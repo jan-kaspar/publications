@@ -1,0 +1,543 @@
+\input ../../kaspiTeX/base.tex
+\input ../../kaspiTeX/biblio.tex
+\input ../../kaspiTeX/colors.tex
+\input ../../kaspiTeX/slides.tex
+\input utf8-csf.tex
+
+
+\def\comment#1{}
+\def\fg{\cmyk{\FgColor}}
+\def\fgt{\cmyk{\TitColor}}
+\def\yellow{\cmyk{\TitColor}}
+\def\green{\cmyk{0.5 0 0.5 0}}
+
+
+\SetBackground{../../kaspiTeX/fig/bg3.jpg}
+%\edef\FgColor{\cmykBl}
+
+%\def\FootLineMessage{\ $1^{\rm st}$ preliminary version}
+
+\def\date{June 30, 2009}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\centerline{EDS'09: 13$^{\rm th}$ International Conference on Elastic \& Diffractive Scattering}
+\vfil
+\title{\bPxx TOTEM Experiment:}
+\vskip-2mm
+\title{\bPxx Elastic and Total Cross Sections}
+\vskip2\baselineskip
+\bgroup
+		\obeylines\leftskip0pt plus1fil
+		{\bPxv Jan Ka\v spar}
+		\vskip2mm
+		CERN PH-TOT and
+		Institute of Physics of the AS CR
+		on behalf of the {\bf TOTEM Collaboration}
+		\vskip2\baselineskip
+		CERN, \date
+\egroup
+
+\vskip2\baselineskip
+
+\line{\hss
+	\fig[,3cm]{../../kaspiTeX/fig/cern_logo_white.pdf}\hss
+	\fig[,3cm]{../../kaspiTeX/fig/totemLogo_white.pdf}\hss
+	\fig[,3cm]{../../kaspiTeX/fig/logo-FZU-male_white.pdf}\hss
+}
+\footline={}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{TOTEM Physics Programme}
+
+\centerline{
+\vbox{\hsize5.1cm
+\centerline{\bPxv Total cross section}
+\centerline{ultimately $\approx 1\percent$ precision}
+\centerline{\fig[,4cm]{fig/sigma,tot.pdf}}
+}\hss
+\vbox{\hsize5.1cm
+\centerline{\bPxv Elastic scattering}
+\centerline{wide $t$ range}
+\centerline{\fig[,4cm]{fig/elastic_scheme.pdf}}
+}}
+
+\vfil
+
+\centerline{\vbox{\hsize10cm
+\centerline{\bf Hard and Soft Diffraction}
+\centerline{\fig[,2cm]{fig/diffraction_hard.pdf}\hskip5mm\fig*[,2cm]{fig/diffraction_soft.pdf}}
+\centerline{(covered by the talk of Simone)}
+}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{\kern-\horizontalmargin\vbox to\vsize{\vss\vskip-1mm
+\fig[7cm]{fig/elasticCrossSection.pdf}%
+\vskip1pt
+\fig[7cm]{fig/sigma,tot.pdf}%
+\vss
+}\hskip3mm\raise9mm\vbox{\hsize8.3cm
+\title{Why...}
+
+\noindent {\bf Elastic scattering} (diffraction in general)
+\> theoretical understanding not complete
+\> number of approaches: Regge, geometrical, eikonal, QCD, $\ldots\Rightarrow$ rather incompatible predictions
+\> intimately related to the structure of proton
+
+\vskip3\baselineskip
+
+\noindent {\bf Total cross section}
+\> various models/approaches: $\si_{\rm tot} \sim \log s$,\hfil\break $\si_{\rm tot} \sim \log^2 s$, $\si_{\rm tot} \sim s^{\al - 1}$
+\> predictions for $\sqrt{s} = 14\un{TeV}$:\hfil\break $90\un{mb} < \si_{\rm tot} < 130\un{mb}$ $\Rightarrow$ $40\percent$ uncertainty
+\> available data not decisive (incompatible CDF/E810 measurements)
+\> implications to cosmic ray physics etc.
+
+\vskip3\baselineskip
+
+\centerline{\bf TOTEM = precise and decisive measurement}
+}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Total Cross Section Measurement}
+
+\> Luminosity Independent Method
+\vskip-2mm
+$$\si_{\rm tot} \propto \Im A(t = 0),\qquad \d\si/\d t \propto |A|^2,\qquad \d N = {\cal L} \d\si,\qquad N_{\rm tot} = N_{\rm el} + N_{\rm inel}$$
+\vskip-1mm
+$$\Downarrow$$
+$$\si_{\rm tot} = {1\over 1+\rh^2} {{\d N/ \d t|_0}\over N_{\rm el} + N_{\rm inel}}, \qquad\qquad {\cal L} = (1+\rh^2)\, {(N_{\rm el} + N_{\rm inel})^2\over {\d N/ \d t|_0}}$$
+
+\bls
+\bls
+{\fgt$\d N/\d t|_0$\fg} : extrapolation of elastic rate to $t = 0$ 
+
+{\fgt$N_{\rm el}$\fg} : total elastic rate
+
+{\fgt$N_{\rm inel}$\fg} : total inelastic rate
+
+{\fgt$\rh$\fg} : ratio of real to imaginary part of elastic amplitude
+
+\vfil
+$$\Big\Downarrow$$
+\vfil
+
+\centerline{requirements for detectors: \fgt\em{detection of forward protons}\fg{} and \fgt\em{large pseudorapidity coverage}\fg}
+\vfil
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{TOTEM Detectors}
+\comment{the instrument to accomplish the physics programme}
+\comment{ATLAS is large, CMS heavy and TOTEM long}
+
+\itskip0pt
+
+\vskip-3pt
+\line{%
+\vtop{\hsize5.6cm
+\> \fgt{\bf Roman Pots}\fg
+\>> measurement of forward protons
+}\hskip3mm\vtop{\hsize8cm
+\> telescopes \fgt{\bf T1}\fg{} and \fgt{\bf T2}\fg: tracking of charged particles produced in inelastic events
+%\>> vertex reconstruction
+\>> measurement of inelastic rate
+}\hss}
+\vskip5pt
+
+\centerline{\fig[,7.7cm]{fig/totem_detectors_overview.png}}
+\vfil
+\> for details on instrumentation see Gennaro's talk
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Acceptance of TOTEM Detectors}
+
+\centerline{%
+	\fig[8.4cm]{fig/acceptanceOverview.pdf}\hskip1mm
+	\vbox{%
+		\fig[6cm]{fig/charged_multiplicity_nondiffractive.pdf}%
+		\vskip1mm
+		\fig[6cm]{fig/multiplicity_diffractive.pdf}%
+	}%
+}
+
+\comment{TOTEM with CMS: the larges coverage detector ever built}
+\comment{the percentage of protons detected}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Optics}
+
+\centerline{\fig[9cm]{fig/protonTransport.pdf}\hskip1cm\raise1mm\vbox{\advance\hsize-9.5cm
+transport of {\it\fgt elastic\fg} protons
+$$\eqnarray{
+x_{\rm det} &= \yellow L_x \green \th_x^* \fg + \yellow v_x \green x^* \fg\cr
+y_{\rm det} &= \yellow L_y \green \th_y^* \fg + \yellow v_y \green y^* \fg\cr
+}$$
+\bls
+\green{} $\th_{x, y}^*$\fg{} are angles and \green{} $x^*, y^*$\fg{} are coordinates of a proton at IP
+}\hss}
+
+
+\centerline{\yellow{} $L_{x, y}$\fg{} and \yellow$v_{x, y}$\fg{} are optical functions}
+\centerline{$\downarrow$}
+\centerline{define which $t$ can be seen ($\equiv$ acceptance)}
+\centerline{$\downarrow$}
+\centerline{example: elastic hits seen by 3 different optics}
+%\centerline{\vbox to3cm{\fig[13cm]{fig/diffraction_hit_distribution.pdf}\hss}}
+\centerline{%
+\fig[,5cm]{fig/hitDistributions_1535.pdf}\hskip1pt
+\fig[,5cm]{fig/hitDistributions_90.pdf}\hskip1pt
+\fig[,5cm]{fig/hitDistributions_2.pdf}%
+}
+\centerline{(the gray ellipse shows $10\si$ beam envelope)}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{\kern-\horizontalmargin\vbox to\vsize{\vss\vskip-1mm
+\fig[6.2cm]{fig/elasticAcceptance.pdf}%
+\vskip1pt
+\fig[6.2cm]{fig/elasticCrossSection_withAcceptance.pdf}%
+\vss
+}\hskip3mm\vbox to\vsize{\hsize9cm
+
+\title{Scenarios}
+\bgroup
+\itskip0pt
+\indent 1) {\fgt\bf high $\be^*$\fg}
+\> $\be^* = 1535\un{m}$
+\> ${\cal L} \approx 10^{28} \div 10^{29}\un{cm^{-2}s^{-1}}$
+\> elastic resolution: $\si(\th_x) \approx 0.23\un{\mu rad}$, $\si(\th_y) \approx 0.22\un{\mu rad}$
+\> vertical sensors at $1.35\un{mm}$ from beam center
+
+\vfil
+2) {\fgt\bf medium $\be^*$\fg}
+\> $\be^* = 90\un{m}$
+\> ${\cal L} \approx 10^{30}\un{cm^{-2}s^{-1}}$
+\> elastic resolution: $\si(\th_x) \approx 5\un{\mu rad}$ (low effective length), $\si(\th_y) \approx 1.7\un{\mu rad}$
+\> vertical sensors at $6.4\un{mm}$ from beam center
+
+\vfil
+3) {\fgt\bf low $\be^*$\fg}
+
+\> $\be^* = 0.5\div 2\un{m}$ (early running: $p = 5\un{TeV}$, $\be^* \sim 3\un{m}$)
+\> ${\cal L} \approx 10^{33}\un{cm^{-2}s^{-1}}$
+\> elastic resolution: $\si(\th_x) \approx 16\un{\mu rad}$, $\si(\th_y) \approx 12\un{\mu rad}$
+\> vertical sensors at $3.3\un{mm}$ from beam center
+
+\vfil
+\> sensors at $10\si + 0.5\un{mm}$ from beam center
+\> resolution (usually) limited by beam divergence
+\egroup
+}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Extrapolation}
+
+\centerline{\fig[,6cm]{fig/elasticCrossSection_low.pdf}\hss\fig[,6cm]{fig/elasticSlope.pdf}}
+
+\> $\d\si/\d t|_0$ experimentally inaccessible
+\> extrapolation $\Rightarrow$ parameterization needed
+
+$$T(t) = e^{M(t)} e^{i P(t)},\quad {\d\si\over\d t} = |T(t)|^2,\quad M, P\hbox{ polynomials}$$
+
+\> questions
+\>> optimal fit range
+\>> optimal degree of polynomials
+\comment{if too many - they cannot be resolved ... problem with phase}
+
+\vskip2mm
+\noindent$\ldots$ as model independent as possible
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Extrapolation and Coulomb scattering}
+
+\> ``elastic scattering = strong (hadronic) + electro-magnetic (Coulomb) interaction''
+
+\> 2 approaches
+\>> ``{\it\fgt traditional\fg}'' (\`a la West-Yennie)
+\vskip-1mm
+$$T^{C+H}_{\rm WY} = \pm {\al s \over t} f_1(t) f_2(t) e^{\mp i\al (\log(-Bt/2) + \ga )} + {\sigma_{\rm tot} \over {4\pi}} p\sqrt{s} (\rh+i)e^{Bt/2}$$
+\vskip2mm
+\>> {\fgt\it eikonal\fg} (Kundrát-Lokajíček), formula too long $\rightarrow$ see the talk of Vojtěch
+
+\> traditional approach internally inconsistent $\rightarrow$ the eikonal one shall be preferred 
+
+\centerline{\fig[,6cm]{fig/coulombInterference_lin.pdf}\hss\fig[,6cm]{fig/R.pdf}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Extrapolation at $\be^* = 1535\un{m}$}
+
+\line{\raise33mm\vbox{\hsize7cm
+\> parameterization
+$$T(t) = e^{i \Ph} e^{a + (b_0 + b_1 t + b_2 t^2) t}$$
+(quadratic $B(t)$, constant phase)
+\> using Kundrát-Lokajíček formula
+\> upper bound $|t| = 4\cdot10^{-2}\un{GeV^2}$
+\> based on preliminary\hfil\break simulation/reconstruction data
+\vskip\baselineskip
+\> most models within $\pm 0.2\%$
+}\hskip3mm\fig*[7.8cm]{fig/extrapolation1535.pdf}\hss}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\itskip0pt
+
+\line{\hskip-10mm
+\raise2mm\vbox to 11cm{\vss
+	\fig*[6.2cm]{fig/tError90.pdf}%
+	\vskip1pt
+	\fig*[6.2cm]{fig/extrapolation90.pdf}%
+	\vss
+}
+\hskip3mm
+\vbox{\hsize9cm
+	\title{Extrapolation at $\be^* = 90\un{m}$}%
+	
+	\> advantage: Coulomb effects negligible
+	\> disadvantage: poor $t_x$ resolution ($t$ resolution as well)
+	\vskip\baselineskip
+	
+	\> possible solutions:
+
+	\noindent {\bf 1)} use $t$-distribution anyway
+
+	\vskip2mm
+	\noindent {\bf 2)} ``convert'' $t_y$-distribution to $t$-distribution (azimuthal symmetry)
+	$$t = t_x + t_y,\qquad t_x = t\cos^2\ph,\quad t_y=t\sin^2\ph$$
+	$${\d\si\over\d t_y} = {\d\si\over\d t_x} \quad \Rightarrow \quad {\d\si\over\d t}(t) \propto \int\limits_t^0 \d u\, {\d\si\over\d t_y}(u)\, {\d\si\over\d t_y}(t - u)$$
+	\>> low $|t_y|$ information missing $\Rightarrow$ extrapolation needed
+
+	\vskip2mm
+	\noindent {\bf3)} ``convert'' $t$-parameterization to $t_y$-parameterization
+$${\d\si\over\d t_y}(t_y) = {2\over\pi} \int\limits_{0}^{\pi/2} {\d\ph\over\sin^2\ph}\ \ {\d\si\over\d t}\!\left(t_y\over\sin^2\ph\right)$$\par
+
+
+
+	$$ {\d\si\over\d t_y}(t_y) \approx {1\over\sqrt{\pi}}\, {e^{a\, +\, bt_y\, +\, ct_y^2\, + d t_y^3}\over\sqrt{|b\,t_y|}}\quad (c, d\hbox{ small})$$
+
+	\vskip\baselineskip
+	
+	\> left: results of approach 3)
+	\>> upper bound $|t| = 0.25\un{GeV^2}$
+	\>> based on preliminary simulation/reconstruction data
+	\>> the offset $-2\%$ due to beam divergence
+}%
+\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Total Cross Section -- Combined Uncertainty}
+
+
+\vfil
+$$\BiggerFonts\si_{\rm tot} = {1\over 1+\rh^2} {{\d N/ \d t|_0}\over N_{\rm el} + N_{\rm inel}}$$
+\vfil
+
+\line{\hss\AddBckg[1mm]{\vbox{\cmyk{\cmykBl}\htab{
+\multispan{2}&\multispan2\bhrulefill\cr
+\multispan{2}&\omit\strut\bvrule\hfil\tskip $\be^* = 90\un{m}$\tskip\hfil & 1535\un{m} \cr\bln
+\d N/\d t|_0	& \hbox{Extrapolation of elastic rate to } t = 0 & 4\percent & 0.2 \percent \cr\ln
+N_{\rm el}	& \hbox{Total elastic rate (correlated with extrapolation)} & 2\percent & 0.1\percent \cr\ln
+N_{\rm inel}	& \vbox{\hsize7cm\noindent\strut Total inelastic rate (error dominated by Single Diffractive trigger losses)} & 1\percent & 0.8\percent \cr\ln
+\rh\equiv\Re A(t)/\Im A(t)|_{t = 0} & \vcenter{\hsize7cm\noindent\strut {\bf External input}, e.g. from COMPETE.\hfil\break Error contribution from $(1 + \rh^2)$\phantom{y}} &\multispan2\vrule\hfil $1.2\percent$\hfil \cr\bln
+\multispan1&\strut\hbox{Total for } \si_{\rm tot} & 5\percent & 1\div2\percent \cr
+\multispan1&\multispan3\bhrulefill\cr
+\multispan1&\strut\hbox{Total for } {\cal L} & 7\percent & 2\percent \cr
+\multispan1&\multispan3\bhrulefill\cr
+}%
+\cmyk{\FgColor}}}\hss}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Sensitivity to Misalignment}
+
+\> a simple (but instructive) example
+
+\> proton transport: $y_{\rm det} = L_y \th_y^* + v_y y^*$
+
+\> a Roman Pot in $220\un{m}$ station displaced by $100\un{\mu m}$ $\Rightarrow$ angular error $\De\th$ :
+
+\centerline{\AddBckg[1mm]{\cmyk{\cmykBl}\tab{\bln
+\be^*\un{m}	&	L_y\un{m}	& \De\th\un{\mu rad}	& \hbox{beam divergence}\un{\mu rad}\cr\bln
+1535		&	272			& 0.36					& 0.3	\cr\ln
+90			&	264			& 0.38					& 2.4	\cr\ln
+2			&	18			& 5.5					& 15.8	\cr\bln
+}}}
+
+$\Rightarrow$ $1535\un{m}$ optics needs perfect alignment
+
+\newpage %-------------------------------------------------------------------------------------------
+\hskip-1.5mm\line{\hss
+\vbox to11cm{\vss\vskip-1.5mm
+\fig[4.25cm]{fig/stationScheme.pdf}%
+\vskip0.5pt
+\fig*[4.25cm]{fig/alignment_RP2.pdf}%
+\vskip0.5pt
+\fig*[4.25cm]{fig/es_profiles.pdf}%
+\vss
+}\hskip1cm
+\raise3mm\vbox to11cm{\hsize10cm
+\title{Alignment Procedures}
+\itskip0pt
+\noindent
+{\bf\fgt 1) internal alignment\fg} (one Roman Pot level)
+\> track-based (Millepede-like) alignment
+\> whatever straight tracks: beam test, commissioning, etc.
+
+\vfil\noindent
+{\bf\fgt 2) station alignment\fg} -- 2 aspects
+\> {\fgt relative RP alignment within a station\fg}
+\>> track-based using \em{overlap}
+
+\> {\fgt alignment wrt. beam\fg}
+\>> physics processes: hit and angular distributions 
+%\>> fluxes/rates
+
+\vfil\noindent
+{\fgt\bf 3) global alignment\fg} (left--right)
+\> elastic tracks
+\> track-based alignment with \em{elastic} tracks
+
+\vfil
+\noindent{\bf\fgt 4) external information\fg}
+\>> Beam Position Monitors -- can watch fast beam variations
+\>> motor control -- very useful after calibration
+}\hss
+}
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}\vfil
+\title{Thank you for your attention}
+
+\centerline{\fig[5cm]{../../kaspiTeX/fig/kasparek.pdf}}
+\centerline{\SmallerFonts (kašpar = joker :-)}
+
+\footline={}
+
+\newpage %-------------------------------------------------------------------------------------------
+\def\FootLineMessage{\ this is a backup slide}
+\title{Optics}
+
+\centerline{\fig[9cm]{fig/protonTransport.pdf}\hss\raise5mm\vbox{\advance\hsize-9.5cm
+proton transport equation
+$$\eqnarray{
+x_{\rm det} &= \yellow L_x \green \th_x^* \fg + \yellow v_x \green x^* \fg + \yellow D \green \xi \fg\cr
+y_{\rm det} &= \yellow L_y \green \th_y^* \fg + \yellow v_y \green y^* \fg\cr
+}$$
+}}
+
+\green{} $\th_{x, y}^*$\fg{} and\green{} $x^*, y^*$\fg{} are angles and coordinates of a proton at IP, $\green\xi\fg\equiv\De p / p$ is proton momentum loss
+
+\centerline{\yellow{} $L_{x, y}$, $v_{x, y}$\fg{} and \yellow{} D\fg{} are optical functions}
+\centerline{$\downarrow$}
+\centerline{define which $t$ and $\xi$ can be seen ($\equiv$ acceptance)}
+\centerline{$\downarrow$}
+\centerline{example: with the same sample of diffractive protons}
+\centerline{\vbox to3cm{\fig[13cm]{fig/diffraction_hit_distribution.pdf}\hss}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Scenarios}
+
+\advance\hsize\horizontalmargin\line{\kern-\horizontalmargin
+\fig[,4.8cm]{fig/acceptance_3m_5TeV.pdf}
+\fig[,4.8cm]{fig/acceptance_220_90_7TeV.pdf}
+\fig[,4.8cm]{fig/acceptance_220_1535_7TeV.pdf}\hss
+}
+
+\line{\kern-\horizontalmargin\SmallerFonts\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil
+	\fgt{\NormalFonts\bf low $\be^*$}\fg
+	\hrule\vskip1mm
+	$\be^* = 0.5\div 2\un{m}$, ${\cal L} \approx 10^{33}\un{cm^{-2}s^{-1}}$
+	early running: $p = 5\un{TeV}$, $\be^* \sim 3\un{m}$
+		\vskip\baselineskip
+	elastic acceptance
+	$2 \ls |t/{\rm GeV^2}| \ls 10$
+		\vskip\baselineskip
+	resolution
+	$\si(\th) \approx 15\un{\mu rad}$
+	$\si(\xi) \approx 1\div6\cdot 10^{-3}$
+		\vskip3\baselineskip
+	\em{\fgt diffraction, high $|t|$ elastic scattering\fg}
+}
+\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil
+	{\fgt\NormalFonts\bf $\be^* = 90\un{m}$\fg}
+	\hrule\vskip1mm
+	${\cal L} \approx 10^{30}\un{cm^{-2}s^{-1}}$
+		\vskip2\baselineskip
+	elastic acceptance
+	$ 10^{-2} < |t_y/{\rm GeV^2}| \ls 10 $
+		\vskip\baselineskip
+	resolution
+	$\si(\th) \approx 1.7\un{\mu rad}$
+	$\si(\xi) \approx 6\div 15\cdot 10^{-3}$
+		\vskip\baselineskip
+	all $\xi$ seen, universal optics
+		\vskip\baselineskip
+	\em{\fgt diffraction, mid $|t|$ elastic scattering, total cross section\fg}
+}
+\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil
+	{\fgt\NormalFonts\bf $\be^* = 1535\un{m}$\fg}
+	\hrule\vskip1mm
+	${\cal L} \approx 10^{28} \div 10^{29}\un{cm^{-2}s^{-1}}$
+		\vskip2\baselineskip
+	elastic acceptance
+	$ 3\cdot10^{-3} < |t/{\rm GeV^2}| < 0.5$
+		\vskip\baselineskip
+	resolution
+	$\si(\th) \approx 0.3\un{\mu rad}$
+	$\si(\xi) \approx 2\div 10\cdot10^{-3}$
+		\vskip\baselineskip
+	all $\xi$ seen
+		\vskip\baselineskip
+	\em{\fgt total cross section, low $|t|$ elastic scattering\fg}
+}
+\hss}
+
+\advance\hsize-\horizontalmargin
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Complication at $\mathbf{\be^*}$ = 90 m: only $t_y$ is measured}
+
+\line{%
+\raise10mm\vbox{\advance\hsize-6.5cm
+\> $L_x \approx 0\un{m}$ $\Rightarrow$ only $t_y$ can practically be reconstructed $\Rightarrow$ $\d\si/\d {t_y}$ measured instead of $\d\si/\d t$
+\comment{emphasize the ty x t difference}\par
+\vskip8mm
+\> transformation between p.d.fs. of random variables $t,\ph$ and $t_y,\ph$\par
+$$t_y(t, \ph) = t\sin^2 \ph \Rightarrow$$
+\eqref{\Rightarrow\quad{\d\si\over\d t_y}(t_y) = {2\over\pi} \int\limits_{0}^{\pi/2} {\d\ph\over\sin^2\ph}\ \ {\d\si\over\d t}\!\left(t_y\over\sin^2\ph\right)}{ty}\par
+%
+}\hskip5mm\fig[5.95cm]{fig/autoconvolution.pdf}}
+
+\> inverse transformation (consequence of azimuthal symmetry)
+$$t = t_x + t_y,\qquad t_x = t\cos^2\ph,\quad t_y=t\sin^2\ph$$
+$${\d\si\over\d t_y} = {\d\si\over\d t_x} \quad \Rightarrow \quad {\d\si\over\d t}(t) \propto \int\limits_t^0 \d u\, {\d\si\over\d t_y}(u)\, {\d\si\over\d t_y}(t - u)$$\par
+\>> can be well adapted for discrete case of histograms\par
+\vskip3mm
+\>> cannot be used because \em{information from low $|t_y|$ region is missing}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{SD extrapolation to low masses}
+
+\> assuming $\d\si/\d M^2 \propto 1/M^2$
+
+\bls
+
+\centerline{\fig[15cm]{fig/sd_acceptance_extrapolation.pdf}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\centerline{This background is a photo of ice from inside of the Mer de Glace glacier.}
+\footline={}
+
+\vfil\eject\bye

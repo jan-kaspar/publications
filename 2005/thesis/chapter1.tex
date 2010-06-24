@@ -1,0 +1,625 @@
+\def\qt{q_{\perp}}
+\def\fg{Fig\hbox{.}}
+\def\fgs{Figs\hbox{.}}
+\def\Fg{Fig\hbox{.}}
+\def\Fgs{Figs\hbox{.}}
+\def\equ{Eq\hbox{.}}
+\def\equs{Eqs\hbox{.}}
+\def\Equ{Eq\hbox{.}}
+\def\Equs{Eqs\hbox{.}}
+\def\rf{Ref.\spacefactor=1000}
+\def\rfs{Refs.\spacefactor=1000}
+\def\percent{\%% because of highlighting
+}
+
+
+
+% =============================================== Chapter 1 ============================================
+\chapter{Analysis of pp elastic scattering}
+
+\section{General concepts}
+As it was mentioned in the introduction we are interested in $pp$ (or $\bar pp$) elastic scattering in this thesis. First of all we have to set a reference frame in which we will investigate these processes. And it is very convenient to chose center--of--mass system (CMS). The situation in this frame is shown in \fg{} \fref{kinematics}. 
+
+\fig{fig/kinematics.eps}{kinematics}{Kinematics of two body scattering in CMS.\vbox to0pt{\vskip9.5mm\hbox to0pt{\hss$\th$\hskip4mm}\vss}}
+
+The grey circle represents interaction, $p_1$ and $p_2$ are four--momenta of the incoming particles and $p_1'$ and $p_2'$ are four--momenta of the outgoing particles. Due to the mass shell condition, conservation laws and our choice of reference frame, there are actually only 2 independent kinematic parameters (see \rf{} \bibref{Barone}). As these two parameters
+we will use Mandelstam variables $s$ and $t$
+\eqref{s = (p_1 + p_2)^2,\qquad t = (p_1' - p_1)^2\.}{mandelstam}
+The variable $s$ denotes the total CMS energy squared and $t$ the four--momentum transfer squared. It is useful to recast definition \ref{mandelstam} using scattering angle $\th$ and momentum $p$ (magnitude of three--momentum) of incident particles in CMS. Assuming both particles have the same mass $M$, it yields
+\eqref{p^2 = {s - 4M^2\over 4}\c\qquad t = - 2p^2\, (1-\cos\th)\.}{p, t}
+With the help of relation \ref{p, t} one finds out there is a restriction for $t$
+\eqref{0 \geq t \geq t_{min} = -4p^2\.}{t region}
+Later, in the section devoted to the impact parameter representation, we will find natural to use quantity
+\eqref{q = \sqrt{-t}}{q}
+instead of $t$. This quantity is restricted to region
+\eqref{0 \leq q \leq q_{max} = 2p\.}{q region}
+For the square root of $s$ we will use symbol
+\eqref{W = \sqrt{s}\.}{W}
+
+Having fixed the kinematical description, let us turn to the dynamics of our processes. It is natural to use quantum theory, particularly the interaction picture. Within this framework, the scattering is viewed as a transition from the initial state $\ket i$ to the final state $\ket f$. Using the $S$-matrix operator $\op S$ (i.e., the evolution operator in the interaction picture) one can express the relevant amplitude of transition probability as 
+\eqref{S_{fi} = \mel{f}{\op S}{i} \.}{S matrix element}
+Performing following substitution one can extract all the nontrivial information from $S_{fi}$ and obtain Lorentz invariant amplitude ${\cal M}_{fi}$
+\eqref{S_{fi} = \brk{f}{i} + i\,(2\pi)^4 \,\de(p_i - p_f)\, {\cal M}_{fi}\, \prod_{n} {1\over (2\pi)^{3/2} \sqrt{2E_n}}\c}{invariant amp}
+where the product over $n$ means multiplication over all particles in the initial and the final state with $E_n$ symbolizing their energy. $\de(p_i - p_f)$ is four--dimensional delta function expressing four--momentum conservation. 
+
+To make a practical use of our calculations it is necessary to enumerate some quantities that are experimentally measurable. Cross section $\sigma$ is good candidate for this purpose. For two particle scattering in the CMS there is the general formula (see \rfs{} \bibref{Formanek pole}, \bibref{Horejsi} or \bibref{Barone})
+%\eqref{\d\si_{fi} = {1\over K} {1\over 4pW} |{\cal M}_{fi}|^2\, \d\Pi_N \c}{d sigma}
+\eqref{\d\si_{fi} = {1\over 4pW} |{\cal M}_{fi}|^2\, \d\Pi_N \c}{d sigma}
+where $\d\Pi_N$ is an element of relativisticly invariant phase space of the final state containing $N$ particles
+\eqref{\d\Pi_N = (2\pi)^4\, \de(p_i - p_f)\, \prod_{k=1}^N {\d^3 \vec p_k\over (2\pi)^3\, 2E_k} .}{d Pi}
+Here $\vec p_k$ is vector of momentum of the $k$-th particle in the final state and $E_k$ is the corresponding energy. The $\de$ function governs four--momentum conservation and simultaneously reduces dimension of $\Pi_N$ to $3N - 4$. Thus the phase space can be parameterized by parameters $a_1,\ldots, a_{3N-4}$. Integrating \equ{} \ref{d sigma} over all of these parameters one obtains the integral cross section $\si_{int,\, fi}$ for interaction $i\rightarrow f$ (here, $f$ denotes particle contents of the final state only)
+\eqref{\si_{int,\, fi} = {1\over K}\int \d a_1\ldots\d a_{3N-4}\,  {1\over 4pW}\  |{\cal M}_{fi}|^2\  \d\Pi_N(a_j) \.}{sigma int fi}
+The additional factor $K$ is so called statistical factor and it is equal to $\prod_\al n_\al!$ where $n_\al$ is number of (identical) particles of kind $\al$ in the final state.
+
+Summing over all possible final states one gets the total cross section $\si_{tot,\, i}$ for the initial state $i$
+\eqref{\si_{tot,\,i} = \sum_{f} \si_{int,\, fi} \.}{sigma tot}
+In situations where it will be clear which initial state we have in mind, we will abbreviate $\si_{tot,\, i}$ to $\si_{tot}(s)$ (i.e., we will write down the kinematical description of the initial state only).
+
+This general scheme can be applied to the processes we are interested in --- the $pp$ and $\bar pp$ elastic scattering. As there are two particles in the final state, the phase space $\Pi_N$ is two--dimensional. Moreover, we are not concerned in spin measurement and that is why we can replace $|{\cal M}_{fi}|^2$ in \equ{} \ref{d sigma} by $\overline{|{\cal M}_{fi}|^2}$. It is obtained from $|{\cal M}_{fi}|^2$ by averaging over all spin states in the initial state and summing over all spin states in the final state. This spin--averaged squared amplitude is a function of kinematical variables only. And since there is no privileged direction except the scattering axis (axis parallel to $\vec p_1$ and $\vec p_2$ in \fg \fref{kinematics}), $\overline{|{\cal M}_{fi}|^2}$ is invariant under rotations around the scattering axis. Therefore the averaged squared amplitude depends on one phase space parameter only. Conveniently, $t$ variable is chosen to play this role and the averaged squared amplitude is written as $\overline{|{\cal M}(s, t)|^2}$. In this case, one can perform the integration over the angle round scattering axis in Eq. \ref{d sigma} and obtains the formula for differential cross section
+\eqref{{\d\sigma\over\d t} = {1\over 64\pi s p^2}\, \overline{|{\cal M}(s, t)|^2} \.}{dsigma/dt}
+
+For the elastic interactions with no spin measurement the integral cross section is called elastic cross section and is denoted $\si_{el,\,i}$ (resp. $\si_{el}(s)$). It can be evaluated with the help of differential cross section \ref{dsigma/dt} as
+\eqref{\si_{el}(s) = \int\limits_{t_{min}}^{0} {\d\sigma\over\d t}\, \d t\.}{sigma el}
+
+The total cross section for collisions of unpolarized particles is given by arithmetic mean of the total cross sections that correspond to particular spin states of colliding particles. Then, one can define the inelastic cross section as
+\eqref{\si_{inel}(s) = \si_{tot}(s) - \si_{el}(s) \.}{sigma inel}
+
+As allready said the $S$ matrix operator is evolution operator. That is why it must be unitary. It can be shown that this fact implies (see \rf{} \bibref{Formanek pole})
+\eqref{{\cal M}_{fi} - {\cal M}_{if}^* = i\,(2\pi)^4\,\int\d n\, \de(p_i - p_n)\, {\cal M}_{nf}^* {\cal M}_{ni}\,\prod_{k=1}^{N_{n}} {1\over (2\pi)^3\,2E_k}\c}{unitarity}
+where $\int\d n\, \de(p_i - p_n)$ symbolizes integration (and summation) over all states with the same four--momentum as the initial state $i$, $N_n$ is number of particles in intermediate state $n$ and $E_k$ is energy of the $k$--th particle in this state. For $i = f$ \equ{} \ref{unitarity} leads to the optical theorem which for scattering of unpolarized particles reads
+\eqref{\si_{tot}(s) =  {1\over 2pW}\, \Im \overline{\cal M}(s, 0) \c}{optical th}
+where $\overline{\cal M}(s, 0)$ is elastic amplitude conserving spin state at $t=0\un{GeV^2}$ and which is averaged over all initial spin states.
+
+If we have a theory that is $PT$ invariant, i.e., it is invariant under combined space and time inversion, and the initial and the final state contain the same particles with the same spin characteristics, then the amplitude must fulfil ${\cal M}_{fi} = {\cal M}_{i'f'}$ where the state $f'$ is identical to $f$ but has flipped spins. Thus in theories with no spin or when spin is omitted it must hold
+\eqref{{\cal M}_{fi} = {\cal M}_{if}}{T symmetry}
+and the \lhs{} of \equ{} \ref{unitarity} becomes $2\Im {\cal M}_{fi}$.
+
+Beside the optical theorem there is number of rigorous theorems that every model (or theory) must obey. We will mention only two of them now. The first one, Froissart theorem (taken from \bibref{Barone}) claims that for asymptotically high energies, i.e., for $s\to\infty$, the total cross section cannot grow faster than $\log^2 s$. That is
+\eqref{\si_{tot}(s) \leq C\,\log^2 s \c}{Froissart}
+where $C$ is a constant.
+
+The second one, Martin's theorem \bibref{Martin} has two assumptions. First, $\d\si/\d t$ for reactions $A+B\to A+B$ and $A+\bar B\to A + \bar B$ must tend to zero for $s\to\infty$ at $t$ region $-T < t < 0$ for some $T$. And second, the total cross sections for $A + B$ and $A + \bar B$ collisions must tend to infinity for $s\to\infty$. Then the theorem claims that the real part of crossing even amplitude cannot have constant sign in a strip $S < s,\ -T < t \leq 0$ for any $S$ and $T > 0$. In other words, for every value of $s$ there must exist a value of $t$ such that
+\eqref{\Re {\cal M}(s, t) = 0 \,}{Martin}
+if we assume that $\Re {\cal M}(s, t)$ is continuous.
+
+Now, we will briefly discuss crossing symmetry. It is based on the fact that (in relativistic QFT) an incoming particle with four--momentum $p$ can be viewed as an outgoing antiparticle with four--momentum $-p$ (see \rf{} \bibref{Barone}). This remark can be applied on $pp$ elastic scattering and in terms of invariant amplitudes it reads (see \rf{} \bibref{Peskin})
+\eqref{{\cal M} \Big(  p(p_1) + p(p_2) \to p(p_3) + p(p_4)  \Big) = {\cal M} \Big(  p(p_1) + \bar p(-p_4) \to p(p_3) + \bar p(-p_2)  \Big) \c}{crossing}
+where the arguments of ${\cal M}$ describe the scattering and for example $\bar p(-p_4)$ denotes an antiproton with four-momentum $-p_4$. Indeed, if $p_4$ is momentum of physical particle, $-p_4$ cannot describe a physical particle. Therefore the \rhs{} of \equ{} \ref{crossing} is meant in the sense of analytic continuation. Next, one can describe the reaction from \lhs{} of \equ{} \ref{crossing} by the Mandelstam variables
+\eqref{s = (p_1 + p_2)^2,\quad t = (p_1 - p_3)^2,\quad u = (p_1 - p_4)^2 \.}{Mandelstam 2}
+The same can be done for the \rhs{} reaction (for this reaction we will denote the Mandelstam variables with prime)
+\eqref{s' = (p_1 - p_4)^2 = u,\quad t' = (p_1 - p_3)^2 = t ,\quad u = (p_1 + p_2)^2 = s \.}{Mandelstam 2'}
+Then one can recast \equ{} \ref{crossing} to
+\eqref{{\cal M}_{pp}(s, t) = {\cal M}_{\bar pp}(u, t)\.}{crossing 2}
+It can be shown that $u = 4M^2 - s - t$ and thus for high energies and small values of $t$ one can put
+\eqref{u \approx -s\c\qquad {\cal M}_{pp}(s, t) = {\cal M}_{\bar pp}(-s, t).}{u approx}
+One can define crossing even amplitude ${\cal M}^{+}(s, t)$ and crossing odd amplitude ${\cal M}^{-}(s, t)$
+\eqref{{\cal M}^\pm(s, t) = {1\over 2} \Big( {\cal M}_{\bar pp}(s, t) \pm {\cal M}_{pp}(s, t) \Big)}{even odd amp}
+with following crossing property
+\eqref{{\cal M}^\pm(-s, t) = \pm\,{\cal M}^\pm(s, t).}{even odd crossing}
+
+The only thing left in order to compute the cross section is to determine the amplitude $\cal M$. And this is the point where one has to employ models for particular interactions. We are interested in $pp$ and $\bar pp$ scattering. For these processes only two of all four known fundamental interactions are relevant. Namely electromagnetic and strong. For computation of electromagnetic amplitude one can use QED, which is very reliable and trusted model. Situation in strong interaction domain is much more complicated. There only exist several phenomenological models and none of them is completely successful. One such a model will be discussed in some detail in the next section.
+
+
+
+%..............................................................................
+
+\section{Hadron model}
+
+We digress a little from the general scheme presented in the previous section and we will introduce an amplitude $T(s, t)$ for elastic unpolarized $pp$ (or $\bar pp$) scattering. So, we neglect the spin of nucleons from the very beginning. Moreover, the amplitude $T(s, t)$ will have a different normalization than the invariant amplitude. Then, formulae \ref{dsigma/dt} and \ref{optical th} become 
+\eqref{{\d\sigma\over\d t} = {\pi\over s p^2}\, |T(s, t)|^2 \c}{dsigma/dt 2}
+\eqref{\si_{tot}(s) =  {4\pi\over pW}\, \Im T(s, 0) \.}{optical th 2}
+
+Here, in this section, we are going to describe a model of M.M.Islam and coworkers. As there are still new experimental data and new physical information, the model makes progress. Thus there are several stages of this model, but for our pourpose 3 of them are relevant. They are represented by papers \bibref{Islam1987}, \bibref{Islam2003} and \bibref{Islam2004}. The newer ones implement more features, but as we will demonstrate, they do not explain older data correctly in some cases.
+
+Although there are several versions of the model, all of them have something in common. It is a notion of the authors how the nucleon structure looks like. It is based on the $SU(3)_L\times SU(3)_R \times U(1)_V$ gauged nonlinear $\si$ model with Wess-Zumino action. Its full treatment can be found in papers \bibref{Islam1992} and \bibref{Islam1993}. Here, we want to demonstrate the main result. It can be done with simplified lagrangian density
+\eqref{{\cal L} = \bar\psi\, i \rlap\slash\partial\, \psi + {1\over 2} \partial_\mu \si\, \partial^\mu \si + {1\over 2} \partial_\mu \vec\pi \cdot \partial^\mu \vec\pi - G\, \bar\psi (\si + i \vec\La\cdot\vec\pi \ga^5) \psi - \la (\si^2 + \vec\pi^2 - f_\pi^2)^2 \c}{lagrangian}
+where $\psi$ is a vector of 3 Dirac fields describing quarks, $\vec\pi$ stands for an octet of Goldstone bosons and $\si$ is a scalar boson that plays role of the Higgs particle. $\vec\La$ is a vector of Gell-Mann matrices and $f_\pi$ is a constant. Then, the derivatives are replaced by covariant derivatives. It is done separately for left and right chiral components of $\ps$. In the unitary gauge fields $\vec\pi$ disappear and only $\si$ provides interaction between left and right quarks. The authors discovered an interesting critical behavior of $\si$. If $\si$ is zero at small distances from the origin and sharply rises to its vacuum value $f_\pi$ at some distance, then the energy of the system of interacting quark Dirac sea with scalar field can be less than that of the noninteracting system. Such a system can make a phase transition to the lower energy state and form the nucleon. In this approach, nucleon is divided into two distinct areas --- inner core and outer cloud.
+
+From this result the authors derive how $pp$ (or $\bar pp$) collision looks like. They distinguish several mechanisms. Namely, the diffraction, the core scattering and in the latest stages also the quark--quark scattering. For small $|t|$, when only the outer clouds of nucleons overlap, the diffraction dominates. As $|t|$ grows, the inner cores begin to scatter one off the other and it gives rise to the core scattering. For very hight $|t|$ the QCD coupling constant is small enough to employ perturbative approach. Then, the $qq$ scattering takes control. Formally, we can describe the situation as
+\eqref{T_H(s, t) = T_D(s, t) + T_\om(s, t) + T_Q(s, t) \.}{T H}
+In other words, the complete hadron amplitude $T_H(s, t)$ is given by sum of the diffraction amplitude $T_D(s, t)$, the core scattering amplitude $T_\om(s, t)$ and the quark--quark scattering amplitude $T_Q(s, t)$.
+
+Next, look at the diffraction a little bit more in detail. The authors parameterize this amplitude in terms of Fourier--Bessel transform
+\eqref{T_D(s, t) = ipW \int\limits_0^\infty b\,\d b\, J_0(bq)\, \Ga_D^+(s, b) \c}{T D}
+where the crossing even profile function is given by
+\eqref{\Ga_D^+(s, b) = g(s)\, \Ga_0(s, b) = g(s) \left[ {1\over 1 + e^{b-R\over a}} + {1\over 1 + e^{-{b+R\over a}}} - 1\right]\.}{Gamma D+}
+We used abbreviations\footnote{In expressions of type $\log s$ and $s^{\al}$, where $\al$ is non-integer power, one has to understand $s$ as a dimensionless fraction $s/1\un{GeV^2}$.}
+\eqref{R\equiv R(s) = R_0 + R_1 \Big(\log s - i{\pi\over2}\Big)\c\qquad a \equiv a(s) = a_0 + a_1 \Big(\log s - i{\pi\over2}\Big) \,}{R,a}
+with $R_0$, $R_1$, $a_0$, $a_1$ being free parameters of the model with unit of length. The function $g(s)$ is crossing even, i.e., $g^*(-s) = g(s)$, and asymptotically becomes a real positive constant.
+
+It can be shown that this parameterization satisfies some general theorems. For furher discussion we refer the reader to the end of this section.  
+
+Let us now turn to the core scattering. Authors claim that the inner cores scatter via $\om$ boson exchange. The $\om$ behaves as an elementary spin--1 boson and thus the amplitude is proportional to $s/(m^2 - t)$, where $m$ is mass of $\om$. Next, a form factor $F(t)$ and an diffraction absorption factor $1 - \Ga(s, 0)$ are plugged and the full core scattering amplitude reads
+\eqref{T_\om(s, t) = \pm s\, \Big (1 - \Ga(s, 0) \Big ) \, \hat\ga(s)\, e^{i\hat\th(s)}  {F^2(t)\over m^2 - t} \.}{T om}
+The real functions $\hat\ga(s)$ and $\hat\th(s)$ express the $s$ dependence of the amplitude and need to be further parameterized. The upper sign holds for $\bar pp$ while the lower holds for $pp$ scattering\footnote{We will keep this sign notation in what follows.}. For the absorption factor one has to take into account the crossing odd profile function $\Ga_D^-(s, 0)$
+\eqref{\Ga_D(s, 0) = \Ga_D^+(s, 0) \pm \Ga_D^-(s, 0) \.}{Gamma D}
+Function $\Ga_D^-(s, 0)$ is a new free function of the model and need to be parameterized. The form factor $F(t)$ is given by
+\eqref{F^2(t) = \be \sqrt{m^2 - t}\ K_1\Big(\be \sqrt{m^2 - t} \Big)\.}{FormFac}
+
+If we stop here, we get to a level described in paper \bibref{Islam1987}. There are 8 free parameters. $a_0$, $a_1$, $R_0$ and $R_1$ have dimension of length and are energy--independent. The rest of parameters, $g(s)$, $\hat\ga(s)$, $\hat\th(s)$, $\Ga^-_D(s, 0)$ are dimesionless and they have different values for different values of $s$. Furthermore, $g(s)$ and $\Ga^-_D(s, 0)$ are complex quantities and hence there are 10 free real parameters in this stage. Values of $\be$ and $m$ are kept fixed at $\be = 3.075\un{GeV^{-1}}$ and $m = 0.801\un{GeV}$. To determine values of free parameters, it is necessary to fit the experimental data. This work is done for several energies in paper \bibref{Islam1987}, but without providing method of fitting and values of $\chi^2$ for the fits. That is why we repeated this fitting procedure. But we fitted the data on differential cross section for $pp$ scattering at energy of $53\un{GeV}$ only (taken from \bibref{data pp53}). In this case, when only one process at a single energy is fitted, one can obtain values of 8 parameters only. It is a consequence of the form of $T_D(s, t)$ and $T_\om(s, t)$. They can be recast to
+\eqref{T_D(s, t) = f_D(s)\, \int\limits_0^\infty b\,\d b\, J_0(bq)\, \Ga_0(s, b) \c  \quad T_\om(s, t) = f_\om(s)\, {F^2(t)\over m^2 - t} \c}{T D, T H}
+where we factored out only the $s$--dependent factors
+\eqref{f_D(s) = i\,g(s)\,pW \c \quad f_\om(s, t) = \pm s \, \hat\ga(s) e^{i\hat\th(s)} \, \Big (1 - \Ga_D^+(s, 0) \mp \Ga_D^-(s, 0) \Big ).}{f D, f H}
+Now, it is clear that energy--dependent parameters reduce to only two complex free parameters $f_D(s)$ and $f_\om(s)$ (i.e., to 4 real parameters). 
+
+It is important to describe our fitting method. In reality, $pp$ (resp. $\bar pp$) scattering is not caused by hadron interaction only. Coulomb interaction is relevant too and as we will show in the last section of this chapter, the Coulomb interaction or Coulomb--hadron interference cannot be neglected for any $t$ value. Therefore we used formula \ref{T full} to fit experimental data. Comparison of our fit results and the results from \bibref{Islam1987} is shown in \fgs{} \fref{pp53 m vs i} and \fref{pp53 m vs i coulomb} and in Table \tref{53comparison} (symbol $\chi^2/D.F.$ means total $\chi^2$ divided by number of degrees of freedom). For completeness we included to the table forward direction (i.e., $t = 0\un{GeV^2}$) values of diffraction slope  
+\eqref{B(s, t) = {\d\over\d t} \log |T_H(s, t)|^2\.}{B}
+and ratio of real and imaginary part of the hadron amplitude
+\eqref{\rh(s, t) = {\Re T(s, t) \over \Im T(s, t)}\.}{rho}
+
+\vskip0pt
+
+{\SmallerFonts\setbox\strutbox=\hbox{\vrule height12pt depth5pt width0pt}
+\global\advance\nftn1
+\htab{Comparison of two fits for $pp$ scattering at energy of $53\un{GeV}$.\tlab{53comparison}}{
+% --------------------------------------------------------------------------------------------------------------
+		& R_0\un{(fm)}\ ^{\the\nftn)}	& R_1\un{(fm)} 	& a_0\un{(fm)} 	& a_1\un{(fm)}	& \Re f_D\un{(fm^{-2})} 	& \Im f_D\un{(fm^{-2})} \cr
+\bln % ---------------------------------------------------------------------------------------------------------
+\hbox{paper \bibref{Islam1987}}	& 0.311 	& 1.06\cdot10^{-2} 	& 0.311 	& 1.06\cdot10^{-2} 	& -5.51\cdot10^2	& 5.51\cdot 10^4 \cr\ln
+\hbox{our fit}					& 0.818		&-1.99\cdot10^{-2}	& 0.721		&-4.79\cdot10^{-2} 	& 8.22\cdot10^3		& 3.05\cdot10^4	 \cr
+\bln % ---------------------------------------------------------------------------------------------------------
+				 & \Re f_\om\un{(GeV^2)}	& \Im f_\om\un{(GeV^{2})} & \chi^2/D.F. & \si_{tot}\un{(mb)} & B(s, 0)\un{(GeV^{-2})} & \rh(s, 0)\cr
+\bln % ---------------------------------------------------------------------------------------------------------
+\hbox{paper \bibref{Islam1987}}	&-1.50\cdot10^2 &  1.48\cdot10^3	& 102 	& 42.3	& 17.0	& 0.0805\cr\ln
+\hbox{our fit}					&-1.01\cdot10^3	& -1.11\cdot10^3	& 1.70	& 43.0	& 13.7	& 0.0734\cr
+\bln % ---------------------------------------------------------------------------------------------------------
+}}
+
+In \fg{} \fref{pp53} we compared experimental data with particular contributions to Islam's amplitude. For this graph we used original amplitude parameters from Ref. \bibref{Islam1987}.
+
+% footnote from table
+{\SmallerFonts \vfootnote{$^{\,\the\nftn)}$}{We decided to measure length in$\un{fm}$. To convert length from$\un{GeV^{-1}}$ (natural units) to$\un{fm}$, one has to multiply the value in natural units by $\hbar c$ (see \equ{} \ref{hbar c 1}). This point is discussed a little bit more in detail in the last section devoted to computation.}}
+
+\fig*[14cm]{../results/stage1/pp53.eps}{pp53}{[]Differential cross section for $pp$ scattering at energy of $53\un{GeV}$ with parameters taken from \bibref{Islam1987}. The blue line represents diffraction alone, the red core scattering alone and the green complete hadron amplitude.}{$\d\sigma/\d t \un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}
+\vfil
+\vskip0pt
+\bmfig
+\fig*[,6.5cm]{../results/stage1/pp53_mine_vs_islam.eps}{pp53 m vs i}{[7cm]Differential cross section for $pp$ scattering at energy of $53\un{GeV}$. The blue curve was plotted with the help of our fit and the red with parameters from \bibref{Islam1987}.}{$\d\sigma/\d t \un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}
+\fig*[,6.5cm]{../results/stage1/pp53_mine_vs_islam_c_region.eps}{pp53 m vs i coulomb}{[7cm]\Fg{} \fref{pp53 m vs i} zoomed into the Coulomb region.}{$\d\sigma/\d t \un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}	
+\emfig
+
+In the second stage of the model (paper \bibref{Islam2003}), the authors parameterize functions $g(s)$, $\hat\ga(s)$, $\hat\th(s)$ and $\Ga^-_D(s, 0)$ by energy--independent parameters. $g(s)$ can be disentangled from relation
+\eqref{\eta_0 + {c_0\over (s\, e^{-i\pi/2})^\si} = 1 - \Ga_D^+(s, 0)}{gs def}
+with the help of definition \ref{Gamma D+} and it yields
+\eqref{g(s) = \left( 1 - \eta_0 - {c_0\over (s\, e^{-i\pi/2})^\si} \right) {1 + e^{-{R\over a}}\over 1-e^{-{R\over a}}} \.}{gs}
+Crossing odd part of diffraction profile is considered to be
+\eqref{\Ga_D^-(s, 0) = i\la_0 - i{d_0\over (s\, e^{-i\pi/2})^\al} \.}{Gamma D-}
+$\hat\ga(s)$ and $\hat\th(s)$ are parameterized in the following way
+\eq{\hat\ga(s)\, e^{i\hat\th(s)} = \hat\ga_0 + {\hat\ga_1\over (s\, e^{-i\pi/2}\big)^{\hat\si}} \.}
+Putting the previous formulae together, the core scattering amplitude reads
+\eqref{T_\om(s, t) = \pm s\, \left(\eta_0 + {c_0\over (s\, e^{-i\pi/2})^\si} \mp i\la_0 \pm i{d_0\over (s\, e^{-i\pi/2})^\al} \right) \left(\hat\ga_0 + {\hat\ga_1\over (s\, e^{-i\pi/2}\big)^{\hat\si}}\right) \, {F^2(t)\over m^2 - t} \c}{T H2}
+
+In this stage, 9 new free parameters are introduced. Namely, $\et_0$, $c_0$, $\si$, $\la_0$, $d_0$, $\al$, $\hat\ga_0$, $\hat\ga_1$ and $\hat\si$. They are energy--independent and dimensionless. Alltogether, with $a_0$, $a_1$, $R_0$ and $R_1$, the model involves 13 free parameters. To determine their values authors fitted data on $\si_{tot}(s)$, $\rh(s, 0)$ and experimental data on $\d\si/\d t$ for $\bar pp$ scattering at energy of $541\un{GeV}$. Results can be found in paper \bibref{Islam2003} and in \fg{} \fref{app541}. We repeated the fit for the latter data set, but we used our method based on formula \ref{T full}. The data were taken from \bibref{data app541 1} (data for energy of $546\un{GeV}$), \bibref{data app541 2} (for $541\un{GeV}$) and \bibref{data app630} (for \un{630\un{GeV}}). Comparison of the fits is shown in Table \tref{541comparison} and \fgs{} \fref{app541 m vs i} and \fref{app541 m vs i coulomb}.
+
+\vskip-2pt\vskip0pt
+{\SmallerFonts\setbox\strutbox=\hbox{\vrule height12pt depth5pt width0pt}
+% ---------------------------------------------------------------------------------------------------------
+\htab{Comparison of two fits for $\bar pp$ scattering at energy of $541\un{GeV}$.\tlab{541comparison}}{
+	& 		R_0\un{(fm)}&	R_1\un{(fm)}& 			a_0\un{(fm)}& 		a_1\un{(fm)} 	& \Re f_D\un{(fm^{-2})}	& \Im f_D\un{(fm^{-2})}\cr
+\bln % ----------------------------------------------------------------------------------------------------
+\hbox{paper \bibref{Islam2003}}		& 0.493		& 7.60\cdot10^{-3}	& 0.112		& 2.09\cdot10^{-2}	& 2.69\cdot10^5		& 5.62\cdot10^6	\cr\ln
+\hbox{our fit}						& 1.325		& -53.4\cdot10^{-3}	& -0.683	& 8.45\cdot10^{-2}	& -1.36\cdot10^5	& 4.85\cdot10^6	\cr
+\bln % ----------------------------------------------------------------------------------------------------
+				& \Re f_\om\un{(GeV^2)}	& \Im f_\om\un{(GeV^2)}			&\chi^2/D.F.& \si_{tot}\un{(mb)}& B(s, 0)\un{(GeV^{-2})}& \rh(s, 0)	\cr
+\bln % ----------------------------------------------------------------------------------------------------
+\hbox{paper \bibref{Islam2003}}	& -3.23\cdot10^4& -2.33\cdot10^5	& 123		& 62.9		& 16.8		& 0.141\cr\ln
+\hbox{our fit}					& 1.01\cdot10^5	& -2.54\cdot10^5	&1.15		& 63.1		& 16.1		& 0.091\cr
+\bln % ----------------------------------------------------------------------------------------------------
+}}
+
+
+\fig*[14cm]{../results/stage2/app541.eps}{app541}{[]Differential cross sections for $\bar pp$ scattering at energy of $541\un{GeV}$. The blue curve shows diffraction alone, the red core scattering and the green is the complete hadron amplitude. Original parameters from paper \bibref{Islam2003} were used.}{$\d\si/\d t\un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}
+\bmfig
+\fig*[,6.5cm]{../results/stage2/app541_mine_vs_islam.eps}{app541 m vs i}{[7cm]Differential cross sections for $\bar pp$ at energy of $541\un{GeV}$. Comparison of fit from paper \bibref{Islam2003} (red line) and our fit represented by Table \tref{541comparison} (blue line).}{$\d\si/\d t\un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}
+\fig*[,6.5cm]{../results/stage2/app541_mine_vs_islam_c_region.eps}{app541 m vs i coulomb}{[7cm] \Fg{} \fref{app541 m vs i} zoomed into Coulomb region.}{$\d\si/\d t\un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}
+\emfig
+
+
+\bmfig
+\fig*[,6.5cm]{../results/stage2/pp500_vs_app541.eps}{pp500}{[7cm]Differential cross sections for $\bar pp$ at energy of $541\un{GeV}$ (blue graph) and for $pp$ at energy of $500\un{GeV}$ (red graph).}{$\d\si/\d t\un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}
+\fig*[,6.5cm]{../results/stage2/pp53_st1_vs_st2.eps}{pp53 ST1 vs ST2}{[7cm] Differential cross sections for $pp$ at energy of $53\un{GeV}$. The blue line was obtained with use of stage 1 parameterization, the red line by stage 2 parameterization.}{$\d\si/\d t\un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}
+\emfig
+
+Looking at \fgs{} \fref{app541} and \fref{app541 m vs i} one can notice that parameter values taken from \bibref{Islam2003} do not agree with data satisfactorily. Our fit agrees much better (compare values of $\chi^2/D.F.$ in Table \tref{541comparison}). But note, that we fitted just one data set. Authors of \bibref{Islam2003} took into account 3 data sets. \Fg{} \fref{pp500} seems strange a bit since experimental data for $pp$ scattering usually exhibit deeper and narrower dip that data for $\bar pp$. \Fg{} \fref{pp53 ST1 vs ST2} shows up that stage 2 parameterization (with parameters from \bibref{Islam2003}) is unable to explain data on $pp$ scattering at energy of $53\un{GeV}$.
+
+Now, let us discuss the extension of the model done in paper \bibref{Islam2004}. We will refer it as the stage 3. Here, besides diffraction and core scattering a new mechanism is involved. The mechanism is dominant in very hight $|t|$ region and reflects transition from the nonperturbative regime to the perturbative regime, where QCD can be used quite easily. The new mechanism is represented by amplitude $T_Q(s, t)$ in \equ{} \ref{T H}. 
+
+Within the new mechanism, $pp$ scattering is viewed as a hard collision of valence quarks, one quark from each proton. It brings two new features. First it is a probability amplitude of finding a quark of momentum $\vec P$ in proton with momentum $\vec p_1$. We will denote it $\ph(\vec P)$. And second it is the amplitude for the elastic quark--quark ($qq$) scattering. To compute this amplitude, the authors did not use directly perturbative QCD but exploited BFKL theory and obtained
+\eqref{T_{qq}(s, t) = i\, \ga_{qq}\, s\, (s\, e^{-i{\pi/2}})^\om\, {1\over |t| + {1\over r_0^2}} \.}{T qq}
+% They set up the face to make the amplitude crossing even. 
+$\ga_{qq}$, $\om$ and $r_0$ are new free parameters.
+
+Analogically to $\ph(\vec P)$, one can define $\ph(\vec K)$ as probability amplitude of a quark to have momentum $\vec K$ when the proton has momentum $\vec p_2=-\vec p_1$ (see \fg{} \fref{kinematics}). After the collision the quarks have momenta $\vec P - \vec q$ and $\vec K + \vec q$. They hadronize and create protons with momenta $\vec p_3 = \vec p_1 - \vec q$ and $\vec p_4 = \vec p_2 + \vec q$. Probability amplitudes for such a hadronisation are $\ph(\vec P - \vec q)$ and $\ph(\vec K + \vec q)$. Note that the momentum transfer is the same on the level of quark and proton scattering. Whereas values of CM energy are different. We will keep the original meaning of $s$ and denote $\tilde s = (P + K)^2$. $P$ and $K$ stand for four--momenta corresponding to $\vec P$ and $\vec K$. With the help of the probability amplitudes one can write down the $qq$ scattering contribution to the $pp$ scattering amplitude as
+\eqref{T_Q'(s, t) = \int \d^3\vec P \int \d^3\vec K \, \ph^*(\vec P - \vec q)\, \ph^*(\vec K + \vec q) \ T_{qq}(\tilde s, t) \  \ph(\vec P)\, \ph(\vec K) \c\qquad t = -\vec q^2\.}{T Q' 0}
+
+Assuming that $\ph(\vec P)$ is the wave function in momentum representation, one can find the wave function in space representation $\psi(\vec x)$ and obtains
+\eqref{\ps(\vec x) = {1\over (2\pi)^{3\over 2}} \int \d^3\vec P\, e^{i\vec P \cdot \vec x}\, \ph(\vec P), \quad \int \d^3\vec P\, \ph^*(\vec P - \vec q)\, \ph(\vec P) = \int \d^3\vec x\, e^{i \vec q\cdot \vec x}\, \rh(\vec x) = F_Q(\vec q) \.}{FF Q 0}
+Here we used symbol $\rh(\vec x) = |\ps(\vec x)|^2$ for probability density. Then it naturally follows that $F_Q(\vec q)$ can be interpreted as a form factor related to the $\rh(\vec x)$ density. In \bibref{Islam2004}, a dipole form is taken for this form factor in the proton rest frame
+\eqref{F_Q(\vec q) = \left(1 + {\vec q^2\over m_0}\right)^{-2}}{FF Q rest}
+with $m_0$ being the fourth new free parameter in this extension. If one wants to substitute the form factor to \equ{} \ref{FF Q 0}, one has to use Lorentz contracted form $F_Q(\vec q_\perp)$. As we are interested in high $s$ limit, we completely neglected the element of $\vec q$ parallel to $\vec p$. The part of $\vec q$ perpendicular to $\vec p$ is denoted $\vec q_\perp$.
+
+With the help of \equs{} \ref{FF Q rest} and \ref{FF Q 0} one can extract $\ph(\vec p)$ and substitute it into \equ{} \ref{T Q' 0}. Then the integrations can be performed (in high $s$ limit) with the result (rewritten from \bibref{Islam2004})
+\eqref{T_Q'(s, t) = i\, \tilde\ga_{qq}\, s \, (s\, e^{-i\pi/2})^\om \, {{\cal F}^2(\qt)\over |t| + {1\over r_0^2}} \c}{T Q' 1}
+\eqref{{\cal F}(\qt) = {M m_0^5\over 8\pi}\, \int\limits_0^1 \d x\, {x^{1+\om}\over \al^2(x)}\,I(\qt, \al(x)) \c \qquad \al(x) = \sqrt{{m_0^2\over 4} + M^2 x^2} \c}{F cal}
+\eqref{I(\qt, \al) = {1\over 8\al^4} \left( 
+{2\over a^3 a'}\,\log{(a' + a)}   +   {1\over a a'^3}\,\log{(a' + a)}   -   {1\over a^2 a'^2}   -   {3a'\over a^5}\,\log{(a' + a)}   +  {3\over a^4}
+\right),}{I integral}
+where
+\eqref{a' = {\qt\over 2\al} \c \qquad a = \sqrt{a'^2 + 1} \c\qquad \qt = \sqrt{t\,\left( {t\over t_{min}} - 1 \right)} \.}{a a' qt}
+We remind that $M$ denotes proton mass. Note that for $|t| \ll |t_{min}|$ one may approximate $\qt \approx \sqrt{-t}$. One more remark. For $\qt\to0_+$ (i.e., for $t\to0_-$) the second and the third term in \ref{I integral} suffer from $\qt^{-2}$ divergence. And although they have opposite signs they do not cancel. Finally, the amplitude $T_Q(s, t)$ is given by product of $T'_Q(s, t)$ such that
+\eqref{T_\om(s, t) + T_Q(s, t) = \Big(1 - \Ga_D(s, 0)\Big) \left(\hat\ga_0 + {\hat\ga_1\over (s\, e^{-i\pi/2}\big)^{\hat\si}}\right) \left[ \pm s\, {F^2(t)\over m^2 - t} + T_Q'(s, t) \right] \.}{T 1Q}
+
+Alltogether there are 17 free parameters in the model. The new parameters are $\ga_{qq}$, $\om$ (dimensionless), $r_0$ (dimension of length) and $m_0$ (dimension of mass). The parameters were determined by fitting the data on $\si_{tot}(s)$, $\rh(s)$ and $\d\si/\d t$ for $\bar pp$ at energies $W = 541\un{GeV}$, $630\un{GeV}$ and $1.8\un{TeV}$.
+
+We used this model parameterization and plotted graphs \fref{lhc}--\fref{pp53 ST1 vs ST3}. Note that data for $\bar pp$ at energy of $541\un{GeV}$ are much better described than by stage 2 parameterization (\fg{} \fref{app541 ST2 vs ST3}). However, for $pp$ at energy of $53\un{GeV}$ stage 3 fails just like stage 2 (\fg{} \fref{pp53 ST1 vs ST3}).
+
+\fig*[14cm]{../results/stage3/lhc.eps}{lhc}{[]Prediction for differential cross sections for $pp$ scattering at energy of $14\un{TeV}$. Diffraction contribution is drawn blue, core scattering red, quark scattering black and complete cross section green.}{$\d\si/\d t\un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}
+\bmfig
+\fig*[,6.5cm]{../results/stage3/app541_st2_vs_st3.eps}{app541 ST2 vs ST3}{[7cm]Differential cross sections for $\bar pp$ scattering at energy of $541\un{GeV}$. The blue line represents stage 2 while the red stage 3.}{$\d\si/\d t\un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}%
+\fig*[,6.5cm]{../results/stage3/pp53_st1_vs_st3.eps}{pp53 ST1 vs ST3}{[7cm]Differential cross sections for $pp$ scattering at energy of $53\un{GeV}$. The blue curve is for stage 1 and the red for stage 3.}{$\d\si/\d t\un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}%
+\emfig
+
+Now, we will check whether the Islam's model satisfy general theorems. First of all we use optical theorem \ref{optical th} and plot the total cross section, see \fg{} \fref{sigma tot}. We do so for all three stages. But since the amplitude $T_Q(s, t)$ diverges at $t = 0\un{GeV^2}$, we have to exclude it from our considerations. Forthermore, the dominant contribution to $T(s, 0)$ is the diffraction contribution $T_D(s, 0)$. The diffraction amplitude is given by \equs{} \ref{T D}--\ref{R,a}. And it is shown in paper \bibref{Islam2003} that this parameterization leads to the total cross section proportional to $(a_0 + a_1 \log s)^2$, what qualitatively saturates the Froissart bound \ref{Froissart} at high energies.
+
+\bmfig
+\fig*[,6.5cm]{../results/sdraw/sigma_tot.eps}{sigma tot}{[7cm]Total cross section. The blue line stands for $pp$ and the red for $\bar pp$ collision\break within the stage 2. Stage 3 without $T_Q(s, t)$ is drawn black ($pp$) and green ($\bar  pp$).}{$\si_{tot}\un{(mb)}$}{$W\un{GeV}$}{}%
+\fig*[,6.5cm]{../results/sdraw/rho.eps}{rho}{[7cm]Plot of $\rh(s)$. The legend is the same as for \fg{} \fref{sigma tot}.}{$\rh(s)$}{$W\un{(GeV)}$}{}
+\emfig
+
+The authors point out that $\rh(s, 0)$ defined by \equ{} \ref{rho} asymptotically tends to $\pi/\log s$ as required (see \fg{} \fref{rho}). They also demonstrate that assumptions of the Martin theorem \ref{Martin} are fulfilled. Thus there must be a value of $t$ where $\Re T(s, t) = 0$. It can be checked at \fg{} \fref{Re T} that stage 2 and 3 parameterizations have such a zeros at $t \approx - 0.1\un{GeV^2}$. Stage 1 parameterization crosses zero as well, but at much higher $|t|$.
+
+The zeros of $\Im T(s, t)$ usually correspond to the diffraction dip. It is not true in the case of out fit for $\bar pp$ scattering at energy of $541\un{GeV}$. Looking at \fg{} \fref{Im T} one can see that $\Im T(s, t)$ reaches zero at point $t \approx -0.65\un{GeV^2}$. But the diffraction dip takes place at $t \approx - 0.9\un{GeV^2}$. And this is the point where $\Re T(s, t)$ crosses zero.
+
+\bmfig[The hadron amplitude for 3 sample process (each denoted with different color). The solid lines were obtained with the help of parameters published by Islam et al. The dashed lines correspond to our fits, see Tables \tref{53comparison} and \tref{541comparison}.]
+\fig*[,6.5cm]{../results/re_amp.eps}{Re T}{}{$\Re T(s, t)$}{$-t\un{(GeV^2)}$}{}%
+\fig*[,6.5cm]{../results/im_amp.eps}{Im T}{}{$\Im T(s, t)$}{$-t\un{(GeV^2)}$}{}%
+\emfig
+
+
+
+%..............................................................................
+
+\section{Impact parameter point of view}
+Working directly with amplitude $T(s, t)$ does not need to be the most efficient way in all situations. And that is why several different representations are employed. In this section we will discus particularly the impact parameter representation. 
+
+From the historical point of view, the impact parameter representation is related with eikonal approximation in nonrelativistic quantum mechanics. In this approach the scattering amplitude $T(s, t)$ is transformed to a different amplitude $A(s, b)$, where the variable $b$ is traditionally called impact parameter. It has a meaning of the transverse distance between colliding particles (i.e., the distance in the plane perpendicular to momenta of incident particles in the CMS). A different way how to derive the impact parameter representation is to make a high energy limit of the partial wave expansion. As it is shown in \bibref{Barone}, the impact parameter $b$ is related\footnote{Actually, it is defined in this way.} to angular momentum value $\ell$
+\eqref{p b = \ell + {1\over 2}.}{b(l)}
+And since it holds in the high--energy region, where $p$ and $\ell$ have large values, the $1/2$ is negligible and one receives classical relation for the impulsmoment $\ell$. Thus, the interpretation of $b$ as the impact parameter can be justified.
+
+In this section we will follow an exact formulation of impact parameter representation \bibref{AK1965} which is valid for all energies and for all values of $t$. One can check high--energy behavior of the impact parameter amplitude $A(s, b)$ (it is done in Ref. \bibref{AK1966}) and finds out that it satisfies
+\eqref{A_\ell(s) = A \Big (s, b = (2\ell + 1) / 2p \Big ) - {\cal O}\left({1\over p^2}\right) \c}{b(l) 2}
+where $A_\ell$ is the partial amplitude corresponding to the angular momentum value $\ell$. It is in accordance with \equ{} \ref{b(l)} and that is why we can keep physical interpretation of $b$.
+
+The impact parameter representation is based mathematically\footnote{It is worth noticing that the transformation is defined consistently in both directions. It is consequence of the infinite upper bound.} on the Fourier--Bessel transformation between the functions $U(q)$ and $A(b)$
+\eqref{U(q) = \xi\, \int\limits_0^\infty b\,\d b\, J_0(bq)\,A(b)\c}{A2U}
+\eqref{A(b) = {1\over \xi}\int\limits_0^\infty q\,\d q\, J_0(bq)\,U(q)\c}{U2A}
+where $\xi$ is an arbitrary constant. Now, one can identify function $U(q)$ with amplitude $T(s, -q^2)$ and function $A(b)$ with impact parameter amplitude $A(s, b)$. However, there is a difficulty. Namely, to perform transformation \ref{U2A} one needs to know amplitude $T(s, -q^2)$ in whole integration region. But the physical amplitude is constrained to physical region, that is to $0 < q < q_{max}$. The solution is to define the function $U(s, q)$ as follows
+\eqref{U(s, q) = \left\{ %} for syntax highlighting
+\vcenter{\halign{\strut $#$\hfil& \qquad #\hfil\cr
+T(s, -q^2)& for $q < q_{max}$\cr 
+\tilde T(s, q)& for $q > q_{max}$\cr
+}} \right. \c}{U(s, q)} 
+
+where the function $\tilde T(s, q)$ is an arbitrary function, that reflects ambiguity in the impact parameter formulation.
+
+Now we can apply formula \ref{U2A} in a straight-forward way and receive
+\eqref{A(s, b)= {1\over \xi}\int\limits_0^{q_{max}} q\,\d q\, J_0(bq)\,T(s, -q^2)  +  {1\over \xi}\int\limits_{q_{max}}^\infty q\,\d q\, J_0(bq)\,\tilde T(s, q) = a(s, b) + \tilde a(s, b) \c}{A decomposition}
+where $a(s, b)$ corresponds to the first integral and $\tilde a(s, b)$ to the second one. Performing the backward transformation \ref{A2U} one is left with\footnote{Symbol $\Th(x)$ will be hereafter used for a step function.}
+\eqref{\eqalign{
+U(s, q) &= \xi\, \int\limits_0^\infty b\,\d b\, J_0(bq)\,a(s, b) + \xi\, \int\limits_0^\infty b\,\d b\, J_0(bq)\,\tilde a(s, b)\cr
+&= T(s, -q^2)\, \Th(q_{max} - q) +  \tilde T(s, q)\, \Th(q - q_{max})\c\cr
+}}{T decomposition}
+where again the former term comes from $a(s, b)$ and the latter from $\tilde a(s, b)$ transformation. It is clear from this relation that $U(s, q)$ in physical region is unaffected by our choice of $\tilde T(s, q)$. 
+
+Let us make a short digression from theoretical discussion and look at amplitudes $a(s, b)$ given by Islam model. These amplitudes for two different processes are plotted in \fgs{} \fref{profile53} and \fref{profile541}. Note, that the transformation \ref{U2A} is linear and that is why every contribution to Islam's amplitude $T(s, t)$ (i.e., diffraction, core and quark scattering) has its partner among contributions to $a(s, b)$.
+
+\bmfig[\flab{profile53}Impact parameter amplitude $a(s, b)$ for $pp$ scattering at energy of $53\un{GeV}$ (drawn with stage 1 parameterization). The blue curve represents diffraction contribution, the red core scattering contribution and the green complete amplitude $a(s, b)$.]%
+\fig*[,6.5cm]{../results/bdraw/profile_pp53_re.eps}{}{}{$\Re a(s, b)$}{$b\un{(fm)}$}{}
+\fig*[,6.5cm]{../results/bdraw/profile_pp53_im.eps}{}{}{$\Im a(s, b)$}{$b\un{(fm)}$}{}
+\emfig
+\vfil
+\vskip0pt
+\bmfig[\flab{profile541}Impact parameter amplitude $a(s, b)$ for $\bar pp$ scattering at energy of $541\un{GeV}$ (drawn with stage 3 parameterization). The blue solid line denotes diffraction contribution, the red core and the black solid line quark scattering contribution. Complete amplitude $a(s, b)$ is drawn green.]%
+\fig*[,6.5cm]{../results/bdraw/profile_app541_re.eps}{}{}{$\Re a(s, b)$}{$b\un{(fm)}$}{}
+\fig*[,6.5cm]{../results/bdraw/profile_app541_im.eps}{}{}{$\Im a(s, b)$}{$b\un{(fm)}$}{}
+\emfig
+
+It is a typical feature of the Islam model that the amplitude $T(s, t)$ is almost imaginary for $|t|$ bellow the diffraction dip. In this region we can put $\Re T(s, t) \ll \Im T(s, t) \approx |T(s, t)|$ and deduce behavior of the amplitude from experimental data which can be approximately described by $|T(s, t)| \sim \exp(-Bt)$ in that region ($B$ is appropriate constant). Now, it is clear that decisive contribution to $\Im a(s, b)$ (see \equ{} \ref{A decomposition}) comes from the mentioned small $t$ region where diffraction is in charge. It explains why the diffraction contribution dominates in the right graphs of \fgs{} \fref{profile53} and \fref{profile541}. The approximately gaussian shape can explained as well. The transformation \ref{A decomposition} of $\Im T(s, t) \sim \exp(-Bt)$ can be carried out for $s\to\infty$ and one obtains $\Im a(s, b) \sim \exp(-C b^2)$, where $C$ is a constant.
+
+As it was said above, the impact parameter amplitude is ambiguous. To remove this ambiguity one can introduce some requirements that determine the amplitude $A(s, b)$ fully. Before doing this we will derive some relations that will help us to find both, the requirements and a physical interpretation of amplitude $A(s, b)$. Let us start with formula for the total cross section $\si_{tot}(s)$. Substituting $U(s, q)$ from \equ{} \ref{T decomposition} for $T(s, -q^2)$ into optical theorem \ref{optical th 2} one gets
+\eqref{\sigma_{tot}(s) = {4\pi \xi\over pW} \int\limits_0^\infty b\,\d b\, \Im A(s, b) = {4\pi \xi\over pW} \int\limits_0^\infty b\,\d b\, \Im a(s, b) \c}{imp par sigma tot}
+where the first equality is a consequence of $J_0(0) = 1$. The second equality follows from the fact that in optical theorem we take the value of the amplitude in forward direction ($t = 0\un{GeV^2}$). That is at (the boundary of) physical region and thus only the first term in \ref{T decomposition} contributes. In other words $\tilde a(s, b)$ has following property
+\eqref{\int\limits_{0}^\infty b\,\d b\, \Im \tilde a(s, b) = 0\.}{tilde a 1}
+
+One can derive a formula similar to \equ{} \ref{imp par sigma tot} for the elastic cross section $\si_{el}(s)$ as well. A feasible way is to begin with definition of the elastic cross sections \ref{sigma el} and \ref{dsigma/dt 2}. The square of amplitude in the latter equation can be recast to $T^*(s, t)\,T(s, t)$ and the factor $T^*(s, t)$ can be substituted from \equ{} \ref{T decomposition}. Note that \equ{} \ref{sigma el} contains integral through physical region only. And that is why it is sufficient to take only the first term from decomposition \ref{T decomposition}. However, considering the full amplitude $U(s, q)$ is relevant as well. Thus, one can perform the suggested substitution once with $U(s, q)$ and with $T(q)\,\Th(q_{max}-q)$ for the second time. It leads to following chain of equalities
+\eqref{\sigma_{el}(s) = {2\pi \xi^2\over sp^2} \int\limits_0^\infty b\,\d b\, |a(s, b)|^2 = {2\pi \xi^2\over sp^2} \int\limits_0^\infty b\,\d b\, A^*(s, b)\,a(s, b)\c}{imp par sigma el}
+that hides a constraint 
+\eqref{\int\limits_0^\infty b\,\d b\ \tilde a^*(s, b)\,a(s, b) = 0}{tilde a 2}
+and thus $a(s, b)$ and $\tilde a(s, b)$ are not independent.
+
+Looking at formulae \ref{imp par sigma tot} and \ref{imp par sigma el} one can find, that fixing $\xi = 2pW$ is very convenient. Then that formulae unify to
+\eqref{\sigma_{tot}(s) = 8\pi \int\limits_0^\infty b\,\d b\, \Im A(s, b)\c \qquad \si_{el}(s) = 8\pi \int\limits_0^\infty b\,\d b\, |a(s, b)|^2 \.}{imp par sigma}
+In fact there is one more advantage of this choice. Particularly, the impact parameter amplitude is dimensionless, just like the common amplitude $T(s, t)$. That is why we will use this convention.
+
+Graph of $\sigma_{tot}(s)$ for Islam's model is plotted in \fg{} \fref{sigma tot} in the previous section. Graph of $\sigma_{el}(s)$ is shown in \fg{} \fref{sigma el} a few pages later.
+
+At this moment we are ready to discuss the meaning of impact parameter amplitude. For this pourpose let us introduce a vector $\vec b$ denoting relative position of the incident particles in the transversal plane. That is plane perpendicular to momenta of colliding particles in the CMS. Then the impact parameter $b$ is magnitude of the vector $\vec b$. We can rewrite relations \ref{imp par sigma} employing integration over whole transversal plane
+\eqref{\sigma_{tot}(s) = \int\d^2 \vec b\ 4\Im A(s, b)\c \qquad \si_{el}(s) = \int\d^2 \vec b\ 4|a(s, b)|^2 \.}{imp par sigma2}
+This result evokes a clear interpretation. The total resp. the elastic cross section can be obtained by integrating corresponding density over the whole transversal plane (i.e., over all impact parameter configurations). The densities $\rh_{tot}$ and $\rh_{el}$ for the total and the elastic cross sections are
+\eqref{\rh_{tot}(s, b) = 4\,\Im A(s, b)\c\qquad \rh_{el}(s, b) = 4\, |a(s, b)|^2\.}{rh tot el}
+However, if we want to interpret these functions as densities of collisions (elastic or total\footnote{The total collision means a collision of whatever type, i.e., elastic or inelastic.}), these functions must be non-negative. While this condition is fullfiled automatically in the case of the elastic density $\rh_{el}(s, b)$, for the total density $\rh_{tot}(s, b)$ it is not generally satisfied. Of course, when we require $\rh_{tot}(s, b)$ to be non-negative, it leads to restrictions for $\tilde a(s, b)$ resp. $\tilde T(s, q)$. And it has been our goal.
+
+One may question if there generally exists a function $\tilde T(s, q)$ that satisfies
+\eqref{\rh_{tot}(s, b) \geq 0\.}{tilde T requirement}
+The second question is whether this function is unique. And the final question is how to find such a function. Similar problem was studied in paper \bibref{Kundrat2002}. 
+%They left the first two questions (existence and unicity) open and focused on the third one.
+They focused on the last question and successfully applied a numerical approach. They directly searched for $\Im\tilde a(s, b)$ ($c(s, b)$ in their notation) instead of $\tilde T(s, q)$. It is easy to understand since $\Im\tilde a(s, b)$ performs directly in $\rh_{tot}(s)$ definition. On the other hand it is necessary to fullfill properties of $\Im\tilde a(s, b)$ such as \ref{tilde a 1} and \ref{tilde a 2}. In the quoted paper only \equ{} \ref{tilde a 1} is kept in mind. And as we will demonstrate in a sequel, there is infinite number of constraints for $\tilde a(s, b)$. Thus the approach based on finding $\Im\tilde a(s, b)$ gets into troubles. 
+%rem Can the monotony requirement save the situation?
+
+Hence finding appropriate function $\tilde T(s, q)$ is a difficult task. One may wonder if there are some quantities that would give us some information about densities $\rh_{tot,\, el}(s, b)$ and simultaneously we would not need to determine $\tilde T(s, q)$ for their evaluation. The answer is there are such quantities. As an example we mention mean values of $b^2$ for elastic or total collisions
+\eqref{\mean{b^2(s)}_{el,\, tot} = {\displaystyle\int \d^2 \vec b\, b^2\, \rh_{el,\, tot}(s, b)\over \displaystyle\int \d^2 \vec b\, \rh_{el,\, tot}(s, b)} = {1\over\si_{tot,\,el}(s)}\, \int \d^2 \vec b\, b^2\, \rh_{el,\, tot}(s, b)\.}{mean b2}
+
+Now we will demonstrate how to calculate their values. To do so, we will make use of following identities for Bessel functions with integer $m$ (taken from \bibref{mathworld})
+\eqref{{\d\over\d x}(x^m\,J_m(x)) = x^m\,J_{m-1}(x)\c\quad J_{-m}(x) = (-1)^m J_{m}(x)\c}{Bessel identities}
+\eqref{\lim_{x\to 0} {J_m(x)\over x^m} = {1\over 2^m\, m!} \qquad \hbox{for }m \geq 0 \.}{Bessel identities2}
+Equipped with these relations it is easy to check (for integer $n \geq 0$)
+\eqref{\lim_{q\to 0_+} \left( {1\over q} {\d\over\d q} \right)^n\, U(s, q) = {(-1)^n\over 2^n\,n!}\,\int\limits_0^\infty b\, \d b\,b^{2n}\,A(s, b) \.}{mean b2 tot base}
+In this equation both terms on \rhs{} of \ref{T decomposition} are taken into account. But since we take (one side) limit at point $t = 0\un{GeV^2}$ (and limit and derivative are local operations) only the first term, containing $a(s, b)$ contributes. That is why one can replace $A(s, b)$ by $a(s, b)$ in \equ{} \ref{mean b2 tot base}. It means
+\eqref{\int\limits_0^\infty b\, \d b\,b^{2n}\,\tilde a(s, b) = 0 \.}{tilde a 3}
+
+Comparing \equs{} \ref{mean b2 tot base} and \ref{mean b2} for the total case, one can notice that numerator of \equ{} \ref{mean b2} is proportional to imaginary part of \ref{mean b2 tot base} with $n = 1$ and denominator to the same expression with $n = 0$. Writing down this observation one can obtain compact form (copied from \bibref{Kundrat2002})
+\eqref{\mean{b^2(s)}_{tot} = 4\, \left.{\d\over\d t} \log \Im T(s, t) \right|_{0_-}\.}{mean b2 tot}
+This mean value for model of Islam is plotted in \fg{} \fref{mean b tot}. In paper \bibref{Kundrat2002} the authors derived an approximate relation for $\mean{b^2(s)}_{tot}$
+\eqref{\mean{b^2(s)}_{tot} \approx 4\, \left.{\d\over\d t} \log | T(s, t) | \right|_{0_-} \.}{mean b2 tot approx}
+The advantage of this form is that it could be evaluated directly from experimental data. Comparison of this formula and exact formula \ref{mean b2 tot} is shown in \fg{} \fref{mean b tot approx}.
+
+\Equ{} \ref{tilde a 3} enables us to make an important conclusion about $\mean{b^2(s)}_{tot}$. Namely, it is independent on choice of $\tilde T(s, q)$. Hence, the existence of function $\tilde T(s, q)$ satisfying \ref{tilde T requirement} is necessary only for correct interpretation of $\mean{b^2(s)}_{tot}$ as a mean value of $b^2$.
+
+Let us turn to the elastic mean $b^2$ now. Here, we will confine to physical region from the very beginning. Then we can compute derivative\footnote{Note that derivative of $\th$ functions in $U(s, q)$ definition \ref{T decomposition} would give rise to corresponding $\de$ functions. The restriction to physical region enables us to foreget the $\de$ functions.}
+\eqref{{\d U(s, q)\over \d q} = {\d T(s, -q^2)\over \d q} = - \int\limits_0^\infty b^2\,\d b\, J_1(bq)\, a(s, b) \qquad 0 \leq q < q_{max}\.}{mean b2 el base}
+With the help of this result one gets readily
+\eqref{\int\limits_0^{q_{max}} q\,\d q\, \left| {\d T(s, -q^2)\over \d q} \right|^2 = \int\limits_0^\infty b\,\d b\,b^2\, |a(s, b)|^2\.}{mean b2 el base2}
+The \rhs{} of just received equation is proportional to \ref{mean b2} for the elastic collisions. Thus \ref{mean b2} can be rewritten with the use of the last equation and $t$ variable (the form was taken from \rf{} \bibref{Kundrat1980})
+\eqref{\mean{b^2(s)}_{el} = 4\, {\displaystyle\int_{t_{min}}^0  \d t\, |t|\,\left| {\d\over\d t} T(s, t) \right|^2 \over \displaystyle\int_{t_{min}}^0 \d t\, | T(s, t) |^2}\.}{mean b2 el}
+
+\bmfig
+\fig*[,6.5cm]{../results/sdraw/meanb_tot.eps}{mean b tot}{[7cm]Total RMS\footnote{} of $b$. The blue line corresponds to $pp$ and the red to $\bar pp$ scattering with parameterization of stage 2 of Islam's model. Similarly, the black line stands for $pp$ and the green for $\bar pp$ scattering with stage 3 parameterization.}{$\sqrt{\mean{b^2}_{tot}}\un{(fm)}$}{$W\un{(GeV)}$}{}
+\fig*[,6.5cm]{../results/sdraw/meanb_el.eps}{mean b el}{[7cm]RMS of $b$ for the elastic collisions. Legend is the same as in \fg{} \fref{mean b tot}.}{$\sqrt{\mean{b^2)}_{el}}\un{(fm)}$}{$W\un{(GeV)}$}{}
+\emfig
+
+% footnote from figure
+{\SmallerFonts \vfootnote{$^{\,\the\nftn)}$}{RMS is abbreviation of root mean square. That is, the total RMS of $b$ means $\sqrt{\mean b^2_{tot}}$.}}
+
+\bmfig%
+\fig*[,6.5cm]{../results/sdraw/meanb_tot_approx.eps}{mean b tot approx}{[7cm]Total RMS of $b$. The black curves are obtained by exact formula \ref{mean b2 tot} while the green by approximate formula \ref{mean b2 tot approx}. The solid curves use stage 2 and the dashed stage 3 parameterization.}{$\sqrt{\mean{b^2}_{tot}}\un{(fm)}$}{$W\un{(GeV)}$}{}
+\fig*[,6.5cm]{../results/sdraw/sigma_el.eps}{sigma el}{[7cm]Elastic cross section. See legend of \fg{} \fref{mean b tot}.}{$\si_{el}\un{(mb)}$}{$W\un{(GeV)}$}{}%
+\emfig
+
+The fact, that mean $b^2$ for the total collisions is grater than for the elastic collisions (compare \fgs{} \fref{mean b tot} and \fref{mean b el}) is typical for so called central models which the Islam model belongs to. These models have a weak $t$ dependence of the phase of the amplitude in the small $|t|$ region. Whereas models with a convenient strong $t$ dependence of phase lead to so called peripherality and yield mean $b^2$ grater for the elastic than for the total collisions (for details see \rf{} \bibref{Kundrat1994}).
+
+At the end of this section we would like to devote some space to the unitarity relation in the impact parameter representation. We start from \equ{} \ref{unitarity} (adapted for the elastic scattering) and adopt assumption \ref{T symmetry}. We recast \equ{} \ref{unitarity} to form
+\eqref{\Im T(s, t) = E(s, t) + F(s, t) \c}{t unitarity}
+where the $E(s, t)$ term contains all elastic intermediate states $n$ and the $F(s, t)$ involves the rest. Indeed, the $E(s, t)$ term is expressible as function of the elastic amplitude $T(s, t)$. \Equ{} (4.5) from \bibref{AK1965} reads
+\eqref{E(s, t) = {1\over 8pW}\, \int\limits_0^\infty b\,\d b\,J_0\left(b\sqrt{-t}\right) \int\limits_{t_{min}}^0 \d t_1 \int\limits_{t_{min}}^0 \d t_2\ T^*(s, t_1)\, T(s, t_2)\, L(b;\, t_1, t_2) \c}{E}
+\eqref{L(b;\, t_1, t_2) = J_0\left( b\, \sqrt{t_1 \left({t_2\over t_{min}} - 1\right)} \right)\, J_0\left( b\, \sqrt{t_2 \left({t_1\over t_{min}} - 1\right)} \right) \.}{L}
+
+For the elastic scattering the interesting region of momentum transfer $t$ (the experimentally measured region) is $|t| \ll |t_{min}|$. In this region we can approximate
+\eqref{L(b;\, t_1, t_2) \approx J_0(b\sqrt{-t_1})\, J_0(b\sqrt{-t_2})}{L approx}
+and for fixed $t_1$ and $t_2$ the approximation is the better the higher $|t_{min}|$ (i.e., the higher $s$) we have. Later we will find convenient to define a correction function $M(b;\, t_1, t_2)$
+\eqref{L(b;\, t_1, t_2) = J_0(b\sqrt{-t_1})\, J_0(b\sqrt{-t_2}) + M(b;\, t_1, t_2)\c\qquad M(b;\, t_1, t_2) \approx 0\.}{M}
+
+Now, we would like to apply transformation \ref{U2A} on unitarity relation \ref{t unitarity}. But since functions $E(s, t)$ and $F(s, t)$ are defined at physical region only we get into troubles. One can get over this problem in a similar way as with amplitude $T(s, t)$ and in analogy with \ref{U(s, q)} introduce arbitrary functions $\tilde E(q)$ and $\tilde F(q)$. Following the analogy (see \equ{} \ref{A decomposition}) we will denote transformation of $E(s, t)$ resp. $F(s, t)$ by $e(s, b)$ and $f(s, b)$. Non--physical contributions will be denoted $\tilde e(b)$ and $\tilde f(b)$. Performing the transformation of \ref{t unitarity} separately in physical and non--physical region one obtains set of \equs{}
+\eqref{\Im a(s, b) = e(s, b) + f(s, b) \c}{b unitarity P}
+\eqref{\Im \tilde a(s, b) = \tilde e(b) + \tilde f(b) \.}{b unitarity NP}
+As the function $\tilde E(t)$ is arbitrary we can put 
+\eqref{\tilde E(t) \equiv 0}{tilde E 0}
+and obtain
+\eqref{\Im A(s, b) = e(s, b) + G(s, b)\c}{b unitarity}
+where we used $G(s, b) = f(s, b) + \tilde f(b)$.
+
+The function $e(s, b)$ can be calculated directly from \equs{} \ref{E} and \ref{M} with result
+\eqref{e(s, b) = |a(s, b)|^2 + K(s, b) \c}{e}
+where $|a(s, b)|^2$ comes from the first term in \ref{M} and the correction function $K(s, b)$ comes from the second term. It is explicitly given as
+\eqref{K(s, b) = {1\over 16 s p^2}\, \int\limits_{t_{min}}^0 \d t_1 \int\limits_{t_{min}}^0 \d t_2\ T^*(s, t_1)\, T(s, t_2)\, M(b;\, t_1, t_2) \.}{K}
+If one takes complex conjugate of $K(s, b)$ and subsequently swaps the integration variables in \ref{K}, one obtains $K^*(s, b) = K(s, b)$ and hence the correction function is real.
+
+Putting \ref{b unitarity} and \ref{e} together it yields the desired unitarity relation in the impact parameter space
+\eqref{\Im A(s, b) = |a(s, b)|^2 + G(s, b) + K(s, b)\c}{b unitarity2}
+where the term $K(s, b)$ is negligible in high $s$ limit. We plotted the correction function given by Islam's model for two processes in \fg{} \fref{K}. And in comparison with imaginary part of $a(s, b)$ (\fgs{} \fref{profile53} and \fref{profile541}) we see, it is suppressed by factor grater than $10^5$. \Fg{} \fref{K} also confirms the assumption that for higher $s$ the contribution of $K(s, b)$ should be smaller. In later applications of the unitarity relation we will neglect the correction $K(s, b)$. 
+
+One may multiply \equ{} \ref{b unitarity2} by $b^3$ and integrate over $b$ from $0$ to $\infty$ and receive
+\eqref{\si_{tot}(s)\, \mean{b^2(s)}_{tot} = \si_{el}(s)\, \mean{b^2(s)}_{el} + \si_{inel}(s)\, \mean{b^2(s)}_{inel} \,}{mean b2 relation}
+where we denoted (in accordance with \equs{} \ref{imp par sigma2} and \ref{mean b2})
+\eqref{\si_{inel}(s) = \int \d^2 \vec b \, 4 G(s, b)  \qquad  \mean{b^2(s)}_{inel} = {\displaystyle\int_{0}^\infty b\,\d b\,b^2\,4G(s, b) \over \displaystyle\int_{0}^\infty b\,\d b\,4G(s, b)}\.}{mean b2 inel}
+With the help of \equs{} \ref{imp par sigma2} and \ref{b unitarity2} one can check that the previous formula agrees with the original definition of $\si_{inel}(s)$ \ref{sigma inel}. $\mean{b^2(s)}_{inel}$ is defined in analogy with \ref{mean b2} and we would like to interpret it as a mean value of $b^2$ for the inelastic collisions. And again, we face the same interpretation problem as in the case of the total mean $b^2$. The corresponding collision density $\rh_{inel}(s, b) = 4G(s, b)$ need not be positive. The solution might be following. Since we adopted \ref{tilde E 0}, $\tilde f(b) = \Im\tilde a(s, b)$. And there might exist such a function $\tilde T(s, q)$ that would guarantee both, condition \ref{tilde T requirement} and
+\eqref{\rh_{inel}(s, b) \geq 0\.}{tilde T requirement2}
+
+In fact, $\mean{b^2(s)}_{inel}$ is independent of choice of $\tilde F(q)$ (just like $\mean{b^2(s)_{tot}}$ is independent on $\tilde T(s, q)$) and condition \ref{tilde T requirement2} is important only for the suggested interpretation. However, if we adopt \ref{tilde T requirement2}, all terms in \ref{mean b2 relation} become non negative and one can gain inequalities\footnote{These inequalities can be obtained without choice \ref{tilde E 0}.}
+\eqref{\mean{b^2(s)}_{el} \leq {\si_{tot}\over\si_{el}} \, \mean{b^2}_{tot} = \mean{b^2(s)}_{el.\,bound}}{mean b2 el bound}
+\eqref{\mean{b^2(s)}_{inel} \leq {\si_{tot}\over\si_{inel}} \, \mean{b^2}_{tot} = \mean{b^2(s)}_{inel.\,bound}}{mean b2 inel bound}
+The elastic bound is compared to $\mean{b^2(s)}_{el}$ (for the Islam's model) in \fg{} \fref{mean b el bound}.
+
+\bmfig
+\fig*[,6.5cm]{../results/bdraw/K_pp53_app541_small.eps}{K}{[7cm]\flab{K}Modulus of the correction function $K(s, b)$ for two sample processes.}{$|K|$}{$b\un{(fm)}$}{}
+\fig*[,6.5cm]{../results/sdraw/meanb_el_bound.eps}{mean b el bound}
+{[7cm]Bound \ref{mean b2 el bound} for the elastic RMS of $b$ (the black line represtents $pp$ scattering para\-meterized by stage 1 and the green by stage 3). It is compared with the elastic RMS of $b$ with use of stage 3. The blue line is for $pp$ and the red for $\bar pp$ scattering.}
+{$\sqrt{\mean{b^2}_{el, bound}}\un{(fm)}$}{$W\un{(GeV)}$}{}
+\emfig
+
+A conclusion of this section. We presented an impact parameter formalism where the impact parameter amplitude is ambiguous. The ambiguity is expressed by functions $\tilde T(s, q)$, $\tilde E(q)$ and $\tilde F(q)$ defined in the non--physical region. We raised natural requirements \ref{tilde T requirement}, \ref{tilde T requirement2}, \ref{tilde E 0} on this functions. The last requirement can be generally satisfied. Questions, whether the first two requirements can be fullfilled and whether they determine function $\tilde T(s, q)$ uniquely, are left open in this thesis. For their treatment we refer the reader to \bibref{Islam1967}.
+
+
+%..............................................................................
+
+\section{Coulomb interference}
+
+So far we have omitted an influence of electromagnetic interaction in $pp$ resp. $\bar pp$ scattering. We will remedy it in this section. Generally, one can expect two effects at the amplitude level. First, it is an appearance of amplitude describing pure electromagnetic scattering and second, it is a contribution arising from electromagnetic and hadron interaction acting simultaneously. Denoting the former $T_C(s, t)$\footnote{As it is common, we will use Coulomb amplitude as synonym to electromagnetic amplitude and so on.} and the latter $R(s, t)$, the full scattering amplitude $T(s, t)$ can be written
+\eqref{T(s, t) = T_C(s, t) + T_H(s, t) + R(s, t) \c}{T full form}
+where $T_H(s, t)$ is amplitude for pure hadron scattering discussed in preceding sections. Basically, there are two approaches for calculation of the electromagnetic effects. The first is based on quantum mechanics in eikonal approximation and the second on evaluating some relevant Feynman graphs.
+
+Let us begin with the quantum mechanical approach. Here, the scattering is viewed as a scattering of one particle off potential of the second particle. So it is different from the picture described in the beginning of this chapter. However, it can be accommodated. Here, we will consider only spherically symmetric potentials $V(r)$. Furthermore, for high energy scattering, one can employ the eikonal model\footnote{It is a high energy approximation. Hence, it assumed that the wave function $\ps(\vec x)$ does not differ too much from plane wave $e^{i\vec x\cdot\vec k}$, where $\vec k$ is momentum of the particle. In other words, function $\ph(\vec x)$, $\ps(\vec x) = \ph(\vec x)\,e^{i\vec k\cdot\vec x}$, should be slowly varying. Then one can use approximation $\nabla \ph \ll \vec k$.}.
+It gives the following prescription for scattering amplitude \footnote{Actually, formula \ref{eikonal approx} is taken from \bibref{Islam lectures}. The authors did not use the standard eikonal approximation but derived a series of exact equations for function $V(s, r)$. But their only argument for interpretation of $V(s, r)$ as a potential is that \equ{} \ref{eikonal approx} is just the same as in eikonal approximation.}
+\eqref{T(s, t) = 2pW \int\limits_0^\infty b\,\d b\,J_0(b\sqrt{-t})\,{e^{2i\de(s, b)} - 1\over 2i}\c \qquad \de(s, b) = - {1\over 2p} \int\limits_0^\infty \d z\, V\Big(\sqrt{b^2 + z^2}\Big)\c}{eikonal approx}
+where in the definition of eikonal $\de(s, b)$ one has to integrate in direction of the projectile particle. 
+
+Now, we are in situation, that the potential $V(r)$ consists of Coulomb part $V_C(r)$ and hadron part $V_H(r)$. And since the relation between potential and eikonal is linear we obtain
+\eqref{V(r) = V_C(r) + V_H(r) \c \qquad \de(s, b) = \de_C(s, b) + \de_H(s, b)\c}{eikonal additivity}
+where $\de_{C,H}(s, t)$ corresponds to $V_{C, H}(r)$ respectively. The last equation can be written in terms of amplitudes and it turns out to have form of \ref{T full form} with
+\eqref{R(s, t) = {i\over 2\pi pW} \int\limits_{\Om} \d^2 \vec q'\, T_C(s, -q'^2)\, T_H(s, -|\vec q - \vec q'|^2) \.}{R}
+We used $\vec q'$ for a two dimensional vector with magnitude $q'$ and integration region $\Om$ is circle with center at origin and radius $q_{max}$. Similarly, $\vec q$ is two dimensional vector with magnitude $q = \sqrt{-t}$ and with arbitrary direction.
+
+The next step is to determine the Coulomb amplitude. There is a complication caused by zero mass of photon. A standard treatment is to work with fictitious mass $\la$ and in the final formula apply limit $\la\to 0$. This way is used in \bibref{Cahn} with result
+\eqref{T_C(s, -q^2) = \pm {\alpha s\over q^2 + \la^2} e^{\mp i \alpha \et(q)}\c\qquad \et(q) = \log{\la^2\over q^2}\.}{T C 1}
+It differs from the first Born approximation only by presence of $\la$ and phase. Note one cannot apply limit $\la\to 0$ directly to this formula, since the limit of $\exp(i\et(q))$ is not defined. One can plug form factors for both particles to the Coulomb amplitude. We will assume both form factors are the same and then the Coulomb amplitude is given by \ref{T C 1} multiplied by $F_C^2(t)$. Substituting it to \ref{R} and following \bibref{Cahn} it yields
+\eqref{\eqalign{
+T(s, t)\,e^{\pm i\alpha\eta(q)} =& \mp {\alpha s\over t}\,F_C^2(t)\ +\ T_H(s, t) \left[\ 
+\int\limits_{t_{min}}^0 \!\!\d t'\ \left({t\over t'}\right)^{\mp i\alpha} {\d F_C^2(t')\over \d t} - \right.\cr 
+&\left. - {\pm i\alpha\over 2\pi} \int\limits_{t_{min}}^0 \!\!\d t'\  {F_C^2(t')\over t'} \left({t\over t'}\right)^{\mp i\alpha} \int\limits_0^{2\pi} \d\ph \left({T_H(s, t'')\over T_H(s, t)}  - 1\right) \right] \c
+}}{T full 0}
+\eqref{t'' = -|\vec q - \vec q'|^2 = t + t' + 2\sqrt{tt'} \cos\ph \.}{t''}
+It this form, all the pathological dependence on $\la$ is contained in the exponential factor on \lhs{} And this factor vanishes when one computes differential cross section. To derive this form, one has to assume general properties of form factor $F(t=0\un{GeV^2}) = 1$ and $F(t_{min}) \approx 0$. $s/2pW\approx 1$ is to be adopted as well. The next step in \bibref{Cahn} is expansion of the power of $t/t'$ to Taylor series
+\eqref{\left({t\over t'}\right)^{\mp i\alpha} = 1 \mp i\alpha \log {t\over t'} + \ldots}{t/t' expansion}
+The first two terms are taken into account in the first integral in \ref{T full 0}, in the second integral only one term of expansion is said to contribute. We are a little suspicious with this simplification because it is valid only for $\alpha \log t/t' \approx 0$ and if $t'$ tends to $0$ (boundary of integration region), the logarithm diverges. But when one presses on, obtained result agrees with result of the Feynman diagrams technique. It seems this discrepancy is almost harmless.
+
+Authors of \bibref{Cahn} continue making simplifications and that is why we stop following their paper and make the last modification as in paper \bibref{Kundrat1994}. It can be schematically written down
+\eqref{\int\limits_{t_{min}}^0 \!\!\d t' \int\limits_0^{2\pi} \!\!\d\ph = 2 \int\limits_\Om \!\!\d^2\vec q' = 2 \int\limits_{\Om'} \!\!\d^2(\vec q - \vec q') \approx \int\limits_{t_{min}}^0 \!\!\d t'' \int\limits_0^{2\pi} \!\!\d\ph \.}{Omega move}
+The region $\Om'$ is circle with radius $q_{max}$ and with center $\vec q$. Hence, it differs from $\Om$ only by shift by $\vec q$. Furthermore, at present experiments value of $q$ is such that
+\eqref{q \ll q_{max} \c}{small q}
+thus the difference between $\Om$ and $\Om'$ can be neglected. Putting all together (and dropping the irelevant phase factor on \lhs{}) one obtains
+\eqref{\eqalign{
+T(s, t) = \mp {\alpha s\over t}\,F_C^2(t)\ +\ T_H(s, t) \left[1 \pm i \alpha \int\limits_{t_{min}}^0 \!\!\d t'\ \left(\vrule width0pt height15pt \right.\right.& \log{t'\over t}\ {\d F_C^2(t')\over \d t} -\cr
+&\left.\left. - \left({T_H(s, t')\over T_H(s, t)}  - 1\right)\,I(t, t') \right) \vrule width0pt height30pt \right] \c\cr
+}}{T full}
+\eqref{I(t, t') = {1\over 2\pi} \int\limits_0^{2\pi} \d\ph {F_C^2(t'')\over t''} \.}{I}
+
+For simplicity we will use the dipole form factor and corresponding derivative
+\eqref{F_C(t) = \left( {\La\over\La - t} \right)^2 \c\qquad {\d F_C^2\over \d t} = \left( {\La\over\La - t} \right)^4 {4\over \La - t} \c}{FF em dipole}
+with $\La = 0.71\un{GeV^2}$.
+
+Formula \ref{T full} has two directions of use. First, it can be used to predict differential cross section when we have a model for the hadron amplitude. Or reversely, it can be used for extraction of the hadron amplitude from experimental data.
+
+For completeness, let us give a brief review of the second approach based on Feynman diagrams technique. For any details we refer the reader to \rfs{} \bibref{West1968}, \bibref{Rix1966} and \bibref{Locher}. Authors of the papers make a strong simplification from the very beginning. They describe proton (and antiproton) by a complex scalar field, not by a Dirac field as it is adequate for spin $1/2$ particles. However, it makes all calculations much easier. And in the former approach, spin of particles is not considered at all.
+
+First, let us compute pure electromagnetic amplitude $T_C(s, t)$. The interaction lagrangian can be obtained by the standard way. The derivatives in kinetic term of free field are replaced by the covariant derivatives. This prescription gives two interaction terms. But as we want to retain analogy with fermion QED, we take only the three--leg vertex into account. Then the lowest non--vanishing graphs are shown in \fg{} \fref{T C}. Graphs A and B are valid for $pp$ scattering and graphs A and C for $\bar pp$ scattering. Indeed, corresponding amplitudes are linear in $\alpha$.
+
+% 16.4 cm
+\fig[11cm]{fig/feyn_em.eps}{T C}{The lowest order Feynman graphs for pure electromagnetic scattering.}
+
+Now we will present a very simple heuristics and show that major contribution in high energy and small angle scattering comes from graph A. This graph contains factor $1/t$ from photon propagator but graph B (resp. C) contains factor $1/u$ (resp. $1/s$). The variable $u = 4M^2 - s - t$ is the third Mandelstam variable. Furthermore, interesting physics (for the elastic scattering) occurs at small $t$ region, i.e., region where
+\eqref{s \gg |t|.}{typical t}
+This implies
+\eqref{u\approx -s\hbox{\ and\ } {1\over |t|} \gg {1\over |u|}}{t channel}
+and that is why the graph A dominates the graph B or C.
+
+%9.2
+\fig*[6cm]{fig/feyn_rules.eps}{rules}{Feynman rules for scalar QED.}{}{\hskip-2mm$-ie\,(p+p')^\mu$ \hskip22mm $\displaystyle {-ig_{\mu\nu}\over q^2 + i\ep}$}{}
+
+In \fg{} \fref{rules} we showed some of Feynman rules for scalar QED (for details see \rf{} \bibref{Peskin}). The presented vertex rule holds for particles with four--momenta $p$ and $p'$. For antiparticles with the same momenta, the corresponding expression has opposite sign, i.e., $ie\,(p + p')^\mu$. Then, straightforward application of these rules on graph A in \fg{} \fref{T C} leads to invariant amplitude
+\eqref{|{\cal M}_C(s, t)| = {e^2 (s - u)\over |t|}\c}{M C}
+where $e = \sqrt{4\pi\al}$ is electric charge of proton. With the help of \equs{} \ref{t channel} and \ref{dsigma/dt 2} it can be recast in terms of $T$ amplitude
+\eqref{|T_C (s, t)| = {\al s\over |t|}, }{T C 2}
+which is in accordance with fermion QED, Born amplitude and the eikonal amplitude in the previous approach.
+
+% 15.2 cm
+\fig[10cm]{fig/feyn_inter.eps}{C-H}{The lowest order Feynman graphs contributing to Coulomb--hadron interference.}
+
+If we want to calculate Coulomb--hadron interference with use of Feynman diagrams, we need to represent the hadron amplitude $T_H(s, t)$ by a graph. We will use graph A in \fg{} \fref{C-H} for this purpose. But we immediately encounter a big problem. If this graph is a part of a larger graph, the four--momenta attached to lines of graph A may be arbitrary. In other words they do not satisfy the mass shell condition for proton (resp. antiproton) and we cannot use the (Islam's) hadron amplitude since it is defined only on the mass shell. We will return to this problem in a sequel. But now we would like to present next step in \bibref{West1968}. Their calculation is based on graphs B and C from \fg{} \fref{C-H}. But the zero photon mass gives birth of IR divergences of the mentioned graphs. Authors of \bibref{West1968} gave up evaluating complete graphs and introduced the model independent contribution instead. It does not suffer from the divergences and depend on hadron amplitude on the mass shell only. Their resulting formula reads
+\eqref{T(s, t) = T_C(s, t) \,e^{i\al\ph(s, t)} + T_H(s, t) \c }{WY 0}
+\eqref{\ph(s, t) = -2 \log{\sqrt{-t}\over 2p} + \int\limits_{t_{min}}^0 {\d t'\over |t' - t|} \left( 1 - {T_H(s, t')\over T_H(s, t)} \right) \.}{WY exact}
+It is shown in \bibref{Cahn} that this formula can be obtained also within the eikonal approach. One has to omit form factors and make several additional approximations.
+
+In \bibref{West1968}, one more approximative step was made. The hadron amplitude was parameterized
+\eqref{T_H(s, t) \sim \exp(a + bt) \c}{T H approx}
+which was perfectly acceptable at that times. Performing the integration in \equ{} \ref{WY exact} one obtains\footnote{Actually, formula \ref{WY approx} was first derived in paper \bibref{Locher}.}
+\eqref{\ph(s, t) \approx \pm \left(\ga + \log {-B(s, 0) \, t\over2} \right) \.}{WY approx}
+Actually, we mentioned a generalization  valid for $\bar pp$ too. The function $B(s, t)$ is the diffraction slope defined by \equ{} \ref{B}.
+
+This approximate formula is used for data analysis very often, until nowadays, although the parameterization \ref{T H approx} is no more admissible. The comparison of formulae \ref{T full} and \ref{WY approx} is shown at \fgs{} \fref{coulomb pp53}, \fref{coulomb app541} and \fref{coulomb lhc} and Table \tref{WY vs KL}. In this table, one can find differential cross sections for pure hadron scattering, pure Coulomb scattering and full differential cross section obtained by formulae \ref{T full} and \ref{WY approx}. In the last column there is relative difference between the mentioned formulae. More precisely it is difference between the 4th and 5th column divided by the 4th column. For each process, there are 3 rows corresponding to different values of $t$. The first row stands for region where the Coulomb amplitude dominates, the last row for region where the hadron amplitude dominates. The middle row represents region where both amplitudes are comparable.
+\bgroup
+\setbox\strutbox=\hbox{\vrule height13pt depth5pt width0pt}
+\htab{Comparison of formulae \ref{T full} and \ref{WY approx}.\tlab{WY vs KL}}{
+&\multispan{4}\bvrule\hfil $\d\si/\d t\un{(mb/GeV^2)}$\hfil	& \hbox{difference (\percent) of}\cr
+\inline{\bvrule}{$-t\un{(GeV^2)}$}& \multispan{4}\hrulefill& \cr
+&		\hbox{hadron}&	\hbox{coulomb}&		\hbox{full \ref{T full}}&	\hbox{full \ref{WY approx}}&	\hbox{\ref{T full} and \ref{WY approx}}\cr\bln
+\multispan{6}\bvrule\strut\hfil $pp$ at energy of $53\un{GeV}$\hfil\cr\ln
+0.001&	93.5&			258&				319.01&						317.92&							0.34\cr\ln
+0.003&	91.0&			28.0&				108.56&						108.37&							0.17\cr\ln
+0.010&	82.8&			2.33&				81.79&						81.89&							-0.12\cr\bln
+\multispan{6}\bvrule\strut\hfil $\bar pp$ at energy of $541\un{GeV}$\hfil\cr\ln
+0.001&	202&			257&				501.10&						484.62&							3.3\cr\ln
+0.004&	192&			15.6&				215.79&						213.54&							1.0\cr\ln
+0.015&	161&			0.980&				162.44&						162.53&							-0.058\cr\bln
+\multispan{6}\bvrule\strut\hfil $pp$ at energy of $14\un{TeV}$\hfil\cr\ln
+0.0005&	609&			1040&				1470&						1400&							4.5\cr\ln
+0.0015&	590&			114&				648&						630&							2.8\cr\ln
+0.0060&	513&			6.77&				509&						505&							0.65\cr\bln
+}
+\egroup
+
+Table \tref{WY vs KL} shows that the difference between formulae \ref{T full} and \ref{WY approx} is much smaller for $pp$ scattering at $W = 53\un{GeV}$ than for other processes. This can be explained by the fact that the mentioned process is better described by \ref{T H approx} than the other processes. The parameterization \ref{T H approx} is admissible between $t = 0\un{GeV^2}$ and the diffraction dip. In this region the differential cross section falls from $10^2$ to almost $10^{-5}\un{mb/GeV^2}$. For the remaining processes this fall is lower than 5 orders. Moreover, the diffraction dip is closer to $t = 0\un{GeV^2}$ and thus the region where \ref{T H approx} holds, is smaller.
+
+At \fgs{} \fref{relative pp53}, \fref{relative app541} and \fref{relative lhc} we plotted relative importance of the interference term $R(s, t)$ (see formula \ref{T full form}). We represented this importance by fraction
+\eqref{f(s, t) = {|T(s, t)|^2 - |T_H(s, t)|^2 - |T_C(s, t)|^2\over |T_H(s, t)|^2}\.}{T C importance}
+These figures indicate that the Coulomb--hadron interference term cannot be neglected even for higher $|t|$ values as it is commonly done.
+
+\Fgs{} \fref{coulomb pp53}--\fref{relative app541} were plotted with the use of parameters obtained from our fits (see Tables \tref{53comparison} and \tref{541comparison}).
+
+
+\bmfig
+\fig*[,6.5cm]{../results/interference/pp53.eps}{coulomb pp53}{[7cm]Differential cross sections for $pp$ scattering at energy of $53\un{GeV}$. The blue curve was obtained by using formula \ref{T full} while the red by approximate formula \ref{WY approx}.}{$\d\sigma/\d t \un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}%
+\fig*[,6.5cm]{../results/interference/pp53_rel.eps}{relative pp53}{[7cm]Relative contribution of the interference term for $pp$ scattering at energy of $53\un{GeV}$.}{$f \un{(\%)}$}{$-t\un{(GeV^2)}$}{}%
+\emfig
+\bmfig
+\fig*[,6.5cm]{../results/interference/app541.eps}{coulomb app541}{[7cm]Differential cross sections for $\bar pp$ scattering at energy of $541\un{GeV}$. The blue curve was obtained by using formula \ref{T full} while the red by approximate formula \ref{WY approx}.}{$\d\sigma/\d t \un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}%
+\fig*[,6.5cm]{../results/interference/app541_rel.eps}{relative app541}{[7cm]Relative contribution of the interference term for $\bar pp$ scattering at energy of $541\un{GeV}$.}{$f \un{(\%)}$}{$-t\un{(GeV^2)}$}{}%
+\emfig
+\bmfig
+\fig*[,6.5cm]{../results/interference/lhc.eps}{coulomb lhc}{[7cm]Differential cross sections for $pp$ scattering at energy of $14\un{TeV}$. The blue curve was obtained by using formula \ref{T full} while the red by approximate formula \ref{WY approx}.}{$\d\sigma/\d t \un{(mb/GeV^2)}$}{$-t\un{(GeV^2)}$}{}%
+\fig*[,6.5cm]{../results/interference/lhc_rel.eps}{relative lhc}{[7cm]Relative contribution of the interference term for $pp$ scattering at energy of $14\un{TeV}$.}{$f \un{(\%)}$}{$-t\un{(GeV^2)}$}{}%
+\emfig
+
+
+The assumption \ref{T H approx} requires diffraction slope $B(s, t)$ and phase of the hadron amplitude to be constant for all values of $t$. Prediction of Islam's model for these functions is shown in \fg{} in \fref{B}. Both functions vary significantly which is in contradiction with \equ{} \ref{T H approx}. While the phase can be different in every model, the diffraction slope is determined by experimental data and thus it must be (almost) same in all models. In other words, the experimental data rule out approximation \ref{T H approx}.
+
+\bmfig[Diffraction slope $B(s, t)$ and phase of the hadron amplitude $T_H(s, t)$. $pp$ scattering at energy of $53\un{GeV}$ is drawn blue, $\bar pp$ scattering at energy of $541\un{GeV}$ is drawn red and $pp$ scattering at energy of $14\un{TeV}$ green. The solid curves were obtained using parameters from papers \bibref{Islam1987} and \bibref{Islam2003}. The dashed curves represent our fits, see Tables \tref{53comparison} and \tref{541comparison}.]
+\fig*[,6.5cm]{../results/B.eps}{B}{}{$B(s, t)\un{(GeV^{-2})}$}{$-t\un{(GeV^2)}$}{}%
+\fig*[,6.5cm]{../results/phase.eps}{phase}{}{phase of $T_H(s, t)$}{$-t\un{(GeV^2)}$}{}%
+\emfig
+
+
+
+\section{Computation}
+So far we have used natural units, i.e., convention $\hbar = c = 1$. For practical calculations a different choice of units may be more convenient. For instance, we wanted to obtain differential cross section in$\un{mb/GeV^2}$ and impact parameter $b$ in$\un{fm}$. Therefore we had to plug $\hbar$ and $c$ constants appropriately to our formulae. \Equs{} \ref{dsigma/dt 2} and \ref{optical th 2} need to be replaced with
+$${\d\sigma\over\d t} = {\pi\,(\hbar c)^2\over s p^2}\, |T(s, t)|^2 \c \qquad \si_{tot}(s) =  {4\pi\,(\hbar c)^2\over pW}\, \Im T(s, 0) \.\eqno{\hbox{(\safecom{eq:dsigma/dt 2}' , \safecom{eq:optical th 2}')}}$$
+Similarly, the impact parameter $b$ must be replaced by fraction $b/\hbar c$. For example formulae \ref{T decomposition} or \ref{mean b2 tot} become
+$$ U(s, q) = {\xi\over (\hbar c)^2}\, \int\limits_0^\infty b\,\d b\, J_0 \left({bq\over \hbar c} \right)\,a(s, b) + {\xi\over (\hbar c)^2}\, \int\limits_0^\infty b\,\d b\, J_0 \left({bq\over \hbar c}\right)\,\tilde a(s, b) \c \eqno{\hbox{(\safecom{eq:T decomposition}')}}$$
+$$\mean{b^2(s)}_{tot} = 4\, (\hbar c)^2\,\left.{\d\over\d t} \log \Im T(s, t) \right|_{0_-}\.\eqno{\hbox{(\safecom{eq:mean b2 tot}')}}$$
+We used numerical values
+\eqref{\hbar c\doteq 0.197327\un{GeV\,fm}\c}{hbar c 1}
+\eqref{(\hbar c)^2\doteq 0.389379\un{GeV^2\,mb} = 0.0389379\un{GeV^2\,fm^2} \.}{hbar c 2}
+
+\iffalse
++ corrected formulae, if they are different from the generic case
+\eqref{a_D(s, b) = {i\, g(s)\over 2} \, \Ga_0(s, b)}{a D}
+\fi
+
+All our numerical calculations were done with the help of the ROOT system. It is a data analysis system developed in CERN. It is object-oriented and it is based on C++ and partly on FORTRAN CERN libraries. We always used double precision type ({\tt Double\_t}). For numerical integration we used method {\tt TF1::Integral}, which exploits 8 and 16--point Gaussian quadrature approximations. During tests it turned out to be very reliable. However, in some cases manual intervention was necessary. For instance in the case of \equ{} \ref{T full}. The problematic part is the last term in square brackets. If $t'\to t$ integral $I(t, t')$ diverges while the substraction in parentheses tends to $0$. Both factors together are finite. To avoid troubles we used following trick. We split the integral
+\eqref{\int\limits_{t_{min}}^0 \left({T_H(t')\over T_H(t)}  - 1\right)\,I(t, t') = \int\limits_{t + \ta}^0 \left({T_H(t')\over T_H(t)}  - 1\right)\,I(t, t') + \int\limits_{t - T}^{t - \ta} \left({T_H(t')\over T_H(t)}  - 1\right)\,I(t, t')\c}{trick}
+where the equality holds if $\ta\to 0$ and $t - T\to t_{min}$. If one takes $\ta$ finite but small, deviation from \ref{trick} will be small as well. Simultaneously, one avoids problems with $I(t, t')$ divergence. We made several tests for values of $\ta$ round $10^{-4}\un{GeV^2}$. And differences of values of the discussed integral were negligible. Therefore we fixed $\ta$ at the mentioned value. Similarly, we can raise lower bound for the second integral in \ref{trick}. Since $I(t, t')$ falls quickly when $t'$ draws apart $t$, the contribution to the integral from region of $t'$ far from $t$ is negligible. That is why we consider the lower bound in form $t - T$. $T$ denotes size of $t'$ region which is taken into account. Again, we made several tests and for values around $T = 10 \un{GeV^2}$ and higher the variation of the integral value was negligible.
+
+\iffalse
+Let us summarize all the formulae describing Islam's model into compact form which was actually used for computation. During computer computation all quantities shrink to their values only. To keep their physical sense it essential to fix their units. We decided to measure impact parameter $b$ in$\un{fm}$, momentum transfer $t$ (and other quantities with dimension of mass) in$\un{GeV}$ and differential cross section $\d\sigma/\d t$ in$\un{mbarn/GeV^2}$. To reach this point one has to involve reduced Planck constant $\hbar$ and vacuum speed of light $c$ into the expressions. The complete set of formulae reads
+\eqref{\eqalign{
+T(s, t) &= T_D(s, t) + T_H(s, t)\c\qquad {\d\sigma\over\d t} = {\pi (\hbar c)^2\over s p^2}\, |T(s, t)|^2 \c\cr
+T_D(s, t) &= f_D(s)\, \int\limits_0^\infty b\,\d b\, J_0\Big({b\sqrt{-t}\over\hbar c}\Big)\, \left[ {1\over 1 + e^{b-R\over a}} + {1\over 1 + e^{-{b+R\over a}}} - 1\right] \c\cr
+T_H(s, t) &= f_H(s) \, {F^2(t)\over m^2 - t} \c\cr
+}}{T comp}
+where we factored out the only $s$-dependent factors
+\eqref{f_D(s) = i\,{pW\over(\hbar c)^2} \left( 1 - \eta_0 - {c_0\over (s\, e^{-i\pi/2})^\si} \right) {1 + e^{-{R\over a}}\over 1-e^{-{R\over a}}} \c}{fD}
+\eqref{f_H(s) =  \pm s \left[  \left(\eta_0 + {c_0\over (-i s)^\si}\right) \mp i \left(\la_0 + {-d_0\over (-i s)^\al}\right) \right]\, \Bigg(\hat\ga_0 + {\hat\ga_1\over (-i s)^{\hat\si}}\Bigg)\.}{fH}
+
+\fi
+
+
+\references
+\PrintReferences{references.bib}

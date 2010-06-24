@@ -1,0 +1,656 @@
+\input /home/jkaspar/tex/kaspiTeX/base
+\input /home/jkaspar/tex/kaspiTeX/biblio
+\input /home/jkaspar/tex/kaspiTeX/book
+
+\input references.tex
+
+\let\NormalFonts\SetFontSizesX
+\let\SmallerFonts\SetFontSizesVIII
+\NormalFonts
+
+\font\fPbxii 	= pplb8z at 12pt
+\let\fch 		= \fPbxx
+\let\fsec	 	= \fPbxiv
+\let\fsubsec 	= \fPbxii
+\let\fssubsec	= \fPbxii
+
+
+\newbox\warningBox
+\setbox\warningBox\centerline{\special{color push rgb 0.9 0 0}This is a working document and it is being continuously updated.\special{color pop}}%
+
+\iffalse
+\def\layoutpage{
+	\footline={\tenbf \ifodd\pageno \hss\the\pageno \else \the\pageno\hss\fi}
+	\def\makeheadline{%
+		\vbox to0pt{%
+			\vskip-45pt
+			\box\warningBox
+			\centerline{\special{color push rgb 0.9 0 0}This is a working document and it is being continuously updated.\special{color pop}}%
+			\vskip10pt
+			\line{\vbox to8.5pt{}\tenit \ifodd\pageno \hss \botmark \else \chname\hss\fi}%
+			\vskip3pt\vskip-\prevdepth\hrule\vss
+		}%
+		\nointerlineskip
+		}%
+	}%
+\fi
+
+\Reftrue
+
+\ParIndent=2em
+\parskip=0pt plus10pt
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\box\warningBox
+\hbox{}
+\vfil
+\hrule
+\vskip\baselineskip
+\centerline{\fch Jan Ka\v spar}
+\vskip\baselineskip
+\centerline{\fch Track based alignment}
+\vskip\baselineskip
+\hrule
+
+\vfil
+\input\jobname.toc
+\vfil
+\eject
+
+\BeginText
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter[theory]{Track based alignment}
+
+\section{Shifts and residuals}
+
+Let's consider the case when a (track) measurement in $i$-th detector $m_i$ can be described as\footnote{%
+This is a generalized version of \Eq{IdealMeasurement}, i.e. the case which concerns us. The track parameters $a_x, b_x, a_y$ and $b_y$ become elements of vector $\vec\th$.
+}
+\eqref{m_i = A_{i1} \th_1 + \cdots + A_{iL}\th_L}{SimpleLM}
+where $\th_j$ are track parameters and $A_{ij}$ are coefficients. The \Eq{SimpleLM} can be written in matrix formalism
+\eqref{\vec m = \mat A \vec\, \th\ ,}{SimpleLMMat}
+where $\vec m = (m_1,\ldots,m_D)^\T$ is vector of measurements in $D$ detectors and $\vec\th$ is vector of $L$ track parameters. Matrix $\mat A$ contains parameters as shown in \Eq{SimpleLM}.
+
+For a given measurement, one may obtain estimate of optimal track parameters using the method of Least Squares. It yields the following formula (see e.g. (6.23) in \bref{barlow})
+\eqref{\hat\vec\th = (A^\T A)^{-1} A^\T\,\vec m\.}{LSestimate}
+
+Residual is difference between actual measurement and value given by the best fit, i.e.
+\eqref{\vec R = \vec m - \mat A\, \hat\vec\th = \mat S\, \vec m,\qquad S = 1 - \mat A(\mat A^\T \mat A)^{-1}\mat A^\T \.}{residual}
+
+Now, let's suppose the detectors are shifted. In such a way that instead of perfect measurement $\vec m_0$ the detectors measure
+\eqref{\vec m = \vec m_0 + \vec\De \ ,}{MeasShift}
+where $\vec\De$ is the vector of shifts. Inserting that into \Eq{LSestimate} gives
+\eqref{\eqnarray{%
+\hat\vec\th &= (\mat A^\T \mat A)^{-1}\mat A^\T\,\vec m_0 &+ (\mat A^\T \mat A)^{-1}\mat A^\T\, \vec\De\cr
+			&= \vec\th_0 &+ (\mat A^\T \mat A)^{-1}\mat A^\T\, \vec\De\cr
+}}{LSestimateShift}
+Provided \Eq{SimpleLM} perfectly describes the track, $\vec\th_0$ are original (true) track parameters. The influence of shifts is fully absorbed in the second term. Inserting \Eq{MeasShift,LSestimateShift} into \Eq{residual} yields
+\eqref{\vec R = \mat S\, \vec\De}{ResidualShift}
+and thus, in principle, the shifts can be calculated from residuals by inverting the expression. The necessary condition is the matrix $\mat S$ is invertible. 
+
+The matrix $\mat S$ is symmetric ($\mat S^\T = \mat S$) and thus it can be diagonalized by orthogonal matrix $\mat U$
+$$\mat S = \mat U^\T\,{\rm diag}(\la_1,\ldots,\la_D)\,\mat U\ .$$
+Moreover, the matrix is idempotent, i.e. $\mat S^2 = \mat S$. That is why its eigenvalues $\la_i$ can be only zero or one. Consequently, the rank of matrix $\mat S$ is given by its trace
+\eqref{\rank \mat S = \Tr\mat S = \Tr \mat 1_{D\times D} - \Tr \mat A (\mat A^\T\mat A)^{-1} \mat A^\T = D - L\ .}{RankS}
+Recalling $\mat S$ is $D\times D$ matrix, it is clear that $\mat S$ is singular. The proof was taken from \bref{becvar}.
+
+\Eq{RankS} states that $\mat S$ is singular. In combination with \Eq{ResidualShift} it states that $\vec R$ contains $L$ less pieces of information than $\vec \De$. Matrix $\mat S$ acts as an projection operator\footnote{%
+In fact it is a projection operator as $\mat S^2 = \mat S$ and $\mat S^\T = \mat S$.
+}
+which filters out everything that can be described by model \Eq{SimpleLMMat}. Shift configurations "resembling tracks" are not transmitted to residuals $\vec R$. For instance, in case of straight line fit, if all detectors were shifted by the same amount, it would look the same as if the track was shifted in the opposite direction. To summarise, there are $L$ shifts that cannot obtained by this fitting procedure.
+
+So far, we have been discussing fit of one track only. But every real detector has a finite precision, that is an measurement error $\vec\ep$ is introduced
+\eqref{\vec m \to \vec m + \vec\ep \ .}{MeasShiftErr}
+Impact of this random error $\vec\ep$ can reduced (as usually) by registering many tracks and averaging the residuals. Denoting $\vec R^n$ the residuals for $n$-track, one obtains
+\eqref{\vec R^n = \mat S\, \vec\De + \mat S\,\vec\ep^n}{ResidualShiftErr}
+and after averaging over $N$ tracks
+\eqref{{1\over N}\sum_n^n \vec R^n = \mat S\, \vec\De + \mat S\,{\sum_n^N\vec\ep^n\over N} \ .}{ResidualShiftErrAverage}
+Assuming the random error $\vec\ep$ has zero mean value, the laws of statistics force the second term to converge to zero for large $N$.
+
+\section[track model]{Model of tracks and displacements}
+
+Tracks of particles outside magnetic field (e.g. within a station) are straight lines and can be described by
+\eqref{x(z) = a_x\,z + b_x,\qquad y(z) = a_y\,z + b_y\ ,}{StraightTracks}
+where $z$ axis goes along the beam line and $x$ and $y$ are two perpendicular directions. \em{Ideal} measurement of a strip detector at position $z_i$ (the strips of which are in $x$--$y$ plane) can be written as
+\eqref{\eqnarray{
+m_i & = x(z_i)\cos\al_i + y(z_i)\sin\al_i\cr
+	& = (z_i\cos\al_i)\,a_x + (\cos\al_i)\,b_x + (z_i\sin\al_i)\,a_y + (\sin\al_i)\,b_y\ .\cr
+}}{IdealMeasurement}
+$\al_i$ denotes sensitive direction of this detector, i.e. a direction perpendicular to its strips.
+
+The real detectors will be displaced, the most relevant displacements are shifts in $x$ and $y$ direction and rotation around $z$ axis. Since the strip detectors are sensitive to one projection in $x$--$y$ plane, the measurement is affected only by the projection of shift to the sensitive direction. This projection will be denoted $\De_i$. For the rotation around $z$ we will use symbol $\de_i$. Then, the actual measurement is
+\eqref{\eqnarray{
+m_i &=\ & x(z_i)\cos(\al_i+\de_i) + y(z_i)\sin(\al_i+\de_i) + \De_i\cr
+	&=\ & (z_i\cos\al_i)\,a_x + (\cos\al_i)\,b_x + (z_i\sin\al_i)\,a_y + (\sin\al_i)\,b_y\cr
+	&	& + \De_i\cr
+	&	& + \left( -(a_x\,z_i + b_x)\sin\al_i + (a_y\,z_i + b_y)\cos\al_i \right) \de_i + {\cal O}(\de_i^2)\ .\cr
+}}{RealMeasurement}
+Note that this expression (model) is not linear in parameters $a_x, b_x, a_y, b_y, \De_i$ and $\de_i$. In particular, the coefficient for $\de_i$ comprises track parameters $a_x$ etc. In practice, it is worth to linearize this model and perform several iterations. That usually means to use \Eq{IdealMeasurement} to find estimates of track parameters $\hat a_x, \hat b_x, \hat a_y$ and $\hat b_y$ and insert them into the $\de_i$ term in \Eq{RealMeasurement}. The linearized model, then, reads
+\eqref{\eqnarray{
+m_i		&=\ & (z_i\cos\al_i)\,a_x + (\cos\al_i)\,b_x + (z_i\sin\al_i)\,a_y + (\sin\al_i)\,b_y\cr
+		&	& + \De_i + \ga_i\,\de_i \ ,\cr
+\ga_i	&=	& -(\hat a_x\,z_i + \hat b_x)\sin\al_i + (\hat a_y\,z_i + \hat b_y)\cos\al_i\ .\cr
+}}{RealMeasurementLin}
+
+\section{Millepede approach}
+
+Let's consider situation where $N$ tracks were measured, each of them registered by $D$ detectors. Let's suppose the measurement of $n$-th track in $i$-th detector can be described by\footnote{%
+In fact we want to study model \Eq{RealMeasurementLin}, but it is worth formulating the problem on a general level. This unveils the symmetries in the problem. When \Eq{RealMeasurementLin} is written in the general formalism, then $\De_i\to b_{1,i}$ and $\de_i\to b_{2,i}$. The coefficients $g_{1,i}^n=1$ and $g_{2,i}^n = \ga_i^n$.
+}
+\eqref{m_i^n = \underbrace{f_{1,i}\,a_1^n + \cdots + f_{L, i}\,a_L^n}_{\hbox{local part}} + 
+\underbrace{g^n_{1,i}\,b_{1,i} + \cdots + g^n_{G, i}\,b_{G, i}}_{\hbox{global part}}\ .}{MilleModel}
+Parameters $a_l^n$ are called \em{local} and they describe $n$-th track. There are $L$ local parameters. In contrast, \em{global} parameters $b_{g, i}$ are identical for all tracks. They are associated to detectors, i.e. $b_{1, i},\ldots,b_{G, i}$ are $G$ parameters associated to $i$-th detector. Good examples of global parameters might be shifts and rotations of the detectors.
+
+\Eq{MilleModel} can be written in more compact matrix formalism. It is useful to build vector of measurements in the following way
+\eqref{\vec m = (m_1^1\ldots m_D^1, m_1^2\ldots m_D^2,\ldots \ldots, m_1^n\ldots m_D^n)^\T \ ,}{MilleMeasVec}
+that is group measurements for the first track, then second etc. Similarly, the vector of parameters is build as
+\eqref{\vec \th = (a_1^1\ldots a_L^1, a_1^2\ldots a_L^2, \ldots || b_{1,1}\ldots b_{1, D}, b_{2, 1}\ldots b_{2, D}, \ldots)^\T \ .}{MilleParVec}
+Then \Eq{MilleModel} can be written as
+\eqref{\vec m = \mat A\,\vec \th\ ,}{MilleModelMat}
+where
+\eqref{\mat A = \pmatrix{
+\al & 		&		&\vrule	&\Ga_1^1	&\cdots	&\Ga_G^1	\cr
+	& \al	&		&\vrule	&\vdots		&		&\vdots		\cr
+	&		& \ddots&\vrule	&\Ga_1^N	&\cdots	&\Ga_G^N	\cr
+}}{MilleA}
+and $D$-by-$L$ matrix $\al$
+\eqref{\mat\al = \pmatrix{
+f_{1,1}	&\cdots	& f_{1,L}	\cr
+\vdots	&		&\vdots		\cr
+f_{D,1}	&\cdots	& f_{D,L}	\cr
+}}{MilleAlpha}
+and diagonal $D\times D$ matrices $\Ga_i^n$
+\eqref{\Ga_i^n = {\rm diag}\,\left(g_{i,1}^n, \ldots, g_{i,D}^n \right)\ .}{MilleGamma}
+Note that matrix $\al$ is nothing else than $A$ matrix in the one-track-fit case, see \Eq{SimpleLMMat}.
+
+The Least Squares method gives estimate for the parameters
+\eqref{\hat\vec\th = (\mat A^\T \mat A)^{-1} \mat A^\T\,\vec m\.}{MilleLS}
+The \rhs expression will be evaluated now bit by bit, keeping in mind one is mainly interested in the global parameters (i.e. the bottom part of $\hat\vec\th$ vector).
+\eqref{\mat A^\T \mat A = \pmatrix{
+\mat\al^\T \mat\al	&		&						&\vrule	&\mat\al^\T\mat\Ga_1^1	&\cdots	&\mat\al^\T\mat\Ga_G^1	\cr
+					&\ddots	&						&\vrule	&\vdots					&		&\vdots					\cr
+					&		&\mat\al^\T \mat\al		&\vrule	&\mat\al^\T\mat\Ga_1^N	&\cdots	&\mat\al^\T\mat\Ga_G^N	\cr
+\noalign{\hrule}
+\mat\Ga_1^1 \mat\al	&\cdots	&\mat\Ga_1^N \mat\al	&\vrule	&\sum_n \Ga_1^n\Ga_1^n	&\cdots	&\sum_n \Ga_1^n\Ga_G^n	\cr
+\vdots				&		&\vdots					&\vrule	&\vdots					&		&\vdots					\cr
+\mat\Ga_G^1 \mat\al	&\cdots	&\mat\Ga_G^N \mat\al	&\vrule	&\sum_n \Ga_G^n\Ga_1^n	&\cdots	&\sum_n \Ga_G^n\Ga_G^n	\cr
+}\ .}{MilleATA}
+This matrix can be inverted with use of the following identity for block matrices (taken from \bref{wikipedia} keyword \em{matrix inverse}):
+\eqref{\pmatrix{
+\mat A	&\strut\vrule	&\mat B	\cr
+\noalign{\hrule}
+\mat C	&\strut\vrule	&\mat D\cr
+}^{-1} = \pmatrix{
+\ldots							&\strut\vrule	&\ldots\cr
+\noalign{\hrule}
+-\mat S^{-1}\mat C\mat A^{-1}	&\strut\vrule	& \mat S^{-1}\cr
+},\qquad \mat S = \mat D - \mat C\mat A^{-1}\mat B\ .}{BlockInverse}
+(The upper row was skipped as it will not be needed to estimate global parameters). After some algebra manipulations, matrix $\mat S$ can be written
+\eqref{\mat S = \pmatrix{
+\sum_n \Ga_1^n \mat\si \mat \Ga_1^n	&\cdots	&\sum_n \Ga_1^n \mat\si \mat \Ga_G^n	\cr
+\vdots								&		&\vdots									\cr
+\sum_n \Ga_G^n \mat\si \mat \Ga_1^n	&\cdots	&\sum_n \Ga_G^n \mat\si \mat \Ga_G^n	\cr
+},\qquad \mat\si = 1 - \mat\al(\mat\al^\T\mat\al)^{-1}\mat\al^\T\ .}{MilleS}
+Note that $\mat\si$ matrix exactly coincides with $\mat S$ matrix for one-track-fit, see \Eq{residual}.
+
+The second bit needed for \Eq{MilleLS} is
+\eqref{\mat A^\T\,\vec m = \pmatrix{
+\mat\al^\T\,\vec m^1\cr
+\vdots\cr
+\mat\al^\T\,\vec m^N\strut\cr
+\ln
+\sum_n\mat\Ga_1^n\, \vec m^n\vrule width0pt height15pt\cr
+\vdots\cr
+\sum_n\mat\Ga_G^n\, \vec m^n\cr
+},\qquad \vec m^n = \pmatrix{
+m_1^n\cr
+\vdots\cr
+m_D^n\cr
+}\ .}{MilleATm}
+The vector $\vec m^n$ contains measurements from all detectors of the $n$-th track. It corresponds to the $\vec m$ vector in the one-track-fit case, see \Eq{SimpleLMMat}. Finally, the global parameters (the bottom part of vector $\vec\th$)
+\eqref{\vec\th_G = (b_{1,1}\ldots b_{1, D},\ b_{2, 1}\ldots b_{2, D},\ \ldots)^\T}{MilleGlobalPar}
+can be determined from \Eq{MilleLS}
+\eqref{\vec\th_G = \mat S^{-1}\,\pmatrix{
+\sum_n \mat\Ga_1^n\mat\,\mat\si\,\vec m^n\cr
+\vdots\cr
+\sum_n \mat\Ga_G^n\mat\,\mat\si\,\vec m^n\cr
+}\ .}{MilleLSGlobal}
+Looking at \Eq{residual} one finds the meaning of $\mat\si\,\vec m^n$: this is the vector one-track-fit residuals for the $n$-track. Therefore we will adopt notation
+\eqref{\vec R^n = \mat\si\,\vec m^n}{MilleResidual}
+As $\mat\si$ is singular (and so $\mat S$ might be), one had better write
+\eqref{\mat S\, \vec\th_G = \pmatrix{
+\sum_n \mat\Ga_1^n\mat\,\vec R^n\cr
+\vdots\cr
+\sum_n \mat\Ga_G^n\mat\,\vec R^n\cr
+}\ .}{MilleLSResidual}
+
+
+
+\subsection{Invertibility of $\mat S$}
+
+First, let us remark the for every matrix with real elements $\mat M$ it holds (taken from \bref{wikipedia}, keyword \em{matrix rank})
+\eqref{\rank\mat M^\T\mat M = \rank\mat M\mat M^\T = \rank\mat M\ .}{Lemma1}
+
+We assume such a configuration of parameters $f_{i,j}$ that fitting of a single track is possible. In other words we assume $\mat\al^\T\mat\al$ is invertible, which can be equivalently expressed by $\rank \mat\al^\T\mat\al = L$ (since $\mat\al^T\mat\al$ is $L$-by-$L$ matrix). Then, \Eq{Lemma1} yields $\rank\mat\al = L$.
+
+Matrix $\mat S$ can be decomposed as follows\footnote{%
+This decomposition shows that $\mat S$ is symmetric. This is a very important observation for numerical calculations.
+}
+\eqref{\mat S = 
+\underbrace{\pmatrix{
+\mat\Ga_1^1	&\cdots	&\mat\Ga_1^N	\cr
+\vdots		&		&\vdots			\cr
+\mat\Ga_G^1	&\cdots	&\mat\Ga_G^N	\cr
+}}_{\mat S_1}
+\underbrace{\pmatrix{
+\mat\si	&		&		\cr
+		&\ddots	&		\cr
+		&		&\mat\si\cr
+}}_{\mat S_2}
+\underbrace{\pmatrix{
+\mat\Ga_1^1	&\cdots	&\mat\Ga_G^1	\cr
+\vdots		&		&\vdots			\cr
+\mat\Ga_1^N	&\cdots	&\mat\Ga_G^N	\cr
+}}_{\mat S_3}
+\ .}{MilleSDecomp}
+For its rank one can write
+\eqref{\rank\mat S = \rank\mat S_1\mat S_2\mat S_2\mat S_3 = \rank\mat S_1\mat S_2 \ .}{RankS}
+The first equality is consequence of $\mat\si^2=\mat\si$ and the latter equality follows from $\mat\si^\T = \mat\si$ and $\mat S_1^\T = \mat S_3$. Because $\mat S_1\mat S_2$ has $GD$ rows, it is clear
+\eqref{\rank\mat S\leq GD\ .}{RankS1S2}
+
+Furthermore, we will assume that $\mat S_1$ has full row rank, i.e. all its rows are linearly independent, i.e. its rank is $GD$. The contrary would mean trying to determine global parameters that cannot be obtained for the measured data. The fact that all rows of $\mat S_1$ are linearly independent can be expressed by assertion
+\eqref{\hbox{if}\ \exists\ c_{ia}\ \hbox{such}\ \sum_{i=1}^G\sum_{a=1}^D c_{ia} [\mat\Ga_i^n]_{ab} = 0\quad\forall 1\leq b\leq D, 1\leq n\leq N\ \hbox{then}\ c_{ia} = 0\quad \forall i, a\ .}{rankGD2}
+
+It has already be shown (see \Eq{RankS}) that
+\eqref{\rank\mat\si = D - L}{RankS2}
+that is matrix $\mat\si$ has exactly $D-L$ linearly independent rows. Denoting those independent rows by $IR(\mat\si)$, their independence can be expressed as:
+\eqref{\hbox{if exist coefficients}\quad c_a\quad\hbox{such that}\quad\sum_{a\in\ IR(\mat\si)} c_a\mat\si_{ab} = 0\quad\forall b\quad\hbox{then}\quad c_a = 0,\forall a\ .}{SigmaRank1}
+The rest of rows of $\mat\si$ can be written as linear combination of the linearly independent rows:
+\eqref{\forall\al\not\in IR(\mat\si)\hbox{ exist coefficients }\ e_{\al a}\ \hbox{ such that }\ \mat\si_{\al b} = \sum_{a\in IR(\mat\si)} e_{\al a}\, \mat\si_{ab}\ .}{SigmaRank2}
+
+Matrices $\mat\Ga_i^n$ are all diagonal (see \Eq{MilleGamma}) and therefore
+\eqref{[\mat\Ga_i^n]_{ab} = \de_{ab}\,g_{i, a}^n\ , \qquad [\mat\Ga_i^n\,\mat\si]_{ab} = g_{i, a}^n\,\mat\si_{ab}\ .}{GaElements}
+Using the first relation, condition \Eq{rankGD2} simplifies to
+\eqref{\hbox{if}\ \exists\ c_{ia}\ \hbox{such}\ \sum_{i=1}^G c_{ia} g_{i, a}^n = 0\ \ \forall a, n\ \hbox{then}\ c_{ia} = 0\ \ \forall i, a\ .}{rankGD3}
+
+Now, let's check whether the linearly independent rows of $\mat\si$ are preserved independent in product $\mat S_1\mat S_2$. We put the following equality and find what it implies.
+\eqref{\sum_{i=1}^G \sum_{a\in IR(\mat\si)} c_{ia}\,\left[\mat\Ga_i^n\,\mat\si\right]_{ab} = 0\qquad\forall b, n\ .}{TestEquality}
+Using the second equality in \Eq{GaElements} it can be rearranged to
+\eqref{\sum_{a\in IR(\mat\si)} \underbrace{\sum_{i=1}^G c_{ia}\,g_{i, a}^n}_{K^n}\,\mat\si_{ab} = 0\qquad\forall b, n\ .}{TestEquality2}
+However, \Eq{SigmaRank1} requires $K^n_a = 0$ for all $a$, that is
+\eqref{\sum_{i=1}^G c_{ia}\,g_{i, a}^n = 0\qquad\forall a, n\.}{TestEquality3}
+Employing \Eq{rankGD3} leads to condition $c_{ia} = 0$ for all $a$ and $n$. In other words requirement \Eq{TestEquality} implies $c_{ia} = 0$, which proves that all $G(D-L)$ rows that are summed over in \Eq{TestEquality} are linearly independent. One can add a lower bound to \Eq{RankS1S2}
+\eqref{G(D-L)\leq\rank\mat S\leq GD\ .}{RankS1S2 2}
+
+Next, one may wan to use \Eq{SigmaRank2} to find linearly dependent row of $\mat S_1\mat S_2$. That is to find coefficients $d_{i\al,a}$ such that
+\eqref{\left[\mat\Ga_i^n\,\mat\si\right]_{\al b} = \sum_{a\in IR(\mat\si)} d_{i\al,a}\,\left[\mat\Ga_i^n\,\mat\si\right]_{ab}\qquad\forall n,b\hbox{ and }\al\not\in IR(\mat\si)\ .}{DependentRows}
+Expanding \lhs{} and using second relation in \Eq{GaElements} and assumption \Eq{SigmaRank2} yields
+\eqref{\left[\mat\Ga_i^n\,\mat\si\right]_{\al b} 
+= g_{i,\al}^n \mat\si_{\al b}
+= \sum_{a\in IR(\mat\si)} f_{\al a} g_{i,\al}^n \mat\si_{ab}
+= \sum_{a\in IR(\mat\si)} \left( f_{\al a} {g_{i,\al}^n\over g_{i,a}^n} \right) \left[\mat\Ga_i^n\,\mat\si\right]_{ab}\ .
+}{DependentRows2}
+If one could identify $d_{i\al,a}$ with the factor in parentheses, it would mean that also the dependent row of $\mat\si$ are preserved in $\mat S_1\mat S_2$. But as the factor in parentheses is $n$-dependent, the identification is not possible. It is this $n$-dependence which may remove some singularity and increase rank of $\mat S$ over the lower bound.
+
+
+
+\subsection[shifts only]{Example: shifts only}
+
+Let's go back and consider the realistic model \Eq{RealMeasurement} with no rotations, i.e. $\de_i\equiv 0$. There is just one global parameter ($G=1$) per detector -- shift $\De_i$. Corresponding coefficients $g_{1,a}^n=1$ and therefore $\Ga_1^n = 1_{D\times D}$. From \Eq{MilleS} one can calculate 
+\eqref{\mat S = N\,\mat\si}{ShiftsOnlyS}
+and LS estimate \Eq{MilleLSResidual} simplifies to
+\eqref{N\,\mat\si\,\vec\De = \sum_n^N \vec R^n\ .}{ShiftsOnlyS}
+where we used $\vec\th_G\equiv\vec\De$ (since $G=1$). Note that \Eq{ShiftsOnlyS} is identical to equation \Eq{ResidualShiftErrAverage}. That shows that both \em{approaches are identical} for the case with shifts only.
+
+
+
+
+\subsection[shifts and rotations]{The actual case: shifts and rotations}
+
+Let's consider again the linearized model \Eq{RealMeasurementLin}. There are two sets of global parameters -- shifts $\De_i$ and rotations $\de_i$. The corresponding $\mat\Ga$ matrices are $\mat\Ga_1^n = 1_{D\times D}$ and $\mat\Ga_2^n = {\rm diag}(\ga^n_1, \ldots, \ga_D^n)$.
+
+As the shift $\mat\Ga$ matrices are $n$-independent, the dependent $\mat\si$ rows are preserved and one obtains $\rank\mat S\leq GD - L$. Indeed, $G=2$ and $L=4$ for this model.
+
+The $\mat S$ matrix reads
+\eqref{\mat S = \pmatrix{
+\strut\sum_n \mat\si & \sum_n \mat\si\mat\Ga^n_2\cr
+\strut\sum_n \mat\Ga^n_2\mat\si & \sum_n \mat\Ga^n_2\mat\si\mat\Ga^n_2\cr
+}\ .}{ShiftsAndRotsS}
+
+As we already know
+\eqref{S\, \pmatrix{\mat\al\vec u\ \vrule\ 0}^\T = 0\qquad\forall\vec u\in\mathbb{R}^L\ .}{ShiftConstraints}
+
+If there is a vector $\vec u\in\mathbb{R}^D$ such that
+\eqref{\mat\si\mat\Ga^n_2\vec u = 0\qquad\forall n\ ,}{RotConstraintCond}
+then $\mat S \pmatrix{0\ \vrule\ u}^\T = 0$. Condition \Eq{RotConstraintCond} can be satisfied only if there is a vector $\vec t\in\mathbb{R}^L$ such that
+\eqref{\mat\Ga_2^n\vec u = \mat\al\vec t\ .}{RotConstraintCond2}
+Now, we show that vector $\vec u_1 = \pmatrix{1,\ldots,1}^\T$ fullfills the last condition. Recalling the definition of $\ga_i^n$ (see \Eq{RealMeasurementLin})
+$$\ga_i^n	= -(\hat a_x^n\,z_i + \hat b_x^n)\sin\al_i + (\hat a_y^n\,z_i + \hat b_y^n)\cos\al_i$$
+one can find the vector
+$$\vec t = \pmatrix{\hat a_y^n & \hat b_y^n & -\hat a_x^n & -\hat b_x^n}^\T \ .$$
+
+Now, we focus on the actual situation where the angles $\al_i$ in the definition of $\ga_i^n$ can only have two possible values: $\al_i \in \{\al_a, \al_b\}$. Then, also vector
+\eqref{\vec u_2 = \pmatrix{f(\al_1), \ldots, f(\al_D)}^\T\qquad f\hbox{is an arbitrary function such that }f(\al_a)\not = f(\al_b)}{RotConstraint2}
+fullfills condition \Eq{RotConstraintCond2}. To prove it, we put $\vec t = \pmatrix{t_1, t_2, t_3, t_4}^\T$ and expand the condition \Eq{RotConstraintCond2}
+\eqref{\eqnarray{
+&z_i \big(-\hat a_x^n\sin\al_i + \hat a_y^n\cos\al_i\big) f(\al_i) + \big(-\hat b_x^n\sin\al_i + \hat b_y^n\cos\al_i\big)  f(\al_i) =\cr
+&= z_i \big(t_1 \cos\al_i + t_3 \sin\al_i\big) + \big(t_2\cos\al_i + t_4\sin\al_i\big)\qquad\forall i\ .\cr
+}}{RotConstraintCond2Exp}
+The comparison the coefficients at $z_i$ and $1$ yields the set of equations
+\eqref{\eqnarray{
+-\hat a_x^n\sin\al_i\ f(\al_i) + \hat a_y^n\cos\al_i\ f(\al_i) & = t_1 \cos\al_i + t_3 \sin\al_i\cr
+-\hat b_x^n\sin\al_i\ f(\al_i) + \hat b_y^n\cos\al_i\ f(\al_i) & = t_2 \cos\al_i + t_2 \sin\al_i\cr
+}\qquad\forall i\ .}{RotConstraintCond2ExpSet}
+Note that the second equation can be obtained from the first by formal substitutions $t_1 \rightarrow t_2$, $t_3 \rightarrow t_4$ and $a \rightarrow b$. Thus we will focus on the first equation only. In fact, the first line in \Eq{RotConstraintCond2ExpSet} comprises $D$ equations, but only two of them are independent. These two can be written
+\eqref{\pmatrix{
+\cos\al_a & \sin\al_a\cr
+\cos\al_b & \sin\al_b\cr
+}\pmatrix{
+t_1\cr
+t_3\cr
+}=\pmatrix{
+-\hat a_x^n\sin\al_a\ f(\al_a) + \hat a_y^n\cos\al_a\ f(\al_a)\cr
+-\hat a_x^n\sin\al_b\ f(\al_b) + \hat a_y^n\cos\al_b\ f(\al_b)\cr
+}\ .}{RotConstraint2t}
+This set of equations has a unique solution if $\sin(\al_a - \al_b) \not = 0$. Note that if we allowed more than 2 possible values of $\al_i$, there would be more than 2 independent equations in the first line of \Eq{RotConstraintCond2ExpSet}, and generally speaking, the analog of \Eq{RotConstraint2t} would be over-constrained. Let us also remark that the choice of the function $f$ is really arbitrary. Moreover, if one defines a vector $\vec u_3$ in analogy to \Eq{RotConstraint2}, just using an alternative function $f$, then the vectors $\vec u_1, \vec u_2$ and $\vec u_3$ are linearly dependent.
+
+Instead of using vectors $\vec u_1$ and $\vec u_2$, one can use any linear combination of them. A particularly convenient choice might be
+\eqref{(\vec u_1)_i = \cases{0\cr 1}\qquad (\vec u_2)_i = \cases{1\qquad \al_i = \al_a\cr 0\qquad \al_i = \al_b}}{RotConstraintsUseful}
+
+TODO: Iterations. Will the iteration converge? How quickly?
+
+
+\section{Shifts and incomplete measurements}
+
+The geometry of TOTEM Roman Pots is such that a single track cannot go through all detectors. Thus it is important to discuss the situations when not all detectors are included in vector $\vec m$ (see \Eq{MilleMeasVec}). For simplicity we will focus on the case with shifts only, that is $G = 1$. The fit matrix (compare with \Eq{MilleA}) can be written
+\eqref{\mat A = \pmatrix{
+\mat \al_1 & 			&		&\vrule	&\mat I_1\cr
+	& \mat \al_2		&		&\vrule	&\vdots	\cr
+	&					& \ddots&\vrule	&\mat I_N\cr
+}\ .}{IncompA}
+The matrices $\mat\al_j$ have the same structure as displayed by \Eq{MilleAlpha}, but their rows correspond to detectors active the $j$-th event. The size of $\mat \al_j$ is $D_j\times L$, where $D_j$ is number of detectors active in $j$-th event. Matrix $\mat I_j$ is a $D_j$-by-$D$ matrix with elements either $0$ or $1$. The structure is such that it has exactly one 1 at each row and non-zero columns correspond to active detectors. For instance, if only detectors 2, 3 and 5 were active, the matrix may\footnote{Order of rows is irrelevant.} read
+$$\mat I = \pmatrix{
+0& 1& 0& 0& 0& 0& \ldots& 0 \cr
+0& 0& 1& 0& 0& 0& \ldots& 0\cr
+0& 0& 0& 0& 1& 0& \ldots& 0\cr
+}\ .$$
+
+Repeating the same procedure as above \Eq{MilleLSResidual} one can derive equation
+\eqref{\mat S\vec{\hat\De} = \sum_n^N \mat I_n^\T\, \vec R_n,\qquad}{IncompEq}
+where
+\eqref{\mat S = \sum_n^N \mat I_n^\T\,\mat\si_n\,\mat I_n,\qquad \mat\si_n = 1 - \mat\al_n (\mat\al_n^\T\mat\al_n)^{-1} \mat\al_n^\T\ .}{IncompEqDef}
+$\vec{\hat\De}$ is our shift estimate and residuals $\vec R_n$ are defined (in accordance to \Eq{MilleResidual})
+\eqref{\vec R_n = \mat\si_n \vec m_n\ .}{IncompResid}
+
+For further discussion, the key observation is
+\eqref{\mat\al_n = \mat I_n\, \mat\al\ ,}{IncompAlphaN}
+where $\mat\al$ is the matrix for full measurement, i.e. for (maybe hypothetical) measurement to which all detectors contribute. With the help of this observation, one easily finds
+\eqref{\mat S (\mat\al \vec u) = 0\qquad\hbox{for all }\vec u\in\mathbb{R}^L\ .}{IncompKernel}
+That shows that $\mat S$ is singular and moreover that dimension of its kernel is at least $L$ (see discussion of rank of $\mat\al$ above \Eq{MilleSDecomp}).
+
+In pathological cases the kernel of $\mat S$ can be of higher dimension than $L$. Imagine there are only two types of events. First type comprises detectors $1\ldots d$ while second $d+1\ldots D$. Note there are no detectors in common for such event types. $\mat S$ can be carried out ($N_{1, 2}$ denotes number of events of first, second type).
+$$\mat S = \pmatrix{
+N_1\, \mat\si_1 & 0\cr
+0 & N_2\, \mat\si_2\cr
+}$$
+One can see that events of the first and the second type decouple from each other. Each $\si_{1, 2}$ matrix has kernel of dimension $L$ and therefore $\rank\mat S = D - 2L$.
+
+
+For the rest of this section we will assume that the sample of events is not pathological and hence $\rank\mat S = D - L$. That also means that kernel of $\mat S$ contains \em{only} vectors $\mat\al\vec u$ TODO
+
+Let's discuss number of solutions of \Eq{IncompEq}. Since matrix $\mat S$ is singular, there can be either no or infinite number of solutions. To find what holds we rewrite \Eq{IncompEq}
+\eqref{\mat S \vec{\hat\De} = \sum_n^N \mat I_n^\T\, \vec R_n = \sum_n^N \mat I_n^\T\, \mat\si_n \vec m_n = \sum_n^N \mat I_n^\T\, \mat\si_n (\underbrace{\vec m_n^0}_{\displaystyle\mat\al_n \vec u} + \mat I_n \vec \De) = \sum_n^N \mat I_n^\T\, \mat I_n \vec \De = \mat S\vec \De\ .}{IncompEq2}
+We decomposed measurement $\vec m_n$ into part which can be described by track model $\vec m_n^0$ and the actual (not an estimate) displacement $\vec\De$. The obtained equality seems almost like a tautology, but in fact it is a major result. It claims that displacement estimate $\vec{\hat\De}$ (i.e. a solution of \Eq{IncompEq}) can differ from the actual displacement $\vec\De$ only by a vector from the kernel of matrix $\mat S$, i.e.
+\eqref{\vec{\hat\De} = \vec\De + \mat\al \vec u\ ,\qquad \vec u\in\mathbb{R}^L\ .}{IncompSolutions}
+Therefore \Eq{IncompEq} has infinite number of solutions forming vector space of dimension $L$.
+
+In order to obtain an unique solution, one has to impose additional constraints (in other words to fix $\vec u$ in \Eq{IncompSolutions}). A convenient constraint parameterization is the following
+\eqref{(\mat\al^\T \mat\al)^{-1} \mat\al^\T \vec{\hat\De} = \vec\th_{\rm con}\ ,}{IncompConstraint}
+where $\vec\th_{\rm con}$ is a vector of $L$ constants. \Eq{IncompEq,IncompConstraint} have, together, a unique solution.
+
+The best choice (in order to gain as much information on shifts as possible) for $\vec u$ is, indeed, $\vec 0$. In terms of \Eq{IncompConstraint}, it means setting $\vec\th_{\rm con}$ to $\vec\th_{\rm G}$
+\eqref{\vec\th_{\rm G} = (\mat\al^\T \mat\al)^{-1} \mat\al^\T \vec{\De}\ .}{IncompGlobal}
+TODO: $\vec\th_{\rm G}$ has the meaning of global modes.
+Note the $\vec\th_{\rm G}$ is function of the actual shifts. Finally, let us remark that values of $\vec\th_{\rm G}$ cannot be obtained by means of fitting. They must be obtained by an independent analysis.
+
+\section{Shifts and rotations, incomplete measurements}
+
+Quite generally, using the same trick with $I^n$ as in the preceding section.
+
+\eqref{\mat S\, \vec\th_G = \pmatrix{
+\sum_n \mat\Ga_1^n\mat\,{\mat I^n}^\T\,\vec R^n\cr
+\vdots\cr
+\sum_n \mat\Ga_G^n\mat\,{\mat I^n}^\T\,\vec R^n\cr
+}\ .}{PartialEq}
+
+\eqref{\mat S = \pmatrix{
+\sum_n \Ga_1^n\,{\mat I^n}^\T \mat\si^n\,\mat I^n \mat \Ga_1^n	&\cdots	&\sum_n \Ga_1^n\,{\mat I^n}^\T \mat\si^n\,\mat I^n \mat \Ga_G^n	\cr
+\vdots								&		&\vdots									\cr
+\sum_n \Ga_G^n\,{\mat I^n}^\T \mat\si^n\,\mat I^n \mat \Ga_1^n	&\cdots	&\sum_n \Ga_G^n\,{\mat I^n}^\T \mat\si^n\,\mat I^n \mat \Ga_G^n	\cr
+},\qquad
+\mat\si^n = 1 - \mat\al^n ({\mat\al^n}^\T\mat\al^n)^{-1} {\mat\al^n}^\T\ .}{PartialS}
+
+All the solutions of \Eq{PartialEq} can described as
+\eqref{\vec\th_G(\vec b) = \vec\th_p + \sum b_i\,\vec\et_i}{PartialEqSolutions}
+where $\vec\th_p$ is one particular solution of \Eq{PartialEq} and vectors $\vec\et_i$ are solutions of the homogeneous equation $\mat S\,\vec\et_i = 0$. In other words, vectors $\vec\et_i$ are vectors from the kernel of matrix $\mat S$.
+
+Let's focus on the realistic case with shifts and rotations. That is $G = 2$ and $\mat\Ga_1^n = 1_{D\times D}$ and $\mat\Ga_2^n = {\rm diag}(\ga^n_1, \ldots, \ga_D^n)$, where the $\ga_i^n$ are defined by \Eq{RealMeasurementLin}. We would like to find the basis of the kernel of matrix $\mat S$. One may proceed similarly as in section \sref{shifts and rotations}. The only new complication is the presence of matrices $\mat I^n$, but in fact it is not a deep problem. First, for arbitrary vector $\vec u\in\mathbb{R}^L$
+\eqref{\mat\si^n\,\mat I^n\mat\al\,\vec u = \mat\si^n\mat\al^n\,\vec u = 0\ .}{PartialShiftConstraints}
+Second, if there is a vector $\vec u\in\mathbb{R}^D$ and a vector $\vec t\in\mathbb{R}^L$ such that $\mat\Ga_2^n\,\vec u = \mat\al\,\vec t$, then
+\eqref{\mat\si^n\,\mat I^n\mat\Ga_2^n\,\vec u = \mat\si^n\,\mat I^n\mat\al\,\vec t = 0\ .}{PartialRotConstraints}
+
+TODO: show that the actual shifts and rotations can play the role of $\vec\th_p$.
+
+TODO: pathological cases, as in 1.4?
+
+\references
+\PrintReferences
+
+
+\chapter{Test beam results}
+
+There were two Roman Pot assemblies tested at the beam test of 2008. We will refere to them as RP1 and RP2.
+
+A RP assembly consits of 10 hybrids (detectors). Their $z$ position (along the beam) is summarized in \Tb{RP dets z}. The detectors are Si strip detectors. Their read-out (sensitive) direction is given by angle $\rh$, see \Fg{rho definition} and \Tb{RP dets z}.
+
+\bmcent
+\fiig[8cm]{fig/stripDirection.eps}{rho definition}{The first two detectors in RP assembly.}
+\hfil
+
+\htaab{\tlab{RP dets z}The geometry of RP assemblies.}{\bln
+\hbox{hybrid} & z\un{mm} & \rh \cr\bln
+ 1 &  0.00 & 3\pi/4 \cr\ln
+ 2 &  5.75 & \pi/4 \cr\ln
+ 3 &  9.00 & 3\pi/4 \cr\ln
+ 4 & 14.75 & \pi/4 \cr\ln
+ 5 & 18.00 & 3\pi/4 \cr\ln
+ 6 & 23.75 & \pi/4 \cr\ln
+ 7 & 27.00 & 3\pi/4 \cr\ln
+ 8 & 32.75 & \pi/4 \cr\ln
+ 9 & 36.00 & 3\pi/4 \cr\ln
+10 & 41.75 & \pi/4 \cr\bln
+}
+\emcent
+
+
+\section[AppTBAlign]{Application of track based alignment}
+
+We will apply \Eq{PartialEq} and track model described in section \sref{track model} to the test beam data. The matrices $\mat\al^n$ in \Eq{PartialEqSolutions} are given (by the track model)
+\eqref{\mat\al^n = \pmatrix{%
+\vdots &&& \vdots\cr
+z_i\,\cos\rh_i & \cos\rh_i & z_i\,\sin\rh_i & \sin\rh_i\cr
+\vdots &&& \vdots\cr
+}\ ,}{AlForm}
+where each row corresponds to a detector involved in the $n$-th event. The $\mat\Ga$ matrices appearing in \Eq{PartialEq,PartialEqSolutions} are described in section \sref{shifts and rotations}
+
+As discussed in sections \sref{shifts only} and \sref{shifts and rotations}, \Eq{PartialEq} can be solved only if 6 additional are applied. For each projection ($u$ and $v$) one has to fix
+\bitm\itskip-2mm
+\itm overall shift,
+\itm linearly progressive shift and
+\itm overall rotation.
+\eitm
+We fix them to zero values.
+
+The last subtlety to be discussed is the influence of the finite detector pitch on the performance of the alignment method. This influence can be effectively described by transition
+$\vec m \longrightarrow \vec m + \vec\ep$
+where $\vec\ep$ represents the rounding error arising from the fact that only a multiple of the pitch can be actually measured. In a good approximation, the elements of $\vec\ep$ follow a uniform distribution $U(-P/2, P/2)$ where $P$ denotes the detector pitch. Full analytical analysis of the pitch influence is quite difficult and therefore, here, we will only present a motivation for the qualitative behavior of the MC results shown below. We will constrain ourselves to the situation with shifts and complete measurements only. The basic equation for this case \Eq{ShiftsOnlyS} can be recast
+\eqref{\mat\si (\vec\De + \vec\De_E) = {1\over N} \sum_n^N (\vec R^n + \mat\si\vec\ep^n)}{ShiftsOnlySPitch}
+where the $\vec\De_E$ is the error in shift determination induced by the pitch rounding. In holds
+\eqref{\mat\si \vec\De_E = \mat\si {1\over N} \sum_n^N \vec\ep^n\ .}{ShiftPitchError}
+We finish this brief discussion by remarking some statistical properties of the vector standing on the \rhs{} of the previous equation
+\eqref{{\rm E}\left[ {1\over N} \sum_n^N \vec\ep^n_i \right] = 0\ ,\qquad {\rm V}\left[ {1\over N} \sum_n^N \vec\ep^n_i \right] = {P\over\sqrt{12 N}}\ .}{ShiftPitchErrorEstim}
+Those suggest that the elements of $\vec\De_E$ should tend to zero as the number of tracks $N$ grows.
+
+In order to obtain a reliable estimate of the uncertainties of the track based alignment, we have performed a Monte Carlo simulation. For several values of $N$ we carried out 500 (track) simulations followed by alignment analysis. For each simulation and detector we evaluated differences between expected and obtained shifts and rotations. These differences were filled into histograms and eventually the means and the variations (RMS) of the histograms were plotted as functions of $N$ (see \Fg{ErrorSimSft,ErrorSimRot}).
+
+The results justify our qualitative estimate \Eq{ShiftPitchErrorEstim} that the variations are proportional to $1/\sqrt{N}$. On the other hand, the results show that the proportionality constant is different for different detectors which is in contradiction with \Eq{ShiftPitchErrorEstim}. Fits for the worst cases give
+\eqref{\hbox{shift uncertainty} = {44\un{\mu m}\over\sqrt{N}},\qquad \hbox{rotation uncertainty} = {6.3\un{mrad}\over\sqrt{N}}\ .}{ErrorSimVariations}
+The offsets for $N > 1000$ are rather flat and lie in a band around zero:
+\eqref{|\hbox{shift offset}| < 0.5\un{\mu m},\qquad |\hbox{rotation offset}| < 0.05\un{mrad}\ .}{ErrorSimMeans}
+
+\bmfig[\flab{ErrorSimSft}Errors in shift determination. Left: systematic offset, right: result variation. Each line corresponds to one detector.]
+\fig*[7.5cm]{errorEstimates/sftMeans.eps}{}{}{}{}{}
+\fig*[7.5cm]{errorEstimates/sftRMSs.eps}{}{}{}{}{}
+\emfig
+
+\bmfig[\flab{ErrorSimRot}Errors in rotation determination. Left: systematic offset, right: result variation. Each line corresponds to one detector.]
+\fig*[7.5cm]{errorEstimates/rotMeans.eps}{}{}{}{}{}
+\fig*[7.5cm]{errorEstimates/rotRMSs.eps}{}{}{}{}{}
+\emfig
+
+
+\section{Optical measurements}
+
+The position of the detectors within the RP assembly has been measured. There are 3 reference points on a detector and one point on the RP. For each detector a zoomed high resolution photo was taken and a relative position of the points 1 and 2 (see \Fg{metrology}) and the RP reference point was measured. Theoretical values and results are summarized in \Tb{metrology theoretical,RP1 metrology,RP2 metrology}. The precision of this measurement is $\approx 10\un{\mu m}$.
+
+\bmcent
+
+\taab{\tlab{metrology theoretical}The theoretical values for the optical measurement of RPs.}{\bln
+\multispan{2}\strut\bvrule\hfil reference point 1\hfil&\multispan{2}\strut\vrule\hfil reference point 2\hfil& \omit\bvrule\hfil control\hfil\cr
+x\un{(mm)}	& y\un{(mm)}	& x\un{(mm)}	& y\un{mm}	& \omit\bvrule\hfil\ distance (mm)\hfil\	\cr\bln
+75.068 & 31.631 & 25.932 & 31.631 & 49.136\cr\bln
+}
+
+\fiig[8cm]{fig/metrology.eps}{metrology}{An illustration of the metrology measurement.}
+\emcent
+
+\eqref{\hbox{control distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}}{metrology distance}
+
+Shifts and rotations are extracted as follows
+\eqref{\hbox{rotation} = {y_2 - y_1\over x_2 - x_1}}{metrology rot}
+\eqref{\hbox{shift} = \left ({x_1 + x_2\over 2} - \bar x\right)\,\cos\rh + \left ({y_1 + y_2\over 2} - \bar y\right)\,\sin\rh}{metrology shift}
+where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values displayed in \Tb{metrology theoretical} and $\rh$ is the read-out direction (see \Fg{rho definition}). These values of shifts and rotations cannot be fully obtained by the track-based alignment (see e.g. section \sref{AppTBAlign}). To compare results of track-based alignment and optical measurements, we there determine ``measurable'' shifts and rotations. Those are obtained form the full displacements by removing the inaccessible modes. For shifts: if $\vec s = (s_1 \ldots s_{10})^\T$ is the vector of (full) shifts, then the vector of measurable shifts $\vec s'$ is given (see e.g. \Eq{IncompSolutions})
+\eqref{\vec s' = \left(1 - \mat\al (\mat\al^\T \mat\al)^{-1}\mat\al^\T\right)\, \vec s\ .}{metrology meas shift}
+The measurable rotations are given by a constant shift $\de_i \rightarrow \de' = \de_i + c$ such that the sum of $\de_i'$ is zero. This is done independently for $u$ and $v$ detectors.
+
+
+\htab{\tlab{RP1 metrology}The metrology of RP1.}{\bln
+		&\multispan{2}\strut\bvrule\hfil reference point 1\hfil&\multispan{2}\strut\vrule\hfil reference point 2\hfil& \omit\bvrule\hfil control\hfil & & \hbox{measurable} & \hbox{rotation} & \hbox{measurable}\cr
+\hbox{hybrid}	& x\un{(mm)}	& y\un{(mm)}	& x\un{(mm)}	& y\un{mm}	& \omit\bvrule\hfil\ distance (mm)\hfil\	& \hbox{shift }\un{(\mu m)}	& \hbox{shift }\un{(\mu m)}	& \hbox{(mrad)}	& \hbox{rotation (mrad)}\cr\bln
+ 1 & 75.070 & 31.622 & 25.933 & 31.631 & 49.137 &  -4.2 & -10.4 &  -0.2 &  -0.1\cr\ln
+ 2 & 75.069 & 31.663 & 25.936 & 31.667 & 49.133 & +25.8 & +10.5 &  -0.1 &  -0.0\cr\ln
+ 3 & 75.064 & 31.665 & 25.928 & 31.656 & 49.136 & +23.7 & +17.1 &  +0.2 &  +0.2\cr\ln
+ 4 & 75.052 & 31.653 & 25.916 & 31.655 & 49.136 &  +4.9 & -13.6 &  -0.0 &  +0.0\cr\ln
+ 5 & 75.082 & 31.656 & 25.944 & 31.662 & 49.138 & +10.6 &  +3.6 &  -0.1 &  -0.1\cr\ln
+ 6 & 75.084 & 31.646 & 25.950 & 31.653 & 49.134 & +25.1 &  +3.3 &  -0.1 &  -0.1\cr\ln
+ 7 & 75.086 & 31.629 & 25.951 & 31.643 & 49.135 &  -9.5 & -17.0 &  -0.3 &  -0.2\cr\ln
+ 8 & 75.070 & 31.657 & 25.937 & 31.647 & 49.133 & +17.3 &  -7.8 &  +0.2 &  +0.3\cr\ln
+ 9 & 75.055 & 31.640 & 25.917 & 31.635 & 49.138 & +14.5 &  +6.6 &  +0.1 &  +0.2\cr\ln
+10 & 75.093 & 31.650 & 25.956 & 31.665 & 49.137 & +36.1 &  +7.6 &  -0.3 &  -0.2\cr\bln
+}
+
+\htab{\tlab{RP2 metrology}The metrology of RP2.}{\bln
+		&\multispan{2}\strut\bvrule\hfil reference point 1\hfil&\multispan{2}\strut\vrule\hfil reference point 2\hfil& \omit\bvrule\hfil control\hfil & & \hbox{measurable} & \hbox{rotation} & \hbox{measurable}\cr
+\hbox{hybrid}	& x\un{(mm)}	& y\un{(mm)}	& x\un{(mm)}	& y\un{mm}	& \omit\bvrule\hfil\ distance (mm)\hfil\	& \hbox{shift }\un{(\mu m)}	& \hbox{shift }\un{(\mu m)}	& \hbox{(mrad)}	& \hbox{rotation (mrad)}\cr\bln
+ 1 & 75.055 & 31.643 & 25.921 & 31.665 & 49.134 & +24.7 & +12.7 &  -0.4 &  -0.3\cr\ln
+ 2 & 75.084 & 31.664 & 25.948 & 31.655 & 49.136 & +31.5 & -11.5 &  +0.2 &  +0.5\cr\ln
+ 3 & 75.082 & 31.654 & 25.947 & 31.655 & 49.135 &  +6.4 &  -2.9 &  -0.0 &  +0.2\cr\ln
+ 4 & 75.110 & 31.630 & 25.977 & 31.674 & 49.133 & +45.6 &  +7.0 &  -0.9 &  -0.6\cr\ln
+ 5 & 75.091 & 31.624 & 25.954 & 31.644 & 49.137 & -13.8 & -20.3 &  -0.4 &  -0.2\cr\ln
+ 6 & 75.101 & 31.653 & 25.965 & 31.659 & 49.136 & +41.0 &  +6.8 &  -0.1 &  +0.2\cr\ln
+ 7 & 75.074 & 31.639 & 25.938 & 31.642 & 49.136 &  +2.5 &  -1.2 &  -0.1 &  +0.1\cr\ln
+ 8 & 75.092 & 31.653 & 25.956 & 31.678 & 49.136 & +41.4 & +11.5 &  -0.5 &  -0.2\cr\ln
+ 9 & 75.061 & 31.642 & 25.925 & 31.642 & 49.136 & +12.7 & +11.8 &  -0.0 &  +0.2\cr\ln
+10 & 75.070 & 31.640 & 25.934 & 31.651 & 49.136 & +11.7 & -13.8 &  -0.2 &  +0.1\cr\bln
+}
+
+
+\section{Results of track based alignment}
+
+For RP1 we analyzed run 20 (5228 tracks) and run 31 (3195 tracks). The track-based alignment results and the comparison to the optical measurement are show in \Tb{RP1 shifts,RP1 rotations}.
+
+\bmcent
+\htaab{\tlab{RP1 shifts}RP1: shifts in$\un{\mu m}$}{\bln
+\hbox{plane} & \hbox{metrology} & \hbox{run 20} & \hbox{run 31} \cr\bln
+ 1 &  -10.4 &  -0.9 &  -0.2  \cr\ln
+ 2 &  +10.5 &  +9.7 &  +8.3  \cr\ln
+ 3 &  +17.1 &  +1.1 &  +1.1  \cr\ln
+ 4 &  -13.6 &  -7.4 &  -6.8  \cr\ln
+ 5 &   +3.6 & +13.7 & +13.0  \cr\ln
+ 6 &   +3.3 &  -0.9 &  +0.4  \cr\ln
+ 7 &  -17.0 & -26.8 & -28.3  \cr\ln
+ 8 &   -7.8 & -14.6 & -13.8  \cr\ln
+ 9 &   +6.6 & +13.0 & +14.5  \cr\ln
+10 &   +7.6 & +13.3 & +11.9  \cr\bln
+\hbox{uncertainty} & \pm 7 & \pm 0.6 & \pm 0.8\cr\bln
+}
+
+\htaab{\tlab{RP1 rotations}RP1: rotations in$\un{mrad}$}{\bln
+\hbox{plane} & \hbox{metrology} & \hbox{run 20} & \hbox{run 31} \cr\bln
+ 1 & -0.1 & +1.0 & +5.2\cr\ln
+ 2 & -0.0 & +5.4 & +3.7\cr\ln
+ 3 & +0.2 & +0.8 & +3.1\cr\ln
+ 4 & +0.0 & +2.7 & +1.9\cr\ln
+ 5 & -0.1 & -0.1 & -0.0\cr\ln
+ 6 & -0.1 & -0.3 & -0.3\cr\ln
+ 7 & -0.2 & -1.0 & -3.3\cr\ln
+ 8 & +0.3 & -2.1 & -1.3\cr\ln
+ 9 & +0.2 & -0.7 & -5.0\cr\ln
+10 & -0.2 & -5.8 & -4.0\cr\bln
+\hbox{uncertainty} & \pm 0.4 & \pm 0.05 & \pm 0.06\cr\bln
+}
+\emcent
+
+
+For RP2 we analyzed run 5 (14523 tracks) and run 31 (11056 tracks). The track-based alignment results and the comparison to the optical measurement are show in \Tb{RP2 shifts,RP2 rotations}.
+
+\bmcent
+\htaab{\tlab{RP2 shifts}RP2: shifts in$\un{\mu m}$}{\bln
+\hbox{plane} & \hbox{metrology} & \hbox{run 5} & \hbox{run 6} \cr\bln
+ 1 &  +12.7   & +15.8 & +16.0  \cr\ln
+ 2 &  -11.5   & -10.1 & -10.6  \cr\ln
+ 3 &   -2.9   &  -6.0 &  -6.2  \cr\ln
+ 4 &   +7.0   & +10.1 & +10.1  \cr\ln
+ 5 &  -20.3   & -20.3 & -20.2  \cr\ln
+ 6 &   +6.8   &  -0.5 &  +0.1  \cr\ln
+ 7 &   -1.2   &  -4.7 &  -4.9  \cr\ln
+ 8 &  +11.5   & +11.0 & +11.6  \cr\ln
+ 9 &  +11.8   & +15.2 & +15.4  \cr\ln
+10 &  -13.8   & -10.6 & -11.3  \cr\bln
+\hbox{uncertainty} & \pm 7 & \pm 0.4 & \pm 0.4\cr\bln
+}
+
+\htaab{\tlab{RP2 rotations}RP2: rotations in$\un{mrad}$}{\bln
+\hbox{plane} & \hbox{metrology} & \hbox{run 5} & \hbox{run 6} \cr\bln
+ 1 & -0.3  & +0.0 & +0.2\cr\ln
+ 2 & +0.5  & -0.6 & +1.8\cr\ln
+ 3 & +0.2  & +0.3 & +0.4\cr\ln
+ 4 & -0.6  & -1.0 & +0.3\cr\ln
+ 5 & -0.2  & -0.2 & -0.2\cr\ln
+ 6 & +0.2  & +0.2 & +0.2\cr\ln
+ 7 & +0.1  & -0.2 & -0.3\cr\ln
+ 8 & -0.2  & +0.4 & -0.9\cr\ln
+ 9 & +0.2  & +0.1 & -0.1\cr\ln
+10 & +0.1  & +1.1 & -1.4\cr\bln
+\hbox{uncertainty} & \pm 0.4 & \pm 0.08 & \pm 0.11\cr\bln
+}
+\emcent
+
+
+\EndText
+\end

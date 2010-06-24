@@ -1,0 +1,350 @@
+\input /home/kaspi/tex/kaspiTeX/base.tex
+\input /home/kaspi/tex/kaspiTeX/biblio.tex
+\input pdfslides
+
+
+%---------------------------------------------------------------------------------------------------- 
+\vbox to0pt{}\vfil
+\title{Jan Ka¹par}
+\title{defence of diploma thesis}
+\title{High energy diffraction processes -- TOTEM experiment}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{TOTEM experiment}
+\vskip-\baselineskip
+\centerline{\rPviii(Total Cross Section, Elastic Scattering and Diffraction Dissociation at the LHC)}
+\vskip-5pt
+The smallest, but independent experiment at the LHC at CERN. Its physical program (see \bref{TDR} for details):
+
+\bitm\parskip=0pt
+\itm Total cross section -- precise measurement (error $\approx 1\un{mb}$), luminosity independent method
+$$\si_{tot}(s) = {16\pi\over 1 + \rh^2} {\d N_{el} / \d t |_{t = 0\un{GeV^2}}\over N_{el} + N_{inel}}\qquad \rh(s) = {\Re T(s, 0)\over \Im T(s, 0)}$$
+\itm Elastic scattering ...
+\itm Diffraction and the Pomeron -- inelastic processes "not too different" from elastic, various $X \sim$ various physics
+$$p + p \to p + X \qquad p + p \rightarrow p + p + X$$
+\eitm
+
+\vskip -5pt
+Common property is presence of particles scattered to very angles $\Rightarrow$ special detector technique is required.
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{TOTEM detectors}
+\vskip-10pt
+It will share location with CMS. The forward {\bf inelastic detectors} will be assembled in CMS.
+
+\centerline{\fig{width7cm}{figures/tdr1.jpg}}
+\vskip-10pt
+Elastic detectors will be placed far from IP in {\bf Roman pots}
+\vskip0pt
+\centerline{\fig{width7cm}{figures/tdr2.jpg}}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Roman pots}
+\centerline{\fig{width4cm}{figures/tdr25.jpg}}
+\centerline{\fig{width3cm}{figures/tdr34.jpg}}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Synopsis of my thesis}
+\bitm{\parskip=10pt}
+\itm Elastic $pp$ scattering analysis
+\itmm Islam's model for hadron interaction
+\itmm Impact parameter point of view
+\itmm Coulomb interference
+\itm Calibration of detector alignment (my summer project in \hfil\break CERN)
+\eitm\parskip=0pt
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{The model}
+\vskip-3mm
+\>Interesting is small $t$ region, where coupling constant is too large to use perturbative approach within QCD $\Rightarrow$ phenomenological models are employed.
+
+\vskip3mm
+\>Model of Islam et al. (\bref{Islam1987}, \bref{Islam2003}, \bref{Islam2004}) was used. It is based on idea of proton structure. They start from $SU(3)_L\times SU(3)_R$ gauged nonlinear sigma model.
+
+\centerline{\fig{width5cm}{figures/lag_sigma_model.jpg}}
+\centerline{\fig{width4cm}{figures/nucleon.jpg}}
+
+
+
+\newpage %-----------------------------------------------------------------------------------------
+\parskip=9pt
+They distinguish 3 mechanisms (diffraction, core scattering and quark scattering)
+\vskip-8pt
+$$T(s, t) = T_D(s, t) + T_C(s, t) + T_Q(s, t) \qquad {\d\si\over\d t} = {\pi\over s p^2}\,|T(s, t)|^2$$
+
+{\bf Diffraction} is a consequence of interaction of the outer clouds. The corresponding amplitude is parametrised
+\vskip-8pt
+$$T_D(s, t) \sim \int\limits_0^\infty b \d b\, J_0(b\sqrt{-t})\, \left[ {1\over 1 + e^{b-R\over a}} + {1\over 1 + e^{-b-R\over a}} - 1 \right ]$$
+
+Scattering one core off the other gives birth to the {\bf core scattering}. It should be go via $\om$ exchange, therefore 
+\vskip-8pt
+$$T_C(s, t) \sim {s\,F^2(t)\over m^2_\om - t}$$
+\parskip=0pt
+
+\newpage %-----------------------------------------------------------------------------------------
+{\bf Quark amplitude} reflects transition to perturbative regime of QCD. They take into account "distribution functions", elastic $qq$ amplitude. The latter is obtained with BFKL theory. The former leads to appearance of form factor ${\cal F}(q_\perp)$. The quark amplitude reads
+$$T_Q(s, t) \sim {s\,{\cal F}(q_\perp)\over |t| + r_0^{-2}}$$
+
+\vskip\baselineskip
+\centerline{\fig{width7cm}{figures/quark_scattering.jpg}}
+
+
+\newpage %-----------------------------------------------------------------------------------------
+Altogether, there are 17 (13) energy--independent parameters. Authors determined these parameters by fitting data on $\si_{tot}(s)$, $\rho(s)$ and $\d\si/\d t$ for $\bar pp$ at energies $\sqrt{s} = 541\un{GeV}$, $630\un{GeV}$ and $1.8 \un{TeV}$.
+
+\line{\hskip-2mm\fig{width6.3cm}{figures/app541full.jpg}\hfil\fig{width4cm}{figures/app541.jpg}\hskip-2mm}
+
+
+
+\newpage %-----------------------------------------------------------------------------------------
+\centerline{\fig{width10cm}{figures/lhc.jpg}}
+
+
+
+\newpage %%% 12 %%% -------------------------------------------------------------------------------
+\title{Impact parameter representation}
+\vskip-2mm
+\>Basic idea is to replace $T(s, t)$ by $A(s, b)$, where $b$ is impact parameter.
+
+\>It naturally follows from eikonal approximation in QM.
+
+\>There is precise formulation based on Fourier--Bessel transform \bref{AK1965}
+$$U(q) = c \int\limits_0^\infty b\, \d b\, J_0(bq)\,A(b) \qquad A(b) = {1\over c} \int\limits_0^\infty q\, \d q\, J_0(bq)\,U(q)$$
+
+\vskip-3mm
+\>However, it requires both $A(b)$ and $U(q)$ to be defined on $(0, \infty)$. We want to identify $U(q)$ with amplitude $T(s, t=-q^2)$, but it is constrained to $t_{min} < t < 0$ $\Rightarrow$ we introduce arbitrary function $\tilde T$
+
+$$U(q) = \left\{ %} for syntax highlighting
+\vcenter{\halign{\strut $#$\hfil& \qquad #\hfil\cr
+T(s, t=-q^2)& for $t_{min} < t < 0$\cr 
+\tilde T(s, t=-q^2)& for $t < t_{min}$\cr
+}} \right.$$
+
+
+\newpage %%% 13 %%% -------------------------------------------------------------------------------
+\>$\tilde T$ represents ambiguity in i.p. amplitude $\Rightarrow$ it is necessary to introduce a physical requirement for $\tilde T$, that would remove the ambiguity.
+
+\>$A(s, b) = a(s, b) + \tilde a(s, b)$
+$$\int\limits_0^\infty b\, \d b\,b^{2n}\,\tilde a(s, b) = 0 \qquad \int\limits_0^\infty b\,\d b\ \tilde a^*(s, b)\,a(s, b) = 0$$
+
+\>$\displaystyle \sigma_{tot}(s) = 4\pi \int\limits_0^\infty \d^2 \vec b\ \Im A(s, b)\c \qquad \si_{el}(s) = 4\pi \int\limits_0^\infty \d^2 \vec b\ |a(s, b)|^2$
+$\Rightarrow$ seems natural to interpret $4\pi\,\Im A(s, b)$ resp. $4\pi\,|a(s, b)|^2$ as total resp. elastic collisions density $\rh_{el,\, tot}(s, b)$. To do so, $\Im A(s, b)$ must be non--negative $\Rightarrow$ physical constraint on $\tilde a$ (or $\tilde T$).
+
+
+\newpage %%% 14 %%% -------------------------------------------------------------------------------
+\>If we adopt the density interpretation we can define mean value of $b^2$ (independent on $\tilde T$ choice)
+$$\mean{b^2(s)}_{el,\, tot} = \displaystyle\int \d^2 \vec b\, b^2\, \rh_{el,\, tot}(s, b) \left( \displaystyle\int \d^2 \vec b\, \rh_{el,\, tot}(s, b) \right)^{-1}$$
+
+\vskip-3mm
+\centerline{\fig{width8cm}{figures/mean_b2.jpg}}
+\vskip-1mm
+
+Islam model is central, with weak $t$ dependence of amplitude phase $\Rightarrow \mean b_{tot} > \mean b_{el}$. It is in contradiction with diffraction, which is described by peripheral models.
+
+
+\newpage %%% 15 %%% -------------------------------------------------------------------------------
+\title{Coulomb--Hadron interference}
+\>Two fundamental forces are essential for $pp$ scattering. Namely, electromagnetic and strong. We know scattering amplitudes for each interaction separately. The problem, how to determine amplitude for both interactions acting simultaneously.
+
+\>One problem, two ways for solutions:
+
+\bitm{}
+\itcc=96
+\itmm eikonal additivity way
+\itmm summing some relevant Feynman diagrams
+\eitm
+\vskip\baselineskip
+{\bf Eikonal} approximation in QM gives following prescription
+$$A(s, b) = {e^{2\de(s, b)} - 1\over 2i} \qquad \de(s, b) = -{1\over 2p} \int\limits_0^\infty \d z\, V(\sqrt{b^2 + z^2})$$
+
+
+\newpage %%% 16 %%% -------------------------------------------------------------------------------
+Potential is additive $\Rightarrow$ eikonal $\de$ is additive. For $V = V_1 + V_2$, the total amplitude 
+$$A(s, b) = A_1(s, b) + A_2(s, b) + 2iA_1(s, b) A_2(s, b)$$
+Jump to the final result \bref{Cahn}, \bref{Kundrat1994}
+$$\eqalign{
+T(s, t) = \mp {\alpha s\over t}\,F^2(t)\ +\ T_H(s, t) \left[\vrule width0pt height20pt\right. &1 \pm i \alpha \int\limits_{t_{min}}^0 \!\!\d t' \left( \right. {\rm ln}{t'\over t}\ {\d F^2(t')\over \d t} -\cr
+&\left.\left. - \left({T_H(s, t')\over T_H(s, t)}  - 1\right)\,I(t, t') \right) \vrule width0pt height20pt \right]\cr
+}$$
+$$I(t, t') = {1\over 2\pi} \int\limits_0^{2\pi} \d\ph {F^2(t'')\over t''}\qquad t'' = t + t' + 2\sqrt{tt'} \cos\ph$$
+
+\>Two ways of possible use: $T \Rightarrow T_H$ and $T \Leftarrow T_H$
+
+\>One formula for whole $t$ region.
+
+\newpage %%% 17 %%% -------------------------------------------------------------------------------
+{\bf Feynman diagrams technique} (West--Yennie formula) \bref{West1968}, \bref{Rix1966}
+
+\>Uses scalar field for protons.
+
+\>Needs to know off shell hadron amplitude.
+
+\>A "model independent contribution" is introduced. It depends on amplitude on the mass shell only and does not suffer from IR divergence.
+
+\>Final formula is equivalent with simplified formula derived within the previous approach.
+
+\vskip\baselineskip
+{\bf Conventional analysis} -- simplified WY formula assumes 
+
+\>Purely exponential decay of amplitude in whole $t$ region.
+
+\>Constant phase in whole $t$ region.
+
+\vskip\baselineskip
+Relative importance of interference
+$$f(s, t) = {|T(s, t)|^2 - |T_H(s, t)|^2 - |T_C(s, t)|^2\over |T_H(s, t)|^2}$$
+
+
+\newpage %%% 18 %%% -------------------------------------------------------------------------------
+For $pp$ at energy $\sqrt s = 53\un{GeV}$
+
+\line{\fig{width4.8cm}{figures/pp53_inter.jpg}\hfil\fig{width4.8cm}{figures/pp53_imp.jpg}}
+
+Prediction for LHC has the same character, with 2 quantitative differences. The blue and the red line are closer (diff. cross section is higher) and the peak in $f(t)$ is at $t\approx 5\cdot 10^{-1}\un{GeV^2}$ (position of diffraction dip).
+
+
+\newpage %%% 19 %%% -------------------------------------------------------------------------------
+\title{Calibration of detector alignment}
+
+\>In every roman pot, there will be (at least) a bunch of 10 planar strip detectors (with strip pitch $66\mu m$). One half having the strips perpendicular to the other half.
+
+\>The detectors will be adapted for TOTEM special needs, they will be {\bf edgeless}.
+
+\>This new technology need to be tested. For this purpose it is crucial to know precise position of every detector.
+
+\>Estimated maximum error of mechanical placement is $20\un{\mu m}$. This induces maximum possible slant $10^{-3}$.
+
+
+\newpage %%% 20 %%% -------------------------------------------------------------------------------
+\title{Test detector geometry}
+\centerline{\fig{width7cm}{figures/test_detector.jpg}}
+\centerline{\fig{width5.8cm}{figures/test_detector2.jpg}}
+
+
+\newpage %%% 21 %%% -------------------------------------------------------------------------------
+\title{The method}
+\>We know distribution of tracks from beam source.
+
+\vskip-8pt
+$$\mean a = 0,\quad \si_a = 3\cdot 10^{-3}, \qquad \mean b = 0\un{mm}, \qquad \si_b \approx 12\un{mm}$$
+\vskip5pt
+
+\>Difference in $x$ positions measured in $i$-th and $j$-th detector
+
+\vskip-5pt
+$$\eqalign{D_{ij} = x_i' - x_j' =& \,a_x (z_i - z_j) - (\De x_i - \De x_j) - a_y (z_i s_i - z_j s_j) - \cr
+&- b_y (s_i - s_j) + (\De y_i s_i - \De y_j s_j)\cr
+}$$
+\vskip5pt
+\centerline{\fig{width8cm}{figures/order_estimate.jpg}}
+
+
+\newpage %%% 22 %%% -------------------------------------------------------------------------------
+\title{Shifts}
+\>Event-averaged value of $D_{ij}$
+
+$$\eqalign{\bar D_{ij} = {1\over N} \sum_{n=0}^N D_{ij}^n =& - (\De x_i - \De x_j) + \bar a_x (z_i - z_j) -\cr 
+& - \bar a_y (z_i s_i - z_j s_j) - \bar b_y (s_i - s_j)\cr
+}$$
+\>Deviation of arithmetic mean
+
+$$\si_{\bar a_x} = {\si_{a_x}\over\sqrt N}$$
+
+\>$\bar D_{ij} \approx - (\De x_i - \De x_j)$ with error $0.7\un{\mu m}$ for $5\cdot 10^4$ events.
+
+
+\newpage %%% 23 %%% -------------------------------------------------------------------------------
+\title{Slants}
+
+\>Linear regression applied on data $D_{ij}^n$ versus $b_y^n$
+
+\vskip-8pt
+$$T_{ij} = -(s_i - s_j) + F$$
+\vskip3pt
+
+\>It can be shown $\mean F = 0\un{m^{-1}}$ and $\si_F \sim 1/\sqrt{N}$
+
+\>$T_{ij} \approx -(s_i - s_j)$ with error $2.2\cdot 10^{-4}$ for $5\cdot 10^4$ events.
+
+
+\newpage %%% 24 %%% -------------------------------------------------------------------------------
+\title{Real situation}
+\centerline{\fig{width6cm}{figures/det_size.jpg}}
+\def\foo{\hbox to3mm{\hfil}}
+$$h(a, b)= {g(b)\over \foo\int\limits_{b_{min}}^{b_{max}} g(b)\foo} \, {f(a)\over \foo\int\limits_{a_{min}(b)}^{a_{max}(b)} f(a)\foo}$$
+
+
+\newpage %%% 24 %%% -------------------------------------------------------------------------------
+\title{Conclusion}
+{\bf CHAPTER 1}
+
+\>The hadron interaction model by Islam et al. was implemented in ROOT computional environment and their results were checked. The newest stage is in good accordance with data for high energies ($\sqrt s \geq 500\un{GeV}$) but it is inconsistent with data on $pp$ scattering at energy $53\un{GeV}$.
+
+\>An exact formulation of impact parameter representation was presented. The formulation is ambiguous but we rose an natural requirement that may remove the ambiguity.
+
+\>We applied impact parameter transformation on Islam model. We plotted corresponding profile functions and obtained mean square values of impact parameter for elastic and all collisions.
+
+\newpage %%% 24 %%% -------------------------------------------------------------------------------
+\>Interference between Coulomb and hadron interaction was\break discussed. We compared two standard approaches (eikonal and simplified West--Yennie), relative difference is of order $0.1 \div 1 \%$.
+
+\>We confirmed that Coulomb interaction cannot be neglected outside small $t$ region.
+
+
+\vskip2\baselineskip
+{\bf CHAPTER 2}
+
+\>On the basis of knowledge of some statistical characteristics of beam source, we developed a method to reduce uncertainties in Roman pot detector positions. According to our estimations the relative shifts should be decreased by factor $\approx10$, slants by factor $\approx5$.
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Spin, isospin amplitudes}
+\>TOTEM is experiment with unpolarised protons $\Rightarrow$ spin is omitted in this thesis, "spin averaged" amplitude $T(s, t)$ is used 
+$${\d\si\over\d t} = {\pi\over s p^2}\,|T(s, t)|^2 \.$$
+
+\vskip-3mm
+\>Protons have spin $1/2$, they have 2 spin states (e.g. helicity values $\pm 1/2$). Thus one can distinguish $2^4=16$ amplitudes for $pp$ elastic scattering. But if identity of protons and (usually assumed) $P$ and $T$ invariance of hadron interaction are taken into account, number of independent amplitudes reduce to 5. The traditional set of helicity amplitudes (taken from \bref{Buttimore}) reads
+
+\vskip-3mm
+$$\Ph_1(s, t) = \langle ++|\hat T|++\rangle,\quad \Ph_3(s, t) = \langle +-|\hat T|+-\rangle \leqno{\hbox{(no flip)}}$$
+$$\Ph_5(s, t) = \langle ++|\hat T|+-\rangle \leqno{\hbox{(single flip)}}$$
+$$\Ph_2(s, t) = \langle ++|\hat T|--\rangle,\quad \Ph_4(s, t) = \langle +-|\hat T|-+\rangle \leqno{\hbox{(double flip)}} \.$$
+
+\newpage %-------------------------------------------------------------------------------------------
+Spin averaged cross section can be obtained
+$${\d\si_{\hbox{\csname csr7\endcsname spin av.}}\over\d t} = {\pi\over 2sp^2} \left( |\Ph_1|^2 + |\Ph_2|^2 + |\Ph_3|^2 + |\Ph_4|^2 + 4|\Ph_5|^2 \right) \.$$
+\vskip3mm
+\>Proton and neutron can be viewed as two isospin states of a "nucleon". Since isospin is believed to be conserved in strong interactions there should be only two different amplitudes for $p, n$ scattering --- iso--singlet ${\cal A}_0$ and iso--triplet ${\cal A}_1$. It follows
+
+\vskip3mm
+$$\mel{pp}{\op T}{pp} = {\cal A}_1,\ \mel{pn}{\op T}{pn} = {{\cal A}_1 + {\cal A}_0\over2},\ \mel{pn}{\op T}{np} = {{\cal A}_1 - {\cal A}_0\over 2}\.$$
+
+\vskip3mm
+It is summarised in Ref\hbox{.} \bref{Kundrat1996} that differential cross section for the latter process is suppressed by 5 orders compared to the first two processes. Therefore we can put
+$$\mel{pp}{\op T}{pp} \cong \mel{pn}{\op T}{pn} \.$$
+
+
+
+\newpage %%% 25 %%% -------------------------------------------------------------------------------
+\title{References}
+\rPviii
+\font\bPviii	= pplb8z at 8pt		\def\bf{\bPviii}
+\font\iPviii	= pplri8z at 8pt	\def\it{\iPviii}
+\def\bc{, }
+\baselineskip=10pt
+\setbox\strutbox=\hbox{\vrule height8pt depth3pt width0pt}
+\PrintReferences{references.bib}
+
+
+\end
+

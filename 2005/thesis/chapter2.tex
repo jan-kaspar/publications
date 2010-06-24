@@ -1,0 +1,329 @@
+\def\D{{\cal D}}
+\def\fg{Fig.}
+\def\fgs{Figs.}
+\def\Fg{Fig.}
+\def\Fgs{Figs.}
+\def\equ{Eq.}
+\def\equs{Eqs.}
+\def\Equ{Eq.}
+\def\Equs{Eqs.}
+
+
+% =============================================== Chapter 2 ============================================
+\chapter{Detector alignment}
+
+\vfil
+As indicated in the introduction the TOTEM experiment will exploit a special detection technique that is able to detect particles scattered to very small angles. The basic elements of this technique are the Roman pots and edgeless detectors. The Roman pots are devices that can move the detectors near and far from the beam. The detectors stay far from the beam until it gets stable and of well defined shape and thickness. Then the detectors will be moved to the beam so as their edge will be about $1\un{mm}$ apart from the beam axis.
+
+The detectors inside the Roman pots will be planar silicon strip detectors with strip pitch $66\un{\mu m}$. In each Roman pot, the detectors will be divided to two groups such that strips in one group will be perpendicular to strips of the other group. Common strip detectors have at their edges special voltage terminating structures. These structures improve stability, but are insensible. This is in contradiction with our physical aim --- to detect particles as close to the beam as possible. That is why special edgeless strip detectors are developed for TOTEM experiment (see \bibref{TDR}).
+
+These detectors have to be tested. For this purpose we used test beam facility at X5 at CERN. It is based on SPS accelerator that accelerates protons. The protons are extracted and hitting a target they produce pions at most. Pions decay into muons. Thanks to different muon and pion interaction
+with matter, after the beam passes obstacle wide enough (pion dump), there are only muons in the beam. And this muon beam was used to test the detectors.
+
+We are interested to probe especially the edge area of the detectors, which is very small. Thus we will have to fix detector positions as precisely as possible. However, there will always be some mechanical displacement. Our aim in this chapter is to develop a method how to acquire maximum information about the detector displacements from test beam data. Our approach is based the fact we know some statistical properties of test beam.
+
+
+
+
+
+\section{Testing edgeless strip detectors}
+
+Proportional sketch of the test beam detector configuration is shown at \fg{} \fref{tbconf}. There are 2 packages per 6 detectors. All the detectors are used for track reconstruction and testing simultaneously.
+
+\fig[15cm]{fig/tbconf.eps}{tbconf}{Detector shape and test beam geometry.}
+
+As the magnetic field is negligible in the detector area the particle tracks inside the detector will be the straight lines. To describe the tracks we will use reference frame shown at the right side of \fg{} \fref{coorsys}, where we chose the axis $z$ as the beam axis. A track within this frame can be determined by slopes and offsets in $Z-X$ and $Z-Y$ plane. At the \fg{} \fref{coorsys} there is a sample track with shown offset $b_y$ and slope $a_y$ (by definition tangent of corresponding angle) in $Z-Y$ plane\footnote{Similarly slope and offset in $Z-X$ plane will be denoted $a_x$ and $b_x$}.
+
+\fig[15cm]{fig/coorsys.eps}{coorsys}{Coordinate system used in the detector.}
+
+For description of hits in individual planar detectors it is natural to use coordinate system with subscript $d$ as it is shown on the left part of \fg{} \fref{coorsys}. The axes are parallel to strips and system origin is placed in the geometrical center of the detector (if we omit the cut corner).
+
+For further discusion it is essential to know statistical behavior of tracks in the test beam. Due to technical construction of the beam source we can expect slope $a$ (in both planes)
+to have approximately Gaussian distribution with mean value $\mean a$ and standard deviation $\si_a$
+\eqref{\mean a = 0,\quad \si_a = 3\cdot 10^{-3} \.}{apar}
+Both offsets $b_x$ and $b_y$ have approximately uniform distribution. The size of the beam source is of order $10\un{cm}$. But during experiment we
+will detect only particles that pass through trigger. It effectively reduces width of the beam to about $4\un{cm}$. The latter
+size induces standard deviation
+\eqref{\si_b = {4\un{cm}\over\sqrt{12}} \approx 12\un{mm} \.}{bpar}
+
+So far we have described ideal case. But we are able to assemble the detector with finite precision only.
+Error of mechanical placement of detectors is estimated to be less than
+\eqref{\De = 20\un{\mu m} \.}{shift estm}
+These error shifts can cause the detectors to slant. Maximum slant is produced when one end of
+detector will be shifted in one direction and opposite end to opposite direction. One can expect maximum
+slant
+\eqref{s = {2\De\over L} = 1\cdot 10^{-3} \,}{slant estm}
+where $L = 4\un{cm}$ as a detector size was used.
+
+
+
+
+%==================================================================================================================
+\section{Track reconstruction}
+Due to the displacements of detectors it is necessary to distinguish for all quantities \em{measured} values (values acquired by our apparatus) and \em{actual} values (values that would be measured if there were no shifts and slats). That is why we will use the following convention. Actual values will be denoted without primes (e.g., for actual $y$ hit position in the $i$-th detector we will use $y_i$), measured values will be denoted with primes ($y_i'$).
+
+As the particle tracks are linear we can employ linear regression for reconstruction. Let us use $x_i'$ or $y_i'$ for ($X$ or $Y$) coordinate in the $i$-th detector (in accordance with which coordinate the $i$-th detector
+measures). Then the standard linear regression formulas for slope $a_x'$ and offset $b_x'$  plane read
+\eqref{a_x' = {1\over\D} (S_{zx} S_1 - S_x S_z)\ ,}{ax'}
+\eqref{b_x' = {1\over\D} (S_{zz} S_x - S_{zx} S_z)\ ,}{bx'}
+where we used useful abbreviations
+\eqref{S_1 = \sum_i {1\over\sigma^2}, \quad S_z = \sum_i {z_i\over\sigma^2}, \quad S_{zz} = \sum_i {z_i^2\over\sigma^2},}{sums1}
+\eqref{S_x = \sum_i {x'_i\over\sigma^2}, \quad S_{zx} = \sum_i {z_i x'_i\over\sigma^2} \quad {\rm and} \quad \D = S_{zz} S_1 - S_z S_z \.}{sums2}
+
+The sums go over all detectors measuring $X$ coordinate that are active
+in the event. $z_i$ stands for $Z$ position of the $i$-th detector and $\sigma_i$
+stands for measurement error in this detector.
+
+Besides $a_x'$ and $b_x'$ the linear regression can give us the covariance matrix
+corresponding to these quantities. Using the abbreviations \ref{sums1} and \ref{sums2} the
+covariance matrix can be written as
+\eq{- {1\over\D} \pmatrix{
+S_1 & S_{z}\cr
+S_{z} & S_{zz}\cr
+}\.}
+
+The similar equations can be used for track reconstruction in $Z-Y$ plane, only replacing
+$x$ by $y$.
+
+Note that $a_x'$ and $a_y'$ need not be the same as $a_x$ and $a_y$ (due to the detector
+shifts and slants).
+
+
+
+
+
+%==================================================================================================================
+\section{Calibration}
+
+As it was mentioned above we can expect two types of displacement for every detector -- shift
+perpendicular to the beam axis and slant (small rotation around the beam axis). The situation is
+depicted at \fg{}~\fref{displ}.
+\fig{fig/displ.eps}{displ}{Detector displacement.}
+
+Non-displaced detector has coordinate system $X_d-Y_d$. After shifting the detector by $\De x$ resp.
+$\De y$ in $X$ resp. $Y$ direction and rotating by angle $s$ we receive primed system $X_d'-Y_d'$ of displaced detector.
+
+Slant estimation for $s$ is of order $10^{-3}$. In this region of values we can put
+\eqref{\cos s\approx 1, \quad \sin s\approx s \.}{gon approx}
+Then, the relation between actual hit position and position measured by $i$-th displaced detector is given
+by
+\eqref{\pmatrix{x_i'\cr y_i'} = \pmatrix{1& -s_i\cr s_i &1} \pmatrix{x_i - \De x_i\cr y_i - \De y_i} =
+\pmatrix{x_i - \De x_i - (y_i - \De y_i) s_i\cr y_i - \De y_i + (y_i - \De y_i) s_i} \.}{x'y'}
+
+Having obtained these relations one can also derive relations between actual and measured track parameters. Let us note that \equs{} \ref{ax'} and \ref{bx'} describing the track reconstruction method are linear in $x'$. Therefore the relations for measured slopes and offsets must have form
+\eqref{\pmatrix{a_x'\cr a_y'} = \pmatrix{a_x - \De a_x - \de a_x\cr a_y - \De a_y + \de a_y},\quad
+\pmatrix{b_x'\cr b_y'} = \pmatrix{b_x - \De b_x - \de b_x\cr b_y - \De b_y + \de b_y} \c}{axbx}
+where the terms with $\De$ denote perturbations due to the shifts and the terms with $\de$ stand for the slant perturbations. We will keep this notation in what follows. Performing the calculation one can identify (for example for $a_x'$ part)
+\eqref{\De a_x = {1\over\D} (S_{z\,\De x} S_1 - S_z S_{\De x}), \quad \de a_x = {1\over\D} (S_{z\, ys} S_1 - S_z S_{ys}),}{Deax}
+where
+$$S_{\De x} = \sum_i {\De x_i\over\sigma^2}, \quad S_{z\,\De x} = \sum_i {z_i \De x_i\over\sigma^2},$$
+\eqref{S_{ys} = \sum_i {(y_i - \De y_i) s_i\over\sigma^2}, \quad S_{z\, ys} = \sum_i {z_i\, (y_i - \De y_i) s_i\over\sigma^2}}{DeaxSum}
+and other abbreviations are given by \equs{} \ref{sums1} and \ref{sums2}. The other symbols
+in \ref{axbx} have very analogical meanings as $\De a_x$, $\de a_x$ in \ref{Deax}.
+
+Now we are going to employ knowledge of distribution of track in the beam. Crucial point is
+having beam with zero mean slope (see \equ{} \ref{apar}). For convergence of this method we
+also need zero mean offset of the tracks. Here we will assume these conditions are met. Later we will discuss their fullfiling including influence of detector shape.
+
+We will make one more simplification here. We will pretend the laboratory system $X-Y$ and detector system $X_d-Y_d$ are equivalent. In the next sections we will generalize our ideas to the situation shown at \fg{} \fref{coorsys}.
+
+%In forthcoming text we will make use of some basic statistical formulas. All the formulas we will use are summarized in appendix.
+
+Mathematical description of our calibration method comes out from \equ{} \ref{x'y'}. For simplicity we will go on
+discussing $X$ detectors (i.e. detectors measuring $X$ coordinate) only. Let us denote difference between measured positions in $i$-th
+and $j$-th detector $D_{ij}$
+\eqref{D_{ij} = x_i' - x_j' = (x_i - x_j) - (\De x_i - \De x_j) - (y_i s_i - y_j s_j) + (\De y_i s_i - \De y_j s_j) \.}{Dij}
+If we use standard notation for actual track parameters
+\eq{x_i = a_x z_i + b_x,\qquad y_i = a_y z_i + b_y, }
+we can rewrite \equ{} \ref{Dij} as
+\eqref{D_{ij} = a_x (z_i - z_j) - (\De x_i - \De x_j) - a_y (z_i s_i - z_j s_j) - b_y (s_i - s_j) + (\De y_i s_i - \De y_j s_j) \.}{Dij ab}
+With the help of estimations \ref{apar} and \ref{bpar} we can make order estimation of terms on
+\rhs{} of \equ{} \ref{Dij ab}. For this purpose let us denote $\De z$ a typical $z$ distance
+between detector planes. All estimations are shown in Table \tref{order estm}.
+
+{\setbox\strutbox=\hbox{\vrule height14pt depth6pt width0pt}
+\htab{Order estimation for terms on \rhs{} of \equ{} \ref{Dij ab}.\tlab{order estm}}{
+\hbox{term}& \hbox{estimation}& \hbox{estimation for }\De z = 10^{-1}\un{m}\cr\bln
+a_x (z_i - z_j) & \De z\,10^{-3} & 10^{-4}\un{m} \cr\ln
+\De x_i - \De x_j & 10^{-5}\un{m} & 10^{-5}\un{m} \cr\ln
+a_y (z_i s_i - z_j s_j) & \De z\,10^{-6} & 10^{-7}\un{m} \cr\ln
+b_y (s_i - s_j) & 10^{-5}\un{m} & 10^{-5}\un{m} \cr\ln
+\De y_i s_i - \De y_j s_j & 10^{-8}\un{m} & 10^{-8}\un{m} \cr\bln
+}}
+
+This analysis reads that the last term $\De y_i s_i - \De y_j s_j$ is negligible compared to the
+others. And that is why it will be omitted in the following.
+
+So far we have discussed analysis of one event (one track) only. But we can count with ensemble of $N = 10^4 \div 10^5$ events. To make use of this ensemble we introduce event--averaged value of $D_{ij}$ (it will be denoted $\bar D_{ij}$)
+\eqref{\bar D_{ij} = {1\over N} \sum_{n=0}^N D_{ij}^n ,}{Dij averaging}
+where $N$ is number of events and upper index $n$ expresses the value of $D_{ij}$ is taken
+from $n$-th event. One can substitute \ref{Dij ab} for $D_{ij}^n$ and obtains
+\eqref{\bar D_{ij} =  - (\De x_i - \De x_j) + \bar a_x (z_i - z_j) - \bar a_y (z_i s_i - z_j s_j) - \bar b_y (s_i - s_j),}{Dij ev}
+where
+\eq{\bar a_x = {1\over N} \sum_{n=0}^N a_x^n,\quad \hbox{etc.}}
+Factor $\bar a_x$ has the form of arithmetic mean and thus its standard deviation is given by standard formula
+\eq{\si_{\bar a_x} = {\si_{a_x}\over\sqrt N}}
+and similarly for $a_y$ and $b_y$. In other words last three terms on \rhs{} of \equ{} \ref{Dij ev}
+will be suppressed by factor $\sqrt N$ after averaging. For $N$ high enough term $\De x_i - \De x_j$
+will be the most important one and we can present approximate relation
+\eqref{\bar D_{ij} \approx  - (\De x_i - \De x_j)\.}{Dij approx}
+Error of this relation is given dominantly by the second highest term on \rhs{} of \equ{} \ref{Dij ev}. It the
+is term $\bar a_x (z_i - z_j)$ and its value can be estimated
+\eqref{{\si_{a_x}\over\sqrt N}\,(z_i - z_j) \.}{Dij error}
+In the Table \tref{Dij err} there are several error estimates for different number of events $N$ and $(z_i - z_j) = 5\cdot 10^{-2}\un{m}$ (which is the distance between detector packages in the test beam configuration). Value of $\si_{a_x} = 3\cdot 10^{-3}$ is given by \equ{} \ref{apar}.
+
+{\setbox\strutbox=\hbox{\vrule height14pt depth4pt width0pt}
+\htab{Estimates of error of relation \ref{Dij approx}.\tlab{Dij err}}{
+N&\hbox{error}\cr\bln
+1\cdot 10^4& 1.5\un{\mu m}\cr\ln
+5\cdot 10^4& 0.7\un{\mu m}\cr\bln
+}}
+
+Let us turn to the slant calibration now. \Equ{} \ref{Dij ab} truncated of the last (negligible) term and
+with added upper index $n$ (that stands for event number) reads
+\eqref{D_{ij}^n = - b_y^n (s_i - s_j) - (\De x_i - \De x_j) + a_x^n (z_i - z_j) - a_y^n (z_i s_i - z_j s_j) \.}{Dij sl}
+If we omitted last two terms on \rhs{} of previous formula, we could retrieve coefficient $s_i - s_j$ using linear
+regression applied on data $D_{ij}^n$ versus $b_y^n$. The last two terms are not negligible and we cannot
+omit them easily, however we can treat them as a perturbation. Let us denote $T_{ij}$ the result of the regression
+suggested above. The perturbation causes
+\eqref{T_{ij} = - (s_i - s_j) - T_{a_x} - T_{a_y} ,}{Sij}
+where
+$$T_{a_x} = (z_i - z_j)\, {\sum b_y a_x\ \sum 1 - \sum a_x\ \sum b_y \over \sum b_y^2\ \sum 1 - \big(\sum b_y\big)^2},$$
+\eqref{T_{a_y} = (z_i s_i - z_j s_j)\, {\sum b_y a_y\ \sum 1 - \sum a_y\ \sum b_y \over \sum b_y^2\ \sum 1 - \big(\sum b_y\big)^2}}{Tax}
+and all the sums go through all events and to simplify reading upper indices $n$ were dropped at $a_x$, $a_y$ and $b_y$.
+Let us investigate properties of the fraction in definition of $T_{a_x}$. We will use symbol $F$ for this
+fraction and recast it to
+\eqref{F = {{1\over N}\sum b_y a_x - {1\over N}\sum a_x\ {1\over N}\sum b_y \over {1\over N}\sum b_y^2\ - \big({1\over N}\sum b_y\big)^2} \.}{F}
+As the random variables $a_x$ and $b_y$ are independent and the mean value $\mean a = 0$ one can find out
+\eqref{\mean F = 0\un{m^{-1}}\.}{mean F}
+Computing standard deviation of term $F$ is more difficult. To simplify this task we fixed the denominator to its mean value $\si_{b_y}^2$ and computed the standard deviation only for the numerator. Performing the computation one can obtain
+\eqref{\si_{F} \approx {\si_{a_x}\over\si_{b_y}} \sqrt{{1\over N} - {1\over N^2}} \approx {\si_{a_x}\over\si_{b_y}} {1\over \sqrt N} \.}{dev F}
+Note that we will have at least $N = 10^3$ events and that is why we can put the last approximate equality
+in previous relation.
+
+We made several simulations with different event numbers $N$ to test \equ{} \ref{dev F}. The input values (beam parameters) were taken from \equs{} \ref{apar} and \ref{bpar}. For every event number we generated $10^4$ values of $F$ and made histograms (two of them are shown in \fgs{} \fref{1E3} and \fref{1E4}, values of $F$ are in $\un{m^{-1}}$). Gradually, the histograms were fitted by Gaussian. The standard deviations acquired from fitting are shown in Table \tref{fuj test}.
+\bmfig
+\fig[78mm]{fig/Fdistrib_1E3.eps}{1E3}{Distribution of $F$ for $N = 10^3$}
+\fig[78mm]{fig/Fdistrib_1E4.eps}{1E4}{Distribution of $F$ for $N = 10^4$}
+\emfig
+
+{\setbox\strutbox=\hbox{\vrule height12pt depth4pt width0pt}
+\htab{Test of \equ{} \ref{dev F}\tlab{fuj test}}{
+&\multispan{2}\bvrule\hfil\hbox{standard deviation in $\un{m^{-1}}$}\hfil\cr
+\omit\bvrule\hfil \vbox to0pt{\vss\hbox{$N$}\vss}\hfil&\multispan{2}\hrulefill\cr
+& \hbox{estimated by \equ{} \ref{dev F}}& \hbox{acquired from fitting}\cr\bln
+1\cdot 10^3 & 7.9\cdot 10^{-3} & 8.1\cdot 10^{-3} \cr\ln
+5\cdot 10^3 & 3.5\cdot 10^{-3} & 3.6\cdot 10^{-3} \cr\ln
+1\cdot 10^4 & 2.5\cdot 10^{-3} & 2.5\cdot 10^{-3} \cr\ln
+5\cdot 10^4 & 1.1\cdot 10^{-3} & 1.2\cdot 10^{-3} \cr\bln
+}}
+
+Merging \equs{} \ref{Tax} and \ref{dev F} one can receive estimates for standard deviations
+\eqref{\si_{T_{a_x}}\approx {z_i - z_j\over\sqrt N} {\si_{a_x}\over\si_{b_y}},
+\qquad \si_{T_{a_y}}\approx {z_i s_i - z_j s_j\over\sqrt N} {\si_{a_y}\over\si_{b_y}} \. }{Tax error}
+Therefore for high $N$ terms $T_{a_x}$ and $T_{a_y}$ become negligible and we can introduce
+approximate relation
+\eqref{T_{ij} \approx - (s_i - s_j) \.}{Tij approx}
+Error of the previous relation is given mostly by $T_{a_x}$ (see Table \tref{order estm}). Several error estimations
+for different event numbers are evaluated in Table \tref{Tij error}. For evaluating we used beam parameters
+summarized in \ref{apar} and \ref{bpar} and $(z_i - z_j) = 5\cdot 10^{-2}\un{m}$ (package distance
+in test beam configuration).
+
+{\setbox\strutbox=\hbox{\vrule height12pt depth4pt width0pt}
+\htab{Error estimations for \equ{} \ref{Tij approx}\tlab{Tij error}}{
+N& \hbox{error}\cr\bln
+1\cdot 10^4& 5\cdot 10^{-4}\cr\ln
+5\cdot 10^4& 2.2\cdot 10^{-4}\cr\bln
+}}
+
+Let us make several final notes. The first concerns regression process suggested bellow \equ{} \ref{Dij sl}.
+In practice we do not know actual value of offset $b_y$. We can only obtain value $b_y'$ by tracking. But
+the difference between $b_y$ and $b_y'$ should be of order $10^{-5}\un{m}$ (like shifts). Therefore it is
+negligible in comparison with $b_y$ that is of order $10^{-2}\un{m}$.
+
+To obtain value of $\De x_i - \De x_j$ one does not need to use formula \ref{Dij approx}. In can be obtained by regression used to determine $s_i - s_j$. Namely one can use offset obtained by the regression. Computer simulations show that the difference between these two approaches is much smaller than error estimated by \equ{} \ref{Dij error}.
+
+In the beginning of this part we introduced \equ{} \ref{Dij} describing difference between measured positions in two detectors. Consequence of this fact is that we can obtain only shift and slant differences between these detectors, not absolute values. One could try to use relation \ref{x'y'} as starting point for analysis and thus use directly $x'_i$ instead of $D_{ij}$. But then a term containing $b_x$ appears in analog of \equ{} \ref{Dij ab}. Even if we knew the mean value of $b_x$ is zero, $b_x$ is of order $10^{-2}\un{m}$. One can compare this value with values in Table \tref{order estm} and find out it is by factor $100$ greater than greatest value it the mentioned table. If we consider that standard deviation of arithmetic mean is proportional to $1/\sqrt N$ one can do following guess. Statistics necessary to reduce $b_x$ term to the level of $\De x$ (by averaging analogical to \equ{} \ref{Dij averaging}) is approximately $N = 10^6$ events. During experiment we will not be able to collect so many (meaningful) events and that is why we use method suggested in this section.
+
+
+
+%------------------------------------------------------------------------------------------------------------------
+\subsection{Calibration in actual configuration}
+In the previous section we made several simplifications. One of them was using the laboratory coordinate system instead of detector system. From now on we will consider the detector coordinate system as shown on the left side of \fg{} \fref{coorsys}. One can derive relation between coordinates $x, y$ in the laboratory system $X-Y$ and coordinates $x', y'$ in the displaced detector system $X'_d-Y'_d$
+
+\eqref{\pmatrix{x_i'\cr y_i'} =
+{\cal R}_{s_{i}}\, \left[ {\cal R}_{\pi/4}  \pmatrix{x_i\cr y_i - P_i}  - \pmatrix{\De x_i\cr \De y_i}\right] ,}{x'y' real}
+where ${\cal R}_{\al}$ stands for matrix rotating coordinates counter-clockwise by angle $\al$. It reads
+$${\cal R}_\al = \pmatrix{\cos\al& -\sin\al\cr \sin\al&\cos\al} \.$$
+
+Before tracking and calibration one should unify all the reference frames as much as possible. We tried
+to eliminate $P_i$ shift by summing
+\eqref{\eqalign{
+\pmatrix{x_i'\cr y_i'} + {\cal R}_{\pi/4} \pmatrix{0\cr P_i} &=
+{\cal R}_{s_{i}} \pmatrix{\xi_i - \De x_i \cr \eta_i - \De y_i} + {\cal R}_{\pi/4} (1 - {\cal R}_{s_{i}}) \pmatrix{0\cr P_i} = \cr
+&= \pmatrix{\xi_i -(\De x_i - P_i s_i / \sqrt 2) - (\eta_i - \De y_i)\, s_i\cr \eta_i -(\De y_i - P_i s_i / \sqrt 2) + (\xi_i - \De x_i)\, s_i} ,
+}}{x'y' displ}
+where we used symbols $\xi$ and $\eta$ for coordinates in reference frame rotated by $45^\circ$ clockwise from the laboratory one, i.e.
+\eq{\pmatrix{\xi_i\cr \eta_i} = {\cal R}_{\pi/4} \pmatrix{x_i\cr y_i} \.}
+The last equality in \ref{x'y' displ} follows from estimation \ref{slant estm} and \equ{} \ref{gon approx}.
+
+We can compare \equs{} \ref{x'y' displ} and \ref{x'y'}. The first difference is that there are $\xi$ and $\eta$ in \equ{} \ref{x'y' displ} instead of $x$ and $y$. This interchange only reflects we work in reference frame that is $45^\circ$ rotated.
+The second change is presence of term involving $P$. As the $P$ should be of order of $1\un{mm}$, order of the
+term should be
+\eq{P_i s_i \approx 10^{-6} \.}
+Therefore it cannot be neglected in comparison with the shifts and we have to include this term as part of the shifts. Then the full shift vector reads
+\eqref{\pmatrix{\De x_i - P_i s_i / \sqrt 2\cr \De y_i - P_i s_i / \sqrt 2} \.}{shift full}
+
+
+
+%------------------------------------------------------------------------------------------------------------------
+\subsection{Calibration and detector geometry}
+We have assumed that our detectors are infinitely large so far. It means that all tracks are detected. In this section we are going to discuss finite size and shape of the detectors.
+
+\fig[8cm]{fig/det_shape.eps}{detshape}{Illustration detector configuration.}
+
+Let us consider situation drawn in \fg{} \fref{detshape} (for simplicity, we restrict the discussion to one plane only, let us say $Z-X$ plane). On the left side you can see the beam source with parameters given by \equs{} \ref{apar} and \ref{bpar}. The two hatched rectangles represent two detectors. Our aim is to describe distribution of slopes and offsets of the tracks detected by these two detectors. It is clear that the slope $a$ and the offset $b$\footnote{%
+In this section we will work in $Z-X$ plane only. Therefore we will drop indeces $x$ at $a_x$ and $b_x$.}
+cannot have any arbitrary value (see two dotted tracks in \fg{} \fref{detshape}). The slopes resp. the offsets are confined to intervals $(a_{min}, a_{max})$ resp. $(b_{min}, b_{max})$. In addition the interval of plausible values for the slope is different for different values of the offset. Thus we should properly denote allowed interval for slopes $(a_{min}(b), a_{max}(b))$. The distribution of slopes inside these allowed intervals remains unchanged, but must be renormalized. This is expressed by following relation
+\eqref{h(a, b)= {g(b)\over \int_{b_{min}}^{b_{max}} g(b)}  {f(a)\over \int_{a_{min}(b)}^{a_{max}(b)} f(a)},}{pdf ab}
+where $f(a)$ and $g(b)$ are probability distribution functions (p.d.f.) of slopes and offsets for the beam source and $h(a, b)$ is joint p.d.f. of slopes a slants detected by the two detectors.
+
+Let us make two notes here. Formula \ref{pdf ab} introduces correlation between slopes and slants. Actually even slants and offsets in $Z-X$ and $Z-Y$ planes are correlated for general detector shapes. Thus the fact $\mean a = 0$ does not imply $\mean{F} = 0\un{m^{-1}}$, which is a necessary condition for our calibration method explained above.
+
+Geometry of detectors is effectively affected by cuts\footnote{%
+Here, the word cut means a choice of events (i.e., tracks) which are taken into account.}
+as well. If one accepts tracks passing through a small area only, it is (from point of view of \equ{} \ref{pdf ab}) the same as the detectors occupied only this small area.
+
+Hence, introducing a desirable cut offers a way to meet condition condition $\mean F = 0 \un{m^{-1}}$. However, evaluating $h(a,b)$ by formula \ref{pdf ab} may be difficult (even for very symmetric areas) and for instance for Gaussian distributions analytically impossible at all. That is why we describe only qualitatively the geometry influence for our test beam detector configuration.
+
+Let us accept only tracks going through the overlap area (see \fg{} \fref{tbconf}) of the first and the last detector (it is our cut). And assume the detectors are placed in distance $D$ of order $10^{-1}\un{m}$ from the beam source. Let us recall that slope of the tracks should be of order $\si_a\approx 10^{-3}$. Therefore, with error $D\si_a\approx 10^{-4}\un{m}$, we can state that interval of allowed offset is given by size of the overlap area. This overlap has typical dimension $1\un{cm}$ and hence we can make order estimation for $a_{max}(b)$ and $a_{min}(b)$ (actually it is evaluated for $b = 0\un{m}$)
+\eq{a_{max}(b) \approx |a_{min}(b)| \approx {1\un{cm}\over D} = 10^{-1} \.}
+It is much more than beam angular spread $\si_a$ and thus we can put
+\eq{\int_{a_{min}(b)}^{a_{max}(b)} f(a) \approx 1 \.}
+Then we can factorize joint p.d.f. $h(a, b)$ to marginal p.d.fs. for $a$ and $b$
+\eqref{h(a, b) \approx {g(b)\over \int_{b_{min}}^{b_{max}} g(b)}\  f(a) \c}{pdf ab approx}
+which means $a$ and $b$ are nearly independent. In addition due to the symmetric shape of overlap area, variables
+$a$ and $b$ keep their zero mean values
+\eq{\mean{a} = 0,\qquad \mean b = 0\un{m} \.}
+It implies
+\eq{\mean F = 0 \un{m^{-1}}\.}
+The conclusion of this section is that calibration method suggested in Section \the\nch.3 can be used also for detectors with finite size. Necessary condition is to use desirable cut. Computer simulations confirm this conclusion.
+
+
+
+
+%---------------------------------------------------------------------------------------------------------------------
+\section{Programming}
+Two ROOT programs were produced. The first simulates detector--beam interaction and the second analyzes acquired data.
+
+The simulation program generates random (beam particle) tracks on basis of formulae \ref{apar} and \ref{bpar}. With the help of \equ{} \ref{x'y' real} positions of hits are calculated. These positions are converted into strip numbers and stored in a ROOT tree. This ROOT tree has the same structure as was used during the test beam. Briefly described, in each row there is be number of clusters\footnote{
+Cluster in this meaning is piece of information describing a hit (i.e. detector number,
+charge distribution on strips, etc.)
+} followed by cluster array. To make the simulation more realistic, two more features were included. Clusters are generated only with some probability (particles are detected only with this probability). And on the other hand noise clusters are produced too (they simulate background).
+
+Analysis program reads the ROOT tree, finds the true clusters (hits produced by beam particles) and
+performs track fitting using formulae \ref{ax'} and \ref{bx'}. Finally, the shift and slant calibration based on formulae \ref{Dij approx} and \ref{Tij approx} is done.
+
+\AddBibRef{Deile}
+\references
+\PrintReferences{references.bib}

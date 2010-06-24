@@ -1,0 +1,1044 @@
+\input /home/jkaspar/tex/kaspiTeX/base
+\input /home/jkaspar/tex/kaspiTeX/biblio
+\input /home/jkaspar/tex/kaspiTeX/book
+
+\input references.tex
+
+\let\NormalFonts\SetFontSizesX
+\let\SmallerFonts\SetFontSizesVIII
+\NormalFonts
+
+\font\fPbxii 	= pplb8z at 12pt
+\let\fch 		= \fPbxx
+\let\fsec	 	= \fPbxiv
+\let\fsubsec 	= \fPbxii
+\let\fssubsec	= \fPbxii
+
+
+\def\chapter#1{\advance\nch1 \nsec=0 \nsubsec=0 \nssubsec=0 \eqn = 0 \tabn = 0 \fign = 0%
+		\vfil\eject\forceoddpage%
+		\def\chname{#1} \edef\actname{\the\nch.\ #1}%
+		%\vbox to0pt{}\vskip2cm\noindent\titskip{\fch Chapter \the\nch}\bigskip%
+		\noindent\titskip{\fch\the\nch. \chname}%\vskip3cm%
+		\TOCwrite{\TOCchline}{\actname}{\the\pageno}%
+		\parindent = 0pt \everypar={\parindent=\ParIndent \everypar={}}
+	}
+
+
+\Reftrue
+
+\ParIndent=2em
+\parskip=0pt plus10pt
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\BeginText
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{General notes}
+
+\section{Acceptance for $\be^*=1535\un{m}$ involving the horizontal RP}
+
+The acceptance $A(t, \ph)$ is a function with values $0$ or $1$. The value $1$ means that point is covered by detector, $0$ means it is not covered. Since the azimuthal distribution of particles is uniform, one may be interested in azimuthally averaged acceptance $A(t)$
+$$A(t) = {1\over 2\pi}\int\limits_0^{2\pi}\!\d\ph\, A(t, \ph)\.$$
+Here, we will present analytical form of $A(t)$ for RP at $220\un{m}$ at optics $\be^*=1535\un{m}$. The parameterization depends on $t$ region.
+\bitm
+\itm As the beam is wider in $y$ direction, the vertical detectors are touched first (if $|t|$ is rising from $0\un{GeV^2}$). The detectors are touched at $t_0$
+\eqref{|t_0| = p^2 \left(10\si_y + \de\over L_y\right)^2 \approx 1.2\cdot10^{-3}\un{GeV^2}}{t0}
+\itmpar When only the vertical RP are hit, the acceptance has following form
+\eqref{A(t) = {2\over\pi} \arccos\sqrt{t\over t_0}\.}{par1}
+\itm As $|t|$ grows, the horizontal detector is hit too. This happens at $t_1$
+\eqref{|t_1| = p^2 \left(10\si_x + \de\over L_x\right)^2 \approx 3.1\cdot10^{-3}\un{GeV^2}\.}{t1}
+\itmpar Then one may use parameterization
+\eqref{A(t) = {2\over\pi} \arccos\sqrt{t\over t_0} + {1\over\pi} \arccos\sqrt{t\over t_1}\.}{par2}
+\itm Then, at point $t_2 = t_0 + t_1$ formula \Eq{par2} gets saturated and one needs to use following parameterization for $|t|>|t_2|$
+\eqref{A(t) = {1\over\pi} \arccos\sqrt{t\over t_0} + {1\over 2}\.}{par3}
+
+\eitm
+
+\fig*[9.8cm]{eps/acceptance,new,1535.eps}{}{[] The acceptance of detector at $220\un{m}$ and $\be^*=1535\un{m}$. The solid line shows actual shape of acceptance. The colors, red, blue and green correspond to parameterizations by \Eq{par1,par2,par3} respectively. The red (solid plus dashed) curve describes acceptance without the horizontal RP. The vertical dotted lines indicate $t_0$, $t_1$, $t_2$ and the right-most denotes reaching side of vertical detectors.}{}{}{}
+
+
+\fig*[9.8cm]{eps/acceptance,1535,simulation.eps}{}{[]Comparison of MC simulation and analytical form by \Eq{par1,par2,par3}.}{}{}{}
+
+\iffalse
+\references
+\def\bc{, }
+\PrintReferences{references.bib}
+\fi
+
+\vfil\eject
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Elegant method to determine detector-beam offset}
+
+The position of a hit is given by
+\eqref{x = L_x \th\cos\ph + \De x + \ldots,\qquad y = L_y\th\sin\ph + \De y + \ldots,}{hit pos}
+where $\De x$ and $\De y$ denote the detector-beam offset and $\ldots$ stand for other sources of error that we will abandon here. Now suppose we select only hits with $\th$ values from a thin interval around base value $\th_0$. Then, points $[x/L_x, y / L_y]$ will create a circle with center at $[\De x/L_x, \De y/ L_y]$ and radius $\th_0$. The width of the circle is given either by "size" of the selection interval and either by the other perturbations that we denoted $\ldots$ in \Eq{hit pos}. 
+
+The next step is straightforward. We need to fit a circle (i.e. find its center and radius) against the points $[x/L_x, y / L_y]$. We suggest following method. A circle with center $[\bar x, \bar y]$ and radius $r$ is described by equation
+$$(x - \bar x)^2 + (y - \bar y)^2 = r^2$$
+or
+\eqref{x^2 - 2x\bar x + y^2 - 2y\bar y + C = 0,\qquad C = \bar x^2 + \bar y^2 - r^2 \.}{circle}
+Thus, one may find optimal parameters by minimizing function $S$ (the sum goes through all selected hits)
+\eqref{S = \sum_i \left( x^2 - 2x\bar x + y^2 - 2y\bar y + C \right)^2 \.}{S}
+The minimum is reached at point where partial derivations vanish, i.e. $\partial S/\partial\bar x = 0$, etc. After a portion of algebra, one finds the solution
+\eqref{\pmatrix{\bar x\cr\bar y\cr \strut C\cr} = \pmatrix{2S_x & 2S_y & -S_1\cr 2S_{x^2} & 2S_{xy} & -S_x\cr 2S_{xy} & 2S_{y^2} & -S_y\cr}^{-1} \pmatrix{S_{x^2} + S_{y^2} \cr S_{x^3} + S_{xy^2}\cr S_{x^2y} + S_{y^3}}\,}{solution}
+where the abbreviations mean
+$$S_1 = \sum_i 1,\qquad S_{x^2y} = \sum_i x_i^2\, y_i,\qquad\hbox{etc.}$$
+To return to the original task
+$$\De x = L_x \bar x, \qquad \De y = L_y \bar y\.$$ 
+A realistic demonstration of this procedure is shown at \Fg{example}.
+
+
+\bmfig[\flab{example}An example made for RP at $220\un{m}$ and $\be^* = 1535\un{m}$. We used values $\De x = \De y = 80\un{\mu m}$ for simulation. The selection criteria was $17\cdot10^{-4}\un{GeV^2} < |t| < 18\cdot10^{-4}\un{GeV^2}$. The obtained detector-beam offset is shown above each plot. The three plots correspond to different possible acceptances. The leftmost figure is for full acceptance, middle for a hypothetical small acceptance and the rightmost for the realistic acceptance.]
+\fig*[5.1cm]{eps/full.eps}{}{No condition on $\ph$.}{}{$\De x = 79.9\un{\mu m}, \De y = 79.9\un{\mu m}$}{}
+\fig*[5.1cm]{eps/quarter.eps}{}{$\ph\in(0, \pi/2)$.}{}{$\De x = 146\un{\mu m}, \De y = 259\un{\mu m}$}{}
+\fig*[5.1cm]{eps/acceptance.eps}{}{[4.5cm]Hits really detected,\break\hfill i.e. $|y| > 10\si_y + \de$.}{}{$\De x = 80.3\un{\mu m}, \De y = 78.0\un{\mu m}$}{}
+\emfig
+
+\vfil\eject
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Influence of detector--beam offset at $\be^*=1535$}
+
+\bmfig[Blue line is theoretical cross section, blue is histogram with $\De_x=\De_y=0\un{\mu m}$, red with $50\un{\mu m}$ and green with $100\un{\mu m}$.]
+\fig*[7cm]{eps/db,rebin1,dsigma.eps}{}{$-t\un{(GeV^2)}$}{$\d\si/\d t\un{(mb/GeV^2)}$}{}{}
+\emfig
+
+\bmfig[Blue histogram corresponds to $\De_x=\De_y=0\un{\mu m}$ and old error generation, black to $0\un{\mu m}$ again but new error treatment, red to $50\un{\mu m}$ and green to $100\un{\mu m}$.]
+\fig*[7cm]{eps/db,rebin30.eps}{}{$-t\un{(GeV^2)}$}{$\d\si/\d t\ \hbox{difference}\un{(mb/GeV^2)}$}{Difference $histogram - theory$, at rebin $30$.}{}
+\fig*[7cm]{eps/db,rebin1,chi.eps}{}{}{}{\vbox{\hsize=7cm\noindent$\chi$ distribution. Obtained RMS: blue $1.006$, black $1.02$, red $1.11$ and green $1.57$.}}{}
+\emfig
+\eject
+
+A generic coordinate measured in RP; $_i$, $\pm$ means left or right RP, $\th^0$ is orginal angle created in physical process, $\de \th$ is deviation due to beam spread, $\de x$ stands for error of measurement in RP (strip size, beam position variation in time) and $\De x$ denotes relative beam-RP position
+\eqref{x_i = \pm L_x (\th^0 + \de\th_i)\cos\ph + \de x_i + \De x_i}{coor}
+
+Reconstruction of $y$:
+\eqref{y_m \equiv {y_r - y_l\over 2} = L_y \th^0\sin\ph + \underbrace{L_y {\de\th_r + \de\th_l\over 2}}_{A}\sin\ph + \underbrace{\de y_r - \de y_l\over 2}_{B} + \underbrace{\De y_r - \De y_l\over 2}_{C}}{coor rec}
+
+
+\tab{Estimated variances in $\mu m$}{
+&	\be^*=1535\un{m},\ \ep = 1&	\be^*=90\un{m},\ \ep=3.75\cr\bln
+A&	60&			440\cr\ln
+B&	15&			45\cr\ln
+C&	80&			80\cr\bln
+}
+
+\bmfig[Graphs of measured $y$ versus $\ph$. Black points represent hits, green curve is fit of $a\sin\ph + b$ and blue line demonstrates value of $b$.]
+\fig*[7cm]{eps/1535,ym,phi.eps}{}{}{}{}{}
+\emfig
+
+
+\vfil
+\eject
+
+
+\subsection{Smearing correction (for $\be^*=90\un{m}$)}
+
+The old MC made each event as $t = t_0 + \De t$, which in fact means 
+\eqref{t = t_0 + \xi\, \si(t_0, \ph)}{}
+Then, one may transfer from pdfs of set $t_0, \ph, \xi$ to set $t, \ph, \xi$ and subsequently integrate over $\xi$ and $\ph$ and obtain pdf for $t$
+\eqref{h_t(t) = \int \d\xi h_\xi(\xi) \int \d\ph h_\ph(\ph) \ h_{t_0}(t_0(t, \xi, \ph)) {1\over\left|1+\xi{\partial\si\over\partial t_0}(t_0(t, \xi, \ph))\right|}}{}
+But somehow the approximation of average error works very well
+\eqref{h_t(t) = \int \d\De t \ h_{t_0}(t - \De t) \ N_{\De t}(0, \si^2(t - \De t, \bar\ph))}{old smearing}
+
+The new MC makes every event in more realistic way. In the sence of \Eq{coor rec}. The estimate for $\si^2(t, \ph)$ is the same, but the details must be different, because approximation \Eq{old smearing} doesn't work. One has to proceed carefuly the full expresion for pdf of $t$. This is a bit difficult, therefor I began with simple testing model, the calculations are on a enclosed paper. Comparison with corresponding MC showed the the Jacobian part is crucial. The new correction is based on
+\eqref{h_t(t) = \int \d\de\th \ h_{t_0}(-p^2(\th - \de\th)^2) \  N_{\de\th}(0, \si^2_{\de\th}) \ {\th + \de\th\over\th}}{}
+Still, this formula is unable to explain behaviour at $t < 0.05\un{GeV^2}$. I stop investigation in this direction because for $\be^*=90\un{m}$ the $t$ will be evaluated only from $y$ coordinate measurement.
+
+
+\bmfig[Difference between theoretical curve and histograms. Blue histogram corresponds to old MC, the others to the new one. Black is $\De=0\un{\mu m}$, red $\De=50\un{\mu m}$ and green $\De=100\un{\mu m}$.]
+\fig*[7cm]{eps/zagada.eps}{}{}{}{old smearing correction \ref{old smearing}}{}
+\fig*[7cm]{eps/zagada,half,solved.eps}{}{}{}{new smearing correction}{}
+\emfig
+
+
+\vfil
+\eject
+
+
+\subsection{$t$-measurement at $\be^*=90\un{m}$}
+
+At $\be^*=90\un{m}$ optics we will only be able to measure $y$ coordinate and therefore to determine just $y$ part of $t$ value
+\eqref{t = t_x + t_y,\qquad t_x = t\cos^2\ph,\ t_y = t\sin^2\ph\.}{txty}
+The pdf for $t$ is proportional to differential cross section, $h_t \propto \d\si/\d t$. Then, the pdf for $t_y$ is given by the following equation (no errors are included)
+\eqref{h_{t_y}(t_y) = {2\over\pi} \int\limits_{0}^{\pi/2} {\d\ph\over\sin^2\ph}\ \ h_t\!\left(t_y\over\sin^2\ph\right)}{ty}
+or equivalently
+\eqref{h_{t_y}(t_y) = {1\over\pi} {1\over\sqrt{-t_y}}\int\limits_{t_y}^{-\infty} {h_t(u)\over\sqrt{-u + t_y}} \,\d u}{ty2}
+
+Provided $h_t$ falls off quickly enough at high $|t|$ the $h_{t_y}$ distribution is finite in all points except the point $t_y = 0\un{GeV^2}$. It is sufficient if $h_t(t) \propto 1/t$ as $|t|\to\infty$:
+$$\ph\to 0 \Rightarrow {t_y\over \sin^2 \ph}\to\infty \Rightarrow \int\limits_0^\ep {\d\ph\over\sin^2\ph}\ \ h_t\!\left(t_y\over\sin^2\ph\right) \to \int\limits_0^\ep {\d\ph\over\sin^2\ph} {\sin^2\ph\over t_y} = const.$$
+The rest of the integral \ref{ty} in bounds $(\ep, \pi/2)$ is apparently regular. \Eq{ty2} can help us understand pole behavior of $h_{t_y}$ at $t_y=0\un{GeV^2}$. There is either the obviously diverging $1/\sqrt{-t_y}$ factor and either the integral part. For the latter we may put $t_y=0$ and check its value. Since $h(u)$ tends to a non-zero constant as $u\to 0$ we get for pole term
+$$\int\limits_0^{-\ep} {const.\over\sqrt{u}} \d u = const. \neq 0 \.$$
+Hence we may conclude that $h_{t_y}$ diverge as $1/\sqrt{-t_y}$ as $t_y\to 0\un{GeV^2}$.
+
+A practical example, for $h_t(t) = e^{a\, +\, bt}, bt < 0$ one gets
+$$h_{t_y}(t_y) = {1\over\sqrt{\pi}}\, {e^{a\, +\, bt_y}\over\sqrt{|bt_y|}}\.$$
+
+A generaly good parameterization of $h_{t_y}$ seems to be
+\eqref{{e^{\,polynomial(t_y)}\over\sqrt{t_y}} \.}{ty param}
+The integral in \Eq{ty2} can be rewritten as
+$$\int\limits_0^{-\infty} \d u\ {h_t(u + t_y)\over\sqrt{|u|}}\.$$
+The main contribution to this integral comes from the peak region of the $1/\sqrt{u}$, which is quite small region around $u=0$. Then the integral might be approximated as $h_t(t_y) \cdot const.$ The parameterization in \Eq{ty param} naturaly follows then.
+
+
+\bmfig
+\fig*[10cm]{eps/ty.eps}{tyt}{[]Comparison of $t$ and $t_y$ distributions. The difference is easy to understand: $\sin^2\ph$ is always between $0$ and $1$ and thus the distribution of $t_y$ is pushed to smaller $|t|$ values.
+}{}{}{}
+\emfig
+
+
+\section{Fitting at $\be^*=90\un{m}$}
+
+\subsection{An attempt for correction}
+
+\bmfig
+\fig*[10cm]{eps/ty,err,correction.eps}{ty,corr}{[]Correction from $t_y$ to $t$ distributions. Colors correspond to different models. One can see the correction is so huge, that it can hardly be called correction. The differences between models are that big it cannot be treated in iteration way with some apriory step. The curves were obtained with TF3::IntegrateMulti method and it is clear that numerical precision is insufficient.}{}{}{}
+\emfig
+
+\subsection{An attempt for autoconvolution}
+
+\eq{t = t_x + t_y}
+and $t_x$ and $t_y$ have the same distributions. Thus distribution of $t$ is given by autoconvolution
+\eq{h_t(t) = \int \d t_z\, h_{t_z}(y_z)\, h_{t_z}(t - t_z) \c}
+where $z$ denotes either $x$ or $y$. The last formula can be adapted for a histogram with bin size $w$
+\eqref{h_t(w_j) = w\sum_{i = i_0}^{j-i_0-1}\, h_{t_z}\left({w\over 2} + i\,w\right)\, h_{t_z}\left({w\over 2} + (j-i-1)\,w\right)\qquad j\geq 2i_0 + 1\c}{autoconv hist}
+where $i, j$ are integers (bin numbers) and $i_0$ is the lowest bin.
+
+\bmfig
+\fig*[10cm]{eps/ty,autoconvolution.eps}{ty,autoconvolution}{[]The black curve is $t_y$ simulation with no acceptance rejection, the green is diff. cross section, i.e. $t$ distribution. The blue curve was obtained with \Eq{autoconv hist} and full $t_y$ simulation. For the red line we used \Eq{autoconv hist} as well, but the $t_y$ was rescrited to values $t_y \geq 0.03\un{GeV^2}$, similarly to the real case with acceptance. There is a slight disagreement between blue and green curves. It is probably because of inaccurate simulation at $|t|\approx 0$. The simulation should be accurate up to $0.001\un{GeV^2}$ (approx. $t_{min}$ of $1535\un{m}$ optics), further there are no points for integrated cross. section. The difference between green and red curve is so huge that it excludes any use of it. The reason is that we miss the most important part of $t_y$ distribution.}{}{}{}
+\emfig
+
+\vfil\eject
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Errors summary}
+
+\bmfig%
+\fig*[7.5cm]{eps/ty,err,means.eps}{bv m}{Means}{}{}{}%
+\fig*[7.5cm]{eps/ty,err,variations.eps}{bv m}{Sigmas}{}{}{}%
+\emfig
+
+\def\ErrorSource#1{\line{\it#1\hfil}}
+
+\ErrorSource{beam divergence}
+$$-t_y' = \left[ (\sqrt{-t} + p\,\De\th) \sin\ph \right]^2$$
+$$\langle\De\th\rangle = 0, \qquad \si_{\De\th} = \sqrt{\ep\over\ga\be^*} \approx 2.4\cdot10^{-6}\un{rad}$$
+$$\langle\De t_y\rangle = {1\over 2} p^2 \si_{\De\th}^2 \approx 1.36\cdot10^{-4}\un{GeV^2}$$
+$$\si_{\De t_y} = \sqrt{2p^2\si_{\De\th}^2 (-t_y) + {7\over 8} p^4 \si^4_{\De\th}}\approx \sqrt{2}\, p \si_{\De\th}\, \sqrt{-t_y} \approx 2.34\cdot10^{-2}\un{GeV}\,\sqrt{-t_y}$$
+
+\ErrorSource{vertex smearing}
+$$\langle y^*\rangle = 0, \qquad \si_{y^*} = \sqrt{\ep\be^*\over\ga} \approx 2.1\cdot10^{-4}\un{m}$$
+
+\ErrorSource{beam possition variation}
+$$-t_y' = \left[ \sqrt{-t}\sin\ph + p\,{\de y\over L_y} \right]^2$$
+$$\langle\de y\rangle = 0, \qquad \si_{\de y} = {1\over 10}\, s_y$$
+$$\langle\De t_y\rangle = {p^2 \si_{\de y}^2\over L_y^2} \approx 2.7\cdot10^{-6}\un{GeV^2}$$
+$$\si_{\De t_y} = \sqrt{4{p^2\, \si_{\de y}^2\over L_y^2} (-t_y) + 3 \left(p\,\si_{\de y}\over L_y\right)^4}\approx 2\,{p\,\si_{\de y}\over L_y}\,\sqrt{-t_y} \approx 3.27\cdot10^{-3}\un{GeV}\,\sqrt{-t_y}$$
+For both arms there's recuction factor $1/2$ for mean value and $1/\sqrt{2}$ for variance.
+
+
+\ErrorSource{strip pitch}
+rounding to detector pitch $66\un{\mu m}$
+
+\ErrorSource{detector--beam possition offset}
+promissed $20\un{\mu m}$, realistic $100\un{\mu m}$
+
+\ErrorSource{reconstruction}
+method itself
+
+error in $L_{eff}$, 
+
+\ErrorSource{energy smearing}
+$\xi$ mean $1\cdot10^{-3}$, variance $1\cdot10^{-4}$
+
+\ErrorSource{crossing angle}
+left for further investigation
+
+\vfil\eject
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Estimations}
+
+Data directly from models, fits with equal weights, points in distance $5\cdot10^{-4}\un{GeV^{2}}$, lower bound of fit $4\cdot10^{-2}\un{GeV^2}$, varying upper fit bound.
+\fig[15cm]{eps/t,limit,nc.eps}{t limit nc}{Full $\d\si/dt$ distribution, Coulomb interference not included.}
+\fig[15cm]{eps/t,limit,c.eps}{t limit c}{Full $\d\si/dt$ distribution, Coulomb interference included.}
+
+\fig[15cm]{eps/ty,limit,nc.eps}{ty limit nc}{$t_y$ distribution, Coulomb interference not included.}
+\fig[15cm]{eps/ty,limit,c.eps}{ty limit c}{$t_y$ distribution, Coulomb interference included.}
+\vfill\eject
+
+Data as above, the same lever-arm, fit with quadratic $B$. From the lower bound $4\cdot10^{-2}\un{GeV^2}$ continued to $0$ only with constant $B$ or linear $B$ or quadratic $B$.
+\fig*[15cm]{eps/continuation.eps}{continuation}{[]Left: quadratic and linear (dashed) $B$ continuation, right: quadratic and constant (dashed) $B$ continuation.}{}{}{}
+
+Again, data directly from models (infinite statistic), equal weight fit, fine binning. Varying lower bound of fit.
+\fig[15cm]{eps/blaKL.eps}{ty lower c}{With Coulomb.}
+\fig[15cm]{eps/blaPH.eps}{ty lower nc}{Without Coulomb.}
+
+Data points only in possitions corresponding to strip possitions (pitch $66\mu m$), poisson error corresponding to $L_{int} = 2\cdot10^{6}\un{mb^{-1}}$
+\fig*[15cm]{eps/ty,limit,binning,c.eps}{ty lower c}{[]With Coulomb. Constant $B$ fit left, quadratic $B$ fit on the right. Fit uncertainities showed as error bars.}{}{}{}
+\fig[15cm]{eps/ty,limit,binning,nc.eps}{ty lower nc}{Without Coulomb.}
+\vfil\eject
+
+$t_y$-fitting method imperfection.
+\fig*[15cm]{eps/ty,method,error,low.eps}{method error}{[]Fit upper bound $|t_y| = 0.05\un{GeV^2}$. Left difference between $t$-fit and (pure hadronic) model and right difference between the model and $t_y$-fit.}{}{}{}
+\fig[15cm]{eps/ty,method,error,high.eps}{method error}{Fit upper bound $|t_y| = 0.2\un{GeV^2}$.}
+
+$s$-dependence.
+\bmfig
+\fig*[7cm]{eps/s,dependence.eps}{s dependence}{[7cm]Difference in normalized differential cross-sections between nominal energy and energy shifted by $\pm 1\percent$}{}{}{}
+\fig*[7cm]{eps/s,dependence,0.eps}{s dependence 0}{[7cm]Dependency of $\d\si/\d t$ at $t=0\un{GeV^2}$ on energy offset.}{}{}{}
+\emfig
+
+
+\vfil\eject
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Beam--gas Background}
+
+\section{Input data}
+
+The input was a (semi heuristic) simulation of beam protons interacting with rest gas in accelerator pipe. The simulation was performed only for RP at 220m and scenario $\be^*=1540\un{m}, k=156, N=1.15\cdot10^{11}$. The data forms a list of particles passing scoring plane at $220\un{m}$. Each record included: ID of particle, its kinetic energy, (transverse) position within the beam pipe, direction of momentum and weight. Sum of the weights for a particle type gives flux (in$\un{Hz}$) of those particles. Note there was no information on arrival time. Hence we have no information on multiplicity. One can expect that when a proton showers, e.g. several pions are created and all of them reach the scoring plane at the same time (or at least the same time slot). Unfortunately, this information is not available and thus, later on, only one particle per time slot was generated.
+
+
+\iffalse
+- table of fluxes (Hz)
+--------------------------
+   process  rate(Hz)   
+--------------------------
+        ga   2.4E+05   
+  (physics   2.0E+04   for 100mb @ $L = 2E29 cm^-2 s^-1$)
+        e-   1.2E+04   
+        e+   8.5E+03   
+       pi+   9.9E+02   
+       pi-   7.4E+02   
+         p   4.9E+02   
+         n   2.6E+02   
+      le n   3.0E+01   
+      le p   2.1E+00   
+--------------------------
+\fi
+
+
+The input data were represented as 5 dimensional histograms (a histogram per particle species). An illustration is shown at \Fg{beam gas proton}.
+
+\fig*[12cm]{eps/beamgas_2212.eps}{beam gas proton}{[]Histogram representation of input data for protons.
+The transverse position in the beam pipe $x, y$ was transformed to polar coordinates $r, \al$
+$$x = r\cos\al,\qquad y=r\sin\al$$
+and momentum direction was represented in spherical coordinates (${\bf p}$ denotes momentum)
+$$p_x = |p|\sin\th\cos\ph,\qquad p_y=|p|\sin\th\sin\ph,\qquad p_z = |p|\cos\th\.$$
+$E$ denotes kinetic energy. The first five plots show one dimensional projections of the full histogram. The last figure shows kinetic energy histogram in logarithmic binning.}{}{}{}
+
+Then, the histograms were used to generate background particles with the same (position, energy, $\ldots$) distributions as given in the input data. When a particle was generated, I tried to track it back (by straight line) well in front of the $216\un{m}$ unit (more precisely to $z = 214.03\un{m}$). However, quite often the particle had that large $\th$ angle that it escape the beam pipe. In those case, particles were moved just to the point where they reached the beam pipe edge. \Tb{background reverse eff}
+
+\htab{[]Percentage of particles that could be tracked back to $z = 214.6\un{m}$ (first detector plane is at $214.612\un{m}$).\tlab{background reverse eff}}{\bln
+\hbox{particle}&	\pi^+&	\pi^-&	\rm p&	\rm n&	\rm e^+&	\rm e^-&	\ga	\cr\ln
+\hbox{percentage}&	40&		38&		39&		30&		4.8&		1.3&		8.5\cr\bln
+}
+
+
+\section{Efficiency of background suppression}
+
+This study was done for detector configuration for $\be^*=90\un{m}$ scenario with $150\un{m}$ station out. Note that this scenarion counts with $N=5.7\cdot10^{10}$ instead of $N=1.15\cdot10^{11}$ which differs from conditions which input data were made for. However, one can scale the fluxes with $kN$ and for ratios and percentages this is irrelevant.
+
+The background suppression is done on two levels, trigger and reconstruction. Thus, one should distinguish efficiency for trigger
+\eqref{p_{\rm trigger} = {N({\rm triggered\ events})\over N({\rm total\ events})}}{p trigger}
+and for reconstruction
+\eqref{p_{\rm reco} = {N({\rm reconstructed\ events})\over N({\rm triggered\ events})}\.}{p reco}
+The overall efficiency is clearly given by product $p_{\rm trigger}\ p_{\rm reco}$. Note that $p_{\rm trigger}$ is influenced by acceptance and therefore in cannot reach $100\un{\%}$.
+
+Naturally, the values of both efficiencies depend on trigger logic and reconstruction algorithm. For the purpose of this early study, I assumed an event to be triggered when there was at least one VFAT triggered. In a similar manner, I define a reconstructed event as a event with at least one RP with track fit. Results for efficiency on reconstruction level are summarized in \Tb{bckg}.
+
+I also wanted to extract detection efficiency for neutral particles, i.e. for $\ga$ and $\rm n$. A good estimate of this efficiency is given by ratio ${N({\rm triggered\ ev.}) / N({\rm accepted\ ev.})}$. Where the quantity in denominator is number of events in geometrically accepted range. To evaluate $ N({\rm accepted\ ev.})$ I considered ideal track (straight line) and searched for intersections with detectors in RPs. If there was at least one intersection, the event was considered as accepted. Counts of accepted events are summarized in \Tb{bckg}. One can see, e.g. for background proton, that there were more triggered events than accepted events. This is a non-sense from theoretical point of view. Nevertheless, one can imagine situation when a particle (avoiding all detectors) interacts in a non-detector material and is either deflected or it creates a shower so as detectors are hit. The estimates for detection efficiency are $5.1\un{\%}$ for photon and $7.5\un{\%}$ for neutron.
+
+\htab{[]Background suppression on reconstruction level. Important parameters: road size $ = 0.2\un{mm}$, maximum hits per detector $3$ and minimum hits per coordinate $4$. Values in column "Mario" are taken from TOTEM-CMS TDR, Beam Gas Background chapter. Note that Mario used a very different approach -- coincidence between $216\un{m}$ and $220\un{m}$ units and he used only trigger information. In this sense, those results correspond rather to $p_{\rm trigger}$ with acceptance correction.\tlab{bckg}}{\bln
+& \hbox{reconstructed ev.} & \hbox{triggered ev.} & \hbox{accepted ev.} & p_{\rm reco}\un{(\%)}  & \hbox{Mario}\un{(\%)} \cr\bln
+%
+\multispan{6}\bvrule\strut\hfil background hadrons, 5000 generated particles for each type\hfil\cr\ln
+\pi^- & 1983 & 3025 & 3005 & 66 & 54\cr
+\pi^+ & 2337 & 3259 & 3290 & 72 & 62\cr
+\rm n &   21 &  184 & 2453 & 11 & 0.3\cr
+\rm p & 2157 & 2940 & 2886 & 73 & 88\cr\bln
+%
+\multispan{6}\bvrule\strut\hfil background electron and positron, 5000 events each\hfil\cr\ln
+\rm e^+ & 104 & 2417 & 2570 & 4.3 & 0.5\cr
+\rm e^- &  74 & 2175 & 2519 & 3.4 & 0.4\cr\bln
+%
+\multispan{6}\bvrule\strut\hfil background photons, $10^{5}$ events\hfil\cr\ln
+\ga & 17 & 2743 & 54003 & 0.6 & 0.3\cr\bln
+%
+\multispan{6}\bvrule\strut\hfil elastic protons ($|t|$ range $0.03\hbox{ to } 0.5 \un{GeV^2}$), 5000 events\hfil\cr\ln
+\rm p & 2596 & 2729 & 95 & -  & - \cr\bln
+}
+
+ 
+
+\section{One RP background suppression using trigger information only}
+
+This study was performed at conditions as above and VFAT regime with 32 strips per trigger sector (i.e. 16 trigger sectors per RP plane).
+
+The algorithm has two steps:
+\bitm
+\itm{} For each RP, trigger sector histogram is calculated (separately for u and v detectors). I.e. information from all planes (with same strip direction) is summed up and a histogram is created. When summing up, weights are used. This means that a hit in a plane with 3 hits in total, contributes to the final histogram with weight $1/3$. From this histogram, its RMS value is computed.
+\itm{} RMS values from all RPs and all events are taken and overall histogram of RMS values is assembled. This histogram is shown at \Fg{trigger rms}.
+\eitm
+
+At the figure, one can recognize a peak at ${\rm RMS} = 0$ for all particles. Leptons, then, give non-negligible signal at values $0.5$ to $1.5$. While hadrons (both background and elastic protons) do not tend to make signals at that region. They create a small peak around $4.5$ which corresponds to a RP full of triggers.
+
+It is clear that the RMS value do not present a good quantity to distinguish background and signal. However, I tried to cut off everything with RMS grater than zero. It is evident that one looses a large portion of signal too. On the other hand, when an elastic proton creates shower resulting in RMS around $4$, it is doubtful whether such an information could be used for reconstruction. The results can be found in \Tb{trigger supp}.
+
+\bmfig[Normalized histogram of trigger RMS (see the discussion above). Value $0$ corresponds to the case when all sectors are aligned in a tower. The smallest non-zero value is $0.3$. It corresponds to tower of 5 sectors plus one neighbouring sector at one plane. The next value is $0.4$, it comes when there is a tower of 4 sectors and a neighbouring sector in the remaining fifth plane.\flab{trigger rms}]
+\fig*[7.0cm]{eps/triggerRMS1.eps}{trigger rms full}{}{}{full view}{}
+\fig*[7.0cm]{eps/triggerRMS2.eps}{trigger rms zoom}{}{}{zoomed and rebined}{}
+\emfig
+
+
+\htab{[]In the first column, there is number of RPs which had all triggers falling into one trigger sector. The second column shows number of RP with whatever trigger (i.e. at least one VFAT was triggered). Let me remind you, the numbers are summed over all events and all RPs in the system.\tlab{trigger supp}}{\bln
+& \hbox{RPs with triggers within one sector only} & \hbox{triggered RP} & \hbox{percentage} \cr\bln
+\multispan{4}\bvrule\strut\hfil background\hfil\cr\ln
+%
+\pi^- & 5937 & 8171 & 73 \cr
+\pi^+ & 6893 & 9018 & 76 \cr
+\rm n &  104 &  947 & 11 \cr
+\rm p & 6236 & 8767 & 71 \cr
+%
+\rm e^+ & 1958 & 4917 & 40 \cr
+\rm e^- & 1639 & 4358 & 38 \cr
+%
+\ga & 2578 & 4018 & 64 \cr\bln
+%
+\multispan{4}\bvrule\strut\hfil elastic protons\hfil\cr\ln
+\rm p & 18791 & 22851 & 82.23 \cr\bln
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Reconstruction of elastic events}
+
+\section{Linear regression}
+
+\subsection{Model with equal errors}
+
+Assumptions:
+\bitm
+\itm $N$ measurements: $y_1\ldots y_N$
+\itm $y_i \in N(\mu_i, \si^2)$, $y_i$ and $y_j$ are independent for $i \neq j$
+\itm $\mathbf{\mu} = A\,\mathbf{\th}$, where $\mathbf{\th}$ is vector of parameters
+\eitm
+
+Then, estimate of parameters is
+\eqref{\mathbf{\hat\th} = (A^T A)^{-1} A^T \mathbf{y}}{lin reg simple estim}
+and corresponding variance matrix
+\eqref{V[\mathbf{\hat\th}] = \si^2\, (A^T A)^{-1} \.}{lin reg simple var}
+Residual sum of squares
+\eqref{S^2_{\rm min} = {1\over \si^2} \left( \mathbf{y}^T\mathbf{y} - \mathbf{y}^T A \mathbf{\hat \th} \right) \.}{lin reg simple resid sum}
+This quantity follows distribution $\chi^2(\nu = N - m)$, where $m$ is number of fit parameters.
+
+
+\subsection{Model with non-equal errors}
+
+Assumptions:
+\bitm
+\itm $N$ measurements: $y_1\ldots y_N$
+\itm $y_i \in N(\mu_i, \si_i^2)$, $y_i$ and $y_j$ are independent for $i \neq j$
+\itm $\mathbf{\mu} = A\,\mathbf{\th}$, where $\mathbf{\th}$ is vector of parameters
+\eitm
+
+\vskip1mm
+Transformation
+\eqref{y_i \Rightarrow \tilde y_i = {y_i\over \si_i},\qquad \mu_i \Rightarrow \tilde \mu_i = {\mu_i\over \si_i},\qquad
+A_{ij} \Rightarrow \tilde A_{ij} = {A_{ij}\over \si_i} \qquad : \qquad  \tilde y_i \in N(\tilde\mu_i, 1)}{lin reg trans simple}
+reduces this problem to the case with equal errors  (with $\si^2 = 1$). And therefore estimate of parameters is
+\eqref{\mathbf{\hat\th} = (\tilde A^T \tilde A)^{-1} \tilde A^T \mathbf{y}}{lin reg estim}
+and corresponding variance matrix
+\eqref{V[\mathbf{\hat\th}] = (\tilde A^T \tilde A)^{-1} \.}{lin reg var}
+
+Example of $y = a\,f_1(x) + b\,f_2(x)$:
+$$\tilde A = \pmatrix{f_1(x_1)/\si_1&f_2(x_1)/\si_1\cr f_1(x_2)/\si_2&f_2(x_2)/\si_2\cr \vdots & \vdots\cr}$$
+$$V[a, b] = (\tilde A^T \tilde A)^{-1} = {1\over \sum f_1^2 \sum f_2^2 - \sum f_1 f_2 \sum f_1 f_2} \pmatrix{\sum f_2^2 & -\sum f_1 f_2\cr -\sum f_1 f_2 & \sum f_1^2}\ ,$$
+where for instance $\sum f_2^2$ stands for $\sum_{i} f_2(x_i)^2 / \si^2_i$. As each sum involves $1/\si^2$ factor, the variance matrix is $\propto \si^2$ which is correct.
+$$\pmatrix{\hat a\cr\hat b} = {1\over \sum f_1^2 \sum f_2^2 - \sum f_1 f_2 \sum f_1 f_2} \pmatrix{\sum f_2^2\ \sum f_1 y - \sum f_1 f_2\ \sum f_2 y\cr - \sum f_1 f_2\ \sum f_1 y + \sum f_1^2\ \sum f_2 y}\ ,$$
+where e.g. the abbreviation $\sum f_1 y$ means $\sum_i f_1(x_i)\, y_i / \si^2_i$. Residual sum of squares
+$$S^2_{\rm min} = \sum y^2 - \hat a \sum f_1 y - \hat b \sum f_2 y \.$$
+
+
+
+
+
+\vfil\eject
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Estimation of t measurement error}
+
+Here, I consider only two sources of measurement error. Variation in angle $\th$ (mainly caused beam divergence), denoted $\De\th$ and assumed to follow normal distribution $N(0, \si^2_{\De\th})$. Second, effect caused be finite detector pitch, resulting in variation in measured position by quantity $\De x$. Again, normal distribution $N(0, \si^2_{\De x})$ is assumed.
+
+To make the calculation smooth, I adopted the assumptions bellow. None of those is precisely fulfilled, but the error caused by them is not dramatic for the purpose of error estimate.
+\bitm
+\itm Value of $t$ (and $t_x$ and $t_y$) are determined by fitting angles $\th_x$ and $\th_y$.
+\itm We have symmetric optics, therefore the $v$-terms in track parameterization cancels.
+\itm Absolute values of $L_x$ and $L_y$ for all RPs involved in the fit are identical.
+\itm Uncertainties in hit position measurements are identical. Then, linear regression gives estimate for the angle
+\eqref{\th_x' = {1\over N} \sum_i^N {x_i S_i\over L_x},}{theta estimate}
+where the sign factor $S_i$ is $+1$ for hits on the right side and $-1$ otherwise.
+\itm There are only values of $\De\th$ per event -- for the left arm and for the right arm. They are uncorrelated.
+\itm For each RP there is one $\De x_i$. All of those are uncorrelated.
+\itm There are $n = N/2$ measurements for both sides.
+\eitm
+
+For elastic scattering, where $\xi\equiv0$, equations for $x$ and $y$ parts are identical (up to $\sin\ph\leftrightarrow\cos\ph$ interchange). I will write the following formulae only for the $x$ part.
+
+Measured and estimated quantities will always be denoted with a prime while originally (unperturbed) quantities will be prime-less.
+
+$t$, $t_x$ and $t_y$ are considered as positive here.
+
+Position measured by the $i$-th detector is
+\eqref{x_i' = S_i \left[ L_x \left( {\sqrt{t}\over p} + \De\th_i \right)\cos\ph + \De x_i \right] .}{position err}
+Plugging this to \Eq{theta estimate} and using assumptions 5 and 6, one is left with ($S_i^2 = 1$)
+\eqref{\th_x' = {\sqrt{t}\over p}\cos\ph + {1\over2} (\De\th_L + \De\th_R)\cos\ph + {1\over N}\sum_i^N{\De x_i\over L_x}}{theta estimate err}
+Considering the definitions
+\eqref{t = p^2\th^2,\qquad t_x = t\cos^2\ph }{tx def}
+and defining $\et = \mathop{\rm sign}\cos\ph$, one receives estimate for $t_x$
+\eqref{\eqalign{t_x' &= \left( \sqrt{t_x}\et + {1\over 2}p\cos\ph \sum_i^2 \De\th_i + p {1\over N}\sum_i^N {\De x_i\over L_x}\right)^2 = \cr
+&= t_x 
++ 2 p \sqrt{t_x} |\cos\ph| {1\over 2}\sum_i^2 \De\th_i + 2 p \sqrt{t_x} {1\over N}\sum_i^N {\De x_i\over L_x} + {}\cr
+&\hskip5mm +{p^2\over 4}\cos^2\ph \left(\sum_i^2 \De\th_i\right)^2 + {p^2\over N^2}\left(\sum_i^N {\De x_i\over L_x}\right)^2 .\cr
+}}{tx estimate}
+\def\Exp#1{\langle #1\rangle}
+One can easily calculate mean value of this estimator -- all terms linear in perturbations drop out because of their zero mean values. And moreover $\Exp{\De\th^2} = \si^2_{\De\th}$, etc.
+\eqref{\Exp{t_x'} = t_x + {p^2\over 2} {\si^2_{\De\th}\over 2} + {p^2\over N} {\si^2_{\De x}\over L_x^2}}{tx est mean}
+Note, that the $t_x'$ estimator is biased as its mean value is shifted from the original value $t_x$.
+
+In order to evaluate $\si_{t_x'}$, we need to calculate $\Exp{t_x'^2}$. It is evident that terms linear in $\De\th$ and $\De x$ will not contribute. To keep the calculation simple, I did not involve terms higher that quadratic. The higher terms are all denoted by ${\cal O}(\De^3)$.
+\eqref{\eqalign{t_x'^2 &= t_x^2 + {\rm linear\ terms} + {}\cr
+&\hskip5mm 
++6 p^2 t_x {1\over 4}\cos^2\ph \left(\sum_i^2 \De\th_i\right)^2 + 6 p^2 t_x {1\over N^2}\left(\sum_i^N {\De x_i\over L_x}\right)^2 + {\cal O}(\De^3) .\cr
+}}{tx sq estimate}
+It is straight-forward to show that
+\eqref{\si^2_{t_x'} \equiv \Exp{t_x'^2} - \Exp{t_x'}^2 = 4 p^2 t_x \left( {1\over 2} {\si^2_{\De\th}\over 2} + {1\over N} {\si^2_{\De x}\over L_x^2} \right) .}{tx sigma}
+Or an alternative form
+\eqref{{\si_{t_x'}\over t_x} = {2 p\over\sqrt{t_x}} \sqrt{ {1\over 2} {\si^2_{\De\th}\over 2} + {1\over N} {\si^2_{\De x}\over L_x^2} } .}{tx sigma rel}
+One may also define variable $\de$
+\eqref{\de^2 = {(t_x' - t_x)^2\over t_x^2} \Rightarrow \sqrt{\Exp{\de^2}} = {\si_{t_x'}\over t_x}}{delta for tx}
+
+TODO: Estimates for $t' = t_x' + t_y'$
+
+
+
+
+
+\vfil\eject
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Elastic reconstruction}
+
+\subsection{Information from one-RP track fit}
+
+The step which precedes the elastic reconstruction is fit on one RP level. Output of this step is local track fit, i.e. position $x, y$ and angles $\th_x, \th_y$ (plus covariance matrix for all these parameters). However, one RP (cca $3\un{cm}$ thick) presents a lever-arm too small for an interesting angle measurement, see \Fg{theta local reco}. And therefore, only position information can be used for fitting.
+
+One can plug values of optical function to the reconstructed position at a RP and create a super point, i.e. $(x, \si_x, y, \si_y|L_x, L_y, v_x, v_y)$. A list of super points is an input to the elastic reconstruction algorithm.
+
+\fig*[9cm]{eps/theta_yVstheta_y_reco.eps}{theta local reco}{[]$\th_y$ generated (at IP) vs. reconstructed (at RP). No interesting correlation. The reason is too small lever-arm for the given detector pitch. One can clearly see the strip pattern.}{}{}{}
+
+
+
+\subsection{Method}
+
+Protons traversing from IP to detectors follow tracks given by the following parameterization 
+\eqref{x(s) = L_x(s)\, \th_x^* + v_x(s)\, x^* + D(s)\,\xi\qquad y(s) = L_y(s)\, \th_y^* + v_y(s)\, y^*\ ,}{track general}
+where the quantities with star refer to the state of the proton at IP. For elastic scattering it holds $\xi\equiv 0$ and therefore dependencies for both coordinates gain the same form. Thus, I will use $\ze$ to refer whichever of $x$ and $y$ variables.
+
+Obviously, the fitting model I used is
+\eqref{\ze(s) = v(s)\,\ze^* + L(s)\,\th^* \.}{fit model}
+Working out the linear fit equations (see \Eq{lin reg estim} and the example bellow), the estimate for vertex position $\ze^*$ and angle (at vertex) $\th^*$ is
+\eqref{\pmatrix{\ze^*\cr\th^*} = {1\over \sum v^2 \sum L^2 - \sum vL \sum vL} \pmatrix{\sum L^2 \sum \ze v - \sum vL \sum \ze L\cr -\sum vL \sum \ze v + \sum v^2 \sum \ze L} \ ,}{fit}
+where for instance $\sum \ze L$ means $\sum_{i} \ze(s_i) L(s_i)$ where the sum goes over all detectors hit and $\ze(s_i)$ is the hit position in corresponding detector. The covariance matrix (see \Eq{lin reg var})
+\eqref{\mathop{\rm Var}[\ze^*, \th^*] = {1\over \sum v^2 \sum L^2 - \sum vL \sum vL} \pmatrix{\sum L^2 & - \sum vL \cr -\sum vL & \sum v^2 }\.
+}{fit err}
+
+\iffalse
+In case of symmetric optic, i.e.
+$$L(-s) = - L(s),\qquad v(-s) = v(s)\eqno(3)$$
+and symmetric measurement (simultaneously at $\pm 216$ and/or $\pm220$) one gets condition $\sum Lv = 0$. It simplifies the general formula (2) to
+$$\pmatrix{\ze^*\cr\th^*} = \pmatrix{\sum \ze v / \sum v^2\cr \sum \ze L / \sum L^2}.\eqno{(4)}$$
+The expression for $\th^*$ can be further expanded
+$$\th^* = {1\over 2} {L(216) \big(\ze(216) - \ze(-216)\big)\ +\ L(220)\big( \ze(220) - \ze(-220) \big) \over L^2(216) + L^2(220)}\eqno{(5)}$$
+\fi
+
+\subsection{Algorithm}
+
+The actual algorithm comprises 3 steps bellow.
+\bitm
+\itm \em{Hit selection}. The purpose of this step is to choose from all the hist only those which belong to the actual track. Which in turn means to suppress background and tracks from secondaries. It is assumed that the $L\,\th^*$ term dominates in \Eq{fit model}. For all the hits, value of $\ze(s) / L(s)$ is calculated and a road search algorithm is applied. Only road with the highest weight and at least one hit on both sides can continue.
+\itmpar Parameters of this search are (angular) road sizes for $x$ and $y$ projections.
+
+\itm \em{Left, right and global fit}. We know the vertex distribution at IP, i.e\hbox{.} we know mean value $\bar\ze^*$ and spread $\si_{\ze^*}$. And therefore, one may add point $(\ze = \bar\ze^*, \si_\ze = \si_{\ze^*}, L = 0, v = 1)$ to the list of hits. Then, tree fits using \Eq{fit model} are performed. First, fit of all hits left plus IP, second, all hits right plus IP and eventually the global fit of all hits.
+
+\itm \em{Final cut}. This step is used to distinguish elastic scattering from other processes. It uses the fact that both left and right protons should have the same angles $\th_x$ and $\th_y$ and indeed they have the vertex in common. At the moment, the cut is based on angular information only, in particular it requires differences in angles for left, right and global fit to be smaller than a certain limit. This threshold I call tolerance and tolerances for $x$ and $y$ projections are the parameters of this step.
+\eitm
+
+
+\subsection{Estimate of the parameters}
+
+The road size should be such that it distinguishes between top and bottom RPs. I.e. if $\De$ is distance between top and bottom RP edges and $L$ is typical effective length, then a meaningful value is $\approx \De / L$.
+
+For \em{$\be^* = 90\un{m}$ optics}, vertical distance between the detector edges is $\approx 13\un{mm}$ and typical $L_y \approx 265\un{m}$. Hence a good choice for $y$ road size is around $5\cdot10^{-5}\un{rad}$. For the $x$ projection it is a very different situation. The effective length is almost zero and the selection algorithm is not intended for such a case. Therefore the road size should be set to a large number in order to let everything pass.
+
+Regarding the tolerance parameter, a good choice seems to be of order ${\rm pitch}/L$, where again $L$ is a typical effective length. However, in the case when beam divergence is present, the tolerance should be greater than $2\,\si({\rm beam\ divergence})$.
+
+For \em{$\be^* = 90\un{m}$ optics}, the beam divergence is $\approx 2.5\cdot10^{-6}\un{rad}$ and thus the tolerance for $y$ should be set to $\approx 5\cdot10^{-6}\un{rad}$. For the same reason as above, tolerance for $x$ should be a large number.
+
+
+
+\subsection{Results -- performance at $\be^* = 90\un{m}$ with no smearing}
+
+\fig[15cm]{eps/elReco_nosm_angle.eps}{el reco ns angle}{Results for elastic reconstruction in terms of angles $\th_x$ and $\th_y$.}
+
+The reconstruction procedure described above was applied on a sample of $5000$ simulated elastic events with $|t|$-range from $0.03\hbox{ to }0.5\un{GeV^2}$. I used the standard optical parameters for the $90\un{m}$ optics. The parameters for the elastic reconstruction were: ${\rm road\ size}_x = {\rm tolerance}_x = 10\un{rad},\ {\rm road\ size}_y = 5\cdot10^{-5}\un{rad},\ {\rm tolerance}_y = 5\cdot10^{-6}\un{rad}$. Results are shown in \Fg{el reco ns angle,el reco vs vertex,el reco ns t}. In the latter figure, relative error of $t_y$ reconstruction was fitted by the theoretical dependency $A/\sqrt{t_y}$ (see \Eq{tx sigma rel}). The fit gives $A = 6.8\cdot10^{-4}$. Inserting $\si_{\De y} = 66\un{\mu m}/ \sqrt{12}$ to \Eq{tx sigma rel}, one obtains $A = 7.5$ for $N = 2$ and $A = 5.3$ for $N = 4$. These numbers agree well if one takes into account that sometimes there are two and sometimes four hits contributing to the fit.
+
+\fig*[18cm]{eps/elReco_vs_vertex.eps}{el reco vs vertex}{[]Vertex reconstruction results obtained with vertex-smearing applied! The transverse bunch sigma was $212\un{\mu m}$. Left plots show correlation between simulated and reconstructed vertex position. The right-hand side plots show reconstruction error. The blue histogram in $x$ error plot corresponds to the case with no vertex smearing.}{}{}{}
+
+\fig[18cm]{eps/elReco_nosm_t.eps}{el reco ns t}{Relative errors of $t_y$, $t_x$ and $t$ reconstruction.}
+
+Out of the $5000$ events simulated, $2454$ events were fully reconstructed. $2477$ events were rejected because of no input (predominately due to th acceptance), $60$ events rejected at step 1 (no convenient road found) and $9$ at step 3 (incompatible fits). All cases of the step 1 rejection were really pathological -- hits on one side only, hits at top RPs on both sides, etc. There were two patterns in step 3 rejected events. First, only horizontal RP hit at one arm (this is pathological) and second, when a proton undergoes an interaction in between $214\un{m}$ and $220\un{m}$ units at one arm. The latter case is discussed more in detail in the `Know issues section' later.
+
+
+
+\subsection{Results -- performance at $\be^* = 90\un{m}$ with smearing}
+
+The simulation and analysis were done in the same way as in the previous case. Here, in addition, vertex smearing (bunch sigma $216\un{\mu m}$), angular smearing (no crossing-angle, beam divergence $\si = 2.4\cdot10^{-6}\un{rad}$) and energy smearing ($\bar\xi = 10^{-3}$, $\si_\xi = 10^{-4}$) were applied.
+The parameters of elastic reconstruction were the same as above: ${\rm road\ size}_x = {\rm tolerance}_x = 10\un{rad},\ {\rm road\ size}_y = 5\cdot10^{-5}\un{rad},\ {\rm tolerance}_y = 5\cdot10^{-6}\un{rad}$. Results are shown in \Fg{el reco fs angle,el reco fs vertex,el reco fs t}. Fit of relative error of $t_y$ by $A/\sqrt{t_y}$ gives $A = 1.5\cdot10^{-2}$ which is in a good accordance with analytic estimate $A = 1.7\cdot10^{-2}$ by \Eq{tx sigma rel}.
+
+\fig[18cm]{eps/elReco_fullSm_angle.eps}{el reco fs angle}{Results for elastic reconstruction in terms of angles $\th_x$ and $\th_y$. Case with smearing.}
+
+\fig*[18cm]{eps/elReco_fullSm_vertex.eps}{el reco fs vertex}{[]Vertex reconstruction results. Plots on the left-hand side show correlations between simulated and reconstructed vertex positions. The right plots show reconstruction error. The blue histogram in $x$ error plot corresponds to the case with zero mean energy smearing ($\bar \xi = 0$).}{}{}{}
+
+\fig[18cm]{eps/elReco_fullSm_t.eps}{el reco fs t}{Relative errors of $t_y$, $t_x$ and $t$ reconstruction. Case with smearing.}
+
+Out of $5000$ simulated events, $2264$ events were fully reconstructed. For $2296$ events there was no input, $317$ events were rejected in step 1 and $123$ events in step 3. One can see the number of rejected events is considerably higher that in the no-smearing case. The (left-right independent) beam divergence makes a number of events for which only one arm is hit. Those events are then rejected in step 1. Moreover, the difference between left and right beam divergence angles is projected into difference in left and right reconstructed angles. The value of ${\rm tolerance}_y$ used (very roughly) corresponds to a cut at $1\ \si$ with respect to the beam divergence. This explains the relatively high number of step 3 rejects. The tolerance is probably too strict.
+
+\subsection{Results -- performance with background}
+
+Currently, only one arm background simulations are available. No surprise that none of such events gets through step 1.
+
+
+\subsection{Known issues and possible enhancements}
+
+Let's imagine a situation when a proton interacts in/after $214\un{m}$ unit. Indeed, it gets deflected and if it reaches further detectors, the information is misleading. In such a case one should omit information from affected RPs. That should be done on the level of selection, but unfortunately the present road search algorithm is not sensitive enough. Fortunately, those events present $\approx 0.1\%$ of the total.
+
+\iffalse
+In order to avoid those problems, it is necessary to improve the selection algorithm. Instead of road search algorithm, one can use a proper pattern recognition algorithm with pattern defined by \Eq{track general}. This can be implemented on the level of elastic reconstruction or better a lever lower. Instead of (current) selecting hits RP by RP, this might be done using all hits available. This might be very useful in the case a detector has more than one hit. Using information from other detectors, one may remove the ambiguity in pairing $u$ and $v$ strips. This needs to be discussed.
+\fi
+
+\vfil\eject
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Alignment}
+
+\section{Problem analysis}
+
+\bitm
+\itm Errors: degrees of freedom
+\itmm displacements from ideal position: shifts and rotations 
+\itmm optical function and momentum uncertainty, $t\sim (\ze p/L)^2$
+\itmm beam position and direction (what counts is relative beam--detector position), variation during run
+\itmm correlation of displacements -- grouping (within a RP, within a unit etc.)
+\itmm expected values of errors
+\itmm goal -- precision needed (errors which are negligible to other error sources, e.g. beam divergence)
+
+
+\itm Information one has
+\itmm straight line tracks
+\itmm symmetries in fluxes, up-down or azimuthal (for elastic only)
+\itmm known distributions, e.g. $\d\si/\d t \sim e^{-b|t|}$
+\itmm BPM
+\itmm physical processes and other detectors (rather for aligning RPs with telescopes and CMS)
+
+
+\itm What did others
+\itmm others mean H1, Zeus, D0, CDF, ?
+\itmm information gate: HERA-LHC workshop 2005,\hfil\break http://indico.cern.ch/conferenceDisplay.py?confId=a045699\#8
+
+\itm Methods
+\itmm track-based (residual-based)
+\itmm rates (up-down symmetrization)
+\itmm $x$ distribution in vertical RP and $y$ in horizontal pots
+\itmm kinematic peak ($\th_x, \th_y$ distributions shall be peaked at $0$)
+\itmm maximizing $\d N/\d t|_{t=0}$ and slope of $t$ distribution for SD (a la Goulianos)
+\itmm kinematically forbiden (reconstructed) events
+
+\itm TOTEM approach
+\itmm each optics needs its strategy
+
+\eitm
+
+\section{Applicability of CDF method of maximum slope}
+
+The method proposed in \bref{Gallinaro:2006vz,Goulianos:2005} suggests to align RP detectors by maximizing slope of measured $t$ distribution. In paper \bref{Gallinaro:2006vz} the authors claim to obtain spacial precision of $30\un{\mu m}$ and they suggest to use this method at future LHC experiments. My goal was to verify whether this method can be applied to alignment of RP detectors of the TOTEM experiment. The quoted papers suggest to use single-diffractive events for the alignment procedure. In contrast with that, my analysis is based on simulation of elastic scattering. However, the key feature (that corresponding cross-section can be well approximated by $\d\si/\d t \propto \exp(-b|t|)$) is common for both processes.
+
+In order to well understand the method, I used a simple reconstruction method and misalignment model rather than a full simulation. I focused on the case of $\be^*=1540\un{m}$ optics. It is the ideal case from the point of view of alignment and hence it is a good starting point. The optics with $\be^*=90\un{m}$ will be discussed later on.
+
+The high $\be$ optics includes the feature of parallel-to-point focusing, i.e. hit position in detector $x$ can be well approximated by
+$$x = L_x\, \th_x^* \ ,$$
+where $\th_x^*$ is scattering angle in the IP and $L_x$ is the effective length corresponding to the RP. Let's assume now, that all the misalignments reduce to simple shifts of detectors. In this case, position measured position $x_i'$ at $i$-th detector is related to actual hit position $x_i$ by
+$$x_i' = x_i + \De x_i\ ,$$
+where I introduced the detector shift $\De_i$.
+
+The optics is left-right symmetric too. Thanks to that fact, reconstruction equations boil down to
+\eqref{\th_x' = {\sum x_i'\, L_{x_i}\over \sum L^2_{x_i}} = {\sum x_i\, L_{x_i}\over \sum L^2_{x_i}} + {\sum \De x_i\, L_{x_i}\over \sum L^2_{x_i}} = \th_x + \De\th_x \ ,}{angular shift from offsets}
+where I denote actual (resp. measured) scattering angle $\th_x$ (resp. $\th'_x$) and the summing index $i$ counts active detectors. The message of this equation is that such a misalignment produces a (constant) shift in $\th_x$. Indeed, everything said so far remains true for $y$ projection too.
+
+To continue, let's assume that all offsets $\De x_i$ follow the same distribution $N(0, \si_{\De_x}^2)$. At this point, one can calculate parameters of distribution of $\De\th_x$. To simplify their dependency on optical functions $L_i$, let's make one more approximation $L_i\approx L$. That is a crude approximation, but quite sufficient for our purposes. If the reconstruction is based on information from $N$ detectors, the estimate of spread of angular shift reads
+\eqref{\si_{\De\th_x} = {1\over\sqrt{N}} {\si_{\De_x}\over L}\ .}{sigma angular shift from offsets}
+
+To explore this model I performed a simple MC simulation. I generated $N_{ev}$ values of $t$. They were generated according to either purely exponential distribution or a phenomenological model \bref{Islam2004,Islam:2007nr}. Then, the program calculated
+$$\th_x = \th\cos\ph,\qquad\th_y = \th\sin\ph,\qquad\th = {\sqrt{t}\over p}\ ,$$
+where $p = 7\cdot10^{3}\un{GeV}$ denotes momentum of proton and $\ph$ is azimuthal angle uniformly distributed from $0$ to $2\pi$. Subsequently, \Eq{angular shift from offsets} was used to simulate the effect of misalignment. For simplicity, I fixed $\De\th_x = \si_{\De\th_x}$. Reconstructed value of $t$ was calculated as $p^2\, (\th_x'^2 + \th_y'^2)$. To estimate value of $N_{ev}$ I used realistic values of elastic cross-section, luminosity and acquisition time
+$$N_{ev} = 30\un{mb} \cdot 2\cdot 10^{28} \un{cm^{-2} s^{-1}} \cdot 10^5\un{s} \approx 5\cdot10^{7}\ .$$
+Some results are shown in \Fg{cdf method} left.
+
+For both exponential and model simulations there was no evident effect for $\si_{\De_x} < 10^{-3}\un{m}$. To understand this, it is useful to recall that misalignment creates shift in $\th_x$. And this shift is relevant if it is comparable to width of distribution of $\th_x$ (given by physics). It is straight-forward to show that $\th_x$ follows distribution $N(0, S^2)$ with $S = 1/\sqrt{2bp^2}$ provided $t$ is distributed according to $\exp(-b|t|)$. For $b\approx 20\un{GeV^{-2}}$ one is left with estimate for $\De_x$ approximately $3\cdot10^{-3}$ which qualitatively agrees with the observation above.
+
+This already signalizes that resolution of this method is not satisfying in conditions of the TOTEM experiment. To quantify this suspicion, I made simulations at various values of $\De_x$. Obtained histograms were fitted by exponential at $t$ range from $0.05\un{GeV^2}$ to $0.3\un{GeV^2}$. Fit results are shown at \Fg{cdf method} middle and right. The error bars marked are coming from poisson error of bin content. The right plot clearly shows that the method is insensitive for displacements $\De_x < 100\un{\mu m}$.
+
+Moreover, displacement of detectors is not the only smearing effect. It is well known that beam divergence will play a very important role. For high $\be$ optics one expects beam divergence of $0.3\un{\mu rad}$. This roughly corresponds to $\si_{\De_x} \approx 50\un{\mu m}$. Hence, this observation represents an independent confirmation of the fact that one cannot expect good results from this method on the scale of $50\un{\mu m}$.
+
+A final comment on usability with $\be^*=90\un{m}$. As $L_x$ is too small, $\th_x$ cannot be retrieved from the fit and only $y$ projection of the scattering angle can be measured. That, indeed, means the method cannot be applied directly. But event if there were a solution to this complication, the beam divergence would be a great issue as it is estimated to $2.4\un{\mu rad}$ for this optics.
+
+\bmfig[\flab{cdf method}Left: Simulation of measured $t$ distribution for Islam model, $\be^*=1540\un{m}$ optics ($L_x = 100\un{m}, L_y = 250\un{m}$) and various misalignments. Middle and right: $\De_x$ versus slope fit result.]
+\fig*[5.1cm]{eps/cdfMethod_t_dist.eps}{}{}{}{}{}
+\fig*[5.1cm]{eps/cdfMethod_result_overall.eps}{}{}{}{}{}
+\fig*[5.1cm]{eps/cdfMethod_result_zoom.eps}{}{}{}{}{}
+\emfig
+
+\PrintReferences
+
+
+%%%%%%%%%%%
+
+\vfil\eject
+
+
+\section{Shifts and residuals}
+
+Let's consider the case when a (track) measurement in $i$-th detector $m_i$ can be described as\footnote{%
+This is a generalized version of \Eq{IdealMeasurement}, i.e. the case which concerns us. The track parameters $a_x, b_x, a_y$ and $b_y$ become elements of vector $\vec\th$.
+}
+\eqref{m_i = A_{i1} \th_1 + \cdots + A_{iL}\th_L}{SimpleLM}
+where $\th_j$ are track parameters and $A_{ij}$ are coefficients. The \Eq{SimpleLM} can be written in matrix formalism
+\eqref{\vec m = \mat A \vec\, \th\ ,}{SimpleLMMat}
+where $\vec m = (m_1,\ldots,m_D)^\T$ is vector of measurements in $D$ detectors and $\vec\th$ is vector of $L$ track parameters. Matrix $\mat A$ contains parameters as shown in \Eq{SimpleLM}.
+
+For a given measurement, one may obtain estimate of optimal track parameters using the method of Least Squares. It yields the following formula (see e.g. (6.23) in \bref{barlow})
+\eqref{\hat\vec\th = (A^\T A)^{-1} A^\T\,\vec m\.}{LSestimate}
+
+Residual is difference between actual measurement and value given by the best fit, i.e.
+\eqref{\vec R = \vec m - \mat A\, \hat\vec\th = \mat S\, \vec m,\qquad S = 1 - \mat A(\mat A^\T \mat A)^{-1}\mat A^\T \.}{residual}
+
+Now, let's suppose the detectors are shifted. In such a way that instead of perfect measurement $\vec m_0$ the detectors measure
+\eqref{\vec m = \vec m_0 + \vec\De \ ,}{MeasShift}
+where $\vec\De$ is the vector of shifts. Inserting that into \Eq{LSestimate} gives
+\eqref{\eqnarray{%
+\hat\vec\th &= (\mat A^\T \mat A)^{-1}\mat A^\T\,\vec m_0 &+ (\mat A^\T \mat A)^{-1}\mat A^\T\, \vec\De\cr
+			&= \vec\th_0 &+ (\mat A^\T \mat A)^{-1}\mat A^\T\, \vec\De\cr
+}}{LSestimateShift}
+Provided \Eq{SimpleLM} perfectly describes the track, $\vec\th_0$ are original (true) track parameters. The influence of shifts is fully absorbed in the second term. Inserting \Eq{MeasShift,LSestimateShift} into \Eq{residual} yields
+\eqref{\vec R = \mat S\, \vec\De}{ResidualShift}
+and thus, in principle, the shifts can be calculated from residuals by inverting the expression. The necessary condition is the matrix $\mat S$ is invertible. 
+
+The matrix $\mat S$ is symmetric ($\mat S^\T = \mat S$) and thus it can be diagonalized by orthogonal matrix $\mat U$
+$$\mat S = \mat U^\T\,{\rm diag}(\la_1,\ldots,\la_D)\,\mat U\ .$$
+Moreover, the matrix is idempotent, i.e. $\mat S^2 = \mat S$. That is why its eigenvalues $\la_i$ can be only zero or one. Consequently, the rank of matrix $\mat S$ is given by its trace
+\eqref{\rank \mat S = \Tr\mat S = \Tr \mat 1_{D\times D} - \Tr \mat A (\mat A^\T\mat A)^{-1} \mat A^\T = D - L\ .}{RankS}
+Recalling $\mat S$ is $D\times D$ matrix, it is clear that $\mat S$ is singular. The proof was taken from \bref{becvar}.
+
+\Eq{RankS} states that $\mat S$ is singular. In combination with \Eq{ResidualShift} it states that $\vec R$ contains $L$ less pieces of information than $\vec \De$. Matrix $\mat S$ acts as an projection operator\footnote{%
+In fact it is a projection operator as $\mat S^2 = \mat S$ and $\mat S^\T = \mat S$.
+}
+which filters out everything that can be described by model \Eq{SimpleLMMat}. Shift configurations "resembling tracks" are not transmitted to residuals $\vec R$. For instance, in case of straight line fit, if all detectors were shifted by the same amount, it would look the same as if the track was shifted in the opposite direction. To summarise, there are $L$ shifts that cannot obtained by this fitting procedure.
+
+So far, we have been discussing fit of one track only. But every real detector has a finite precision, that is an measurement error $\vec\ep$ is introduced
+\eqref{\vec m \to \vec m + \vec\ep \ .}{MeasShiftErr}
+Impact of this random error $\vec\ep$ can reduced (as usually) by registering many tracks and averaging the residuals. Denoting $\vec R^n$ the residuals for $n$-track, one obtains
+\eqref{\vec R^n = \mat S\, \vec\De + \mat S\,\vec\ep^n}{ResidualShiftErr}
+and after averaging over $N$ tracks
+\eqref{{1\over N}\sum_n^n \vec R^n = \mat S\, \vec\De + \mat S\,{\sum_n^N\vec\ep^n\over N} \ .}{ResidualShiftErrAverage}
+Assuming the random error $\vec\ep$ has zero mean value, the laws of statistics force the second term to converge to zero for large $N$.
+
+\section{Model of tracks and displacements}
+
+Tracks of particles outside magnetic field (e.g. within a station) are straight lines and can be described by
+\eqref{x(z) = a_x\,z + b_x,\qquad y(z) = a_y\,z + b_y\ ,}{StraightTracks}
+where $z$ axis goes along the beam line and $x$ and $y$ are two perpendicular directions. \em{Ideal} measurement of a strip detector at position $z_i$ (the strips of which are in $x$--$y$ plane) can be written as
+\eqref{\eqnarray{
+m_i & = x(z_i)\cos\al_i + y(z_i)\sin\al_i\cr
+	& = (z_i\cos\al_i)\,a_x + (\cos\al_i)\,b_x + (z_i\sin\al_i)\,a_y + (\sin\al_i)\,b_y\ .\cr
+}}{IdealMeasurement}
+$\al_i$ denotes sensitive direction of this detector, i.e. a direction perpendicular to its strips.
+
+The real detectors will be displaced, the most relevant displacements are shifts in $x$ and $y$ direction and rotation around $z$ axis. Since the strip detectors are sensitive to one projection in $x$--$y$ plane, the measurement is affected only by the projection of shift to the sensitive direction. This projection will be denoted $\De_i$. For the rotation around $z$ we will use symbol $\de_i$. Then, the actual measurement is
+\eqref{\eqnarray{
+m_i &=\ & x(z_i)\cos(\al_i+\de_i) + y(z_i)\sin(\al_i+\de_i) + \De_i\cr
+	&=\ & (z_i\cos\al_i)\,a_x + (\cos\al_i)\,b_x + (z_i\sin\al_i)\,a_y + (\sin\al_i)\,b_y\cr
+	&	& + \De_i\cr
+	&	& + \left( -(a_x\,z_i + b_x)\sin\al_i + (a_y\,z_i + b_y)\cos\al_i \right) \de_i \ .\cr
+}}{RealMeasurement}
+Note that this expression (model) is not linear in parameters $a_x, b_x, a_y, b_y, \De_i$ and $\de_i$. In particular, the coefficient for $\de_i$ comprises track parameters $a_x$ etc. In practice, it is worth to linearize this model a perform several iterations. That usually means to use \Eq{IdealMeasurement} to find estimates of track parameters $\hat a_x, \hat b_x, \hat a_y$ and $\hat b_y$ and insert them into the $\de_i$ term in \Eq{RealMeasurement}. The linearized model, then, reads
+\eqref{\eqnarray{
+m_i		&=\ & (z_i\cos\al_i)\,a_x + (\cos\al_i)\,b_x + (z_i\sin\al_i)\,a_y + (\sin\al_i)\,b_y\cr
+		&	& + \De_i + \ga_i\,\de_i \ ,\cr
+\ga_i	&=	& -(\hat a_x\,z_i + \hat b_x)\sin\al_i + (\hat a_y\,z_i + \hat b_y)\cos\al_i\ .\cr
+}}{RealMeasurementLin}
+
+\section{Millepede approach}
+
+Let's consider situation where $N$ tracks were measured, each of them registered by $D$ detectors. Let's suppose the measurement of $n$-th track in $i$-th detector can be described by\footnote{%
+In fact we want to study model \Eq{RealMeasurementLin}, but it is worth formulating the problem on a general level. This unveils the symmetries in the problem. When \Eq{RealMeasurementLin} is written in the general formalism, then $\De_i\to b_{1,i}$ and $\de_i\to b_{2,i}$. The coefficients $g_{1,i}^n=1$ and $g_{2,i}^n = \ga_i^n$.
+}
+\eqref{m_i^n = \underbrace{f_{1,i}\,a_1^n + \cdots + f_{L, i}\,a_L^n}_{\hbox{local part}} + 
+\underbrace{g^n_{1,i}\,b_{1,i} + \cdots + g^n_{G, i}\,b_{G, i}}_{\hbox{global part}}\ .}{MilleModel}
+Parameters $a_l^n$ are called \em{local} and they describe $n$-th track. There are $L$ local parameters. In contrast, \em{global} parameters $b_{g, i}$ are identical for all tracks. They are associated to detectors, i.e. $b_{1, i},\ldots,b_{G, i}$ are $G$ parameters associated to $i$-th detector. Good examples of global parameters might be shifts and rotations of the detectors.
+
+\Eq{MilleModel} can be written in more compact matrix formalism. It is useful to build vector of measurements in the following way
+\eqref{\vec m = (m_1^1\ldots m_D^1, m_1^2\ldots m_D^2,\ldots \ldots, m_1^n\ldots m_D^n)^\T \ ,}{MilleMeasVec}
+that is group measurements for the first track, then second etc. Similarly, the vector of parameters is build as
+\eqref{\vec \th = (a_1^1\ldots a_L^1, a_1^2\ldots a_L^2, \ldots || b_{1,1}\ldots b_{1, D}, b_{2, 1}\ldots b_{2, D}, \ldots)^\T \ .}{MilleParVec}
+Then \Eq{MilleModel} can be written as
+\eqref{\vec m = \mat A\,\vec \th\ ,}{MilleModelMat}
+where
+\eqref{\mat A = \pmatrix{
+\al & 		&		&\vrule	&\Ga_1^1	&\cdots	&\Ga_G^1	\cr
+	& \al	&		&\vrule	&\vdots		&		&\vdots		\cr
+	&		& \ddots&\vrule	&\Ga_1^N	&\cdots	&\Ga_G^N	\cr
+}}{MilleA}
+and $D$-by-$L$ matrix $\al$
+\eqref{\mat\al = \pmatrix{
+f_{1,1}	&\cdots	& f_{1,L}	\cr
+\vdots	&		&\vdots		\cr
+f_{D,1}	&\cdots	& f_{D,L}	\cr
+}}{MilleAlpha}
+and diagonal $D\times D$ matrices $\Ga_i^n$
+\eqref{\Ga_i^n = {\rm diag}\,\left(g_{i,1}^n, \ldots, g_{i,D}^n \right)\ .}{MilleGamma}
+Note that matrix $\al$ is nothing else than $A$ matrix in the one-track-fit case, see \Eq{SimpleLMMat}.
+
+The Least Squares method gives estimate for the parameters
+\eqref{\hat\vec\th = (\mat A^\T \mat A)^{-1} \mat A^\T\,\vec m\.}{MilleLS}
+The \rhs expression will be evaluated now bit by bit, keeping in mind one is mainly interested in the global parameters (i.e. the bottom part of $\hat\vec\th$ vector).
+\eqref{\mat A^\T \mat A = \pmatrix{
+\mat\al^\T \mat\al	&		&						&\vrule	&\mat\al^\T\mat\Ga_1^1	&\cdots	&\mat\al^\T\mat\Ga_G^1	\cr
+					&\ddots	&						&\vrule	&\vdots					&		&\vdots					\cr
+					&		&\mat\al^\T \mat\al		&\vrule	&\mat\al^\T\mat\Ga_1^N	&\cdots	&\mat\al^\T\mat\Ga_G^N	\cr
+\noalign{\hrule}
+\mat\Ga_1^1 \mat\al	&\cdots	&\mat\Ga_1^N \mat\al	&\vrule	&\sum_n \Ga_1^n\Ga_1^n	&\cdots	&\sum_n \Ga_1^n\Ga_G^n	\cr
+\vdots				&		&\vdots					&\vrule	&\vdots					&		&\vdots					\cr
+\mat\Ga_G^1 \mat\al	&\cdots	&\mat\Ga_G^N \mat\al	&\vrule	&\sum_n \Ga_G^n\Ga_1^n	&\cdots	&\sum_n \Ga_G^n\Ga_G^n	\cr
+}\ .}{MilleATA}
+This matrix can be inverted with use of the following identity for block matrices (taken from \bref{wikipedia} keyword \em{matrix inverse}):
+\eqref{\pmatrix{
+\mat A	&\strut\vrule	&\mat B	\cr
+\noalign{\hrule}
+\mat C	&\strut\vrule	&\mat D\cr
+}^{-1} = \pmatrix{
+\ldots							&\strut\vrule	&\ldots\cr
+\noalign{\hrule}
+-\mat S^{-1}\mat C\mat A^{-1}	&\strut\vrule	& \mat S^{-1}\cr
+},\qquad \mat S = \mat D - \mat C\mat A^{-1}\mat B\ .}{BlockInverse}
+(The upper row was skipped as it will not be needed to estimate global parameters). After some algebra manipulations, matrix $\mat S$ can be written
+\eqref{\mat S = \pmatrix{
+\sum_n \Ga_1^n \mat\si \mat \Ga_1^n	&\cdots	&\sum_n \Ga_1^n \mat\si \mat \Ga_G^n	\cr
+\vdots								&		&\vdots									\cr
+\sum_n \Ga_G^n \mat\si \mat \Ga_1^n	&\cdots	&\sum_n \Ga_G^n \mat\si \mat \Ga_G^n	\cr
+},\qquad \mat\si = 1 - \mat\al(\mat\al^\T\mat\al)^{-1}\mat\al^\T\ .}{MilleS}
+Note that $\mat\si$ matrix exactly coincides with $\mat S$ matrix for one-track-fit, see \Eq{residual}.
+
+The second bit needed for \Eq{MilleLS} is
+\eqref{\mat A^\T\,\vec m = \pmatrix{
+\mat\al^\T\,\vec m^1\cr
+\vdots\cr
+\mat\al^\T\,\vec m^N\strut\cr
+\ln
+\sum_n\mat\Ga_1^n\, \vec m^n\vrule width0pt height15pt\cr
+\vdots\cr
+\sum_n\mat\Ga_G^n\, \vec m^n\cr
+},\qquad \vec m^n = \pmatrix{
+m_1^n\cr
+\vdots\cr
+m_D^n\cr
+}\ .}{MilleATm}
+The vector $\vec m^n$ contains measurements from all detectors of the $n$-th track. It corresponds to the $\vec m$ vector in the one-track-fit case, see \Eq{SimpleLMMat}. Finally, the global parameters (the bottom part of vector $\vec\th$)
+\eqref{\vec\th_G = (b_{1,1}\ldots b_{1, D},\ b_{2, 1}\ldots b_{2, D},\ \ldots)^\T}{MilleGlobalPar}
+can be determined from \Eq{MilleLS}
+\eqref{\vec\th_G = \mat S^{-1}\,\pmatrix{
+\sum_n \mat\Ga_1^n\mat\,\mat\si\,\vec m^n\cr
+\vdots\cr
+\sum_n \mat\Ga_G^n\mat\,\mat\si\,\vec m^n\cr
+}\ .}{MilleLSGlobal}
+Looking at \Eq{residual} one finds the meaning of $\mat\si\,\vec m^n$: this is the vector one-track-fit residuals for the $n$-track. Therefore we will adopt notation
+\eqref{\vec R^n = \mat\si\,\vec m^n}{MilleResidual}
+As $\mat\si$ is singular (and so $\mat S$ might be), one had better write
+\eqref{\mat S\, \vec\th_G = \pmatrix{
+\sum_n \mat\Ga_1^n\mat\,\vec R^n\cr
+\vdots\cr
+\sum_n \mat\Ga_G^n\mat\,\vec R^n\cr
+}\ .}{MilleLSResidual}
+
+
+
+\subsection{Invertibility of $\mat S$}
+
+First, let us remark the for every matrix with real elements $\mat M$ it holds (taken from \bref{wikipedia}, keyword \em{matrix rank})
+\eqref{\rank\mat M^\T\mat M = \rank\mat M\mat M^\T = \rank\mat M\ .}{Lemma1}
+
+We assume such a configuration of parameters $f_{i,j}$ that fitting of a single track is possible. In other words we assume $\mat\al^\T\mat\al$ is invertible, which can be equivalently expressed by $\rank \mat\al^\T\mat\al = L$ (since $\mat\al^T\mat\al$ is $L$-by-$L$ matrix). Then, \Eq{Lemma1} yields $\rank\mat\al = L$.
+
+Matrix $\mat S$ can be decomposed as follows
+\eqref{\mat S = 
+\underbrace{\pmatrix{
+\mat\Ga_1^1	&\cdots	&\mat\Ga_1^N	\cr
+\vdots		&		&\vdots			\cr
+\mat\Ga_G^1	&\cdots	&\mat\Ga_G^N	\cr
+}}_{\mat S_1}
+\underbrace{\pmatrix{
+\mat\si	&		&		\cr
+		&\ddots	&		\cr
+		&		&\mat\si\cr
+}}_{\mat S_2}
+\underbrace{\pmatrix{
+\mat\Ga_1^1	&\cdots	&\mat\Ga_G^1	\cr
+\vdots		&		&\vdots			\cr
+\mat\Ga_1^N	&\cdots	&\mat\Ga_G^N	\cr
+}}_{\mat S_3}
+\ .}{MilleSDecomp}
+For its rank one can write
+\eqref{\rank\mat S = \rank\mat S_1\mat S_2\mat S_2\mat S_3 = \rank\mat S_1\mat S_2 \ .}{RankS}
+The first equality is consequence of $\mat\si^2=\mat\si$ and the latter equality follows from $\mat\si^\T = \mat\si$ and $\mat S_1^\T = \mat S_3$. Because $\mat S_1\mat S_2$ has $GD$ rows, it is clear
+\eqref{\rank\mat S\leq GD\ .}{RankS1S2}
+
+Furthermore, we will assume that $\mat S_1$ has full row rank, i.e. all its rows are linearly independent, i.e. its rank is $GD$. The contrary would mean trying to determine global parameters that cannot be obtained for the measured data. The fact that all rows of $\mat S_1$ are linearly independent can be expressed by assertion
+\eqref{\hbox{if}\ \exists\ c_{ia}\ \hbox{such}\ \sum_{i=1}^G\sum_{a=1}^D c_{ia} [\mat\Ga_i^n]_{ab} = 0\quad\forall 1\leq b\leq D, 1\leq n\leq N\ \hbox{then}\ c_{ia} = 0\quad \forall i, a\ .}{rankGD2}
+
+It has already be shown (see \Eq{RankS}) that
+\eqref{\rank\mat\si = D - L}{RankS2}
+that is matrix $\mat\si$ has exactly $D-L$ linearly independent rows. Denoting those independent rows by $IR(\mat\si)$, their independence can be expressed as:
+\eqref{\hbox{if exist coefficients}\quad c_a\quad\hbox{such that}\quad\sum_{a\in\ IR(\mat\si)} c_a\mat\si_{ab} = 0\quad\forall b\quad\hbox{then}\quad c_a = 0,\forall a\ .}{SigmaRank1}
+The rest of rows of $\mat\si$ can be written as linear combination of the linearly independent rows:
+\eqref{\forall\al\not\in IR(\mat\si)\hbox{ exist coefficients }\ e_{\al a}\ \hbox{ such that }\ \mat\si_{\al b} = \sum_{a\in IR(\mat\si)} e_{\al a}\, \mat\si_{ab}\ .}{SigmaRank2}
+
+Matrices $\mat\Ga_i^n$ are all diagonal (see \Eq{MilleGamma}) and therefore
+\eqref{[\mat\Ga_i^n]_{ab} = \de_{ab}\,g_{i, a}^n\ , \qquad [\mat\Ga_i^n\,\mat\si]_{ab} = g_{i, a}^n\,\mat\si_{ab}\ .}{GaElements}
+Using the first relation, condition \Eq{rankGD2} simplifies to
+\eqref{\hbox{if}\ \exists\ c_{ia}\ \hbox{such}\ \sum_{i=1}^G c_{ia} g_{i, a}^n = 0\ \ \forall a, n\ \hbox{then}\ c_{ia} = 0\ \ \forall i, a\ .}{rankGD3}
+
+Now, let's check whether the linearly independent rows of $\mat\si$ are preserved independent in product $\mat S_1\mat S_2$. We put the following equality and find what it implies.
+\eqref{\sum_{i=1}^G \sum_{a\in IR(\mat\si)} c_{ia}\,\left[\mat\Ga_i^n\,\mat\si\right]_{ab} = 0\qquad\forall b, n\ .}{TestEquality}
+Using the second equality in \Eq{GaElements} it can be rearranged to
+\eqref{\sum_{a\in IR(\mat\si)} \underbrace{\sum_{i=1}^G c_{ia}\,g_{i, a}^n}_{K^n}\,\mat\si_{ab} = 0\qquad\forall b, n\ .}{TestEquality2}
+However, \Eq{SigmaRank1} requires $K^n_a = 0$ for all $a$, that is
+\eqref{\sum_{i=1}^G c_{ia}\,g_{i, a}^n = 0\qquad\forall a, n\.}{TestEquality3}
+Employing \Eq{rankGD3} leads to condition $c_{ia} = 0$ for all $a$ and $n$. In other words requirement \Eq{TestEquality} implies $c_{ia} = 0$, which proves that all $G(D-L)$ rows that are summed over in \Eq{TestEquality} are linearly independent. One can add a lower bound to \Eq{RankS1S2}
+\eqref{G(D-L)\leq\rank\mat S\leq GD\ .}{RankS1S2 2}
+
+Next, one may wan to use \Eq{SigmaRank2} to find linearly dependent row of $\mat S_1\mat S_2$. That is to find coefficients $d_{i\al,a}$ such that
+\eqref{\left[\mat\Ga_i^n\,\mat\si\right]_{\al b} = \sum_{a\in IR(\mat\si)} d_{i\al,a}\,\left[\mat\Ga_i^n\,\mat\si\right]_{ab}\qquad\forall n,b\hbox{ and }\al\not\in IR(\mat\si)\ .}{DependentRows}
+Expanding \lhs{} and using second relation in \Eq{GaElements} and assumption \Eq{SigmaRank2} yields
+\eqref{\left[\mat\Ga_i^n\,\mat\si\right]_{\al b} 
+= g_{i,\al}^n \mat\si_{\al b}
+= \sum_{a\in IR(\mat\si)} f_{\al a} g_{i,\al}^n \mat\si_{ab}
+= \sum_{a\in IR(\mat\si)} \left( f_{\al a} {g_{i,\al}^n\over g_{i,a}^n} \right) \left[\mat\Ga_i^n\,\mat\si\right]_{ab}\ .
+}{DependentRows2}
+If one could identify $d_{i\al,a}$ with the factor in parentheses, it would mean that also the dependent row of $\mat\si$ are preserved in $\mat S_1\mat S_2$. But as the factor in parentheses is $n$-dependent, the identification is not possible. It is this $n$-dependence which may remove some singularity and increase rank of $\mat S$ over the lower bound.
+
+
+
+\subsection{Example: shifts only}
+
+Let's go back and consider the realistic model \Eq{RealMeasurement} with no rotations, i.e. $\de_i\equiv 0$. There is just one global parameter ($G=1$) per detector -- shift $\De_i$. Corresponding coefficients $g_{1,a}^n=1$ and therefore $\Ga_1^n = 1_{D\times D}$. From \Eq{MilleS} one can calculate 
+\eqref{\mat S = N\,\mat\si}{ShiftsOnlyS}
+and LS estimate \Eq{MilleLSResidual} simplifies to
+\eqref{N\,\mat\si\,\vec\De = \sum_n^N \vec R^n\ .}{ShiftsOnlyS}
+where we used $\vec\th_G\equiv\vec\De$ (since $G=1$). Note that \Eq{ShiftsOnlyS} is identical to equation \Eq{ResidualShiftErrAverage}. That shows that both \em{approaches are identical} for the case with shifts only.
+
+
+
+
+\subsection{The actual case: shifts and rotations}
+
+Let's consider again the linearized model \Eq{RealMeasurementLin}. There are two sets of global parameters -- shifts $\De_i$ and rotations $\de_i$. The corresponding $\mat\Ga$ matrices are $\mat\Ga_1^n = 1_{D\times D}$ and $\mat\Ga_2^n = {\rm diag}(\ga^n_1, \ldots, \ga_D^n)$.
+
+As the shift $\mat\Ga$ matrices are $n$-independent, the dependent $\mat\si$ rows are preserved and one obtains $\rank\mat S\leq GD - L$. Indeed, $G=2$ and $L=4$ for this model.
+
+2 more open questions. 1) Can all the rotations be obtained? 2) Will the iteration converge? How quickly?
+
+
+\section{Shifts and incomplete measurements}
+
+The geometry of TOTEM Roman Pots is such that a single track cannot go through all detectors. Thus it is important to discuss the situations when not all detectors are included in vector $\vec m$ (see \Eq{MilleMeasVec}). For simplicity we will focus on the case with shifts only, that is $G = 1$. The fit matrix (compare with \Eq{MilleA}) can be written
+\eqref{\mat A = \pmatrix{
+\mat \al_1 & 			&		&\vrule	&\mat I_1\cr
+	& \mat \al_2		&		&\vrule	&\vdots	\cr
+	&					& \ddots&\vrule	&\mat I_N\cr
+}\ .}{IncompA}
+The matrices $\mat\al_j$ have the same structure as displayed by \Eq{MilleAlpha}, but their rows correspond to detectors active the $j$-th event. The size of $\mat \al_j$ is $D_j\times L$, where $D_j$ is number of detectors active in $j$-th event. Matrix $\mat I_j$ is a $D_j$-by-$D$ matrix with elements either $0$ or $1$. The structure is such that it has exactly one 1 at each row and non-zero columns correspond to active detectors. For instance, if only detectors 2, 3 and 5 were active, the matrix may\footnote{Order of rows is irrelevant.} read
+$$\mat I = \pmatrix{
+0& 1& 0& 0& 0& 0& \ldots& 0 \cr
+0& 0& 1& 0& 0& 0& \ldots& 0\cr
+0& 0& 0& 0& 1& 0& \ldots& 0\cr
+}\ .$$
+
+Repeating the same procedure as above \Eq{MilleLSResidual} one can derive equation
+\eqref{\mat S\vec{\hat\De} = \sum_n^N \mat I_n^\T\, \vec R_n,\qquad}{IncompEq}
+where
+\eqref{\mat S = \sum_n^N \mat I_n^\T\,\mat\si_n\,\mat I_n,\qquad \mat\si_n = 1 - \mat\al_n (\mat\al_n^\T\mat\al_n)^{-1} \mat\al_n^\T\ .}{IncompEqDef}
+$\vec{\hat\De}$ is our shift estimate and residuals $\vec R_n$ are defined (in accordance to \Eq{MilleResidual})
+\eqref{\vec R_n = \mat\si_n \vec m_n\ .}{IncompResid}
+
+For further discussion, the key observation is
+\eqref{\mat\al_n = \mat I_n\, \mat\al\ ,}{IncompAlphaN}
+where $\mat\al$ is the matrix for full measurement, i.e. for (maybe hypothetical) measurement to which all detectors contribute. With the help of this observation, one easily finds
+\eqref{\mat S (\mat\al \vec u) = 0\qquad\hbox{for all }\vec u\in\mathbb{R}^L\ .}{IncompKernel}
+That shows that $\mat S$ is singular and moreover that dimension of its kernel is at least $L$ (see discussion of rank of $\mat\al$ above \Eq{MilleSDecomp}).
+
+In pathological cases the kernel of $\mat S$ can be of higher dimension than $L$. Imagine there are only two types of events. First type comprises detectors $1\ldots d$ while second $d+1\ldots D$. Note there are no detectors in common for such event types. $\mat S$ can be carried out ($N_{1, 2}$ denotes number of events of first, second type).
+$$\mat S = \pmatrix{
+N_1\, \mat\si_1 & 0\cr
+0 & N_2\, \mat\si_2\cr
+}$$
+One can see that events of the first and the second type decouple from each other. Each $\si_{1, 2}$ matrix has kernel of dimension $L$ and therefore $\rank\mat S = D - 2L$.
+
+
+For the rest of this section we will assume that the sample of events is not pathological and hence $\rank\mat S = D - L$. That also means that kernel of $\mat S$ contains \em{only} vectors $\mat\al\vec u$ TODO
+
+Let's discuss number of solutions of \Eq{IncompEq}. Since matrix $\mat S$ is singular, there can be either no or infinite number of solutions. To find what holds we rewrite \Eq{IncompEq}
+\eqref{\mat S \vec{\hat\De} = \sum_n^N \mat I_n^\T\, \vec R_n = \sum_n^N \mat I_n^\T\, \mat\si_n \vec m_n = \sum_n^N \mat I_n^\T\, \mat\si_n (\underbrace{\vec m_n^0}_{\displaystyle\mat\al_n \vec u} + \mat I_n \vec \De) = \sum_n^N \mat I_n^\T\, \mat I_n \vec \De = \mat S\vec \De\ .}{IncompEq2}
+We decomposed measurement $\vec m_n$ into part which can be described by track model $\vec m_n^0$ and the actual (not an estimate) displacement $\vec\De$. The obtained equality seems almost like a tautology, but in fact it is a major result. It claims that displacement estimate $\vec{\hat\De}$ (i.e. a solution of \Eq{IncompEq}) can differ from the actual displacement $\vec\De$ only by a vector from the kernel of matrix $\mat S$, i.e.
+\eqref{\vec{\hat\De} = \vec\De + \mat\al \vec u\ ,\qquad \vec u\in\mathbb{R}^L\ .}{IncompSolutions}
+Therefore \Eq{IncompEq} has infinite number of solutions forming vector space of dimension $L$.
+
+In order to obtain an unique solution, one has to impose additional constraints (in other words to fix $\vec u$ in \Eq{IncompSolutions}). A convenient constraint parameterization is the following
+\eqref{(\mat\al^\T \mat\al)^{-1} \mat\al^\T \vec{\hat\De} = \vec\th_{\rm con}\ ,}{IncompConstraint}
+where $\vec\th_{\rm con}$ is a vector of $L$ constants. \Eq{IncompEq,IncompConstraint} have, together, a unique solution.
+
+The best choice (in order to gain as much information on shifts as possible) for $\vec u$ is, indeed, $\vec 0$. In terms of \Eq{IncompConstraint}, it means setting $\vec\th_{\rm con}$ to $\vec\th_{\rm G}$
+\eqref{\vec\th_{\rm G} = (\mat\al^\T \mat\al)^{-1} \mat\al^\T \vec{\De}\ .}{IncompGlobal}
+TODO: $\vec\th_{\rm G}$ has the meaning of global modes.
+Note the $\vec\th_{\rm G}$ is function of the actual shifts. Finally, let us remark that values of $\vec\th_{\rm G}$ cannot be obtained by means of fitting. They must be obtained by an independent analysis.
+
+\references
+\PrintReferences
+
+\EndText
+\end

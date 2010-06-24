@@ -1,0 +1,144 @@
+\input macros/macros
+
+% ========================================== local macros ================================================
+
+
+% ============================================ title page ================================================
+
+\vbox to0pt{}
+\vfil
+
+\baselineskip=18pt
+
+\iffalse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CZECH VERSION
+\centerline{\fPxv Univerzita Karlova v Praze}
+\centerline{\fPxv Matematicko--fyzikální fakulta}
+\vskip2	cm
+\centerline{\fPbxx DIPLOMOVÁ PRÁCE}
+\vskip1cm
+\centerline{\epsfxsize=5cm\epsfbox{fig/logoMFF.eps}}
+%\vskip5cm
+\vskip3cm
+\centerline{\fPbxv Jan Ka¹par}
+\vskip1cm
+\centerline{\fPbxx Difrakèní procesy pøi vysokých energiích}
+\vskip1mm
+\centerline{\fPbxx experiment TOTEM}
+\vskip2cm
+\centerline{\fPxv Ústav èásticové a jaderné fyziky}
+\ialign to\hsize{\tabskip 0pt plus1fil\strut #&\hfil\fPxv #\ \tabskip0pt&\fPxv #\hfil\tabskip 0pt plus1fil\cr
+&Vedoucí diplomové práce:&		RNDr. Vojtìch Kundrát, DrSc.\cr
+&Studijní program:&				Fyzika, Jaderná a subjaderná fyzika\cr}
+
+\else
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENGLISH VERSION
+\centerline{\fPxv Charles University in Prague}
+\centerline{\fPxv Faculty of Mathematics and Physics}
+\vskip2	cm
+\centerline{\fPbxx DIPLOMA THESIS}
+\vskip1cm
+\centerline{\epsfxsize=5cm\epsfbox{fig/logoMFF.eps}}
+%\vskip5cm
+\vskip3cm
+\centerline{\fPbxv Jan Ka¹par}
+\vskip1cm
+\centerline{\fPbxx High energy diffraction processes}
+\vskip1mm
+\centerline{\fPbxx -- TOTEM experiment}
+\vskip2cm
+\centerline{\fPxv Institute of Particle and Nuclear Physics}
+\ialign to\hsize{\tabskip 0pt plus1fil\strut #&\hfil\fPxv #\ \tabskip0pt&\fPxv #\hfil\tabskip 0pt plus1fil\cr
+&Supervisor:&		RNDr. Vojtìch Kundrát, DrSc.\cr
+&Field of study:&	Physics, Nuclear and Particle Physics\cr}
+
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% prohlá¹ení
+\vfil\eject\forceoddpage
+\baselineskip=15pt
+
+\noindent First of all I would like to thank my supervisors, Drs. Vojtìch Kundrát (for the first part) and Mario Deile (for the second part), for their tireless help and assistance. Next, I would like to thank all my teachers and friends who helped me searching answers to physical questions. Last but not least, a big thank belongs to my family and my girlfriend. They contributed to this thesis by non--physical but essential support.
+
+\vskip\baselineskip
+
+\iffalse
+\bgroup
+\SmallerFonts
+\noindent V první øadì bych rád podìkoval za vstøícný pøístup a vytrvalou pomoc svým vedoucím, kterými byli RNDr. Vojtìch Kundrát, DrSc. pro první èást a Dr. Mario Deile pro èást druhou. Dále bych chtìl podìkovat v¹em uèitelùm a kamarádùm, kteøí mi bìhem studií pomáhali hledat odpovìdi na fyzikální otázky. A v neposlední øadì patøí velké podì\-kování mé rodinì a pøítelkyni, kteøí sice nefyzikální ale pøesto významnou podporou pøispìli ke vzniku této práce.
+
+\egroup
+\fi
+
+\vfill
+\iffalse
+\noindent Prohla¹uji, ¾e jsem svou diplomovou práci napsal samostatnì a výhradnì s pou¾itím citovaných pramenù. Souhlasím se zapùjèováním práce.
+\vskip2\baselineskip
+\noindent V Praze dne \the\day. \the\month. 2005 \hfill Jan Ka¹par\hbox to1cm{\hfil}
+\vskip3\baselineskip
+\else
+\noindent I declare that I completed my diploma thesis myself and with use of cited literature only. I agree with using this thesis.
+\vskip2\baselineskip
+\noindent Prague, April \the\day, 2005 \hfill Jan Ka¹par\hbox to1cm{\hfil}
+\vskip3\baselineskip
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% obsah
+\insertTOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% abstrakty
+\vfil\eject\forceoddpage
+
+
+
+\ialign{\hbox to4cm{#\hfil}&#\hfil\cr
+Title:& 					High energy diffraction processes -- TOTEM experiment\cr
+Author:& 					Jan Ka¹par\cr
+Department:& 				Institute of particle and nuclear physics\cr
+Supervisor:& 				RNDr. Vojtìch Kundrát, DrSc.\cr
+Supervisor's & 				\cr
+\hskip5mm e-mail address:& 	kundrat@fzu.cz\cr
+\noalign{\vskip3pt}
+Abstract:&\vtop{\advance\hsize-4cm\noindent\SmallerFonts
+We study two problems in this thesis. First, we analyse a model for $pp$ and $\bar pp$ elastic scattering. The model was developed by M.M.Islam and coworkers in the past 25 years. Our aim was to make a prediction for differential cross section of $pp$ scattering at energy of $14\un{TeV}$ which will be measured by the TOTEM experiment at the LHC at CERN. Since protons carry electromagnetic charge, we had to take into account an electromagnetic interaction and effects of the interference between electromagnetic and hadronic forces. We also analysed the model in the impact parameter representation. It enabled us to gain information about range of hadronic forces responsible for elastic, inelastic and total $pp$ and $\bar pp$ scattering. In the second part we present our alignment method for detectors inside the Roman pots of the TOTEM experiment. The method was used during Roman pot tests on the SPS beam last year.
+\strut}\cr
+\noalign{\vskip3pt}
+Keywords:&					elastic nucleon scattering, TOTEM experiment\cr
+%
+\noalign{\vskip3\baselineskip}
+%
+Název práce:& 				Difrakèní procesy pøi vysokých energiích -- experiment TOTEM\cr
+Autor:&						Jan Ka¹par\cr
+Katedra (ústav):&			Ústav èásticové a jaderné fyziky\cr
+Vedoucí diplomové& 			\cr
+\hskip5mm práce:&			RNDr. Vojtìch Kundrát, DrSc.\cr
+e-mail vedoucího:& 			kundrat@fzu.cz\cr
+\noalign{\vskip3pt}
+Abstrakt:&\vtop{\advance\hsize-4cm\noindent\SmallerFonts
+V této práci jsme se zabývali dvìma problémy. Nejprve jsme analyzovali model pro elastický $pp$ a $\bar pp$ rozptyl. Tento model byl vyvinut bìhem minulých 25 let skupinou, kterou vedl M.M.Islam. Na¹im cílem bylo pøedpovìdìt diferenciální úèinný prùøe¾ pro elastický $pp$ rozptyl pøi enerigii $14\un{TeV}$, který bude mìøen experimentem TOTEM na urychlovaèi LHC v CERNu. Proto¾e protony nesou elektromagnetický náboj, museli jsme pøi výpoètech vzít v úvahu elektromagnetickou interakci a efekty zpùsobené interferencí mezi hadronovou a elektromagnetickou interakcí. Také jsme provedli analýzu zmínìného modelu v prostoru srá¾kového paramteru. To nám umo¾nilo získat informaci o dosahu hadron\-ových sil zodpovìdných za elastický, neelastický a totální $pp$ a $\bar pp$ rozptyl. Ve druhé èásti jsme se zabývali metodou na kalibraci poloh detektorù, které budou umístìny v øímských hrncích eperimentu TOTEM. Tato metoda byla pou¾ita minulý rok pøi testech øímských hrncù na svazku SPS.
+\strut}\cr
+\noalign{\vskip3pt}
+Klíèová slova:& 			elastický rozptyl nukleonù, experiment TOTEM\cr
+}
+
+\vfil\eject
+\forceoddpage
+
+
+
+
+% ================================================ TEXT ================================================
+
+
+
+\insertREF
+\BeginText
+
+\input introduction
+\input chapter1
+\input chapter2
+
+\EndText
+
+
+\end

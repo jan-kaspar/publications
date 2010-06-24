@@ -1,0 +1,406 @@
+\input base
+\input biblio
+\input colors
+\input slides
+
+
+
+\SetBackground{fig/bg3.jpg}
+%\def\FgColor{\cmykBlack}\edef\TitColor{\cmykBlack}
+
+\def\Bref#1{Ref\hbox{. }\bref{#1}}
+\def\comment#1{}
+
+\def\fg{\cmyk{\FgColor}}
+\def\fgt{\cmyk{\TitColor}}
+\def\blue{\rgb{\0.5 0.5 0.9}}
+\def\green{\rgb{0.5 0.9 0.5}}
+\def\red{\rgb{0.9 0.5 0.5}}
+\def\yellow{\rgb{0.9 0.9 0}}
+
+\def\date{June 7, 2010}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+%\centerline{\fg 3rd preliminary version}
+\hbox{}\vfil
+\title{\bPxx First Results of the TOTEM Roman Pots}
+\vskip2\baselineskip
+\bgroup
+		\obeylines\leftskip0pt plus1fil
+		{\bPxv Jan Ka\v spar}
+		CERN and Institute of Physics of the AS CR
+		on behalf of the {\bf TOTEM Collaboration}
+		\vskip2\baselineskip
+		Vertex 2010
+		Loch Lomond, \date
+\egroup
+
+\vskip2\baselineskip
+
+\line{\hss
+	\fig[,3cm]{fig/cern_logo_white.pdf}\hss
+	\fig[,3cm]{fig/totemLogo_white.pdf}\hss
+	\fig[,3cm]{fig/logo-FZU-male_white.pdf}\hss
+}
+\footline={}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Outline}
+
+\vfil
+\vskip-1cm
+
+\bgroup
+\def\tit#1{\vskip1cm{\bPxii #1}}
+\obeylines
+\leftskip0pt plus 1fil
+\tit{The TOTEM experiment}
+physics programme
+detector requirements
+the Roman Pot system
+
+\tit{Edgeless Silicon Detectors}
+{\bPxii with Current Terminating Structure}
+concept and characteristics
+performance studies
+
+\tit{Roman Pot Production Tests}
+
+\tit{First LHC results} 
+\egroup
+
+\vfil
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{TOTEM Experiment -- Detector Requirements}
+
+\vfil
+
+\bgroup
+\itident6mm
+\iitident8mm
+
+\line{\vbox{\hsize6cm
+{\bf TOTEM physics programme}
+\> total pp cross-section
+\> elastic scattering
+\> hard and soft diffraction}%
+\raise6mm\hbox{$\left.\vrule width0pt height8mm\right\rbrace$}
+\raise2mm\vbox{\hsize8cm
+\centerline{detection of very forward protons}
+\centerline{$\Downarrow$}
+\centerline{special detectors needed: Roman Pots}
+}\hss}
+
+\hbox{}\vfil
+
+{\bf TOTEM Roman Pots}
+\> stations at $147\un{m}$ and $220\un{m}$ on both sides of IP
+\> movable beam-pipe insertions
+\>> as close to the beam as safe ($\approx 10\sigma$)
+\>> retracted when beam instable
+\egroup
+
+\vfil
+
+\vskip2\baselineskip
+\centerline{\fig*[15cm]{fig/RP_stations_original.pdf}}
+
+\vfil
+\vfil
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{The Roman Pot System}
+
+\line{\hskip-6.1mm$\bullet$ each station has 2 units\hss}
+
+\bgroup
+\parindent=0pt
+\line{\hss
+\vbox{\hsize5.6cm\> each unit has top, bottom and\hfil\break horizontal pot\par\fig[,38mm]{fig/rp_unit.jpg}}\hskip1mm\hfil
+\vbox{\hsize5cm\> each pot contains a detector\hfil\break package\par\fig[,38mm]{fig/rp.jpg}}\hskip1mm\hfil
+\vbox{\hsize4.2cm\> each detector package\hfil\break comprises 10 Si detectors\par\fig[,38mm]{fig/rp_package.jpg}}\hss
+}
+
+\vskip2mm
+
+\line{\hss
+\fig*[,44mm]{fig/overlap.pdf}\hfil
+\fig[,44mm]{fig/hybrid2.jpg}\hfil
+\fig[,44mm]{fig/reference_frame.png}\hss
+}
+\egroup
+
+\> overlap crucial for alignment
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{The Requirements for Sensors}
+
+\centerline{\fig[15cm]{asy/protonTransport.pdf}}
+
+\vfil
+
+\centerline{maximization of acceptance for low scattering angles}
+\centerline{$\Downarrow$}
+\centerline{detectors as close to the beam as safe}
+\centerline{$\Downarrow$}
+\centerline{narrow insensitive edge needed}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Edgeless Silicon Detectors with CTS}
+\unskip
+\centerline{(\SmallerFonts CTS = Current Terminating Structure)}
+
+\line{\hss\fig[,42mm]{fig/cts_scheme.png}\hfil\fig[,42mm]{fig/silicon_explained.png}\hskip1mm\hss}
+
+\vskip2mm
+
+\itskip=2pt
+\line{\hss\vbox{\hsize8cm\rightskip=0pt plus 1fil
+\> TOTEM design
+\> very high resistivity Si n-type $\langle 111\rangle$
+\> $300\un{\mu m}$ thick, $V_{\rm dep}=20\un{V}$
+\> standard planar technology fabrication / dicing with diamond saw
+\> single sided detector, 512 microstrips (pitch $66\un{\mu m}$)
+\> pitch adapter on detector (VFAT / APV25 compatible)
+\> strips at $45^{\circ}$ from the sensitive edge
+\> AC coupled (punch-through)
+\> only $\approx 50 \un{\mu m}$ of dead area (standard technology $0.5\div 1\un{mm}$)
+}\hfil\raise1cm\hbox{\fig*[,45mm]{fig/iv_characteristic.pdf}}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Silicon Detector Prototype Tests}
+\unskip
+\centerline{\SmallerFonts (details will be soon published in paper ''Reconstruction Performance of Silicon Detectors with Reduced Edge}
+\vskip-2pt
+\centerline{\SmallerFonts Insensitive Volume Manufactured in CTS and 3D-Planar Technologies'' by the TOTEM collaboration)}
+
+\itskip1pt
+\> muon beam, analogue readout with APV25
+\> alignment: metrology + software $\rightarrow$ $1\un{\mu m}$ precision
+\> tracking uncertainty $< 10\un{\mu m}$
+
+\vfil
+
+\title{Edge Efficiency}
+\unskip
+\> efficiency curves for two of the test detectors
+
+\line{\hss\fig*[,5.5cm]{fig/edge1.pdf}\fig*[,5.5cm]{fig/edge2.pdf}\hskip2mm\hss}
+
+\> $w$ coordinate perpedicular to the edge
+\> red line represents the physical edge
+\> $10\percent \div 90\percent$ rise (region with blue boundary) found in range $30\div 40\un{\mu m}$
+\> plateau at about $95\percent$ because of unbonded/noisy strips
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Signal to Noise}
+
+\line{\hss\vtop{\hsize7cm
+\> signal-to-noise ratio histogram
+\vskip\baselineskip
+
+\fig*[8cm]{fig/signal_to_noise_100.pdf}
+
+\>> good noise/signal separation
+}\hskip2mm
+\vtop{\hsize6.4cm
+\> signal-to-noise as a function of distance from the edge ($w$)
+
+\fig*[7cm]{fig/signal_to_noise.pdf}
+
+\>> the ''dead'' area is partially efficient
+}
+\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Charge Sharing and Cluster Size}
+
+\line{\hss\vtop{\hsize7cm
+\> ratio $Q_{\rm main\ strip}/Q_{\rm cluster\ total}$
+\vskip1mm
+\fig*[,6.2cm]{fig/charge_sharing.pdf}
+\>> hits close to a strip center: most charge collected by the strip
+\vskip2mm
+\>> hits between strips: reduced ratio, i.e.\break increased charge sharing
+}\hskip2mm
+%
+\vtop{\hsize7.3cm
+\> mean cluster size\strut
+\vskip1mm
+
+\fig*[,6.2cm]{fig/cluster_size.pdf}
+\>> hits close to a strip center: mostly one-strip clusters 
+\vskip2mm
+\>> hits between strips: larger clusters
+}
+\hss}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Track Reconstruction}
+
+\line{\hss\vtop{\hsize7cm
+\> distribution of residuals in a test detector\hfil\break(residual = recon. hit - reference track) 
+\vskip1mm
+\fig*[,5.5cm]{fig/test_residuals.pdf}
+\>> std. deviation close to the expected value $66\un{\mu m}/\sqrt{12} \approx 19\un{\mu m}$
+}\hskip2mm
+\vtop{\hsize8cm
+\> mean residuals as a function of distance from the edge ($w$)
+\vskip1mm
+\fig*[,5.5cm]{fig/reconstruction_bias.pdf}
+\>> small bias ($< 40\un{\mu m}$) close to the edge, fully correctable
+}
+\hss}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Irradiation Tests}
+
+\line{\hskip-5mm\fig*[,9cm]{fig/irradiation.pdf}\hskip3mm\raise6.6cm\vbox{\hsize7cm
+\> detectors irradiated with $24\un{GeV}$ protons
+\> no efficiency decrease for irradiation below $10^{13}\un{p\cdot cm^{-2}}$
+\> higher bias needed to reach full efficiency for irradiations above $10^{13}\un{p\cdot cm^{-2}}$
+%\> $10^{14}\un{p\cdot cm^{-2}}$ currently considered as\break irradiation limit
+%\vskip\baselineskip
+%\> detectors functional to $\approx 1\un{fb^{-1}}$
+}\hss}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Final Electronics System}
+
+\line{
+\vbox{\hsize8.5cm
+\> custom-developed front-end chip: VFAT2
+\>> digital
+\>> trigger capability
+\>> 128 channels (4 chips per sensor)
+\>> 256 clock cycles memory
+\>> used for all TOTEM sub-detectors (also T1 and T2)
+
+\> and much more (backup slide)
+
+\vskip1.5cm
+
+\fig*[7cm]{fig/vfat.jpg}
+
+}
+\fig*[,10cm]{fig/hybrid.jpg}
+\hss}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Production Tests 2007-2009}
+
+\> every detector package tested
+\> with final electronics
+\> with muon beam/with cosmic rays
+
+\vskip2cm
+
+\> threshold scan with pion beam
+
+\iitskip=2pt
+\line{\hss\fig*[9cm]{fig/threshold_scan.pdf}\hfil\raise20mm\vbox{\hsize6cm
+\>> noise stops at $\approx 3\,000\un{e}$
+\>> plateau up to $\approx15\,000\un{e}$
+\>> efficiency reduced to about half at $22\,000\un{e}$
+\>> with noise maximum around $1\,000\un{e}$ $\Rightarrow$ signal-to-noise between $20$ and $25$
+}\hss}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Internal Alignment}
+
+\> comparison of internal alignment results for one detector package
+
+\line{\hss\fig[14.5cm]{asy/alignment_comparison.pdf}\hss}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Cooling}
+
+\> cooling fully functional
+
+\line{\hss\fig*[15.5cm]{fig/temperature.jpg}\hss}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{First LHC Data, December 2009}
+
+\itskip=2pt
+\> pot edge at about $4.5\si$ from the beam
+\vskip\itskip
+
+\line{\hss\fig*[15.5cm]{fig/firstData.pdf}\hss}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Recent LHC Data, April 2010}
+
+\> showers seen in retracted position (movement commissioning still in progress)
+
+\line{\hss\fig[14.3cm]{fig/screenshot.png}\hss}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Summary \& Outlook}
+
+\> both stations at $220\un{m}$ fully equipped and installed
+\>> $99\percent$ of channels working
+\>> first data taken and analyzed (commissioning)
+\>> ready to take physics data
+\>> Roman Pot position calibration -- precondition for routine RP insertions
+
+\vskip\baselineskip
+
+\> detectors for stations at $147\un{m}$ in production/under test
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}\vfil
+\title{Backup slides}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Silicon Detector Prototype Tests}
+\unskip
+\centerline{\SmallerFonts (details will be soon published in paper ''Reconstruction Performance of Silicon Detectors with Reduced Edge}
+\vskip-2pt
+\centerline{\SmallerFonts Insensitive Volume Manufactured in CTS and 3D-Planar Technologies'' by the TOTEM collaboration)}
+
+\> muon beam, $\approx 4\cdot10^{5}$ events, analogue readout with APV25
+
+\> 2 reference packages (track definition), 2 test packages
+
+\line{\hss\fig*[,4cm]{fig/test_geometry.pdf}\hss\fig[,4cm]{fig/test_photo.png}\hss}
+
+
+\vskip\baselineskip
+\> careful alignment
+\comment{development of the alignment strategy}
+\>> metrology
+\>> software alignment (shift in read-out direction, rotation around beam, edge position)
+\>> eventually $1\un{\mu m}$ precision
+
+\> track interpolation in test packages: uncertainty $< 10\un{\mu m}$
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Final Electronics System}
+
+\centerline{\fig*[15cm]{fig/electronics.pdf}}
+
+
+\vfil\eject\bye

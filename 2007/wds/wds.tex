@@ -1,0 +1,441 @@
+\input ../../kaspiTeX/base.tex
+\input ../../kaspiTeX/colors.tex
+\input ../../kaspiTeX/biblio.tex
+\input ../../kaspiTeX/slides.tex
+
+
+\SetBackground{../../kaspiTeX/fig/bg2.eps}
+%\def\FgColor{\rgbBl}
+%\nocolor
+
+\font\rpvi=pplr8z at 6pt
+
+\def\comment#1{(\SmallerFonts #1)}
+\def\comment#1{\message{* comment[\the\pageno]: #1}}
+\def\ar{$\rightarrow$}
+\def\Ar{$\Rightarrow$}
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}\vfil
+\title{Jan Ka\v spar}
+\title{TOTEM Experiment and Total Cross-Section at LHC}
+
+\centerline{\figv{2.5cm}{../../kaspiTeX/fig/totemLogo.eps}\figv{2.5cm}{../../kaspiTeX/fig/mffLogo.eps}\figv{25mm}{../../kaspiTeX/fig/fzuLogo.eps}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Elastic Scattering at LHC}
+
+\hbox{%
+\fig{4cm}{fig/lhc2.eps}\bref{cern web}%
+\hskip31mm\raise2.3cm
+\vbox{\advance\hsize-7.1cm
+\> Large Hadron Collider (LHC)\par
+\>> proton-proton collider at CERN\par
+\>> energies up to $14\un{TeV}$\par
+\>> first test this year, real start probably 2008\par
+}}
+
+\vfil
+\comment{do not say too much, just present it as an interesting topic}
+
+\hbox{%
+\fig{6.9cm}{fig/dsigma,isr.eps}\bref{isr}%
+\hskip2mm\raise5mm
+\vbox{\advance\hsize-7.1cm\parskip2mm
+\> Elastic Scattering\par
+\>> $p+p\rightarrow p+p$, i.e. the simplest process\par
+\>> still challenge for theory - QCD cannot be used in perturbative regime\par
+\>> do not know what to expect \Ar{} exciting\comment{history with ISR, new physics}\par
+\>> probes structure of proton in a complementary way to the large experiments (such as ATLAS, CMS, etc.) \comment{it rather sees the proton as a whole than a set of constituents}\par
+\>> clear signature process \Ar{} precise\break measurement\par
+}}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Total Cross-section}
+\parskip1mm
+
+\> The total pp cross-section is infinite (because of the Coulomb scattering).\par
+\> The total cross-section of pp collisions due to the strong interaction is finite.\comment{I'll mean always this in what follows}\par
+\> Important parameter of the strong interaction.
+
+\> Interesting for theory -- Froissart-Martin theorem \bref{froissart}:
+$$\lim_{E\to\infty} {\si_{\rm tot}(E)\over\log^2 E} < \infty$$\par
+\>> present data: the bound might be saturated, i.e. $\si_{\rm tot} \propto \log^2 E$ \ asymptotically\par
+\>> need for precise measurement in high energy region \comment{at the moment such a region was only accessible by cosmic ray experiments}
+
+%\centerline{\fig{5cm}{fig/sigma,tot.eps}\bref{islam2002}}
+\centerline{\fig{7.5cm}{fig/sigma,tot2.eps}\bref{deile,cudell}}
+
+\parskip0mm
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{TOTEM Experiment}
+\unskip
+\centerline{\rpvi (TOTal and Elastic Measurement)}
+\vskip\baselineskip
+
+\comment{smoothly come to its objectives, add the diffraction}
+\> objectives are measurement of\par
+\bitm
+\itm Total Cross-Section -- precise measurement (error $\approx 1\percent$)
+\itm Elastic Scattering in a wide kinematic range
+\itm Diffractive production
+\eitm
+\vskip\baselineskip
+
+\line{\hss\fig{15cm}{fig/diagrams.eps}\hss}
+
+\vskip\baselineskip
+\> Common property: particles in forward direction ($\eta > 3$) \Ar{} TOTEM needs special detectors.
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Inelastic Detectors}
+
+\centerline{\fig{10cm}{fig/t1,t2.eps}\bref{tdr,deileDesy}}
+\vskip\baselineskip
+\line{%
+\vbox{\divide\hsize2
+T1\hfil\break
+CSC, size $1-2\un{m}$\hfil\break
+\line{\fig{6.5cm}{fig/t1.eps}\bref{tdr}\hss}
+}\vbox{\divide\hsize2
+T2\hfil\break
+GEM, size $\sim 40\un{cm}$\hfil\break
+\line{\fig{6.1cm}{fig/t2.eps}\bref{deileDesy}\hss}
+}}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Forward Proton Detectors}
+
+\vskip-2mm
+\> need to register very forward protons \Ar{} the detectors must:\par
+\>> be far from the interaction point\comment{simple geometrical argument, position sensitive detectors}\par
+\>> be as close to beam as possible (Roman Pot mechanism)\comment{why}\par
+\vskip2mm
+
+\> system of Roman Pots\comment{2 stations per arm, 147 and 220m stations}\par
+\>> each station includes two substations ($4 \un{m}$ apart)\par
+\>> each substation has 2 vertical RP and one horizontal RP\par
+\>> each RP comprises 5+5 silicon strip detectors (pitch $66\un{\mu m}$) with perpendicular strips.\par
+\>> RP manufactured by Vacuum Praha (the first time a Czech company supplies parts of accelerator)
+
+\centerline{\figv{2.3cm}{fig/rp,ip.eps}\figv{2.3cm}{fig/substation.eps}}%
+\centerline{\figv{4cm}{fig/station.eps}\hfil\figv{4cm}{fig/rp.eps}\hfil\figv{4cm}{fig/overlap.eps}}
+\hbox{\bref{tdr,oriuonno}}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Kinematics of Elastic Scattering}
+
+\centerline{\fig{5cm}{fig/kinematics.eps}}
+
+\> In a given coordinate frame, one needs 3 parameters to describe an elastic scattering event.\par
+\vskip\baselineskip
+\> Usually, the azimuthal angle $\ph$ (angle around the beam axis in CM system) is used.\par
+\vskip\baselineskip
+\> For the remaining 2 parameters, there are two common choices:
+\bitm
+\itm Mandelstam's variables (capital $P$ denotes four-momentum)
+\eq{s = (P_1 + P_2)^2,\qquad t=(P_1' - P_1)^2}
+\vskip\baselineskip
+\itm CM system parameters ($\approx$ laboratory frame), $p$ denotes (three-)momentum of a proton
+\eq{p = \sqrt{s - 4m^2\over 2}\approx {s\over 2},\qquad t = -2p^2 (1-\cos\th)\approx - (p\,\th)^2}
+\eitm
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Proton Transport and Reconstruction of $t$}
+\line{%
+\raise3mm\hbox to5.6cm{\fig{5.5cm}{fig/effectiveLength.eps}}%
+\vbox{\advance\hsize-5.6cm\parskip2mm
+\> trajectory of a proton emitted from the interaction point (IP)\par
+\eqref{\pmatrix{x(z)\cr\th_x(z)\cr} = T_x(z)\,\pmatrix{x(\rm IP)\cr \th_x(\rm IP)\cr}}{transport}
+\vskip4mm
+\>> analogically for $y$ coordinate\par
+\>> $T$ given by magnet layout in the accelerator\par
+\>> important matrix elements are:\hfil\break
+magnification $T_{11}\equiv v_x$\hfil\break
+effective length $T_{12}\equiv L_x$\comment{the transport matrix depends on the energy of the proton too}\par
+}}
+
+\vfil
+\> positions of hits in detectors (in case of elastic scattering)\comment{symmetric optics}\hfil\break
+right arm: $\displaystyle x_r = +L_x \,\th_x({\rm IP}) + v_x\, x({\rm IP}),\qquad \th_x\equiv \th\cos\ph$\hfil\break
+left arm:\hskip4mm $\displaystyle x_l = -L_x \,\th_x({\rm IP}) + v_x\, x({\rm IP})$
+
+\vfil
+\> $t$-reconstruction
+\eqref{t = t_x + t_y = - (p\,\th\cos\ph)^2 - (p\,\th\sin\ph)^2 = -p^2 (\th_x^2 + \th_y^2)}{t reconstruction}
+\vskip2mm
+\eqref{\th_x = {x_{r} - x_{l}\over 2 L_x},\quad \th_y = {y_{r} - y_{l}\over 2 L_y}}{theta reconstruction}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Running Scenarios}
+
+\line{%
+\vbox{\advance\hsize-7.4cm
+\> Physical programme of TOTEM too rich for one regime of the LHC.\par
+\vskip\baselineskip
+\> Key optics\par
+\bitm
+\itm $\be^*=1540\un{m}$ - low $|t|$ elastic scattering, total cross-section
+$$L_y = 275\un{m},\qquad L_x = 100\un{m}$$
+\comment{this is the dedicated optics for extrapolation; vx terms almost zero, i.e. parallel-to-point focusing}%
+\vskip3mm
+\itm $\be^*=90\un{m}$ - diffractive processes, elastic scattering, total cross-section
+$$L_y = 265\un{m},\qquad L_x = 0\un{m}$$
+\em{$\th_x$ can NOT be measured}
+\comment{this is dedicated to diffraction, but still the extrapolation can be done}
+\vskip3mm
+\itm low $\be^*$ ($11\un{m}$, $2\un{m}$, $0.5\un{m}$) - diffractive processes, high $|t|$ elastic scattering
+\eitm
+}%
+\hskip3mm
+\raise-6mm\vbox{\fig{7cm}{fig/dsigma,models.eps}\hbox{\bref{deile}}}%
+}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Total Cross-Section Measurement}
+
+\line{%
+\vbox{\advance\hsize-6.7cm
+\> Luminosity Independent method\par
+\> based on the Optical Theorem (\bref{formanek qft})\par\vskip-2mm
+\eqref{\Im {\cal M^{\rm pp\rightarrow pp}}(t=0) \propto \si^{\rm pp}_{\rm tot}}{optical}
+\vskip1mm
+\> common notation\par\vskip-3mm
+$$\rh = {\Re {\cal M}(0)\over\Im {\cal M}(0)}$$
+\> definition of cross-section and luminosity\par
+$${\left.\d N\over\d t\right|_0} = {\cal L}{\left.\d \si\over\d t\right|_0} \propto {\cal L}\, |{\cal M}(0)|^2 \propto (1+\rh^2)\, {\cal L}\, \si_{\rm tot}^2 = $$
+\vskip2mm
+$$ = (1+\rh^2) (N_{\rm el} + N_{\rm inel}) \si_{\rm tot}$$\par
+%
+}\hskip6mm\raise3mm\vbox{\fig{6cm}{fig/rho.eps}\hbox to6cm{\hfil\bref{cudell}}}}
+
+
+\eqref{\si_{\rm tot} = {1\over 1+\rh^2} {{\d N/ \d t|_0}\over N_{\rm el} + N_{\rm inel}}, \qquad\qquad {\cal L} = (1+\rh^2)\, {(N_{\rm el} + N_{\rm inel})^2\over {\d N/ \d t|_0}}}{sigma tot}
+
+\> the inputs are:
+\halign{\hfil#\ \ &#\hfil\cr
+$\rho$			& either can be measured or prediction is used\cr
+$\d N/\d t|_0$	& extrapolated from the measured differential rate\cr
+$N_{\rm el}$	& elastic rate = integral form the measured differential rate\cr
+$N_{\rm inel}$	& inelastic rate measured by T1 and T2\cr
+}
+
+\> advantages\par
+\>> (quite large) uncertainty of luminosity does not influence the result\par
+\>> luminosity is determined simultaneously and independently\par
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Exponential Extrapolation}
+
+\vfil
+\line{%
+\fig{6cm}{fig/sigmaelastic.eps}\hskip2mm
+\vbox{\advance\hsize-6.3cm
+\> extrapolation \Ar a parameterisation is needed\par
+\vskip\baselineskip
+\> in the range $0 \leq |t| \leq 0.35\un{GeV^2}$ the differential cross-section exhibits almost purely exponential fall off\par
+\vskip\baselineskip
+\> convenient parameterization is
+\eqref{{\d\si\over\d t} = |T(s, t)|^2,\qquad T(s, t) = e^{i P(t)}\, e^{M(t)}}{parameterisation}
+\vskip1mm
+$$\hbox{where } P(t) \hbox{ and } M(t) \hbox{ are polynomials}$$\par
+}}
+\vfil
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Inclusion of Coulomb Scattering}
+
+\parskip0pt plus1fil
+\> pp elastic scattering = strong (hadronic) + electro-magnetic force (Coulomb) interaction
+
+\> interested in hadronic total cross-section only \comment{the one of Coulomb interaction is infinite}
+
+\> A question: given an amplitude for hadronic scattering $T_H$, what is the complete amplitude $T_{H+C}$ describing hadronic+Coulomb interaction?
+
+\> $T_{H+C}(t) \neq T_H(t) + T_C(t)$
+
+\> 2 approaches: based on Feynman diagrams (\bref{wy}) or based on Eikonal representation (\bref{cahn,kundrat}). However, none gives clear solution in full generality.
+
+\> The best solution on market (\bref{kundrat}):\par
+\line{\hss
+\fig{6.3cm}{fig/interference.eps}\comment{comment the curves,the gap between red and blue c. is rho sensitive}%
+\vbox{\advance\hsize-5cm
+$$\eqalign{
+T^{C+H}(s, t) &= \mp {\alpha s\over t}\,F_C^2(t)\ +\ T^H(s, t) \left[1 \pm i \alpha (A + B) \right]\cr
+A &= \int\limits_{t_{min}}^0 \!\!\d t'\ \log{t'\over t}\ {\d F_C^2(t')\over \d t}\,I(t, t')\cr
+B &= \int\limits_{t_{min}}^0 \!\!\d t'\ \left({T^H(s, t')\over T^H(s, t)}  - 1\right)\,I(t, t')\cr
+I(t, t') &= {1\over 2\pi} \int\limits_0^{2\pi} \d\ph {F_C^2(t'')\over t''}\cr
+}\eqnoref{ckl}$$
+}\hss}
+\vskip\parskip
+
+\> \Eq{parameterisation,ckl} define a model for fitting experimental data
+
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Errors, errors and errors}
+
+\line{%
+\vbox{\advance\hsize-5.2cm
+\> bin content fluctuations - negligible\par
+\> points placement - negligible (narrow bins)\par
+\vskip\baselineskip
+\> measured $t$ differs from the actual one\par
+\bitm
+\itm \em{beam divergence}, \em{crossing-angle}: the collision is not precisely head-to-head, protons scattered at $t=0$ do not propagate parallely to the beam axis
+\itm \em{energy smearing}: the energy of colliding protons is not the nominal ($14\un{TeV}$)
+\eitm
+}\hskip2mm\fig{49mm}{fig/simulation.eps}\comment{show the smearing at t=0}%
+}
+\bitm\itc=2
+\itm error in \em{effective length}: measurement precision $\approx 2\%$
+\itm \em{strip pitch}: the pitch of dectors is $66\un{\mu m}$ which defines spacial resolution
+\itm \em{alignment} errors: misalignments between single detectors, misalignment of the detector system with respect to the beam 
+\eitm
+\vfil
+
+\line{%
+\fig{5cm}{fig/smearing.eps}\hskip4mm
+\raise5mm\vbox{\advance\hsize-55mm
+\> errors in $t$
+
+\>> constant shift: $\De t$ function of $t$ only
+
+\>> smearing: $\De t$ depends on $\ph$ too
+
+\vskip\baselineskip
+\> antismearing correction\par
+\>> an iterative attempt to reduce impact of smearing\par
+}}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Complication at $\mathbf{\be^*}$ = 90 m: only $t_y$ is measured}
+
+\line{%
+\raise10mm\vbox{\advance\hsize-6.5cm
+\> $L_x = 0\un{m}$ \Ar{} only $t_y$ can be reconstructed \Ar{} $\d\si/\d {t_y}$ measured instead of $\d\si/\d t$\comment{emphasize the ty x t difference}\par
+\vskip8mm
+\> transformation between p.d.fs. of random variables $t,\ph$ and $t_y,\ph$\par
+$$t_y(t, \ph) = t\sin^2 \ph \Rightarrow$$
+\eqref{\Rightarrow\quad{\d\si\over\d t_y}(t_y) = {2\over\pi} \int\limits_{0}^{\pi/2} {\d\ph\over\sin^2\ph}\ \ {\d\si\over\d t}\!\left(t_y\over\sin^2\ph\right)}{ty}\par
+%
+}\hskip5mm\fig{5.95cm}{fig/autoconvolution.eps}}
+
+\> inverse transformation (consequence of azimuthal symmetry)
+\eqref{t = t_x + t_y,\qquad t_x = t\cos^2\ph,\quad t_y=t\sin^2\ph}{t decomposition}
+\eqref{{\d\si\over\d t_y} = {\d\si\over\d t_x} \quad \Rightarrow \quad {\d\si\over\d t}(t) \propto \int\limits_t^0 \d u\, {\d\si\over\d t_y}(u)\, {\d\si\over\d t_y}(t - u)}{autoconvolution}\par
+\>> can be well adapted for discrete case of histograms\par
+\vskip3mm
+\>> cannot be used because \em{information from low $|t_y|$ region is missing}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Complication at $\mathbf{\be^*}$ = 90 m: a way out}
+\parskip3mm
+
+\> The effects of Coulomb interference are small at this optics.
+
+\> The parameterization of the full cross-section is
+$${\d\si\over\d t} = \exp(a + bt + ct^2 + \ldots)$$
+
+\> if only $a$ and $b$ are non-zero: \Eq{ty} gives us
+$${\d\si\over\d t}(t) = e^{a\, +\, bt}  \qquad\Rightarrow\qquad  {\d\si\over\d t_y}(t_y) = {1\over\sqrt{\pi}}\, {e^{a\, +\, bt_y}\over\sqrt{|b\,t_y|}}$$
+
+\> if $c$ and higher coefficients do not contribute essentially (the actual situation): one may use the formula for the general case
+$${\d\si\over\d t}(t) = e^{a\, +\, bt\, +\, ct^2\, +\, \ldots}  \qquad\Rightarrow\qquad  {\d\si\over\d t_y}(t_y) \approx {1\over\sqrt{\pi}}\, {e^{a\, +\, bt_y\, +\, ct_y^2\, +\, \ldots}\over\sqrt{|b\,t_y|}}$$
+
+\parskip0mm
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Testing\&Tuning the Procedures}
+
+\> test chain (contains a lot of C++)
+\bitm
+\itm MC generator based on a model of elastic scattering (5+1 models)
+\itm adding errors: vertex position, beam divergence, crossing-angle
+\itm transport of protons from IP to the detectors (using non-perfect optical functions)
+\itm simulation of proton-detector interaction, digitization, tracking ...  (resulting in hit coordinates)
+\itm reconstruction of $t$ or $t_y$ and building histogram of differential cross-section
+\itm application of the fitting procedure
+\itm comparison of the extrapolated value with the model
+\eitm
+
+\parskip1mm
+\> important parameters\par
+\>> upper/lower bound of fit, size of bins\par
+\>> grades of polynomials in the fitting model (for modulus and for phase)\par
+\>> number of anti-smearing iterations\par
+\>> the way of Coulomb separation\par
+
+\vskip\baselineskip
+\> the goal - to find optimal parameters which minimize extrapolation deviations for all models used
+
+\parskip0mm
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Sample Results (I)}
+
+Preliminary results for the $\be^* = 90 m$ optics. Fitting performed with model
+$${\d\si\over\d t} = \exp(a + bt + ct^2 + dt^3)$$
+in $|t_y|$ range form the indicated lower bound to $0.25\un{GeV^2}$. The natural binning given by strip pitch was used.
+\vskip\baselineskip
+
+\line{\hfil\figv{6.5cm}{fig/extrapolationDeviation.eps}\hfil\figv{6.5cm}{fig/extrapolationUncertainty.eps}\hfil}
+
+\comment{Band of models, Islam sticking out. General offset -2 percent}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Sample Results (II)}
+\parskip2mm
+
+\> uncertainties\par
+
+\>> $\rh$: prediction used (\bref{cudell}), relative error $4.3\%$, error of term $1/(1+\rh^2)$ approx. $0.16\%$
+
+\>> $\d N/\d t|_0$: relative error $< 5\%$
+
+\>> $N_{\rm el}$: high correlation with $\d N/\d t|_0$ \Ar{} partial error cancellation
+
+\>> $N_{\rm inel}$: relative error $1\%$
+
+\> error propagation
+$$\si_{\rm tot} = {1\over 1+\rh^2} {{\d N/ \d t|_0}\over N_{\rm el} + N_{\rm inel}}$$
+
+\>> $\si_{\rm tot}$: relative error $\approx 4.5\%$, i.e. error $\approx 5\un{mb}$
+
+\parskip0mm
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}\vfil
+\title{Thanks for attention.}
+\vskip\baselineskip
+\title{Any questions?}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{References}
+\def\bc{, }
+\baselineskip=15pt
+\setbox\strutbox=\hbox{\vrule height8pt depth3pt width0pt}
+\PrintReferences{ref.bib}
+
+\end

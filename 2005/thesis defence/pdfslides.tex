@@ -1,0 +1,43 @@
+% ============================================== fonts ===================================================
+\font\rPviii	= pplr8z at 8pt
+
+% ======================================== pdf color management ==========================================
+\def\PdfColor#1{\pdfliteral{#1 k}}
+\def\PdfRuleColor#1{\pdfliteral{#1 K}}
+\def\White{\PdfColor{0 0 0 0}}
+
+% ============================================ page layout ===============================================
+\hsize=120mm	\pdfpagewidth=\hsize	\hoffset=10mm	\advance\hsize by -2\hoffset	\advance\hoffset by -1in
+\vsize=90mm		\pdfpageheight=\vsize	\voffset=10mm	\advance\vsize by -2\voffset	\advance\voffset by -1in
+\topskip=0pt
+
+\baselineskip=12pt
+
+\parindent=0pt
+\abovedisplayskip=0pt
+\abovedisplayshortskip=0pt
+\belowdisplayskip=0pt
+\belowdisplayshortskip=0pt
+\footline={}
+\parskip=\baselineskip
+\def\makeheadline{   \hbox to0pt{\hskip -1in \hskip -\hoffset \vbox to0pt{\vglue-1in \vskip -\voffset\offinterlineskip   \pdfximage{bg2.jpg}\pdfrefximage\pdflastximage   \vss}\hss}   }
+
+
+% ========================================== structure macros ============================================
+\def\title#1{\centerline{\bPxii\PdfColor{0.1 0 1 0}#1}\White\vskip\baselineskip}
+\def\Title#1{\centerline{\bPxii\PdfColor{0.5 0 0.5 0}#1}\White\vskip\baselineskip}
+\def\newpage{\vfil\eject%
+				\White%						to make text white
+				\PdfRuleColor{0 0 0 0}% 	to make thin rules white
+				}
+
+\def\>#1\par{\line{\hbox to3mm{$\bullet$\hfil}\vtop{\advance\hsize-3mm\noindent\strut #1\strut}}}
+
+% ============================================= figures ==================================================
+\def\fig#1#2{\PdfRuleColor{0 0 0 1}%
+				\vbox{\hbox{\pdfximage #1{#2}\pdfrefximage\pdflastximage \vrule}\hrule}%
+				\PdfRuleColor{0 0 0 0}}
+
+% ================================================ presets ===============================================
+\White\PdfRuleColor{0 0 0 0}
+\SmallerFonts

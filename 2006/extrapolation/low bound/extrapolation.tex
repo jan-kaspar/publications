@@ -1,0 +1,30 @@
+\input /home/jkaspar/tex/kaspiTeX/base
+\input /home/jkaspar/tex/kaspiTeX/article
+\input /home/jkaspar/tex/kaspiTeX/biblio
+
+\Reftrue
+
+\parindent=0pt
+\parskip=3pt plus5pt
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\BeginText
+In paper \bref{extrapolation} we studied dependency of extrapolation deviation on several parameters. Here, we vary $|t_{min}|$ parameter which was fixed in the referred paper. Values of the other parameters are the best values we have found, see Tabs. 3, 5 and 7 in \bref{extrapolation}.
+
+\bmfig[Extrapolation at $\be^* = 1535\un{m}$ optics with reduced emittance. Black curves represent fits with parameters of variant 1, red 2 and blue 3 from Tabs. 3 and 5 in the cited paper.]
+\fig*[7cm]{eps/1535,a.eps}{}{}{}{$\d\si/\d t\,|_{0\un{GeV^2}}$ extrapolation}{}
+\fig*[7cm]{eps/1535p,a.eps}{}{}{}{$\rho$ extrapolation}{}
+\emfig
+
+\fig*[7cm]{eps/90,a.eps}{}{[]$\d\si/\d t\,|_{0\un{GeV^2}}$ extrapolation at $\be^* = 90\un{m}$ optics with nominal emittance. Black line corresponds to variant 1 while red to variant 2 from Tab. 7 in \bref{extrapolation}.}{}{}{}
+
+
+\references
+\def\bc{, }
+\PrintReferences{references.bib}
+
+
+\EndText
+\end

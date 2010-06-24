@@ -1,0 +1,617 @@
+\input base
+\input colors
+\input biblio
+\input book
+
+\input references.tex
+
+\let\BiggerFonts\SetFontSizesXII
+\let\NormalFonts\SetFontSizesX
+\let\SmallerFonts\SetFontSizesVIII
+
+\NormalFonts
+
+\ParIndent=5mm
+
+\Reftrue
+\Toctrue
+
+% to show labels
+\ShowLabelstrue \advance\hoffset-1cm
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\centerline{\fPbxiv Charles University in Prague}
+\centerline{\fPbxiv Faculty of Mathematics and Physics}
+\vskip2	cm
+\centerline{\fPbxx PhD THESIS}
+\vskip1cm
+\centerline{\IncludeSizedGraphics{5cm}{fig/mffLogo.pdf}}
+%\vskip5cm
+\vskip3cm
+\centerline{\fPbxiv Jan Ka\v spar}
+\vskip1cm
+\centerline{\fPbxx Title to be defined}
+\vskip2cm
+\centerline{\fPbxiv Institute of Particle and Nuclear Physics}
+\ialign to\hsize{\tabskip 0pt plus1fil\strut #&\hfil\fPbxiv #\ \tabskip0pt&\fPbxiv #\hfil\tabskip 0pt plus1fil\cr
+&Supervisors:&		RNDr. Vojt\v ech Kundr\' at, DrSc.\cr
+&&					Mario Deile, PhD\cr
+&Field of study:&	Physics, Nuclear and Particle Physics\cr}
+
+\vfil\eject\forceoddpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\InsertToc
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\BeginText
+
+\chapter{Introduction}
+
+\> General introduction
+\> {\bf motivation} for what I study.
+
+\section{LHC}
+
+\> LHC and proton trasport
+\>> the matrix equations, ref to Hubert?
+\>> more precise tools, MAD and ?
+\>> parameterization, ref to Hubert
+\>> linearized parameterization
+\>> concept of optics
+
+\>> smearing
+
+\section{TOTEM}
+
+\> Description of TOTEM detectors
+
+\section{Theoretical concepts}
+
+\> def of cross-section, t, xi
+\>> precise formulae
+
+\> optical theorem
+\>> neglecting spins - several amplitudes, how to treat them in the optical theorem - Formanek
+
+\> symmetries
+\>> azimuthal symmetry? Question of Formanek
+
+%----------------------------------------------------------------------------------------------------
+
+\chapter{Elastic scattering of protons}
+
+\> add also double pomeron exchange or SD?
+
+\section{Models of elastic scattering}
+
+\subsection{The model of Islam et al.}
+
+\bref{Islam2004,Islam2007,IslamReview}
+
+\> the structure of proton is very important for low $|t|$ el. scat
+\> just putting several ideas together
+
+\subsection{The model of Petrov, Predazzi and Prokudin}
+
+\bref{ppp}
+
+\subsection{The model of Bourrely, Soffer and Wu}
+
+\bref{bsw}
+
+\subsection{The model of Block and Halzen}
+
+\bref{bh}
+
+\section{Coulomb interference}
+
+\section{Predictions for the LHC}
+
+%----------------------------------------------------------------------------------------------------
+
+\chapter{Simulation and analysis methods}
+
+\section{Principle of the experiment}
+
+\subsection[rp measurement]{Relation between RP measurements and a proton}
+
+A collision takes place (the vertex is) in
+\eqref{(x^*, y^*, z^*)^\T}{IP vertex}
+and a proton is created. The proton has energy $E=\sqrt{p^2 + m^2}$ and momentum components
+\eqref{\vec p = p \pmatrix{\sin\th \cos\ph\cr \sin\th\sin\ph \cr \cos\th} = 
+p \pmatrix{\th_x\cr \th_y\cr \sqrt{1 - \th_x^2 - \th_y^2}}}{IP proton momentum}
+
+\fig{fig/pdf/protonTransport.pdf}{protonTransport}{Proton transport.}
+
+Then, the proton is transported by the lattice of the LHC magnets to the detector area (say to $z = z_0$). The transport is schematically depicted in \Fg{protonTransport}. As there are no magnets in the detector area, from $z_0$ on, the proton follows a straight trajectory which might be described as
+\eqref{\pmatrix{x\cr y\cr z} = \pmatrix{a_x\cr a_y\cr 1} z + \pmatrix{b_x\cr b_y\cr 0}}{local track}
+
+So far, the coordinates have been described in the global $xyz$ coordinate system. For deriving (the expected measurement value), it is useful to use a local coordinate frame $x_l y_l z_l$. This coordinate system has its origin in the center of the detector. Its $x_l$ and $y_l$ axes parallel to the detector surface and its $z_l$ axis perpendicular to the surface. The global to local transformation can be written
+\eqref{\pmatrix{x_l\cr y_l\cr z_l} = \mat R \left[ \pmatrix{x\cr y\cr z}  - \pmatrix{c_x\cr c_y\cr c_z}  \right] \ ,}{global to local}
+where the $\vec c$ vector stands for the detector's center position in the global coordinates.
+
+The measurement $m$ is then given by projection of the local surface coordinates $x_l$ and $y_l$ to the readout direction $\vec d$
+\eqref{m = \hbox{ROUND}\left( (d_x, d_y) \pmatrix{x_l\cr y_l} \right)}{full measurement}
+The vector $\vec d = (d_x, d_y)^\T$ is the readout direction (perpendicular to strips). The ``ROUND'' comprises charge sharing effects etc.
+
+The rotation $\mat R$ can be parameterized as
+\eqref{\mat R =
+\pmatrix{
+\cos\rh_z  & \sin\rh_z & 0\cr
+-\sin\rh_z & \cos\rh_z & 0\cr
+0		   & 0         & 1\cr
+}
+\pmatrix{
+\cos\rh_y  & 0 & \sin\rh_y\cr
+0		   & 1 &          \cr
+-\sin\rh_y & 0 & \cos\rh_y\cr
+}
+\pmatrix{
+1 & 0		   & 0        \cr
+0 & \cos\rh_x  & \sin\rh_x\cr
+0 & -\sin\rh_x & \cos\rh_x\cr
+}
+}{rotation parameterization}
+
+TODO The rotation $\mat R$ only describes the misalignment rotations. As follows from the \Sc{expected misalignments}, the estimate for such rotations is of the order $1\un{mrad}$. For such angles, it is possible to use the following approximation
+\eqref{\cos\rh \approx 1,\qquad \sin\rh \approx \rh\ .}{small rotation approximation}
+Furthermore, terms as $\sin\rh_x \sin\rh_y$ can be neglected to $\sin\rh_x$. Therefore, the rotation $\mat R$ can be approximated by
+\eqref{\mat R \approx \pmatrix{
+1 & \rh_z & \rh_y\cr
+-\rh_z & 1 & \rh_x\cr
+-\rh_y & -\rh_x & 1\cr
+}}{rotation parameterization approximated}
+
+TODO: keep $\rh_z$ without the limit
+
+Now, lets find the point where the track \Eq{local track} hits the detector. This is the point on the track with $z_l = 0$. Inserting \Eq{local track} to \Eq{global to local}, one can find that the condition is fulfilled for 
+\eqref{z = z_i \equiv - { - c_z - \rh_y (b_x - c_x) - \rh_x (b_y - c_y) \over 1 - \rh_y a_x - \rh_x a_y} \ .}{z i}
+Now, lets make order estimate for the terms in the expression for $z_i$.\hfil\break
+\eqref{\eqnarray{
+c_z &\sim& 1\un{m} \cr
+\rh_{x,y} &\sim& 10^{-3}\un{rad} \cr
+(b - c)_{x, y} &\sim& 10^{-2}\un{m} \cr
+a_{x, y} &\sim& 10^{-2}\un{rad} \cr
+}}{z i order estimates}
+
+With these estimates, one can conclude
+\eqref{z_i = c_z + \O{10^{-5}\un{m}}\ .}{z i approximated}
+
+With the help of \Eq{global to local}, one can calculate the ``on-surface'' coordinates $x_l$ and $y_l$, for example
+\eqref{x_l = 
+\underbrace{a_x z_i}_{10^{-2}\un{m}}
++ \underbrace{b_x - c_x}_{10^{-2}\un{m}} 
++ \underbrace{\rh_z}_{10^{-3}} (\underbrace{a_y z_i}_{10^{-2}\un{m}} + \underbrace{b_y - c_y}_{10^{-2}\un{m}})
++ \underbrace{\rh_y}_{10^{-3}} \underbrace{(z_i - c_z)}_{10^{-5}\un{m}}
+\ .}{xlyl i}
+Keeping only the important terms
+\eqref{\pmatrix{x_l\cr y_l} = \pmatrix{1 & \rh_z\cr -\rh_z & 1}
+\left[
+\pmatrix{a_x\cr a_y} c_z + \vec b - \vec c
+\right] + \O{10^{-8}\un{m}}\ .
+}{xlyl i approximated}
+
+\section{Simulation and analysis chain}
+
+\fig[15cm]{fig/pdf/offline_sw_structure.pdf}{offline sw structure}{The structure of the TOTEM Offline software.}
+
+\> briefly comment on all steps
+\> details only for those I worked on
+
+\subsection{Beam smearing simulation}
+
+\subsection{Pattern recognition}
+
+\subsection{Reconstruction of elastic events}
+
+
+%----------------------------------------------------------------------------------------------------
+
+\chapter[alignment]{Alignment of Roman Pots}
+
+\> Methods overview (plus experience from other experiments)
+
+\section[expected misalignments]{Expected misalignments}
+
+\noindent\em{Internal misalignments} arise from finite precision of fixing the detectors within a package. The precision is estimated to be
+\eqref{20\un{\mu m}\ .}{internal misalignment shift}
+This also gives estimate about the rotation
+\eqref{\De\rh \approx {2\cdot 20\un{\mu m}\over 4\un{cm}} = 1\un{mrad}\ .}{internal misalignment rotation}
+
+\noindent\em{Errors in RP positions}
+\> z shifts
+\> errors in RP motor control $~20\un{\mu m}$
+\> RP frame deformation ???
+
+\noindent\em{Errors in optical functions} are also sort of misalignments -- global alignment
+
+\htab{expected misalignments}{Expected misalignments orders. TODO}{\bln
+	& \hbox{within RP package} & \hbox{Roman Pot} \cr\bln
+\hbox{transverse shift} \un{\mu m}& & \cr\ln
+\hbox{shift in }z & & \cr\ln
+\hbox{rotation around }z & & \cr\bln
+}
+
+\section{What misalignments are relevant?}
+
+As it follows from \Sc{rp measurement}, only the rotation around $z$ axis is relevant.
+
+\section{Track--based alignment}
+
+In \Sc{rp measurement}, the relation between a proton kinematics and RP detector measurement has been derived -- see \Eq{xlyl i approximated}. In principle, all geometry parameters (the situation is depicted in \Fg{detector geometry}) may be subjects to misalignments. Using primes (no primes) for misaligned (ideal) quantities, this might be described as
+\eqref{\eqnarray{
+z' &=& z + \De z\cr
+\vec c' &=& \vec c + \De\vec c\cr
+}}{misalignment definition}
+(The z component of the $\vec c$ vector will be denoted simply as $z$ from now on, while $\vec c$ will refer to the two-component vector $(c_x, c_y)^\T$). The $\rh_z$ already refers to misalignment. In this regard, we will change the notation
+\eqref{\rh_z \rightarrow \De\rh}{misalignment definition 2}
+(the $z$ subscript will be dropped as it is the only rotation in our picture from now on).
+
+With the new notation, one can write
+\eqref{
+\vec d^\T \pmatrix{1 & \De\rh\cr -\De\rh & 1} =
+\vec d + \De\rh \underbrace{\pmatrix{-d_y\cr d_x}}_{\vec d_\perp}\ .
+}{d perp definition}
+
+\fig{fig/pdf/detector_geometry.pdf}{detector geometry}{The detector geometry. A sample hit is drawn as the blue dot, the corresponding measurement is visualized as the thick solid blue line.}
+
+To summarize, the measurement of the $n$-th event in the $i$-th detector is
+\eqref{
+m_i^n = (\vec d_i + \De\rh_i\,\vec d_{\perp i})^\T \left[\vec a^n (z_i + \De z_i) + \vec b^n - (\vec c_i + \De\vec c_i)\right] + \De m_i^n\ ,
+}{n i measurement}
+where the last term includes the errors introduced by various approximations and by neglecting the ``rounding'' step. It will be treated as an error in what follows. One can rearrange the terms in the last equation
+\eqref{\eqnarray{
+\mu_i^n \equiv m_i^n - \vec d^\T \vec c = & &\cr
+& +\vec d_i^\T (\vec a^n z_i + \vec b^n)&\qquad 10^{-2}\un{m}\cr
+& -\vec d_i^\T \De\vec c_i&\qquad 10^{-5}\un{m}\cr
+& +\vec d_i^\T \vec a^n \De z_i&\qquad 10^{-??}\un{m} \cr
+& +\De \rh_i\ \vec d_{\perp i}^\T (\vec a^n z_i + \vec b^n - \vec c_i) &\qquad 10^{-5}\un{m} \cr
+& +\De \rh_i\ \vec d_{\perp i}^\T (\vec a^n \De z_i - \De\vec c_i) &\qquad 10^{-8}\un{m} \cr
+}}{effective measurement}
+The order estimates on the \rhs{} follow from \Tb{expected misalignments} and \Eq{z i order estimates}. It is clear that the last term can be neglected with respect to the others and hence we will do so. It is very advantageous since this is the only term non-linear in misalignments. 
+
+The first term on the \rhs{} of \Eq{effective measurement} accounts for the measurement of a track by a perfectly aligned detector, the other terms then constitute alignment corrections. Since these corrections are linear in misalignments, one can write
+\eqref{\mu_i^n =
+\underbrace{\vec d_i^\T (\vec a^n z_i + \vec b^n)}_{\hbox{track}}
++
+\underbrace{\sum_j \ga_{j, i}^n \ch_{j, i}}_{\hbox{alignment corrections}}
+\ ,}{effective measurement 2}
+introducing symbol $\ch_{j, i}$ for any misalignment. The mapping between the index $j$ and misalignment type can be found in \Tb{alignment quantities}.
+
+\htab{alignment quantities}{Alignment quantities and their coefficients.}{\bln
+j & \hbox{quantity} & \ch_{j, i}					& \ga_{j, i}^n\cr\bln
+1 & \hbox{shift in read-out direction} & \De s_i \equiv \vec d_i^\T \De\vec c_i		& -1\cr\ln
+2 & \hbox{shift in }z & \De z_i						& \vec d_i^\T \vec a^n  \cr\ln
+3 & \hbox{rotation around}z & \De\rh_i					& \vec d_{\perp i}^\T (\vec a^n z_i + \vec b^n - \vec c_i)\cr\bln
+}
+
+\Eq{effective measurement 2} can written for all events in a compact form using matrix formalism. Let's put all measurements to a vector
+\eqref{\vec M = (\mu^1_1 \ldots, \mu^2_1, \ldots)^\T\ .}{vector M}
+The vector of parameters $\vec P$ has two parts, first the track parameters for all events, second the alignment parameters for all detectors
+\eqref{\vec P = (a_x^1, a_y^1, b_x^1, b_y^1, a_x^2, \ldots || \ch_{1, 1}\ldots \ch_{1, D}, \ch_{2, 1}\dots \ch_{2, D}, \ldots)^\T}{vector P}
+Then, \Eq{effective measurement 2} reads
+\eqref{\vec M = \mat A \vec P\ ,}{effective measurement all}
+where
+\eqref{\mat A = \pmatrix{
+\al^1 & 		&		&\vrule	&\Ga_1^1	&\cdots	&\Ga_G^1	\cr
+	& \al^2	&		&\vrule	&\vdots		&		&\vdots		\cr
+	&		& \ddots&\vrule	&\Ga_1^N	&\cdots	&\Ga_G^N	\cr
+}}{mat A}
+and
+\eqref{\mat \al^n = \pmatrix{
+\vdots & \vdots & \vdots & \vdots \cr
+d_{ix} z_i & d_{iy} z_i & d_{ix} & d_{iy} \cr
+\vdots & \vdots & \vdots & \vdots \cr
+}, \quad \hbox{for all detectors involved in }n\hbox{-th event}}{mat alpha}
+and
+\eqref{\Ga_i^n = {\rm diag}\,\left(\ga_{i, 1}^n, \ldots, \ga_{i, D}^n \right)\ .}{mat Gamma}
+TODO: Gamma is of dimension Dn x D !!!
+
+TODO: $N$ events, $D$ detectors, $D_n$ detectors active in $n$-th event, $G$ misalignment classes, $\vec\mu^n = (\mu^n_1, \ldots, \mu_{D_n}^n)^\T$
+
+\eqref{\vec\mu^n =
+\underbrace{\mat\al^n \vec\ta}_{\hbox{track}}
++
+\underbrace{\sum_j \mat\Ga_j^n \vec \ch_j}_{\hbox{misalignments}}
+\ ,}{todo1}
+
+\eqref{\vec P = (\vec\ta^1, \vec\ta^2, \ldots || \vec\ch_1, \vec\ch_2, \ldots)^\T}{todo2}
+
+
+
+\subsection{Simultaneous fit of track and alignment parameters}
+
+This idea was first implemented in Millepede (see \bref{millepede}). Here we use different notation as this work as been done independently.
+
+Now we would like to estimate parameters $\vec P$ based on the measurements $\vec M$. For that, we can use the Least Squares method (TODO), which gives the following prediction:
+\eqref{\hat\vec P = (\mat A^\T \mat A)^{-1} \mat A^\T\,\vec M\.}{P estimate exact}
+(The hat is to emphasize it is an estimate.) However, the $\mat\Ga$ matrices (contained in $\mat A$ matrix) include track parameters which are unknown at the fit time. Instead, one can use track parameter estimates obtained via model where all misalignments are neglected. This is basically using $\mat \al^n$ as fit matrix for data $\vec \mu^n$. Let's denote gamma and A matrices obtained in this way as $\hat\mat\Ga$ and $\hat\mat A$. One can then use
+\eqref{\hat\vec P = (\hat\mat A^\T \hat\mat A)^{-1} \hat\mat A^\T\,\vec M\ .}{P estimate}
+
+The \rhs expression will be evaluated now bit by bit, keeping in mind one is mainly interested in the $\ch$ parameters (i.e. the bottom part of $\hat\vec P$ vector).
+\eqref{\mat A^\T \mat A = \pmatrix{
+{\mat\al^1}^\T \mat\al^1	&		&						&\vrule	&{\mat\al^1}^\T\mat\Ga_1^1	&\cdots	&{\mat\al^1}^\T\mat\Ga_G^1	\cr
+					&\ddots	&						&\vrule	&\vdots					&		&\vdots					\cr
+					&		&{\mat\al^N}^\T \mat\al^N		&\vrule	&{\mat\al^N}^\T\mat\Ga_1^N	&\cdots	&{\mat\al^N}^\T\mat\Ga_G^N	\cr
+\noalign{\hrule}
+{\mat\Ga_1^1}^\T \mat\al	&\cdots	&{\mat\Ga_1^N}^\T \mat\al	&\vrule	&\sum_n {\Ga_1^n}^\T \Ga_1^n	&\cdots	&\sum_n {\Ga_1^n}^\T\Ga_G^n	\cr
+\vdots				&		&\vdots					&\vrule	&\vdots					&		&\vdots					\cr
+{\mat\Ga_G^1}^\T \mat\al	&\cdots	&{\mat\Ga_G^N}^\T \mat\al	&\vrule	&\sum_n {\Ga_G^n}^\T\Ga_1^n	&\cdots	&\sum_n {\Ga_G^n}^\T\Ga_G^n	\cr
+}\ .}{mat ATA}
+This matrix can be inverted (TODO provided ... ) with the use of the following identity for block matrices (taken from \bref{wikipedia} keyword \em{matrix inverse}):
+\eqref{\pmatrix{
+\mat A	&\strut\vrule	&\mat B	\cr
+\noalign{\hrule}
+\mat C	&\strut\vrule	&\mat D\cr
+}^{-1} = \pmatrix{
+\ldots							&\strut\vrule	&\ldots\cr
+\noalign{\hrule}
+-\mat S^{-1}\mat C\mat A^{-1}	&\strut\vrule	& \mat S^{-1}\cr
+},\qquad \mat S = \mat D - \mat C\mat A^{-1}\mat B\ .}{BlockInverse}
+(The upper row was skipped as it will not be needed to estimate global parameters.) After some algebra manipulations, matrix $\mat S$ can be written
+\eqref{\mat S = \pmatrix{
+\sum_n {\Ga_1^n}^\T \mat\si^n \mat \Ga_1^n	&\cdots	&\sum_n {\Ga_1^n}^\T \mat\si^n \mat \Ga_G^n	\cr
+\vdots								&		&\vdots									\cr
+\sum_n {\Ga_G^n}^\T \mat\si^n \mat \Ga_1^n	&\cdots	&\sum_n {\Ga_G^n}^\T \mat\si^n \mat \Ga_G^n	\cr
+},\qquad \mat\si^n = 1 - \mat\al^n({\mat\al^n}^\T\mat\al^n)^{-1}{\mat\al^n}^\T\ .}{mat S}
+
+The second bit needed for \Eq{P estimate} is
+\eqref{\mat A^\T\,\vec M = \pmatrix{
+{\mat\al^n}^\T\,\vec \mu^1\cr
+\vdots\cr
+{\mat\al^n}^\T\,\vec \mu^N\strut\cr
+\ln
+\sum_n\mat{\Ga_1^n}^\T\, \vec \mu^n\vrule width0pt height15pt\cr
+\vdots\cr
+\sum_n\mat{\Ga_G^n}^\T\, \vec \mu^n\cr
+}\ .}{vec ATm}
+Finally, the $\ch$ parameters (the bottom part of $\hat\vec P$ vector) can be determined from
+\eqref{\hat\vec\ch = \mat S^{-1}\,\pmatrix{
+\sum_n {\mat\Ga_1^n}^\T\mat\,\mat\si^n\,\vec \mu^n\cr
+\vdots\cr
+\sum_n {\mat\Ga_G^n}^\T\mat\,\mat\si^n\,\vec \mu^n\cr
+}\ .}{chi estimate}
+
+$\mat\si^n\,\vec \mu^n$ is the vector of one-track-fit residuals for the $n$-track. Therefore we will adopt notation
+\eqref{\vec R^n = \mat\si^n\,\vec \mu^n}{vec R}
+
+As $\mat\si^n$ is singular (and so $\mat S$ might be TODO), one had better write
+\eqref{\mat S\, \hat\vec\ch = \pmatrix{
+\sum_n {\mat\Ga_1^n}^\T\mat\,\vec R^n\cr
+\vdots\cr
+\sum_n {\mat\Ga_G^n}^\T\mat\,\vec R^n\cr
+}\ .}{fit equation}
+
+
+\subsection{Justification of the alignment equation}
+
+As we will show in the following the $\mat S$ matrix is singular and therefore the identity \Eq{BlockInverse} cannot be used. Thus, it is important to justify the validity of the final result \Eq{fit equation}. In fact this is rather trivial; by plugging \Eq{vec R,todo1} to the \rhs{} of \Eq{fit equation}.
+
+\subsection{Constraints}
+
+It is clear that not all $\ch$ parameters can be determined by the track-based alignment. It is a consequence of the fact that measurements enter the fit equation \Eq{fit equation} in the form of residuals. That means that misalignment modes that can be compensated by track-parameters variation, cannot be revealed. These misalignment modes manifest themselves as eigenvectors of the $\mat S$ matrix with zero eigenvalue. This makes $\mat S$ singular and the naive, matrix-inversion solution \Eq{chi estimate} is not possible. For this reason we will refer to such misalignment modes as \em{singular modes}.
+
+Let's prove the statements above. Imagine that one could change misalignments $\vec\ch_j$ and track parameters $\vec\ta^n$ such that all measurments $\vec\mu^n$ in all events $n$ would remain unchanged. That is
+\eqref{\vec\ch_j \rightarrow \vec\ch_j',\quad \vec\ta^n \rightarrow {\vec\ta'}^n(\vec\ta^n, \vec\ch_j, \vec\ch_j') : \quad \vec\mu^n \rightarrow {\vec\mu'}^n = \vec\mu^n\ .}{track-parameter compensation}
+From \Eq{todo1} it follows
+\eqref{\sum_j \mat\Ga_j^n (\vec\ch_j' - \vec\ch_j) = \mat \al^n (\vec\ta^n - {\vec\ta'}^n) }{aux1}
+and thus
+\eqref{
+\mat S \pmatrix{\vdots\cr \vec\ch_i' - \vec\ch_i\cr\vdots} = 
+\pmatrix{\vdots\cr \sum_n {\mat\Ga_i^n}^\T \mat\si^n \sum_j \Ga_j^n (\vec\ch_j' - \vec\ch_j) \cr\vdots} =
+\pmatrix{\vdots\cr \sum_n {\mat\Ga_i^n}^\T \mat\si^n \mat \al^n (\vec\ta^n - {\vec\ta'}^n) \cr\vdots} = 0\ ,
+}{equivalence singular mode track parameter variation}
+which is a direct consequence of $\mat\si^n \al^n = 0$.
+
+Now, let's explore what are the singular modes that we have to face. This will done it two steps -- first for an arbitrary detector geometry and second for the actual case of TOTEM Roman Pots, where only two read-out directions are used.
+
+TODO: there can be at most 4 singular modes per misalignment class. Prove it!
+
+\ssubsection{Constraints for any geometry}
+
+In this section we will discuss what the singular modes are when no assumptions about the geometry are made. That will be performed for all misalignment classes as listed in \Tb{alignment quantities}.
+
+\em{Shifts in readout direction}. Let's try to find a variation of track parameters $\vec a^n$ and $\vec b^n$ that would compensate shifts $\De\vec c_i$. That is
+\eqref{\vec d_i \cdot (\vec a^n z_i + \vec b^n - \vec c_i - \De\vec c_i) = \vec d_i \cdot ({\vec a'}^n z_i + {\vec b'}^n - \vec c_i)\ .}{cnst shr 1}
+If this is fulfilled, such $\De\vec c_i$ configurations will be singular modes, for all values of ${\vec a'}^n$ and ${\vec b'}^n$ vectors. Explicitly:
+\eqref{- \De s_i \equiv -\vec d_i \cdot \De\vec c_i = \vec d_i \cdot \left[ ({\vec a'}^n - \vec a^n) z_i + ({\vec b'}^n - \vec b^n) \right]\ .}{cnst shr 2}
+Since the ${\vec a'}^n$ and ${\vec b'}^n$ vectors are two-dimensional, there four singular modes:
+\eqref{\De s_i \propto z_i\cos\rh_i,\quad \De s_i \propto z_i\sin\rh_i,\quad \De s_i \propto \cos\rh_i,\quad \De s_i \propto \sin\rh_i\ .}{cnst shr 3}
+TODO: Like columns of complete $\mat\al$ matrix. 2 shifts and 2 shearings.
+
+
+\em{Shifts in $z$}. 
+\eqref{\vec d_i \cdot \left[ \vec a^n (z_i + \De z_i) + \vec b^n \right] = \vec d_i \cdot ({\vec a'}^n z_i + {\vec b'}^n)\ .}{cnst shz 1}
+\eqref{\vec d_i \cdot \vec a^n \De z_i = \vec d_i \cdot (\De\vec a^n z_i + \De\vec b^n)\ .}{cnst shz 2}
+This shall hold for every $\vec d_i$ and therefore one obtains
+\eqref{\vec a^n \De z_i = \De\vec a^n z_i + \De\vec b^n\ .}{cnst shz 3}
+Moreover, this must be obeyed for every value of $\vec a^n$, which is only possible if both $\De\vec a^n$ and $\De\vec b^n$ are proportional to $\vec a^n$. That means
+\eqref{\De z_i = \al z_i + \be\ ,}{cnst shz 4}
+where $\al$ and $\be$ are the proportionality constants. Thus there are two sinuglar modes (magnification and shift):
+\eqref{\De z_i \propto z_i, \quad \De z_i \propto 1\ .}{cnst shz 5}
+
+\em{Rotations around $z$}. We will use symbol $\mat R(\rh)$ for a rotation matrix around $z$ axis by angle $\rh$:
+\eqref{\mat R(\rh) = \pmatrix{
+\cos\rh & -\sin\rh \cr
+\sin\rh & \cos\rh \cr
+}\ .}{rotation matrix}
+Again, let's search for track-parameter variations that could compensate a rotation. This time, we will include also transverse (read-out) misalignments as it will turn out that they are linked.
+\eqref{[\mat R(\De\rh_i) \vec d_i]^\T (\vec a^n z_i + \vec b^n - \vec c_i - \De\vec c_i) = \vec d_i \cdot ({\vec a'}^n z_i + {\vec b'}^n - \vec c_i - \De\vec c'_i)\ .}{cnst rotz 1}
+Since this must be fulfilled for all $\vec d_i$, one can write
+\eqref{\mat R(\De\rh_i)^\T (\vec a^n z_i + \vec b^n - \vec c_i - \De\vec c_i) = {\vec a'}^n z_i + {\vec b'}^n - \vec c_i - \De\vec c'_i\ .}{cnst rotz 2}
+Comparing $n$-dependent quantities, one finds
+\eqref{\mat R(\De\rh_i)^\T \vec a^n z_i = {\vec a'}^n}{cnst rotz 3}
+(and similarly for $\vec b^n$). This can be guaranteed only provided $\De\rh_i$ is $i$-independent, that is constant. Then it is easy to find that
+\eqref{\De\vec c'_i = \mat R(\De\rh) \De\vec c_i + [\mat R(\De\rh) - 1] \vec c_i\ .}{cnst rotz 4}
+The second term reflects the fact that the singular mode is a uniform rotation around the $z$ axis, while alignment rotations (described by angles $\De\rh_i$) are performed around detector axes. These axes are parallel, but displaced by vectors $\vec c_i$.
+
+Considering the misalignment expectations (see \Tb{expected misalignments}), it is reasonable to replace the rotation matrix by the first Taylor terms and also neglect terms containing the product of $\De\rh$ and $\De\vec c_i$. These simplifications yield
+\eqref{\De\vec c'_i = \De\vec c_i + \De\rh \pmatrix{
+- {c_y}_i\cr
+{c_x}_i\cr
+} + \O{\De\rh^2, \De\rh \De\vec c_i}}{cnst rotz 5}
+or in terms of read-out shift $s_i$
+\eqref{\De s'_i = \De s_i + \De\rho\, \de s_i + \O{\De\rh^2, \De\rh \De\vec c_i}, \qquad \de s_i = \vec d_{\perp i}\cdot\vec c_i\ .}{cnst rotz 6}
+To summarize, we have just derived that transition from overall rotation $\De\rh$ and shifts $\De s_i$ to zero rotation and shifts $\De s_i'$ generates a singular mode. This is the only singular mode for rotations, but it also involves shifts. It can be schematically written as
+\eqref{
+\pmatrix{
+\De\rh_i \cr
+\De s_i
+} \propto \pmatrix{
+1\cr
+- \de s_i
+}\ .}{cnst rotz 7}
+TODO: Check the minus sign.
+
+
+
+
+
+\ssubsection{Constraints for 2 read-out directions}
+
+\> close to the two groups -- the graph
+
+\ssubsection{Constraints for RPShZ}
+
+\ssubsection{Constrained solution}
+
+\> Importance of RP overlap vs. pathological case with no track through overlap
+
+
+\subsection{Uncertainty estimate}
+
+\subsection{Implementation}
+
+\> few notes about the implementaion in OfflineSW, may be not here
+
+\subsection{Monte-Carlo tests}
+
+\ssubsection{Ideal results}
+
+\ssubsection{Test algorithm}
+
+\ssubsection{One-RP tests with fast simulation}
+
+\ssubsection{One-station tests with fast simulation}
+
+\ssubsection{Fast vs. Geant4 comparison}
+
+\subsection{Testbeam results}
+
+The method has been applied to test-beam and comsmis data for all 12 RPs installed in the tunnel.
+
+Give statistics table (muon/cosmics run, total events, useful events, cut-off/low-quality events)...
+
+\ssubsection{Comparison to optical measurements}
+
+The position of the detectors within the RP assembly has been measured. There are 3 reference points on a detector and one point on the RP. For each detector a zoomed high resolution photo was taken and a relative position of the points 1 and 2 (see \Fg{opticalMetrology}) and the RP reference point was measured. Theoretical values and results are summarized in \Tb{metrology theoretical}. The precision of this measurement is $\approx 10\un{\mu m}$.
+
+\fig{fig/pdf/opticalMetrology.pdf}{opticalMetrology}{An illustration of the optical metrology measurement. TODO points on detector or hybrid?}
+
+\tab{metrology theoretical}{The theoretical values for the optical measurement of RPs (the positions of the fiducial marks).}{
+\multispan{2}\strut\bvrule\hfil reference point 1\hfil&\multispan{2}\strut\vrule\hfil reference point 2\hfil& \omit\bvrule\hfil control\hfil\cr
+x\un{(mm)}	& y\un{(mm)}	& x\un{(mm)}	& y\un{mm}	& \omit\bvrule\hfil\ distance (mm)\hfil\	\cr\bln
+75.068 & 31.631 & 25.932 & 31.631 & 49.136\cr\bln
+}
+
+\eqref{\hbox{control distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}}{metrology distance}
+
+\fig{fig/pdf/opticalMetrologyControlDistance.pdf}{opticalMetrologyControlDistance}{The distribution of the control distance around the theoretical value (the dashed line) -- a measure of the statistical uncertainty.}
+
+Shifts and rotations are extracted as follows
+\eqref{\hbox{rotation} = {y_2 - y_1\over x_2 - x_1}}{metrology rot}
+\eqref{x\hbox{ shift} = {x_1 + x_2\over 2} - \bar x,\qquad y\hbox{ shift} = {y_1 + y_2\over 2} - \bar y}{metrology shift}
+where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values displayed in \Tb{metrology theoretical}
+
+\subsection{Summary}
+
+\> what cannot be resolved
+\> expected precision
+
+\section{Profile methods}
+
+\> Hit rate comparison
+\> Hit spatial distributions
+\> Kinematic peak method
+
+\section{Collimation alignment}
+
+\section{Summary}
+
+%----------------------------------------------------------------------------------------------------
+
+\chapter{Measurement of total cross-section}
+
+\section{Luminosity independent method}
+
+\section{Extrapolation studies}
+
+%----------------------------------------------------------------------------------------------------
+
+\appendices
+
+\chapter{Statistics}
+
+\section{Mean, variance, etc.}
+
+Let's consider a sample ${x_1, \ldots, x_N}$. Each of $x_i$ follows the same distribution $h(x)$. Let's denote $\mu$ the mean and $\si^2$ the variance of the distribution:
+\eqref{\mu = \int \d x\, h(x)\, x,\qquad \si^2 = \int \d x\, h(x)\, (x-\mu)^2.}{mu si}
+
+The mean estimator
+\eqref{\hat\mu = {1\over N}\sum_i^N x_i}{hat mu}
+is unbiased, that is $E[\hat\mu] = \mu$, and its variance is
+\eqref{V[\hat\mu] = {\si^2\over N}\ .}{V hat mu}
+
+The variance estimator
+\eqref{\widehat{\si^2} = {1\over N} \sum_i^N \left( x_i - {1\over N} \sum_j^N x_j \right)^2}{hat si}
+is also unbiased, i.e. $E[\widehat{\si^2}] = \si^2$ and its variance is (see e.g. \bref{barlow} page 78)
+\eqref{V[\widehat{\si^2}] = {N-1\over N^3} \left( (N-1) E[(x-\mu)^4] - (N-3) E[(x-\mu)^2]^2 \right)\ ,}{V hat si}
+where
+\eqref{E[(x-\mu)^n] = \int \d x\, h(x)\, (x-\mu)^n.}{E n}
+
+The variance estimator can be recast into a more practical form
+\eqref{\widehat{\si^2} = {1\over N} \left( \sum x^2 - {(\sum x)^2\over \sum 1} \right)\ .}{hat si 2}
+
+To estimate the variance of the mean estimation \Eq{V hat mu}, one can replace $\si^2$ by \Eq{hat si}. Similarly, to estimate the variance of the variance estimator, one can put \Eq{hat si} in place of $E[(x-\mu)^2]$. For the 4th momentum mean $E[(x-\mu)^4]$, one can use the following estimator
+\eqref{\widehat{E_4} = {1\over N}\sum_i^N (x_i - \hat\mu)^4 \ ,}{hat E 4}
+where \Eq{hat mu} should be inserted for $\hat\mu$. Note that this estimator might be biased. Finally, one may expand the 4th power in order to obtain a more practical expression:
+\eqref{\widehat{E_4} = {1\over N} \left( \sum x^4 - 4\hat\mu\sum x^3 + 6\hat\mu^2\sum x^2 - 4\hat\mu^3\sum x + \hat\mu^4 \sum 1 \right )\ .}{hat E p}
+
+The variance of standard deviation $\si = \sqrt{\si^2}$ can be related to the one of variance
+\eqref{V[\si] = {V[\si^2]\over 4\si^2}\ .}{V std dev}
+
+\section{p--value}
+
+See e.g. \bref{barlow}, Eq.~(8.5) on page 150.
+\eqref{\hbox{p--value}(\chi^2, N_{\rm df}) = \int_{\chi^2}^{+\infty} P_{\chi^2}(z, N_{\rm df})\ \d z}{p-value}
+
+P--values shall be uniformly distributed on $\langle 0, 1\rangle$. $p\to 1$ means too low $\chi^2$, while $p\to 0$ means too high $\chi^2$.
+
+
+\chapter{Optics details}
+
+Summary of key optics, if really needed...
+
+\chapter{TOTEM Software}
+
+\> the technical aspects of my SW work
+
+\> TOTEM Offline SW
+
+\fig[15cm]{fig/pdf/offline_sw_structure.pdf}{offline sw structure}{The structure of the TOTEM Offline software.}
+
+\> TOTEM Monitor
+
+\> TOTEM DQM
+
+
+\references
+\PrintReferences
+
+
+\EndText
+\end

@@ -1,0 +1,190 @@
+\input ../../kaspiTeX/base.tex
+\input ../../kaspiTeX/biblio.tex
+\input ../../kaspiTeX/pdfslides
+
+\SetBackground{bg2.jpg}
+%\def\FgColor{0 0 0 1}
+%\def\BgColor{0 0 0 0}
+%\edef\TitColor{\cBl}
+
+\def\Bref#1{Ref\hbox{. }\bref{#1}}
+
+
+%---------------------------------------------------------------------------------------------------- 
+\vbox to0pt{}\vfil
+\title{\bPxx Elastic Scattering at the TOTEM experiment.}
+\title{\bPxv Jan Ka¹par, Jan Smotlacha}
+\centerline{Institute of Physics, Academy of Sciences of the Czech Republic, Prague}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Models for elastic scattering}
+\vfil
+\> QCD cannot directly describe elastic scattering at the moment $\Rightarrow$ phenomenological models must be used
+
+\vfil
+\> models\par
+\>> inspired by QCD, Regge and other theories\par
+\>> approximate but try to hit key features of original theories\par
+\>> concrete predictions (that agree with existing experimental data)\par 
+\>> contain a lot ($\approx10$) free parameters\par 
+\>> sample models: Islam, Bourrely--Soffer--Wu, Petrov--Predazzi--Prokudin,\hfill\break Block--Halzen (\Bref{Block})
+
+\vfil
+\vfil
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Islam model}
+\> Idea of nucleon structure (supported by nonlinear sigma model), Refs\hbox{.} \bref{Islam1987}, \bref{Islam2003}, \bref{Islam2004}, \bref{Islam2006}
+
+\centerline{\fig{width 4cm}{figures/nucleon.jpg}}
+\> 3 mechanisms of scattering $\qquad T = T_D + T_C + T_Q, \qquad {\d\sigma\over\d t} \sim |T(s, t)|^2$
+
+\>> diffraction -- outer clouds overlap
+$$T_D(s, t) \sim \int\limits_0^\infty b \d b\, J_0(b\sqrt{-t})\, A_D(s, b), \qquad A_D(s, b) \sim \left[ {1\over 1 + e^{b-R\over a}} + {1\over 1 + e^{-{b+R\over a}}} - 1\right]$$
+
+\>> core scattering -- inner cores scatter one off the other via $\om$ exchange
+$$T_C(s, t) \sim {s\,F^2(t)\over m^2_\om - t}$$
+
+\>> quark scattering -- high $|t| \lower3pt\vbox{\offinterlineskip\hbox{$>$}\hbox{$\sim$}} 5\un{GeV^2}$, transition to perturbation region (BFKL theory)
+$$T_Q(s, t) \sim {s\,{\cal F}(q_\perp)\over |t| + r_0^{-2}}$$
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\bgroup
+\parskip=0pt
+\title{Eikonal models}
+
+\> Fourier--Bessel transform
+$$T(s, t) \sim \int\limits_0^\infty b \d b\, J_0(b\sqrt{-t})\, (e^{2i\de(s, b)} - 1)$$
+
+\> {\bf Petrov--Prokudin--Predazzi} (\Bref{Petrov})\par
+\>> simple model with 5 or 6 Regge particles
+$$\de(s, b) = \sum \de_j(s, b),\qquad \de_j(s, b) \sim c_j (-i s)^{\al_j(0) - 1} {e^{-b^2/\rh_j^2}\over 4\pi\rh_j^2},\qquad \rh_j^2 = 4\al_j'(0) \log s + r_j^2$$
+
+\vskip\baselineskip
+
+\> {\bf Bourrely--Soffer--Wu} (\Bref{Bourrely})\par
+\>> factorized dependency on $s $ and $b$: $\de\sim S(s)\, F(b)$\par
+\>> $s$-dependence deduced form behavior of Feynman diagrams for a QCD-like QFT model\par
+$$S(s) = {s^c\over (\log s)^{c'}} + {u^c\over (\log u)^{c'}}$$
+\>> $t$-dependence given by assumption of equal electric and hadronic charge distributions, rough approximation
+$$F(b)=\int_0^\infty b\,\d b\, J_0(b\sqrt{-t})\,\tilde F(t),\qquad \tilde F(t) = f(t)^2\, {a^2 + t\over a^2 - t},\qquad f(t) = \Big( 1 - {t\over m^2} \Big)^{-2}$$
+\egroup
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Models -- comparison with measurement}
+\centerline{pp scattering at energy of $53\un{GeV}$, data taken from \Bref{data53}}
+\centerline{plotted with the same parameters as for $14\un{TeV}$ prediction}
+\centerline{\fig{width 9cm}{figures/pp53.pdf}}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Models -- TOTEM prediction, large $|t|$}
+\centerline{pp scattering at energy of $14\un{TeV}$}
+\centerline{\fig{width 9cm}{figures/pp14000.pdf}}
+\> huge differences -- TOTEM will be able to exclude some models
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Models -- TOTEM prediction, low $|t|$}
+\centerline{\fig{height 9cm}{figures/smallt.pdf} \fig{height 9cm}{figures/sigtot.pdf}}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Models -- TOTEM prediction, elastic slope}
+\vskip-8mm
+$$B(t) = {\d\over\d t} \log {\d\si\over\d t}$$
+\vskip2mm
+\centerline{\fig{width 10cm}{figures/slope.pdf}}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Coulomb interference}
+\> for small $|t|$ electromagnetic interaction is significant too
+
+\centerline{\fig{width8cm}{figures/interference.pdf}}
+
+\> need of amplitude for combined coulomb--hadronic force\par
+\> standard analysis with assumption $T^{C+H} = T^{C} + T^{H} e^{i\ph}$\par
+\>> i.e. simple addition up to phase shift\par
+\>> there is no reason why it should be so
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Coulomb interference -- theory}
+\> 2 basic theoretical approaches -- eikonal and QFT, none is perfect
+
+\vskip\baselineskip
+
+\> QFT (e.g. West and Yennie, e.g. \Bref{WY})\par
+\>> summing relevant class of Feynman diagrams $\Rightarrow$ general formula\par
+\>> crucial approximation $T^H(s, t) \sim e^{Bt}$ in whole kinematical region (it made sense at that times, but it is excluded by experiments now) $\Rightarrow$ simplified formula
+$$T^{C+H} = T^{C} + T^{H} e^{i\ph(t)}, \qquad \ph = \pm \left(\ga + \log {-Bt\over 2}\right)$$
+
+\vskip\baselineskip
+
+\> eikonal\par
+\>> based on eikonal (high energy) approximation in QM\par
+\>> Cahn (\Bref{Cahn}) showed equivalence with general formula of West and Yennie\par
+\>> Kundrát and Lokajíèek took up Cahn's work (removed some approximations) and obtained general formula involving form factors (\Bref{KL})
+
+$T^{C+H}(s, t) = \mp {\alpha s\over t}\,F_C^2(t)\ +\ T^H(s, t) \left[1 \pm i \alpha \int\limits_{t_{min}}^0 \!\!\d t'\ \left(\log{t'\over t}\ {\d F_C^2(t')\over \d t} - \left({T^H(s, t')\over T^H(s, t)}  - 1\right)\,I(t, t') \right) \right]$
+\centerline{$I(t, t') = {1\over 2\pi} \int\limits_0^{2\pi} \d\ph {F_C^2(t'')\over t''}$}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Difference between CKL and WY formulae}
+\centerline{$(\left.{ \d\sigma\over\d t}\right|_{\rm CKL}  -  \left.{\d\sigma\over\d t}\right|_{\rm WY}) \ / \left.{\d\sigma\over\d t}\right|_{\rm CKL}$}
+\vskip2mm
+\centerline{\fig{width10cm}{figures/R.pdf}}
+
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Importance of interference}
+\centerline{$(\left.{ \d\sigma\over\d t}\right|_{\rm full}  -  \left.{\d\sigma\over\d t}\right|_{\rm coulomb}   -  \left.{\d\sigma\over\d t}\right|_{\rm hadron}) \ / \left.{\d\sigma\over\d t}\right|_{\rm full}$}
+\vskip2mm
+\centerline{\fig{width10cm}{figures/importance.pdf}}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Extrapolation to $t=0\un{GeV^2}$}
+\> measurement of $\si_{\rm tot}$ is important part of physical program of the TOTEM experiment (\Bref{TDR})\par
+\> luminosity independent method
+$$\si_{\rm tot} = {16\pi\over (1+\rh^2)} {(\d N_{\rm el}/ \d t)_{t=0}\over N_{\rm el} + N_{\rm inel}}$$
+
+\centerline{\fig{width7.8cm}{figures/extrapolation.pdf}}
+
+
+
+
+\newpage %-----------------------------------------------------------------------------------------
+\title{References}
+%\rPviii
+%\font\bPviii	= pplb8z at 8pt		\def\bf{\bPviii}
+%\font\iPviii	= pplri8z at 8pt	\def\it{\iPviii}
+\def\bc{, }
+\baselineskip=15pt
+\setbox\strutbox=\hbox{\vrule height8pt depth3pt width0pt}
+\PrintReferences{references.bib}
+
+\iffalse
+\newpage %-----------------------------------------------------------------------------------------
+\title{Thank you for attention !}
+\centerline{\pdfximage width8cm{../../kaspiTeX/fig/kasparek2.pdf}\pdfrefximage\pdflastximage}
+\font\tiny=pplr8z at 3pt
+\centerline{\tiny For those who wonder why the joker is here: my surname, Ka¹par, means joker in Czech.}
+\fi
+
+\end
+

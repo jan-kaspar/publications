@@ -1,0 +1,279 @@
+\input /home/jkaspar/tex/kaspiTeX/base
+\input /home/jkaspar/tex/kaspiTeX/article
+\input /home/jkaspar/tex/kaspiTeX/biblio
+
+\Reftrue
+
+%\parindent=0pt
+\parskip=3pt plus5pt
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\BeginText
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Acceptance for $\be^*=1535\un{m}$ involving the horizontal RP}
+
+The acceptance $A(t, \ph)$ is a function with values $0$ or $1$. The value $1$ means that point is covered by detector, $0$ means it is not covered. Since the azimuthal distribution of particles is uniform, one may be interested in azimuthally averaged acceptance $A(t)$
+$$A(t) = {1\over 2\pi}\int\limits_0^{2\pi}\!\d\ph\, A(t, \ph)\.$$
+Here, we will present analytical form of $A(t)$ for RP at $220\un{m}$ at optics $\be^*=1535\un{m}$. The parameterization depends on $t$ region.
+\bitm
+\itm As the beam is wider in $y$ direction, the vertical detectors are touched first (if $|t|$ is rising from $0\un{GeV^2}$). The detectors are touched at $t_0$
+\eqref{|t_0| = p^2 \left(10\si_y + \de\over L_y\right)^2 \approx 1.2\cdot10^{-3}\un{GeV^2}}{t0}
+\itmpar When only the vertical RP are hit, the acceptance has following form
+\eqref{A(t) = {2\over\pi} \arccos\sqrt{t\over t_0}\.}{par1}
+\itm As $|t|$ grows, the horizontal detector is hit too. This happens at $t_1$
+\eqref{|t_1| = p^2 \left(10\si_x + \de\over L_x\right)^2 \approx 3.1\cdot10^{-3}\un{GeV^2}\.}{t1}
+\itmpar Then one may use parameterization
+\eqref{A(t) = {2\over\pi} \arccos\sqrt{t\over t_0} + {1\over\pi} \arccos\sqrt{t\over t_1}\.}{par2}
+\itm Then, at point $t_2 = t_0 + t_1$ formula \Eq{par2} gets saturated and one needs to use following parameterization for $|t|>|t_2|$
+\eqref{A(t) = {1\over\pi} \arccos\sqrt{t\over t_0} + {1\over 2}\.}{par3}
+
+\eitm
+
+\fig*[9.8cm]{eps/acceptance,new,1535.eps}{}{[] The acceptance of detector at $220\un{m}$ and $\be^*=1535\un{m}$. The solid line shows actual shape of acceptance. The colors, red, blue and green correspond to parameterizations by \Eq{par1,par2,par3} respectively. The red (solid plus dashed) curve describes acceptance without the horizontal RP. The vertical dotted lines indicate $t_0$, $t_1$, $t_2$ and the right-most denotes reaching side of vertical detectors.}{}{}{}
+
+
+\fig*[9.8cm]{eps/acceptance,1535,simulation.eps}{}{[]Comparison of MC simulation and analytical form by \Eq{par1,par2,par3}.}{}{}{}
+
+\iffalse
+\references
+\def\bc{, }
+\PrintReferences{references.bib}
+\fi
+
+\vfil\eject
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Elegant method to determine detector-beam offset}
+
+The position of a hit is given by
+\eqref{x = L_x \th\cos\ph + \De x + \ldots,\qquad y = L_y\th\sin\ph + \De y + \ldots,}{hit pos}
+where $\De x$ and $\De y$ denote the detector-beam offset and $\ldots$ stand for other sources of error that we will abandon here. Now suppose we select only hits with $\th$ values from a thin interval around base value $\th_0$. Then, points $[x/L_x, y / L_y]$ will create a circle with center at $[\De x/L_x, \De y/ L_y]$ and radius $\th_0$. The width of the circle is given either by "size" of the selection interval and either by the other perturbations that we denoted $\ldots$ in \Eq{hit pos}. 
+
+The next step is straightforward. We need to fit a circle (i.e. find its center and radius) against the points $[x/L_x, y / L_y]$. We suggest following method. A circle with center $[\bar x, \bar y]$ and radius $r$ is described by equation
+$$(x - \bar x)^2 + (y - \bar y)^2 = r^2$$
+or
+\eqref{x^2 - 2x\bar x + y^2 - 2y\bar y + C = 0,\qquad C = \bar x^2 + \bar y^2 - r^2 \.}{circle}
+Thus, one may find optimal parameters by minimizing function $S$ (the sum goes through all selected hits)
+\eqref{S = \sum_i \left( x^2 - 2x\bar x + y^2 - 2y\bar y + C \right)^2 \.}{S}
+The minimum is reached at point where partial derivations vanish, i.e. $\partial S/\partial\bar x = 0$, etc. After a portion of algebra, one finds the solution
+\eqref{\pmatrix{\bar x\cr\bar y\cr \strut C\cr} = \pmatrix{2S_x & 2S_y & -S_1\cr 2S_{x^2} & 2S_{xy} & -S_x\cr 2S_{xy} & 2S_{y^2} & -S_y\cr}^{-1} \pmatrix{S_{x^2} + S_{y^2} \cr S_{x^3} + S_{xy^2}\cr S_{x^2y} + S_{y^3}}\,}{solution}
+where the abbreviations mean
+$$S_1 = \sum_i 1,\qquad S_{x^2y} = \sum_i x_i^2\, y_i,\qquad\hbox{etc.}$$
+To return to the original task
+$$\De x = L_x \bar x, \qquad \De y = L_y \bar y\.$$ 
+A realistic demonstration of this procedure is shown at \Fg{example}.
+
+
+\bmfig[\flab{example}An example made for RP at $220\un{m}$ and $\be^* = 1535\un{m}$. We used values $\De x = \De y = 80\un{\mu m}$ for simulation. The selection criteria was $17\cdot10^{-4}\un{GeV^2} < |t| < 18\cdot10^{-4}\un{GeV^2}$. The obtained detector-beam offset is shown above each plot. The three plots correspond to different possible acceptances. The leftmost figure is for full acceptance, middle for a hypothetical small acceptance and the rightmost for the realistic acceptance.]
+\fig*[5.1cm]{eps/full.eps}{}{No condition on $\ph$.}{}{$\De x = 79.9\un{\mu m}, \De y = 79.9\un{\mu m}$}{}
+\fig*[5.1cm]{eps/quarter.eps}{}{$\ph\in(0, \pi/2)$.}{}{$\De x = 146\un{\mu m}, \De y = 259\un{\mu m}$}{}
+\fig*[5.1cm]{eps/acceptance.eps}{}{[4.5cm]Hits really detected,\break\hfill i.e. $|y| > 10\si_y + \de$.}{}{$\De x = 80.3\un{\mu m}, \De y = 78.0\un{\mu m}$}{}
+\emfig
+
+\vfil\eject
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Influence of detector--beam offset at $\be^*=1535$}
+
+\bmfig[Blue line is theoretical cross section, blue is histogram with $\De_x=\De_y=0\un{\mu m}$, red with $50\un{\mu m}$ and green with $100\un{\mu m}$.]
+\fig*[7cm]{eps/db,rebin1,dsigma.eps}{}{$-t\un{(GeV^2)}$}{$\d\si/\d t\un{(mb/GeV^2)}$}{}{}
+\emfig
+
+\bmfig[Blue histogram corresponds to $\De_x=\De_y=0\un{\mu m}$ and old error generation, black to $0\un{\mu m}$ again but new error treatment, red to $50\un{\mu m}$ and green to $100\un{\mu m}$.]
+\fig*[7cm]{eps/db,rebin30.eps}{}{$-t\un{(GeV^2)}$}{$\d\si/\d t\ \hbox{difference}\un{(mb/GeV^2)}$}{Difference $histogram - theory$, at rebin $30$.}{}
+\fig*[7cm]{eps/db,rebin1,chi.eps}{}{}{}{\vbox{\hsize=7cm\noindent$\chi$ distribution. Obtained RMS: blue $1.006$, black $1.02$, red $1.11$ and green $1.57$.}}{}
+\emfig
+\eject
+
+A generic coordinate measured in RP; $_i$, $\pm$ means left or right RP, $\th^0$ is orginal angle created in physical process, $\de \th$ is deviation due to beam spread, $\de x$ stands for error of measurement in RP (strip size, beam position variation in time) and $\De x$ denotes relative beam-RP position
+\eqref{x_i = \pm L_x (\th^0 + \de\th_i)\cos\ph + \de x_i + \De x_i}{coor}
+
+Reconstruction of $y$:
+\eqref{y_m \equiv {y_r - y_l\over 2} = L_y \th^0\sin\ph + \underbrace{L_y {\de\th_r + \de\th_l\over 2}}_{A}\sin\ph + \underbrace{\de y_r - \de y_l\over 2}_{B} + \underbrace{\De y_r - \De y_l\over 2}_{C}}{coor rec}
+
+
+\tab{Estimated variances in $\mu m$}{
+&	\be^*=1535\un{m},\ \ep = 1&	\be^*=90\un{m},\ \ep=3.75\cr\bln
+A&	60&			440\cr\ln
+B&	15&			45\cr\ln
+C&	80&			80\cr\bln
+}
+
+\bmfig[Graphs of measured $y$ versus $\ph$. Black points represent hits, green curve is fit of $a\sin\ph + b$ and blue line demonstrates value of $b$.]
+\fig*[7cm]{eps/1535,ym,phi.eps}{}{}{}{}{}
+\emfig
+
+
+\vfil
+\eject
+
+
+\subsection{Smearing correction (for $\be^*=90\un{m}$)}
+
+The old MC made each event as $t = t_0 + \De t$, which in fact means 
+\eqref{t = t_0 + \xi\, \si(t_0, \ph)}{}
+Then, one may transfer from pdfs of set $t_0, \ph, \xi$ to set $t, \ph, \xi$ and subsequently integrate over $\xi$ and $\ph$ and obtain pdf for $t$
+\eqref{h_t(t) = \int \d\xi h_\xi(\xi) \int \d\ph h_\ph(\ph) \ h_{t_0}(t_0(t, \xi, \ph)) {1\over\left|1+\xi{\partial\si\over\partial t_0}(t_0(t, \xi, \ph))\right|}}{}
+But somehow the approximation of average error works very well
+\eqref{h_t(t) = \int \d\De t \ h_{t_0}(t - \De t) \ N_{\De t}(0, \si^2(t - \De t, \bar\ph))}{old smearing}
+
+The new MC makes every event in more realistic way. In the sence of \Eq{coor rec}. The estimate for $\si^2(t, \ph)$ is the same, but the details must be different, because approximation \Eq{old smearing} doesn't work. One has to proceed carefuly the full expresion for pdf of $t$. This is a bit difficult, therefor I began with simple testing model, the calculations are on a enclosed paper. Comparison with corresponding MC showed the the Jacobian part is crucial. The new correction is based on
+\eqref{h_t(t) = \int \d\de\th \ h_{t_0}(-p^2(\th - \de\th)^2) \  N_{\de\th}(0, \si^2_{\de\th}) \ {\th + \de\th\over\th}}{}
+Still, this formula is unable to explain behaviour at $t < 0.05\un{GeV^2}$. I stop investigation in this direction because for $\be^*=90\un{m}$ the $t$ will be evaluated only from $y$ coordinate measurement.
+
+
+\bmfig[Difference between theoretical curve and histograms. Blue histogram corresponds to old MC, the others to the new one. Black is $\De=0\un{\mu m}$, red $\De=50\un{\mu m}$ and green $\De=100\un{\mu m}$.]
+\fig*[7cm]{eps/zagada.eps}{}{}{}{old smearing correction \ref{old smearing}}{}
+\fig*[7cm]{eps/zagada,half,solved.eps}{}{}{}{new smearing correction}{}
+\emfig
+
+
+\vfil
+\eject
+
+
+\subsection{$t$-measurement at $\be^*=90\un{m}$}
+
+At $\be^*=90\un{m}$ optics we will only be able to measure $y$ coordinate and therefore to determine just $y$ part of $t$ value
+\eqref{t = t_x + t_y,\qquad t_x = t\cos^2\ph,\ t_y = t\sin^2\ph\.}{txty}
+The pdf for $t$ is proportional to differential cross section, $h_t \propto \d\si/\d t$. Then, the pdf for $t_y$ is given by the following equation (no errors are included)
+\eqref{h_{t_y}(t_y) = {2\over\pi} \int\limits_{0}^{\pi/2} {\d\ph\over\sin^2\ph}\ \ h_t\!\left(t_y\over\sin^2\ph\right)}{ty}
+or equivalently
+\eqref{h_{t_y}(t_y) = {1\over\pi} {1\over\sqrt{-t_y}}\int\limits_{t_y}^{-\infty} {h_t(u)\over\sqrt{-u + t_y}} \,\d u}{ty2}
+
+Provided $h_t$ falls off quickly enough at high $|t|$ the $h_{t_y}$ distribution is finite in all points except the point $t_y = 0\un{GeV^2}$. It is sufficient if $h_t(t) \propto 1/t$ as $|t|\to\infty$:
+$$\ph\to 0 \Rightarrow {t_y\over \sin^2 \ph}\to\infty \Rightarrow \int\limits_0^\ep {\d\ph\over\sin^2\ph}\ \ h_t\!\left(t_y\over\sin^2\ph\right) \to \int\limits_0^\ep {\d\ph\over\sin^2\ph} {\sin^2\ph\over t_y} = const.$$
+The rest of the integral \ref{ty} in bounds $(\ep, \pi/2)$ is apparently regular. \Eq{ty2} can help us understand pole behavior of $h_{t_y}$ at $t_y=0\un{GeV^2}$. There is either the obviously diverging $1/\sqrt{-t_y}$ factor and either the integral part. For the latter we may put $t_y=0$ and check its value. Since $h(u)$ tends to a non-zero constant as $u\to 0$ we get for pole term
+$$\int\limits_0^{-\ep} {const.\over\sqrt{u}} \d u = const. \neq 0 \.$$
+Hence we may conclude that $h_{t_y}$ diverge as $1/\sqrt{-t_y}$ as $t_y\to 0\un{GeV^2}$.
+
+A practical example, for $h_t(t) = e^{a\, +\, bt}, bt < 0$ one gets
+$$h_{t_y}(t_y) = {1\over\sqrt{\pi}}\, {e^{a\, +\, bt_y}\over\sqrt{|bt_y|}}\.$$
+
+A generaly good parameterization of $h_{t_y}$ seems to be
+\eqref{{e^{\,polynomial(t_y)}\over\sqrt{t_y}} \.}{ty param}
+The integral in \Eq{ty2} can be rewritten as
+$$\int\limits_0^{-\infty} \d u\ {h_t(u + t_y)\over\sqrt{|u|}}\.$$
+The main contribution to this integral comes from the peak region of the $1/\sqrt{u}$, which is quite small region around $u=0$. Then the integral might be approximated as $h_t(t_y) \cdot const.$ The parameterization in \Eq{ty param} naturaly follows then.
+
+
+\bmfig
+\fig*[10cm]{eps/ty.eps}{tyt}{[]Comparison of $t$ and $t_y$ distributions. The difference is easy to understand: $\sin^2\ph$ is always between $0$ and $1$ and thus the distribution of $t_y$ is pushed to smaller $|t|$ values.
+}{}{}{}
+\emfig
+
+
+\section{Fitting at $\be^*=90\un{m}$}
+
+\subsection{An attempt for correction}
+
+\bmfig
+\fig*[10cm]{eps/ty,err,correction.eps}{ty,corr}{[]Correction from $t_y$ to $t$ distributions. Colors correspond to different models. One can see the correction is so huge, that it can hardly be called correction. The differences between models are that big it cannot be treated in iteration way with some apriory step. The curves were obtained with TF3::IntegrateMulti method and it is clear that numerical precision is insufficient.}{}{}{}
+\emfig
+
+\subsection{An attempt for autoconvolution}
+
+\eq{t = t_x + t_y}
+and $t_x$ and $t_y$ have the same distributions. Thus distribution of $t$ is given by autoconvolution
+\eq{h_t(t) = \int \d t_z\, h_{t_z}(y_z)\, h_{t_z}(t - t_z) \c}
+where $z$ denotes either $x$ or $y$. The last formula can be adapted for a histogram with bin size $w$
+\eqref{h_t(w_j) = w\sum_{i = i_0}^{j-i_0-1}\, h_{t_z}\left({w\over 2} + i\,w\right)\, h_{t_z}\left({w\over 2} + (j-i-1)\,w\right)\qquad j\geq 2i_0 + 1\c}{autoconv hist}
+where $i, j$ are integers (bin numbers) and $i_0$ is the lowest bin.
+
+\bmfig
+\fig*[10cm]{eps/ty,autoconvolution.eps}{ty,autoconvolution}{[]The black curve is $t_y$ simulation with no acceptance rejection, the green is diff. cross section, i.e. $t$ distribution. The blue curve was obtained with \Eq{autoconv hist} and full $t_y$ simulation. For the red line we used \Eq{autoconv hist} as well, but the $t_y$ was rescrited to values $t_y \geq 0.03\un{GeV^2}$, similarly to the real case with acceptance. There is a slight disagreement between blue and green curves. It is probably because of inaccurate simulation at $|t|\approx 0$. The simulation should be accurate up to $0.001\un{GeV^2}$ (approx. $t_{min}$ of $1535\un{m}$ optics), further there are no points for integrated cross. section. The difference between green and red curve is so huge that it excludes any use of it. The reason is that we miss the most important part of $t_y$ distribution.}{}{}{}
+\emfig
+
+\vfil\eject
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Errors summary}
+
+\bmfig%
+\fig*[7.5cm]{eps/ty,err,means.eps}{bv m}{Means}{}{}{}%
+\fig*[7.5cm]{eps/ty,err,variations.eps}{bv m}{Sigmas}{}{}{}%
+\emfig
+
+\def\ErrorSource#1{\line{\it#1\hfil}}
+
+\ErrorSource{beam divergence}
+$$-t_y' = \left[ (\sqrt{-t} + p\,\De\th) \sin\ph \right]^2$$
+$$\langle\De\th\rangle = 0, \qquad \si_{\De\th} = \sqrt{\ep\over\ga\be^*} \approx 2.4\cdot10^{-6}\un{rad}$$
+$$\langle\De t_y\rangle = {1\over 2} p^2 \si_{\De\th}^2 \approx 1.36\cdot10^{-4}\un{GeV^2}$$
+$$\si_{\De t_y} = \sqrt{2p^2\si_{\De\th}^2 (-t_y) + {7\over 8} p^4 \si^4_{\De\th}}\approx \sqrt{2}\, p \si_{\De\th}\, \sqrt{-t_y} \approx 2.34\cdot10^{-2}\un{GeV}\,\sqrt{-t_y}$$
+
+\ErrorSource{vertex smearing}
+$$\langle y^*\rangle = 0, \qquad \si_{y^*} = \sqrt{\ep\be^*\over\ga} \approx 2.1\cdot10^{-4}\un{m}$$
+
+\ErrorSource{beam possition variation}
+$$-t_y' = \left[ \sqrt{-t}\sin\ph + p\,{\de y\over L_y} \right]^2$$
+$$\langle\de y\rangle = 0, \qquad \si_{\de y} = {1\over 10}\, s_y$$
+$$\langle\De t_y\rangle = {p^2 \si_{\de y}^2\over L_y^2} \approx 2.7\cdot10^{-6}\un{GeV^2}$$
+$$\si_{\De t_y} = \sqrt{4{p^2\, \si_{\de y}^2\over L_y^2} (-t_y) + 3 \left(p\,\si_{\de y}\over L_y\right)^4}\approx 2\,{p\,\si_{\de y}\over L_y}\,\sqrt{-t_y} \approx 3.27\cdot10^{-3}\un{GeV}\,\sqrt{-t_y}$$
+For both arms there's recuction factor $1/2$ for mean value and $1/\sqrt{2}$ for variance.
+
+
+\ErrorSource{strip pitch}
+rounding to detector pitch $66\un{\mu m}$
+
+\ErrorSource{detector--beam possition offset}
+promissed $20\un{\mu m}$, realistic $100\un{\mu m}$
+
+\ErrorSource{reconstruction}
+method itself
+
+error in $L_{eff}$, 
+
+\ErrorSource{energy smearing}
+$\xi$ mean $1\cdot10^{-3}$, variance $1\cdot10^{-4}$
+
+\ErrorSource{crossing angle}
+left for further investigation
+
+\vfil\eject
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Estimations}
+
+Data directly from models, fits with equal weights, points in distance $5\cdot10^{-4}\un{GeV^{2}}$, lower bound of fit $4\cdot10^{-2}\un{GeV^2}$, varying upper fit bound.
+\fig[15cm]{eps/t,limit,nc.eps}{t limit nc}{Full $\d\si/dt$ distribution, Coulomb interference not included.}
+\fig[15cm]{eps/t,limit,c.eps}{t limit c}{Full $\d\si/dt$ distribution, Coulomb interference included.}
+
+\fig[15cm]{eps/ty,limit,nc.eps}{ty limit nc}{$t_y$ distribution, Coulomb interference not included.}
+\fig[15cm]{eps/ty,limit,c.eps}{ty limit c}{$t_y$ distribution, Coulomb interference included.}
+\vfill\eject
+
+Data as above, the same lever-arm, fit with quadratic $B$. From the lower bound $4\cdot10^{-2}\un{GeV^2}$ continued to $0$ only with constant $B$ or linear $B$ or quadratic $B$.
+\fig*[15cm]{eps/continuation.eps}{continuation}{[]Left: quadratic and linear (dashed) $B$ continuation, right: quadratic and constant (dashed) $B$ continuation.}{}{}{}
+
+Again, data directly from models (infinite statistic), equal weight fit, fine binning. Varying lower bound of fit.
+\fig[15cm]{eps/blaKL.eps}{ty lower c}{With Coulomb.}
+\fig[15cm]{eps/blaPH.eps}{ty lower nc}{Without Coulomb.}
+
+Data points only in possitions corresponding to strip possitions (pitch $66\mu m$), poisson error corresponding to $L_{int} = 2\cdot10^{6}\un{mb^{-1}}$
+\fig*[15cm]{eps/ty,limit,binning,c.eps}{ty lower c}{[]With Coulomb. Constant $B$ fit left, quadratic $B$ fit on the right. Fit uncertainities showed as error bars.}{}{}{}
+\fig[15cm]{eps/ty,limit,binning,nc.eps}{ty lower nc}{Without Coulomb.}
+\vfil\eject
+
+$t_y$-fitting method imperfection.
+\fig*[15cm]{eps/ty,method,error,low.eps}{method error}{[]Fit upper bound $|t_y| = 0.05\un{GeV^2}$. Left difference between $t$-fit and (pure hadronic) model and right difference between the model and $t_y$-fit.}{}{}{}
+\fig[15cm]{eps/ty,method,error,high.eps}{method error}{Fit upper bound $|t_y| = 0.2\un{GeV^2}$.}
+
+$s$-dependence.
+\bmfig
+\fig*[7cm]{eps/s,dependence.eps}{s dependence}{[7cm]Difference in normalized differential cross-sections between nominal energy and energy shifted by $\pm 1\percent$}{}{}{}
+\fig*[7cm]{eps/s,dependence,0.eps}{s dependence 0}{[7cm]Dependency of $\d\si/\d t$ at $t=0\un{GeV^2}$ on energy offset.}{}{}{}
+\emfig
+
+\EndText
+\end

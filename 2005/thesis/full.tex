@@ -1,0 +1,110 @@
+\input macros/macros
+
+% ========================================== local macros ================================================
+
+
+% ============================================ title page ================================================
+
+
+\vbox to0pt{}
+\vfil
+
+\baselineskip=18pt
+\centerline{\fPxv Univerzita Karlova v Praze}
+\centerline{\fPxv Matematicko--fyzikální fakulta}
+\vskip2	cm
+\centerline{\fPbxx DIPLOMOVÁ PRÁCE}
+\vskip1cm
+\centerline{\epsfxsize=5cm\epsfbox{fig/logoMFF.eps}}
+%\vskip5cm
+\vskip3cm
+\centerline{\fPbxv Jan Ka¹par}
+\vskip1cm
+\centerline{\fPbxx Difrakèní procesy pøi vysokých energiích}
+\vskip1mm
+\centerline{\fPbxx experiment TOTEM}
+\vskip2cm
+\centerline{\fPxv Ústav èásticové a jaderné fyziky}
+\ialign to\hsize{\tabskip 0pt plus1fil\strut #&\hfil\fPxv #\ \tabskip0pt&\fPxv #\hfil\tabskip 0pt plus1fil\cr
+&Vedoucí diplomové práce:&		RNDr. Vojtìch Kundrát DrSc.\cr
+&Studijní program:&				Fyzika, Jaderná a subjaderná fyzika\cr}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% prohlá¹ení
+\vfil\eject\forceoddpage
+\baselineskip=15pt
+
+\noindent V první øadì bych rád podìkoval za vstøícný pøístup a vytrvalou pomoc svým vedoucím, kterými byli Vojtìch Kundrát pro první èást a Mario Deile pro èást druhou. Dále bych chtìl podìkovat v¹em uèitelùm a kamarádùm, kteøí mi bìhem studií pomáhali hledat odpovìdi na fyziální otázky. A v neposlední øadì patøí velké podì\-kování mé rodinì a pøítelkyni, kteøí sice nefyzikální ale pøesto významnou podporou pøispìli ke vzniku této práce.
+\vfill
+\noindent Prohla¹uji, ¾e jsem svou diplomovou práci napsal samostatnì a výhradnì s pou¾itím citovaných pramenù. Souhlasím se zapùjèováním práce.
+\vskip2\baselineskip
+\noindent V Praze dne \rem \hfill Jan Ka¹par\hbox to1cm{\hfil}
+\vskip3\baselineskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% obsah
+\insertTOC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% abstrakty
+\vfil\eject\forceoddpage
+
+
+
+\ialign{\hbox to4cm{#\hfil}&#\hfil\cr
+Název práce:& 				Difrakèní procesy pøi vysokých energiích -- experiment TOTEM\cr
+Autor:&						Jan Ka¹par\cr
+Katedra (ústav):&			Ústav èásticové a jaderné fyziky\cr
+Vedoucí diplomové& 			\cr
+\hskip5mm práce:&			RNDr. Vojtìch Kundrát DrSc.\cr
+e-mail vedoucího:& 			kundrat@fzu.cz\cr
+\noalign{\vskip3pt}
+Abstrakt:&\vtop{\advance\hsize-4cm\noindent\SmallerFonts
+V této práci jsme se zabývali dvìma problémy. Nejprve jsme analyzovali model pro elastický $pp$ a $\bar pp$ rozptyl. Tento model byl vyvinut bìhem minulých 25 let skupinou, kterou vedl M.M.Islam. Na¹im cílem bylo pøedpovìdìt diferenciální úèinný prùøe¾ pro elastický $pp$ rozptyl pøi enerigii $14\un{TeV}$, který bude mìøen experimentem TOTEM na urychlovaèi LHC v CERN. Proto¾e protony nesou elektromagnetický náboj, museli jsme pøi výpoètech vzít v úvahu elektromagnetickou interakci a efekty zpùsobené interferencí mezi hadronovou a elektromagnetickou interakcí. Také jsme provedli analýzu zmínìného modelu v prostoru srá¾kového paramteru. To nám umo¾nilo získat informaci o dosahu hadron\-ových sil zodpovìdných za elastický, neelastický a totální $pp$ a $\bar pp$ rozptyl. Získali jsme také informaci o rozlo¾ení hadronové hmony uvnitø nukleonu. Ve druhé èásti jsme se zabývali metodou na kalibraci poloh detektorù, které budou umístìny v Øímských hrncích. Tato metoda byla pou¾ita minulý rok pøi testech Øímských hrncù na svazku SPS.
+\strut}\cr
+\noalign{\vskip3pt}
+Klíèová slova:& 			elastický rozptyl nukleonù, experiment TOTEM\cr
+%
+\noalign{\vskip2\baselineskip}
+%
+Title:& 					High energy diffraction processes -- the TOTEM expriment\cr
+Author:& 					Jan Ka¹par\cr
+Department:& 				Institute of particle end nuclear physics\cr
+Supervisor:& 				RNDr. Vojtìch Kundrát DrSc.\cr
+Supervisor's & 				\cr
+\hskip5mm e-mail address:& 	kundrat@fzu.cz\cr
+\noalign{\vskip3pt}
+Abstract:&\vtop{\advance\hsize-4cm\noindent\SmallerFonts
+We study two problems in this thesis. First, we analyse a model for $pp$ and $\bar pp$ elastic scattering. The model was developed by M.M.Islam and cooworkers in the past 25 years. Our aim was to make prediction for differential cross section of $pp$ scattering at energy $14\un{TeV}$ which will be measured by the TOTEM experiment at the LHC collider at CERN. Since protons carry electromagnetic charge, we had to take into account electromagnetic interaction and effects of interference between electromagnetic and hadronic forces. We also analysed the model in the impact parameter representation. It enabled us to gain information about range of hadronic forces responsible for elastic, inelastic and total $pp$ and $\bar pp$ scattering. Some information on distribution of hadron matter inside nucleon was otained too. In the second part we present our alignment method for detectors inside the Roman pots. The method was used during Roman pot tests on the SPS beam last year.
+\strut}\cr
+\noalign{\vskip3pt}
+Keywords:&					elastic nucelon scattering, TOTEM experiment\cr
+}
+
+\vfil\eject
+\forceoddpage
+
+
+
+
+% ================================================ TEXT ================================================
+
+
+
+\insertREF
+\BeginText
+
+% ============================================= Introduction ==========================================
+
+\input introduction
+
+% =============================================== Chapter 1 ============================================
+
+\input chapter1
+
+% =============================================== Chapter 2 ============================================
+
+\input chapter2
+
+\EndText
+
+
+\end

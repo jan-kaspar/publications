@@ -1,0 +1,671 @@
+\input base
+\input biblio
+\input colors
+\input slides
+
+
+
+\SetBackground{fig/bg3.eps}
+%\def\FgColor{\rgbBl}
+%\edef\TitColor{\rgbBl}
+
+\def\Bref#1{Ref\hbox{. }\bref{#1}}
+\def\comment#1{}
+
+\def\fg{\cmyk{\FgColor}}
+\def\fgt{\cmyk{\TitColor}}
+\def\blue{\rgb{\0.5 0.5 0.9}}
+\def\green{\rgb{0.5 0.9 0.5}}
+\def\red{\rgb{0.9 0.5 0.5}}
+\def\yellow{\rgb{0.9 0.9 0}}
+
+\def\date{March 3, 2009}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+%\centerline{\fg 3rd preliminary version}
+\hbox{}\vfil
+\title{\bPxx Soft Physics at the LHC with TOTEM}
+\vskip2\baselineskip
+\bgroup
+		\obeylines\leftskip0pt plus1fil
+		{\bPxv Jan Ka\v spar}
+		CERN PH-TOT and
+		Institute of Physics of the AS CR
+		on behalf of the {\bf TOTEM Collaboration}
+		\vskip2\baselineskip
+		La Thuile, \date
+\egroup
+
+\vskip2\baselineskip
+
+\line{\hss
+	\fig[,3cm]{fig/cern_logo_white.eps}\hss
+	\fig[,3cm]{fig/totemLogo_white.eps}\hss
+	\fig[,3cm]{fig/logo-FZU-male_white.eps}\hss
+}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{TOTEM Physics Programme}
+
+\centerline{
+\vbox{\hsize5.1cm
+\centerline{\bPxv Total cross section}
+\centerline{ultimately $\approx 1\percent$ precision}
+\centerline{\fig[,4cm]{../fig/sigma,tot.eps}}
+}\hss
+\vbox{\hsize5.1cm
+\centerline{\bPxv Elastic scattering}
+\centerline{wide $t$ range}
+\centerline{\fig[,4cm]{../fig/elastic_scheme.eps}}
+}}
+
+\vfil
+
+\centerline{\vbox{\hsize10cm
+\centerline{\bPxv Hard and Soft Diffraction}
+\centerline{\fig[,4cm]{../fig/diffraction_hard.eps}\hss\fig[,4cm]{../fig/diffraction_soft.eps}}
+}}
+
+\comment{stress that TOTEM is the only LHC exp. that may do some items}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Dominant Event Classes in pp Collisions}
+
+\line{\kern-\horizontalmargin\fig*[,10.5cm]{../fig/diagrams.eps}\hskip3mm\vbox{\hsize7.5cm
+\centerline{\bf Non-diffractive events}
+\> exchange of colour: Initial hadrons acquire\break colour and break up
+\> rapidity filled in hadronisation
+
+\centerline{$\downarrow$}
+\centerline{exponential suppression of rapidity gaps}
+\centerline{$\downarrow$}
+\centerline{$\hbox{prob}(\De\eta)\sim\exp^{-\la\, \De\eta}$}
+
+\vskip2\baselineskip
+\hrule
+\vskip2\baselineskip
+
+\centerline{\bf Diffractive events}
+\> exchange of colour singlets with vacuum quantum numbers (``Pomerons'')
+\> \em{rapidity gaps}
+
+\centerline{$\hbox{prob}(\De\eta)\sim\hbox{const.}$}
+\centerline{\fig[6cm]{../fig/rapidityGap.eps}}
+
+\> (often) \em{forward protons}
+}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{\kern-\horizontalmargin\vbox{\vskip-3mm
+\fig[6.9cm]{../fig/elastic.eps}
+\fig[6.9cm]{../fig/sigma,tot.eps}
+}\hskip3mm\vbox{\hsize8.3cm
+\title{Why...}
+
+\noindent {\bf Elastic scattering} (diffraction in general)
+\> theoretical understanding not complete
+\> number of approaches: Regge, geometrical, eikonal, QCD, $\ldots\Rightarrow$ rather incompatible predictions
+\> intimately related to the structure of proton
+
+\vskip3\baselineskip
+
+\noindent {\bf Total cross section}
+\> various models/approaches: $\si_{\rm tot} \sim \log s$,\hfil\break $\si_{\rm tot} \sim \log^2 s$, $\si_{\rm tot} \sim s^{\al - 1}$
+\> predictions for $\sqrt{s} = 14\un{TeV}$:\hfil\break $90\un{mb} < \si_{\rm tot} < 130\un{mb}$ $\Rightarrow$ $40\percent$ uncertainty
+\> available data not decisive (incompatible CDF/E810 measurements)
+\> implications to cosmic ray physics etc.
+
+\vskip3\baselineskip
+
+\centerline{\bf TOTEM = precise and decisive measurement}
+
+\vskip2\baselineskip
+}}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{TOTEM Detectors}
+\comment{the instrument to accomplish the physics programme}
+\comment{ATLAS is large, CMS heavy and TOTEM long}
+
+\itskip0pt
+
+\> physics requirements: \fgt\em{forward proton detectors}\fg{} and \fgt\em{large pseudorapidity coverage}\fg
+\vskip-3pt
+\line{%
+\vtop{\hsize5.6cm
+\> \fgt{\bf Roman Pots}\fg
+\>> measurement of forward protons
+}\hskip3mm\vtop{\hsize8cm
+\> telescopes \fgt{\bf T1}\fg{} and \fgt{\bf T2}\fg: tracking of charged particles produced in inelastic events
+\>> vertex reconstruction
+\>> measurement of inelastic rate
+}\hss}
+\vskip5pt
+\> all detectors symmetrically on both sides of IP5
+\> all detectors L1 \em{trigger capable}
+
+\centerline{\vbox to5cm{\fig[,7.7cm]{../fig/totem_detectors_overview.eps}\vss}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Acceptance of TOTEM Detectors}
+
+\centerline{\fig*[10cm]{../fig/acceptanceOverview.eps}}
+
+\comment{TOTEM with CMS: the larges coverage detector ever built}
+\comment{the percentage of protons detected}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Roman Pots}
+
+\itskip=0mm
+\line{\hss
+\vbox{\hsize7cm
+\> stations at $-200, -147, +147$ and $+220\un{m}$\break (measured from IP5)
+\> each station 2 units
+\> each unit 2 vertical and one horizontal RP
+\> each RP 10 strip silicon detectors
+}\hskip1cm
+\vbox{\hsize7cm
+\> \fgt\em{movable}\fg{} insertions
+\>> instable beam $\rightarrow$ safe position
+\>> measurement: as close to beam as possible ($10\si + 0.5\un{mm}$)\hfil\break
+	$\rightarrow$ measurement of very forward protons
+
+}\hss}
+
+\centerline{%
+%\fig[,3.5cm]{../fig/station.eps}\hss
+\fig[,4.5cm]{../fig/rp_station_in_tunnel.eps}\hss
+\fig[,4.5cm]{../fig/rp_unit.eps}
+}
+\centerline{%
+\raise25mm\vbox{\hsize2cm
+\obeylines\leftskip0pt plus1fill\noindent
+thin
+window
+$150\un{\mu m}$
+}\hskip5mm
+\fig[,4cm]{../fig/rp.eps}\hss
+\fig*[,4cm]{../fig/overlap.eps}%
+\raise15mm\vbox{\hsize2cm
+\centerline{overlap}
+\centerline{$\downarrow$}
+\centerline{alignment}
+}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Silicon Detectors}
+
+\itskip=0mm
+\> each RP: $5\times 2$ (back-to-back mounted) strip silicon detectors
+\> strip pitch $66\un{\mu m}$
+\> detection of low angles $\Rightarrow$ ``edge less'': only $\approx 50\un{\mu m}$ dead area
+
+\> L1 trigger capability
+
+\vfil
+
+\centerline{\kern-\horizontalmargin
+\raise9mm\hbox{\fig[,6.2cm]{../fig/rp_package2.eps}}\kern1mm
+\fig[,8cm]{../fig/rp_hybrid.eps}\kern1mm
+\fig[,8cm]{../fig/si_detector.eps}\hss
+}%
+
+\> installation ongoing, $220\un{m}$ stations fully equipped by June
+\> for safety reasons (high background) $147\un{m}$ stations only partially equipped (by June)
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Telescope T1}
+\unskip\centerline{\SmallerFonts (in the center of the CMS end cup)}
+
+\vskip-1cm
+\line{\raise5mm\vbox{\hsize7.5cm
+\itskip0pt
+\> 1 station per side of IP5
+\> each station: 5 planes
+\> each plane: 6 trapezoidal CSC detectors
+\comment{Primary Vertex Reconstruction}
+
+\vskip\baselineskip
+\> L1 trigger capability
+\vskip\baselineskip
+
+\> Cathode Strip Chamber detector
+\>> 3 coordinates: 2 cathode strips, 1 anode wire
+\>> Resolution $\approx 1\un{mm}$
+
+\vskip\baselineskip
+
+\> installation foreseen for May/June (eventually September)
+\comment{Detector design similar to CMS CSC muon chamber}
+}\hskip2cm
+\fig[,7cm]{../fig/t1_sketch.eps}\hss
+}
+
+
+\centerline{\fig[,4.6cm]{../fig/csc_strips.eps}\hss\fig[,4.6cm]{../fig/t1_half.eps}}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Telescope T2}
+\unskip\centerline{\SmallerFonts (after CMS HF calorimeter)}
+
+\itskip0pt
+\> one station on each side of IP5
+\> each station: two halves (left/right)
+\> each half: $5\times$ 2 (back-to-back mounted) GEM detectors
+
+\vskip\baselineskip
+\> L1 trigger capability
+\vskip\baselineskip
+
+\> triple Gas Electron Multiplier detectors
+\>> double readout: strips (radial) and pads (coarse radial and azimuthal)
+\>> resolution: radial $0.15\un{mm}$, azimuthal $0.8^\circ$
+\comment{Used in COMPASS, LHCb, ...}
+
+\vskip\baselineskip
+
+\> installation ongoing, fully finished by May
+
+\advance\hsize1cm
+\centerline{
+	\fig[,6cm]{../fig/gem.eps}\hss
+	\fig[,6cm]{../fig/t2_half.eps}%
+}
+\advance\hsize-1cm
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Optics}
+
+\centerline{\fig*[9cm]{../fig/protonTransport.eps}\hss\raise5mm\vbox{\advance\hsize-9.5cm
+proton transport equation
+$$\eqnarray{
+x_{\rm det} &= \yellow L_x \green \th_x^* \fg + \yellow v_x \green x^* \fg + \yellow D \green \xi \fg\cr
+y_{\rm det} &= \yellow L_y \green \th_y^* \fg + \yellow v_y \green y^* \fg\cr
+}$$
+}}
+
+\green{} $\th_{x, y}^*$\fg{} and\green{} $x^*, y^*$\fg{} are angles and coordinates of a proton at IP, $\green\xi\fg\equiv\De p / p$ is proton momentum loss
+
+\centerline{\yellow{} $L_{x, y}$, $v_{x, y}$\fg{} and \yellow{} D\fg{} are optical functions}
+\centerline{$\downarrow$}
+\centerline{define which $t$ and $\xi$ can be seen ($\equiv$ acceptance)}
+\centerline{$\downarrow$}
+\centerline{example: with the same sample of diffractive protons}
+\centerline{\vbox to3cm{\fig[13cm]{../fig/diffraction_hit_distribution.eps}\hss}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Scenarios}
+
+\advance\hsize\horizontalmargin\line{\kern-\horizontalmargin
+\fig[,4.8cm]{../fig/acceptance_3m_5TeV.eps}
+\fig[,4.8cm]{../fig/acceptance_220_90_7TeV.eps}
+\fig[,4.8cm]{../fig/acceptance_220_1535_7TeV.eps}\hss
+}
+
+\line{\kern-\horizontalmargin\SmallerFonts\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil
+	\fgt{\NormalFonts\bf low $\be^*$}\fg
+	\hrule\vskip1mm
+	$\be^* = 0.5\div 2\un{m}$, ${\cal L} \approx 10^{33}\un{cm^{-2}s^{-1}}$
+	early running: $p = 5\un{TeV}$, $\be^* \sim 3\un{m}$
+		\vskip\baselineskip
+	elastic acceptance
+	$2 \ls |t/{\rm GeV^2}| \ls 10$
+		\vskip\baselineskip
+	resolution
+	$\si(\th) \approx 15\un{\mu rad}$
+	$\si(\xi) \approx 1\div6\cdot 10^{-3}$
+		\vskip3\baselineskip
+	\em{\fgt diffraction, high $|t|$ elastic scattering\fg}
+}
+\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil
+	{\fgt\NormalFonts\bf $\be^* = 90\un{m}$\fg}
+	\hrule\vskip1mm
+	${\cal L} \approx 10^{30}\un{cm^{-2}s^{-1}}$
+		\vskip2\baselineskip
+	elastic acceptance
+	$ 10^{-2} < |t_y/{\rm GeV^2}| \ls 10 $
+		\vskip\baselineskip
+	resolution
+	$\si(\th) \approx 1.7\un{\mu rad}$
+	$\si(\xi) \approx 6\div 15\cdot 10^{-3}$
+		\vskip\baselineskip
+	all $\xi$ seen, universal optics
+		\vskip\baselineskip
+	\em{\fgt diffraction, mid $|t|$ elastic scattering, total cross section\fg}
+}
+\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil
+	{\fgt\NormalFonts\bf $\be^* = 1535\un{m}$\fg}
+	\hrule\vskip1mm
+	${\cal L} \approx 10^{28} \div 10^{29}\un{cm^{-2}s^{-1}}$
+		\vskip2\baselineskip
+	elastic acceptance
+	$ 3\cdot10^{-3} < |t/{\rm GeV^2}| < 0.5$
+		\vskip\baselineskip
+	resolution
+	$\si(\th) \approx 0.3\un{\mu rad}$
+	$\si(\xi) \approx 2\div 10\cdot10^{-3}$
+		\vskip\baselineskip
+	all $\xi$ seen
+		\vskip\baselineskip
+	\em{\fgt total cross section, low $|t|$ elastic scattering\fg}
+}
+\hss}
+
+\advance\hsize-\horizontalmargin
+
+\iffalse
+\advance\hsize\horizontalmargin
+\line{\kern-\horizontalmargin\vbox{\kern-5mm
+\fig[4.8cm]{../fig/acceptance_3.eps}
+\fig[4.8cm]{../fig/acceptance_90.eps}
+\fig[4.8cm]{../fig/acceptance_1535.eps}
+}\hss\vbox to11.5cm{\hsize10cm
+\title{Scenarios}
+\itskip0pt
+
+\noindent\hbox{\fgt\bf low $\be^*$\fg}
+\> $\be^* = 0.5\div 2\un{m}$, ${\cal L}\approx 10^{33}\un{cm^{-2}s^{-1}}$
+\> early running: $p = 5\un{TeV}$, $\be^* \sim 3\un{m}$
+\> elastic acceptance: $ 2 \ls |t/{\rm GeV^2}| \ls 10$
+\> resolution: $\si(\th) \approx 15\un{\mu rad}$, $\si(\xi) \approx 1\div6\cdot 10^{-3}$
+\vskip\baselineskip
+\noindent$\Rightarrow$ \em{diffraction, high $|t|$ elastic scattering}
+\vfil
+
+\noindent\hbox{\fgt\bf $\be^* = 90\un{m}$\fg}, ${\cal L} \approx 10^{30}\un{cm^{-2}s^{-1}}$
+\> elastic acceptance: $ 10^{-2} < |t_y/{\rm GeV^2}| \ls 10 $
+\> all $\xi$ seen
+\> \em{universal} $\rightarrow$ extensive use planned for the \em{first years}
+\> resolution: $\si(\th) \approx 1.7\un{\mu rad}$, $\si(\xi) \approx 6\div 15\cdot 10^{-3}$
+\vskip\baselineskip
+\noindent$\Rightarrow$ \em{diffraction, mid $|t|$ elastic scattering, total cross section}
+\vfil
+
+\noindent\hbox{\fgt\bf $\be^* = 1535\un{m}$\fg}, ${\cal L} \approx 10^{28} \div 10^{29}\un{cm^{-2}s^{-1}}$
+\> all $\xi$ seen
+\> elastic acceptance: $ 3\cdot10^{-3} < |t/{\rm GeV^2}| < 0.5$
+\> resolution: $\si(\th) \approx 0.3\un{\mu rad}$, $\si(\xi) \approx 2\div 10\cdot10^{-3}$
+\vskip\baselineskip
+\noindent$\Rightarrow$ \em{total cross section, low $|t|$ elastic scattering}
+\vfil
+}}
+\advance\hsize-\horizontalmargin
+\fi
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Total Cross Section}
+
+\> Luminosity Independent Method
+\>> based on Optical theorem: $\si_{\rm tot} \propto \Im A(t = 0)$
+
+$$\si_{\rm tot} = {1\over 1+\rh^2} {{\d N/ \d t|_0}\over N_{\rm el} + N_{\rm inel}}, \qquad\qquad {\cal L} = (1+\rh^2)\, {(N_{\rm el} + N_{\rm inel})^2\over {\d N/ \d t|_0}}$$
+\vskip\baselineskip
+
+\htab{\bln
+	&	& \be^* = 90\un{m} & 1535\un{m} \cr\bln
+\d N/\d t|_0	& \hbox{Extrapolation of elastic rate to } t = 0 & 4\percent & 0.2 \percent \cr\ln
+N_{\rm el}	& \hbox{Total elastic rate (correlated with extrapolation)} & 2\percent & 0.1\percent \cr\ln
+N_{\rm inel}	& \vbox{\hsize7cm\noindent\strut Total inelastic rate (error dominated by Single Diffractive trigger losses)} & 1\percent & 0.8\percent \cr\ln
+\rh\equiv\Re A(t)/\Im A(t)|_{t = 0} & \vcenter{\hsize7cm\noindent\strut Error contribution from $(1 + \rh^2)$ (using full COMPETE error band)\phantom{g}} &\multispan2\vrule\hfil $1.2\percent$\hfil \cr\bln
+&\hbox{Total for } \si_{\rm tot} & 5\percent & 1\div2\percent \cr\bln
+&\hbox{Total for } {\cal L} & 7\percent & 2\percent \cr\bln
+}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Total Cross Section -- details}
+
+\line{\hss
+\vbox{\hsize7cm\> exponential extrapolation\par\fig*[,5cm]{../fig/low_t_sigma_el.eps}}\hss
+\vbox{\hsize7cm\> coulomb interference $\Rightarrow$ CKL formula\par\fig*[,5cm]{../fig/coulomb_interference.eps}}\hss
+}
+
+\> inelastic rate -- dominant trigger loss
+
+\centerline{\fig[15cm]{../fig/sd_acceptance_extrapolation.eps}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Early Measurements with RP}
+
+\> the low $\be^*$ optics: $p = 5\un{TeV}$, $\be^* = 3\un{m}$
+\>> acceptance: $0.02 < \xi < 0.18$
+\>> resolution: $\si(\xi) \ls 6\cdot10^{-3}$
+
+\vskip\itskip\noindent 1) \fgt SD\fg, using horizontal RPs
+\>> $\d\si^{\rm SD}/\d M$ at high masses $1.4\un{TeV} < M < 4.2\un{TeV}$, $\si(M) / M \approx 2\div 4\percent$
+
+\line{\hss\fig*[13cm]{../fig/sd_high_mass.eps}\hss}
+
+\vskip\itskip\noindent 2) \fgt DPE\fg, using horizontal RPs
+\>> $\d\si^{\rm DPE}/\d M$ at high masses $0.2\un{TeV} < M < 1.8\un{TeV}$, $\si(M) / M \approx 2.1\div 3.5\percent$
+
+\line{\hss\fig*[13cm]{../fig/dpe_high_mass.eps}\hss}
+
+\vskip\itskip\noindent 3) \fgt ES\fg, using vertical RPs
+\>> $\d\si^{\rm ES}/\d t$, $2\ls |t| \ls 10\un{GeV^2}$, $\si(t)\approx 0.2/\sqrt{|t|}$
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Early Measurements with T1 and T2}
+
+\> charged multiplicity studies
+\>> important implications for cosmic ray physcis
+
+\> measurement of rapidity gaps
+
+\vfil
+
+\advance\hsize+1\horizontalmargin
+\line{\kern-\horizontalmargin\hss
+\vbox{
+	\hbox{non-diffractive}
+	\fig[,5cm]{../fig/charged_multiplicity_nondiffractive.eps}
+}\hss\vbox{
+	\hbox{single diffractive}
+	\fig[,5cm]{../fig/multiplicity_diffractive.eps}
+}\hss}
+\advance\hsize-1\horizontalmargin
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Conclusions}
+
+\> status
+\>> detectors partially installed, \em{fully installed} by ...
+\>> \em{TOTEM ready} for LHC restart
+
+\> beam conditions
+\>> TOTEM will run under \em{all beam conditions}
+\>> TOTEM will \em{need high $\be^*$ optics} $\rightarrow$ will require $\be^* = 90\un{m}$ optics for early running
+
+
+\vfil\noindent\fgt Early measurements\fg
+
+\> low $\be^*$
+\>> study of SD and DPE at high masses
+\>> elastic scattering at high $|t|$
+\>> measurement of forward charged multiplicity
+
+\> $\be^* = 90\un{m}$
+\>> $5\percent$ measurement of $\si_{\rm tot}$
+\>> inclusive studies of the main diffractive processes
+\>> elastic scattering already in a wide range of $t$
+\>> measurement of forward charged multiplicity
+
+\vfil\noindent\fgt Later\fg
+\> precision $\si_{\rm tot}$ measurement ($1\div 2\percent$), will need the $\be^*=1535\un{m}$ optics at dedicated short TOTEM runs
+\> an extensive physics programme  together with CMS
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}\vfil
+\title{Thank you for your attention}
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}\vfil
+\title{Backup slides}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Kinematics}
+
+\> using small $\th$ and high energy approximation
+
+\line{\fig[7cm]{../fig/kinematics.eps}\hskip5mm\raise-2mm\vbox{\advance\hsize-7.8cm
+$$\vec p_1 = p_{\rm nom} (1 + \xi_1) \pmatrix{\th_1 \cos\ph_1\cr \th_1 \sin\ph_1\cr 1}$$
+\vskip5mm
+$$\vec p_2 = - p_{\rm nom} (1 + \xi_2) \pmatrix{\th_2 \cos\ph_2\cr \th_2 \sin\ph_2\cr 1}$$
+
+\> momentum transfer (capital $P$ denotes four-momentum)
+\vskip1mm
+$$t_1 = (P_1' - P_1)^2 \approx - p_{\rm nom}^2 (1+\xi_1)^2 \th_1^2$$
+}}
+
+\vskip\baselineskip
+\line{\fig[5cm]{../fig/pseudo_rapidity.eps}\hss\raise5mm\vbox{\advance\hsize-6.5cm
+\> rapidity
+$$y = {1\over 2}\log{E + p_z\over E - p_z}$$
+\> pseudorapidity
+$$\eta = -\log \tan {\th\over 2}$$
+\vskip\baselineskip
+\noindent$\longleftarrow$ for proton of $p = 7\un{TeV}$
+}}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Optics details}
+\abovedisplayshortskip=3pt
+\belowdisplayshortskip=3pt
+
+\> $\ep$ = emittance ($3.75$ normal, $1$ reduced for low $\be^*$ optics)
+\> $\gamma = E/m_0$ relativistic factor of proton
+
+\> proton trajectory
+$$x(s) = \sqrt{\ep \be(s)} \cos\phi(s) + D(s)\xi$$
+
+\> high $\be^* \Rightarrow$ thick beam $\Rightarrow$ need for parallel-to-point focusing $\equiv$ negligible $v$-terms
+
+\> optical functions
+$$v(s) = \sqrt{\be(s)\over\be^*} \cos\phi(s)$$
+$$L(s) = \sqrt{\be(s)\be^*} \sin\phi(s)$$
+$$\phi(s) = \int_0^s {\d s'\over\be(s')}$$
+
+$$\sigma(\hbox{vertex}) = \sqrt{\ep \be^*\over \gamma}$$
+$$\sigma(\hbox{beam divergence}) = \sqrt{\ep \over \be^* \gamma}$$
+
+\> details: see \Bref{hubert thesis}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Scenarios}
+
+\itskip0pt
+
+\line{\hss\raise5mm\vbox{\advance\hsize-4.8cm
+\> $p = 5\un{TeV}$, $\be^* \sim 3\un{m}, {\cal L} = low$ for early runs, $\approx 10^{33}$ later
+\> $\si(\hbox{vertex}) \approx 32\un{\mu m}$, $\si(\hbox{beam divergence}) \approx 16\un{\mu rad}$
+\> only $t_y$ practically resolvable
+\> elastic acceptance: $ 2 \ls |t/{\rm GeV^2}| \ls 10$
+\> reco. precision: $\si(\th) \approx 15\un{\mu rad}$, $\si(\xi) \approx 0.006\div0.01$
+\vskip\baselineskip
+\noindent$\Rightarrow$ diffraction, high $|t|$ elastic scattering
+}}
+
+\line{\hss\vbox{\advance\hsize-4.8cm
+\> $p = 7\un{TeV}$, $\be^* = 90\un{m}, {\cal L} \approx 10^{30}$
+\> $\si(\hbox{vertex}) \approx 212\un{\mu m}$, $\si(\hbox{beam divergence}) \approx 2.3\un{\mu rad}$
+\> vertical parallel-to-point focusing, all $\xi$ seen
+\> $L_x \approx 0 \Rightarrow$ only $t_y$ practically resolvable
+\> elastic acceptance: $ 10^{-2} < |t_y/{\rm GeV^2}| \ls 10 $
+\> reco. precision: $\si(\th) \approx 1.7\un{\mu rad}$, $\si(\xi) \approx 0.006$
+\vskip0\baselineskip
+\noindent$\Rightarrow$ diffraction, mid $|t|$ el. scat., total cross section
+}}
+
+\line{\hss\raise5mm\vbox{\advance\hsize-4.8cm
+\> $p = 7\un{TeV}$, $\be^* = 1535\un{m}, {\cal L} \approx 10^{28} \div 10^{29}$
+\> $\si(\hbox{vertex}) \approx 450\un{\mu m}$, $\si(\hbox{beam divergence}) \approx 0.3\un{\mu rad}$
+\> parallel-to-point focusing, all $\xi$ seen
+\> elastic acceptance: $ 3\cdot10^{-3} < |t/{\rm GeV^2}| < 0.5$
+\> reco. precision: $\si(\th) \approx 0.3\un{\mu rad}$, $\si(\xi) \approx 0.005$
+\vskip\baselineskip
+\noindent$\Rightarrow$ total cross section, low $|t|$ elastic scattering
+}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Telescope T1}
+
+\line{\hss\raise1cm\vbox{\hsize8cm
+\> 5 planes, each formed by 6 trapezoidal CSC detectors
+\>> $3^\circ$ rotation and overlap between adjacent planes
+\>> Resolution $\approx 0.8\un{mm}$
+\comment{Primary Vertex Reconstruction}
+
+\> CSC detector
+\>> 3 coordinates: 2 cathode strips, 1 anode wire
+\>> Anode wires: diameter $30\un{\mu m}$, $3\un{mm}$ pitch
+\>> Cathode strips: $4.5\un{mm}$ width, $5\un{mm}$ pitch
+\>> Trigger with anode wires
+\comment{Detector design similar to CMS CSC muon chamber}
+\>> Gas Mixture $\rm Ar/CO_2/CF_4$
+\>> Gas gap: 10 mm
+\>> Max size: $\approx 1\un{m} x 0.68\un{m}$
+}\hss
+\fig[,6.5cm]{../fig/t1_sketch.eps}\hss
+}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Telescope T2}
+
+\> T2: 10 planes formed by 20 GEM semi-circular modules
+\>> back-to-back assembly and overlap between modules
+\>> double read-out: strips for radial position, pads for both rad and azimuthal
+\>> Trigger from Pads, 1560/chamber,
+
+\comment{Used in COMPASS, LHCb, ...}
+
+\> triple GEM detectors
+\>> gas detector, radiation hard, high rate, good spatial, and timing resolution
+\>> Electrodes: $50\un{\mu m}$ kapton + $2\times 5\un{\mu m}$ Cu
+\>> Density: $50-100\un{holes/mm^2}$
+\>> Electric field (channel) $\approx 100\un{KV/cm} \Rightarrow$ electron cascade
+\>> Gain: 10 - 100
+
+\advance\hsize1cm
+\centerline{
+	\kern-5mm
+	\vbox{
+		\fig[5cm]{../fig/gem_princip.eps}%
+		\fig[5cm]{../fig/gem_foil.eps}%
+	}\hss
+	\fig[,5cm]{../fig/gem.eps}\hss
+	\fig[,5cm]{../fig/t2_half.eps}%
+}
+\advance\hsize-1cm
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Trigger Schemes}
+
+\centerline{\fig[13cm]{../fig/trigger_schemes.eps}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Inelastic Rate Measurement}
+
+\centerline{\fig[13cm]{../fig/inelastic_rate_measurement.eps}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Pseudorapidity Distributions for SD}
+
+\centerline{\fig[13cm]{../fig/pseudorapidity_distributions_sd.eps}}
+
+
+\vfil\eject\bye

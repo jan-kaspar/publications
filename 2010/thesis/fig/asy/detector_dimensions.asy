@@ -1,0 +1,1 @@
+../../../../totem figures/detector_dimensions.asy
