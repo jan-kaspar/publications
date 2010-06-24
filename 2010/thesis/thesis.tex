@@ -31,7 +31,8 @@
 \vskip3cm
 \centerline{\fPbxiv Jan Ka\v spar}
 \vskip1cm
-\centerline{\fPbxx Title to be defined}
+\centerline{\fPbxx Diffractive process at high energies}
+\centerline{\fPbxx -- TOTEM experiment}
 \vskip2cm
 \centerline{\fPbxiv Institute of Particle and Nuclear Physics}
 \ialign to\hsize{\tabskip 0pt plus1fil\strut #&\hfil\fPbxiv #\ \tabskip0pt&\fPbxiv #\hfil\tabskip 0pt plus1fil\cr
@@ -468,10 +469,54 @@ To summarize, we have just derived that transition from overall rotation $\De\rh
 TODO: Check the minus sign.
 
 
+\ssubsection{Constraints for few read-out directions}
 
+In the previous section, we have used the fact that certain equalities shall hold for all read-out directions $\vec d_i$. However, the TOTEM detectors are designed such that the read-out directions are all parallel to either $U$ or $V$ axes (TODO: make sure these are defined). In this section we will show that such a geometry may increase the number of singular modes. We will consider a more general case, where the detectors split into groups according to their read-out direction:
+\eqref{\vec \d_i \in \lbrace \pm\vec\de_1, \pm\vec\de_2, \ldots \rbrace \ ,\qquad |\vec\de_i \cdot \vec\de_j| \neq 1\hbox{ for } i \neq j\ .}{read-out groups}
 
+For \em{shifts in read-out direction} the assumption of all direction has not been used and thus the result \Eq{cnst shr 3} remains valid also for these geometries.
 
-\ssubsection{Constraints for 2 read-out directions}
+For \em{shifts in $z$} one gets a copy of \Eq{cnst shz 2} for every group $g$:
+\eqref{\vec\de_g \cdot \vec a^n \De z_i = \vec\de_g \cdot (\De\vec a^n z_i + \De\vec b^n)\ ,}{cnst shz g1}
+valid, indeed, for detectors $i$ from the group $g$. (note the $\pm$ signs cancel). Since this shall hold for all $\vec a^n$, the ratio $\vec\de_g\cdot\De\vec a^n / \vec\de_g\cdot\vec a^n$ must be $n$-independent. That means constant, at least per group. Formally written (and similarly for the $\De\vec b^n$ term):
+\eqref{
+{\vec\de_g\cdot\De\vec a^n \over \vec\de_g\cdot\vec a^n} = \al_g,\qquad
+{\vec\de_g\cdot\De\vec b^n \over \vec\de_g\cdot\vec a^n} = \be_g
+\ .}{cnst shz g2}
+For \em{one group}, there is infinite number of $\De\vec a^n$ vectors fulfilling this condition for a fixed value of $\al_1$. For \em{two groups}, there is a unique solution for given values $\al_1$ and $\al_2$. This means that singular modes are independent for each group, they are of form
+\eqref{\De z_i = \al_g z_i + \be_g,\qquad \hbox{for groups }g \in \lbrace 1, 2\rbrace\ .}{cnst shz g3}
+This means that the number of singular modes is doubled compared to \Eq{cnst shz 5}.
+
+For \em{three and more groups}, the $\vec a^n$ vector is defined by two (let's say first and second) $\al$ values. Let's check what are the conditions for the other $\al$ values so as all requirements \Eq{cnst shz g2} are satisfied. Since $\vec\de_g$ vectors are two dimensional, one can put
+\eqref{\vec\de_g = \et_{g1}\vec\de_1 + \et_{g2}\vec\de_2\ .}{cnst shz g4}
+(For $g>2$ both $|\et| < 1$). Inserting that to \Eq{cnst shz g2} yields
+\eqref{\al_g = {
+\et_{g1} \vec\de_1\cdot\De\vec a^n \al_1 + \et_{g2} \vec\de_2\cdot\De\vec a^n \al_2
+\over
+\et_{g1} \vec\de_g\cdot\vec a^n + \et_{g2} \vec\de_g\cdot\vec a^n
+}\ .}{cnst shz g5}
+If $\al_1 \neq \al_2$, then $\al_g$ would become $n$-dependent, which is not possible. Therefore, there is no solution for this case. If $\al_1 = \al_2$, then all $\al_g$ are equal. This is exactly the solution \Eq{cnst shz 5} derived in the preceding section.
+
+\em{Rotations around $z$}. Here, one can proceed in a similar way as for shift in z. One gets an analogy of \Eq{cnst rotz 3} for every group
+\eqref{\de_g \cdot \mat R(\de\rh_i)^\T \vec a^n = \de_g \cdot {\vec a'}^n\ ,}{cnst rotz g1}
+ which limits the dependence of $\De\rh$ only to group: $\De\rh_i \rightarrow \De\rh_g$. For \em{one} group there exist infinitely many solutions, for \em{two groups} there is exactly one. The solution has the form of \Eq{cnst rotz 7}, but separately for each groups -- therefore there are two linearly-independent singular modes. For \em{three and more groups}, the ${\vec a^n}'$ vector is fixed by two values of $\De\rh_g$ (again, take the first and second). Using the decomposition \Eq{cnst shz g4} one finds (in infinitesimal approximation)
+\eqref{\De\rh_g = {
+\et_{g1} \vec\de_1\cdot\De\vec a^n \De\rh_1 + \et_{g2} \vec\de_2\cdot\De\vec a^n \De\rh_2
+\over
+\et_{g1} \vec\de_g\cdot\vec a^n + \et_{g2} \vec\de_g\cdot\vec a^n
+}\ .}{cnst rotz g5}
+This is a similar result to \Eq{cnst shz g5} and thus the interpretation is similar too. There is no solution if $\De\rh_1 \neq \De\rh_2$ and if they are equal, then all $\De\rh_g$ are equal. This reveals the solution \Eq{cnst rotz 7} from the previous section.
+
+The singular mode numbers are summarized in \Tb{singular mode number}.
+
+\htab{singular mode number}{Numbers of singular modes for different geometry types.}{\bln
+\hbox{quantity class}				& \hbox{two read-out directions} & \hbox{three and more read-out directions} \cr\bln
+\hbox{shift in read-out direction}	& 4 & 4\cr\ln
+\hbox{shift in }z					& 2 & 4\cr\ln
+\hbox{rotation around}z				& 1 & 2\cr\bln
+}
+
+As it was already said, the \em{design} of the Roman Pot detectors is such that there would be only two read-out directions. However in \em{reality}, because of misalignment rotations, the number of read-out directions is as large as the number of detectors. But since the misalignments small only, one stays close to the 2-readout-direction case. 
 
 \> close to the two groups -- the graph
 
