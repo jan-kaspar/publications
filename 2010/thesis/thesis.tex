@@ -158,7 +158,7 @@ The rotation $\mat R$ can be parameterized as
 }
 }{rotation parameterization}
 
-TODO The rotation $\mat R$ only describes the misalignment rotations. As follows from the \Sc{expected misalignments}, the estimate for such rotations is of the order $1\un{mrad}$. For such angles, it is possible to use the following approximation
+\TODO{} The rotation $\mat R$ only describes the misalignment rotations. As follows from the \Sc{expected misalignments}, the estimate for such rotations is of the order $1\un{mrad}$. For such angles, it is possible to use the following approximation
 \eqref{\cos\rh \approx 1,\qquad \sin\rh \approx \rh\ .}{small rotation approximation}
 Furthermore, terms as $\sin\rh_x \sin\rh_y$ can be neglected to $\sin\rh_x$. Therefore, the rotation $\mat R$ can be approximated by
 \eqref{\mat R \approx \pmatrix{
@@ -167,7 +167,7 @@ Furthermore, terms as $\sin\rh_x \sin\rh_y$ can be neglected to $\sin\rh_x$. The
 -\rh_y & -\rh_x & 1\cr
 }}{rotation parameterization approximated}
 
-TODO: keep $\rh_z$ without the limit
+\TODO{keep $\rh_z$ without the limit}
 
 Now, lets find the point where the track \Eq{local track} hits the detector. This is the point on the track with $z_l = 0$. Inserting \Eq{local track} to \Eq{global to local}, one can find that the condition is fulfilled for 
 \eqref{z = z_i \equiv - { - c_z - \rh_y (b_x - c_x) - \rh_x (b_y - c_y) \over 1 - \rh_y a_x - \rh_x a_y} \ .}{z i}
@@ -230,7 +230,7 @@ This also gives estimate about the rotation
 
 \noindent\em{Errors in optical functions} are also sort of misalignments -- global alignment
 
-\htab{expected misalignments}{Expected misalignments orders. TODO}{\bln
+\htab{expected misalignments}{Expected misalignments orders. \TODO{}}{\bln
 	& \hbox{within RP package} & \hbox{Roman Pot} \cr\bln
 \hbox{transverse shift} \un{\mu m}& & \cr\ln
 \hbox{shift in }z & & \cr\ln
@@ -310,9 +310,9 @@ d_{ix} z_i & d_{iy} z_i & d_{ix} & d_{iy} \cr
 }, \quad \hbox{for all detectors involved in }n\hbox{-th event}}{mat alpha}
 and
 \eqref{\Ga_i^n = {\rm diag}\,\left(\ga_{i, 1}^n, \ldots, \ga_{i, D}^n \right)\ .}{mat Gamma}
-TODO: Gamma is of dimension Dn x D !!!
+\TODO{Gamma is of dimension Dn x D !!!}
 
-TODO: $N$ events, $D$ detectors, $D_n$ detectors active in $n$-th event, $G$ misalignment classes, $\vec\mu^n = (\mu^n_1, \ldots, \mu_{D_n}^n)^\T$
+\TODO{$N$ events, $D$ detectors, $D_n$ detectors active in $n$-th event, $G$ misalignment classes, $\vec\mu^n = (\mu^n_1, \ldots, \mu_{D_n}^n)^\T$}
 
 \eqref{\vec\mu^n =
 \underbrace{\mat\al^n \vec\ta}_{\hbox{track}}
@@ -328,9 +328,11 @@ TODO: $N$ events, $D$ detectors, $D_n$ detectors active in $n$-th event, $G$ mis
 
 This idea was first implemented in Millepede (see \bref{millepede}). Here we use different notation as this work as been done independently.
 
-Now we would like to estimate parameters $\vec P$ based on the measurements $\vec M$. For that, we can use the Least Squares method (TODO), which gives the following prediction:
+Now we would like to estimate parameters $\vec P$ based on the measurements $\vec M$. For that, we can use the Least Squares method \TODO{reference}, which gives the following prediction:
 \eqref{\hat\vec P = (\mat A^\T \mat A)^{-1} \mat A^\T\,\vec M\.}{P estimate exact}
-(The hat is to emphasize it is an estimate.) However, the $\mat\Ga$ matrices (contained in $\mat A$ matrix) include track parameters which are unknown at the fit time. Instead, one can use track parameter estimates obtained via model where all misalignments are neglected. This is basically using $\mat \al^n$ as fit matrix for data $\vec \mu^n$. Let's denote gamma and A matrices obtained in this way as $\hat\mat\Ga$ and $\hat\mat A$. One can then use
+(The hat is to emphasize it is an estimate.) However, the $\mat\Ga$ matrices (contained in $\mat A$ matrix) include track parameters which are unknown at the fit time. Instead, one can use track parameter estimates obtained via model where all misalignments are neglected. This is basically using $\mat \al^n$ as fit matrix for data $\vec \mu^n$. Let's denote gamma and A matrices obtained in this way as $\hat\mat\Ga$ and $\hat\mat A$:
+\eqref{\vec\ta \rightarrow \hat\vec\ta: \quad \mat\Ga \rightarrow \hat\mat\Ga, \mat A \rightarrow \hat\mat A}{tau linearization}
+ One can then use
 \eqref{\hat\vec P = (\hat\mat A^\T \hat\mat A)^{-1} \hat\mat A^\T\,\vec M\ .}{P estimate}
 
 The \rhs expression will be evaluated now bit by bit, keeping in mind one is mainly interested in the $\ch$ parameters (i.e. the bottom part of $\hat\vec P$ vector).
@@ -343,7 +345,7 @@ The \rhs expression will be evaluated now bit by bit, keeping in mind one is mai
 \vdots				&		&\vdots					&\vrule	&\vdots					&		&\vdots					\cr
 {\mat\Ga_G^1}^\T \mat\al	&\cdots	&{\mat\Ga_G^N}^\T \mat\al	&\vrule	&\sum_n {\Ga_G^n}^\T\Ga_1^n	&\cdots	&\sum_n {\Ga_G^n}^\T\Ga_G^n	\cr
 }\ .}{mat ATA}
-This matrix can be inverted (TODO provided ... ) with the use of the following identity for block matrices (taken from \bref{wikipedia} keyword \em{matrix inverse}):
+This matrix can be inverted (\TODO{provided ...}) with the use of the following identity for block matrices (taken from \bref{wikipedia} keyword \em{matrix inverse}):
 \eqref{\pmatrix{
 \mat A	&\strut\vrule	&\mat B	\cr
 \noalign{\hrule}
@@ -380,8 +382,9 @@ Finally, the $\ch$ parameters (the bottom part of $\hat\vec P$ vector) can be de
 $\mat\si^n\,\vec \mu^n$ is the vector of one-track-fit residuals for the $n$-track. Therefore we will adopt notation
 \eqref{\vec R^n = \mat\si^n\,\vec \mu^n}{vec R}
 
-As $\mat\si^n$ is singular (and so $\mat S$ might be TODO), one had better write
-\eqref{\mat S\, \hat\vec\ch = \pmatrix{
+As $\mat\si^n$ is singular (and so $\mat S$ might be \TODO{...}), one had better write
+\eqref{\mat S\, \hat\vec\ch = \vec T, \qquad 
+\vec T = \pmatrix{
 \sum_n {\mat\Ga_1^n}^\T\mat\,\vec R^n\cr
 \vdots\cr
 \sum_n {\mat\Ga_G^n}^\T\mat\,\vec R^n\cr
@@ -392,7 +395,7 @@ As $\mat\si^n$ is singular (and so $\mat S$ might be TODO), one had better write
 
 As we will show in the following the $\mat S$ matrix is singular and therefore the identity \Eq{BlockInverse} cannot be used. Thus, it is important to justify the validity of the final result \Eq{fit equation}. In fact this is rather trivial; by plugging \Eq{vec R,todo1} to the \rhs{} of \Eq{fit equation}.
 
-\subsection{Constraints}
+\subsection{Singular modes and constraints}
 
 It is clear that not all $\ch$ parameters can be determined by the track-based alignment. It is a consequence of the fact that measurements enter the fit equation \Eq{fit equation} in the form of residuals. That means that misalignment modes that can be compensated by track-parameters variation, cannot be revealed. These misalignment modes manifest themselves as eigenvectors of the $\mat S$ matrix with zero eigenvalue. This makes $\mat S$ singular and the naive, matrix-inversion solution \Eq{chi estimate} is not possible. For this reason we will refer to such misalignment modes as \em{singular modes}.
 
@@ -410,7 +413,7 @@ which is a direct consequence of $\mat\si^n \al^n = 0$.
 
 Now, let's explore what are the singular modes that we have to face. This will done it two steps -- first for an arbitrary detector geometry and second for the actual case of TOTEM Roman Pots, where only two read-out directions are used.
 
-TODO: there can be at most 4 singular modes per misalignment class. Prove it!
+\TODO{there can be at most 4 singular modes per misalignment class. Prove it!}
 
 \ssubsection{Constraints for any geometry}
 
@@ -422,7 +425,7 @@ If this is fulfilled, such $\De\vec c_i$ configurations will be singular modes, 
 \eqref{- \De s_i \equiv -\vec d_i \cdot \De\vec c_i = \vec d_i \cdot \left[ ({\vec a'}^n - \vec a^n) z_i + ({\vec b'}^n - \vec b^n) \right]\ .}{cnst shr 2}
 Since the ${\vec a'}^n$ and ${\vec b'}^n$ vectors are two-dimensional, there four singular modes:
 \eqref{\De s_i \propto z_i\cos\rh_i,\quad \De s_i \propto z_i\sin\rh_i,\quad \De s_i \propto \cos\rh_i,\quad \De s_i \propto \sin\rh_i\ .}{cnst shr 3}
-TODO: Like columns of complete $\mat\al$ matrix. 2 shifts and 2 shearings.
+\TODO{Like columns of complete $\mat\al$ matrix. 2 shifts and 2 shearings.}
 
 
 \em{Shifts in $z$}. 
@@ -466,12 +469,12 @@ To summarize, we have just derived that transition from overall rotation $\De\rh
 1\cr
 - \de s_i
 }\ .}{cnst rotz 7}
-TODO: Check the minus sign.
+\TODO{Check the minus sign.}
 
 
 \ssubsection{Constraints for few read-out directions}
 
-In the previous section, we have used the fact that certain equalities shall hold for all read-out directions $\vec d_i$. However, the TOTEM detectors are designed such that the read-out directions are all parallel to either $U$ or $V$ axes (TODO: make sure these are defined). In this section we will show that such a geometry may increase the number of singular modes. We will consider a more general case, where the detectors split into groups according to their read-out direction:
+In the previous section, we have used the fact that certain equalities shall hold for all read-out directions $\vec d_i$. However, the TOTEM detectors are designed such that the read-out directions are all parallel to either $U$ or $V$ axes (\TODO{make sure these are defined}). In this section we will show that such a geometry may increase the number of singular modes. We will consider a more general case, where the detectors split into groups according to their read-out direction:
 \eqref{\vec \d_i \in \lbrace \pm\vec\de_1, \pm\vec\de_2, \ldots \rbrace \ ,\qquad |\vec\de_i \cdot \vec\de_j| \neq 1\hbox{ for } i \neq j\ .}{read-out groups}
 
 For \em{shifts in read-out direction} the assumption of all direction has not been used and thus the result \Eq{cnst shr 3} remains valid also for these geometries.
@@ -516,22 +519,99 @@ The singular mode numbers are summarized in \Tb{singular mode number}.
 \hbox{rotation around}z				& 1 & 2\cr\bln
 }
 
-As it was already said, the \em{design} of the Roman Pot detectors is such that there would be only two read-out directions. However in \em{reality}, because of misalignment rotations, the number of read-out directions is as large as the number of detectors. But since the misalignments small only, one stays close to the 2-readout-direction case. 
+As it was already said, the \em{design} of the Roman Pot detectors is such that there would be only two read-out directions. However in \em{reality}, because of misalignment rotations, the number of read-out directions is as large as the number of detectors. But since the misalignments small only, one stays close to the 2-readout-direction case. This will manifest in presence of several modes with low but non-zero eigenvalues. It will lead to numerical issues that will be addressed in \Sc{align imp}.
 
-\> close to the two groups -- the graph
 
 \ssubsection{Constraints for RPShZ}
 
 \ssubsection{Constrained solution}
 
-\> Importance of RP overlap vs. pathological case with no track through overlap
+To solve the fit equation \Eq{fit equation}, one has to imply additional constraints that would regularize the $\mat S$ matrix. For the alignment task, these constraints may be for example metrology or laster measurements. Such constraints may be written in the following form
+\eqref{\vec C \cdot \hat\vec\ch = v\ ,}{cnst form}
+where $\vec C$ describes the structure of the constraint and $v$ contains the measurement outcome.
+
+To solve the fit equation with constraints, it is advantageous to employ the Lagrange multipliers technique (\TODO{reference}). It suggests to expand the fit equation to
+\eqref{\pmatrix{
+\mat S & \mat C \cr
+\mat C^\T & 0\cr
+} \pmatrix{
+\hat\vec\ch \cr
+\vec\La \cr
+} = \pmatrix{
+\vec T\cr
+\vec V\cr
+}\ ,}{alignment equation}
+where the $\mat C$ matrix contains the $\vec C$ vectors (see \Eq{cnst form}) in columns for all constraints applied and vector $\vec V$ includes corresponding $v$'s. $\vec\La$ is the vector Lagrange multipliers. Let's demonstrate that this equation does what we want. First, let's rewrite as two equations
+\eqref{\mat S \hat\vec\ch = \vec T - \mat C \vec\La \equiv \tilde\vec T(\vec\La)\ ,}{cnst aux1}
+\eqref{\mat C^\T \hat\vec\ch = \vec V\ .}{cnst aux2}
+The second one obviously presents a series of constraints of type \Eq{cnst form}. Since $\mat S$ is symmetric (\TODO{ref}), it can be diagonalized as follows (see e.g. \bref{wikipedia} key \em{symmetric matrix})
+\eqref{\mat S = \mat Q \mat D \mat Q^{-1}, \qquad
+\mat D = \diag(\underbrace{0, \ldots}_{\vbox{\hbox{singular}\hbox{modes}}}; \underbrace{\la_1, \ldots}_{\vbox{\hbox{regular}\hbox{modes}}}), \qquad
+\mat Q = (\underbrace{\vec s_1, \ldots}_{\vbox{\hbox{singular}\hbox{modes}}} ; \underbrace{\vec r_1, \ldots}_{\vbox{\hbox{regular}\hbox{modes}}})
+\ ,}{cnst aux3}
+where we have ordered the eigenvalues and eigenvectors such that all singular modes go first. Let's remark that we don't require eigenvectors for the same eigenvalue to form an ortonormal set (although we could). This will enable us to work with singular modes as derived above (without ortnormalizing them). Since $\mat Q$ is regular, one can put
+\eqref{\mat D \mat Q^{-1} \hat\vec\ch = (\mat Q^\T \mat Q)^{-1} \mat Q^T \tilde\vec T(\vec\La)}{cnst aux4}
+and expand the parts for singular vectors
+\eqref{
+\pmatrix{
+\ddots & & & \vrule & \cr
+& 0 & & \vrule & \cr
+& & \ddots & \vrule & \cr
+\noalign{\hrule}
+ & & & \vrule & \ddots \cr
+}
+\mat Q^{-1} \hat\vec\ch = 
+\pmatrix{
+& & & \vrule & \cr
+& (\mat E^\T \mat E)^{-1} & & \vrule & \cr
+& & & \vrule & \cr
+\noalign{\hrule}
+ & & & \vrule & \ddots \cr
+}
+\pmatrix{
+\cr
+\mat E^\T\cr
+\cr
+\noalign{\hrule}
+\vdots\cr
+}
+\tilde\vec T(\vec\La)
+\ .}{cnst aux5}
+The part above the vertical line on the \lhs{} is identically equal to zero and thus so the \rhs{} must be. Considering that $\mat E^T \mat E$ is regular, one finds
+\eqref{\mat E^\T \vec T = \mat E^\T \mat C \vec\La\ .}{cnst aux6}
+In order to find solution $\vec\La$ for any $\vec T$,
+\eqref{\mat E^\T \mat C\hbox{ must be regular}\ .}{cnst condition}
+This condition defines what constraints may be used. We will discuss some convenient choices later on.
+
+For the moment, let's get back to \Eq{cnst aux1}. (As $\vec\La$ has been resolved from \Eq{cnst aux6}, $\tilde\vec T$ is known.) This equation has infinite number of solutions that can be written
+\eqref{\hat\vec\ch(\vec\et) = \vec\ch^0 + \mat E \vec\et\ ,}{cnst aux7}
+where $\vec\ch^0$ is a particular solution and $\vec\et$ are parameters in the solution space of the homogeneous equation. Inserting that to \Eq{cnst aux2} yields
+\eqref{\vec\et = (\mat C^\T \mat E)^{-1} (\vec V - \vec C^\T \vec\ch^0)}{cnts aux8}
+and therefore \Eq{alignment equation} has always a unique solution that satisfies all constraints \Eq{cnst form}.
+
+Now it would nice to show that the actual misalignments can play the role of $\vec\ch^0$. Unfortunatelly, this is the case only for shifts in read-out direction. For the other misalignment classes it is violated because of the linearization step \Eq{tau linearization}. To demonstrate that we will assume this has not been done and only afterwards we will show where the problem appears. Let's use the $\vec\ch_{\rm a}$ symbol for the actual misalignments.
+Combining \Eq{todo1,vec R,fit equation} one gets
+\eqref{\vec T = \mat S \vec\ch_{\rm a}}{cnst form}
+and since $\mat E^\T \mat S \equiv 0$, $\vec\La = 0$ and $\tilde\vec T = \vec T$.
+
+\> $\vec\ch^0$ is the true solution for shifts only
+
+\TODO{$\vec\La$ should be close to zero}
+
+\ssubsection{Detector overlap}
+
+\> Importance of RP overlap vs\hbox{.} pathological case with no track through overlap
 
 
 \subsection{Uncertainty estimate}
 
-\subsection{Implementation}
+\subsection[align imp]{Implementation}
 
-\> few notes about the implementaion in OfflineSW, may be not here
+\> few notes about the implementation in OfflineSW, may be not here
+
+\> numerical issues
+
+\> close to the two groups -- graph of lowest eigen values
 
 \subsection{Monte-Carlo tests}
 
@@ -555,7 +635,7 @@ Give statistics table (muon/cosmics run, total events, useful events, cut-off/lo
 
 The position of the detectors within the RP assembly has been measured. There are 3 reference points on a detector and one point on the RP. For each detector a zoomed high resolution photo was taken and a relative position of the points 1 and 2 (see \Fg{opticalMetrology}) and the RP reference point was measured. Theoretical values and results are summarized in \Tb{metrology theoretical}. The precision of this measurement is $\approx 10\un{\mu m}$.
 
-\fig{fig/pdf/opticalMetrology.pdf}{opticalMetrology}{An illustration of the optical metrology measurement. TODO points on detector or hybrid?}
+\fig{fig/pdf/opticalMetrology.pdf}{opticalMetrology}{An illustration of the optical metrology measurement. \TODO{points on detector or hybrid?}}
 
 \tab{metrology theoretical}{The theoretical values for the optical measurement of RPs (the positions of the fiducial marks).}{
 \multispan{2}\strut\bvrule\hfil reference point 1\hfil&\multispan{2}\strut\vrule\hfil reference point 2\hfil& \omit\bvrule\hfil control\hfil\cr
