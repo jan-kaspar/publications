@@ -92,7 +92,6 @@ DrawBPM(268.4290, 1, "R.7R5.B1");
 DrawBPM(268.4290, 2, ".7R5.B2");
 
 
-
 real y_a = 0;
 draw((-max_s, y_a)--(max_s, y_a), EndArrow);
 label("$z\,({\rm m})$", (max_s, y_a), E);
@@ -106,3 +105,5 @@ for (real s = -250; s <= 250; s += 50) {
 texpreamble("\font\fTit=pplb8z at 20pt");
 label("\fTit The BPMs around IP5", (0, 5sep), N);
 label("BPMs in red mounted on TOTEM RP stations", (0, 5sep), S);
+
+shipout(bbox(5mm, nullpen));
