@@ -44,7 +44,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\InsertToc
+%\InsertToc
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -330,10 +330,10 @@ This idea was first implemented in Millepede (see \bref{millepede}). Here we use
 
 Now we would like to estimate parameters $\vec P$ based on the measurements $\vec M$. For that, we can use the Least Squares method \TODO{reference}, which gives the following prediction:
 \eqref{\hat\vec P = (\mat A^\T \mat A)^{-1} \mat A^\T\,\vec M\.}{P estimate exact}
-(The hat is to emphasize it is an estimate.) However, the $\mat\Ga$ matrices (contained in $\mat A$ matrix) include track parameters which are unknown at the fit time. Instead, one can use track parameter estimates obtained via model where all misalignments are neglected. This is basically using $\mat \al^n$ as fit matrix for data $\vec \mu^n$. Let's denote gamma and A matrices obtained in this way as $\hat\mat\Ga$ and $\hat\mat A$:
-\eqref{\vec\ta \rightarrow \hat\vec\ta: \quad \mat\Ga \rightarrow \hat\mat\Ga, \mat A \rightarrow \hat\mat A}{tau linearization}
+(The hat is to emphasize it is an estimate.) However, the $\mat\Ga$ matrices (contained in $\mat A$ matrix) include track parameters which are unknown at the fit time. Instead, one can use track parameter estimates obtained via model where all misalignments are neglected. This is basically using $\mat \al^n$ as fit matrix for data $\vec \mu^n$. Let's denote gamma and A matrices obtained in this way as $\tilde\mat\Ga$ and $\tilde\mat A$:
+\eqref{\vec\ta \rightarrow \hat\vec\ta: \quad \mat\Ga \rightarrow \tilde\mat\Ga, \mat A \rightarrow \tilde\mat A}{tau linearization}
  One can then use
-\eqref{\hat\vec P = (\hat\mat A^\T \hat\mat A)^{-1} \hat\mat A^\T\,\vec M\ .}{P estimate}
+\eqref{\hat\vec P = (\tilde\mat A^\T \tilde\mat A)^{-1} \tilde\mat A^\T\,\vec M\ .}{P estimate}
 
 The \rhs expression will be evaluated now bit by bit, keeping in mind one is mainly interested in the $\ch$ parameters (i.e. the bottom part of $\hat\vec P$ vector).
 \eqref{\mat A^\T \mat A = \pmatrix{
@@ -345,7 +345,7 @@ The \rhs expression will be evaluated now bit by bit, keeping in mind one is mai
 \vdots				&		&\vdots					&\vrule	&\vdots					&		&\vdots					\cr
 {\mat\Ga_G^1}^\T \mat\al	&\cdots	&{\mat\Ga_G^N}^\T \mat\al	&\vrule	&\sum_n {\Ga_G^n}^\T\Ga_1^n	&\cdots	&\sum_n {\Ga_G^n}^\T\Ga_G^n	\cr
 }\ .}{mat ATA}
-This matrix can be inverted (\TODO{provided ...}) with the use of the following identity for block matrices (taken from \bref{wikipedia} keyword \em{matrix inverse}):
+This matrix can be inverted (\TODO{provided ...}) with the use of the following identity for block matrices (taken from \bref{wikipedia} keyword \em{matrix inverse}): 
 \eqref{\pmatrix{
 \mat A	&\strut\vrule	&\mat B	\cr
 \noalign{\hrule}
@@ -355,11 +355,11 @@ This matrix can be inverted (\TODO{provided ...}) with the use of the following 
 \noalign{\hrule}
 -\mat S^{-1}\mat C\mat A^{-1}	&\strut\vrule	& \mat S^{-1}\cr
 },\qquad \mat S = \mat D - \mat C\mat A^{-1}\mat B\ .}{BlockInverse}
-(The upper row was skipped as it will not be needed to estimate global parameters.) After some algebra manipulations, matrix $\mat S$ can be written
-\eqref{\mat S = \pmatrix{
-\sum_n {\Ga_1^n}^\T \mat\si^n \mat \Ga_1^n	&\cdots	&\sum_n {\Ga_1^n}^\T \mat\si^n \mat \Ga_G^n	\cr
+(The upper row was skipped as it will not be needed to estimate $\ch$ parameters.) After some algebra manipulations, matrix $\mat S$ can be written
+\eqref{\tilde\mat S = \pmatrix{
+\sum_n {\tilde\mat\Ga}_1^{n^\T} \mat\si^n {\tilde\mat\Ga}_1^n	&\cdots	&\sum_n {\tilde\mat\Ga}_1^{n^\T} \mat\si^n {\tilde\mat\Ga}_G^n	\cr
 \vdots								&		&\vdots									\cr
-\sum_n {\Ga_G^n}^\T \mat\si^n \mat \Ga_1^n	&\cdots	&\sum_n {\Ga_G^n}^\T \mat\si^n \mat \Ga_G^n	\cr
+\sum_n {\tilde\mat\Ga}_G^{n^\T} \mat\si^n {\tilde\mat\Ga}_1^n	&\cdots	&\sum_n {\tilde\mat\Ga}_G^{n^\T} \mat\si^n {\tilde\mat\Ga}_G^n	\cr
 },\qquad \mat\si^n = 1 - \mat\al^n({\mat\al^n}^\T\mat\al^n)^{-1}{\mat\al^n}^\T\ .}{mat S}
 
 The second bit needed for \Eq{P estimate} is
@@ -383,21 +383,40 @@ $\mat\si^n\,\vec \mu^n$ is the vector of one-track-fit residuals for the $n$-tra
 \eqref{\vec R^n = \mat\si^n\,\vec \mu^n}{vec R}
 
 As $\mat\si^n$ is singular (and so $\mat S$ might be \TODO{...}), one had better write
-\eqref{\mat S\, \hat\vec\ch = \vec T, \qquad 
-\vec T = \pmatrix{
-\sum_n {\mat\Ga_1^n}^\T\mat\,\vec R^n\cr
+\eqref{\tilde \mat S\, \hat\vec\ch = \tilde \vec T, \qquad 
+\tilde\vec T = \pmatrix{
+\sum_n {\tilde\mat\Ga}_1^{n^\T} \,\vec R^n\cr
 \vdots\cr
-\sum_n {\mat\Ga_G^n}^\T\mat\,\vec R^n\cr
+\sum_n {\tilde\mat\Ga}_G^{n^\T} \,\vec R^n\cr
 }\ .}{fit equation}
 
 
-\subsection{Justification of the alignment equation}
+\subsection[fit equation]{Justification of the alignment equation}
 
-As we will show in the following the $\mat S$ matrix is singular and therefore the identity \Eq{BlockInverse} cannot be used. Thus, it is important to justify the validity of the final result \Eq{fit equation}. In fact this is rather trivial; by plugging \Eq{vec R,todo1} to the \rhs{} of \Eq{fit equation}.
+As we will show in the following, the $\mat S$ matrix is singular and therefore the identity \Eq{BlockInverse} cannot be used. Thus, it is important to justify the validity of the final result \Eq{fit equation}. By plugging \Eq{vec R,todo1} to the definition of $\tilde\vec T$ in \Eq{fit equation} one obtains
+\eqref{\tilde\vec T =
+\pmatrix{
+\vdots \cr
+\sum_n {\tilde\mat\Ga}_j^{n^\T} \mat\si^n \vec\mu^n\cr
+\vdots \cr
+}
+=
+\pmatrix{
+\ddots & & \udots \cr
+ & \sum_n {\tilde\mat\Ga}_j^{n^\T} \mat\si^n \mat\Ga_i^n\cr
+\udots & & \ddots \cr
+}
+\pmatrix{\vdots \cr {\vec\ch_{\rm a}}_i \cr \vdots}
+=
+\bar\mat S \vec\ch_{\rm a}
+}{exact fit equation}
+(the a subscript in $\vec\ch_{\rm a}$ is to emphasize the we mean the actual misalignments). This is close to \Eq{fit equation}, but not completely equivalent. The difference is that $\tilde\mat S$ contains both $\mat\Ga$ matrices with tildes. This difference represents the error we make by the linearization step \Eq{tau linearization}. Since the expected misalignments are small, the difference between $\mat\Ga$ and $\tilde\mat\Ga$ are small too and it is reasonable to expect that the solution of \Eq{fit equation} would be close to the actual misalignments $\vec\ch_a$. The error can be reduced by taking several iterations \TODO{...}. Note that this problem is not present if only shifts in the read-out direction are considered. The corresponding $\mat\Ga$ matrices are independent of track parameters and therefore there is no difference between tilded and non-tilded versions.
 
 \subsection{Singular modes and constraints}
 
 It is clear that not all $\ch$ parameters can be determined by the track-based alignment. It is a consequence of the fact that measurements enter the fit equation \Eq{fit equation} in the form of residuals. That means that misalignment modes that can be compensated by track-parameters variation, cannot be revealed. These misalignment modes manifest themselves as eigenvectors of the $\mat S$ matrix with zero eigenvalue. This makes $\mat S$ singular and the naive, matrix-inversion solution \Eq{chi estimate} is not possible. For this reason we will refer to such misalignment modes as \em{singular modes}.
+
+\TODO{This is for the exact fit equation, for the real one, the singular modes are "almost" singular modes.}
 
 Let's prove the statements above. Imagine that one could change misalignments $\vec\ch_j$ and track parameters $\vec\ta^n$ such that all measurments $\vec\mu^n$ in all events $n$ would remain unchanged. That is
 \eqref{\vec\ch_j \rightarrow \vec\ch_j',\quad \vec\ta^n \rightarrow {\vec\ta'}^n(\vec\ta^n, \vec\ch_j, \vec\ch_j') : \quad \vec\mu^n \rightarrow {\vec\mu'}^n = \vec\mu^n\ .}{track-parameter compensation}
@@ -532,7 +551,7 @@ where $\vec C$ describes the structure of the constraint and $v$ contains the me
 
 To solve the fit equation with constraints, it is advantageous to employ the Lagrange multipliers technique (\TODO{reference}). It suggests to expand the fit equation to
 \eqref{\pmatrix{
-\mat S & \mat C \cr
+\tilde\mat S & \mat C \cr
 \mat C^\T & 0\cr
 } \pmatrix{
 \hat\vec\ch \cr
@@ -542,7 +561,7 @@ To solve the fit equation with constraints, it is advantageous to employ the Lag
 \vec V\cr
 }\ ,}{alignment equation}
 where the $\mat C$ matrix contains the $\vec C$ vectors (see \Eq{cnst form}) in columns for all constraints applied and vector $\vec V$ includes corresponding $v$'s. $\vec\La$ is the vector Lagrange multipliers. Let's demonstrate that this equation does what we want. First, let's rewrite as two equations
-\eqref{\mat S \hat\vec\ch = \vec T - \mat C \vec\La \equiv \tilde\vec T(\vec\La)\ ,}{cnst aux1}
+\eqref{\tilde\mat S \hat\vec\ch = \vec T - \mat C \vec\La \equiv \vec T'(\vec\La)\ ,}{cnst aux1}
 \eqref{\mat C^\T \hat\vec\ch = \vec V\ .}{cnst aux2}
 The second one obviously presents a series of constraints of type \Eq{cnst form}. Since $\mat S$ is symmetric (\TODO{ref}), it can be diagonalized as follows (see e.g. \bref{wikipedia} key \em{symmetric matrix})
 \eqref{\mat S = \mat Q \mat D \mat Q^{-1}, \qquad
@@ -550,7 +569,7 @@ The second one obviously presents a series of constraints of type \Eq{cnst form}
 \mat Q = (\underbrace{\vec s_1, \ldots}_{\vbox{\hbox{singular}\hbox{modes}}} ; \underbrace{\vec r_1, \ldots}_{\vbox{\hbox{regular}\hbox{modes}}})
 \ ,}{cnst aux3}
 where we have ordered the eigenvalues and eigenvectors such that all singular modes go first. Let's remark that we don't require eigenvectors for the same eigenvalue to form an ortonormal set (although we could). This will enable us to work with singular modes as derived above (without ortnormalizing them). Since $\mat Q$ is regular, one can put
-\eqref{\mat D \mat Q^{-1} \hat\vec\ch = (\mat Q^\T \mat Q)^{-1} \mat Q^T \tilde\vec T(\vec\La)}{cnst aux4}
+\eqref{\mat D \mat Q^{-1} \hat\vec\ch = (\mat Q^\T \mat Q)^{-1} \mat Q^T \vec T'(\vec\La)}{cnst aux4}
 and expand the parts for singular vectors
 \eqref{
 \pmatrix{
@@ -575,28 +594,30 @@ and expand the parts for singular vectors
 \noalign{\hrule}
 \vdots\cr
 }
-\tilde\vec T(\vec\La)
+\vec T'(\vec\La)
 \ .}{cnst aux5}
-The part above the vertical line on the \lhs{} is identically equal to zero and thus so the \rhs{} must be. Considering that $\mat E^T \mat E$ is regular, one finds
+(The $\mat E$ matrix contains the singular vectors $\vec s_i$ in columns). The part above the vertical line on the \lhs{} is identically equal to zero and thus so the \rhs{} must be. Considering that $\mat E^T \mat E$ is regular, one finds
 \eqref{\mat E^\T \vec T = \mat E^\T \mat C \vec\La\ .}{cnst aux6}
 In order to find solution $\vec\La$ for any $\vec T$,
 \eqref{\mat E^\T \mat C\hbox{ must be regular}\ .}{cnst condition}
 This condition defines what constraints may be used. We will discuss some convenient choices later on.
 
-For the moment, let's get back to \Eq{cnst aux1}. (As $\vec\La$ has been resolved from \Eq{cnst aux6}, $\tilde\vec T$ is known.) This equation has infinite number of solutions that can be written
+For the moment, let's get back to \Eq{cnst aux1}. (As $\vec\La$ has been resolved from \Eq{cnst aux6}, $\vec T'$ is known.) This equation has infinite number of solutions that can be written
 \eqref{\hat\vec\ch(\vec\et) = \vec\ch^0 + \mat E \vec\et\ ,}{cnst aux7}
 where $\vec\ch^0$ is a particular solution and $\vec\et$ are parameters in the solution space of the homogeneous equation. Inserting that to \Eq{cnst aux2} yields
 \eqref{\vec\et = (\mat C^\T \mat E)^{-1} (\vec V - \vec C^\T \vec\ch^0)}{cnts aux8}
 and therefore \Eq{alignment equation} has always a unique solution that satisfies all constraints \Eq{cnst form}.
 
-Now it would nice to show that the actual misalignments can play the role of $\vec\ch^0$. Unfortunatelly, this is the case only for shifts in read-out direction. For the other misalignment classes it is violated because of the linearization step \Eq{tau linearization}. To demonstrate that we will assume this has not been done and only afterwards we will show where the problem appears. Let's use the $\vec\ch_{\rm a}$ symbol for the actual misalignments.
-Combining \Eq{todo1,vec R,fit equation} one gets
-\eqref{\vec T = \mat S \vec\ch_{\rm a}}{cnst form}
-and since $\mat E^\T \mat S \equiv 0$, $\vec\La = 0$ and $\tilde\vec T = \vec T$.
+Now it would be nice to show that the actual misalignments can play the role of $\vec\ch^0$. Unfortunately, this is the case only for shifts in the read-out direction. For the other misalignment classes it is violated because of the linearization step \Eq{tau linearization} -- see section \Sc{fit equation}. Combining \Eq{exact fit equation,cnst aux6} yields
+\eqref{\vec\La = (\mat E^\T \mat C)^{-1} \mat E^\T \bar\mat S \vec\ch_a\ .}{cnst aux9}
+If we were not forced to make the linearization step \Eq{tau linearization}, $\mat E$ would contain singular vectors of $\bar\mat S$ and thus their product would be identically zero. Then, $\vec\La = 0$, $\tilde\vec T = \vec T$ and \Eq{cnst aux1} would become trivial
+\eqref{\tilde\mat S \hat\vec\ch = \tilde\mat S \vec\ch_{\rm a}\ ,}{cnst aux10}
+which demonstrates that $\vec\ch_{\rm a}$ could play the role of the particular solution $\vec\ch^0$.
 
-\> $\vec\ch^0$ is the true solution for shifts only
-
-\TODO{$\vec\La$ should be close to zero}
+\TODO{Even with the linearization step, we will be assuming the same singular vectors for $\tilde\mat S$ as for $\bar\mat S$, hence $\vec\La = 0$ and the particular would obey
+\eqref{\tilde\mat S \vec\ch^0 = \bar\mat S \vec\ch_{\rm a}}{cnst aux11}
+$\vec\ch^0$ close to $\vec\ch_{\rm a}$ ...
+}
 
 \ssubsection{Detector overlap}
 
