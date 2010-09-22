@@ -34,13 +34,17 @@ void DrawBPM(real s, int beam, string name, real correction = 0, int dip = 0, bo
 	pen p = black;
 	if (dip > 0) p = red;
 
-	name = "BPM" + name;
+	string label = "\hbox to35mm{";
+	if (y < 0) label += "\hfil ";
+	label += "BPM" + name;
+	if (y > 0) label += "\hfil";
+	label += "}";
 
 	if (printZ)
-		name += ", $z=" + format("%.3f", s) + "\,{\rm m}$";
+		label += "$z=" + format("%.3f", s) + "\,{\rm m}$";
 
-	if (y >= 0) label(rotate(90)*Label(name), (s + correction, y), N, p);
-	else label(rotate(90)*Label(name), (s + correction, y), S, p);
+	if (y >= 0) label(rotate(90)*Label(label), (s + correction, y), N, p);
+	else label(rotate(90)*Label(label), (s + correction, y), S, p);
 }
 
 // left part

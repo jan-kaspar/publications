@@ -34,10 +34,10 @@ void DrawBLM(real s, int beam, string name, real correction = 0, int forTotem = 
 	pen p = black;
 	if (forTotem > 0) p = red;
 
-	name = "\hbox to65mm{" + replace(name, "_", "\_") + "}";
+	name = "\hbox to68mm{" + replace(name, "_", "\_") + "}";
 
 	if (printZ)
-		name += "$z=" + format("%+.3f", s) + "\,{\rm m}$";
+		name += "$z=" + format("%#+.3f", s) + "\,{\rm m}$";
 
 	if (y >= 0) label(rotate(90)*Label(name), (s + correction, y), N, p);
 	else label(rotate(90)*Label(name), (s + correction, y), S, p);

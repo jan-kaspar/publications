@@ -2,7 +2,7 @@ import three;
 import math;
 
 unitsize(1cm);
-currentprojection = perspective(3*(-7, 4.5, 9), up=Y, autoadjust=true, center=false);
+currentprojection = perspective(3*(-8, 4.5, 9), up=Y, autoadjust=true, center=false);
 //currentprojection = orthographic((-1.0, 0.4, 1), (0, 1, 0));
 
 //----------------------------------------------------------------------------------------------------
