@@ -1,0 +1,98 @@
+\chapter{Simulation and analysis methods}
+
+\section{Principle of the experiment}
+
+\subsection[rp measurement]{Relation between RP measurements and a proton}
+
+A collision takes place (the vertex is) in
+\eqref{(x^*, y^*, z^*)^\T}{IP vertex}
+and a proton is created. The proton has energy $E=\sqrt{p^2 + m^2}$ and momentum components
+\eqref{\vec p = p \pmatrix{\sin\th \cos\ph\cr \sin\th\sin\ph \cr \cos\th} = 
+p \pmatrix{\th_x\cr \th_y\cr \sqrt{1 - \th_x^2 - \th_y^2}}}{IP proton momentum}
+
+\fig{fig/pdf/protonTransport.pdf}{protonTransport}{Proton transport.}
+
+Then, the proton is transported by the lattice of the LHC magnets to the detector area (say to $z = z_0$). The transport is schematically depicted in \Fg{protonTransport}. As there are no magnets in the detector area, from $z_0$ on, the proton follows a straight trajectory which might be described as
+\eqref{\pmatrix{x\cr y\cr z} = \pmatrix{a_x\cr a_y\cr 1} z + \pmatrix{b_x\cr b_y\cr 0}}{local track}
+
+So far, the coordinates have been described in the global $xyz$ coordinate system. For deriving (the expected measurement value), it is useful to use a local coordinate frame $x_l y_l z_l$. This coordinate system has its origin in the center of the detector. Its $x_l$ and $y_l$ axes parallel to the detector surface and its $z_l$ axis perpendicular to the surface. The global to local transformation can be written
+\eqref{\pmatrix{x_l\cr y_l\cr z_l} = \mat R \left[ \pmatrix{x\cr y\cr z}  - \pmatrix{c_x\cr c_y\cr c_z}  \right] \ ,}{global to local}
+where the $\vec c$ vector stands for the detector's center position in the global coordinates.
+
+The measurement $m$ is then given by projection of the local surface coordinates $x_l$ and $y_l$ to the readout direction $\vec d$
+\eqref{m = \hbox{ROUND}\left( (d_x, d_y) \pmatrix{x_l\cr y_l} \right)}{full measurement}
+The vector $\vec d = (d_x, d_y)^\T$ is the readout direction (perpendicular to strips). The ``ROUND'' comprises charge sharing effects etc.
+
+The rotation $\mat R$ can be parameterized as
+\eqref{\mat R =
+\pmatrix{
+\cos\rh_z  & \sin\rh_z & 0\cr
+-\sin\rh_z & \cos\rh_z & 0\cr
+0		   & 0         & 1\cr
+}
+\pmatrix{
+\cos\rh_y  & 0 & \sin\rh_y\cr
+0		   & 1 &          \cr
+-\sin\rh_y & 0 & \cos\rh_y\cr
+}
+\pmatrix{
+1 & 0		   & 0        \cr
+0 & \cos\rh_x  & \sin\rh_x\cr
+0 & -\sin\rh_x & \cos\rh_x\cr
+}
+}{rotation parameterization}
+
+\TODO{} The rotation $\mat R$ only describes the misalignment rotations. As follows from the \Sc{expected misalignments}, the estimate for such rotations is of the order $1\un{mrad}$. For such angles, it is possible to use the following approximation
+\eqref{\cos\rh \approx 1,\qquad \sin\rh \approx \rh\ .}{small rotation approximation}
+Furthermore, terms as $\sin\rh_x \sin\rh_y$ can be neglected to $\sin\rh_x$. Therefore, the rotation $\mat R$ can be approximated by
+\eqref{\mat R \approx \pmatrix{
+1 & \rh_z & \rh_y\cr
+-\rh_z & 1 & \rh_x\cr
+-\rh_y & -\rh_x & 1\cr
+}}{rotation parameterization approximated}
+
+\TODO{keep $\rh_z$ without the limit}
+
+Now, lets find the point where the track \Eq{local track} hits the detector. This is the point on the track with $z_l = 0$. Inserting \Eq{local track} to \Eq{global to local}, one can find that the condition is fulfilled for 
+\eqref{z = z_i \equiv - { - c_z - \rh_y (b_x - c_x) - \rh_x (b_y - c_y) \over 1 - \rh_y a_x - \rh_x a_y} \ .}{z i}
+Now, lets make order estimate for the terms in the expression for $z_i$.\hfil\break
+\eqref{\eqnarray{
+c_z &\sim& 1\un{m} \cr
+\rh_{x,y} &\sim& 10^{-3}\un{rad} \cr
+(b - c)_{x, y} &\sim& 10^{-2}\un{m} \cr
+a_{x, y} &\sim& 10^{-2}\un{rad} \cr
+}}{z i order estimates}
+
+With these estimates, one can conclude
+\eqref{z_i = c_z + \O{10^{-5}\un{m}}\ .}{z i approximated}
+
+With the help of \Eq{global to local}, one can calculate the ``on-surface'' coordinates $x_l$ and $y_l$, for example
+\eqref{x_l = 
+\underbrace{a_x z_i}_{10^{-2}\un{m}}
++ \underbrace{b_x - c_x}_{10^{-2}\un{m}} 
++ \underbrace{\rh_z}_{10^{-3}} (\underbrace{a_y z_i}_{10^{-2}\un{m}} + \underbrace{b_y - c_y}_{10^{-2}\un{m}})
++ \underbrace{\rh_y}_{10^{-3}} \underbrace{(z_i - c_z)}_{10^{-5}\un{m}}
+\ .}{xlyl i}
+Keeping only the important terms
+\eqref{\pmatrix{x_l\cr y_l} = \pmatrix{1 & \rh_z\cr -\rh_z & 1}
+\left[
+\pmatrix{a_x\cr a_y} c_z + \vec b - \vec c
+\right] + \O{10^{-8}\un{m}}\ .
+}{xlyl i approximated}
+
+\section{Simulation and analysis chain}
+
+\fig[15cm]{fig/pdf/offline_sw_structure.pdf}{offline sw structure}{The structure of the TOTEM Offline software.}
+
+\> briefly comment on all steps
+\> details only for those I worked on
+
+\section{Beam smearing simulation}
+
+\input smearing.tex
+
+\section{Pattern recognition}
+
+\section{Reconstruction of elastic events}
+
+\input elasticReco.tex

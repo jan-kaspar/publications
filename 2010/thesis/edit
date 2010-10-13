@@ -1,0 +1,13 @@
+#!/bin/bash
+
+gvim -p \
+	thesis.tex \
+	introduction.tex \
+	elastic.tex \
+	simu_reco.tex \
+		smearing.tex \
+		elasticReco.tex \
+	alignment.tex \
+	sigma_tot.tex \
+		extrapolation.tex \
+	appendices.tex

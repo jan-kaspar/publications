@@ -1,0 +1,357 @@
+\subsection{Introduction}
+
+One of the goals of the TOTEM experiment \bref{tdr,blois11} is to measure total cross section for proton-proton collisions at energies up to $14\un{TeV}$. One of methods to reach the goal is based on the optical theorem and gives following prescription for total cross section $\si_{tot}$
+\eqref{\si_{tot} = {16\pi\over (1+\rh^2)} {(\d N_{el}/ \d t)_{t=0}\over N_{el} + N_{inel}} \c}{sigma tot}
+where $N_{el}$ and $N_{inel}$ are elastic and inelastic rates, $\d N_{el}/\d t$ is differential elastic rate and $\rho$ is ratio of real over imaginary part of elastic scattering amplitude at $t=0\un{GeV^2}$.
+
+From technical point of view, it is impossible to measure the differential rate $\d N_{el}/\d t$ directly at $t=0\un{GeV^2}$. One is always limited by finite acceptance to $|t| > |t_{min}|$, for details see section about TOTEM optics. Then one may question how to extrapolate experimental data to $t=0\un{GeV^2}$ the best way. This article will try to answer this question.
+
+We simulated realistic data first. For this purpose we used several theoretical models for $pp$ elastic scattering and information on TOTEM detectors (acceptance and resolution). Then we applied our extrapolation procedure and compared back its results with the predictions of theoretical models.
+
+It is clear that it is necessary to exploit small $|t|$ region to obtain good results. And in this region one cannot neglect coulomb scattering. It means one has to merge coulomb scattering with the theoretical hadronic models since they do not involve the coulomb scattering. This procedure will be discussed more in detail later.
+
+In whole article, we will have in mind proton-proton elastic scattering at (center-of-mass) energy of $\sqrt s = 14\un{TeV}$.
+
+
+\subsection{Hadronic models}
+We used four (hadronic) models for elastic scattering --- Islam \bref{Islam1987,Islam2003,Islam2004,Islam2006}, Petrov--Predazzi--Prokudin \bref{ppp}, Bourrely--Soffer--Wu \bref{bsw} and Block--Halzen \bref{bh}. Furthermore, the model of Petrov--Predazzi--Prokudin has two variants with two or three Pomerons. Thus, we had five different cross section predictions in hand to probe and tune up the our extrapolation method. The predictions are shown at \Fg{sigma}. For $|t| \ls 0.35 \un{GeV^2}$, all the differential cross sections decrease almost purely exponentially. Thus, as a first approach one may fit an exponential across the data. 
+
+\Fg{B} shows up deviation of cross sections from pure exponential. And again for $|t| \ls 0.35 \un{GeV^2}$ (for some models a bit less) the elastic slope $B$ can be well described by a parabola. That is the differential cross section should be described by an exponential of polynomial of the 3rd degree.
+
+These preliminary considerations led us to restrict the data up to $|t| \ls |t_{max}| = 0.35 \un{GeV^2}$ for extrapolation purposes.
+
+\bmfig
+\fig*[7.7cm]{exfig/pdf/cross,section.pdf}{sigma}{[7.55cm]Predicted differential cross sections. The black curve corresponds to Islam model, red to model of Petrov--Predazzi--Prokudin with 2 Pomerons, blue the same model with 3 Pomerons, the purple line stands for Bourrely--Soffer--Wu model and green for Block--Halzen.}{}{}{}
+\fig*[7.7cm]{exfig/pdf/B.pdf}{B}{[7cm]Predicted elastic slope. See the legend of \Fg{sigma}. The colors for models will be kept in what follows.}{}{}{}
+\emfig
+
+
+\subsection{TOTEM detectors and optics}
+The study was done for two running scenarios of the TOTEM experiment (see Ref\hbox{.} \bref{blois11}). First for optics with $\be^* = 1535\un{m}$ and emittance $\ep = 1\un{\mu m\ rad}$ and second for optics with $\be^* = 90\un{m}$ and emittance $\ep = 3.75\un{\mu m\ rad}$.
+
+We assumed we have information from Roman Pots at $220\un{m}$ at both arms. For the $90\un{m}$ optics value of $t$ is reconstructed only from $y$ coordinate, since the effective length $L_x$ is almost zero. In this study we considered only statistical errors (they are listed in \Tb{resolution}). No systematical errors (e.g. relative beam--detector position error) were taken into account.
+
+We used the following formula to parametrize (averaged over the azimuthal angle) acceptance $A(t)$ of Roman pots
+\eqref{A(t) = {2\over\pi} \arccos \sqrt{t_0\over t},\qquad t_0 = -\left({10\si_y + \de\over L_y}p\right)^2 \.}{acceptance}
+
+$p$ denotes momentum of protons in CMS frame, other parameters are explained in Tab\hbox{.}~\tref{resolution}. For estimation of Roman pots' resolution  we took into account angular spread, detector resolution and beam variation errors. The estimate reads
+\eqref{\si^2(t) = 4p^2 t \left( {1\over2} \si_\th^2 + {\cos^2 \ph\over 2L_x^2} (\si_p^2 + \si_{bx}^2) + {\sin^2 \ph\over 2L_y^2} (\si_p^2 + \si_{by}^2)\right) \.}{resolution}
+$\ph$ is angle round the accelerator axis, other symbols are explained in  Tab\hbox{.} \tref{resolution}, again. The resolution depends on $\ph$ angle, for figures \Fg{res rel,res} we fixed the angle at $\ph = \pi/4$ (it gives the mean value of $\si^2(t)$).
+
+
+\htab{resolution}{Optics and detector parameters.}{\bln
+\hbox{parameter}&	\hbox{meaning}	&\hbox{value for } \be^* = 1535\un{m}	&\hbox{value for } \be^* = 90\un{m}\cr\bln
+\si_\th	& \hbox{angular spread error} 			&	3.0\cdot10^{-07}	& 2.4\cdot10^{-06}\cr\ln		
+\si_p	& \hbox{detector pitch error} 			&	\multispan2\vrule\hfil $20\un{\mu m}$\hfil \cr\ln
+\si_{bx}& \hbox{beam x-position variation e.}&	3.0\un{\mu m}	& -	\cr\ln
+\si_{by}& \hbox{beam y-position variation e.}&	8.5\un{\mu m}	& 62\un{\mu m}\cr\ln
+L_x		& \hbox{effective length in x} 			&	100\un{m}	& - \cr\ln
+L_y		& \hbox{effective length in y} 			&	280\un{m}	& 260\un{m}\cr\ln
+\si_y	& \hbox{radius of beam in y}	 			&	85\un{\mu m}& 620\un{\mu m}\cr\ln
+\de		& \hbox{safety gap}			 			&	\multispan2\vrule\hfil $0.5\un{mm}$\hfil\cr\bln
+}
+
+ 
+
+\bmfig
+\fig*[5.1cm]{exfig/pdf/acceptance.pdf}{accep}{[5cm]Acceptance.}{}{}{}
+\fig*[5.1cm]{exfig/pdf/resolution,rel.pdf}{res rel}{[5cm]Relative resolution.}{}{}{}
+\fig*[5.1cm]{exfig/pdf/resolution.pdf}{res}{[5cm]Absolute resolution.}{}{}{}
+\emfig
+
+
+The reasonable lower bounds for $|t|$ are $|t_{min}| = 2\cdot 10^{-3}\un{GeV^2}$ for $\be^* = 1535\un{m}$ and $|t_{min}| = 4\cdot 10^{-2}\un{GeV^2}$ for $\be^* = 1535\un{m}$ (see the dashed lines in \Fg{accep,res rel,res}).
+
+
+
+
+
+\subsection{Coulomb--hadron interference}
+There are two fundamental forces responsible for elastic scattering of protons --- electromagnetic (coulomb) and strong (hadronic). The coulomb scattering is domain of small $|t|$ region and can be described by QED very precisely. Hadronic scattering dominates for higher $|t|$ values and there is no satisfactory theory for this process yet. However, one can use the hadronic models. The boundary is approximately given by point with equal cross sections. Model\footnote{%
+We will use following abbreviations: PPP2 and PPP3 for model of Petrov--Predazzi--Prokudin with 2 and 3 Pomerons, BSW for model of Bourrely--Soffer--Wu and BH for Block--Halzen model.
+} predictions are summarized in Tab\hbox{. }\tref{hc eq}.
+
+\htab{hc eq}{Values of $|t|$ where hadron and coulomb differential cross sections are equal.}{\bln
+						&\hbox{Islam}	&\hbox{PPP2}	&\hbox{PPP3}	&\hbox{BSW}	&\hbox{BH}	\cr\bln
+|t|\ (10^{-3}\un{GeV^2})&0.652			&0.749			&0.657			&0.690		&0.666		\cr\bln
+}
+
+There are several theoretical approaches to describe both interactions acting simultaneously. We used the formula by Cahn, Kundrát and M. Lokajíèek\footnote{We shall abbreviate to CKL formula later on.} (see Refs\hbox{.} \bref{kl94,cahn}) since it is the best we have in hands. The formula gives full scattering amplitude for both interactions $T_{C+H}(t)$ 
+\eqref{T_{C+H}(t) = T_C(t) + T_H(t)\, [1 + i(\al(t) + \be(t))]\,}{CKL}
+where $T_C(t)$ is coulomb amplitude and $T_H(t)$ is amplitude given by a hadronic model. $\al(t)$ and $\be(t)$ are abbreviations for more complicated expressions (for precise form consult the cited papers). Here, we just conclude that $\al(t)$ can be completely neglected compared to $1$ and $\be(t)$ makes effects of order several percents.
+
+\bmfig[Difference between pure hadronic and full cross sections.\flab{CKLxh}]%
+\fig*[5.7cm]{exfig/pdf/CKLxhadron.pdf}{}{}{}{}{}
+\fig*[5.7cm]{exfig/pdf/CKLxhadron,zoom.pdf}{}{}{}{}{}
+\emfig
+
+\bmfig%
+\fig*[5.7cm]{exfig/pdf/CKLxWYxCKLAB0.pdf}{CKLxWY}{[7cm]Comparison of approximations to CKL. Solid lines are WY approximation while dashed curves represent CKL formula with $\al=\be=0$. The deviation means relative difference of full and approximated cross section.}{}{}{}
+\fig*[5.7cm]{exfig/pdf/CKLxhadronxCKLphi.pdf}{CKLxphi}{[7cm]Comparison of approximations to CKL. Solid curves stand for pure hadron scattering, dashed to CKL formula with hadronic phase fixed at $\pi/2$.}{}{}{}
+\emfig
+
+\Fg{CKLxh} shows that difference of full and pure hadron cross sections is significant for $|t| \ls 0.05\un{GeV^2}$. Thus it must be taken into account for $\be^* = 1535\un{m}$ optics. On contrary, the same figure demonstrates that coulomb effects are almost negligible for $\be^* = 90\un{m}$ optics if one stays at $|t| \ls 0.3\un{GeV^2}$. Note that points with higher $|t|$ have larger uncertainties and therefore they are not that important when fitting.
+
+Using CKL formula directly for fitting is too slow. That is why one should use a fast approximation and then some correction iterations may be applied. At \Fg{CKLxWY} one can compare West--Yennie (see Ref\hbox{. }\bref{wy}) and CKL with $\al=\be=0$ approximations. The latter is significantly better for low $|t|$ (and this is the most important region, because of lower uncertainties and proximity to the optical point $t=0\un{GeV^2}$). Error made by using CKL formula with $\al=\be=0$ is small enough to use it as a first approach for iterations.
+
+As we will show later, within the $\be^* = 90\un{m}$ optics it is not possible to determine phase by fitting. Thus the options left are either to use pure hadron approximation or to use CKL formula with apriory fixed phase of hadronic amplitude $T_H(t)$ (all the models predict the phase close to $\pi/2$, i.e. $T_H(t)$ is almost imaginary). These two approximations are compared at \Fg{CKLxphi}. One cannot see any significant differences between the approximations. We used the pure hadron approximation since it is easier to work with.
+
+A warning concerning using CKL formula. The $\be(t)$ term in \Eq{CKL} has actually form of
+\eqref{\be(t) \propto \int\limits_{-4p^2}^{0}\d t' \left( {T_H(t')\over T_H(t)} - 1 \right) I(t, t') \c}{CKL be}
+		where $I(t, t')$ is a function diverging at $t=t'$ and tending to $0$ when $|t-t'|\to\infty$. $T_H$ (more precisely its modulus) is decreasing function. Therefore for $t' < t-T'$ where $T'$ is large and positive, one may safely replace the term in brackets in \Eq{CKL be} by $-1$. For instance, $T'=0.2\un{GeV^2}$ causes error in cross section less than $0.3\un{\%}$ in region $|t|<0.3\un{GeV^2}$. A problem may arise when fiting. Let us assume one fits a parameterization of $T_H(t)$ over data with $|t| < |t_{max}|$. Then $T_H(t)$ is closely sticked to the data on the interval and that is why it behaves reasonably. But outside the interval, i.e. for $|t| > |t_{max}|$, behaviour of $T_H(t)$ is not determined by data. And the condition $|T_H(t')|/|T_H(t)|\approx 0$ for $|t'|\gg|t|$ might be broken and the integral in \Eq{CKL be} might blow up. The only help is to reduce integration outside the data interval as much as possible. In other words to use $T'$ as low as possible. On the other hand making $T'$ too small introduces error to computed cross section. We used value $T'=0.2\un{GeV^2}$ as a reasonable compromise.
+
+
+
+
+\subsection{Monte Carlo simulation}
+
+Testing data were obtained by Monte Carlo simulations. We used luminosity ${\cal L} = 2\cdot 10^{28}\un{cm^{-2}\,s^{-1}}$ and acquisition time $1\un{day}=8.64\cdot10^4\un{s}$ for both optics. 
+
+The value of $t$ for each event was given by
+\eq{t = t_0 + \De t\c}
+where $t_0$ is a random variable with p.d.f. corresponding to $A\,\d\si/\d t$ and $\De t$ is a random variable with p.d.f. $N(0, \si^2(t_0))$\ \footnote{The symbol $N(a, s^2)$ means p.d.f. of Gaussian distribution with center $a$ and variance $s^2$.}
+. The $\si(t_0)$ is error given by \Eq{resolution}.
+
+We made also simulations with fixed $\De t = 0$. Comparison of simulations with and without taking into account of the resolution is shown at \Fg{1535 sme,90 sme}. One can see, the difference is negligible in case of $\be^* = 1535\un{m}$ while it is relevant (up to $15\%$) for $\be^* = 90\un{m}$. This smearing can be well explained by theory. It sais that p.d.f. for random variable $t$ is given (up to normalization) by convolution
+\eqref{\hbox{p.d.f.}(t) \sim \int\limits_{-\infty}^{\infty}\d\De t\ {\d\si\over\d t}(t-\De t)\ A(t-\De t)\  N(\De t, \si^2(t-\De t)).}{convolution}
+
+\bmfig
+\fig*[5.3cm]{exfig/pdf/1535,smearing.pdf}{1535 sme}{[7cm]$\be^* = 1535\un{m}$. Relative difference between $A\,\d\si/\d t$ and rhs\hbox{.} of \Eq{convolution}. Different colors correspond to different models just as in \Fg{sigma}.}{}{}{}
+\hfil
+\fig*[5.3cm]{exfig/pdf/90,smearing.pdf}{90 sme}{[7cm]$\be^* = 90\un{m}$. Black solid line corresponds to $\d\si/\d t\ A$ while the red solid line corresponds to rhs. of \Eq{convolution}.}{}{}{}
+\emfig
+
+Such a drastic difference between the two optics is caused by huge difference in resolution (see \Fg{res} and compare values at corresponding $t_{min}$).
+
+
+
+\subsection{Fitting}
+
+We used the following fitting model
+\eqref{T_H(t) = e^{M(t)} \, e^{i\,P(t)} \c\qquad {\d\si\over\d t} = {\pi\over sp^2}|T_{C+H}|^2\c }{fitm}
+where $M(t)$ and $P(t)$ were polynomials.
+
+As already discussed, one should use convolution \ref{convolution} instead of $A\,\d\si/\d t$ and amplitude \ref{CKL} instead of pure hadron amplitude $T_H(t)$. However, using these formulae is time consuming and for fitting practically useless. A feasible way is to fit with an approximation first. With these approximate results one can compute corrections according to \Eq{convolution,CKL} and repeat the fit. One may iterate till results get stable.
+
+The parameters we tried to tune up:
+\bitm
+\itm Parameters of input data: the {\bf lever-arm} $|t| \in (|t_{min}|, \tau)$, {\bf the binning} (width of bin $w$). There is no point setting the lower edge of lever arm different than $|t_{min}|$, so the only question is the upper bound $\tau$. The bigger width $w$ is chosen, the smaller errors one gets, on the other hand, the smaller size we set, the more points we have. 
+\itm Parameters of fitting model: {\bf $n_m$ free parameters for modulus} polynomial $M(t)$, {\bf $n_p$ free parameters for phase} polynomial $P(t)$.
+\itm Parameters of adjusting iterations: number of {\bf CKL iterations $i_C$}, number of {\bf anti-smearing iterations $i_s$}.
+\itm Parameters of fitting routine. We used gradient method of Minuit package. The relevant parameters are {\bf initial values} and {\bf initial steps} and {\bf precision}. We considered two options for initial values. First, we set the initial polynomials to $M(t) = 21 + 10\un{GeV^{-2}}\cdot t$ and $P(t) = 1.57$. This initial parameterization for modulus polynomial can be guessed just by looking at data. The value for phase polynomial is based on model predictions which are all close to $\pi/2$. The second option takes these initial values just for fitting with $n_m = 2$. Then the $n_m=2$ results are used as initial values for $n_m = 3$ fitting, etc. We will refer to this option as incremental fitting, to the previous option as non-incremental fitting. 
+\eitm
+
+The results were judged by deviation $\de$
+\eqref{\de = {f_{model} - f_{fit}\over f_{model}}\c}{deviation}
+where $f$ was either $\d\si/\d t$ at $t=0\un{GeV^2}$ (for modulus extrapolation) or $\rho$ (for phase extrapolation). 
+As a model independent deviation we used average over models ($m$ stands for number of models).
+\eqref{\bar\de = {1\over m}\sum_{i=1}^{m} |\de_i|}{deviation avg}
+
+
+\subsection{Fit results for $\be^* = 1535\un{m}$}
+
+From the analysis above we can conclude already: the effect of smearing is negligible because of fine resolution and it is necessary to include coulomb interaction to fitting model. We recall $|t_{min}| = 2\cdot10^{-3}\un{GeV^2}$ for this optics.
+
+\ssubsection{Modulus extrapolation ($\d\si/\d t|_{t=0}$ extrapolation)}
+
+In the first step we tried to determine applicable values of $n_p$. Sample plots for various $n_p$ and $n_m$ are shown at \Fg{1535 np}. One can see that just $n_p = 1$ gives reasonable results, the others do not get bellow $1\un{\%}$ . Thus we set $n_p = 1$.
+
+
+\bmfig[\flab{1535 np}Comparison of various $n_p$. If not stated other, $n_m = 3$. If $n_p = 0$ then the phase polynomial was fixed at its initial value $P(t) = 1.57$.]
+\fig*[3.8cm]{exfig/pdf/1535,nm3np0.pdf}{}{}{}{$n_p=0$}{}
+\fig*[3.8cm]{exfig/pdf/1535,nm3.pdf}{}{}{}{$n_p=1$}{}
+\fig*[3.8cm]{exfig/pdf/1535,nm3np2.pdf}{}{}{}{$n_p=2$}{}
+\fig*[3.5cm]{exfig/pdf/1535,nm2np2.pdf}{}{}{}{$n_p=2$, $n_m=2$}{}
+\emfig
+
+
+Next step was to find useful $n_m$ values, comparison of results is given at \Fg{1535 nm}. All the plots prefer low $w$ (probably to have enough points in the interference window to determine phase correctly). Preferred $\tau$ makes sense, for small $n_m$ small $\tau$ is preferred and vice versa. The low $w$ region is shown in detail at \Fg{1535 nm cut}. With the help of these plots one can easily find the best $w$ and $\tau$ values.
+
+\bmfig[Fitting results for various $n_m$ at $n_p = 1$ and $i_C = 2$.\flab{1535 nm}]
+\fig*[3.8cm]{exfig/pdf/1535,nm2.pdf}{}{}{}{$n_m = 2$}{}
+\fig*[3.8cm]{exfig/pdf/1535,nm3.pdf}{}{}{}{$n_m = 3$}{}
+\fig*[3.8cm]{exfig/pdf/1535,nm4.pdf}{}{}{}{$n_m = 4$}{}
+\fig*[3.8cm]{exfig/pdf/1535,nm5.pdf}{}{}{}{$n_m = 5$}{}
+\emfig
+
+\bmfig[$w$-constant cuts with $n_p = 1$ and $i_C = 2$. Black corresponds to $w = 0.4\cdot10^{-4}\un{GeV^2}$, red $w = 2.0\cdot10^{-4}\un{GeV^2}$, blue $w = 4.0\cdot10^{-4}\un{GeV^2}$, violet $w = 5.6\cdot10^{-4}\un{GeV^2}$, green $w = 7.2\cdot10^{-4}\un{GeV^2}$ and brown $w = 8.8\cdot10^{-4}\un{GeV^2}$.\flab{1535 nm cut}]
+\fig*[3.8cm]{exfig/pdf/1535,nm2,cut.pdf}{}{}{}{$n_m = 2$}{}
+\fig*[3.8cm]{exfig/pdf/1535,nm3,cut.pdf}{}{}{}{$n_m = 3$}{}
+\fig*[3.8cm]{exfig/pdf/1535,nm4,cut.pdf}{}{}{}{$n_m = 4$}{}
+\fig*[3.8cm]{exfig/pdf/1535,nm5,cut.pdf}{}{}{}{$n_m = 5$}{}
+\emfig
+
+\Fg{1535 nm cut} shows that minimal $\bar\de$ achievable with $n_m=2$ is a bit higher than for other studied $n_m$ values. Also the width of the minimum is rather small. Therefore we excluded this case from further analysis.
+
+Next, we took the best $w$ values from \Fg{1535 nm cut} and explored dependency on $i_C$ and initial parameter values, see \Fg{1535 ic}. The incremental fit does not bring any enhancement, rather the other way round. Different numbers of CKL iterations $i_C$ do not make any important difference except $n_p = 5$ case. Anyway, more than one CKL adjustment does not make any distinct improvement.
+
+\bmfig[The best $w$-constant cuts. Solid lines stand for incremental fitting, dashed for non-incremental. Colors represent different $i_C$: black $0$, red $1$ and blue $2$.\flab{1535 ic}]
+\fig*[5cm]{exfig/pdf/1535,nm3,ic.pdf}{}{}{}{$n_p=3$, $w = 4\cdot 10^{-4}\un{GeV^2}$}{}
+\fig*[5cm]{exfig/pdf/1535,nm4,ic.pdf}{}{}{}{$n_p=4$, $w = 5.6\cdot 10^{-4}\un{GeV^2}$}{}
+\fig*[5cm]{exfig/pdf/1535,nm5,ic.pdf}{}{}{}{$n_p=5$, $w = 2\cdot 10^{-4}\un{GeV^2}$}{}
+\emfig
+
+{\bf Conclusion:} The best parameters we found are $n_p = 1$, non-incremental fitting, $i_C=1$. For other parameters we found three possible variants with almost the same deviation. These variants are listed in \Tb{1535 best par}. Any sensitivity to initial step and precision of Minuit was not found. At \Tb{1535 best par} one can also find fit results for particular models. The last row shows average over the three fitting variants.
+
+\setbox\strutbox=\hbox{\vrule height10pt depth5pt width0pt}
+
+\htab{1535 best par}{The best parameters for modulus extrapolation at $1535\un{m}$ optics.}{
+\multispan4&\multispan6\bvrule\bhrulefill\cr
+\multispan4\strut\hfil&\multispan5\bvrule\hfil$\de\un{(\%)}$\hfil&\cr
+\multispan4\bvrule\bhrulefill&\multispan5\bvrule\hrulefill&\vbox to0pt{\vss\hbox{$\bar\de\un{(\%)}$}\vss}\cr
+\hbox{variant} & n_m & \tau\un{(GeV^{2})} & w\un{(10^{-4}\,GeV^2)} & \hbox{Islam} & \hbox{PPP2} & \hbox{PPP3} & \hbox{BSW} & \hbox{BH} &\cr\bln
+%-----------------
+1&3	&0.054	&4 	& -0.011&	-0.062&	-0.019&	0.180&	-0.065&0.067\cr\ln
+2&4 &0.14 	&5.6 	& -0.007&	-0.001&	-0.019&	0.198&	-0.092&0.063\cr\ln
+3&5 &0.27 	&2 	& -0.028&	-0.043&	0.032&	0.172&	-0.012  &0.057\cr\ln
+%-----------------
+\hbox{comb.}&\multispan3\bvrule\hfil	& -0.014	&-0.035	&-0.002	&0.183	&-0.056	&0.058	\cr\bln
+}
+
+
+\htab{1535 chisq}{$\chi^2$ values for the best modulus fits at $1535\un{m}$ optics.}{
+\multispan2&\multispan5\bvrule\bhrulefill\cr
+\multispan2\strut\hfil&\multispan5\bvrule\hfil$\chi^2/{\rm\,degrees\ of\ freedom}$\hfil\cr
+\multispan2\bvrule\bhrulefill&\multispan5\bvrule\hrulefill\cr
+\hbox{variant}  & \hbox{points} & \hbox{Islam} & \hbox{PPP2} & \hbox{PPP3} & \hbox{BSW} & \hbox{BH}\cr\bln
+1&130 	&3.6 	&1.2 	&	1.2	&	1.2&	1.2\cr\ln
+2&248 	&3.0 	&1.1	&	1.0	&	1.1&	1.0\cr\ln
+3&1344 	&1.5 	&1.1	&	1.0	&	1.0&	1.1\cr\bln
+}
+
+
+
+Looking at \Tb{1535 best par} one may question why the BSW model gives much worse results than the other models. The answer is that it behaves a slightly different than the other models. And parameters which minimize deviations of other models do not minimize deviation of BSW model. E.g. for $n_m=3$ one can change $w$ to $8.4\cdot10^{-4}\un{GeV^2}$ and then deviation of BSW drops to $0.05\un{\%}$. But $\bar\de=0.14\un{\%}$ then.
+
+
+
+\ssubsection{Phase extrapolation ($\rh$ extrapolation)}
+
+We performed the analysis in the same order as above and determined useful values of $n_p$ first (see \Fg{1535p np1,1535p np2}). One can see that $n_m=2$ gives poor results for both $n_p$. The remaining plots look promising and all prefer small values of $w$. Nevertheless, the fits with $n_p=2$ are fake, since obtained slope of phase (i.e. $\d P(t)/\d t$) disagrees totally with theory. That is why we dismissed $n_p=2$ fits.
+\bmfig[Comparison of various $n_m$ at $n_p = 1$ and non-incremental fitting.\flab{1535p np1}]
+\fig*[3.8cm]{exfig/pdf/1535p,nm2.pdf}{}{}{}{$n_m = 2$}{}
+\fig*[3.8cm]{exfig/pdf/1535p,nm3.pdf}{}{}{}{$n_m = 3$}{}
+\fig*[3.8cm]{exfig/pdf/1535p,nm4.pdf}{}{}{}{$n_m = 4$}{}
+\fig*[3.8cm]{exfig/pdf/1535p,nm5.pdf}{}{}{}{$n_m = 5$}{}
+\emfig
+
+\bmfig[Comparison of various $n_m$ at $n_p = 2$ and non-incremental fitting.\flab{1535p np2}]
+\fig*[3.8cm]{exfig/pdf/1535p,nm2,np2.pdf}{}{}{}{$n_m = 2$}{}
+\fig*[3.8cm]{exfig/pdf/1535p,nm3,np2.pdf}{}{}{}{$n_m = 3$}{}
+\fig*[3.8cm]{exfig/pdf/1535p,nm4,np2.pdf}{}{}{}{$n_m = 4$}{}
+\fig*[3.8cm]{exfig/pdf/1535p,nm5,np2.pdf}{}{}{}{$n_m = 5$}{}
+\emfig
+For better orientation we plotted details for some low values of $w$, see \Fg{1535p cut}. Then, we made the best choice of $w$ and probed dependency on $i_C$ value and incremental fitting on and off, as shown at \Fg{1535p ic}. Here, incremental fitting exhibits definitely better performance (the inconvenient peaks disappear). The first CKL adjustment causes remarkable improvement, subsequent CKL iterations have almost no effect.
+
+\bmfig[$w$-constant cuts with $i_C = 2$ and $n_p = 1$. Black corresponds to $w = 0.4\cdot10^{-4}\un{GeV^2}$, red $w = 2.0\cdot10^{-4}\un{GeV^2}$, blue $w = 4.0\cdot10^{-4}\un{GeV^2}$, violet $w = 5.6\cdot10^{-4}\un{GeV^2}$, green $w = 7.2\cdot10^{-4}\un{GeV^2}$ and brown $w = 8.8\cdot10^{-3}\un{GeV^2}$.\flab{1535p cut}]
+\fig*[5cm]{exfig/pdf/1535p,nm3,cut.pdf}{}{}{}{$n_m = 3$}{}
+\fig*[5cm]{exfig/pdf/1535p,nm4,cut.pdf}{}{}{}{$n_m = 4$}{}
+\fig*[5cm]{exfig/pdf/1535p,nm5,cut.pdf}{}{}{}{$n_m = 5$}{}
+\emfig
+
+\bmfig[The best $w$-constant cuts. Solid lines stand for incremental fitting, dashed for non-incremental. Colors represent different $i_C$: black $0$, red $1$ and blue $2$ (the red curves are often hidden by the blue ones).\flab{1535p ic}]
+\fig*[5cm]{exfig/pdf/1535p,nm3,ic.pdf}{}{}{}{$n_m = 3$}{}
+\fig*[5cm]{exfig/pdf/1535p,nm4,ic.pdf}{}{}{}{$n_m = 4$}{}
+\fig*[5cm]{exfig/pdf/1535p,nm5,ic.pdf}{}{}{}{$n_m = 5$}{}
+\emfig
+
+{\bf Conclusion:} We found that incremental fitting at $n_p = 1$ is convenient. For other parameters we found three possible variants that are described in \Tb{1535p best par}. The table lists also details for particular models. Again, the last row shows average over the three fitting variants.
+
+
+\htab{1535p best par}{The best parameters for phase extrapolation at $1535\un{m}$ optics.}{
+\multispan4&\multispan6\bvrule\bhrulefill\cr
+\multispan4\hfil															&\multispan5\strut\bvrule\hfil$\de\un{(\%)}$\hfil&\cr
+\multispan4\bvrule\bhrulefill&\multispan5\bvrule\hrulefill&\vbox to0pt{\vss\hbox{$\bar\de\un{(\%)}$}\vss}\cr
+\hbox{variant}	& n_m	& \tau\un{(GeV^2)}	& w\un{(10^{-4}GeV^2)}	& \hbox{Islam}	& \hbox{PPP2}	&	\hbox{PPP3}	& \hbox{BSW}	&	\hbox{BH}	&\cr\bln
+1				& 3 	& 0.045			& 4		&2.2	&-1.2	&-0.77	&0.31	&-0.20	&0.94\cr\ln
+2				& 4 	& 0.095			& 5.6	&2.6	&0.34	&-0.18	&-1.2	&0.050	&0.88\cr\ln
+3				& 5		& 0.115			& 5.6	&0.5	&0.51	&-0.097	&-1.2	&0.18	&0.51\cr\ln
+\hbox{comb.}&\multispan3\bvrule\hfil 			&1.8	&-0.35	&-0.35	&-0.7	&0.01	&0.64\cr\bln
+}
+
+
+\htab{90 chisq}{$\chi^2$ values for the best phase fits at $1535\un{m}$ optics.}{
+\multispan2&\multispan5\bvrule\bhrulefill\cr
+\multispan2\hfil															&\multispan5\strut\bvrule\hfil$\chi^2/{\rm\,degrees\ of\ freedom}$\hfil\cr
+\multispan2\bvrule\bhrulefill&\multispan5\bvrule\hrulefill\cr
+\hbox{variant}	& \hbox{points}	& \hbox{Islam}	& \hbox{PPP2}	&	\hbox{PPP3}	& \hbox{BSW}	&	\hbox{BH}\cr\bln
+1&	108&	2.30	&1.19	&1.17	&1.23	&1.16\cr\ln
+2&	167&	1.30	&1.22	&1.18	&1.19	&1.09\cr\ln
+3&	203&	1.03	&1.11	&1.05	&1.15	&1.02\cr\bln
+}
+
+
+
+
+
+\subsection{Fit results for $\be^* = 90\un{m}$}
+As it was already stated above, the resolution smearing plays important role for this running scenario and it should be corrected properly. We also anticipated that phase of hadronic scattering amplitude $T_H(t)$ cannot be acquired from fits. This fact is documented at \Fg{90p}. Therefore we fixed $n_p = 0$. Besides these, we proceeded just as for the previous optics. First we tried to fix $n_m$, results are shown at \Fg{90 nm}. We remind $|t_{min}| = 4\cdot10^{-2}\un{GeV^2}$ for this scenario.
+
+
+\bmfig[Fit of phase of $T_H(0)$ at $i_s = 1$, $n_p = 1$ and non-incremental fitting.\flab{90p}]
+\fig*[3.8cm]{exfig/pdf/90,nm2,phase.pdf}{}{}{}{$n_m=2$}{}
+\fig*[3.8cm]{exfig/pdf/90,nm3,phase.pdf}{}{}{}{$n_m=3$}{}
+\fig*[3.8cm]{exfig/pdf/90,nm4,phase.pdf}{}{}{}{$n_m=4$}{}
+\fig*[3.8cm]{exfig/pdf/90,nm5,phase.pdf}{}{}{}{$n_m=5$}{}
+\emfig
+
+
+\bmfig[Comparison of various $n_m$ with $n_p=0$, $i_s = 3$ and non-incremental fitting.\flab{90 nm}]
+\fig*[3.8cm]{exfig/pdf/90,nm2.pdf}{}{}{}{$n_m=2$}{}
+\fig*[3.8cm]{exfig/pdf/90,nm3.pdf}{}{}{}{$n_m=3$}{}
+\fig*[3.8cm]{exfig/pdf/90,nm4.pdf}{}{}{}{$n_m=4$}{}
+\fig*[3.8cm]{exfig/pdf/90,nm5.pdf}{}{}{}{$n_m=5$}{}
+\emfig
+
+\Fg{90 nm} shows that one can squeeze the deviation bellow $1\un{\%}$ for $n_m=4$ and $5$. For better overview we plotted a few cuts in the promissing $w$-region, they are shown at \Fg{90 nm cut}. With the best values of $w$ we plotted \Fg{90 is} that uncovers dependency on $i_s$ and (non-)incremental fitting. There is no significant improvement for $i_s > 3$, thus we fix $i_s = 3$.
+
+
+\bmfig[Detailed $\tau$-dependency for several values of $w$ and $i_s = 4$.\flab{90 nm cut}]
+\fig*[5cm]{exfig/pdf/90,nm4,cut.pdf}{}{[7cm]Black line corresponds to $w=9\cdot10^{-3}$, red to $w=10\cdot10^{-3}$, blue to $w=11\cdot10^{-3}$, violet to $w=12\cdot10^{-3}$, green to $w=13\cdot10^{-3}$ and brown to $w=14\cdot10^{-3}$.\strut}{}{$n_m=4$. }{}\hfil
+\fig*[5cm]{exfig/pdf/90,nm5,cut.pdf}{}{[7cm]Black line corresponds to $w=11.5\cdot10^{-3}$, red to $w=12.1\cdot10^{-3}$, blue to $w=12.7\cdot10^{-3}$, violet to $w=1.34\cdot10^{-3}$, green to $w=1.40\cdot10^{-3}$ and brown to $w=1.45\cdot10^{-3}$.}{}{$n_m=5$}{}
+\emfig
+
+
+\bmfig[The best $w$-constant cuts with various $i_s$. Solid lines correspond to incremental fitting, dashed to non-incremental. Black lines denote $i_s=1$, red $i_s=2$, blue $i_s=3$ and violet $i_s=4$.\flab{90 is}]
+\fig*[5cm]{exfig/pdf/90,nm4,is.pdf}{}{}{}{$n_m=4$, $w=12\cdot10^{-3}\un{GeV^2}$}{}
+\fig*[5cm]{exfig/pdf/90,nm5,is.pdf}{}{}{}{$n_m=5$, $w=12.7\cdot10^{-3}\un{GeV^2}$}{}
+\emfig
+
+{\bf Conclusion:} Phase cannot be determined with reasonable precision, therefore we fixed $n_p=0$. We found that there is no significant advantage of incremental fitting, $i_s = 3$ anti smearing iterations are enough. For other parameters we found two possible variants that are described in \Tb{90 best par}. The table lists also details for particular models. Again, the last row shows average over those two fitting variants.
+
+
+\htab{90 best par}{The best parameters for modulus extrapolation at $90\un{m}$ optics.}{
+\multispan4&\multispan6\bvrule\bhrulefill\cr
+\multispan4\hfil															&\multispan5\strut\bvrule\hfil$\de\un{(\%)}$\hfil&\cr
+\multispan4\bvrule\bhrulefill&\multispan5\bvrule\hrulefill&\vbox to0pt{\vss\hbox{$\bar\de\un{(\%)}$}\vss}\cr
+\hbox{variant}	& n_m	& \tau\un{(GeV^2)}	& w\un{(10^{-3}GeV^2)}	& \hbox{Islam}	& \hbox{PPP2}	&	\hbox{PPP3}	& \hbox{BSW}	&	\hbox{BH}	&\cr\bln
+1				& 4		& 0.14			& 12	& 1.27	& 0.24	& 0.03	& -1.23	& 0.06	& 0.56\cr\ln
+2				& 5 	& 0.19			& 12.7	& 0.13	& 0.10	& 0.20	& -1.23	& 0.27	& 0.38\cr\bln
+}
+
+
+
+\htab{90 chisq}{$\chi^2$ values for the best fits at $90\un{m}$ optics.}{
+\multispan2&\multispan5\bvrule\bhrulefill\cr
+\multispan2\hfil															&\multispan5\strut\bvrule\hfil$\chi^2/{\rm\,degrees\ of\ freedom}$\hfil\cr
+\multispan2\bvrule\bhrulefill&\multispan5\bvrule\hrulefill\cr
+\hbox{variant}	& \hbox{points}	& \hbox{Islam}	& \hbox{PPP2}	&	\hbox{PPP3}	& \hbox{BSW}	&	\hbox{BH}\cr\bln
+1				& 8				& 1				& 0.3			& 1.9			& 1.3			& 0.7	\cr\ln
+2				& 11 			& 1.9			& 2.4			& 1.6			& 2.1			& 2.2	\cr\bln
+}
+
+
+
+\bmfig
+\fig*[4.5cm]{exfig/pdf/90,B,islam.pdf}{}{}{}{Islam}{}
+\fig*[4.5cm]{exfig/pdf/90,B,ppp2.pdf}{}{}{}{PPP2}{}
+\fig*[4.5cm]{exfig/pdf/90,B,ppp3.pdf}{}{}{}{PPP3}{}
+\emfig
+\bmfig[Elastic slope $B$ --- an illustration of fits. The $+$ crosses correspond to points after $i_s=4$ corrections and with $w=8\cdot10^{-3}\un{GeV^2}$. The red $\times$ crosses denote the same but without anti-smearing correction (i.e. $i_s = 0$). The black line represent slope computed from model, colorful solid lines stand for fits, dashed for extrapolation. Red stands for variant 1 and green for variant 2. The blue line is for the best fit with $n_m = 3$.]
+\fig*[4.5cm]{exfig/pdf/90,B,bsw.pdf}{}{}{}{BSW}{}
+\fig*[4.5cm]{exfig/pdf/90,B,bh.pdf}{}{}{}{BH}{}
+\emfig
+
+
+\EndText
+\end

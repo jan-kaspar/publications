@@ -1,0 +1,136 @@
+TODO:
+
+Si vx. Ci on page 3 top
+
+page 16: C2 -> -C2, S2 -> -S2
+
+page 29: case with small alpha
+
+\subsection{Introduction}
+
+Most Monte Carlo generators assume that incident particles of nominal energy approach each other along $z$ axis and collide at point $x = y = z = 0$. This is not the actual situation. In reality there are two bunches collided under a certain crossing angle. Within a bunch, particles do not have identical energy (energy smearing) and they are not all collinear (angular smearing). The bunches have non-zero dimensions and therefore the collision may take place at various points (vertex smearing). Our goal was to combine the smearing effects with Monte Carlo events in order to obtain a realistic simulation.
+
+
+\subsection{Angular and energy smearing}
+
+Let's discuss angular and energy smearing first. A collision in LAB frame (a frame bound with accelerator) is illustrated in \Fg{lab}. On the other hand, MC generators use a different frame to describe events -- a frame where incident particles have same momenta and opposite directions parallel to $z$ axis. This frame will be referred as the MC frame. Obviously, we want to find a transformation between these two frames. It will be done in two steps. 
+
+\fig[8cm]{fig/pdf/smearing_angles.pdf}{lab}{Sketch of angular and energy smearing.}
+
+\vfil\eject
+First, we find the Lorentz boost which makes incident particles have equal momenta and opposite directions. If we write the transformation of a four-momentum $(E|\vec p)$ to $(E'|\vec p')$ in the following form
+\eqref{\eqalign{
+E'      &= \ga\,(E - \vec p\cdot\vec\be)\cr
+\vec p' &= \vec p  +  (\ga - 1) {\vec p \cdot \vec \be\over \be^2}\vec\be - \ga E \vec\be\cr
+}\qquad\eqalign{
+\be &= |\vec\be|\cr
+\ga &= {1\over\sqrt{1 - \be^2}}\cr}
+\ ,}{lorentz}
+one can find that the $\vec\be$ needed for our purpose is
+\eqref{\vec\be = {\vec p_1 + \vec p_2\over E_1 + E_2}\ ,}{beta}
+where $\vec p_1, \vec p_2$ are the momenta and $E_1, E_2$ are the energies of the incident particles in the LAB frame. Let's denote this transformation $L(\vec\be)$ and the boosted momenta of the incident particles $\vec p_1'$ and $\vec p_2'$.
+
+In the second step, we rotate the vectors $\vec p_1'$ and $\vec p_2'$ to be parallel to the MC frame $z$ axis. We use Rodrigues' formula to describe the rotation of a vector $\vec v$ around a unit vector (axis) $\vec a$:
+\eqref{R(a, \om)\, \vec v = \vec v\,\cos\om + \vec a\times\vec v\,\sin\om + \vec a\cdot\vec v\,\vec a\,(1 - \cos\om)\ .}{rotation}
+For our purpose, one may identify\footnote{In fact, this is just one of the possible solutions, rotation around $\vec a$ axis is arbitrary.}
+\eqref{\vec a = {\vec p_1' \times \hat z\over |\vec p_1' \times \hat z|}, \qquad \cos\om = {\vec p_1' \cdot \hat z\over |\vec p_1'|}}{axis angle}
+where $\hat z$ is the unit vector in the $z$ direction in the frame after the boost. Obviously, the coordinate representation is $\hat z = (0, 0, 1)$.
+
+Unfortunately, this is not the full story. MC generators usually produce events for a fixed center-of-mass energy $\sqrt{s}$. However, in the real case, $\sqrt{s}$ varies slightly due to the smearing effects. Since the variation is small it might be neglected. But for consistency reason, one had better make sure that the scattering products sum up to the same $\sqrt{s}$ as for which the event has been produced. There is generally no correct way how to accomplish that. Nevertheless, as the variations are small, it does not matter much. Therefore, let's scale the energy of the outgoing particles
+\eqref{E_i^{\rm MC} \rightarrow \chi\, E_i^{\rm MC},\qquad \chi = \sqrt{s_{\rm LAB}\over s_{\rm MC}}\ .}{energy scaling}
+The momenta of the particles are scaled such that their masses are preserved.
+
+To summarize, if $(E|\vec p)_{\rm MC}$ is the four-momentum for a particle produced in a MC event, then the LAB four-momentum can be written
+\eqref{(E|\vec p)_{LAB} = L(-\vec\be)\,R(\vec a, -\om)\, S(\chi)\, (E|\vec p)_{MC}\ ,}{mc to lab}
+where $S(\chi)$ stands for the energy scaling procedure.
+
+
+\ssubsection{Simulation}
+
+So far, the smearing effects have been discussed on a general level. Now, let us turn to the question how to simulate them. Following \Fg{lab}, it is natural to parameterize LAB momenta as
+\eqref{\vec p_1 = p_{\rm nom}\, (1 + \xi_1)\,\pmatrix{\sin\th_1\cos\ph_1\cr \sin\th_1\sin\ph_1\cr \cos\th_1\cr},\qquad \vec p_2 = - p_{\rm nom}\, (1 + \xi_2)\,\pmatrix{\sin\th_2\cos\ph_2\cr \sin\th_2\sin\ph_2\cr \cos\th_2\cr} \ ,}{mom par 1}
+where $p_{\rm nom}$ is the nominal momentum, i.e. $7\un{TeV}$ for LHC. The $\xi$ factor is related to the energy smearing. It is natural to assume that it follows normal distribution $N(\bar\xi, \si_\xi^2)$, where $\bar\xi$ is the energy offset and $\si_\xi$ is the energy variation. $\xi_1$ and $\xi_2$ shall be treated as independent. The $\th$ and $\ph$ variables refer to the angular smearing. It is natural to simulate $\ph$ according to uniform distribution $U(0, 2\pi)$ and $\th$ to normal distribution $N(0, \si_\th^2)$. But since $\th$ shall be positive, only the positive part of $N(0, \si_\th^2)$ must be considered. 
+
+Parameterization \Eq{mom par 1} is not the only admissible one. Actually, the preferred parameterization to describe the smearing effects in the LHC is the following
+\eqref{\vec p_1 = p_{\rm nom}\, (1 + \xi_1)\,\pmatrix{S_1\cr C_1\cr \sqrt{1 - S_1^2 - C_1^2}\cr},\qquad \vec p_2 = - p_{\rm nom}\, (1 + \xi_2)\, \pmatrix{S_2\cr C_2\cr \sqrt{1 - S_2^2 - C_2^2}\cr}\ ,}{mom par 2}
+with $S_{1,2}$ and $C_{1,2}$ following a normal distribution $N(0, \si_\th^2)$. In fact, the tails of the normal distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_\th \ll 1$, the effect is negligible. The distributions of $\xi$'s are the same as for parameterization \Eq{mom par 1}.
+
+Regarding the case with non-zero crossing angle $\al$ (see \Fg{vertex smearing}), one may use a better parameterization than the ones above. For instance, the parameterization \Eq{mom par 2} may be modified to
+\eqref{\vec p_1 = p_{\rm nom}\,(1 + \xi_1)\,\pmatrix{\cos\al & 0 & \sin\al\cr 0 & 1 & 0 \cr -\sin\al & 0 & \cos\al\cr}\,\pmatrix{S_1\cr C_1\cr \sqrt{1 - S_1^2 - C_1^2}}\.}{momentum par crossing}
+and analogically for $\vec p_2$, just with $-\al$ instead of $\al$. The advantage is clear, $S_{1,2}$ and $C_{1,2}$ can still be regarded as small perturbations. For the parameterization \Eq{mom par 1}, the crossing-angle treatment is analogical. 
+
+\ssubsection{Explicit formulae for forward particles}
+
+In principle, the transformation \Eq{mc to lab} can be expressed in terms of $\xi$'s, $\th$'s, $\ph$'s (resp. $\xi$'s, $S_{1,2}$ and $C_{1,2}$) and $\al$. However, in full generality, the formula would be too complicated. Instead of that, let's focus on a potentially interesting example and let's express it under assumptions of zero crossing angle, no energy smearing and small angular smearing (the calculation will be done in the leading order). This simplified model is, in particular, useful for $1540\un{m}$ and $90\un{m}$ optics for the TOTEM experiment, where the beam divergence plays a dominant role. Furthermore, bearing in mind the LHC energies, we will approximate $E\approx p$ for all the particles involved.
+
+Using parameterization \Eq{mom par 1}, expanding $\sin\th\approx\th$ and $\cos\th\approx 1$ and inserting it into \Eq{beta} yields
+\eqref{\vec\be = {1\over 2}\pmatrix{C_1 - C_2\cr S_1 - S_2\cr 0},\qquad\hbox{where}\qquad \matrix{C_1 = \th_1\cos\ph_1,\quad C_2 = \th_2\cos\ph_2\cr\cr S_1 = \th_1\sin\ph_1,\quad S_2 = \th_2\sin\ph_2}\ .}{beta expl}
+The expression for $\vec\be$ remains the same even if parameterization \Eq{mom par 2} is used. In this case the symbols $S_{1,2}$ and $C_{1,2}$ are defined by \Eq{mom par 2}.
+
+As we work in the leading order only, the Lorentz boost \Eq{lorentz} simplifies to
+\eqref{\vec p' = \vec p - |\vec p| \vec\be,\qquad E' = E - \vec p\cdot\vec\be}{lorentz expl}
+and therefore
+\eqref{\vec p'_{1,2} = \pm {\vec p_1 - \vec p_2\over 2}\ .}{p1' expl}
+Note the vectors $\vec p'_{1, 2}$ have really opposite directions and magnitude $p_{\rm nom}$. Now, the rotation axis and the angle from \Eq{axis angle} can be evaluated and inserted into \Eq{rotation}. It yields
+\eqref{R(\vec a, \om)\,\vec v = \vec v + {1\over 2}\pmatrix{S_1 + S_2\cr -C_1 - C_2\cr 0} \times \vec v\ .}{rotation expl}
+
+Since the vectors $\vec p_{1, 2}'$ retained magnitude $p_{\rm nom}$ after the boost and since rotations keep magnitudes invariant, one need not perform the energy rescaling (in the leading order).
+
+Finally, let's apply \Eq{mc to lab} to an outgoing (MC generated) particle with momentum $\vec p_{\rm MC}$. And let's limit ourselves to particles that can reach Roman Pot stations, i.e. particles scattered to small angles. A convenient parameterization, thus, is
+\eqref{\vec p_{\rm MC} = \pm p\,\pmatrix{\th\cos\ph\cr \th\sin\ph\cr 1\cr} \.}{diff mc}
+The particles with $+$ sign can be detected in the right arm stations, with $-$ sign in the left arm. Still working in the leading approximation, one finds
+\eqref{\vec p_{\rm LAB} = \vec p_{\rm MC} \pm {p\over 2} \pmatrix{C_1 + C_2\cr S_1 + S_2\cr 0} + {p\over 2} \pmatrix{C_1 - C_2\cr S_1 - S_2\cr 0}\ .}{diff lab}
+Or equivalently
+\eqref{\vec p_{\rm LAB} = \pm p\,\pmatrix{\th\cos\ph + \De\th_x\cr \th\sin\ph + \De\th_y\cr 1\cr},\qquad \De\th_x = \left\{\matrix{C_1\cr\cr C_2\cr}\right.,\qquad \De\th_y = \left\{\matrix{S_1\qquad\hbox{for right arm}\cr\cr S_2\qquad\hbox{ for left arm}\cr}\right.\ .}{diff lab 2} %}}
+
+Using the statistical properties suggested in the previous section yields the following relation between variances (recalling $\si_\th$ refers to the beam divergence)
+\eqref{\si_{\De\th_x} = \si_{\De\th_y} = \si_{C_1} = \si_{C_2} = \si_{S_1} = \si_{S_2} = \cases{
+{\si_\th\over\sqrt2}\qquad\hbox{for parameterization \Eq{mom par 1}}\cr
+\si_\th\qquad\hbox{for parameterization \Eq{mom par 2}}\cr
+}\ .}{delta th sigma}
+
+
+\subsection{Vertex smearing}
+
+One of the definitions of cross-section $\si$ relates it to the corresponding number of events $N$ per time
+\eqref{{\d N\over \d t} = \si\,j\,n_T\.}{cross-section}
+$j$ denotes the flux of bombarding particles and $n_T$ is the number of target particles. This formula can be written in a more general form
+\eqref{N = \si\,{\cal L}_{int},\qquad {\cal L}_{int} = \int\d t\,\d x\,\d y\,\d z\, j(x, y, z; t)\, \rh_T(x, y, z; t), }{luminosity}
+where ${\cal L}_{int}$ is the integrated luminosity in a given time interval and $\rh_T$ is the density of target particles. This equation suggests that function
+\eqref{h(x, y, z; t) = {1\over {\cal L}_{int}}\,j(x, y, z; t)\, \rh_T(x, y, z; t)}{pdf}
+can be interpreted as the probability density function of finding an interaction (vertex) at position $(x, y, z)$ and time $t$.
+
+\fig[8cm]{fig/pdf/smearing_crossing_angle.pdf}{vertex smearing}{Bunch collision with crossing angle $\al$.}
+
+Now, consider a collision processes described in \Fg{vertex smearing}. The two bunches, each propagating (in the LAB frame) with speed $v$, are collided under crossing angle $\al$. The flux $j$ in \Eq{pdf} can be expressed as $v_{\rm rel}\,\rh$, where $v_{\rm rel} = 2v\cos\al$ is the relative velocity of the two bunches and $\rh$ is the density of one of them. Therefore one can write
+\eqref{h(x, y, z; t) = {2v\cos\al\over {\cal L}_{int}}\,\rh_1(x, y, z; t)\, \rh_2(x, y, z; t)\.}{pdf2}
+The $\rh_{1,2}$ densities correspond to the two bunches (note that the formula is symmetric against swap of the two bunches, as it should be).
+
+If $\rh_0(\tilde x, \tilde y, \tilde z)$ is a (time-independent) particle density in the rest frame of bunch 2 (the tilded frame in \Fg{vertex smearing}), then the (time-dependent) particle density $\rh_2(x, y, z)$ in the LAB frame (the non-tilded one) can be obtained by means of coordinate transformation (we assume that the origins of the tilded and the non-tilded frame coincide in $t=t'=0$)
+\eqref{\eqnarray{
+\tilde x &= x\cos\al\ - z\sin\al \cr
+\tilde y &= y\cr
+\tilde z &= \ga \left( z\cos\al\ + x\sin\al + vt \right),\qquad \ga = {1\over\sqrt{1 - v^2}}\ .\cr
+}}{coord trans}
+The result reads
+\eqref{\rh_2(x, y, z; t) = \ga\, \rh_0\Big(x\cos\al - z\sin\al, y, \ga(z\cos\al + x\sin\al + vt) \Big)\ .}{density2}
+The overall factor $\ga$ is need to preserve normalization; it comes from the request
+\eqref{\int \rh_0(\tilde x, \tilde y, \tilde z)\ \d\tilde x\d\tilde y\d\tilde z = \int \rh_2(x, y, z)\ \d x\d y\d z\ .}{rho normalization}
+The density for bunch 1 can be obtained analogically
+\eqref{\rh_1(x, y, z; t) = \ga\, \rh_0\Big(x\cos\al + z\sin\al, y, \ga(z\cos\al - x\sin\al - vt) \Big)\ .}{density1}
+
+The Lorentz contracted particle density of each bunch can be well approximated by a Gaussian
+\eqref{\ga \rh_0(x, y, \ga z) = {n_B\over (2\pi)^{3/2}\si_x\si_y\si_z}\,\exp\left(-{ x^2\over 2\si_x^2}-{ y^2\over 2\si_y^2}-{ z^2\over 2\si_z^2}\right),}{density}
+where $n_B$ is the number of protons in a bunch and the variances $\si_x, \si_y$ and $\si_z$ refer to the bunch dimensions in the LAB frame.
+
+Inserting \Eq{density1,density2,density} to \Eq{pdf2} yields
+\eqref{h(x, y, z; t) \propto \exp\left[- {\cos^2\al\over\si^2_x} x^2 - {y^2\over\si^2_y} - \left({\sin^2\al\over\si^2_x} + {\cos^2\al\over\si^2_z}\right)z^2 - {(vt + x\sin\al)^2\over\si^2_z}\right]\.}{vertex full distribution}
+This means that the random variables $x$ and $t$ are not independent. But as we are not interested in the time of collision, we can integrate over the time $t$ and obtain the \hbox{p.d.f.} only for the spatial coordinates of the vertex
+\eqref{h(x, y, z) \propto \exp\left[- {\cos^2\al\over\si^2_x} x^2 - {y^2\over\si^2_y} - \left({\sin^2\al\over\si^2_x} + {\cos^2\al\over\si^2_z}\right)z^2\right]\.}{vertex distribution}
+We can see that the vertex distribution retains a Gaussian form. The mean values of $x, y$ and $z$ are zero while the effective variations are
+\eqref{\si_{x,\rm ef\!f} = {\si_x\over\sqrt{2}\cos\al},\quad \si_{y,\rm ef\!f} = {\si_y\over\sqrt{2}},\quad \si_{z,\rm ef\!f} = {\si_z\over\sqrt{2}}\,{\si_x\over\sqrt{\si_z^2\sin^2\al + \si_x^2\cos^2\al}} \.}{effective variations}
+
+
+\subsection{Conclusion}
+
+We have described the angular and the energy smearing by \Eq{mc to lab} and parameterized by \Eq{momentum par crossing}. We have shown that the distribution of vertices is a Gaussian with zero mean values and variances given by \Eq{effective variations}. These formulae has become the heart of a TOTEM software package which is used to include the smearing effects to physics simulations.

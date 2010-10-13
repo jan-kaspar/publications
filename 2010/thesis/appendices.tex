@@ -1,0 +1,53 @@
+\chapter{Statistics}
+
+\section{Mean, variance, etc.}
+
+Let's consider a sample ${x_1, \ldots, x_N}$. Each of $x_i$ follows the same distribution $h(x)$. Let's denote $\mu$ the mean and $\si^2$ the variance of the distribution:
+\eqref{\mu = \int \d x\, h(x)\, x,\qquad \si^2 = \int \d x\, h(x)\, (x-\mu)^2.}{mu si}
+
+The mean estimator
+\eqref{\hat\mu = {1\over N}\sum_i^N x_i}{hat mu}
+is unbiased, that is $E[\hat\mu] = \mu$, and its variance is
+\eqref{V[\hat\mu] = {\si^2\over N}\ .}{V hat mu}
+
+The variance estimator
+\eqref{\widehat{\si^2} = {1\over N} \sum_i^N \left( x_i - {1\over N} \sum_j^N x_j \right)^2}{hat si}
+is also unbiased, i.e. $E[\widehat{\si^2}] = \si^2$ and its variance is (see e.g. \bref{barlow} page 78)
+\eqref{V[\widehat{\si^2}] = {N-1\over N^3} \left( (N-1) E[(x-\mu)^4] - (N-3) E[(x-\mu)^2]^2 \right)\ ,}{V hat si}
+where
+\eqref{E[(x-\mu)^n] = \int \d x\, h(x)\, (x-\mu)^n.}{E n}
+
+The variance estimator can be recast into a more practical form
+\eqref{\widehat{\si^2} = {1\over N} \left( \sum x^2 - {(\sum x)^2\over \sum 1} \right)\ .}{hat si 2}
+
+To estimate the variance of the mean estimation \Eq{V hat mu}, one can replace $\si^2$ by \Eq{hat si}. Similarly, to estimate the variance of the variance estimator, one can put \Eq{hat si} in place of $E[(x-\mu)^2]$. For the 4th momentum mean $E[(x-\mu)^4]$, one can use the following estimator
+\eqref{\widehat{E_4} = {1\over N}\sum_i^N (x_i - \hat\mu)^4 \ ,}{hat E 4}
+where \Eq{hat mu} should be inserted for $\hat\mu$. Note that this estimator might be biased. Finally, one may expand the 4th power in order to obtain a more practical expression:
+\eqref{\widehat{E_4} = {1\over N} \left( \sum x^4 - 4\hat\mu\sum x^3 + 6\hat\mu^2\sum x^2 - 4\hat\mu^3\sum x + \hat\mu^4 \sum 1 \right )\ .}{hat E p}
+
+The variance of standard deviation $\si = \sqrt{\si^2}$ can be related to the one of variance
+\eqref{V[\si] = {V[\si^2]\over 4\si^2}\ .}{V std dev}
+
+\section{p--value}
+
+See e.g. \bref{barlow}, Eq.~(8.5) on page 150.
+\eqref{\hbox{p--value}(\chi^2, N_{\rm df}) = \int_{\chi^2}^{+\infty} P_{\chi^2}(z, N_{\rm df})\ \d z}{p-value}
+
+P--values shall be uniformly distributed on $\langle 0, 1\rangle$. $p\to 1$ means too low $\chi^2$, while $p\to 0$ means too high $\chi^2$.
+
+
+\chapter{Optics details}
+
+Summary of key optics, if really needed...
+
+\chapter{TOTEM Software}
+
+\> the technical aspects of my SW work
+
+\> TOTEM Offline SW
+
+\fig[15cm]{fig/pdf/offline_sw_structure.pdf}{offline sw structure}{The structure of the TOTEM Offline software.}
+
+\> TOTEM Monitor
+
+\> TOTEM DQM

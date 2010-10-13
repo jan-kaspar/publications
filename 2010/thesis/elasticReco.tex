@@ -1,0 +1,310 @@
+\subsection[intro]{Introduction}
+
+The step which precedes the elastic reconstruction is fit on one-RP level. The results of that step are local track fits, i.e. positions $x, y$ and angles $\th_x, \th_y$ (plus covariance matrix for all these parameters). However, one RP (ca $3\un{cm}$ thick) presents a lever-arm too small for an interesting angular measurement, see \Fg{theta local reco}. And therefore, only position information can be used for fitting.
+
+In principle, one may also employ the knowledge of vertex distribution at the IP. That can be understood as a fictitious measurement at IP with uncertainty given by beam width. Corresponding optical functions would be $L = 0\un{m}, v = 0$ for both projections. The question whether this makes sense will be addressed after presenting the method and the algorithm of reconstruction.
+
+Regardless whether the IP information is used, input data form a list of $(x, \si_x, y, \si_y|\penalty0 L_x, L_y, v_x, v_y)$, one per RP (or IP measurement).
+
+\fig*[8cm]{erfig/pdf/theta_yVstheta_y_reco.pdf}{theta local reco}{[]$\th_y$ generated (at IP) vs. reconstructed (at RP) for $90\un{m}$ optics: no interesting correlation. The reason is too small lever-arm for the given detector pitch. One can clearly see the strip pattern.}{}{}{}
+
+
+
+\subsection[method]{Method}
+Tracks of protons travelling from IP to detectors can be well described by\footnote{We use the standard coordinate frame: $s$ axis goes along beam in clock-wise direction and $x$ points outside the ring. $y$ axis is chosen such as the coordinate system is right-handed.}
+\eqref{x(s) = L_x(s)\, \th_x^* + v_x(s)\, x^* + D(s)\,\xi\qquad y(s) = L_y(s)\, \th_y^* + v_y(s)\, y^*\ ,}{track general}
+where the quantities with stars refer to the state of the proton at IP. For elastic scattering $\xi\equiv 0$ and therefore dependencies for both coordinates obtain the same form. Thus, $\ze$ will be used to refer to whichever of $x$ and $y$ variables.
+
+Obviously, the fitting model used is
+\eqref{\ze(s) = v(s)\,\ze^* + L(s)\,\th^* \.}{fit model}
+Working out the linear fit equations (see e.g. Eq. (6.23) in \bref{barlow}), the estimate for vertex position $\ze^*$ and scattering angle (at vertex) $\th^*$ is
+\eqref{\pmatrix{\ze^*\cr\th^*} = {1\over \sum v^2 \sum L^2 - \sum vL \sum vL} \pmatrix{\sum L^2 \sum \ze v - \sum vL \sum \ze L\cr -\sum vL \sum \ze v + \sum v^2 \sum \ze L} \ ,}{fit}
+where for instance $\sum \ze L$ means $\sum_{i} \ze(s_i) L(s_i) / \si^2(s_i)$. The sums go over all detectors involved in the event and $\ze(s_i)$ is the hit position in corresponding detector. $\si$ denotes measurement uncertainty. The covariance matrix (see e.g. Eq. (6.24) in \bref{barlow})
+\eqref{\mathop{\rm Var}[\ze^*, \th^*] = {1\over \sum v^2 \sum L^2 - \sum vL \sum vL} \pmatrix{\sum L^2 & - \sum vL \cr -\sum vL & \sum v^2 }\.
+}{fit err}
+
+\iffalse
+In case of symmetric optic, i.e.
+$$L(-s) = - L(s),\qquad v(-s) = v(s)\eqno(3)$$
+and symmetric measurement (simultaneously at $\pm 216$ and/or $\pm220$) one gets condition $\sum Lv = 0$. It simplifies the general formula (2) to
+$$\pmatrix{\ze^*\cr\th^*} = \pmatrix{\sum \ze v / \sum v^2\cr \sum \ze L / \sum L^2}.\eqno{(4)}$$
+The expression for $\th^*$ can be further expanded
+$$\th^* = {1\over 2} {L(216) \big(\ze(216) - \ze(-216)\big)\ +\ L(220)\big( \ze(220) - \ze(-220) \big) \over L^2(216) + L^2(220)}\eqno{(5)}$$
+\fi
+
+\subsection[algo]{Algorithm}
+
+The algorithm comprises the three steps below.
+\bitm
+\itm \em{Hit selection}. The aim of this step is to choose from all the hits only those which belong to the actual track (of elastic protons). Which in turn means to suppress background and tracks from secondary interactions in detectors etc. It is assumed that the $L\,\th^*$ term dominates in \Eq{fit model}, i.e\hbox{.} at least approximate parallel-to-point focusing. For each hit, value of $\ze(s) / L(s)$ is calculated and a road search algorithm is applied. Only road with the highest weight and at least one hit on both sides can continue. Parameters of this search are (angular) road sizes for $x$ and $y$ projections.
+
+\fig*[12cm]{erfig/asy/roadSearch.pdf}{road search}{[]Principle of the road search algorithm. Left: hits in RPs shown vs\hbox{.} corresponding effective length. Hits by elastic protons displayed in blue, background in red. Right: histogram of angles $y/L_y$. Elastic hits pile up to high tower (i.e. road with highest weight).}{}{}{}
+
+\itm \em{Fitting}. There are three fits performed: left-arm fit, right-arm fit and global fit. Obviously, left-arm fit is carried out through hits from the left-arm only (plus IP if applicable), etc.
+
+\itm \em{Cut application}. This step is used to distinguish elastic scattering from other processes. It exploits properties of elastic scattering, namely reconstructed angles and vertex positions shall be identical for left and right fits. Therefore, the cut requires the left-right differences to be smaller than a certain limit. The parameters of this step are, hence, angular and vertex difference tolerances. Indeed, for both projections $x$ and $y$.
+\eitm
+
+\break
+\subsection[ip]{Usefulness of IP information}
+
+Here, we are coming back to the question whether it is worth adding a fictitious measurement at IP to the list of hits
+\footnote{%
+Let us remark that IP information has a different statistical nature than RP measurement. Let's have a particle passing through a RP at position $\ze$. Due to measurement errors the detector reports the particle at position $\ze_m$. In the language of statistics, $\ze_m$ is a sample of some distribution $D$, which reflects properties of measurement errors. It is reasonable to assume that mean value of $D$ is $\ze$, i.e. the actual particle position. Regarding the IP information, the role of mean and actual position is swapped. We put the fictitious measurement to $\ze = 0$ (vertex mean) while the real vertex position is unknown. A naive mixing RP and IP information may, therefore, lead to inconsistencies. Nevertheless, both types of informations can be safely used withing LS method since the method is only sensitive to distance between actual and mean position.
+}. To answer the question, let's assume the optics is symmetric i.e.
+$$L(-s) = - L(s),\qquad v(-s) = v(s)$$
+(that assumption is true for ideal $1540$ and $90\un{m}$ optics). Then\footnote{%
+In fact, one has to assume the fit to be symmetric too. That means if a RP at $s$ was hit, its partner at $-s$ was involved too. However, this should be true for most events.
+}, the fit equation boils down to
+\eqref{\ze^* = {\sum\ze v\over\sum v^2},\qquad \th^* = {\sum\ze L\over\sum L^2}\ .}{fit sym}
+One can clearly see that the IP measurement has no impact on angular reconstruction of $\th^*$. As effective length associated to IP is zero, both numerator and denominator remain unchanged. The situation is different for $\ze^*$ reconstruction, so let's rewrite the expression explicitly separating RP and IP contributions
+$$\ze^* = {\sum{\ze_i v_i\over\si_i^2} + {\ze_{\rm IP}\over \si^2_{\rm IP}}\over \sum {v_i^2\over\si_i^2} + {1\over\si_{\rm IP}^2}}\ ,$$
+where the index $i = 1\ldots N$ labels RP hits. Looking at denominator, one can estimate that the influence of IP information would be irrelevant if
+\eqref{v \gg {1\over\sqrt N}\,{\si\over\si_{\rm IP}}\ ,}{IP irrelevant}
+where $v$ denotes a typical value of $v_i$ and similarly $\si$ means typical $\si_i$. Validity of this condition can verified with use of \Tb{optics,smearing}. For $1540\un{m}$ optics one finds both sides of \Eq{IP irrelevant} to be of order $10^{-2}$ and thus the condition is false. While for $90\un{m}$ optics the condition $2 \gg 6\cdot10^{-2}$ is true. Anyway, vertex reconstruction is not our primary concern and therefore IP information will not be used unless necessary.
+
+The necessity for IP information may be seen in the following example. Imagine the situation where only one RP per arm was active in the event. We need to perform one-arm fits to verify the identity of the event, but one hit is not enough to fit two parameters. This is the only case when the IP information is used.
+
+\subsection[estim]{Estimate of the parameters}
+
+As explained above, there are 6 parameters governing the reconstruction, namely road sizes, angular and vertex tolerances for both projections. Here, we try to estimate reasonable values of those parameters.
+
+The road size is meant as a coarse seed for principal track search. Thus, it makes sense to set it to approximately to $T/L$, where $T$ is size of a trigger zone and $L$ is typical effective length. The road size should definitely distinguish between top and bottom RPs. That is if $\De$ is distance between top and bottom RP edges, the road size should be $< \De / L$.
+
+Regarding the angular tolerance parameter, a good choice seems to be a few times ${\rm pitch}/L$, where again $L$ is a typical effective length. However, in the case when beam divergence is present, the tolerance should become $\approx \si({\rm beam\ divergence})$.
+
+Having in mind the $90$ and $1540\un{m}$ optics, it is difficult to make any estimate for vertex tolerance. The problem arises from very small magnifications $v$. However, it is easy to simulate elastic events only, apply the reconstruction with no cuts and make histograms of left-right fit differences. Eventually, the tolerance parameters can be deduced from those histograms.
+
+
+\subsection[1540]{Performance at $\mathbf{\be^*=1540\un{m}}$ optics}
+
+The reconstruction method was probed on a sample of $10^4$ elastic events, generated in $t$-range $10^{-3}\un{GeV^2}$ to $1.5\un{GeV^2}$. The actual parameters of optics and detector geometry are summarized in \Tb{optics}. The simulation was carried out first without beam smearing and then including it (see the next two subsections). The beam smearing characteristics can be found in \Tb{smearing}.
+
+The road size parameters were set to $5\un{\mu rad}$ for $x$ (the $\De/L$ estimate) and $8\un{\mu rad}$ for $y$ coordinate (the $T/L$ estimate, $T = 32\cdot 66\un{\mu m}$). The tolerance parameters were set to huge numbers so no cuts were applied.
+
+Let us recall that double arm fits were employed (details in section \sref{algo}) and no vertex information used (more in section \sref{ip}).
+
+\tab{optics}{Description of optics and detector geometry for station at $220\un{m}$. $\ep$ stands for emittance. $L_x, v_x, L_y\hbox{ and } v_y$ represent typical values of the optical functions. Here, we put their maximal values as those contribute most to the fit. And $\de_x$ or $\de_y$ denotes distance between beam and edge of horizontal or vertical detector.}{
+\be^*\un{(m)} & \ep\un{(\mu m\cdot rad)} & L_{x}\un{(m)} & v_x  & L_{y}\un{(m)} & v_y& \de_x\un{(mm)} & \de_y\un{(mm)}\cr\bln
+1540 & 1    & 110 & 6\cdot10^{-2} & 270 & 2\cdot10^{-2} & 0.80 & 1.35\cr\ln
+  90 & 3.75 & 2.9 & 2.2			  & 265 & 2\cdot10^{-2}	& 4.15 & 6.40\cr\bln
+}
+
+\tab{smearing}{Smearing parameters used for simulation. $\si_\th$ denotes sigma of beam divergence, $\si_v$ spread of vertex distribution and $\si_\xi$ variance of energy smearing. Full explanation of smearing simulation and its parameters is to be found at \bref{smearing}.}{
+\be^*\un{(m)} & \si_\th\un{(\mu rad)} & \si_v\un{(\mu m)} & \si_\xi & \hbox{crossing angle}\un{(rad)} \cr\bln
+1540 & 0.295 & 321 & 10^{-4} & 0\cr\ln
+  90 & 2.4   & 150 & 10^{-4} & 0\cr\bln
+}
+
+\ssubsection{Case without beam smearing}
+
+\Fg{1540 nosm resolution} shows errors of angular and vertex reconstruction. The right plot clearly demonstrates that vertex resolution is poor for this optics. Relative error of $t$ determination is shown in \Fg{1540 nosm t}. The blue curve represents fit of $A/\sqrt{t}$ and it describes the data well. The fit gives $A = 0.9\cdot10^{-3}\un{GeV}$, while the estimate \Eq{tx' resolution} predicts $A = 0.8\cdot10^{-3}\un{GeV}$ (for $N=6$). One can conclude that both values well agree.
+
+\Fg{1540 nosm stat,1540 nosm chisq} demonstrate statistical behavior of the fits. One should emphasize that uncertainty of RP spatial measurement was fixed to $66\un{\mu m}/\sqrt{12}$ \footnote{
+In fact, as there are 5 planes for each coordinate, one might expect resolution of $66\un{\mu m}/\sqrt{12\cdot 5}$. However, it is a profound fact that a vast majority of protons hit all the five detector planes within the same strip. That's why one cannot directly apply the $1/\sqrt{N}$ statistical rule.}.
+Majority of events produced fits with two and four degrees of freedom, that means 4 and 6 RPs were hit. The most frequent hit configuration includes 2 vertical RPs at each side and 2 horizontal RPs at one side. The second most frequent case comprises only 2 vertical RPs at each side. \Fg{1540 nosm chisq} shows distributions of normalized residual sums for theses two dominant hit configurations. The red and blue curves represent theoretical $\chi^2$ distributions. There is an evident small discrepancy, the residual sums seems to be squeezed to smaller values. This suggests that measurement uncertainties were overestimated. The right-hand side plot of \Fg{1540 nosm stat} shows a histogram of reconstruction error divided by fit uncertainty for $\th_y$. Ideally, it should be a Gaussian with unit variance. The variance obtained is just slightly higher.
+%, which suggests that the measurement uncertainties were underestimated. 
+%Therefore, there are tiny inconsistencies in the results, however not on a level one should worry about.
+
+\fig*[11cm]{erfig/pdf/1540_nosm_resolution.pdf}{1540 nosm resolution}{Angular (left) and vertex (right) resolutions.}{}{}{}
+\kern-8mm
+\fig*[5.5cm]{erfig/pdf/1540_nosm_tres.pdf}{1540 nosm t}{Relative $t$ resolution.}{}{}{}
+\kern-8mm
+\fig*[11cm]{erfig/pdf/1540_nosm_stat.pdf}{1540 nosm stat}{[]Left: histogram of numbers of degrees of freedom. Right: $\th_y$ reconstruction error divided by fit uncertainty (blue line represents a Gaussian fit).}{}{}{}
+\kern-8mm
+\fig*[11cm]{erfig/pdf/1540_nosm_chisq.pdf}{1540 nosm chisq}{[]Histograms of normalized residual sums (for $y$ fits, plots for $x$ fits look similarly). Left for 2 degrees of freedom, right for 4. Red and blue curves show theoretical $\chi^2$ distributions.}{}{}{}
+
+Before moving to the next section, let's briefly discus efficiency of the algorithm, i.e. numbers of rejected events. The results are shown in \Tb{1540 efficiency}. One can see quite low number ($< 2\%$) of inconsistent fits, which is correct as no constraints were imposed. The present number corresponds to pathological events (e.g. when a proton interacts in front RP and therefore measurement in back RP is misleading). There are many events empty or insufficient. However, this can be easily explained geometrically. Assuming that $t$ distribution falls off exponentially, i.e. $t\sim b\exp(-bt)$, and $\ph$ is uniformly distributed on $\langle 0, 2\pi)$, one finds that angles $\th_x$ and $\th_y$ are independent and follow normal distribution $N(0, \si^2 = 1/2bp^2)$ where $p$ is momentum of protons. Therefore, probability of $|\th_y|<\th_y^{\rm min}$ is given by
+\eqref{P(|\th_y|<\th_y^{\rm min}) = {\rm Erf(\th_y^{\rm min}/\sqrt{2\si^2})}\ .}{}
+And consequently, fraction of empty and insufficient events is
+\eqref{P(\hbox{empty}) = {\rm Erf}\left( \de_y\, p\, \sqrt{b}\over L_y \right)\, {\rm Erf}\left( \de_x\, p\, \sqrt{b}\over L_x \right) \approx 4.4\un{\%}\ ,}{no road}
+\eqref{P(\hbox{insufficient}) = {\rm Erf}\left( \de_y\, p\, \sqrt{b}\over L_y \right)\, \left[ 1 - {\rm Erf}\left( \de_x\, p\, \sqrt{b}\over L_x \right) \right ] \approx 13\un{\%}\ ,}{no good road}
+where $b \approx 20\un{GeV^{-2}}$ was used and $\de$ and $L$ parameters are to be found in \Tb{optics}. These estimates correspond well with \Tb{1540 efficiency} (one should keep in mind that many effects, like insensitive edge, were not taken into account).
+
+\htab{1540 efficiency}{Efficiency of the algorithm (sample of $10^4$ events). Column ``empty events'' refers to events with no signal and column ``insufficient events'' with signal insufficient to perform the fit (see step 1 in the algorithm, section \sref{algo}). The four right-most columns show numbers of events rejected because of inconsistent right and left fits (see step 3 of the algorithm).}{
+\omit&\multispan{7}\bhrulefill\cr
+\omit              		& \hbox{fully} 			& \hbox{empty}	& \hbox{insufficient}	&\multispan{4}\vrule\hfil\hbox{inconsistent}\hfil \cr
+\omit              		& \hbox{reconstructed}	& \hbox{events}	& \hbox{events}			& x^* & y^* & \th_x	& \th_y \cr\bln
+\hbox{without smearing}	& 7867					& 426			& 1557					& 0   & 8   & 125	& 17 \cr\ln
+\hbox{with smearing}	& 7801					& 414			& 1548					& 0   & 5   & 154 	& 78 \cr\bln
+}
+
+
+\ssubsection{Case with beam smearing}
+
+\Fg{1540 sm resolution} shows precision of angular and vertex reconstruction. The dominant error source for angular reconstruction is the beam divergence and therefore all $\th_x$, $\th_y$ and $\th$ variances are practically identical\footnote{%
+Since $\th^2 = \th_x^2 + \th_y^2$ one may naively expect that $\si_{\th} > \si_{\th_{x, y}}$. However, a careful error propagation yields
+$$\si^2_{\th} = \si^2\big(\sqrt{\th_x^2 + \th_y^2}\big) = {\th_x^2\over \th_x^2 + \th_y^2}\, \si^2_{\th_x} + {\th_y^2\over \th_x^2 + \th_y^2}\, \si^2_{\th_y} = {\si^2_{\rm bd}\over 2}\ .$$
+In the last step we employed $\si_{\th_x} = \si_{\th_y} = \si_{\rm bd}/2$ (compare with $\de\th_x$ in \Eq{fit simple}). Therefore variances of $\th$, $\th_x$ and $\th_y$ are equal.
+}%
+. The relative $t$-resolution shown in \Fg{1540 sm tres} was fitted by $A/\sqrt{t}$ (as suggested by \Eq{t' resolution}) yielding $A = 2.2\cdot10^{-3}\un{GeV}$. Analytical estimate gives $A = 2.2\cdot10^{-3}\un{GeV}$, which agrees with fit result.
+
+As already said, it is useful to plot right-left fit differences, see \Fg{1540 right left diff smear}. This information can be used to set reasonable values of tolerance parameters (of course, these plots should be compared to corresponding plots obtained for background). Considering the properties of the optics (parallel-to-point focusing), one can expect rather a wide distribution of vertex differences. This expectation is well supported by the figure. Therefore, cut based on vertex differences is not very promising. Regarding $\De_{R-L}\th_y$, it is reasonable to expect it to be dominated by beam divergence. In other words, its distribution shall have RMS of beam divergence (compare \Eq{angular smearing,fit simple}). It really does, but one might be surprised by the peaks. 
+
+\break\hbox{}\kern-14mm
+\fig*[14cm]{erfig/pdf/1540_sm_resolution.pdf}{1540 sm resolution}{Angular (left) and vertex (right) resolutions.}{}{}{}
+\kern-3mm
+\fig*[7cm]{erfig/pdf/1540_sm_tres.pdf}{1540 sm tres}{Relative $t$ resolution.}{}{}{}
+\kern-3mm
+\fig[15.9cm]{erfig/pdf/1540_right_left_diff_smear.pdf}{1540 right left diff smear}{Right-left differences in $\th_y$ and $y^*$ fit results. Plots for $x$ coordinate are qualitatively the same.}
+
+To understand the peak appearance, we should go back and discuss what data are inserted to the reconstruction algorithm. Every RP has 5 $u$ and 5 $v$ strip detectors. Measurements from each group are (roughly speaking) averaged, yielding one $u, v$ point per RP. This point is, then, rotated by $45\un{^\circ}$ to obtain $x$ and $y$ coordinates of the hit. The detectors have strip pitch $P = 66\un{\mu m}$ and therefore any possible (single detector) measurement outcome can be written as
+\eqref{u\hbox{ or }v = {\rm const.} + P\, k\ ,}{u peaks}
+where $k$ is an integer. Moreover, particles detected in RPs have very small scattering angles and thus, very often, the same strip is hit in all 5 $u$, resp. $v$ strip detectors. This means that the averaged $u, v$ coordinates are peaked at values given by \Eq{u peaks}. After the rotation to $x, y$ space, the peaks in hit distribution are separated by $P/\sqrt{2}$ (this is the gap between two closest $x$ or $y$ outcomes). This fact is documented by \Fg{1540 peaks}A.
+
+Now, one may insert \Eq{u peaks} to \Eq{fit} and find where the peaks of angular distributions are. However, performing that in full generality would be complicated and not instructive. But, let's try out the (so far well working) approximation from Appendix A. Inserting $y_i = y^0_i + k_i P / \sqrt2$ into \Eq{fit 2} yields
+\eqref{\th_y' = \th_y^0 + {P\over N L_y \sqrt2} \left(\sum_R k_i - \sum_L k_i\right)\ .}{th peaks}
+Since the factor in parentheses is integer, peaks at distance $P/(\sqrt2 N L_y)$ can be expected. Using this equation, let's express the right-left difference
+\eqref{\De_{R-L}\th_y \equiv \th_y^R - \th_y^L =  {\rm const.} + {P\over 2 L_y \sqrt2} \left(\sum_R k_i + \sum_L k_i\right) = {\rm const.} + {P\over L_y \sqrt2} (k^R + k^L)\ ,}{drl th peaks}
+where, for simplicity, we constrained ourselves to the case with 2 hits per arm. In this simple approach, all effective $L$ are identical within one arm and therefore so $k_i$'s are. In other words $\sum_R k_i = 2 k^R$, which justifies the last equality in \Eq{drl th peaks}. The peaks are predicted with spacing $P/(\sqrt2 L_y)\approx 0.17\un{rad}$, which perfectly agrees with \Fg{1540 right left diff smear}.
+
+\bmfig[\flab{1540 peaks}To the explanation of peaks in $\th_y$ distribution. Plot A shows quantization of measured $y$ coordinate. The other three plots describe steps of MC simulation: single effective length approach (B), realistic effective length used (C) and finally partial (strip-)quantization included (D).]
+\fig*[7cm]{erfig/pdf/1540_strip_quantization.pdf}{}{}{}{A}{}
+\fig*[7cm]{erfig/pdf/1540_peaks_simple.pdf}{}{}{}{B}{}
+\fig*[7cm]{erfig/pdf/1540_peaks_clean.pdf}{}{}{}{C}{}
+\fig*[7cm]{erfig/pdf/1540_peaks_full.pdf}{}{}{}{D}{}
+\emfig
+
+There have been two important facts omitted in the previous paragraph: different effective lengths present and several hits counts (e.g. the dominant configuration has 4 hits at one arm and 2 at the other). It would be complicated to incorporate those two effects in the analytic calculation and that is why we rather performed a simple MC simulation. The results are shown in \Fg{1540 peaks}. Plot A corresponds to the approximation of the previous paragraph. Plot B was obtained for realistic $L_i$ values and for $2+2$ and $4+2$ hit configurations. Eventually, we added the effect of partial (strip-)discretization of $y$ values and the plot C was obtained. This plot well reproduces \Fg{1540 right left diff smear}. However, note the secondary structure with half pitch of the main peaks in the MC plot. This is probably due to other effects not included to the MC simulation.
+
+As the last comment, let's address the detector shifts. Displacing horizontal detectors would change only the constant terms in \Eq{u peaks,drl th peaks} and thus the entire peak structure would just move. The same effect takes place if top and bottom vertical pots are shifted simultaneously. But if they are moved independently, the whole picture changes. We stop this discussion here as it is not the primary goal of this article.
+
+
+
+
+
+
+\subsection[90]{Performance at $\mathbf{\be^* = 90\un{m}}$ optics}
+
+Relevant parameters of this optics are summarized in \Tb{optics}. Immediately, one can see this optics has very low effective lengths $L_x$, which requires a special treatment. First, the selection algorithm is not intended for such a case and therefore the $x$ road size should be set to a large number in order to let everything pass (the two dimensional road search is, then, reduced to one dimension). Similarly, this is the reason for bad $\th_x$ reconstruction performance. Thus no constraints should be imposed on $\th_x$ (this is equivalent to very large tolerance parameter).
+
+As for $1540\un{m}$ optics, we generated $10^4$ elastic events ($2.5\cdot10^{-2}\un{GeV^2} < |t| < 1.5\un{GeV^2}$), with and without smearing. The $y$ road size was fixed at $50\un{\mu rad}$ (the $\De/L$ estimate) and no vertex cuts (high vertex tolerances) were used for both cases.
+
+\ssubsection{Case without beam smearing}
+
+The last parameter which has not been discussed yet, is $\th_y$ tolerance. For this section it was set to $6\cdot10^{-7}$. It is a very liberal cut which removes only pathological events.
+
+\fig*[14cm]{erfig/pdf/90_angle_nosmear.pdf}{90 angle nosmear}{[10cm]Angular resolution for $90\un{m}$ optics without smearing.}{}{}{}
+
+\break\hbox{}
+\kern-1.6cm
+\fig*[7cm]{erfig/pdf/90_t_resolution_nosmear.pdf}{90 ty res nosmear}{Relative $t$ resolution.}{}{}{}
+
+The angular resolution is shown in \Fg{90 angle nosmear}. The $\th_x$ precision is very bad, as expected. Relative error of $t_y$ reconstruction, shown in \Fg{90 ty res nosmear}, was fitted by \Eq{tx' resolution}. The fit gives $A = 7.1\cdot10^{-4}\un{GeV}$, while analytic estimation yields $A = 5.3\cdot10^{-4}\un{GeV}$ for $N = 4$, which is the dominant configuration. The analytical uncertainty is apparently slightly underestimated.
+
+\Fg{90 vertex nosmear} shows vertex reconstruction potential. As magnifications $v_y$ are low for this optics, precision of $y^*$ reconstruction is poor.
+
+Important statistical properties of the fits can be seen in \Fg{90 statistics no smear 1}. The left-hand side plot shows that most events include 4 hits, i.e. 2 degrees of freedom. The right-hand plot shows residual sum of squares for events with 2 degrees of freedom. The histogram is compared to $\chi^2(\nu = 2)$ distribution drawn in red. The histogram is quite close to the desired distribution. \Fg{90 statistics no smear 2} presents a histogram of $\th_y$ error divided by fit uncertainty. Ideally (if included error sources were Gaussian-like), the histogram should form a Gaussian with RMS one. But since strip-rounding error behaves rather like $\de x$ in \Eq{fit simple}, one need not be surprised that the histogram deviates from Gaussian shape.
+
+\Tb{90 efficiency} summarizes numbers of rejected events. There is evidently high number of empty events. But again, this can be explained geometrically. In principle, one might follow the same prescription as for $1540\un{m}$ optics. However, here one should consider relatively high lower bound of simulated events: $2.5\cdot10^{-2} < |t|$. Then, the calculation gets complicated. We performed a MC simulation instead, yielding $53\un{\%}$ probability of empty event. This corresponds well to the observed frequencies. As $L_x\approx 0$, horizontal RPs are not involved in elastic events and there is no geometrical reason for insufficient events. Those 103 events correspond to problematic events, for instance when proton was registered at one arm only etc.
+
+\fig[14cm]{erfig/pdf/90_vertex_nosmear.pdf}{90 vertex nosmear}{Vertex resolution.}
+\fig*[14cm]{erfig/pdf/90_nosm_stat.pdf}{90 statistics no smear 1}{[]Some statistical properties of the $y$ fit. Left: number of degrees of freedom distribution. Right: Histogram of normalized residual sums for events with 2 degrees of freedom. Red curve represents theoretical $\chi^2$ distribution.}{}{}{}
+\fig[7cm]{erfig/pdf/90_nosm_recerr.pdf}{90 statistics no smear 2}{Histogram of $\th_y$ deviation divided by fit uncertainty.}
+
+
+\htab{90 efficiency}{Efficiency of the algorithm (sample of $10^4$ events). For legend see \Tb{1540 efficiency}.}{
+\omit&\multispan{7}\bhrulefill\cr
+\omit              		& \hbox{fully} 			& \hbox{empty}		& \hbox{insufficient}&\multispan{4}\vrule\hfil\hbox{inconsistent}\hfil \cr
+\omit              		& \hbox{reconstructed}	& \hbox{events}	& \hbox{events}	& x^* & y^* & \th_x	& \th_y \cr\bln
+\hbox{without smearing}	& 4495					& 5350			& 103			& 0   & 0   & 0		& 52 \cr\ln
+\hbox{with smearing}	& 4228					& 5120			& 605			& 0   & 9   & 0 	& 38 \cr\bln
+}
+
+
+\ssubsection{Case with beam smearing}
+
+The analysis was repeated for simulation with smearing applied (smearing parameters are to be found in \Tb{smearing}). The $\th_y$ tolerance had to be increased because of the beam divergence. The value used was $8\cdot10^{-6}\un{rad}$ (compare with left plot of \Fg{90 right left diff smear}).
+
+Interesting angular and vertex reconstruction results are shown in \Fg{90 angle vertex smear}. Relative errors of $t$ components are plotted in \Fg{90 t res smear}. All of them follow the $A/\sqrt{t_y}$ rule. But as $t_x$ measurement introduces a significant error, only $t_y$ is of practical use. The of $t_y$ resolution gives $A = 1.7\cdot10^{-2}$, just as estimate by \Eq{tx' resolution}.
+
+\hbox{}
+\kern-2.0cm
+\fig*[12cm]{erfig/pdf/90_sm_resolution.pdf}{90 angle vertex smear}{[10cm]Angular and vertex resolution for $90\un{m}$ optics with smearing.}{}{}{}
+\kern-0.5cm
+\bmfig[\flab{90 t res smear}Relative errors of $t_y$, $t_x$ and $t$ reconstruction.]
+\fig*[12cm]{erfig/pdf/90_sm_tyxres.pdf}{}{}{}{}{}
+\fig*[6cm]{erfig/pdf/90_sm_tres.pdf}{}{}{}{}{}
+\emfig
+\kern-0.5cm
+\fig[12cm]{erfig/pdf/90_sm_rldiff.pdf}{90 right left diff smear}{Right-left differences in $\th_y$ and $x^*$ fits.}
+
+Finally, right-left difference plots are shown in \Fg{90 right left diff smear}. The sigma of $\th_y$ difference histogram well corresponds to beam divergence variance. Also the peaks are present. We carried out a MC simulation like for the previous optics, but this time the outcome did not fit that well to the data. The major peaks in the simulation are twice closer than the major peaks in data. In fact, this observation is similar to the case of $1540\un{m}$ optics. The peaks with half pitch were also present (see \Fg{1540 peaks}D) but were suppressed in comparison with the principal peaks. The reason is, probably, the simple MC is missing some relevant effects and subtleties (which can have only smearing impact). 
+
+Looking at \Tb{90 efficiency} one can see that number of insufficient events rose drastically after inclusion of smearing effects. Those events take place mainly in the region of detector edges and hence it suggest a straight-forward explanation: outgoing protons have slightly different direction due to the beam divergence and it happens that only one proton hits detectors.
+
+
+
+\subsection[disc]{Discussion}
+
+It would be definitely worth testing the performance of the algorithm on a sample of background or background plus elastic events. Unfortunately, only one-arm background simulations are currently available. No surprise that all those events are rejected.
+
+There is one issue already known. Let's imagine a situation when a proton interacts in/after $214\un{m}$ unit. Indeed, it gets deflected and if it reaches further detectors, the information is misleading. In such a case one should omit information from affected RPs. That should be done on the level of selection, but unfortunately the present road search algorithm is not sensitive enough. Fortunately, those events are rather rare.
+
+\iffalse
+In order to avoid those problems, it is necessary to improve the selection algorithm. Instead of road search algorithm, one can use a proper pattern recognition algorithm with pattern defined by \Eq{track general}. This can be implemented on the level of elastic reconstruction or better a lever lower. Instead of (current) selecting hits RP by RP, this might be done using all hits available. This might be very useful in the case a detector has more than one hit. Using information from other detectors, one may remove the ambiguity in pairing $u$ and $v$ strips. This needs to be discussed.
+\fi
+
+
+\subsection[appendix]{Estimation of t measurement error}
+
+In order to cross-check performance of the reconstruction method, it is desirable to estimate reconstruction error. In this appendix, I will express contribution of two main error sources, i.e. beam divergence and finite pitch of detectors.
+
+To keep the calculation smooth, I adopted the assumptions below. Many of those are not precisely fulfilled, but the error caused by them is not dramatic for the purpose of error estimate.
+\bitm
+\itm The optics is symmetric, therefore the $v$-terms in track parameterization (see \Eq{fit model}) cancel out.
+\itm Absolute values of $|L_x|$ for all RPs do not differ drastically\footnote{%
+For instance, for $1540\un{m}$ optics $L_x$ ranges from $99$ to $113\un{m}$ and $L_y$ from $248$ to $272\un{m}$. Therefore, the approximation of unique effective length brings error of roughly $10\un{\percent}$.
+}
+and can be well approximated by $\pm L_x$. The $+$ sign holds for RPs at right arm and vice versa. The same assumption for $L_y$.
+\itm Uncertainties in hit position measurements are identical for all RPs. 
+%\itm For each RP there is one $\De x_i$. All of those are uncorrelated.
+\itm There are $N$ measurements in total, $N/2$ for each arm.
+\eitm
+
+\vskip2mm
+Under these assumptions, the fit equation (\Eq{fit}) can be simplified to
+\eqref{\th_x' = {1\over N\,L_x} \left( \sum_{\rm right} x_i - \sum_{\rm left} x_i \right)\.}{fit 2}
+From now on, symbols with prime will be related to measured values while prime-less symbols will refer to the true or unsmeared value. 
+
+If there were no errors and smearings, $x_i$ would be given by parameterization \Eq{fit model}. But as those are present, one needs to generalize the dependence. Since we assume symmetric optics, we may drop out the $v$-term and write down
+\eqref{x_i = L_x \th_x^{\rm smeared} + \De x_i \.}{fit model 2}
+We replaced $\th_x$ by its smeared value and added a term which describes discretization to the given pitch. It is natural to assume that $\De x_i$ follows uniform distribution $U(-P/2, P/2)$, where $P$ stands for the detector pitch. For completeness, $\si_{\De x} = P / \sqrt{12}$. Later on, we will also assume $\De x_i$ to be independent for different RPs.
+
+In note \bref{smearing} an analysis of angular smearing has been carried out for particles scattered to small angles (i.e. particles that can be detected by Roman Pots). It shows that the effect of smearing is equivalent to modification of particles' direction (see Eq. (16) in \bref{smearing})
+\eqref{\matrix{\th_x\equiv\th\cos\ph \rightarrow \th\cos\ph + \De\th_x^{L, R}\cr\th_y\equiv\th\sin\ph \rightarrow \th\sin\ph + \De\th_y^{L, R}}  \ ,}{angular smearing}
+where the standard notation is followed: $\th$ denotes scattering angle and $\ph$ is azimuthal angle. By the $L, R$ superscript we want to emphasize that the shift has different values for particles at left and right arm.
+
+Inserting \Eq{fit model 2,angular smearing} to \Eq{fit 2} yields
+\eqref{\th_x' = \th_x + \de\th_x + {1\over L_x} \de x,\qquad \de\th_x = {\De\th_x^{R} + \De\th_x^{L}\over 2}, \qquad \de x = {1\over N} \left( \sum^{N/2}_{\rm right} \De x_i - \sum^{N/2}_{\rm left} \De x_i \right)}{fit simple}
+Clearly, mean values of both $\de\th_x$ and $\de x$ are zero. Following Eq. (17)\footnote{%
+All the simulations in this note were performed using the smearing parameterization (7) in \bref{smearing}.
+} in \bref{smearing} one obtains $\si_{\de\th_x} = \si_\th / 2$, where $\si_\th$ denotes sigma of beam divergence. And finally, $\si_{\de x} = P / \sqrt{12N}$.
+
+Taking into account definitions ($t$, $t_x$ and $t_y$ are considered as positive here)
+\eqref{t = p^2\th^2,\qquad t_x = t\cos^2\ph, \qquad t_y = t\sin^2\ph ,}{t def}
+\Eq{fit simple} can be rewritten in terms of $t$ components:
+\eqref{t_x' = t\cos^2\ph + p^2\de^2\th_x + {p^2\over L_x^2}\de x^2 + 2p\sqrt{t}\cos\ph \left( \de\th_x + {1\over L_x}\de x \right).}{tx'}
+The relation for $t_y'$ can be obtained by swapping $x\leftrightarrow y$ and $\cos\ph\leftrightarrow\sin\ph$. 
+
+One can easily calculate mean value of $t_x'$ while keeping $t_x$ fixed (all terms linear in perturbations drop out because of their zero mean values):
+\eqref{\Exp{t_x'} = t_x + p^2 \left({\si_{\th}^2\over 4} + {P^2\over 12N\,L_x^2}\right).}{tx' mean}
+Similarly, mean value of $t'$ when $t$ is fixed reads
+\eqref{\Exp{t'} = t + p^2 \left({\si_{\th}^2\over 2} + {P^2\over 12N\,L_x^2} + {P^2\over 12N\,L_y^2}\right).}{t' mean}
+
+In order to evaluate $\si_{t_x'}$, we need to calculate $\Exp{t_x'^2}$. It is evident that terms linear in $\de\th_x$ and $\de x$ will not contribute. Also, to keep the calculation simple, terms higher than quadratic were not included. 
+\eqref{t_x'^2 = t_x^2 + 6 p^2 t_x \left( \de^2\th_x + {1\over L_x^2}\de^2 x \right) + \ldots}{tx' sq}
+And analogically
+\eqref{t'^2 = t^2 + 2 p^2 t \left[ (1 + 2\cos^2\ph) \left(\de^2\th_x + {1\over L_x^2}\de^2 x \right) + (1 + 2\sin^2\ph) \left(\de^2\th_y + {1\over L_y^2}\de^2 y \right)\right] + \ldots}{t' sq}
+
+It is straight-forward to show that
+\eqref{\si^2_{t_x'} \equiv \Exp{t_x'^2} - \Exp{t_x'}^2 = 4 p^2 t_x \left({\si_{\th}^2\over 4} + {P^2\over 12N\,L_x^2}\right)\qquad \hbox{for fixed }t_x\ ,}{tx' sigma}
+\eqref{\si^2_{t'} \equiv \Exp{t'^2} - \Exp{t'}^2 = 4 p^2 t \left[{\si_{\th}^2\over 4} + {P^2\over 24N}\left({1\over L_x^2} + {1\over L_y^2}\right)\right]\qquad \hbox{for fixed }t\ .}{t' sigma}
+The relative resolution, then, gains the commonly used $A/\sqrt{t}$ form:
+\eqref{{\si_{t_x'}\over t_x}  = {A\over\sqrt{t_x}},\qquad A = 2p \sqrt{ {\si_{\th}^2\over 4} + {P^2\over 12N\,L_x^2}}\ ,}{tx' resolution}
+\eqref{{\si_{t'}\over t}  = {A\over\sqrt{t}},\qquad A = 2p \sqrt{{\si_{\th}^2\over 4} + {P^2\over 24N}\left({1\over L_x^2} + {1\over L_y^2}\right)}}{t' resolution}
+
+\iffalse
+One may also define variable $\de$
+\eqref{\de^2 = {(t_x' - t_x)^2\over t_x^2} \Rightarrow \sqrt{\Exp{\de^2}} = {\si_{t_x'}\over t_x}}{delta for tx}
+\fi

@@ -34,7 +34,15 @@ real m = 5;
 real si_x = 0.8/7; // in cm
 real si_y = 0.71/7;
 
-real sx = m*si_x, sy = m*si_y;
-strip_color = blue; add(shift(0, +sy) * rotate(45) * shift(-cutEdge/2, -cutEdge/2) * Det);
-strip_color = red; add(shift(+sx, 0) * rotate(-45) * shift(-cutEdge/2, -cutEdge/2) * Det);
-strip_color = heavygreen; add(shift(0, -sy) * rotate(-135) * shift(-cutEdge/2, -cutEdge/2) * Det);
+//real sx = m*si_x, sy = m*si_y;
+//real sx_hor = 0.64, sy_top = 1.0961, sy_bot = 1.1111;
+real sx_hor = 0.7204, sy_top = 1.1550, sy_bot = 0.9649;
+
+real gap = 0.03;
+sy_top += gap;
+sy_bot += gap;
+sx_hor += gap;
+
+strip_color = blue; add(shift(0, +sy_top -0.1405) * rotate(45) * shift(-cutEdge/2, -cutEdge/2) * Det);
+strip_color = red; add(shift(+sx_hor+0.0140, 0) * rotate(-45) * shift(-cutEdge/2, -cutEdge/2) * Det);
+strip_color = heavygreen; add(shift(0, -sy_bot-0.0776) * rotate(-135) * shift(-cutEdge/2, -cutEdge/2) * Det);
