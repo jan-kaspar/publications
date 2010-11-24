@@ -4,13 +4,16 @@ unitsize(1.5mm);
 
 picture Det0;
 
-real edge = 36.065;
-real cutEdge = 22.361 / sqrt(2);
+real edge = 36.070;
+real cutEdge = 22.276 / sqrt(2);
 real eD = (edge - cutEdge) / sqrt(2);
+real centerToOuterWindow = 14.717;
+real windowThickness = 0.150;
+
 int strips = 75;
 real margin_v_f = 2;
-real margin_v_l = 4;
-real margin_u_f = 2;
+real margin_v_l = 3;
+real margin_u_f = 4;
 real margin_u_l = 2;
 
 path Det0Shape = (cutEdge, 0)--(edge, 0)--(edge, edge)--(0, edge)--(0, cutEdge)--cycle;
@@ -71,29 +74,34 @@ add(shift(0, 0) * rotate(45) * shift(-edge/2, -edge/2) * Det0);
 
 
 real s2 = sqrt(2);
-ShowLength((edge/s2, 0), (0, edge/s2), (1, 1), "36.065", 10);
-ShowLength((-edge/s2, 0), (0, edge/s2), (-1, 1), "36.065", 10);
-ShowLength((0, edge/s2), ((margin_v_f-margin_u_f)/s2, (edge-margin_v_f-margin_u_f)/s2), (1, 1), "FStB", 5);
-ShowLength((edge/s2, 0), ((edge-margin_v_l-margin_u_f)/s2, (margin_v_l-margin_u_f)/s2), (1, 1), "LStB", 5);
-ShowLength((0, edge/s2), ((margin_v_f-margin_u_f)/s2, (edge-margin_v_f-margin_u_f)/s2), (-1, 1), "?", 5);
-ShowLength((-edge/s2, 0), ((-edge+margin_v_f+margin_u_l)/s2, (-margin_v_f+margin_u_l)/s2), (-1, 1), "?", 5);
+ShowLength((edge/s2, 0), (0, edge/s2), (1, 1), format("%#.3f", edge), 10);
+ShowLength((-edge/s2, 0), (0, edge/s2), (-1, 1), format("%#.3f", edge), 10);
+ShowLength((0, edge/s2), ((margin_v_f-margin_u_f)/s2, (edge-margin_v_f-margin_u_f)/s2), (1, 1), "\hskip12mm 0.9215", 5);
+ShowLength((edge/s2, 0), ((edge-margin_v_l-margin_u_f)/s2, (margin_v_l-margin_u_f)/s2), (1, 1), "\hskip-8mm 1.4175", 5);
+ShowLength((0, edge/s2), ((margin_v_f-margin_u_f)/s2, (edge-margin_v_f-margin_u_f)/s2), (-1, 1), "\hskip-8mm 2.38", 5);
+ShowLength((-edge/s2, 0), ((-edge+margin_v_f+margin_u_l)/s2, (-margin_v_f+margin_u_l)/s2), (-1, 1), "\hskip6mm 0.7", 5);
 
-ShowLength((-edge/s2, 0), (-edge/s2+eD, -eD), (-1, -1), "20.352", 5);
-ShowLength((edge/s2, 0), (edge/s2-eD, -eD), (1, 0), "14.321", 5);
-ShowLength((edge/s2-eD, -eD), (-edge/s2+eD, -eD), (0, -1), "22.361", 5);
-
-label("FStB (first strip to border) = $0.9215$", (0, -30));
-label("LStB (last strip to border) = $1.4175$", (0, -35));
+ShowLength((-edge/s2, 0), (-edge/s2+eD, -eD), (-1, -1), format("%#.3f", edge-cutEdge), 5);
+ShowLength((edge/s2, 0), (edge/s2-eD, -eD), (1, 0), format("%#.3f", (edge-cutEdge)/sqrt(2)), 5);
+ShowLength((edge/s2-eD, -eD), (-edge/s2+eD, -eD), (0, -1), format("%#.3f", cutEdge*sqrt(2)), 5);
 
 //----------------------------------------------------------------------------------------------------
 
 real c = 80;
-real g = 2;
-real b = 15;
+real g = 8;
+real tw = 3;
+real tww = 20;
+real b = 20;
 add(shift(c, 0) * rotate(45) * shift(-edge/2, -edge/2) * Det0);
-ShowLength((c+edge/s2, 0), (c+edge/s2-eD, -eD), (1, 0), "14.321", 5);
-ShowLength((c+edge/s2, 0), (c, -eD-g), (1, 0), "14.471", 10);
-ShowLength((c-edge/s2+eD, -eD), (c, -eD-g), (-1, 0), "0.15", 5);
-ShowLength((c, -eD-g),(c, -eD-b),  (1, 0), "DDL", 10);
+ShowLength((c+edge/s2, 0), (c+edge/s2-eD, -eD), (1, 0), format("%#.3f", (edge-cutEdge)/sqrt(2)), 5);
+ShowLength((c+edge/s2, 0), (c, -eD-g-tw), (1, 0), format("%#.3f", centerToOuterWindow), 10);
+
+ShowLength((c-edge/s2+eD, -eD), (c-tww, -eD-g), (-1, 0), format("%#.3f", -(edge-cutEdge)/sqrt(2) + centerToOuterWindow - windowThickness), 5);
+ShowLength((c-tww, -eD-g), (c-tww, -eD-g-tw), (-1, 0), format("%#.3f", windowThickness), 9);
+
+ShowLength((c, -eD-g-tw), (c, -eD-b),  (1, 0), "DDL", 10);
+
+draw((c-tww, -eD-g)--(c+tww, -eD-g), black+2);
+draw((c-tww, -eD-g-tw)--(c+tww, -eD-g-tw), black+2);
 
 filldraw(shift(c, -eD-b)*scale(0.5)*unitcircle, black);

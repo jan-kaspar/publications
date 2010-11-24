@@ -1,9 +1,12 @@
 import three;
 import math;
 
-unitsize(1cm);
-currentprojection = perspective(3*(-8, 4.5, 9), up=Y, autoadjust=true, center=false);
-//currentprojection = orthographic((-1.0, 0.4, 1), (0, 1, 0));
+void PreparePicture()
+{
+	unitsize(1cm);
+	currentprojection = perspective(3*(-12, 6.5, 9), up=Y, autoadjust=true, center=false);
+	//currentprojection = orthographic((-1.0, 0.4, 1), (0, 1, 0));
+}
 
 //----------------------------------------------------------------------------------------------------
 
@@ -54,6 +57,10 @@ void DrawDet(transform3 align, string L, triple aligPoint = (4, 4, 0)) {
 }
 
 //----------------------------------------------------------------------------------------------------
+
+/*
+PreparePicture();
+
 // RP 120
 draw((0, edge/sqrt(2), -3)--(0, edge/sqrt(2), 0), dotted);
 DrawDet(rotate(45, (0, 0, 1)), "1200");
@@ -101,3 +108,61 @@ draw((0, 0, az)--(0, 0, az+aLen), black+1, EndArrow3(9));
 label("$x$", (1.5*aLen, 0, az), E);
 label("$y$", (0, aLen, az), N);
 label("$z$", (0, 0, az+aLen), S);
+
+shipout("station_56_220");
+*/
+
+//----------------------------------------------------------------------------------------------------
+
+currentpicture = new picture;
+PreparePicture();
+
+// RP 20
+draw((0, edge/sqrt(2), +3)--(0, edge/sqrt(2), 0), dotted);
+DrawDet(rotate(180, (0, 1, 0)) * rotate(45, (0, 0, 1)), "200");
+draw((0, edge/sqrt(2), 0)--(0, edge/sqrt(2), -6), dotted);
+
+DrawDet(shift(0, 0, -6) * rotate(45, (0, 0, 1)), "201");
+draw((0, edge/sqrt(2), -6)--(0, edge/sqrt(2), -8.7), dotted, EndBar3(20));
+draw((0, edge/sqrt(2), -9)--(0, edge/sqrt(2), -10), dotted, BeginBar3(20));
+
+draw((0, 0, 0)--(0, cE2, 0), dotted);
+draw((0, 0, -6)--(0, cE2, -6), dotted);
+
+// RP 21
+draw((0, -edge/sqrt(2), -3)--(0, -edge/sqrt(2), 0), dotted);
+DrawDet(rotate(180, (0, 1, 0)) * rotate(-135, (0, 0, 1)), "210");
+draw((0, -edge/sqrt(2), 0)--(0, -edge/sqrt(2), -6), dotted);
+DrawDet(shift(0, 0, -6) * rotate(-135, (0, 0, 1)), "211");
+draw((0, -edge/sqrt(2), -6)--(0, -edge/sqrt(2), -8.7), dotted);
+
+draw((0, 0, 0)--(0, -cE2, 0), dotted);
+draw((0, 0, -6)--(0, -cE2, -6), dotted);
+
+// RP 22
+draw((edge/sqrt(2), 0, -20)--(edge/sqrt(2), 0, -23.5), dotted, EndBar3(20));
+draw((edge/sqrt(2), 0, -23.8)--(edge/sqrt(2), 0, -25), dotted, BeginBar3(20));
+DrawDet(shift(0, 0, -25) * rotate(180, (1, 0, 0)) * rotate(-45, (0, 0, 1)), "220", (-0.275, 4., 0));
+draw((edge/sqrt(2), 0, -25)--(edge/sqrt(2), 0, -28), dotted);
+DrawDet(shift(0, 0, -28) * rotate(-45, (0, 0, 1)), "221", (4., -0.275, 0));
+draw((edge/sqrt(2), 0, -28)--(edge/sqrt(2), 0, -30), dotted);
+
+draw((0, 0, -15)--(cE2, 0, -25), dotted);
+draw((0, 0, -18)--(cE2, 0, -28), dotted);
+
+// axes and beam line
+draw((0, 0, +3)--(0, 0, -8.7), dashed, EndBar3(20));
+draw((0, 0, -9)--(0, 0, -13.5), dashed, BeginBar3(20), EndBar3(20));
+draw((0, 0, -13.8)--(0, 0, -20), dashed, BeginBar3(20));
+label(zscale3(-1)*ZY*Label("beam line"), (0, -0.5, -11));
+
+real aLen = 3;
+real az = -10;
+draw((0, 0, az)--(1.5*aLen, 0, az), black+1, EndArrow3(9));
+draw((0, 0, az)--(0, aLen, az), black+1, EndArrow3(9));
+draw((0, 0, az)--(0, 0, az+aLen), black+1, EndArrow3(9));
+label("$x$", (1.5*aLen, 0, az), E);
+label("$y$", (0, aLen, az), N);
+label("$z$", (0, 0, az+aLen), S);
+
+shipout("station_45_220");
