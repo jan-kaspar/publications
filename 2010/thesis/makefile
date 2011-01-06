@@ -11,7 +11,8 @@ thesis.pdf : thesis.tex references.tex $(timestamps) \
 	alignment.tex appendices.tex elasticReco.tex elastic.tex introduction.tex references.tex \
 	sigma_tot.tex simu_reco.tex smearing.tex elasticReco.tex extrapolation.tex
 	@echo "* TeX"
-	@pdftex -fmt encpdftex -interaction batchmode thesis.tex &> /dev/null
+	@#pdftex -fmt encpdftex -interaction batchmode thesis.tex &> /dev/nul
+	@pdftex -interaction batchmode thesis.tex &> /dev/null
 
 references.tex : references.bib
 	@echo "* bib -> tex"

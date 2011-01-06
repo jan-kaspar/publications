@@ -1,8 +1,25 @@
 \chapter[alignment]{Alignment of Roman Pots}
 
-\> Methods overview (plus experience from other experiments)
+MOTIVATION: An accurate alignment is of major importance for the TOTEM experiment in order to deliver precise measurements. Among the subdetectors of TOTEM, the alignment of the RPs presents the biggest challenge since they are movable. The importance of alignment is most pronounced at the $\be^* = 1535\un{m}$ optics, where the beam divergence (the dominant smearing effect) is rather low and hence the impact of any misalignment has a large relevance. To give a feeling, a $100\un{\mu m}$ displacement of a vertical RP would lead to angular shift of about $0.4\un{\mu rad}$ (based on an effective length $L_y\approx 270\un{m}$, typical for this optics). This is to be compared to the spread of the beam divergence $0.3\un{\mu rad}$.
+
+\TODO{experience from other experiments}
+
+WHAT WE ALIGN, WRT WHAT:
+What is important is the relative position between RP sensors (the other parts do not matter much) and the beam. Hence there are two players in the game -- RP positions and beam positions.
+
+\section[alignment procedure]{Alignment procedure}
+The procedure has two steps. First, move the pots to the desired position as precisely as possible. Then take data, analyze them and find what error has been done in the first step.
+
+The first step relies mainly on two types devices -- RP motor control and Beam Position Monitors (BPMs). Both are calibrated to determine position of outer edge of the window or the beam with respect to the ideal beam-pipe center.
+
+For the second step, a number of methods is available. Undoubtedly, one of the most powerful ones is the track-based alignment. It uses the tracks passing through the overlap between vertical and horizontal RPs and is, hence, capable of determining the relative position between the pots. Its strength is underlined by the fact that it is based on a single assumption: tracks are straight lines. To determine the position of the beam, other methods must be used. One may profit from know symmetries of certain physics processes. Here, the analysis becomes delicate because in the observables the properties of the processes are mixed with the properties of the optics. This gives a certain superiority to elastic scattering. This process is often easy to separate and hence can provide a clean sample, as the first argument. As the second one, it comprises two protons exactly in the opposite direction and can thus be used for the alignment of the opposite arms of the experiment. Yet another advantage the protons have, by definition, zero momentum-loss and therefore, the dependence on the optics is largely reduced.
+
+Reference to \sref{expected misalignments}.
+As it follows from \Sc{rp measurement}, only the rotation around $z$ axis is relevant.
 
 \section[expected misalignments]{Expected misalignments}
+
+Let's first asses what may go wrong and what are the corresponding misalignment estimates.
 
 \noindent\em{Internal misalignments} arise from finite precision of fixing the detectors within a package. The precision is estimated to be
 \eqref{20\un{\mu m}\ .}{internal misalignment shift}
@@ -23,9 +40,23 @@ This also gives estimate about the rotation
 \hbox{rotation around }z & & \cr\bln
 }
 
-\section{What misalignments are relevant?}
+\section{Collimation alignment}
 
-As it follows from \Sc{rp measurement}, only the rotation around $z$ axis is relevant.
+PUT THIS TO INTRODUCTION? In principle both \abb{BPM}s and \abb{RP} motor controls should have been calibrated such that they give the position of beam/RP edge with respect to the beam-pipe center. However, a cross-check is always good. Moreover, this exercise was needed for the alignment against the system of the LHC collimators.
+
+In the beginning, the collimators scrape the beam such that its edge is sharp and its size and center is well defined. Then a RP is approached to the beam, until it touches the sharp edge. In this moment, particles from the beam edge are scattered of the RP edge and they give raise to peaks in the BLMs downstream (see \Fg{collimation alignment example} bottom). In this moment, the RP edge is at the same beam-sigma-distance as the collimators.
+
+With the vertical RPs we can make use of the fact that we have 2 jaws and determine the beam-sigma (in millimeters) and the beam-center. Suppose that we have touched the beam with the top RP. In that moment, the RP became the primary collimator and scraped the beam a bit. Due to the multi-turn effect, the beam was scraped symmetrically about the vertical center of the beam. Then, one can approach the bottom pot, again until a BLM peak appears. Then, both RPs are at the same distance from the vertical beam-center and the distance corresponds to one beam-sigma (up to the step-size, indeed). These steps can be repeated in order to improve the precision of the beam-center determination. An example of this procedure can be found in \Fg{collimation alignment example}.
+
+\fig{fig/pdf/CollimationAlignmentExample.pdf}{collimation alignment example}{An example of collimation alignment data (from 29 November 2009). The top and bottom pot movements(up) induced the BLM signals (bottom).}
+
+The precision is obviously given by the step size. Mostly because of the limited time resolution one cannot determine when during the movement the beam was touched. One should, thus, aim at as little steps as possible. On the other hand, the smaller step, the less scraping and the lower peak in the BLM signal. If the step is too small, the induced beam loss can not be distinguished from the noise. We observed a step of $50\un{\mu m}$ to be on the practical limit.
+
+So far, the collimation alignment has been repeated three times: 29 November 2009, 25 June 2010 (both at $450\un{GeV}$) and ?? at $7\un{TeV}$. The results suggest two unfortunate conclusions: RP LVDTs seemed wrongly calibrated and BPMs were unreliable.
+
+BPM unreliable.
+
+LVDT mis-calibration
 
 \section{Track--based alignment}
 
@@ -114,22 +145,24 @@ and
 
 This idea was first implemented in Millepede (see \bref{millepede}). Here we use different notation as this work as been done independently.
 
-Now we would like to estimate parameters $\vec P$ based on the measurements $\vec M$. For that, we can use the Least Squares method \TODO{reference}, which gives the following prediction:
-\eqref{\hat\vec P = (\mat A^\T \mat A)^{-1} \mat A^\T\,\vec M\.}{P estimate exact}
-(The hat is to emphasize it is an estimate.) However, the $\mat\Ga$ matrices (contained in $\mat A$ matrix) include track parameters which are unknown at the fit time. Instead, one can use track parameter estimates obtained via model where all misalignments are neglected. This is basically using $\mat \al^n$ as fit matrix for data $\vec \mu^n$. Let's denote gamma and A matrices obtained in this way as $\tilde\mat\Ga$ and $\tilde\mat A$:
+Now we would like to estimate parameters $\vec P$ based on the measurements $\vec M$. For that, we can use the Least Squares method \TODO{reference}, which gives the following prescription:
+\eqref{\hat\vec P = (\mat A^\T \mat V^{-1} \mat A)^{-1} \mat A^\T \mat V^{-1}\,\vec M\.}{P estimate exact}
+(The hat in $\hat\vec P$ is to emphasize it is an estimate.) The $\mat V$ matrix, is the correlation matrix for the measurements $\vec M$.
+
+The $\mat\Ga$ matrices (contained in $\mat A$ matrix) include track parameters which are unknown at the fit time. Instead, one can use track parameter estimates obtained via model where all misalignments are neglected. This is basically using $\mat \al^n$ as fit matrix for data $\vec \mu^n$. Let's denote gamma and A matrices obtained in this way as $\tilde\mat\Ga$ and $\tilde\mat A$:
 \eqref{\vec\ta \rightarrow \hat\vec\ta: \quad \mat\Ga \rightarrow \tilde\mat\Ga, \mat A \rightarrow \tilde\mat A}{tau linearization}
  One can then use
-\eqref{\hat\vec P = (\tilde\mat A^\T \tilde\mat A)^{-1} \tilde\mat A^\T\,\vec M\ .}{P estimate}
+\eqref{\hat\vec P = (\tilde\mat A^\T \mat V^{-1} \tilde\mat A)^{-1} \tilde\mat A^\T \mat V^{-1}\,\vec M\ .}{P estimate}
 
 The \rhs expression will be evaluated now bit by bit, keeping in mind one is mainly interested in the $\ch$ parameters (i.e. the bottom part of $\hat\vec P$ vector).
-\eqref{\mat A^\T \mat A = \pmatrix{
-{\mat\al^1}^\T \mat\al^1	&		&						&\vrule	&{\mat\al^1}^\T\mat\Ga_1^1	&\cdots	&{\mat\al^1}^\T\mat\Ga_G^1	\cr
+\eqref{\mat A^\T \mat V^{-1}\mat A = \pmatrix{
+{\mat\al^1}^\T \mat V^{1^{-1}}\mat\al^1	&		&						&\vrule	&{\mat\al^1}^\T \mat V^{1^{-1}} \mat\Ga_1^1	&\cdots	&{\mat\al^1}^\T \mat V^{1^{-1}} \mat\Ga_G^1	\cr
 					&\ddots	&						&\vrule	&\vdots					&		&\vdots					\cr
-					&		&{\mat\al^N}^\T \mat\al^N		&\vrule	&{\mat\al^N}^\T\mat\Ga_1^N	&\cdots	&{\mat\al^N}^\T\mat\Ga_G^N	\cr
+					&		&{\mat\al^N}^\T \mat V^{N^{-1}}\mat\al^N		&\vrule	&{\mat\al^N}^\T \mat V^{N^{-1}}\mat\Ga_1^N	&\cdots	&{\mat\al^N}^\T \mat V^{N^{-1}} \mat\Ga_G^N	\cr
 \noalign{\hrule}
-{\mat\Ga_1^1}^\T \mat\al	&\cdots	&{\mat\Ga_1^N}^\T \mat\al	&\vrule	&\sum_n {\Ga_1^n}^\T \Ga_1^n	&\cdots	&\sum_n {\Ga_1^n}^\T\Ga_G^n	\cr
+{\mat\Ga_1^1}^\T \mat V^{1^{-1}} \mat\al	&\cdots	&{\mat\Ga_1^N}^\T \mat V^{1^{-1}} \mat\al	&\vrule	&\sum_n {\Ga_1^n}^\T \mat V^{1^{-1}} \Ga_1^n	&\cdots	&\sum_n {\Ga_1^n}^\T \mat V^{1^{-1}} \Ga_G^n	\cr
 \vdots				&		&\vdots					&\vrule	&\vdots					&		&\vdots					\cr
-{\mat\Ga_G^1}^\T \mat\al	&\cdots	&{\mat\Ga_G^N}^\T \mat\al	&\vrule	&\sum_n {\Ga_G^n}^\T\Ga_1^n	&\cdots	&\sum_n {\Ga_G^n}^\T\Ga_G^n	\cr
+{\mat\Ga_G^1}^\T \mat V^{N^{-1}}\mat\al	&\cdots	&{\mat\Ga_G^N}^\T \mat V^{N^{-1}} \mat\al	&\vrule	&\sum_n {\Ga_G^n}^\T \mat V^{N^{-1}} \Ga_1^n	&\cdots	&\sum_n {\Ga_G^n}^\T \mat V^{N^{-1}}\Ga_G^n	\cr
 }\ .}{mat ATA}
 This matrix can be inverted (\TODO{provided ...}) with the use of the following identity for block matrices (taken from \bref{wikipedia} keyword \em{matrix inverse}): 
 \eqref{\pmatrix{
@@ -146,17 +179,19 @@ This matrix can be inverted (\TODO{provided ...}) with the use of the following 
 \sum_n {\tilde\mat\Ga}_1^{n^\T} \mat\si^n {\tilde\mat\Ga}_1^n	&\cdots	&\sum_n {\tilde\mat\Ga}_1^{n^\T} \mat\si^n {\tilde\mat\Ga}_G^n	\cr
 \vdots								&		&\vdots									\cr
 \sum_n {\tilde\mat\Ga}_G^{n^\T} \mat\si^n {\tilde\mat\Ga}_1^n	&\cdots	&\sum_n {\tilde\mat\Ga}_G^{n^\T} \mat\si^n {\tilde\mat\Ga}_G^n	\cr
-},\qquad \mat\si^n = 1 - \mat\al^n({\mat\al^n}^\T\mat\al^n)^{-1}{\mat\al^n}^\T\ .}{mat S}
+}\ ,}{mat S}
+where we used
+\eqref{\mat\si^n = \mat V^{n^{-1}} - \mat V^{n^{-1}} \mat\al^n({\mat\al^n}^\T \mat V^{n^{-1}} \mat\al^n)^{-1} \mat {\mat\al^n}^\T V^{n^{-1}}\ .}{sigma n}
 
 The second bit needed for \Eq{P estimate} is
-\eqref{\mat A^\T\,\vec M = \pmatrix{
-{\mat\al^n}^\T\,\vec \mu^1\cr
+\eqref{\mat A^\T \mat V^{-1}\,\vec M = \pmatrix{
+{\mat\al^1}^\T \mat V^{1^{-1}} \,\vec \mu^1\cr
 \vdots\cr
-{\mat\al^n}^\T\,\vec \mu^N\strut\cr
+{\mat\al^n}^\T \mat V^{N^{-1}} \,\vec \mu^N\strut\cr
 \ln
-\sum_n\mat{\Ga_1^n}^\T\, \vec \mu^n\vrule width0pt height15pt\cr
+\sum_n\mat{\Ga_1^n}^\T \mat V^{n^{-1}} \, \vec \mu^n\vrule width0pt height15pt\cr
 \vdots\cr
-\sum_n\mat{\Ga_G^n}^\T\, \vec \mu^n\cr
+\sum_n\mat{\Ga_G^n}^\T \mat V^{n^{-1}} \, \vec \mu^n\cr
 }\ .}{vec ATm}
 Finally, the $\ch$ parameters (the bottom part of $\hat\vec P$ vector) can be determined from
 \eqref{\hat\vec\ch = \mat S^{-1}\,\pmatrix{
@@ -165,15 +200,23 @@ Finally, the $\ch$ parameters (the bottom part of $\hat\vec P$ vector) can be de
 \sum_n {\mat\Ga_G^n}^\T\mat\,\mat\si^n\,\vec \mu^n\cr
 }\ .}{chi estimate}
 
-$\mat\si^n\,\vec \mu^n$ is the vector of one-track-fit residuals for the $n$-track. Therefore we will adopt notation
-\eqref{\vec R^n = \mat\si^n\,\vec \mu^n}{vec R}
+In fact, the elements of $\mat\si^n\,\vec \mu^n$ vector are residuals for the $n$-track divided by the corresponding measurement uncertainty. We will call this ratio \em{normalized} residuals and denote $\vec r^n$. The full residuals will be denoted by $\vec R^n$:
 
-As $\mat\si^n$ is singular (and so $\mat S$ might be \TODO{...}), one had better write
+\eqref{\mat\si^n\,\vec \mu^n \equiv \vec r^n = \mat V^{n^{-1}} \vec R^n\ .}{vec R}
+
+It is worth mentioning some properties of the $\mat\si^n$ matrix. It is symmetric
+\eqref{\mat\si^{n^\T} = \mat\si^n\ ,}{sigma n symmetric}
+it is idempotent
+\eqref{\mat\si^n \mat\si^n = \mat\si^n}{sigma n idempotent}
+and it is singular
+\eqref{\mat\si^{n^\T} \mat\al^n = 0\ .}{sigma n singular}
+
+Since $\mat\si^n$ is singular (and so $\mat S$ might be \TODO{...}), one had better write
 \eqref{\tilde \mat S\, \hat\vec\ch = \tilde \vec T, \qquad 
 \tilde\vec T = \pmatrix{
-\sum_n {\tilde\mat\Ga}_1^{n^\T} \,\vec R^n\cr
+\sum_n {\tilde\mat\Ga}_1^{n^\T} \,\vec r^n\cr
 \vdots\cr
-\sum_n {\tilde\mat\Ga}_G^{n^\T} \,\vec R^n\cr
+\sum_n {\tilde\mat\Ga}_G^{n^\T} \,\vec r^n\cr
 }\ .}{fit equation}
 
 
@@ -327,15 +370,13 @@ The singular mode numbers are summarized in \Tb{singular mode number}.
 As it was already said, the \em{design} of the Roman Pot detectors is such that there would be only two read-out directions. However in \em{reality}, because of misalignment rotations, the number of read-out directions is as large as the number of detectors. But since the misalignments small only, one stays close to the 2-readout-direction case. This will manifest in presence of several modes with low but non-zero eigenvalues. It will lead to numerical issues that will be addressed in \Sc{align imp}.
 
 
-\ssubsection{Constraints for RPShZ}
-
 \ssubsection{Constrained solution}
 
-To solve the fit equation \Eq{fit equation}, one has to imply additional constraints that would regularize the $\mat S$ matrix. For the alignment task, these constraints may be for example metrology or laster measurements. Such constraints may be written in the following form
+To solve the fit equation \Eq{fit equation}, one has to imply additional constraints that would regularize the $\mat S$ matrix. For the alignment task, these constraints may be for example metrology or laser measurements. Such constraints may be written in the following form
 \eqref{\vec C \cdot \hat\vec\ch = v\ ,}{cnst form}
 where $\vec C$ describes the structure of the constraint and $v$ contains the measurement outcome.
 
-To solve the fit equation with constraints, it is advantageous to employ the Lagrange multipliers technique (\TODO{reference}). It suggests to expand the fit equation to
+To solve the fit equation with constraints, it is advantageous to employ the Lagrange multipliers technique (\TODO{reference}). It suggests to expand the fit equation to \TODO{T with tilde}
 \eqref{\pmatrix{
 \tilde\mat S & \mat C \cr
 \mat C^\T & 0\cr
@@ -412,6 +453,38 @@ $\vec\ch^0$ close to $\vec\ch_{\rm a}$ ...
 
 \subsection{Uncertainty estimate}
 
+The solution of the alignment task is given by \Eq{alignment equation}. In this equation there two quantities that are subject to statistical uncertainties: $\vec T$ and $\vec V$. The uncertainty of $\vec T$ vector is propagated from the measurements $\vec M^n$ through \Eq{fit equation}. $\vec V$ is an outcome of an external measurement and as such it is likely to subject to certain uncertainty. All these uncertainties can be propagated to the uncertainty of the result $\hat\vec\ch$. According to \bref{barlow}, page 60 \TODO{eqn number}:
+\eqref{\Var \pmatrix{\tilde\vec\ch\cr \vec\La} = 
+\pmatrix{
+\tilde\mat S & \mat C \cr
+\mat C^\T & 0\cr
+}^{-1}
+%
+\Var \pmatrix{\tilde\vec T\cr\vec V}
+%
+\pmatrix{
+\tilde\mat S & \mat C \cr
+\mat C^\T & 0\cr
+}^{-1}\ .
+}{alignment equation err prop}
+
+Since $\tilde\vec T$ and $\vec V$ are independent and $\Var \tilde\vec T = \tilde\mat S$, one can write:
+\eqref{\Var \pmatrix{\tilde\vec\ch\cr \vec\La} = 
+\pmatrix{
+\tilde\mat S & \mat C \cr
+\mat C^\T & 0\cr
+}^{-1}
+%
+\pmatrix{\tilde\mat S& 0\cr 0 & \Var \vec V}
+%
+\pmatrix{
+\tilde\mat S & \mat C \cr
+\mat C^\T & 0\cr
+}^{-1}\ .
+}{alignment equation err prop}
+
+\TODO{Choice of $\mat V^n$: independent measurements is a good, but not perfect approximation. At least for small angles there is non-trivial correlation. But later we will see that this estimate will quite match with statistical evaluation of the result error.}
+
 \subsection[align imp]{Implementation}
 
 \> few notes about the implementation in OfflineSW, may be not here
@@ -432,9 +505,17 @@ $\vec\ch^0$ close to $\vec\ch_{\rm a}$ ...
 
 \ssubsection{Fast vs. Geant4 comparison}
 
+\subsection{Input selection with real data}
+
+With the fast Monte-Carlo one a priory knows that there was exactly one track per event and that all detector hits belong to this track. Consequently all track-fit residuals follow from misalignments. This is not true for real data. There might be a number of tracks per event, moreover different in every RP. There might be a number of hits that do not belong to any particle track -- noise, data corruption. That is why it is necessary to select carefully the input for the track-based alignment. It is better to loose some statistics than to bias the results with false input.
+
+\> the algorithm
+
+\> the cuts -- depend on situation, don't give values here but only later
+
 \subsection{Testbeam results}
 
-The method has been applied to test-beam and comsmis data for all 12 RPs installed in the tunnel.
+The method has been applied to test-beam and commissioning data for all 12 RPs installed in the tunnel.
 
 Give statistics table (muon/cosmics run, total events, useful events, cut-off/low-quality events)...
 
@@ -459,10 +540,10 @@ Shifts and rotations are extracted as follows
 \eqref{x\hbox{ shift} = {x_1 + x_2\over 2} - \bar x,\qquad y\hbox{ shift} = {y_1 + y_2\over 2} - \bar y}{metrology shift}
 where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values displayed in \Tb{metrology theoretical}
 
+\subsection{LHC results}
+
 \subsection{Summary}
 
-\> what cannot be resolved
-\> expected precision
 
 \section{Profile methods}
 
@@ -470,6 +551,5 @@ where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values d
 \> Hit spatial distributions
 \> Kinematic peak method
 
-\section{Collimation alignment}
 
 \section{Summary}
