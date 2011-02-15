@@ -1,5 +1,7 @@
 import graph;
 
+StdFonts();
+
 size(10cm, 10cm, IgnoreAspect);
 
 real t1_min = 3.1, t1_max = 4.7;

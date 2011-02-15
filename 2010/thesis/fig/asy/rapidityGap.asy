@@ -1,5 +1,7 @@
 unitsize(1cm);
 
+StdFonts();
+
 draw((0, 0)--(8, 0), EndArrow);
 label("$\eta$", (8, 0), S);
 

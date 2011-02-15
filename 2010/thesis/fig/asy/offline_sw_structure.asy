@@ -1,5 +1,7 @@
 import flowchart;
 
+StdFonts();
+
 // both work
 unitsize(1cm);
 //size(15cm);

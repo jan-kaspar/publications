@@ -2,6 +2,9 @@ import three;
 import math;
 import solids;
 unitsize(1cm);
+
+StdFonts();
+
 currentprojection = orthographic((-0.5, 2, -0.5), (1, 0, 0));
 
 // main axes

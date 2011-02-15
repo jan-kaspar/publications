@@ -1,5 +1,7 @@
 import graph;
 
+StdFonts();
+
 size(7cm, 7cm, IgnoreAspect);
 
 real p = 7e3, m = 0.938;

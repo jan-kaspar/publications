@@ -1,5 +1,7 @@
 unitsize(1cm);
 
+StdFonts();
+
 real z_IP = 0, z_det = 9, z_beg = 2, z_end = 7;
 real l_axis = 2, h_axis = 1.5, h_box = 1;
 

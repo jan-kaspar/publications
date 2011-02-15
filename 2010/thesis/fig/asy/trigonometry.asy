@@ -1,5 +1,7 @@
 import pad_layout;
 
+StdFonts();
+
 real min = 0;
 real max = 3.141593/2;
 
