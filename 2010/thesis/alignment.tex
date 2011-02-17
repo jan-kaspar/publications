@@ -48,17 +48,22 @@ In the beginning, the collimators scrape the beam such that its edge is sharp an
 
 With the vertical RPs we can make use of the fact that we have 2 jaws and determine the beam-sigma (in millimeters) and the beam-center. Suppose that we have touched the beam with the top RP. In that moment, the RP became the primary collimator and scraped the beam a bit. Due to the multi-turn effect, the beam was scraped symmetrically about the vertical center of the beam. Then, one can approach the bottom pot, again until a BLM peak appears. Then, both RPs are at the same distance from the vertical beam-center and the distance corresponds to one beam-sigma (up to the step-size, indeed). These steps can be repeated in order to improve the precision of the beam-center determination. An example of this procedure can be found in \Fg{collimation alignment example}.
 
-\fig{fig/pdf/CollimationAlignmentExample.pdf}{collimation alignment example}{An example of collimation alignment data (from 29 November 2009). The top and bottom pot movements(up) induced the BLM signals (bottom).}
+\fig{fig/pdf/CollimationAlignmentExample.pdf}{collimation alignment example}{An example of collimation alignment data from 29 November 2009 (sector 56, near unit). The top and bottom pot movements (up) induced the BLM signals (bottom).}
 
 The precision is obviously given by the step size. Mostly because of the limited time resolution one cannot determine when during the movement the beam was touched. One should, thus, aim at as little steps as possible. On the other hand, the smaller step, the less scraping and the lower peak in the BLM signal. If the step is too small, the induced beam loss can not be distinguished from the noise. We observed a step of $50\un{\mu m}$ to be on the practical limit.
 
-So far, the collimation alignment has been repeated three times: 29 November 2009, 25 June 2010 (both at $450\un{GeV}$) and ?? at $7\un{TeV}$. The results suggest two unfortunate conclusions: RP LVDTs seemed wrongly calibrated and BPMs were unreliable.
+So far, the collimation alignment has been repeated three times: 29 November 2009, 25 June 2010 (both at $450\un{GeV}$) and 29 September 2010 at $3.5\un{TeV}$. The results suggest an unfortunate conclusion -- both RP LVDTs and BPMs seemed wrongly calibrated. For an immediate indiation, let's look back to \Fg{collimation alignment example}. Assuming the the beam was touched in the middle of the movement, one obtains the beam center at $(313\pm 63)\un{\mu m}$ according to the LVDTs. However, the corresponding BPM claimed the beam to be at $(-550\pm50)\un{\mu m}$. The discrepancy is evident, what is not clear is, however, which device to blame. A valuable hint was provided later by the track-based alignment method. The results contained large per-RP shifts, moreover almost run independent. This suggested that the LVDTs do not have a common origin, in other words, every LVDT reading shall be corrected by an offset. 
 
-BPM unreliable.
+These offsets can be determined with the collimation alignment -- the principle is shown in \Fg{collimation alignment}. The beam size at the collimator location ($n\si_0$) is known and can be propagated to the RP location, thus $n\si$ is known too. $t$ and $b$ are the top and bottom LVDT readings. The offsets then follow:
+\eqref{o_t = n\si - t,\qquad o_b = -n\si - b\ .}{LVDT offsets}
+Note that the offsets are determined with respect to the beam center (not the beam-pipe center), which 
 
-LVDT mis-calibration
+
+\fig{fig/pdf/collimationAlignment.pdf}{collimation alignment}{How to determine LVDT offsets with collimation alignment. The beam is drawn in blue, its envelope with solid and its ceter with dashdotted line. The origins of the LVDT scales are marked with red dots.}
 
 \section{Track--based alignment}
+
+\TODO{few notes about the implementation in OfflineSW}
 
 In \Sc{rp measurement}, the relation between a proton kinematics and RP detector measurement has been derived -- see \Eq{xlyl i approximated}. In principle, all geometry parameters (the situation is depicted in \Fg{detector geometry}) may be subjects to misalignments. Using primes (no primes) for misaligned (ideal) quantities, this might be described as
 \eqref{\eqnarray{
@@ -219,6 +224,11 @@ Since $\mat\si^n$ is singular (and so $\mat S$ might be \TODO{...}), one had bet
 \sum_n {\tilde\mat\Ga}_G^{n^\T} \,\vec r^n\cr
 }\ .}{fit equation}
 
+\TODO{Overview of the approximations:
+\> linearization of rotation matrix (and cosine correction)
+\> linearization of gamma coefficients (external fitter)
+}
+
 
 \subsection[fit equation]{Justification of the alignment equation}
 
@@ -241,9 +251,11 @@ As we will show in the following, the $\mat S$ matrix is singular and therefore 
 }{exact fit equation}
 (the a subscript in $\vec\ch_{\rm a}$ is to emphasize the we mean the actual misalignments). This is close to \Eq{fit equation}, but not completely equivalent. The difference is that $\tilde\mat S$ contains both $\mat\Ga$ matrices with tildes. This difference represents the error we make by the linearization step \Eq{tau linearization}. Since the expected misalignments are small, the difference between $\mat\Ga$ and $\tilde\mat\Ga$ are small too and it is reasonable to expect that the solution of \Eq{fit equation} would be close to the actual misalignments $\vec\ch_a$. The error can be reduced by taking several iterations \TODO{...}. Note that this problem is not present if only shifts in the read-out direction are considered. The corresponding $\mat\Ga$ matrices are independent of track parameters and therefore there is no difference between tilded and non-tilded versions.
 
-\subsection{Singular modes and constraints}
+\subsection{Singular and weak modes}
 
 It is clear that not all $\ch$ parameters can be determined by the track-based alignment. It is a consequence of the fact that measurements enter the fit equation \Eq{fit equation} in the form of residuals. That means that misalignment modes that can be compensated by track-parameters variation, cannot be revealed. These misalignment modes manifest themselves as eigenvectors of the $\mat S$ matrix with zero eigenvalue. This makes $\mat S$ singular and the naive, matrix-inversion solution \Eq{chi estimate} is not possible. For this reason we will refer to such misalignment modes as \em{singular modes}.
+
+\TODO{Define weak mode.}
 
 \TODO{This is for the exact fit equation, for the real one, the singular modes are "almost" singular modes.}
 
@@ -263,7 +275,7 @@ Now, let's explore what are the singular modes that we have to face. This will d
 
 \TODO{there can be at most 4 singular modes per misalignment class. Prove it!}
 
-\ssubsection{Constraints for any geometry}
+\ssubsection{Singular modes for any geometry}
 
 In this section we will discuss what the singular modes are when no assumptions about the geometry are made. That will be performed for all misalignment classes as listed in \Tb{alignment quantities}.
 
@@ -317,10 +329,9 @@ To summarize, we have just derived that transition from overall rotation $\De\rh
 1\cr
 - \de s_i
 }\ .}{cnst rotz 7}
-\TODO{Check the minus sign.}
 
 
-\ssubsection{Constraints for few read-out directions}
+\ssubsection[sing modes groups]{Singular modes for few read-out directions}
 
 In the previous section, we have used the fact that certain equalities shall hold for all read-out directions $\vec d_i$. However, the TOTEM detectors are designed such that the read-out directions are all parallel to either $U$ or $V$ axes (\TODO{make sure these are defined}). In this section we will show that such a geometry may increase the number of singular modes. We will consider a more general case, where the detectors split into groups according to their read-out direction:
 \eqref{\vec \d_i \in \lbrace \pm\vec\de_1, \pm\vec\de_2, \ldots \rbrace \ ,\qquad |\vec\de_i \cdot \vec\de_j| \neq 1\hbox{ for } i \neq j\ .}{read-out groups}
@@ -350,7 +361,19 @@ If $\al_1 \neq \al_2$, then $\al_g$ would become $n$-dependent, which is not pos
 
 \em{Rotations around $z$}. Here, one can proceed in a similar way as for shift in z. One gets an analogy of \Eq{cnst rotz 3} for every group
 \eqref{\de_g \cdot \mat R(\de\rh_i)^\T \vec a^n = \de_g \cdot {\vec a'}^n\ ,}{cnst rotz g1}
- which limits the dependence of $\De\rh$ only to group: $\De\rh_i \rightarrow \De\rh_g$. For \em{one} group there exist infinitely many solutions, for \em{two groups} there is exactly one. The solution has the form of \Eq{cnst rotz 7}, but separately for each groups -- therefore there are two linearly-independent singular modes. For \em{three and more groups}, the ${\vec a^n}'$ vector is fixed by two values of $\De\rh_g$ (again, take the first and second). Using the decomposition \Eq{cnst shz g4} one finds (in infinitesimal approximation)
+ which limits the dependence of $\De\rh$ only to group: $\De\rh_i \rightarrow \De\rh_g$. For \em{one} group there exist infinitely many solutions, for \em{two groups} there is exactly one. The solution has the form of \Eq{cnst rotz 7}, but separately for each groups -- therefore there are two linearly-independent singular modes. Schematically written
+
+\eqref{
+\pmatrix{
+\De\rh_i \cr
+\De s_i
+} = \al_g \pmatrix{
+1\cr
+- \de s_i
+},\qquad \hbox{for groups }g \in \lbrace 1, 2\rbrace\ .}{cnst rotz g2}
+
+
+For \em{three and more groups}, the ${\vec a^n}'$ vector is fixed by two values of $\De\rh_g$ (again, take the first and second). Using the decomposition \Eq{cnst shz g4} one finds (in infinitesimal approximation)
 \eqref{\De\rh_g = {
 \et_{g1} \vec\de_1\cdot\De\vec a^n \De\rh_1 + \et_{g2} \vec\de_2\cdot\De\vec a^n \De\rh_2
 \over
@@ -367,10 +390,54 @@ The singular mode numbers are summarized in \Tb{singular mode number}.
 \hbox{rotation around}z				& 1 & 2\cr\bln
 }
 
-As it was already said, the \em{design} of the Roman Pot detectors is such that there would be only two read-out directions. However in \em{reality}, because of misalignment rotations, the number of read-out directions is as large as the number of detectors. But since the misalignments small only, one stays close to the 2-readout-direction case. This will manifest in presence of several modes with low but non-zero eigenvalues. It will lead to numerical issues that will be addressed in \Sc{align imp}.
+As it was already said, the \em{design} of the Roman Pot detectors is such that there would be only two read-out directions. However in \em{reality}, because of misalignment rotations, the number of read-out directions is as large as the number of detectors. But since the misalignments small only, one stays close to the 2-readout-direction case. This will manifest in a presence of several modes with low but non-zero eigenvalues. 
 
+\fig[15cm]{fig/pdf/al_eigenvalues_rho.pdf}{al eig rho}{The dependence of $\mat S$ matrix eigenvalues on the RMS of $\rh$. Theta 10 mrad, geometry 2.7x3.3, overlap=f}
+\TODO{note that singular modes have actually non-zero eigenvalues, choice of singular limit}
 
-\ssubsection{Constrained solution}
+\ssubsection{Pathological track distributions}
+
+So far we have discussed singular and weak modes that arise from the track parameterization and the geometry of read-out directions. Besides those, there could be singular modes arising from special track distributions. One could immediately think of a case where the detectors split into several groups and there would be no track going through detectors of several groups in the same time. Regarding RPs, this situation appears when the pots are not inserted close enough and therefore no track can go through the overlap between the vertical and horizontal pots. In this case, the alignment task would split into several smaller tasks (one per group) and for each of them one could write alignment equation like \Eq{fit equation}. Each of these equations contain a $\mat S$ matrix with its singular modes as discussed. Therefore the number of singular modes gets multiplied by the number of groups.
+
+So far, we have assumed that tracks have a slope $\vec a^n$ and an intercept $\vec b^n$. However, the proton tracks at LHC are very parallel, making the slopes be distributed around 0 with spread of about $10^{-4}\un{rad}$. Let's look back to \Eq{cnst rotz 2} and check what happens when $\vec a^n\to 0$. We first expand the rotation matrix keeping just the first Taylor terms:
+\eqref{\pmatrix{1 & -\De\rh_i\cr \De\rh_i & 1\cr} (\vec b^n - \vec c_i - \De\vec c_i) = {\vec a'}^n z_i + {\vec b'}^n - \vec c_i - \De\vec c'_i\ .}{cnst rotz lt1}
+Comparing the $n$-dependent quantities one obtains:
+\eqref{\pmatrix{1 & -\De\rh_i\cr \De\rh_i & 1\cr} \vec b^n = {\vec a'}^n z_i + {\vec b'}^n \ .}{cnst rotz lt2}
+This condition has two solutions. First, $\De\rh_i \equiv \hbox{const.}$, which is equivalent to the solution of \Eq{cnst rotz 3}. Second solution
+\eqref{\De\rh_i = \al z_i\ ,}{cnst rotz lt3}
+where $\al$ is a proportionality constant. Then, ${\vec b'}^n = \vec b^n$ and ${\vec a'}^n = \al\, (-b^n_y,\ b^n_x)^\T$. In analogy to the arguments above \Eq{cnst rotz 7}, one can conclude that
+\eqref{
+\pmatrix{
+\De\rh_i \cr
+\De s_i
+} \propto z_i\, \pmatrix{
+1\cr
+- \de s_i
+}\ .}{cnst rotz lt4}
+is a weak mode. It would be a true singular mode if we did not use the Taylor approximation of the rotation matrix. Or if all $\rh_i$'s would be zero. But as show in \Fg{al eig theta}, this weak mode is numerically indistinguishable from real singular modes.
+
+It would be possible to draw a similar line of arguments for the case where $\vec b^n\to 0$. Then, $\De\rh_i \propto 1/z_i$ would emerge as a weak mode. But keeping in mind the application to LHC proton tracks, this turns out to be very unrealistic scenario.
+
+The treatment above started with \Eq{cnst rotz 2}, which assumes that the read-out directions can have all values. In section \Sc{sing modes groups} we have derived that if there are just two read-out direction groups, the number of singular modes for rotations doubles. By similar arguments one find out that this is the case for the weak mode \Eq{cnst rotz lt4} too. There would be one such a mode for every group, just like in \Eq{cnst rotz g2}.
+
+Eventually, let's remark that vanishing track angles does not introduce new weak modes for shifts in read-out nor in $z$ direction. The reason is simple, their $\ga$ factors (see \Tb{alignment quantities}) do not involve both track parameters (slope and intercept). Thus it is not possible that a misalignment would ''convert'' one to the other (in the sense of creating slope $\vec a'$ from intercept $\vec b$ in \Eq{cnst rotz lt2}).
+
+To summarize, the \Tb{low theta singular mode number} lists the numbers of weak modes that emerge when tracks become very parallel. \Fg{al eig theta} illustrates the situation by showing the dependence of the $\mat S$ matrix eigenvalues on the RMS angle of the tracks.
+
+\htab{low theta singular mode number}{Numbers of additional weak (or singular) modes due to low track slopes.}{\bln
+\hbox{quantity class}				& \hbox{two read-out directions} & \hbox{three and more read-out directions} \cr\bln
+\hbox{shift in read-out direction}	& 0 & 0\cr\ln
+\hbox{shift in }z					& 0 & 0\cr\ln
+\hbox{rotation around}z				& 1 & 2\cr\bln
+}
+
+\fig[15cm]{fig/pdf/al_eigenvalues_theta.pdf}{al eig theta}{The dependence of $\mat S$ matrix eigenvalues on the RMS of $\th$. extfit=t means not-biased gammas. What is the misalignment? Show line at 0.1mrad as the typical value.}
+
+\subsection{Constraints}
+
+Discuss two cases:
+\> constraining singular modes only (dim E = dim C)
+\> constraining also weak modes (dim E < dim C) and its danger when some of the weak modes are not that weak.
 
 To solve the fit equation \Eq{fit equation}, one has to imply additional constraints that would regularize the $\mat S$ matrix. For the alignment task, these constraints may be for example metrology or laser measurements. Such constraints may be written in the following form
 \eqref{\vec C \cdot \hat\vec\ch = v\ ,}{cnst form}
@@ -446,14 +513,47 @@ which demonstrates that $\vec\ch_{\rm a}$ could play the role of the particular 
 $\vec\ch^0$ close to $\vec\ch_{\rm a}$ ...
 }
 
-\ssubsection{Detector overlap}
+\TODO{Scaling of constraints with N}
 
-\> Importance of RP overlap vs\hbox{.} pathological case with no track through overlap
+List of common constraint choices
+\> \em{homogeneous}
+\> \em{fixed detectors}
+\> \em{final} (used for the final analysis)
 
+\subsection{Errors}
 
-\subsection{Uncertainty estimate}
+The errors are of 3 origins:
+\> pitch rounding (any measurement outcome is a multiple of the detector pitch)
+\> rotation matrix linearization (cosine correction), \TODO{reference}
+$$(\cos\rh_i - 1) \vec\d_i^\T (\vec h^n - \vec c_i)$$
+\> biased track parameters in gamma coefficients, \TODO{reference}
+$$\vec\d_{\perp_i}^\T \left[ (\vec a^n - \hat\vec a^n) z_i - (\vec b^n - \hat\vec b^n) \right]$$
 
-The solution of the alignment task is given by \Eq{alignment equation}. In this equation there two quantities that are subject to statistical uncertainties: $\vec T$ and $\vec V$. The uncertainty of $\vec T$ vector is propagated from the measurements $\vec M^n$ through \Eq{fit equation}. $\vec V$ is an outcome of an external measurement and as such it is likely to subject to certain uncertainty. All these uncertainties can be propagated to the uncertainty of the result $\hat\vec\ch$. According to \bref{barlow}, page 60 \TODO{eqn number}:
+The pitch rounding is a gentle effect. The error due to it is smaller than half of the pitch. This is to be compared to with hit distribution that is several centimeters wide. In first approximation one could assume that the error is
+\> a random variable uniformly distributed on $(-P/2, +P/2)$ and
+\> pitch errors in different detectors are independent.
+Especially the second one is not really true, but it will give satisfactory results though.
+
+An important property of the pitch error is that the errors in different events are independent. That is (event if one keeps the same track distribution and geometry) if one doubles the sample, the errors in the second half will be independent of those in the first half. As a consequence, one may assume better results with increasing sample size. As rule of thumb, the error should be proportional to $1/\sqrt N$ where $N$ is the sample size. That is why the pitch rounding error is of \em{statistical} nature.
+
+The other two error sources do not behave in this way. In contrary, one can assume that the final error would be independent of the sample size (provided that track distribution and geometry and misalignments remain the same). Therefore, the cosine error and biased $\ga$ coefficient lead to a \em{systematical} error.
+
+\TODO{The above statements are hypothesis, a MC proof should come here.
+\> for s, r, z
+\> choose a typical scenario (any big differences beyond the dependence on theta ??? I hope not.)
+\> does the statistical error correspond well to the estimated uncertainty ???
+\> any systematical errors ???
+}
+
+\TODO{Dependence of rho and z errors on theta}
+
+\TODO{errors of z too large, abandon.}
+
+\ssubsection{Statistical errors and uncertainty estimate}
+
+The solution of the alignment task is given by \Eq{alignment equation}. In this equation there two quantities that are subject to statistical uncertainties: $\vec T$ and $\vec V$. The uncertainty of $\vec T$ vector is propagated from the measurements $\vec M^n$ through \Eq{fit equation}. $\vec V$ is an outcome of an external measurement and as such it is likely to subject to certain uncertainty. All these uncertainties can be propagated to the uncertainty of the result $\hat\vec\ch$. Eqn. (4.19) in \bref{barlow} on page 60 says that if $\vec y = \mat A\vec x$, then
+$$\Var\vec y = \mat A\ \Var\vec x\ \mat A^\T\ .$$
+This can be directly applied to \Eq{alignment equation}:
 \eqref{\Var \pmatrix{\tilde\vec\ch\cr \vec\La} = 
 \pmatrix{
 \tilde\mat S & \mat C \cr
@@ -485,16 +585,31 @@ Since $\tilde\vec T$ and $\vec V$ are independent and $\Var \tilde\vec T = \tild
 
 \TODO{Choice of $\mat V^n$: independent measurements is a good, but not perfect approximation. At least for small angles there is non-trivial correlation. But later we will see that this estimate will quite match with statistical evaluation of the result error.}
 
-\subsection[align imp]{Implementation}
+\ssubsection{Systematical errors}
 
-\> few notes about the implementation in OfflineSW, may be not here
+\subsection{Input data selection}
 
-\> numerical issues
+With the fast Monte-Carlo one a priory knows that there was exactly one track per event and that all detector hits belong to this track. Consequently all track-fit residuals follow from misalignments. This is not true for real data. There might be a number of tracks per event, moreover different in every RP. There might be a number of hits that do not belong to any particle track -- noise, data corruption. That is why it is necessary to select carefully the input for the track-based alignment. It is better to loose some statistics than to bias the results with false input.
 
-\> close to the two groups -- graph of lowest eigen values
+\> the algorithm
+
+\> the cuts -- depend on situation, don't give values here but only later
+
+\subsection{Roman Pot alignment}
+
+Alignment of the entire RPs -- factorization process.
 
 \subsection{Monte-Carlo tests}
 
+Generally - I want to show that the algorithm is performing well:
+\> no systematics under indeal circumstances
+\> errors under control
+
+The reference result.
+
+Used simplified MC (fast). What to expect with G4 or real data?
+
+\iffalse
 \ssubsection{Ideal results}
 
 \ssubsection{Test algorithm}
@@ -504,26 +619,26 @@ Since $\tilde\vec T$ and $\vec V$ are independent and $\Var \tilde\vec T = \tild
 \ssubsection{One-station tests with fast simulation}
 
 \ssubsection{Fast vs. Geant4 comparison}
+\fi
 
-\subsection{Input selection with real data}
 
-With the fast Monte-Carlo one a priory knows that there was exactly one track per event and that all detector hits belong to this track. Consequently all track-fit residuals follow from misalignments. This is not true for real data. There might be a number of tracks per event, moreover different in every RP. There might be a number of hits that do not belong to any particle track -- noise, data corruption. That is why it is necessary to select carefully the input for the track-based alignment. It is better to loose some statistics than to bias the results with false input.
+\subsection{Experimental results}
 
-\> the algorithm
+There are 3 sources
 
-\> the cuts -- depend on situation, don't give values here but only later
+\> Optical metrology
 
-\subsection{Testbeam results}
+\> beam-tests in H8
+\>> The method has been applied to test-beam and commissioning data for all 12 RPs installed in the tunnel.
+\>> Give statistics table (muon/cosmics run, total events, useful events, cut-off/low-quality events)...
 
-The method has been applied to test-beam and commissioning data for all 12 RPs installed in the tunnel.
+\> LHC runs
 
-Give statistics table (muon/cosmics run, total events, useful events, cut-off/low-quality events)...
-
-\ssubsection{Comparison to optical measurements}
+(A) Internal alignment comparison
 
 The position of the detectors within the RP assembly has been measured. There are 3 reference points on a detector and one point on the RP. For each detector a zoomed high resolution photo was taken and a relative position of the points 1 and 2 (see \Fg{opticalMetrology}) and the RP reference point was measured. Theoretical values and results are summarized in \Tb{metrology theoretical}. The precision of this measurement is $\approx 10\un{\mu m}$.
 
-\fig{fig/pdf/opticalMetrology.pdf}{opticalMetrology}{An illustration of the optical metrology measurement. \TODO{points on detector or hybrid?}}
+\fig{fig/pdf/opticalMetrology.pdf}{opticalMetrology}{An illustration of the optical metrology measurement. \TODO{points on detector or hybrid?} \TODO{add mark photo}}
 
 \tab{metrology theoretical}{The theoretical values for the optical measurement of RPs (the positions of the fiducial marks).}{
 \multispan{2}\strut\bvrule\hfil reference point 1\hfil&\multispan{2}\strut\vrule\hfil reference point 2\hfil& \omit\bvrule\hfil control\hfil\cr
@@ -531,18 +646,35 @@ x\un{(mm)}	& y\un{(mm)}	& x\un{(mm)}	& y\un{mm}	& \omit\bvrule\hfil\ distance (m
 75.068 & 31.631 & 25.932 & 31.631 & 49.136\cr\bln
 }
 
-\eqref{\hbox{control distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}}{metrology distance}
+\eqref{\hbox{control distance}\ d_c = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}}{metrology distance}
 
 \fig{fig/pdf/opticalMetrologyControlDistance.pdf}{opticalMetrologyControlDistance}{The distribution of the control distance around the theoretical value (the dashed line) -- a measure of the statistical uncertainty.}
+
+If one assumes that the uncertainty of a measurement in any direction is $\si_m$, then the error of the control distance is approximately $\si_m \sqrt2$. This follows from the error propagation via \Eq{metrology distance} and considering that $y_2-y_1\approx 0$ while $x_1-x_2\approx d_c$. Then, the distribution in \Fg{opticalMetrologyControlDistance} suggests that $\si_m \approx 1\un{\mu m}$. However, since the measurements enter \Eq{metrology distance} in differences, this error estimate is only valid for rotations as defined by \Eq{metrology rot}. For shifts, we will keep the more conservative estimate $10\un{\mu m}$
 
 Shifts and rotations are extracted as follows
 \eqref{\hbox{rotation} = {y_2 - y_1\over x_2 - x_1}}{metrology rot}
 \eqref{x\hbox{ shift} = {x_1 + x_2\over 2} - \bar x,\qquad y\hbox{ shift} = {y_1 + y_2\over 2} - \bar y}{metrology shift}
 where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values displayed in \Tb{metrology theoretical}
 
-\subsection{LHC results}
+\fig{fig/pdf/al_comp_det_per_pot.pdf}{al comp det per pot}{Internal alignment comparison. \TODO{chose 2 or 3 pots that would show all things worth discussing - compatible and non-compatible results, possible linearly progressive rotation, etc.}}
 
-\subsection{Summary}
+(B) show that U-V and N-F rotations can not be determined from beam-test/LHC data. Is there any hint from the optical metrology.?
+
+\fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment comparison with fixed-detectors constraints. Shows full rotation about z.}
+
+
+(C)  LHC results per unit (choose one typical) on detector level
+
+\fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with final constraints. Unit 56 near.
+\TODO{Shift comparision is misleading because of different geometries!}
+}
+
+(D) The RP quantities for one station
+
+\fig{fig/pdf/al_comp_rp.pdf}{al comp det rp}{RP alignment comparison with fixed-detectors constraints. Circles: all tracks, squares: overlap tracks only.}
+
+Generally - want to show that everything is stable and consistent.
 
 
 \section{Profile methods}
@@ -551,5 +683,6 @@ where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values d
 \> Hit spatial distributions
 \> Kinematic peak method
 
+\section{Elastic Alignment}
 
-\section{Summary}
+\section{Summary (if any)}

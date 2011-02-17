@@ -12,7 +12,7 @@ thesis.pdf : thesis.tex references.tex $(timestamps) \
 	sigma_tot.tex simu_reco.tex smearing.tex elasticReco.tex extrapolation.tex
 	@echo "* TeX"
 	@#pdftex -fmt encpdftex -interaction batchmode thesis.tex &> /dev/nul
-	@pdftex -interaction batchmode thesis.tex &> /dev/null
+	@pdftex -interaction batchmode thesis.tex &> /dev/null || pdftex thesis.tex
 
 references.tex : references.bib
 	@echo "* bib -> tex"
@@ -28,7 +28,7 @@ fig/pdf :
 
 $(timestamps) : fig/.timecache/%.pdf : fig/asy/%
 	@echo "* asy $<"
-	@cd "fig/asy"; asy -o "../pdf/" $(ASYOPT) "../../$<"
+	cd "fig/asy"; asy -o "../pdf/" $(ASYOPT) "../../$<"
 	@touch $@
 
 info:
