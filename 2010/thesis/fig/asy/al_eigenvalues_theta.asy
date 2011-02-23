@@ -2,6 +2,9 @@ import pad_layout;
 import root;
 
 StdFonts();
+
+xSizeDef = 5.5cm;
+ySizeDef = 5.5cm;
 	
 string[] geometries = {
 //	"RP_V:1.2_H:0.65",
@@ -10,7 +13,7 @@ string[] geometries = {
 
 string[] rho_sigmas = {
 	"0",
-	"1000"
+//	"1000"
 };
 
 string[] theta_sigmas = { 
@@ -79,7 +82,7 @@ guide[] GetGraphs(string dir)
 
 void DrawSet(guide[] graphs, int sm, real mx)
 {
-	NewPad("$\si(\th)\un{mrad}$", "eigenvaules of $\mat S / N_{\rm events}$");
+	NewPad("$\si(\vec a)\un{mrad}$", "normalized eigenvaules of $\mat S$");
 	scale(Log, Log);
 	for (int j = 0; j < N; ++j) {
 		pen p = stdPens[j % 5];
@@ -94,6 +97,7 @@ void DrawSet(guide[] graphs, int sm, real mx)
 
 	label("\SmallerFonts singular limit", (-5, log10(sing_limit)), Fill(white));
 	limits((1e-9, 1e-15), (1e-1, 1e+6), Crop);
+	yaxis(XEquals(1e-4, false), dotted);
 	xaxis(YEquals(sing_limit, false), dotted);
 }
 
@@ -104,14 +108,15 @@ bool newPage = false;
 
 void MakeFile(string o, string g, string rho)
 {
-	if (newPage)
-		NewRow();
+	//if (newPage)
+	//	NewRow();
 	newPage = true;
 
 	string rps = "120,121,122,123,124,125";
 	string twoU = "t";
 	string overlap = "f";
 
+	/*
 	NewPad(false);
 
 	NewPad(false);
@@ -129,6 +134,7 @@ void MakeFile(string o, string g, string rho)
 		+ " overlap="+overlap + "\hfil\break"
 		+ " 3potsInO=t" + "\hfil\break"
 		+"}");
+	*/
 
 	for (int op: optimized.keys) {
 		string opt = optimized[op];
@@ -147,8 +153,8 @@ void MakeFile(string o, string g, string rho)
 		guide[] graphs = GetGraphs(label);
 	
 		//----------
-		NewPad(false);
-		label(opt);
+		//NewPad(false);
+		//label(opt);
 		
 		DrawSet(graphs, sm, 0.01);
 		//DrawSet(graphs, sm, 50);
@@ -165,6 +171,14 @@ void MakeFile(string o, string g, string rho)
 
 //----------------------------------------------------------------------------------------------------
 
+NewPad(false);
+label("biased $\ga$ coefficients");
+
+NewPad(false);
+label("non-biased $\ga$ coefficients");
+
+NewRow();
+
 for (int o: options.keys) {
 	for (int g: geometries.keys) {
 		for (int r: rho_sigmas.keys) {
@@ -172,3 +186,5 @@ for (int o: options.keys) {
 		}
 	}
 }
+
+GShipout(hSkip=1mm, vSkip=1mm);

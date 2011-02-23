@@ -23,6 +23,9 @@ asy: fig/.timecache fig/pdf $(timestamps)
 .timecache :
 	@mkdir -p .timecache
 
+fig/.timecache :
+	@mkdir -p fig/.timecache
+
 fig/pdf :
 	@mkdir -p fig/pdf
 

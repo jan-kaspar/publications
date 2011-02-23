@@ -319,7 +319,7 @@ Considering the misalignment expectations (see \Tb{expected misalignments}), it 
 {c_x}_i\cr
 } + \O{\De\rh^2, \De\rh \De\vec c_i}}{cnst rotz 5}
 or in terms of read-out shift $s_i$
-\eqref{\De s'_i = \De s_i + \De\rho\, \de s_i + \O{\De\rh^2, \De\rh \De\vec c_i}, \qquad \de s_i = \vec d_{\perp i}\cdot\vec c_i\ .}{cnst rotz 6}
+\eqref{\De s'_i = \De s_i - \De\rho\, \de s_i + \O{\De\rh^2, \De\rh \De\vec c_i}, \qquad \de s_i = \vec d_{\perp i}\cdot\vec c_i\ .}{cnst rotz 6}
 To summarize, we have just derived that transition from overall rotation $\De\rh$ and shifts $\De s_i$ to zero rotation and shifts $\De s_i'$ generates a singular mode. This is the only singular mode for rotations, but it also involves shifts. It can be schematically written as
 \eqref{
 \pmatrix{
@@ -386,26 +386,35 @@ The singular mode numbers are summarized in \Tb{singular mode number}.
 \htab{singular mode number}{Numbers of singular modes for different geometry types.}{\bln
 \hbox{quantity class}				& \hbox{two read-out directions} & \hbox{three and more read-out directions} \cr\bln
 \hbox{shift in read-out direction}	& 4 & 4\cr\ln
-\hbox{shift in }z					& 2 & 4\cr\ln
-\hbox{rotation around}z				& 1 & 2\cr\bln
+\hbox{shift in }z					& 4 & 2\cr\ln
+\hbox{rotation around}z				& 2 & 1\cr\bln
 }
 
 As it was already said, the \em{design} of the Roman Pot detectors is such that there would be only two read-out directions. However in \em{reality}, because of misalignment rotations, the number of read-out directions is as large as the number of detectors. But since the misalignments small only, one stays close to the 2-readout-direction case. This will manifest in a presence of several modes with low but non-zero eigenvalues. 
 
-\fig[15cm]{fig/pdf/al_eigenvalues_rho.pdf}{al eig rho}{The dependence of $\mat S$ matrix eigenvalues on the RMS of $\rh$. Theta 10 mrad, geometry 2.7x3.3, overlap=f}
-\TODO{note that singular modes have actually non-zero eigenvalues, choice of singular limit}
+\TODO{A few comments about numerics here.} First of all, it is clear that the eigenvalues of $\mat S$ would scale with the number of events (if the track-distribution is constant). Then, it make sense to define \em{normalized eigenvalues} as the eigenvalues of $\mat S/N_{\rm events}$. These should be, in first approximation, independent of the number of events. Second, due to limited precision of calculations\footnote{Double precision and ROOT matrix libraries have been used.}, the singular modes will not have their eigenvalues strictly zero. Because of the computational error it is even possible that their eigenvalues would come out negative. That is why we will always use the absolute value of the normalized eigenvalues. Although the singular modes will have non-zero values, they would be much smaller than those for regular modes. In between, one can expect band with no eigenvalues. This band can then be used to set a \em{singular limit}, that is the eigenvalue limit below which the eigenvalues would be treated as singular. All these effects can be seen if \Fg{al eig rho}.
+
+\fig{fig/pdf/al_eigenvalues_rho.pdf}{al eig rho}{The dependence of normalized $\mat S$ matrix eigenvalues on the RMS of $\rh$. Theta 10 mrad, geometry 2.7x3.3, overlap=f. Colors correspond to the eigenvalue order. The top row shows the eigenvalues when only shifts in read-out direction are optimized. In middle row rotations about $z$ are added and in the bottom one also shifts in $z$. The two columns provide views in two different horizontal scales. The dashed lines correspond to the singular modes for any geometry. The rapidly changing eigenvalues demonstrate the transition from two to three and more groups.}
 
 \ssubsection{Pathological track distributions}
 
 So far we have discussed singular and weak modes that arise from the track parameterization and the geometry of read-out directions. Besides those, there could be singular modes arising from special track distributions. One could immediately think of a case where the detectors split into several groups and there would be no track going through detectors of several groups in the same time. Regarding RPs, this situation appears when the pots are not inserted close enough and therefore no track can go through the overlap between the vertical and horizontal pots. In this case, the alignment task would split into several smaller tasks (one per group) and for each of them one could write alignment equation like \Eq{fit equation}. Each of these equations contain a $\mat S$ matrix with its singular modes as discussed. Therefore the number of singular modes gets multiplied by the number of groups.
 
-So far, we have assumed that tracks have a slope $\vec a^n$ and an intercept $\vec b^n$. However, the proton tracks at LHC are very parallel, making the slopes be distributed around 0 with spread of about $10^{-4}\un{rad}$. Let's look back to \Eq{cnst rotz 2} and check what happens when $\vec a^n\to 0$. We first expand the rotation matrix keeping just the first Taylor terms:
-\eqref{\pmatrix{1 & -\De\rh_i\cr \De\rh_i & 1\cr} (\vec b^n - \vec c_i - \De\vec c_i) = {\vec a'}^n z_i + {\vec b'}^n - \vec c_i - \De\vec c'_i\ .}{cnst rotz lt1}
-Comparing the $n$-dependent quantities one obtains:
-\eqref{\pmatrix{1 & -\De\rh_i\cr \De\rh_i & 1\cr} \vec b^n = {\vec a'}^n z_i + {\vec b'}^n \ .}{cnst rotz lt2}
-This condition has two solutions. First, $\De\rh_i \equiv \hbox{const.}$, which is equivalent to the solution of \Eq{cnst rotz 3}. Second solution
-\eqref{\De\rh_i = \al z_i\ ,}{cnst rotz lt3}
-where $\al$ is a proportionality constant. Then, ${\vec b'}^n = \vec b^n$ and ${\vec a'}^n = \al\, (-b^n_y,\ b^n_x)^\T$. In analogy to the arguments above \Eq{cnst rotz 7}, one can conclude that
+The LHC proton tracks are very parallel (\TODO{reference}), that is their slopes can be written:
+\eqref{\vec a^n = \vec a_0 + \de\vec a^n,\qquad \si(\de\vec a^n) = \O{10^{-4}\un{rad}}\ .}{cnst rotz lt0}
+ Let's look back to \Eq{cnst rotz 2} and check what happens when the spread $\de\vec a^n\to 0$. We first expand the rotation matrix keeping just the first Taylor terms:
+\eqref{\pmatrix{1 & -\De\rh_i\cr \De\rh_i & 1\cr} (\vec a_0 + \vec b^n - \vec c_i - \De\vec c_i) = {\vec a'}^n z_i + {\vec b'}^n - \vec c_i - \De\vec c'_i\ .}{cnst rotz lt1}
+This equation can still be solved by $\De\rh_i\equiv\hbox{const.}$, which leads to the solution \Eq{cnst rotz 7}. But there is another solution:
+\eqref{\De\rh_i = \al z_i\ ,}{cnst rotz lt2}
+where $\al$ is a proportionality constant. This can be seen, for example, by rearranging the terms on the \lhs{}:
+\eqref{
+\underbrace{\left[ \vec a_0 + \al \pmatrix{-b^n_y\cr b^n_x} \right]}_{{\vec a'}^n} z_i
+	+ \underbrace{\vec b^n}_{{\vec b'}^n}
+	- \vec c_i
+	- \underbrace{\De\vec c_i - \al z_i \left[ \pmatrix{-c_{i_y}\cr c_{i_x}} - z_i \pmatrix{-a_{0_y}\cr a_{0_x}} \right]}_{\De\vec c_i'}
+}{cnst rotz lt3}
+
+In analogy to the arguments above \Eq{cnst rotz 7}, one can conclude that
 \eqref{
 \pmatrix{
 \De\rh_i \cr
@@ -413,25 +422,25 @@ where $\al$ is a proportionality constant. Then, ${\vec b'}^n = \vec b^n$ and ${
 } \propto z_i\, \pmatrix{
 1\cr
 - \de s_i
-}\ .}{cnst rotz lt4}
-is a weak mode. It would be a true singular mode if we did not use the Taylor approximation of the rotation matrix. Or if all $\rh_i$'s would be zero. But as show in \Fg{al eig theta}, this weak mode is numerically indistinguishable from real singular modes.
+},\qquad \de s_i = \vec d_{\perp_i} \dot (\vec c_i - \vec a_0 z_i)\ .}{cnst rotz lt4}
+is a weak mode. It would be a true singular mode if we did not use the Taylor approximation of the rotation matrix. Or if all $\rh_i$'s would be zero. But as show in \Fg{al eig theta}, this weak mode is numerically indistinguishable from real singular modes for sufficiently parallel tracks.
 
-It would be possible to draw a similar line of arguments for the case where $\vec b^n\to 0$. Then, $\De\rh_i \propto 1/z_i$ would emerge as a weak mode. But keeping in mind the application to LHC proton tracks, this turns out to be very unrealistic scenario.
+It would be possible to draw a similar line of arguments for the case where $\vec b^n\to \vec b_0$. But keeping in mind the application to LHC proton tracks, this turns out to be very unrealistic scenario.
 
-The treatment above started with \Eq{cnst rotz 2}, which assumes that the read-out directions can have all values. In section \Sc{sing modes groups} we have derived that if there are just two read-out direction groups, the number of singular modes for rotations doubles. By similar arguments one find out that this is the case for the weak mode \Eq{cnst rotz lt4} too. There would be one such a mode for every group, just like in \Eq{cnst rotz g2}.
+The treatment above started with \Eq{cnst rotz 2}, which assumes that the read-out directions can have all values. In section \Sc{sing modes groups} we have derived that if there are just two read-out direction groups, the number of singular modes for rotations doubles. In a similar way one can find out that this is the case for the weak mode \Eq{cnst rotz lt4} too. There would be a copy of \Eq{cnst rotz lt3} for every group, with independent proportionality constants $\al_g$. This would lead to one weak mode per group, just like in \Eq{cnst rotz g2}.
 
-Eventually, let's remark that vanishing track angles does not introduce new weak modes for shifts in read-out nor in $z$ direction. The reason is simple, their $\ga$ factors (see \Tb{alignment quantities}) do not involve both track parameters (slope and intercept). Thus it is not possible that a misalignment would ''convert'' one to the other (in the sense of creating slope $\vec a'$ from intercept $\vec b$ in \Eq{cnst rotz lt2}).
+Eventually, let's remark that parallel tracks do not introduce new weak modes for shifts in read-out nor in $z$ direction. The reason is simple, their $\ga$ factors (see \Tb{alignment quantities}) do not involve both track parameters (slope and intercept). Thus it is not possible that a misalignment would ''convert'' one to the other (in the sense of creating slope $\vec a'$ from intercept $\vec b$ in \Eq{cnst rotz lt2}). \TODO{For z shifts, the number would indeed increase, with no slope spread, the z shifts can not be determined at all}.
 
 To summarize, the \Tb{low theta singular mode number} lists the numbers of weak modes that emerge when tracks become very parallel. \Fg{al eig theta} illustrates the situation by showing the dependence of the $\mat S$ matrix eigenvalues on the RMS angle of the tracks.
 
 \htab{low theta singular mode number}{Numbers of additional weak (or singular) modes due to low track slopes.}{\bln
 \hbox{quantity class}				& \hbox{two read-out directions} & \hbox{three and more read-out directions} \cr\bln
 \hbox{shift in read-out direction}	& 0 & 0\cr\ln
-\hbox{shift in }z					& 0 & 0\cr\ln
-\hbox{rotation around}z				& 1 & 2\cr\bln
+\hbox{shift in }z					& - & -\cr\ln
+\hbox{rotation around}z				& 2 & 1\cr\bln
 }
 
-\fig[15cm]{fig/pdf/al_eigenvalues_theta.pdf}{al eig theta}{The dependence of $\mat S$ matrix eigenvalues on the RMS of $\th$. extfit=t means not-biased gammas. What is the misalignment? Show line at 0.1mrad as the typical value.}
+\fig{fig/pdf/al_eigenvalues_theta.pdf}{al eig theta}{The dependence of $\mat S$ matrix eigenvalues on the RMS of the track slopes $\vec a$. Misalignment shr\_rotz=0. 2.7x33, overlap=f, whole station, $\si_\rh=0\un{mrad}$. For higher sigma(rho) there is just one line right where you can see the red and blue curves. The vertical dotted line marks the typical slope spread in the LHC data.}
 
 \subsection{Constraints}
 
@@ -516,11 +525,25 @@ $\vec\ch^0$ close to $\vec\ch_{\rm a}$ ...
 \TODO{Scaling of constraints with N}
 
 List of common constraint choices
-\> \em{homogeneous}
+\> \em{homogeneous} 
 \> \em{fixed detectors}
-\> \em{final} (used for the final analysis)
+\> \em{final} (used for the final analysis). \Fg{al eig rho,al eig theta} suggest that, in standard conditions ($\De\rh_i = \O{5\un{mrad}}$, $\si(\vec a)=\O{0.1\un{mrad}}$), it is not possible to determine the rotation between U and V detectors and between near and far unit (following the weak mode \Eq{cnst rotz lt2} and big z difference between the units). Need to fix these modes. Over-constrained case. Possible problems -- systematical errors.
+
+\subsection{Monte-Carlo tests}
+
+In the next section the errors of the algorithm will be discussed. To support our hypotheses we will use Monte-Carlo simulations. Here, we will briefly review how these simulations are performed and evaluated.
+
+\> The reference result.
+\> Used simplified MC (fast). What to expect with G4 or real data?
+
 
 \subsection{Errors}
+
+\TODO{
+Generally - I want to show that the algorithm is performing well:
+\> no systematics under ideal circumstances
+\> errors under control
+}
 
 The errors are of 3 origins:
 \> pitch rounding (any measurement outcome is a multiple of the detector pitch)
@@ -585,6 +608,19 @@ Since $\tilde\vec T$ and $\vec V$ are independent and $\Var \tilde\vec T = \tild
 
 \TODO{Choice of $\mat V^n$: independent measurements is a good, but not perfect approximation. At least for small angles there is non-trivial correlation. But later we will see that this estimate will quite match with statistical evaluation of the result error.}
 
+\Fg{al err rotz rho} that we can not determine the rotation between U and V planes with sufficient precision. The estimated error is $1\un{mrad}$, while the uncertainty is 10 times higher. We will give up trying to resolve this alignment mode. \TODO{Comment of the far unit errors}.
+
+\TODO{Comment on the saturation at about $10\un{mrad}$ -- higher angles cannot be detected by both units.}
+
+\fig{fig/pdf/al_err_rotz_rho.pdf}{al err rotz rho}{Rotation statistical error as a function of RMS of $\rh$. No misalignment (misaligned and real geometry contain detectors rotated with the given rho distribution). 1000 events. Extfit=false. fix-bas constraints, the fixed rotation in 1200. Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7).}
+
+\Fg{al err shz theta} shows that the error of $z$ shift is huge \TODO{an expectation for comparison}. Even with high slopes, the uncertainty does not drop below $1\un{m}$. We will abandon the $z$-alignment.
+
+\fig{fig/pdf/al_err_shz_theta.pdf}{al err shz theta}{Rotation statistical error as a function of RMS of $\rh$. No misalignment, fix-ext constraints (rotz in 1200, 1201; shz in 1200, 1201, 1248 and 1249), 100 events, extfit=f. Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7).}
+
+\fig{fig/pdf/al_err_rotz_theta.pdf}{al err rotz theta}{Rotation statistical error as a function of RMS of $\vec a$. No misalignment, fix-ext constraints(rotz in 1200 and 1201). 1000 events, extfit=f. Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7).}
+
+
 \ssubsection{Systematical errors}
 
 \subsection{Input data selection}
@@ -599,27 +635,6 @@ With the fast Monte-Carlo one a priory knows that there was exactly one track pe
 
 Alignment of the entire RPs -- factorization process.
 
-\subsection{Monte-Carlo tests}
-
-Generally - I want to show that the algorithm is performing well:
-\> no systematics under indeal circumstances
-\> errors under control
-
-The reference result.
-
-Used simplified MC (fast). What to expect with G4 or real data?
-
-\iffalse
-\ssubsection{Ideal results}
-
-\ssubsection{Test algorithm}
-
-\ssubsection{One-RP tests with fast simulation}
-
-\ssubsection{One-station tests with fast simulation}
-
-\ssubsection{Fast vs. Geant4 comparison}
-\fi
 
 
 \subsection{Experimental results}
@@ -676,6 +691,10 @@ where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values d
 
 Generally - want to show that everything is stable and consistent.
 
+Why analyses with overlap true and false?
+\> First, if there were some weird events fooling the alignment, they might be found by splitting the sample into several parts. Then one expect to find incompatible results (within the estimated uncertainty).
+\> If tracks were hitting only a very small part of the detector, the corresponding gamma coefficient would be almost constant and the rotation would be indistinguishable from shifts. In case of wrongly determined rotations, one would expect rather different results here and when the ga distribution is large.
+\> The overlap=true does both things as above: smaller sample and tracks accumulated in a rather small area.
 
 \section{Profile methods}
 

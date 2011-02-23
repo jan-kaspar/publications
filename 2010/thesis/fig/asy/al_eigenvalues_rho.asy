@@ -2,6 +2,9 @@ import pad_layout;
 import root;
 
 StdFonts();
+
+xSizeDef = 5.5cm;
+ySizeDef = 5.5cm;
 	
 string[] geometries = {
 //	"RP_V:1.2_H:0.65",
@@ -54,7 +57,7 @@ guide[] GetGraphs(string dir)
 		int size = obj.iExec("GetNrows");
 		//write("** size: ", size);
 		for (int i = 0; i < size; ++i)
-			values.push(obj.rExec("operator[]", i) / events);
+			values.push(abs(obj.rExec("operator[]", i)) / events);
 		
 		values = sort(values);
 		//write(values);
@@ -73,7 +76,7 @@ guide[] GetGraphs(string dir)
 
 void DrawSet(guide[] graphs, int sm, real mx)
 {
-	NewPad("$\si(\De\rh_z)\un{mrad}$", "eigenvaules of $\mat S / N_{\rm events}$");
+	NewPad("$\si(\De\rh_z)\un{mrad}$", "normalize eigenvaules of $\mat S$");
 	scale(Linear, Log);
 	for (int j = 0; j < N; ++j) {
 		pen p = stdPens[j % 5];
@@ -135,8 +138,8 @@ void MakeFile(string g, string t, string what, int o)
 		guide[] graphs = GetGraphs(dir);
 	
 		//----------
-		NewPad(false);
-		label(opt);
+		//NewPad(false);
+		//label(opt);
 		
 		DrawSet(graphs, sm, 5);
 		DrawSet(graphs, sm, 1000);
@@ -145,10 +148,18 @@ void MakeFile(string g, string t, string what, int o)
 	//string prefix = g+"_"+t+"_"+what+"_overlap="+overlap;
 	//write("shipout:" + prefix);
 	//GShipout(prefix);
-	GShipout();
 }
 
 //----------------------------------------------------------------------------------------------------
+
+NewPad(false, 2, 1);
+label(rotate(90)*Label("sh. r-o."));
+
+NewPad(false, 2, 2);
+label(rotate(90)*Label("sh. r-o. and rot. z"));
+
+NewPad(false, 2, 3);
+label(rotate(90)*Label("sh. r-o., rot. z and sh. z"));
 
 for (int g: geometries.keys) {
 	for (int t: thetas.keys) {
@@ -157,3 +168,5 @@ for (int g: geometries.keys) {
 			MakeFile(geometries[g], thetas[t], "st", o);
 	}
 }
+
+GShipout(hSkip=1mm, vSkip=1mm, O);
