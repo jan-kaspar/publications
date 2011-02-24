@@ -1,12 +1,15 @@
 include "../alignment/common_code.asy";
 import pad_layout;
 
+xSizeDef = 5.9cm;
+ySizeDef = 5.9cm;
+
+StdFonts();
+
 real rhos[] = { 0, 1, 4, 10, 40, 100, 200, 300, 400, 500 };
 //real rhos[] = { 0, 1, 4, 10 };
 
-int ids[] = { 1200, 1210, 1220, 1230, 1240, 1250 };
-
-int rps[] = { 120, 121, 122, 123, 124, 125 };
+int rps[] = { 124 };
 int dets[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
 string base_dir = "../alignment/systematical errors/near_far_rotation";
@@ -42,6 +45,7 @@ void MakePage(string dir, string file1, string file2)
 		}
 	}
 
+	/*
 	NewPad(false, 0, -1);
 	label(dir);
 
@@ -51,28 +55,36 @@ void MakePage(string dir, string file1, string file2)
 		+ "\hfill\break-\hfill\break "
 		+replace(file2, "_", "\_")
 		+"}");		
+	*/
 	
+	xTicksDef = LeftTicks(Step=50, step=10);
+
 	int j = 0;
 	for (int rp_i : rps.keys) {
-		NewPad("$\De_{F-N} \rh \un{mrad}$", "shift syst. error $\un{\mu m}$", j, 0);
+		NewPad("$\De_{F-N} \rh \un{mrad}$", "shift syst. error $\un{\mu m}$", 0, j);
 		int i = 0;
 		for (int d_i : dets.keys) {
 			int id = rps[rp_i]*10 + dets[d_i];
-			draw(s_graphs[id], stdPens[quotient(i, 2)] + ((i % 2 == 1) ? dashed : solid));
+			pen p = StdPen(quotient(i, 2));
+			if (i % 2 == 0)
+				p = p + dashed;
+			draw(s_graphs[id], p, mCi+p);
 			++i;
 		}
+		limits((0, -5), (200, +1), Crop);
 	
-		NewPad("$\De_{F-N} \rh \un{mrad}$", "rotation syst. error $\un{mrad}$", j, 1);
+		NewPad("$\De_{F-N} \rh \un{mrad}$", "rotation syst. error $\un{mrad}$", 1, j);
 		int i = 0;
 		for (int d_i : dets.keys) {
 			int id = rps[rp_i]*10 + dets[d_i];
-			draw(r_graphs[id], stdPens[quotient(i, 2)] + ((i % 2 == 1) ? dashed : solid));
+			pen p = StdPen(quotient(i, 2));
+			if (i % 2 == 0)
+				p = p + dashed;
+			draw(r_graphs[id], p, mCi+p);
 			++i;
 		}
+		limits((0, -0.1), (200, +1), Crop);
 	
-		//ylimits(-2, +2, Crop);
-		//yaxis(XEquals(4, false), dashed);
-		AttachLegend(RPName(rps[rp_i]), NE, NE);	
 		
 		++j;
 	}
@@ -80,12 +92,13 @@ void MakePage(string dir, string file1, string file2)
 
 //----------------------------------------------------------------------------------------------------
 
-MakePage("theta=0E-3", "precise3_expanded_results_Ideal.xml", "precise3_expanded_results_Jan.xml");
-NewPage();
-MakePage("theta=10E-3", "precise3_expanded_results_Ideal.xml", "precise3_expanded_results_Jan.xml");
-
-NewPage();
+//MakePage("theta=0E-3", "precise3_expanded_results_Ideal.xml", "precise3_expanded_results_Jan.xml");
+//NewPage();
+//MakePage("theta=10E-3", "precise3_expanded_results_Ideal.xml", "precise3_expanded_results_Jan.xml");
+//NewPage();
 
 MakePage("theta=0E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
-NewPage();
-MakePage("theta=10E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
+//NewPage();
+//MakePage("theta=10E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
+
+GShipout(hSkip=1mm, vSkip=1mm);

@@ -1,13 +1,20 @@
 include "../alignment/common_code.asy";
 import pad_layout;
 
+xSizeDef = 6cm;
+ySizeDef = 6cm;
+
+StdFonts();
+
 real pitches[] = { 1, 33, 66, 100, 133, 166, 200 };
 
-int rps[] = { 120, 121, 122, 123, 124, 125 };
+int rps[] = { 120 };
 int dets[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 //int dets[] = { 2, 3, 8, 9 };
 
 string base_dir = "../alignment/systematical errors/pitch";
+
+int j = 0;
 
 void MakePage(string dir, string file1, string file2)
 {
@@ -56,17 +63,18 @@ void MakePage(string dir, string file1, string file2)
 		}
 	}
 
-	NewPad(false, 0, -1);
+	/*
+	NewPad(false, j, -1);
 	label(replace(dir, "_", "\_"));
 
-	NewPad(false, 1, -1);
+	NewPad(false, 1, -2);
 	label("\vbox{\hsize8cm\noindent "
 		+replace(file1, "_", "\_")
 		+ "\hfill\break-\hfill\break "
 		+replace(file2, "_", "\_")
-		+"}");		
+		+"}");
+	*/		
 	
-	int j = 0;
 	for (int rp_i : rps.keys) {
 		xTicksDef = LeftTicks(Step=50, step=10);
 		
@@ -80,10 +88,9 @@ void MakePage(string dir, string file1, string file2)
 			filldraw(su_graphs[id]--reverse(sb_graphs[id])--cycle, p+opacity(0.3), nullpen);
 			++i;
 		}
-		limits((0, -2), (200, +2), Crop);
+		limits((0, -5), (200, +5), Crop);
 		yaxis(XEquals(66, false), dashed);
 		xaxis(YEquals(0, false), dashed);
-		AttachLegend(RPName(rps[rp_i]), NE, NE);	
 	
 		NewPad("pitch $\un{\mu m}$", "rotation syst. error $\un{mrad}$", j, 2);
 		currentpad.yTicks = RightTicks(Step=0.1, step=0.02);
@@ -95,7 +102,7 @@ void MakePage(string dir, string file1, string file2)
 			filldraw(ru_graphs[id]--reverse(rb_graphs[id])--cycle, p+opacity(0.3), nullpen);
 			++i;
 		}
-		limits((0, -0.2), (200, +0.2), Crop);
+		limits((0, -0.5), (200, +0.5), Crop);
 		yaxis(XEquals(66, false), dashed);
 		xaxis(YEquals(0, false), dashed);
 		
@@ -106,28 +113,18 @@ void MakePage(string dir, string file1, string file2)
 //----------------------------------------------------------------------------------------------------
 
 string simulations[] = {
-//	"station12_realistic_shr_rotz_4/theta=0.1E-3,dscr=0.5",
-//	"station12_realistic_shr_rotz_4/theta=0.1E-3,dscr=0.5,seed=2",
-//	"station12_realistic_shr_rotz_4/theta=0.1E-3,dscr=0.5,seed=3",
-
-//	"station12_realistic_shr_rotz_4/theta=0.1E-3,dscr=0.15",
-//	"station12_realistic_shr_rotz_4/theta=0.1E-3,dscr=0.5,seed=2",
-//	"station12_realistic_shr_rotz_4/theta=0.1E-3,dscr=1",
-
-//	"station12_realistic_shr_rotz_4/theta=0E-3,dscr=0,seed=1",
-//	"station12_realistic_shr_rotz_4/theta=0E-3,dscr=0.5,seed=1",
-
-//	"station12_realistic_shr_rotz_4/theta=0.1E-3,dscr=0.5,seed=2",
-	"station12_realistic_shr_rotz_4/theta=0.1E-3,dscr=0.5,seed=1,ConstError",
 	"station12_realistic_shr_rotz_4/theta=0.1E-3,dscr=0.5,seed=2,ConstError",
+	"station12_realistic_shr_rotz_4/theta=0.1E-3,dscr=0.5,seed=2",
 };
 
+NewPad(false, 0, -1);
+label("non-reduced uncertainties");
 
-bool newPage = false;
+NewPad(false, 1, -1);
+label("reduced uncertainties");
+
 for (int s_i : simulations.keys) {
-	if (newPage)
-		NewPage();
-	newPage = true;
-
 	MakePage(simulations[s_i], "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
 }
+
+GShipout(hSkip=1mm, vSkip=1mm);

@@ -533,7 +533,7 @@ List of common constraint choices
 
 In the next section the errors of the algorithm will be discussed. To support our hypotheses we will use Monte-Carlo simulations. Here, we will briefly review how these simulations are performed and evaluated.
 
-\> The reference result.
+\> The reference result. Ideal and Jan(pitch round=t/f, ext fit=t/f).
 \> Used simplified MC (fast). What to expect with G4 or real data?
 
 
@@ -608,6 +608,16 @@ Since $\tilde\vec T$ and $\vec V$ are independent and $\Var \tilde\vec T = \tild
 
 \TODO{Choice of $\mat V^n$: independent measurements is a good, but not perfect approximation. At least for small angles there is non-trivial correlation. But later we will see that this estimate will quite match with statistical evaluation of the result error.}
 
+\Fg{al stat fixDet}: a statistical verification of the model of the pitch error. Just an example (that's why the fix-det constraints). Systematical error is compatible with zero ($3\sigma$), uncertainty falls as $1/\sqrt{N}$, statistical error over uncertainty almost flat, but below $1$ (error overestimations).
+
+\fig{fig/pdf/al_stat_fixDet.pdf}{al stat fixDet}{Statistical study (20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad, fixed detector constraints (shr: 1200, 1201, 1248, 1249, rotz: 1200, 1201). Plane 3 in every RP. \TODO{dotted lines}}
+
+In some cases it is more difficult: reduced multi-strip cluster errors, see \Fg{al syst err pitch}.
+
+\fig{fig/pdf/al_syst_err_pitch.pdf}{al syst err pitch}{it3 - precise3, near top RP, every plane by different color}
+
+Conclusion: if non-reduced msc errors are used, then: negligible syst. error and real stat. fluctuation is smaller that the estimated uncertainty.
+
 \Fg{al err rotz rho} that we can not determine the rotation between U and V planes with sufficient precision. The estimated error is $1\un{mrad}$, while the uncertainty is 10 times higher. We will give up trying to resolve this alignment mode. \TODO{Comment of the far unit errors}.
 
 \TODO{Comment on the saturation at about $10\un{mrad}$ -- higher angles cannot be detected by both units.}
@@ -620,8 +630,31 @@ Since $\tilde\vec T$ and $\vec V$ are independent and $\Var \tilde\vec T = \tild
 
 \fig{fig/pdf/al_err_rotz_theta.pdf}{al err rotz theta}{Rotation statistical error as a function of RMS of $\vec a$. No misalignment, fix-ext constraints(rotz in 1200 and 1201). 1000 events, extfit=f. Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7).}
 
+\TODO{Overconstraints -- additional statistical error}
 
-\ssubsection{Systematical errors}
+\TODO{Iterations
+\> idea
+\> error behavior
+\> example of convergence?
+}
+
+Systematical errors now. Still in game
+\> cosine correction (at rhos around 10mrad, it is negligible to the other error contributions)
+\> biased gamma factors due to undetermined rotations
+\>> u-v
+\>> f-n
+
+\Fg{al syst err uv rot}. misalignment: shr zero, rotations in V det. sigma~1mrad, mean 0, rotations in U detectors as indicated on the hor. axis. Diff. between Jan(round=f, extfit=f) and Jan(f, t). Note that the error is created in V detectors while U detectors have the problem. \TODO{Explain}.
+
+\fig{fig/pdf/al_syst_err_uv_rot.pdf}{al syst err uv rot}{Systematical errors due to undetermined uv rotation. near top RP (V det dashed, U solid, near pair same color), geometry 2.7x3.3, final constraints, special tr.dist x:box(5,10) y:box(0,20), it3 - precise3, theta=0mrad, }
+
+\Fg{al syst err fn rot}. Misalignment: shr zero, rotations in near unit sigma~1mrad, mean 0, rotations in far unit sigma~1mrad and mean as indicated on the horizontal axis. Diff. between Jan(round=f, extfit=f) and Jan(f, t). Note the increasing diff. between U and V detectors.
+
+\fig{fig/pdf/al_syst_err_fn_rot.pdf}{al syst err fn rot}{Systematical errors due to undetermined uv rotation. far top RP (V det dashed, U solid, near pair same color) (errors in near much lower!), geometry 2.7x3.3, final constraints, special tr.dist x:box(5,10) y:box(0,20), it3 - precise3, theta=0mrad, }
+
+\Fg{al stat final}: another example of the statistical convergence. One more ''insurance'' that the final procedure would work.
+\fig{fig/pdf/al_stat_final.pdf}{al stat final}{Statistical study (20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad, final constraints. Plane 3 in every RP. Dashed lines}
+
 
 \subsection{Input data selection}
 

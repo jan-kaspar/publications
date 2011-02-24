@@ -1,16 +1,16 @@
 include "../alignment/common_code.asy";
 include "../alignment/statistics/station_base.asy";
 
-xSizeDef = 3.8cm;
-ySizeDef = 3.8cm;
+xSizeDef = 3.9cm;
+ySizeDef = 3.9cm;
 
 StdFonts();
 
 geometry="RP_V:2.7_H:3.3";
-options="fixDet-extended,4pl,2units=t,overlap=f,3potsInO=t,1rotz=f";
+options="fin-fin,4pl,2units=t,overlap=f,3potsInO=t,1rotz=f";
 misalignment="station12_realistic_shr_rotz_4";
 
-file = "../alignment/statistics/simulations5/RP_V:2.7_H:3.3/fixDet-extended,4pl,2units=t,overlap=f,3potsInO=t,1rotz=f/misalignment:station12_realistic_shr_rotz_4/result_summary.root";
+file = "../alignment/statistics/simulations5/RP_V:2.7_H:3.3/fin-fin,4pl,2units=t,overlap=f,3potsInO=t,1rotz=f/misalignment:station12_realistic_shr_rotz_4/result_summary.root";
 
 RPs = "120,121,122,123,124,125";
 optimized = "sr";
@@ -19,8 +19,6 @@ tr_dist = "gauss_6_8,th=0.1E-3";
 string[] plots = {"systematical error", "estimated uncertainty", "stat. err. / estim. unc."};
 string[] tags = { "e_m", "u_m", "eR"};
 real[] p_scales = { 1e3, 1e3, 1.};
-
-int coff = 0;
 
 //----------------------------------------------------------------------------------------------------
 
@@ -49,7 +47,7 @@ void MakePlots(string dirLabel, string fileNameLabel, string xLabel, real x_from
 
 				rGetObj(file, obj, error=true);
 				if (robj.valid)
-					draw(yscale(p_scales[p]), robj, opt, colors[i+coff]+1pt, marks[i+coff]+true+2pt+colors[i+coff],
+					draw(yscale(p_scales[p]), robj, opt, colors[i]+1pt, marks[i]+true+2pt+colors[i],
 					RPName(rps[i], "%u-%r"));
 			}
 
@@ -69,8 +67,13 @@ void MakePlots(string dirLabel, string fileNameLabel, string xLabel, real x_from
 			
 			yaxis(XEquals(1e5, false), dotted);
 
-			if (q == 0 && p == 2)
+			if (q == 0 && p > 0) {
+				if (p == 1)
+					currentpicture.legend.delete(3, 5);
+				if (p == 2)
+					currentpicture.legend.delete(0, 2);
 				AttachLegend();
+			}
 		}
 
 		NewRow();
@@ -90,19 +93,11 @@ label("stat. error / uncertainty");
 
 detNum = 3;
 
-rps = new int[] { 120, 121, 122 };
-ylimits = new real[] { 8., 0, 2.};
-y_Steps = new real[] {2., 0, 0.5};
-y_steps = new real[] {1., 0, 0.1};
-coff = 0;
-MakePlots("fcn_of_N/iteration>" + iteration, "_fcnN", "", 1e2, 1e6, true);
-
-
-rps = new int[] { 123, 124, 125 };
-ylimits = new real[] { 200., 0, 20.};
-y_Steps = new real[] {50., 0, 5};
-y_steps = new real[] {10., 0, 1};
-coff = 3;
+rps = new int[] { 120, 121, 122, 123, 124, 125 };
+ylimits = new real[] { 6., 0, 1.};
+y_Steps = new real[] {1., 0, 0.2};
+y_steps = new real[] {0.5, 0, 0.1};
 MakePlots("fcn_of_N/iteration>" + iteration, "_fcnN", "tracks analyzed", 1e2, 1e6, true);
+
 
 GShipout(hSkip=1mm, vSkip=1mm);
