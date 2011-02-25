@@ -5,13 +5,13 @@ include "../alignment/common_code.asy";
 StdFonts();
 
 xSizeDef = 4.3cm;
-ySizeDef = 3.5cm;
+ySizeDef = 3.1cm;
 
 yTicksDef = NoTicks();
 
 string q_labels[] = { "$x\un{\mu m}$", "$y\un{\mu m}$", "$\rh\un{mrad}$" };
 real q_range[] = { 20, 20, 1 };
-real q_Steps[] = { 20, 20, 0.5 };
+real q_Steps[] = { 10, 10, 0.5 };
 real q_steps[] = { 2, 2, 0.1 };
 
 //----------------------------------------------------------------------------------------------------
@@ -98,7 +98,7 @@ void AddData(string f, string label)
 		return;
 	}
 
-	mark m = StdMark(setting_idx)+3pt+StdPen(date_idx);
+	mark m = StdMark(setting_idx)+2pt+StdPen(date_idx);
 
 	for (int rp : a.rp_shx.keys) {
 		int r = rp % 10;

@@ -608,11 +608,11 @@ Since $\tilde\vec T$ and $\vec V$ are independent and $\Var \tilde\vec T = \tild
 
 \TODO{Choice of $\mat V^n$: independent measurements is a good, but not perfect approximation. At least for small angles there is non-trivial correlation. But later we will see that this estimate will quite match with statistical evaluation of the result error.}
 
-\Fg{al stat fixDet}: a statistical verification of the model of the pitch error. Just an example (that's why the fix-det constraints). Systematical error is compatible with zero ($3\sigma$), uncertainty falls as $1/\sqrt{N}$, statistical error over uncertainty almost flat, but below $1$ (error overestimations).
+\Fg{al stat fixDet}: a statistical verification of the model of the pitch error. Just an example (that's why the fix-det constraints). Systematical error is compatible with zero ($3\sigma$) \TODO{really? there is a syst. error induced by stat. error}, uncertainty falls as $1/\sqrt{N}$, statistical error over uncertainty almost flat, but below $1$ (error overestimations).
 
-\fig{fig/pdf/al_stat_fixDet.pdf}{al stat fixDet}{Statistical study (20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad, fixed detector constraints (shr: 1200, 1201, 1248, 1249, rotz: 1200, 1201). Plane 3 in every RP. \TODO{dotted lines}}
+\fig{fig/pdf/al_stat_fixDet.pdf}{al stat fixDet}{Statistical study (20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad, fixed detector constraints (shr: 1200, 1201, 1248, 1249, rotz: 1200, 1201). Plane 3 in every RP. \TODO{dotted lines, number of iterations}}
 
-In some cases it is more difficult: reduced multi-strip cluster errors, see \Fg{al syst err pitch}.
+In some cases it is more difficult: reduced multi-strip cluster errors, see \Fg{al syst err pitch}. Pitch rounding effect is different for every seed while the reduced ms cluster error one is the same for every seed.
 
 \fig{fig/pdf/al_syst_err_pitch.pdf}{al syst err pitch}{it3 - precise3, near top RP, every plane by different color}
 
@@ -626,17 +626,30 @@ Conclusion: if non-reduced msc errors are used, then: negligible syst. error and
 
 \Fg{al err shz theta} shows that the error of $z$ shift is huge \TODO{an expectation for comparison}. Even with high slopes, the uncertainty does not drop below $1\un{m}$. We will abandon the $z$-alignment.
 
-\fig{fig/pdf/al_err_shz_theta.pdf}{al err shz theta}{Rotation statistical error as a function of RMS of $\rh$. No misalignment, fix-ext constraints (rotz in 1200, 1201; shz in 1200, 1201, 1248 and 1249), 100 events, extfit=f. Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7).}
+\fig{fig/pdf/al_err_shz_theta.pdf}{al err shz theta}{$z$ shift statistical error as a function of RMS of $\vec a$. No misalignment, fix-ext constraints (rotz in 1200, 1201; shz in 1200, 1201, 1248 and 1249), 100 events, extfit=f. Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7).}
 
 \fig{fig/pdf/al_err_rotz_theta.pdf}{al err rotz theta}{Rotation statistical error as a function of RMS of $\vec a$. No misalignment, fix-ext constraints(rotz in 1200 and 1201). 1000 events, extfit=f. Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7).}
 
 \TODO{Overconstraints -- additional statistical error}
 
-\TODO{Iterations
-\> idea
-\> error behavior
-\> example of convergence?
+
+\Tb{al iter} shows the principle of iterations. The symbol $A$ represents an alignment, thats is geometrical corrections to be applied on the basic geometry. The numerical lower indices refer to the relevant iteration, $A_0$ stands for the initial alignment. The correction obtained in $i$-th iteration is denoted $\De A_i$. The expression in the right-hand side column summarizes our understanding of the errors. That is the correction shall be equal to the difference between the actual alignment $A$ and the pre-iteration alignment $A_{i-1}$ (modulo constraints -- filter matrix ${\cal F}_{\rm constr}$) altered by the statistical ($\De A_{\rm stat}$) and systematical ($\De A_{\rm syst}$) errors. For a given sample the statistical error (given by the pitch rounding) is constant (when not changing the cut parameters which would modify the sample). The systematical error depends on ''how far we are from the actual alignments,'' that is $A - A_i$. The iterations continue as long as the corrections are important (their size is larger than a limit). In the LHC data analysis, two iterations turned out to be sufficient. That is the correction in the third one was already negligible.
+
+After the iteration process has, the final error still have two components -- the statistical and the systematical. The latter one is proportional to the distance to the actual alignments. The distance can not vanish because of two reasons -- the constraints (some alignment modes remain undetermined) and the statistical error. \Fg{al syst err uv rot,al syst err fn rot} show the systematical errors due to undermined U-V and far-near unit rotations. \TODO{The systematical error induced by the statistical error}
+
+\tab[\strut\hfil#\qquad&#\hfil\qquad&#\hfil\cr]{al iter}{A scheme of alignment iterations with the error evolution.}{\ln
+			& alignment & correction \cr\ln
+			& $A_0$ \cr
+iteration 1	& $\downarrow$	\cr
+			& $A_1 = A_0 + \De A_1$ & $\De A_1 = {\cal F}_{\rm constr} (A - A_0) + \De A_{\rm stat} + \De A_{\rm syst}(A - A_0) $ \cr
+iteration 2	& $\downarrow$	\cr
+			& $A_2 = A_1 + \De A_2$ & $\De A_2 = {\cal F}_{\rm constr} (A - A_1) + \De A_{\rm stat} + \De A_{\rm syst}(A - A_1) $ \cr
+			& $\vdots$	\cr
+(last) iteration n	& $\downarrow$	\cr
+			& $A_n = A_{n-1} + \De A_n$ & $|\De A_n| < \hbox{limit}$ \cr\ln
 }
+
+\TODO{Iterations: an example of convergence?}
 
 Systematical errors now. Still in game
 \> cosine correction (at rhos around 10mrad, it is negligible to the other error contributions)
@@ -708,6 +721,14 @@ where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values d
 \fig{fig/pdf/al_comp_det_per_pot.pdf}{al comp det per pot}{Internal alignment comparison. \TODO{chose 2 or 3 pots that would show all things worth discussing - compatible and non-compatible results, possible linearly progressive rotation, etc.}}
 
 (B) show that U-V and N-F rotations can not be determined from beam-test/LHC data. Is there any hint from the optical metrology.?
+
+Trying to solve
+$$\bar \mat S \vec\ch = \vec T \equiv \mat S \vec\ch^0 $$
+$$\bar \mat S \vec\ch = \bar\mat S \vec\ch^0 + \underbrace{(\mat S - \bar\mat S) \vec\ch^0}_{\De\vec T}$$
+$$\vec\ch = \vec\ch^0 + ''\bar\mat S^-1 '' \De \vec T$$
+Hence for the weak modes the error contribution is
+$$\De\vec T\over\la$$
+which can grow big as $\la\to 0$
 
 \fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment comparison with fixed-detectors constraints. Shows full rotation about z.}
 
