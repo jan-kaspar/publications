@@ -92,6 +92,7 @@ void MakePage(string dir, string file1, string file2)
 		yaxis(XEquals(66, false), dashed);
 		xaxis(YEquals(0, false), dashed);
 	
+		/*
 		NewPad("pitch $\un{\mu m}$", "rotation syst. error $\un{mrad}$", j, 2);
 		currentpad.yTicks = RightTicks(Step=0.1, step=0.02);
 		int i = 0;
@@ -105,6 +106,7 @@ void MakePage(string dir, string file1, string file2)
 		limits((0, -0.5), (200, +0.5), Crop);
 		yaxis(XEquals(66, false), dashed);
 		xaxis(YEquals(0, false), dashed);
+		*/
 		
 		++j;
 	}
