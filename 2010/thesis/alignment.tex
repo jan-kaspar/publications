@@ -385,7 +385,9 @@ The singular modes are summarized in \Tb{al sing mode overview}.
 
 As it was already said, the \em{design} of the Roman Pot detectors is such that there would be only two read-out directions. However in \em{reality}, because of misalignment rotations, the number of read-out directions is as large as the number of detectors. But since the misalignments small only, one stays close to the 2-readout-direction case. This will manifest in a presence of several modes with low but non-zero eigenvalues. 
 
-\TODO{A few comments about numerics here.} First of all, it is clear that the eigenvalues of $\mat S$ would scale with the number of events (if the track-distribution is constant). Then, it make sense to define \em{normalized eigenvalues} as the eigenvalues of $\mat S/N_{\rm events}$. These should be, in first approximation, independent of the number of events. Second, due to limited precision of calculations\footnote{Double precision and ROOT matrix libraries have been used.}, the singular modes will not have their eigenvalues strictly zero. Because of the computational error it is even possible that their eigenvalues would come out negative. That is why we will always use the absolute value of the normalized eigenvalues. Although the singular modes will have non-zero values, they would be much smaller than those for regular modes. In between, one can expect band with no eigenvalues. This band can then be used to set a \em{singular limit}, that is the eigenvalue limit below which the eigenvalues would be treated as singular. All these effects can be seen if \Fg{al eig rho}.
+\TODO{A few comments about numerics here.} First of all, it is clear that the eigenvalues of $\mat S$ would scale with the number of events (if the track-distribution is constant). Then, it make sense to define
+\eqref{\hbox{\em{normalized eigenvalues} as the eigenvalues of }\mat S/N_{\rm events}\ .}{S norm eig val}
+These should be, in first approximation, independent of the number of events. Second, due to limited precision of calculations\footnote{Double precision and ROOT matrix libraries have been used.}, the singular modes will not have their eigenvalues strictly zero. Because of the computational error it is even possible that their eigenvalues would come out negative. That is why we will always use the absolute value of the normalized eigenvalues. Although the singular modes will have non-zero values, they would be much smaller than those for regular modes. In between, one can expect band with no eigenvalues. This band can then be used to set a \em{singular limit}, that is the eigenvalue limit below which the eigenvalues would be treated as singular. All these effects can be seen if \Fg{al eig rho}.
 
 \fig{fig/pdf/al_eigenvalues_rho.pdf}{al eig rho}{The dependence of normalized $\mat S$ matrix eigenvalues on the RMS of $\rh$. Theta 10 mrad, geometry 2.7x3.3, overlap=f. Colors correspond to the eigenvalue order. The top row shows the eigenvalues when only shifts in read-out direction are optimized. In middle row rotations about $z$ are added and in the bottom one also shifts in $z$. The two columns provide views in two different horizontal scales. The dashed lines correspond to the singular modes for any geometry. The rapidly changing eigenvalues demonstrate the transition from two to three and more groups.}
 
@@ -461,7 +463,7 @@ To solve the fit equation with constraints, it is advantageous to employ the Lag
 \vec T\cr
 \vec V\cr
 }\ ,}{alignment equation}
-where the $\mat C$ matrix contains the $\vec C$ vectors (see \Eq{cnst form}) in columns for all constraints applied and vector $\vec V$ includes corresponding $v$'s. $\vec\La$ is the vector Lagrange multipliers. Let's demonstrate that this equation does what we want. First, let's rewrite as two equations
+where the $\mat C$ matrix contains the $\vec c$ vectors (see \Eq{cnst form}) in columns for all constraints applied and vector $\vec V$ includes corresponding $v$'s. $\vec\La$ is the vector Lagrange multipliers. Let's demonstrate that this equation does what we want. First, let's rewrite as two equations
 \eqref{\tilde\mat S \hat\vec\ch = \vec T - \mat C \vec\La \equiv \vec T'(\vec\La)\ ,}{cnst aux1}
 \eqref{\mat C^\T \hat\vec\ch = \vec V\ .}{cnst aux2}
 The second one obviously presents a series of constraints of type \Eq{cnst form}. Since $\mat S$ is symmetric (\TODO{ref}), it can be diagonalized as follows (see e.g. \bref{wikipedia} key \em{symmetric matrix})
@@ -523,16 +525,21 @@ $\vec\ch^0$ close to $\vec\ch_{\rm a}$ ...
 We have seen that a set of constraints must fulfill \Eq{cnst condition}, but one has still a lot of freedom in their choice. Let's list here a few common options.
 \> Probably the most natural choice is to take singular modes as the constraints, that is $\mat C = \mat E$. We will refer to this option as \em{homogeneous} constraints (the role of all detectors is equal, in contrary to the next option). 
 \> Another natural choice is to select a subset of reference detectors the position of which would be fixed and let the other detectors align with respect to the reference ones. We will call this option \em{fixed-detectors} constraints. \TODO{how does the C matrix look like?}
-\> The last option is called \em{final} since it has been agreed for the final alignment analysis. \Fg{al eig rho,al eig theta} suggest that, in standard conditions ($\De\rh_i = \O{5\un{mrad}}$, $\si(\vec a)=\O{0.1\un{mrad}}$), it is not possible to determine the rotation between U and V detectors and between near and far unit (following the weak mode \Eq{cnst rotz lt2} and the large $z$ difference between the units). Thus one needs to constrain these modes too. \TODO{We trust the vertical position of the beam from the touching excercises, we leave the horizontals out}. For every unit
+\> The last option is called \em{final} since it has been agreed for the final alignment analysis. \Fg{al eig rho,al eig theta} suggest that, in standard conditions ($\De\rh_i = \O{5\un{mrad}}$, $\si(\vec a)=\O{0.1\un{mrad}}$), it is not possible to determine the rotation between U and V detectors and between near and far unit
+%(following the weak mode \Eq{cnst rotz lt2} and the large $z$ difference between the units). 
+with satisfactory precision. Thus one needs to constrain these modes too, increasing the number of rotation constraints to 4 (one constraint per U/V projection and per unit). The number of read-out shift constraint remains 4, but they will be a little different than the homogeneous constraints. The reason is that we trust the beam position determination by the touching exercise and therefore we want to preserve the vertical center between the top and bottom pots. Consequently, we will drop the horizontal pot from the vertical ($Y$) constraints. In fact we will drop the horizontal RP from the horizontal ($X$) constraints too. Since there is only one horizontal pot, the touching exercise cannot determine the horizontal beam position with a sufficient precision and the best (least bad) assumption is to keep the vertical pots (horizontally) at their nominal position. To summarize, for every unit, we will impose these 4 constraints:
 \eqref{\eqnarray{
-\hbox{shifts:}\qquad && \sum_{i \in \hbox{top, bottom}} \De s_i \, d_{x_i} = \sum_{i \in \hbox{top, bottom}} \De s_i \, d_{y_i} = 0\ ,\cr
-\hbox{rotations:}\qquad && \sum_{i \in \hbox{U detectors in unit}} \De \rh_i =
-\sum_{i \in \hbox{V detectors in unit}} \De \rh_i = 0\ .
+\hbox{shifts:}\qquad && \sum_{i\ \in\ \hbox{top, bottom}} \De s_i \, d_{x_i} = \sum_{i\ \in\ \hbox{top, bottom}} \De s_i \, d_{y_i} = 0\ ,\cr
+\hbox{rotations:}\qquad && \sum_{i\ \in\ \hbox{U detectors}} \De \rh_i = \sum_{i\ \in\ \hbox{V detectors}} \De \rh_i = 0\ .
 }}{final constraints}
 
-The final constraints \TODO{overconstrained}. So far we have discussed only the case where dim E = dim C, now also constraining also weak modes (dim E < dim C) and its danger when some of the weak modes are not that weak.
+The final set of constraints differs from the others in the sense that it includes some weak modes too. This means that the dimensions of the $\mat E$ and $\mat C$ matrices are different and one can not apply the arguments from the beginning of this section. The condition \Eq{cnst aux6} still remains valid, however, it does not fully determine $\vec\La$ and consequently \Eq{cnst aux7} does not hold. If all constraint vectors $\vec c$ were perpendicular to all regular modes $\vec r_i$ (like for homogeneous constraints), then one could obtain a generalization
+\eqref{\hat\vec\ch(\vec\et_E, \vec\et_W) = \vec\ch^0 + \mat E \vec\et_E + \mat W \vec\et_W\ ,}{cnst gen sol space}
+where the $\mat W$ matrix contains weak modes as columns. In this case, the $\vec\et$ parameters are still fully determined by the constraint values $\vec V$. However, fixed-detectors and final constrains do not fall even to this category and thus the difference $\hat\vec\ch - \vec\ch^0$ depends on the details of the $\mat S$ matrix. That means that the solution depends on the sample used. In other words, over-constraining may give rise to an extra error. \TODO{negligible in our case}.
 
-\TODO{Scaling of constraints with N}
+For the last comment, let's recall that the $\mat S$ scales with the number of events $N_{\rm events}$ (see \Eq{S norm eig val}). In order to simplify the interpretation of the eigenvalues of the alignment matrix (see \Eq{alignment equation}), it is advantageous to let the $\mat C$ matrix scale with $N_{\rm events}$ too. This effectively means to use
+\eqref{\mat C = N_{\rm events}\, \mat C^0\ ,}{C scaled}
+where $\mat C^0$ is one of the constraint choices above, which does not scale with the number of events.
 
 \subsection[al err]{Errors}
 
@@ -660,15 +667,20 @@ quantity & label\cr\ln
 }}}{al stat quan def}
 the term sigma is used as square-root of variance here, the full formulae used can be found in \Sc{stat estim}. The \rhs{} column lists the labels that will be used for these quantities.
 
-\Fg{al stat fixDet}: a statistical verification of the model of the pitch error. Just an example (that's why the fix-det constraints) \TODO{(any big differences beyond the dependence on theta ??? I hope not.)}. Systematical error is compatible with zero ($3\sigma$) \TODO{really? there is a syst. error induced by stat. error}, uncertainty falls as $1/\sqrt{N}$, statistical error over uncertainty almost flat, but below $1$ (error overestimations).
+An example of such a statistical study can be seen in \Fg{al stat fixDet}. Here we chose fixed-detectors type of constraints, with rotations fixed only in the near unit. This is the reason for much higher errors in the far unit (bottom part). Let us make three important observations. First, the systematical error is compatible with zero within the estimated error \TODO{with a small exception}. Second, the estimated uncertainty falls as $1/\sqrt{N_{\rm tracks}}$. Third, the ratio of statistical error to estimated uncertainty is almost flat, but below the expected value of one. This means that the uncertainty estimated with the help of the model \Er{pitch error model} is overestimated. However, the most important observation was the first one, that there is no bias.
 
-\fig{fig/pdf/al_stat_fixDet.pdf}{al stat fixDet}{Statistical study (20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad, fixed detector constraints (shr: 1200, 1201, 1248, 1249, rotz: 1200, 1201). Plane 3 in every RP. \TODO{dotted lines, number of iterations}}
+This was just an example, for other conditions and settings the results confirm the observations above. Another example can be found in \Fg{al stat final}.
 
-In some cases it is more difficult: reduced multi-strip cluster errors, see \Fg{al syst err pitch}. Pitch rounding effect is different for every seed while the reduced ms cluster error one is the same for every seed.
+\fig{fig/pdf/al_stat_fixDet.pdf}{al stat fixDet}{A statistical study of the alignment algorithm. We imposed a set of fixed-detectors constraints (for read-out shifts we fixed planes 1200, 1201, 1248 and 1249, for rotations 1200 and 1201). Every curve corresponds to the 3rd plane of a pot, see the legend. The near/far unit plots are at the top/bottom of the figure. The filled areas show $1\si$ error bands. The vertical dotted line marks a typical number of events in LHC runs.
+%[20 repetitions, geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad, 3 iterations]
+}
 
-\fig{fig/pdf/al_syst_err_pitch.pdf}{al syst err pitch}{it3 - precise3, near top RP, every plane by different color. For rotz similar behavior in scale -0.5 to +0.5 mrad}
+\Fg{al syst err pitch} demonstrates the impact of multi-strip-cluster uncertainties choice. The left plot shows the simulations for non-reduced uncertainties and confirms our previous statement about systematical errors. The picture changes dramatically when reduced uncertainties are used, see the right plot.
+%Pitch rounding effect is different for every seed while the reduced ms cluster error one is the same for every seed.
 
-Conclusion: if non-reduced msc errors are used, then: negligible syst. error and real stat. fluctuation is smaller that the estimated uncertainty.
+\fig{fig/pdf/al_syst_err_pitch.pdf}{al syst err pitch}{The systematical error in read-out shifts created by reduced multi-strip-cluster uncertainties. Every line corresponds to one plane in near top RP. The plots for rotations about $z$ look likewise in the scale from $-0.5$ to $0.5\un{\mu m}$. The size of the double-strip-cluster region (see \Fg{fast simulation scheme}) was kept at $50\percent$ of the pitch. The vertical dashed line marks the actual pitch.
+%it3 - precise3
+}
 
 \Fg{al err rotz rho} that we can not determine the rotation between U and V planes with sufficient precision. The estimated error is $1\un{mrad}$, while the uncertainty is 10 times higher. We will give up trying to resolve this alignment mode. \TODO{Comment of the far unit errors}.
 
