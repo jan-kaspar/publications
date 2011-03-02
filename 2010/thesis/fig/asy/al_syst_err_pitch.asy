@@ -89,8 +89,8 @@ void MakePage(string dir, string file1, string file2)
 			++i;
 		}
 		limits((0, -5), (200, +5), Crop);
-		yaxis(XEquals(66, false), dashed);
-		xaxis(YEquals(0, false), dashed);
+		yaxis(XEquals(66, false), dotted);
+		xaxis(YEquals(0, false), dotted);
 	
 		/*
 		NewPad("pitch $\un{\mu m}$", "rotation syst. error $\un{mrad}$", j, 2);

@@ -6,19 +6,6 @@ StdFonts();
 
 //---------------------------------------------------------------------------------------------------------------------
 
-string RPName(int rp)
-{
-	int R = rp % 10;
-	string r = "";
-	if (R == 0 || R == 4) r = "top";
-	if (R == 1 || R == 5) r = "bot";
-	if (R == 2 || R == 3) r = "hor";
-	
-	return r;
-}
-
-//---------------------------------------------------------------------------------------------------------------------
-
 void DrawResult(int id, real v, real e, pen p, marker m)
 {
 	real x = id;
@@ -60,7 +47,7 @@ void AddData(string file, string label)
 
 	labels.push(label);
 	pen p = StdPen(dataset_idx-1);
-	mark m = StdMark(opt_idx)+p+2.5pt;
+	mark m = StdMark(opt_idx)+p+1.5pt;
 	marks.push(m);
 
 	for (int id : a.shr.keys) {
@@ -137,18 +124,18 @@ void Finalize()
 	currentpad.yTicks = RightTicks(Step=Step, step=step);
 	yaxis(XEquals(rp_min*10+9.5, false), RightTicks("%", Step=Step, step=step));
 	yaxis(XEquals(rp_min*10+19.5, false), RightTicks("%", Step=Step, step=step));
-	label(RPName(rp_min+0), (rp_min*10+4.5, laby));
-	label(RPName(rp_min+1), (rp_min*10+14.5, laby));
-	label(RPName(rp_min+2), (rp_min*10+24.5, laby));
+	label("\strut "+RPName(rp_min+0, "%r"), (rp_min*10+4.5, laby));
+	label("\strut "+RPName(rp_min+1, "%r"), (rp_min*10+14.5, laby));
+	label("\strut "+RPName(rp_min+2, "%r"), (rp_min*10+24.5, laby));
 	
 	SetPad(pShRU);
 	limits((rp_min*10-0.5, -200), (rp_min*10+29.5, +200), Crop);
 	currentpad.yTicks = RightTicks(Step=Step, step=step);
 	yaxis(XEquals(rp_min*10+9.5, false), RightTicks("%", Step=Step, step=step));
 	yaxis(XEquals(rp_min*10+19.5, false), RightTicks("%", Step=Step, step=step));
-	label(RPName(rp_min+0), (rp_min*10+4.5, laby));
-	label(RPName(rp_min+1), (rp_min*10+14.5, laby));
-	label(RPName(rp_min+2), (rp_min*10+24.5, laby));
+	label("\strut "+RPName(rp_min+0, "%r"), (rp_min*10+4.5, laby));
+	label("\strut "+RPName(rp_min+1, "%r"), (rp_min*10+14.5, laby));
+	label("\strut "+RPName(rp_min+2, "%r"), (rp_min*10+24.5, laby));
 
 	Step = 1; step = 0.2; laby = 1.5;
 	SetPad(pRotZV);
@@ -156,18 +143,18 @@ void Finalize()
 	currentpad.yTicks = RightTicks(Step=Step, step=step);
 	yaxis(XEquals(rp_min*10+9.5, false), RightTicks("%", Step=Step, step=step));
 	yaxis(XEquals(rp_min*10+19.5, false), RightTicks("%", Step=Step, step=step));
-	label(RPName(rp_min+0), (rp_min*10+4.5, laby));
-	label(RPName(rp_min+1), (rp_min*10+14.5, laby));
-	label(RPName(rp_min+2), (rp_min*10+24.5, laby));
+	label("\strut "+RPName(rp_min+0, "%r"), (rp_min*10+4.5, laby));
+	label("\strut "+RPName(rp_min+1, "%r"), (rp_min*10+14.5, laby));
+	label("\strut "+RPName(rp_min+2, "%r"), (rp_min*10+24.5, laby));
 	
 	SetPad(pRotZU);
 	limits((rp_min*10-0.5, -2), (rp_min*10+29.5, +2), Crop);
 	currentpad.yTicks = RightTicks(Step=Step, step=step);
 	yaxis(XEquals(rp_min*10+9.5, false), RightTicks("%", Step=Step, step=step));
 	yaxis(XEquals(rp_min*10+19.5, false), RightTicks("%", Step=Step, step=step));
-	label(RPName(rp_min+0), (rp_min*10+4.5, laby));
-	label(RPName(rp_min+1), (rp_min*10+14.5, laby));
-	label(RPName(rp_min+2), (rp_min*10+24.5, laby));
+	label("\strut "+RPName(rp_min+0, "%r"), (rp_min*10+4.5, laby));
+	label("\strut "+RPName(rp_min+1, "%r"), (rp_min*10+14.5, laby));
+	label("\strut "+RPName(rp_min+2, "%r"), (rp_min*10+24.5, laby));
 	
 	Step = 5; step = 1; laby = -10;
 	SetPad(pFRotZV);
@@ -175,18 +162,18 @@ void Finalize()
 	currentpad.yTicks = RightTicks(Step=Step, step=step);
 	yaxis(XEquals(rp_min*10+9.5, false), RightTicks("%", Step=Step, step=step));
 	yaxis(XEquals(rp_min*10+19.5, false), RightTicks("%", Step=Step, step=step));
-	label(RPName(rp_min+0), (rp_min*10+4.5, laby));
-	label(RPName(rp_min+1), (rp_min*10+14.5, laby));
-	label(RPName(rp_min+2), (rp_min*10+24.5, laby));
+	label("\strut "+RPName(rp_min+0, "%r"), (rp_min*10+4.5, laby));
+	label("\strut "+RPName(rp_min+1, "%r"), (rp_min*10+14.5, laby));
+	label("\strut "+RPName(rp_min+2, "%r"), (rp_min*10+24.5, laby));
 	
 	SetPad(pFRotZU);
 	limits((rp_min*10-0.5, -15), (rp_min*10+29.5, +15), Crop);
 	currentpad.yTicks = RightTicks(Step=Step, step=step);
 	yaxis(XEquals(rp_min*10+9.5, false), RightTicks("%", Step=Step, step=step));
 	yaxis(XEquals(rp_min*10+19.5, false), RightTicks("%", Step=Step, step=step));
-	label(RPName(rp_min+0), (rp_min*10+4.5, laby));
-	label(RPName(rp_min+1), (rp_min*10+14.5, laby));
-	label(RPName(rp_min+2), (rp_min*10+24.5, laby));
+	label("\strut "+RPName(rp_min+0, "%r"), (rp_min*10+4.5, laby));
+	label("\strut "+RPName(rp_min+1, "%r"), (rp_min*10+14.5, laby));
+	label("\strut "+RPName(rp_min+2, "%r"), (rp_min*10+24.5, laby));
 
 	AttLeg();
 }
@@ -196,7 +183,7 @@ void Finalize()
 xSizeDef = 6.5cm;
 ySizeDef = 4cm;
 
-pen markupColor = paleyellow;
+pen markupColor = white;
 
 bool attachLegend = false;
 
@@ -235,14 +222,14 @@ void NewUnit(string _arm, string _unit)
 	attach(bbox(p, 1mm, nullpen, Fill(markupColor)));
 	
 
-	pShRV = NewPad("plane number", "shift in $\quad(\rm\mu m)$");
+	pShRV = NewPad("", "shift in $\quad(\rm\mu m)$");
 	pShRU = NewPad();
 	NewRow();
-	pRotZV = NewPad("plane number", "internal rotation $\quad(\rm mrad)$");
+	pRotZV = NewPad("", "internal rotation $\quad(\rm mrad)$");
 	pRotZU = NewPad();
 	NewRow();
 	pFRotZV = NewPad("plane number", "full rotation $\quad(\rm mrad)$");
-	pFRotZU = NewPad();
+	pFRotZU = NewPad("plane number", "");
 }
 
 

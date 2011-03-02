@@ -6,19 +6,6 @@ StdFonts();
 
 //---------------------------------------------------------------------------------------------------------------------
 
-string RPName(int rp)
-{
-	int R = rp % 10;
-	string r = "";
-	if (R == 0 || R == 4) r = "top";
-	if (R == 1 || R == 5) r = "bot";
-	if (R == 2 || R == 3) r = "hor";
-	
-	return r;
-}
-
-//---------------------------------------------------------------------------------------------------------------------
-
 void DrawResult(int id, real v, real e, pen p, marker m)
 {
 	real x = id;
@@ -60,7 +47,7 @@ void AddData(string file, string label)
 
 	labels.push(label);
 	pen p = StdPen(dataset_idx-1);
-	mark m = StdMark(opt_idx)+p+2.5pt;
+	mark m = StdMark(opt_idx)+p+1.5pt;
 	marks.push(m);
 
 	for (int id : a.shr.keys) {
@@ -117,6 +104,7 @@ void AttLeg()
 	
 	AttachLegend(legendTitle, (0, 0), (0, 0));
 	*/
+
 	NewPad(false, -1, yGridHintDef);
 	label(rotate(90)*Label(legendTitle));
 }
@@ -180,18 +168,18 @@ void Finalize()
 	currentpad.yTicks = RightTicks(Step=Step, step=step);
 	yaxis(XEquals(rp_min*10+9.5, false), RightTicks("%", Step=Step, step=step));
 	yaxis(XEquals(rp_min*10+19.5, false), RightTicks("%", Step=Step, step=step));
-	label(RPName(rp_min+0), (rp_min*10+4.5, laby));
-	label(RPName(rp_min+1), (rp_min*10+14.5, laby));
-	label(RPName(rp_min+2), (rp_min*10+24.5, laby));
+	label("\strut "+RPName(rp_min+0, "%r"), (rp_min*10+4.5, laby));
+	label("\strut "+RPName(rp_min+1, "%r"), (rp_min*10+14.5, laby));
+	label("\strut "+RPName(rp_min+2, "%r"), (rp_min*10+24.5, laby));
 	
 	SetPad(pFRotZU);
 	limits((rp_min*10-0.5, -15), (rp_min*10+29.5, +15), Crop);
 	currentpad.yTicks = RightTicks(Step=Step, step=step);
 	yaxis(XEquals(rp_min*10+9.5, false), RightTicks("%", Step=Step, step=step));
 	yaxis(XEquals(rp_min*10+19.5, false), RightTicks("%", Step=Step, step=step));
-	label(RPName(rp_min+0), (rp_min*10+4.5, laby));
-	label(RPName(rp_min+1), (rp_min*10+14.5, laby));
-	label(RPName(rp_min+2), (rp_min*10+24.5, laby));
+	label("\strut "+RPName(rp_min+0, "%r"), (rp_min*10+4.5, laby));
+	label("\strut "+RPName(rp_min+1, "%r"), (rp_min*10+14.5, laby));
+	label("\strut "+RPName(rp_min+2, "%r"), (rp_min*10+24.5, laby));
 
 	AttLeg();
 }
@@ -201,7 +189,7 @@ void Finalize()
 xSizeDef = 6.4cm;
 ySizeDef = 4cm;
 
-pen markupColor = paleyellow;
+pen markupColor = white;
 
 bool attachLegend = false;
 
@@ -237,8 +225,11 @@ void NewUnit(string _arm, string _unit)
 	pRotZU = NewPad("plane number", "rotation around $z\quad(\rm mrad)$");
 	NewRow();
 	*/
-	pFRotZV = NewPad("plane number", "rotation around $z\quad(\rm mrad)$");
-	pFRotZU = NewPad("plane number", "");
+
+	string xLabel = (_unit == "far") ? "plane number" : "";
+
+	pFRotZV = NewPad(xLabel, "rotation around $z\quad(\rm mrad)$");
+	pFRotZU = NewPad(xLabel, "");
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -257,7 +248,7 @@ string settings[] = {
 	"sr-fix-ext,4pl,1rotzIt=0,2units=t,overlap=f,3potsInO=t"
 };
 
-string arms[] = { "45", "56" };
+string arms[] = { "45" }; //, "56" };
 string units[] = { "near", "far" };
 	
 NewPad(drawAxes = false, 0, -1);
@@ -284,7 +275,7 @@ for (int a_i : arms.keys) {
 			NextDataSet();
 			for (int s_i : settings.keys) {
 				string file = source_dir+"/"+data_set+"/tb/"+runs+"/"+rps+"/"+settings[s_i]
-					+"/iteration4/cumulative_factored_results_Jan.xml";
+					+"/iteration5/cumulative_factored_results_Jan.xml";
 	
 				write(file);
 				AddData(file, data_set);

@@ -95,7 +95,7 @@ detNum = 3;
 
 rps = new int[] { 120, 121, 122, 123, 124, 125 };
 ylimits = new real[] { 6., 0, 1.};
-y_Steps = new real[] {1., 0, 0.2};
+y_Steps = new real[] {1., 0, 0.5};
 y_steps = new real[] {0.5, 0, 0.1};
 MakePlots("fcn_of_N/iteration>" + iteration, "_fcnN", "tracks analyzed", 1e2, 1e6, true);
 

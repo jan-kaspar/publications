@@ -57,7 +57,7 @@ Draw(1246, magenta+dashed);
 Draw(1256, cyan+dashed);
 
 ylimits(1e-1, 1e3);
-yaxis(XEquals(1e-4, false), dashed);
+yaxis(XEquals(1e-4, false), dotted);
 
 AttachLegend();
 
@@ -80,7 +80,7 @@ Draw(1247, magenta+dashed);
 Draw(1257, cyan+dashed);
 
 ylimits(1e-1, 1e3);
-yaxis(XEquals(1e-4, false), dashed);
+yaxis(XEquals(1e-4, false), dotted);
 
 AttachLegend();
 

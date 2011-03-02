@@ -1,4 +1,4 @@
-\chapter[alignment]{Alignment of Roman Pots}
+\chapter[al]{Alignment of Roman Pots}
 
 MOTIVATION: An accurate alignment is of major importance for the TOTEM experiment in order to deliver precise measurements. Among the subdetectors of TOTEM, the alignment of the RPs presents the biggest challenge since they are movable. The importance of alignment is most pronounced at the $\be^* = 1535\un{m}$ optics, where the beam divergence (the dominant smearing effect) is rather low and hence the impact of any misalignment has a large relevance. To give a feeling, a $100\un{\mu m}$ displacement of a vertical RP would lead to angular shift of about $0.4\un{\mu rad}$ (based on an effective length $L_y\approx 270\un{m}$, typical for this optics). This is to be compared to the spread of the beam divergence $0.3\un{\mu rad}$.
 
@@ -7,17 +7,17 @@ MOTIVATION: An accurate alignment is of major importance for the TOTEM experimen
 WHAT WE ALIGN, WRT WHAT:
 What is important is the relative position between RP sensors (the other parts do not matter much) and the beam. Hence there are two players in the game -- RP positions and beam positions.
 
-\section[alignment procedure]{Alignment procedure}
+\section[al proc]{Alignment procedure}
 The procedure has two steps. First, move the pots to the desired position as precisely as possible. Then take data, analyze them and find what error has been done in the first step.
 
 The first step relies mainly on two types devices -- RP motor control and Beam Position Monitors (BPMs). Both are calibrated to determine position of outer edge of the window or the beam with respect to the ideal beam-pipe center.
 
 For the second step, a number of methods is available. Undoubtedly, one of the most powerful ones is the track-based alignment. It uses the tracks passing through the overlap between vertical and horizontal RPs and is, hence, capable of determining the relative position between the pots. Its strength is underlined by the fact that it is based on a single assumption: tracks are straight lines. To determine the position of the beam, other methods must be used. One may profit from know symmetries of certain physics processes. Here, the analysis becomes delicate because in the observables the properties of the processes are mixed with the properties of the optics. This gives a certain superiority to elastic scattering. This process is often easy to separate and hence can provide a clean sample, as the first argument. As the second one, it comprises two protons exactly in the opposite direction and can thus be used for the alignment of the opposite arms of the experiment. Yet another advantage the protons have, by definition, zero momentum-loss and therefore, the dependence on the optics is largely reduced.
 
-Reference to \sref{expected misalignments}.
+Reference to \Sc{al exp misal}.
 As it follows from \Sc{rp measurement}, only the rotation around $z$ axis is relevant.
 
-\section[expected misalignments]{Expected misalignments}
+\section[al exp misal]{Expected misalignments}
 
 Let's first asses what may go wrong and what are the corresponding misalignment estimates.
 
@@ -40,7 +40,7 @@ This also gives estimate about the rotation
 \hbox{rotation around }z & & \cr\bln
 }
 
-\section{Collimation alignment}
+\section[al collim]{Collimation alignment}
 
 PUT THIS TO INTRODUCTION? In principle both \abb{BPM}s and \abb{RP} motor controls should have been calibrated such that they give the position of beam/RP edge with respect to the beam-pipe center. However, a cross-check is always good. Moreover, this exercise was needed for the alignment against the system of the LHC collimators.
 
@@ -61,7 +61,7 @@ Note that the offsets are determined with respect to the beam center (not the be
 
 \fig{fig/pdf/collimationAlignment.pdf}{collimation alignment}{How to determine LVDT offsets with collimation alignment. The beam is drawn in blue, its envelope with solid and its ceter with dashdotted line. The origins of the LVDT scales are marked with red dots.}
 
-\section{Track--based alignment}
+\section[al tb]{Track--based alignment}
 
 \TODO{few notes about the implementation in OfflineSW}
 
@@ -146,7 +146,7 @@ and
 
 
 
-\subsection{Simultaneous fit of track and alignment parameters}
+\subsection[al sim fit]{Simultaneous fit of track and alignment parameters}
 
 This idea was first implemented in Millepede (see \bref{millepede}). Here we use different notation as this work as been done independently.
 
@@ -230,7 +230,7 @@ Since $\mat\si^n$ is singular (and so $\mat S$ might be \TODO{...}), one had bet
 }
 
 
-\subsection[fit equation]{Justification of the alignment equation}
+\subsection[al fit eq]{Justification of the alignment equation}
 
 As we will show in the following, the $\mat S$ matrix is singular and therefore the identity \Eq{BlockInverse} cannot be used. Thus, it is important to justify the validity of the final result \Eq{fit equation}. By plugging \Eq{vec R,todo1} to the definition of $\tilde\vec T$ in \Eq{fit equation} one obtains
 \eqref{\tilde\vec T =
@@ -621,7 +621,7 @@ The uncertainties of the $\vec\ch$ vector components can be found on the diagona
 
 \Tb{al iter} shows the principle of iterations. The symbol $\vec\ch$ represents a state of the alignment, thats is geometrical corrections to be applied on the basic geometry. The numerical lower indices refer to the relevant iteration, $\vec\ch_0$ stands for the initial alignment. The correction obtained in $i$-th iteration is denoted $\De \vec\ch_i$. The expression in the right-hand side column summarizes our understanding of the errors. That is the correction shall be equal to the difference between the actual alignment $\vec\ch$ and the pre-iteration alignment $\vec\ch_{i-1}$ (modulo constraints -- filter matrix ${\cal F}_{\rm constr}$) altered by the statistical ($\De \vec\ch_{\rm stat}$) and systematical ($\De \vec\ch_{\rm syst}$) errors. For a given sample the statistical error (given by the pitch rounding) is constant (when not changing the cut parameters which would modify the sample). The systematical error depends on ''how far we are from the actual alignments,'' that is $\vec\ch - \vec\ch_i$. The iterations continue as long as the corrections are important (their size is larger than a limit). In the LHC data analysis, two iterations turned out to be sufficient. That is the correction in the third one was already negligible.
 
-After the iteration process has converged, the final error still have two components -- the statistical and the systematical. The latter one is proportional to the distance to the actual alignments. The distance can not vanish because of two reasons -- the constraints (some alignment modes remain undetermined) and the statistical error. \Fg{al syst err uv rot,al syst err fn rot} show the systematical errors due to undermined U-V and far-near unit rotations. \TODO{The systematical error induced by the statistical error}
+After the iteration process has converged, the final error still have two components -- the statistical and the systematical. The latter one is proportional to the distance to the actual alignments. The distance can not vanish because of two reasons -- the constraints (some alignment modes remain undetermined) and the statistical error. \Fg{al syst err uv rot,al syst err fn rot} show the systematical errors due to undermined $U$-$V$ and far-near unit rotations. \TODO{The systematical error induced by the statistical error}
 
 \tab[\strut\hfil#\qquad&#\hfil\qquad&#\hfil\cr]{al iter}{A scheme of alignment iterations with the error evolution.}{\ln
 			& alignment & correction \cr\ln
@@ -677,69 +677,101 @@ This was just an example, for other conditions and settings the results confirm 
 
 \Fg{al syst err pitch} demonstrates the impact of multi-strip-cluster uncertainties choice. The left plot shows the simulations for non-reduced uncertainties and confirms our previous statement about systematical errors. The picture changes dramatically when reduced uncertainties are used, see the right plot.
 %Pitch rounding effect is different for every seed while the reduced ms cluster error one is the same for every seed.
+That is why we will always use the non-reduced uncertainties in all following simulations and experimental data analyses.
 
-\fig{fig/pdf/al_syst_err_pitch.pdf}{al syst err pitch}{The systematical error in read-out shifts created by reduced multi-strip-cluster uncertainties. Every line corresponds to one plane in near top RP. The plots for rotations about $z$ look likewise in the scale from $-0.5$ to $0.5\un{\mu m}$. The size of the double-strip-cluster region (see \Fg{fast simulation scheme}) was kept at $50\percent$ of the pitch. The vertical dashed line marks the actual pitch.
+\fig{fig/pdf/al_syst_err_pitch.pdf}{al syst err pitch}{The systematical error in read-out shifts as a function of the detector pitch. The error shown in the r.h.s.{} plot is due to the use of the reduced multi-strip-cluster uncertainties. Every line corresponds to one plane in near top RP. The plots for rotations about $z$ look likewise in the scale from $-0.5$ to $0.5\un{\mu m}$. The size of the double-strip-cluster region (see \Fg{fast simulation scheme}) was kept at $50\percent$ of the pitch. The vertical dotted line marks the actual pitch.
 %it3 - precise3
 }
 
-\Fg{al err rotz rho} that we can not determine the rotation between U and V planes with sufficient precision. The estimated error is $1\un{mrad}$, while the uncertainty is 10 times higher. We will give up trying to resolve this alignment mode. \TODO{Comment of the far unit errors}.
+It has been revealed by \Fg{al eig rho} that the $\mat S$ eigenvalues related to the $z$ shifts are rather low. One can, thus, expect large alignment errors and, indeed, \Fg{al err shz theta} confirms this expectation. The uncertainty never falls below $1\un{m}$ \TODO{compare to the misalignment expectation}. For the realistic beam divergence (dashed vertical line) the uncertainty is of the order of $10\un{m}$, which effectively means that there is no way to perform $z$-shift alignment.
 
-\TODO{Comment on the saturation at about $10\un{mrad}$ -- higher angles cannot be detected by both units.}
+Let us remark one feature of \Fg{al err shz theta} that is common for all $\si(\vec a)$ dependences -- the saturation above $\si(\vec a) \gs 10\un{mrad}$. The reason is simple, the $10\un{mrad}$ is roughly the maximum angle that can be detected by both units. Thus tracks of higher angles do not contribute.
 
-\fig{fig/pdf/al_err_rotz_rho.pdf}{al err rotz rho}{Rotation statistical error as a function of RMS of $\rh$. No misalignment (misaligned and real geometry contain detectors rotated with the given rho distribution). 1000 events. Extfit=false. fix-bas constraints, the fixed rotation in 1200. Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7).}
+\fig{fig/pdf/al_err_shz_theta.pdf}{al err shz theta}{The estimated uncertainty of $z$ shifts as a function of the track divergence $\si(\vec a)$. Simulations performed with $1000$ events and fixed-detectors constraints (fixed planes for $z$-shifts: 1200, 1201, 1248 and 1249). Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7). (The dashed lines are mostly covered by the solid ones in this picture.) The dotted vertical line shows the realistic track divergence.
+%No misalignment, fix-ext constraints (rotz in 1200, 1201; shz in 1200, 1201, 1248 and 1249), extfit=f.
+}
 
-\Fg{al err shz theta} shows that the error of $z$ shift is huge \TODO{an expectation for comparison}. Even with high slopes, the uncertainty does not drop below $1\un{m}$. We will abandon the $z$-alignment.
+A similar situation takes place for relative $U$-$V$ rotations (see the rising $\mat S$ eigenvalue in \Fg{al eig rho}). \Fg{al err rotz rho} then confirms the expectation of large uncertainty of the rotation between $U$ and $V$ planes. In these simulations we modified the basic geometry -- instead of the nominal rotations $\rh_i$ we used $\rh_i + \de\rh_i$, where $\de\rh_i$ were randomly generated according to Gaussian distribution with zero mean and variance as indicated on the horizontal axes. Let us focus on the rotations in the near unit only (the far-near rotation issues will be discussed later, e.g. in \Fg{al err rotz theta}). Since we fixed the rotation of plane 1200, which is a $V$ plane, the uncertainties of all $V$ planes stays low (see the left plot). For $U$ planes one finds similar uncertainties for $\de\gs 0.1\un{rad}$ only. As one approaches the nominal geometry, the uncertainty grows almost like $1/\si(\de\rh)$. The expected rotational deviations from the nominal geometry are $\si(\de\rh) \approx 5\un{mrad}$ (see the vertical dotted lines). At this point, the $U$ uncertainties are about $10$ times larger that the $V$ ones. For typical LHC runs one can expect $10^5$ tracks, which give reduction factor of $10$ with respect to the uncertainties in the figure. This would mean $U$-$V$ rotation uncertainties of the order of $1\un{mrad}$, which is the misalignment expectation. Therefore the track-based alignment is unable to provide reasonable corrections to the relative $U$-$V$ rotations.
 
-\fig{fig/pdf/al_err_shz_theta.pdf}{al err shz theta}{$z$ shift statistical error as a function of RMS of $\vec a$. No misalignment, fix-ext constraints (rotz in 1200, 1201; shz in 1200, 1201, 1248 and 1249), 100 events, extfit=f. Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7).}
+\fig{fig/pdf/al_err_rotz_rho.pdf}{al err rotz rho}{The estimated uncertainty of rotations about $z$ as a function of $\si(\de\rh)$ ($\de\rh$ gives the detector rotation difference from the nominal geometry). Simulations done with $1000$ events, fixed-detectors constraints and $\si(\vec a) = 0.1\un{mrad}$. The fixed for rotations was 1200 (a $V$ plane). Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7). (The dashed lines are mostly covered by the solid ones in this picture.) The vertical dotted line shows the realistic deviation from the nominal geometry.
+%No misalignment (misaligned and real geometry contain detectors rotated with the given rho distribution). 1000 events. Extfit=false. fix-bas
+}
 
-\fig{fig/pdf/al_err_rotz_theta.pdf}{al err rotz theta}{Rotation statistical error as a function of RMS of $\vec a$. No misalignment, fix-ext constraints(rotz in 1200 and 1201). 1000 events, extfit=f. Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7).}
+If \Fg{al eig theta} we have seen that the eigenvalues of the linearly-progressive rotations depend strongly on the track divergence $\si(\vec a)$. Recalling the RP station geometry \TODO{reference} one can see the large gap in $z$ between the near and far units. These two facts may make us expect large uncertainties of the relative far-near rotation in the case of very parallel tracks. This is demonstrated in \Fg{al err rotz theta}. The uncertainties get saturated above $\approx 10\un{mrad}$, below they roughly follow $1/\si(\vec a)$. The lowest uncertainties can be found in the near top and bottom pots (the fixed planes are in the top RP). The near horizontal pot takes a bit higher uncertainty, it is $??\un{cm}$ downstream from the near verticals. The uncertainty of all the far pots is about $10$ times higher than of the near horizontal. If we take the typical LHC track divergence (vertical dotted line) and number of tracks ($10^5$), we are left with the far-pot rotation uncertainty of the order of $1\un{mrad}$. Since the misalignment estimate is\TODO{??}, it turns out that track-base alignment can not improve our knowledge of the far-near rotation.
+
+\fig{fig/pdf/al_err_rotz_theta.pdf}{al err rotz theta}{The estimated uncertainty of rotation about $z$ as a function of the track divergence $\si(\vec a)$. Simulations performed with $1000$ events and fixed-detectors constraints (fixed planes for rotations: 1200 and 1201). Solid lines correspond to planes near the RP entry (2 or 3), while dashed near the RP exit (6 or 7). The dotted vertical line shows the realistic track divergence.
+%No misalignment, extfit=f. 
+}
+
+\Fg{al err rotz rho,al err rotz theta} provide another motivation to use of the final constraints (see \Eq{final constraints}). However, as it was mentioned in \Sc{al constr}, constraining weak modes (with low but non-zero eigenvalues) may lead to additional errors -- they are plotted in \Fg{al err overconstraints}. For every value of track divergence, we have made 20 simulations (with different random seeds). On this sample we have evaluated the sigma of the reference result (statistical error) and the mean difference between the reference and ideal result (systematical error). As expected, both errors are negligible for low values of $\si(\vec a)$, which is still true for the typical LHC track divergence (the vertical dotted line). For large $\si(\vec a)$ values the errors become relevant, however, in this case one could determine the far-near rotation and a ''lighter'' set of constraints could be used. The simulations used in \Fg{al err overconstraints} were performed with a misalignment scenario with the far-near rotation of $10\un{mrad}$. Let us remark that if a misalignment with no far-near rotations was used, the additional errors would vanish.
+
+\fig{fig/pdf/al_err_overconstraints.pdf}{al err overconstraints}{The errors due to constraining the weak modes in the final set of constraints, plotted as a function of the track divergence $\si(\vec a)$.Every line corresponds to a detector in the near top RP. The dashed lines represent $V$ detectors while the solid $U$ detectors. The vertical dotted line marks the typical LHC track spread.
+% Jan(round=f,extFit=t) - Ideal, 3 iterations, 
+}
+
+As already revealed by \Fg{al stat fixDet}, the systematical error is practically negligible. But still, let us explore them a bit more in detail. As discussed in \Sc{al err}, the systematical errors may arise either from the linearization of the rotation matrix, which gives a negligible contribution, or from undetermined alignment modes (they bias the $\ga$ coefficients). With the final constraints the are two types of undetermined modes: $U$-$V$ and far-near rotations. 
+
+To study the systematical errors due to undetermined $U$-$V$ rotation, we have a created a set of misalignments scenarios. They all have had no read-out shift misalignment. The rotations have been generated according to Gaussian distributions with $\si = 1\un{mrad}$. The mean has been zero for $V$ detectors, for $U$ detectors as indicated on the horizontal axes in \Fg{al syst err uv rot}. One can see the errors are practically zero for $U$ detectors (solid lines), but non-zero for $V$ (detectors). This can be easily understood from the form of the $\ga$ coefficient for rotations (see \Tb{alignment quantities}) -- it contains the direction perpendicular to the read-out one. And in the nominal geometry, the direction perpendicular to $U$ is $\pm V$ and vice versa. Hence by neglecting (not determining) the rotations of $U$ detectors, one biases the $\ga$ coefficients for $V$ detectors (and gives raise to the related error).
+
+\fig{fig/pdf/al_syst_err_uv_rot.pdf}{al syst err uv rot}{Systematical errors due to undetermined $U$-$V$ rotation $\De_{U-V}\rh$. The simulations have done with $\si(\vec a) = 0\un{mrad}$, final constraints and a special track distribution -- uniform on $0\un{mm}<x<10\un{mm}$ and $-20\un{mm}<y<20\un{mm}$. This distribution is closer to the typical LHC one and, moreover, amplifies the effect. Every curve corresponds to a detector in the near top RP ($V$ detectors are dashed, $U$ solid).
+%geometry 2.7x3.3, Jan(round=f, extfit=f) - Jan(f, t), 3 iterations
+}
+
+A similar study has been performed for the far-near rotations, the results are in \Fg{al syst err fn rot}. Again, the misalignment scenarios had no read-out shifts. The rotations in the near unit were generated according to a Gaussian distribution with zero mean and $\si=1\un{mrad}$. The rotations in the far unit had the same sigma, but the mean as indicated on the horizontal axes of the figure. The figure is showing the results for the top far RP, for the near unit the effects are smaller by an order. The fact that the $V$ detectors have very low error is just a coincidence.
+\TODO{Note the increasing difference between U and V detectors.}
+
+\fig{fig/pdf/al_syst_err_fn_rot.pdf}{al syst err fn rot}{Systematical errors due to undetermined far-near rotation $\De_{F-N}\rh$. The simulations have done with $\si(\vec a) = 0\un{mrad}$, final constraints and a special track distribution (the same as in \Fg{al syst err uv rot}). Every curve corresponds to a detector in the far top RP ($V$ detectors are dashed, $U$ solid).
+%geometry 2.7x3.3, 3 iterations, Jan(round=f, extfit=f) - Jan(f, t)
+}
+
+\Fg{al err rotz rho,al err rotz theta} gave us the motivation to use the final constraints, \Fg{al err overconstraints,al syst err uv rot,al syst err fn rot} reassured us that there is no relevant systematical error. To conclude this section, we include an equivalent of \Fg{al stat fixDet}, but with the use of the final constraints: \Fg{al stat final}. The interpretation is equivalent too: no systematical error and slightly overestimated uncertainty.
+
+\fig{fig/pdf/al_stat_final.pdf}{al stat final}{A statistical study of the alignment algorithm with the final constraints. Every curve corresponds to the third plane of a RP, see the legend. The filled areas represent $1\si$ error bands. The vertical dotted lines mark the typical number of tracks in LHC runs.
+%(20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad.
+}
 
 
-Systematical errors now. Still in game
-\> cosine correction (at rhos around 10mrad, it is negligible to the other error contributions)
-\> biased gamma factors due to undetermined rotations
-\>> u-v
-\>> f-n
-
-\Fg{al syst err uv rot}. misalignment: shr zero, rotations in V det. sigma~1mrad, mean 0, rotations in U detectors as indicated on the hor. axis. Diff. between Jan(round=f, extfit=f) and Jan(f, t). Note that the error is created in V detectors while U detectors have the problem. \TODO{Explain}.
-
-\fig{fig/pdf/al_syst_err_uv_rot.pdf}{al syst err uv rot}{Systematical errors due to undetermined uv rotation. near top RP (V det dashed, U solid, near pair same color), geometry 2.7x3.3, final constraints, special tr.dist x:box(5,10) y:box(0,20), it3 - precise3, theta=0mrad, }
-
-\Fg{al syst err fn rot}. Misalignment: shr zero, rotations in near unit sigma~1mrad, mean 0, rotations in far unit sigma~1mrad and mean as indicated on the horizontal axis. Diff. between Jan(round=f, extfit=f) and Jan(f, t). Note the increasing diff. between U and V detectors.
-
-\fig{fig/pdf/al_syst_err_fn_rot.pdf}{al syst err fn rot}{Systematical errors due to undetermined uv rotation. far top RP (V det dashed, U solid, near pair same color) (errors in near much lower!), geometry 2.7x3.3, final constraints, special tr.dist x:box(5,10) y:box(0,20), it3 - precise3, theta=0mrad, }
-
-\Fg{al stat final}: another example of the statistical convergence. One more ''insurance'' that the final procedure would work.
-\fig{fig/pdf/al_stat_final.pdf}{al stat final}{Statistical study (20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad, final constraints. Plane 3 in every RP. Dashed lines}
-
-
-\subsection{Input data selection}
+\subsection[al data sel]{Input data selection}
 
 With the fast Monte-Carlo one a priory knows that there was exactly one track per event and that all detector hits belong to this track. Consequently all track-fit residuals follow from misalignments. This is not true for real data. There might be a number of tracks per event, moreover different in every RP. There might be a number of hits that do not belong to any particle track -- noise, data corruption. That is why it is necessary to select carefully the input for the track-based alignment. It is better to loose some statistics than to bias the results with false input.
 
-\> the algorithm
+The selection algorithm has two components: hit selection and event selection. In the first one some hits are removed, since they are doubtful. In the latter one, entire events are dropped.
 
+The hit selection is integrated with track fitting and can be described as follows.
+\bitm
+\itm Input: the collection of all hits from all detectors and all RPs.
+\itm Local track fit (parameterization \Eq{local track}).
+\itm Outlier removal: remove all points for which
+\eqref{m_i - \hat m_i > n\, \si(m_i)\ ,}{al outlier cond}
+where $\hat m_i = \vec d_i \cdot (\vec a^n z_i + \vec b^n)$ is the track interpolation and $\si(m_i)$ is the corresponding measurement error. $n$ is a parameter of the algorithm.
+\itm Remove all hits from RPs where there are less hits per projection than a given limit $L$.
+\itm If some points have been removed, go back to step 2. Stop otherwise.
+\eitm
+
+The event selection starts with a $\ch^2$ cut, that is all events with track fits the $\ch^2/\hbox{n.d.f.}$ of which exceeds a certain limit are discarded. Then, there are few optional (they can be switched on or off) boolean checks:
+\> remove events with signal in a top and a bottom pot simultaneously,
+\> require signal in both units,
+\> require signal in the overlap between horizontal and vertical pots and
+\> if there is signal in the overlap, require signal in at least three pots.
+
+\TODO{
+\> iterations, making cuts more strict
 \> the cuts -- depend on situation, don't give values here but only later
+}
 
-\subsection{Roman Pot alignment}
+\subsection[al rp fac]{Roman Pot alignment}
 
-Alignment of the entire RPs -- factorization process.
+The basic elements in the track-based alignment are the detectors (sensors). Only these provide measurements and only these can be aligned. On the other side, the sensors are inserted (per groups) in RP and thus, they share (per groups) common misalignments. One could, therefore, try to extract these common misalignments and call them \em{RP alignments}. However, this should be still understood in the sense of common shifts and rotations of the sensors in a RP. A full alignment of RPs can to be obtained with track-based alignment.
 
-
+\> the algorithm
+\> why slopes not extracted
+\> why errors not used
 
 \subsection[al exp res]{Experimental results}
 
-There are 3 sources
+There are 3 sources: optical metrology, beam-tests in H8 and LHC data.
 
-\> Optical metrology
-
-\> beam-tests in H8
-\>> The method has been applied to test-beam and commissioning data for all 12 RPs installed in the tunnel.
-\>> Give statistics table (muon/cosmics run, total events, useful events, cut-off/low-quality events)...
-
-\> LHC runs
-
-(A) Internal alignment comparison
+\ssubsection{Optical metrology}
 
 The position of the detectors within the RP assembly has been measured. There are 3 reference points on a detector and one point on the RP. For each detector a zoomed high resolution photo was taken and a relative position of the points 1 and 2 (see \Fg{opticalMetrology}) and the RP reference point was measured. Theoretical values and results are summarized in \Tb{metrology theoretical}. The precision of this measurement is $\approx 10\un{\mu m}$.
 
@@ -762,9 +794,39 @@ Shifts and rotations are extracted as follows
 \eqref{x\hbox{ shift} = {x_1 + x_2\over 2} - \bar x,\qquad y\hbox{ shift} = {y_1 + y_2\over 2} - \bar y}{metrology shift}
 where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values displayed in \Tb{metrology theoretical}
 
+\subsection{beam-tests in H8}
+
+\>> The method has been applied to test-beam and commissioning data for all 12 RPs installed in the tunnel.
+\>> Give statistics table (muon/cosmics run, total events, useful events, cut-off/low-quality events)...
+
+\ssubsection{LHC runs}
+
+\> Standard processing of the LHC data.
+\>> minimumHitsPerProjectionPerRP=4
+\>> process.RPStraightTrackAligner.removeImpossible = True
+\>> requireBothUnits="True"
+\>> requireOverlap="False"
+\>> requireAtLeast3PotsInOverlap="True"
+\>> constraintsType="final"; constraintsLabel="fin"
+\>> iterations=5;
+\>> optimize=("s" "s" "sr")
+\>> maxResidualToSigma=(100 10 10 3);
+\>> chiSqPerNdfCut=(5000 50 50 5)
+
+\> LHC runs (maybe a table?)
+\>> typical number of tracks used
+\>> typical angular distributions
+\>> list of data-takings
+
+
+\ssubsection{Comparisons}
+
+(A) Internal alignment comparison
+
+
 \fig{fig/pdf/al_comp_det_per_pot.pdf}{al comp det per pot}{Internal alignment comparison. \TODO{chose 2 or 3 pots that would show all things worth discussing - compatible and non-compatible results, possible linearly progressive rotation, etc.}}
 
-(B) show that U-V and N-F rotations can not be determined from beam-test/LHC data. Is there any hint from the optical metrology.?
+(B) show that $U$-$V$ and N-F rotations can not be determined from beam-test/LHC data. Is there any hint from the optical metrology.?
 
 Trying to solve
 $$\bar \mat S \vec\ch = \vec T \equiv \mat S \vec\ch^0 $$
@@ -774,12 +836,13 @@ Hence for the weak modes the error contribution is
 $$\De\vec T\over\la$$
 which can grow big as $\la\to 0$
 
-\fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment comparison with fixed-detectors constraints. Shows full rotation about z.}
+\Fg{al comp det per unit weak}: all runs possible (even without horizontal RPs), start at "standard" results, 5 iterations then, fix-ext
 
+\fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment comparison with fixed-detectors constraints (rotz: 1200, 1201). Shows full rotation about z. October 24 (black), 26 (red), 29-30 (blue), sector 45}
 
 (C)  LHC results per unit (choose one typical) on detector level
 
-\fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with final constraints. Unit 56 near.
+\fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with final constraints. Unit 56 near. Data from 24 Aug to 29-30 Oct.
 \TODO{Shift comparision is misleading because of different geometries!}
 }
 
@@ -794,12 +857,16 @@ Why analyses with overlap true and false?
 \> If tracks were hitting only a very small part of the detector, the corresponding gamma coefficient would be almost constant and the rotation would be indistinguishable from shifts. In case of wrongly determined rotations, one would expect rather different results here and when the ga distribution is large.
 \> The overlap=true does both things as above: smaller sample and tracks accumulated in a rather small area.
 
-\section{Profile methods}
+\section[al prof]{Profile methods}
 
 \> Hit rate comparison
 \> Hit spatial distributions
 \> Kinematic peak method
 
-\section{Elastic Alignment}
+\section[al elast]{Elastic Alignment}
 
-\section{Summary (if any)}
+\section[al sum]{Summary}
+
+\> tasks accomplished/non-accomplished
+\> final uncertainty
+\> error impact on the physics reconstruction

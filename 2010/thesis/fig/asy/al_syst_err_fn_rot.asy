@@ -2,7 +2,7 @@ include "../alignment/common_code.asy";
 import pad_layout;
 
 xSizeDef = 5.9cm;
-ySizeDef = 5.9cm;
+ySizeDef = 4.9cm;
 
 StdFonts();
 

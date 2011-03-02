@@ -9,7 +9,7 @@ xSizeDef = 6cm;
 string rhos[] = { "0.2E-3", "0.4E-3", "0.6E-3", "0.8E-3", "1E-3", "2E-3", "3E-3", "4E-3", "5E-3", 
 	"10E-3", "20E-3", "30E-3", "40E-3", "50E-3", "500E-3", "1000" }; 
 
-NewPad("$\si(\rh)\un{rad}$", "rotation uncertainty $(\rm mrad)$");
+NewPad("$\si(\de\rh)\un{rad}$", "rotation uncertainty $(\rm mrad)$");
 scale(Log, Log);
 
 guide graphs[];
@@ -50,13 +50,13 @@ Draw(1246, magenta+dashed);
 Draw(1256, cyan+dashed);
 
 ylimits(1e-1, 1e3);
-yaxis(XEquals(5e-3, false), dashed);
+yaxis(XEquals(5e-3, false), dotted);
 
 AttachLegend();
 
 //---------------------------------------------------------------------------------------------------------------------
 
-NewPad("$\si(\rh)\un{rad}$", "rotation uncertainty $(\rm mrad)$");
+NewPad("$\si(\de\rh)\un{rad}$", "rotation uncertainty $(\rm mrad)$");
 scale(Log, Log);
 Draw(1203, black);
 Draw(1213, red);
@@ -73,7 +73,7 @@ Draw(1247, magenta+dashed);
 Draw(1257, cyan+dashed);
 
 ylimits(1e-1, 1e3);
-yaxis(XEquals(5e-3, false), dashed);
+yaxis(XEquals(5e-3, false), dotted);
 
 AttachLegend();
 
