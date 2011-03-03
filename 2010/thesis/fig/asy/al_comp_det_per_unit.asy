@@ -34,10 +34,55 @@ pad pShRV, pRotZV, pFRotZV;
 real f_shr_e, f_rotz_e;
 real f_shr = 1.;
 
-
 string arm, unit;
 string labels[];
 mark marks[];
+
+//---------------------------------------------------------------------------------------------------------------------
+
+void AddFits(string file)
+{
+	Alignment a;
+	if (ParseXML(file, a) > 0)
+		return;
+
+	for (int r = 120; r < 123; ++r) {
+		for (int proj = 0; proj < 2; ++proj) {
+			real S1=0, Sx=0, Sxx=0, Sy=0, Sxy=0;
+			for (int p = 0; p < 10; ++p) {
+				bool v_proj = (proj == 0);
+				bool v_plane = (p % 2 == 0);
+				if (r == 122)
+					v_plane = !v_plane;
+				if (v_proj != v_plane)
+					continue;
+
+				int id = 10*r + p;
+				real x = id;
+				real y = a.shr[id];
+				S1 += 1;
+				Sx += x;
+				Sxx += x*x;
+				Sy += y;
+				Sxy += x*y;
+			}
+			
+			real det = Sxx*S1 - Sx*Sx;
+			if (det == 0)
+				continue;
+
+			real a = (S1*Sxy - Sx*Sy)/det;
+			real b = (Sy*Sxx - Sx*Sxy)/det;
+			real x_min = r*10, x_max = r*10+9;
+	
+			pad p = (proj == 0) ? pShRV : pShRU;
+			SetPad(p);
+			draw((x_min, a*x_min+b)--(x_max, a*x_max+b), dashed);
+		}
+	}	
+}
+
+//---------------------------------------------------------------------------------------------------------------------
 
 void AddData(string file, string label)
 {
@@ -137,7 +182,7 @@ void Finalize()
 	label("\strut "+RPName(rp_min+1, "%r"), (rp_min*10+14.5, laby));
 	label("\strut "+RPName(rp_min+2, "%r"), (rp_min*10+24.5, laby));
 
-	Step = 1; step = 0.2; laby = 1.5;
+	Step = 1; step = 0.2; laby = -1.5;
 	SetPad(pRotZV);
 	limits((rp_min*10-0.5, -2), (rp_min*10+29.5, +2), Crop);
 	currentpad.yTicks = RightTicks(Step=Step, step=step);
@@ -283,6 +328,9 @@ for (int a_i : arms.keys) {
 	
 				write(file);
 				AddData(file, data_set+", "+((s_i == 0) ? "all tracks" : "overlap tracks only"));
+			
+				if (d_i == 0 && s_i == 0)
+					AddFits(file);
 			}
 		}
 	}

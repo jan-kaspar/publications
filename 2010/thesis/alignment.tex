@@ -103,13 +103,14 @@ The first term on the \rhs{} of \Eq{effective measurement} accounts for the meas
 +
 \underbrace{\sum_j \ga_{j, i}^n \ch_{j, i}}_{\hbox{alignment corrections}}
 \ ,}{effective measurement 2}
-introducing symbol $\ch_{j, i}$ for any misalignment. The mapping between the index $j$ and misalignment type can be found in \Tb{alignment quantities}.
+introducing symbol $\ch_{j, i}$ for any misalignment. The mapping between the index $j$ and misalignment type can be found in \Tb{alignment quantities}. It will become useful to define shift in read-out direction as
+\eqref{\De s_i \equiv \vec d_i \cdot \De c_i\ .}{al shr def}
 
 \htab{alignment quantities}{Alignment quantities and their coefficients.}{\bln
 j & \hbox{quantity} & \ch_{j, i}					& \ga_{j, i}^n\cr\bln
-1 & \hbox{shift in read-out direction} & \De s_i \equiv \vec d_i^\T \De\vec c_i		& -1\cr\ln
+1 & \hbox{shift in read-out direction} & \De s_i 	& -1\cr\ln
 2 & \hbox{shift in }z & \De z_i						& \vec d_i^\T \vec a^n  \cr\ln
-3 & \hbox{rotation around}z & \De\rh_i					& \vec d_{\perp i}^\T (\vec a^n z_i + \vec b^n - \vec c_i)\cr\bln
+3 & \hbox{rotation around}z & \De\rh_i				& \vec d_{\perp i}^\T (\vec a^n z_i + \vec b^n - \vec c_i)\cr\bln
 }
 
 \Eq{effective measurement 2} can be written for all events in a compact form using matrix formalism. Let's put all measurements to a vector
@@ -761,22 +762,51 @@ The event selection starts with a $\ch^2$ cut, that is all events with track fit
 
 \subsection[al rp fac]{Roman Pot alignment}
 
-The basic elements in the track-based alignment are the detectors (sensors). Only these provide measurements and only these can be aligned. On the other side, the sensors are inserted (per groups) in RP and thus, they share (per groups) common misalignments. One could, therefore, try to extract these common misalignments and call them \em{RP alignments}. However, this should be still understood in the sense of common shifts and rotations of the sensors in a RP. A full alignment of RPs can to be obtained with track-based alignment.
+The basic structures in the track-based alignment are the detectors (sensors). Only these provide measurements and only these can be aligned. On the other side, the sensors are inserted (per groups) in RPs and thus, they share (per groups) common misalignments. One could, therefore, try to extract these common misalignments and call them \em{RP alignments}. However, this should be still understood in the sense of common shifts and rotations of the sensors in a RP. In no way, the track-based alignment can determine the positions of inactive elements, like the thin window.
 
-\> the algorithm
-\> why slopes not extracted
-\> why errors not used
+\fig{fig/pdf/al_rp_misalignment.pdf}{al rp misalignment}{A side view on a RP (for simplicity only 4 planes are drawn). The displaced detectors are drawn in black, their centers are marked with dots. The centers of non-displaced detectors are shown as gray dots. The blue arrows represent $\vec c_i$ vectors from \Eq{al rp de c}. The green arrow represents the RP shift $\vec s^{\rm RP}$.}
+
+Any RP misalignment can be decomposed to the shift of its center $\vec s^{\rm RP}$ and the rotation about its center. The rotation can be represented by a matrix $\mat R^{\rm RP}$, an equivalent of the rotation matrix for sensors (cf.~\Eq{global to local}). Let us define the center of a RP ($\vec c^{\rm RP}$) as the mean of its sensors' centers. The RP misalignments are naturally inherited by all sensors of this RP, but moreover, the rotation may give rise to additional shifts, see \Fg{al rp misalignment}. The center of $i$-th detector is
+\eqref{\vec c'_i = \mat R^{\rm RP} (\vec c_i - \vec c^{\rm RP}) + \vec c^{\rm RP} + \vec s^{\rm RP}\ ,}{al rp c'}
+where $\vec c$ would be its nominal center (without the RP misalignment). The only non-negligible component of $\vec c_i - \vec c^{\rm RP}$ vector is the $z$ one. Furthermore, since the expected mis-rotations are of the order \TODO{?? reference}, we can use the approximation \Eq{rotation parameterization approximated} for the rotation matrix $\mat R^{\rm RP}$. Then, keeping only $x$ and $y$ components, one finds
+\eqref{\De\vec c_i \equiv \vec c'_i - \vec c_i = \vec s^{\rm RP} + \pmatrix{\rh_y^{\rm RP}\cr \rh_x^{\rm RP}} z_i^{\rm eff}, \qquad z_i^{\rm eff} = c_{z_i} - c_z^{\rm RP}\ .}{al rp de c}
+Since the sensors are placed in RPs in regular $z$ intervals, one can expect the shifts to be linearly dependent on the plane number. And indeed, this can be seen in experimental data, for example in \Fg{al comp det per unit}. The shifts in read-out direction (this is what is determined by track-based alignment) can be compactly written
+\eqref{
+\pmatrix{\vdots\cr \De s_i\cr \vdots} = \mat F \pmatrix{s_x^{\rm RP}\cr s_y^{\rm RP}\cr \rh_x^{\rm RP}\cr \rh_y^{\rm RP}\cr}, \qquad
+\mat F = \pmatrix{
+\vdots & \vdots & \vdots & \vdots\cr
+d_{x_i} & d_{y_i} & d_{x_i}\,z_i^{\rm eff} & d_{y_i}\,z_i^{\rm eff} \cr
+\vdots & \vdots & \vdots & \vdots\cr
+}\ ,}{al rp fit matrix}
+where $i$ lists all sensors in the given RP. The last equality can easily be combined with the Least Squares method in order to determine the RP misalignments from experimental data:
+\eqref{\pmatrix{s_x^{\rm RP}\cr s_y^{\rm RP}\cr \rh_x^{\rm RP}\cr \rh_y^{\rm RP}\cr} = (\mat F^\T \mat V^{-1} \mat F)^{-1} \mat F^\T \mat V^{-1} \pmatrix{\vdots\cr \De s_i\cr \vdots}\ ,}{al rp fit}
+where $\mat V$ is the covariance matrix of the $\De s$ vector. The results of the track-based alignment is on the r.h.s. and the LS estimate on the l.h.s. 
+
+As it has been said above, all sensors in a pot inherit its rotation misalignment. Since we can determine sensors' rotations about $z$, we can extract the RP rotation by simply taking the mean rotation
+\eqref{\rh_z^{\rm RP} = {\sum_i {\rh_{z_i}\over \si^2_i} \over \sum_i {1\over\si_i^2}}\ .}{al rp rotz fit}
+Again, $i$ lists all sensors in the given RP and $\si_i$ abbreviates the uncertainty of $\rh_{z_i}$.
+
+Some results extracted from the LHC data can be found in \Fg{al comp rp all rot}.
+
+\TODO{why slopes not extracted, why errors not used : they are used in the end!}
 
 \subsection[al exp res]{Experimental results}
 
+\ssubsection{Internal alignment comparison}
+
+
+\fig{fig/pdf/al_comp_det_per_pot.pdf}{al comp det per pot}{Internal alignment comparison. \TODO{chose 2 or 3 pots that would show all things worth discussing - compatible and non-compatible results, possible linearly progressive rotation, etc.}}
+
+
 There are 3 sources: optical metrology, beam-tests in H8 and LHC data.
 
-\ssubsection{Optical metrology}
+\em{Optical metrology}
 
 The position of the detectors within the RP assembly has been measured. There are 3 reference points on a detector and one point on the RP. For each detector a zoomed high resolution photo was taken and a relative position of the points 1 and 2 (see \Fg{opticalMetrology}) and the RP reference point was measured. Theoretical values and results are summarized in \Tb{metrology theoretical}. The precision of this measurement is $\approx 10\un{\mu m}$.
 
 \fig{fig/pdf/opticalMetrology.pdf}{opticalMetrology}{An illustration of the optical metrology measurement. \TODO{points on detector or hybrid?} \TODO{add mark photo}}
 
+\iffalse
 \tab{metrology theoretical}{The theoretical values for the optical measurement of RPs (the positions of the fiducial marks).}{
 \multispan{2}\strut\bvrule\hfil reference point 1\hfil&\multispan{2}\strut\vrule\hfil reference point 2\hfil& \omit\bvrule\hfil control\hfil\cr
 x\un{(mm)}	& y\un{(mm)}	& x\un{(mm)}	& y\un{mm}	& \omit\bvrule\hfil\ distance (mm)\hfil\	\cr\bln
@@ -788,18 +818,23 @@ x\un{(mm)}	& y\un{(mm)}	& x\un{(mm)}	& y\un{mm}	& \omit\bvrule\hfil\ distance (m
 \fig{fig/pdf/opticalMetrologyControlDistance.pdf}{opticalMetrologyControlDistance}{The distribution of the control distance around the theoretical value (the dashed line) -- a measure of the statistical uncertainty.}
 
 If one assumes that the uncertainty of a measurement in any direction is $\si_m$, then the error of the control distance is approximately $\si_m \sqrt2$. This follows from the error propagation via \Eq{metrology distance} and considering that $y_2-y_1\approx 0$ while $x_1-x_2\approx d_c$. Then, the distribution in \Fg{opticalMetrologyControlDistance} suggests that $\si_m \approx 1\un{\mu m}$. However, since the measurements enter \Eq{metrology distance} in differences, this error estimate is only valid for rotations as defined by \Eq{metrology rot}. For shifts, we will keep the more conservative estimate $10\un{\mu m}$
+\fi
 
 Shifts and rotations are extracted as follows
 \eqref{\hbox{rotation} = {y_2 - y_1\over x_2 - x_1}}{metrology rot}
 \eqref{x\hbox{ shift} = {x_1 + x_2\over 2} - \bar x,\qquad y\hbox{ shift} = {y_1 + y_2\over 2} - \bar y}{metrology shift}
 where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values displayed in \Tb{metrology theoretical}
 
-\subsection{beam-tests in H8}
+\em{beam-tests in H8}
 
 \>> The method has been applied to test-beam and commissioning data for all 12 RPs installed in the tunnel.
 \>> Give statistics table (muon/cosmics run, total events, useful events, cut-off/low-quality events)...
 
-\ssubsection{LHC runs}
+\em{LHC runs}
+
+
+
+\ssubsection{LHC data analysis}
 
 \> Standard processing of the LHC data.
 \>> minimumHitsPerProjectionPerRP=4
@@ -813,20 +848,28 @@ where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values d
 \>> maxResidualToSigma=(100 10 10 3);
 \>> chiSqPerNdfCut=(5000 50 50 5)
 
-\> LHC runs (maybe a table?)
-\>> typical number of tracks used
-\>> typical angular distributions
-\>> list of data-takings
+\> need horizontals in !
 
+\tab{al datasets}{List of data takings}{
+\multispan2&\multispan6\bhrulefill\cr
+\multispan2&\multispan3\bvrule\strut\hfil\hbox{sector 45}\hfil&\multispan3\vrule\hfil\strut\hbox{sector 56}\hfil\cr
+\multispan2&\multispan6\hrulefill\cr
+\multispan2&\omit\bvrule\hfil\strut\hbox{events}\hfil & \si(a_x) & \si(a_y) &\hbox{events} & \si(a_x) & \si(a_y)\cr
+\multispan2\bhrulefill&\multispan6\cr
+\hbox{date} & \hbox{run numbers} & \times 10^5 & \rm mrad & \rm mrad  & \times 10^5 & \rm mrad & \rm mrad \cr\bln
+\hbox{24 Aug} & 2762,2763,2770,2772 & 7 & 0.3 & 0.3 & 8.4 & 0.3 & 0.3\cr\ln
+\hbox{26 Aug} & 2896,2895,2892,2891 & 2.5 & 0 & 0 & 3.8 & 0 & 0\cr\ln
+\hbox{21 Sep} & 3230,3231 & 0.5 & 0.2 & 0.2 & 0.6 & 0.3 & 0.2\cr\ln
+\hbox{28 Sep} & 3285,3286,3287,3288 & 5 & 0.4 & 0.4 & 6.2 & 0.3 & 0.3\cr\ln
+\hbox{05 Oct} & 3336,3337 & 10.8 & 0.4 & 0.4 & 15.1 & 0.3 & 0.3\cr\ln
+\hbox{07 Oct} & 3359,3360,3361 & 4 & 0.3 & 0.3 & 4.6 & 0.3 & 0.3\cr\ln
+\hbox{14 Oct} & 3457,3459,3460 & 0.8 & 0.4 & 0.4 & 1.1 & 0.3 & 0.3\cr\ln
+\hbox{24 Oct} & 3609 & 6.2 & 0.2 & 0.2 & 6.6 & 0.2 & 0.2\cr\ln
+\hbox{26 Oct} & 3634,3635 & 5.2 & 0.4 & 0.3 & 6.5 & 0.3 & 0.3\cr\ln
+\hbox{29-30 Oct} & 3723,3725,3728 & 2.5 & 0.2 & 0.2 & 2.9 & 0.3 & 0.2\cr\bln
+}
 
-\ssubsection{Comparisons}
-
-(A) Internal alignment comparison
-
-
-\fig{fig/pdf/al_comp_det_per_pot.pdf}{al comp det per pot}{Internal alignment comparison. \TODO{chose 2 or 3 pots that would show all things worth discussing - compatible and non-compatible results, possible linearly progressive rotation, etc.}}
-
-(B) show that $U$-$V$ and N-F rotations can not be determined from beam-test/LHC data. Is there any hint from the optical metrology.?
+\> (B) show that $U$-$V$ and N-F rotations can not be determined from beam-test/LHC data. Is there any hint from the optical metrology.?
 
 Trying to solve
 $$\bar \mat S \vec\ch = \vec T \equiv \mat S \vec\ch^0 $$
@@ -840,15 +883,17 @@ which can grow big as $\la\to 0$
 
 \fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment comparison with fixed-detectors constraints (rotz: 1200, 1201). Shows full rotation about z. October 24 (black), 26 (red), 29-30 (blue), sector 45}
 
-(C)  LHC results per unit (choose one typical) on detector level
+\> (C)  LHC results per unit (choose one typical) on detector level
 
 \fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with final constraints. Unit 56 near. Data from 24 Aug to 29-30 Oct.
 \TODO{Shift comparision is misleading because of different geometries!}
 }
 
-(D) The RP quantities for one station
+\> (D) The RP quantities for one station
 
-\fig{fig/pdf/al_comp_rp.pdf}{al comp det rp}{RP alignment comparison with fixed-detectors constraints. Circles: all tracks, squares: overlap tracks only.}
+\fig{fig/pdf/al_comp_rp_all_rot.pdf}{al comp rp all rot}{RP alignment comparison with fixed-detectors constraints. Circles: all tracks, squares: overlap tracks only. Showing only the far unit in 56-220, in the near one, the $\rh_z$ fluctuations are smaller.
+\TODO{Shift comparision is misleading because of different geometries!}
+}
 
 Generally - want to show that everything is stable and consistent.
 
@@ -856,6 +901,9 @@ Why analyses with overlap true and false?
 \> First, if there were some weird events fooling the alignment, they might be found by splitting the sample into several parts. Then one expect to find incompatible results (within the estimated uncertainty).
 \> If tracks were hitting only a very small part of the detector, the corresponding gamma coefficient would be almost constant and the rotation would be indistinguishable from shifts. In case of wrongly determined rotations, one would expect rather different results here and when the ga distribution is large.
 \> The overlap=true does both things as above: smaller sample and tracks accumulated in a rather small area.
+
+
+\> Table of all rotations (big average) for all pots?
 
 \section[al prof]{Profile methods}
 

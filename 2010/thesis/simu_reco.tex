@@ -42,7 +42,7 @@ The rotation $\mat R$ can be parameterized as
 }
 }{rotation parameterization}
 
-\TODO{} The rotation $\mat R$ only describes the misalignment rotations. As follows from the \Sc{expected misalignments}, the estimate for such rotations is of the order $1\un{mrad}$. For such angles, it is possible to use the following approximation
+\TODO{} The rotation $\mat R$ only describes the misalignment rotations. As follows from the \Sc{al exp misal}, the estimate for such rotations is of the order of $1\un{mrad}$. For such angles, it is possible to use the following approximation
 \eqref{\cos\rh \approx 1,\qquad \sin\rh \approx \rh\ .}{small rotation approximation}
 Furthermore, terms as $\sin\rh_x \sin\rh_y$ can be neglected to $\sin\rh_x$. Therefore, the rotation $\mat R$ can be approximated by
 \eqref{\mat R \approx \pmatrix{
@@ -53,8 +53,8 @@ Furthermore, terms as $\sin\rh_x \sin\rh_y$ can be neglected to $\sin\rh_x$. The
 
 \TODO{keep $\rh_z$ without the limit}
 
-Now, lets find the point where the track \Eq{local track} hits the detector. This is the point on the track with $z_l = 0$. Inserting \Eq{local track} to \Eq{global to local}, one can find that the condition is fulfilled for 
-\eqref{z = z_i \equiv - { - c_z - \rh_y (b_x - c_x) - \rh_x (b_y - c_y) \over 1 - \rh_y a_x - \rh_x a_y} \ .}{z i}
+Now, let us find the point where the track \Eq{local track} hits the detector. This is the point on the track with $z_l = 0$. Inserting \Eq{local track} to \Eq{global to local}, one can find that the condition is fulfilled for 
+\eqref{z = z_i \equiv { c_z + \rh_y (b_x - c_x) + \rh_x (b_y - c_y) \over 1 - \rh_y a_x - \rh_x a_y} \ .}{z i}
 Now, lets make order estimate for the terms in the expression for $z_i$.\hfil\break
 \eqref{\eqnarray{
 c_z &\sim& 1\un{m} \cr
