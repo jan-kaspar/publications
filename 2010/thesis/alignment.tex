@@ -1,3 +1,6 @@
+\def\pmt#1{\hbox{\tt[#1]}}
+
+
 \chapter[al]{Alignment of Roman Pots}
 
 MOTIVATION: An accurate alignment is of major importance for the TOTEM experiment in order to deliver precise measurements. Among the subdetectors of TOTEM, the alignment of the RPs presents the biggest challenge since they are movable. The importance of alignment is most pronounced at the $\be^* = 1535\un{m}$ optics, where the beam divergence (the dominant smearing effect) is rather low and hence the impact of any misalignment has a large relevance. To give a feeling, a $100\un{\mu m}$ displacement of a vertical RP would lead to angular shift of about $0.4\un{\mu rad}$ (based on an effective length $L_y\approx 270\un{m}$, typical for this optics). This is to be compared to the spread of the beam divergence $0.3\un{\mu rad}$.
@@ -743,17 +746,21 @@ The hit selection is integrated with track fitting and can be described as follo
 \itm Input: the collection of all hits from all detectors and all RPs.
 \itm Local track fit (parameterization \Eq{local track}).
 \itm Outlier removal: remove all points for which
-\eqref{m_i - \hat m_i > n\, \si(m_i)\ ,}{al outlier cond}
-where $\hat m_i = \vec d_i \cdot (\vec a^n z_i + \vec b^n)$ is the track interpolation and $\si(m_i)$ is the corresponding measurement error. $n$ is a parameter of the algorithm.
-\itm Remove all hits from RPs where there are less hits per projection than a given limit $L$.
+\eqref{m_i - \hat m_i > \pmt{maxResidualToSigma}\, \si(m_i)\ ,}{al outlier cond}
+where $\hat m_i = \vec d_i \cdot (\hat\vec a^n z_i + \hat\vec b^n)$ is the track interpolation and $\si(m_i)$ is the corresponding measurement error. \pmt{maxResidualToSigma} is a parameter of the algorithm.
+\itm Remove all hits from RPs where there are less hits per projection than a given limit\break \pmt{minimumHitsPerProjectionPerRP}.
 \itm If some points have been removed, go back to step 2. Stop otherwise.
 \eitm
 
-The event selection starts with a $\ch^2$ cut, that is all events with track fits the $\ch^2/\hbox{n.d.f.}$ of which exceeds a certain limit are discarded. Then, there are few optional (they can be switched on or off) boolean checks:
-\> remove events with signal in a top and a bottom pot simultaneously,
-\> require signal in both units,
-\> require signal in the overlap between horizontal and vertical pots and
-\> if there is signal in the overlap, require signal in at least three pots.
+The event selection starts with a $\ch^2$ cut, that is all events with track fits the $\ch^2/\hbox{n.d.f.}$ of which exceeds a limit \pmt{chiSqPerNdfCut} are discarded. Then, there are few optional (they can be switched on or off) boolean checks, see \Tb{al alg flags}.
+
+\tab[\strut\hfil#\ &#\hfil\cr]{al alg flags}{The boolean settings of alignment data selection.}{\ln
+parameter							& meaning\cr\ln
+\pmt{removeImpossible} 				& remove events with signal in a top and a bottom pot simultaneously\cr
+\pmt{requireBothUnits} 				& require signal in both units\cr
+\pmt{requireOverlap} 				& require signal in the overlap between horizontal and vertical pots\cr
+\pmt{requireAtLeast3PotsInOverlap}	& if there is signal in the overlap, require signal in at least three pots\cr\ln
+}
 
 \TODO{
 \> iterations, making cuts more strict
@@ -795,24 +802,24 @@ Some results extracted from the LHC data can be found in \Fg{al comp rp all rot}
 \ssubsection{Internal alignment comparison}
 
 
-\fig{fig/pdf/al_comp_det_per_pot.pdf}{al comp det per pot}{Internal alignment comparison. \TODO{chose 2 or 3 pots that would show all things worth discussing - compatible and non-compatible results, possible linearly progressive rotation, etc.}}
 
+There are 3 sources: optical metrology, beam and cosmic tests in H8 and LHC data.
 
-There are 3 sources: optical metrology, beam-tests in H8 and LHC data.
-
+\vskip\baselineskip
 \em{Optical metrology}
 
 The position of the detectors within the RP assembly has been measured. There are 3 reference points on a detector and one point on the RP. For each detector a zoomed high resolution photo was taken and a relative position of the points 1 and 2 (see \Fg{opticalMetrology}) and the RP reference point was measured. Theoretical values and results are summarized in \Tb{metrology theoretical}. The precision of this measurement is $\approx 10\un{\mu m}$.
 
 \fig{fig/pdf/opticalMetrology.pdf}{opticalMetrology}{An illustration of the optical metrology measurement. \TODO{points on detector or hybrid?} \TODO{add mark photo}}
 
-\iffalse
-\tab{metrology theoretical}{The theoretical values for the optical measurement of RPs (the positions of the fiducial marks).}{
+\tab{metrology theoretical}{The theoretical values for the optical measurement of RPs (the positions of the fiducial marks).}{\bln
 \multispan{2}\strut\bvrule\hfil reference point 1\hfil&\multispan{2}\strut\vrule\hfil reference point 2\hfil& \omit\bvrule\hfil control\hfil\cr
-x\un{(mm)}	& y\un{(mm)}	& x\un{(mm)}	& y\un{mm}	& \omit\bvrule\hfil\ distance (mm)\hfil\	\cr\bln
+\multispan4\hrulefill&\cr
+x\un{(mm)}	& y\un{(mm)}	& x\un{(mm)}	& y\un{(mm)}	& \omit\bvrule\hfil\ distance (mm)\hfil\	\cr\bln
 75.068 & 31.631 & 25.932 & 31.631 & 49.136\cr\bln
 }
 
+\iffalse
 \eqref{\hbox{control distance}\ d_c = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}}{metrology distance}
 
 \fig{fig/pdf/opticalMetrologyControlDistance.pdf}{opticalMetrologyControlDistance}{The distribution of the control distance around the theoretical value (the dashed line) -- a measure of the statistical uncertainty.}
@@ -825,32 +832,86 @@ Shifts and rotations are extracted as follows
 \eqref{x\hbox{ shift} = {x_1 + x_2\over 2} - \bar x,\qquad y\hbox{ shift} = {y_1 + y_2\over 2} - \bar y}{metrology shift}
 where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values displayed in \Tb{metrology theoretical}
 
-\em{beam-tests in H8}
+\vskip\baselineskip
+\em{H8 tests}
 
-\>> The method has been applied to test-beam and commissioning data for all 12 RPs installed in the tunnel.
-\>> Give statistics table (muon/cosmics run, total events, useful events, cut-off/low-quality events)...
+These are beam-test and/or cosmics ray data taken at H8 \TODO{explain H8}. The tests were done with one pot at a time.
 
+The track-based alignment has been done with the following settings:
+{\itskip0pt\itindent=\parindent
+\> \pmt{minimumHitsPerProjectionPerRP} = 4,
+\> \pmt{removeImpossible} = True,
+\> \pmt{requireBothUnits} = False,
+\> \pmt{requireOverlap} = False and
+\> \pmt{requireAtLeast3PotsInOverlap} = False.
+}
+
+In total 5 iterations have been performed. In the first two only the read-out shifts have been optimized, in the rest the rotations about $z$ have been added. Some of the cuts have been made increasingly more strict, see \Tb{al H8 iter par}. \TODO{Justify the choice of the values}.
+\htab{al H8 iter par}{The iteration-dependent alignment parameters as used in the H8 data analysis. s stands for read-out shifts, r for rotations about $z$.}{\bln
+\hbox{iteration}&1 & 2 & 3 & 4 & 5\cr\bln
+\hbox{quantities optimized}& \rm s & \rm s & \rm s+r & \rm s+r & \rm s+r \cr
+\hbox{\pmt{maxResidualToSigma}}&10 & 7 & 3 & 3 & 3\cr
+\hbox{\pmt{chiSqPerNdfCut}}&50 & 25 & 5 & 5 & 5\cr\bln
+}
+
+We have applied fixed-detector constraints. The fixed planes for read-out shifts were 0, 1, 8 and 9 (for every RP). For rotations about $z$: 0 and 1.
+
+\tab{al H8 stat}{H8 statistics}{\bln
+\hbox{detector} & \hbox{later installed}  & \hbox{particle} & \hbox{events} & \hbox{events} & \si(a_x) & \si(a_y)\cr
+\hbox{package} & \hbox{as RP}             & \hbox{type} & \hbox{total} & \hbox{used} & \rm mrad & \rm mrad\cr\bln
+\hbox{1}  & \hbox{45-220-far-hor}  & \hbox{muons} & 2\cdot10^{4} & 1\cdot10^{4} & 4.9 & 4.9\cr\ln
+\hbox{2}  & \hbox{56-220-far-hor}  & \hbox{muons} & 4\cdot10^{4} & 2\cdot10^{4} & 3.4 & 3.9\cr\ln
+\hbox{3}  & \hbox{56-220-far-bot}  & \hbox{cosmics} & 9\cdot10^{2} & 4\cdot10^{2} & 53.4 & 53.1\cr\ln
+\hbox{4}  & \hbox{56-220-far-top}  & \hbox{cosmics} & 6\cdot10^{2} & 3\cdot10^{2} & 55.3 & 53.5\cr\ln
+\hbox{5}  & \hbox{56-220-near-top} & \hbox{cosmics} & 4\cdot10^{2} & 2\cdot10^{2} & 54.6 & 53\cr\ln
+\hbox{6}  & \hbox{56-220-near-bot} & \hbox{cosmics} & 4\cdot10^{2} & 1\cdot10^{2} & 56.7 & 45.2\cr\ln
+\hbox{7}  & \hbox{56-220-near-hor} & \hbox{cosmics} & 6\cdot10^{2} & 3\cdot10^{2} & 52.8 & 54.5\cr\ln
+\hbox{8}  & \hbox{45-220-near-hor} & \hbox{muons} & 2\cdot10^{5} & 3\cdot10^{4} & 2.6 & 2.7\cr\ln
+\hbox{9}  & \hbox{45-220-far-top}  & \hbox{muons} & 3\cdot10^{4} & 1\cdot10^{4} & 2.1 & 2.1\cr\ln
+\hbox{10} & \hbox{45-220-far-bot}  & \hbox{muons} & 2\cdot10^{4} & 7\cdot10^{3} & 2.2 & 2.8\cr\ln
+\hbox{11} & \hbox{45-220-near-top} & \hbox{muons} & 1\cdot10^{4} & 4\cdot10^{3} & 2.6 & 2.1\cr\ln
+\hbox{12} & \hbox{45-220-near-bot} & \hbox{muons} & 6\cdot10^{4} & 2\cdot10^{4} & 2.3 & 2.1\cr\bln
+}
+
+\vskip\baselineskip
 \em{LHC runs}
 
+Track-based alignment with the same settings as for H8 data applied on the LHC runs (see \Tb{al lhc datasets})
 
+\vskip\baselineskip
+An example of the internal alignment comparison is shown in \Fg{al comp det per pot}. For the other RPs, the comparison is yet worse.
+
+\TODO{chose 2 or 3 pots that would show all things worth discussing - compatible and non-compatible results, possible linearly progressive rotation, etc.}
+
+\fig{fig/pdf/al_comp_det_per_pot.pdf}{al comp det per pot}{Internal alignment comparison. All LHC points are overlapping (one can see only the top orange) and hence only few data-sets are shown.}
+
+\TODO{A conclusion:
+\> compatibility of results?
+\> which rotations can be determined - no way for U-V? Difficult event last-first plane.
+}
 
 \ssubsection{LHC data analysis}
 
-\> Standard processing of the LHC data.
-\>> minimumHitsPerProjectionPerRP=4
-\>> process.RPStraightTrackAligner.removeImpossible = True
-\>> requireBothUnits="True"
-\>> requireOverlap="False"
-\>> requireAtLeast3PotsInOverlap="True"
-\>> constraintsType="final"; constraintsLabel="fin"
-\>> iterations=5;
-\>> optimize=("s" "s" "sr")
-\>> maxResidualToSigma=(100 10 10 3);
-\>> chiSqPerNdfCut=(5000 50 50 5)
+To analyze the LHC data we selected the runs with horizontal RPs in, see \Tb{al lhc datasets}. \TODO{Usually the horizontal RPs were inserted in the very end, sometimes the beam died even before.} The alignment was applied with the following parameters:
+{\itskip0pt\itindent=\parindent
+\> \pmt{minimumHitsPerProjectionPerRP} = 4,
+\> \pmt{removeImpossible} = True,
+\> \pmt{requireBothUnits} = True,
+\> \pmt{requireOverlap} = False and
+\> \pmt{requireAtLeast3PotsInOverlap} = True.
+}
 
-\> need horizontals in !
+In total five iterations were performed. In the first two only the read-out shifts were optimized, then the rotations about $z$ were added. The reason was to remove as many pathological evens as possible before the rotations are optimized. The rotations are sensitive and if used from the very beginning, the convergence might be endangered. Some of the selection cuts were tightened during iterations, see \Tb{al LHC iter par}. \TODO{Justify the values}.
+\htab{al LHC iter par}{The iteration-dependent alignment parameters as used in the LHC data analysis. s stands for read-out shifts, r for rotations about $z$.}{\bln
+\hbox{iteration}&1 & 2 & 3 & 4 & 5\cr\bln
+\hbox{quantities optimized}& \rm s & \rm s & \rm s+r & \rm s+r & \rm s+r \cr
+\hbox{\pmt{maxResidualToSigma}}&100 & 10 & 10 & 3 & 3\cr
+\hbox{\pmt{chiSqPerNdfCut}}&5000 & 50 & 50 & 5 & 5\cr\bln
+}
 
-\tab{al datasets}{List of data takings}{
+Indeed, the final constraints were imposed.
+
+\tab{al lhc datasets}{List of data takings, \TODO{add number of sigmas}}{
 \multispan2&\multispan6\bhrulefill\cr
 \multispan2&\multispan3\bvrule\strut\hfil\hbox{sector 45}\hfil&\multispan3\vrule\hfil\strut\hbox{sector 56}\hfil\cr
 \multispan2&\multispan6\hrulefill\cr
@@ -869,31 +930,30 @@ where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values d
 \hbox{29-30 Oct} & 3723,3725,3728 & 2.5 & 0.2 & 0.2 & 2.9 & 0.3 & 0.2\cr\bln
 }
 
-\> (B) show that $U$-$V$ and N-F rotations can not be determined from beam-test/LHC data. Is there any hint from the optical metrology.?
+\> $U$-$V$ rotation impossible to determine, not even showing. Is there any hint from the optical metrology?
 
-Trying to solve
-$$\bar \mat S \vec\ch = \vec T \equiv \mat S \vec\ch^0 $$
-$$\bar \mat S \vec\ch = \bar\mat S \vec\ch^0 + \underbrace{(\mat S - \bar\mat S) \vec\ch^0}_{\De\vec T}$$
-$$\vec\ch = \vec\ch^0 + ''\bar\mat S^-1 '' \De \vec T$$
-Hence for the weak modes the error contribution is
-$$\De\vec T\over\la$$
-which can grow big as $\la\to 0$
-
-\Fg{al comp det per unit weak}: all runs possible (even without horizontal RPs), start at "standard" results, 5 iterations then, fix-ext
+An attempt to determine the far-near rotations is in \Fg{al comp det per unit weak}. Here all runs are used (even those without horizontal RPs). The standard results (i.e. with final constraints) are taken as the starting point, then 5 iterations made with fixed-detectors constraints (fixed rotation planes: 1200 and 1201). The results are practically identical in the near unit, but incompatible in the far one. Moreover, in the far unit, the results have ''the same shape'' but are ''shifted by a constant''. This outcome is quite easy to understand. The alignment equation \Eq{alignment equation} (dropping the constraints for a moment) reads
+%$$\bar \mat S \vec\ch = \vec T \equiv \mat S \vec\ch^0 $$
+%$$\bar \mat S \vec\ch = \bar\mat S \vec\ch^0 + \underbrace{(\mat S - \bar\mat S) \vec\ch^0}_{\De\vec T}$$
+\eqref{\bar \mat S \vec\ch = \bar\mat S \vec\ch^0 + \De\vec T\ ,}{al de T}
+where the $\De\vec T$ sums all error contributions. The solution can be symbolically written as
+$$\vec\ch = \vec\ch^0 + " {\bar\mat S}^{-1} " \De \vec T$$
+This form is quite instructive, although is has very vague mathematical meaning. The message is that for weak modes, with small eigenvalues $\la$, the error contribution
+$$\De\vec\ch = \vec\ch - \vec\ch^0 \sim {\De\vec T\over\la}$$
+can become big. In our case, the important weak modes are far-near rotations (for $U$ and $V$ detectors separately, see \Tb{al sing mode overview}). Since we constrained the rotations in the near unit, the error would fully manifest in the far one. Looking at the $z$ positions of the RPs, one can approximate and take one $z$ for the near and one $z$ for the far unit. In this approximation, the error would be constant for every pot (but indeed different for every projection). This is exactly the observed effect.
 
 \fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment comparison with fixed-detectors constraints (rotz: 1200, 1201). Shows full rotation about z. October 24 (black), 26 (red), 29-30 (blue), sector 45}
 
 \> (C)  LHC results per unit (choose one typical) on detector level
 
-\fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with final constraints. Unit 56 near. Data from 24 Aug to 29-30 Oct.
-\TODO{Shift comparision is misleading because of different geometries!}
-}
+\TODO{Shift comparison is misleading because of different geometries!}
 
-\> (D) The RP quantities for one station
+\fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with final constraints. Unit 56 near. Every point corresponds to a data-taking from \Tb{al lhc datasets} (overlap=f). Dashed lines.}
 
-\fig{fig/pdf/al_comp_rp_all_rot.pdf}{al comp rp all rot}{RP alignment comparison with fixed-detectors constraints. Circles: all tracks, squares: overlap tracks only. Showing only the far unit in 56-220, in the near one, the $\rh_z$ fluctuations are smaller.
-\TODO{Shift comparision is misleading because of different geometries!}
-}
+\> (D) The RP quantities calculated according to \Eq{al rp fit,al rp rotz fit}
+\TODO{Shift comparison is misleading because of different geometries!}
+
+\fig{fig/pdf/al_comp_rp_all_rot.pdf}{al comp rp all rot}{RP alignment comparison with fixed-detectors constraints. The order of points is the same as in \Tb{al lhc datasets} (top-down in both cases). There are might be two points for each data-set: a circle (all tracks) and a square (overlap tracks only). Showing only the far unit in 56-220, in the near one, the $\rh_z$ fluctuations are smaller.}
 
 Generally - want to show that everything is stable and consistent.
 

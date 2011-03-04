@@ -91,7 +91,7 @@ void AddData(string file, string label)
 		return;
 
 	labels.push(label);
-	pen p = StdPen(dataset_idx-1);
+	pen p = StdPen(dataset_idx-4);
 	mark m = StdMark(opt_idx)+p+1.5pt;
 	marks.push(m);
 
@@ -285,6 +285,7 @@ attachLegend = false;
 string source_dir = "../alignment/lhc";
 string data_sets[] = {
 	"2010_08_24/2762,2763,2770,2772",
+	"2010_08_26/2896,2895,2892,2891",
 	"2010_09_21/3230,3231",
 	"2010_09_28/3285,3286,3287,3288",
 	"2010_10_05/3336,3337",

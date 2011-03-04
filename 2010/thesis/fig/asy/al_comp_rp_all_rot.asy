@@ -101,7 +101,7 @@ void AddData(string f, string label)
 		return;
 	}
 
-	mark m = StdMark(setting_idx)+2pt+StdPen(date_idx);
+	mark m = StdMark(setting_idx)+2pt+StdPen(date_idx-1);
 
 	for (int rp : data.keys) {
 		int r = rp % 10;
