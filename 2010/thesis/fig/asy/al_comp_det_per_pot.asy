@@ -5,7 +5,7 @@ include "../alignment/common_code.asy";
 StdFonts();
 
 xSizeDef = 4.5cm;
-ySizeDef = 5.5cm;
+ySizeDef = 4.5cm;
 
 string opt_dir = "../alignment/optical";
 string tb_dir = "../alignment/testbeam";
@@ -30,7 +30,7 @@ bool forceError = false;
 void DrawResult(int id, real v, real e, pen p, marker m)
 {
 	real x = id % 10;
-	if (v != 0 || (x > 1 && x < 8)) {
+	if (fabs(v) > 1e-1 || (x > 1 && x < 8)) {
 		draw((x, v), m);
 		draw((x, v-e)--(x, v+e), p, Bars);
 	} else
@@ -44,6 +44,9 @@ pad pShRV, pShRU, pRotZV, pRotZU;
 real f_shr_e, f_rotz_e;
 real f_shr = 1.;
 
+int dp;
+real v_rot_corr[], u_rot_corr[];
+
 void DrawResults(string filename, pen p, marker m, string legend)
 {
 	Alignment a;
@@ -56,11 +59,14 @@ void DrawResults(string filename, pen p, marker m, string legend)
 		pad pShR = (id % 2 == 0) ? pShRV : pShRU;
 		pad pRotZ = (id % 2 == 0) ? pRotZV : pRotZU;
 
+		real rot_corr[] = (id % 2 == 0) ? v_rot_corr : u_rot_corr;
+		real rc = (rot_corr.initialized(dp)) ? rot_corr[dp] : 1.;
+
 		SetPad(pShR);
 		DrawResult(id, f_shr*a.shr[id], (forceError) ? f_shr_e : a.shr_e[id], p, m);
 		
 		SetPad(pRotZ);
-		DrawResult(id, a.rotz[id], (forceError) ? f_rotz_e : a.rotz_e[id], p, m);
+		DrawResult(id, rc * a.rotz[id], (forceError) ? f_rotz_e : a.rotz_e[id], p, m);
 	}
 
 	AddToLegend(legend, p, m);
@@ -68,15 +74,30 @@ void DrawResults(string filename, pen p, marker m, string legend)
 
 //---------------------------------------------------------------------------------------------------------------------
 
+real si_ax, si_ay;
+
+void GetTrackDivergence(string f)
+{
+	rGetObj(f, "common/ax_selected");
+	if (robj.valid)
+		si_ax = robj.rExec("GetRMS");
+	rGetObj(f, "common/ay_selected");
+	if (robj.valid)
+		si_ay = robj.rExec("GetRMS");
+}
+
+//---------------------------------------------------------------------------------------------------------------------
+
+real rot_lim = 5, rot_Step = 1, rot_step = 0.5;
+real y_leg;
 pen markupColor = white;
 xTicksDef = LeftTicks(Step=1, step=0);
 
-for (int dp = 2; dp <= 2; ++dp) {
+void DrawDP(int _dp, string constr, bool drawShR, bool drawRotZ, bool drawLegend)
+{
+	dp = _dp;
 	int rp = dp_to_rp[dp];
 	write(dp, rp);
-
-	if (dp > 1)
-		NewPage();
 
 	NewPad(drawAxes = false);
 	picture p; 
@@ -89,13 +110,18 @@ for (int dp = 2; dp <= 2; ++dp) {
 	attach(bbox(p, 1mm, nullpen, Fill(markupColor)));
 	NewRow();
 	
-	yTicksDef = RightTicks(Step=20, step=5);
-	pShRV = NewPad("", "shift in $v\quad(\rm\mu m)$");
-	pShRU = NewPad("", "");
-	NewRow();
-	yTicksDef = RightTicks(Step=1, step=0.5);
-	pRotZV = NewPad("plane number", "rotation around $z\quad(\rm mrad)$");
-	pRotZU = NewPad("plane number", "");
+	if (drawShR) {
+		yTicksDef = RightTicks(Step=20, step=5);
+		pShRV = NewPad("", "internal shift $\quad(\rm\mu m)$");
+		pShRU = NewPad("", "");
+		NewRow();
+	}
+
+	if (drawRotZ) {
+		yTicksDef = RightTicks(Step=1, step=0.5);
+		pRotZV = NewPad("plane number", "internal rotation $\quad(\rm mrad)$");
+		pRotZU = NewPad("plane number", "");
+	}
 
 	// OPTICAL DATA
 	forceError = true;
@@ -103,61 +129,90 @@ for (int dp = 2; dp <= 2; ++dp) {
 	f_shr_e = 7;
 	f_rotz_e = 0.2;
 	pen p = std_pens[1];
-	DrawResults(opt_dir+"/DP"+format("%u", dp)+"/constrained.xml", p, mSq+p+2.5pt, "optical");
+	v_rot_corr = v_rot_corr_opt; u_rot_corr = u_rot_corr_opt;
+
+	DrawResults(opt_dir+"/DP"+format("%u", dp)+"/"+constr+".xml", p, mSq+p+2.5pt, "optical");
 	
 	// TESTBEAM DATA
 	forceError = false;
 	f_shr = +1.;
 	p = std_pens[2];
-	//DrawResults(tb_dir+"/DP"+format("%u", dp)+"/full/iteration2/cumulative_results_Jan.xml", cyan, mTU+cyan+2.5pt);
-	DrawResults(tb_dir+"/DP"+format("%u", dp)+"/full/iteration5/cumulative_results_Jan.xml", p, mTU+p+2.5pt, "H8 test (all)");
-	DrawResults(tb_dir+"/DP"+format("%u", dp)+"/even/iteration5/cumulative_results_Jan.xml", p, mTL+p+2.5pt, "H8 test (even)");
-	DrawResults(tb_dir+"/DP"+format("%u", dp)+"/odd/iteration5/cumulative_results_Jan.xml", p, mTR+p+2.5pt,  "H8 test (odd)");
+	v_rot_corr = v_rot_corr_h8; u_rot_corr = u_rot_corr_h8;
+
+	DrawResults(tb_dir+"/DP"+format("%u", dp)+"/"+constr+"/full/iteration5/cumulative_results_Jan.xml", p, mTU+p+2.5pt, "H8 tests (all)");
+	DrawResults(tb_dir+"/DP"+format("%u", dp)+"/"+constr+"/even/iteration5/cumulative_results_Jan.xml", p, mTL+p+2.5pt, "H8 tests (even)");
+	DrawResults(tb_dir+"/DP"+format("%u", dp)+"/"+constr+"/odd/iteration5/cumulative_results_Jan.xml", p, mTR+p+2.5pt, "H8 tests (odd)");
+
+	//GetTrackDivergence(tb_dir+"/DP"+format("%u", dp)+"/"+constr+"/full/iteration1/diagnostics.root");
+	//AddToLegend("$\si(a_x) = " + format("%.1f", si_ax*1e3) + "$, $\si(a_y) = " + format("%.1f", si_ay*1e3) + "\ \rm mrad$");
 
 	// LHC DATA
 	string arm = (rp >= 100) ? "56" : "45";
 	string unit = ((rp % 10) > 2) ? "far" : "near"; 
-	//string label = ((rp % 10) > 2) ? "-far" : ""; 
-	string settings = "s+sr-fin,4pl,1rotzIt=0,2units=t,overlap=f,3potsInO=t";
+	string settings;
+	v_rot_corr = new real[]; u_rot_corr = new real[];
 
 	for (int d_i : lhc_data.keys) {
 		string bits[] = split(lhc_data[d_i], "/");
 		string dataset = bits[0];
 		string task = bits[1];
 
-		string settings = "s+sr-fin,4pl,1rotzIt=0,2units=t,overlap=f,3potsInO=t";
+		settings = "s+sr-fin,4pl,1rotzIt=0,2units=t,overlap=f,3potsInO=t";
 		p = StdPen(3+d_i);
-		DrawResults("../alignment/lhc comparisons/data/"+dataset+"/"+arm+"/"+unit+"/"+settings
-			+"/"+format("%u", rp)+".xml", p, mCi+p+2.5pt,
-			"LHC "+ Date(dataset));
+		//DrawResults("data/"+dataset+"/"+arm+"/"+unit+"/"+settings+"/"+format("%u", rp)+".xml", p, mCi+p+2.5pt,
+		//	"LHC "+ replace(dataset, "_", "\_") + " (full)");
 		
-		/*
-		settings = "s+sr-fix,4pl,1rotzIt=0,2units=f,overlap=f,3potsInO=f";
-		DrawResults("../lhc/"+dataset+"/tb-per-pot/"+task+"/"+format("%u", rp)+"/"+settings+"/"
-			+"/iteration5/cumulative_expanded_results_Jan.xml", p, mCr+p+5.5pt,
-			"LHC "+ replace(dataset, "_", "\_") + " (one pot)");
-		*/
+		//settings = "s+sr-fix,4pl,1rotzIt=0,2units=f,overlap=f,3potsInO=f";
+		settings = "s+sr-"+constr+",4pl,1rotzIt=0,2units=f,overlap=f,3potsInO=f";
+		DrawResults("../alignment/lhc/"+dataset+"/tb-per-pot/"+task+"/"+format("%u", rp)+"/"+settings
+			+"/iteration5/cumulative_expanded_results_Jan.xml", p, mCi+p+2.5pt,
+			"LHC "+ Date(dataset));
 	}
 	
-	SetPad(pShRV);
-	limits((-0.5, -60), (9.5, +60), Crop);
-	xaxis(YEquals(0, false), dotted);
-	SetPad(pShRU);
-	limits((-0.5, -60), (9.5, +60), Crop);
-	xaxis(YEquals(0, false), dotted);
-	SetPad(pRotZV);
-	limits((-0.5, -5), (9.5, +5), Crop);
-	xaxis(YEquals(0, false), dotted);
+	if (drawShR) {
+		real shr_lim = 50, shr_Step=10, shr_step=5;
+		
+		SetPad(pShRV);
+		currentpad.yTicks = RightTicks(Step=shr_Step, step=shr_step);
+		limits((-0.5, -shr_lim), (9.5, +shr_lim), Crop);
+		xaxis(YEquals(0, false), dotted);
+		
+		SetPad(pShRU);
+		currentpad.yTicks = RightTicks(Step=shr_Step, step=shr_step);
+		limits((-0.5, -shr_lim), (9.5, +shr_lim), Crop);
+		xaxis(YEquals(0, false), dotted);
+	}
 
-	SetPad(pRotZU);
-	limits((-0.5, -5), (9.5, +5), Crop);
-	xaxis(YEquals(0, false), dotted);
-
-	AddToLegend("fixed planes", (marker)(mCi+false+black+2.5pt));
-	frame lf = Legend("DP "+format("%u", dp)+" ("+RPName(rp)+")", O);
+	if (drawRotZ) {
+		SetPad(pRotZV);
+		currentpad.yTicks = RightTicks(Step=rot_Step, step=rot_step);
+		limits((-0.5, -rot_lim), (9.5, +rot_lim), Crop);
+		xaxis(YEquals(0, false), dotted);
 	
-	NewPad(false, 3, 1);
-	add(lf);
+		SetPad(pRotZU);
+		currentpad.yTicks = RightTicks(Step=rot_Step, step=rot_step);
+		limits((-0.5, -rot_lim), (9.5, +rot_lim), Crop);
+		xaxis(YEquals(0, false), dotted);
+	}
+
+	if (drawLegend) {
+		AddToLegend("fixed planes", (marker)(mCi+false+black+2.5pt));
+		frame lf = Legend("DP "+format("%u", dp)+" ("+RPName(rp)+")", O);	
+		NewPad(false, 2, 1);
+		add(lf);
+		FixPad(10cm, y_leg);
+	}
 }
 
-GShipout(vSkip=1mm, hSkip=1mm);
+//---------------------------------------------------------------------------------------------------------------------
+
+rot_lim = 10; rot_Step = 2; rot_step = 1; y_leg = -2.75cm;
+DrawDP(2, "fix-ext", drawShR=false, drawRotZ=true, drawLegend=true);
+GShipout("al_comp_det_per_pot_dp2_ext", vSkip=1mm, hSkip=1mm);
+
+rot_lim = 1.5; rot_Step = 0.5; rot_step = 0.1; y_leg = -5.5cm;
+DrawDP(1, "fix-ext2", drawShR=true, drawRotZ=true, drawLegend=true);
+GShipout("al_comp_det_per_pot_dp1_ext2", vSkip=1mm, hSkip=1mm);
+
+DrawDP(2, "fix-ext2", drawShR=true, drawRotZ=true, drawLegend=true);
+GShipout("al_comp_det_per_pot_dp2_ext2", vSkip=1mm, hSkip=1mm);

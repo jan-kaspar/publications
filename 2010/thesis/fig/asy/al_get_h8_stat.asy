@@ -43,6 +43,34 @@ void GetAngles(string root)
 
 //----------------------------------------------------------------------------------------------------
 
+real uv_rot;
+
+int GetOpticalUVRot(string f)
+{
+	uv_rot = 0;
+
+	Alignment a;
+	if (ParseXML(f, a) > 0)
+		return 1;
+
+	real n_u=0, n_v=0, s_u=0, s_v=0;
+	for (int i : a.rotz.keys) {
+		if (i % 2 == 0) {
+			++n_u;
+			s_u += a.rotz[i];
+		} else {
+			++n_v;
+			s_v += a.rotz[i];
+		}
+	}
+
+	uv_rot = (s_u/n_u) - (s_v/n_v);
+
+	return 0;
+}
+
+//----------------------------------------------------------------------------------------------------
+
 string source_dir = "../alignment/testbeam";
 
 string settings[] = {
@@ -65,6 +93,10 @@ for (int dp = 1; dp <= 12; ++dp) {
 		GetAngles(diag_file);
 		line += " & " + format("%.1f", ax*1e3);
 		line += " & " + format("%.1f", ay*1e3);
+
+		string opt_file = "../alignment/optical/DP"+format("%u", dp)+"/full.xml";
+		GetOpticalUVRot(opt_file);	
+		line += " & " + format("%#.2f", uv_rot);
 	}
 
 	write(line+"\cr\ln");

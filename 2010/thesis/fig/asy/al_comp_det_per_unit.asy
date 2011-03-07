@@ -42,8 +42,8 @@ mark marks[];
 
 void AddFits(string file)
 {
-	Alignment a;
-	if (ParseXML(file, a) > 0)
+	Alignment al;
+	if (ParseXML(file, al) > 0)
 		return;
 
 	for (int r = 120; r < 123; ++r) {
@@ -59,7 +59,7 @@ void AddFits(string file)
 
 				int id = 10*r + p;
 				real x = id;
-				real y = a.shr[id];
+				real y = al.shr[id];
 				S1 += 1;
 				Sx += x;
 				Sxx += x*x;
@@ -78,6 +78,16 @@ void AddFits(string file)
 			pad p = (proj == 0) ? pShRV : pShRU;
 			SetPad(p);
 			draw((x_min, a*x_min+b)--(x_max, a*x_max+b), dashed);
+			
+			pad p = (proj == 0) ? pFRotZV : pFRotZU;
+			SetPad(p);
+			real rot = al.rp_rotz[r];
+			draw((x_min, rot)--(x_max, rot), dashed);
+			
+			pad p = (proj == 0) ? pRotZV : pRotZU;
+			SetPad(p);
+			real rot = 0;
+			draw((x_min, rot)--(x_max, rot), dashed);
 		}
 	}	
 }
@@ -267,7 +277,7 @@ void NewUnit(string _arm, string _unit)
 	attach(bbox(p, 1mm, nullpen, Fill(markupColor)));
 	
 
-	pShRV = NewPad("", "shift in $\quad(\rm\mu m)$");
+	pShRV = NewPad("", "shift $\quad(\rm\mu m)$");
 	pShRU = NewPad();
 	NewRow();
 	pRotZV = NewPad("", "internal rotation $\quad(\rm mrad)$");

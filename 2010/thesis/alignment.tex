@@ -832,6 +832,11 @@ Shifts and rotations are extracted as follows
 \eqref{x\hbox{ shift} = {x_1 + x_2\over 2} - \bar x,\qquad y\hbox{ shift} = {y_1 + y_2\over 2} - \bar y}{metrology shift}
 where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values displayed in \Tb{metrology theoretical}
 
+\htab{al opt uv rot}{Mean $U$-$V$ rotations determined from the optical metrology. Values in $\rm mrad$.}{\bln
+\hbox{DP}	 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\cr\ln
+\De_{U-V}\rh & -0.13 & 0.51 & -0.07 & 0.00 & 0.19 & -0.24 & -0.21 & -0.08 & -0.10 & 0.06 & 0.03 & -0.08\cr\bln
+}
+
 \vskip\baselineskip
 \em{H8 tests}
 
@@ -854,9 +859,9 @@ In total 5 iterations have been performed. In the first two only the read-out sh
 \hbox{\pmt{chiSqPerNdfCut}}&50 & 25 & 5 & 5 & 5\cr\bln
 }
 
-We have applied fixed-detector constraints. The fixed planes for read-out shifts were 0, 1, 8 and 9 (for every RP). For rotations about $z$: 0 and 1.
+We have applied fixed-detector constraints. The fixed planes for read-out shifts were 0, 1, 8 and 9 (for every RP), same planes for rotations about $z$. We have made an attempt to fix only two planes for rotations (0 and 1), but the linearly-progressive rotation turned out to be badly constraint, spoiling the results -- see \Fg{al comp det per pot dp1 ext}.
 
-\tab{al H8 stat}{H8 statistics}{\bln
+\tab{al H8 stat}{Some statistics on the H8 data.}{\bln
 \hbox{detector} & \hbox{later installed}  & \hbox{particle} & \hbox{events} & \hbox{events} & \si(a_x) & \si(a_y)\cr
 \hbox{package} & \hbox{as RP}             & \hbox{type} & \hbox{total} & \hbox{used} & \rm mrad & \rm mrad\cr\bln
 \hbox{1}  & \hbox{45-220-far-hor}  & \hbox{muons} & 2\cdot10^{4} & 1\cdot10^{4} & 4.9 & 4.9\cr\ln
@@ -878,12 +883,16 @@ We have applied fixed-detector constraints. The fixed planes for read-out shifts
 
 Track-based alignment with the same settings as for H8 data applied on the LHC runs (see \Tb{al lhc datasets})
 
-\vskip\baselineskip
-An example of the internal alignment comparison is shown in \Fg{al comp det per pot}. For the other RPs, the comparison is yet worse.
 
-\TODO{chose 2 or 3 pots that would show all things worth discussing - compatible and non-compatible results, possible linearly progressive rotation, etc.}
+\fig{fig/pdf/al_comp_det_per_pot_dp2_ext.pdf}{al comp det per pot dp1 ext}{An attempt to determine the $z$ rotations with one fixed plane per projection (planes 0 and 1).}
 
-\fig{fig/pdf/al_comp_det_per_pot.pdf}{al comp det per pot}{Internal alignment comparison. All LHC points are overlapping (one can see only the top orange) and hence only few data-sets are shown.}
+\fig{fig/pdf/al_comp_det_per_pot_dp1_ext2.pdf}{al comp det per pot dp1 ext2}{Internal alignment comparison for DP1 (an example of bad match). All LHC points are overlapping (one can see only the top orange) and hence only few data-sets are shown.
+%ext2 constraints
+}
+
+\fig{fig/pdf/al_comp_det_per_pot_dp2_ext2.pdf}{al comp det per pot dp2 ext2}{Internal alignment comparison for DP2 (an example of good match). All LHC points are overlapping (one can see only the top orange) and hence only few data-sets are shown.
+%ext2 constraints
+}
 
 \TODO{A conclusion:
 \> compatibility of results?
@@ -897,7 +906,7 @@ To analyze the LHC data we selected the runs with horizontal RPs in, see \Tb{al 
 \> \pmt{minimumHitsPerProjectionPerRP} = 4,
 \> \pmt{removeImpossible} = True,
 \> \pmt{requireBothUnits} = True,
-\> \pmt{requireOverlap} = False and
+\> \pmt{requireOverlap} = False (some analyses done with True, these will be \TODO{noted})
 \> \pmt{requireAtLeast3PotsInOverlap} = True.
 }
 
@@ -930,7 +939,7 @@ Indeed, the final constraints were imposed.
 \hbox{29-30 Oct} & 3723,3725,3728 & 2.5 & 0.2 & 0.2 & 2.9 & 0.3 & 0.2\cr\bln
 }
 
-\> $U$-$V$ rotation impossible to determine, not even showing. Is there any hint from the optical metrology?
+$U$-$V$ rotation is impossible to determine, not even showing. However, the optical metrology suggests that is rather small, see \Tb{al opt uv rot}.
 
 An attempt to determine the far-near rotations is in \Fg{al comp det per unit weak}. Here all runs are used (even those without horizontal RPs). The standard results (i.e. with final constraints) are taken as the starting point, then 5 iterations made with fixed-detectors constraints (fixed rotation planes: 1200 and 1201). The results are practically identical in the near unit, but incompatible in the far one. Moreover, in the far unit, the results have ''the same shape'' but are ''shifted by a constant''. This outcome is quite easy to understand. The alignment equation \Eq{alignment equation} (dropping the constraints for a moment) reads
 %$$\bar \mat S \vec\ch = \vec T \equiv \mat S \vec\ch^0 $$
@@ -940,20 +949,43 @@ where the $\De\vec T$ sums all error contributions. The solution can be symbolic
 $$\vec\ch = \vec\ch^0 + " {\bar\mat S}^{-1} " \De \vec T$$
 This form is quite instructive, although is has very vague mathematical meaning. The message is that for weak modes, with small eigenvalues $\la$, the error contribution
 $$\De\vec\ch = \vec\ch - \vec\ch^0 \sim {\De\vec T\over\la}$$
-can become big. In our case, the important weak modes are far-near rotations (for $U$ and $V$ detectors separately, see \Tb{al sing mode overview}). Since we constrained the rotations in the near unit, the error would fully manifest in the far one. Looking at the $z$ positions of the RPs, one can approximate and take one $z$ for the near and one $z$ for the far unit. In this approximation, the error would be constant for every pot (but indeed different for every projection). This is exactly the observed effect.
+can become big. In our case, the important weak modes are far-near rotations (for $U$ and $V$ detectors separately, see \Tb{al sing mode overview}). Since we constrained the rotations in the near unit, the error would fully manifest in the far one. Looking at the $z$ positions of the RPs, one can approximate and take one $z$ for the near and one $z$ for the far unit. In this approximation, the error would be constant for every pot (but indeed different for every projection) -- this is exactly the observed effect.
 
-\fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment comparison with fixed-detectors constraints (rotz: 1200, 1201). Shows full rotation about z. October 24 (black), 26 (red), 29-30 (blue), sector 45}
+\fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment comparison with fixed-detectors constraints (for rotations: 1200 and 1201). Top row: near unit, bottom row: far unit. October 24 (black), 26 (red), 29-30 (blue).}
 
 \> (C)  LHC results per unit (choose one typical) on detector level
+\Fg{al comp det per unit} compares the alignment results for the unit 56 near. On the first sight, one can see the shift points forming lines. This is exactly what one expects with rotated RPs, see \Sc{al rp fac}. \TODO{Comment about rotations? Stability?}
 
-\TODO{Shift comparison is misleading because of different geometries!}
+In fact, such a direct comparison of shifts is slightly misleading. Every rotation misalignment induces a shift correction, see the $\De\rh \de s_i$ term in \Eq{cnst rotz 6}. This correction is perpendicular to the position of the detector ($\vec c_i$ vector), that's why $\vec d_{\perp_i}$ in the formula. This means that the correction for vertical pots would be horizontal and vertical for horizontal pots. Moreover, the correction is proportional to the distance of the detector from the origin. Hence, this correction would be different for different RP approaches. That is why the comparison for different data-takings is misleading. For the data-takings in \Tb{al lhc datasets}, the thin-window positions varied approximately from $2.6$ to $8\un{mm}$ for the vertical pots and from $2.3$ to $5.6\un{mm}$ for the horizontal pots. The span was, thus, of the order of $\De c \approx 4\un{mm}$. From the \Eq{cnst rotz 6} one could expect the rotation-induced shifts to vary by $\De c \De \rh$. Taking $\De\rh \approx 10 \un{mrad}$ gives us variation by $40\un{\mu m}$. However, in the real case, the variation is much smaller, simulations give the order of $5\un{\mu m}$. There are two reasons for this. First, the final constraints are used, which mix shift and rotation degrees of freedom and make the calculation more complex. And second, the rotataions of the top and bottom pots have nearly the same values but opposite signs. This leads to partial cancelations. To summarize, the shifts obtained from different data-takings can be compared within the error of $5\un{\mu m}$.
 
-\fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with final constraints. Unit 56 near. Every point corresponds to a data-taking from \Tb{al lhc datasets} (overlap=f). Dashed lines.}
+\fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with final constraints for unit 56 near. Each point corresponds to a data-taking from \Tb{al lhc datasets}. The dashed lines correspond to the fits \Eq{al rp fit,al rp rotz fit}. The internal rotation is the sensor rotation with respect to the RP rotation.
+%overlap=f
+}
 
 \> (D) The RP quantities calculated according to \Eq{al rp fit,al rp rotz fit}
-\TODO{Shift comparison is misleading because of different geometries!}
 
 \fig{fig/pdf/al_comp_rp_all_rot.pdf}{al comp rp all rot}{RP alignment comparison with fixed-detectors constraints. The order of points is the same as in \Tb{al lhc datasets} (top-down in both cases). There are might be two points for each data-set: a circle (all tracks) and a square (overlap tracks only). Showing only the far unit in 56-220, in the near one, the $\rh_z$ fluctuations are smaller.}
+
+\htab{al rp rot}{Summary of RP rotations (all values in $\rm mrad$). Mean is the weighted mean and $\si$ is the standard deviation of data extracted from all data-takings. Only analyses with all tracks (\pmt{requireOverlap} = False) included (large errors in 45).
+% weighted mean, non-weighted sigma
+}{
+\omit&\multispan6\bhrulefill\cr
+\omit&\multispan2\bvrule\strut\hfil$\rh_x$\hfil&\multispan2\vrule\strut\hfil$\rh_y$\hfil&\multispan2\vrule\strut\hfil$\rh_z$\hfil\cr
+\omit\bhrulefill&\multispan6\hrulefill\cr
+\hbox{RP} & \hbox{mean} & \si  & \hbox{mean} & \si  & \hbox{mean} & \si \cr\bln
+  20 & -10.8& 0.08 & -4.8 & 0.15 & -4.5 & 0.07\cr\ln
+  21 & -6.1 & 0.08 & +5.9 & 0.06 & +6.1 & 0.09\cr\ln
+  22 & +1.7 & 0.02 & -1.4 & 0.04 & -1.6 & 0.03\cr\ln
+  23 & -1.9 & 0.03 & -9.9 & 0.04 & -2.4 & 0.06\cr\ln
+  24 & -7.3 & 0.04 & -0.9 & 0.04 & -2.4 & 0.15\cr\ln
+  25 & -9.2 & 0.04 & +4.7 & 0.02 & +4.8 & 0.15\cr\bln
+ 120 & -7.7 & 0.05 & +2.3 & 0.03 & -3.5 & 0.08\cr\ln
+ 121 & -7.3 & 0.05 & \phantom{+}0.0 & 0.05 & +5.0 & 0.09\cr\ln
+ 122 & +1.2 & 0.03 & -5.7 & 0.03 & -1.6 & 0.03\cr\ln
+ 123 & -0.2 & 0.03 & -3.4 & 0.02 & -2.6 & 0.05\cr\ln
+ 124 & -3.8 & 0.06 & \phantom{+}0.0 & 0.02 & -4.5 & 0.19\cr\ln
+ 125 & -4.4 & 0.07 & +2.5 & 0.02 & +7.1 & 0.17\cr\bln
+}
 
 Generally - want to show that everything is stable and consistent.
 
@@ -962,8 +994,6 @@ Why analyses with overlap true and false?
 \> If tracks were hitting only a very small part of the detector, the corresponding gamma coefficient would be almost constant and the rotation would be indistinguishable from shifts. In case of wrongly determined rotations, one would expect rather different results here and when the ga distribution is large.
 \> The overlap=true does both things as above: smaller sample and tracks accumulated in a rather small area.
 
-
-\> Table of all rotations (big average) for all pots?
 
 \section[al prof]{Profile methods}
 
