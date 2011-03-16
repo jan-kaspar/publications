@@ -34,7 +34,7 @@ void Limit()
 //----------------------------------------------------------------------------------------------------
 
 string file = base_dir+"/3230,3231/after_tb/profiles.root";
-TGraph_reducePoints = 10;
+TGraph_reducePoints = 5;
 useDefaultLabel = false;
 bool drawHits = true;
 

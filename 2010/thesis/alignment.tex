@@ -1001,9 +1001,9 @@ Why analyses with overlap true and false?
 \> Hit spatial distributions
 \> Kinematic peak method
 
-\fig{fig/pdf/al_prof_simu.pdf}{al prof simu}{A Geant4 simulation of hit distributions at ?? (what processes?)}
+\fig{fig/pdf/al_prof_simu.pdf}{al prof simu}{A Geant4 simulation of hit distributions at the RPs of the 56-220m near unit. The geen points represent elastic scattering (Elegent, PPP3), blue SD (Pythia) and red DPE (Phojet). All processes simulated at $\sqrt s = 3.5\un{GeV}$ and with nominal optics with $\be^* = 2.5\un{m}$. The black lines are the countours of the sensors.}
 
-\fig{fig/pdf/al_prof_hits.pdf}{al prof hits}{Typical hit distributions at near stations, where exactly ??. data from 21 Sep. The far stations look qualitatively the same.
+\fig{fig/pdf/al_prof_hits.pdf}{al prof hits}{Typical hit distributions at near stations (scoring planes at $\pm 217m$). Data from 21 Sep. The far stations look qualitatively the same.
 % analysis with vsym2 geometry
 }
 
@@ -1033,19 +1033,146 @@ In this section, $\De q \equiv q_F - q_N$
 
 \fig{fig/pdf/al_el_selection.pdf}{al el selection}{Selection of elastic events. The black dots show events before the cut, colorful dots after. The red dots belong to 45 bottom -- 56 top diagonal, the blue to the other one. The lightgreen area represents the cut requirement. \TODO{data set, data reduction ?}}
 
-4 alignment methods
-\bitm
-\itm vertical fit in YX plots for the x position of the beam (for every unit)
-\itm fit of dy vs. y for far wrt. near vertical alignment (for every arm)
-\itm fit of y56 vs y45 for left wrt. right vertical alignment (for far and near units)
-\itm fit of vertical hit distributions for vertical alignment wrt. beam (for every unit)
-\eitm
 
-\fig{fig/pdf/al_el_plots.pdf}{al el plots}{Illustration of the elastic alignment methods. For methods 1 to 3 there are always three fits. The red line fits the red points only, similarly for the blue one. The green line represents a global fit. For the method 4, the violet curve shows a Gaussian fit.}
 
-Methods 1 and 2: all the fits are the same - the same misalignment of top and bottom pots. In other words, the TB alignment worked well!
+\em{Method 1}. vertical fit in YX plots for the x position of the beam (for every unit)
 
-\TODO{Summary table, comparison of methods}
+\fig{fig/pdf/al_el_plots_yx.pdf}{al el plots yx}{Illustration of the alignment method 1. The red line fits the red points only, similarly for the blue one. The green line represents a global fit. 45 far}
+
+{\SmallerFonts
+\htab{al el yx}{y vs. x fits, method 1. Slope $a$ in $\rm mrad$, intercept $b$ in $\rm\mu m$.}{
+\omit&\multispan8\bhrulefill\cr
+\omit&\multispan2\strut\bvrule\hfil 45 near\hfil & \multispan2\vrule\hfil 45 far\hfil  & \multispan2\vrule\hfil 56 near\hfil & \multispan2\vrule\hfil 56 far\hfil\cr
+\omit&\multispan8\hrulefill\cr
+\omit\strut & a & b & a & b & a & b & a & b\cr\bln
+\hbox{21 Sep}    & -35.3 \pm    0.8& -33.4 \pm    3.5& -29.8 \pm    0.7& -46.1 \pm    3.2&  43.5 \pm    0.7& -23.1 \pm    3.4&  38.7 \pm    0.7& -26.3 \pm    3.4\cr\ln
+\hbox{05 Oct}    & -36.7 \pm    0.5& -42.9 \pm    4.4& -32.4 \pm    0.5& -36.0 \pm    3.9&  44.0 \pm    0.5& -23.6 \pm    4.4&  38.4 \pm    0.5& -24.4 \pm    4.4\cr\ln
+\hbox{07 Oct}    & -37.7 \pm    0.4&   1.9 \pm    3.6& -31.3 \pm    0.4& -11.7 \pm    3.2&  42.7 \pm    0.4& -38.1 \pm    3.5&  39.4 \pm    0.4& -27.2 \pm    3.5\cr\ln
+\hbox{24 Oct}    & -37.7 \pm    0.2& -46.2 \pm    2.1& -32.2 \pm    0.2& -34.2 \pm    1.8&  43.8 \pm    0.2& -37.6 \pm    2.0&  39.5 \pm    0.2& -14.8 \pm    2.1\cr\ln
+\hbox{26 Oct}    & -37.2 \pm    0.2& -24.3 \pm    1.8& -32.4 \pm    0.2& -20.3 \pm    1.6&  43.9 \pm    0.2& -35.2 \pm    1.7&  38.9 \pm    0.2& -67.5 \pm    1.7\cr\ln
+\hbox{29-30 Oct} & -36.4 \pm    0.2& -25.5 \pm    0.7& -31.7 \pm    0.2&  -4.0 \pm    0.7&  44.3 \pm    0.1&  -6.5 \pm    0.7&  38.4 \pm    0.1&  -5.7 \pm    0.7\cr\bln
+}}
+
+
+
+\em{Method 2a}. fit of vertical hit distributions for vertical alignment wrt. beam (for every unit), Gauss fit throught all data
+
+\fig{fig/pdf/al_el_plots_y_full.pdf}{al el plots y full}{Illustration of the alignment method 2a. The violet curve shows a Gaussian fit. 56 far}
+
+\htab{al el y full}{y distributions, full fits}{
+\omit&\multispan4\bhrulefill\cr
+\omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
+\hbox{21 Sep}    & -54.3 \pm   18.7&  24.5 \pm   21.9& -61.4 \pm   31.3& -26.1 \pm   31.3\cr\ln
+\hbox{05 Oct}    &  72.2 \pm   20.5&  93.0 \pm   35.0& -81.8 \pm   39.6&-214.1 \pm   45.6\cr\ln
+\hbox{07 Oct}    &  42.6 \pm   16.8&  85.6 \pm   24.0& -48.7 \pm   28.6& -76.6 \pm   30.7\cr\ln
+\hbox{24 Oct}    & -88.4 \pm   12.9& -20.4 \pm   15.5&  39.5 \pm   29.2&   8.7 \pm   38.4\cr\ln
+\hbox{26 Oct}    &  91.8 \pm    9.9& 160.1 \pm   10.8&-248.2 \pm   22.1&-217.5 \pm   23.8\cr\ln
+\hbox{29-30 Oct} &  12.4 \pm   11.0&  99.9 \pm   10.4& -36.7 \pm   13.3& -32.9 \pm   14.1\cr\bln
+}
+
+
+
+\em{Method 2b}. As 2a, but fit through the Gaussian region only
+
+\fig{fig/pdf/al_el_plots_y_gauss.pdf}{al el plots y gauss}{Illustration of the alignment method 2b. The violet curve shows a Gaussian fit. 56 far}
+
+\htab{al el y gauss}{y distributions, guass region fits}{
+\omit&\multispan4\bhrulefill\cr
+\omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
+\hbox{21 Sep}    & -56.3 \pm   10.5&  30.0 \pm   16.3& -62.2 \pm   25.3& -25.0 \pm   30.8\cr\ln
+\hbox{29-30 Oct} &   8.6 \pm    7.6&  89.5 \pm    8.5& -18.8 \pm   10.8&  -2.5 \pm   15.0\cr\bln
+}
+
+Comparison to method 2a: the worst case is $30\un{\mu m}$, generally much better than the error estimate.
+
+
+\em{Method 2c}. A Kolmogorov-like shift test.
+
+\fig{fig/pdf/al_el_plots_y_shift.pdf}{al el plots y shift}{Illustration of the alignment method 2c. The violet curve shows a Gaussian fit through the data in the fit region (delimited by the vertical dotted lines). The selected data points are marked in green. There are no data and no fit in the left plot. 56 far}
+
+\htab{al el y shift}{y distributions, shift tests. The ucertainty can be estimated as a half of the bin size. That is $25\un{\mu m}$ for 26 and 29-30 Oct and $50\un{\mu m}$ for the others.}{
+\omit&\multispan4\bhrulefill\cr
+\omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
+\hbox{21 Sep}    & -50.0&   0.0&-100.0&   0.0\cr\ln
+\hbox{05 Oct}    & 150.0& 150.0& -50.0&-200.0\cr\ln
+\hbox{07 Oct}    & 100.0& 150.0& -50.0& -50.0\cr\ln
+\hbox{24 Oct}    &-100.0&   0.0&  50.0&  50.0\cr\ln
+\hbox{26 Oct}    & 100.0& 200.0&-200.0&-200.0\cr\ln
+\hbox{29-30 Oct} &   0.0& 100.0& -50.0& -50.0\cr\bln
+}
+
+Comparison to method 2a: std. deviation of the differences $30\un{mu m}$, generally well within the estimated error.
+
+
+
+\em{Method 3}. fit of dy vs. y for far wrt. near vertical alignment (for every arm)
+
+\fig{fig/pdf/al_el_plots_dyy.pdf}{al el plots dyy}{Illustration of the alignment method 3. The red line fits the red points only, similarly for the blue one. The green line represents a global fit. sector 45}
+
+\bgroup
+\def\ln{\multispan3\hrulefill&&\multispan2\hrulefill\cr}
+\def\bln{\multispan3\bhrulefill&&\multispan2\bhrulefill\cr}
+\htab{al el dyy}{dy vs y fits}{
+\omit&\multispan2\bhrulefill&&\multispan2\bhrulefill\cr
+\omit&\strut\hbox{sector 45}&\hbox{sector 56}&&\hbox{sector 45}&\hbox{sector 56}\cr\bln
+\hbox{21 Sep}    &  69.3 \pm    0.7&  37.9 \pm    0.7 & \hskip1mm & -10 \pm 29 & -3   \pm 44\cr\ln
+\hbox{05 Oct}    &  70.4 \pm    0.8&  12.8 \pm    1.3 & \hskip1mm & 50  \pm 41 & -145 \pm 60\cr\ln
+\hbox{07 Oct}    &  72.0 \pm    0.9&   6.0 \pm    1.0 & \hskip1mm & 29  \pm 29 & -34  \pm 42\cr\ln
+\hbox{24 Oct}    &  86.8 \pm    0.4&  -1.4 \pm    0.6 & \hskip1mm & 19  \pm 20 & -29  \pm 48\cr\ln
+\hbox{26 Oct}    &  79.6 \pm    0.5&  -7.9 \pm    0.6 & \hskip1mm & 11  \pm 15 & 39   \pm 32\cr\ln
+\hbox{29-30 Oct} &  79.6 \pm    0.2&  -1.1 \pm    0.2 & \hskip1mm & -8  \pm 15 & 5    \pm 19\cr\bln
+}
+\egroup
+
+
+
+\em{Method 4}. fit of y56 vs y45 for left wrt. right vertical alignment (for far and near units)
+
+\fig{fig/pdf/al_el_plots_ylyr.pdf}{al el plots ylyr}{Illustration of the alignment method 4. The red line fits the red points only, similarly for the blue one. The green line represents a global fit. far units}
+
+\bgroup
+\def\ln{\multispan3\hrulefill&&\multispan2\hrulefill\cr}
+\def\bln{\multispan3\bhrulefill&&\multispan2\bhrulefill\cr}
+\htab{al el ylyr}{y56 vs. y45 fits}{
+\omit&\multispan2\bhrulefill&&\multispan2\bhrulefill\cr
+\omit&\strut\hbox{near units}&\hbox{far units}&&\hbox{near units}&\hbox{far units}\cr\bln
+\hbox{21 Sep}    & -40.4 \pm   21.3&  78.6 \pm   21.4 & \hskip1mm & 75   \pm 42 & 80   \pm 44\cr\ln
+\hbox{05 Oct}    & 170.8 \pm   26.3& 264.5 \pm   28.6 & \hskip1mm & 180  \pm 52 & 386  \pm 64\cr\ln
+\hbox{07 Oct}    &  95.4 \pm   20.2& 181.9 \pm   21.8 & \hskip1mm & 102  \pm 39 & 173  \pm 45\cr\ln
+\hbox{24 Oct}    & -75.8 \pm   10.7&  15.3 \pm   11.4 & \hskip1mm & -27  \pm 34 & 27   \pm 43\cr\ln
+\hbox{26 Oct}    &  19.5 \pm    9.1&  98.6 \pm    9.9 & \hskip1mm & 176  \pm 26 & 156  \pm 28\cr\ln
+\hbox{29-30 Oct} &-240.9 \pm    4.9&-158.3 \pm    4.9 & \hskip1mm & -217 \pm 18 & -225 \pm 18\cr\bln
+}
+\egroup
+
+
+
+Methods 1 and 3, 4: all the fits are the same - the same misalignment of top and bottom pots. In other words, the TB alignment worked well!
+
+
+\iffalse
+RP position corrections (only dy vs. y data used)								
+	45 near		45 far		56 near		56 far	
+	x	y	x	y	x	y	x	y
+2010_09_21	-33	0	-48	69	-23	0	-25	38
+2010_10_05	-43	0	-38	70	-24	0	-24	13
+2010_10_07	2	0	-14	72	-38	0	-27	6
+2010_10_24	-46	0	-37	87	-38	0	-15	-1
+2010_10_26	-24	0	-23	80	-35	0	-68	-8
+2010_10_29-30	-26	0	-7	80	-7	0	-6	-1
+								
+								
+RP position corrections (y distributions data used)								
+	45 near		45 far		56 near		56 far	
+	x	y	x	y	x	y	x	y
+2010_09_21	-31	-54	-47	25	-26	-61	-27	-26
+2010_10_05	-46	72	-39	93	-27	-82	-33	-214
+2010_10_07	0	43	-14	86	-40	-49	-30	-77
+2010_10_24	-43	-88	-34	-20	-36	40	-14	9
+2010_10_26	-28	92	-25	160	-46	-248	-76	-218
+2010_10_29-30	-26	12	-7	100	-8	-37	-7	-33
+\fi
+
 
 \section[al sum]{Summary}
 
