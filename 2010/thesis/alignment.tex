@@ -1009,29 +1009,47 @@ Why analyses with overlap true and false?
 
 \fig{fig/pdf/al_prof_fits.pdf}{al prof fits}{Details for the fit in 56 near unit. (data 21 Sep). The fit lines have the same color code as in \Fg{al prof hits}. The green points excluded from the fit.}
 
+\TODO{Elastic peak tilts}
+
+\TODO{Diffracive hits have banana shape, cannot be used}
+
 \section[al elast]{Elastic Alignment}
 
+One first needs to select a sample of elastic events...
 
-Selection of elastic events. What we know
-\> angles the same left and right
-\> correlation between angle and position
-\> arrive at x ~ 0
+The transport of elastic events can be well described as \TODO{reference}:
+\eqref{\eqnarray{
+q(s) &= L_q(s) \th_q^* + v_q(s) q^*\ ,& \qquad q = x, y\cr
+\th_q \equiv q'(s) \equiv {\d q\over\d s} &= L_q'(s) \th_q^* + v_q'(s) q^*\ ,& \qquad L_q' \equiv {\d L_q\over \d s}\cr
+}}{el transport}
+Moreover the vertex terms can be neglected \TODO{reference}. In addition, the optics is rather symmetric \TODO{reference}, that is:
+\eqref{L_q(s) \approx L_q(-s)}{al el sym opt}
 
-Three cuts (for each diagonal)
-\bitm
-\itm $\th_x$ equal left and right.
-\eqref{\hbox{distance from line } \De x^{56} = (-1 + a) \De x^{45} + b \hbox{ smaller than } 0.08\un{mm}\ ,}{al el cut 1}
-where $a$ and $b$ are small corrections \TODO{determined in iterations}
-In this section, $\De q \equiv q_F - q_N$
+Furthermore, the optics is such that the phase advance $\phi$ (see Hill's equation \Eq{hill eq}) at the $220\un{m}$ stations is close to $\pi/2$ in $x$ or $0$ in $y$ \TODO{reference}. This means that $L_x(220)$ almost vanishes, but $L_x'(220)$ is large and vice versa for the vertical projection. All these considerations lead to the following three properties of elastic events:
+\eqref{\eqnarray{
+\th_x^{\rm left} &\approx& - \th_x^{\rm right}\ ,\cr
+\th_y &\approx & {L_x'\over L_x} y\ ,\cr
+x &\approx & 0\ .
+}}{al el prop}
+The above relations are approximate only -- we have made important simplifications in the proton transport and completely neglected beam smearing and detector misalignments. These effect thus set the thresholds for the cuts that follow from the three conditions.
 
-\itm $\De y$ proportional to $y$
-\eqref{\hbox{distance from line } \De y = a y_N + b \hbox{ smaller than } 0.045\un{mm}\ ,}{al el cut 2}
+Before dicussing the cuts, let's note that one could consider also relations between $\th_y$ left and right and between $\th_x$ and $x$. But because of the phase advance conditions, the latter two would not provide a powerful cut.
 
-\itm $x$ close to 0
-\eqref{\hbox{distance from line } x = a y + b \hbox{ smaller than } 0.045\un{mm}\ ,}{al el cut 3}
-\eitm
+\em{Cut 1}: $\th_x$ equal left and right. In fact, one may use the far-near difference $\De_{F-N} x$ instead of the angle. Since the optics is not perfectly symmetric, the slope of the $\De_{F-N} x^{56}$ vs. $\De_{F-N} x^{45}$ correlation may slightly differ from $-1$. And since the detectors might be sligly misaligned, one should allow for a small, but non-zero, intercept of this dependence. Hence, one may expect the events be close to a line:
+\eqref{\De_{F-N} x^{56} = (-1 + a) \De_{F-N} x^{45} + b\ .}{al el cut 1 line}
+The cut can then be formulated as:
+\eqref{\hbox{distance from the above line is smaller than } 0.08\un{mm}\ ,}{al el cut 1}
+\TODO{a, b: determined in iterations}
 
-\fig{fig/pdf/al_el_selection.pdf}{al el selection}{Selection of elastic events. The black dots show events before the cut, colorful dots after. The red dots belong to 45 bottom -- 56 top diagonal, the blue to the other one. The lightgreen area represents the cut requirement. \TODO{data set, data reduction ?}}
+\em{Cut 2}. $\th y$ proportional to $y$. As for the first cut, we will use the far-near difference $\De_{F-N} y$ instead of the angle $\th_y$ and we will allow for a small intercept, which may arise from detector misalignments. The second cut reads:
+\eqref{\hbox{distance from line } \De_{F-N} y = a y_N + b \hbox{ smaller than } 0.045\un{mm}\ .}{al el cut 2}
+
+\em{Cut 3}. $x$ close to zero. As we saw in \Sc{al prof}, there is a sort of XY coupling in the optics, which makes the elastic distributions to tilt. Hence instead of expecting the elastic hits literally close to $x\approx 0$, we should require them being close to a line $x = ay + b$, where $a$ corresponds to the tilt and $b$ is a result of detector misalignments. The third cut reads:
+\eqref{\hbox{distance from line } x = a y + b \hbox{ smaller than } 0.4\un{mm}\ .}{al el cut 3}
+
+The cut parameters (a's, b's and thresholds) were determined empirically in several iterations. First we used the ideal values from \Eq{al el prop} and very liberal thresholds. The obtained sample was used to fit the relevant distributions and get corrections to the cut parameters. An illustration of the cuts can be found in \Fg{al el selection}.
+
+\fig{fig/pdf/al_el_selection.pdf}{al el selection}{Selection of elastic events. The black dots show events before the cut, colorful dots after. The red dots belong to 45 bottom -- 56 top diagonal, the blue to the other one. The lightgreen area represents the cut requirement. Data from 21 Sep (only 2000 events shown).}
 
 
 
@@ -1059,7 +1077,7 @@ In this section, $\De q \equiv q_F - q_N$
 
 \fig{fig/pdf/al_el_plots_y_full.pdf}{al el plots y full}{Illustration of the alignment method 2a. The violet curve shows a Gaussian fit. 56 far}
 
-\htab{al el y full}{y distributions, full fits}{
+\htab{al el y full}{y distributions, full fits, values in $\rm \mu m$}{
 \omit&\multispan4\bhrulefill\cr
 \omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
 \hbox{21 Sep}    & -54.3 \pm   18.7&  24.5 \pm   21.9& -61.4 \pm   31.3& -26.1 \pm   31.3\cr\ln
@@ -1076,7 +1094,7 @@ In this section, $\De q \equiv q_F - q_N$
 
 \fig{fig/pdf/al_el_plots_y_gauss.pdf}{al el plots y gauss}{Illustration of the alignment method 2b. The violet curve shows a Gaussian fit. 56 far}
 
-\htab{al el y gauss}{y distributions, guass region fits}{
+\htab{al el y gauss}{y distributions, guass region fits, values in $\rm \mu m$}{
 \omit&\multispan4\bhrulefill\cr
 \omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
 \hbox{21 Sep}    & -56.3 \pm   10.5&  30.0 \pm   16.3& -62.2 \pm   25.3& -25.0 \pm   30.8\cr\ln
@@ -1090,7 +1108,7 @@ Comparison to method 2a: the worst case is $30\un{\mu m}$, generally much better
 
 \fig{fig/pdf/al_el_plots_y_shift.pdf}{al el plots y shift}{Illustration of the alignment method 2c. The violet curve shows a Gaussian fit through the data in the fit region (delimited by the vertical dotted lines). The selected data points are marked in green. There are no data and no fit in the left plot. 56 far}
 
-\htab{al el y shift}{y distributions, shift tests. The ucertainty can be estimated as a half of the bin size. That is $25\un{\mu m}$ for 26 and 29-30 Oct and $50\un{\mu m}$ for the others.}{
+\htab{al el y shift}{y distributions, shift tests,  values in $\rm \mu m$. The ucertainty can be estimated as a half of the bin size. That is $25\un{\mu m}$ for 26 and 29-30 Oct and $50\un{\mu m}$ for the others.}{
 \omit&\multispan4\bhrulefill\cr
 \omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
 \hbox{21 Sep}    & -50.0&   0.0&-100.0&   0.0\cr\ln

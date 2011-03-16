@@ -30,15 +30,7 @@ real dyy_56_a, dyy_56_b;
 
 include "../alignment/elastic/2010_09_21/cuts.cc";
 
-//----------------------------------------------------------------------------------------------------
-
-// data reduction
-rGetObj(file, diag1+"/cut 1/dx_56 vs dx_45");
-int N = robj.iExec("GetN");
-TGraph_reducePoints = (N < 2000) ? 1 : quotient(N, 2000);
-
-write(N);
-write(TGraph_reducePoints);
+TGraph_N_limit = 2000;
 
 //----------------------------------------------------------------------------------------------------
 
