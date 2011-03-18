@@ -17,19 +17,22 @@ real s = 1/sqrt(2);
 transform rot = (0, 0, s, s, -s, s);
 
 for (int d_i: dates.keys) {
-	string name = "far: y_56 vs. y_45";
+	string name_f = "far: y_56 vs. y_45, full";
+	string name_c = "far: y_56 vs. y_45, cut";
 	string file = "../alignment/elastic/"+dates[d_i]+"/alignment_analysis.root";
 	write(dates[d_i]);
 
 	NewPad("$y_{45} \un{mm}$", "$y_{56} \un{mm}$");
 	//AddToLegend("far");
 	AddToLegend(Date(dates[d_i]));
-	draw(rot, rGetObj(file, name + "#1"), "p", red);
-	draw(rot, rGetObj(file, name + "#3"), "p", blue);
+	draw(rot, rGetObj(file, name_f + "#1"), "p", darkred+opacity(0.2));
+	draw(rot, rGetObj(file, name_c + "#1"), "p", red);
+	draw(rot, rGetObj(file, name_f + "#3"), "p", darkblue+opacity(0.2));
+	draw(rot, rGetObj(file, name_c + "#3"), "p", blue);
 
-	draw(rot, rGetObj(file, name + "#2"), "l", red);
-	draw(rot, rGetObj(file, name + "#4"), "l", blue);
-	draw(rot, rGetObj(file, name + "#5"), "l", heavygreen);
+	draw(rot, rGetObj(file, name_c + "#2"), "l", red);
+	draw(rot, rGetObj(file, name_c + "#4"), "l", blue);
+	draw(rot, rGetObj(file, name_c + "#5"), "l", heavygreen);
 
 	limits((-12, -12), (+12, +12), Crop);
 	AttachLegend("Method 4", NE, NE);
@@ -37,4 +40,4 @@ for (int d_i: dates.keys) {
 	yaxis(XEquals(0, false), gray+dotted);
 }
 
-GShipout(hSkip=1mm, vSkip=1mm);
+GShipout(hSkip=5mm, vSkip=1mm);

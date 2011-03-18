@@ -11,12 +11,12 @@ string base_dir = "../alignment/lhc_old/2010_09_21_vsym2/profiles";
 NewPad("$x\un{mm}$", "$y\un{mm}$");
 draw(rGetObj(base_dir+"/120_121.root", "56_1#2"), "p");
 draw(rGetObj(base_dir+"/120_121.root", "56_1#3"), "p", heavygreen);
-draw(rGetObj(base_dir+"/120_121.root", "56_1#2#0"), "l", red);
+draw(rGetObj(base_dir+"/120_121.root", "56_1#2#0"), "l", red+1pt);
 limits((0, -10), (1, 10));
 
 NewPad("$x\un{mm}$", "$y\un{mm}$");
 draw(rGetObj(base_dir+"/122.root", "56_3#2"), "p");
-draw(rGetObj(base_dir+"/122.root", "56_3#2#0"), "l", blue);
+draw(rGetObj(base_dir+"/122.root", "56_3#2#0"), "l", blue+1pt);
 limits((2, 0.5), (8, 2));
 
 /*

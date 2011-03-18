@@ -10,6 +10,8 @@ MOTIVATION: An accurate alignment is of major importance for the TOTEM experimen
 WHAT WE ALIGN, WRT WHAT:
 What is important is the relative position between RP sensors (the other parts do not matter much) and the beam. Hence there are two players in the game -- RP positions and beam positions.
 
+Coordinate system such that the beam is at x=y=0
+
 \section[al proc]{Alignment procedure}
 The procedure has two steps. First, move the pots to the desired position as precisely as possible. Then take data, analyze them and find what error has been done in the first step.
 
@@ -577,7 +579,7 @@ if one doubles the sample, the errors in the second half will be independent of 
 
 The other two error sources (approximations 2) and 3)) do not behave in this way. In contrary, one can assume that the final error would be independent of the sample size
 %(provided that track distribution and geometry and misalignments remain the same)
-. Therefore, the rotation-matrix linearization and biased $\ga$ coefficient lead to a \em{systematical} error.
+. Therefore, the rotation-matrix linearization and biased $\ga$ coefficient lead to a \em{systematic} error.
 
 The above statements are hypothesis only, we will illustrate their validity with a number of Monte-Carlo tests below (see \Sc{al mc tests})
 
@@ -623,9 +625,9 @@ The uncertainties of the $\vec\ch$ vector components can be found on the diagona
 
 \ssubsection[al iter]{Iterations}
 
-\Tb{al iter} shows the principle of iterations. The symbol $\vec\ch$ represents a state of the alignment, thats is geometrical corrections to be applied on the basic geometry. The numerical lower indices refer to the relevant iteration, $\vec\ch_0$ stands for the initial alignment. The correction obtained in $i$-th iteration is denoted $\De \vec\ch_i$. The expression in the right-hand side column summarizes our understanding of the errors. That is the correction shall be equal to the difference between the actual alignment $\vec\ch$ and the pre-iteration alignment $\vec\ch_{i-1}$ (modulo constraints -- filter matrix ${\cal F}_{\rm constr}$) altered by the statistical ($\De \vec\ch_{\rm stat}$) and systematical ($\De \vec\ch_{\rm syst}$) errors. For a given sample the statistical error (given by the pitch rounding) is constant (when not changing the cut parameters which would modify the sample). The systematical error depends on ''how far we are from the actual alignments,'' that is $\vec\ch - \vec\ch_i$. The iterations continue as long as the corrections are important (their size is larger than a limit). In the LHC data analysis, two iterations turned out to be sufficient. That is the correction in the third one was already negligible.
+\Tb{al iter} shows the principle of iterations. The symbol $\vec\ch$ represents a state of the alignment, thats is geometrical corrections to be applied on the basic geometry. The numerical lower indices refer to the relevant iteration, $\vec\ch_0$ stands for the initial alignment. The correction obtained in $i$-th iteration is denoted $\De \vec\ch_i$. The expression in the right-hand side column summarizes our understanding of the errors. That is the correction shall be equal to the difference between the actual alignment $\vec\ch$ and the pre-iteration alignment $\vec\ch_{i-1}$ (modulo constraints -- filter matrix ${\cal F}_{\rm constr}$) altered by the statistical ($\De \vec\ch_{\rm stat}$) and systematic ($\De \vec\ch_{\rm syst}$) errors. For a given sample the statistical error (given by the pitch rounding) is constant (when not changing the cut parameters which would modify the sample). The systematic error depends on ''how far we are from the actual alignments,'' that is $\vec\ch - \vec\ch_i$. The iterations continue as long as the corrections are important (their size is larger than a limit). In the LHC data analysis, two iterations turned out to be sufficient. That is the correction in the third one was already negligible.
 
-After the iteration process has converged, the final error still have two components -- the statistical and the systematical. The latter one is proportional to the distance to the actual alignments. The distance can not vanish because of two reasons -- the constraints (some alignment modes remain undetermined) and the statistical error. \Fg{al syst err uv rot,al syst err fn rot} show the systematical errors due to undermined $U$-$V$ and far-near unit rotations. \TODO{The systematical error induced by the statistical error}
+After the iteration process has converged, the final error still have two components -- the statistical and the systematic. The latter one is proportional to the distance to the actual alignments. The distance can not vanish because of two reasons -- the constraints (some alignment modes remain undetermined) and the statistical error. \Fg{al syst err uv rot,al syst err fn rot} show the systematic errors due to undermined $U$-$V$ and far-near unit rotations. \TODO{The systematic error induced by the statistical error}
 
 \tab[\strut\hfil#\qquad&#\hfil\qquad&#\hfil\cr]{al iter}{A scheme of alignment iterations with the error evolution.}{\ln
 			& alignment & correction \cr\ln
@@ -665,13 +667,13 @@ The first term removes the singular modes from the actual alignments $\vec\ch^0$
 We have performed a number of simulations to explore the influence of various parameters. For every settings, the simulation has been repeated 20 times with different random seeds. For every repetition, we have calculated real results with their uncertainty and reference results. This provided us with a statistical sample on which we evaluated
 \eqref{\vbox{\halign{\strut#\qquad&#\cr
 quantity & label\cr\ln
-\hbox{mean(real result - reference result)}	& \hbox{systematical error} \cr
+\hbox{mean(real result - reference result)}	& \hbox{systematic error} \cr
 \hbox{sigma(real result - reference result)}& \hbox{statistical error} \cr
 \hbox{mean(uncertainty)} 					& \hbox{estimated uncertainty} \cr
 }}}{al stat quan def}
 the term sigma is used as square-root of variance here, the full formulae used can be found in \Sc{stat estim}. The \rhs{} column lists the labels that will be used for these quantities.
 
-An example of such a statistical study can be seen in \Fg{al stat fixDet}. Here we chose fixed-detectors type of constraints, with rotations fixed only in the near unit. This is the reason for much higher errors in the far unit (bottom part). Let us make three important observations. First, the systematical error is compatible with zero within the estimated error \TODO{with a small exception}. Second, the estimated uncertainty falls as $1/\sqrt{N_{\rm tracks}}$. Third, the ratio of statistical error to estimated uncertainty is almost flat, but below the expected value of one. This means that the uncertainty estimated with the help of the model \Er{pitch error model} is overestimated. However, the most important observation was the first one, that there is no bias.
+An example of such a statistical study can be seen in \Fg{al stat fixDet}. Here we chose fixed-detectors type of constraints, with rotations fixed only in the near unit. This is the reason for much higher errors in the far unit (bottom part). Let us make three important observations. First, the systematic error is compatible with zero within the estimated error \TODO{with a small exception}. Second, the estimated uncertainty falls as $1/\sqrt{N_{\rm tracks}}$. Third, the ratio of statistical error to estimated uncertainty is almost flat, but below the expected value of one. This means that the uncertainty estimated with the help of the model \Er{pitch error model} is overestimated. However, the most important observation was the first one, that there is no bias.
 
 This was just an example, for other conditions and settings the results confirm the observations above. Another example can be found in \Fg{al stat final}.
 
@@ -679,11 +681,11 @@ This was just an example, for other conditions and settings the results confirm 
 %[20 repetitions, geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad, 3 iterations]
 }
 
-\Fg{al syst err pitch} demonstrates the impact of multi-strip-cluster uncertainties choice. The left plot shows the simulations for non-reduced uncertainties and confirms our previous statement about systematical errors. The picture changes dramatically when reduced uncertainties are used, see the right plot.
+\Fg{al syst err pitch} demonstrates the impact of multi-strip-cluster uncertainties choice. The left plot shows the simulations for non-reduced uncertainties and confirms our previous statement about systematic errors. The picture changes dramatically when reduced uncertainties are used, see the right plot.
 %Pitch rounding effect is different for every seed while the reduced ms cluster error one is the same for every seed.
 That is why we will always use the non-reduced uncertainties in all following simulations and experimental data analyses.
 
-\fig{fig/pdf/al_syst_err_pitch.pdf}{al syst err pitch}{The systematical error in read-out shifts as a function of the detector pitch. The error shown in the r.h.s.{} plot is due to the use of the reduced multi-strip-cluster uncertainties. Every line corresponds to one plane in near top RP. The plots for rotations about $z$ look likewise in the scale from $-0.5$ to $0.5\un{\mu m}$. The size of the double-strip-cluster region (see \Fg{fast simulation scheme}) was kept at $50\percent$ of the pitch. The vertical dotted line marks the actual pitch.
+\fig{fig/pdf/al_syst_err_pitch.pdf}{al syst err pitch}{The systematic error in read-out shifts as a function of the detector pitch. The error shown in the r.h.s.{} plot is due to the use of the reduced multi-strip-cluster uncertainties. Every line corresponds to one plane in near top RP. The plots for rotations about $z$ look likewise in the scale from $-0.5$ to $0.5\un{\mu m}$. The size of the double-strip-cluster region (see \Fg{fast simulation scheme}) was kept at $50\percent$ of the pitch. The vertical dotted line marks the actual pitch.
 %it3 - precise3
 }
 
@@ -707,15 +709,15 @@ If \Fg{al eig theta} we have seen that the eigenvalues of the linearly-progressi
 %No misalignment, extfit=f. 
 }
 
-\Fg{al err rotz rho,al err rotz theta} provide another motivation to use of the final constraints (see \Eq{final constraints}). However, as it was mentioned in \Sc{al constr}, constraining weak modes (with low but non-zero eigenvalues) may lead to additional errors -- they are plotted in \Fg{al err overconstraints}. For every value of track divergence, we have made 20 simulations (with different random seeds). On this sample we have evaluated the sigma of the reference result (statistical error) and the mean difference between the reference and ideal result (systematical error). As expected, both errors are negligible for low values of $\si(\vec a)$, which is still true for the typical LHC track divergence (the vertical dotted line). For large $\si(\vec a)$ values the errors become relevant, however, in this case one could determine the far-near rotation and a ''lighter'' set of constraints could be used. The simulations used in \Fg{al err overconstraints} were performed with a misalignment scenario with the far-near rotation of $10\un{mrad}$. Let us remark that if a misalignment with no far-near rotations was used, the additional errors would vanish.
+\Fg{al err rotz rho,al err rotz theta} provide another motivation to use of the final constraints (see \Eq{final constraints}). However, as it was mentioned in \Sc{al constr}, constraining weak modes (with low but non-zero eigenvalues) may lead to additional errors -- they are plotted in \Fg{al err overconstraints}. For every value of track divergence, we have made 20 simulations (with different random seeds). On this sample we have evaluated the sigma of the reference result (statistical error) and the mean difference between the reference and ideal result (systematic error). As expected, both errors are negligible for low values of $\si(\vec a)$, which is still true for the typical LHC track divergence (the vertical dotted line). For large $\si(\vec a)$ values the errors become relevant, however, in this case one could determine the far-near rotation and a ''lighter'' set of constraints could be used. The simulations used in \Fg{al err overconstraints} were performed with a misalignment scenario with the far-near rotation of $10\un{mrad}$. Let us remark that if a misalignment with no far-near rotations was used, the additional errors would vanish.
 
 \fig{fig/pdf/al_err_overconstraints.pdf}{al err overconstraints}{The errors due to constraining the weak modes in the final set of constraints, plotted as a function of the track divergence $\si(\vec a)$.Every line corresponds to a detector in the near top RP. The dashed lines represent $V$ detectors while the solid $U$ detectors. The vertical dotted line marks the typical LHC track spread.
 % Jan(round=f,extFit=t) - Ideal, 3 iterations, 
 }
 
-As already revealed by \Fg{al stat fixDet}, the systematical error is practically negligible. But still, let us explore them a bit more in detail. As discussed in \Sc{al err}, the systematical errors may arise either from the linearization of the rotation matrix, which gives a negligible contribution, or from undetermined alignment modes (they bias the $\ga$ coefficients). With the final constraints the are two types of undetermined modes: $U$-$V$ and far-near rotations. 
+As already revealed by \Fg{al stat fixDet}, the systematic error is practically negligible. But still, let us explore them a bit more in detail. As discussed in \Sc{al err}, the systematic errors may arise either from the linearization of the rotation matrix, which gives a negligible contribution, or from undetermined alignment modes (they bias the $\ga$ coefficients). With the final constraints the are two types of undetermined modes: $U$-$V$ and far-near rotations. 
 
-To study the systematical errors due to undetermined $U$-$V$ rotation, we have a created a set of misalignments scenarios. They all have had no read-out shift misalignment. The rotations have been generated according to Gaussian distributions with $\si = 1\un{mrad}$. The mean has been zero for $V$ detectors, for $U$ detectors as indicated on the horizontal axes in \Fg{al syst err uv rot}. One can see the errors are practically zero for $U$ detectors (solid lines), but non-zero for $V$ (detectors). This can be easily understood from the form of the $\ga$ coefficient for rotations (see \Tb{alignment quantities}) -- it contains the direction perpendicular to the read-out one. And in the nominal geometry, the direction perpendicular to $U$ is $\pm V$ and vice versa. Hence by neglecting (not determining) the rotations of $U$ detectors, one biases the $\ga$ coefficients for $V$ detectors (and gives raise to the related error).
+To study the systematic errors due to undetermined $U$-$V$ rotation, we have a created a set of misalignments scenarios. They all have had no read-out shift misalignment. The rotations have been generated according to Gaussian distributions with $\si = 1\un{mrad}$. The mean has been zero for $V$ detectors, for $U$ detectors as indicated on the horizontal axes in \Fg{al syst err uv rot}. One can see the errors are practically zero for $U$ detectors (solid lines), but non-zero for $V$ (detectors). This can be easily understood from the form of the $\ga$ coefficient for rotations (see \Tb{alignment quantities}) -- it contains the direction perpendicular to the read-out one. And in the nominal geometry, the direction perpendicular to $U$ is $\pm V$ and vice versa. Hence by neglecting (not determining) the rotations of $U$ detectors, one biases the $\ga$ coefficients for $V$ detectors (and gives raise to the related error).
 
 \fig{fig/pdf/al_syst_err_uv_rot.pdf}{al syst err uv rot}{Systematical errors due to undetermined $U$-$V$ rotation $\De_{U-V}\rh$. The simulations have done with $\si(\vec a) = 0\un{mrad}$, final constraints and a special track distribution -- uniform on $0\un{mm}<x<10\un{mm}$ and $-20\un{mm}<y<20\un{mm}$. This distribution is closer to the typical LHC one and, moreover, amplifies the effect. Every curve corresponds to a detector in the near top RP ($V$ detectors are dashed, $U$ solid).
 %geometry 2.7x3.3, Jan(round=f, extfit=f) - Jan(f, t), 3 iterations
@@ -728,7 +730,7 @@ A similar study has been performed for the far-near rotations, the results are i
 %geometry 2.7x3.3, 3 iterations, Jan(round=f, extfit=f) - Jan(f, t)
 }
 
-\Fg{al err rotz rho,al err rotz theta} gave us the motivation to use the final constraints, \Fg{al err overconstraints,al syst err uv rot,al syst err fn rot} reassured us that there is no relevant systematical error. To conclude this section, we include an equivalent of \Fg{al stat fixDet}, but with the use of the final constraints: \Fg{al stat final}. The interpretation is equivalent too: no systematical error and slightly overestimated uncertainty.
+\Fg{al err rotz rho,al err rotz theta} gave us the motivation to use the final constraints, \Fg{al err overconstraints,al syst err uv rot,al syst err fn rot} reassured us that there is no relevant systematic error. To conclude this section, we include an equivalent of \Fg{al stat fixDet}, but with the use of the final constraints: \Fg{al stat final}. The interpretation is equivalent too: no systematic error and slightly overestimated uncertainty.
 
 \fig{fig/pdf/al_stat_final.pdf}{al stat final}{A statistical study of the alignment algorithm with the final constraints. Every curve corresponds to the third plane of a RP, see the legend. The filled areas represent $1\si$ error bands. The vertical dotted lines mark the typical number of tracks in LHC runs.
 %(20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad.
@@ -997,68 +999,114 @@ Why analyses with overlap true and false?
 
 \section[al prof]{Profile methods}
 
-\> Hit rate comparison
-\> Hit spatial distributions
-\> Kinematic peak method
+Profile methods are those which use symmetries in track and/or angular distributions. The expected symmetries depend on the studied physical processes as well as on the optics. However, the vertical symmetry around the beam can be assumed quite generally. If there was no crossing-angle, the process would have full azimuthal symmetry (about the beam axis). Even if the crossing-angle is non-zero, it is horizontal, hence the up-down symmetry is preserved. On the optics side, most of them are designed with vanishing vertical dispersion $D_y$, therefore the vertical symmetry remains also after the proton transport.
 
-\fig{fig/pdf/al_prof_simu.pdf}{al prof simu}{A Geant4 simulation of hit distributions at the RPs of the 56-220m near unit. The geen points represent elastic scattering (Elegent, PPP3), blue SD (Pythia) and red DPE (Phojet). All processes simulated at $\sqrt s = 3.5\un{GeV}$ and with nominal optics with $\be^* = 2.5\un{m}$. The black lines are the countours of the sensors.}
+This vertical symmetry can be used even on-line, before data-taking, to symmetrized the position of the vertical RPs around the beam. This would increase the low $|t|$ acceptance.
 
-\fig{fig/pdf/al_prof_hits.pdf}{al prof hits}{Typical hit distributions at near stations (scoring planes at $\pm 217m$). Data from 21 Sep. The far stations look qualitatively the same.
+Profile methods have also offline applications, that is those that can provide alignment corrections for registered data. Let us focus low-$\be$ optics, which was the case for 2010 data-takings. \Fg{al prof simu} shows typical hit distributions (MC simulation) for some important forward-physics processes. Beyond the aforementioned vertical symmetry, one can immediately spot the horizontal symmetry of the green points (elastic scattering). The entire next section will be devoted to the alignment with elastic scattering, but let us comment on how to use this symmetry even without separating a sample of elastic events. The ''hot spot'' close to $x\approx 0$ contains also a contribution from non-elastic processes with low $\xi$ (see for example the red dots -- DPE). Due to the horizontal dispersion, the hits are shifted to the right and the symmetry is broken. This can be well seen \Fg{al prof x dists}: the elastic peak is close to zero, but the non-elastic events form a broad structure shifted towards higher $x$ values. But what is important is that around $x=0$, the distribution is dominated by elastics events and their peak can be well fitted, as illustrated in the figure.
+
+\Fg{al prof simu} shows the distributions as expected from simulations, however, in reality they look quite different, see \Fg{al prof hits}. On the first sight, we one can two major differences.
+\bitm
+\itm The \em{tilt of the elastic peak} (around the red line). Our current understanding is a XY coupling, \TODO{because of ...}
+\itm The unexpected distribution of the diffractive hits (around the blue line, mainly for the sector 56). The distribution is tilted and deformed. The slope of the diffractive hits could be explained by the presence of a vertical dispersion \TODO{... more, comment about the shape}.
+\eitm
+
+As a consequence of the elastic peak tilt, the peak in the $x$ distribution widens up, see \Fg{al prof x dists} left, and its center does not correspond to the $x$ position of the beam. To mitigate this problem, one may divide the scatter plot into horizontal slices and build and fit the $x$ distributions for each of them (an example is in \Fg{al prof x dists} right; note the thinner peak). Then, the peak positions then be plotted versus the center of the slice, see an example in \Fg{al prof fits} left. The vertical error bands represent the slice widths, the horizontal are coming from the peak fit uncertainty. The points in green were removed as outliers. The red line represent a common fit through top and bottom pot data and it confirms that the tilt is the same for both RPs. Ideally (were there no errors), the red line would go through the beam position.
+
+In principle, the same slicing method could be applied to the diffractive hits (see \Fg{al prof fits} right), however it is complicated by two facts. First, the profile is non-linear (can be seen by bare eyes in \Fg{al prof hits} right and is manifested by the point fluctuation in \Fg{al prof fits} right). Thus the linear-fit result will be burdened by an important systematic error. Since the diffractive hit distribution is wide and therefore the statistical error of the fit is large as well. This all is made even worse by the second complication: since there is just one horizontal pot, the fit must be extrapolated to the beam position. At the end, the error propagation makes this method uninteresting.
+
+\TODO{broken symmetries - assymetric acceptance, optics deviations, apperture limitations, trigger and detector efficiency bias}
+
+\fig{fig/pdf/al_prof_simu.pdf}{al prof simu}{A Geant4 simulation of hit distributions at the RPs of the 56-220m near unit. The geen points represent elastic scattering (Elegent, PPP3), blue SD (Pythia) and red DPE (Phojet). All processes simulated at $\sqrt s = 3.5\un{GeV}$ and with nominal optics with $\be^* = 2.5\un{m}$. The black solid lines are the contours of the sensors. The dotted lines represent symmetry axes, the middle black dot marks the position of the beam.}
+
+\fig{fig/pdf/al_prof_x_dists.pdf}{al prof x dists}{Horizontal hit distributions in the 56-220-near-top pot (data from 29-30 Oct). Left: all hits, Right: one horizontal slice only. The peak is mostly formed by elastic events, the background is dominated by DPE. The red curve is a Gaussian fit with quadratic background.}
+
+\fig{fig/pdf/al_prof_hits.pdf}{al prof hits}{Typical hit distributions at near stations (scoring planes at $\pm 217\un{m}$). Data from 21 Sep. The far stations look qualitatively the same.
 % analysis with vsym2 geometry
 }
 
-\fig{fig/pdf/al_prof_fits.pdf}{al prof fits}{Details for the fit in 56 near unit. (data 21 Sep). The fit lines have the same color code as in \Fg{al prof hits}. The green points excluded from the fit.}
+\fig{fig/pdf/al_prof_fits.pdf}{al prof fits}{The results of the sliced fits for the 56-220-near unit and data from 21 Sep. Left: fit of the elastic peaks, Right: fit of the diffractive hit distribution. The fit lines use the same color code as in \Fg{al prof hits}. The green points excluded from the fit.}
 
-\TODO{Elastic peak tilts}
+\TODO{With an interesting precision, the alignment can be done in the horizontal direction only.}
 
-\TODO{Diffracive hits have banana shape, cannot be used}
+Practically, the profile alignment is used as the step prior to the alignment with elastic tracks. It simplifies the selection of the elastic sample, but the precision is superseded in the next step.
 
 \section[al elast]{Elastic Alignment}
+
+\TODO{Certain statements hold only for the low $\be$ optics.}
 
 One first needs to select a sample of elastic events...
 
 The transport of elastic events can be well described as \TODO{reference}:
 \eqref{\eqnarray{
 q(s) &= L_q(s) \th_q^* + v_q(s) q^*\ ,& \qquad q = x, y\cr
-\th_q \equiv q'(s) \equiv {\d q\over\d s} &= L_q'(s) \th_q^* + v_q'(s) q^*\ ,& \qquad L_q' \equiv {\d L_q\over \d s}\cr
+\th_q \equiv {\d q\over\d s} &= L_q'(s) \th_q^* + v_q'(s) q^*\ ,& \qquad L_q' \equiv {\d L_q\over \d s}\cr
 }}{el transport}
-Moreover the vertex terms can be neglected \TODO{reference}. In addition, the optics is rather symmetric \TODO{reference}, that is:
-\eqref{L_q(s) \approx L_q(-s)}{al el sym opt}
+Moreover, the vertex terms can be neglected \TODO{reference}. In addition, the optics is rather symmetric \TODO{reference}, that is:
+\eqref{L_q(s) \approx L_q(-s),\quad L_q'(s) \approx - L_q'(-s)\ .}{al el sym opt}
+Furthermore, the optics is such that the phase advance $\ph$ (see Hill's equation \Eq{hill eq}) at the $220\un{m}$ stations is close to $\pi/2$ in $x$ or $0$ in $y$ \TODO{reference}. This means that $L_x(220)$ almost vanishes, but $L_x'(220)$ is large and vice versa for the vertical projection.
 
-Furthermore, the optics is such that the phase advance $\phi$ (see Hill's equation \Eq{hill eq}) at the $220\un{m}$ stations is close to $\pi/2$ in $x$ or $0$ in $y$ \TODO{reference}. This means that $L_x(220)$ almost vanishes, but $L_x'(220)$ is large and vice versa for the vertical projection. All these considerations lead to the following three properties of elastic events:
-\eqref{\eqnarray{
-\th_x^{\rm left} &\approx& - \th_x^{\rm right}\ ,\cr
-\th_y &\approx & {L_x'\over L_x} y\ ,\cr
-x &\approx & 0\ .
-}}{al el prop}
-The above relations are approximate only -- we have made important simplifications in the proton transport and completely neglected beam smearing and detector misalignments. These effect thus set the thresholds for the cuts that follow from the three conditions.
+The $q(s)$ gives the true hit position (wrt. the beam), however a detector (i.e. a RP) misaligned by $\De q$ would make a measurement $q'$:
+\eqref{q' = q - \De q\ .}{al el misal}
 
-Before dicussing the cuts, let's note that one could consider also relations between $\th_y$ left and right and between $\th_x$ and $x$. But because of the phase advance conditions, the latter two would not provide a powerful cut.
+Later on, we will use the relation between the angle $\th_q$ and far-near difference $q_F - q_N$:
+\eqref{q_F - q_N = \th_q \, d\ ,}{al FN diff}
+where $d$ stands for the distance between far and near RPs (see \Tb{rp station}).
 
-\em{Cut 1}: $\th_x$ equal left and right. In fact, one may use the far-near difference $\De_{F-N} x$ instead of the angle. Since the optics is not perfectly symmetric, the slope of the $\De_{F-N} x^{56}$ vs. $\De_{F-N} x^{45}$ correlation may slightly differ from $-1$. And since the detectors might be sligly misaligned, one should allow for a small, but non-zero, intercept of this dependence. Hence, one may expect the events be close to a line:
-\eqref{\De_{F-N} x^{56} = (-1 + a) \De_{F-N} x^{45} + b\ .}{al el cut 1 line}
-The cut can then be formulated as:
-\eqref{\hbox{distance from the above line is smaller than } 0.08\un{mm}\ ,}{al el cut 1}
-\TODO{a, b: determined in iterations}
+The above considerations will help us find the properties useful for both, elastic event selection and alignment.
 
-\em{Cut 2}. $\th y$ proportional to $y$. As for the first cut, we will use the far-near difference $\De_{F-N} y$ instead of the angle $\th_y$ and we will allow for a small intercept, which may arise from detector misalignments. The second cut reads:
-\eqref{\hbox{distance from line } \De_{F-N} y = a y_N + b \hbox{ smaller than } 0.045\un{mm}\ .}{al el cut 2}
+First of all, the angles left and right should be highly correlated. We recall that left stands for sector 45 and right for sector 56. Given the phase advance conditions make the angular resolution in $x$ much better, thus will focus on the horizontal projection. Using the far-near difference, one finds:
+\eqref{\De_{F-N} x^{56} \approx \underbrace{ {L_x^{56'}\over L_x^{45'}} }_{-1 + a} \De_{F-N} x^{45} + 
+\underbrace{ {L_x^{56'}\over L_x^{45'}} (\De x_F^{45} - \De x_N^{45}) - (\De x_F^{56} - \De x_N^{56}) }_{b} \ .
+}{al el dxdx}
+The small slope correction $a$ arises from small asymmetries in the optics, the intercept $b$ is an effect of the RP misalignments. The relation is, indeed, just an approximations -- this will be discussed later -- but let's remark that the elastic events will be distributed along the above line, see \Fg{al el selection} (cut 1).
 
-\em{Cut 3}. $x$ close to zero. As we saw in \Sc{al prof}, there is a sort of XY coupling in the optics, which makes the elastic distributions to tilt. Hence instead of expecting the elastic hits literally close to $x\approx 0$, we should require them being close to a line $x = ay + b$, where $a$ corresponds to the tilt and $b$ is a result of detector misalignments. The third cut reads:
-\eqref{\hbox{distance from line } x = a y + b \hbox{ smaller than } 0.4\un{mm}\ .}{al el cut 3}
+When the vertex terms in \Eq{el transport} are negligible, there is a high correlation between the hit position and the track angle -- the hits will cumulate along line
+\eqref{\De_{F-N} y \approx
+\underbrace{ {L_y^{N'}\, d\over L_y^N} }_a y_N 
++ \underbrace{ {L_y^{N'}\, d\over L_y^N} \De y_N - (\De y_F - \De y_N) }_b \ .
+}{al el dyy}
 
-The cut parameters (a's, b's and thresholds) were determined empirically in several iterations. First we used the ideal values from \Eq{al el prop} and very liberal thresholds. The obtained sample was used to fit the relevant distributions and get corrections to the cut parameters. An illustration of the cuts can be found in \Fg{al el selection}.
-
-\fig{fig/pdf/al_el_selection.pdf}{al el selection}{Selection of elastic events. The black dots show events before the cut, colorful dots after. The red dots belong to 45 bottom -- 56 top diagonal, the blue to the other one. The lightgreen area represents the cut requirement. Data from 21 Sep (only 2000 events shown).}
-
+In the above relation, we used the vertical projection, since the resolution in $x$ is poor -- $L_x\approx 0$ follows from the phase advance settings. This fact can also be used for elastic event selection. In \Sc{al prof} we saw that the actual optics gave raise to the tilts ($a$) of the elastic peaks, the axes of which can be described as
+\eqref{x \approx ay + \underbrace{a \De y - \De x}_{b}\ .}{al el x} 
 
 
-\em{Method 1}. vertical fit in YX plots for the x position of the beam (for every unit)
+\tab[\strut\hfil\ #\ \hfil&\ #\ \hfil&\hfil\ #\ \hfil&\hfil\ #\ \hfil\cr]{al el cuts}{The cuts used for elastic event selection. The threshold gives the maximal permitted distance from the line. The right-most column gives the ratio of the threshold to the RMS of the distance-to-line distribution (see the rhs.~plots in \Fg{al el selection}).}{\ln
+cut & line & threshold & num.~of sigmas \cr\ln
+1 & $\De_{F-N} x^{56} = (-1+a) \De_{F-N} x^{45} + b$	& $80\un{\mu m}$	& $2.5$ \cr
+2 & $\De_{F-N} y = a y_N + b$							& $45\un{\mu m}$	& $2.5$ \cr
+3 & $x = ay + b$ 										& $400\un{\mu m}$	& $2.5$ \cr\ln
+}
 
-\fig{fig/pdf/al_el_plots_yx.pdf}{al el plots yx}{Illustration of the alignment method 1. The red line fits the red points only, similarly for the blue one. The green line represents a global fit. 45 far}
+The relations \Eq{al el dxdx,al el dyy,al el x} provide the basis for our elastic selection cuts. All of them can be expressed as ''distance from a line must be smaller than a given threshold.'' The details are summarized in \Tb{al el cuts}. The distribution of events around the cut lines has two sources: the beam smearing and the proton transport approximations that we have made. The distributions have a Gaussian shape as can be seen in \Fg{al el selection} and their RMS values were used to set the cut thresholds -- they roughly correspond to $2.5$ multiple of the RMS.
+
+The $a$ and $b$ cut parameters were determined empirically in several iterations. Starting with the values coming from the ideal optics and no misalignments and with liberal cuts. After a selection, the resulting graphs were fitted and improved values of the cut parameters were obtained.
+
+\fig{fig/pdf/al_el_selection.pdf}{al el selection}{Selection of elastic events (data from 21 Sep). Each row corresponds to a cut. Left: the events before (black) and after (colorful) the cut. The red dots belong to 45 bottom -- 56 top diagonal, the blue to the other one. The lightgreen area represents the cut requirement. Right: the distribution of events around the cut line (black) with a Gaussian fit (red). The dotted lines show the cut thresholds, cf. \Tb{al el cuts}.}
+
+Since the relations \Eq{al el dxdx,al el dyy,al el x} involve the misalignment parameters, they can be used for alignment purposes. In the rest of this section we will present a few alignment methods. The first one is dedicated to the horizontal alignment, methods 2a-c are several attempts for the vertical alignment. As we will see later on, the precision of the absolute vertical alignment will to be fully satisfactory. That is why we will mention also methods 3 and 4, which can resolve certain relative components of the vertical alignment.
+
+\em{Method 1}: vertical fit in $y$ vs.~$x$ plots. According to \Eq{al el x}, the horizontal shift $\De x = a \De y - b$. The $a$ and $b$ parameters are the result of the fit and $\De y$ can be determined from methods 2a-c. NB: the influence of $\De y$ is small because of the tilts $a$ are small (see \Tb{al el yx}). If $\De y$ would be of the order of $100\un{\mu m}$ and would completely neglect it, the error of $\De x$ would be of the order of $4\un{\mu m}$.
+
+The fits were performed with the parameterization \Eq{al el x}. To reduce the impact of any possible outliers, every hit was assigned weight (one of the suggested outlier treatments from \bref{millepede})
+\eqref{w = \left\lbrace \matrix{
+\strut 1				& \de < c_H \cr
+\strut c_H^2\over\de^2	& \de > c_H \cr
+}\right.\ ,\qquad c_H = 1.345\ .}{al el fit weight}
+Here, $\de$ stands for the ratio of the hit distance to the fit line and the RMS of the distance distribution. We made five fit iterations.
+
+The uncertainty of the fit was determined as from the Least-Squares method \TODO{reference}. As the error input, we assigned the RMS of the cut-line distance as the error of $x$ variable.
+
+An illustration of the method is shown in \Fg{al el plots yx}. Similar illustrations will be shown for all other methods. The left plot will always be done for the data from 5~Oct (a $18\si$ run with low statistics), while the right plot from 29-30~Oct (a $7\si$ run with high statistics).
+
+The \Fg{al el plots yx} shows the top and bottom RP fits (red and blue) are compatible with each other and the global one (green). This means that the shifts of the top and bottoms are the same. This confirms that the track-base alignment, the previous step, worked correctly.
+
+The results are summarized in \Tb{al el yx}.
+
+\fig{fig/pdf/al_el_plots_yx.pdf}{al el plots yx}{Illustration of the alignment method 1 (unit 45-220-far). The red line fits the red points only, similarly for the blue one. The green line represents a global fit.}
 
 {\SmallerFonts
-\htab{al el yx}{y vs. x fits, method 1. Slope $a$ in $\rm mrad$, intercept $b$ in $\rm\mu m$.}{
+\htab{al el yx}{The results of the elastic alignment method 1 -- vertical fits of y vs.~x data. Slope $a$ in $\rm mrad$, intercept $b$ in $\rm\mu m$.}{
 \omit&\multispan8\bhrulefill\cr
 \omit&\multispan2\strut\bvrule\hfil 45 near\hfil & \multispan2\vrule\hfil 45 far\hfil  & \multispan2\vrule\hfil 56 near\hfil & \multispan2\vrule\hfil 56 far\hfil\cr
 \omit&\multispan8\hrulefill\cr
@@ -1073,11 +1121,14 @@ The cut parameters (a's, b's and thresholds) were determined empirically in seve
 
 
 
-\em{Method 2a}. fit of vertical hit distributions for vertical alignment wrt. beam (for every unit), Gauss fit throught all data
+\em{Method 2a}. The vertical distribution of elastic hits shall be symmetric around the position of the beam. This remains true even if the axis of elastic scattering is tilted with respect to $y$ axis. In this case, the $y$ distribution shrinks, but symmetrically around the beam's position. Hence a way to determine the position of the beam is to fit a symmetric function through the data registered by a top and bottom pot of the same unit. Looking at the data in \Fg{al el plots y full}, a Gaussian fit looks as a plausible choice. 
 
-\fig{fig/pdf/al_el_plots_y_full.pdf}{al el plots y full}{Illustration of the alignment method 2a. The violet curve shows a Gaussian fit. 56 far}
+The results are summarized in \Tb{al el y full}. The quoted errors are statistical only. They do not reflect the fact that we fit tails of the distribution only (data from 5 Oct), neither the deviations from Gaussian shape (data from 29-30 Oct). The latter deficiency will lead us to a fit improvement, see method 2b.
 
-\htab{al el y full}{y distributions, full fits, values in $\rm \mu m$}{
+
+\fig{fig/pdf/al_el_plots_y_full.pdf}{al el plots y full}{Illustration of the alignment method 2a (unit 56-220-far). The violet curve shows a Gaussian fit.}
+
+\htab{al el y full}{The results of the elastic alignment method 2a -- Gaussian fits of $y$ distributions. Values in $\rm \mu m$, uncertainties are statistical only.}{
 \omit&\multispan4\bhrulefill\cr
 \omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
 \hbox{21 Sep}    & -54.3 \pm   18.7&  24.5 \pm   21.9& -61.4 \pm   31.3& -26.1 \pm   31.3\cr\ln
@@ -1090,25 +1141,35 @@ The cut parameters (a's, b's and thresholds) were determined empirically in seve
 
 
 
-\em{Method 2b}. As 2a, but fit through the Gaussian region only
+\em{Method 2b}. In the previous method we fitted the $y$ distributions with a Gaussian, without any justification. In fact, one may expect an (approximately) Gaussian shape for for sufficiently small $|y|$. Here is the reason. $y$ is (approximately) proportional to $\th_y$ and that is proportional to $\th_y^*$ and$\th_y^*$ is normally distributed as far as $\d\si/\d t$ falls off exponentially. This is (approximately) true for $|t|$ below the elastic dip. Actually, the ''elastic dip structures'' can be seen in \Fg{al el plots y gauss} right as the bumps on the tails. Hence one should restrain the Gaussian fit to the data below the elastic dip. In terms of $y$, the limit is $\approx 4.2\un{mm}$ (see the dotted lines in the figure).
 
-\fig{fig/pdf/al_el_plots_y_gauss.pdf}{al el plots y gauss}{Illustration of the alignment method 2b. The violet curve shows a Gaussian fit. 56 far}
+For the case of 29-30 Oct, the fit quality improved significantly. For 5 Oct there is no fit, since there are no data in the ''Gaussian'' region, the RPs were not close enough. Unfortunately, this is the case for most data-takings. \Tb{al el y gauss} summarizes the results for the two data-takings where we could apply this method.
 
-\htab{al el y gauss}{y distributions, guass region fits, values in $\rm \mu m$}{
+The results of methods 2a and 2b (\Tb{al el y full,al el y gauss}) compare surprisingly well. The differences fall below the error estimate (with the only exception of the shift of 56-220-far for the data from 29-30 Oct).
+
+\fig{fig/pdf/al_el_plots_y_gauss.pdf}{al el plots y gauss}{Illustration of the alignment method 2b (unit 56-220-far). The violet curve shows a Gaussian fit through the data in the fit region (delimited by the vertical dotted lines). The selected data points are marked in green. There are no data and no fit in the left plot.}
+
+\htab{al el y gauss}{The results of the elastic alignment method 2b -- Gaussian fits of $y$ distributions, low $|y|$ regions only. Values in $\rm \mu m$, uncertainties are statistical only.}{
 \omit&\multispan4\bhrulefill\cr
 \omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
 \hbox{21 Sep}    & -56.3 \pm   10.5&  30.0 \pm   16.3& -62.2 \pm   25.3& -25.0 \pm   30.8\cr\ln
 \hbox{29-30 Oct} &   8.6 \pm    7.6&  89.5 \pm    8.5& -18.8 \pm   10.8&  -2.5 \pm   15.0\cr\bln
 }
 
-Comparison to method 2a: the worst case is $30\un{\mu m}$, generally much better than the error estimate.
 
+\em{Method 2c}. Another approach to mitigate the deficiency of the method 2a is to remove the Gaussian-shape assumption. The only assumption would be that the $y$ distributions measured from the top and bottom pots are parts (cut by acceptance) of the same distribution. One can flip the $y$ distribution from the bottom pot (blue in \Fg{al el plots y shift}) and shift it such that it matches to the distribution from the top pot (red). When the best match is found, the position of the beam is given
+$${f_B + f_T + s\over 2}\ ,$$
+where $f_B$ is the position of the highest bottom pot bin, $f_T$ the lowest top pot bin and $s$ the shift of the blue histogram (left edge) wrt. the red one. Indeed, $s$ can only by a multiple of the bin size. The best match is the one which gives the lowest value of
+\eqref{S^2/N = {1\over N} \sum_{i\ \in \hbox{overlapping bins}} \left( C_{\rm red}(i) - C_{\rm blue}(i) \right)^2\ ,}{al el shift test}
+where $N$ is the number of overlapping bins and $C_{\rm red}(i)$ represents the contents of the bin $i$ of the red histogram.
 
-\em{Method 2c}. A Kolmogorov-like shift test.
+As measure of uncertainty, one may take a half of the bin size. Of course, this does not reflect systematic errors that may appear because incompatible distributions from the top and bottom RP. An example of this incompatibility can be seen in \Fg{al el plots y shift} left. For the right plot, it is less pronounced, but still present. The differences in shape may come from different acceptances, trigger, detector and reconstruction efficiencies etc. For a fine alignment one would need to correct for all these effects.
 
-\fig{fig/pdf/al_el_plots_y_shift.pdf}{al el plots y shift}{Illustration of the alignment method 2c. The violet curve shows a Gaussian fit through the data in the fit region (delimited by the vertical dotted lines). The selected data points are marked in green. There are no data and no fit in the left plot. 56 far}
+The results are summarized in \Tb{al el y shift}. Comparing these to the method 2a (\Tb{al el y full}), one finds differences with RMS of roughly $30\un{\mu m}$, that is well below the estimated uncertainty.
 
-\htab{al el y shift}{y distributions, shift tests,  values in $\rm \mu m$. The ucertainty can be estimated as a half of the bin size. That is $25\un{\mu m}$ for 26 and 29-30 Oct and $50\un{\mu m}$ for the others.}{
+\fig{fig/pdf/al_el_plots_y_shift.pdf}{al el plots y shift}{Illustration of the alignment method 2c (unit 56-220-far). The $y$ distribution from the bottom pot (blue) has been shifted to match the best to the distribution from the top pot (red).}
+
+\htab{al el y shift}{The results of the elastic alignment method 2c -- shift matching the $y$ distributions from the top and bottom pot. All values in $\rm \mu m$. The ucertainty can be estimated as a half of the bin size. That is $25\un{\mu m}$ for 26 and 29-30 Oct and $50\un{\mu m}$ for the others.}{
 \omit&\multispan4\bhrulefill\cr
 \omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
 \hbox{21 Sep}    & -50.0&   0.0&-100.0&   0.0\cr\ln
@@ -1119,18 +1180,21 @@ Comparison to method 2a: the worst case is $30\un{\mu m}$, generally much better
 \hbox{29-30 Oct} &   0.0& 100.0& -50.0& -50.0\cr\bln
 }
 
-Comparison to method 2a: std. deviation of the differences $30\un{mu m}$, generally well within the estimated error.
 
+\em{Method 3} is based on \Eq{al el dyy}. The slopes $a$ turn out to be of the order of $20\un{mrad}$ (see \Fg{al el plots dyy}) hence neglecting the middle term would create an error of $\approx 2\un{\mu m}$, assuming $\De y_n$ is of the order of $100\un{\mu m}$. The $2\un{\mu m}$ are a negligible error compared to the corrections one may get with this method. Thus, we will use
+$$b = \De y_F - \De y_N\ .$$
+In other words, the intercept gives the relative far-near vertical misalignment.
 
+The fits are performed in a similar manner as in method 1, with the difference that the RMS of distance-to-cut-line distribution is attributed to $\De_{F-N} y$ quantity. An example of the fits is shown if \Fg{al el plots dyy}. Again the one-side fits are compatible with each other and the global fit (with the exception of the red fit in the left-hand side plot). This means that the far-near misalignments are the same for top and bottom pots, a result that is expected after a track-based alignment step.
 
-\em{Method 3}. fit of dy vs. y for far wrt. near vertical alignment (for every arm)
+\Tb{al el dyy} summarizes the results (left part) and provides a comparison to method 2a (right part) -- the $\De y$ results from \Tb{al el y full} were used to predict the intercepts. With the exception of the sector 56 measurement from 5 Oct data, all the differences lie below the estimated error.
 
-\fig{fig/pdf/al_el_plots_dyy.pdf}{al el plots dyy}{Illustration of the alignment method 3. The red line fits the red points only, similarly for the blue one. The green line represents a global fit. sector 45}
+\fig{fig/pdf/al_el_plots_dyy.pdf}{al el plots dyy}{Illustration of the alignment method 3 (sector 45). The red line fits the red points only (top pots), blue line blue points (bottom pot). The green line represents a global fit.}
 
 \bgroup
 \def\ln{\multispan3\hrulefill&&\multispan2\hrulefill\cr}
 \def\bln{\multispan3\bhrulefill&&\multispan2\bhrulefill\cr}
-\htab{al el dyy}{dy vs y fits}{
+\htab{al el dyy}{Left: the results of the elastic alignment method 3 -- intercepts of $\De_{F-N} y$ vs.~$y$ data fits. Right: a comparison to method 2a (\Tb{al el y full}).}{
 \omit&\multispan2\bhrulefill&&\multispan2\bhrulefill\cr
 \omit&\strut\hbox{sector 45}&\hbox{sector 56}&&\hbox{sector 45}&\hbox{sector 56}\cr\bln
 \hbox{21 Sep}    &  69.3 \pm    0.7&  37.9 \pm    0.7 & \hskip1mm & -10 \pm 29 & -3   \pm 44\cr\ln
@@ -1144,14 +1208,22 @@ Comparison to method 2a: std. deviation of the differences $30\un{mu m}$, genera
 
 
 
-\em{Method 4}. fit of y56 vs y45 for left wrt. right vertical alignment (for far and near units)
+\em{Method 4}. The correlation between $y$ hit positions left and right can be written (follows from \Eq{el transport}):
+\eqref{y^{56} =
+\underbrace{ {L_y^{56}\over L_y^{45}} }_{-1+a}  y^{45}
++ \underbrace{ {L_y^{56}\over L_y^{45}} \De y^{45} - \De y^{56} }_b
+}{al el yy}
 
-\fig{fig/pdf/al_el_plots_ylyr.pdf}{al el plots ylyr}{Illustration of the alignment method 4. The red line fits the red points only, similarly for the blue one. The green line represents a global fit. far units}
+\TODO{Method 4 does not compare well to the method 2a, but it is consistent with method 3.}
+
+\fig{fig/pdf/al_el_plots_ylyr.pdf}{al el plots ylyr}{Illustration of the alignment method 4 (far units). The red line fits the red points only (diagonal 45 top -- 56 bottom), blue line blue points (diagonal 45 bottom -- 56 top). The green line represents a global fit. The dark points have been cut off not to bias the fit because of the asymmetric acceptance.}
 
 \bgroup
 \def\ln{\multispan3\hrulefill&&\multispan2\hrulefill\cr}
 \def\bln{\multispan3\bhrulefill&&\multispan2\bhrulefill\cr}
-\htab{al el ylyr}{y56 vs. y45 fits}{
+\htab{al el ylyr}{
+Left: the results of the elastic alignment method 4 -- fits of $y^{56}$ vs.~$y^{45}$ data. Right: a comparison to method 2a (\Tb{al el y full}).
+}{
 \omit&\multispan2\bhrulefill&&\multispan2\bhrulefill\cr
 \omit&\strut\hbox{near units}&\hbox{far units}&&\hbox{near units}&\hbox{far units}\cr\bln
 \hbox{21 Sep}    & -40.4 \pm   21.3&  78.6 \pm   21.4 & \hskip1mm & 75   \pm 42 & 80   \pm 44\cr\ln
@@ -1164,9 +1236,7 @@ Comparison to method 2a: std. deviation of the differences $30\un{mu m}$, genera
 \egroup
 
 
-
-Methods 1 and 3, 4: all the fits are the same - the same misalignment of top and bottom pots. In other words, the TB alignment worked well!
-
+\TODO{A summary -- how shall the beam position be determined for each data-taking. 21 Sep and 29-30 Oct using 2b, what for the others?}
 
 \iffalse
 RP position corrections (only dy vs. y data used)								
@@ -1195,5 +1265,17 @@ RP position corrections (y distributions data used)
 \section[al sum]{Summary}
 
 \> tasks accomplished/non-accomplished
+\>> TBA left 4 shift and 4 rotation modes unresolved
+\>> Elastic/profile methods fixed the 4 shift modes
+\>> From Optical alignment there is no indication of U-V rotation.
+\>> Once optics is known better, the far-near rotation could be determined from the shift of the elastic peaks.
+
 \> final uncertainty
-\> error impact on the physics reconstruction
+\>> internal shifts and rotations
+\>> inter-RP shifts and rotations
+\>> x al. wrt beam
+\>> y al. far-near
+\>> y al. absolute wrt beam
+
+\> error impact on the physics reconstruction (of elastic $t$)
+\>> errors and unresolved modes

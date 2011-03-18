@@ -35,4 +35,4 @@ for (int d_i: dates.keys) {
 	yaxis(XEquals(0, false), gray+dotted);
 }
 
-GShipout(hSkip=1mm, vSkip=1mm);
+GShipout(hSkip=5mm, vSkip=1mm);

@@ -32,4 +32,4 @@ for (int d_i: dates.keys) {
 	AttachLegend("Method 2c", NE, NE);
 }
 
-GShipout(hSkip=1mm, vSkip=1mm);
+GShipout(hSkip=5mm, vSkip=1mm);

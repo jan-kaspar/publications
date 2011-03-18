@@ -19,6 +19,7 @@ void DrawRegion(path p)
 string dir = "../alignment/elastic/2010_09_21";
 
 string file = dir + "/selection.root";
+string file_e = dir + "/alignment_errors.root";
 
 string diag1 = "45 bottom - 56 top";
 string diag2 = "45 top - 56 bottom";
@@ -63,6 +64,16 @@ limits((-1, -1), (1, 1), Crop);
 TGraph_lowLimit = -inf;
 TGraph_highLimit = +inf;
 
+NewPad("distance from cut line$\un{mm}$");
+draw(rGetObj(file_e, "dx_56 vs. dx_45 (45b-56t)"), "lR", black);
+draw(rGetObj(file_e, "dx_56 vs. dx_45 (45b-56t)#0"), red+1pt);
+limits((-0.2, 0), (0.2, 100), Crop);
+yaxis(XEquals(-0.08, false), dotted);
+yaxis(XEquals(+0.08, false), dotted);
+AttachLegend();
+
+
+NewRow();
 
 // ----- th_y proportional to y -----
 void DrawDyY(int rp1, int rp2, int rp3, int rp4, real a, real b)
@@ -81,11 +92,22 @@ void DrawDyY(int rp1, int rp2, int rp3, int rp4, real a, real b)
 	
 	limits((-10, -0.3), (10, 0.3), Crop);
 	//AttachLegend(format("%u", rp1) +", " + format("%u", rp3));
-	AttachLegend("cut 2, 45 near", NW, NW);
+	AttachLegend("cut 2, sector 45", NW, NW);
 }
 
 DrawDyY(21, 25, 20, 24, dyy_45_a, dyy_45_b);
 //DrawDyY(120, 124, 121, 125, dyy_56_a, dyy_56_b);
+
+NewPad("distance from cut line$\un{mm}$");
+currentpad.yTicks = RightTicks(Step=100, step=20);
+draw(rGetObj(file_e, "45: dy vs. y"), "lR", black);
+draw(rGetObj(file_e, "45: dy vs. y#0"), red+1pt);
+limits((-0.2, 0), (0.2, 500), Crop);
+yaxis(XEquals(-0.045, false), dotted);
+yaxis(XEquals(+0.045, false), dotted);
+AttachLegend();
+
+
 
 NewRow();
 
@@ -117,5 +139,12 @@ DrawXY(21, 20, -0.036, -0.029);
 //DrawXY(120, 121, 0.042, -0.031);
 //DrawXY(124, 125, 0.038, -0.030);
 
+NewPad("distance from cut line$\un{mm}$");
+draw(rGetObj(file_e, "45 near: y vs. x"), "lR", black);
+draw(rGetObj(file_e, "45 near: y vs. x#0"), red+1pt);
+limits((-1, 0), (1, 150), Crop);
+yaxis(XEquals(-0.4, false), dotted);
+yaxis(XEquals(+0.4, false), dotted);
+AttachLegend();
 
 GShipout(hSkip=2mm, vSkip=1mm);

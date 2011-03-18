@@ -24,10 +24,12 @@ real pointSize = l/30;
 void Limit()
 {
 	pen gP = gray+dotted;
+	/*
 	for (real v = -l; v <= +l; v += dl) {
 		draw((-l, v)--(+l, v), gP);
 		draw((v, -l)--(v, +l), gP);
 	}
+	*/
 	limits((-l, -l), (+l, +l), Crop);
 }
 
