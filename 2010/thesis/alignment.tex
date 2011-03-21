@@ -49,22 +49,38 @@ This also gives estimate about the rotation
 
 PUT THIS TO INTRODUCTION? In principle both \abb{BPM}s and \abb{RP} motor controls should have been calibrated such that they give the position of beam/RP edge with respect to the beam-pipe center. However, a cross-check is always good. Moreover, this exercise was needed for the alignment against the system of the LHC collimators.
 
-In the beginning, the collimators scrape the beam such that its edge is sharp and its size and center is well defined. Then a RP is approached to the beam, until it touches the sharp edge. In this moment, particles from the beam edge are scattered of the RP edge and they give raise to peaks in the BLMs downstream (see \Fg{collimation alignment example} bottom). In this moment, the RP edge is at the same beam-sigma-distance as the collimators.
+In the beginning, the collimators scrape the beam such that its edge is sharp and its size and center is well defined. Then a RP is approached to the beam, until it touches the sharp edge. In this moment, particles from the beam edge are scattered off the RP edge and they give raise to peaks in the BLMs downstream (see \Fg{al collim ex} bottom). In this moment, the RP edge is at the same beam-sigma-distance as the collimators.
 
-With the vertical RPs we can make use of the fact that we have 2 jaws and determine the beam-sigma (in millimeters) and the beam-center. Suppose that we have touched the beam with the top RP. In that moment, the RP became the primary collimator and scraped the beam a bit. Due to the multi-turn effect, the beam was scraped symmetrically about the vertical center of the beam. Then, one can approach the bottom pot, again until a BLM peak appears. Then, both RPs are at the same distance from the vertical beam-center and the distance corresponds to one beam-sigma (up to the step-size, indeed). These steps can be repeated in order to improve the precision of the beam-center determination. An example of this procedure can be found in \Fg{collimation alignment example}.
+With the vertical RPs we can make use of the fact that we have two jaws and determine the beam-sigma (in millimeters) and the beam-center. Suppose that we have touched the beam with the top RP. In that moment, the RP became the primary collimator and scraped the beam a bit. Due to the multi-turn effect, the beam was scraped symmetrically about the vertical center of the beam. Then, one can approach the bottom pot, again until a BLM peak appears. Then, both RPs are at the same distance from the vertical beam-center and the distance corresponds to one beam-sigma (up to the step-size, indeed). These steps can be repeated in order to improve the precision of the beam-center determination. An example of this procedure can be found in \Fg{al collim ex}.
 
-\fig{fig/pdf/CollimationAlignmentExample.pdf}{collimation alignment example}{An example of collimation alignment data from 29 November 2009 (sector 56, near unit). The top and bottom pot movements (up) induced the BLM signals (bottom).}
+\fig{fig/pdf/al_collim_ex.pdf}{al collim ex}{An example of collimation alignment data from 29 November 2009 (56-220-near unit). The top and bottom pot movements (upper plot) induced the BLM signals (bottom plot). The time is in minutes from the start of the test.}
 
 The precision is obviously given by the step size. Mostly because of the limited time resolution one cannot determine when during the movement the beam was touched. One should, thus, aim at as little steps as possible. On the other hand, the smaller step, the less scraping and the lower peak in the BLM signal. If the step is too small, the induced beam loss can not be distinguished from the noise. We observed a step of $50\un{\mu m}$ to be on the practical limit.
 
-So far, the collimation alignment has been repeated three times: 29 November 2009, 25 June 2010 (both at $450\un{GeV}$) and 29 September 2010 at $3.5\un{TeV}$. The results suggest an unfortunate conclusion -- both RP LVDTs and BPMs seemed wrongly calibrated. For an immediate indiation, let's look back to \Fg{collimation alignment example}. Assuming the the beam was touched in the middle of the movement, one obtains the beam center at $(313\pm 63)\un{\mu m}$ according to the LVDTs. However, the corresponding BPM claimed the beam to be at $(-550\pm50)\un{\mu m}$. The discrepancy is evident, what is not clear is, however, which device to blame. A valuable hint was provided later by the track-based alignment method. The results contained large per-RP shifts, moreover almost run independent. This suggested that the LVDTs do not have a common origin, in other words, every LVDT reading shall be corrected by an offset. 
+So far, the collimation alignment has been repeated three times: 29 November 2009, 25 June 2010 (both at $450\un{GeV}$) and 21 September 2010 at $3.5\un{TeV}$. The results suggest an unfortunate conclusion -- both RP LVDTs and BPMs seemed wrongly calibrated. For an immediate indication, let's look back to \Fg{al collim ex}. Assuming the beam was touched in the middle of the movement, one obtains the beam center at $(313\pm 63)\un{\mu m}$ according to the LVDTs. However, the corresponding BPM claimed the beam to be at $(-550\pm50)\un{\mu m}$. The discrepancy is evident, what is not clear is, however, which device to blame.
 
-These offsets can be determined with the collimation alignment -- the principle is shown in \Fg{collimation alignment}. The beam size at the collimator location ($n\si_0$) is known and can be propagated to the RP location, thus $n\si$ is known too. $t$ and $b$ are the top and bottom LVDT readings. The offsets then follow:
+Very soon it became clear that the BPMs very not reliable at that time. A quite typical BPM curves are plotted in \Fg{al collim bpm problem}, note the huge drifts. It was confirmed by BPM experts that these devices suffered from temperature and intensity effects. These made the use of BPMs uninteresting for alignment purposes.
+
+\fig{fig/pdf/al_collim_bpm_problem.pdf}{al collim bpm problem}{The readings from sector 56 BPMs from 25 June 2010. Very pronounced drifts are evident.}
+
+Another valuable hint was provided later by the track-based alignment method (\Sc{al tb}). The results contained large per-RP shifts (i.e. all sensors from a pot indicated the same shift), moreover almost run-independent. This suggested that the LVDT scales did not have a common origin, in other words, every LVDT reading should be corrected by an offset. 
+
+These offsets can be determined with the collimation alignment -- the principle is shown in \Fg{al collim}. The beam size at the collimator location ($n\si_0$) is known and can be propagated to the RP location, thus $n\si$ is known too. $t$ and $b$ are the top and bottom LVDT readings. The offsets then follow:
 \eqref{o_t = n\si - t,\qquad o_b = -n\si - b\ .}{LVDT offsets}
-Note that the offsets are determined with respect to the beam center (not the beam-pipe center), which 
+Note that the offsets are determined with respect to the beam center (not the beam-pipe center), which is, in fact, exactly what we need. The measurements were performed on 21 Sep, the results were published in \bref{al collim} (Tb.~1). The calculated offsets can be found in \Tb{al lvdt off}. The error has obviously two components: from the beam-size extrapolation \TODO{how much} and from the touching-point determination. For the latter, taking a half of the step size yields an error of $\approx 100\un{\mu m}$.
 
 
-\fig{fig/pdf/collimationAlignment.pdf}{collimation alignment}{How to determine LVDT offsets with collimation alignment. The beam is drawn in blue, its envelope with solid and its ceter with dashdotted line. The origins of the LVDT scales are marked with red dots.}
+\fig{fig/pdf/al_collim.pdf}{al collim}{How to determine LVDT offsets with collimation alignment. The beam is drawn in blue, its envelope with solid and its center with dash-dotted line. The origins of the LVDT scales are marked with red dots.}
+
+\htab{al lvdt off}{The LVDT offsets (values in $\un{mm}$). Positive/negative value means shift up/down (like in \Fg{al collim}).}{\bln
+\hbox{unit} & o_t & o_b \cr\bln
+\hbox{45-220-near} & +0.515 & +0.135\cr\ln
+\hbox{45-220-far} & +0.389 & +0.111\cr\bln
+\hbox{56-220-near} & -1.254 & -0.286\cr\ln
+\hbox{56-220-far} & +0.262 & -0.162\cr\bln
+}
+
+In this way, we've determined the vertical positions of the thin windows (the RP parts that face the beam, see \Sc{rp system}). The package with silicon sensors is inserted into the RP with a limited precision, which has even deteriorated by \TODO{the short-circuit incident}. Regarding the thin-window-to-sensor-edge distance, this may bring another $100\un{\mu m}$ of uncertainty. Thus, altogether, the vertical position of the sensors in the vertical pots is determined with a precision of $\approx 150\un{\mu m}$.
 
 \section[al tb]{Track--based alignment}
 
@@ -90,7 +106,7 @@ With the new notation, one can write
 To summarize, the measurement of the $n$-th event in the $i$-th detector is
 \eqref{
 m_i^n = (\vec d_i + \De\rh_i\,\vec d_{\perp i})^\T \left[\vec a^n (z_i + \De z_i) + \vec b^n - (\vec c_i + \De\vec c_i)\right] + \De m_i^n\ ,
-}{n i measurement}
+}{m i measurement}
 where the last term includes the errors introduced by various approximations and by neglecting the ``rounding'' step. It will be treated as an error in what follows. One can rearrange the terms in the last equation
 \eqref{\eqnarray{
 \mu_i^n \equiv m_i^n - \vec d^\T \vec c = & &\cr
@@ -951,24 +967,26 @@ where the $\De\vec T$ sums all error contributions. The solution can be symbolic
 $$\vec\ch = \vec\ch^0 + " {\bar\mat S}^{-1} " \De \vec T$$
 This form is quite instructive, although is has very vague mathematical meaning. The message is that for weak modes, with small eigenvalues $\la$, the error contribution
 $$\De\vec\ch = \vec\ch - \vec\ch^0 \sim {\De\vec T\over\la}$$
-can become big. In our case, the important weak modes are far-near rotations (for $U$ and $V$ detectors separately, see \Tb{al sing mode overview}). Since we constrained the rotations in the near unit, the error would fully manifest in the far one. Looking at the $z$ positions of the RPs, one can approximate and take one $z$ for the near and one $z$ for the far unit. In this approximation, the error would be constant for every pot (but indeed different for every projection) -- this is exactly the observed effect.
+can become big. In our case, the important weak modes are far-near rotations (for $U$ and $V$ detectors separately, see \Tb{al sing mode overview}). Since we constrained the rotations in the near unit, the error would fully manifest in the far one. Looking at the $z$ positions of the RPs (\Tb{rp station}), one can approximate and take one $z$ for the near and one $z$ for the far unit. In this approximation, the error would be constant for every pot (but indeed different for every projection) -- this is exactly the observed effect.
 
 \fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment comparison with fixed-detectors constraints (for rotations: 1200 and 1201). Top row: near unit, bottom row: far unit. October 24 (black), 26 (red), 29-30 (blue).}
 
-\> (C)  LHC results per unit (choose one typical) on detector level
-\Fg{al comp det per unit} compares the alignment results for the unit 56 near. On the first sight, one can see the shift points forming lines. This is exactly what one expects with rotated RPs, see \Sc{al rp fac}. \TODO{Comment about rotations? Stability?}
+As expected, it is not possible to determine the far-near rotations with sufficient precision and therefore we will use the final constraints. Such an example, for 56-220-near unit, is in \Fg{al comp det per unit}. On the first sight, one can see the shift points forming lines. This is exactly what one expects with rotated RPs, see \Sc{al rp fac}. The second interesting outcome is the stability of the results, especially for the shifts. The stability of the shifts means that the RP rotations about $x$ and $y$ do not change in time and the stability of the rotations infers the stability of the rotations about $z$ (see also \Fg{al comp rp all rot}). 
 
-In fact, such a direct comparison of shifts is slightly misleading. Every rotation misalignment induces a shift correction, see the $\De\rh \de s_i$ term in \Eq{cnst rotz 6}. This correction is perpendicular to the position of the detector ($\vec c_i$ vector), that's why $\vec d_{\perp_i}$ in the formula. This means that the correction for vertical pots would be horizontal and vertical for horizontal pots. Moreover, the correction is proportional to the distance of the detector from the origin. Hence, this correction would be different for different RP approaches. That is why the comparison for different data-takings is misleading. For the data-takings in \Tb{al lhc datasets}, the thin-window positions varied approximately from $2.6$ to $8\un{mm}$ for the vertical pots and from $2.3$ to $5.6\un{mm}$ for the horizontal pots. The span was, thus, of the order of $\De c \approx 4\un{mm}$. From the \Eq{cnst rotz 6} one could expect the rotation-induced shifts to vary by $\De c \De \rh$. Taking $\De\rh \approx 10 \un{mrad}$ gives us variation by $40\un{\mu m}$. However, in the real case, the variation is much smaller, simulations give the order of $5\un{\mu m}$. There are two reasons for this. First, the final constraints are used, which mix shift and rotation degrees of freedom and make the calculation more complex. And second, the rotataions of the top and bottom pots have nearly the same values but opposite signs. This leads to partial cancelations. To summarize, the shifts obtained from different data-takings can be compared within the error of $5\un{\mu m}$.
 
-\fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with final constraints for unit 56 near. Each point corresponds to a data-taking from \Tb{al lhc datasets}. The dashed lines correspond to the fits \Eq{al rp fit,al rp rotz fit}. The internal rotation is the sensor rotation with respect to the RP rotation.
+\fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with the final constraints for 56-220-near unit. Each point corresponds to a data-taking from \Tb{al lhc datasets}. The dashed lines correspond to the fits \Eq{al rp fit,al rp rotz fit}. The internal shift/rotation is the sensor shift/rotation with respect to the RP shift/rotation.
 %overlap=f
 }
 
-\> (D) The RP quantities calculated according to \Eq{al rp fit,al rp rotz fit}
+Let's investigate a bit more the stability of the RP shifts and rotations. Since a comparison for all sensors would require to much space, we decided to compare the RP alignments calculated according to \Eq{al rp fit,al rp rotz fit}. A comparison for unit 56-220-far can be found in \Fg{al comp rp all rot}. For each data-taking there are two points representing two analyses: with \pmt{requireOverlap} = False (circles) and with \pmt{requireOverlap} = True (squares). There were several reasons to do so. First, imagine there were some pathological events biasing the alignment results. Then, splitting the sample into two parts is likely to lead to results incompatible with each other (withing the estimated errors). The overlap requirement provides a subsample selection, moreover the subsample would have a rather different distribution of the rotation $\ga$ factors (see \Tb{alignment quantities}). Hence, this would test also the stability of the rotation determination. Looking at the results, one finds both analyses compatible -- this suggests that the results are robust.
 
-\fig{fig/pdf/al_comp_rp_all_rot.pdf}{al comp rp all rot}{RP alignment comparison with fixed-detectors constraints. The order of points is the same as in \Tb{al lhc datasets} (top-down in both cases). There are might be two points for each data-set: a circle (all tracks) and a square (overlap tracks only). Showing only the far unit in 56-220, in the near one, the $\rh_z$ fluctuations are smaller.}
+Now, let's return to the RP position stability. Most shift corrections lie in a band of $\pm 10\un{\mu m}$ around the mean (dashed vertical line). This a good result which could have been achieved only thanks to the reliability of the (corrected) LVDT measurements. In fact, the mean values could be used to improve the corrections obtained in \Sc{al collim}. There we determined the corrections for the vertical positions of the vertical pots. Looking at the second row, one finds that track-based alignment brings a modification of $90\un{\mu m}$, which is below the uncertainty of the collimation alignment. Regarding the rotations, the situation is less homogeneous. Some rotations are very stable (all rotations of the horizontal pot), some less ($\rh_z$ of the two vertical pots). For the latter, the fluctuations go up to $\pm 0.4\un{mrad}$ from the mean. This is already an important rotation, which shall not be neglected. A quantitative summary of the rotations can be found in \Tb{al rp rot}. One can see the higher fluctuation of the rotations about $z$ also there.
 
-\htab{al rp rot}{Summary of RP rotations (all values in $\rm mrad$). Mean is the weighted mean and $\si$ is the standard deviation of data extracted from all data-takings. Only analyses with all tracks (\pmt{requireOverlap} = False) included (large errors in 45).
+\fig{fig/pdf/al_comp_rp_all_rot.pdf}{al comp rp all rot}{RP alignment comparison with fixed-detectors constraints. The order of points is the same as in \Tb{al lhc datasets} (top-down in both cases). There are might be two points for each data-set: a circle (all tracks) and a square (overlap tracks only). Showing only 56-220-far unit, in the near one, the $\rh_z$ fluctuations are smaller (see \Fg{al comp det per unit}).}
+
+In fact, such a direct comparison of shifts as in \Fg{al comp rp all rot} is slightly misleading. Every rotation misalignment induces a shift correction, see the $\De\rh \de s_i$ term in \Eq{cnst rotz 6}. This correction is perpendicular to the position of the detector ($\vec c_i$ vector), that's why $\vec d_{\perp_i}$ in the formula. This means that the correction for vertical pots would be horizontal and vertical for horizontal pots. Moreover, the correction is proportional to the distance of the detector from the origin. Hence, this correction would be different for different RP approaches. That is why the comparison for different data-takings is misleading. For the data-takings in \Tb{al lhc datasets}, the thin-window positions varied approximately from $2.6$ to $8\un{mm}$ for the vertical pots and from $2.3$ to $5.6\un{mm}$ for the horizontal pots. The span was, thus, of the order of $\De c \approx 4\un{mm}$. From the \Eq{cnst rotz 6} one could expect the rotation-induced shifts to vary by $\De c \De \rh$. Taking $\De\rh \approx 10 \un{mrad}$ gives us variation by $40\un{\mu m}$. However, in the real case, the variation is much smaller, simulations give the order of $5\un{\mu m}$. There are two reasons for this. First, the final constraints are used, which mix shift and rotation degrees of freedom and make the calculation more complex. And second, the rotations of the top and bottom pots have nearly the same values but opposite signs. This leads to partial cancellations. To summarize, the shifts obtained from different data-takings can be compared within the error of $5\un{\mu m}$.
+
+\htab{al rp rot}{Summary of the RP rotations results (all values in $\rm mrad$). Only analyses with all tracks (\pmt{requireOverlap} = False) have been included, since the other ones have very large errors for the sector 45. Mean is the (weighted) mean which is drawn as the dashed line in \Fg{al comp rp all rot}. $\si$ stands for the standard deviation of the results. 
 % weighted mean, non-weighted sigma
 }{
 \omit&\multispan6\bhrulefill\cr
@@ -989,15 +1007,19 @@ In fact, such a direct comparison of shifts is slightly misleading. Every rotati
  125 & -4.4 & 0.07 & +2.5 & 0.02 & +7.1 & 0.17\cr\bln
 }
 
-Generally - want to show that everything is stable and consistent.
+\TODO{Generally - want to show that everything is stable and consistent}
 
-Why analyses with overlap true and false?
-\> First, if there were some weird events fooling the alignment, they might be found by splitting the sample into several parts. Then one expect to find incompatible results (within the estimated uncertainty).
-\> If tracks were hitting only a very small part of the detector, the corresponding gamma coefficient would be almost constant and the rotation would be indistinguishable from shifts. In case of wrongly determined rotations, one would expect rather different results here and when the ga distribution is large.
-\> The overlap=true does both things as above: smaller sample and tracks accumulated in a rather small area.
 
 
 \section[al prof]{Profile methods}
+
+\TODO{Comment about beam position}
+\> beam position is the theoretical hit position of an elastic proton with $\th = 0$ and the mean vertex position.
+\> (in our OfflineSW convention, the beam is at zero)
+\> misalignements $\De q$ and RP positions $q^{\rm RP}$ (in accordance with \Eq{misalignment definition})
+$$q^{\rm RP}(\hbox{actual/misaligned}) = q^{\rm RP}(\hbox{thought/nominal}) + \De q$$
+hence for hit positions $q$
+$$q(\hbox{reconstructed with thought geometry}) = q(\hbox{real}) - \De q$$
 
 Profile methods are those which use symmetries in track and/or angular distributions. The expected symmetries depend on the studied physical processes as well as on the optics. However, the vertical symmetry around the beam can be assumed quite generally. If there was no crossing-angle, the process would have full azimuthal symmetry (about the beam axis). Even if the crossing-angle is non-zero, it is horizontal, hence the up-down symmetry is preserved. On the optics side, most of them are designed with vanishing vertical dispersion $D_y$, therefore the vertical symmetry remains also after the proton transport.
 

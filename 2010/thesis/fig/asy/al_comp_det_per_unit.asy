@@ -277,7 +277,7 @@ void NewUnit(string _arm, string _unit)
 	attach(bbox(p, 1mm, nullpen, Fill(markupColor)));
 	
 
-	pShRV = NewPad("", "shift $\quad(\rm\mu m)$");
+	pShRV = NewPad("", "internal shift $\quad(\rm\mu m)$");
 	pShRU = NewPad();
 	NewRow();
 	pRotZV = NewPad("", "internal rotation $\quad(\rm mrad)$");
