@@ -67,8 +67,7 @@ Another valuable hint was provided later by the track-based alignment method (\S
 
 These offsets can be determined with the collimation alignment -- the principle is shown in \Fg{al collim}. The beam size at the collimator location ($n\si_0$) is known and can be propagated to the RP location, thus $n\si$ is known too. $t$ and $b$ are the top and bottom LVDT readings. The offsets then follow:
 \eqref{o_t = n\si - t,\qquad o_b = -n\si - b\ .}{LVDT offsets}
-Note that the offsets are determined with respect to the beam center (not the beam-pipe center), which is, in fact, exactly what we need. The measurements were performed on 21 Sep, the results were published in \bref{al collim} (Tb.~1). The calculated offsets can be found in \Tb{al lvdt off}. The error has obviously two components: from the beam-size extrapolation \TODO{how much} and from the touching-point determination. For the latter, taking a half of the step size yields an error of $\approx 100\un{\mu m}$.
-
+Note that the offsets are determined with respect to the beam center (not the beam-pipe center), which is, in fact, exactly what we need. The measurements were performed on 21 Sep, the results were published in \bref{al collim} (Tb.~1). The calculated offsets can be found in \Tb{al lvdt off}. The error is dominated by the touching-point determination. Taking a half of the step size yields an error of $\approx 100\un{\mu m}$.
 
 \fig{fig/pdf/al_collim.pdf}{al collim}{How to determine LVDT offsets with collimation alignment. The beam is drawn in blue, its envelope with solid and its center with dash-dotted line. The origins of the LVDT scales are marked with red dots.}
 
@@ -938,23 +937,23 @@ In total five iterations were performed. In the first two only the read-out shif
 
 Indeed, the final constraints were imposed.
 
-\tab{al lhc datasets}{List of data takings, \TODO{add number of sigmas}}{
-\multispan2&\multispan6\bhrulefill\cr
-\multispan2&\multispan3\bvrule\strut\hfil\hbox{sector 45}\hfil&\multispan3\vrule\hfil\strut\hbox{sector 56}\hfil\cr
-\multispan2&\multispan6\hrulefill\cr
-\multispan2&\omit\bvrule\hfil\strut\hbox{events}\hfil & \si(a_x) & \si(a_y) &\hbox{events} & \si(a_x) & \si(a_y)\cr
-\multispan2\bhrulefill&\multispan6\cr
-\hbox{date} & \hbox{run numbers} & \times 10^5 & \rm mrad & \rm mrad  & \times 10^5 & \rm mrad & \rm mrad \cr\bln
-\hbox{24 Aug} & 2762,2763,2770,2772 & 7 & 0.3 & 0.3 & 8.4 & 0.3 & 0.3\cr\ln
-\hbox{26 Aug} & 2896,2895,2892,2891 & 2.5 & 0 & 0 & 3.8 & 0 & 0\cr\ln
-\hbox{21 Sep} & 3230,3231 & 0.5 & 0.2 & 0.2 & 0.6 & 0.3 & 0.2\cr\ln
-\hbox{28 Sep} & 3285,3286,3287,3288 & 5 & 0.4 & 0.4 & 6.2 & 0.3 & 0.3\cr\ln
-\hbox{05 Oct} & 3336,3337 & 10.8 & 0.4 & 0.4 & 15.1 & 0.3 & 0.3\cr\ln
-\hbox{07 Oct} & 3359,3360,3361 & 4 & 0.3 & 0.3 & 4.6 & 0.3 & 0.3\cr\ln
-\hbox{14 Oct} & 3457,3459,3460 & 0.8 & 0.4 & 0.4 & 1.1 & 0.3 & 0.3\cr\ln
-\hbox{24 Oct} & 3609 & 6.2 & 0.2 & 0.2 & 6.6 & 0.2 & 0.2\cr\ln
-\hbox{26 Oct} & 3634,3635 & 5.2 & 0.4 & 0.3 & 6.5 & 0.3 & 0.3\cr\ln
-\hbox{29-30 Oct} & 3723,3725,3728 & 2.5 & 0.2 & 0.2 & 2.9 & 0.3 & 0.2\cr\bln
+\tab{al lhc datasets}{List of data takings \TODO{what data-takings}. The RP position gives an approximate distance of the vertical pot thin windows from the beam, in terms of beam sigmas.}{
+\multispan3&\multispan6\bhrulefill\cr
+\multispan3&\multispan3\bvrule\strut\hfil\hbox{sector 45}\hfil&\multispan3\vrule\hfil\strut\hbox{sector 56}\hfil\cr
+\multispan3&\multispan6\hrulefill\cr
+\multispan3&\omit\bvrule\hfil\strut\hbox{events}\hfil & \si(a_x) & \si(a_y) &\hbox{events} & \si(a_x) & \si(a_y)\cr
+\multispan3\bhrulefill&&&&&&\cr
+\hbox{date} & \hbox{RP position} & \hbox{run numbers} & \times 10^5 & \rm mrad & \rm mrad  & \times 10^5 & \rm mrad & \rm mrad \cr\bln
+\hbox{24 Aug}    & 20\,\sigma & 2762,2763,2770,2772 & 7 & 0.3 & 0.3 & 8.4 & 0.3 & 0.3\cr\ln
+\hbox{26 Aug}    & 20\,\sigma & 2896,2895,2892,2891 & 2.5 & 0 & 0 & 3.8 & 0 & 0\cr\ln
+\hbox{21 Sep}    &  8\,\sigma & 3230,3231 & 0.5 & 0.2 & 0.2 & 0.6 & 0.3 & 0.2\cr\ln
+\hbox{28 Sep}    & 18\,\sigma & 3285,3286,3287,3288 & 5 & 0.4 & 0.4 & 6.2 & 0.3 & 0.3\cr\ln
+\hbox{05 Oct}    & 18\,\sigma & 3336,3337 & 10.8 & 0.4 & 0.4 & 15.1 & 0.3 & 0.3\cr\ln
+\hbox{07 Oct}    & 18\,\sigma & 3359,3360,3361 & 4 & 0.3 & 0.3 & 4.6 & 0.3 & 0.3\cr\ln
+\hbox{14 Oct}    & 18\,\sigma & 3457,3459,3460 & 0.8 & 0.4 & 0.4 & 1.1 & 0.3 & 0.3\cr\ln
+\hbox{24 Oct}    & 18\,\sigma & 3609 & 6.2 & 0.2 & 0.2 & 6.6 & 0.2 & 0.2\cr\ln
+\hbox{26 Oct}    & 18\,\sigma & 3634,3635 & 5.2 & 0.4 & 0.3 & 6.5 & 0.3 & 0.3\cr\ln
+\hbox{29-30 Oct} &  7\,\sigma & 3723,3725,3728 & 2.5 & 0.2 & 0.2 & 2.9 & 0.3 & 0.2\cr\bln
 }
 
 $U$-$V$ rotation is impossible to determine, not even showing. However, the optical metrology suggests that is rather small, see \Tb{al opt uv rot}.
