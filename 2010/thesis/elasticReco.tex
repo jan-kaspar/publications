@@ -6,7 +6,7 @@ In principle, one may also employ the knowledge of vertex distribution at the IP
 
 Regardless whether the IP information is used, input data form a list of $(x, \si_x, y, \si_y|\penalty0 L_x, L_y, v_x, v_y)$, one per RP (or IP measurement).
 
-\fig*[8cm]{erfig/pdf/theta_yVstheta_y_reco.pdf}{theta local reco}{[]$\th_y$ generated (at IP) vs. reconstructed (at RP) for $90\un{m}$ optics: no interesting correlation. The reason is too small lever-arm for the given detector pitch. One can clearly see the strip pattern.}{}{}{}
+\fig[8cm]{erfig/pdf/theta_yVstheta_y_reco.pdf}{theta local reco}{[]$\th_y$ generated (at IP) vs. reconstructed (at RP) for $90\un{m}$ optics: no interesting correlation. The reason is too small lever-arm for the given detector pitch. One can clearly see the strip pattern.}
 
 
 
@@ -38,7 +38,7 @@ The algorithm comprises the three steps below.
 \bitm
 \itm \em{Hit selection}. The aim of this step is to choose from all the hits only those which belong to the actual track (of elastic protons). Which in turn means to suppress background and tracks from secondary interactions in detectors etc. It is assumed that the $L\,\th^*$ term dominates in \Eq{fit model}, i.e\hbox{.} at least approximate parallel-to-point focusing. For each hit, value of $\ze(s) / L(s)$ is calculated and a road search algorithm is applied. Only road with the highest weight and at least one hit on both sides can continue. Parameters of this search are (angular) road sizes for $x$ and $y$ projections.
 
-\fig*[12cm]{erfig/asy/roadSearch.pdf}{road search}{[]Principle of the road search algorithm. Left: hits in RPs shown vs\hbox{.} corresponding effective length. Hits by elastic protons displayed in blue, background in red. Right: histogram of angles $y/L_y$. Elastic hits pile up to high tower (i.e. road with highest weight).}{}{}{}
+\fig[12cm]{erfig/asy/roadSearch.pdf}{road search}{[]Principle of the road search algorithm. Left: hits in RPs shown vs\hbox{.} corresponding effective length. Hits by elastic protons displayed in blue, background in red. Right: histogram of angles $y/L_y$. Elastic hits pile up to high tower (i.e. road with highest weight).}
 
 \itm \em{Fitting}. There are three fits performed: left-arm fit, right-arm fit and global fit. Obviously, left-arm fit is carried out through hits from the left-arm only (plus IP if applicable), etc.
 
@@ -106,13 +106,13 @@ Majority of events produced fits with two and four degrees of freedom, that mean
 %, which suggests that the measurement uncertainties were underestimated. 
 %Therefore, there are tiny inconsistencies in the results, however not on a level one should worry about.
 
-\fig*[11cm]{erfig/pdf/1540_nosm_resolution.pdf}{1540 nosm resolution}{Angular (left) and vertex (right) resolutions.}{}{}{}
+\fig[11cm]{erfig/pdf/1540_nosm_resolution.pdf}{1540 nosm resolution}{Angular (left) and vertex (right) resolutions.}
 \kern-8mm
-\fig*[5.5cm]{erfig/pdf/1540_nosm_tres.pdf}{1540 nosm t}{Relative $t$ resolution.}{}{}{}
+\fig[5.5cm]{erfig/pdf/1540_nosm_tres.pdf}{1540 nosm t}{Relative $t$ resolution.}
 \kern-8mm
-\fig*[11cm]{erfig/pdf/1540_nosm_stat.pdf}{1540 nosm stat}{[]Left: histogram of numbers of degrees of freedom. Right: $\th_y$ reconstruction error divided by fit uncertainty (blue line represents a Gaussian fit).}{}{}{}
+\fig[11cm]{erfig/pdf/1540_nosm_stat.pdf}{1540 nosm stat}{Left: histogram of numbers of degrees of freedom. Right: $\th_y$ reconstruction error divided by fit uncertainty (blue line represents a Gaussian fit).}
 \kern-8mm
-\fig*[11cm]{erfig/pdf/1540_nosm_chisq.pdf}{1540 nosm chisq}{[]Histograms of normalized residual sums (for $y$ fits, plots for $x$ fits look similarly). Left for 2 degrees of freedom, right for 4. Red and blue curves show theoretical $\chi^2$ distributions.}{}{}{}
+\fig[11cm]{erfig/pdf/1540_nosm_chisq.pdf}{1540 nosm chisq}{Histograms of normalized residual sums (for $y$ fits, plots for $x$ fits look similarly). Left for 2 degrees of freedom, right for 4. Red and blue curves show theoretical $\chi^2$ distributions.}
 
 Before moving to the next section, let's briefly discus efficiency of the algorithm, i.e. numbers of rejected events. The results are shown in \Tb{1540 efficiency}. One can see quite low number ($< 2\%$) of inconsistent fits, which is correct as no constraints were imposed. The present number corresponds to pathological events (e.g. when a proton interacts in front RP and therefore measurement in back RP is misleading). There are many events empty or insufficient. However, this can be easily explained geometrically. Assuming that $t$ distribution falls off exponentially, i.e. $t\sim b\exp(-bt)$, and $\ph$ is uniformly distributed on $\langle 0, 2\pi)$, one finds that angles $\th_x$ and $\th_y$ are independent and follow normal distribution $N(0, \si^2 = 1/2bp^2)$ where $p$ is momentum of protons. Therefore, probability of $|\th_y|<\th_y^{\rm min}$ is given by
 \eqref{P(|\th_y|<\th_y^{\rm min}) = {\rm Erf(\th_y^{\rm min}/\sqrt{2\si^2})}\ .}{}
@@ -142,9 +142,9 @@ In the last step we employed $\si_{\th_x} = \si_{\th_y} = \si_{\rm bd}/2$ (compa
 As already said, it is useful to plot right-left fit differences, see \Fg{1540 right left diff smear}. This information can be used to set reasonable values of tolerance parameters (of course, these plots should be compared to corresponding plots obtained for background). Considering the properties of the optics (parallel-to-point focusing), one can expect rather a wide distribution of vertex differences. This expectation is well supported by the figure. Therefore, cut based on vertex differences is not very promising. Regarding $\De_{R-L}\th_y$, it is reasonable to expect it to be dominated by beam divergence. In other words, its distribution shall have RMS of beam divergence (compare \Eq{angular smearing,fit simple}). It really does, but one might be surprised by the peaks. 
 
 \break\hbox{}\kern-14mm
-\fig*[14cm]{erfig/pdf/1540_sm_resolution.pdf}{1540 sm resolution}{Angular (left) and vertex (right) resolutions.}{}{}{}
+\fig[14cm]{erfig/pdf/1540_sm_resolution.pdf}{1540 sm resolution}{Angular (left) and vertex (right) resolutions.}
 \kern-3mm
-\fig*[7cm]{erfig/pdf/1540_sm_tres.pdf}{1540 sm tres}{Relative $t$ resolution.}{}{}{}
+\fig[7cm]{erfig/pdf/1540_sm_tres.pdf}{1540 sm tres}{Relative $t$ resolution.}
 \kern-3mm
 \fig[15.9cm]{erfig/pdf/1540_right_left_diff_smear.pdf}{1540 right left diff smear}{Right-left differences in $\th_y$ and $y^*$ fit results. Plots for $x$ coordinate are qualitatively the same.}
 
@@ -184,11 +184,11 @@ As for $1540\un{m}$ optics, we generated $10^4$ elastic events ($2.5\cdot10^{-2}
 
 The last parameter which has not been discussed yet, is $\th_y$ tolerance. For this section it was set to $6\cdot10^{-7}$. It is a very liberal cut which removes only pathological events.
 
-\fig*[14cm]{erfig/pdf/90_angle_nosmear.pdf}{90 angle nosmear}{[10cm]Angular resolution for $90\un{m}$ optics without smearing.}{}{}{}
+\fig[14cm]{erfig/pdf/90_angle_nosmear.pdf}{90 angle nosmear}{[10cm]Angular resolution for $90\un{m}$ optics without smearing.}
 
 \break\hbox{}
 \kern-1.6cm
-\fig*[7cm]{erfig/pdf/90_t_resolution_nosmear.pdf}{90 ty res nosmear}{Relative $t$ resolution.}{}{}{}
+\fig[7cm]{erfig/pdf/90_t_resolution_nosmear.pdf}{90 ty res nosmear}{Relative $t$ resolution.}
 
 The angular resolution is shown in \Fg{90 angle nosmear}. The $\th_x$ precision is very bad, as expected. Relative error of $t_y$ reconstruction, shown in \Fg{90 ty res nosmear}, was fitted by \Eq{tx' resolution}. The fit gives $A = 7.1\cdot10^{-4}\un{GeV}$, while analytic estimation yields $A = 5.3\cdot10^{-4}\un{GeV}$ for $N = 4$, which is the dominant configuration. The analytical uncertainty is apparently slightly underestimated.
 
@@ -199,7 +199,7 @@ Important statistical properties of the fits can be seen in \Fg{90 statistics no
 \Tb{90 efficiency} summarizes numbers of rejected events. There is evidently high number of empty events. But again, this can be explained geometrically. In principle, one might follow the same prescription as for $1540\un{m}$ optics. However, here one should consider relatively high lower bound of simulated events: $2.5\cdot10^{-2} < |t|$. Then, the calculation gets complicated. We performed a MC simulation instead, yielding $53\un{\%}$ probability of empty event. This corresponds well to the observed frequencies. As $L_x\approx 0$, horizontal RPs are not involved in elastic events and there is no geometrical reason for insufficient events. Those 103 events correspond to problematic events, for instance when proton was registered at one arm only etc.
 
 \fig[14cm]{erfig/pdf/90_vertex_nosmear.pdf}{90 vertex nosmear}{Vertex resolution.}
-\fig*[14cm]{erfig/pdf/90_nosm_stat.pdf}{90 statistics no smear 1}{[]Some statistical properties of the $y$ fit. Left: number of degrees of freedom distribution. Right: Histogram of normalized residual sums for events with 2 degrees of freedom. Red curve represents theoretical $\chi^2$ distribution.}{}{}{}
+\fig[14cm]{erfig/pdf/90_nosm_stat.pdf}{90 statistics no smear 1}{Some statistical properties of the $y$ fit. Left: number of degrees of freedom distribution. Right: Histogram of normalized residual sums for events with 2 degrees of freedom. Red curve represents theoretical $\chi^2$ distribution.}
 \fig[7cm]{erfig/pdf/90_nosm_recerr.pdf}{90 statistics no smear 2}{Histogram of $\th_y$ deviation divided by fit uncertainty.}
 
 
@@ -220,11 +220,11 @@ Interesting angular and vertex reconstruction results are shown in \Fg{90 angle 
 
 \hbox{}
 \kern-2.0cm
-\fig*[12cm]{erfig/pdf/90_sm_resolution.pdf}{90 angle vertex smear}{[10cm]Angular and vertex resolution for $90\un{m}$ optics with smearing.}{}{}{}
+\fig[12cm]{erfig/pdf/90_sm_resolution.pdf}{90 angle vertex smear}{[10cm]Angular and vertex resolution for $90\un{m}$ optics with smearing.}
 \kern-0.5cm
 \bmfig[\flab{90 t res smear}Relative errors of $t_y$, $t_x$ and $t$ reconstruction.]
-\fig*[12cm]{erfig/pdf/90_sm_tyxres.pdf}{}{}{}{}{}
-\fig*[6cm]{erfig/pdf/90_sm_tres.pdf}{}{}{}{}{}
+\fig[12cm]{erfig/pdf/90_sm_tyxres.pdf}{}{}
+\fig[6cm]{erfig/pdf/90_sm_tres.pdf}{}{}
 \emfig
 \kern-0.5cm
 \fig[12cm]{erfig/pdf/90_sm_rldiff.pdf}{90 right left diff smear}{Right-left differences in $\th_y$ and $x^*$ fits.}

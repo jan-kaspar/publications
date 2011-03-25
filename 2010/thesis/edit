@@ -10,4 +10,5 @@ gvim -p \
 	alignment.tex \
 	sigma_tot.tex \
 		extrapolation.tex \
-	appendices.tex
+	appendices.tex \
+	references.bib

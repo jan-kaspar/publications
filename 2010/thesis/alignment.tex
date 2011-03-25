@@ -1177,12 +1177,18 @@ The results of methods 2a and 2b (\Tb{al el y full,al el y gauss}) compare surpr
 \hbox{29-30 Oct} &   8.6 \pm    7.6&  89.5 \pm    8.5& -18.8 \pm   10.8&  -2.5 \pm   15.0\cr\bln
 }
 
-
-\em{Method 2c}. Another approach to mitigate the deficiency of the method 2a is to remove the Gaussian-shape assumption. The only assumption would be that the $y$ distributions measured from the top and bottom pots are parts (cut by acceptance) of the same distribution. One can flip the $y$ distribution from the bottom pot (blue in \Fg{al el plots y shift}) and shift it such that it matches to the distribution from the top pot (red). When the best match is found, the position of the beam is given
+\bmfig
+\vbox{\hsize9cm\noindent\leftskip0pt\rightskip0pt\parfillskip0pt plus1fil
+\em{Method 2c}. Another approach to mitigate the deficiency of the method 2a is to remove the Gaussian-shape assumption. The only assumption would be that the $y$ distributions measured from the top and bottom pots are parts (cut by acceptance) of the same distribution. One can flip the $y$ distribution from the bottom pot (blue in \Fg{al el shift test}) and shift it such that it matches to the distribution from the top pot (red). When the best match is found, the position of the beam is given
 $${f_B + f_T + s\over 2}\ ,$$
 where $f_B$ is the position of the highest bottom pot bin, $f_T$ the lowest top pot bin and $s$ the shift of the blue histogram (left edge) wrt. the red one. Indeed, $s$ can only by a multiple of the bin size. The best match is the one which gives the lowest value of
+}%
+\fig{fig/pdf/al_el_shift_test.pdf}{al el shift test}{[]To the explanation of the shift test}%
+\emfig
+
 \eqref{S^2/N = {1\over N} \sum_{i\ \in \hbox{overlapping bins}} \left( C_{\rm red}(i) - C_{\rm blue}(i) \right)^2\ ,}{al el shift test}
 where $N$ is the number of overlapping bins and $C_{\rm red}(i)$ represents the contents of the bin $i$ of the red histogram.
+
 
 As measure of uncertainty, one may take a half of the bin size. Of course, this does not reflect systematic errors that may appear because incompatible distributions from the top and bottom RP. An example of this incompatibility can be seen in \Fg{al el plots y shift} left. For the right plot, it is less pronounced, but still present. The differences in shape may come from different acceptances, trigger, detector and reconstruction efficiencies etc. For a fine alignment one would need to correct for all these effects.
 

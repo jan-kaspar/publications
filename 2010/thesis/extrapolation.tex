@@ -21,8 +21,8 @@ We used four (hadronic) models for elastic scattering --- Islam \bref{Islam1987,
 These preliminary considerations led us to restrict the data up to $|t| \ls |t_{max}| = 0.35 \un{GeV^2}$ for extrapolation purposes.
 
 \bmfig
-\fig*[7.7cm]{exfig/pdf/cross,section.pdf}{sigma}{[7.55cm]Predicted differential cross sections. The black curve corresponds to Islam model, red to model of Petrov--Predazzi--Prokudin with 2 Pomerons, blue the same model with 3 Pomerons, the purple line stands for Bourrely--Soffer--Wu model and green for Block--Halzen.}{}{}{}
-\fig*[7.7cm]{exfig/pdf/B.pdf}{B}{[7cm]Predicted elastic slope. See the legend of \Fg{sigma}. The colors for models will be kept in what follows.}{}{}{}
+\fig[7.7cm]{exfig/pdf/cross,section.pdf}{sigma}{[7.55cm]Predicted differential cross sections. The black curve corresponds to Islam model, red to model of Petrov--Predazzi--Prokudin with 2 Pomerons, blue the same model with 3 Pomerons, the purple line stands for Bourrely--Soffer--Wu model and green for Block--Halzen.}
+\fig[7.7cm]{exfig/pdf/B.pdf}{B}{[7cm]Predicted elastic slope. See the legend of \Fg{sigma}. The colors for models will be kept in what follows.}
 \emfig
 
 
@@ -54,9 +54,9 @@ L_y		& \hbox{effective length in y} 			&	280\un{m}	& 260\un{m}\cr\ln
  
 
 \bmfig
-\fig*[5.1cm]{exfig/pdf/acceptance.pdf}{accep}{[5cm]Acceptance.}{}{}{}
-\fig*[5.1cm]{exfig/pdf/resolution,rel.pdf}{res rel}{[5cm]Relative resolution.}{}{}{}
-\fig*[5.1cm]{exfig/pdf/resolution.pdf}{res}{[5cm]Absolute resolution.}{}{}{}
+\fig[5.1cm]{exfig/pdf/acceptance.pdf}{accep}{[5cm]Acceptance.}
+\fig[5.1cm]{exfig/pdf/resolution,rel.pdf}{res rel}{[5cm]Relative resolution.}
+\fig[5.1cm]{exfig/pdf/resolution.pdf}{res}{[5cm]Absolute resolution.}
 \emfig
 
 
@@ -81,13 +81,13 @@ There are several theoretical approaches to describe both interactions acting si
 where $T_C(t)$ is coulomb amplitude and $T_H(t)$ is amplitude given by a hadronic model. $\al(t)$ and $\be(t)$ are abbreviations for more complicated expressions (for precise form consult the cited papers). Here, we just conclude that $\al(t)$ can be completely neglected compared to $1$ and $\be(t)$ makes effects of order several percents.
 
 \bmfig[Difference between pure hadronic and full cross sections.\flab{CKLxh}]%
-\fig*[5.7cm]{exfig/pdf/CKLxhadron.pdf}{}{}{}{}{}
-\fig*[5.7cm]{exfig/pdf/CKLxhadron,zoom.pdf}{}{}{}{}{}
+\fig[5.7cm]{exfig/pdf/CKLxhadron.pdf}{}{}
+\fig[5.7cm]{exfig/pdf/CKLxhadron,zoom.pdf}{}{}
 \emfig
 
 \bmfig%
-\fig*[5.7cm]{exfig/pdf/CKLxWYxCKLAB0.pdf}{CKLxWY}{[7cm]Comparison of approximations to CKL. Solid lines are WY approximation while dashed curves represent CKL formula with $\al=\be=0$. The deviation means relative difference of full and approximated cross section.}{}{}{}
-\fig*[5.7cm]{exfig/pdf/CKLxhadronxCKLphi.pdf}{CKLxphi}{[7cm]Comparison of approximations to CKL. Solid curves stand for pure hadron scattering, dashed to CKL formula with hadronic phase fixed at $\pi/2$.}{}{}{}
+\fig[5.7cm]{exfig/pdf/CKLxWYxCKLAB0.pdf}{CKLxWY}{[7cm]Comparison of approximations to CKL. Solid lines are WY approximation while dashed curves represent CKL formula with $\al=\be=0$. The deviation means relative difference of full and approximated cross section.}
+\fig[5.7cm]{exfig/pdf/CKLxhadronxCKLphi.pdf}{CKLxphi}{[7cm]Comparison of approximations to CKL. Solid curves stand for pure hadron scattering, dashed to CKL formula with hadronic phase fixed at $\pi/2$.}
 \emfig
 
 \Fg{CKLxh} shows that difference of full and pure hadron cross sections is significant for $|t| \ls 0.05\un{GeV^2}$. Thus it must be taken into account for $\be^* = 1535\un{m}$ optics. On contrary, the same figure demonstrates that coulomb effects are almost negligible for $\be^* = 90\un{m}$ optics if one stays at $|t| \ls 0.3\un{GeV^2}$. Note that points with higher $|t|$ have larger uncertainties and therefore they are not that important when fitting.
@@ -116,9 +116,9 @@ We made also simulations with fixed $\De t = 0$. Comparison of simulations with 
 \eqref{\hbox{p.d.f.}(t) \sim \int\limits_{-\infty}^{\infty}\d\De t\ {\d\si\over\d t}(t-\De t)\ A(t-\De t)\  N(\De t, \si^2(t-\De t)).}{convolution}
 
 \bmfig
-\fig*[5.3cm]{exfig/pdf/1535,smearing.pdf}{1535 sme}{[7cm]$\be^* = 1535\un{m}$. Relative difference between $A\,\d\si/\d t$ and rhs\hbox{.} of \Eq{convolution}. Different colors correspond to different models just as in \Fg{sigma}.}{}{}{}
+\fig[5.3cm]{exfig/pdf/1535,smearing.pdf}{1535 sme}{[7cm]$\be^* = 1535\un{m}$. Relative difference between $A\,\d\si/\d t$ and rhs\hbox{.} of \Eq{convolution}. Different colors correspond to different models just as in \Fg{sigma}.}
 \hfil
-\fig*[5.3cm]{exfig/pdf/90,smearing.pdf}{90 sme}{[7cm]$\be^* = 90\un{m}$. Black solid line corresponds to $\d\si/\d t\ A$ while the red solid line corresponds to rhs. of \Eq{convolution}.}{}{}{}
+\fig[5.3cm]{exfig/pdf/90,smearing.pdf}{90 sme}{[7cm]$\be^* = 90\un{m}$. Black solid line corresponds to $\d\si/\d t\ A$ while the red solid line corresponds to rhs. of \Eq{convolution}.}
 \emfig
 
 Such a drastic difference between the two optics is caused by huge difference in resolution (see \Fg{res} and compare values at corresponding $t_{min}$).
