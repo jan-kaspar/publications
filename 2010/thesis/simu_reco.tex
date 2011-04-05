@@ -1,102 +1,76 @@
-\chapter{Simulation and analysis methods}
+\chapter{RP simulation and reconstruction methods}
 
-\section{Principle of the experiment}
+In \Sc{rp measurement} we have described how scattered protons can be detected by the RP detectors. This processes can be simulated by computer programs which is essential for development and tuning of reconstruction techniques. That for processes where the scattered proton kinematics is deduced from the RP hits. The structure of the simulation and reconstruction software is sketched in \Fg{sr sw structure}. Beyond the aforemetined \em{simulation} and \em{reconstruction} blocks, you can see three more: \em{alignment} (special reconstruction focused to the alignment of RP detectors), \em{raw-data} (experimental data preprocessing) and \em{trigger} (trigger related analyses).
 
-\subsection[rp measurement]{Relation between RP measurements and a proton}
+\fig{fig/pdf/sr_sw_structure.pdf}{sr sw structure}{The structure of the RP simulation and reconstruction software.}
 
-A collision takes place (the vertex is) in
-\eqref{(x^*, y^*, z^*)^\T}{IP vertex}
-and a proton is created. The proton has energy $E=\sqrt{p^2 + m^2}$ and momentum components
-\eqref{\vec p = p \pmatrix{\sin\th \cos\ph\cr \sin\th\sin\ph \cr \cos\th} = 
-p \pmatrix{\th_x\cr \th_y\cr \sqrt{1 - \th_x^2 - \th_y^2}}}{IP proton momentum}
+Our contribution to the software mostly complements the work described in \bref{hubert}. Below we will briefly describe all the essential components and later will give details for our modules.
 
-\fig{fig/pdf/protonTransport.pdf}{protonTransport}{Proton transport.}
+\em{Event generator}.
+The simulation process starts with generation of particles at the interaction point. This can be either a \em{particle gun} or a \em{physics event generator}. Particle guns generate particles according to some given distributions and are useful for specialized tests. Physics event generators simulate physics processes such as elastic scattering, single diffraction etc. We use common generators like Pythia \bref{pyhia6,pythia8} or Phojet \bref{phojet} and a custom developed Elegent (see \Sc{elegent}).
 
-Then, the proton is transported by the lattice of the LHC magnets to the detector area (say to $z = z_0$). The transport is schematically depicted in \Fg{protonTransport}. As there are no magnets in the detector area, from $z_0$ on, the proton follows a straight trajectory which might be described as
-\eqref{\pmatrix{x\cr y\cr z} = \pmatrix{a_x\cr a_y\cr 1} z + \pmatrix{b_x\cr b_y\cr 0}}{local track}
+\em{Smearing}.
+Most Monte Carlo generators simulate head-to-head collisions of particles of a fixed energy at a given point. However, in reality there are two bunches collided under a certain crossing angle. Within a bunch, particles do not have identical energy (energy smearing) and they are not all collinear (angular smearing). The bunches have non-zero dimensions and therefore the collision may take place at various points (vertex smearing). This module introduces these smearing effects in order to obtain realistic simulations. It will be discussed in detail in \Sc{beam smearing}
 
-So far, the coordinates have been described in the global $xyz$ coordinate system. For deriving (the expected measurement value), it is useful to use a local coordinate frame $x_l y_l z_l$. This coordinate system has its origin in the center of the detector. Its $x_l$ and $y_l$ axes parallel to the detector surface and its $z_l$ axis perpendicular to the surface. The global to local transformation can be written
-\eqref{\pmatrix{x_l\cr y_l\cr z_l} = \mat R \left[ \pmatrix{x\cr y\cr z}  - \pmatrix{c_x\cr c_y\cr c_z}  \right] \ ,}{global to local}
-where the $\vec c$ vector stands for the detector's center position in the global coordinates.
+\em{Geant4 and proton transport}.
+This module performs two actions: simulates energy depositions in sensitive volumes and propagates protons in between. The sensitive volumes are located around the IP5 (CMS, T1 and T2) and at the RP stations at $\pm 147\un{m}$ and $\pm 220\un{m}$. Both actions are implemented within the Geant4 \bref{geant4} simulation kit. The proton transport uses a polynomial parameterization model described in Chap.~6 of \bref{hubert}. For details on the implementation see Sec.~7.3 in \bref{hubert}.
 
-The measurement $m$ is then given by projection of the local surface coordinates $x_l$ and $y_l$ to the readout direction $\vec d$
-\eqref{m = \hbox{ROUND}\left( (d_x, d_y) \pmatrix{x_l\cr y_l} \right)}{full measurement}
-The vector $\vec d = (d_x, d_y)^\T$ is the readout direction (perpendicular to strips). The ``ROUND'' comprises charge sharing effects etc.
+\em{Detector response and electronics simulation}. The energy deposited in the silicon detectors gives raise to electron-hole pairs, which are collected by the strips and then processed by the VFAT2 chips \bref{vfat}. Details can be found in Sec.~7.4 in \bref{hubert}.
 
-The rotation $\mat R$ can be parameterized as
-\eqref{\mat R =
-\pmatrix{
-\cos\rh_z  & \sin\rh_z & 0\cr
--\sin\rh_z & \cos\rh_z & 0\cr
-0		   & 0         & 1\cr
-}
-\pmatrix{
-\cos\rh_y  & 0 & \sin\rh_y\cr
-0		   & 1 &          \cr
--\sin\rh_y & 0 & \cos\rh_y\cr
-}
-\pmatrix{
-1 & 0		   & 0        \cr
-0 & \cos\rh_x  & \sin\rh_x\cr
-0 & -\sin\rh_x & \cos\rh_x\cr
-}
-}{rotation parameterization}
+\em{DIGI}.
+Since the VFAT chips are digital, their output is a boolean value per silicon sensor channel. We call these data DIGI. This is the meeting point of the simulation and raw-data chains and is the start point for reconstructions and analyses.
 
-\TODO{} The rotation $\mat R$ only describes the misalignment rotations. As follows from the \Sc{al exp misal}, the estimate for such rotations is of the order of $1\un{mrad}$. For such angles, it is possible to use the following approximation
-\eqref{\cos\rh \approx 1,\qquad \sin\rh \approx \rh\ .}{small rotation approximation}
-Furthermore, terms as $\sin\rh_x \sin\rh_y$ can be neglected to $\sin\rh_x$. Therefore, the rotation $\mat R$ can be approximated by
-\eqref{\mat R \approx \pmatrix{
-1 & \rh_z & \rh_y\cr
--\rh_z & 1 & \rh_x\cr
--\rh_y & -\rh_x & 1\cr
-}}{rotation parameterization approximated}
+\em{Raw data}.
+Raw data are those saved by the DAQ system.
 
-\TODO{keep $\rh_z$ without the limit}
+\em{Raw-data validation}.
+The form of raw data is given by the DAQ and can change during time according to needs. Hence before the data is used, they must be converted to a common format -- DIGI in our case. The DAQ system has only a limited possibility to run error checks online, therefore most of then must of run offline. This is the main duty of this module.
+\TODO{Standalone section?}
 
-Now, let us find the point where the track \Eq{local track} hits the detector. This is the point on the track with $z_l = 0$. Inserting \Eq{local track} to \Eq{global to local}, one can find that the condition is fulfilled for 
-\eqref{z = z_i \equiv { c_z + \rh_y (b_x - c_x) + \rh_x (b_y - c_y) \over 1 - \rh_y a_x - \rh_x a_y} \ .}{z i}
-Now, lets make order estimate for the terms in the expression for $z_i$.\hfil\break
-\eqref{\eqnarray{
-c_z &\sim& 1\un{m} \cr
-\rh_{x,y} &\sim& 10^{-3}\un{rad} \cr
-(b - c)_{x, y} &\sim& 10^{-2}\un{m} \cr
-a_{x, y} &\sim& 10^{-2}\un{rad} \cr
-}}{z i order estimates}
+\em{Fast simulation}
+\Sc{fast simu}
 
-With these estimates, one can conclude
-\eqref{z_i = c_z + \O{10^{-5}\un{m}}\ .}{z i approximated}
 
-With the help of \Eq{global to local}, one can calculate the ``on-surface'' coordinates $x_l$ and $y_l$, for example
-\eqref{x_l = 
-\underbrace{a_x z_i}_{10^{-2}\un{m}}
-+ \underbrace{b_x - c_x}_{10^{-2}\un{m}} 
-+ \underbrace{\rh_z}_{10^{-3}} (\underbrace{a_y z_i}_{10^{-2}\un{m}} + \underbrace{b_y - c_y}_{10^{-2}\un{m}})
-+ \underbrace{\rh_y}_{10^{-3}} \underbrace{(z_i - c_z)}_{10^{-5}\un{m}}
-\ .}{xlyl i}
-Keeping only the important terms
-\eqref{\pmatrix{x_l\cr y_l} = \pmatrix{1 & \rh_z\cr -\rh_z & 1}
-\left[
-\pmatrix{a_x\cr a_y} c_z + \vec b - \vec c
-\right] + \O{10^{-8}\un{m}}\ .
-}{xlyl i approximated}
+\em{Clusterization}
+is the first step of the reconstruction chain. Due to charge-sharing effects, it is possible that one track fires two or more neighbouring strips. Such strip clusters need be found and later treated as a single hit.
 
-\section{Simulation and analysis chain}
+\em{RECO}.
+The position of a cluster can be turned into the distance (in the read-out direction) from the center of the sensor. We call such data RECO.
 
-\fig[15cm]{fig/pdf/offline_sw_structure.pdf}{offline sw structure}{The structure of the TOTEM Offline software.}
 
-\> briefly comment on all steps
-\> details only for those I worked on
+\em{Pattern recognition}.
+In this step we would like to find RECO hits belonging to (a) track(s) and suppress those which are result of noise of errors. For that we may use the fact that we have five planes in every projection and that particle tracks are straight lines. Hence hits forming line patterns are likely to come from a particle track, isolated hits are likely to be noise. Such an algorithm will be discussed in \Sc{pattern reco}. An alternative to this method -- road search algorithm -- is presented in Sec.~8.1.4 in \bref{hubert}. It is based on an additional piece of knowledge that physics protons are always very parallel to the beam. However, a possibility to reconstruct tracks with high angles will turn out important for alignment applications (see \Fg{al eig theta}). \TODO{problem with multiple tracks}
 
-\section{Beam smearing simulation}
+\em{One-RP track fitting}.
+In this step, hits from $U$ and $V$ projections are combined into one XYZ fit, see Sec.~8.1.5 in \bref{hubert}.
 
-%\input smearing.tex
+\em{Station track fitting} is similar to one-RP track fit, but here all hits from an entire (or a part) station are combined. This module has been developed mainly for alignment purposes. In order to select really clean tracks, it also comprises outlier removal procedure. It will be discussed in \Sc{al data sel}.
 
-\section{Pattern recognition}
+\em{Physics reconstruction}.
+In this step, the one-RP track fits are used to reconstruct proton kinematics at IP5. There are two versions -- \em{general} suitable for any diffractive protons and \em{elastic} which is a lighter version for elastic events. The latter one will be discussed in \Sc{el reco}.
+
+\em{Alignment} modules perform a special analyses focused on the alignment of RP sensors wrt.~each other and wrt.~the beam. The entire chapter~\sref{al}will be devoted to RP alignment.
+
+Various \em{coincidence-chip and trigger analyses} have been performed to validate the performance of the trigger system.
+
+\section[elegent]{Elegent}
+
+Elegent is acronym for ELastic Event GENeraTor.
+
+\section[beam smearing]{Beam smearing}
+
+Most Monte Carlo generators assume that incident particles of nominal energy approach each other along $z$ axis and collide at point $x = y = z = 0$. This is not the actual situation. In reality there are two bunches collided under a certain crossing angle. Within a bunch, particles do not have identical energy (energy smearing) and they are not all collinear (angular smearing). The bunches have non-zero dimensions and therefore the collision may take place at various points (vertex smearing). Our goal was to combine the smearing effects with Monte Carlo events in order to obtain a realistic simulation.
+
+\input smearing.tex
+
+\section[fast simu]{Fast simulation}
+
+\section[pattern reco]{Pattern recognition}
 
 \fig{fig/pdf/sr_pattern_reco.pdf}{sr pattern reco}{Illustration of the pattern recognition method. Left: sideview on the five sensors (black vertical lines) of identical strip orientation (U or V). The small horizontal ticks represent the strip positions. The thick inclined line shows a track, the colorful points around mark the measurments by the five sensors. The black dot in the upper-left corener represents an error, due to noise for instance. Right: the corresponding Hough diagram. The colors of the lines correspond to the colors of the points in the left plot. The line intersections are marked with black dots. The gray region represents a cluster. Here, the intercept $b$ is measured in strips, the slope $a$ in strips/plane count.}
 
 \fig{fig/pdf/sr_pattern_reco_ex.pdf}{sr pattern reco ex}{An example of the patter recognition. Run 3230, file 0, event 111, unit 45-220-near. Left: a track plus noise in the bottom pot (V sensors). Right: many tracks in the horizontal pot (U sensors). The red lines correspond to the cluster \TODO{centers}.}
 
-\section{Reconstruction of elastic events}
+\section[el reco]{Reconstruction of elastic events}
 
-%\input elasticReco.tex
+\input elasticReco.tex

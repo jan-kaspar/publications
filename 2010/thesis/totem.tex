@@ -1,0 +1,142 @@
+\chapter{The TOTEM experiment}
+
+\> Physics programme + motivation
+
+\> Description of TOTEM detectors \bref{totem04,totem08,totem10}
+
+\section[rp system]{The Roman Pot system}
+
+\fig[15cm]{fig/external/RP_stations_original.pdf}{rp stations}{RP stations}
+\fig[10cm]{fig/external/rp_unit.jpg}{rp unit}{RP unit}
+\fig[10cm]{fig/external/rp.jpg}{rp rp}{A Roman Pot}
+\fig[10cm]{fig/external/rp_package.jpg}{rp package}{Detector package}
+\fig[10cm]{fig/external/hybrid2.jpg}{rp hybrid}{A hybrid with a silicon detector and four VFAT chips.}
+\fig[10cm]{fig/external/silicon_explained.png}{rp sensor}{A detail of a silicon sensor.}
+
+\htab{rp station}{The structure of the RP stations. The $z$ positions of the RP centers.}{
+\omit&\multispan6\bhrulefill\cr
+\omit&\multispan3\strut\bvrule\hfil near unit\hfil&\multispan3\vrule\hfil far unit\hfil\cr
+\omit&\multispan6\bhrulefill\cr
+\omit&\omit\bvrule\strut\hfil\hbox{top}\hfil & \hbox{bottom} &\hbox{horizontal} &\hbox{horizontal} &\hbox{top} &\hbox{bottom} \cr\bln
+\hbox{147 m station} & 148.784 & 148.784 & 149.234 & 150.026 & 150.476 & 150.476 \cr\ln
+\hbox{220 m station} & 214.628 & 214.628 & 215.078 & 219.550 & 220.000 & 220.000 \cr\bln
+}
+
+\> Naming schemes
+\>> official \bref{totem-rp-naming} arm-station-unit-pot-plane-vfat-strip
+\>> OfflineSW |arm|station|pot|plane|vfat
+
+\tab[\strut\quad#\quad\hfil&\quad#\quad\hfil&\quad#\quad\hfil\cr]{rp naming schemes}{RP system naming schemes}{\bln
+& official & SW\cr\bln
+arm		& 45, 56		& 0, 1\cr
+station	& 147, 220		& 0, 2\cr
+unit	& far, near		& -\cr
+pot		& top, bot, hor	& near: 0 (top), 1 (bot), 2 (hor)\cr
+		& 				& far:  3 (hor), 4 (top), 5 (bot)\cr
+plane	& 1 to 10		& 0 to 9\cr
+vfat	& 1 to 4		& 0 to 3\cr
+strip	& 0 to 127		& -\cr\bln
+}
+
+\section[rp measurement]{Proton Measurement with Roman Pot detectors}
+
+A collision takes place (the vertex is) in
+\eqref{(x^*, y^*, z^*)^\T}{IP vertex}
+and a proton is created. The proton has energy $E=\sqrt{p^2 + m^2}$ and momentum components
+\eqref{\vec p = p \pmatrix{\sin\th \cos\ph\cr \sin\th\sin\ph \cr \cos\th} = 
+p \pmatrix{\th_x\cr \th_y\cr \sqrt{1 - \th_x^2 - \th_y^2}}}{IP proton momentum}
+
+\fig{fig/pdf/protonTransport.pdf}{protonTransport}{Proton transport.}
+
+Then, the proton is transported by the lattice of the LHC magnets to the detector area (say to $z = z_0$). The transport is schematically depicted in \Fg{protonTransport}. As there are no magnets in the detector area, from $z_0$ on, the proton follows a straight trajectory which might be described as
+\eqref{\pmatrix{x\cr y\cr z} = \pmatrix{a_x\cr a_y\cr 1} z + \pmatrix{b_x\cr b_y\cr 0}}{local track}
+
+So far, the coordinates have been described in the global $xyz$ coordinate system. For deriving (the expected measurement value), it is useful to use a local coordinate frame $x_l y_l z_l$. This coordinate system has its origin in the center of the detector. Its $x_l$ and $y_l$ axes parallel to the detector surface and its $z_l$ axis perpendicular to the surface. The global to local transformation can be written
+\eqref{\pmatrix{x_l\cr y_l\cr z_l} = \mat R \left[ \pmatrix{x\cr y\cr z}  - \pmatrix{c_x\cr c_y\cr c_z}  \right] \ ,}{global to local}
+where the $\vec c$ vector stands for the detector's center position in the global coordinates.
+
+The measurement $m$ is then given by projection of the local surface coordinates $x_l$ and $y_l$ to the readout direction $\vec d$
+\eqref{m = \hbox{ROUND}\left( (d_x, d_y) \pmatrix{x_l\cr y_l} \right)}{full measurement}
+The vector $\vec d = (d_x, d_y)^\T$ is the readout direction (perpendicular to strips). The ``ROUND'' comprises charge sharing effects etc.
+
+The rotation $\mat R$ can be parameterized as
+\eqref{\mat R =
+\pmatrix{
+\cos\rh_z  & \sin\rh_z & 0\cr
+-\sin\rh_z & \cos\rh_z & 0\cr
+0		   & 0         & 1\cr
+}
+\pmatrix{
+\cos\rh_y  & 0 & \sin\rh_y\cr
+0		   & 1 &          \cr
+-\sin\rh_y & 0 & \cos\rh_y\cr
+}
+\pmatrix{
+1 & 0		   & 0        \cr
+0 & \cos\rh_x  & \sin\rh_x\cr
+0 & -\sin\rh_x & \cos\rh_x\cr
+}
+}{rotation parameterization}
+
+\TODO{} The rotation $\mat R$ only describes the misalignment rotations. As follows from the \Sc{al exp misal}, the estimate for such rotations is of the order of $1\un{mrad}$. For such angles, it is possible to use the following approximation
+\eqref{\cos\rh \approx 1,\qquad \sin\rh \approx \rh\ .}{small rotation approximation}
+Furthermore, terms as $\sin\rh_x \sin\rh_y$ can be neglected to $\sin\rh_x$. Therefore, the rotation $\mat R$ can be approximated by
+\eqref{\mat R \approx \pmatrix{
+1 & \rh_z & \rh_y\cr
+-\rh_z & 1 & \rh_x\cr
+-\rh_y & -\rh_x & 1\cr
+}}{rotation parameterization approximated}
+
+\TODO{keep $\rh_z$ without the limit}
+
+Now, let us find the point where the track \Eq{local track} hits the detector. This is the point on the track with $z_l = 0$. Inserting \Eq{local track} to \Eq{global to local}, one can find that the condition is fulfilled for 
+\eqref{z = z_i \equiv { c_z + \rh_y (b_x - c_x) + \rh_x (b_y - c_y) \over 1 - \rh_y a_x - \rh_x a_y} \ .}{z i}
+Now, lets make order estimate for the terms in the expression for $z_i$.\hfil\break
+\eqref{\eqnarray{
+c_z &\sim& 1\un{m} \cr
+\rh_{x,y} &\sim& 10^{-3}\un{rad} \cr
+(b - c)_{x, y} &\sim& 10^{-2}\un{m} \cr
+a_{x, y} &\sim& 10^{-2}\un{rad} \cr
+}}{z i order estimates}
+
+With these estimates, one can conclude
+\eqref{z_i = c_z + \O{10^{-5}\un{m}}\ .}{z i approximated}
+
+With the help of \Eq{global to local}, one can calculate the ``on-surface'' coordinates $x_l$ and $y_l$, for example
+\eqref{x_l = 
+\underbrace{a_x z_i}_{10^{-2}\un{m}}
++ \underbrace{b_x - c_x}_{10^{-2}\un{m}} 
++ \underbrace{\rh_z}_{10^{-3}} (\underbrace{a_y z_i}_{10^{-2}\un{m}} + \underbrace{b_y - c_y}_{10^{-2}\un{m}})
++ \underbrace{\rh_y}_{10^{-3}} \underbrace{(z_i - c_z)}_{10^{-5}\un{m}}
+\ .}{xlyl i}
+Keeping only the important terms
+\eqref{\pmatrix{x_l\cr y_l} = \pmatrix{1 & \rh_z\cr -\rh_z & 1}
+\left[
+\pmatrix{a_x\cr a_y} c_z + \vec b - \vec c
+\right] + \O{10^{-8}\un{m}}\ .
+}{xlyl i approximated}
+
+
+\section[pr transport]{Proton transport -- optics}
+
+\> LHC and proton trasport
+\>> the matrix equations, ref to Hubert?
+\>> more precise tools, MAD and ?
+\>> parameterization, ref to Hubert
+\>> linearized parameterization
+\>> concept of optics
+
+\> smearing
+\>> beam divergence
+
+\eqref{\si_\th = }{to beam div}
+
+\>> vertex smearing
+
+\eqref{\si_{x^*} = }{to vertex sm}
+
+\>> energy fluctuation and offset
+
+\eqref{\si_\xi = }{to energy fl}
+
+\eqref{\bar\xi = }{to energy off}

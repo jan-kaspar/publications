@@ -4,6 +4,7 @@ gvim -p \
 	thesis.tex \
 	introduction.tex \
 	elastic.tex \
+	totem.tex \
 	simu_reco.tex \
 		smearing.tex \
 		elasticReco.tex \

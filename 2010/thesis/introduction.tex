@@ -1,5 +1,13 @@
 \chapter{Introduction}
 
+\> General introduction
+\> {\bf motivation} for what I study.
+
+\section{CERN, LHC}
+
+\> bla bla
+
+
 \section{Conventions}
 
 \> typographical conventions
@@ -13,65 +21,13 @@ dot product			& $\vec v\cdot \vec w$	& middle dot\cr
 matrix				& $\mat M$				& slanted\cr\ln
 }
 
-\> General introduction
-\> {\bf motivation} for what I study.
-
-\section{LHC}
-
-\> LHC and proton trasport
-\>> the matrix equations, ref to Hubert?
-\>> more precise tools, MAD and ?
-\>> parameterization, ref to Hubert
-\>> linearized parameterization
-\>> concept of optics
-
-\>> smearing
-
-Hill's equation (Sec.~3.3 in \bref{wilson}, Eq.~(4.33) in \bref{dolezal} or in \bref{wiedemann})
-\eqref{x(s) = \sqrt{\be(s) \ep} \cos (\ph(s) + \ph_0)}{hill eq}
-
-\section{TOTEM}
-
-\> Description of TOTEM detectors \bref{totem04,totem08,totem10}
-
-\subsection[rp system]{The Roman Pot system}
-
-\fig[15cm]{fig/external/RP_stations_original.pdf}{rp stations}{RP stations}
-\fig[10cm]{fig/external/rp_unit.jpg}{rp unit}{RP unit}
-\fig[10cm]{fig/external/rp.jpg}{rp rp}{A Roman Pot}
-\fig[10cm]{fig/external/rp_package.jpg}{rp package}{Detector package}
-\fig[10cm]{fig/external/hybrid2.jpg}{rp hybrid}{A hybrid with a silicon detector and four VFAT chips.}
-\fig[10cm]{fig/external/silicon_explained.png}{rp sensor}{A detail of a silicon sensor.}
-
-\htab{rp station}{The structure of the RP stations. The $z$ positions of the RP centers.}{
-\omit&\multispan6\bhrulefill\cr
-\omit&\multispan3\strut\bvrule\hfil near unit\hfil&\multispan3\vrule\hfil far unit\hfil\cr
-\omit&\multispan6\bhrulefill\cr
-\omit&\omit\bvrule\strut\hfil\hbox{top}\hfil & \hbox{bottom} &\hbox{horizontal} &\hbox{horizontal} &\hbox{top} &\hbox{bottom} \cr\bln
-\hbox{147 m station} & 148.784 & 148.784 & 149.234 & 150.026 & 150.476 & 150.476 \cr\ln
-\hbox{220 m station} & 214.628 & 214.628 & 215.078 & 219.550 & 220.000 & 220.000 \cr\bln
-}
-
-\> Naming schemes
-\>> official \bref{totem-rp-naming} arm-station-unit-pot-plane-vfat-strip
-\>> OfflineSW |arm|station|pot|plane|vfat
-
-\tab[\strut\quad#\quad\hfil&\quad#\quad\hfil&\quad#\quad\hfil\cr]{rp naming schemes}{RP system naming schemes}{\bln
-& official & SW\cr\bln
-arm		& 45, 56		& 0, 1\cr
-station	& 147, 220		& 0, 2\cr
-unit	& far, near		& -\cr
-pot		& top, bot, hor	& near: 0 (top), 1 (bot), 2 (hor)\cr
-		& 				& far:  3 (hor), 4 (top), 5 (bot)\cr
-plane	& 1 to 10		& 0 to 9\cr
-vfat	& 1 to 4		& 0 to 3\cr
-strip	& 0 to 127		& -\cr\bln
-}
 
 \section{Theoretical concepts}
 
 \> def of cross-section, t, xi
 \>> precise formulae
+
+\> def of luminosity
 
 \> optical theorem
 \>> neglecting spins - several amplitudes, how to treat them in the optical theorem - Formanek
