@@ -38,9 +38,10 @@ for (real x = 0; x <= 4*dx; x += dx) {
 }
 
 
-NewPad("$a$", "$b$");
+NewPad("$a/a_0$", "$b/P$");
 
-filldraw(shift(a/dy*dx, (b+a*2*dx)/dy)*scale(1.4, 2.1)*unitcircle, black+opacity(0.3), black);
+//filldraw(shift(a/dy*dx, (b+a*2*dx)/dy)*scale(1.4, 2.1)*unitcircle, black+opacity(0.3), black);
+filldraw(shift(a/dy*dx, (b+a*2*dx)/dy)*((-1.5, 2)--(-1.5, -2)--(1.5, -2)--(1.5, 2)--cycle), black+opacity(0.3), black);
 
 for (int i : x_data.keys) {
 	draw((a_min, -x_data[i]*a_min + y_data[i])--(a_max, -x_data[i]*a_max + y_data[i]), colors[i]);

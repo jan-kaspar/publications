@@ -168,7 +168,47 @@ We can see that the vertex distribution retains a Gaussian form. The mean values
 
 \section[pattern reco]{Pattern recognition}
 
-\fig{fig/pdf/sr_pattern_reco.pdf}{sr pattern reco}{Illustration of the pattern recognition method. Left: sideview on the five sensors (black vertical lines) of identical strip orientation (U or V). The small horizontal ticks represent the strip positions. The thick inclined line shows a track, the colorful points around mark the measurments by the five sensors. The black dot in the upper-left corener represents an error, due to noise for instance. Right: the corresponding Hough diagram. The colors of the lines correspond to the colors of the points in the left plot. The line intersections are marked with black dots. The gray region represents a cluster. Here, the intercept $b$ is measured in strips, the slope $a$ in strips/plane count.}
+
+$$u = a (z - z_0) + b$$
+
+$z_0$ at the middle of the RP
+
+\fig{fig/pdf/sr_pattern_reco.pdf}{sr pattern reco}{Illustration of the pattern recognition method. Left: sideview on the five sensors (black vertical lines) of identical strip orientation (U or V). The small horizontal ticks represent the strip positions. The thick inclined line shows a track, the colorful points around mark the measurments by the five sensors. The black dot in the upper-left corener represents an error, due to noise for instance. Right: the corresponding Hough diagram. The colors of the lines correspond to the colors of the points in the left plot. The line intersections are marked with black dots. The gray region represents a cluster \TODO{of the chosen size}.}
+
+\fig{fig/pdf/sr_pattern_reco_tune.pdf}{sr pattern reco tune}{Cluster-size distributions: MC simulation (blue) and run 3728 (red).}
+
+pitch $P$, nominal distance between adjacent planes of the same strip orientation $d = 9\un{mm}$, $a_0 \equiv P/d$
+
+MC: 1000 (internal) misalignment scenarios compatible with \Fg{al comp det per unit} (slope $50\un{\mu m}$ per detector, deviations with variation $20\un{\mu m}$), for each 1000 track simulations for 5 planes at nominal distances, tracks with angle distribution $N(0, \si_\th^2)$, $\si_\th = 5\un{mrad}$
+
+file 3728.0001, for both projection require 5 planes with just one hit - perfect track, cluster size cuts cuts at $10 a_0$ and $10 P$
+
+weight of hit = $\si_0/\si$, $\si_0 = 66/\sqrt{12} \un{\mu m}$, weight of crossing = sum of the hits' weights, 
+
+To optimize performance:
+\> planes with more than \pmt{maxHitsPerPlaneToSearch} hits per plane are tagged as unusuable
+\> events with less reasonable (i.e. non-empty and not unusable) planes per projection than \pmt{minPlanesPerProjectionToSearch} are skipped
+
+\bitm
+\itm Build clusters, crossing accepted to cluster if
+\itmm Travers all crossings
+\itmm Try to match each crossing to the existing clusters:
+$$|a - a_c| < \pmt{clusterSize\_a}/2 \hbox{ and } |b - b_c| < \pmt{clusterSize\_b}/2 $$
+$a_c = \sum a_i w_i / \sum w_i$
+If match, add the crossing to the cluster. If no match, create a new cluster containing the crossing only.
+\itmm Calculate cluster weights = sum of its hit weights. 
+\itm If heightest cluster weight above \pmt{threshold} then select the line and remove its points and go back to 1). If not, stop.
+\eitm
+
+\tab[\strut\quad\pmt{#}\hfil&\quad\hfil$#$\hfil\quad\cr]{pattern reco par}{The parameters of the pattern recognition algorithm with their default values}{\ln
+clusterSize\_a& 3a_0\cr
+clusterSize\_b& 4P\cr
+maxHitsPerPlaneToSearch& 4\cr
+minPlanesPerProjectionToSearch& 3\cr
+threshold& 2.99\cr\ln
+}
+
+Only events with exactly one candidate per projection are selected as fittable.
 
 \fig{fig/pdf/sr_pattern_reco_ex.pdf}{sr pattern reco ex}{An example of the patter recognition. Run 3230, file 0, event 111, unit 45-220-near. Left: a track plus noise in the bottom pot (V sensors). Right: many tracks in the horizontal pot (U sensors). The red lines correspond to the cluster \TODO{centers}.}
 
