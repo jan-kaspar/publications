@@ -49,13 +49,18 @@ In this step, hits from $U$ and $V$ projections are combined into one XYZ fit, s
 \em{Physics reconstruction}.
 In this step, the one-RP track fits are used to reconstruct proton kinematics at IP5. There are two versions -- \em{general} suitable for any diffractive protons and \em{elastic} which is a lighter version for elastic events. The latter one will be discussed in \Sc{el reco}.
 
-\em{Alignment} modules perform a special analyses focused on the alignment of RP sensors wrt.~each other and wrt.~the beam. The entire chapter~\sref{al}will be devoted to RP alignment.
+\em{Alignment} modules perform a special analyses focused on the alignment of RP sensors wrt.~each other and wrt.~the beam. The entire Chapter~\sref{al} will be devoted to RP alignment. \TODO{Standalone section with implementation details??}
 
 Various \em{coincidence-chip and trigger analyses} have been performed to validate the performance of the trigger system.
 
 \section[elegent]{Elegent}
 
-Elegent is acronym for ELastic Event GENeraTor.
+Elegent is acronym for ELastic Event GENeraTor. It generates elastic $\rm pp$ and $\rm\bar pp$ collisions with $\d\si/\d t$ distributions according to the four phenomenological models discussed in \Sc{el models}.
+
+It uses the inversion method (see \bref{wikipedia} key ''Inverse transform sampling''). This means one has to prepare cumulative distribution functions (cdfs.) first. The Elegent package contains a standalone program to do so. For a chosen energy and interaction type ($\rm pp$ or $\rm\bar pp$), the program calculates (samples in a given range) cdfs.~for every models and saves them as a ROOT file. In fact, for each hadronic model, there are three cdfs.~with various levels of Coulomb interaction inclusion: pure hadron (Coulomb effects are completely neglected), West-Yennie (\Eq{el WY}) and Kundr\' at-Lokaj\' i\v cek (\Eq{el KL}).
+
+The generation program itself loads a selected cdf., can reduce the available $t$-region and inverts the cdf. The generated events are saved in the standard HepMC format. Technical details and usage hints can be found in \bref{elegent}.
+
 
 \section[beam smearing]{Beam smearing}
 
@@ -165,6 +170,11 @@ We can see that the vertex distribution retains a Gaussian form. The mean values
 \eqref{\si_{x,\rm ef\!f} = {\si_x\over\sqrt{2}\cos\al},\quad \si_{y,\rm ef\!f} = {\si_y\over\sqrt{2}},\quad \si_{z,\rm ef\!f} = {\si_z\over\sqrt{2}}\,{\si_x\over\sqrt{\si_z^2\sin^2\al + \si_x^2\cos^2\al}} \.}{sm effective variations}
 
 \section[fast simu]{Fast simulation}
+
+In order to verify the functionality of our track-based alignment (see Chapter~\sref{al}) we had perform a number of MC simulations. With full Geant4 simulation it would have had taken an enormous time. Instead we developped a fast simulation modules. As indicated in \Fg{sr sw structure}, there are two versions: \em{Fast full simulation} and \em{fast station simulation}. The first one takes as input smeared particles at IP5 and transport them to the RP station with the polynomial optics approximation (the one used later for reconstruction). The latter version generates random tracks at the beginning of a chosen station. Subsequent processing is in common for both versions. Within a station, the tracks are interpolated linearly and intersections with all sensors are calculated. If \pmt{roundToPitch} is set to True, then the hit point is rounded to the nearest strip or inter-strip position. The mechanism is illsutrated in \Fg{sr fast simulation scheme}. If the intersection falls in the blue region, the creation of a double-strip cluster is assumed and the hit position is rounded to the inter-strip position (dash-dotted line). Otherwise one-strip clusters are assumed and the position is rounded to the nearest strip. The strip pitch can be set by \pmt{pitch} parameter, the size of the double-strip-cluster region (blue) by \pmt{dscrWidth} parameter. All hits are assigned errors of pitch$/\sqrt{12}$ unless \pmt{dscReduceUncertainty} = True. In that case, the error of double-strip cluster hits reduced to half.
+
+\fig{fig/pdf/sr_fast_simulation_scheme.pdf}{sr fast simulation scheme}{One and two-strip cluster regions as used in the fast simulation. The solid lines represent the strip centers, the dash-dotted lines mark the half way between the strips. The blue areas correspond to the double-strip-cluster regions, the white ones to the regions where one-strip clusters are created.}
+
 
 \section[pattern reco]{Pattern recognition}
 

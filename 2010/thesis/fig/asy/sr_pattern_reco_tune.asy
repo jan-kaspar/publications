@@ -1,6 +1,8 @@
 import root;
 import pad_layout;
 
+StdFonts();
+
 NewPad("$\hbox{cluster size } a / a_0$");
 draw(rGetObj("../root/ClusterSizeSimulation.root", "da_h"), "n", blue+1pt, "simulation");
 draw(rGetObj("../root/FastLineRecognition_tune.root", "cas"), "n", red+1pt, "real data");

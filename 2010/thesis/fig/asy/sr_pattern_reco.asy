@@ -1,5 +1,7 @@
 import pad_layout;
 
+StdFonts();
+
 NewPad(false, false);
 
 unitsize(1cm);

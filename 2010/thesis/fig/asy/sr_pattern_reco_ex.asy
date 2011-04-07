@@ -1,6 +1,8 @@
 import root;
 import pad_layout;
 
+StdFonts();
+
 string file = "../root/output_run_32300000_event_111_0.root";
 
 NewPad("$z\un{mm}$", "$v\un{mm}$");
