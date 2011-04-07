@@ -168,39 +168,44 @@ We can see that the vertex distribution retains a Gaussian form. The mean values
 
 \section[pattern reco]{Pattern recognition}
 
+The input to this module is a list of RECO hits among which we would like to find those lying around particle tracks. This search is performed pot per pot, where any physics track is a straight line. Thus our task is to find straight line patterns within the data. The fact, that there are just two read-out directions (U and V) makes it special. In a way simpler -- one 2-dimensional task can be split into two 1-dimensional ones (one per projection). In a way more complicated -- if there are several tracks in a RP, we may find line patterns it both projections, but there is now clue how to combine them togher.
+%For example, imagine two tracks in a pot. We would find two patterns in both projections, yielding four possible combinations. However, two of them are real and two are fake (ghosts).
+Even if we applied rotational alignment corrections, the deviations from the U and V read-out directions would be insufficient to perform a 2D pattern search. 
 
-$$u = a (z - z_0) + b$$
+Our algorithm is an optimization of the Hough transform pattern search (see e.g. \bref{wikipedia} key ''hough transform''). Let us parameterize the line patterns in the following way ($q$ stands for either $u$ or $v$)
+\eqref{q = a (z - z_0) + b\ .}{pr line par}
+$z_0$ refers to the center of the RP (this is the ''nearest'' place to all the planes, therefore it minimizes the extrapolation error in $b$ determination). The Hough transform assignes to each point $(z, q)$ a line in $ab$ space:
+\eqref{(z, q) \rightarrow b = - (z - z_0) a + q \ .}{pr transform}
+This process is shown in \Fg{sr pattern reco}: each of the points in the left plot is transformed to a line (of the same color) in the right plot. The effect is evident. The intersections of colorful lines (corresponding to the colorful points that lie around a line) cumulate together, but the intersections of the black line (representing a noise hit) are scattered around. Hence the taks of finding line patters is reduced to a (intersection) cluster search.
 
-$z_0$ at the middle of the RP
+Since the RECO hit positions are multiples of pith $P$, it is natural to measure $b$ in units of $P$. Similarly, we will give slopes $a$ in multiples of $a_0 \equiv P / d$, where $d = 9 \un{mm}$ is the nominal distance between adjacent planes of the same strip orientation.
 
-\fig{fig/pdf/sr_pattern_reco.pdf}{sr pattern reco}{Illustration of the pattern recognition method. Left: sideview on the five sensors (black vertical lines) of identical strip orientation (U or V). The small horizontal ticks represent the strip positions. The thick inclined line shows a track, the colorful points around mark the measurments by the five sensors. The black dot in the upper-left corener represents an error, due to noise for instance. Right: the corresponding Hough diagram. The colors of the lines correspond to the colors of the points in the left plot. The line intersections are marked with black dots. The gray region represents a cluster \TODO{of the chosen size}.}
+\fig{fig/pdf/sr_pattern_reco.pdf}{sr pattern reco}{Illustration of the pattern recognition method. Left: sideview on the five sensors (black vertical lines) of identical strip orientation (U or V). The small horizontal ticks represent the strip positions. The thick inclined line shows a track, the colorful points around mark the measurments by the five sensors. The black dot in the upper-left corener represents an error, due to noise for instance. Right: the corresponding Hough diagram. The colors of the lines correspond to the colors of the points in the left plot. The line intersections are marked with black dots. The gray region represents a cluster (of the optimal size -- see \Tb{pattern reco par}).}
+
+Now, let us describe the cluster-search algorithm. Every RECO hit is assigned a weight $w = \si_0/\si$, where $\si_0 = 66/\sqrt{12} \un{\mu m}$ is the uncertainty of a 1-strip cluster. The weight of a line crossing is given by the sum of the two contributing hit weights. The algorithm can be described as follows.
+
+\bitm
+\itm Build clusters. Go throught all crossings, try to match each crossing to any of the already existing clusters. A crossing falls into a cluster if
+\eqref{|a - a_c| < \pmt{clusterSize\_a}/2 \quad \hbox{ and }\quad |b - b_c| < \pmt{clusterSize\_b}/2\ ,}{pr cluster match}
+where $a$ and $b$ are the coordintates of the crossing and $a_c$ and $b_c$ give the position of the cluster. The position is calculated as a weighed mean over all contributing crossings: $a_c = \sum a_i w_i / \sum w_i$.
+If match, add the crossing to the cluster. If no match, create a new cluster containing the crossing only.
+\itm Calculate cluster weights as the sum of its hit weights.
+\itm Take the cluster with the highest weight. If its weight is lower than \pmt{threshold}, stop. If not, the cluster corresponds to a recognized track. Remove its points from the list and return to the step 1) to recognize more line patterns.
+\eitm
+
+The \pmt{threshold} parameter gives an effective minimal number of hits for a cluster to be trusted as a reasonable line. The other two critical parameters are the cluster sizes. If set too low, real tracks would not be recognized, if set too high, noise hits may get selected or even multiple tracks may be merged. The needed cluster size depends on the expected deviations of the individual measurements from the track. These deviations have two major ingredients: pitch rounding and misalignments. To find the optimal cluster sizes we made a simple MC test and a real data analysis, see \Fg{sr pattern reco tune}. For the MC test, we simulated  1000 (internal) misalignment scenarios compatible with \Fg{al comp det per unit} (slope $50\un{\mu m}$ per detector, deviations with the variation of $20\un{\mu m}$). For each misalignment, we simulated 1000 tracks through 5 planes at nominal distances $d$, the angular spread of tracks was $\si_\th = 5\un{mrad}$. For each track we calculated the cluster sizes and filled the values in the blue histograms. The red curves correspond to an analysis of run 3728, file 1. For both projection we required five planes with just one hit -- a perfect track. There are non-negligible differences between the two histograms at lower cluster sizes, but both agree that there is practically nothing above $3a_0$ and $4P$.
 
 \fig{fig/pdf/sr_pattern_reco_tune.pdf}{sr pattern reco tune}{Cluster-size distributions: MC simulation (blue) and run 3728 (red).}
 
-pitch $P$, nominal distance between adjacent planes of the same strip orientation $d = 9\un{mm}$, $a_0 \equiv P/d$
-
-MC: 1000 (internal) misalignment scenarios compatible with \Fg{al comp det per unit} (slope $50\un{\mu m}$ per detector, deviations with variation $20\un{\mu m}$), for each 1000 track simulations for 5 planes at nominal distances, tracks with angle distribution $N(0, \si_\th^2)$, $\si_\th = 5\un{mrad}$
-
-file 3728.0001, for both projection require 5 planes with just one hit - perfect track, cluster size cuts cuts at $10 a_0$ and $10 P$
-
-weight of hit = $\si_0/\si$, $\si_0 = 66/\sqrt{12} \un{\mu m}$, weight of crossing = sum of the hits' weights, 
-
-To optimize performance:
-\> planes with more than \pmt{maxHitsPerPlaneToSearch} hits per plane are tagged as unusuable
-\> events with less reasonable (i.e. non-empty and not unusable) planes per projection than \pmt{minPlanesPerProjectionToSearch} are skipped
-
+To optimize the performance, we apply the cuts below before performing the search.
 \bitm
-\itm Build clusters, crossing accepted to cluster if
-\itmm Travers all crossings
-\itmm Try to match each crossing to the existing clusters:
-$$|a - a_c| < \pmt{clusterSize\_a}/2 \hbox{ and } |b - b_c| < \pmt{clusterSize\_b}/2 $$
-$a_c = \sum a_i w_i / \sum w_i$
-If match, add the crossing to the cluster. If no match, create a new cluster containing the crossing only.
-\itmm Calculate cluster weights = sum of its hit weights. 
-\itm If heightest cluster weight above \pmt{threshold} then select the line and remove its points and go back to 1). If not, stop.
+\itm Planes with more than \pmt{maxHitsPerPlaneToSearch} hits per plane are tagged as unusuable. We recall that only events with one track can be fully reconstructed.
+\itm Events with less reasonable (i.e.~non-empty and not unusable) planes per projection than\break \pmt{minPlanesPerProjectionToSearch} are skipped.
 \eitm
 
-\tab[\strut\quad\pmt{#}\hfil&\quad\hfil$#$\hfil\quad\cr]{pattern reco par}{The parameters of the pattern recognition algorithm with their default values}{\ln
+\Tb{pattern reco par} summarizes the parameters of the algorithm and gives their default/optimal values. \Fg{sr pattern reco ex} provides an example of the recognition results.
+
+\tab[\strut\quad\pmt{#}\hfil&\quad\hfil$#$\hfil\quad\cr]{pattern reco par}{The parameters of the pattern recognition algorithm with their default values.}{\ln
 clusterSize\_a& 3a_0\cr
 clusterSize\_b& 4P\cr
 maxHitsPerPlaneToSearch& 4\cr
@@ -208,9 +213,8 @@ minPlanesPerProjectionToSearch& 3\cr
 threshold& 2.99\cr\ln
 }
 
-Only events with exactly one candidate per projection are selected as fittable.
 
-\fig{fig/pdf/sr_pattern_reco_ex.pdf}{sr pattern reco ex}{An example of the patter recognition. Run 3230, file 0, event 111, unit 45-220-near. Left: a track plus noise in the bottom pot (V sensors). Right: many tracks in the horizontal pot (U sensors). The red lines correspond to the cluster \TODO{centers}.}
+\fig{fig/pdf/sr_pattern_reco_ex.pdf}{sr pattern reco ex}{An example of the patter recognition. Run 3230, file 0, event 111, unit 45-220-near. Left: a track plus noise in the bottom pot (V sensors). Right: many tracks in the horizontal pot (U sensors). The red lines correspond to the recognized patterns (cluster centers).}
 
 \section[el reco]{Reconstruction of elastic events}
 
