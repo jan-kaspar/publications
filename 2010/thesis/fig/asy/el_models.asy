@@ -2,12 +2,13 @@ include root;
 include pad_layout;
 
 StdFonts();
+xSizeDef = ySizeDef = 6.1cm;
 
 string base_dir = "/mnt/pctotem31/software/offline/311/user/elastic_models/data";
 
 string[] files = {
-	"3500GeV_0_20_1E4", 
-//	"7000GeV_0_20_4E3", 
+	"3500GeV_0_20_4E3", 
+	"7000GeV_0_20_4E3", 
 };
 
 string[] flabels = {
@@ -19,6 +20,9 @@ string[] tags = {"islam_bfkl", "islam_cgc", "ppp2", "ppp3", "bsw", "bh"};
 pen[] colors = {black, black+dashed, red, red+dashed, blue, heavygreen};
 string[] labels = {"Islam et al. (BFKL)", "Islam et al. (CGC)", "Petrov-Predazzi-Prokudin, 2 pomerons", "Petrov-Predazzi-Prokudin, 3 pomerons",
 	"Bourrely-Soffer-Wu", "Block-Halzen"};
+
+string[] labelsS = {"Islam et al. (BFKL)", "Islam et al. (CGC)", "Petrov et al. (2P)", "Petrov et al. (3P)",
+	"Bourrely et al.", "Block et al."};
 
 //----------------------------------------------------------------------------------------------------
 
@@ -54,14 +58,26 @@ void DrawOptimized(real min, real max, real yScale, rObject obj, pen p, string l
 
 //----------------------------------------------------------------------------------------------------
 
-void DrawLegend(string label="", pair al=NE)
+void AdjustPlot(int f, bool l=false)
 {
+	if (f > 0)
+		currentpad.yLabel = "";
+
 	currentpicture.legend.delete();
-	/*
-	for (int i : tags.keys)
-		AddToLegend(labels[i], colors[i]);
-	*/
-	AttachLegend(label, al, al);
+
+	if (l) {
+		if (f == 0) {
+			AddToLegend(labelsS[0], colors[0]);
+			AddToLegend(labelsS[1], colors[1]);
+			AddToLegend(labelsS[4], colors[4]);
+		} else {
+			AddToLegend(labelsS[2], colors[2]);
+			AddToLegend(labelsS[3], colors[3]);
+			AddToLegend(labelsS[5], colors[5]);
+		}
+	}
+
+	AttachLegend(flabels[f]);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -69,7 +85,7 @@ void DrawLegend(string label="", pair al=NE)
 
 // ---------- sigma large -----------
 
-TGraph_reducePoints = 10;
+TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=2, step=0.5);
 
 for (int f = 0; f < files.length; ++f) {
@@ -84,10 +100,10 @@ for (int f = 0; f < files.length; ++f) {
 
 	limits((0, 1e-15), (20, 1e3), Crop);
 		
-	DrawLegend(flabels[f]);
+	AdjustPlot(f, true);
 }
 
-GShipout("el_mod_dsdt_large");
+GShipout("el_mod_dsdt_large", hSkip=2mm);
 
 // ---------- sigma narrow -----------
 
@@ -106,14 +122,14 @@ for (int f = 0; f < files.length; ++f) {
 
 	limits((0, 1e-7), (5, 1e3), Crop);
 		
-	DrawLegend(flabels[f]);
+	AdjustPlot(f);
 }
 
-GShipout("el_mod_dsdt_narrow");
+GShipout("el_mod_dsdt_narrow", hSkip=2mm);
 
 // ---------- B -----------
 
-TGraph_reducePoints = 10;
+TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
@@ -128,15 +144,15 @@ for (int f = 0; f < files.length; ++f) {
 
 	limits((0, -10), (5, 30), Crop);
 		
-	DrawLegend(flabels[f]);
+	AdjustPlot(f);
 }
 
-GShipout("el_mod_B");
+GShipout("el_mod_B", hSkip=2mm);
 
 
 // ---------- phase -----------
 
-TGraph_reducePoints = 10;
+TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
@@ -151,15 +167,15 @@ for (int f = 0; f < files.length; ++f) {
 
 	limits((0, 0), (5, +2), Crop);
 		
-	DrawLegend(flabels[f]);
+	AdjustPlot(f);
 }
 
-GShipout("el_mod_phase");
+GShipout("el_mod_phase", hSkip=2mm);
 
 
 // ---------- rho -----------
 
-TGraph_reducePoints = 10;
+TGraph_reducePoints = 1;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
@@ -169,19 +185,19 @@ for (int f = 0; f < files.length; ++f) {
 	for (int t : tags.keys) {
 		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "rho/PH/" + tags[t], error=false);
 		if (o.valid)
-			DrawOptimized(-6.5, +6.5, 1, o, colors[t]);
+			DrawOptimized(-8, +8, 1, o, colors[t]);
 	}
 
 	limits((0, -6), (5, +6), Crop);
 		
-	DrawLegend(flabels[f]);
+	AdjustPlot(f);
 }
 
-GShipout("el_mod_rho");
+GShipout("el_mod_rho", hSkip=2mm);
 
 // ---------- R -----------
 
-TGraph_reducePoints = 10;
+TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
@@ -196,14 +212,14 @@ for (int f = 0; f < files.length; ++f) {
 
 	limits((0, -0.2), (5, +0.1), Crop);
 		
-	DrawLegend(flabels[f]);
+	AdjustPlot(f);
 }
 
-GShipout("el_mod_R");
+GShipout("el_mod_R", hSkip=2mm);
 
 // ---------- Z -----------
 
-TGraph_reducePoints = 10;
+TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
@@ -218,7 +234,7 @@ for (int f = 0; f < files.length; ++f) {
 
 	limits((0, -0.2), (5, +0.1), Crop);
 		
-	DrawLegend(flabels[f]);
+	AdjustPlot(f);
 }
 
-GShipout("el_mod_Z");
+GShipout("el_mod_Z", hSkip=2mm);
