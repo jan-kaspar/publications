@@ -39,9 +39,108 @@
 
 \section[el coulomb]{Coulomb interference}
 
-\eqref{F^{\rm C+N}_{\rm WY} = }{el WY}
-\eqref{F^{\rm C+N}_{\rm KL} = }{el KL}
+\def\KL{Kudr\' at-Lokaj\' i\v cek}
+\def\WY{West-Yennie}
 
+\> genneral problems
+\>> PROBLEM 1: proton form-factors have been determined in ep scattering, how to apply them to pp scatterin?
+
+\> problems of Cahn formula (inherited and not solved in \KL{} treatment)
+\>> PROBLEM 2: The case without form factors gives just the \WY{} formula. If \WY{} is wrong, then Cahn is wrong too. The formula with form factors (and thus \KL too) is just a trivial generalization which does not remove the basic issue.
+\>> PROBLEM 3: Some approximations may be a bit too crude (e.g. neglecting $\al \log {t\over t_{\rm min}}$)
+
+\> problems in \KL{} formula
+\>> PROBLEM 4: The inclusion of form-factors is not complete -- the modification of the Coulomb phase is not discussed (c.f. Sec.~4 in \bref{cahn82})
+\>> PROBLEM 5: The relation between hadronic $t$- and $b$-amplitudes require the knowledge of the $t$-amplitude beyond the physical region. Cahn assumes this is know, the upper bound of his $q^2$-integrals is $Q^2\to\infty$. \KL{} realized the issue and fixed the upper bound to the edge of the physical region $Q^2 = t_{\rm min}$. This brings some inconsistency.
+
+\> comments
+\>> to be really consistent, one should not mix amplitudes obtained by different approaches, they might be incompatible (especially their phases) 
+\>> $F^C$ in Cahn and KL is merely a symbol for $\al s/t$, one has no freedom to use anything else
+\>> We will use high energy approximations to compare the results of several authors.
+
+\vskip1cm
+
+\iffalse
+Out of the four fundamental forces, only two are important for forward scattering of protons, namely strong and electromagnetic. The gravitational force is too weak and the weak force has a negligible contribution only (\TODO{suppressed by the mass of its bosons}).
+
+Bethe derived \bref{bethe58}
+\eqref{F^{C+H}(t) = F^C(t) e^{i \al \Ph(t)} + F^H(t)}{el FCH decomp}
+with the Coulomb-hadronic phase $\Phi$
+\eqref{\Phi_{\rm Bethe}(t) = 2 \log {1.06\over a\sqrt{t}}}{el phase bethe}
+\TODO{explain}
+\fi
+
+Before discussing the problems a greater detail, let us make a comment about the Coulomb-hadronic interference phase. Many authors (including Bethe \bref{bethe58} and \WY{} \bref{wy68}) decomposed the full amplitude in the following way
+\eqref{F^{C+H}(t) = F^C(t) e^{i \al \Ph(t)} + F^H(t)\ .}{el FCH decomp}
+Since the phase $\Ph$ is real in their treatments, the phase factor can be moved to the hadronic amplitude $F^H$:
+\eqref{F^{C+H}(t) e^{-i \al \Ph(t)} = F^C(t) + F^H(t) e^{-i \al \Ph(t)}\ .}{el FCH decomp2}
+The phase shift of the full amplitude is not observable. This form is more similar to the formulae of Cahn \bref{cahn82} and \KL{} \bref{kl94}, which can be written as
+\eqref{F^{C+H}(t) = F^C(t) + F^H(t) e^{i \al \Ps(t)}\ .}{el FCH decomp2}
+Here we took the liberty to exponentiate the factor $1+ia\Ps$. This modification introduces corrections of the order $\O{\al^2}$, that is the order which is commonly neglected in the work of Cahn \bref{cahn82}. The ``phase'' $\Ps$ may generally be complex (and thus it does not qualify to be called phase) and that is why it cannot be moved to the Coulomb amplitude. Still, it will be interesting to compare the phases:
+\eqref{-\Ph\quad\hbox{vs.}\quad\Ps\ .}{}
+
+{\bf PROBLEM 1}
+
+The form factors of proton have been determined from the measurements of the elastic ep scattering. The electrons serves as a point-like projectile that probes the spatial structure of the proton. This process can be described by QED, see e.g. Sc. ~in \bref{peskin} or Sc.~in \bref{chyla}. The electron vertex is the standard $-ie\ga^\mu$, while for the proton one uses the most general vertex function that satisfies ...:
+\eqref{\Ga^\mu = F_1(q^2) \ga^\mu + i{\ka\over 2m} F_2(q^2) \si^{\mu\nu} q_\nu\ ,\qquad \si^{\mu\nu} = {i\over 2} [\ga^\mu, \ga^\nu]\ .}{}
+The functions $F_1$ and $F_2$ are the form factors depending on the four-momentum transfer squared. The result in one-photon exchange approximation is the Rosenbluth formula \TODO{ref}, which enables to extract the form-factors from experimental data. This has been done by several authors, gradually accounting for the increasing amount of experimental data. One of the first results was the paper of Hofstadter \bref{hofstadter58}, who parameterized both form factors by dipole formula
+\eqref{F_1 = F_2 = F_{D} \equiv {\La^2\over \La^2 + q^2}\ ,\qquad \La^2 = 0.71\un{GeV^2}\ .}{el ff dipole}
+This result has been improved by Borkowski et al.~\bref{borkowski74,borkowski75}. Their fit is done in terms of the electric form factor $G_E$ and the magnetic one $G_M$ (see e.g. Sachs \bref{sachs62})
+\eqref{G_E = F_1 - {q^2\over 2m} F_2\ ,\qquad G_M = {1\over 2m} F_1 + F_2}{el ff el mag}
+Each of them is parameterized by a sum of four poles:
+\eqref{G_{E/M} = \sum_{i=1}^4 {{c_i}\over w_i + q^2}\ .}{el ff borkowski}
+The parameters $c_i$ and $w_i$ are different for electric and magnetic form factors and can be found in \TODO{table}.
+
+In short while, we will need the inverse of the definition of the electric and magnetic form-factors
+\eqref{F_1 = {G_E + {q^2\over 2m} G_M\over {1 + {q^2\over 4m^2}}}\ , \qquad F_2 = {G_M - {1\over 2m} G_E\over {1 + {q^2\over 4m^2}}}\ .}{el ff el mag inv}
+
+The last question is how to apply these form factors to proton-proton scattering. QED provides this answer quite easily -- one just needs to use the generalized vertex $-ie\Ga^\mu$ for both protons. In the one-photon exchange approximation (keeping only the $t$-channel diagram) one can obtain differential cross-section
+\eqref{{\d\si\over\d t} \propto {\al^2\over t^2} F_1^4(q^2 = -t)\ ,}{el cs coulomb real proton}
+where we have neglected all terms containing fraction $m/p\approx 0.938\un{GeV}/10\un{TeV}\approx 10^{-4}$ and used the fact that the interesting CMS scattering angles $\th<<1$ (for instance $|t|=1\un{GeV^2}$ and $p=10\un{TeV}$ yields $\th=10^{-4}$). Certain steps of the calculation have been performed with TamarA package \bref{tamara} to Mathematica \bref{mathematica}. \TODO{I'm still checking this result!}. The important outcome is that the only the form factor $F_1$ contributes to the (high energy and low-angle) scattering cross-section. Thus, if one decides to use Borkowski form factors, one should use the $F_1$, not simply $G_E$ as suggested by \KL{} in \bref{kl94}. \TODO{Check the numerical differences between GD, GE and F1Bork}.
+
+The modulus of the corresponding amplitude can be written
+\eqref{|F^C| = {\al s\over t}\, F^2_1(t)\ .}{el amp coulomb}
+
+{\bf PROBLEM 3}
+The derivation of Cahn \bref{cahn82} is clearly just the first order in $\al$, the fine structure constant. Therefore, one would naively expect the error to be of the order $1/\al\approx 1\percent$. However, looking closer this uncertainty estimate may look too optimistic. For example, some of the neglected terms are of the order
+$$\al \log {t\over t_{\rm min}}\ .$$
+Taking some values of interest: $|t| = 10^{-3}\un{GeV^2}$ and $|t_{\rm min}| \approx s = (14\un{TeV})^2$ yields a correction of $-24\percent$, which is rather important. Analytical estimation of the influence of these rather large correction is not an easy task. Instead, we decided to verify the accuracy of the Cahn's formula numerically. For that we reverted to his starting point (his Eq.~(12)):
+\eqref{F^{C+H}(t) = {s\over 2i} \int\limits_0^\infty b\ \d b\ J_0(b\sqrt{-t}) \left( e^{2i [\de^C(b) + \de^H(b)] } - 1\right)}{}
+The Coulomb eikonal $\de_C$ can be determined from a Born Coulomb amplitude $F^C_{\rm Born}(t)$:
+\eqref{\de^C(b) = \int\limits_0^\infty q\ \d q\ J_0(b q)\ F^C_{\rm Born}(-q^2)}{}
+To enable for numerical calculations, one must remove the singularity of the Coulomb amplitude at $|t|\to 0$. Therefore, we will use
+\eqref{F^C_{\rm Born} = - {\al s\over -t + \la^2}\ .}{}
+The factor $\la$ represents a fictious mass of the photon. It will be kept low throughout our calculations, moreover we will use a set of values. At the end we will demonstrate that the results, in a region of interest, are independent of the value of $\la$.
+\TODO{Formfactors}
+
+The hadronic eikonal $\de_H$ could, in principle, be extracted from the $t$-amplitude by means of Fourier-Bessel transform:
+\eqref{e^{2i \de^H(b)} = \int\limits_0^\infty q\ \d q\ J_0(b q)\ F^H(-q^2)\ .}{}
+However, it is immediately clear that this transform requires the knowledge of the hadronic amplitude also outside the physical region.
+\TODO{PROBLEM}. Disappears for BSW - there we know the eikonal
+
+
+\eqref{F^{\rm C+H}_{\rm WY} = F^C(t) e^{i\al\Ph(t) + F^H(t) }}{el WY}
+\TODO{Comment on FC and FH, c.f. Eq.~(6) in \bref{wy68}}
+
+\eqref{\Phi_{\rm WY}(t) =  -\al\log {t\over t_{\rm min}} + \int\limits_{t_{\rm min}}^0 {\d t'\over |t-t'|} \left({F^H(t')\over F^H(t)} - 1\right) }{el phase WY}
+\TODO{Check the sign of the second term!!!}
+
+
+The \KL{} formula.
+\eqref{F^{\rm C+H}_{\rm KL}(t) = \pm {\al s\over t} f^2(t) + F^H(t)\ e^{i\al\Ps(t)}\ ,}{el FCH KL}
+where
+\eqref{\Ps_{\rm KL}(t) = \mp \int\limits_{t_{\rm min}}^0 \d t' \left[ \log {t'\over t} \left( f^2(t') \right)' - {1\over 2\pi} \left({F^H(t')\over F^H(t)} - 1\right) I(t, t') \right]}{el phase KL}
+\eqref{I(t, t') = \int\limits_0^{2\pi} \d\ph {f^2(t'')\over t''}\ ,\qquad t'' = t + t' + 2\sqrt{t t'} \cos\ph\ .}{el KL I}
+
+Compared to \bref{kl94} we wrote the correction to the hadronic amplitude in a exponentiated way. Both are, in principle, equivalent since the phase $\Phi_{\rm KL}$ has been derived under the assumption that $\O{\al^2}$ terms can be neglected. Another assumption leading to this phase was that $f(t_{\rm min}) = 0$. Although this is a very good assumption for any real form factor, it makes it uneasy to compare the phases of \KL{} and \WY. Fortunately, it is easy to correct \Eq{el phase KL} to allow for any form factor dependence:
+\eqref{\Ps_{\rm KL,corr}(t) = \Ps_{\rm KL}(t) \pm f^2(t_{\rm min}) \log {t\over t_{\rm min}}\ .}{el phase KL corr}
+Now it is easy to verify that the WY phase corresponds to KL phase, if no form factors are used:
+\eqref{\Ps_{\rm KL,corr}(t) \mathop{\longrightarrow}\limits^{f(t)\to 1} - \Ph_{\rm WY}(t)}{el KL WY correspondance}
+
+\TODO{Check signs}
+
+\vskip1cm
+\hrule
 
 \eqref{R(t) = {|F^{\rm \rm C+N}_{\rm KL}|^2 - |F^{\rm C+N}_{\rm WY}|^2 \over |F^{\rm C+N}_{\rm KL}|^2}}{el R}
 \eqref{Z(t) = {|F^{\rm \rm C+N}_{\rm KL}|^2 - |F^{\rm C+N}_{\rm PH}|^2 - |F^{\rm C+N}_{\rm PC}|^2\over |F^{\rm C+N}_{\rm KL}|^2}}{el Z}
@@ -51,6 +150,8 @@
 \fig{fig/pdf/el_mod_R.pdf}{el mod R}{The difference between WY and KL formulae as a function of $t$.}
 
 Eq.~2-7 (page 14) in ATLAS ALFA TDR \bref{alfa} is wrong.
+
+\PrintReferences
 
 \section[el impact]{Impact parameter analyses}
 
