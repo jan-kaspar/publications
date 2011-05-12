@@ -37,14 +37,17 @@
 
 \fig{fig/pdf/el_mod_rho.pdf}{el mod rho}{The $\rho$ parameter as predicted by the four models.}
 
+\section[el impact]{Impact parameter analyses}
+
 \section[el coulomb]{Coulomb interference}
 
 \def\KL{Kudr\' at-Lokaj\' i\v cek}
 \def\WY{West-Yennie}
 
 \> genneral problems
-\>> PROBLEM 1: proton form-factors have been determined in ep scattering, how to apply them to pp scatterin?
+\>> PROBLEM 1: proton form-factors have been determined in ep scattering, how to apply them to pp scattering?
 
+\iffalse
 \> problems of Cahn formula (inherited and not solved in \KL{} treatment)
 \>> PROBLEM 2: The case without form factors gives just the \WY{} formula. If \WY{} is wrong, then Cahn is wrong too. The formula with form factors (and thus \KL too) is just a trivial generalization which does not remove the basic issue.
 \>> PROBLEM 3: Some approximations may be a bit too crude (e.g. neglecting $\al \log {t\over t_{\rm min}}$)
@@ -59,6 +62,7 @@
 \>> We will use high energy approximations to compare the results of several authors.
 
 \vskip1cm
+\fi
 
 \iffalse
 Out of the four fundamental forces, only two are important for forward scattering of protons, namely strong and electromagnetic. The gravitational force is too weak and the weak force has a negligible contribution only (\TODO{suppressed by the mass of its bosons}).
@@ -70,7 +74,8 @@ with the Coulomb-hadronic phase $\Phi$
 \TODO{explain}
 \fi
 
-Before discussing the problems a greater detail, let us make a comment about the Coulomb-hadronic interference phase. Many authors (including Bethe \bref{bethe58} and \WY{} \bref{wy68}) decomposed the full amplitude in the following way
+\iffalse
+Before discussing the problems in a greater detail, let us make a comment about the Coulomb-hadronic interference phase. Many authors (including Bethe \bref{bethe58} and \WY{} \bref{wy68}) decomposed the full amplitude in the following way
 \eqref{F^{C+H}(t) = F^C(t) e^{i \al \Ph(t)} + F^H(t)\ .}{el FCH decomp}
 Since the phase $\Ph$ is real in their treatments, the phase factor can be moved to the hadronic amplitude $F^H$:
 \eqref{F^{C+H}(t) e^{-i \al \Ph(t)} = F^C(t) + F^H(t) e^{-i \al \Ph(t)}\ .}{el FCH decomp2}
@@ -78,6 +83,7 @@ The phase shift of the full amplitude is not observable. This form is more simil
 \eqref{F^{C+H}(t) = F^C(t) + F^H(t) e^{i \al \Ps(t)}\ .}{el FCH decomp2}
 Here we took the liberty to exponentiate the factor $1+ia\Ps$. This modification introduces corrections of the order $\O{\al^2}$, that is the order which is commonly neglected in the work of Cahn \bref{cahn82}. The ``phase'' $\Ps$ may generally be complex (and thus it does not qualify to be called phase) and that is why it cannot be moved to the Coulomb amplitude. Still, it will be interesting to compare the phases:
 \eqref{-\Ph\quad\hbox{vs.}\quad\Ps\ .}{}
+\fi
 
 {\bf PROBLEM 1}
 
@@ -96,11 +102,17 @@ In short while, we will need the inverse of the definition of the electric and m
 
 The last question is how to apply these form factors to proton-proton scattering. QED provides this answer quite easily -- one just needs to use the generalized vertex $-ie\Ga^\mu$ for both protons. In the one-photon exchange approximation (keeping only the $t$-channel diagram) one can obtain differential cross-section
 \eqref{{\d\si\over\d t} \propto {\al^2\over t^2} F_1^4(q^2 = -t)\ ,}{el cs coulomb real proton}
-where we have neglected all terms containing fraction $m/p\approx 0.938\un{GeV}/10\un{TeV}\approx 10^{-4}$ and used the fact that the interesting CMS scattering angles $\th<<1$ (for instance $|t|=1\un{GeV^2}$ and $p=10\un{TeV}$ yields $\th=10^{-4}$). Certain steps of the calculation have been performed with TamarA package \bref{tamara} to Mathematica \bref{mathematica}. \TODO{I'm still checking this result!}. The important outcome is that the only the form factor $F_1$ contributes to the (high energy and low-angle) scattering cross-section. Thus, if one decides to use Borkowski form factors, one should use the $F_1$, not simply $G_E$ as suggested by \KL{} in \bref{kl94}. \TODO{Check the numerical differences between GD, GE and F1Bork}.
+where we have neglected all terms containing fraction $m/p\approx 0.938\un{GeV}/10\un{TeV}\approx 10^{-4}$ and used the fact that the interesting CMS scattering angles $\th<<1$ (for instance $|t|=1\un{GeV^2}$ and $p=10\un{TeV}$ yields $\th=10^{-4}$). Certain steps of the calculation have been performed with TamarA package \bref{tamara} to Mathematica \bref{mathematica}. A bit different result has been obtained by Block \bref{block06} (see his Eq.~(29) with terms $t/E_{\rm lab}$ and $m/E_{\rm lab}$ neglected) \TODO{Check it!}. Anyway, the message is (and Block spells it out explicitly) that the magnetic form factor can not be neglected. In other words, one can not just use $G_E$. 
+%The important outcome is that the only the form factor $F_1$ contributes to the (high energy and low-angle) scattering cross-section. Thus, if one decides to use Borkowski form factors, one should use the $F_1$, not simply $G_E$ as suggested by \KL{} in \bref{kl94}.
+
+\fig{fig/pdf/el_ff_comparison.pdf}{el ff comparison}{Comparison of form factors.}
 
 The modulus of the corresponding amplitude can be written
-\eqref{|F^C| = {\al s\over t}\, F^2_1(t)\ .}{el amp coulomb}
+\eqref{|F^C| = {\al s\over t}\, F^2_1(t)\ ,}{el amp coulomb mod}
+hence it looks plausible to use the Born amplitude in form:
+\eqref{F^C_{\rm Born} = -{\al s\over t}\, F^2_1(t)\ ,}{el amp coulomb}
 
+\iffalse
 {\bf PROBLEM 3}
 The derivation of Cahn \bref{cahn82} is clearly just the first order in $\al$, the fine structure constant. Therefore, one would naively expect the error to be of the order $1/\al\approx 1\percent$. However, looking closer this uncertainty estimate may look too optimistic. For example, some of the neglected terms are of the order
 $$\al \log {t\over t_{\rm min}}\ .$$
@@ -150,8 +162,6 @@ Now it is easy to verify that the WY phase corresponds to KL phase, if no form f
 \fig{fig/pdf/el_mod_R.pdf}{el mod R}{The difference between WY and KL formulae as a function of $t$.}
 
 Eq.~2-7 (page 14) in ATLAS ALFA TDR \bref{alfa} is wrong.
+\fi
 
-\PrintReferences
-
-\section[el impact]{Impact parameter analyses}
 
