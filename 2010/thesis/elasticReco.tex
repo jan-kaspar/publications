@@ -75,6 +75,82 @@ Regarding the angular tolerance parameter, a good choice seems to be a few times
 
 Having in mind the $90$ and $1540\un{m}$ optics, it is difficult to make any estimate for vertex tolerance. The problem arises from very small magnifications $v$. However, it is easy to simulate elastic events only, apply the reconstruction with no cuts and make histograms of left-right fit differences. Eventually, the tolerance parameters can be deduced from those histograms.
 
+\subsection{Estimation of t measurement error}
+
+In order to cross-check performance of the reconstruction method, it is desirable to estimate reconstruction error. In this \TODO{appendix}, I will express contribution of two main error sources, i.e. beam divergence and finite pitch of detectors.
+
+To keep the calculation smooth, I adopted the assumptions below. Many of those are not precisely fulfilled, but the error caused by them is not dramatic for the purpose of error estimate.
+\bitm
+\itm The optics is symmetric, therefore the $v$-terms in track parameterization (see \Eq{fit model}) cancel out.
+\itm Absolute values of $|L_x|$ for all RPs do not differ drastically\footnote{%
+For instance, for $1540\un{m}$ optics $L_x$ ranges from $99$ to $113\un{m}$ and $L_y$ from $248$ to $272\un{m}$. Therefore, the approximation of unique effective length brings error of roughly $10\un{\percent}$.
+}
+and can be well approximated by $\pm L_x$. The $+$ sign holds for RPs at right arm and vice versa. The same assumption for $L_y$.
+\itm Uncertainties in hit position measurements are identical for all RPs. 
+%\itm For each RP there is one $\De x_i$. All of those are uncorrelated.
+\itm There are $N$ measurements in total, $N/2$ for each arm.
+\eitm
+
+\vskip2mm
+Under these assumptions, the fit equation (\Eq{fit}) can be simplified to
+\eqref{\th_x' = {1\over N\,L_x} \left( \sum_{\rm right} x_i - \sum_{\rm left} x_i \right)\.}{fit 2}
+From now on, symbols with prime will be related to measured values while prime-less symbols will refer to the true or unsmeared value. 
+
+If there were no errors and smearings, $x_i$ would be given by parameterization \Eq{fit model}. But as those are present, one needs to generalize the dependence. Since we assume symmetric optics, we may drop out the $v$-term and write down
+\eqref{x_i = L_x \th_x^{\rm smeared} + \De x_i \.}{fit model 2}
+We replaced $\th_x$ by its smeared value and added a term which describes discretization to the given pitch. It is natural to assume that $\De x_i$ follows uniform distribution $U(-P/2, P/2)$, where $P$ stands for the detector pitch. For completeness, $\si_{\De x} = P / \sqrt{12}$. Later on, we will also assume $\De x_i$ to be independent for different RPs.
+
+\TODO{Section \Sc{beam smearing}}
+In note \bref{smearing} an analysis of angular smearing has been carried out for particles scattered to small angles (i.e. particles that can be detected by Roman Pots). It shows that the effect of smearing is equivalent to modification of particles' direction (see Eq. (16) in \bref{smearing})
+\eqref{\matrix{\th_x\equiv\th\cos\ph \rightarrow \th\cos\ph + \De\th_x^{L, R}\cr\th_y\equiv\th\sin\ph \rightarrow \th\sin\ph + \De\th_y^{L, R}}  \ ,}{angular smearing}
+where the standard notation is followed: $\th$ denotes scattering angle and $\ph$ is azimuthal angle. By the $L, R$ superscript we want to emphasize that the shift has different values for particles at left and right arm.
+
+Inserting \Eq{fit model 2,angular smearing} to \Eq{fit 2} yields
+\eqref{\th_x' = \th_x + \de\th_x + {1\over L_x} \de x,\qquad \de\th_x = {\De\th_x^{R} + \De\th_x^{L}\over 2}, \qquad \de x = {1\over N} \left( \sum^{N/2}_{\rm right} \De x_i - \sum^{N/2}_{\rm left} \De x_i \right)}{fit simple}
+Clearly, mean values of both $\de\th_x$ and $\de x$ are zero. 
+
+!!!
+
+Following Eq. (17) in \bref{smearing} --
+All the simulations in this note were performed using the smearing parameterization (7) in \bref{smearing}. \TODO{This is the wrong parameterization}
+
+-- one obtains $\si_{\de\th_x} = \si_\th / 2$, where $\si_\th$ denotes sigma of beam divergence.
+
+\TODO{Correct the formulae}: $\si_{\de\th_x} = \si_{bd} / \sqrt{2}$, hence \Eq{t' resolution} should read $A = 2p \sqrt{{\si^2_{bd}\over 2} \ldots}$
+\TODO{Modify the beam div. values in \Tb{smearing} to match the new/correct parameterization. Explain the problem?}
+
+!!!
+
+
+And finally, $\si_{\de x} = P / \sqrt{12N}$.
+
+Taking into account definitions ($t$, $t_x$ and $t_y$ are considered as positive here)
+\eqref{t = p^2\th^2,\qquad t_x = t\cos^2\ph, \qquad t_y = t\sin^2\ph ,}{t def}
+\Eq{fit simple} can be rewritten in terms of $t$ components:
+\eqref{t_x' = t\cos^2\ph + p^2\de^2\th_x + {p^2\over L_x^2}\de x^2 + 2p\sqrt{t}\cos\ph \left( \de\th_x + {1\over L_x}\de x \right).}{tx'}
+The relation for $t_y'$ can be obtained by swapping $x\leftrightarrow y$ and $\cos\ph\leftrightarrow\sin\ph$. 
+
+One can easily calculate mean value of $t_x'$ while keeping $t_x$ fixed (all terms linear in perturbations drop out because of their zero mean values):
+\eqref{\Exp{t_x'} = t_x + p^2 \left({\si_{\th}^2\over 4} + {P^2\over 12N\,L_x^2}\right).}{tx' mean}
+Similarly, mean value of $t'$ when $t$ is fixed reads
+\eqref{\Exp{t'} = t + p^2 \left({\si_{\th}^2\over 2} + {P^2\over 12N\,L_x^2} + {P^2\over 12N\,L_y^2}\right).}{t' mean}
+
+In order to evaluate $\si_{t_x'}$, we need to calculate $\Exp{t_x'^2}$. It is evident that terms linear in $\de\th_x$ and $\de x$ will not contribute. Also, to keep the calculation simple, terms higher than quadratic were not included. 
+\eqref{t_x'^2 = t_x^2 + 6 p^2 t_x \left( \de^2\th_x + {1\over L_x^2}\de^2 x \right) + \ldots}{tx' sq}
+And analogically
+\eqref{t'^2 = t^2 + 2 p^2 t \left[ (1 + 2\cos^2\ph) \left(\de^2\th_x + {1\over L_x^2}\de^2 x \right) + (1 + 2\sin^2\ph) \left(\de^2\th_y + {1\over L_y^2}\de^2 y \right)\right] + \ldots}{t' sq}
+
+It is straight-forward to show that
+\eqref{\si^2_{t_x'} \equiv \Exp{t_x'^2} - \Exp{t_x'}^2 = 4 p^2 t_x \left({\si_{\th}^2\over 4} + {P^2\over 12N\,L_x^2}\right)\qquad \hbox{for fixed }t_x\ ,}{tx' sigma}
+\eqref{\si^2_{t'} \equiv \Exp{t'^2} - \Exp{t'}^2 = 4 p^2 t \left[{\si_{\th}^2\over 4} + {P^2\over 24N}\left({1\over L_x^2} + {1\over L_y^2}\right)\right]\qquad \hbox{for fixed }t\ .}{t' sigma}
+The relative resolution, then, gains the commonly used $A/\sqrt{t}$ form:
+\eqref{{\si_{t_x'}\over t_x}  = {A\over\sqrt{t_x}},\qquad A = 2p \sqrt{ {\si_{\th}^2\over 4} + {P^2\over 12N\,L_x^2}}\ ,}{tx' resolution}
+\eqref{{\si_{t'}\over t}  = {A\over\sqrt{t}},\qquad A = 2p \sqrt{{\si_{\th}^2\over 4} + {P^2\over 24N}\left({1\over L_x^2} + {1\over L_y^2}\right)}}{t' resolution}
+
+\iffalse
+One may also define variable $\de$
+\eqref{\de^2 = {(t_x' - t_x)^2\over t_x^2} \Rightarrow \sqrt{\Exp{\de^2}} = {\si_{t_x'}\over t_x}}{delta for tx}
+\fi
 
 \subsection[1540]{Performance at $\mathbf{\be^*=1540\un{m}}$ optics}
 
@@ -84,13 +160,13 @@ The road size parameters were set to $5\un{\mu rad}$ for $x$ (the $\De/L$ estima
 
 Let us recall that double arm fits were employed (details in section \sref{algo}) and no vertex information used (more in section \sref{ip}).
 
-\tab{optics}{Description of optics and detector geometry for station at $220\un{m}$. $\ep$ stands for emittance. $L_x, v_x, L_y\hbox{ and } v_y$ represent typical values of the optical functions. Here, we put their maximal values as those contribute most to the fit. And $\de_x$ or $\de_y$ denotes distance between beam and edge of horizontal or vertical detector.}{
+\tab{optics}{Description of optics and detector geometry for station at $220\un{m}$. $\ep$ stands for emittance. $L_x, v_x, L_y\hbox{ and } v_y$ represent typical values of the optical functions. Here, we put their maximal values as those contribute most to the fit. And $\de_x$ or $\de_y$ denotes distance between beam and edge of horizontal or vertical detector.}{\bln
 \be^*\un{(m)} & \ep\un{(\mu m\cdot rad)} & L_{x}\un{(m)} & v_x  & L_{y}\un{(m)} & v_y& \de_x\un{(mm)} & \de_y\un{(mm)}\cr\bln
 1540 & 1    & 110 & 6\cdot10^{-2} & 270 & 2\cdot10^{-2} & 0.80 & 1.35\cr\ln
   90 & 3.75 & 2.9 & 2.2			  & 265 & 2\cdot10^{-2}	& 4.15 & 6.40\cr\bln
 }
 
-\tab{smearing}{Smearing parameters used for simulation. $\si_\th$ denotes sigma of beam divergence, $\si_v$ spread of vertex distribution and $\si_\xi$ variance of energy smearing. Full explanation of smearing simulation and its parameters is to be found at \bref{smearing}.}{
+\tab{smearing}{Smearing parameters used for simulation. $\si_\th$ denotes sigma of beam divergence, $\si_v$ spread of vertex distribution and $\si_\xi$ variance of energy smearing. Full explanation of smearing simulation and its parameters is to be found at \bref{smearing}.}{\bln
 \be^*\un{(m)} & \si_\th\un{(\mu rad)} & \si_v\un{(\mu m)} & \si_\xi & \hbox{crossing angle}\un{(rad)} \cr\bln
 1540 & 0.295 & 321 & 10^{-4} & 0\cr\ln
   90 & 2.4   & 150 & 10^{-4} & 0\cr\bln
@@ -246,65 +322,3 @@ In order to avoid those problems, it is necessary to improve the selection algor
 \fi
 
 
-\subsection[appendix]{Estimation of t measurement error}
-
-In order to cross-check performance of the reconstruction method, it is desirable to estimate reconstruction error. In this appendix, I will express contribution of two main error sources, i.e. beam divergence and finite pitch of detectors.
-
-To keep the calculation smooth, I adopted the assumptions below. Many of those are not precisely fulfilled, but the error caused by them is not dramatic for the purpose of error estimate.
-\bitm
-\itm The optics is symmetric, therefore the $v$-terms in track parameterization (see \Eq{fit model}) cancel out.
-\itm Absolute values of $|L_x|$ for all RPs do not differ drastically\footnote{%
-For instance, for $1540\un{m}$ optics $L_x$ ranges from $99$ to $113\un{m}$ and $L_y$ from $248$ to $272\un{m}$. Therefore, the approximation of unique effective length brings error of roughly $10\un{\percent}$.
-}
-and can be well approximated by $\pm L_x$. The $+$ sign holds for RPs at right arm and vice versa. The same assumption for $L_y$.
-\itm Uncertainties in hit position measurements are identical for all RPs. 
-%\itm For each RP there is one $\De x_i$. All of those are uncorrelated.
-\itm There are $N$ measurements in total, $N/2$ for each arm.
-\eitm
-
-\vskip2mm
-Under these assumptions, the fit equation (\Eq{fit}) can be simplified to
-\eqref{\th_x' = {1\over N\,L_x} \left( \sum_{\rm right} x_i - \sum_{\rm left} x_i \right)\.}{fit 2}
-From now on, symbols with prime will be related to measured values while prime-less symbols will refer to the true or unsmeared value. 
-
-If there were no errors and smearings, $x_i$ would be given by parameterization \Eq{fit model}. But as those are present, one needs to generalize the dependence. Since we assume symmetric optics, we may drop out the $v$-term and write down
-\eqref{x_i = L_x \th_x^{\rm smeared} + \De x_i \.}{fit model 2}
-We replaced $\th_x$ by its smeared value and added a term which describes discretization to the given pitch. It is natural to assume that $\De x_i$ follows uniform distribution $U(-P/2, P/2)$, where $P$ stands for the detector pitch. For completeness, $\si_{\De x} = P / \sqrt{12}$. Later on, we will also assume $\De x_i$ to be independent for different RPs.
-
-In note \bref{smearing} an analysis of angular smearing has been carried out for particles scattered to small angles (i.e. particles that can be detected by Roman Pots). It shows that the effect of smearing is equivalent to modification of particles' direction (see Eq. (16) in \bref{smearing})
-\eqref{\matrix{\th_x\equiv\th\cos\ph \rightarrow \th\cos\ph + \De\th_x^{L, R}\cr\th_y\equiv\th\sin\ph \rightarrow \th\sin\ph + \De\th_y^{L, R}}  \ ,}{angular smearing}
-where the standard notation is followed: $\th$ denotes scattering angle and $\ph$ is azimuthal angle. By the $L, R$ superscript we want to emphasize that the shift has different values for particles at left and right arm.
-
-Inserting \Eq{fit model 2,angular smearing} to \Eq{fit 2} yields
-\eqref{\th_x' = \th_x + \de\th_x + {1\over L_x} \de x,\qquad \de\th_x = {\De\th_x^{R} + \De\th_x^{L}\over 2}, \qquad \de x = {1\over N} \left( \sum^{N/2}_{\rm right} \De x_i - \sum^{N/2}_{\rm left} \De x_i \right)}{fit simple}
-Clearly, mean values of both $\de\th_x$ and $\de x$ are zero. Following Eq. (17)\footnote{%
-All the simulations in this note were performed using the smearing parameterization (7) in \bref{smearing}.
-} in \bref{smearing} one obtains $\si_{\de\th_x} = \si_\th / 2$, where $\si_\th$ denotes sigma of beam divergence. And finally, $\si_{\de x} = P / \sqrt{12N}$.
-
-Taking into account definitions ($t$, $t_x$ and $t_y$ are considered as positive here)
-\eqref{t = p^2\th^2,\qquad t_x = t\cos^2\ph, \qquad t_y = t\sin^2\ph ,}{t def}
-\Eq{fit simple} can be rewritten in terms of $t$ components:
-\eqref{t_x' = t\cos^2\ph + p^2\de^2\th_x + {p^2\over L_x^2}\de x^2 + 2p\sqrt{t}\cos\ph \left( \de\th_x + {1\over L_x}\de x \right).}{tx'}
-The relation for $t_y'$ can be obtained by swapping $x\leftrightarrow y$ and $\cos\ph\leftrightarrow\sin\ph$. 
-
-One can easily calculate mean value of $t_x'$ while keeping $t_x$ fixed (all terms linear in perturbations drop out because of their zero mean values):
-\eqref{\Exp{t_x'} = t_x + p^2 \left({\si_{\th}^2\over 4} + {P^2\over 12N\,L_x^2}\right).}{tx' mean}
-Similarly, mean value of $t'$ when $t$ is fixed reads
-\eqref{\Exp{t'} = t + p^2 \left({\si_{\th}^2\over 2} + {P^2\over 12N\,L_x^2} + {P^2\over 12N\,L_y^2}\right).}{t' mean}
-
-In order to evaluate $\si_{t_x'}$, we need to calculate $\Exp{t_x'^2}$. It is evident that terms linear in $\de\th_x$ and $\de x$ will not contribute. Also, to keep the calculation simple, terms higher than quadratic were not included. 
-\eqref{t_x'^2 = t_x^2 + 6 p^2 t_x \left( \de^2\th_x + {1\over L_x^2}\de^2 x \right) + \ldots}{tx' sq}
-And analogically
-\eqref{t'^2 = t^2 + 2 p^2 t \left[ (1 + 2\cos^2\ph) \left(\de^2\th_x + {1\over L_x^2}\de^2 x \right) + (1 + 2\sin^2\ph) \left(\de^2\th_y + {1\over L_y^2}\de^2 y \right)\right] + \ldots}{t' sq}
-
-It is straight-forward to show that
-\eqref{\si^2_{t_x'} \equiv \Exp{t_x'^2} - \Exp{t_x'}^2 = 4 p^2 t_x \left({\si_{\th}^2\over 4} + {P^2\over 12N\,L_x^2}\right)\qquad \hbox{for fixed }t_x\ ,}{tx' sigma}
-\eqref{\si^2_{t'} \equiv \Exp{t'^2} - \Exp{t'}^2 = 4 p^2 t \left[{\si_{\th}^2\over 4} + {P^2\over 24N}\left({1\over L_x^2} + {1\over L_y^2}\right)\right]\qquad \hbox{for fixed }t\ .}{t' sigma}
-The relative resolution, then, gains the commonly used $A/\sqrt{t}$ form:
-\eqref{{\si_{t_x'}\over t_x}  = {A\over\sqrt{t_x}},\qquad A = 2p \sqrt{ {\si_{\th}^2\over 4} + {P^2\over 12N\,L_x^2}}\ ,}{tx' resolution}
-\eqref{{\si_{t'}\over t}  = {A\over\sqrt{t}},\qquad A = 2p \sqrt{{\si_{\th}^2\over 4} + {P^2\over 24N}\left({1\over L_x^2} + {1\over L_y^2}\right)}}{t' resolution}
-
-\iffalse
-One may also define variable $\de$
-\eqref{\de^2 = {(t_x' - t_x)^2\over t_x^2} \Rightarrow \sqrt{\Exp{\de^2}} = {\si_{t_x'}\over t_x}}{delta for tx}
-\fi
