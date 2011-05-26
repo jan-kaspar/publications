@@ -42,7 +42,9 @@
 \section[el coulomb]{Coulomb interference}
 
 \def\KL{Kudr\' at-Lokaj\' i\v cek}
+\def\KaL{Kudr\' at and Lokaj\' i\v cek}
 \def\WY{West-Yennie}
+\def\WaY{West and Yennie}
 
 \> genneral problems
 \>> PROBLEM 1: proton form-factors have been determined in ep scattering, how to apply them to pp scattering?
@@ -57,7 +59,6 @@
 
 \> comments
 \>> to be really consistent, one should not mix amplitudes obtained by different approaches, they might be incompatible (especially their phases) 
-\>> $F^C$ in Cahn and KL is merely a symbol for $\al s/t$, one has no freedom to use anything else
 \>> We will use high energy approximations to compare the results of several authors.
 
 \vskip1cm
@@ -80,6 +81,8 @@ The phase shift of the full amplitude is not observable. This form is more simil
 \eqref{F^{C+H}(t) = F^C(t) + F^H(t) e^{i \al \Ps(t)}\ .}{el FCH decomp2}
 Here we took the liberty to exponentiate the factor $1+ia\Ps$. This modification introduces corrections of the order $\O{\al^2}$, that is the order which is commonly neglected in the work of Cahn \bref{cahn82}. The ``phase'' $\Ps$ may generally be complex (and thus it does not qualify to be called phase) and that is why it cannot be moved to the Coulomb amplitude. Still, it will be interesting to compare the phases:
 \eqref{-\Ph\quad\hbox{vs.}\quad\Ps\ .}{}
+
+\TODO{Here, $F^C$ is merely a symbol for $\al s/t$, it is real!}
 
 {\bf PROBLEM 1}
 
@@ -112,48 +115,76 @@ hence it looks plausible to use the Born amplitude in form:
 
 Cahn finds his result Eq.~(26) agree with the result of WY. The latter one has beed shown to be inconsistent, see e.g. \bref{klv07}. Then, a question raises immediately -- can the result be still correct?
 
+Despite Cahn's comment, we find the results different for two reasons. The first is the limit in Cahn's Eq.~(26). In the result of \WaY{}, $Q^2$ is fixed at $-t_{\rm min}$. As will show (at least for a class of hadronic models) in the discussion of PROBLEM 5, this difference is not important.
+
+The second issue is that Cahn moved his phase factor from $F^H$ term to $F^C$ term, simply by inverting the sign in the exponent (cf. decompositions \Eq{el FCH decomp,el FCH decomp2}). This would be permitted if the phase $\Ps$ would be purely real -- the overall phase is not observable. But it is not the case as can be seen e.g. in \Fg{el cic noff Psi,el cic diff Psi}. The imaginary part is very small up to $|t|\approx 0.1\un{GeV^2}$, but then it gains importance. Because of this, Cahn's comparison to the \WY{} formula looks doubtful. \TODO{One should look at $|F^{C+H}|$, this is unambiguous. TO BE DONE}.
+
 {\bf PROBLEM 3}
 
-The derivation of Cahn \bref{cahn82} is clearly just the first order in $\al$, the fine structure constant. Therefore, one would naively expect the error to be of the order $1/\al\approx 1\percent$. However, looking closer one would find a rather benevolent manipulation with terms like
+The derivation of Cahn \bref{cahn82} is clearly only the first order in $\al$, the fine structure constant. Therefore, one would naively expect the error to be of the order $\al\approx 1\percent$. However, looking closer one would find a rather benevolent manipulation with terms like
 $$\al \log {t\over t' - \la^2}\ ,$$
 where $t'$ is an integration variable ranging from $t_{\rm min}$ to $0$. $\la\to0$ is merely an infrared regulator. Taking some values of interest: $|t| = 10^{-3}\un{GeV^2}$ and $|t_{\rm min}| \approx s = (14\un{TeV})^2$ yields a correction of $-24\percent$, which is rather important. Analytical estimation of the influence of these rather large correction is not an easy task. Instead, we decided to verify the accuracy of the Cahn's formula numerically. For that we reverted to his starting point (his Eq.~(12)):
-\eqref{F^{C+H}(t) = {s\over 2i} \int\limits_0^\infty b\ \d b\ J_0(b\sqrt{-t}) \left( e^{2i [\de^C(b) + \de^H(b)] } - 1\right)}{}
+\eqref{F^{C+H}(t) = {s\over 2i} \int\limits_0^\infty b\ \d b\ J_0(b\sqrt{-t}) \left( e^{2i [\de^C(b) + \de^H(b)] } - 1\right)}{el F CH eik}
+
 The Coulomb eikonal $\de_C$ can be determined from a Born Coulomb amplitude $F^C_{\rm Born}(t)$:
 \eqref{\de^C(b) = \int\limits_0^\infty q\ \d q\ J_0(b q)\ F^C_{\rm Born}(-q^2)}{}
-To enable for numerical calculations, one must remove the singularity of the Coulomb amplitude at $|t|\to 0$. Therefore, we will use
+Consistently with Cahn, we took the Born Coulomb amplitude
 \eqref{F^C_{\rm Born} = - {\al s\over -t + \la^2}\ .}{}
-(we will turn to the case with form-factors later on). The factor $\la$ represents a fictious mass of the photon. It will be kept low throughout our calculations, moreover we will use a set of values. At the end we will demonstrate that the results, in a region of interest, are independent of the value of $\la$.
+It is missing the form-factors, which we will plug in later on. The factor $\la$ represents a fictious mass of the photon. It will be kept low throughout our calculations, moreover we will use a set of values. At the end we will demonstrate that the final results, in a region of interest, are independent of the value of $\la$.
 
-With BSW model.
+\Fg{el cic noff FC} shows that one can well recover the Coulomb amplitude in the $|t|$ range $10^{-5}\hbox{ to } 10\un{GeV^2}$ with $\la \le 10^{-3}\un{GeV}$.
 
-\fig{fig/pdf/el_cic_noff_F_C.pdf}{el cic noff FC}{bla}
+\fig{fig/pdf/el_cic_noff_F_C.pdf}{el cic noff FC}{Coulomb amplitude calculated with \Eq{el F CH eik} ($\de_H$ set to zero). Left: the modulus of the amplitude (for three values of $\la$) compared to the Born approximation. Right: the argument of the amplitude (solid lines) compared to Cahn's $\eta^C$ (dashed lines).}
 
-\fig{fig/pdf/el_cic_noff_Psi.pdf}{el cic noff Psi}{bla}
+For simplicity, we will use only one hadronic model in what follows. We have chosen BSW model, because the corresponding eikonal function is known.
 
-\fig{fig/pdf/el_cic_noff_Z.pdf}{el cic noff Z}{bla}
+\Fg{el cic noff Psi} compares interference phases obtained with Cahn/KL formulae and via the eikonal one, \Eq{el F CH eik}. For the latter one, the phase extraction is somewhat delicate since the $F^{C+H}$ involves and phase factor that is ignored in the decomposition \Eq{el FCH decomp2}. It is ignored as it is unobservable and it diverges as $\la\to 0$. The phase can be extracted
+\eqref{\Psi = {1\over i} \log {F^{C+H} e^{-i \arg F^C + i\pi} + |F^C| \over F^H} \ .}{}
+Looking at the real part of the phase, we may conclude that the eikonal calculation (with $\la \le 10^{-3}\un{GeV}$) agrees perfectly with the Cahn/KL formula. Regarding the imaginary part, there is a disagreement for $|t|$ below $\approx 0.1\un{GeV^2}$. This is, in fact one of the $\al^2$ effects, coming from approximating $\exp i\al\ph$ with $1+i\al\ph$. However the discrepancy is about $100$ times smaller than the typical values of the phase magnitude, hence quite negligible.
+
+\fig{fig/pdf/el_cic_noff_Psi.pdf}{el cic noff Psi}{Comparison of Coulomb-interference phases.}
+
+The importance of the interference can be measured with the help of this function
+\eqref{Z(t) = {|F^{\rm C+H}|^2 - |F^{\rm C}|^2 - |F^{\rm H}|^2\over |F^{\rm C+H}|^2}\ .}{el Z}
+It is plotted in \Fg{el cic noff Z} together with function
+\eqref{\zeta = {2\over {|F^H|\over |F^C|} + {|F^C|\over |F^H|}}}{el zeta}
+which measures the relative difference between the hadronic and Coulomb amplitude. If they are equal, $\zeta = 1$, if one is much larger, $\ze$ tends to $0$. If one substitutes the decomposition \Eq{el FCH decomp2} to \Eq{el Z}, one easily finds that $Z$ must be very small (therefore the interference unimportant) if $F^C$ is much larger than $F^H$. A similar argument can be made for the opposite situation, where $F^H >> F^C$, but there one must employ also the fact that the phase is almost real. Thus it becomes more a rule of thumb than an exact statement. Still, looking at the \Fg{el cic noff Z} one can find quite good relation between the peaks of the importance function $Z$ and the ``closeness'' function $\zeta$.
+
+\fig{fig/pdf/el_cic_noff_Z.pdf}{el cic noff Z}{Left: the interference importance function $Z$. Right: $\zeta$ function reaches one if $|F^C| = |F^H|$ and tends to zero if one of the amplitudes is much larger that the other one.}
 
 {\bf PROBLEM 4}
 
-Coulomb phase with form factors.
+To describe the Coulomb interaction accurately, one must include the form factors. They are to be included to the Born Coulomb amplitude. When the full Coulomb amplitude is calculated via \Eq{el F CH eik} (with $\de_H=0$), the effect can be two-fold (as discussed by Cahn in his Sec.~4): modification of modulus and argument of the full Coulomb amplitude. 
 
-Again with BSW model, dipole form factor.
+\Fg{el cic diff FC} compares various quantities related to the Coulomb amplitude. Cahn used dipole form factor and in oder to make comparisons to his results, we used it so. The left plot demonstrates that the modulus alternation provoked by the inclusion of form factors is negligible. In contrary, there is a sizeable effect on the phase (this has been concluded already by Cahn). The detail of this effect compared to Cahn's correction function $\nu$ can be found in \Fg{el cic diff FC darg}. We must conclude that our results do not fully agree with Cahn's correction function, most likely because of oversimplified nature of Cahn's derivation.
 
-\fig{fig/pdf/el_cic_diff_F_C.pdf}{el cic diff FC}{bla}
+\fig{fig/pdf/el_cic_diff_F_C.pdf}{el cic diff FC}{Full Coulomb amplitude for several values of $\la$. Left: the modulus compared to the Born term (black). Right: the argument (solid lines) compared to the case with no form factor (dashed).}
 
-\fig{fig/pdf/el_cic_diff_F_C_darg.pdf}{el cic diff FC darg}{bla}
+\fig{fig/pdf/el_cic_diff_F_C_darg.pdf}{el cic diff FC darg}{The difference in argument of the Coulomb amplitude between dipole and no form factors. The colored lines are our (eikonal) calculation (see preceding figure for legend), the black line is Cahn's $\nu$ function.}
 
-\fig{fig/pdf/el_cic_diff_Psi.pdf}{el cic diff Psi}{bla}
+We have seen that the form factors have non-negligible influence on the phase of the Coulomb amplitude. Therefore one should check what is the effect on the interference phase $\Psi$. Still, we will be using BSW model. Looking at \Fg{el cic diff Psi} (left) one can find the gap between the black line (KL) and the colorful lines, this is the effect not accounted for by \KL{} formulation.
 
-\fig{fig/pdf/el_cic_diff_Z.pdf}{el cic diff Z}{bla}
+\fig{fig/pdf/el_cic_diff_Psi.pdf}{el cic diff Psi}{The Coulomb-interference phase with dipole form factors.}
+
+The error of the \KL{} formula reaches maximum about $|t|\approx 0.1\un{GeV^2}$. This is a region, where the hadronic amplitude dominates (see \Fg{el cic diff Z} right). Moreover the error applies to the real part of the phase only. As a consequence, one may expect very low importance of the interference and thus the error gets heavily suppressed. The left plot of \Fg{el cic diff Z} fully supports our arguments.
+
+Conclusion. We have verified the numerical accuracy of Cahn and \KL{} interference formulae by comparing them to the eikonal one \Eq{el F CH eik}. We have found only one case of disagreement -- the form factor effect in the interference phase $\Psi$. However, this discrepancy is not visible in cross sections.
+
+\fig{fig/pdf/el_cic_diff_Z.pdf}{el cic diff Z}{Left: the importance of the interference.}
 
 {\bf PROBLEM 5}
 
-The hadronic eikonal $\de_H$ could, in principle, be extracted from the $t$-amplitude by means of Fourier-Bessel transform:
-\eqref{e^{2i \de^H(b)} = \int\limits_0^\infty q\ \d q\ J_0(b q)\ F^H(-q^2)\ .}{}
-However, it is immediately clear that this transform requires the knowledge of the hadronic amplitude also outside the physical region.
+Cahn's work lies entirely in within the eikonal framework. Regarding the hadronic interaction, the assumed input is the eikonal $\de^H(b)$. However, if a hadronic model is not eikonal-formulated, one would be given the amplitude in the $t$-space $F^H(t)$. Then, the hadronic eikonal $\de_H$ could, in principle, be obtained by means of Fourier-Bessel transform:
+\eqref{\de^H(b) = {1\over 2i} \log \left[ 1 + {2i\over s} \int\limits_0^\infty q\ \d q\ J_0(b q)\ F^H(-q^2)  \right ]\ .}{}
+However, it is immediately clear that this transform requires the knowledge of the hadronic amplitude also outside the physical region\footnote{There might be an interesting parallel between the complications in adopting eikonal and QFT approaches. In the former, one is missing the hadronic amplitude beyond the physical region, in the latter, one is missing the amplitude off mass shell.}.
 
-Disappears for BSW - there we know the eikonal
+\KaL{} tried to solve this issue simply by taking Cahn's final result and truncating the integrals at $Q^2 = - t_{\rm min}$. This step, if unjustified, may seem very controversial. Cahn assumed that $Q^2\to\infty$ throughout his work, e.g. his crucial Eq.~(15) would not hold otherwise.
 
+It is clear that one may hardly argue about $F^H$ behavior in the unphysical region on a general level. Therefore let's focus on the group of eikonal hadronic models, in fact most of those presented in \Sc{el models}. The eikonal amplitudes \TODO{reference} of these models are typically of a Gaussian profile \TODO{reference} \Sc{el impact} with RMS of about \TODO{value}. The $t$-amplitude can be calculated through \Eq{el F CH eik}. Now, for very high $|t|$ values (like in the unphysical region) the factor $J_0(b\sqrt{-t})$ becomes a rapidly oscillating function and from the ``oscillation theorem'' \TODO{reference} it becomes clear that $F^H$ must be heavily suppressed. This can be seen even for much lower $|t|$ values, even in \Fg{el mod dsdt narrow}. Therefore, the contribution to the interference term in Cahn's Eq.~15
+$$\int \d^2 \vec q' F^C(\vec q') F^H([\vec q - \vec q']^2)$$
+from sufficiently high $q'^2$ will be negligible. This means that would could cut the integration region at $q'^2 = \mu^2$, where $\mu$ is the sufficiently large constant. Now, following the steps of \KaL{}, one would obtain their formula, just with $t_{\rm min}$ replaced with $-\mu^2$.
+
+The last statement could be demonstrated directly in Eq.~(26) in \bref{kl94}. Let's split the integration region into two: $(t_{\rm min}, -\mu^2)$ and $(-\mu^2, 0)$. Again, $\mu$ is such that $F^H(-\mu^2)$ is small (or more precisely negligible wrt. the denominator $F^H(t)$). Then one can show that the integral over the first integration region vanishes. That is, the lower bound is quite arbitrary, it only needs to be value large enough.
 
 \iffalse
 \eqref{F^{\rm C+H}_{\rm WY} = F^C(t) e^{i\al\Ph(t) + F^H(t) }}{el WY}
