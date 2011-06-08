@@ -96,16 +96,26 @@ real Cahn_nu(real mt)
 {
 	real La_sq = 0.71;
 	real al = 7.297e-3;
-	return al * 2*mt/La_sq * (2*log(La_sq/4/mt) - 1);
+	// plotting alpha * nu, in units of pi !!
+	return al * 2*mt/La_sq * (2*log(La_sq/4/mt) - 1) / 3.141593;
+}
+
+real Selyugin_nu(real mt)
+{
+	real c1 = 0.11;
+	real c2 = 20;
+	real al = 7.297e-3;
+	return al * c1 * log(1 + c2*c2*mt) / 3.141593;
 }
 
 NewPad("$|t|\un{GeV^2}$", "$\De \arg F_C / \pi$");
 scale(Log, Linear);
-draw(graph(Cahn_nu, 1e-5, 1e0, 1000), black, "Cahn's $\nu$");
 for (int li : las.keys) {
 	draw(yscale(1/3.141593), rGetObj(f4, "dipole/F_C#5|F_C_de_arg,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
 }
-limits((1e-5, -1e-3), (1e0, +2e-3), Crop);
+draw(graph(Cahn_nu, 1e-5, 1e0, 1000), black, "Cahn's $\nu$");
+draw(graph(Selyugin_nu, 1e-5, 1e0, 1000), black+dashed, "Selyugin's $\nu$");
+limits((1e-5, -1e-3), (1e-1, +2e-3), Crop);
 
 GShipout("el_cic_diff_F_C_darg", hSkip=5mm);
 
