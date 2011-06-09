@@ -127,13 +127,17 @@ Locher \bref{locher67}
 
 \WaY \bref{wy68}
 
-The same decomposition as \Eq{el FCH decomp C}, $F_{\rm C}$ only a symbol for ...
+The same decomposition as \Eq{el FCH decomp C}, $F_{\rm C}$ only a symbol for $\pm\al s / t$ (FF not taken into account)
 
-\eqref{\Phi_{\rm WY} = - \log {t\over t_{\rm min}} - \int\limits_{t_{\rm min}} {\d t'\over |t' - t|} \left( {F^H(t')\over F^H(t)} - 1 \right)}{el phase WY}
-Note that Eq.(23) in \bref{wy68} is likely to contain a missprint: the sign of the second term shall read minus.
+Upper (lower) sign for $\rm pp$ ($\rm \bar pp$).
+
+\eqref{\Phi_{\rm WY} = \mp \log {t\over t_{\rm min}} \pm \int\limits_{t_{\rm min}} {\d t'\over |t' - t|} \left( {F^H(t')\over F^H(t)} - 1 \right)}{el phase WY}
+Note that in \bref{wy68} there is a number of inconsistencies between Eq.~(17) and (23), the latter one is likely to contain a missprint: the sign of the second term shall read minus, i.e. as in our \Eq{el phase WY}
+
+The authors write: ``One can hope, therefor, that in the region where $\Ph$ gets its major contribution, corrections due to the variation of the phase of $F^H$ are not large. Nevertheless, this represents another source of our ignorance whose magnitude cannot be estimated without detailed knowledge of the strong interactions.''
 
 If $F^H(t) \propto e^{Bt/2}$, then the phase would simplify (for low scattering angles and high energies) to
-\eqref{\Phi_{\rm SWY} = - \left(\log {B|t|\over 2} + \ga \right) \ ,}{el phase SWY}
+\eqref{\Phi_{\rm SWY} = \mp \left(\log {B|t|\over 2} + \ga \right) \ ,}{el phase SWY}
 where $\ga \doteq 0.577$ is the Euler's constant.
 
 
@@ -147,19 +151,41 @@ Islam \bref{islam67}
 
 Cahn \bref{cahn82}
 
-\eqref{F^{C+H}(t) = F^C(t) + F^H(t) e^{i \al \Ps(t)} }{el FCH decomp H}
+The author used decomposition
+\eqref{F^{C+H}(t) = F^C(t) + F^H(t) [1 + i \al \Ps(t) ]\ .}{el FCH decomp H lin}
+However, within the approximations used in the paper, this decomposition could be written in an exponential form
+\eqref{F^{C+H}(t) = F^C(t) + F^H(t) e^{i \al \Ps(t)}\ .}{el FCH decomp H}
+$F_C$ is merely a symbol for $\pm\al s G_{\rm eff}^2 / t$
 
 No FF
 
-\eqref{\Ps_{\rm Cahn} = \lim\limits_{t_{\rm min} \to -\infty} \left[ \log {t\over t_{\rm min}} - \int\limits_{t_{\rm min}}^{0} {\d t'\over |t' - t|} \left ( {F^H(t')\over F^H(t)} - 1 \right) \right]}{el phase Cahn}
+\eqref{\Ps_{\rm Cahn} = \pm \lim\limits_{t_{\rm min} \to -\infty} \left[ \log {t\over t_{\rm min}} - \int\limits_{t_{\rm min}}^{0} {\d t'\over |t' - t|} \left ( {F^H(t')\over F^H(t)} - 1 \right) \right]}{el phase Cahn}
+Note: without the limit, $\Ps_{\rm Cahn} = - \Ph_{\rm WY}$
 
-\TODO{Check signs}
-
-Simplification of $G_{\rm eff} = F_D$ leads to
+With FF, a simplification of $G_{\rm eff} = F_D$ leads to a shift in phase
+\eqref{\Ps \rightarrow \Ps + \nu}{el FF influence}
+For the phase shift Cahn derived
 \eqref{\nu_{\rm Cahn} = - {4t\over \La^2} \log {\La^2\over -4t} + {2t\over \La^2}}{el nu Cahn}
-Independent of $s$
+Note: independent of $s$
 
-\KaL{} \bref{kl94}: generalization for form factors
+\KaL{} \bref{kl94}:
+
+\eqref{\Ps_{\rm KL} =
+	\mp \int\limits_{t_{\rm min}}^{0} \log {t'\over t}\ {\d\phantom{t'}\over\d t'} G_{\rm eff}^2(t')
+	\pm \int\limits_{t_{\rm min}}^{0} \d t' \left ( {F^H(t')\over F^H(t)} - 1 \right)\, {I(t, t')\over 2\pi}
+}{el phase KL}
+where
+\eqref{I(t, t') = \int\limits_{0}^{2\pi}\d\ph\ {G_{\rm eff}^2(t'')\over t''}\ ,\qquad t'' = t + t' + 2\sqrt{t t'} \cos\ph}{el KL I}
+
+\eqref{\Ps_{\rm CKL} =
+	\mp \int\limits_{T}^{0} \log {t'\over t}\ {\d\phantom{t'}\over\d t'} G_{\rm eff}^2(t')
+	\pm \int\limits_{T}^{0} \d t' \left ( {F^H(t')\over F^H(t)} - 1 \right)\, {I(t, t')\over 2\pi}
+	\pm G_{\rm eff}^2(T)\,\log {t\over T}
+}{el phase CKL}
+
+Note that in the limit $G_{\rm eff}^2\to 1$ one finds (see Eq.~(25) in \bref{Cahn82})
+$${I(t, t')\over 2\pi}\to - {1\over |t' - t|}$$
+and thus $\Ps_{\rm CKL}$ coincides with $\Ps_{\rm Cahn}$ (indeed, in the limit $T\to -\infty$)
 
 Selyugin \bref{selyugin99}
 
