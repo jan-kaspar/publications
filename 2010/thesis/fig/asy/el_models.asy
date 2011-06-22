@@ -16,13 +16,13 @@ string[] flabels = {
 	"$\sqrt s = 14\,{\rm TeV}$",
 };
 	
-string[] tags = {"islam_bfkl", "islam_cgc", "ppp2", "ppp3", "bsw", "bh"};
-pen[] colors = {black, black+dashed, red, red+dashed, blue, heavygreen};
+string[] tags = {"islam_bfkl", "islam_cgc", "ppp2", "ppp3", "bsw", "bh" };
+pen[] colors = {black, black+dashed, red, red+dashed, blue, heavygreen, magenta};
 string[] labels = {"Islam et al. (BFKL)", "Islam et al. (CGC)", "Petrov-Predazzi-Prokudin, 2 pomerons", "Petrov-Predazzi-Prokudin, 3 pomerons",
-	"Bourrely-Soffer-Wu", "Block-Halzen"};
+	"Bourrely-Soffer-Wu", "Block-Halzen", "Jenkovszky et al."};
 
 string[] labelsS = {"Islam et al. (BFKL)", "Islam et al. (CGC)", "Petrov et al. (2P)", "Petrov et al. (3P)",
-	"Bourrely et al.", "Block et al."};
+	"Bourrely et al.", "Block et al.", "Jenkovszky et al."};
 
 //----------------------------------------------------------------------------------------------------
 
@@ -58,7 +58,7 @@ void DrawOptimized(real min, real max, real yScale, rObject obj, pen p, string l
 
 //----------------------------------------------------------------------------------------------------
 
-void AdjustPlot(int f, bool l=false)
+void AdjustPlot(int f, bool l=false, pair alig=NE)
 {
 	if (f > 0)
 		currentpad.yLabel = "";
@@ -77,7 +77,7 @@ void AdjustPlot(int f, bool l=false)
 		}
 	}
 
-	AttachLegend(flabels[f]);
+	AttachLegend(flabels[f], alig, alig);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -195,27 +195,27 @@ for (int f = 0; f < files.length; ++f) {
 
 GShipout("el_mod_rho", hSkip=2mm);
 
-// ---------- R -----------
+// ---------- C -----------
 
 TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$R(t)$");
+	NewPad("$|t|\un{GeV^2}$", "$C(t)\un{\%}$");
 	scale(Linear, Linear);
 
 	for (int t : tags.keys) {
-		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "R/" + tags[t], error=false);
+		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "C/" + tags[t], error=false);
 		if (o.valid)
-			DrawOptimized(-6.5, +6.5, 1, o, colors[t]);
+			draw(yscale(100), o, colors[t]);
 	}
 
-	limits((0, -0.2), (5, +0.1), Crop);
+	limits((0, -15), (5, +2), Crop);
 		
-	AdjustPlot(f);
+	AdjustPlot(f, true, SE);
 }
 
-GShipout("el_mod_R", hSkip=2mm);
+GShipout("el_mod_C", hSkip=2mm);
 
 // ---------- Z -----------
 
@@ -223,18 +223,40 @@ TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$Z(t)$");
+	NewPad("$|t|\un{GeV^2}$", "$Z(t)\un{\%}$");
 	scale(Linear, Linear);
 
 	for (int t : tags.keys) {
 		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "Z/" + tags[t], error=false);
 		if (o.valid)
-			DrawOptimized(-6.5, +6.5, 1, o, colors[t]);
+			draw(yscale(100), o, colors[t]);
 	}
 
-	limits((0, -0.2), (5, +0.1), Crop);
+	limits((0, -15), (5, +2), Crop);
 		
-	AdjustPlot(f);
+	AdjustPlot(f, true, SE);
 }
 
 GShipout("el_mod_Z", hSkip=2mm);
+
+// ---------- R -----------
+
+TGraph_reducePoints = 3;
+xTicksDef = LeftTicks(Step=1, step=0.2);
+
+for (int f = 0; f < files.length; ++f) {
+	NewPad("$|t|\un{GeV^2}$", "$R(t)\un{\%}$");
+	scale(Linear, Linear);
+
+	for (int t : tags.keys) {
+		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "R/" + tags[t], error=false);
+		if (o.valid)
+			draw(yscale(100), o, colors[t]);
+	}
+
+	limits((0, -25), (5, +5), Crop);
+		
+	AdjustPlot(f, true, SE);
+}
+
+GShipout("el_mod_R", hSkip=2mm);

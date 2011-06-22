@@ -2,6 +2,11 @@
 
 \section[el models]{Hadronic models}
 
+Normalization as in Cahn \bref{cahn82}
+
+\eqref{{\d\si\over\d t} = {\pi\over s p^2} |F|^2}{el dsdt}
+\eqref{\si_{\rm tot} = {4\pi\over p \sqrt{s}} \Im F(t = 0)}{el si tot}
+
 \em{The model of Islam et al.}
 
 \bref{islam87,islam03,islam04,islam06,islam07}
@@ -40,6 +45,12 @@
 \section[el impact]{Impact parameter analyses}
 
 \section[el coulomb]{Coulomb interference}
+
+\fig{fig/pdf/el_diagrams.pdf}{el diagrams}{Diagrams.}
+
+Born vs. complete, that is the complete sum of the Born series.
+
+Coulomb, hadronic and total amplitudes.
 
 \def\KL{Kudr\' at-Lokaj\' i\v cek}
 \def\KaL{Kudr\' at and Lokaj\' i\v cek}
@@ -90,17 +101,18 @@ The terms ''eikonal'' or ''impact-parameter'' descriptions are used in a number 
 
 Islam developed his own \em{eikonal formalism} as a relativistic generalization of the eikonal approximation to QM. He defines an ''optical potential'' $V(s, r)$ (depending on the energy), which is the starting point in his algorithm. However, it is far from evident, what properties does this new ''potential'' shares with the one used in the traditional QM. Most importantly, whether the optical potential is additive.
 
-\em{Eikonal approximation} is ... (see e.g. Sc.~2.3 in \bref{barone} or Sc.? in \bref{formanek qm}). It sais
+\em{Eikonal approximation} is ... (see e.g. Sc.~2.3 in \bref{barone} or Sc.~4.2.7 in \bref{formanek qm}). It sais
 \eqref{F(t) = {s\over 2i}\int b\,\d b\,J_0(b\sqrt{|t|})\,\left( e^{2i\de(b)} - 1 \right)}{el eik rep}
 (using the notation of Cahn \bref{Cahn82}). The \em{eikonal} function is given as
-\eqref{\de(b) = ... \int_{-\infty}^{\infty} V(\vec b, z)\ \d z,}{el eik app}
-where $V(x, y, z)$ is a potential. As the eikonal is linear in potential, it retains the property of additivity. The eikonal can also be related to the Born approximation of a scattering amplitude
+\eqref{\de(b) = - {1\over 4 p_{\rm lab}} \int\limits_{-\infty}^{\infty} V(\vec b, z)\ \d z,}{el eik app}
+where $V(x, y, z)$ is a potential. As the eikonal is linear in potential, it retains the property of additivity \TODO{verified by \bref{rix66}}. The eikonal can also be related to the Born approximation of a scattering amplitude
 \eqref{\de(b) = {1\over s} \int q\,\d q\,J_0(bq)\, F_{\rm Born}(t = -q^2)}{el eik app born}
 
-With the Coulomb potential $V(r) = \pm ... \al/r$ one gets \TODO{ref}
-\eqref{F^{\rm C}_{\rm Born} = \pm ... {\al\over t}}{el coul born}
-From point-like to charge distributions of both target and projectile, it hopefully adds a factor of $F^2(t)$. Compare to \Eq{el dsdt em} (Born -- OPE). Take sign from eikonal formula (note that QED amp. has different signs too) and take FF from QED calculation. In that sense, it is not a Coulomb scattering anymore (magnetic influence is accounted for too), but we will keep the notation.
-
+With the Coulomb potential $V(r) = \pm \al/r$ one gets
+\eqref{F^{\rm C}_{\rm Born} = \pm {\al s\over t}\ .}{el coul born}
+This result is to be compared to the one-photon-exchange prediction by QED \Eq{el dsdt em} (both amplitudes are of the order $\O{\al}$). We see that the more general QED result differs only by the presence of the effective form factor $G_{\rm eff}$. We will use the same form factor also within the eikonal formalism:
+\eqref{F^{\rm C}_{\rm Born} = \pm {\al s\over t}\, G^2_{\rm eff} \.}{el coul born ff}
+In that sense, it is not a Coulomb scattering anymore (magnetic influence is accounted for too), but we will keep calling the amplitude ``Coulomb''.
 
 Interference -- what is the amplitude describing hadronic and electromagnetic forces acting simultaneously? Several approaches...
 
@@ -108,12 +120,10 @@ Interference -- what is the amplitude describing hadronic and electromagnetic fo
 \em{Interference in non-relativistic QM}
 \vskip\baselineskip
 
-Bethe derived \bref{bethe58} by WKB approximation
-\eqref{F^{C+H}(t) = F^C(t) e^{i \al \Ph(t)} + F^H(t)}{el FCH decomp C}
+Bethe derived \bref{bethe58} by WKB approximation. Model: spatial distribution of protons and neutrons is the same. Parameterized by a Gaussian with $a$ giving the ``size''. Nuclear potential proportional to the nucleon density. (low angle and high energy approximation). The result could have been written (it was using lab quantities and for a fixed energy). Upper (lower) sign for $\rm pp$ ($\rm \bar pp$).
+\eqref{F^{\rm C+H}(t) = \pm {\al s\over t} e^{i \al \Ph(t)} + F^{\rm H(t)}}{el FCH decomp C}
 with the Coulomb-hadronic phase $\Phi$
-\eqref{\Phi_{\rm Bethe}(t) = 2 \log {1.06\over a\sqrt{t}}}{el phase bethe}
-
-No FF, $F_{\rm C}$ is just a symbol...
+\eqref{\Phi_{\rm Bethe}(t) = \pm 2 \log {1.06\over a\sqrt{|t|}}}{el phase bethe}
 
 \vskip\baselineskip
 \em{Interference in QFT / Feynman diagrams}
@@ -127,9 +137,6 @@ Locher \bref{locher67}
 
 \WaY \bref{wy68}
 
-The same decomposition as \Eq{el FCH decomp C}, $F_{\rm C}$ only a symbol for $\pm\al s / t$ (FF not taken into account)
-
-Upper (lower) sign for $\rm pp$ ($\rm \bar pp$).
 
 \eqref{\Phi_{\rm WY} = \mp \log {t\over t_{\rm min}} \pm \int\limits_{t_{\rm min}} {\d t'\over |t' - t|} \left( {F^H(t')\over F^H(t)} - 1 \right)}{el phase WY}
 Note that in \bref{wy68} there is a number of inconsistencies between Eq.~(17) and (23), the latter one is likely to contain a missprint: the sign of the second term shall read minus, i.e. as in our \Eq{el phase WY}
@@ -194,13 +201,44 @@ Again, independent of $s$
 
 Kopeliovich and Tarasov \bref{kopeliovich01}
 
+Franco \bref{franco73}
+
+Buttimore et al. \bref{buttimore78}
+
 \vskip\baselineskip
 Data fits with different interference formulae: \bref{ppp03,ppp05}
 
 \vskip\baselineskip
-\em{Critique and checks}
+\em{Critique and discussion}
 \vskip\baselineskip
 
+\hrule
+
+\fig{fig/pdf/el_cic_noff_F_C.pdf}{el cic noff FC}{(Full) Coulomb amplitude calculated with \Eq{el F CH eik} ($\de_H$ set to zero, no form factor). Left: the modulus of the amplitude (for three values of $\la$) compared to the Born approximation (hidden by the green and blue curves). Right: the argument of the amplitude (solid lines) compared to Cahn's $\eta^C$ (dashed lines, often hidden by the solid lines).}
+
+SWY all right up to $3\cdot 10^{-2}$
+
+\fig{fig/pdf/el_cic_noff_Psi.pdf}{el cic noff Psi}{Comparison of Coulomb-interference phases with no form factor. Solid curves have been calculated with the eikonal formula.}
+
+\fig{fig/pdf/el_cic_noff_Z.pdf}{el cic noff Z}{Left: the interference importance function $Z$. Right: $\zeta$ function reaches one if $|F^C| = |F^H|$ and tends to zero if one of the amplitudes is much larger that the other one. Both: no form factor included.}
+
+Now with form factors.
+
+\bmfig
+\fig{fig/pdf/el_cic_diff_F_C.pdf}{el cic diff FC}{[7cm]The modulus of the (full) Coulomb amplitude calculated with the eikonal formula and Puckett form factor. The Born curve is hidden behined green and blue curves.}
+%
+\fig{fig/pdf/el_cic_diff_nu.pdf}{el cic diff nu}{[7cm]The form factor induced Coulomb phase alternation $\nu$. Colorful lines calculated with eikonal formula.}
+\emfig
+
+\fig{fig/pdf/el_cic_diff_Psi_ff.pdf}{el cic diff Psi ff}{The Coulomb-interference phases with different form factors and according to different formulae.}
+
+\fig{fig/pdf/el_cic_diff_Psi_eik.pdf}{el cic diff Psi eik}{A comparison of Coulomb-interference phases with Puckett form factor, between CKL and eikonal formulae.}
+
+\fig{fig/pdf/el_cic_diff_Z_ff.pdf}{el cic diff Z ff}{The importance of the Coulomb-interference ($Z$ function) for diffrent form factors and different formulae.}
+
+\fig{fig/pdf/el_cic_diff_Z_eik.pdf}{el cic diff Z eik}{Left: the importance of the interference $Z$, Right: the $\ze$ function. For both plots the Puckett form factor has been used.}
+
+\hrule
 
 \iffalse
 \> problems of Cahn formula (inherited and not solved in \KL{} treatment)
@@ -323,18 +361,22 @@ Compared to \bref{kl94} we wrote the correction to the hadronic amplitude in a e
 Now it is easy to verify that the WY phase corresponds to KL phase, if no form factors are used:
 \eqref{\Ps_{\rm KL,corr}(t) \mathop{\longrightarrow}\limits^{f(t)\to 1} - \Ph_{\rm WY}(t)}{el KL WY correspondance}
 
-\TODO{Check signs}
 \fi
 
 \vskip1cm
 \hrule
 
-\eqref{R(t) = {|F^{\rm \rm C+N}_{\rm KL}|^2 - |F^{\rm C+N}_{\rm WY}|^2 \over |F^{\rm C+N}_{\rm KL}|^2}}{el R}
-\eqref{Z(t) = {|F^{\rm \rm C+N}_{\rm KL}|^2 - |F^{\rm C+N}_{\rm PH}|^2 - |F^{\rm C+N}_{\rm PC}|^2\over |F^{\rm C+N}_{\rm KL}|^2}}{el Z}
+\eqref{C(t) = {|F^{\rm \rm C+H}_{\rm CKL}|^2 - |F^{\rm H}|^2\over |F^{\rm H}|^2}}{el C}
 
-\fig{fig/pdf/el_mod_Z.pdf}{el mod Z}{The importance of the interference term (see \Eq{el Z}) as a function of $t$.}
+\eqref{Z(t) = {|F^{\rm \rm C+H}_{\rm CKL}|^2 - |F^{\rm C}|^2 - |F^{\rm H}|^2\over |F^{\rm C+H}_{\rm CKL}|^2}}{el Z}
 
-\fig{fig/pdf/el_mod_R.pdf}{el mod R}{The difference between WY and KL formulae as a function of $t$.}
+\eqref{R(t) = {|F^{\rm \rm C+H}_{\rm CKL}|^2 - |F^{\rm C+H}_{\rm SWY}|^2 \over |F^{\rm C+H}_{\rm CKL}|^2}}{el R}
+
+\fig{fig/pdf/el_mod_C.pdf}{el mod C}{The influence of Coulomb interaction (see \Eq{el C}) as a function of $t$. Calculated with CKL formula and Puckett form factor.}
+
+\fig{fig/pdf/el_mod_Z.pdf}{el mod Z}{The importance of the interference term (see \Eq{el Z}) as a function of $t$. Calculated with CKL formula and Puckett form factor.}
+
+\fig{fig/pdf/el_mod_R.pdf}{el mod R}{The difference between WY and KL formulae as a function of $t$. Calculated with CKL formula and Puckett form factor.}
 
 Eq.~2-7 (page 14) in ATLAS ALFA TDR \bref{alfa} is wrong.
 

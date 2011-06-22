@@ -3,94 +3,126 @@ import pad_layout;
 
 StdFonts();
 
-xSizeDef = ySizeDef = 5.4cm;
+xSizeDef = ySizeDef = 5.5cm;
 
-string f3 = "../elastic/coulomb3_anal.root";
-string f4 = "../elastic/coulomb4_anal.root";
+string fff = "../elastic/coulomb_ff.root";
+string f4 = "../elastic/coulomb_anal.root";
 
 real las[] = { 1e-2, 1e-3, 1e-4 };
 pen colors[] = { red, blue, heavygreen };
 
-NewPad("$|t|\un{GeV^2}$", "$|F_C|$");
+string cModes[] = { "WY", "SWY", "KL" };
+string cNames[] = { "WY", "SWY", "CKL" };
+pen cm_colors[] = { heavygreen, blue, red };
+
+string FFs[] = { "dipole", "Hofstadter", "Puckett" };
+pen ff_colors[] = { red, blue, heavygreen };
+
+
+real t_min = 1e-4, t_max = 3e0;
+
+//--------------------------------------------------
+write("* el_cic_noff_F_C");
+
+NewPad("$|t|\un{GeV^2}$", "$|F^{\rm C}|$");
 scale(Log, Log);
-draw(rGetObj(f3, "F_C#0|cmp_F_C_mod"), black, "Born ($\la = 0$)");
+draw(rGetObj(f4, "none/F_C#2|cmp_F_C_mod"), black);
 for (int li : las.keys)
-	draw(rGetObj(f3, "F_C#0|F_C_mod,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-limits((1e-5, 1e4), (1e1, 1e11), Crop);
+	draw(rGetObj(f4, "none/F_C#2|F_C_mod,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+limits((t_min, 1e5), (t_max, 1e10), Crop);
+AttachLegend(NE, NE);
+
+ClearLegend();
+AddToLegend("Born ($\la = 0$)", black);
 AttachLegend(SW, SW);
 
-
-NewPad("$|t|\un{GeV^2}$", "$\arg F_C / \pi$");
+NewPad("$|t|\un{GeV^2}$", "$\arg F^{\rm C} / \pi$");
 scale(Log, Linear);
-//draw(yscale(1/3.141593), rGetObj(f3, "F_C#1|cmp_F_C_arg"), black, "Cahn");
 for (int li : las.keys) {
-	draw(yscale(1/3.141593), rGetObj(f3, "F_C#1|F_C_arg,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-	draw(yscale(1/3.141593), rGetObj(f3, "F_C#1|F_C_arg_th,la="+format("%.0E", las[li])), colors[li]+dashed, format("$\la=%.0E\,\rm GeV$", las[li]));
+	draw(yscale(1/3.141593), rGetObj(f4, "none/F_C#3|F_C_arg,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+	draw(yscale(1/3.141593), rGetObj(f4, "none/F_C#3|F_C_arg_th,la="+format("%.0E", las[li])), colors[li]+longdashed, format("$\la=%.0E\,\rm GeV$", las[li]));
 }
-limits((1e-5, 0.95), (1e1, 1.01), Crop);
+limits((t_min, 0.95), (t_max, 1.01), Crop);
 
 GShipout("el_cic_noff_F_C", hSkip=5mm);
 
+//--------------------------------------------------
+write("* el_cic_noff_Psi");
 
-
-NewPad("$|t|\un{GeV^2}$", "$\Re \Psi$");
-scale(Log, Linear);
-draw(rGetObj(f3, "interference#0|cmp_CH_phase_re"), black, "Cahn");
+NewPad("$|t|\un{GeV^2}$", "real part of $\al\Psi$ or $-\al\Ph$");
+scale(Linear, Linear);
+for (int ci : cModes.keys)
+	draw(rGetObj(f4, "none/interference#0|cmp_"+cModes[ci]+"_CH_phase_re"), cm_colors[ci]+longdashed, cNames[ci]);
 for (int li : las.keys)
-	draw(rGetObj(f3, "interference#0|CH_phase_re,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-limits((1e-5, -0.4), (1e1, 0.3), Crop);
-AttachLegend(SW, SW);
+	draw(rGetObj(f4, "none/interference#0|CH_phase_re,la="+format("%.0E", las[li])), colors[li]);
+limits((t_min, -0.2), (t_max, 0.7), Crop);
+AttachLegend(NW, NW);
 
-NewPad("$|t|\un{GeV^2}$", "$\Im \Psi$");
-scale(Log, Linear);
-draw(rGetObj(f3, "interference#1|cmp_CH_phase_im"), black, "Cahn");
+NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Psi$ or $-\al\Ph$");
+scale(Linear, Linear);
+for (int ci : cModes.keys)
+	draw(rGetObj(f4, "none/interference#1|cmp_"+cModes[ci]+"_CH_phase_im"), cm_colors[ci]+longdashed);
 for (int li : las.keys)
-	draw(rGetObj(f3, "interference#1|CH_phase_im,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-limits((1e-5, -0.02), (1e1, 0.02), Crop);
+	draw(rGetObj(f4, "none/interference#1|CH_phase_im,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+limits((t_min, -0.25), (t_max, 0.25), Crop);
+AttachLegend(NE, NE);
 
 GShipout("el_cic_noff_Psi", hSkip=5mm);
 
 
+//--------------------------------------------------
+write("* el_cic_noff_Z");
 
 NewPad("$|t|\un{GeV^2}$", "$Z\un{\%}$");
 scale(Log, Linear);
-draw(yscale(100), rGetObj(f3, "interference#2|cmp_CH_Z"), black, "Cahn");
+for (int ci : cModes.keys)
+	draw(yscale(100), rGetObj(f4, "none/interference#2|cmp_"+cModes[ci]+"_CH_Z"), cm_colors[ci]+longdashed, cNames[ci]);
 for (int li : las.keys)
-	draw(yscale(100), rGetObj(f3, "interference#2|CH_Z,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-limits((1e-5, -30), (1e1, 30), Crop);
-AttachLegend();
+	draw(yscale(100), rGetObj(f4, "none/interference#2|CH_Z,la="+format("%.0E", las[li])), colors[li]);
+limits((t_min, -30), (t_max, 30), Crop);
+AttachLegend(NW, NW);
 
 NewPad("$|t|\un{GeV^2}$", "$\zeta$");
 scale(Log, Linear);
 for (int li : las.keys)
-	draw(yscale(1), rGetObj(f3, "interference#3|CH_zeta,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-limits((1e-5, 0), (1e1, 1.2), Crop);
+	draw(yscale(1), rGetObj(f4, "none/interference#3|CH_zeta,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+limits((t_min, 0), (t_max, 1.2), Crop);
+AttachLegend(NE, NE);
 
 GShipout("el_cic_noff_Z", hSkip=5mm);
 
 //--------------------------------------------------
+//--------------------------------------------------
+write("* el_cic_diff_F_C");
 
-NewPad("$|t|\un{GeV^2}$", "$|F_C|$");
+NewPad("$|t|\un{GeV^2}$", "$|F^{\rm C}|$");
 scale(Log, Log);
+draw(rGetObj(f4, "Puckett/F_C#2|cmp_F_C_mod"), black);
 for (int li : las.keys) {
-	draw(rGetObj(f4, "dipole/F_C#2|F_C_mod,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-	draw(rGetObj(f4, "dipole/F_C#2|F_C_mod_th,la="+format("%.0E", las[li])), colors[li]+dashed);
+	draw(rGetObj(f4, "Puckett/F_C#2|F_C_mod,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+	//draw(rGetObj(f4, "dipole/F_C#2|F_C_mod_th,la="+format("%.0E", las[li])), colors[li]+longdashed);
 }
-draw(rGetObj(f4, "dipole/F_C#2|cmp_F_C_mod"), black);
-limits((1e-5, 1e4), (1e0, 1e11), Crop);
+limits((t_min, 1e5), (t_max, 1e10), Crop);
+AttachLegend(NE, NE);
+
+ClearLegend();
+AddToLegend("Born ($\la = 0$)", black);
 AttachLegend(SW, SW);
 
+/*
 NewPad("$|t|\un{GeV^2}$", "$\arg F_C / \pi$");
 scale(Log, Linear);
 for (int li : las.keys) {
 	draw(yscale(1/3.141593), rGetObj(f4, "dipole/F_C#3|F_C_arg,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-	draw(yscale(1/3.141593), rGetObj(f4, "dipole/F_C#3|F_C_arg_th,la="+format("%.0E", las[li])), colors[li]+dashed);
+	draw(yscale(1/3.141593), rGetObj(f4, "dipole/F_C#3|F_C_arg_th,la="+format("%.0E", las[li])), colors[li]+longdashed);
 }
-limits((1e-5, 0.95), (1e0, 1.01), Crop);
+limits((t_min, 0.95), (t_max, 1.01), Crop);
+*/
 
 GShipout("el_cic_diff_F_C", hSkip=5mm);
 
-
+//--------------------------------------------------
+write("* el_cic_diff_nu");
 
 real Cahn_nu(real mt)
 {
@@ -108,50 +140,113 @@ real Selyugin_nu(real mt)
 	return al * c1 * log(1 + c2*c2*mt) / 3.141593;
 }
 
-NewPad("$|t|\un{GeV^2}$", "$\De \arg F_C / \pi$");
+NewPad("$|t|\un{GeV^2}$", "$\al\nu / \pi$");
 scale(Log, Linear);
-for (int li : las.keys) {
-	draw(yscale(1/3.141593), rGetObj(f4, "dipole/F_C#5|F_C_de_arg,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-}
-draw(graph(Cahn_nu, 1e-5, 1e0, 1000), black, "Cahn's $\nu$");
-draw(graph(Selyugin_nu, 1e-5, 1e0, 1000), black+dashed, "Selyugin's $\nu$");
-limits((1e-5, -1e-3), (1e-1, +2e-3), Crop);
+for (int ffi : FFs.keys)
+	draw(yscale(1/3.141593), rGetObj(fff, FFs[ffi]+"/nu|nu_1E-04"), ff_colors[ffi], FFs[ffi]);
 
-GShipout("el_cic_diff_F_C_darg", hSkip=5mm);
-
-
-
-NewPad("$|t|\un{GeV^2}$", "$\Re \Psi$");
-scale(Log, Linear);
-draw(rGetObj(f4, "dipole/interference#0|cmp_CH_phase_re"), black, "KL");
-for (int li : las.keys)
-	draw(rGetObj(f4, "dipole/interference#0|CH_phase_re,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-limits((1e-5, -0.1), (1e0, 0.1), Crop);
+draw(graph(Cahn_nu, t_min, t_max, 1000), black, "Cahn's $\nu$");
+draw(graph(Selyugin_nu, t_min, t_max, 1000), black+longdashed, "Selyugin's $\nu$");
+limits((t_min, -1e-3), (t_max, +4e-3), Crop);
 AttachLegend(NW, NW);
 
-NewPad("$|t|\un{GeV^2}$", "$\Im \Psi$");
-scale(Log, Linear);
-draw(rGetObj(f4, "dipole/interference#1|cmp_CH_phase_im"), black, "KL");
+GShipout("el_cic_diff_nu", hSkip=5mm);
+
+//--------------------------------------------------
+write("* el_cic_diff_Psi_ff");
+
+NewPad("$|t|\un{GeV^2}$", "real part of $\al\Psi$ or $-\al\Ph$");
+scale(Linear, Linear);
+for (int ffi : FFs.keys) {
+	draw(rGetObj(f4, FFs[ffi]+"/interference#0|cmp_SWY_CH_phase_re"), ff_colors[ffi]+longdashed);
+	draw(rGetObj(f4, FFs[ffi]+"/interference#0|cmp_KL_CH_phase_re"), ff_colors[ffi]);
+}
+AddToLegend("solid: CKL");
+AddToLegend("longdashed: SWY");
+limits((t_min, -0.05), (t_max, 0.06), Crop);
+AttachLegend(SE, SE);
+
+NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Psi$ or $-\al\Ph$");
+scale(Linear, Linear);
+for (int ffi : FFs.keys) {
+	draw(rGetObj(f4, FFs[ffi]+"/interference#1|cmp_SWY_CH_phase_im"), ff_colors[ffi]+longdashed);
+	draw(rGetObj(f4, FFs[ffi]+"/interference#1|cmp_KL_CH_phase_im"), ff_colors[ffi], FFs[ffi]);
+}
+limits((t_min, -0.01), (t_max, 0.1), Crop);
+AttachLegend(NE, NE);
+
+GShipout("el_cic_diff_Psi_ff", hSkip=5mm);
+
+//--------------------------------------------------
+write("* el_cic_diff_Psi_eik");
+
+
+NewPad("$|t|\un{GeV^2}$", "real part of $\al\Psi$ or $-\al\Ph$");
+scale(Linear, Linear);
+draw(rGetObj(f4, "Puckett/interference#0|cmp_KL_CH_phase_re"), black+longdashed, "CKL");
+for (int li : las.keys) {
+	if (li == 0)
+		continue;
+	draw(rGetObj(f4, "Puckett/interference#0|CH_phase_re,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+}
+limits((t_min, -0.05), (t_max, 0.06), Crop);
+
+NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Psi$ or $-\al\Ph$");
+scale(Linear, Linear);
+draw(rGetObj(f4, "Puckett/interference#1|cmp_KL_CH_phase_im"), black+longdashed, "CKL");
 for (int li : las.keys)
-	draw(rGetObj(f4, "dipole/interference#1|CH_phase_im,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-limits((1e-5, -0.01), (1e0, 0.01), Crop);
+	draw(rGetObj(f4, "Puckett/interference#1|CH_phase_im,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+limits((t_min, -0.01), (t_max, 0.1), Crop);
+AttachLegend(NE, NE);
 
-GShipout("el_cic_diff_Psi", hSkip=5mm);
+GShipout("el_cic_diff_Psi_eik", hSkip=5mm);
 
-
+//--------------------------------------------------
+write("* el_cic_diff_Z_ff");
 
 NewPad("$|t|\un{GeV^2}$", "$Z\un{\%}$");
 scale(Log, Linear);
-draw(yscale(100), rGetObj(f4, "dipole/interference#2|cmp_CH_Z"), black, "KL");
+for (int ffi : FFs.keys) {
+	draw(yscale(100), rGetObj(f4, FFs[ffi]+"/interference#2|cmp_SWY_CH_Z"), ff_colors[ffi]+longdashed);
+	draw(yscale(100), rGetObj(f4, FFs[ffi]+"/interference#2|cmp_KL_CH_Z"), ff_colors[ffi], FFs[ffi]);
+}
+limits((t_min, -20), (t_max, 10), Crop);
+AttachLegend(SE, SE);
+
+ClearLegend();
+AddToLegend("solid: CKL");
+AddToLegend("longdashed: SWY");
+AttachLegend(NW, NW);
+
+
+/*
+NewPad("$|t|\un{GeV^2}$", "$\zeta$");
+scale(Log, Linear);
+for (int ffi : FFs.keys) {
+	draw(rGetObj(f4, FFs[ffi]+"/interference#3|cmp_SWY_CH_zeta"), colors[ffi]+longdashed);
+	draw(rGetObj(f4, FFs[ffi]+"/interference#3|cmp_KL_CH_zeta"), colors[ffi], FFs[ffi]);
+}
+limits((t_min, 0), (t_max, 1.2), Crop);
+*/
+
+GShipout("el_cic_diff_Z_ff", hSkip=5mm);
+
+//--------------------------------------------------
+write("* el_cic_diff_Z_eik");
+
+NewPad("$|t|\un{GeV^2}$", "$Z\un{\%}$");
+scale(Log, Linear);
+draw(yscale(100), rGetObj(f4, "Puckett/interference#2|cmp_KL_CH_Z"), black+longdashed, "CKL");
 for (int li : las.keys)
-	draw(yscale(100), rGetObj(f4, "dipole/interference#2|CH_Z,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-limits((1e-5, -20), (1e0, 30), Crop);
-AttachLegend();
+	draw(yscale(100), rGetObj(f4, "Puckett/interference#2|CH_Z,la="+format("%.0E", las[li])), colors[li]);
+limits((t_min, -20), (t_max, 0), Crop);
+AttachLegend(SE, SE);
 
 NewPad("$|t|\un{GeV^2}$", "$\zeta$");
 scale(Log, Linear);
 for (int li : las.keys)
-	draw(yscale(1), rGetObj(f4, "dipole/interference#3|CH_zeta,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-limits((1e-5, 0), (1e0, 1.2), Crop);
+	draw(yscale(1), rGetObj(f4, "Puckett/interference#3|CH_zeta,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+limits((t_min, 0), (t_max, 1.2), Crop);
+AttachLegend(NE, NE);
 
-GShipout("el_cic_diff_Z", hSkip=5mm);
+GShipout("el_cic_diff_Z_eik", hSkip=5mm);
