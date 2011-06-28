@@ -122,7 +122,7 @@ for (int f = 0; f < files.length; ++f) {
 
 	limits((0, 1e-7), (5, 1e3), Crop);
 		
-	AdjustPlot(f);
+	AdjustPlot(f, true);
 }
 
 GShipout("el_mod_dsdt_narrow", hSkip=2mm);
@@ -144,7 +144,7 @@ for (int f = 0; f < files.length; ++f) {
 
 	limits((0, -10), (5, 30), Crop);
 		
-	AdjustPlot(f);
+	AdjustPlot(f, true);
 }
 
 GShipout("el_mod_B", hSkip=2mm);

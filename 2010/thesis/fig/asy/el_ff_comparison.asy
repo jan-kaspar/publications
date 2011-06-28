@@ -7,7 +7,7 @@ string ffs[] = { "Hofstadter", "Borkowski", "Kelly", "Arrington", "Puckett" };
 
 string file = "../elastic/ff_draw.root";
 
-NewPad("$|t|\un{GeV^2}$", "form factor / $F_D$");
+NewPad("$|t|\un{GeV^2}$", "form factor / $F_{\rm d}(t)$", 10cm);
 scale(Log, Linear);
 for (int fi : ffs.keys) {
 	draw(rGetObj(file, ffs[fi]+"/FF_eff_r"), std_pens[fi], ffs[fi]);

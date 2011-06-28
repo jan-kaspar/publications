@@ -21,6 +21,11 @@ pen ff_colors[] = { red, blue, heavygreen };
 
 real t_min = 1e-4, t_max = 3e0;
 
+string es(real x)
+{
+	return "10^{"+format("%i", floor(log10(x)))+"}";
+}
+
 //--------------------------------------------------
 write("* el_cic_noff_F_C");
 
@@ -28,19 +33,19 @@ NewPad("$|t|\un{GeV^2}$", "$|F^{\rm C}|$");
 scale(Log, Log);
 draw(rGetObj(f4, "none/F_C#2|cmp_F_C_mod"), black);
 for (int li : las.keys)
-	draw(rGetObj(f4, "none/F_C#2|F_C_mod,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+	draw(rGetObj(f4, "none/F_C#2|F_C_mod,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
 limits((t_min, 1e5), (t_max, 1e10), Crop);
 AttachLegend(NE, NE);
 
 ClearLegend();
 AddToLegend("Born ($\la = 0$)", black);
-AttachLegend(SW, SW);
+AttachLegend("no form factor", SW, SW);
 
 NewPad("$|t|\un{GeV^2}$", "$\arg F^{\rm C} / \pi$");
 scale(Log, Linear);
 for (int li : las.keys) {
-	draw(yscale(1/3.141593), rGetObj(f4, "none/F_C#3|F_C_arg,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
-	draw(yscale(1/3.141593), rGetObj(f4, "none/F_C#3|F_C_arg_th,la="+format("%.0E", las[li])), colors[li]+longdashed, format("$\la=%.0E\,\rm GeV$", las[li]));
+	draw(yscale(1/3.141593), rGetObj(f4, "none/F_C#3|F_C_arg,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
+	draw(yscale(1/3.141593), rGetObj(f4, "none/F_C#3|F_C_arg_th,la="+format("%.0E", las[li])), colors[li]+longdashed, "$\la="+es(las[li])+"\,\rm GeV$");
 }
 limits((t_min, 0.95), (t_max, 1.01), Crop);
 
@@ -56,14 +61,14 @@ for (int ci : cModes.keys)
 for (int li : las.keys)
 	draw(rGetObj(f4, "none/interference#0|CH_phase_re,la="+format("%.0E", las[li])), colors[li]);
 limits((t_min, -0.2), (t_max, 0.7), Crop);
-AttachLegend(NW, NW);
+AttachLegend("no form factor", NW, NW);
 
 NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Psi$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ci : cModes.keys)
 	draw(rGetObj(f4, "none/interference#1|cmp_"+cModes[ci]+"_CH_phase_im"), cm_colors[ci]+longdashed);
 for (int li : las.keys)
-	draw(rGetObj(f4, "none/interference#1|CH_phase_im,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+	draw(rGetObj(f4, "none/interference#1|CH_phase_im,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
 limits((t_min, -0.25), (t_max, 0.25), Crop);
 AttachLegend(NE, NE);
 
@@ -80,14 +85,14 @@ for (int ci : cModes.keys)
 for (int li : las.keys)
 	draw(yscale(100), rGetObj(f4, "none/interference#2|CH_Z,la="+format("%.0E", las[li])), colors[li]);
 limits((t_min, -30), (t_max, 30), Crop);
-AttachLegend(NW, NW);
+AttachLegend("no form factor", NW, NW);
 
 NewPad("$|t|\un{GeV^2}$", "$\zeta$");
 scale(Log, Linear);
 for (int li : las.keys)
-	draw(yscale(1), rGetObj(f4, "none/interference#3|CH_zeta,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+	draw(yscale(1), rGetObj(f4, "none/interference#3|CH_zeta,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
 limits((t_min, 0), (t_max, 1.2), Crop);
-AttachLegend(NE, NE);
+AttachLegend(NE, N+0.88E);
 
 GShipout("el_cic_noff_Z", hSkip=5mm);
 
@@ -99,7 +104,7 @@ NewPad("$|t|\un{GeV^2}$", "$|F^{\rm C}|$");
 scale(Log, Log);
 draw(rGetObj(f4, "Puckett/F_C#2|cmp_F_C_mod"), black);
 for (int li : las.keys) {
-	draw(rGetObj(f4, "Puckett/F_C#2|F_C_mod,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+	draw(rGetObj(f4, "Puckett/F_C#2|F_C_mod,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
 	//draw(rGetObj(f4, "dipole/F_C#2|F_C_mod_th,la="+format("%.0E", las[li])), colors[li]+longdashed);
 }
 limits((t_min, 1e5), (t_max, 1e10), Crop);
@@ -107,7 +112,7 @@ AttachLegend(NE, NE);
 
 ClearLegend();
 AddToLegend("Born ($\la = 0$)", black);
-AttachLegend(SW, SW);
+AttachLegend("Puckett form factor", SW, SW);
 
 /*
 NewPad("$|t|\un{GeV^2}$", "$\arg F_C / \pi$");
@@ -187,7 +192,7 @@ draw(rGetObj(f4, "Puckett/interference#0|cmp_KL_CH_phase_re"), black+longdashed,
 for (int li : las.keys) {
 	if (li == 0)
 		continue;
-	draw(rGetObj(f4, "Puckett/interference#0|CH_phase_re,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+	draw(rGetObj(f4, "Puckett/interference#0|CH_phase_re,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
 }
 limits((t_min, -0.05), (t_max, 0.06), Crop);
 
@@ -195,9 +200,9 @@ NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Psi$ or $-\al\Ph$");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#1|cmp_KL_CH_phase_im"), black+longdashed, "CKL");
 for (int li : las.keys)
-	draw(rGetObj(f4, "Puckett/interference#1|CH_phase_im,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+	draw(rGetObj(f4, "Puckett/interference#1|CH_phase_im,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
 limits((t_min, -0.01), (t_max, 0.1), Crop);
-AttachLegend(NE, NE);
+AttachLegend("Puckett form factor", NE, NE);
 
 GShipout("el_cic_diff_Psi_eik", hSkip=5mm);
 
@@ -240,12 +245,12 @@ draw(yscale(100), rGetObj(f4, "Puckett/interference#2|cmp_KL_CH_Z"), black+longd
 for (int li : las.keys)
 	draw(yscale(100), rGetObj(f4, "Puckett/interference#2|CH_Z,la="+format("%.0E", las[li])), colors[li]);
 limits((t_min, -20), (t_max, 0), Crop);
-AttachLegend(SE, SE);
+AttachLegend("Puckett form factor", SE, SE);
 
 NewPad("$|t|\un{GeV^2}$", "$\zeta$");
 scale(Log, Linear);
 for (int li : las.keys)
-	draw(yscale(1), rGetObj(f4, "Puckett/interference#3|CH_zeta,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
+	draw(yscale(1), rGetObj(f4, "Puckett/interference#3|CH_zeta,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
 limits((t_min, 0), (t_max, 1.2), Crop);
 AttachLegend(NE, NE);
 
