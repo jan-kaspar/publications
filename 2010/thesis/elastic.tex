@@ -3,34 +3,86 @@
 \def\FCH{F^{\rm C+H}}
 \def\e{{\rm e}}
 
+\def\KL{Kudr\' at-Lokaj\' i\v cek}
+\def\KaL{Kudr\' at and Lokaj\' i\v cek}
+\def\WY{West-Yennie}
+\def\WaY{West and Yennie}
+
+\def\caption#1{%
+	\vskip\baselineskip
+	\em{#1}%
+	\vskip\baselineskip
+}
+
 \chapter{Elastic scattering of protons}
+
+\fig{fig/pdf/el_scat_scheme.pdf}{el scat scheme}{The kinematics of equal-mass elastic scattering in the center-of-mass system. The labels give the four-momenta of the particles involved ($z$ axis is horizontal, $x$ vertical).}
+
+Let us start by defining our notation and terms used later on. A scattering of particles with mass $m$ in the center-of-mass (CMS) frame is sketched in \Fg{el scat scheme}. $E$ and $p$ stand for CMS energy and momentum (we will always assume kinematical quantities are evaluated in the CMS frame, unless stated differently). $\th$ is the scattering angle in the CMS frame. The first Mandelstam variable (total scattering energy squared) reads:
+\eqref{s = 4E^2 = 4p^2 - 4m^2 \approx 4p^2\ ,}{el s}
+where the last approximation holds in \em{high-energy} limit
+\eqref{{m\over p}\to 0\ ,}{el high energy}
+which will be often used. The four-momentum transfer can be expressed:
+\eqref{t = -2p^2 (1 - \cos\th) \approx -(p\th)^2\ .}{el t}
+The last step is valid in \em{low-scattering-angle} limit
+\eqref{\th\to 0\qquad\hbox{or equivalently}\qquad {t\over p}\to 0\ .}{el low angle}
+\Eq{el t} sets bounds to the four-momentum transfer:
+\eqref{t_{\rm min} \le t \le 0\ ,\qquad t_{\rm min} = 4p^2 \approx s\ ,}{el t min}
+where again the high-energy approximation has been used in the last relation.
+
+In principle, one more parameter (for example the azimuthal angle $\ph$ giving the rotation about the scattering axis $z$) is needed to fully describe an elastic scattering event. However, the azimuthal symmetry will be assumed throughout this chapter. Thereby the $\ph$-distribution will be trivially flat and we will not even mention it.
+
+In contrary, a very interesting quantity is the $t$-distribution of elastic events (at a fixed energy $s$). It can be expressed in the form of differential cross-section $\d\si/\d t$ (\TODO{which is moreover normalized}, see e.g. \TODO{...}). In the framework of quantum theory, the differential cross-section is related to the scattering amplitude $F(s, t)$ (see e.g. \TODO{...})
+\eqref{{\d\si\over\d t}(s) = {\pi\over s p^2} |F(s, t)|^2\ .}{el dsdt}
+This relation, in fact, fixes our normalization of the scattering amplitude. Its phase is fixed by writing the Optical Theorem (see e.g. \TODO{...})
+\eqref{\si_{\rm tot}(s) = {4\pi\over p \sqrt{s}} \Im F(s, t = 0)\ .}{el si tot}
+In what follows, we will often drop the $s$ dependence of cross-sections and amplitudes, it will be tacitly assumed.
+
+The scattering amplitude $F(s, t)$ reflects the interactions acting between the colliding particles. Out of the four fundamental forces only two are relevant for elastic scattering of protons. The gravity is too weak on the mass and length scales characteristic for particle physics experiments. The four-momentum transfer typical for the elastic scattering of protons is $|t| \ls 10\un{GeV^2}$. Compared to that the carriers of the weak forces are much heavier, thus the influence of the weak interaction is negligible. The contribution of the strong interaction to the scattering amplitude will be discussed in the next section, electromagnetic interaction and its interference with the strong one will be the topic of \Sc{el coulomb}.
+
+\> $\rm\bar pp$ scattering
 
 \section[el models]{Hadronic models}
 
-Normalization as in Cahn \bref{cahn82}
+\> QCD first principles, models
 
-\eqref{{\d\si\over\d t} = {\pi\over s p^2} |F|^2}{el dsdt}
-\eqref{\si_{\rm tot} = {4\pi\over p \sqrt{s}} \Im F(t = 0)}{el si tot}
+\> note about the impact-parameter space
 
-\em{The model of Islam et al.}
+\caption{The model of Islam et al. \bref{islam87,islam03,islam04,islam06,islam07}}
 
-\bref{islam87,islam03,islam04,islam06,islam07}
+The authors picture the proton in an effective QFT model. They proposed a soliton solution that offers a mass comparable to the one of proton. This soliton divides the proton into two distinct layers: outer cloud of quark-antiquark condensate and inner core of topological charge. Later on, a third, the inner-most layer has been added -- a valence-quark bag. These three layers give rise to three mechanisms contributing to elastic proton-proton scattering. Each of them is dominant in a range of momentum-transfer $t$.
 
-\> the structure of proton is very important for low $|t|$ el. scat
-\> just putting several ideas together
+For the lowest $|t|$ values ($\ls 0.5\un{GeV^2}$ at LHC energies) it is the diffraction scattering, originating in a glancing overlapping of the outer clouds. The corresponding scattering amplitude is formulated in eikonal approach, with a Gaussian-like profile function. For higher $|t|$ values (up to $\approx 5\un{GeV^2}$ at LHC energies) the leading mechanism is the core-core scattering. The QFT model suggests it to be mediated by $\rm\om$, behaving as an elementary particle (not like a Regge pole in many other models). For even higher values of $|t|$, the scattering is probing the inner-most layer of valence quarks. Their distribution is assumed to fall off exponentially as departing from nucleon's center. There are two alternatives for the interaction of two valence quarks. In the first one (we will refer to it as HP), the quarks interact via hard pomeron (gluon ladders in BFKL). In the second (LxG), the interaction is mediated by low-$x$ gluons that surround the valence quarks.
 
-\em{The model of Petrov, Predazzi and Prokudin}
+The model contains 19 parameters in hard-pomeron version HP or 20 in low-$x$ gluon version LxG.
 
-\bref{ppp03}
+\caption{The model of Petrov et al. \bref{ppp02}}
 
-\em{The model of Bourrely, Soffer and Wu}
+This model describes the collision of nucleons as an exchange of several reggeons. Besides the meson trajectories $\rm\rh$ and $\rm\om$ it includes a number of pomerons and an odderon. The authors argue that one pomeron (i.e. trajectory with the intercept higher than one) is insufficient to describe data on nucleon-nucleon scattering. Therefore they consider options with two (will be denoted 2P) and three (3P) pomerons. The latter one is found to be preferred by data fits.
 
-\bref{wu70,bsw79,bsw84,bsw03,bsw10}
+The model is formulated in the eikonal description, which automatically guarantees the required properties of a scattering amplitude such as unitarity and analycity. The total eikonal is a sum of per-trajectory eikonals. Each of them has the typical Regge energy dependence $s^{\al(t)}$, where $\al(t) = \al_0 + \al' t$ is a linear Regge trajectory. The $b$-dependence of the eikonals is chosen Gaussian, which would in $t$-space (in Born approximation) correspond to a constant exponential slope.
 
-\em{The model of Block and Halzen}
+The model comprises 16 free (fitted) parameters for the two pomeron variant, 20 for three pomerons. In addition, there are 4 fixed parameters.
 
+\caption{The model of Bourrely et al. \bref{bsw79,bsw84,bsw03,bsw10}}
 
-\bref{bh99,bh11}
+This is also an eikonal model. The eikonal has two components: from the pomeron and from Regge background. The latter is described as an exchange of $\rm A_w$, $\rm \rh$ and $\rm \om$ trajectories, having the traditional energy dependence $s^{\al(t)}$ and exponential $t$-dependence. The Regge background is responsible for the difference between $\rm pp$ and $\rm\bar pp$ scattering at low energies, but is negligible for high (LHC) energies.
+
+The eikonal of the pomeron is assumed to factorize to the energy dependence and the $b$-dependence. The first is deduced from asymptotic QFT behavior \bref{wy70}. The $b$-dependence is implied from the assumption of similar distributions of charge and hadronic matter in the nucleon. The charge distribution is extracted from the electromagnetic form factor (a dipole parameterization is used). The hadronic matter distribution is then obtained by correcting by a slowly-varying (in $t$) function.
+
+Thanks to this construction, the model can be easily extended to describe other scattering processes such as $\rm \pi p$ or $\rm Kp$. The only change is the to replace a form factor of the proton by a form factor of another particle.
+
+The model has 18 parameters in total (restricting ourselves to $\rm pp$ and $\rm \bar p p$), however, only 6 of them are relevant for high energy scattering.
+
+\caption{The model of Block et al. \bref{bh99,bh11}}
+
+This model is a QCD-inspired model, eikonal-formulated model. Similarly to the previous models, the eikonal receives two contributions. One that controls high energy behavior (the authors call it even) and one responsible for the difference between $\rm pp$ and $\rm\bar pp$ scattering at low energies.
+
+The even eikonal has three components, accounting for quark-quark, quark-gluon and gluon-gluon interactions. Each of these components takes a form with factorized energy dependence (proportional to the integral cross-section of that interaction at a given energy) and $b$-dependence. The latter is parameterized as the Fourier transform of a dipole form factor, with the control parameter given by the ``area'' of the nucleon occupied by the partons. The quark-gluon cross-section is assumed to rise logarithmically with energy, the quark-quark cross-section has a constant and a $1/\sqrt s$ contributions. The gluon-gluon cross-section is deduced from the gluonic structure functions of the nucleon.
+
+The authors extend the model to $\rm\ga p$ and $\rm\ga\ga$ interactions, by proposing that the photon behaves as a quark-antiquark system in strong interactions.
+
+The model has 12 parameters in total, 5 of them control the high-energy behavior.
 
 \section[el pred]{Predictions for the LHC}
 
@@ -41,22 +93,20 @@ Normalization as in Cahn \bref{cahn82}
 
 \fig{fig/pdf/el_mod_dsdt_narrow.pdf}{el mod dsdt narrow}{Differential cross-section as predicted by the four models.}
 
+\> ref to TOTEM measurement
+
 \fig{fig/pdf/el_mod_B.pdf}{el mod B}{The elastic slope as predicted by the four models.}
 
 \fig{fig/pdf/el_mod_phase.pdf}{el mod phase}{The elastic amplitude phase as predicted by the four models.}
 
 \fig{fig/pdf/el_mod_rho.pdf}{el mod rho}{The $\rho$ parameter as predicted by the four models.}
 
-\section[el impact]{Impact parameter analyses}
+\> very little constraints for the phase/rho
+
+\> something about the impact parameter
 
 \section[el coulomb]{Coulomb interference}
 
-\def\KL{Kudr\' at-Lokaj\' i\v cek}
-\def\KaL{Kudr\' at and Lokaj\' i\v cek}
-\def\WY{West-Yennie}
-\def\WaY{West and Yennie}
-
-In \Sc{el models} we have discussed the contribution of the strong interaction to the elastic scattering of nucleon. The strong interaction is obviously the most important one, however, there are three more fundamental forces: electromagnetic, weak and gravitational. The gravity is too weak on the mass and length scales typical for particle physics experiments and can be safely neglected therefore. The carriers of the weak force are much heavier that a typical four-momentum transfer $t\approx 1\un{GeV^2}$ and thus can be neglected too. The only other relevant interaction is the electromagnetic.
 
 The scattering amplitude due to the electromagnetic force can be calculated in a number of ways. Here we will use two approaches -- eikonal and QED. The former since the eikonal formalism will be used to discuss the Coulomb-hadronic interference and the latter since we consider it the most appropriate framework.
 
@@ -64,9 +114,7 @@ But first of all let us define the terminology that we will use. We will call \e
 
 We premise that we will often use high-energy and low-scattering-angle approximations to compare the results of several authors.
 
-\vskip\baselineskip
-\em{Electromagnetic scattering in QED}
-\vskip\baselineskip
+\caption{Electromagnetic scattering in QED}
 
 QED is a relativistic QFT that can naturally account for the structure of the proton and its anomalous magnetic moment (see e.g. Sc.~6.2 in \bref{peskin} or Sc.~5.2 in \bref{chyla}). These are described by two form factors, the electric $G_{\rm E}(t)$ and the magnetic $G_{\rm M}(t)$, which are related to the distributions of charge and magnetization in the proton \bref{sachs62}. The leading contribution (one photon exchange, $\O{\al^2}$) to the cross-section has been calculated in \bref{block06} (Eq.~(29)). Since we are interested in the LHC energies ($\approx 7\un{Tev}$) and momentum transfers smaller than $|t| = 10\un{GeV^2}$, we may use high-energy ($m/p\to 0$) and low-momentum-transfer ($t/p^2\to 0$) limits. Then, the result reads (both for $\rm pp$ and $\rm \bar p p$ scattering)
 \eqref{{\d\si^{\rm EM}_{\rm QED, OPE}\over\d t} = {4\pi \al^2\over t^2} G_{\rm eff}^4(t)\ .}{el dsdt em}
@@ -96,9 +144,7 @@ Since the degree of the polynomial in the denominator is higher by two compared 
 
 \fig{fig/pdf/el_ff_comparison.pdf}{el ff comparison}{Comparison of electric (dashed) and effective (solid) form factors. The dotted line represents dipole expression $F_{\rm d}(t)$.}
 
-\vskip\baselineskip
-\em{Electromagnetic scattering in eikonal description}
-\vskip\baselineskip
+\caption{Electromagnetic scattering in eikonal description}
 
 \iffalse
 The terms ''eikonal'' or ''impact-parameter'' descriptions are used in a number of meanings, thus let's make it clear. Adachi et. al \bref{adachi65} formulated an \em{impact-parameter representation} of a scattering amplitude. That is an amplitude $F(s, t)$ is transformed into a function $A(s, b)$, where $b$ has the meaning of impact-parameter. This procedure is mathematically consistent, however, does not present an algorithm to calculate either of the amplitudes.
@@ -125,9 +171,7 @@ The Coulomb eikonal can, in principle, be calculated by \Eq{el eik app born}. Ho
 
 So far, we have discussed hadronic and electromagnetic interactions separately. Now we turn to the question what is the amplitude describing these forces acting simultaneously. This \em{Coulomb-hadronic} interference has been studied by a number of authors within a number of formalism. We will first review some of the most important results and eventually discuss the differences and provide numerical comparisons. \TODO{eikonal calculation -- new}
 
-\vskip\baselineskip
-\em{Interference in non-relativistic QM}
-\vskip\baselineskip
+\caption{Interference in non-relativistic QM}
 
 One of the first authors to tackle the interference task was Bethe. In his work \bref{bethe58} he studied particle scattering by nuclei. He proposed a model based on two assumptions. First, the spatial distribution of protons and neutrons is the same. He parameterized this distribution by a Gaussian, with parameter $a$ governing its width (and thus the size of the nucleus). The second assumption is that the nuclear potential is proportional to the nucleon density. His total amplitude for $\rm pp$ and $\rm \bar pp$ scattering (upper and lower sign respectively) could be written:
 \eqref{F^{\rm C+H}(t) = \pm {\al s\over t} \e^{i \al \Ph(t)} + F^{\rm H}(t)}{el F CH decomp C}
@@ -135,9 +179,7 @@ with the Coulomb-hadronic phase $\Phi$
 \eqref{\Phi_{\rm Bethe}(t) = \pm 2 \log {1.06\over a\sqrt{|t|}}\ .}{el phase bethe}
 We recall that the hadronic amplitude $F^{\rm H}$ reflects Bethe's hadronic model and thus one cannot use his interference formula for a generic hadronic model. This fact may seem as a major disadvantage nowadays. We are mentioning Bethe's work because most of his successors have derived formulae formally very similar to \Eq{el F CH decomp C}. The common feature is that the total amplitude $F^{\rm C+H}$ hides an infinite phase factor which is not observable in differential cross-section. In that sense, \Eq{el dsdt} is valid for $F^{\rm C+H}$ but \Eq{el si tot} not.
 
-\vskip\baselineskip
-\em{Interference in QFT / Feynman diagrams}
-\vskip\baselineskip
+\caption{Interference in QFT / Feynman diagrams}
 
 \fig{fig/pdf/el_diagrams.pdf}{el diagrams}{Some of the Feynman diagrams contributing to proton-proton scattering. A: one photon exchange (OPE) diagram. B: a representation of complete hadronic scattering, that is the sum of all diagrams without photon exchange. C and D: the lowest order diagram contributing to the Coulomb-hadronic interference phase.}
 
@@ -179,9 +221,7 @@ where $\ga \doteq 0.577$ is the Euler's constant.
 
 
 
-\vskip\baselineskip
-\em{Interference in eikonal description}
-\vskip\baselineskip
+\caption{Interference in eikonal description}
 
 If electromagnetic and hadronic interactions could be described by potentials $V^{\rm C}$ and $V^{\rm H}$, the total potential would be given by their sum $V^{\rm C} + V^{\rm H}$. Since the eikonal is linear in potential, see \Eq{el eik app}, the total eikonal is a sum of Coulomb and hadronic eikonals
 \eqref{\de^{\rm C+H}(b) = \de^{\rm C}(b) + \de^{\rm H}(b)\ .}{el de CH}
@@ -239,11 +279,11 @@ The work of Selyugin \bref{selyugin99} provides a refinement of Cahn's $\nu$ cal
 
 One of the most recent works on the field of the Coulomb-interference is from Kopeliovich et al. \bref{kopeliovich01}. They aimed at describing proton-carbon collisions and from the beginning they fixed the electromagnetic form factors (exponential) and hadronic model (constant slope and phase).
 
-\vskip\baselineskip
-\em{Critique and discussion}
-\vskip\baselineskip
+\caption{Critique and discussion}
 
 \> two-photon exchange, QFT effects missing in eikonal formalism, running coupling constant.
+
+\> eikonal representation ~ sum of Feynman diagrams (Sec.~6.2 in \bref{barone})
 
 \> Form-factors in $ep$ and $pp$
 
@@ -314,7 +354,7 @@ There might be an interesting parallel between the complications in adopting eik
 While this is a serious conceptual issue, it has little practical impact for calculating the Coulomb-interference. It is due to the rapid fall off of the hadronic amplitude (it drops by $\gs 12$ orders of magnitude between $|t|=0$ and $20\un{GeV^2}$, see \Fg{el mod dsdt large}). Moreover the hadronic amplitude enters the interference formula \Eq{el phase Cahn} as a ratio $\FH(t') / \FH(t)$, where $t$ is the point of evaluation and $t'$ is the integration variable. Then it follows
 \eqref{{\FH(t')\over \FH(t)} \approx 0\ , \quad\hbox{ for }\quad t' \gs t + T\ ,}{el T 1}
 where $T$ is a sufficiently large constant (for a given value of $t$). Assuming that this stays valid even if $t'$ enters the kinematically forbidden region\footnote{%
-This can be justified for at least most of the eikonal-formulated hadronic models. Their eikonal amplitudes ($\equiv \exp(2i\de(b)) - 1$) are typically of a Gaussian-like profile with the RMS of about $1\un{fm}$. The $t$-amplitude can be calculated through \Eq{el eik rep}. For very high $|t|$ values the factor $J_0(b\sqrt{-t})$ becomes a rapidly oscillating function and one may expect a heavy suppression of the integral. No matter whether $t$ falls into kinematically allow region. It also explains the fast decrease of the hadronic cross-section. 
+This can be justified for at least most of the eikonal-formulated hadronic models. Their eikonal amplitudes ($\equiv \exp(2i\de(b)) - 1$) are typically of a Gaussian-like profile with the RMS of about $1\un{fm}$ (see e.g. Fg.~6.6 in \bref{barone}). The $t$-amplitude can be calculated through \Eq{el eik rep}. For very high $|t|$ values the factor $J_0(b\sqrt{-t})$ becomes a rapidly oscillating function and one may expect a heavy suppression of the integral. No matter whether $t$ falls into kinematically allow region. It also explains the fast decrease of the hadronic cross-section. 
 }, \Eq{el phase Cahn} yields
 \eqref{\Ps_{\rm Cahn}(t) =
 \pm \underbrace{\lim\limits_{\ta \to -\infty} \left[
@@ -330,7 +370,6 @@ Similar steps could be repeated for the interference formulae including form fac
 Let's turn to the interference formula of \KaL{} now. The authors have realized the issue with the hadronic eikonal $\de^{\rm H}$ and tried to circumvent it by truncating the integrals at $T = t_{\rm min}$. This step, if unjustified, may seem very controversial. Their derivation (based on the work of Cahn) needs, at least formally, infinite lower bound $T\to -\infty$. For example, Cahn's Eq.~(15) would not hold otherwise. However, it should be clear from the discussion above that thanks to the rapid decrease of the hadronic amplitude, one is allowed to cut the final integral in \Eq{el phase KL} at an appropriate value $T$. This justifies the step of \KaL.
 
 The formula of \KaL{} possesses another deficiency -- the authors have completely neglected the form-factor-induced modification of the Coulomb phase $\nu(t)$. However, this correction is small, compare \Fg{el cic diff nu} to \Fg{el cic noff FC} (right), with marginal influence on the measurable cross-section, see e.g. \Fg{el cic noff Z}.
-
 
 \vskip\baselineskip
 \em{Coulomb interference for different hadronic models}
@@ -352,9 +391,7 @@ As we have written above, the simplified formula of \WaY{} is still being used d
 
 \fig{fig/pdf/el_mod_R.pdf}{el mod R}{The difference between WY and KL formulae as a function of $t$. Calculated with CKL formula and Puckett form factor.}
 
-\vskip\baselineskip
-\em{Summary and conclusion}
-\vskip\baselineskip
+\caption{Summary and conclusion}
 
 \> review of electromagnetic amplitude + form factors
 \>> outcome ?? renormalization effects ??

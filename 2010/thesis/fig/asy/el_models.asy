@@ -18,10 +18,10 @@ string[] flabels = {
 	
 string[] tags = {"islam_bfkl", "islam_cgc", "ppp2", "ppp3", "bsw", "bh" };
 pen[] colors = {black, black+dashed, red, red+dashed, blue, heavygreen, magenta};
-string[] labels = {"Islam et al. (BFKL)", "Islam et al. (CGC)", "Petrov-Predazzi-Prokudin, 2 pomerons", "Petrov-Predazzi-Prokudin, 3 pomerons",
+string[] labels = {"Islam et al. (HP)", "Islam et al. (LxG)", "Petrov-Predazzi-Prokudin, 2 pomerons", "Petrov-Predazzi-Prokudin, 3 pomerons",
 	"Bourrely-Soffer-Wu", "Block-Halzen", "Jenkovszky et al."};
 
-string[] labelsS = {"Islam et al. (BFKL)", "Islam et al. (CGC)", "Petrov et al. (2P)", "Petrov et al. (3P)",
+string[] labelsS = {"Islam et al. (HP)", "Islam et al. (LxG)", "Petrov et al. (2P)", "Petrov et al. (3P)",
 	"Bourrely et al.", "Block et al.", "Jenkovszky et al."};
 
 //----------------------------------------------------------------------------------------------------
