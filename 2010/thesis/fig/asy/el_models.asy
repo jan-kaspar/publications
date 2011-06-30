@@ -143,6 +143,7 @@ for (int f = 0; f < files.length; ++f) {
 	}
 
 	limits((0, -10), (5, 30), Crop);
+	xaxis(YEquals(0, false), dotted);
 		
 	AdjustPlot(f, true);
 }
@@ -156,7 +157,7 @@ TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$\hbox{phase}\un{\pi}$");
+	NewPad("$|t|\un{GeV^2}$", "$\arg F(t)/\pi$");
 	scale(Linear, Linear);
 
 	for (int t : tags.keys) {
