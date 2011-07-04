@@ -54,7 +54,7 @@ GShipout("el_cic_noff_F_C", hSkip=5mm);
 //--------------------------------------------------
 write("* el_cic_noff_Psi");
 
-NewPad("$|t|\un{GeV^2}$", "real part of $\al\Psi$ or $-\al\Ph$");
+NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ci : cModes.keys)
 	draw(rGetObj(f4, "none/interference#0|cmp_"+cModes[ci]+"_CH_phase_re"), cm_colors[ci]+longdashed, cNames[ci]);
@@ -63,7 +63,7 @@ for (int li : las.keys)
 limits((t_min, -0.2), (t_max, 0.7), Crop);
 AttachLegend("no form factor", NW, NW);
 
-NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Psi$ or $-\al\Ph$");
+NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ci : cModes.keys)
 	draw(rGetObj(f4, "none/interference#1|cmp_"+cModes[ci]+"_CH_phase_im"), cm_colors[ci]+longdashed);
@@ -160,7 +160,7 @@ GShipout("el_cic_diff_nu", hSkip=5mm);
 //--------------------------------------------------
 write("* el_cic_diff_Psi_ff");
 
-NewPad("$|t|\un{GeV^2}$", "real part of $\al\Psi$ or $-\al\Ph$");
+NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ffi : FFs.keys) {
 	draw(rGetObj(f4, FFs[ffi]+"/interference#0|cmp_SWY_CH_phase_re"), ff_colors[ffi]+longdashed);
@@ -171,7 +171,7 @@ AddToLegend("longdashed: SWY");
 limits((t_min, -0.05), (t_max, 0.06), Crop);
 AttachLegend(SE, SE);
 
-NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Psi$ or $-\al\Ph$");
+NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ffi : FFs.keys) {
 	draw(rGetObj(f4, FFs[ffi]+"/interference#1|cmp_SWY_CH_phase_im"), ff_colors[ffi]+longdashed);
@@ -186,7 +186,7 @@ GShipout("el_cic_diff_Psi_ff", hSkip=5mm);
 write("* el_cic_diff_Psi_eik");
 
 
-NewPad("$|t|\un{GeV^2}$", "real part of $\al\Psi$ or $-\al\Ph$");
+NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#0|cmp_KL_CH_phase_re"), black+longdashed, "CKL");
 for (int li : las.keys) {
@@ -196,7 +196,7 @@ for (int li : las.keys) {
 }
 limits((t_min, -0.05), (t_max, 0.06), Crop);
 
-NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Psi$ or $-\al\Ph$");
+NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#1|cmp_KL_CH_phase_im"), black+longdashed, "CKL");
 for (int li : las.keys)
