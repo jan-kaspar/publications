@@ -5,10 +5,10 @@ gvim -p \
 	introduction.tex \
 	elastic.tex \
 	totem.tex \
+		extrapolation.tex \
 	simu_reco.tex \
 		elasticReco.tex \
 	alignment.tex \
-	sigma_tot.tex \
-		extrapolation.tex \
+	first_el_measurement.tex \
 	appendices.tex \
 	references.bib
