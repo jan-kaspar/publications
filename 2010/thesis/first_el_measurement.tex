@@ -2,6 +2,114 @@
 
 \> attach paper
 \> comment on what I have done (mostly with Simone)
-\>> alignment (previous chapter + th y matching)
-\>> background
-\>> unfolding
+
+\section{Alignment}
+
+\> alignment (previous chapter + th y matching)
+
+\section{Background}
+
+\> what bckg do we expect - low lumi runs
+\>> mainly: DPE
+\>> much less: twice a process (SD, beam gas, ...)
+
+\> table of cuts
+\>> quantities compared, cut quantity, sigma
+
+\> all cuts applied at $3\si$ perfect efficiency, purity study is the background study
+
+\> two parts:
+\>> integral = the number of non-elastic events has passed our selection
+\>> distribution = what is the distribution of such events in $t$ (= elastic definition)
+
+\fig{fig/pdf/felm_cuts.pdf}{felm cuts}{bla}
+
+INTEGRAL
+
+\> release one of the 6 cuts, look at the tails
+
+\> 2D example, "theorem", provided one can extract the bckg dist from the tails
+
+\> look at \Fg{felm background dist txty} left, the backround "seems" Guassian, reasonable fit
+\> every cut different rejection power, the best is cut 1, $th_x$
+\> the right plot has non-negligible bckg just on one side, fit doubtful
+
+\> compared (reasonable) fits for all 6 cuts (double-Gauss fit + tail only methods), result:
+$N_{\rm b}/N_{\rm t} = (8\pm 1)\percent$ for both diagonals (t = total = signal + bckg)
+
+\fig{fig/pdf/felm_background_int_dg_fit.pdf}{felm background int dg fit}{bla}
+
+DISTRIBUTION
+
+\> looking for left-right uncorrelated background -- cannot do much more
+\>> hence t left and right indep: $h(x, y) = h(x) h(y)$
+
+\> triggered on a proton on each side
+\>> but when looking on the left proton, the influence of the right one goes just to the normaliz.
+
+\> acceptance: need to cut of the events close to $t_y$ limit
+
+\> 2D dist: looks like exponential decrease in $t = t_x + t_y$
+\>> naively expected for DPE
+
+\> $t_x$ dist, in fact it looks more like exp/sqrt(x)
+\>> much better chi sq
+\>> in fact, for $h(t) \sim \exp(-b t)$
+
+$$h(t_x, t_y) \sim {\e^{-b t_x}\over \sqrt{t_x}} {\e^{-b t_y}\over \sqrt{t_y}}$$
+
+\>> let's try this param. but keep the b's indep. for x and y -- in fact, $t_x$ is reconstr. as for elastics, doesn't take into account xi, this would modify the x (or $t_x$) dist
+
+\> linear fit in the triangle (empty bins are not useful)
+
+\> fit results: bx and by difference, but consistent values for L and R and both diagonals
+\>> take the mean
+\>> STD DEV compatible with the estimated uncertainty
+
+\> now, if we know $h(t_x, t_y)$, what would be the distribution of the events passing our selection?
+\>> distribution in what:
+
+$$\bar t(\ldots)
+= p^2 \left( \th_x^{\rm L} + \th_x^{\rm R} \over 2 \right) + p^2 \left( \th_y^{\rm L} + \th_y^{\rm R} \over 2 \right)
+= \left( \sqrt{t_x^{\rm L}} + \sqrt{t_x^{\rm R}}\over 2 \right)^2 + \left( \sqrt{t_y^{\rm L}} + \sqrt{t_y^{\rm R}}\over 2 \right)^2 $$
+
+$$h(t) = \int $$
+
+\> MC simulation with realistic values + fit (alternation within the estim uncertainties give the errors of the fit params)
+\>> fit param.
+
+\bmfig
+\fig{fig/pdf/felm_background_dist_txty.pdf}{felm background dist txty}{[7cm]bla}
+\fig{fig/pdf/felm_background_dist_tx.pdf}{felm background dist tx}{[7cm]bla}
+\emfig
+
+\fig{fig/pdf/felm_background_dist_t_el.pdf}{felm background dist t el}{bla}
+
+RESULT
+
+\> apply the normalization to the dist
+
+\> acceptance: dist. treatment contains naturally acceptance correction (extending the param into the inaccesible region)
+\>> hope that the 8 percent would survive the acceptance corrections
+
+\> the normalization condition
+
+\> comparison to data
+
+\fig{fig/pdf/felm_background_cmp.pdf}{felm background cmp}{bla}
+
+\section{Unfolding}
+
+\bmfig
+\fig{fig/pdf/felm_unfolding_m1_fit.pdf}{felm unfolding m1 fit}{[7cm]bla.}
+\fig{fig/pdf/felm_unfolding_m1_correction.pdf}{felm unfolding m1 correction}{[7cm]bla.}
+\emfig
+
+\fig{fig/pdf/felm_unfolding_m1_test.pdf}{felm unfolding m1 test}{bla.}
+
+\bmfig
+\fig{fig/pdf/felm_unfolding_m2_addsm.pdf}{felm unfolding m2 addsm}{[7cm]bla.}
+\fig{fig/pdf/felm_unfolding_m2_corrections.pdf}{felmunfolding m2 corrections}{[7cm]bla.}
+\emfig
+
+\fig{fig/pdf/felm_unfolding_m1m2_cmp.pdf}{felm unfolding m1m2 cmp}{bla.}
