@@ -37,8 +37,8 @@ NewPad("$q_1/\si_1$", "");
 draw(rGetObj(dir+"/bckg_45b_56t.root", "cq1_dist_sel"), "p");
 draw(rGetObj(dir+"/bckg_45b_56t.root", "cq1_dist_sel|ff"), blue+1pt);
 
-GetSignal(robj);
-draw(graph(gauss, -12, +12, 1000), heavygreen+1pt);
+//GetSignal(robj);
+//draw(graph(gauss, -12, +12, 1000), heavygreen+1pt);
 
 GetGauss(robj);
 draw(graph(gauss, -12, +12, 1000), red+1pt);
@@ -53,8 +53,8 @@ NewPad("$q_4/\si_4$", "");
 draw(rGetObj(dir+"/bckg_45b_56t.root", "cq4_dist_sel"), "p");
 draw(rGetObj(dir+"/bckg_45b_56t.root", "cq4_dist_sel|ff"), blue+1pt);
 
-GetSignal(robj);
-draw(graph(gauss, -12, +12, 1000), heavygreen+1pt);
+//GetSignal(robj);
+//draw(graph(gauss, -12, +12, 1000), heavygreen+1pt);
 
 GetGauss(robj);
 draw(graph(gauss, -12, +12, 1000), red+1pt);
@@ -73,13 +73,13 @@ TH2_process = TH2_log;
 draw(rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "hxy_L"), "p,i");
 limits((0, 0), (1.2, 1.2), Crop);
 
-draw((0, 0.4)--(1.2, 0.4)--(0, 1.2)--cycle, black);
+draw((0, 0.35)--(1.2, 0.35)--(0, 1.2)--cycle, red+dashed+1pt);
 
 GShipout("felm_background_dist_txty");
 
 //--------------------
 
-NewPad("$|t_x|\un{GeV^2}$", "");
+NewPad("$|t_x|\un{GeV^2}$", "$\d N/\d t_x$");
 scale(Linear, Log);
 draw(rGetObj(dir+"/h_x_r_45b_fit.root", "Canvas_1|hx_R"), black);
 TF1_lowLimit = 0.01;
@@ -90,11 +90,11 @@ GShipout("felm_background_dist_tx");
 
 //--------------------
 
-NewPad("$|t|\un{GeV^2}$", "");
+NewPad("$|t|\un{GeV^2}$", "(arbitrary units)");
 scale(Linear, Log);
 draw(rGetObj(dir+"/mc2.root", "h_m"));
 draw(rGetObj(dir+"/mc2.root", "h_m|ffel"), red+1pt);
-limits((0, 1e0), (2.5, 1e5), Crop);
+limits((0, 1e-1), (2.5, 2e5), Crop);
 
 GShipout("felm_background_dist_t_el");
 
@@ -107,7 +107,8 @@ scale(Linear, Log);
 draw(shift(0, log10(1/0.05)), rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "h_t"), black+1pt, "signal+background");
 draw(rGetObj(dir+"/background2_with_errors_45b_56t.root", "bckg_with_err"), "l,ec", red+1pt, "background new");
 
-limits((0, 1e1), (3, 1e6), Crop);
-AttachLegend("diagonal 45 bottom -- 56 top");
+limits((0, 1e1), (2.5, 2e5), Crop);
+yaxis(XEquals(0.36, false), dashed);
+//AttachLegend("diagonal 45 bottom -- 56 top");
 
 GShipout("felm_background_cmp");

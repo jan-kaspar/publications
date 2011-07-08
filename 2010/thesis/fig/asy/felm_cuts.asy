@@ -43,8 +43,8 @@ real c[] = { +2.79616e-06, +1.18720e-05, -3.38128e-05, -3.62602e-05, +1.61861e-0
 real si[] = { 2.4e-5*0.325, 2.4e-5, 3.33860e-05, 3.54507e-05, 1.42454e-02, 1.32129e-02 };
 real all[] = { -1.5e-4, 1.5e-4, -2, -2, 6, -20};
 real aul[] = { 1.5e-4, 5e-4, 2, 2, 20, -6 };
-real bll[] = { -1.5e-4, -5e-4, -1.5e-4, -1.5e-4, -0.3 , -0.4};
-real bul[] = { 1.5e-4, -1.5e-4, 1.5e-4, 1.5e-4	, +0.6, +0.4};
+real bll[] = { -1.5e-4, -5e-4, -1.5e-4, -1.5e-4, -0.1 , -0.2};
+real bul[] = { 1.5e-4, -1.5e-4, 1.5e-4, 1.5e-4	, +0.3, +0.2};
 
 for (int i = 0; i < 6; ++i) {
 	write("* ", i);
@@ -58,6 +58,7 @@ for (int i = 0; i < 6; ++i) {
 	draw(tr, rGetObj(f, "sp"+format("%u", i+1)), "p,i");
 
 	draw(tr*((all[i], (-a[i]*all[i] + 3si[i] + c[i]) / b[i])--(aul[i], (-a[i]*aul[i] + 3si[i] + c[i]) / b[i])), black+1pt);
+	draw(tr*((all[i], (-a[i]*all[i] + 0si[i] + c[i]) / b[i])--(aul[i], (-a[i]*aul[i] + 0si[i] + c[i]) / b[i])), black+1pt+dotted);
 	draw(tr*((all[i], (-a[i]*all[i] - 3si[i] + c[i]) / b[i])--(aul[i], (-a[i]*aul[i] - 3si[i] + c[i]) / b[i])), black+1pt);
 
 	limits(tr*(all[i], bll[i]), tr*(aul[i], bul[i]), Crop);

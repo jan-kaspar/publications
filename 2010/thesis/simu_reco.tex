@@ -1,3 +1,7 @@
+\iffalse
+RP, MC, IP5, CMS, T1, T2, VFAT, DIGI, RECO, LAB, LHC
+\fi
+
 \chapter{RP simulation and reconstruction methods}
 
 In \Sc{rp measurement} we have described how scattered protons can be detected by the RP detectors. This processes can be simulated by computer programs which is essential for development and tuning of reconstruction techniques. That for processes where the scattered proton kinematics is deduced from the RP hits. The structure of the simulation and reconstruction software is sketched in \Fg{sr sw structure}. Beyond the aforemetined \em{simulation} and \em{reconstruction} blocks, you can see three more: \em{alignment} (special reconstruction focused to the alignment of RP detectors), \em{raw-data} (experimental data preprocessing) and \em{trigger} (trigger related analyses).
@@ -59,7 +63,7 @@ Elegent is acronym for ELastic Event GENeraTor. It generates elastic $\rm pp$ an
 
 It uses the inversion method (see \bref{wikipedia} key ''Inverse transform sampling''). This means one has to prepare cumulative distribution functions (cdfs.) first. The Elegent package contains a standalone program to do so. For a chosen energy and interaction type ($\rm pp$ or $\rm\bar pp$), the program calculates (samples in a given range) cdfs.~for every models and saves them as a ROOT file. In fact, for each hadronic model, there are three cdfs.~with various levels of Coulomb interaction inclusion: pure hadron (Coulomb effects are completely neglected), West-Yennie (\Eq{el WY}) and Kundr\' at-Lokaj\' i\v cek (\Eq{el KL}).
 
-The generation program itself loads a selected cdf., can reduce the available $t$-region and inverts the cdf. The generated events are saved in the standard HepMC format. Technical details and usage hints can be found in \bref{elegent}.
+The generation program itself loads a selected cdf., can reduce the available $t$-region and inverts the cdf. The generated events are saved in the standard HepMC \TODO{ref} format. Technical details and usage hints can be found in \bref{elegent}.
 
 
 \section[beam smearing]{Beam smearing}
@@ -116,7 +120,7 @@ and thus $\ga\simeq 1$ (all other terms are of second and higher orders). Then, 
 The energy scaling factor turns out
 \eqref{\ch \simeq 1 + {\xi_1 + \xi_2\over 2}\ .}{sm energy scaling expl}
 
-Now we are ready to apply \Eq{sm mc to lab} to an outgoing (MC generated) particle with momentum $\vec p_{\rm MC}$. Let's limit ourselves to particles that can reach Roman Pot stations, that means particles scattered to small angles $\th \leq 10^{-3}$. A convenient parameterization, thus, is
+Now we are ready to apply \Eq{sm mc to lab} to an outgoing (MC generated) particle with momentum $\vec p_{\rm MC}$. Let's limit ourselves to particles that can reach the RP stations, that means particles scattered to small angles $\th \ls 10^{-3}$. A convenient parameterization, thus, is
 \eqref{\vec p_{\rm MC} = \pm p\,\pmatrix{\th\cos\ph\cr \th\sin\ph\cr 1\cr} \.}{sm diff mc}
 The particles with $+$ sign can be detected in the right arm stations, with $-$ sign in the left arm. Still working in the leading approximation, one finds
 \eqref{\vec p_{\rm LAB} = \pm p\,\pmatrix{\th\cos\ph + \De\th_x\cr \th\sin\ph + \De\th_y\cr 1 + \xi\cr},
@@ -139,7 +143,7 @@ Using the statistical properties suggested in the previous section yields the fo
 
 \fig[8cm]{fig/pdf/smearing_vertex.pdf}{smearing vertex}{Bunch collision with crossing angle $\al$.}
 
-\Eq{in luminosity}, one of the luminosity definitions, suggests that function
+\Eq{in luminosity}, one of the luminosity definitions \TODO{ref formanek?}, suggests that function
 \eqref{h(x, y, z; t) = {1\over {\cal L}_{int}}\,j(x, y, z; t)\ \rh_T(x, y, z; t)}{sm pdf}
 can be interpreted as the probability density function of finding an interaction (vertex) at position $(x, y, z)$ and time $t$. Recalling that $j$ stands for the flux of bombarding particles and $\rh_T$ is the density of target particles. This formula can well be adatped for a collision of two bunches, as depicted in \Fg{smearing vertex}. The two bunches, each propagating (in the LAB frame) with speed $v$, are collided under a crossing angle $\al$. The flux $j$ in \Eq{sm pdf} can be expressed as $v_{\rm rel}\,\rh$, where $v_{\rm rel} = 2v\cos\al$ is the relative velocity of the two bunches and $\rh$ is the density of one of them. Therefore one can write
 \eqref{h(x, y, z; t) = {2v\cos\al\over {\cal L}_{int}}\ \rh_1(x, y, z; t)\, \rh_2(x, y, z; t)\.}{sm pdf2}
