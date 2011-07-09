@@ -10,16 +10,15 @@ DPE, SD, MC
 
 \chapter[felm]{The first elastic scattering measurement at the LHC}
 
-\> attach paper
+\> attach the paper \bref{totem11}
 \> comment on what I have done (mostly with Simone)
 
 \section{Alignment}
 
-\> alignment (previous chapter + th y matching)
+\> \Sc{al}
+\> th y matching
 
 \section{Background}
-
-\> left = 45, right = 56
 
 The selection cuts for the ultimate analysis have evolved compared to those used in \Sc{al elast}. At the end six cuts have been used, they are shown in \Fg{felm cuts}. Qualitatively, they are similar to those presented in \Fg{al el selection}. The cut condition could be written as
 \eqref{|q_i| < 3 \si_i\ ,}{felm cut}
@@ -133,57 +132,85 @@ What is left is merely to merge the normalization (integral) result \Eq{felm bck
 
 \section{Unfolding}
 
-The \Eq{sm diff lab,elr tx' sigma} could be summarized by writing the reconstructed angles $\th_x$ and $\th_y$
+The scattering angles $\th_x'$ and $\th_y'$ are reconstructed by taking the average over the two one-arm measurements:
+\eqref{\th_x' \equiv {\th_x^{\rm L} + \th_x^{\rm R}\over 2} = \th_x + \De\th_x}{felm unf th err}
+and equivalently for the $y$ projection. The left and right angle measurements are subject to an error, our estimation of which is given by \Eq{sm diff lab,elr tx' sigma} \TODO{make sure}. We expect two main contributions: due to the beam-divergence ($\si \approx 17\un{\mu rad}$ \TODO{check}) and due to the finite resolution of the silicon detectors ($\si \approx ...$ \TODO{diff. val. for x and y?}). Because of the arithmetic mean, the standard deviation of $\De\th_x$ is reduced by a factor of $\sqrt 2$. We expect therefore $\si(\De\th_x) \approx 12.5\un{\mu rad}$. In fact, it can be measured by examining the distribution of $(\th_x^{\rm L} - \th_x^{\rm R})/2$, it yields
+\eqref{\si(\De\th_x) \simeq \si(\De\th_y) = (12.5\pm 0.5)\un{\mu rad}\ .}{felm unf sigma proj}
 
-\eqref{\th_x = \th_x^{\rm true} + \De \th_x^{\rm bs} + \De \th_x^{\rm dp}}{felm unf th err}
+Suppose that $h(\th)$ is the true distribution of (non-smeared) scattering angle $\th$ (a function proportional to $\d\si/\d\th$ cross-section). Then, after acceptance correction etc., we would reconstruct a distribution $h'(\th')$ smeared due to the final angular measurement distribution. These distributions can be related by an integral transformation (see e.g. \TODO{ref}):
+\eqref{h'(\th') = \int {\d\ph\over 2\pi} \int \d\De\th_x\ G(\De\th_x) \int \d\De\th_y\ G(\De\th_y)
+	\ \left| \d\th\over\d\th' \right|\ h(\th)\ ,
+}{felm unf sm model}
+where $\th \equiv \th(\th', \ph, \De\th_x, \De\th_y)$ is the non-smeared value of scattering angle corresponding to the smeared angle $\th'$, (non-smeared) azimuthal angle $\ph$ and angular measurement errors $\De\th_x$ and $\De\th_y$. It can be obtained by solving
+\eqref{\th'^2 = (\th\cos\ph + \De\th_x)^2 + (\th\sin\ph + \De\th_y)^2\ .}{felm unf th eq}
+For small measurement errors $\si(\De\th_{x, y}) \ll \th$ (compare \Eq{felm unf sigma proj} with the lowest $\th$ in our analysis $\approx 170\un{\mu rad}$), the solution reads
+\eqref{\th = \th' - (\De\th_x \cos\ph + \De\th_y \sin\ph)\ .}{felm unf th sol}
+If we plug it to \Eq{felm unf sm model}, the Jacobian simplifies to 1. We can well describe the angular measurement error distributions $G$ by Gaussians with sigma given by \Eq{felm unf sigma proj}. If expand $h(\th)$ around $\th = \th'$ we obtain
+\eqref{h'(\th') = h(\th') + h^{(2)}(\th') {\si^2\over 2} + \ldots \ ,}{felm unf sm model exp}
+where $h^{(2)}$ represents the second derivative of $h(\th)$. The same first two terms would be obtained in a smearing model
+\eqref{h'(\th') = \int \d\De\th\ G(\De\th)\ h(\th' - \De\th)  \ .}{felm unf sm model sim}
+That is a Gaussian smearing that acts directly in $\th$, moreover with the sigma numerically equivalent to \Eq{felm unf sigma proj}. This is what one expects from the error propagation (the last equality follows from \Eq{felm unf sm model})
+\eqref{\si^2(\th) \equiv \si^2(\sqrt{\th_x^2 + \th_y^2}) = {\th_x^2\over \th^2} \si^2(\De\th_x) + {\th_y^2\over \th^2} \si^2(\De\th_y) = \si^2(\De\th_{x, y)}\ .}{felm unf sigma}
 
-\> sigma bs is ..., sigma dp is ... hence bs is dominant
-\> gaussian approximation good, the same sigma
+The simplified smearing model \Eq{felm unf sm model} is technically advantageous. The smearing applies in $\th$ (which is directly related to $t$, the quantity of interest), it does not mix the $x$ and $y$ components. We will numerically verify its validity for our data later on. For the time being, we can state that it will provide a good approximation to the full model \Eq{felm unf sm model} whenever the $\th$-distribution $h(\th)$ can be locally (in region $\th \pm \hbox{few times }\De\th_{x, y}$) well described by a cubic function (terms with odd derivatives drop from expansions of type \Eq{felm unf sm model exp}).
 
-\> model (smearing in theta, will verify later)
-\eqref{h(\th) = \int \d\ta h^{\rm true}(\th - \ta) N(\ta; 0, \si^2)}{felm unf th sm}
+We will now describe two unsmearing methods: a fit-based and a bin-base method. Each of them has advantages and disadvantages. The bin-based method suffers from the bin-content fluctuations which are further reinforced by the unsmearing procedure. A fit may, by its nature, provide smoothing of the data, hence remove the troublesome fluctuations. However, there is certain arbitrariness of the data description within their errors. It is thus reassuring to find both methods giving compatible results, as we will show at the end.
 
-\> unsmearing also in theta
-\>> in th x and y difficult to apply
-\>> in t problematic too, si is not const
 
-\> 2 methods: fit and bin-migration
-\>> each has + and -
-\>> fit is doing smoothing, which is good but arbitrary
+\caption{Fit-based method}
 
-\caption{Fit method}
+The idea of this method is to describe the data with a function for which the unsmearing (reverse transform \Eq{felm unf sm model sim}) can be done analytically. Moreover, the function shall provide a realistic extrapolation to the low-$\th$ region, where we miss acceptance. In that region we expect the cross-section to be well approximated by $\d\si/\d t \propto \exp(bt)$. This translates into $\th$-distribution as $h(\th) \propto \th \exp(-bp^2 \th^2)$.
 
-\> data described as
-
+We have parameterized the data by
 \eqref{h(\th) = G'(\th) + \sum_{i = 1}^3 G_i(\th),
 	\qquad G'(\th) = a \th \e^{- {\th^2\over 2 T^2}},
 	\qquad G(\th) = a \e^{- {(\th - \mu) ^2\over 2 T^2}},
 }{felm unf fm param}
-with $a$, $\mu$ and $T$ are fit parameters (11 in total)
+with $a$, $\mu$ and $T$ being the free parameters (11 in total). The $G'$ function controls the low-$\th$ behavior. The fit is plotted in \Fg{felm unfolding m1 fit}. The dashed vertical line represents our analysis cut - we do not trust the data below this point, because of too large acceptance corrections (which are subject to too large uncertainties). We show the data points below the analysis cut here in order to demonstrate that the ``extrapolation'' function $G'$ is not unreasonable.
 
-\> motivation for $G'$
+\bmfig
+\fig{fig/pdf/felm_unfolding_m1_fit.pdf}{felm unfolding m1 fit}{[7cm]The reconstructed $\th$-distribution (diagonal 45 top -- 56 bottom) with a fit according to the parameterization \Eq{felm unf fm param}.}
+\fig{fig/pdf/felm_unfolding_m1_correction.pdf}{felm unfolding m1 correction}{[7cm]The smearing correction for diagonal 45 top -- 56 bottom and two representative values of $\si(\De\th)$.}
+\emfig
 
-\> analytic unsmearing = analytic reverse transform \Eq{felm unf th sm}
-
+The unsmearing (reverse transform \Eq{felm unf sm model sim}) keeps the form of the parameterization \Eq{felm unf fm param} unchanged, only the parameters receive modifications:
 \eqref{\eqnarray{
 G'(\th)& :\quad & T^2 \to T^2 - \si^2,\quad a \to a \left( T^2\over T^2 - \si^2 \right)^{3\over 2} \cr
-G(\th)& :\quad & T^2 \to T^2 - \si^2,\quad a \to a \left( T^2\over T^2 - \si^2 \right)^{1\over 2},\quad \mu \to \mu \cr
+G(\th)& :\quad & T^2 \to T^2 - \si^2,\quad a \to a \left( T^2\over T^2 - \si^2 \right)^{1\over 2},\quad \mu \to \mu\ ,\cr
 }}{felm unf fm unsmear}
+where $\si$ is given by \Eq{felm unf sigma}.
+
+\Fg{felm unfolding m1 correction} show the resulting smearing correction
+\eqref{\hbox{smearing correction} = {\hbox{unsmeared distribution} \over \hbox{measured distribution}}\ .}{felm unf fm sm corr}
+The two curves correspond to two values of $\De\th$, representing the uncertainty of its determination, see \Eq{felm unf sigma proj}. The difference between blue and red curves thus evaluates the systematic error of the unsmearing. The statistical error, drawn as the light-red band, has been calculated by propagating the uncertainties of the 11 fit parameters. We have adjusted the fit such that, in our opinion, the resulting error band reasonably reflects the actual uncertainty.
+
+As we have anticipated in the introduction, a fit always brings in a certain ambiguity in data description. Different parametrizations, different fit-procedure settings, etc. can lead to a number of results. Even thought the fits might be equally good (similar value of $\ch^2$), they might be quite different. We had this in mind when calculating the light-red error band.
+
+The ultimate uncertainty has been calculated as the total (maximal) error band for $\si(\De\th) = 12$ and $13\un{\mu rad}$ for both diagonals.
+
+Before we move to the second method, let us verify the validity of the simplified smearing model \Eq{felm unf sm model sim}. Let's take the unsmeared distribution and re-apply the smearing according to the full model \Eq{felm unf sm model}. We have performed the integrations with the help of MC methods. The result is shown in \Fg{felm unfolding m1 test}, one can see a perfect match.
+
+\fig{fig/pdf/felm_unfolding_m1_test.pdf}{felm unfolding m1 test}{Our unsmearing result smeared again with the full model \Eq{felm unf sm model}, compared to the input data.}
+
+\caption{Bin-base method}
+
+The idea of this method is to ``learn'' the trend of the smearing corrections by applying several additional (extra) smearing steps, as depicted in \Fg{felm unfolding m2 scheme}. The ultimate correction (from measured to unsmeared distributions) can then be extrapolated from corrections 1 to 3.
+
+\fig{fig/pdf/felm_unfolding_m2_scheme.pdf}{felm unfolding m2 scheme}{The scheme of the bin-based method. The arrows pointing right represent smearing, the ones pointing left represent unsmearing.}
+
+Before applying any smearing step, we should make sure that the input distribution contains enough data. For example, if we would like to examine the smeared distribution above a given value $\th_{\rm c}$, the input distribution (before the smearing step) should extend to at least $\th_{\rm c} -3\si(\De\th)$. Therefore, if the distribution after 3 extra smearings should be meaningful above the analysis cut $\th_c = 170\un{\mu rad}$, the measured distribution should be defined down to $(170 - 9\cdot 12.5) \un{\mu rad}\approx 60 \un{\mu rad}$. It is therefore necessary to extrapolate the measured distribution down to that value. To achieve this, we have used the $G'$ parameterization (see \Eq{felm unf fm param}) just as in the fit-base method.
+
+The extrapolated smeared distribution is shown in \Fg{felm unfolding m2 addsm}, together with the distributions after the extra smearings which have been calculated with a MC method according to the model \Eq{felm unf sm model sim}. One can see that the effect of smearing is not linear. That is why we have chosen to perform three extra smearing steps -- it allows for a quadratic (the simplest non-linear) extrapolation.
+
+The correction functions (compatible with the definition \Eq{felm unf fm sm corr}) are displayed in \Fg{felm unfolding m2 corrections}. The ultimate corrections has been obtained by a per-bin quadratic extrapolation of the corrections one to three. It is clear that any bin fluctuations get amplified by the extrapolation, thus fluctuation of the black curve are the most pronounced.
 
 \bmfig
-\fig{fig/pdf/felm_unfolding_m1_fit.pdf}{felm unfolding m1 fit}{[7cm]bla.}
-\fig{fig/pdf/felm_unfolding_m1_correction.pdf}{felm unfolding m1 correction}{[7cm]bla.}
+\fig{fig/pdf/felm_unfolding_m2_addsm.pdf}{felm unfolding m2 addsm}{[7cm]The extrapolated measured $\th$-distribution (diagonal 45 top -- 56 bottom) and the distributions after extra smearing steps ($\si(\De\th) = 12\un{\mu rad}$ used).}
+\fig{fig/pdf/felm_unfolding_m2_corrections.pdf}{felm unfolding m2 corrections}{[7cm]The smearing correction functions as defined in \Fg{felm unfolding m2 scheme}.}
 \emfig
 
-\fig{fig/pdf/felm_unfolding_m1_test.pdf}{felm unfolding m1 test}{bla.}
+\caption{Method comparison}
 
-\caption{Bin-migration method}
+The fit-based and bin-based methods are compared in \Fg{felm unfolding m1m2 cmp}. Despite the large fluctuation of the bin-based result, the very good is evident. The discrepancy at low $\th$ values is practically irrelevant because it falls below the analysis cut (drawn as the dotted line). Generally speaking we trust more the fit-based result, we consider the bin-based method rather as a reassuring cross-check.
 
-\bmfig
-\fig{fig/pdf/felm_unfolding_m2_addsm.pdf}{felm unfolding m2 addsm}{[7cm]bla.}
-\fig{fig/pdf/felm_unfolding_m2_corrections.pdf}{felmunfolding m2 corrections}{[7cm]bla.}
-\emfig
-
-\caption{Comparison}
-
-\fig{fig/pdf/felm_unfolding_m1m2_cmp.pdf}{felm unfolding m1m2 cmp}{bla.}
+\fig{fig/pdf/felm_unfolding_m1m2_cmp.pdf}{felm unfolding m1m2 cmp}{A comparison of the fit-based and bin-based method (for diagonal 45 top -- 56 bottom and with $\si(\De\th) = 12\un{\mu rad}$).}
