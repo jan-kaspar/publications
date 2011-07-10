@@ -13,6 +13,12 @@ DPE, SD, MC
 \> attach the paper \bref{totem11}
 \> comment on what I have done (mostly with Simone)
 
+\> review the conventions
+\>> 45 = left, 56 = right
+\>> the 2 diagonals
+
+\> review the reconstruction steps
+
 \section{Alignment}
 
 \> \Sc{al}
@@ -20,69 +26,80 @@ DPE, SD, MC
 
 \section{Background}
 
-The selection cuts for the ultimate analysis have evolved compared to those used in \Sc{al elast}. At the end six cuts have been used, they are shown in \Fg{felm cuts}. Qualitatively, they are similar to those presented in \Fg{al el selection}. The cut condition could be written as
+The elastic-event-selection cuts for the final analysis have evolved compared to those used in \Sc{al elast}. At the end six cuts have been used, as shown in \Fg{felm cuts}. They are qualitatively similar to those presented in \Fg{al el selection}, the cut condition could be written as
 \eqref{|q_i| < 3 \si_i\ ,}{felm cut}
-where the \em{cut quantity} $q_i$ gives the distance from the ``expectation'' line which is drawn dotted in \Fg{felm cuts}. The $\si_i$ is experimentally determined standard deviation of the elastic events projected into the cut quantity.
+where the \em{cut quantity} $q_i$ gives the distance from the ``expectation'' line which is drawn dotted in \Fg{felm cuts}. $\si_i$ is an experimentally determined standard deviation of the elastic events projected into the cut quantity.
 
-The cuts 1 and 2 represent the collinearity requirements, that is the left and right proton shall have opposite directions. The rest of the cuts represent the low-$\xi$ requirements.
+Cuts 1 and 2 represent collinearity requirements, that is the left and right protons shall have opposite directions. The rest of the cuts implement low-$\xi$ requirements -- for such particles there is a high correlation between the hit position and the angle in a station.
 
 \fig{fig/pdf/felm_cuts.pdf}{felm cuts}{The selection cuts (for the diagonal 45 bottom -- 56 top). The color scale follows logarithmically the bin contents in the order: white, blue, green, red and black.}
 
-As already displayed in \Eq{felm cut}, all cuts have been applied on a $3\si$-level. Therefore we expect them to be of a very high efficiency. That is the number of true elastic events that fail the selection cuts is negligible. On the other hand, we expect a number of non-elastic ($\equiv$ background) events to pass our cuts -- these events will be studied in this section.
+As \Eq{felm cut} suggests, all cuts have been applied on a $3\si$-level. Therefore we expect them to be of a very high efficiency. That is the number of true elastic events that fail the selection cuts is negligible. On the other hand, we expect a number of non-elastic ($\equiv$ background) events to pass the cuts -- these events will be studied in this section.
 
-The task can be split into two parts: the \em{integral}, the number of background events which have passed our selection, and the \em{distribution}, the contribution of background to the elastic $t$-distribution.
+The task can be split into two parts: the \em{integral}, the number of background events which have passed the selection, and the \em{distribution}, the contribution of background to the elastic $t$-distribution.
 
 But before the analysis, let us mention what background contributions we expect. Since these data were taken in a low luminosity run (\TODO{avg. num. of in. per bunch cr.}), we expect the pile-up contributions (SD, beam gas, etc.) to be dominated by DPE. For DPE, a naive cross-section guess could be \TODO{ref}
 \eqref{{\d\si^{\rm DPE}\over\d\xi_{\rm L} \d t_{\rm L} \d\xi_{\rm R} \d t_{\rm R} } \propto {\e^{-b t_{\rm L}}\over \xi_{\rm L}} {\e^{-b t_{\rm R}}\over \xi_{\rm R}}\ .}{felm dpe cs}
 
-\caption{Integral}
+\caption{The integral}
 
-If $h_{\rm B}(q_1, \ldots , q_6)$ was be the distribution of the background events in the six cut quantities, then the number of background events passing the selection cuts would be
-\eqref{I_{\rm B} = \int\limits_{-3\si_1}^{+3\si_1} \d q_1\ \ldots\!\! \int\limits_{-3\si_6}^{+3\si_6} \d q_6\  h_{\rm B}(q_1, \ldots , q_6)\ .}{felm bckg int}
-Some information on the background distribution $h_{\rm B}$ can be obtained if one of the cuts is relaxed and one looks at the distribution of the corresponding cut quantity. For example, the background contribution to the distribution of the first cut quantity
+If $h_{\rm B}(q_1, \ldots , q_6)$ was the distribution of the background events in the six cut quantities, then the number of background events passing the selection cuts would be
+\eqref{N_{\rm B} = \int\limits_{-3\si_1}^{+3\si_1} \d q_1\ \ldots\!\! \int\limits_{-3\si_6}^{+3\si_6} \d q_6\  h_{\rm B}(q_1, \ldots , q_6)\ .}{felm bckg int}
+Some information on the background distribution $h_{\rm B}$ can be obtained by relaxing one of the cuts and analyzing the distribution of the corresponding cut quantity. In the region $|q_i| < 3\si_i$ the distribution shall be dominated by the elastic events ($\equiv$ signal), but at the tails $|q_i|>3\si_i$ one can sense the background. For example for the first cut quantity, the tails should be described by (one-cut-quantity distribution)
 \eqref{h_1(q_1) = \int\limits_{-3\si_2}^{+3\si_2} \d q_2\ \ldots\!\! \int\limits_{-3\si_6}^{+3\si_6} \d q_6\  h_{\rm B}(q_1, \ldots , q_6)\ .}{felm bckg q1 dist}
-In the region $|q_1| < 3\si_1$, the distribution is dominated by the elastic events, thus one shall look at the tails only. Provided that one can reconstruct the $h_1$ from tails, the background integral can be calculated
-\eqref{I_{\rm B} = \int\limits_{-3\si_1}^{+3\si_1} \d q_1\ h_1(q_1)\ .}{felm bckg int 2}
-Such a procedure can be repeated for each cut quantity, in principle, yielding six independent determinations of the integral $I$.
+Provided that one can reconstruct the $h_1(q_1)$ from tails, the background integral can be calculated
+\eqref{N_{\rm B} = \int\limits_{-3\si_1}^{+3\si_1} \d q_1\ h_1(q_1)\ .}{felm bckg int 2}
+Such a procedure can be repeated for each cut quantity, in principle yielding six independent determinations of the integral $N_{\rm B}$.
 
-\fig{fig/pdf/felm_background_int_dg_fit.pdf}{felm background int dg fit}{An example of the cut-quantity distributions. The blue curve is a double-gaussian fig, the red one represents its background part.}
+\fig{fig/pdf/felm_background_int_dg_fit.pdf}{felm background int dg fit}{An example of the one-cut-quantity distributions (diagonal 45 bottom -- 56 top). The blue curve represents a double-Gaussian fit, with the red curve being its background part.}
 
-Two examples of the one-cut-quantity distributions are show in \Fg{felm background int dg fit}. It has turned out very reasonable to describe the signal+background data as a superposition of two Gaussians. Fits for both cases shown has given good $\xi^2$, however there is an important difference. For the cut 1 (left), there is enough background events on both sides of the signal peak. Thus, the background fit is trustworthy. In contrary, for the cut 4 (right), there is practically no background in the right tail -- the fit is doubtful in this case. Unfortunately this the case for most cuts. It is related to a simple observation that every cut has a different discrimination power. From this point of view, cut number 1 is the best one and that is why there is enough background leaking to the tails allowing for a reasonable fit.
+Two examples of the one-cut-quantity distributions are shown in \Fg{felm background int dg fit}. It turns out reasonable to describe the signal+background data as a superposition of two Gaussians (\TODO{1: $\ch^2/\hbox{ndf} = 1.6$, 4: $3.1$}). Although the $\ch^2/\hbox{ndf} \approx$ in both shown cases, there is an important difference. For cut 1 (left), there are enough background events on both sides of the signal peak. Thus, the background fit is trustworthy. In contrary, for cut 4 (right), there is nearly no background in the right tail -- the fit is doubtful in this case. Unfortunately this the case for most cuts. It is related to a simple observation that every cut has a different discrimination power. From this point of view, cut 1 is the best one and that is why there is enough background at both tails, allowing for a reasonable fit.
 
-Besides the double-Gauss fits we have tried single-Gauss fits through the tail data only. Eventually, we have calculated a weighted mean (the weight reflecting our confidence in a given result), yielding
-\eqref{{I_{\rm B}\over I_{\rm S+B}} = (8\pm 1)\percent\ ,}{felm bckg int result}
-equally for both diagonals. $I_{\rm S+B}$ represents the total number of events passing the selection cuts, that is signal and background.
+Besides the double-Gauss fits we have tried single-Gauss fits through the tail data only. Eventually, we have calculated a weighted mean (the weight reflecting our confidence in a given result), yielding the values in \Tb{felm bckg int result}.
 
+\tab{felm bckg int result}{The numbers of background events that passed the selection cuts.}{
+\omit&\multispan2\bhrulefill\cr
+\omit&\omit\bvrule\bstrut\tskip 45 bottom -- 56 top\tskip&\hbox{45 top -- 56 bottom}\cr\bln
+N_{\rm B} & 2500 \pm 300 & 2700 \pm 300\cr\bln
+}
 
-\caption{Distribution}
+\caption{The distribution}
 
-\> only from cut 1
-
-We will assume that the left and right protons are independent in the background events. First of all, it is a reasonable assumption. For pile-up background (SD, beam-gas), it is evident. For DPE described by the cross-section \Eq{felm dpe cs} it is also true. Had we enough background data, we could test this assumption, however, we will see that the statistics is not rich. We can thus factorize the two-proton distribution $h_{\rm 2p}$ into one-proton distributions $h_{\rm 1p}$:
+We will assume that the left and right protons are independent in the background events. First of all, it is a reasonable assumption. For pile-up background (SD, beam-gas) it is evident. For DPE described by the cross-section \Eq{felm dpe cs} it holds too. Had we enough background data, we could test this hypothesis, however we will see that the statistics is not rich. Taking the assumption, we can factorize the two-proton distribution $h_{\rm 2p}$ into one-proton distributions $h_{\rm 1p}$:
 \eqref{h_{\rm 2p}(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R}) = h_{\rm 1p}(t_x^{\rm L}, t_y^{\rm L})\ h_{\rm 1p}(t_x^{\rm R}, t_y^{\rm R})\ .}{felm bckg dist fact}
 
-\> we work with $t_x$ and $t_y$ as with $x$ and $y$ because they're reconstructed such
+We consider these distributions as functions of $t$'s only since we are investigating the background to elastic scattering. Elastic protons have $\xi\equiv 0$ by definition, therefore only $t_x$ and $t_y$ are reconstructed. The same applies to inelastic protons that pass the elastic-event selection as background events. Their $xi$-distribution is absorbed to an effective $t_x$ and $t_y$ distribution.
 
-In principle some left-right correlation could have been introduced due to trigger scheme which required hits on both sides of the experiment. But for the observed distribution (for instance on the left side), one can write
+Moreover, on the level of one station $t_x$ ($t_y$) is reconstructed from $x$ ($y$) hit positions at the station, thus one could think of $t_x$ and $t_y$ as an alternative hit position description. In particular, the acceptance function expressed in $t_x$ and $t_y$ is as simple as in $x$ and $y$ -- it is merely $\Th(|t_y| > |t_y|_{\rm min})$. \footnote{%
+We will use symbol $\Th$ for a function that has value 1 if the condition in parentheses is fulfilled and is 0 otherwise.
+}
+
+In principle some left-right correlation could have been introduced due to trigger scheme which required hits on both sides of the experiment. But for an observed one-proton distribution, for instance on the left side, one can write
 \eqref{\eqnarray{
 h_{\rm O}(t_x^{\rm L}, t_y^{\rm L}) & = &
 \int \d t_x^{\rm L}\, \d t_y^{\rm L}\, \d t_x^{\rm R}\, \d t_y^{\rm R}\ h_{\rm 2p}(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R})
-	\ \Th(\hbox{hit left})\ \Th(\hbox{hit right})
+	\ \Th(|t_y^{\rm L}| > |t_y^{\rm L}|_{\rm min})
+	\ \Th(|t_y^{\rm R}| > |t_y^{\rm R}|_{\rm min})
 \cr
-&\propto &\ h_{\rm 1p}(t_x^{\rm L}, t_y^{\rm L})\ \Th(\hbox{hit left})\cr
-}\ ,}{felm bckg dist obs}
-where for example the $\Th(\hbox{hit left})$ function reaches the value of one only if a proton with $t_x^{\rm L}$ and $t_y^{\rm L}$ can be detected. It is merely $\Th(|t_y^{\rm L}| > |t_{y, \rm min}|)$. Therefore, there is no correlation created by the trigger.
+&\propto &\ h_{\rm 1p}(t_x^{\rm L}, t_y^{\rm L})
+	\ \Th(|t_y^{\rm L}| > |t_y^{\rm L}|_{\rm min})
+\ .\cr
+}}{felm bckg dist obs}
+Therefore, there is no correlation created by the trigger.
 
 \bmfig
-\fig{fig/pdf/felm_background_dist_txty.pdf}{felm background dist txty}{[7cm]Distribution of background ($h_{\rm O}$), left arm, diagonal 45 bottom -- 56 top. The color scale follows logarithmically the bin contents in the order: white, blue, green, red and black.}
+\fig{fig/pdf/felm_background_dist_txty.pdf}{felm background dist txty}{[7cm]The distribution of background $h_{\rm O}$ (diagonal 45 bottom -- 56 top, left arm). The color scale follows logarithmically the bin contents in the order: white, blue, green, red and black.}
 \fig{fig/pdf/felm_background_dist_tx.pdf}{felm background dist tx}{[7cm]The observed $t_x$-distribution (left arm, diagonal 45 bottom -- 56 top) with an $\exp(b t_x)/\sqrt{-t_x}$ fit (red curve).}
 \emfig
 
-An example of such a one-side distribution is shown in \Fg{felm background dist txty}, one can clearly see the acceptance cut about $|t_y| = 0.3\un{GeV^2}$. The distribution seems decreasing exponentially with $t = t_x + t_y$, something one would naively expect from the DPE cross-section \Eq{felm dpe cs}. However, if $t$ was distributed exponentially $\exp(b t)$, the corresponding distribution of $t_x$ and $t_y$ would be $\exp(b t_x + b t_y)/\sqrt{t_x t_y}$ (the square-root factor comes from the Jacobian). So far we have ignored the fact that we reconstruct inelastic protons as elastic, that is we attach a $(t_x, t_y)$ pair to a proton. In other words, we neglect the effect of $\xi$. Since the dispersion acts mostly in the horizontal direction, we may expect the $t_x$-distribution to altered. This consideration led us to try the anticipated parameterization with $b$'s independent for $x$ and $y$:
+An example of such a one-side distribution is shown in \Fg{felm background dist txty}. To build the histogram, we have used only the events that have failed cut 1 ($\th_x$ collinearity), which anyway provides most background events. One can clearly see the acceptance cut around $|t_y| = 0.3\un{GeV^2}$ \TODO{ref to table?}, the effect of the of the last $\Th$ function in \Eq{felm bckg dist obs}. The distribution seems decreasing exponentially with $t = t_x + t_y$, something one would naively expect from the DPE cross-section \Eq{felm dpe cs}. However, if $t$ was distributed exponentially $\exp(b t)$, the corresponding distribution of $t_x$ and $t_y$ would be $\exp(b t_x + b t_y)/\sqrt{t_x t_y}$
+%(the square-root factor comes from the Jacobian)
+. Moreover, we reconstruct the background protons as elastic: the effect of non-zero $\xi$ is absorbed into the observed $t_x$ vs.~$t_y$ distribution. Since the dispersion acts mostly in the horizontal direction, we may expect the $t_x$-distribution to be altered. This consideration has led us to try the suggested parameterization with $b$'s independent for $x$ and $y$:
 \eqref{h_{\rm O}(t_x, t_y) \propto {\e^{b_x t_x}\over \sqrt{-t_x}} {\e^{b_y t_y}\over \sqrt{-t_y}}\ .}{felm dist param}
-As a first test, one can compare the $t_x$-distribution with the $x$ part of the suggested parameterization. \Fg{felm background dist tx} shows a very good match. Then, we performed a careful fit of the $t_x$ vs. $t_y$ data. For that we cut of the part of the histogram which is full of empty bins and we removed the closest bins to the acceptance cut. The resulting bin selection is the red dashed triangle shown in \Fg{felm background dist txty}. The results of the fit are summarized in \Tb{felm fit}, note the very good $\ch^2$ (with about 120 bins contributing). Whereas the slopes are clearly different between the $x$ and $y$ projection, their values are consistent within all four fits. This leads us to the conclusion that the background distribution is the same left and right, for both diagonals. Further on, we will use the mean slopes (last row of the table). The error of the mean has been calculated as the standard deviation of the 4 measurements divided by $\sqrt{n = 4}$.
 
-\tab{felm fit}{The result of a fit of parameterization \Eq{felm dist param} through $t_x$ vs.~$t_y$ data.}{
+As a first test, one can compare the $t_x$-distribution with the $x$ part of the suggested parameterization. \Fg{felm background dist tx} shows an excellent match. Then, we have performed a careful fit of the $t_x$ vs. $t_y$ data. For that we have cut off the part of the histogram which is full of empty bins and we have removed the closest bins to the acceptance cut. The resulting bin selection is shown as the red dashed triangle in \Fg{felm background dist txty}. The results of the fit are summarized in \Tb{felm fit}, note the very good $\ch^2$ (with about 120 bins contributing). Whereas the slopes are clearly different between the $x$ and $y$ projection, their values are consistent within all four fits. This has led us to the conclusion that the background distribution is the same left and right and for both diagonals. Further on, we will use the mean slopes (last row of the table). The error of the mean has been calculated as the standard deviation of the 4 measurements divided by $\sqrt{n = 4}$.
+
+\tab{felm fit}{The result of a fit of parameterization \Eq{felm dist param} through $t_x$ vs.~$t_y$ data. \TODO{transpose to match the other tables}}{
 \multispan2&\multispan3\bhrulefill\cr
 \multispan2&\omit\bvrule\bstrut\hfil\tskip $b_x\ \rm (GeV^{-2})$\tskip\hfil& b_y\ \rm (GeV^{-2}) & \ch^2/\hbox{ndf}\cr
 \multispan2\bhrulefill&\multispan3\bhrulefill\cr
@@ -98,66 +115,98 @@ As a first test, one can compare the $t_x$-distribution with the $x$ part of the
 \multispan1&\multispan4\bhrulefill\cr
 }
 
-In order to see how the background events would distribute within the elastic $t$-distribution, we should define ``the elastic $t$'' also for the background events. It follows from the reconstruction procedure (averaging the left and right scattering angles):
+\caption{The background contribution to the elastic $t$-distribution}
+
+Our fit \Eq{felm dist param} determines the two-proton background distribution \Eq{felm bckg dist fact} up to a normalization constant. But this is fixed by the known integral of the background events, see \Tb{felm bckg int result}. This integral gives the number of observed (i.e. within acceptance) background events that satisfy the selection cuts. It can be calculated as:
+\eqref{\eqnarray{
+N_{\rm B} & = & \int \d t_x^{\rm L}\, \d t_y^{\rm L}\, \d t_x^{\rm R}\, \d t_y^{\rm R}\ h_{\rm 2p}(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R})
+	\ \Th(\hbox{acceptance})\ \Th(\hbox{selection})\ ,\cr
+%\Th(\hbox{acceptance}) & = &\ \Th(|t_y^{\rm L}| > |t_y^{\rm L}|_{\rm min})\ \Th(|t_y^{\rm R}| > |t_y^{\rm R}|_{\rm min})\cr
+%\ \Th(\hbox{selection}) & = &\ \Th(|\sqrt{t_x^{\rm R}} - \sqrt{t_x^{\rm L}}| < ) \cr
+}}{felm bckg dist norm cond}
+where $\Th(\hbox{acceptance})$ requires the $t$ values to be such that the event falls into the acceptance (cf. \Eq{felm bckg dist obs}). Similarly, $\Th(\hbox{selection})$ implements the first two ($\th_x$ and $\th_y$ collinearity) selection requirements.
+
+\> the t val. that we attach to a background event
+
 \eqref{\bar t(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R})
 = \left( \sqrt{t_x^{\rm L}} + \sqrt{t_x^{\rm R}}\over 2 \right)^2 + \left( \sqrt{t_y^{\rm L}} + \sqrt{t_y^{\rm R}}\over 2 \right)^2}{felm bckg t el}
-Then, the background contamination in the elastic $t$-distribution is given by
-\eqref{h_{\rm B,el}(t) = \int
-	h_{\rm 2p}(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R})
+
+\> extending h2 into the unobserved region: automatic acceptance correction
+
+\> (acceptance corrected) elastic-like background
+
+\eqref{{\d N_{\rm B, el}\over \d t}(t) = \int
+	\d t_x^{\rm L}\, \d t_y^{\rm L}\, \d t_x^{\rm R}\, \d t_y^{\rm R}
+	\ h_{\rm 2p}(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R})
 	\ \de\!\left(t - \bar t(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R}) \right)
-	\Th(\hbox{sel. cuts})\ ,
+	\Th(\hbox{selection})\ ,
 }{felm bckg el t dist}
+
+\> one could add $\Th(\hbox{acceptance})$ to get the el-like bckg before the acceptance correction.
+
+\> one can parameterize
+
+\eqref{{\d N_{\rm B, el}\over \d t} = a \e^{b t + c t^2}}{felm bckg el t dist param}
+
+\tab{felm bckg results}{bla}{
+\omit&\multispan2\bhrulefill\cr
+\omit&\omit\bvrule\bstrut\tskip 45 bottom -- 56 top\tskip&\hbox{45 top -- 56 bottom}\cr\bln
+|t_{y}^{\rm L}|_{\rm min}\ \rm (GeV^{-2}) & 0.315 \pm 0.01 & 0.335 \pm 0.01\cr\ln
+|t_{y}^{\rm R}|_{\rm min}\ \rm (GeV^{-2}) & 0.315 \pm 0.01 & 0.265 \pm 0.01\cr\bln
+a\ \rm (GeV^{-2}) & 2.6 \pm 0.6 & 2.4 \pm 0.6 \cr\ln
+b\ \rm (GeV^{-2}) & 6.9 \pm 0.6 & 6.9 \pm 0.6 \cr\ln
+c\ \rm (GeV^{-4}) & 0.4 \pm 0.1 & 0.4 \pm 0.1 \cr\bln
+}
+
+\bmfig
+\fig{fig/pdf/felm_background_dist_t_el.pdf}{felm background dist t el}{[7cm]The background contamination in the elastic $t$-distribution. MC simulation (black) with a fit (red) according to parameterization \Eq{felm bckg el t dist param}. \TODO{Update me}}
+\fig{fig/pdf/felm_background_cmp.pdf}{felm background cmp}{[7cm]A signal-to-background comparison (for diagonal 45 bottom -- 56 top). Black: signal+background, red: our background estimation with uncertainty band. \TODO{dashed line as for unfolding} \TODO{Update me}}
+\emfig
+
+\iffalse
+In order to see how the background events would distribute within the elastic $t$-distribution, we should define ``the elastic $t$'' also for the background events. It follows from the reconstruction procedure (averaging the left and right scattering angles):
+Then, the background contamination in the elastic $t$-distribution is given by
 where the $\Th$ factor represents the $t_x$ and $t_y$ selection cuts (cuts 1 and 2). The $h_{\rm 2p}$ distribution can be deduced from our parameterization \Eq{felm dist param} fits and assuming that the parameterization is correct in the region inaccessible due to the acceptance. In fact, in this way one attains the ``acceptance correction'' for the observed background.
 
-\fig{fig/pdf/felm_background_dist_t_el.pdf}{felm background dist t el}{The background contamination in the elastic $t$-distribution. MC simulation (black) with a fit (red) according to parameterization \Eq{felm el dist param}.}
-
 The easiest way to evaluate the integral \Eq{felm bckg el t dist} is perhaps a MC method, the result is shown in \Fg{felm background dist t el}. The distribution deviates slightly from a pure exponential decrease, but is it possible to describe it (set the red curve) by
-\eqref{h_{\rm B, el} \propto \e^{b t + c t^2}}{felm el dist param}
 with parameters
 \eqref{b = (6.5\pm 0.5)\un{GeV^{-2}},\qquad c = (0.2 \pm 0.2)\un{GeV^{-4}}\ .}{felm dist el fit}
 The uncertainty has been obtained by varying the $b_x$ and $b_y$ parameters within their errors quoted in \Tb{felm fit}.
-
-\caption{Result}
-
-What is left is merely to merge the normalization (integral) result \Eq{felm bckg int result} and the ``shape'' result \Eq{felm el dist param}.
-
-\> acceptance: dist. treatment contains naturally acceptance correction (extending the param into the inaccesible region)
-\>> hope that the 8 percent would survive the acceptance corrections
-
-\> the normalization condition
-
-\> comparison to signal
-
-\fig{fig/pdf/felm_background_cmp.pdf}{felm background cmp}{A signal-to-background comparison (for diagonal 45 bottom -- 56 top). Black: signal+background, red: our background estimation with uncertainty band. \TODO{dashed line as for unfolding}}
+\fi
 
 \section{Unfolding}
 
-The scattering angles $\th_x'$ and $\th_y'$ are reconstructed by taking the average over the two one-arm measurements:
+The scattering angles $\th_x'$ and $\th_y'$ \footnote{
+In this section we will always mean the physics scattering angles (i.e. at the interaction point \TODO{ref}). To meet our notation we should use star superscripts $^*$, however this would lead to expressions graphically difficult and thus we will drop them here. Moreover, we will use the traditional distinction between measured/reconstructed (with prime) and true/original (without primes) quantities.
+} are reconstructed by taking the average over the two one-arm measurements:
 \eqref{\th_x' \equiv {\th_x^{\rm L} + \th_x^{\rm R}\over 2} = \th_x + \De\th_x}{felm unf th err}
 and equivalently for the $y$ projection. The left and right angle measurements are subject to an error, our estimation of which is given by \Eq{sm diff lab,elr tx' sigma} \TODO{make sure}. We expect two main contributions: due to the beam-divergence ($\si \approx 17\un{\mu rad}$ \TODO{check}) and due to the finite resolution of the silicon detectors ($\si \approx ...$ \TODO{diff. val. for x and y?}). Because of the arithmetic mean, the standard deviation of $\De\th_x$ is reduced by a factor of $\sqrt 2$. We expect therefore $\si(\De\th_x) \approx 12.5\un{\mu rad}$. In fact, it can be measured by examining the distribution of $(\th_x^{\rm L} - \th_x^{\rm R})/2$, it yields
 \eqref{\si(\De\th_x) \simeq \si(\De\th_y) = (12.5\pm 0.5)\un{\mu rad}\ .}{felm unf sigma proj}
 
-Suppose that $h(\th)$ is the true distribution of (non-smeared) scattering angle $\th$ (a function proportional to $\d\si/\d\th$ cross-section). Then, after acceptance correction etc., we would reconstruct a distribution $h'(\th')$ smeared due to the final angular measurement distribution. These distributions can be related by an integral transformation (see e.g. \TODO{ref}):
+Suppose that $h(\th)$ is the true distribution of the (non-smeared) scattering angle $\th$
+%($h(\th)$ proportional to $\d\si/\d\th$ cross-section)
+. Then, after the acceptance correction etc., we would reconstruct a distribution $h'(\th')$ smeared due to the final angular resolution. These distributions can be related by an integral transformation (see e.g. \TODO{ref}):
 \eqref{h'(\th') = \int {\d\ph\over 2\pi} \int \d\De\th_x\ G(\De\th_x) \int \d\De\th_y\ G(\De\th_y)
 	\ \left| \d\th\over\d\th' \right|\ h(\th)\ ,
 }{felm unf sm model}
-where $\th \equiv \th(\th', \ph, \De\th_x, \De\th_y)$ is the non-smeared value of scattering angle corresponding to the smeared angle $\th'$, (non-smeared) azimuthal angle $\ph$ and angular measurement errors $\De\th_x$ and $\De\th_y$. It can be obtained by solving
+where $\th \equiv \th(\th', \ph, \De\th_x, \De\th_y)$ is the non-smeared value of scattering angle corresponding to the smeared angle $\th'$, (non-smeared) azimuthal angle $\ph$ and angular measurement errors $\De\th_x$ and $\De\th_y$. It can be obtained by solving this equation:
 \eqref{\th'^2 = (\th\cos\ph + \De\th_x)^2 + (\th\sin\ph + \De\th_y)^2\ .}{felm unf th eq}
-For small measurement errors $\si(\De\th_{x, y}) \ll \th$ (compare \Eq{felm unf sigma proj} with the lowest $\th$ in our analysis $\approx 170\un{\mu rad}$), the solution reads
+
+If we compare the measurement error size \Eq{felm unf sigma proj} with the lowest $\th$ in our analysis $\approx 170\un{\mu rad}$ (see the dashed line in \Fg{felm unfolding m1 fit}), we see that we may safely work in a limit $\si(\De\th_{x, y}) \ll \th$. In this approximation, \Eq{felm unf th eq} can be solved easily:
 \eqref{\th = \th' - (\De\th_x \cos\ph + \De\th_y \sin\ph)\ .}{felm unf th sol}
-If we plug it to \Eq{felm unf sm model}, the Jacobian simplifies to 1. We can well describe the angular measurement error distributions $G$ by Gaussians with sigma given by \Eq{felm unf sigma proj}. If expand $h(\th)$ around $\th = \th'$ we obtain
+Plugging it to \Eq{felm unf sm model}, the Jacobian $|\d\th/\d\th'|$ simplifies to 1. We can well describe the angular measurement error distributions $G$ by Gaussians with sigma given by \Eq{felm unf sigma proj}. If we expand $h(\th)$ around $\th = \th'$ we obtain
 \eqref{h'(\th') = h(\th') + h^{(2)}(\th') {\si^2\over 2} + \ldots \ ,}{felm unf sm model exp}
 where $h^{(2)}$ represents the second derivative of $h(\th)$. The same first two terms would be obtained in a smearing model
 \eqref{h'(\th') = \int \d\De\th\ G(\De\th)\ h(\th' - \De\th)  \ .}{felm unf sm model sim}
-That is a Gaussian smearing that acts directly in $\th$, moreover with the sigma numerically equivalent to \Eq{felm unf sigma proj}. This is what one expects from the error propagation (the last equality follows from \Eq{felm unf sm model})
+That is a Gaussian smearing that acts directly in $\th$, moreover with the sigma numerically equal to \Eq{felm unf sigma proj}. This is what one expects from the error propagation (the last equality follows from \Eq{felm unf sm model})
 \eqref{\si^2(\th) \equiv \si^2(\sqrt{\th_x^2 + \th_y^2}) = {\th_x^2\over \th^2} \si^2(\De\th_x) + {\th_y^2\over \th^2} \si^2(\De\th_y) = \si^2(\De\th_{x, y)}\ .}{felm unf sigma}
 
-The simplified smearing model \Eq{felm unf sm model} is technically advantageous. The smearing applies in $\th$ (which is directly related to $t$, the quantity of interest), it does not mix the $x$ and $y$ components. We will numerically verify its validity for our data later on. For the time being, we can state that it will provide a good approximation to the full model \Eq{felm unf sm model} whenever the $\th$-distribution $h(\th)$ can be locally (in region $\th \pm \hbox{few times }\De\th_{x, y}$) well described by a cubic function (terms with odd derivatives drop from expansions of type \Eq{felm unf sm model exp}).
+The simplified smearing model \Eq{felm unf sm model} is technically advantageous. The smearing applies in $\th$ (which is directly related to $t$, the quantity of interest), it does not mix the $x$ and $y$ components. We will numerically verify its validity for our data later on. For the time being, we can state that it will provide a good approximation to the full model \Eq{felm unf sm model} whenever the $\th$-distribution $h(\th)$ can be locally (in region $\th \pm \hbox{few times }\De\th_{x, y}$) well described by a cubic function (terms with odd derivatives drop from expansions of the type \Eq{felm unf sm model exp}).
 
 We will now describe two unsmearing methods: a fit-based and a bin-base method. Each of them has advantages and disadvantages. The bin-based method suffers from the bin-content fluctuations which are further reinforced by the unsmearing procedure. A fit may, by its nature, provide smoothing of the data, hence remove the troublesome fluctuations. However, there is certain arbitrariness of the data description within their errors. It is thus reassuring to find both methods giving compatible results, as we will show at the end.
 
 
-\caption{Fit-based method}
+\caption{The fit-based method}
 
 The idea of this method is to describe the data with a function for which the unsmearing (reverse transform \Eq{felm unf sm model sim}) can be done analytically. Moreover, the function shall provide a realistic extrapolation to the low-$\th$ region, where we miss acceptance. In that region we expect the cross-section to be well approximated by $\d\si/\d t \propto \exp(bt)$. This translates into $\th$-distribution as $h(\th) \propto \th \exp(-bp^2 \th^2)$.
 
@@ -166,7 +215,7 @@ We have parameterized the data by
 	\qquad G'(\th) = a \th \e^{- {\th^2\over 2 T^2}},
 	\qquad G(\th) = a \e^{- {(\th - \mu) ^2\over 2 T^2}},
 }{felm unf fm param}
-with $a$, $\mu$ and $T$ being the free parameters (11 in total). The $G'$ function controls the low-$\th$ behavior. The fit is plotted in \Fg{felm unfolding m1 fit}. The dashed vertical line represents our analysis cut - we do not trust the data below this point, because of too large acceptance corrections (which are subject to too large uncertainties). We show the data points below the analysis cut here in order to demonstrate that the ``extrapolation'' function $G'$ is not unreasonable.
+with $a$, $\mu$ and $T$'s being the free parameters (11 in total). The $G'$ function controls the low-$\th$ behavior. The fit is plotted in \Fg{felm unfolding m1 fit}. The dashed vertical line represents our analysis cut - we do not trust the data below this point, because of too large acceptance corrections (which are subject to too large uncertainties). We show the data points below the analysis cut here in order to demonstrate that the ``extrapolation'' function $G'$ is not unreasonable.
 
 \bmfig
 \fig{fig/pdf/felm_unfolding_m1_fit.pdf}{felm unfolding m1 fit}{[7cm]The reconstructed $\th$-distribution (diagonal 45 top -- 56 bottom) with a fit according to the parameterization \Eq{felm unf fm param}.}
@@ -184,25 +233,25 @@ where $\si$ is given by \Eq{felm unf sigma}.
 \eqref{\hbox{smearing correction} = {\hbox{unsmeared distribution} \over \hbox{measured distribution}}\ .}{felm unf fm sm corr}
 The two curves correspond to two values of $\De\th$, representing the uncertainty of its determination, see \Eq{felm unf sigma proj}. The difference between blue and red curves thus evaluates the systematic error of the unsmearing. The statistical error, drawn as the light-red band, has been calculated by propagating the uncertainties of the 11 fit parameters. We have adjusted the fit such that, in our opinion, the resulting error band reasonably reflects the actual uncertainty.
 
-As we have anticipated in the introduction, a fit always brings in a certain ambiguity in data description. Different parametrizations, different fit-procedure settings, etc. can lead to a number of results. Even thought the fits might be equally good (similar value of $\ch^2$), they might be quite different. We had this in mind when calculating the light-red error band.
+As we have anticipated in the introduction, a fit always brings in a certain ambiguity in data description. Different parametrizations, different fit-procedure settings, etc.~can lead to a number of results. Even though the fits might be equally good (similar value of $\ch^2$), they might be quite different. We had this in mind when calculating the light-red error band.
 
 The ultimate uncertainty has been calculated as the total (maximal) error band for $\si(\De\th) = 12$ and $13\un{\mu rad}$ for both diagonals.
 
-Before we move to the second method, let us verify the validity of the simplified smearing model \Eq{felm unf sm model sim}. Let's take the unsmeared distribution and re-apply the smearing according to the full model \Eq{felm unf sm model}. We have performed the integrations with the help of MC methods. The result is shown in \Fg{felm unfolding m1 test}, one can see a perfect match.
+Before we move to the second method, let us verify the validity of the simplified smearing model \Eq{felm unf sm model sim}. Let's take the unsmeared distribution and re-apply the smearing according to the full model \Eq{felm unf sm model}. We have performed the integrations with the help of a MC simulation. The result is shown in \Fg{felm unfolding m1 test}, one can see a perfect match.
 
 \fig{fig/pdf/felm_unfolding_m1_test.pdf}{felm unfolding m1 test}{Our unsmearing result smeared again with the full model \Eq{felm unf sm model}, compared to the input data.}
 
-\caption{Bin-base method}
+\caption{The bin-based method}
 
 The idea of this method is to ``learn'' the trend of the smearing corrections by applying several additional (extra) smearing steps, as depicted in \Fg{felm unfolding m2 scheme}. The ultimate correction (from measured to unsmeared distributions) can then be extrapolated from corrections 1 to 3.
 
 \fig{fig/pdf/felm_unfolding_m2_scheme.pdf}{felm unfolding m2 scheme}{The scheme of the bin-based method. The arrows pointing right represent smearing, the ones pointing left represent unsmearing.}
 
-Before applying any smearing step, we should make sure that the input distribution contains enough data. For example, if we would like to examine the smeared distribution above a given value $\th_{\rm c}$, the input distribution (before the smearing step) should extend to at least $\th_{\rm c} -3\si(\De\th)$. Therefore, if the distribution after 3 extra smearings should be meaningful above the analysis cut $\th_c = 170\un{\mu rad}$, the measured distribution should be defined down to $(170 - 9\cdot 12.5) \un{\mu rad}\approx 60 \un{\mu rad}$. It is therefore necessary to extrapolate the measured distribution down to that value. To achieve this, we have used the $G'$ parameterization (see \Eq{felm unf fm param}) just as in the fit-base method.
+Before applying any smearing step, we should make sure that the input distribution contains enough data. For example, if we would like to examine the smeared distribution above a given value $\th_{\rm c}$, the input distribution (before the smearing step) should extend to at least $\th_{\rm c} -3\si(\De\th)$. Therefore, if the distribution after 3 extra smearings should be meaningful above the analysis cut $\th_c = 170\un{\mu rad}$, the measured distribution should be defined down to $(170 - 9\cdot 12.5) \un{\mu rad}\approx 60 \un{\mu rad}$. It is therefore necessary to extrapolate the measured distribution down to that value. To achieve this, we have used the $G'$ parameterization (see \Eq{felm unf fm param}), just as in the fit-base method.
 
 The extrapolated smeared distribution is shown in \Fg{felm unfolding m2 addsm}, together with the distributions after the extra smearings which have been calculated with a MC method according to the model \Eq{felm unf sm model sim}. One can see that the effect of smearing is not linear. That is why we have chosen to perform three extra smearing steps -- it allows for a quadratic (the simplest non-linear) extrapolation.
 
-The correction functions (compatible with the definition \Eq{felm unf fm sm corr}) are displayed in \Fg{felm unfolding m2 corrections}. The ultimate corrections has been obtained by a per-bin quadratic extrapolation of the corrections one to three. It is clear that any bin fluctuations get amplified by the extrapolation, thus fluctuation of the black curve are the most pronounced.
+The correction functions (compatible with the definition \Eq{felm unf fm sm corr}) are displayed in \Fg{felm unfolding m2 corrections}. The ultimate corrections has been obtained by a per-bin quadratic extrapolation of the corrections one to three. It is clear that any bin fluctuations get amplified by the extrapolation, thus the fluctuations of the black curve are the most pronounced.
 
 \bmfig
 \fig{fig/pdf/felm_unfolding_m2_addsm.pdf}{felm unfolding m2 addsm}{[7cm]The extrapolated measured $\th$-distribution (diagonal 45 top -- 56 bottom) and the distributions after extra smearing steps ($\si(\De\th) = 12\un{\mu rad}$ used).}
@@ -211,6 +260,6 @@ The correction functions (compatible with the definition \Eq{felm unf fm sm corr
 
 \caption{Method comparison}
 
-The fit-based and bin-based methods are compared in \Fg{felm unfolding m1m2 cmp}. Despite the large fluctuation of the bin-based result, the very good is evident. The discrepancy at low $\th$ values is practically irrelevant because it falls below the analysis cut (drawn as the dotted line). Generally speaking we trust more the fit-based result, we consider the bin-based method rather as a reassuring cross-check.
+The fit-based and bin-based methods are compared in \Fg{felm unfolding m1m2 cmp}. Despite the large fluctuation of the bin-based result, a very good match is evident. The discrepancy at low $\th$ values is practically irrelevant because it falls below the analysis cut (drawn as the dashed line). Generally speaking we trust more the fit-based result, we consider the bin-based method rather as a reassuring cross-check.
 
 \fig{fig/pdf/felm_unfolding_m1m2_cmp.pdf}{felm unfolding m1m2 cmp}{A comparison of the fit-based and bin-based method (for diagonal 45 top -- 56 bottom and with $\si(\De\th) = 12\un{\mu rad}$).}

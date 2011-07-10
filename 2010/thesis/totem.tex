@@ -1,19 +1,38 @@
 \chapter{The TOTEM experiment}
 
 \> Physics programme + motivation
+\>> elastic scattering
+\>> total cross-section
+\>> soft and hard diffraction
 
-\> Description of TOTEM detectors \bref{totem04,totem08,totem10}
+\> 3 sub-detectors
+\>> RP
+\>> T2
+\>> T1
+
+
+\bref{totem04,totem08,totem10}
+
+\section[telescopes]{The telescopes T1 and T2}
 
 \section[rp system]{The Roman Pot system}
 
 \> left = 45, right = 56
 
-\fig[15cm]{fig/external/RP_stations_original.pdf}{rp stations}{RP stations}
-\fig[10cm]{fig/external/rp_unit.jpg}{rp unit}{RP unit}
-\fig[10cm]{fig/external/rp.jpg}{rp rp}{A Roman Pot}
-\fig[10cm]{fig/external/rp_package.jpg}{rp package}{Detector package}
-\fig[10cm]{fig/external/hybrid2.jpg}{rp hybrid}{A hybrid with a silicon detector and four VFAT chips.}
-\fig[10cm]{fig/external/silicon_explained.png}{rp sensor}{A detail of a silicon sensor.}
+\bmfig
+\fig[8cm]{fig/external/RP_stations_original.pdf}{rp stations}{[7cm]RP stations}
+\fig[6cm]{fig/external/rp_unit.jpg}{rp unit}{[7cm]RP unit}
+\emfig
+
+\bmfig
+\fig[6cm]{fig/external/rp.jpg}{rp rp}{[7cm]A Roman Pot}
+\fig[6cm]{fig/external/rp_package.jpg}{rp package}{[7cm]Detector package}
+\emfig
+
+\bmfig
+\fig[6cm]{fig/external/hybrid2.jpg}{rp hybrid}{[7cm]A hybrid with a silicon detector and four VFAT chips.}
+\fig[6cm]{fig/external/silicon_explained.png}{rp sensor}{[7cm]A detail of a silicon sensor.}
+\emfig
 
 \htab{rp station}{The structure of the RP stations. The $z$ positions of the RP centers.}{
 \omit&\multispan6\bhrulefill\cr
@@ -24,6 +43,8 @@
 \hbox{220 m station} & 214.628 & 214.628 & 215.078 & 219.550 & 220.000 & 220.000 \cr\bln
 }
 
+\iffalse
+NOT THE RIGHT PLACE?
 \> Naming schemes
 \>> official \bref{totem-rp-naming} arm-station-unit-pot-plane-vfat-strip
 \>> OfflineSW |arm|station|pot|plane|vfat
@@ -39,6 +60,7 @@ plane	& 1 to 10		& 0 to 9\cr
 vfat	& 1 to 4		& 0 to 3\cr
 strip	& 0 to 127		& -\cr\bln
 }
+\fi
 
 \iffalse
 1200  &     0.514  &    24.140  &   214.6077 &   -0.707 &    0.707 \cr\ln
@@ -52,6 +74,8 @@ strip	& 0 to 127		& -\cr\bln
 1208  &     0.514  &    24.140  &   214.6437 &   -0.707 &    0.707 \cr\ln
 1209  &    -0.514  &    24.140  &   214.6483 &    0.707 &    0.707 \cr\ln
 \fi
+
+\> the acceptance
 
 \section[rp measurement]{Proton Measurement with Roman Pot detectors}
 
@@ -156,8 +180,8 @@ Keeping only the important terms
 
 \eqref{\bar\xi = }{to energy off}
 
-\section{Luminosity independent method}
+\section{The total cross-section}
 
-\section{Extrapolation studies}
+\> plus (shortened) extrapolation studies
 
 \input extrapolation

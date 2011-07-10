@@ -3,7 +3,7 @@ import pad_layout;
 
 StdFonts();
 
-xSizeDef = ySizeDef = 6cm;
+xSizeDef = ySizeDef = 5.8cm;
 
 string dir = "../background";
 string diag = "45t_56b";
@@ -32,7 +32,7 @@ void GetSignal(rObject o)
 //----------------------------------------------------------------------------------------------------
 // INTEGRAL
 
-NewPad("$q_1/\si_1$", "");
+NewPad("$q_1/\si_1$", "$h_1$");
 //scale(Linear, Log);
 draw(rGetObj(dir+"/bckg_45b_56t.root", "cq1_dist_sel"), "p");
 draw(rGetObj(dir+"/bckg_45b_56t.root", "cq1_dist_sel|ff"), blue+1pt);
@@ -48,7 +48,7 @@ limits((-12, 1e-0), (+12, 1700), Crop);
 AttachLegend("cut 1");
 
 
-NewPad("$q_4/\si_4$", "");
+NewPad("$q_4/\si_4$", "$h_2$");
 //scale(Linear, Log);
 draw(rGetObj(dir+"/bckg_45b_56t.root", "cq4_dist_sel"), "p");
 draw(rGetObj(dir+"/bckg_45b_56t.root", "cq4_dist_sel|ff"), blue+1pt);
@@ -90,11 +90,14 @@ GShipout("felm_background_dist_tx");
 
 //--------------------
 
-NewPad("$|t|\un{GeV^2}$", "(arbitrary units)");
+NewPad("$|t|\un{GeV^2}$", "$\d N_{\rm B}/\d t$");
 scale(Linear, Log);
-draw(rGetObj(dir+"/mc2.root", "h_m"));
-draw(rGetObj(dir+"/mc2.root", "h_m|ffel"), red+1pt);
-limits((0, 1e-1), (2.5, 2e5), Crop);
+draw(rGetObj(dir+"/mc2.root", "h_el"), red);
+draw(rGetObj(dir+"/mc2.root", "h_el|ffel"), heavygreen+1pt);
+
+draw(rGetObj(dir+"/mc2.root", "h_el_acc"), blue);
+draw(rGetObj(dir+"/mc2.root", "h_el_acc|ffel"), heavygreen+1pt);
+limits((0, 1e1), (2.5, 1e6), Crop);
 
 GShipout("felm_background_dist_t_el");
 
@@ -105,10 +108,14 @@ NewPage();
 NewPad("$|t|\un{GeV^2}$", "$\d N/\d t$");
 scale(Linear, Log);
 draw(shift(0, log10(1/0.05)), rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "h_t"), black+1pt, "signal+background");
-draw(rGetObj(dir+"/background2_with_errors_45b_56t.root", "bckg_with_err"), "l,ec", red+1pt, "background new");
+draw(rGetObj(dir+"/background_with_errors2_45b_56t.root", "bckg_with_err"), "l,ec", red+1pt, "background new");
 
-limits((0, 1e1), (2.5, 2e5), Crop);
+draw(rGetObj(dir+"/mc2.root", "h_el_acc"), blue);
+draw(rGetObj(dir+"/mc2.root", "h_el_acc|ffel"), black+1pt);
+
+limits((0, 1e1), (2.5, 1e6), Crop);
 yaxis(XEquals(0.36, false), dashed);
 //AttachLegend("diagonal 45 bottom -- 56 top");
+
 
 GShipout("felm_background_cmp");

@@ -29,6 +29,13 @@ real dxdx_d56b_a, dxdx_d56b_b;
 real dyy_45_a, dyy_45_b;
 real dyy_56_a, dyy_56_b;
 
+real yy_near_n, yy_near_p, yy_far_n, yy_far_p;
+
+real yx_45_near_a, yx_45_near_b;
+real yx_45_far_a, yx_45_far_b;
+real yx_56_near_a, yx_56_near_b;
+real yx_56_far_a, yx_56_far_b;
+
 include "../alignment/elastic/2010_09_21/cuts.cc";
 
 TGraph_N_limit = 2000;
