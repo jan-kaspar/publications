@@ -19,6 +19,7 @@
 
 \> left = 45, right = 56
 
+\iffalse
 \bmfig
 \fig[8cm]{fig/external/RP_stations_original.pdf}{rp stations}{[7cm]RP stations}
 \fig[6cm]{fig/external/rp_unit.jpg}{rp unit}{[7cm]RP unit}
@@ -33,6 +34,7 @@
 \fig[6cm]{fig/external/hybrid2.jpg}{rp hybrid}{[7cm]A hybrid with a silicon detector and four VFAT chips.}
 \fig[6cm]{fig/external/silicon_explained.png}{rp sensor}{[7cm]A detail of a silicon sensor.}
 \emfig
+\fi
 
 \htab{rp station}{The structure of the RP stations. The $z$ positions of the RP centers.}{
 \omit&\multispan6\bhrulefill\cr
@@ -75,7 +77,6 @@ strip	& 0 to 127		& -\cr\bln
 1209  &    -0.514  &    24.140  &   214.6483 &    0.707 &    0.707 \cr\ln
 \fi
 
-\> the acceptance
 
 \section[rp measurement]{Proton Measurement with Roman Pot detectors}
 
@@ -155,6 +156,10 @@ Keeping only the important terms
 \right] + \O{10^{-8}\un{m}}\ .
 }{xlyl i approximated}
 
+\> define t (again), justify the low angle limit
+\> define th x and, define t x and y
+\> define phi as the std. notation for the azimuthal angle
+
 
 \section[pr transport]{Proton transport -- optics}
 
@@ -165,7 +170,9 @@ Keeping only the important terms
 \>> linearized parameterization
 \>> concept of optics
 
-\> smearing
+\eqref{x(s) = L_x(s, \ldots)\, \th_x^* + v_x(s,\ldots)\, x^* + D(s,\ldots)\,\xi\qquad y(s) = L_y(s)\, \th_y^* + v_y(s)\, y^*\ ,}{to lin par}
+
+\> beam smearing
 \>> beam divergence
 
 \eqref{\si_\th = }{to beam div}
@@ -180,8 +187,13 @@ Keeping only the important terms
 
 \eqref{\bar\xi = }{to energy off}
 
+\> the concept of acceptance
+
+\> the tree optics classes - high beta, medium beta, low beta
+\>> corresponding detector distances
+
 \section{The total cross-section}
 
 \> plus (shortened) extrapolation studies
 
-\input extrapolation
+%\input extrapolation

@@ -1,6 +1,7 @@
 \iffalse
-RP, MC, IP5, CMS, T1, T2, VFAT, DIGI, RECO, LAB, LHC
+RP, MC, IP5, CMS, T1, T2, VFAT, DIGI, RECO, LAB, LHC, LS, DPE, MC, TOTEM
 \fi
+
 
 \chapter{RP simulation and reconstruction methods}
 
@@ -230,6 +231,103 @@ threshold& 2.99\cr\ln
 
 \fig{fig/pdf/sr_pattern_reco_ex.pdf}{sr pattern reco ex}{An example of the patter recognition. Run 3230, file 0, event 111, unit 45-220-near. Left: a track plus noise in the bottom pot (V sensors). Right: many tracks in the horizontal pot (U sensors). The red lines correspond to the recognized patterns (cluster centers).}
 
-\section[el reco]{Reconstruction of elastic events}
+\section[elr]{Reconstruction of elastic events}
+
+In the note \bref{el reco} we described a module performing a reconstruction of elastic events. It is was light-weight alternative to the full (inelastic proton) reconstruction, with the primary aim to quantify the reconstruction power of the RP detector system. Here in this section, we will present an update to that note. Of of the main differences is the use of a more accurate beam smearing description (as is done in \Sc{beam smearing}). Compared to the old study, the beam divergence has increased by a factor of $\sqrt 2$ (cf. Eq.~(17) in \bref{smearing}).
+
+We will constrain ourselves to the most interesting results, for the others we refer the reader to the original note \bref{el reco}. We will skip the studies of the hypothetical situations without beam smearing. We will also skip the discussion of the peak structures appearing in certain histograms. These only appear with perfectly aligned detectors, therefore they correspond to a hypothetical situation too.
+
+As shown in diagram \Fg{sr sw structure}, the elastic reconstruction follows the one-RP-track fit step. In the note \bref{el reco} we showed that the lever-arm of single RP is too short for a reasonable angular reconstruction. That is why we take only the hit position from the one-RP-track fit.
+
+Elastic protons have, by definition, no momentum loss, that is $\xi \equiv 0$. For such protons, the transport equation \Eq{to lin par} simplifies to:
+\eqref{x(s) = L_x(s)\, \th_x^* + v_x(s)\, x^*\ ,\qquad y(s) = L_y(s)\, \th_y^* + v_y(s)\, y^*\ .}{elr track param}
+We have written the optical functions as functions of $s$ only since in a very good approximation they do not depended on proton's scattering parameters $x^*$, $y^*$, $\th^*_x$ and $\th^*_y$ \TODO{ref to note by Valentina etc?}. 
+
+The hit positions $x$ and $y$ are known from the one-RP-track fits. Assuming that we know the optical functions corresponding to all RPs involved in the event, we may use LS (Least Squares) estimation to obtain the scattering parameters (\TODO{ref})
+\eqref{\pmatrix{x^*\cr\th_x^*} = {1\over \sum v^2 \sum L^2 - \sum vL \sum vL} \pmatrix{\sum L^2 \sum x v - \sum vL \sum x L\cr -\sum vL \sum x v + \sum v^2 \sum x L}\ ,}{elr fit}
+where for example $\sum x L$ abbreviates $\sum_{i} x(s_i) L_x(s_i) / \si_x^2(s_i)$ with $\si_x$ representing the uncertainty of the $x$ measurement (one-RP-track fit). A similar equation can be written for the $y$ projection. In fact, since the proton transport does not mix $x$ and $y$ projections, they decouple in the fit and one can perform $x$ and $y$ fits separately. The treatment is equal for both projections, thus we will write any formulae for the $x$ projection only in what follows.
+
+The LS estimator gives also the covariance matrix for the fit parameters (see e.g. Eq. (6.24) in \bref{barlow}):
+\eqref{\mathop{\rm Var}[x^*, \th^*] = {1\over \sum v^2 \sum L^2 - \sum vL \sum vL} \pmatrix{\sum L^2 & - \sum vL \cr -\sum vL & \sum v^2 }\ .
+}{elr fit err}
+
+The module includes a simple \em{hit selection} (to suppress noise and background hits) and an \em{event selection} (to distinguish elastic events from other processes like DPE). The algorithm can be described by the three steps below.
+
+\bitm
+\itm \em{Hit selection}. The aim is to suppress hits (one-RP tracks) that do not belong to the elastic event. The implementation is based on the fact that the $L\th^*$ terms dominate in the proton transport \Eq{elr fit} (\TODO{more justification}). When a $x/L_x$ histogram is build, the hits of an elastic event tend to cluster together, as illustrated in \Fg{elr road search}. The size of the cluster is optics-dependent and is thus a parameter of the algorithm, called \pmt{road-size}.
+
+\fig{fig/pdf/elr_road_search.pdf}{elr road search}{An illustration of the hit selection. Left: sample RP hits shown vs\hbox{.} the corresponding effective length. The hits by elastic protons are drawn in blue, background in red. Right: the corresponding histogram of angles $x/L_x$.}
+
+\itm \em{Fitting}. There are three fits performed according to \Eq{elr fit}: left-arm, right-arm and global fit. The left-arm fit is carried out through hits from the left-arm only, analogously for the right-arm fit. The global fit uses all hits available.
+
+\itm \em{Elastic event selection}. Here, the left and right-arm fits are compared. For an ideal elastic scattering event, the left and right scattering angles are identical and, indeed, there is just one vertex. Thus, the left and right fit results should coincide. Practically we set \pmt{tolerance}s for the left-right differences of the scattering angles and vertex coordinates.
+\eitm
+
+In total, there are three parameters per projection (\pmt{road-size}, \pmt{angular tolerance} and \pmt{vertex tolerance}). For most optics \TODO{ref}, the dominant smearing effect is the beam divergence. Therefore the \pmt{angular tolerance} should be set to few times the standard deviation of the beam divergence \TODO{a ref?}. Similar argument applies to the \pmt{road-size} parameter. There one should also account for neglecting the $v$ terms in the proton transport \Eq{elr track param}. Thus reasonable values will be larger than those for \pmt{angular tolerance}. In fact, the best way to determine reasonable settings is to run a MC with elastic events only, do the reconstruction with no cuts and look at the distributions of the parameters. This will be done later on in \Sc{elr 1535,elr 90}.
+
+But before turning to optics-dependent results, let us discuss what measurement uncertainties we expect for the quantities of interest -- most notably the scattering angle $\th$ and the momentum-transfer squared $t$. The measurement (fit) uncertainties can be determined from the covariance matrix \Eq{elr fit err}. Moreover, the typical TOTEM optics \TODO{ref} have such properties that will allow us to derive a much simpler formula. First, the effect of the $v$ terms in the proton transport \Eq{elr track param} can be neglected to those of the $L$ terms. Second, let us constrain to the situation where only $220\un{m}$ stations are used \TODO{typical up to 2011}. The variation of the effective lengths $L_x(s)$ with a station is not large, hence we might think of a ``typical effective length'' $L_x$. Under these simplifications, the scattering angle estimator becomes:
+\eqref{\th_x^*
+	\quad\mathop{\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\longrightarrow}\limits^{v \hbox{\SmallerFonts\ neglected}}\quad
+		{\sum L x\over \sum L^2}
+	\quad\mathop{\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\longrightarrow}\limits^{\hbox{\SmallerFonts\ typical }L}\quad
+	{\sum_{\rm R} x - \sum_{\rm L} x\over (N_{\rm R} + N_{\rm L}) L_x}
+\ ,}{elr th fit sim} 
+where for example $\sum_{\rm R}$ represents the sum over the right hits only and $N_{\rm R}$ is the number of the right-arm hits. In this model, the error contributions to a measurement can be written as
+\eqref{x = L_x (\th_x^* + \De\th_x) + \De x\ .}{elr x meas}
+$\th_x^*$ represents the true scattering angle, $\De\th_x$ its alternation due to the beam divergence, see \Eq{sm diff lab}, which is independent for left and right arms. The error $\De x$ combines two effects -- misalignment and error due the finite resolution of the silicon detectors. The misalignment leads to a systematic shift a we will not discuss it here. Had we only one sensor per RP (per projection), the finite-resolution error could be well described by an uniform distribution between plus and minus half of the strip pitch $P$, which would give a standard deviation $\si_{\rm P} = P/\sqrt{12}\approx 19\un{\mu m}$. In reality, there are five sensors per projection in each RP, thus one might naively expect the standard deviation to reduce by a factor $\sqrt 5$. But since physics tracks are almost perpendicular to the sensors, they most often hit the same strip in all five sensors and the reduction is not justified. Because of small misalignments of the sensors within a stack, the distribution of $\De x$ is rather Gaussian-like, but the standard deviation $\si_{\rm P}$ is retained \TODO{ref to Hubert's paper?}.
+
+Putting \Eq{elr x meas} to the rhs.~of\Eq{elr th fit sim} yields an estimate for the reconstruction error (reconstructed value minus the original one)
+\eqref{\De\th_x^* = \De_{\rm B}\th_x^* + \De_{\rm R}\th_x\ ,
+	\quad \De_{\rm B}\th_x^* = {N_{\rm R} \De\th_x^{\rm R} - N_{\rm L} \De\th_x^{\rm L}\over N_{\rm R} + N_{\rm L}}\ ,
+	\quad \De_{\rm R}\th_x^* = {\sum_{\rm R} \De x - \sum_{\rm L} \De x\over  N_{\rm R} + N_{\rm L}}\ ,
+}{elr th err proj}
+where we have introduced the error components due to the beam divergence $\De_{\rm B}\th_x^*$ and due to the finite resolution $\De_{\rm R}\th_x^*$. To a good approximation, both components have zero mean value and their standard deviations can be estimated to
+\eqref{
+	\si_{\rm B} = {\sqrt{N_{\rm R}^2 + N_{\rm L}^2} \over N_{\rm R} + N_{\rm L}}\, \si_\th\ ,\qquad
+	\si_{\rm R} = {1\over L} {1\over \sqrt{N_{\rm R} + N_{\rm L}}}\, \si_{\rm P}\ ,
+}{elr th err comp sig}
+where $\si_\th$ is defined below \Eq{sm momenta par}. The standard deviation of the $\th_x^*$ reconstruction is then
+\eqref{\si(\th_x^*) = \si_{\rm B}^2 + \si^2_{\rm P}\ .}{elr th err proj sig}
+
+The error estimate for $\th^*$ measurement can be obtained by error propagation ($\th_x^*$ and $\th_y^*$ are independent variables)
+\eqref{\si^2(\th^*) \equiv \si^2(\sqrt{\th_x^{*2} + \th_y^{*2}}) = {\th_x^{*2}\over \th^{*2}} \si^2(\De\th_x^*) + {\th_y^{*2}\over \th^{*2}} \si^2(\De\th_y^*)\ .}{elr th err sig}
+If the beam-smearing error contribution dominates the one from finite resolution, that is $\si_{\rm B} \gg \si_{\rm R}$, then we find $\si(\th^*) = \si(\th_x^*) = \si(\th_y^*) = \si_{\rm B}$.
+
+The error propagation can be used to calculate the standard deviations of the momentum-transfer components (\TODO{ref to definition})
+\eqref{{\si(t_x)\over |t_x|} = {2p\over \sqrt{-t_x}}\, \si(\th_x^*)\ .}{elr tx err sig}
+A similar result can be for the full momentum-transfer $t$ (averaged over all values of the azimuthal angle $\ph$)
+\eqref{{\si(t)\over |t|} = {2p\over \sqrt{-t}}\,\sqrt{\si^2(\th_x^*) + \si^2(\th_y^*)\over 2}\ .}{elr t err sig}
+
+We will test these error estimates with MC simulations in the two sub-sections below.
+
+
+\subsection[elr 1535]{1535 m optics}
+
+\bmfig
+\fig{fig/pdf/elr_1535_ndf.pdf}{elr 1535 ndf}{[7cm]bla}
+\fig{fig/pdf/elr_1535_rs.pdf}{elr 1535 rs}{[7cm]bla}
+\emfig
+
+\bmfig
+\fig{fig/pdf/elr_1535_dth.pdf}{elr 1535 dth}{[7cm]bla}
+\fig{fig/pdf/elr_1535_dvtx.pdf}{elr 1535 dvtx}{[7cm]bla}
+\emfig
+
+\fig{fig/pdf/elr_1535_res_t.pdf}{elr 1535 res t}{[7cm]bla}
+
+
+\subsection[elr 90]{90 m optics}
+
+\bmfig
+\fig{fig/pdf/elr_90_ndf.pdf}{elr 90 ndf}{[7cm]bla}
+\fig{fig/pdf/elr_90_rs.pdf}{elr 90 rs}{[7cm]bla}
+\emfig
+
+\bmfig
+\fig{fig/pdf/elr_90_dth.pdf}{elr 90 dth}{[7cm]bla}
+\fig{fig/pdf/elr_90_dvtx.pdf}{elr 90 dvtx}{[7cm]bla}
+\emfig
+
+\fig{fig/pdf/elr_90_res_t.pdf}{elr 90 res t}{[7cm]bla}
 
 \input elasticReco.tex

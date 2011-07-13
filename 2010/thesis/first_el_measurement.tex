@@ -198,8 +198,7 @@ Plugging it to \Eq{felm unf sm model}, the Jacobian $|\d\th/\d\th'|$ simplifies 
 \eqref{h'(\th') = h(\th') + h^{(2)}(\th') {\si^2\over 2} + \ldots \ ,}{felm unf sm model exp}
 where $h^{(2)}$ represents the second derivative of $h(\th)$. The same first two terms would be obtained in a smearing model
 \eqref{h'(\th') = \int \d\De\th\ G(\De\th)\ h(\th' - \De\th)  \ .}{felm unf sm model sim}
-That is a Gaussian smearing that acts directly in $\th$, moreover with the sigma numerically equal to \Eq{felm unf sigma proj}. This is what one expects from the error propagation (the last equality follows from \Eq{felm unf sm model})
-\eqref{\si^2(\th) \equiv \si^2(\sqrt{\th_x^2 + \th_y^2}) = {\th_x^2\over \th^2} \si^2(\De\th_x) + {\th_y^2\over \th^2} \si^2(\De\th_y) = \si^2(\De\th_{x, y)}\ .}{felm unf sigma}
+That is a Gaussian smearing that acts directly in $\th$, moreover with the sigma numerically equal to \Eq{felm unf sigma proj}. This is what one expects from the error propagation from $\th_x$ and $\th_y$ to $\th$, see the comment below \Eq{elr th err sig}.
 
 The simplified smearing model \Eq{felm unf sm model} is technically advantageous. The smearing applies in $\th$ (which is directly related to $t$, the quantity of interest), it does not mix the $x$ and $y$ components. We will numerically verify its validity for our data later on. For the time being, we can state that it will provide a good approximation to the full model \Eq{felm unf sm model} whenever the $\th$-distribution $h(\th)$ can be locally (in region $\th \pm \hbox{few times }\De\th_{x, y}$) well described by a cubic function (terms with odd derivatives drop from expansions of the type \Eq{felm unf sm model exp}).
 
