@@ -1,5 +1,5 @@
 \iffalse
-RP, MC, IP5, CMS, T1, T2, VFAT, DIGI, RECO, LAB, LHC, LS, DPE, MC, TOTEM
+RP, MC, IP5, CMS, T1, T2, VFAT, DIGI, RECO, LAB, LHC, LS, DPE, MC, TOTEM, RMS, ndf
 \fi
 
 
@@ -294,40 +294,65 @@ The error estimate for $\th^*$ measurement can be obtained by error propagation 
 If the beam-smearing error contribution dominates the one from finite resolution, that is $\si_{\rm B} \gg \si_{\rm R}$, then we find $\si(\th^*) = \si(\th_x^*) = \si(\th_y^*) = \si_{\rm B}$.
 
 The error propagation can be used to calculate the standard deviations of the momentum-transfer components (\TODO{ref to definition})
-\eqref{{\si(t_x)\over |t_x|} = {2p\over \sqrt{-t_x}}\, \si(\th_x^*)\ .}{elr tx err sig}
+\eqref{{\si(t_x)\over |t_x|} = {2p\over \sqrt{|t_x|}}\, \si(\th_x^*)\ .}{elr tx err sig}
 A similar result can be for the full momentum-transfer $t$ (averaged over all values of the azimuthal angle $\ph$)
-\eqref{{\si(t)\over |t|} = {2p\over \sqrt{-t}}\,\sqrt{\si^2(\th_x^*) + \si^2(\th_y^*)\over 2}\ .}{elr t err sig}
+\eqref{{\si(t)\over |t|} = {2p\over \sqrt{|t|}}\,\sqrt{\si^2(\th_x^*) + \si^2(\th_y^*)\over 2}\ .}{elr t err sig}
 
 We will test these error estimates with MC simulations in the two sub-sections below.
 
 
 \subsection[elr 1535]{1535 m optics}
 
-\bmfig
-\fig{fig/pdf/elr_1535_ndf.pdf}{elr 1535 ndf}{[7cm]bla}
-\fig{fig/pdf/elr_1535_rs.pdf}{elr 1535 rs}{[7cm]bla}
-\emfig
+\> the nominal optics, \TODO{ref}
+\> reconstruction with no cuts
+
+\Fg{elr 1535 ndf} shows that the most frequent numbers of degrees of freedom of the fit \Eq{elr fit} are 4 and 6. The former corresponds to the situation with 2 vertical pots hit on both sides. The latter is created when a track hits also 2 horizontal pots on a side.
+
+\Fg{elr 1535 rs} illustrates that it is safe to set the \pmt{road size} parameter to $\approx 2$ for both projections.
 
 \bmfig
-\fig{fig/pdf/elr_1535_dth.pdf}{elr 1535 dth}{[7cm]bla}
-\fig{fig/pdf/elr_1535_dvtx.pdf}{elr 1535 dvtx}{[7cm]bla}
+\fig{fig/pdf/elr_1535_ndf.pdf}{elr 1535 ndf}{[7cm]A histogram of the number of degrees of freedom in fit \Eq{elr fit} (the histograms are overlapping).}
+\fig{fig/pdf/elr_1535_rs.pdf}{elr 1535 rs}{[7cm]A histogram of the road sizes.}
 \emfig
 
-\fig{fig/pdf/elr_1535_res_t.pdf}{elr 1535 res t}{[7cm]bla}
+The angular resolutions are practically the same, as shown in \Fg{elr 1535 dth}. The dominant error contribution is the beam smearing with $\si_\th = 0.3\un{\mu rad}$, which gives rise to $\si_{\rm B} = 0.21 \un{\mu rad}$ for the 2+2 configuration (i.e. 2 pots active in both arms) or $\si_{\rm B}$ for the 2+4 configuration.
+
+As a consequence of the low values of the optical functions $v$ the vertex resolution is rather bad, see \Fg{elr 1535 dvtx}.
+
+\bmfig
+\fig{fig/pdf/elr_1535_dth.pdf}{elr 1535 dth}{[7cm]The angular reconstruction error.}
+\fig{fig/pdf/elr_1535_dvtx.pdf}{elr 1535 dvtx}{[7cm]The reconstruction error of the vertex position.}
+\emfig
+
+\Fg{elr 1535 res t} show the relative $t$-resolution with a fit of the form of \Eq{elr t err sig}. The fit describes the data well, the analytic estimate for the numerator is $3.08\un{GeV}$ (for the 2+2 configuration) and $3.18\un{GeV}$ (for the 4+2 configuration), which agrees well with the fit result.
+
+\fig{fig/pdf/elr_1535_res_t.pdf}{elr 1535 res t}{[7cm]The $t$-resolution.}
 
 
 \subsection[elr 90]{90 m optics}
 
-\bmfig
-\fig{fig/pdf/elr_90_ndf.pdf}{elr 90 ndf}{[7cm]bla}
-\fig{fig/pdf/elr_90_rs.pdf}{elr 90 rs}{[7cm]bla}
-\emfig
+\> again, nominal optics and reco with no cuts
+
+For this optics, the hits are concentrated around $x=0\un{mm}$ (the effective length $L_x$ is very small, \TODO{ref to picture}?). This means that horizontal pots can not contribute to the measurement of elastic scattering. Therefore we expect most frequent hit-configuration to be 2 vertical pots on both sides, that is $\hbox{ndf}=2$, which is confirmed by \Fg{elr 90 ndf}.
+
+Since the effective length $L_x$ is too small, the road-search algorithm is not efficient for the $x$ projection (the road sizes are excessively large), see \Fg{elr 90 rs}. For the $y$ projection a value of about $12$ seems safe.
 
 \bmfig
-\fig{fig/pdf/elr_90_dth.pdf}{elr 90 dth}{[7cm]bla}
-\fig{fig/pdf/elr_90_dvtx.pdf}{elr 90 dvtx}{[7cm]bla}
+\fig{fig/pdf/elr_90_ndf.pdf}{elr 90 ndf}{[7cm]A histogram of the number of degrees of freedom in fit \Eq{elr fit} (the histograms are overlapping).}
+\fig{fig/pdf/elr_90_rs.pdf}{elr 90 rs}{[7cm]A histogram of the road sizes.}
 \emfig
 
-\fig{fig/pdf/elr_90_res_t.pdf}{elr 90 res t}{[7cm]bla}
+The $\th_y$ angular resolution is dominated by the beam divergence which corresponds to $\si_{\rm B} = 1.7\un{\mu rad}$. For the $x$ projection it is deteriorated by the low $L_x$ values.
+
+The $v$ optical functions are too small for a reasonable vertex resolution, see \Fg{elr 90 dvtx} (the curve for the $y$ projection is not even drawn).
+
+\bmfig
+\fig{fig/pdf/elr_90_dth.pdf}{elr 90 dth}{[7cm]The angular reconstruction error.}
+\fig{fig/pdf/elr_90_dvtx.pdf}{elr 90 dvtx}{[7cm]The reconstruction error of the vertex position.}
+\emfig
+
+The analytical estimate \Eq{elr t err sig} for the $t$-resolution, drawn in \Fg{elr 90 res t}, gives $4.0\un{GeV}/\sqrt{|t|}$. This differs slightly from the fit value. For this optics, the nominal distance of the detector edges is not negligible anymore, therefore the average over all $\phi$ values becomes a too crude approximation. It gives too much weight to the $t_x$ component, which is burdened by a much larger error. That is why the analytical approach overestimates the error.
+
+\fig{fig/pdf/elr_90_res_t.pdf}{elr 90 res t}{[7cm]The $t$-resolution.}
 
 \input elasticReco.tex

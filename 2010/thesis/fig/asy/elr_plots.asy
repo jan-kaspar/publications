@@ -12,16 +12,18 @@ string data[] = { "7000_1535_4E3", "7000_90_4E3" };
 string file = dir + "/ElRecoVal_7000_1535_4E3.root";
 
 NewPad("ndf");
-draw(rGetObj(file, "statistics/global/ndf_x_global"), blue);
-draw(rGetObj(file, "statistics/global/ndf_y_global"), red);
+draw(rGetObj(file, "statistics/global/ndf_x_global"), blue, "$x$ projection");
+draw(rGetObj(file, "statistics/global/ndf_y_global"), red, "$y$ projection");
 limits((-0.5, 0), (6.5, 4e4), Crop);
+AttachLegend(NW, NW);
 
 GShipout("elr_1535_ndf");
 
 NewPad("road size$\un{\mu rad}$");
-rGetObj(file, "road-size/rs_x"); robj.vExec("Rebin", 2); draw(xscale(1e6), robj, blue);
-rGetObj(file, "road-size/rs_y"); robj.vExec("Rebin", 2); draw(xscale(1e6), robj, red);
+rGetObj(file, "road-size/rs_x"); robj.vExec("Rebin", 2); draw(xscale(1e6), robj, blue, "$x$ projection");
+rGetObj(file, "road-size/rs_y"); robj.vExec("Rebin", 2); draw(xscale(1e6), robj, red, "$y$ projection");
 limits((0, 0), (3, 15e3), Crop);
+AttachLegend();
 
 GShipout("elr_1535_rs");
 
@@ -60,16 +62,18 @@ GShipout("elr_1535_res_t");
 string file = dir + "/ElRecoVal_7000_90_4E3.root";
 
 NewPad("ndf");
-draw(rGetObj(file, "statistics/global/ndf_x_global"), blue);
-draw(rGetObj(file, "statistics/global/ndf_y_global"), red);
+draw(rGetObj(file, "statistics/global/ndf_x_global"), blue, "$x$ projection");
+draw(rGetObj(file, "statistics/global/ndf_y_global"), red, "$y$ projection");
 limits((-0.5, 0), (6.5, 3e4), Crop);
+AttachLegend();
 
 GShipout("elr_90_ndf");
 
 NewPad("road size$\un{\mu rad}$");
-rGetObj(file, "road-size/rs_x"); robj.vExec("Rebin", 4); draw(xscale(1e6), robj, blue);
-rGetObj(file, "road-size/rs_y"); robj.vExec("Rebin", 4); draw(xscale(1e6), robj, red);
+rGetObj(file, "road-size/rs_x"); robj.vExec("Rebin", 4); draw(xscale(1e6), robj, blue, "$x$ projection");
+rGetObj(file, "road-size/rs_y"); robj.vExec("Rebin", 4); draw(xscale(1e6), robj, red, "$y$ projection");
 limits((0, 0), (15, 2e3), Crop);
+AttachLegend();
 
 GShipout("elr_90_rs");
 
@@ -96,6 +100,7 @@ GShipout("elr_90_dvtx");
 
 TGraph_errorBarPen = black+0.2pt;
 NewPad("$|t|\un{GeV^2}$", "$\si(t)/t\un{\%}$");
+TGraph_highLimit = 0.4;
 draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution"), "p,sebc", black, mCi+black+1pt);
 draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution|user"), "", heavygreen+1pt);
 AddToLegend(format("$%.1E\ {\rm GeV}/\sqrt{|t|}$", robj.rExec("GetParameter", 0)), heavygreen+1pt);
