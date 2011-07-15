@@ -47,7 +47,7 @@ The position of a cluster can be turned into the distance (in the read-out direc
 In this step we would like to find RECO hits belonging to (a) track(s) and suppress those which are result of noise of errors. For that we may use the fact that we have five planes in every projection and that particle tracks are straight lines. Hence hits forming line patterns are likely to come from a particle track, isolated hits are likely to be noise. Such an algorithm will be discussed in \Sc{pattern reco}. An alternative to this method -- road search algorithm -- is presented in Sec.~8.1.4 in \bref{hubert}. It is based on an additional piece of knowledge that physics protons are always very parallel to the beam. However, a possibility to reconstruct tracks with high angles will turn out important for alignment applications (see \Fg{al eig theta}). \TODO{problem with multiple tracks}
 
 \em{One-RP track fitting}.
-In this step, hits from $U$ and $V$ projections are combined into one XYZ fit, see Sec.~8.1.5 in \bref{hubert}.
+In this step, hits from $U$ and $V$ projections are combined into one $xyz$ fit, see Sec.~8.1.5 in \bref{hubert}.
 
 \em{Station track fitting} is similar to one-RP track fit, but here all hits from an entire (or a part) station are combined. This module has been developed mainly for alignment purposes. In order to select really clean tracks, it also comprises outlier removal procedure. It will be discussed in \Sc{al data sel}.
 
@@ -105,13 +105,13 @@ To summarize, if $(E|\vec p)_{\rm MC}$ is the four-momentum for a particle produ
 where $S(\chi)$ stands for the energy scaling procedure.
 
 
-\fig[8cm]{fig/pdf/smearing_angular_energy.pdf}{smearing angular energy}{Sketch of angular and energy smearing in XZ plane.}
+\fig[8cm]{fig/pdf/smearing_angular_energy.pdf}{smearing angular energy}{Sketch of angular and energy smearing in $xz$ plane.}
 
-The above formula provides a method to apply angular and energy smearing to MC particles. The missing step to have a smearing MC generator is to know the distributions of the quantities $\vec\be$, $\vec a$, $\om$ and $\ch$. But these can be calculated from beam smearing parameters as discussed in \Sc{pr transport}. Assuming the crossing angle $\al$, see \Fg{smearing angular energy}, one can parameterize the momenta of the incident particles as
+The above formula provides a method to apply angular and energy smearing to MC particles. The missing step to have a smearing MC generator is to know the distributions of the quantities $\vec\be$, $\vec a$, $\om$ and $\ch$. But these can be calculated from beam smearing parameters as discussed in \Sc{rp measurement}. Assuming the crossing angle $\al$, see \Fg{smearing angular energy}, one can parameterize the momenta of the incident particles as
 \eqref{\vec p_i = \pm p_{\rm nom}\,(1 + \xi_i)\,\pmatrix{\cos\al & 0 & \mp \sin\al\cr 0 & 1 & 0 \cr \pm\sin\al & 0 & \cos\al\cr}\,\pmatrix{C_i\cr S_i\cr \sqrt{1 - C_i^2 - S_i^2}}\ ,}{sm momenta par}
 where $i\in {1, 2}$ and the upper/bottom sign corresponds to particle 1/2. $C_i$ and $S_i$ describe the angular smearing in X and Y and according to \Eq{to beam div} one assign them distributions $N(0, \si_\th^2)$. In fact, the tails of the normal distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_\th \ll 1$, the effect is negligible. The $\xi$ parameter accounts for the energy smearing, the expected distribution is $N(\bar\xi, \si_\xi^2)$ (see \Eq{to energy fl}).
 
-The smearing effects and the crossing angle are rather small: $\si_\th \sim \O{10^{-6}}$, $\al \sim \O{10^{-4}}$ and $\si_\xi \sim \O{10^{-4}}$ (see \Sc{pr transport}). Therefore, one may simplify \Eq{sm mc to lab} by keeping just the first oder terms. It will yield an easily iterpretable forumula which will become useful reconstruction uncertainty estimates. Also, bearing in mind the LHC energies, we will approximate $E\approx p$ for all the particles involved.
+The smearing effects and the crossing angle are rather small: $\si_\th \sim \O{10^{-6}}$, $\al \sim \O{10^{-4}}$ and $\si_\xi \sim \O{10^{-4}}$ (see \Sc{rp measurement} \TODO{better ref?}). Therefore, one may simplify \Eq{sm mc to lab} by keeping just the first oder terms. It will yield an easily iterpretable forumula which will become useful reconstruction uncertainty estimates. Also, bearing in mind the LHC energies, we will approximate $E\approx p$ for all the particles involved.
 
 In this approximation \Eq{sm beta} gives
 \eqref{\vec\be \simeq {1\over 2}\pmatrix{-2\al + C_1 - C_2\cr S_1 - S_2\cr \xi_1 - \xi_2}}{sm beta expl}
@@ -287,13 +287,13 @@ where we have introduced the error components due to the beam divergence $\De_{\
 	\si_{\rm R} = {1\over L} {1\over \sqrt{N_{\rm R} + N_{\rm L}}}\, \si_{\rm P}\ ,
 }{elr th err comp sig}
 where $\si_\th$ is defined below \Eq{sm momenta par}. The standard deviation of the $\th_x^*$ reconstruction is then
-\eqref{\si(\th_x^*) = \si_{\rm B}^2 + \si^2_{\rm P}\ .}{elr th err proj sig}
+\eqref{\si^2(\th_x^*) = \si_{\rm B}^2 + \si^2_{\rm R}\ .}{elr th err proj sig}
 
 The error estimate for $\th^*$ measurement can be obtained by error propagation ($\th_x^*$ and $\th_y^*$ are independent variables)
 \eqref{\si^2(\th^*) \equiv \si^2(\sqrt{\th_x^{*2} + \th_y^{*2}}) = {\th_x^{*2}\over \th^{*2}} \si^2(\De\th_x^*) + {\th_y^{*2}\over \th^{*2}} \si^2(\De\th_y^*)\ .}{elr th err sig}
 If the beam-smearing error contribution dominates the one from finite resolution, that is $\si_{\rm B} \gg \si_{\rm R}$, then we find $\si(\th^*) = \si(\th_x^*) = \si(\th_y^*) = \si_{\rm B}$.
 
-The error propagation can be used to calculate the standard deviations of the momentum-transfer components (\TODO{ref to definition})
+The error propagation can be used to calculate the standard deviations of the momentum-transfer components (see \Eq{ttm t x y})
 \eqref{{\si(t_x)\over |t_x|} = {2p\over \sqrt{|t_x|}}\, \si(\th_x^*)\ .}{elr tx err sig}
 A similar result can be for the full momentum-transfer $t$ (averaged over all values of the azimuthal angle $\ph$)
 \eqref{{\si(t)\over |t|} = {2p\over \sqrt{|t|}}\,\sqrt{\si^2(\th_x^*) + \si^2(\th_y^*)\over 2}\ .}{elr t err sig}

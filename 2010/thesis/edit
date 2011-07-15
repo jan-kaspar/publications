@@ -5,7 +5,6 @@ gvim -p \
 	introduction.tex \
 	elastic.tex \
 	totem.tex \
-		extrapolation.tex \
 	simu_reco.tex \
 	alignment.tex \
 	first_el_measurement.tex \

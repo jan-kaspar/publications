@@ -250,7 +250,7 @@ Since $\mat\si^n$ is singular (and so $\mat S$ might be \TODO{...}), one had bet
 }
 
 
-\subsection[al fit eq]{Justification of the alignment equation}
+\caption{Justification of the alignment equation}
 
 As we will show in the following, the $\mat S$ matrix is singular and therefore the identity \Eq{BlockInverse} cannot be used. Thus, it is important to justify the validity of the final result \Eq{fit equation}. By plugging \Eq{vec R,todo1} to the definition of $\tilde\vec T$ in \Eq{fit equation} one obtains
 \eqref{\tilde\vec T =
@@ -295,7 +295,8 @@ Now, let's explore what are the singular modes that we have to face. This will d
 
 \TODO{there can be at most 4 singular modes per misalignment class. Prove it!}
 
-\ssubsection[al sing modes gen]{Singular modes for any geometry}
+\caption{Singular modes for any geometry}
+%\ssubsection[al sing modes gen]{Singular modes for any geometry}
 
 In this section we will discuss what the singular modes are when no assumptions about the geometry are made. That will be performed for all misalignment classes as listed in \Tb{alignment quantities}.
 
@@ -351,7 +352,8 @@ To summarize, we have just derived that transition from overall rotation $\De\rh
 }\ .}{cnst rotz 7}
 
 
-\ssubsection[al sing modes groups]{Singular modes for few read-out directions}
+\caption{Singular modes for few read-out directions}
+%\ssubsection[al sing modes groups]{Singular modes for few read-out directions}
 
 In the previous section, we have used the fact that certain equalities shall hold for all read-out directions $\vec d_i$. However, the TOTEM detectors are designed such that the read-out directions are all parallel to either $U$ or $V$ axes (\TODO{make sure these are defined}). In this section we will show that such a geometry may increase the number of singular modes. We will consider a more general case, where the detectors split into groups according to their read-out direction:
 \eqref{\vec \d_i \in \lbrace \pm\vec\de_1, \pm\vec\de_2, \ldots \rbrace \ ,\qquad |\vec\de_i \cdot \vec\de_j| \neq 1\hbox{ for } i \neq j\ .}{read-out groups}
@@ -411,7 +413,8 @@ These should be, in first approximation, independent of the number of events. Se
 
 \fig{fig/pdf/al_eigenvalues_rho.pdf}{al eig rho}{The dependence of normalized $\mat S$ matrix eigenvalues on the RMS of $\rh$. Theta 10 mrad, geometry 2.7x3.3, overlap=f. Colors correspond to the eigenvalue order. The top row shows the eigenvalues when only shifts in read-out direction are optimized. In middle row rotations about $z$ are added and in the bottom one also shifts in $z$. The two columns provide views in two different horizontal scales. The dashed lines correspond to the singular modes for any geometry. The rapidly changing eigenvalues demonstrate the transition from two to three and more groups.}
 
-\ssubsection[al path tr dist]{Pathological track distributions}
+\caption{Pathological track distributions}
+%\ssubsection[al path tr dist]{Pathological track distributions}
 
 So far we have discussed singular and weak modes that arise from the track parameterization and the geometry of read-out directions. Besides those, there could be singular modes arising from special track distributions. One could immediately think of a case where the detectors split into several groups and there would be no track going through detectors of several groups in the same time. Regarding RPs, this situation appears when the pots are not inserted close enough and therefore no track can go through the overlap between the vertical and horizontal pots. In this case, the alignment task would split into several smaller tasks (one per group) and for each of them one could write alignment equation like \Eq{fit equation}. Each of these equations contain a $\mat S$ matrix with its singular modes as discussed. Therefore the number of singular modes gets multiplied by the number of groups.
 
@@ -442,7 +445,7 @@ is a weak mode. It would be a true singular mode if we did not use the Taylor ap
 
 It would be possible to draw a similar line of arguments for the case where $\vec b^n\to \vec b_0$. But keeping in mind the application to LHC proton tracks, this turns out to be very unrealistic scenario.
 
-The treatment above started with \Eq{cnst rotz 2}, which assumes that the read-out directions can have all values. In section \Sc{al sing modes groups} we have derived that if there are just two read-out direction groups, the number of singular modes for rotations doubles. In a similar way one can find out that this is the case for the weak mode \Eq{cnst rotz lt4} too. There would be a copy of \Eq{cnst rotz lt3} for every group, with independent proportionality constants $\al_g$. This would lead to one weak mode per group, just like in \Eq{cnst rotz g2}.
+The treatment above started with \Eq{cnst rotz 2}, which assumes that the read-out directions can have all values. In the previous sub-section \TODO{check} we have derived that if there are just two read-out direction groups, the number of singular modes for rotations doubles. In a similar way one can find out that this is the case for the weak mode \Eq{cnst rotz lt4} too. There would be a copy of \Eq{cnst rotz lt3} for every group, with independent proportionality constants $\al_g$. This would lead to one weak mode per group, just like in \Eq{cnst rotz g2}.
 
 Eventually, let's remark that parallel tracks do not introduce new weak modes for shifts in read-out nor in $z$ direction. The reason is simple, their $\ga$ factors (see \Tb{alignment quantities}) do not involve both track parameters (slope and intercept). Thus it is not possible that a misalignment would ''convert'' one to the other (in the sense of creating slope $\vec a'$ from intercept $\vec b$ in \Eq{cnst rotz lt2}). \TODO{For z shifts, the number would indeed increase, with no slope spread, the z shifts can not be determined at all}.
 
@@ -600,7 +603,8 @@ The above statements are hypothesis only, we will illustrate their validity with
 The rotation-matrix linearization is an 2nd-order effect. If $\De\rho\approx 10\un{mrad}$ and $h\approx 2\un{cm}$ would be typical rotation misalignment and hit position, then the error would be of order $\De\rho^2\,h/2\approx 1\un{um}$. This is to be compared with the bias in the $\ga$ coefficients, the order of which is $\De\rho h \approx 20\un{\mu m}$. Thus the linearization effect is rather small and we will neglect it in what follows.
 
 
-\ssubsection[al stat unc]{Statistical uncertainty estimate}
+\caption{Statistical uncertainty estimate}
+%\ssubsection[al stat unc]{Statistical uncertainty estimate}
 
 The solution of the alignment task is given by \Eq{alignment equation}. Here, there are two quantities that are subject to statistical uncertainties: $\vec T$ and $\vec V$. The uncertainty of $\vec T$ vector is propagated from the measurements $\vec M^n$ through \Eq{fit equation}. The assumptions about measurement errors have been summarized in the pitch error model \Er{pitch error model}. $\vec V$ is an outcome of an external measurement and as such it is likely to subject to certain uncertainty. All these uncertainties can be propagated to the uncertainty of the result $\hat\vec\ch$.
 
@@ -637,7 +641,8 @@ Since $\tilde\vec T$ and $\vec V$ are independent and $\Var \tilde\vec T = \tild
 The uncertainties of the $\vec\ch$ vector components can be found on the diagonal of the matrix above:
 \eqref{\si(\bar\ch_i) = \sqrt{\Var \pmatrix{\bar\vec\ch\cr\vec\La}_{i\,i}}}{al par unc}
 
-\ssubsection[al iter]{Iterations}
+%\ssubsection[al iter]{Iterations}
+\caption{Iterations}
 
 \Tb{al iter} shows the principle of iterations. The symbol $\vec\ch$ represents a state of the alignment, thats is geometrical corrections to be applied on the basic geometry. The numerical lower indices refer to the relevant iteration, $\vec\ch_0$ stands for the initial alignment. The correction obtained in $i$-th iteration is denoted $\De \vec\ch_i$. The expression in the right-hand side column summarizes our understanding of the errors. That is the correction shall be equal to the difference between the actual alignment $\vec\ch$ and the pre-iteration alignment $\vec\ch_{i-1}$ (modulo constraints -- filter matrix ${\cal F}_{\rm constr}$) altered by the statistical ($\De \vec\ch_{\rm stat}$) and systematic ($\De \vec\ch_{\rm syst}$) errors. For a given sample the statistical error (given by the pitch rounding) is constant (when not changing the cut parameters which would modify the sample). The systematic error depends on ''how far we are from the actual alignments,'' that is $\vec\ch - \vec\ch_i$. The iterations continue as long as the corrections are important (their size is larger than a limit). In the LHC data analysis, two iterations turned out to be sufficient. That is the correction in the third one was already negligible.
 
@@ -811,9 +816,8 @@ Some results extracted from the LHC data can be found in \Fg{al comp rp all rot}
 
 \subsection[al exp res]{Experimental results}
 
-\ssubsection{Internal alignment comparison}
-
-
+\caption{Internal alignment comparison}
+%\ssubsection{Internal alignment comparison}
 
 There are 3 sources: optical metrology, beam and cosmic tests in H8 and LHC data.
 
@@ -911,7 +915,8 @@ Track-based alignment with the same settings as for H8 data applied on the LHC r
 \> which rotations can be determined - no way for U-V? Difficult event last-first plane.
 }
 
-\ssubsection{LHC data analysis}
+\caption{LHC data analysis}
+%\ssubsection{LHC data analysis}
 
 To analyze the LHC data we selected the runs with horizontal RPs in, see \Tb{al lhc datasets}. \TODO{Usually the horizontal RPs were inserted in the very end, sometimes the beam died even before.} The alignment was applied with the following parameters:
 {\itskip0pt\itindent=\parindent

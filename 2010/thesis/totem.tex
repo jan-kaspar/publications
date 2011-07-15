@@ -1,23 +1,55 @@
+\iffalse
+TOTEM, RP, T1, T2, IP, BPM, BLM
+\fi
+
 \chapter{The TOTEM experiment}
 
-\> Physics programme + motivation
-\>> elastic scattering
-\>> total cross-section
-\>> soft and hard diffraction
+MOTIVATION: The forward hadronic physics is one of the least explored and understood areas of the particle physics.
 
-\> 3 sub-detectors
-\>> RP
-\>> T2
-\>> T1
+WHAT: The physics programme of the TOTEM experiment includes:
+\> elastic scattering measurement in a wide $t$-range,
+\> total cross-section measurement and
+\> a study of soft and hard diffraction.
+
+\TODO{add the phi vs. eta diagram to explain the forwardness?}
+
+HOW (detectors): This challenging program brings special requirements for the detector apparatus. In particular large rapidity coverage - to detect most fragments from inelastic collisions and excellent acceptance for outgoing elastic and diffractive protons. To accomplish this task, TOTEM comprises three subdetectors: the telescopes T1 and T2 to detect products of inelastic collisions and a system of Roman Pots (RP) for surviving proton detection.
+
+\TODO{acceptance overview plot? Our acceptance starts where CMS stops}
+
+\> brief description of T1 and T2 with a few pictures
+\>> reference to more detailed information: \bref{totem04,totem08,totem10}
+
+\> describe the RP system
+\>> motivation: very small angles -- need move close to the beam and detectors far from the IP
+\>> break down with pictures, few info about the sensors
+\>> define the standard naming: \bref{totem-rp-naming}
+
+\tab[\strut\quad#\quad\hfil&\quad#\quad\hfil&\quad#\quad\hfil\cr]{rp naming schemes}{RP system naming schemes}{\ln
+arm		& 45 (=left), 56 (=right)		\cr
+station	& 147, 220		\cr
+unit	& far, near		\cr
+pot		& top, bot, hor	\cr
+		& 				\cr
+plane	& 1 to 10		\cr
+vfat	& 1 to 4		\cr
+strip	& 0 to 127		\cr
+\ln
+}
+
+\>> give idea about the dimensions (for reference reasons later), + spacing between sensors (total stack size), detector pitch, detector orientation
+
+\>> mention BPMs and BLMs
 
 
-\bref{totem04,totem08,totem10}
-
-\section[telescopes]{The telescopes T1 and T2}
-
-\section[rp system]{The Roman Pot system}
-
-\> left = 45, right = 56
+\htab{rp station}{The structure of the RP stations. The $z$ positions of the RP centers.}{
+\omit&\multispan6\bhrulefill\cr
+\omit&\multispan3\strut\bvrule\hfil near unit\hfil&\multispan3\vrule\hfil far unit\hfil\cr
+\omit&\multispan6\bhrulefill\cr
+\omit&\omit\bvrule\strut\hfil\hbox{top}\hfil & \hbox{bottom} &\hbox{horizontal} &\hbox{horizontal} &\hbox{top} &\hbox{bottom} \cr\bln
+\hbox{147 m station} & 148.784 & 148.784 & 149.234 & 150.026 & 150.476 & 150.476 \cr\ln
+\hbox{220 m station} & 214.628 & 214.628 & 215.078 & 219.550 & 220.000 & 220.000 \cr\bln
+}
 
 \iffalse
 \bmfig
@@ -36,59 +68,39 @@
 \emfig
 \fi
 
-\htab{rp station}{The structure of the RP stations. The $z$ positions of the RP centers.}{
-\omit&\multispan6\bhrulefill\cr
-\omit&\multispan3\strut\bvrule\hfil near unit\hfil&\multispan3\vrule\hfil far unit\hfil\cr
-\omit&\multispan6\bhrulefill\cr
-\omit&\omit\bvrule\strut\hfil\hbox{top}\hfil & \hbox{bottom} &\hbox{horizontal} &\hbox{horizontal} &\hbox{top} &\hbox{bottom} \cr\bln
-\hbox{147 m station} & 148.784 & 148.784 & 149.234 & 150.026 & 150.476 & 150.476 \cr\ln
-\hbox{220 m station} & 214.628 & 214.628 & 215.078 & 219.550 & 220.000 & 220.000 \cr\bln
-}
-
-\iffalse
-NOT THE RIGHT PLACE?
-\> Naming schemes
-\>> official \bref{totem-rp-naming} arm-station-unit-pot-plane-vfat-strip
-\>> OfflineSW |arm|station|pot|plane|vfat
-
-\tab[\strut\quad#\quad\hfil&\quad#\quad\hfil&\quad#\quad\hfil\cr]{rp naming schemes}{RP system naming schemes}{\bln
-& official & SW\cr\bln
-arm		& 45, 56		& 0, 1\cr
-station	& 147, 220		& 0, 2\cr
-unit	& far, near		& -\cr
-pot		& top, bot, hor	& near: 0 (top), 1 (bot), 2 (hor)\cr
-		& 				& far:  3 (hor), 4 (top), 5 (bot)\cr
-plane	& 1 to 10		& 0 to 9\cr
-vfat	& 1 to 4		& 0 to 3\cr
-strip	& 0 to 127		& -\cr\bln
-}
-\fi
-
-\iffalse
-1200  &     0.514  &    24.140  &   214.6077 &   -0.707 &    0.707 \cr\ln
-1201  &    -0.514  &    24.140  &   214.6123 &    0.707 &    0.707 \cr\ln
-1202  &     0.514  &    24.140  &   214.6167 &   -0.707 &    0.707 \cr\ln
-1203  &    -0.514  &    24.140  &   214.6213 &    0.707 &    0.707 \cr\ln
-1204  &     0.514  &    24.140  &   214.6257 &   -0.707 &    0.707 \cr\ln
-1205  &    -0.514  &    24.140  &   214.6303 &    0.707 &    0.707 \cr\ln
-1206  &     0.514  &    24.140  &   214.6347 &   -0.707 &    0.707 \cr\ln
-1207  &    -0.514  &    24.140  &   214.6393 &    0.707 &    0.707 \cr\ln
-1208  &     0.514  &    24.140  &   214.6437 &   -0.707 &    0.707 \cr\ln
-1209  &    -0.514  &    24.140  &   214.6483 &    0.707 &    0.707 \cr\ln
-\fi
-
-
 \section[rp measurement]{Proton Measurement with Roman Pot detectors}
 
-A collision takes place (the vertex is) in
-\eqref{(x^*, y^*, z^*)^\T}{IP vertex}
-and a proton is created. The proton has energy $E=\sqrt{p^2 + m^2}$ and momentum components
-\eqref{\vec p = p \pmatrix{\sin\th \cos\ph\cr \sin\th\sin\ph \cr \cos\th} = 
-p \pmatrix{\th_x\cr \th_y\cr \sqrt{1 - \th_x^2 - \th_y^2}}}{IP proton momentum}
+\fig{fig/pdf/ttm_proton_transport.pdf}{ttm proton transport}{A scheme of the proton transport from the interaction point to a RP station. $x_{\rm N}$ and $x_{\rm F}$ are the hit points in the near and far units of the station.}
 
-\fig{fig/pdf/protonTransport.pdf}{protonTransport}{Proton transport.}
 
-Then, the proton is transported by the lattice of the LHC magnets to the detector area (say to $z = z_0$). The transport is schematically depicted in \Fg{protonTransport}. As there are no magnets in the detector area, from $z_0$ on, the proton follows a straight trajectory which might be described as
+Imagine a collision which takes place at the \em{vertex}:
+\eqref{(x^*, y^*, z^*)^\T}{ttm ip vertex}
+and where a proton is created, as sketched in \Fg{ttm proton transport}. One may relate the momentum $p$ of the outgoing proton to the nominal beam momentum
+\eqref{p^* = p_{\rm nom} (1 - \xi^*)\ ,}{ttm xi}
+where $\xi^*$ is the the \em{momentum loss}. The direction of the proton is described by the \em{scattering angle} $\th^*$ and the \em{azimuthal angle} $\ph^*$:
+\eqref{\vec p^* = p^* \pmatrix{\sin\th^* \cos\ph^*\cr \sin\th^*\sin\ph^* \cr \cos\th^*}
+%=  p \pmatrix{\th_x\cr \th_y\cr \sqrt{1 - \th_x^2 - \th_y^2}}
+\ .}{ttm mom comp}
+The coordinate system $(x, y, s)$ is illustrated in \Fg{ttm proton transport}, the $s$ axis represents the beam axis.
+
+The protons of our interest are scattered to low angles and therefore they stay close the outgoing beam and together they enter a portion of the LHC magnet lattice. When the outgoing proton reaches the region of a RP station, it has momentum $p$, direction described by angles $\th$ and $\ph$ and may hit the detectors at points $x_{\rm N}$ and $x_{\rm F}$ just as shown in \Fg{ttm proton transport}.
+
+Further on, we will keep the notation that variables related to the IP will include a star superscript, those without will be related to RP stations. Energy of the protons shall be conserved during the LHC transport from the IP to RP stations, therefore $p = p^*$ and $\xi = \si^*$ and thus we will not make disctiction between their IP and RP values.
+
+It will be useful to define the \em{projections of the scattering angle} (both for IP and RP-station quantities)
+\eqref{\th_x = \th \cos\ph\ ,\qquad \th_y = \th \sin\ph\ .}{ttm th x y}
+Similarly, one can define the projections of the momentum transfer $t$:
+\eqref{t_x = t \cos^2\ph^*\ ,\qquad t_y = t \sin^2\ph^*\ ,}{ttm t x y}
+This definition follows, in fact, from the low-scattering-angle approximation in \Eq{el t}, which we will commonly use in what follows (the scattering angles of interest are at most of the order $10^{-3}\un{rad}$, see e.g. \Fg{el mod dsdt large}). The definitions \Eq{ttm th x y,ttm t x y} yield relations
+\eqref{t = t_x + t_y = - p^2 \th^{*2} = - p^2 (\th_x^{*2} + \th_y^{*2})\ .}{ttm t th}
+
+We will now describe the relation between the measurements by the silicon sensors and the kinematics of the outgoing proton. The end of this section will be devoted to the proton transport in the LHC.
+
+\caption{The relation between proton kinematics and silicon sensor measurements}
+
+\> define u, v and U, V (one system rotating with sensor, one as a rotation wrt. x y system), strips along U, read-out direction is V
+
+Then, the proton is transported by the lattice of the LHC magnets to the detector area (say to $z = z_0$). The transport is schematically depicted in \Fg{ttm proton transport}. As there are no magnets in the detector area, from $z_0$ on, the proton follows a straight trajectory which might be described as
 \eqref{\pmatrix{x\cr y\cr z} = \pmatrix{a_x\cr a_y\cr 1} z + \pmatrix{b_x\cr b_y\cr 0}}{local track}
 
 So far, the coordinates have been described in the global $xyz$ coordinate system. For deriving (the expected measurement value), it is useful to use a local coordinate frame $x_l y_l z_l$. This coordinate system has its origin in the center of the detector. Its $x_l$ and $y_l$ axes parallel to the detector surface and its $z_l$ axis perpendicular to the surface. The global to local transformation can be written
@@ -156,26 +168,28 @@ Keeping only the important terms
 \right] + \O{10^{-8}\un{m}}\ .
 }{xlyl i approximated}
 
-\> define t (again), justify the low angle limit
-\> define th x and, define t x and y
-\> define phi as the std. notation for the azimuthal angle
 
 
-\section[pr transport]{Proton transport -- optics}
+\caption{Proton transport in th LHC}
 
-\> LHC and proton trasport
-\>> the matrix equations, ref to Hubert?
-\>> more precise tools, MAD and ?
-\>> parameterization, ref to Hubert
-\>> linearized parameterization
-\>> concept of optics
+\> analytical description
+\>> the solution to Hill's equation, define beta function, emittance, phase advance (+ref)
+\>> alternative: the matrix equations (ref to Hubert, +); define optics, optical functions: effective length, maganification, dispersion
 
-\eqref{x(s) = L_x(s, \ldots)\, \th_x^* + v_x(s,\ldots)\, x^* + D(s,\ldots)\,\xi\qquad y(s) = L_y(s)\, \th_y^* + v_y(s)\, y^*\ ,}{to lin par}
+\> numerical tools; MAD-X
 
-\> beam smearing
+\> optics parameterizations
+\>> linearized
+\eqref{\eqnarray{
+x(s) &=&\ L_x(s, \ldots)\, \th_x^* + v_x(s,\ldots)\, x^* + D_x(s,\ldots)\cr
+y(s) &=&\ L_y(s, \ldots)\, \th_y^* + v_y(s,\ldots)\, y^* + D_y(s,\ldots)\cr
+}}{to lin par}
+\>> polynomial, ref to Hubert
+
+\> so far one proton only, in reality bunches: non-zero spatial, momentum and angular spread --> beam smearing
 \>> beam divergence
 
-\eqref{\si_\th = }{to beam div}
+\eqref{\si_{\th^*} = }{to beam div}
 
 \>> vertex smearing
 
@@ -188,20 +202,105 @@ Keeping only the important terms
 \eqref{\bar\xi = }{to energy off}
 
 \> the concept of acceptance
-
-\fig{fig/pdf/elastic_acceptance.pdf}{elastic acceptance}{bla}
+\>> acceptance of for a single proton, function A(t, phi, xi), plus averaging over parameters up to A(t)
+\>> elastic acceptance - combined acceptance of two protons that we would be able to see an elastic event
 
 \> the tree optics classes - high beta, medium beta, low beta
-\>> corresponding detector distances
+\>> classify by the optical functions (it controls what the optics is good for): Lx, Ly, D
+\>> associated quantities - emittance + resulting beam divergence, vertex smearing
+\>> nominal detector distance = 10 si bd, this sets t min
+\>> goal of the optics (this sets the requirements for the luminosity)
+\>> luminosity
 
-\fig{fig/pdf/hit_distribution.pdf}{hit distribution}{bla}
+\iffalse
+\itskip0pt
+\indent 1) {\fgt\bf high $\be^*$\fg}
+\> $\be^* = 1535\un{m}$
+\> ${\cal L} \approx 10^{28} \div 10^{29}\un{cm^{-2}s^{-1}}$
+\> elastic resolution: $\si(\th_x) \approx 0.23\un{\mu rad}$, $\si(\th_y) \approx 0.22\un{\mu rad}$
+\> vertical sensors at $1.35\un{mm}$ from beam center
+
+\vfil
+2) {\fgt\bf medium $\be^*$\fg}
+\> $\be^* = 90\un{m}$
+\> ${\cal L} \approx 10^{30}\un{cm^{-2}s^{-1}}$
+\> elastic resolution: $\si(\th_x) \approx 5\un{\mu rad}$ (low effective length), $\si(\th_y) \approx 1.7\un{\mu rad}$
+\> vertical sensors at $6.4\un{mm}$ from beam center
+
+\vfil
+3) {\fgt\bf low $\be^*$\fg}
+
+\> $\be^* = 0.5\div 2\un{m}$ (early running: $p = 5\un{TeV}$, $\be^* \sim 3\un{m}$)
+\> ${\cal L} \approx 10^{33}\un{cm^{-2}s^{-1}}$
+\> elastic resolution: $\si(\th_x) \approx 16\un{\mu rad}$, $\si(\th_y) \approx 12\un{\mu rad}$
+\> vertical sensors at $3.3\un{mm}$ from beam center
+
+\vfil
+\> sensors at $10\si + 0.5\un{mm}$ from beam center
+\> resolution (usually) limited by beam divergence
+\fi
+
+\bmfig
+\fig{fig/pdf/elastic_acceptance.pdf}{elastic acceptance}{bla}
+\fig{fig/pdf/hit_distribution.pdf}{hit distribution}{Distribution of elastic hits for the three types of optics.}
+\emfig
 
 \section{The total cross-section}
 
+\> tot cs due to the hadronic interaction only, the one for the em int. is infinite
+
 \> Luminosity independent method
 \>> discuss the two amplitudes (spin averaged and spin preserving)
+\>> 4 inputs: el cs at 0, rho at 0, N el and N inel
+\>> N inel by T1 and T2
+\>> el cs at 0 and N el by RP with an extrapolation
+\>> rho at 0 (ref to \Eq{el rh}): Coulomb-interference or an external input
 
-\> plus (shortened) extrapolation studies at 14 TeV !
+\> extrapolation from measurable region to 0
+\>> two optics: 1535 and 90
+\>> B looks ``parabolic'' -- polynomial fit to B from data
+
+\> what one measures is $h(t')$ -- includes smearing and acceptance and both interactions (hadronic + em)
+\>> one needs to correct measured to hadronic (+unsmeared, acc. corr.)
+\>> for 1535 smearing is not a problem (need a justification), but Coulomb can go large (below few$\cdot 10^{-3}\un{GeV^2}$)
+\>> for 90 (in the range of its acceptance) Coulomb effect is small, but smearing is an issue - mostly because t x resolution
+
+\> corrections by iterations: data = U0 (U is uncorrected, C is corrected), guess C0 (e.g. by taking C0 = U0), then iterate:
+Ci --> Ui --> corr(i) = Ci/Ui --> C(i+1) = U0 * corr(i) and again unless |C(i+1) - C(i)| < threshold
+
+\> two options for 90 m
+\>> heavy unsmearing
+\>> or use t y dist only (preferred)
+
+\> a very old extrapolation study, unpublished, before OfflineSW existed
+\>> no G4 simulation, however simulation of beam smearing as in \Sc{beam smearing} and simulation of detector resolution similar to the one in \bref{fast simu}
+\>> proton transport with a parameterized optics \TODO{ref}
+\>> realistic statistics (1 day of data-taking at a realistic luminosity)
+
+\> generally optimized: lever-arm (fit from ... to ...), the binning, the degree of modulus and phase polynomial, number of coulomb and anti-smearing correction iterations
+
+\> try to do it in a model independent way -- used the 6 models as presented in \Sc{el}, optimizing for the mean discrepancy
+
+\> here we show the most interesting results, the dependence on a hypothetical low $|t|$ bound of the fit
+
+\> 1535: cubic fit for modulus, constant in phase, one coulomb iteration, upper bound 0.054
+\>> discuss the phase: the one percent result might be too good
+
+\> 90m: the t y fit procedure
+\>> no unsmearing done -- the -2 percent shift
+\>> ty fit on 0.04 to 0.25
+
+\> propagation of the errors, the standard table
+
+\htab{ext error summary}{bla}{
+	&	& \be^* = 90\un{m} & 1535\un{m} \cr\bln
+\d N/\d t|_0	& \hbox{Extrapolation of elastic rate to } t = 0 & 4\percent & 0.2 \percent \cr\ln
+N_{\rm el}	& \hbox{Total elastic rate (correlated with extrapolation)} & 2\percent & 0.1\percent \cr\ln
+N_{\rm inel}	& \vbox{\hsize7cm\noindent\strut Total inelastic rate (error dominated by Single Diffractive trigger losses)} & 1\percent & 0.8\percent \cr\ln
+\rh\equiv\Re A(t)/\Im A(t)|_{t = 0} & \vcenter{\hsize7cm\noindent\strut Error contribution from $(1 + \rh^2)$ (using full COMPETE error band)\phantom{g}} &\multispan2\vrule\hfil $1.2\percent$\hfil \cr\bln
+&\hbox{Total for } \si_{\rm tot} & 5\percent & 1\div2\percent \cr\bln
+&\hbox{Total for } {\cal L} & 7\percent & 2\percent \cr\bln
+}
 
 \iffalse
 islam_bfkl, 9E-01, 3E-01, 2E-02, 1E-03, 3E-04

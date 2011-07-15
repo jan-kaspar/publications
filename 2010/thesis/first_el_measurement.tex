@@ -1,9 +1,3 @@
-\def\caption#1{%
-	\vskip\baselineskip
-	\em{#1}%
-	\vskip\baselineskip
-}
-
 \iffalse
 DPE, SD, MC
 \fi
@@ -21,8 +15,8 @@ DPE, SD, MC
 
 \section{Alignment}
 
-\> \Sc{al}
-\> th y matching
+\> as described in chapter \Sc{al}
+\> $\th_y$ matching between diagonals for the vertical alignment wrt. the beam.
 
 \section{Background}
 
@@ -159,8 +153,8 @@ c\ \rm (GeV^{-4}) & 0.4 \pm 0.1 & 0.4 \pm 0.1 \cr\bln
 }
 
 \bmfig
-\fig{fig/pdf/felm_background_dist_t_el.pdf}{felm background dist t el}{[7cm]The background contamination in the elastic $t$-distribution. MC simulation (black) with a fit (red) according to parameterization \Eq{felm bckg el t dist param}. \TODO{Update me}}
-\fig{fig/pdf/felm_background_cmp.pdf}{felm background cmp}{[7cm]A signal-to-background comparison (for diagonal 45 bottom -- 56 top). Black: signal+background, red: our background estimation with uncertainty band. \TODO{dashed line as for unfolding} \TODO{Update me}}
+\fig{fig/pdf/felm_background_dist_t_el.pdf}{felm background dist t el}{[7cm]The background contamination in the elastic $t$-distribution before acceptance correction (blue) and after (red).  The green curves represent fits according to parameterization \Eq{felm bckg el t dist param}. \TODO{Update me}}
+\fig{fig/pdf/felm_background_cmp.pdf}{felm background cmp}{[7cm]A signal-to-background comparison (for diagonal 45 bottom -- 56 top), before acceptance correction. Black: signal+background, blue: background estimation. Red: THE OLD estimate. \TODO{dashed line as for unfolding} \TODO{Update me}}
 \emfig
 
 \iffalse
@@ -177,10 +171,12 @@ The uncertainty has been obtained by varying the $b_x$ and $b_y$ parameters with
 \section{Unfolding}
 
 The scattering angles $\th_x'$ and $\th_y'$ \footnote{
-In this section we will always mean the physics scattering angles (i.e. at the interaction point \TODO{ref}). To meet our notation we should use star superscripts $^*$, however this would lead to expressions graphically difficult and thus we will drop them here. Moreover, we will use the traditional distinction between measured/reconstructed (with prime) and true/original (without primes) quantities.
+In this section we will always mean the physics scattering angles (i.e. at the interaction point, see \Sc{rp measurement}). To meet our notation we should use star superscripts $^*$, however this would lead to expressions graphically difficult and thus we will drop them here. Moreover, we will use the traditional distinction between measured/reconstructed (with prime) and true/original (without primes) quantities.
 } are reconstructed by taking the average over the two one-arm measurements:
 \eqref{\th_x' \equiv {\th_x^{\rm L} + \th_x^{\rm R}\over 2} = \th_x + \De\th_x}{felm unf th err}
-and equivalently for the $y$ projection. The left and right angle measurements are subject to an error, our estimation of which is given by \Eq{sm diff lab,elr tx' sigma} \TODO{make sure}. We expect two main contributions: due to the beam-divergence ($\si \approx 17\un{\mu rad}$ \TODO{check}) and due to the finite resolution of the silicon detectors ($\si \approx ...$ \TODO{diff. val. for x and y?}). Because of the arithmetic mean, the standard deviation of $\De\th_x$ is reduced by a factor of $\sqrt 2$. We expect therefore $\si(\De\th_x) \approx 12.5\un{\mu rad}$. In fact, it can be measured by examining the distribution of $(\th_x^{\rm L} - \th_x^{\rm R})/2$, it yields
+and equivalently for the $y$ projection. The left and right angle measurements are subject to an error, our estimation of which is summarized by \Eq{elr th err proj sig}. We expect two main contributions: due to the beam-divergence ($\si_{\rm B} \approx 17\un{\mu rad}$) and due to the finite resolution of the silicon detectors (
+% Lx ~ 1.68 m, Ly ~ 21.45
+$\si_{\rm R} \approx 0.4\un{\mu rad}$ for $y$ and $5.7\un{\mu rad}$ for $x$ projection). Because of the arithmetic mean, the standard deviation of $\De\th_x$ is reduced by a factor of $\sqrt 2$. We expect therefore $\si(\De\th_x) \approx 12.5\un{\mu rad}$. In fact, it can be measured by examining the distribution of $(\th_x^{\rm L} - \th_x^{\rm R})/2$, it yields
 \eqref{\si(\De\th_x) \simeq \si(\De\th_y) = (12.5\pm 0.5)\un{\mu rad}\ .}{felm unf sigma proj}
 
 Suppose that $h(\th)$ is the true distribution of the (non-smeared) scattering angle $\th$
@@ -226,7 +222,7 @@ The unsmearing (reverse transform \Eq{felm unf sm model sim}) keeps the form of 
 G'(\th)& :\quad & T^2 \to T^2 - \si^2,\quad a \to a \left( T^2\over T^2 - \si^2 \right)^{3\over 2} \cr
 G(\th)& :\quad & T^2 \to T^2 - \si^2,\quad a \to a \left( T^2\over T^2 - \si^2 \right)^{1\over 2},\quad \mu \to \mu\ ,\cr
 }}{felm unf fm unsmear}
-where $\si$ is given by \Eq{felm unf sigma}.
+where $\si$ is given by \Eq{felm unf sigma proj}.
 
 \Fg{felm unfolding m1 correction} show the resulting smearing correction
 \eqref{\hbox{smearing correction} = {\hbox{unsmeared distribution} \over \hbox{measured distribution}}\ .}{felm unf fm sm corr}
