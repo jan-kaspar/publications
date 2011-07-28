@@ -54,7 +54,7 @@ In this step, hits from $U$ and $V$ projections are combined into one $xyz$ fit,
 \em{Physics reconstruction}.
 In this step, the one-RP track fits are used to reconstruct proton kinematics at IP5. There are two versions -- \em{general} suitable for any diffractive protons and \em{elastic} which is a lighter version for elastic events. The latter one will be discussed in \Sc{el reco}.
 
-\em{Alignment} modules perform a special analyses focused on the alignment of RP sensors wrt.~each other and wrt.~the beam. The entire Chapter~\sref{al} will be devoted to RP alignment. \TODO{Standalone section with implementation details??}
+\em{Alignment} modules perform a special analyses focused on the alignment of RP sensors wrt.~each other and wrt.~the beam. The entire Chapter~\sref{al} will be devoted to RP alignment. \TODO{Standalone section with implementation details?? In this chapter or the Alignment one??}
 
 Various \em{coincidence-chip and trigger analyses} have been performed to validate the performance of the trigger system.
 
@@ -144,7 +144,7 @@ Using the statistical properties suggested in the previous section yields the fo
 
 \fig[8cm]{fig/pdf/smearing_vertex.pdf}{smearing vertex}{Bunch collision with crossing angle $\al$.}
 
-\Eq{in luminosity}, one of the luminosity definitions \TODO{ref formanek?}, suggests that function
+\Eq{in luminosity}, one of the luminosity definitions \TODO{ref formanek?} Eq.~(5.2) in \bref{formanek QFT}, suggests that function
 \eqref{h(x, y, z; t) = {1\over {\cal L}_{int}}\,j(x, y, z; t)\ \rh_T(x, y, z; t)}{sm pdf}
 can be interpreted as the probability density function of finding an interaction (vertex) at position $(x, y, z)$ and time $t$. Recalling that $j$ stands for the flux of bombarding particles and $\rh_T$ is the density of target particles. This formula can well be adatped for a collision of two bunches, as depicted in \Fg{smearing vertex}. The two bunches, each propagating (in the LAB frame) with speed $v$, are collided under a crossing angle $\al$. The flux $j$ in \Eq{sm pdf} can be expressed as $v_{\rm rel}\,\rh$, where $v_{\rm rel} = 2v\cos\al$ is the relative velocity of the two bunches and $\rh$ is the density of one of them. Therefore one can write
 \eqref{h(x, y, z; t) = {2v\cos\al\over {\cal L}_{int}}\ \rh_1(x, y, z; t)\, \rh_2(x, y, z; t)\.}{sm pdf2}

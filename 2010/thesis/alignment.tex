@@ -39,9 +39,9 @@ This also gives estimate about the rotation
 
 \htab{expected misalignments}{Expected misalignments orders. \TODO{}}{\bln
 	& \hbox{within RP package} & \hbox{Roman Pot} \cr\bln
-\hbox{transverse shift} \un{\mu m}& & \cr\ln
-\hbox{shift in }z & & \cr\ln
-\hbox{rotation around }z & & \cr\bln
+\hbox{transverse shift}	& 20\un{\mu m} 			& 100\un{\mu m} \cr\ln
+\hbox{shift in }z 		& ?						& ?\cr\ln
+\hbox{rotations}		& \hbox{few }\rm mrad	& \hbox{few }\rm mrad \cr\bln
 }
 
 \section[al collim]{Collimation alignment}
@@ -82,29 +82,76 @@ In this way, we've determined the vertical positions of the thin windows (the RP
 
 \section[al tb]{Track--based alignment}
 
-\TODO{few notes about the implementation in OfflineSW}
+Since the magnetic field within RP stations is negligible, protons follow a straight trajectory, as drawn in the side view of \Fg{al proton sensor interaction} (the same is shown in \Fg{ttm proton transport}, but with the third axis called $s$). The track can be described
+\eqref{\pmatrix{x\cr y\cr z} = \pmatrix{a_x\cr a_y\cr 1} z + \pmatrix{b_x\cr b_y\cr 0}\ ,}{al local track}
+where $a$ and $b$ parameters give the track slopes and intercepts.
 
-In \Sc{rp measurement}, the relation between a proton kinematics and RP detector measurement has been derived -- see \Eq{xlyl i approximated}. In principle, all geometry parameters (the situation is depicted in \Fg{detector geometry}) may be subjects to misalignments. Using primes (no primes) for misaligned (ideal) quantities, this might be described as
-\eqref{\eqnarray{
-z' &=& z + \De z\cr
-\vec c' &=& \vec c + \De\vec c\cr
-}}{misalignment definition}
-(The z component of the $\vec c$ vector will be denoted simply as $z$ from now on, while $\vec c$ will refer to the two-component vector $(c_x, c_y)^\T$). The $\rh_z$ already refers to misalignment. In this regard, we will change the notation
-\eqref{\rh_z \rightarrow \De\rh}{misalignment definition 2}
-(the $z$ subscript will be dropped as it is the only rotation in our picture from now on).
+When a proton enters the sensitive volume of a silicon sensor, it creates electron-hole pairs along its trajectory. This charge is collected by neighbouring strips, giving raise to measurable signal. While details of this charge sharing process can be found, for example, in Sec.~7.4~in \bref{hubert}, here, we will assume that just the nearest strips is active (drawn in green in the front view of \Fg{al proton sensor interaction}). It is a reasonable assumption for the TOTEM sensors. Then, the measurement outcome $m$ can be written
+\eqref{m = v + \De m\ ,}{al measurement}
+where $v$ gives the projection of the hit point in the $\vec v$ direction (i.e. the read-out direction). $\De m$ is the \em{pitch-rounding error}, that is the error made by rounding $v$ to the nearest strip position.
 
-With the new notation, one can write
-\eqref{
-\vec d^\T \pmatrix{1 & \De\rh\cr -\De\rh & 1} =
-\vec d + \De\rh \underbrace{\pmatrix{-d_y\cr d_x}}_{\vec d_\perp}\ .
-}{d perp definition}
+\fig{fig/pdf/al_proton_sensor_interaction.pdf}{al proton sensor interaction}{A scheme of a proton interaction with a sensor. Left (side view when $\rh_y = 0$): the thick black line represents a sensor, the blue line a proton track. The blue dot marks the point where the proton hits the sensor. It has the same meaning in the right (front view) figure. There, the thick blue line shows the hit point projection into the read-out ($\vec v$) direction. The strip drawn in green is the active strip, the ``pitch rounding correction'' is drawn in red.}
 
-\fig{fig/pdf/detector_geometry.pdf}{detector geometry}{The detector geometry. A sample hit is drawn as the blue dot, the corresponding measurement is visualized as the thick solid blue line.}
+The value of $v$ can be related to the track parameters with the aid of a transformation from (global) coordinate system $xyz$ to (local) system $uvz'$. The transformation can be written as follows
+\eqref{\pmatrix{u\cr v\cr z'} = \mat R \left[ \pmatrix{x\cr y\cr z}  - \pmatrix{c_x\cr c_y\cr c_z}  \right] \ .}{al global to local}
+The $c$ parameters give the position of sensor's center, the rotation $\mat R$ can be parameterized with three angles $\rh_{x,y,z}$:
+\eqref{\mat R =
+\pmatrix{
+\cos\rh_z  & \sin\rh_z & 0\cr
+-\sin\rh_z & \cos\rh_z & 0\cr
+0		   & 0         & 1\cr
+}
+\pmatrix{
+\cos\rh_y  & 0 & \sin\rh_y\cr
+0		   & 1 &          \cr
+-\sin\rh_y & 0 & \cos\rh_y\cr
+}
+\pmatrix{
+1 & 0		   & 0        \cr
+0 & \cos\rh_x  & \sin\rh_x\cr
+0 & -\sin\rh_x & \cos\rh_x\cr
+}\ .
+}{al rotation parameterization}
+This three shifts and three rotations reflect the position of a sensor in the global coordinate frame. In reality, despite our best efforts, the position can not be exactly the nominal one. It is therefore important to distinguish between \em{true/actual} (with primes) and \em{nominal/thought} (without primes) position parameters:
+\eqref{\rh_i' = \rh_i + \De\rh_i\ ,\qquad c_i' = c_i + \De c_i\ ,}{al misalignments}
+where $\De\rh_i$ and $\De c_i$ represent the \em{misalignment} or, on the other hand, \em{alignment corrections}.
 
-To summarize, the measurement of the $n$-th event in the $i$-th detector is
+The nominal sensors' positions (see \Sc{ttm}) are perpendicular to the $z$ axis, that is $\rh_x=\rh_y=0$. The order angular misalignments $\De\rh$ in summarized in \Tb{expected misalignments}. Taking $5\un{mrad}$ as the order of these angles, one obtains
+\eqref{\cos\rh_{x,y}' = 1 + \O{10^{-5}},\qquad \sin\rh_{x,y}' = \rh_{x,y}' + \O{2\cdot 10^{-8}}}{al small rotation approximation}
+and thus it is a good approximation to take just the lowest terms in the Taylor expansion. A similar statement holds for $\rh_z'$ too, just the expansion shall be made at the nominal value $\rh_z$.
+
+The fact that the track \Eq{al local track} hits a sensor can be expressed as $z' = 0$. Then it is straightforward to calculate the $v$ coordinate of the hit:
+\eqref{v =
+	\Bigg[
+		\underbrace{\pmatrix{-\sin\rh_z\cr\cos\rh_z}}_{\vec d}
+		+ \underbrace{\pmatrix{-\cos\rh_z\cr\sin\rh_z}}_{\vec d_\perp} \De\rh_z
+	\Bigg]^\T
+	\Bigg[
+		\underbrace{\pmatrix{a_x\cr a_y}}_{\vec a} (c_z + \De c_z)
+		 + \underbrace{\pmatrix{b_x\cr b_y}}_{\vec b}
+		 - \underbrace{\pmatrix{c_x\cr c_y}}_{\vec c}
+		 - \underbrace{\pmatrix{\De c_x\cr \De c_y}}_{\De \vec c}
+	\Bigg]^\T
+	+ \O{10^{-7}\un{m}}\ .
+}{al hit v}
+In fact, we have displayed just the most important terms, the others are included in the $\cal O$ factor. The separation follows from the following order estimates: $c_z \sim 1\un{m}$ (distances between pots in a station), $(b - c)_{x, y} \sim 10^{-2}\un{m}$ (size of the sensors) and $a_{x, y} \sim 10^{-2}\un{rad}$ (the maximal angle that can be detected by near and far units simultaneously). The last estimate is rather an upper bound, see the typical track angles in \Tb{al lhc datasets}. Thus for realistic data the neglected terms would be rather $\O{10^{-8}\un{m}}$.
+
+In \Eq{al hit v} we have defined the \em{unit} vector $\vec d$ which represents the (nominal/thought) \em{read-out direction}. The vector $\vec d_\perp$ is perpendicular to the read-out direction, see \Fg{al proton sensor interaction}. The terms if the left-hand bracket represent the true/actual read-out direction. The vectors $\vec a$, $\vec b$, $\vec c$ and $\De \vec c$ represent two-dimensional vectors of the track slope, the track intercept, sensor's center and the sensor's position misalignment.
+
+The only rotation misalignment that has survived in \Eq{al hit v} is the one about the $z$ axis. Also, this is the only rotation which has non-zero nominal value. To simplify the notation, we will drop the $z$ subscripts in what follows:
+$$\rh_z \longrightarrow \rh\ ,\qquad \De\rh_z \longrightarrow \De\rh\ .$$
+
+So far we have considered one sensor and one event. But \Eq{al measurement,al hit v} can be written for any event and any sensor. For $i$-th sensor and $n$-th event they read
 \eqref{
 m_i^n = (\vec d_i + \De\rh_i\,\vec d_{\perp i})^\T \left[\vec a^n (z_i + \De z_i) + \vec b^n - (\vec c_i + \De\vec c_i)\right] + \De m_i^n\ ,
-}{m i measurement}
+}{al meas i n}
+where for brevity reasons we have made a replacement
+$$c_{z,i} \longrightarrow z_i\ ,\qquad \De c_{z,i} \longrightarrow \De z_i\ .$$
+
+\vskip 1cm
+\hrule
+\vskip 1cm
+
 where the last term includes the errors introduced by various approximations and by neglecting the ``rounding'' step. It will be treated as an error in what follows. One can rearrange the terms in the last equation
 \eqref{\eqnarray{
 \mu_i^n \equiv m_i^n - \vec d^\T \vec c = & &\cr

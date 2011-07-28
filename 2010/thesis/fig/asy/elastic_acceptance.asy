@@ -5,16 +5,16 @@ StdFonts();
 
 string dir = "../root";
 
-NewPad("$|t|\un{GeV^2}$", "acceptance");
-draw(rGetObj(dir+"/elRecoVal_1535_1E5_flatLogT.root", "acceptance/acc_t_o_acc"), red+1pt);
-draw(rGetObj(dir+"/elRecoVal_90_1E5_flatLogT.root", "acceptance/acc_t_o_acc"), blue+1pt);
-draw(rGetObj(dir+"/elRecoVal_2_1E5_flatLogT.root", "acceptance/acc_t_o_acc"), heavygreen+1pt);
+NewPad("$|t|\un{GeV^2}$", "acceptance$\un{\%}$");
+draw(yscale(100), rGetObj(dir+"/elRecoVal_1535_1E5_flatLogT.root", "acceptance/acc_t_o_acc"), red+1pt);
+draw(yscale(100), rGetObj(dir+"/elRecoVal_90_1E5_flatLogT.root", "acceptance/acc_t_o_acc"), blue+1pt);
+draw(yscale(100), rGetObj(dir+"/elRecoVal_2_1E5_flatLogT.root", "acceptance/acc_t_o_acc"), heavygreen+1pt);
 
-label(rotate(88)*Label("$\be^*=1535$ m"), (-2.5, 0.2), red);
-label(rotate(88)*Label("$\be^*=90$ m"), (-1.2, 0.2), blue);
-label(rotate(65)*Label("$\be^*=2$ m"), (0.55, 0.61), heavygreen);
+label(rotate(65)*Label("$\be^*=1535$ m"), (-2.2, 50), red);
+label(rotate(70)*Label("$\be^*=90$ m"), (-0.9, 50), blue);
+label(rotate(65)*Label("$\be^*=2$ m"), (0.55, 62), heavygreen);
 
-limits((-3, 0), (log10(20), 1), Crop);
+limits((-3, 0), (log10(20), 100), Crop);
 
-xaxis(YEquals(0.5, false), dashed);
+xaxis(YEquals(30, false), dashed);
 scale(Log, Linear);

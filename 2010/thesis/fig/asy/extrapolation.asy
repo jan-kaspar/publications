@@ -3,6 +3,14 @@ import pad_layout;
 
 StdFonts();
 
+void DrawT30(real y)
+{
+	xaxis(YEquals(0, false), dotted);
+	yaxis(XEquals(2e-3, false), dashed);
+	label(rotate(90)*Label("1535"), (log10(2.5e-3), y));
+	yaxis(XEquals(4e-2, false), dashed);
+	label(rotate(90)*Label("90"), (log10(5e-2), y));
+}
 
 //----------------------------------------------------------------------------------------------------
 
@@ -20,6 +28,7 @@ string[] labelsS = {"Islam et al. (HP)", "Islam et al. (LxG)", "Petrov et al. (2
 TGraph_reducePoints = 3;
 for (int f = 0; f < files.length; ++f) {
 	NewPad("$|t|\un{GeV^2}$", "$B(t)\un{GeV^{-2}}$");
+	currentpad.xSize = 9cm;
 	scale(Linear, Linear);
 
 	for (int t : tags.keys) {
@@ -29,7 +38,13 @@ for (int f = 0; f < files.length; ++f) {
 	}
 
 	limits((0, 18), (0.35, 33), Crop);
+	yaxis(XEquals(2e-3, false), dashed);
+	label(rotate(90)*Label("1535"), (2e-3, 23), E);
+	yaxis(XEquals(4e-2, false), dashed);
+	label(rotate(90)*Label("90"), (4e-2, 23), E);
 }
+
+AttachLegend(N, N+0.05E);
 
 GShipout("ext_B", hSkip=2mm);
 
@@ -41,15 +56,41 @@ for (int f = 0; f < files.length; ++f) {
 	scale(Log, Linear);
 
 	for (int t : tags.keys) {
-		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "C/" + tags[t], error=false);
+		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "low |t| C/" + tags[t], error=false, search=false);
 		if (o.valid)
-			draw(yscale(100), o, colors[t]);
+			draw(yscale(100), o, colors[t], labelsS[t]);
 	}
 
-	limits((1e-4, -5), (0.35, +2), Crop);
+	limits((1e-3, -5), (0.35, +10), Crop);
 }
 
+DrawT30(-3);
+AttachLegend();
+
 GShipout("ext_C", hSkip=2mm);
+
+//----------------------------------------------------------------------------------------------------
+
+string f = "../extrapolation/SmearingTest.root";
+
+NewPad("$|t|\un{GeV^2}$", "smearing correction$\un{\%}$");
+
+AddToLegend("$\be^* = 1535\ \rm m$");
+draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_0.30.root", tags[0]+"/h_r"), blue, labelsS[0]);
+draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_0.30.root", tags[5]+"/h_r"), blue+dashed, labelsS[5]);
+
+AddToLegend("$\be^* = 90\ \rm m$");
+draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_2.36.root", tags[0]+"/h_r"), red, labelsS[0]);
+draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_2.36.root", tags[5]+"/h_r"), red+dashed, labelsS[5]);
+
+scale(Log, Linear);
+
+limits((1e-3, -5), (0.35, 20), Crop);
+DrawT30(3);
+
+AttachLegend(NW, NW);
+
+GShipout("ext_smearing", hSkip=2mm);
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -60,11 +101,14 @@ pen[] colors = {black, red, red+dashed, blue, heavygreen};
 string f = "../root/extrapolation_1535.root";
 
 NewPad("$|t|_{\rm low}$", "$\de$");
+currentpad.yTicks = RightTicks(Step=1,step=0.2);
 for (int ti : tags.keys) {
 	draw(rGetObj(f, "dev|"+tags[ti]), "l,p", colors[ti], mCi+1pt+colors[ti]);
 }
+	
+limits((0.002, -3), (0.02, 1), Crop);
+xaxis(YEquals(0, false), dotted);
 
-limits((0.003, -3), (0.02, 1), Crop);
 AttachLegend("$\be^* = 1535\ \rm m$");
 
 //---------------
@@ -77,6 +121,7 @@ for (int ti : tags.keys) {
 }
 
 limits((0.04, -6), (0.08, 2), Crop);
+xaxis(YEquals(0, false), dotted);
 AttachLegend("$\be^* = 90\ \rm m$");
-
+	
 GShipout("ext_results", hSkip=5mm);
