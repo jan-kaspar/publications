@@ -74,9 +74,9 @@ guide[] GetGraphs(string dir)
 
 //----------------------------------------------------------------------------------------------------
 
-void DrawSet(guide[] graphs, int sm, real mx)
+void DrawSet(guide[] graphs, int sm, real mx, bool first, bool last)
 {
-	NewPad("$\si(\De\rh_z)\un{mrad}$", "normalize eigenvaules of $\mat S$");
+	NewPad((last) ? "$\si(\De\rh)\un{mrad}$" : "", "$|\la_{\rm N}|$");
 	scale(Linear, Log);
 	for (int j = 0; j < N; ++j) {
 		pen p = stdPens[j % 5];
@@ -92,6 +92,10 @@ void DrawSet(guide[] graphs, int sm, real mx)
 	label("\SmallerFonts singular limit", (mx/2, log10(sing_limit)), Fill(white));
 	limits((0, 1e-15), (mx, 1e+6), Crop);
 	xaxis(YEquals(sing_limit, false), dotted);
+
+	if (first) {
+		label("two groups $\longrightarrow$ three and more groups", (mx/2, 6), -2S);
+	}
 }
 
 
@@ -102,25 +106,6 @@ void MakeFile(string g, string t, string what, int o)
 	string rps = (what == "rp") ? rps_rp : rps_st;
 	string twoU = (what == "rp") ? "f" : "t";
 	string overlap = (o != 0) ? "t" : "f";
-
-	/*
-	NewPad(false);
-
-	NewPad(false);
-	label("\vbox{\noindent\hsize6cm"
-		+replace(g, "_", "\_") + "\hfil\break"
-		+t+"\hfil\break"
-		+rps
-		+"}");
-	
-	NewPad(false);
-	label("\vbox{\noindent\hsize6cm"
-		+ " 4pl" + "\hfil\break"
-		+ " 2units="+twoU + "\hfil\break"
-		+ " overlap="+overlap + "\hfil\break"
-		+ " 3potsInO=t" + "\hfil\break"
-		+"}");
-	*/
 
 	for (int op: optimized.keys) {
 		string opt = optimized[op];
@@ -137,21 +122,34 @@ void MakeFile(string g, string t, string what, int o)
 			+twoU+",overlap="+overlap+",3potsInO=t";
 		guide[] graphs = GetGraphs(dir);
 	
-		//----------
-		//NewPad(false);
-		//label(opt);
-		
-		DrawSet(graphs, sm, 5);
-		DrawSet(graphs, sm, 1000);
-	}
+		DrawSet(graphs, sm, 5, (opt == "s"), (opt == "srz"));
 
-	//string prefix = g+"_"+t+"_"+what+"_overlap="+overlap;
-	//write("shipout:" + prefix);
-	//GShipout(prefix);
+		if (op == 0) {
+			label("\vtop{\hbox{\bf shitfs in the read-out direction}}", (5, 6), S+3E);
+			label("$\}$ four singular modes (4.37)", (5, -12.5), 3E);
+		}
+		
+		if (op == 1) {
+			label("\vtop{\hbox{\bf shitfs in the read-out direction}\hbox{\bf and rotations}}", (5, 6), S+3E);
+			label("singular mode (4.47) with $\De\rh$ different for $U$ and $V$", (5, -1.5), 3E);
+			label("$\Big\rbrace$ \raise2pt\vbox to0pt{\vss\hbox{singular modes (4.37) and}"+
+				"\hbox{singular mode (4.47) with $\De\rh$ equal for $U$ and $V$}\vss}", (5, -11.5), 3E);
+		}
+		
+		if (op == 2) {
+			label("\vtop{\hbox{\bf shitfs in the read-out direction,}\hbox{\bf rotations and $z$-shifts}}", (5, 6), S+3E);
+			label("singular mode (4.47) with $\De\rh$ different for $U$ and $V$", (5, -1), 3E);
+			label("\vbox{\hbox{singular modes (4.41) with $\al$ and $\be$}\hbox{different for $U$ and $V$}}", (5, -6.5), 3E);
+			label("$\Bigg\rbrace$ \raise4pt\vbox to0pt{\vss\hbox{singular modes (4.37),}"+
+				"\hbox{singular mode (4.47) with $\De\rh$ equal for $U$ and $V$}"+
+				"\hbox{and singular modes (4.42)}\vss}", (5, -12.5), 3E);
+		}
+	}
 }
 
 //----------------------------------------------------------------------------------------------------
 
+/*
 NewPad(false, 2, 1);
 label(rotate(90)*Label("sh. r-o."));
 
@@ -160,6 +158,7 @@ label(rotate(90)*Label("sh. r-o. and rot. z"));
 
 NewPad(false, 2, 3);
 label(rotate(90)*Label("sh. r-o., rot. z and sh. z"));
+*/
 
 for (int g: geometries.keys) {
 	for (int t: thetas.keys) {

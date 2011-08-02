@@ -29,8 +29,8 @@ string[] optimized = {
 };
 
 string options[] = {
-	"extFit=f",
-	"extFit=t"
+	"extFit=t",
+	"extFit=f"
 };
 
 real events = 1e3;
@@ -82,7 +82,7 @@ guide[] GetGraphs(string dir)
 
 void DrawSet(guide[] graphs, int sm, real mx)
 {
-	NewPad("$\si(\vec a)\un{mrad}$", "normalized eigenvaules of $\mat S$");
+	NewPad("$\si(\de a)\un{rad}$", "$|\la_{\rm N}|$");
 	scale(Log, Log);
 	for (int j = 0; j < N; ++j) {
 		pen p = stdPens[j % 5];
@@ -116,26 +116,6 @@ void MakeFile(string o, string g, string rho)
 	string twoU = "t";
 	string overlap = "f";
 
-	/*
-	NewPad(false);
-
-	NewPad(false);
-	label("\vbox{\noindent\hsize6cm"
-		+replace(g, "_", "\_") + "\hfil\break "
-		+"$\rh=$"+rho+"\hfil\break "
-		+o+"\hfil\break "
-		+rps
-		+"}");
-	
-	NewPad(false);
-	label("\vbox{\noindent\hsize6cm"
-		+ " 4pl" + "\hfil\break"
-		+ " 2units="+twoU + "\hfil\break"
-		+ " overlap="+overlap + "\hfil\break"
-		+ " 3potsInO=t" + "\hfil\break"
-		+"}");
-	*/
-
 	for (int op: optimized.keys) {
 		string opt = optimized[op];
 		string shz = (opt == "srz") ? "20" : "0";
@@ -157,25 +137,16 @@ void MakeFile(string o, string g, string rho)
 		//label(opt);
 		
 		DrawSet(graphs, sm, 0.01);
-		//DrawSet(graphs, sm, 50);
-		//DrawSet(graphs, sm, 10);
 	}
-
-	/*
-	string prefix = o+"_rho="+rho+"_overlap="+overlap;
-	//prefix = "out";
-	write("shipout:" + prefix);
-	GShipout(prefix);
-	*/
 }
 
 //----------------------------------------------------------------------------------------------------
 
 NewPad(false);
-label("biased $\ga$ coefficients");
+label("eigenvalues of $\mat S$");
 
 NewPad(false);
-label("non-biased $\ga$ coefficients");
+label("eigenvalues of $\tilde\mat S$");
 
 NewRow();
 
@@ -184,6 +155,14 @@ for (int o: options.keys) {
 		for (int r: rho_sigmas.keys) {
 			MakeFile(options[o], geometries[g], rho_sigmas[r]);
 		}
+	}
+
+	if (o == 0) {
+		label(rotate(37)*Label("sing. modes (4.52)"), (-6, -5));
+	}
+
+	if (o == 1) {
+		label(rotate(20)*Label("weak modes (4.52)"), (-6.3, -3));
 	}
 }
 
