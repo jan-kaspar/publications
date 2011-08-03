@@ -207,8 +207,6 @@ The vector $\vec\ch_j$ groups all the misalignments of the $j$-th type for all s
 
 Let us remark that starting with \Eq{al vec mu}, the superscripts are reserved for event numbers, while subscripts fro the misalignment quantity class (see \Tb{al alignment quantities}).
 
-\TODO{NEEDED? $N$ events, $D$ detectors, $D_n$ detectors active in $n$-th event, $G$ misalignment classes, $\vec\mu^n = (\mu^n_1, \ldots, \mu_{D_n}^n)^\T$}
-
 Now we may put the measurement from all events into one vector:
 \eqref{\vec M = (\vec\mu^1, \vec\mu^2, \ldots)^\T}{al vec M}
 and similarly for the track and misalignment parameters
@@ -390,7 +388,7 @@ For \em{shifts in the read-out direction}, the condition \Eq{al sm con} reads (u
 
 Since the \lhs{} does not depend on the event number $n$, neither must the \rhs{}. That is why the ${\De\vec a}=(\De a_x, \De a_y)^\T$ and ${\De\vec b=(\De b_x, \De b_y)^\T}$ vectors do not need to carry a superscript. These two vectors define the structure of the singular modes -- they correspond to \em{global} ($\De\vec b$) and \em{linearly-progressive} ($\De\vec a\, z_i$) shifts in $x$ and $y$. By global shift we mean a shift that is common for all sensors. The size of a linearly-progressive shift is proportional to the $z$-position of a sensor. There are four free parameters, thereby four singular modes. The situation is illustrated in \Fg{al sing modes shr}.
 
-\fig{fig/pdf/al_sing_modes_shr.pdf}{al sing modes shr}{The read-out-shift singular modes within a sensor package (of the nominal RP geometry). Odd sensors (the left most sensor has number 1) measure the $V$ projection, even the $U$ projection. The dots show the values of the singular mode for each sensor (in red for $V$ sensors, in blue for the $U$ ones).}
+\fig{fig/pdf/al_sing_modes_shr.pdf}{al sing modes shr}{An illustration of the singular modes \Eq{al sm shr sol}: a front view on a sensor package. Each sensor is represented by a dot (its center $\vec c$) and an arrow (its read-out direction $\vec d$), cf.~the front view in \Fg{al proton sensor interaction}. The hollow dots mark the nominal positions, the solid ones represent the misalignment mode. For simplicity we have considered a simplified package of six sensors only (see the numbers), moreover with an equal spacing $\De z$. The $U$ (red) and $V$ (blue) sensors are regularly alternating, the first one is at $z = 0$.}
 
 \em{Shifts in $z$}. Writing the condition \Eq{al sm con} for each read-out group yields
 \eqref{\vec\de_g \cdot \vec a^n \De z_i = \vec\de_g \cdot (
@@ -408,7 +406,10 @@ For more than two groups there is generally no solution (it is an over-constrain
 In fact, these are just special cases of the singular modes \Eq{al sm shz sol 2g}, therefore they are present for any type of geometry (any number of read-out groups). Both types of the singular modes are illustrated in \Fg{al sing modes shz}, for a summary see \Tb{al sing mode overview}.
 
 
-\fig{fig/pdf/al_sing_modes_shz.pdf}{al sing modes shz}{The $z$-shift singular modes within a sensor package. Left: the nominal RP geometry -- odd sensors (the left most sensor has number 1) measure the $V$ projection (red), even the $U$ projection (blue). The dots demonstrate the singular modes \Eq{al sm shz sol 2g}. Right: a hypothetical situation with more read-out groups, the dots represent the singular modes \Eq{al sm shz sol 3g}.}
+\fig{fig/pdf/al_sing_modes_shz.pdf}{al sing modes shz}{An illustration of the singular modes \Eq{al sm shz sol 2g,al sm shz sol 3g}: a top view on a sensor package, cf.~\Fg{al proton sensor interaction}. Each sensor is represented by a dot (its center $\vec c$) and an arrow (the $x$ projection of its read-out direction $\vec d$). The hollow dots mark the nominal positions, the solid ones represent the misalignment mode. For simplicity we have considered a simplified package of six sensors only (see the numbers), moreover with an equal spacing $\De z$. The first sensor is at $z = 0$.
+Left: the case with two read-out groups, as in the nominal geometry the $U$ (red) and $V$ (blue) sensors are alternating regularly.
+Right: a hypothetical situation with a third read-out group added (sensor four drawn in green).
+}
 
 \em{Rotations around $z$}. When applying the condition \Eq{al sm con} one shall keep both rotation and read-out-direction shift misalignments. It will turn out that they can not be separated. Written for each read-out group the condition reads:
 \eqref{
@@ -429,7 +430,8 @@ The first two relations require $\De\rh_i$ to be constant within every read-out 
 
 The third relation in \Eq{al sm rotz con sep} gives the read-out-direction shift accompanying the rotation singular modes:
 \eqref{\De s_i \equiv \vec d_i \cdot \De\vec c_i = - \De\rh_i\, \de s_i\ ,\qquad \de s_i = \vec d_{\perp_i} \cdot \vec c_i\ .}{al sm rotz shr}
-\TODO{explain}
+The reason for this shift is that the singular mode is a rotation about the $z$ axis, but the alignment rotations are performed about sensors' centers, displaced by $\vec c_i$ from the $z$ axis.
+
 The singular modes can then be summarized
 \eqref{
 \pmatrix{
@@ -443,15 +445,16 @@ The singular modes can then be summarized
 \ .}{al sm rotz sol}
 For three and more groups, $\De\rh$ is a constant, thus there is just one singular mode. For two groups, the values of $\De\rh_g$ are independent for each group, therefore there are two singular modes. The situation is illustrated in \Fg{al sing modes rotz}, a summary can be found in \Tb{al sing mode overview}.
 
-\fig{fig/pdf/al_sing_modes_rotz.pdf}{al sing modes rotz}{The rotation singular modes within a sensor package. The top panels show the rotation values of the singular modes, the bottom the accompanying read-out-direction shift. Left: the nominal RP geometry -- odd sensors (the left most sensor has number 1) measure the $V$ projection (red), even the $U$ projection (blue). Right: a hypothetical situation where the 5th and 6th sensor have non-standard read-out directions (thereby increasing the number of read-out groups above 2).}
+\fig{fig/pdf/al_sing_modes_rotz.pdf}{al sing modes rotz}{An illustration of the singular modes \Eq{al sm rotz sol}: a front view on a sensor package. Each sensor is represented by a dot (its center $\vec c$) and an arrow (its read-out direction $\vec d$), cf.~the front view in \Fg{al proton sensor interaction}. The hollow dots and dashed arrows/lines show the nominal positions and read-out directions, the full dots and solid arrows represent the misalignment mode. For simplicity we have considered a simplified package of six sensors only (see the numbers), note that often they lie on top of each other in the drawing. Left: the case with two read-out groups, like in the nominal geometry, the $U$ (red) and $V$ (blue) sensors are alternating regularly. The $\De\vec c$ vector shows the accompanying read-out-direction shift \Eq{al sm rotz shr}. Right: a hypothetical situation with a third read-out group (sensor 4 drawn in green).
+}
 
 To illustrate the structure of the singular modes we have made a number of MC studies. We have considered a series of geometries, starting with the nominal one and adding rotation misalignments to all sensors. These mis-rotations have been randomly generated according to a normal distribution with a variable variance. Going from zero variance to positive values represents a smooth transition from a geometry with two read-out groups to geometries with more groups. This transition is shown in \Fg{al eig rho}. There, the results are presented in terms of \em{normalized eigenvalues}
 \eqref{\la_{\rm N} = \hbox{eigenvalue of }\tilde\mat S/N_{\rm events}\ ,}{al S norm eig val}
-which, in a good approximation, shall be independent of the number of events $N_{\rm events}$.
+which, in a good approximation, shall be independent of the number of events $N_{\rm events}$. The determination of the eigenvalues has a limited accuracy (we have used ROOT matrix libraries \bref{root matrix} at double precision). Therefore the eigenvalues corresponding to singular modes are found small but non-zero. In order to distinguish between regular and singular modes one thus needs to set a finite \em{singular limit}. \Fg{al eig rho} shows that a value of $10^{-9}$ is reasonable.
 
-Any numerical calculation (we have used ROOT matrix libraries \bref{root matrix} with double precision) has a limited precision, thus even for true singular modes a small but non-zero eigenvalue is found. Therefore they look like weak modes. For any analysis one has to set a (non-zero) \em{singular limit} to distinguish between regular and very weak/singular modes. \TODO{value}
+\TODO{meaning of the eigenvalues}
 
-\fig{fig/pdf/al_eigenvalues_rho.pdf}{al eig rho}{The spectrum of normalized eigenvalues of the $\tilde\mat S$ matrix ($\la_{\rm N}$) as a function of geometry. The geometries considered have been created from the nominal one by applying rotation misalignment to each sensor (within one station). The misalignments have been randomly generated according to a normal distribution with zero mean and variance $\si^2(\De\rh)$ -- the quantity on the horizontal axis. The case $\si(\De\rh) = 0$ corresponds to the nominal geometry, which contains two read-out groups. Increasing $\si(\De\rh)$ then represents a smooth transition to configurations with three and more read-out groups.\hfil\break
+\fig{fig/pdf/al_eigenvalues_rho.pdf}{al eig rho}{The spectrum of normalized eigenvalues of the $\tilde\mat S$ matrix ($\la_{\rm N}$) as a function of geometry. The geometries considered have been created from the nominal one-station geometry by applying rotation misalignment to each sensor. The misalignments have been randomly generated according to a normal distribution with zero mean and variance $\si^2(\De\rh)$ -- the quantity on the horizontal axis. The case $\si(\De\rh) = 0$ corresponds to the nominal geometry, which contains two read-out groups. Increasing $\si(\De\rh)$ then represents a smooth transition to configurations with three and more read-out groups.\hfil\break
 The colors correspond to the eigenvalue order. Therefore, when two curves representing two alignment modes cross, they exchange their colors (e.g. the mode (4.47) in the bottom plot).
 % Theta 10 mrad, geometry 2.7x3.3, overlap=f
 }
@@ -460,6 +463,7 @@ The colors correspond to the eigenvalue order. Therefore, when two curves repres
 
 Besides the singular modes derived above, there could be singular modes arising from special track distributions. One could immediately think of a case where the sensors split into several groups such that no track can go through sensors of different groups at a time. Regarding RPs, this situation may appear when the pots are not inserted close enough and therefore no track can go through the overlap between the vertical and horizontal pots. In this case, the alignment task would split into several smaller tasks (one per group) and for each of them one could write an alignment equation like \Eq{al fit equation}. Each of these equations contains a $\tilde\mat S$ matrix with its singular modes as discussed above. Therefore the number of singular modes gets multiplied by the number of groups.
 
+\TODO{remove the delta}
 The LHC proton tracks are very parallel (see e.g. \Tb{al lhc datasets}), in other words the distribution of the track slopes $\vec a^n$ is sharply peaked about a mean value $\bar\vec a$:
 \eqref{\vec a^n = \bar\vec a + \de\vec a^n,\qquad \si(\de\vec a^n) = \O{10^{-4}\un{rad}}\ .}{al sm a dist}
 Let us reexamine the condition for rotation singular modes \Eq{al sm rotz con} when the spread $\de\vec a^n\to 0$:
@@ -495,42 +499,47 @@ For two groups, the $\al_g$ parameters are independent for both groups. There ar
 
 Note that the $\De s_i$ part of the rotation singular vectors \Eq{al sm rotz sol,al sm rotz sol la} can be compensated by the read-out-direction shift singular modes \Eq{al sm shr sol}. It is therefore sufficient to consider the rotation singular modes in a form:
 \eqref{\De\rh_i = \al_g z_i + \be_g\ .}{al sm rotz full sol}
-$\be_g$ (equivalent of $\De\rh_g$ in \Eq{al sm rotz sol}) represents a global rotation, $\al_g$ leads to a linearly-progressive rotation. \TODO{ref to figure}, for a summary see \Tb{al sing mode overview}.
+$\be_g$ (equivalent of $\De\rh_g$ in \Eq{al sm rotz sol}) represents a global rotation, $\al_g$ leads to a linearly-progressive rotation.
+
+\TODO{ref to \Fg{al sing modes rotz al}, for a summary see \Tb{al sing mode overview}.}
+
+\fig{fig/pdf/al_sing_modes_rotz_al.pdf}{al sing modes rotz al}{An illustration of the singular modes \Eq{al sm rotz full sol}: a front view on a sensor package. Each sensor is represented by a dot (its center $\vec c$) and an arrow (its read-out direction $\vec d$), cf.~the front view in \Fg{al proton sensor interaction}. The hollow dots and dashed arrows/lines show the nominal positions and read-out directions, the full dots and solid arrows represent the misalignment mode. For simplicity we have considered a simplified package of six sensors only (see the numbers), moreover with an equal spacing $\De z$. There are two read-out groups (like in the nominal geometry): the $U$ (red) and $V$ (blue) sensors are regularly alternating, the first one is at $z = 0$. For three and more groups the situation looks very similar, only the $\al$ and $\be$ parameters are the same for all the groups. To keep the figure simple, we assumed $\bar\vec a = 0$, that is why all detector centers lie on a circle.
+}
 
 Unlike the geometrical singular modes, the modes \Eq{al sm rotz sol la} are singular for $\mat S$ and $\bar\mat S$ only, not for $\tilde\mat S$. The reason is that the transition \Eq{al tau linearization} from true to estimated track parameters brings in an error due to a finite resolution. Thus even if the true tracks are perfectly parallel, the reconstructed ones are not. Consequently the modes \Eq{al sm rotz sol la} correspond only to small, but non-zero eigenvalues of $\tilde\mat S$.
 
-This effect is illustrated in the right panel of \Fg{al eig theta}. For true-track angular spread $\si(\de\vec a)$ below the angular resolution of a station (about few microradians), the eigenvalues of modes \Eq{al sm rotz sol la} do not reduce further as for $\mat S$ in the left panel.
+This effect is illustrated in the right panel of \Fg{al eig theta}. For true-track angular spread $\si(\de\vec a)$ below the angular resolution of a station (about few microradians), the eigenvalues of the modes \Eq{al sm rotz sol la} do not reduce further as for $\mat S$ in the left panel.
 
-It would be possible to draw a similar line of arguments for the case where $\vec b^n\to \vec b_0$. But keeping in mind the application to LHC proton tracks, this turns out to be very unrealistic scenario.
-
-
-\fig{fig/pdf/al_eigenvalues_theta.pdf}{al eig theta}{Spectra of normalized eigenvalues ($\la_{\rm N}$) of the $\mat S$ (left) and $\tilde\mat S$ (right) matrices plotted as a function of track-angle spread $\si(\de a)$ (same values used for $x$ and $y$ projections). The simulations have been done for a RP station of the nominal geometry (two read-out groups). For more groups there would be just one line instead of the labeled red and blue curves. The vertical dotted line marks the typical slope spread in the LHC data.
-\TODO{parallel to non-parallel}
-\TODO{nominal geometry - two groups}
+\fig{fig/pdf/al_eigenvalues_theta.pdf}{al eig theta}{Spectra of normalized eigenvalues ($\la_{\rm N}$) of the $\mat S$ (left) and $\tilde\mat S$ (right) matrices plotted as a function of the track-angle spread $\si(\de a)$ (same values used for $x$ and $y$ projections). Zero value of the spread means perfectly parallel tracks. The simulations have been done for a RP station of the nominal geometry (two read-out groups). For more groups there would be just one line instead of the labeled red and blue curves. The vertical dotted line marks the typical slope spread in the LHC data.
 % shr\_rotz=0. 2.7x33, overlap=f
 }
 
-\> Eventually, let's remark that parallel tracks do not introduce new weak modes for shifts in read-out nor in $z$ direction. The reason is simple, their $\ga$ factors (see \Tb{al alignment quantities}) do not involve both track parameters (slope and intercept). Thus it is not possible that a misalignment would ''convert'' one to the other (in the sense of creating slope $\vec a'$ from intercept $\vec b$ in \Eq{cnst rotz lt2}). \TODO{For z shifts, the number would indeed increase, with no slope spread, the z shifts can not be determined at all}.
+It would be possible to draw a similar line of arguments for a situation where $\vec b^n\to \bar\vec b = $ const. But keeping in mind the application to LHC proton tracks, this turns out to be very unrealistic scenario.
 
-\> final ref to \Tb{al sing mode overview}??
+At the end, let us remark that parallel tracks do not introduce new weak modes for the shifts in the read-out directions. The corresponding singular mode condition \Eq{al sm shr sol} is completely independent of the track slopes $\vec a^n$, therefore their vanishing spread makes no difference. Regarding the shifts in $z$, it makes little sense to consider the case of parallel tracks -- there the $z$-shifts can not be determined at all. The singular and weak modes for all considered configurations are summarized in \Tb{al sing mode overview}.
 
-\htab{al sing mode overview}{Overview of singular and weak modes. The bold numbers give the number of singular modes that are listed afterwards. The ''glob.'' abbreviation stands for ''global'' which is used to refer to a mode with constant coefficients for every detector. The ''l.p.'' stands for ''linearly-progressive'' which means a mode the coefficients of which are proportional to $z_i$. In that sense X and Y shearings can be seen as linearly-progressive X and Y shifts. Note that the additional modes for the parallel-track case $\si(\de\vec a) = 0$ are weak only.}{
+\htab{al sing mode overview}{An overview of the singular and weak modes. The bold numbers give the number of singular/weak modes that are listed afterwards. The ''gl.'' abbreviation stands for ''global'' which is used to refer to a mode with constant coefficients for every sensor. The ''l.p.'' stands for ''linearly-progressive'' which means a mode the coefficients of which are proportional to $z_i$. Note that the additional modes for the parallel-track case are weak only.
+\TODO{one read-out group: such det. apparatus can determine one track projection only}
+\TODO{parallel tracks make no sense for $z$-shifts}
+}{
 \omit&\multispan{4}\bhrulefill\cr
-\omit			&\multispan2\bvrule\strut\hfil two read-out directions\hfil &\multispan2\strut\vrule\hfil three and more read-out directions\hfil\cr
+\omit			&\multispan2\bvrule\strut\hfil two read-out groups\hfil &\multispan2\strut\vrule\hfil three and more read-out groups\hfil\cr
 \omit\bhrulefill&\multispan{4}\hrulefill\cr
-\hbox{quantity class}	& \si(\vec a)>0 & \si(\vec a)=0 & \si(\vec a)>0 & \si(\vec a)=0 \cr\bln
-\hbox{read-out shift}	&\multispan4\bvrule\hfil {\bf 4}: X and Y global shifts, X and Y shearings\hfil\cr\ln
+						& \hbox{non-parallel tracks} & \hbox{parallel tracks} & \hbox{non-parallel tracks} & \hbox{parallel tracks} \cr\bln
+\hbox{read-out shifts}	&\multispan4\bvrule\hfil {\bf 4}: $x$ and $y$ global and linearly progressive shifts\hfil\cr\ln
 %
-&\hbox{{\bf 2}: glob. rot.}  &\hbox{{\bf 4}: glob. and l.p. rots.} &\hbox{{\bf 1}: glob. rot.} &\hbox{{\bf 2}: glob. and l.p. rot.} \cr
-\omit\vbox to 0pt{\vss\hbox{ rotation about $z$ }\vss}&\multispan4\cr
-& \hbox{for U and V indep.} & \hbox{for U and V indep.}&&\cr\ln
+&\hbox{{\bf 2}: gl. rot.}  &\hbox{{\bf 4}: gl. and l.p. rots.} &\hbox{{\bf 1}: gl. rot.} &\hbox{{\bf 2}: gl. and l.p. rot.} \cr
+\omit\vbox to 0pt{\vss\hbox{ rotations about $z$ }\vss}&\multispan4\cr
+& \hbox{for $U$ and $V$ indep.} & \hbox{for $U$ and $V$ indep.}&&\cr\ln
 %
-& \hbox{{\bf 4}: glob. and l.p.} &  & \hbox{{\bf 2}: glob. and l.p.}  & \cr
-\hbox{shift in }z	& \hbox{shifts in }z &-& \hbox{shift in }z&-\cr
-& \hbox{for U and V indep.} &&&\cr\bln
+& \hbox{{\bf 4}: gl. and l.p.} &  & \hbox{{\bf 2}: gl. and l.p.}  & \cr
+\hbox{shifts in }z	& \hbox{shifts in }z &-& \hbox{shift in }z&-\cr
+& \hbox{for $U$ and $V$ indep.} &&&\cr\bln
 }
 
 \subsection[al constr]{Constraints}
+
+\TODO{to compensate singular and weak modes}
 
 To solve the fit equation \Eq{fit equation}, one has to imply additional constraints that would regularize the $\mat S$ matrix. For the alignment task, these constraints may be for example metrology or laser measurements. Such constraints may be written in the following form
 \eqref{\vec c \cdot \hat\vec\ch = v\ ,}{cnst form}
@@ -583,7 +592,7 @@ and expand the parts for singular vectors
 }
 \vec T'(\vec\La)
 \ .}{cnst aux5}
-(The $\mat E$ matrix contains the singular vectors $\vec s_i$ in columns). The part above the vertical line on the \lhs{} is identically equal to zero and thus so the \rhs{} must be. Considering that $\mat E^T \mat E$ is regular, one finds
+(The $\mat E$ matrix contains the singular vectors $\vec s_i$ in columns). The part above the vertical line on the \lhs{} is identically equal to zero and thus so the \rhs{} must be. Considering that $\mat E^T \mat E$ is regular \TODO{why}, one finds
 \eqref{\mat E^\T \vec T = \mat E^\T \mat C \vec\La\ .}{cnst aux6}
 In order to find solution $\vec\La$ for any $\vec T$,
 \eqref{\mat E^\T \mat C\hbox{ must be regular}\ .}{cnst condition}
