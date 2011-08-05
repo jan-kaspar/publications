@@ -6,13 +6,14 @@ ySizeDef = 4.9cm;
 
 StdFonts();
 
-real rhos[] = { 0, 1, 4, 10, 40, 100, 200, 300, 400, 500 };
-//real rhos[] = { 0, 1, 4, 10 };
+real rhos[] = { 0, 25, 50, 75, 100, 125, 150, 175, 200 };
 
 int rps[] = { 124 };
 int dets[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
 string base_dir = "../alignment/systematical errors/near_far_rotation";
+
+//----------------------------------------------------------------------------------------------------
 
 void MakePage(string dir, string file1, string file2)
 {
@@ -71,7 +72,7 @@ void MakePage(string dir, string file1, string file2)
 			draw(s_graphs[id], p, mCi+p);
 			++i;
 		}
-		limits((0, -5), (200, +1), Crop);
+		limits((0, -6), (200, +3), Crop);
 	
 		NewPad("$\De_{F-N} \rh \un{mrad}$", "rotation syst. error $\un{mrad}$", 1, j);
 		int i = 0;
@@ -83,7 +84,7 @@ void MakePage(string dir, string file1, string file2)
 			draw(r_graphs[id], p, mCi+p);
 			++i;
 		}
-		limits((0, -0.1), (200, +1), Crop);
+		limits((0, -0.3), (200, +1), Crop);
 	
 		
 		++j;
@@ -97,7 +98,7 @@ void MakePage(string dir, string file1, string file2)
 //MakePage("theta=10E-3", "precise3_expanded_results_Ideal.xml", "precise3_expanded_results_Jan.xml");
 //NewPage();
 
-MakePage("theta=0E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
+MakePage("theta=0.1E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
 //NewPage();
 //MakePage("theta=10E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
 

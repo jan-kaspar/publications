@@ -12,7 +12,8 @@ string thetas[] = {
 	"100E-3"
 };
 
-NewPad("$\si(\vec a)\un{rad}$", "$z$ shift uncertainty $(\rm mm)$");
+//---------------------------------------------------------------------------------------------------------------------
+
 scale(Log, Log);
 
 guide graphs[];
@@ -32,7 +33,8 @@ for (int ti : thetas.keys) {
 		if (!graphs.initialized(di))
 			graphs[di] = nullpath;
 
-		graphs[di] = graphs[di] -- Scale((th, a.shz_e[di]));
+		// transition from 1E3 to 1E5 events (resolution improves by sqrt(100))
+		graphs[di] = graphs[di] -- Scale((th, a.shz_e[di]/10));
 	}
 }
 
@@ -45,44 +47,52 @@ void Draw(int idx, pen c, string l="")
 
 //---------------------------------------------------------------------------------------------------------------------
 
+NewPad("$\si_a\un{rad}$", "$z$ shift uncertainty $(\rm mm)$");
+scale(Log, Log);
+
 Draw(1202, black, "near-top");
 Draw(1212, red, "near-bot");
 Draw(1223, blue, "near-hor");
-Draw(1233, heavygreen);
-Draw(1242, magenta);
-Draw(1252, cyan);
+Draw(1233, heavygreen, "far-hor");
+Draw(1242, magenta, "far-top");
+Draw(1252, cyan, "far-bot");
 
+/*
 Draw(1206, black+dashed);
 Draw(1216, red+dashed);
 Draw(1227, blue+dashed);
 Draw(1237, heavygreen+dashed);
 Draw(1246, magenta+dashed);
 Draw(1256, cyan+dashed);
+*/
 
-ylimits(1e2, 1e7);
+ylimits(1e1, 1e6);
 yaxis(XEquals(1e-4, false), dotted);
 
 AttachLegend();
 
 //---------------------------------------------------------------------------------------------------------------------
 
-NewPad("$\si(\vec a)\un{rad}$", "rotation uncertainty $(\rm mrad)$");
+NewPad("$\si_a\un{rad}$", "");
 scale(Log, Log);
+
 Draw(1203, black);
 Draw(1213, red);
 Draw(1222, blue);
-Draw(1232, heavygreen, "far-hor");
-Draw(1243, magenta, "far-top");
-Draw(1253, cyan, "far-bot");
+Draw(1232, heavygreen);
+Draw(1243, magenta);
+Draw(1253, cyan);
 
+/*
 Draw(1207, black+dashed);
 Draw(1217, red+dashed);
 Draw(1226, blue+dashed);
 Draw(1236, heavygreen+dashed);
 Draw(1247, magenta+dashed);
 Draw(1257, cyan+dashed);
+*/
 
-ylimits(1e2, 1e7);
+ylimits(1e1, 1e6);
 yaxis(XEquals(1e-4, false), dotted);
 
 AttachLegend();
@@ -90,9 +100,9 @@ AttachLegend();
 //---------------------------------------------------------------------------------------------------------------------
 
 NewPad(false, 0, -1);
-label("V detectors");
+label("$V$ detectors");
 
 NewPad(false, 1, -1);
-label("U detectors");
+label("$U$ detectors");
 
-GShipout(hSkip=3mm, vSkip=1mm);
+GShipout(hSkip=5mm, vSkip=1mm);

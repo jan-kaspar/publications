@@ -6,13 +6,14 @@ ySizeDef = 4.9cm;
 
 StdFonts();
 
-real rhos[] = { 0, 1, 4, 10, 40, 100, 200, 300, 400, 500 };
-//real rhos[] = { 0, 1, 4, 10 };
+real rhos[] = { 0, 25, 50, 75, 100, 125, 150, 175, 200 };
 
 int rps[] = { 120 };
 int dets[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
 string base_dir = "../alignment/systematical errors/u_v_rotation";
+
+//----------------------------------------------------------------------------------------------------
 
 void MakePage(string dir, string file1, string file2)
 {
@@ -61,7 +62,7 @@ void MakePage(string dir, string file1, string file2)
 	
 	int j = 0;
 	for (int rp_i : rps.keys) {
-		NewPad("$\De_{U-V} \rh \un{mrad}$", "read-out shift $\un{\mu m}$", 0, j);
+		NewPad("$\De_{U-V} \rh \un{mrad}$", "shift syst.~error $\un{\mu m}$", 0, j);
 		int i = 0;
 		for (int d_i : dets.keys) {
 			int id = rps[rp_i]*10 + dets[d_i];
@@ -73,7 +74,7 @@ void MakePage(string dir, string file1, string file2)
 		}
 		limits((0, -0.2), (200, +0.2), Crop);
 	
-		NewPad("$\De_{U-V} \rh \un{mrad}$", "rotation around $z$ $\un{mrad}$", 1, j);
+		NewPad("$\De_{U-V} \rh \un{mrad}$", "rotation syst.~error $z$ $\un{mrad}$", 1, j);
 		int i = 0;
 		for (int d_i : dets.keys) {
 			int id = rps[rp_i]*10 + dets[d_i];
@@ -99,7 +100,7 @@ MakePage("theta=10E-3", "precise3_expanded_results_Ideal.xml", "precise3_expande
 NewPage();
 */
 
-MakePage("theta=0E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
+MakePage("theta=0.1E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
 //NewPage();
 //MakePage("theta=10E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
 

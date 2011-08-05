@@ -82,7 +82,7 @@ guide[] GetGraphs(string dir)
 
 void DrawSet(guide[] graphs, int sm, real mx)
 {
-	NewPad("$\si(\de a)\un{rad}$", "$|\la_{\rm N}|$");
+	NewPad("$\si_a\un{rad}$", "$|\la_{\rm N}|$");
 	scale(Log, Log);
 	for (int j = 0; j < N; ++j) {
 		pen p = stdPens[j % 5];
@@ -156,6 +156,8 @@ for (int o: options.keys) {
 			MakeFile(options[o], geometries[g], rho_sigmas[r]);
 		}
 	}
+
+	label("almost parallel $\longrightarrow$ non-parallel tracks", (-5, 6), -S);
 
 	if (o == 0) {
 		label(rotate(37)*Label("sing. modes (4.52)"), (-6, -5));
