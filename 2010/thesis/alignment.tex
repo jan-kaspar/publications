@@ -550,7 +550,7 @@ At the end, let us remark that parallel tracks do not introduce new weak modes f
 
 \subsection[al constr]{Constraints}
 
-In the previous section we have shown that the $\tilde\mat S$ is singular, which expresses the fact that some alignment modes are inaccessible to the track-based alignment. To accomplish the alignment task -- to solve the \Eq{al fit equation} -- one thus needs to supply information about the inaccessible (singular) modes from another source. This information may be formulated in a form of additional \em{constraints} (to the alignment solution $\hat\vec\ch$) which compensates the singularity of the $\tilde\mat S$ matrix. We will consider a set of linear constraints
+In the previous section we have shown that the $\tilde\mat S$ is singular, which expresses the fact that some alignment modes are inaccessible to the track-based alignment. To accomplish the alignment task -- to solve the \Eq{al fit equation} -- one thus needs to supply the information about the inaccessible (singular) modes from another source. This information may be formulated in a form of additional \em{constraints} (to the alignment solution $\hat\vec\ch$) which compensates the singularity of the $\tilde\mat S$ matrix. We will consider a set of linear constraints
 
 \eqref{
 	\mat C^\T \hat\vec\ch = \vec V\ ,\qquad
@@ -567,7 +567,7 @@ In the previous section we have shown that the $\tilde\mat S$ is singular, which
 \ ,}{al constraints}
 where $\vec c_i$ and $v_i$ are the constraint vectors and values ($i$ enumerates the constraints). The constraints require that the ``projection'' of the solution $\hat\vec\ch$ to the ``direction'' $\vec c_i$ is $v_i$. We have used the quotes since we do not require the vectors $\vec c_i$ to be of unit size. Still we find this interpretation of the constraints quite intuitive.
 
-The fit equation \Eq{al fit equation} has been derived by pursuing a least squares fit simultaneously for misalignment and track parameters, see \Sc{al sim fit}. Now introducing the constraints, we have to deal with a constrained least squares problem. It can be addressed by the Lagrange-multipliers technique (see e.g.~\bref{Millepede}):
+The fit equation \Eq{al fit equation} has been derived by pursuing a least squares fit (simultaneously for misalignment and track parameters, see \Sc{al sim fit}). Now introducing the constraints, we have to deal with a constrained least squares problem. It can be addressed by the Lagrange-multipliers technique (see e.g.~\bref{Millepede}):
 \eqref{
 	\pmatrix{
 		\tilde\mat S & \mat C \cr
@@ -585,167 +585,123 @@ The fit equation \Eq{al fit equation} has been derived by pursuing a least squar
 \ ,}{al alignment equation}
 where $\vec\La$ is a vector of Lagrange multipliers. The bottom row expands to the constraints requirement \Eq{al constraints}. Expanding the upper row yields the fit equation \Eq{al fit equation} with a small modification:
 \eqref{
-	\tilde\mat S \hat\vec\ch = \tilde\vec T - \mat C \vec\La\ .
+	\tilde\mat S \hat\vec\ch = \vec T' \equiv \tilde\vec T - \mat C \vec\La\ .
 }{al mod fit eq}
-The presence of the Lagrange multiplier term can guarantee the existence of a solution for any $\tilde\vec T$. As we have shown, the $\tilde\mat S$ is singular, let us put all its singular vectors into columns of an $\mat E$ matrix. Then, it holds $\tilde\mat S \mat E = 0$. The $\tilde\mat S$ matrix is also symmetric, thus one may write
-\eqref{\mat E^\T (\tilde\vec T - \mat C\vec\La) = \mat E^\T \tilde\mat S = \mat E^\T \tilde\mat S^\T = (\tilde\mat S \mat E)^\T = 0\ .}{al T no sing cont}
+The presence of the Lagrange multiplier term can guarantee the existence of a solution for any $\tilde\vec T$.
+
+If we put the singular vectors of $\tilde\mat S$ into columns of an $\mat Q_{\rm s}$ matrix, we get $\tilde\mat S \mat Q_{\rm s} = 0$. The $\tilde\mat S$ matrix is also symmetric, thus one may write
+\eqref{
+	\mat Q_{\rm s}^\T (\tilde\vec T - \mat C\vec\La)
+	= \mat Q_{\rm s}^\T \tilde\mat S
+	= \mat Q_{\rm s}^\T \tilde\mat S^\T
+	= (\tilde\mat S \mat Q_{\rm s})^\T = 0\ .
+}{al T no sing cont}
 This is where the Lagrange multipliers can help to fulfill the condition. In order to find a vector $\vec\La$ for any vector $\tilde\vec T$, one gets a requirement on the set of constraints:
-\eqref{\mat E^\T \mat C\hbox{ must be regular}\ .}{al ETC reg}
+\eqref{\mat Q_{\rm s}^\T \mat C\hbox{ must be regular}\ .}{al ETC reg}
 
 In this way we can be sure that \Eq{al mod fit eq} has a solution. Since $\tilde\mat S$ is singular, we know there are infinitely many solutions. According to theorem 5.5.2~in \bref{anton}, they can be parameterized
-\eqref{\hat\vec\ch(\vec\et) = \vec\ch^0 + \mat E \vec\et\ ,}{al sol param}
-where $\vec\ch^0$ is a particular solution and $\vec\et$ are the parameters in the nullspace of $\tilde\mat S$. Another requirement we want to imply on the set of constraints $\mat C$ is to determine the solution $\hat\vec\ch$ uniquely. By inserting the above parameterization to \Eq{al constraints}, one finds that the requirement is equivalent to asking $\mat C^\T \mat E$ to be regular, which is further equivalent to \Eq{al ETC reg}.
-%\eqref{\vec\et = (\mat C^\T \mat E)^{-1} (\vec V - \vec C^\T \vec\ch^0)}{cnst aux8}
+\eqref{\hat\vec\ch = \vec\ch^0 + \mat Q_{\rm s} \vec\ch_{\rm s}\ ,}{al sol param}
+where $\vec\ch^0$ is a particular solution and $\vec\ch_{\rm s}$ are the parameters in the nullspace of $\tilde\mat S$.
+%\eqref{\vec\ch^0 = \mat Q_{\rm r} \mat L^{-1} \mat Q_{\rm r}^\T \vec T'}{al cnst chi 0}
+Another requirement we want to imply on the set of constraints $\mat C$ is to determine the solution $\hat\vec\ch$ uniquely. By inserting the above parameterization to \Eq{al constraints}, one finds that the requirement is equivalent to asking $\mat C^\T \mat Q_{\rm s}$ to be regular, which is further equivalent to the previous requirement \Eq{al ETC reg}.
+
+%\eqref{\vec\et = (\mat C^\T \mat E)^{-1} (\vec V - \vec C^\T \vec\ch^0)}{al cnst eta}
 
 If we neglect the experimental errors that enter the $\tilde\vec T$ vector, it can be calculated from \Eq{al exact fit equation}: $\tilde\vec T = \bar\mat S \vec\ch$. We recall that $\vec\ch$ is the vector of true (not estimated) residuals. As the singular modes of $\tilde\mat S$ and $\bar\mat S$ are the same, one finds that $\bar\mat S E = 0$ too. Consequently, \Eq{al T no sing cont} leads to $\La = 0$. If the experimental errors are not neglected, the relation becomes only approximative: $\La \approx 0$. This provides a consistency check that may be used during real data analysis.
 
-So far we have focused on constraining the singular modes. Looking back to \Eq{al fit eq eigen one} we remind that there might be also weak modes, which would still allow for a solution, however they would severely deteriorate the accuracy. In such a situation, one might want to constrain some of the weak modes too. In principle, the alignment equation \Eq{al alignment equation} still may be used. But since the number of constraints and the number of singular modes is different now, the results \Eq{al ETC reg} and onwards can not be applied.
+So far we have focused on constraining the singular modes. Looking back to \Eq{al fit eq eigen one} we remind that there might be also weak modes, which would still allow for a solution, however they would severely deteriorate the accuracy. In such a situation, one might want to constrain some of the weak modes too. In principle, the alignment equation \Eq{al alignment equation} still may be used. But since the number of constraints and the number of singular modes is different now, the results \Eq{al ETC reg} and onwards can not be applied. A discussion on a general level would be complicated, let us focus on a practical case instead.
 
-\vskip1cm\hrule\vskip1cm
+As already mentioned, singular modes look like weak to any computer program (due to limited calculation accuracy their eigenvalues are not exactly zero). In such a situation, the $\tilde\mat S$ matrix is not singular, but has a number of weak modes that need to be constrained. Then two important results can be derived for the solution of \Eq{al alignment equation} \footnote{%
+The derivation is lengthy, here we just sketch the main steps. Since $\tilde\mat S$ is regular now, the solution of \Eq{al alignment equation} can be written
+$$
+	\hat\vec\ch = \tilde\mat S^{-1} \big[ 1 - \mat C \mat M \mat C^\T \tilde\mat S^{-1} \big]
+		+ \tilde\mat S^{-1} \mat C \mat M \vec V\ ,\qquad
+	\mat M = (\mat C^\T \tilde\mat S^{-1} \mat C)^{-1}\ .
+$$
+The $\mat M$ matrix receives two contributions -- from weak and regular modes. To perform the inversion, one may use the recurrent relation:
+$$(\mat A+\mat B)^{-1} = \mat A^{-1} - \mat A^{-1} \mat B \mat A^{-1} + \mat A^{-1} \mat B \mat A^{-1} \mat B \mat A^{-1} \ldots\ ,$$
+which as a form of "power series" -- taking into account that $\mat A^{-1}$ contains the small eigenvalues of the weak modes. Because of that, it is sufficient to take first few terms only. Then, provided that $\mat Q_{\rm w}^\T \mat C$ is regular, it is straight-forward to find that the solution $\hat\vec\ch$ does not diverge when the weak eigenvalues vanish. In that limit, the solution gains the form of \Eq{al sol param}.
+}.
+First, the weak modes are constrained if
+\eqref{\mat Q_{\rm w}^\T \mat C \hbox{ is regular} \ .}{al WTC reg}
+Similarly to the definition of $\mat Q_{\rm s}$, the $\mat Q_{\rm w}$ matrix contains the weak modes as columns.
+Second, in the limit where the weak modes become singular (their eigenvalues tend to zero), the solution becomes equivalent to \Eq{al sol param}. Hence there is no difference between extremely weak and singular modes. This is important since computer programs treat singular modes as weak.
 
+We have seen that a set of constraints must fulfill certain conditions, see \Eq{al ETC reg,al WTC reg}, but one has still a lot of freedom in their choice. Let us list a few common options.
 
-\iffalse
-To solve the fit equation \Eq{fit equation}, one has to imply additional constraints that would regularize the $\mat S$ matrix. For the alignment task, these constraints may be for example metrology or laser measurements. Such constraints may be written in the following form
-\eqref{\vec c \cdot \hat\vec\ch = v\ ,}{cnst form}
-where the vector $\vec c$ describes the structure of the constraint and $v$ contains the measurement outcome. \TODO{resolution effects, measurement wrt. det. center}
-
-To solve the fit equation with constraints, it is advantageous to employ the Lagrange multipliers technique (\TODO{reference}). It suggests to expand the fit equation to \TODO{T with tilde}
-\eqref{\pmatrix{
-\tilde\mat S & \mat C \cr
-\mat C^\T & 0\cr
-} \pmatrix{
-\hat\vec\ch \cr
-\vec\La \cr
-} = \pmatrix{
-\vec T\cr
-\vec V\cr
-}\ ,}{alignment equation}
-where the $\mat C$ matrix contains the $\vec c$ vectors (see \Eq{cnst form}) in columns for all constraints applied and vector $\vec V$ includes corresponding $v$'s. $\vec\La$ is the vector Lagrange multipliers. Let's demonstrate that this equation does what we want. First, let's rewrite as two equations
-\eqref{\tilde\mat S \hat\vec\ch = \vec T - \mat C \vec\La \equiv \vec T'(\vec\La)\ ,}{cnst aux1}
-\eqref{\mat C^\T \hat\vec\ch = \vec V\ .}{cnst aux2}
-The second one obviously presents a series of constraints of type \Eq{cnst form}. Since $\mat S$ is symmetric (\TODO{ref}), it can be diagonalized as follows (see e.g. \bref{wikipedia} key \em{symmetric matrix})
-\eqref{\mat S = \mat Q \mat D \mat Q^{-1}, \qquad
-\mat D = \diag(\underbrace{0, \ldots}_{\vbox{\hbox{singular}\hbox{modes}}}; \underbrace{\la_1, \ldots}_{\vbox{\hbox{regular}\hbox{modes}}}), \qquad
-\mat Q = (\underbrace{\vec s_1, \ldots}_{\vbox{\hbox{singular}\hbox{modes}}} ; \underbrace{\vec r_1, \ldots}_{\vbox{\hbox{regular}\hbox{modes}}})
-\ ,}{cnst aux3}
-where we have ordered the eigenvalues and eigenvectors such that all singular modes go first. Let's remark that we don't require eigenvectors for the same eigenvalue to form an orthonormal set (although we could). This will enable us to work with singular modes as derived above (without ortnormalizing them). Since $\mat Q$ is regular, one can put
-\eqref{\mat D \mat Q^{-1} \hat\vec\ch = (\mat Q^\T \mat Q)^{-1} \mat Q^T \vec T'(\vec\La)}{cnst aux4}
-and expand the parts for singular vectors
-\eqref{
-\pmatrix{
-\ddots & & & \vrule & \cr
-& 0 & & \vrule & \cr
-& & \ddots & \vrule & \cr
-\noalign{\hrule}
- & & & \vrule & \ddots \cr
-}
-\mat Q^{-1} \hat\vec\ch = 
-\pmatrix{
-& & & \vrule & \cr
-& (\mat E^\T \mat E)^{-1} & & \vrule & \cr
-& & & \vrule & \cr
-\noalign{\hrule}
- & & & \vrule & \ddots \cr
-}
-\pmatrix{
-\cr
-\mat E^\T\cr
-\cr
-\noalign{\hrule}
-\vdots\cr
-}
-\vec T'(\vec\La)
-\ .}{cnst aux5}
-(The $\mat E$ matrix contains the singular vectors $\vec s_i$ in columns). The part above the vertical line on the \lhs{} is identically equal to zero and thus so the \rhs{} must be. Considering that $\mat E^T \mat E$ is regular \TODO{why}, one finds
-\eqref{\mat E^\T \vec T = \mat E^\T \mat C \vec\La\ .}{cnst aux6}
-In order to find solution $\vec\La$ for any $\vec T$,
-\eqref{\mat E^\T \mat C\hbox{ must be regular}\ .}{cnst condition}
-This condition defines what constraints may be used. We will discuss some convenient choices later on.
-
-For the moment, let's get back to \Eq{cnst aux1}. (As $\vec\La$ has been resolved from \Eq{cnst aux6}, $\vec T'$ is known.) This equation has infinite number of solutions that can be written
-\eqref{\hat\vec\ch(\vec\et) = \vec\ch^0 + \mat E \vec\et\ ,}{cnst aux7}
-where $\vec\ch^0$ is a particular solution and $\vec\et$ are parameters in the solution space of the homogeneous equation. Inserting that to \Eq{cnst aux2} yields
-\eqref{\vec\et = (\mat C^\T \mat E)^{-1} (\vec V - \vec C^\T \vec\ch^0)}{cnst aux8}
-and therefore \Eq{alignment equation} has always a unique solution that satisfies all constraints \Eq{cnst form}.
-
-Now it would be nice to show that the actual misalignments can play the role of $\vec\ch^0$. Unfortunately, this is the case only for shifts in the read-out direction. For the other misalignment classes it is violated because of the linearization step \Eq{tau linearization} -- see section \Sc{fit equation}. Combining \Eq{exact fit equation,cnst aux6} yields
-\eqref{\vec\La = (\mat E^\T \mat C)^{-1} \mat E^\T \bar\mat S \vec\ch_a\ .}{cnst aux9}
-If we were not forced to make the linearization step \Eq{tau linearization}, $\mat E$ would contain singular vectors of $\bar\mat S$ and thus their product would be identically zero. Then, $\vec\La = 0$, $\tilde\vec T = \vec T$ and \Eq{cnst aux1} would become trivial
-\eqref{\tilde\mat S \hat\vec\ch = \tilde\mat S \vec\ch_{\rm a}\ ,}{cnst aux10}
-which demonstrates that $\vec\ch_{\rm a}$ could play the role of the particular solution $\vec\ch^0$.
-
-\TODO{Even with the linearization step, we will be assuming the same singular vectors for $\tilde\mat S$ as for $\bar\mat S$, thus $\vec\La = 0$ and the particular would obey
-\eqref{\tilde\mat S \vec\ch^0 = \bar\mat S \vec\ch_{\rm a}}{cnst aux11}
-$\vec\ch^0$ close to $\vec\ch_{\rm a}$ ...
-}
-\fi
-
-We have seen that a set of constraints \TODO{for singular modes!} must fulfill \Eq{cnst condition}, but one has still a lot of freedom in their choice. Let's list here a few common options.
-
-\> Probably the most natural choice is to take singular modes as the constraints, that is $\mat C = \mat E$. We will refer to this option as \em{homogeneous constraints} (the role of all detectors is equal, in contrary to the next options). \TODO{sing modes only, or one can include weak modes too}
-\par\parindent\itindent\indent\hang As an example, we write explicitly the $\mat E$ matrix considering the read-out-direction shifts only. Taking the singular modes from \Eq{al sm shr sol}, the matrix can read
-\eqref{\mat E = \pmatrix{
+\> Probably the most natural choice is to take the singular modes as the constraints, that is $\mat C = \mat Q_{\rm s}$. We will refer to this option as \em{homogeneous constraints} (the role of all detectors is equal, in contrary to the next options). In principle, this set of constraints may be extended by the weak modes, then $\mat C = (\mat Q_{\rm s}, \mat Q_{\rm w})$.
+\par\parindent\itindent\indent\hang As an example, we write explicitly the constraint matrix $\mat C$ for the read-out-direction shifts only. Taking the singular modes from \Eq{al sm shr sol}, the matrix can read
+\eqref{\mat C = \pmatrix{
 	\vdots		& \vdots		& \vdots	& \vdots \cr
 	d_{ix} z_i	& d_{iy} z_i	& d_{ix}	& d_{iy} \cr
 	\vdots		& \vdots		& \vdots	& \vdots \cr
 }\ ,\qquad i\hbox{ going through all detectors.}}{al hom cnst ex}
 
-\> Another natural choice is to select a subset of reference sensors, fix their positions and let the other sensors align with respect to the reference ones. We will call this option \em{fixed-detectors constraints}. \TODO{sing or sing+weak modes}
-\par\parindent\itindent\indent\hang For an example, we consider again a case with read-out-direction shifts only. There we face four singular modes, thus we need to fix the positions of four detectors, let us take first two and last two:
-\eqref{\mat E = \pmatrix{
+\> Another natural choice is to select a subset of reference sensors, fix their positions and let the other sensors align with respect to the reference ones. We will call this option \em{fixed-detectors constraints}. Both singular and weak modes can be constrained in this way.
+\par\parindent\itindent\indent\hang For an example, we consider again the case with read-out-direction shifts only. There we face four singular modes, thus we need to fix the positions of four detectors, let us take first two and last two:
+\eqref{\mat C = \pmatrix{
 	1		& 0			& 0 		& 0 		\cr
 	0		& 1			& 0 		& 0 		\cr
 	\vdots	& \vdots	& \vdots	& \vdots	\cr
 	0		& 0			& 1 		& 0 		\cr
 	0		& 0			& 0 		& 1 		\cr
-}\ ,\qquad i\hbox{ going through all detectors.}}{al hom cnst ex}
+}\ .}{al fix-det cnst ex}
 
-\> \TODO{sing+weak modes}
- The last option is called \em{final constraints} since it has been used for the final alignment analysis (and the elastic scattering analysis presented in \Sc{felm}).
-\Fg{al eig rho,al eig theta} suggest that, in standard conditions ($\De\rh_i = \O{5\un{mrad}}$, $\si(\vec a)=\O{0.1\un{mrad}}$), it is not possible to determine the rotation between U and V detectors and between near and far unit
-%(following the weak mode \Eq{cnst rotz lt2} and the large $z$ difference between the units). 
-with satisfactory precision. \TODO{Use \Fg{al err shz theta,al err rotz rho,al err rotz theta} instead}. Thus one needs to constrain these modes too, increasing the number of rotation constraints to 4 (one constraint per U/V projection and per unit). The number of read-out shift constraint remains 4, but they will be a little different than the homogeneous constraints. The reason is that we trust the beam position determination by the touching exercise and therefore we want to preserve the vertical center between the top and bottom pots. Consequently, we will drop \TODO{say it better} the horizontal pot from the vertical ($Y$) constraints. In fact we will drop the horizontal RP from the horizontal ($X$) constraints too. Since there is only one horizontal pot, the touching exercise cannot determine the horizontal beam position with a sufficient precision and the best (least bad) assumption is to keep the vertical pots (horizontally) at their nominal position. To summarize, for every unit, we will impose these 4 constraints:
+\> The last option is called \em{final constraints} since it has been used for the final alignment analysis (and the elastic scattering analysis presented in \Sc{felm}). In the \Sc{al mc tests} we will show the shifts in $z$ can not be resolved with a satisfactory precision (see \Fg{al err shz theta}). That is why they have been dropped from the alignment procedure. As shown in \Fg{al err rotz rho,al err rotz theta}, the rotation between $U$ and $V$ sensors and between far and near units can only be determined with a large uncertainty. It is thus necessary to constrain these two additional weak modes, increasing the number of rotation constraints to four (cf. \Tb{al sing mode overview}). The final constraints require zero mean rotation $\De\rh$, separately for $U$ and $V$ sensors and separately for each unit.
+\par\parindent\itindent\indent\hang
+The read-out-direction shift constraints are similar to those from the homogeneous-constraints set. With the exception that the horizontal pots are not included in the constraints. The reason is that we trust the beam position determination by the collimation alignment (see \Sc{al collim}) and therefore we want to preserve the vertical center between the top and bottom pots. This is achieved by asking no mean shift of the top and bottom pot.
+\par\parindent\itindent\indent\hang
+To summarize, for every unit, these four constraints are imposed:
 \eqref{\eqnarray{
 \hbox{shifts:}\qquad && \sum_{i\ \in\ \hbox{top, bottom}} \De s_i \, d_{x_i} = \sum_{i\ \in\ \hbox{top, bottom}} \De s_i \, d_{y_i} = 0\ ,\cr
 \hbox{rotations:}\qquad && \sum_{i\ \in\ \hbox{U detectors}} \De \rh_i = \sum_{i\ \in\ \hbox{V detectors}} \De \rh_i = 0\ .
 }}{al final constraints}
-\TODO{mean x, y shift, mean rotation is zero, explicit C?}
 
 \iffalse
-The final set of constraints differs from the others in the sense that it includes some weak modes too. This means that the dimensions of the $\mat E$ and $\mat C$ matrices are different and one can not apply the arguments from the beginning of this section. The condition \Eq{cnst aux6} still remains valid, however, it does not fully determine $\vec\La$ and consequently \Eq{cnst aux7} does not hold. If all constraint vectors $\vec c$ were perpendicular to all regular modes $\vec r_i$ (like for homogeneous constraints), then one could obtain a generalization
-\eqref{\hat\vec\ch(\vec\et_E, \vec\et_W) = \vec\ch^0 + \mat E \vec\et_E + \mat W \vec\et_W\ ,}{cnst gen sol space}
-where the $\mat W$ matrix contains weak modes as columns. In this case, the $\vec\et$ parameters are still fully determined by the constraint values $\vec V$. However, fixed-detectors and final constrains do not fall even to this category and thus the difference $\hat\vec\ch - \vec\ch^0$ depends on the details of the $\mat S$ matrix. That means that the solution depends on the sample used. In other words, over-constraining may give rise to an extra error. \TODO{negligible in our case}.
+\eqref{
+	C = \pmatrix{
+		\vdots	&\vdots	&		&		& \cr
+		d_{ix}	&d_{iy}	&		&		& \cr
+		\vdots	&\vdots	&		&		& \cr
+				&		&\vdots	&\vdots	& \cr
+				&		&d_{ix}	&d_{iy}	& \cr
+				&		&\vdots	&\vdots	& \cr\ln
+				&		&		&		&1		&0		& 		& 	\cr
+				&		&		&		&0		&1		& 		& 	\cr
+				&		&		&		&1		&0		& 		& 	\cr
+				&		&		&		&0		&1		& 		& 	\cr
+				&		&		&		&\vdots	&\vdots	& 		& 	\cr
+				&		&		&		&		&		&1		&0		\cr
+				&		&		&		&		&		&0		&1		\cr
+				&		&		&		&		&		&1		&0		\cr
+				&		&		&		&		&		&0		&1		\cr
+				&		&		&		&		&		&\vdots	&\vdots	\cr
+	}
+}{al final cnst ex}
 \fi
 
-For the last comment, let's recall that the $\mat S$ scales with the number of events $N_{\rm events}$ (see \Eq{S norm eig val}). In order to simplify the interpretation of the eigenvalues of the alignment matrix (see \Eq{alignment equation}), it is advantageous to let the $\mat C$ matrix scale with $N_{\rm events}$ too. This effectively means to use
-\eqref{\mat C = N_{\rm events}\, \mat C^0\ ,}{C scaled}
-where $\mat C^0$ is one of the constraint choices above, which does not scale with the number of events.
+As the last comment, let us recall that the $\mat S$ scales approximately with the number of events $N_{\rm events}$ (see \Eq{al S norm eig val}). In order to simplify the interpretation of the eigenvalues of the alignment matrix (the \lhs~of \Eq{al alignment equation}), it is advantageous to let the $\mat C$ matrix scale with $N_{\rm events}$ too. This effectively means to use
+\eqref{\mat C = N_{\rm events}\, \mat C^0\ ,}{al C scaled}
+where $\mat C^0$ is one of the constraint choices above.
+
 
 \subsection[al err]{Errors}
 
-%\TODO{
-%Generally - I want to show that the algorithm is performing well:
-%\> no systematics under ideal circumstances
-%\> errors under control
-%}
-
 Any error that might appear can be of two origins only -- \em{approximations} and \em{neglected effects} (multiple scattering, DAQ problems etc.). One can check the presence of problems of the latter type by dividing the sample into a number of subsamples. If results obtained from the subsamples are not compatible with each other, these effects are important (however, in \Sc{al exp res} we will see it is not the case). 
 
-Let's review the approximations we have made while developing the alignment equations.
+Let us review the approximations we have made while developing the alignment equations.
 \bitm
-\itm We have completely neglected the \em{pitch rounding}, described by \Eq{full measurement}.
-\itm We have \em{linearized the rotation matrix}, see \Eq{small rotation approximation}.
-%$$(\cos\rh_i - 1) \vec\d_i^\T (\vec h^n - \vec c_i)$$
-\itm The $\hat\mat\Ga$ matrices include \em{biased track parameters}, see \Eq{tau linearization}.
-%$$\vec\d_{\perp_i}^\T \left[ (\vec a^n - \hat\vec a^n) z_i - (\vec b^n - \hat\vec b^n) \right]$$
+\itm We have neglected the effect of \em{pitch rounding}, formally the $\De m$ term in \Eq{al measurement}.
+\itm We have \em{linearized the rotation matrix}, see \Eq{al small rotation approximation}.
+\itm The $\hat\mat\Ga$ matrices include \em{fitted track parameters}, see \Eq{al tau linearization}.
 \eitm
 
 The pitch rounding is a gentle effect -- the error is smaller than the half of the pitch $P$. This is to be compared to with hit distribution that is several centimeters wide \TODO{relative error is very small}. In the first approximation one could assume that the error is
 \eqref{\eqnarray{
 &\bullet \hbox{ a random variable uniformly distributed on } (-P/2, +P/2) \hbox{ and}\cr
 &\bullet \hbox{ the errors in different detectors are independent.}\cr
-}}{pitch error model}
-Especially the second one is not really true, but we will see (in \Fg{al stat fixDet} for instance) that it leads to satisfactory results though.
+}}{al pitch error model}
+Especially the second one is doubtful, but we will see (in \Fg{al stat fixDet} for instance) that it leads to satisfactory results though.
 
 An important property of the pitch error is that the errors in different events are independent. That is
 %(event if one keeps the same track distribution and geometry)
@@ -761,13 +717,12 @@ The rotation-matrix linearization is an 2nd-order effect. If $\De\rho\approx 10\
 
 
 \caption{Statistical uncertainty estimate}
-%\ssubsection[al stat unc]{Statistical uncertainty estimate}
 
-The solution of the alignment task is given by \Eq{alignment equation}. Here, there are two quantities that are subject to statistical uncertainties: $\vec T$ and $\vec V$. The uncertainty of $\vec T$ vector is propagated from the measurements $\vec M^n$ through \Eq{fit equation}. The assumptions about measurement errors have been summarized in the pitch error model \Er{pitch error model}. $\vec V$ is an outcome of an external measurement and as such it is likely to subject to certain uncertainty. All these uncertainties can be propagated to the uncertainty of the result $\hat\vec\ch$.
+The solution of the alignment task is given by \Eq{al alignment equation}. Here, there are two quantities that are subject to statistical uncertainties: $\vec T$ and $\vec V$. The uncertainty of $\vec T$ vector is propagated from the measurements $\vec M^n$ through \Eq{al fit equation}. The assumptions about measurement errors have been summarized in the pitch error model \Er{al pitch error model}. $\vec V$ is an outcome of an external measurement and as such it is likely to subject to certain uncertainty. All these uncertainties can be propagated to the uncertainty of the result $\hat\vec\ch$.
 
 Eq\hbox{.} (4.19) on page 60 in \bref{barlow} reads
 $$\vec y = \mat A\vec x \qquad \Rightarrow \qquad \Var\vec y = \mat A\ \Var\vec x\ \mat A^\T\ .$$
-This can be directly applied to \Eq{alignment equation}:
+This can be directly applied to \Eq{al alignment equation}:
 \eqref{\Var \pmatrix{\tilde\vec\ch\cr \vec\La} = 
 \pmatrix{
 \tilde\mat S & \mat C \cr
@@ -780,7 +735,7 @@ This can be directly applied to \Eq{alignment equation}:
 \tilde\mat S & \mat C \cr
 \mat C^\T & 0\cr
 }^{-1}\ .
-}{alignment equation err prop}
+}{al alignment equation err prop}
 Since $\tilde\vec T$ and $\vec V$ are independent and $\Var \tilde\vec T = \tilde\mat S$ \TODO{explain}, one obtains:
 \eqref{\Var \pmatrix{\tilde\vec\ch\cr \vec\La} = 
 \pmatrix{
