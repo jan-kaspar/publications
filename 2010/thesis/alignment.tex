@@ -589,25 +589,43 @@ where $\vec\La$ is a vector of Lagrange multipliers. The bottom row expands to t
 }{al mod fit eq}
 The presence of the Lagrange multiplier term can guarantee the existence of a solution for any $\tilde\vec T$.
 
-If we put the singular vectors of $\tilde\mat S$ into columns of an $\mat Q_{\rm s}$ matrix, we get $\tilde\mat S \mat Q_{\rm s} = 0$. The $\tilde\mat S$ matrix is also symmetric, thus one may write
+The $\tilde\mat S$ matrix is symmetric and thus, according to theorem 7.3.1 in \bref{anton}, it can be diagonalized by $\tilde\mat S = \mat Q \mat D \mat Q^\T$. The columns of the $\mat Q$ matrix form an orthonormal set of eigenvectors of $\tilde\mat S$, with the corresponding eigenvalues on the diagonal of the $\mat D$ matrix (which is thus diagonal). Moreover we can order the eigenvectors such that the first columns in $\mat Q$ correspond to zero eigenvalue. We will denote this part $\mat Q_{\rm s}$, the other eigenvectors form the $\mat Q_{\rm r}$ sub-matrix. Denoting $\mat L$ the matrix containing all non-zero eigenvalues on the diagonal, one can write
+\eqref{\tilde\mat S = (\mat Q_{\rm s}, \mat Q_{\rm r})
+	\pmatrix{0& 0\cr 0& \mat L\cr}
+	\pmatrix{\mat Q_{\rm s}^\T\cr \mat Q_{\rm r}^\T}\ ,
+}{al S diag}
+Applying this decomposition to \Eq{al mod fit eq} yields
 \eqref{
-	\mat Q_{\rm s}^\T (\tilde\vec T - \mat C\vec\La)
-	= \mat Q_{\rm s}^\T \tilde\mat S
-	= \mat Q_{\rm s}^\T \tilde\mat S^\T
-	= (\tilde\mat S \mat Q_{\rm s})^\T = 0\ .
+	\pmatrix{0 & 0 \cr 0 & \mat L\cr} \pmatrix{\mat Q_{\rm s}^\T\cr \mat Q_{\rm r}^\T} \hat\vec\ch
+	= \pmatrix{\mat Q_{\rm s}^\T\cr \mat Q_{\rm r}^\T} \vec T'
+}{al mod fit eq eig}
+Since the upper row is identically zero on the \lhs, so must be on the \rhs., thereby
+\eqref{
+	\mat Q_{\rm s}^\T \tilde\vec T = \mat Q_{\rm s}^\T \mat C\vec\La\ .
 }{al T no sing cont}
-This is where the Lagrange multipliers can help to fulfill the condition. In order to find a vector $\vec\La$ for any vector $\tilde\vec T$, one gets a requirement on the set of constraints:
+Note that it would not be possible to fulfill this condition without the Lagrange multipliers. In order to find a vector $\vec\La$ for any vector $\tilde\vec T$, one gets a requirement on the set of constraints:
 \eqref{\mat Q_{\rm s}^\T \mat C\hbox{ must be regular}\ .}{al ETC reg}
+Then
+\eqref{\vec\La = (\mat Q_{\rm s}^\T \mat C)^{-1} \mat Q_{\rm s}^\T \tilde\vec T\ .}{al cnst La}
 
-In this way we can be sure that \Eq{al mod fit eq} has a solution. Since $\tilde\mat S$ is singular, we know there are infinitely many solutions. According to theorem 5.5.2~in \bref{anton}, they can be parameterized
-\eqref{\hat\vec\ch = \vec\ch^0 + \mat Q_{\rm s} \vec\ch_{\rm s}\ ,}{al sol param}
-where $\vec\ch^0$ is a particular solution and $\vec\ch_{\rm s}$ are the parameters in the nullspace of $\tilde\mat S$.
-%\eqref{\vec\ch^0 = \mat Q_{\rm r} \mat L^{-1} \mat Q_{\rm r}^\T \vec T'}{al cnst chi 0}
-Another requirement we want to imply on the set of constraints $\mat C$ is to determine the solution $\hat\vec\ch$ uniquely. By inserting the above parameterization to \Eq{al constraints}, one finds that the requirement is equivalent to asking $\mat C^\T \mat Q_{\rm s}$ to be regular, which is further equivalent to the previous requirement \Eq{al ETC reg}.
+The \Eq{al mod fit eq eig} sets no requirements on $\mat Q_{s}^\T \hat\vec\ch \equiv \vec\ch_{\rm s}$, but it requires $\mat Q_{\rm r}^\T \hat\vec\ch = \mat L^{-1} \mat Q_{\rm r}^\T \vec T'$. Therefor every solution of \Eq{al mod fit eq eig} can be written
+\eqref{\hat\vec\ch =  \mat Q_{\rm r} \mat L^{-1} \mat Q_{\rm r}^\T \vec T' + \mat Q_{\rm s} \vec\ch_{\rm s}\ ,}{al sol param}
+which corresponds to the standard form with a particular solution (first term) and a parameterization of solutions of the homogeneous equation $\tilde\mat S \vec\ch_{\rm s} = 0$ (second term), see theorem 5.5.2~in \bref{anton}. The matrix in the first term could be interpreted as the inversion of the non-singular part of the $\tilde\mat S$ matrix.
 
-%\eqref{\vec\et = (\mat C^\T \mat E)^{-1} (\vec V - \vec C^\T \vec\ch^0)}{al cnst eta}
+Another requirement we want to imply on the set of constraints $\mat C$ is to determine the solution $\hat\vec\ch$ uniquely. By inserting the above parameterization to \Eq{al constraints}, one finds that the requirement is equivalent to asking $\mat C^\T \mat Q_{\rm s}$ to be regular. This is further equivalent to the previous requirement \Eq{al ETC reg}. Then, the homogeneous-equation solution $\vec\ch_{\rm s}$ is fixed to
+\eqref{\vec\ch_{\rm s} = (\mat C^\T \mat Q_{\rm s})^{-1} (\vec V - \vec C^\T \mat Q_{\rm r} \mat L^{-1} \mat Q_{\rm r}^\T \vec T')\ .}{al cnst chi s}
 
+Putting altogether yields
+\eqref{\hat\vec\ch =
+	\mat P^\T \mat Q_{\rm r} \mat L^{-1} \mat Q_{\rm r}^\T \mat P \tilde\vec T
+	+ \mat Q_{\rm s} (\mat C^\T \mat Q_{\rm s})^{-1} \vec V\ ,\qquad
+	\mat P = 1 - \mat C (\mat Q_{\rm s}^\T \mat C)^{-1} \mat Q_{\rm s}^\T\ .
+}{al cnst sol}
+It will be the starting point for discussing the alignment uncertainty in \Sc{al err}.
+
+\iffalse
 If we neglect the experimental errors that enter the $\tilde\vec T$ vector, it can be calculated from \Eq{al exact fit equation}: $\tilde\vec T = \bar\mat S \vec\ch$. We recall that $\vec\ch$ is the vector of true (not estimated) residuals. As the singular modes of $\tilde\mat S$ and $\bar\mat S$ are the same, one finds that $\bar\mat S E = 0$ too. Consequently, \Eq{al T no sing cont} leads to $\La = 0$. If the experimental errors are not neglected, the relation becomes only approximative: $\La \approx 0$. This provides a consistency check that may be used during real data analysis.
+\fi
 
 So far we have focused on constraining the singular modes. Looking back to \Eq{al fit eq eigen one} we remind that there might be also weak modes, which would still allow for a solution, however they would severely deteriorate the accuracy. In such a situation, one might want to constrain some of the weak modes too. In principle, the alignment equation \Eq{al alignment equation} still may be used. But since the number of constraints and the number of singular modes is different now, the results \Eq{al ETC reg} and onwards can not be applied. A discussion on a general level would be complicated, let us focus on a practical case instead.
 
@@ -618,14 +636,19 @@ $$
 		+ \tilde\mat S^{-1} \mat C \mat M \vec V\ ,\qquad
 	\mat M = (\mat C^\T \tilde\mat S^{-1} \mat C)^{-1}\ .
 $$
-The $\mat M$ matrix receives two contributions -- from weak and regular modes. To perform the inversion, one may use the recurrent relation:
+In order to evaluate the $\mat M$ matrix, one may employ a diagonalization similar to \Eq{al S diag}. With the only exception that $\tilde\mat S$ has weak and regular modes now: $\mat Q = (\mat Q_{\rm w}, \mat Q_{\rm r})$ and $\mat D = \diag(\mat l, \mat L)$. The matrices $\mat l$ and $\mat L$ are diagonal and contain the weak and regular eigenvalues respectively. Using the diagonalization, one finds that $\mat M^{-1}$ receives two contributions -- from weak and regular modes:
+$$ \mat M = \big[
+	(\mat Q_{\rm w}^\T \mat C)^\T \mat l^{-1} (\mat Q_{\rm w}^\T \mat C)
+	+ (\mat Q_{\rm r}^\T \mat C)^\T \mat L^{-1} (\mat Q_{\rm r}^\T \mat C)
+\big]^{-1}\ .$$
+Since $\mat l$ contains the weak eigenvalues, which are small, the first term is dominating. To perform the inversion, one may use the recurrent relation:
 $$(\mat A+\mat B)^{-1} = \mat A^{-1} - \mat A^{-1} \mat B \mat A^{-1} + \mat A^{-1} \mat B \mat A^{-1} \mat B \mat A^{-1} \ldots\ ,$$
-which as a form of "power series" -- taking into account that $\mat A^{-1}$ contains the small eigenvalues of the weak modes. Because of that, it is sufficient to take first few terms only. Then, provided that $\mat Q_{\rm w}^\T \mat C$ is regular, it is straight-forward to find that the solution $\hat\vec\ch$ does not diverge when the weak eigenvalues vanish. In that limit, the solution gains the form of \Eq{al sol param}.
+identifying $\mat A$ with the first term. Since each $\mat A$ contains a $\mat l$ factor, the above expansion represents a sort of power series. Then it is just a matter of some algebra to obtain this type of power expansion for the solution $\hat\vec\ch$. Provided that $\mat Q_{\rm w}^\T \mat C$ is regular, the expansion involves non-negative powers of $\mat l$ only. Thus, it is finite in the limit $\mat l\to 0$. Moreover, in this limit, the solution gains the form of \Eq{al cnst sol}.
 }.
 First, the weak modes are constrained if
 \eqref{\mat Q_{\rm w}^\T \mat C \hbox{ is regular} \ .}{al WTC reg}
 Similarly to the definition of $\mat Q_{\rm s}$, the $\mat Q_{\rm w}$ matrix contains the weak modes as columns.
-Second, in the limit where the weak modes become singular (their eigenvalues tend to zero), the solution becomes equivalent to \Eq{al sol param}. Hence there is no difference between extremely weak and singular modes. This is important since computer programs treat singular modes as weak.
+Second, in the limit where the weak modes become singular (their eigenvalues tend to zero), the solution becomes equivalent to \Eq{al cnst sol}. Hence there is no difference between extremely weak and singular modes. This is important since computer programs treat singular modes as weak.
 
 We have seen that a set of constraints must fulfill certain conditions, see \Eq{al ETC reg,al WTC reg}, but one has still a lot of freedom in their choice. Let us list a few common options.
 
