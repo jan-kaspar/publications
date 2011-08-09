@@ -94,29 +94,29 @@ where $a$ and $b$ parameters give the track slopes and intercepts.
 
 When a proton enters the sensitive volume of a silicon sensor, it creates electron-hole pairs along its trajectory. This charge is collected by neighbouring strips, giving raise to measurable signal. While details of this charge sharing process can be found, for example, in Sec.~7.4~in \bref{hubert}, here, we will assume that just the nearest strips is active (drawn in green in the front view of \Fg{al proton sensor interaction}). It is a reasonable assumption for the TOTEM sensors. Then, the measurement outcome $m$ can be written
 \eqref{m = v + \De m\ ,}{al measurement}
-where $v$ gives the projection of the hit point in the $\vec v$ direction (i.e. the read-out direction). $\De m$ is the \em{pitch-rounding error}, that is the error made by rounding $v$ to the nearest strip position.
+where $v$ gives the projection of the hit point in the $\vec v$ direction (i.e. the read-out direction). $\De m$ is the \em{resolution error}, that is the error made by rounding $v$ to the nearest strip position.
 
-\fig{fig/pdf/al_proton_sensor_interaction.pdf}{al proton sensor interaction}{A scheme of a proton interaction with a sensor. Left (side view when $\rh_y = 0$): the thick black line represents a sensor, the blue line a proton track. The blue dot marks the point where the proton hits the sensor. It has the same meaning in the right (front view) figure. There, the thick blue line shows the hit point projection into the read-out ($\vec v$) direction. The strip drawn in green is the active strip, the ``pitch rounding correction'' is drawn in red.}
+\fig{fig/pdf/al_proton_sensor_interaction.pdf}{al proton sensor interaction}{A scheme of a proton interaction with a sensor. Left (side view when $\rh_y = 0$): the thick black line represents a sensor, the blue line a proton track. The blue dot marks the point where the proton hits the sensor. It has the same meaning in the right (front view) figure. There, the thick blue line shows the hit point projection into the read-out ($\vec v$) direction. The strip drawn in green is the active strip, the resolution error is drawn in red.}
 
 The value of $v$ can be related to the track parameters with the aid of a transformation from (global) coordinate system $xyz$ to (local) system $uvz'$. The transformation can be written as follows
 \eqref{\pmatrix{u\cr v\cr z'} = \mat R \left[ \pmatrix{x\cr y\cr z}  - \pmatrix{c_x\cr c_y\cr c_z}  \right] \ .}{al global to local}
 The $c$ parameters give the position of sensor's center, the rotation $\mat R$ can be parameterized with three angles $\rh_{x,y,z}$:
 \eqref{\mat R =
-\pmatrix{
-\cos\rh_z  & \sin\rh_z & 0\cr
--\sin\rh_z & \cos\rh_z & 0\cr
-0		   & 0         & 1\cr
-}
-\pmatrix{
-\cos\rh_y  & 0 & \sin\rh_y\cr
-0		   & 1 &          \cr
--\sin\rh_y & 0 & \cos\rh_y\cr
-}
-\pmatrix{
-1 & 0		   & 0        \cr
-0 & \cos\rh_x  & \sin\rh_x\cr
-0 & -\sin\rh_x & \cos\rh_x\cr
-}\ .
+	\pmatrix{
+		\cos\rh_z  & \sin\rh_z & 0\cr
+		-\sin\rh_z & \cos\rh_z & 0\cr
+		0		   & 0         & 1\cr
+	}
+	\pmatrix{
+		\cos\rh_y  & 0 & \sin\rh_y\cr
+		0		   & 1 &          \cr
+		-\sin\rh_y & 0 & \cos\rh_y\cr
+	}
+	\pmatrix{
+		1 & 0		   & 0        \cr
+		0 & \cos\rh_x  & \sin\rh_x\cr
+		0 & -\sin\rh_x & \cos\rh_x\cr
+	}\ .
 }{al rotation parameterization}
 This three shifts and three rotations reflect the position of a sensor in the global coordinate frame. In reality, despite our best efforts, the position can not be exactly the nominal one. It is therefore important to distinguish between \em{true/actual} (with primes) and \em{nominal/thought} (without primes) position parameters:
 \eqref{\rh_i' = \rh_i + \De\rh_i\ ,\qquad c_i' = c_i + \De c_i\ ,}{al misalignments}
@@ -154,7 +154,7 @@ m_i^n = (\vec d_i + \De\rh_i\,\vec d_{\perp i})^\T \left[\vec a^n (z_i + \De z_i
 where for brevity reasons we have made a replacement
 $$c_{z,i} \longrightarrow z_i\ ,\qquad \De c_{z,i} \longrightarrow \De z_i\ .$$
 
-In what follows, we will drop the last two terms on the \rhs, they will be treate as an error, see \Sc{al err}. The first term can be expanded
+In what follows, we will drop the last two terms on the \rhs, they will be treat as an error, see \Sc{al err}. The first term can be expanded
 \eqref{\eqnarray{
 \mu_i^n \equiv m_i^n + \vec d_i^\T \vec c_i = & &\cr
 & +\vec d_i^\T (\vec a^n z_i + \vec b^n)&\qquad 10^{-2}\un{m}\cr
@@ -710,38 +710,65 @@ where $\mat C^0$ is one of the constraint choices above.
 
 \subsection[al err]{Errors}
 
-Any error that might appear can be of two origins only -- \em{approximations} and \em{neglected effects} (multiple scattering, DAQ problems etc.). One can check the presence of problems of the latter type by dividing the sample into a number of subsamples. If results obtained from the subsamples are not compatible with each other, these effects are important (however, in \Sc{al exp res} we will see it is not the case). 
+In the previous section we have derived \Eq{al alignment equation} that solves the alignment task. In this section we will focus on the uncertainties of the alignment solution.
 
-Let us review the approximations we have made while developing the alignment equations.
-\bitm
-\itm We have neglected the effect of \em{pitch rounding}, formally the $\De m$ term in \Eq{al measurement}.
-\itm We have \em{linearized the rotation matrix}, see \Eq{al small rotation approximation}.
-\itm The $\hat\mat\Ga$ matrices include \em{fitted track parameters}, see \Eq{al tau linearization}.
-\eitm
+First of all, let us remark that any error that might appear can be of two origins only -- the \em{approximations} used to derive the alignment equations and \em{neglected effects} (data corruption, electronic noise, etc.). One can check the presence of problems of the latter type by dividing the sample into a number of subsamples. Were the results obtained from the subsamples not compatible with each other, these effects would be important (however, in \Sc{al exp res} we will see it is not the case). Now, let us review the approximations we have made.
 
-The pitch rounding is a gentle effect -- the error is smaller than the half of the pitch $P$. This is to be compared to with hit distribution that is several centimeters wide \TODO{relative error is very small}. In the first approximation one could assume that the error is
+
+\> We have neglected the \em{resolution error} (formally the $\De m$ term in \Eq{al measurement}). According to the discussion in \Sc{al psi}, it is reasonable to assume that ($P$ denotes the pitch of the sensors)
 \eqref{\eqnarray{
-&\bullet \hbox{ a random variable uniformly distributed on } (-P/2, +P/2) \hbox{ and}\cr
-&\bullet \hbox{ the errors in different detectors are independent.}\cr
-}}{al pitch error model}
-Especially the second one is doubtful, but we will see (in \Fg{al stat fixDet} for instance) that it leads to satisfactory results though.
+	&\bullet \hbox{ the resolution error is a random variable uniformly distributed on } (-P/2, +P/2) \hbox{ and}\cr
+	&\bullet \hbox{ the resolution errors in different detectors are independent.}\cr
+}}{al resolution err mod}
+Given the low angles of the LHC tracks, the second point might look doubtful. But we will show (in \Fg{al stat fixDet} for instance) that it leads to satisfactory results though.
 
-An important property of the pitch error is that the errors in different events are independent. That is
-%(event if one keeps the same track distribution and geometry)
-if one doubles the sample, the errors in the second half will be independent of those in the first half. As a consequence, one may assume better results with increasing sample size. As rule of thumb, the error should be proportional to $1/\sqrt N$ where $N$ is the sample size. That is why the pitch rounding error is of \em{statistical} nature.
+\par\parindent\itindent\indent\hang
+An important property of the resolution error is that the errors in different events are independent. If one doubles the sample, the errors in the second half will be independent of those in the first one. Consequently, one may expect better results with increasing sample size. As rule of thumb, the error should be proportional to $1/\sqrt N_{\rm events}$ where $N_{\rm events}$ is the sample size. That is why the pitch rounding error is of \em{statistical nature}.
 
-The other two error sources (approximations 2) and 3)) do not behave in this way. In contrary, one can assume that the final error would be independent of the sample size
-%(provided that track distribution and geometry and misalignments remain the same)
-. Therefore, the rotation-matrix linearization and biased $\ga$ coefficient lead to a \em{systematic} error.
+\> In deriving \Eq{al effective measurement} we have neglected a number of terms. Most notably all \em{terms non-linear in the alignment corrections}. Since the corrections are small, the non-linear terms lead only small relative errors. For example for the rotation-matrix linearization, see \Eq{al small rotation approximation}, the order of the neglected terms over the retained terms is $10^{-5}$. Following the order estimates from \Sc{al psi} we can conclude that the error due to dropping the non-linear terms is negligible.
 
-The above statements are hypothesis only, we will illustrate their validity with a number of Monte-Carlo tests below (see \Sc{al mc tests})
+\> In the definition of the $\hat\mat\Ga$ matrices, we have replaced the true track parameters by the track fits neglecting the misalignments (see \Eq{al tau linearization}). Thus the fitted \em{track parameters are biased} by the presence of misalignments. In contrary to the resolution error, here it makes sense expecting the error to be independent of the sample size. In other words, this is a  \em{systematic error}.
 
-The rotation-matrix linearization is an 2nd-order effect. If $\De\rho\approx 10\un{mrad}$ and $h\approx 2\un{cm}$ would be typical rotation misalignment and hit position, then the error would be of order $\De\rho^2\,h/2\approx 1\un{um}$. This is to be compared with the bias in the $\ga$ coefficients, the order of which is $\De\rho h \approx 20\un{\mu m}$. Thus the linearization effect is rather small and we will neglect it in what follows.
+Now let us rewrite some of the above statements a bit more formally. The $\tilde\vec T$ vector that appears on the \rhs.~of the alignment equation \Eq{al alignment equation} can be calculated from \Eq{al exact fit equation}. Considering that the measurements $\vec\mu$ gain a contribution $\De\vec\mu$ from the resolution error, we can write
+\eqref{\tilde\vec T =
+	\tilde\mat S \vec\ch
+	+ \underbrace{(\bar\mat S - \tilde\mat S) \vec\ch}_{\De\vec T_{\rm syst}}
+	+ \De\vec T_{\rm stat}
+\ .}{al vec T error}
+The $\De\vec T_{\rm stat}$ is induced by the resolution error ($\De\vec\mu$) and corresponds to the statistical error component. The $\De\vec T_{\rm syst}$ reflects the difference between the $\mat S$ matrices with bar and tilde which differ only by using true or fitted track parameters (see \Eq{al fit equation,al exact fit equation}). It therefore corresponds to the systematic error due to the biased track parameters. By construction it is proportional to the true alignments $\vec\ch$, that is the difference between the true and thought geometry. Note also that it receives no contribution from the singular-mode components of $\vec\ch$.
 
+This can be inserted into \Eq{al cnst sol} which describes the solution of the alignment task. It yields a long expression
+\eqref{\hat\vec\ch =
+	\underbrace{\mat Q_{\rm r} \mat Q_{\rm r}^\T }_{\mat P_{\rm r}} \vec \ch
+	+ \underbrace{\mat Q_{\rm s} (\mat C^\T \mat Q_{\rm s})^{-1} \vec V}_{\vec\ch_{\rm C}}
+	+ \underbrace{\mat P^\T \mat Q_{\rm r} \mat L^{-1} \mat Q_{\rm r}^\T \mat P \De\vec T_{\rm syst}}_{\De\vec\ch_{\rm syst}}
+	+ \underbrace{\mat P^\T \mat Q_{\rm r} \mat L^{-1} \mat Q_{\rm r}^\T \mat P \De\vec T_{\rm stat}}_{\De\vec\ch_{\rm stat}}
+}{al sol err}
+with an easy interpretation. The first term is the projection of the true misalignments to the regular modes. The second term is what is added by the constraints. The last two terms correspond to the systematic and statistical errors of the alignment solution $\hat\vec\ch$. We have started with \Eq{al cnst sol} which is only valid when no weak modes are constrained. If they are, the result differs slightly from \Eq{al cnst sol}. However, the difference is the smaller the weaker the weak modes are. In any case, the difference can be included in the systematic error $\De\ch_{\rm syst}$.
 
-\caption{Statistical uncertainty estimate}
+Using the fitted track parameters in the $\Ga$ matrices (see \Eq{al tau linearization}) is unavoidable. We can only hope that the induced (systematic) error is not too large and applying the alignment corrections (as resolved from \Eq{al alignment equation}) will improve our knowledge about the geometry. If so, one may perform several alignment iterations. In the second iteration we would have a better knowledge of the geometry, thus the track fits would be closer to the true track parameters, consequently there would be less bias and one might expect more accurate alignment results.
 
-The solution of the alignment task is given by \Eq{al alignment equation}. Here, there are two quantities that are subject to statistical uncertainties: $\vec T$ and $\vec V$. The uncertainty of $\vec T$ vector is propagated from the measurements $\vec M^n$ through \Eq{al fit equation}. The assumptions about measurement errors have been summarized in the pitch error model \Er{al pitch error model}. $\vec V$ is an outcome of an external measurement and as such it is likely to subject to certain uncertainty. All these uncertainties can be propagated to the uncertainty of the result $\hat\vec\ch$.
+This iteration process is sketched in \Tb{al iter} in a greater detail. In the beginning we think the geometry is $g_0$ while the true one is $g$. In the first iteration we would like to obtain alignment corrections $\hat\vec\ch = g - g_0$. This is not possible for two reasons: the presence of singular and weak modes and the alignment errors. The expectation for the alignment correction is shown in the right-most column. It comes from \Eq{al sol err}, in addition we have written explicitly the dependence of the systematical error $\De\vec\ch_{\rm syst}$ on $g - g_0$, that is ``how far we are from the true geometry.'' During the iteration this ``distance'' is reducing and so does the systematic error. On contrary, the statistical errors is almost constant -- the resolution error $\De m$ does not change, only the $\tilde\mat\Ga$ are altered slightly. The iterations stop when no further improvement can be made, formally $|\hat\vec\ch^n|$ is smaller than a certain limit.
+
+\tab[\strut\quad\hfil#\qquad&#\hfil\qquad&#\hfil\quad\cr]{al iter}{A scheme of alignment iterations with the error evolution.}{\ln
+	& geometry & alignment correction \cr\ln
+	& $g_0$ \cr
+iteration $1$ & $\downarrow$ & $\hat\vec\ch_1 = \mat P_{\rm r} (g - g_0) + \vec\ch_{\rm C} + \De\vec\ch_{\rm syst}(g - g_0) + \De\vec\ch_{\rm stat}$ \cr
+	& $g_1 = g_0 + \hat\vec\ch_1$ &   \cr
+iteration $2$ & $\downarrow$ & $\hat\vec\ch_2 = \mat P_{\rm r} (g - g_1) + \vec\ch_{\rm C} + \De\vec\ch_{\rm syst}(g - g_1) + \De\vec\ch_{\rm stat}$ \cr
+	& $g_2 = g_1 + \hat\vec\ch_2$ &   \cr
+	& $\vdots$	\cr
+last iteration $n$ & $\downarrow$ & $|\hat\vec\ch_n| < \hbox{limit}$ \cr
+	& $g_n = g_{n-1} + \hat\vec\ch_n$ &  \cr\ln
+}
+
+After the iteration process has converged, the final error still have two components -- the statistical and the systematic. The latter one is proportional to the distance to the actual geometry. The distance can not vanish because of two reasons -- the statistical error and the constraints (in case the constraints are not compatible with the true geometry). Let us recall that the singular modes do not contribute to the systematic error, see \Eq{al vec T error}. Hence only the constrained weak modes can lead to an error of this type (they are both constrained and non-singular). For the RP sensors this is the case of $U$-$V$ and far-near unit rotations, they will be studied in the next section, see \Fg{al syst err uv rot,al syst err fn rot}.
+
+As the last comment related to the iterations, let us mention the typical number of steps. Both in MC tests (\Sc{al mc tests}) and LHC data analysis (\Sc{al exp res}), two iterations have turned out to be sufficient. That is the correction in the third one has already been negligible.
+
+Now, let us estimate the size of the statistical error $\De\ch_{\rm stat}$.
+
+The solution of the alignment task is given by \Eq{al alignment equation}. Here, there are two quantities that are subject to statistical uncertainties: $\vec T$ and $\vec V$. The uncertainty of $\vec T$ vector is propagated from the measurements $\vec M^n$ through \Eq{al fit equation}. The assumptions about measurement errors have been summarized in the resolution err mod \Er{al resolution err mod}. $\vec V$ is an outcome of an external measurement and as such it is likely to subject to certain uncertainty. All these uncertainties can be propagated to the uncertainty of the result $\hat\vec\ch$.
 
 Eq\hbox{.} (4.19) on page 60 in \bref{barlow} reads
 $$\vec y = \mat A\vec x \qquad \Rightarrow \qquad \Var\vec y = \mat A\ \Var\vec x\ \mat A^\T\ .$$
@@ -776,26 +803,6 @@ Since $\tilde\vec T$ and $\vec V$ are independent and $\Var \tilde\vec T = \tild
 The uncertainties of the $\vec\ch$ vector components can be found on the diagonal of the matrix above:
 \eqref{\si(\bar\ch_i) = \sqrt{\Var \pmatrix{\bar\vec\ch\cr\vec\La}_{i\,i}}}{al par unc}
 
-\caption{Iterations}
-
-\TODO{motivation}
-
-\Tb{al iter} shows the principle of iterations. The symbol $\vec\ch$ represents a state of the alignment, that is geometrical corrections to be applied on the basic geometry. The numerical subscripts refer to the order of an iteration, $\vec\ch_0$ stands for the initial alignment \TODO{guess or zeros}. The correction obtained in $i$-th iteration is denoted $\De \vec\ch_i$. The expression in the right-hand side column summarizes our understanding of the errors. That is the correction shall be equal to the difference between the actual alignment $\vec\ch$ and the pre-iteration alignment $\vec\ch_{i-1}$ (modulo constraints -- filter matrix ${\cal F}_{\rm constr}$ \TODO{explain easily}) altered by the statistical ($\De \vec\ch_{\rm stat}$) and systematic ($\De \vec\ch_{\rm syst}$) errors. For a given sample the statistical error (given by the pitch rounding) is constant (when not changing the cut parameters which would modify the sample). The systematic error depends on ''how far we are from the actual alignments,'' that is $\vec\ch - \vec\ch_i$. The iterations continue as long as the corrections are important (their size is larger than a limit). In the LHC data analysis presented in \Sc{al exp res}, two iterations turned out to be sufficient. That is the correction in the third one was already negligible.
-
-After the iteration process has converged, the final error still have two components -- the statistical and the systematic. The latter one is proportional to the distance to the actual alignments. The distance can not vanish because of two reasons -- the constraints (some alignment modes remain undetermined) and the statistical error. \Fg{al syst err uv rot,al syst err fn rot} show the systematic errors due to undermined $U$-$V$ and far-near unit rotations. \TODO{The systematic error induced by the statistical error -- probably small!}
-
-\tab[\strut\hfil#\qquad&#\hfil\qquad&#\hfil\cr]{al iter}{A scheme of alignment iterations with the error evolution.}{\ln
-			& alignment & correction \cr\ln
-			& $\vec\ch_0$ \cr
-iteration 1	& $\downarrow$	\cr
-			& $\vec\ch_1 = \vec\ch_0 + \De \vec\ch_1$ & $\De \vec\ch_1 = {\cal F}_{\rm constr} (\vec\ch - \vec\ch_0) + \De \vec\ch_{\rm stat} + \De \vec\ch_{\rm syst}(\vec\ch - \vec\ch_0) $ \cr
-iteration 2	& $\downarrow$	\cr
-			& $\vec\ch_2 = \vec\ch_1 + \De \vec\ch_2$ & $\De \vec\ch_2 = {\cal F}_{\rm constr} (\vec\ch - \vec\ch_1) + \De \vec\ch_{\rm stat} + \De \vec\ch_{\rm syst}(\vec\ch - \vec\ch_1) $ \cr
-			& $\vdots$	\cr
-(last) iteration n	& $\downarrow$	\cr
-			& $\vec\ch_n = \vec\ch_{n-1} + \De \vec\ch_n$ & $|\De \vec\ch_n| < \hbox{limit}$ \cr\ln
-}
-
 
 \subsection[al mc tests]{Monte-Carlo tests}
 
@@ -805,7 +812,7 @@ Since full Geant4 would take an enormous time, we used a simplified fast simulat
 
 \TODO{We haven't used G4 as it would take too long time. What difference may one expect compared to the G4 simulations/real data?}
 
-The simulations could have been run with the pitch rounding on or off (the rounding in \Eq{full measurement} applied or not). Also, the $\ga$ parameters could have been calculated from the fitted track parameters (biased) or from the original generated track (non-biased). While the combination with pitch rounding on and biased parameters corresponds to the \em{real} alignment application, the combination with no pitch rounding and non-biased parameters corresponds to the \em{reference} results.
+The simulations could have been run with the \TODO{pitch rounding on or off -> resolution error} (the rounding in \Eq{full measurement} applied or not). Also, the $\ga$ parameters could have been calculated from the fitted track parameters (biased) or from the original generated track (non-biased). While the combination with pitch rounding on and biased parameters corresponds to the \em{real} alignment application, the combination with no pitch rounding and non-biased parameters corresponds to the \em{reference} results.
 
 We have performed a number of simulations to explore the influence of various parameters. For every settings, the simulation has been repeated 20 times with different random seeds. For every repetition, we have calculated real results with their uncertainty and reference results. This provided us with a statistical sample on which we evaluated
 \eqref{\vbox{\halign{\quad\strut#\qquad&#\quad\cr\ln
@@ -816,7 +823,7 @@ quantity & label\cr\ln
 }}}{al stat quan def}
 the term sigma is used as square-root of variance here, the full formulae used can be found in \Sc{stat estim}. The \rhs{} column lists the labels that will be used for these quantities.
 
-An example of such a statistical study can be seen in \Fg{al stat fixDet}. Here we chose fixed-detectors type of constraints, with rotations fixed only in the near unit. This is the reason for much higher errors in the far unit (bottom part). Let us make three important observations. First, the systematic error is compatible with zero within the estimated error \TODO{with a small exception}. Second, the estimated uncertainty falls as $1/\sqrt{N_{\rm tracks}}$. Third, the ratio of statistical error to estimated uncertainty is almost flat, but below the expected value of one. This means that the uncertainty estimated with the help of the model \Er{pitch error model} is overestimated. However, the most important observation was the first one, that there is no bias.
+An example of such a statistical study can be seen in \Fg{al stat fixDet}. Here we chose fixed-detectors type of constraints, with rotations fixed only in the near unit. This is the reason for much higher errors in the far unit (bottom part). Let us make three important observations. First, the systematic error is compatible with zero within the estimated error \TODO{with a small exception}. Second, the estimated uncertainty falls as $1/\sqrt{N_{\rm tracks}}$. Third, the ratio of statistical error to estimated uncertainty is almost flat, but below the expected value of one. This means that the uncertainty estimated with the help of the model \Er{resolution err mod} is overestimated. However, the most important observation was the first one, that there is no bias.
 
 This was just an example, for other conditions and settings the results confirm the observations above. Another example can be found in \Fg{al stat final}.
 
