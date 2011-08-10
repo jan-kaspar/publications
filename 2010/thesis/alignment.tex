@@ -789,11 +789,11 @@ The standard deviation of the $\hat\vec\ch$ vector components can be found on th
 
 \subsection[al mc tests]{Monte-Carlo tests}
 
-In the previous section the errors of the algorithm have been discussed. To support our hypotheses we will use Monte-Carlo simulations now. But before, we will briefly review how these simulations are performed and evaluated.
+In the previous sections we have developed a method of track-based alignment and have derived some of its characteristics (inaccessible alignment modes, error behavior, etc.). Before applying the method to real LHC data, we have made a handful of MC tests to validate our theoretical results.
 
 Since full Geant4 would take an enormous time, we used a simplified fast simulation which is described in \Sc{fast simu}. Random tracks have been generated at $z=217\un{m}$ (station 56-220 used). Their slopes $a_{x, y}$ were generated with gauss distribution with $\si$ either $0.1\un{mrad}$ (realistic scenario\TODO{reference}) or $10\un{mrad}$ (the highest angle that can be detected simultaneously in both units). Their intercepts $b_{x, y}$ have been generated with either uniform distribution on $ -20\un{mm} < x, y < +20\un{mm}$ or Gauss distribution with $\si_x = 6\un{mm}$ and $\si_y = 8\un{mm}$. The latter distribution represents a more realistic scenario, where the tracks cumulate close to the beam. The quoted RMS have been chosen to approximately match the experimental distributions. \TODO{the nominal pitch of $66\un{\mu m}$, \pmt{dscrWidth}$=10\un{\mu m}$ and \pmt{dscReduceUncertainty} = False were used}. 
 
-\TODO{We haven't used G4 as it would take too long time. What difference may one expect compared to the G4 simulations/real data?}
+\TODO{What difference may one expect compared to the G4 simulations/real data?}
 
 The simulations could have been run with the \TODO{pitch rounding on or off -> resolution error} (the rounding in \Eq{full measurement} applied or not). Also, the $\ga$ parameters could have been calculated from the fitted track parameters (biased) or from the original generated track (non-biased). While the combination with pitch rounding on and biased parameters corresponds to the \em{real} alignment application, the combination with no pitch rounding and non-biased parameters corresponds to the \em{reference} results.
 
@@ -801,10 +801,10 @@ We have performed a number of simulations to explore the influence of various pa
 \eqref{\vbox{\halign{\quad\strut#\qquad&#\quad\cr\ln
 quantity & label\cr\ln
 \hbox{mean(real result - reference result)}	& \hbox{systematic error} \cr
-\hbox{sigma(real result - reference result)}& \hbox{statistical error} \cr
+\hbox{standard deviation(real result - reference result)}& \hbox{statistical error} \cr
 \hbox{mean(uncertainty)} 					& \hbox{estimated uncertainty} \cr\ln
 }}}{al stat quan def}
-the term sigma is used as square-root of variance here, the full formulae used can be found in \Sc{stat estim}. The \rhs{} column lists the labels that will be used for these quantities.
+the term standard deviation is used as square-root of variance here, the full formulae used can be found in \Sc{stat estim}. The \rhs{} column lists the labels that will be used for these quantities.
 
 An example of such a statistical study can be seen in \Fg{al stat fixDet}. Here we chose fixed-detectors type of constraints, with rotations fixed only in the near unit. This is the reason for much higher errors in the far unit (bottom part). Let us make three important observations. First, the systematic error is compatible with zero within the estimated error \TODO{with a small exception}. Second, the estimated uncertainty falls as $1/\sqrt{N_{\rm tracks}}$. Third, the ratio of statistical error to estimated uncertainty is almost flat, but below the expected value of one. This means that the uncertainty estimated with the help of the model \Er{resolution err mod} is overestimated. However, the most important observation was the first one, that there is no bias.
 
@@ -812,6 +812,10 @@ This was just an example, for other conditions and settings the results confirm 
 
 \fig{fig/pdf/al_stat_fixDet.pdf}{al stat fixDet}{A statistical study of the alignment algorithm. We imposed a set of fixed-detectors constraints (for read-out shifts we fixed planes 1200, 1201, 1248 and 1249, for rotations 1200 and 1201). Every curve corresponds to the 3rd plane of a pot, see the legend. The near/far unit plots are at the top/bottom of the figure. The filled areas show $1\si$ error bands. The vertical dotted line marks a typical number of events in LHC runs.
 %[20 repetitions, geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad, 3 iterations]
+}
+
+\fig{fig/pdf/al_stat_final.pdf}{al stat final}{A statistical study of the alignment algorithm with the final constraints. Every curve corresponds to the third plane of a RP, see the legend. The filled areas represent $1\si$ error bands. The vertical dotted lines mark the typical number of tracks in LHC runs.
+%(20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad.
 }
 
 It has been revealed by \Fg{al eig rho} that the $\mat S$ eigenvalues related to the $z$ shifts are rather low. One can, thus, expect large alignment errors and, indeed, \Fg{al err shz theta} confirms this expectation. The uncertainty never falls below $1\un{m}$ \TODO{compare to the misalignment expectation}. For the realistic beam divergence (dashed vertical line) the uncertainty is of the order of $10\un{m}$, which effectively means that there is no way to perform $z$-shift alignment.
@@ -849,11 +853,6 @@ A similar study has been performed for the far-near rotations, the results are i
 %geometry 2.7x3.3, 3 iterations, Jan(round=f, extfit=f) - Jan(f, t)
 }
 
-\Fg{al err rotz rho,al err rotz theta} gave us the motivation to use the final constraints, \Fg{al syst err uv rot,al syst err fn rot} reassured us that there is no relevant systematic error. To conclude this section, we include an equivalent of \Fg{al stat fixDet}, but with the use of the final constraints: \Fg{al stat final}. The interpretation is equivalent too: no systematic error and slightly overestimated uncertainty.
-
-\fig{fig/pdf/al_stat_final.pdf}{al stat final}{A statistical study of the alignment algorithm with the final constraints. Every curve corresponds to the third plane of a RP, see the legend. The filled areas represent $1\si$ error bands. The vertical dotted lines mark the typical number of tracks in LHC runs.
-%(20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad.
-}
 
 
 \subsection[al data sel]{Input data selection}
@@ -888,7 +887,7 @@ parameter							& meaning\cr\ln
 \> the cuts -- depend on situation, don't give values here but only later
 }
 
-\subsection[al rp fac]{Roman Pot alignment}
+\subsection[al rp fac]{Alignment of sensor packages}
 
 The basic structures in the track-based alignment are the detectors (sensors). Only these provide measurements and only these can be aligned. On the other side, the sensors are inserted (per groups) in RPs and thus, they share (per groups) common misalignments. One could, therefore, try to extract these common misalignments and call them \em{RP alignments}. However, this should be still understood in the sense of common shifts and rotations of the sensors in a RP. In no way, the track-based alignment can determine the positions of inactive elements, like the thin window.
 
@@ -928,9 +927,9 @@ There are 3 sources: optical metrology, beam and cosmic tests in H8 and LHC data
 \vskip\baselineskip
 \em{Optical metrology}
 
-The position of the detectors within the RP assembly has been measured. There are 3 reference points on a detector and one point on the RP. For each detector a zoomed high resolution photo was taken and a relative position of the points 1 and 2 (see \Fg{opticalMetrology}) and the RP reference point was measured. Theoretical values and results are summarized in \Tb{metrology theoretical}. The precision of this measurement is $\approx 10\un{\mu m}$.
+The position of the detectors within the RP assembly has been measured. There are 3 reference points on a detector and one point on the RP. For each detector a zoomed high resolution photo was taken and a relative position of the points 1 and 2 (see \Fg{al optical metrology}) and the RP reference point was measured. Theoretical values and results are summarized in \Tb{metrology theoretical}. The precision of this measurement is $\approx 10\un{\mu m}$.
 
-\fig{fig/pdf/opticalMetrology.pdf}{opticalMetrology}{An illustration of the optical metrology measurement. \TODO{points on detector or hybrid?} \TODO{add mark photo}}
+\fig{fig/pdf/al_optical_metrology.pdf}{al optical metrology}{An illustration of the optical metrology measurement. \TODO{points on detector or hybrid?} \TODO{add mark photo}}
 
 \tab{metrology theoretical}{The theoretical values for the optical measurement of RPs (the positions of the fiducial marks).}{\bln
 \multispan{2}\strut\bvrule\hfil reference point 1\hfil&\multispan{2}\strut\vrule\hfil reference point 2\hfil& \omit\bvrule\hfil control\hfil\cr

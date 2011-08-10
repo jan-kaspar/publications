@@ -54,8 +54,6 @@ void ShowLength(pair p1, pair p2, pair dir, string lab, real offset)
 
 //----------------------------------------------------------------------------------------------------
 
-fonts10();
-
 add(rotate(45) * shift(-edge/2, -edge/2) * Det0);
 
 filldraw(circle((-edge/2, 0), 0.1)); label("1", (-edge/2, 0), E*1mm);

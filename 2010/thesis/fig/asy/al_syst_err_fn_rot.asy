@@ -1,7 +1,7 @@
 include "../alignment/common_code.asy";
 import pad_layout;
 
-xSizeDef = 5.9cm;
+xSizeDef = 5.8cm;
 ySizeDef = 4.9cm;
 
 StdFonts();
@@ -93,13 +93,13 @@ void MakePage(string dir, string file1, string file2)
 
 //----------------------------------------------------------------------------------------------------
 
-//MakePage("theta=0E-3", "precise3_expanded_results_Ideal.xml", "precise3_expanded_results_Jan.xml");
+//MakePage("random/theta=0E-3", "precise3_expanded_results_Ideal.xml", "precise3_expanded_results_Jan.xml");
 //NewPage();
-//MakePage("theta=10E-3", "precise3_expanded_results_Ideal.xml", "precise3_expanded_results_Jan.xml");
+//MakePage("random/theta=10E-3", "precise3_expanded_results_Ideal.xml", "precise3_expanded_results_Jan.xml");
 //NewPage();
 
-MakePage("theta=0.1E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
+MakePage("random/theta=0.1E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
 //NewPage();
-//MakePage("theta=10E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
+//MakePage("random/theta=10E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
 
 GShipout(hSkip=1mm, vSkip=1mm);

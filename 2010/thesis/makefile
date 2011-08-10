@@ -31,7 +31,7 @@ fig/pdf :
 
 $(timestamps) : fig/.timecache/%.pdf : fig/asy/%
 	@echo "* asy $<"
-	cd "fig/asy"; asy -o "../pdf/" $(ASYOPT) "../../$<"
+	cd "fig/pdf"; asy $(ASYOPT) "../../$<"
 	@touch $@
 
 info:

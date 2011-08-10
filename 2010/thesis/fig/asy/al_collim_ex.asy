@@ -21,7 +21,10 @@ string SecToTime(real x)
 
 //----------------------------------------------------------------------------------------------------
 
-file f2 = input("/home/jkaspar/software/dip/data/2009_11_29/file2.txt", comment="%");
+file f2 = input("/home/jkaspar/software/dip/data/2009_11_29/file2.txt", comment="%", check=false);
+if (error(f2))
+	exit();
+
 guide gT, gB;
 while (true) {
 	real[] x;

@@ -101,9 +101,9 @@ AttachLegend();
 //---------------------------------------------------------------------------------------------------------------------
 
 NewPad(false, 0, -1);
-label("$V$ detectors");
+label("$V$ sensors");
 
 NewPad(false, 1, -1);
-label("$U$ detectors");
+label("$U$ sensors");
 
 GShipout(hSkip=5mm, vSkip=1mm);
