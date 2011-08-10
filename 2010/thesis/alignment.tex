@@ -764,44 +764,27 @@ last iteration $n$ & $\downarrow$ & $|\hat\vec\ch_n| < \hbox{limit}$ \cr
 
 After the iteration process has converged, the final error still have two components -- the statistical and the systematic. The latter one is proportional to the distance to the actual geometry. The distance can not vanish because of two reasons -- the statistical error and the constraints (in case the constraints are not compatible with the true geometry). Let us recall that the singular modes do not contribute to the systematic error, see \Eq{al vec T error}. Hence only the constrained weak modes can lead to an error of this type (they are both constrained and non-singular). For the RP sensors this is the case of $U$-$V$ and far-near unit rotations, they will be studied in the next section, see \Fg{al syst err uv rot,al syst err fn rot}.
 
-As the last comment related to the iterations, let us mention the typical number of steps. Both in MC tests (\Sc{al mc tests}) and LHC data analysis (\Sc{al exp res}), two iterations have turned out to be sufficient. That is the correction in the third one has already been negligible.
+As the last comment related to the iterations, let us mention the typical number of steps. Both in MC tests (\Sc{al mc tests}) and LHC data analysis (\Sc{al exp res}), two iterations have turned out to be sufficient. That is, the correction in the third one has already been negligible.
 
-Now, let us estimate the size of the statistical error $\De\ch_{\rm stat}$.
-
-The solution of the alignment task is given by \Eq{al alignment equation}. Here, there are two quantities that are subject to statistical uncertainties: $\vec T$ and $\vec V$. The uncertainty of $\vec T$ vector is propagated from the measurements $\vec M^n$ through \Eq{al fit equation}. The assumptions about measurement errors have been summarized in the resolution err mod \Er{al resolution err mod}. $\vec V$ is an outcome of an external measurement and as such it is likely to subject to certain uncertainty. All these uncertainties can be propagated to the uncertainty of the result $\hat\vec\ch$.
-
-Eq\hbox{.} (4.19) on page 60 in \bref{barlow} reads
-$$\vec y = \mat A\vec x \qquad \Rightarrow \qquad \Var\vec y = \mat A\ \Var\vec x\ \mat A^\T\ .$$
-This can be directly applied to \Eq{al alignment equation}:
+Now, let us estimate the size of the statistical error $\De\ch_{\rm stat}$. It originates in the resolution error $\De m$, thus one may take the model \Eq{al resolution err mod} and propagate the error to the alignment result $\hat\vec\ch$. For the error propagation one may use formula (4.19) from \bref{barlow}:
+\eqref{\vec y = \mat M\vec x \qquad \Rightarrow \qquad \Var\vec y = \mat M\ \Var\vec x\ \mat M^\T\ .}{error prop}
+In \Eq{al mat V} we have used the symbol $\mat V$ for the variance matrix of the sensor measurements. Since in our model the only random variables are the resolutions errors, $\mat V$ corresponds to their variance matrix. Then, from the definition of $\tilde\vec T$ \Eq{al fit equation} and following the properties of the $\si^n$ matrix \Eq{al prop sigma n} it is straightforward to see that $\Var \tilde\vec T = \tilde\mat S$. Propagating the error further through \Eq{al alignment equation}, one obtains the variance of the alignment result
 \eqref{\Var \pmatrix{\tilde\vec\ch\cr \vec\La} = 
-\pmatrix{
-\tilde\mat S & \mat C \cr
-\mat C^\T & 0\cr
-}^{-1}
-%
-\Var \pmatrix{\tilde\vec T\cr\vec V}
-%
-\pmatrix{
-\tilde\mat S & \mat C \cr
-\mat C^\T & 0\cr
-}^{-1}\ .
-}{al alignment equation err prop}
-Since $\tilde\vec T$ and $\vec V$ are independent and $\Var \tilde\vec T = \tilde\mat S$ \TODO{explain}, one obtains:
-\eqref{\Var \pmatrix{\tilde\vec\ch\cr \vec\La} = 
-\pmatrix{
-\tilde\mat S & \mat C \cr
-\mat C^\T & 0\cr
-}^{-1}
-%
-\pmatrix{\tilde\mat S& 0\cr 0 & \Var \vec V}
-%
-\pmatrix{
-\tilde\mat S & \mat C \cr
-\mat C^\T & 0\cr
-}^{-1}\ .
-}{alignment equation err prop}
-The uncertainties of the $\vec\ch$ vector components can be found on the diagonal of the matrix above:
-\eqref{\si(\bar\ch_i) = \sqrt{\Var \pmatrix{\bar\vec\ch\cr\vec\La}_{i\,i}}}{al par unc}
+	\pmatrix{
+		\tilde\mat S & \mat C \cr
+		\mat C^\T & 0\cr
+	}^{-1}
+	\pmatrix{
+		\tilde\mat S& 0\cr
+		0 & 0}
+	\pmatrix{
+		\tilde\mat S & \mat C \cr
+		\mat C^\T & 0\cr
+	}^{-1}\ .
+}{al stat err}
+The standard deviation of the $\hat\vec\ch$ vector components can be found on the diagonal of the matrix above:
+\eqref{\si(\hat\ch_i) = \sqrt{\Var \pmatrix{\hat\vec\ch\cr  \vec\La}_{i\,i}}}{al stat err chi}
+
 
 
 \subsection[al mc tests]{Monte-Carlo tests}
