@@ -796,7 +796,7 @@ In the previous sections we have developed a method of track-based alignment and
 
 Using the full simulation chain including Geant4 (see \Fg{sr sw structure}) is very resource demanding and severely limits the number of simulations that can be done in a reasonable time. For our alignment studies we have used a fast simulation (see \Sc{fast simu}) instead. The fast simulation skips the detailed simulations of charge creation and collection and electronic response, it uses an effective model instead. The neglected effects shall be much smaller that the resolution error, which is the leading statistical error that we consider for the alignment (see \Eq{al resolution err mod}). Therefore within this error, we expect the fast simulation to provide a good tool for alignment studies.
 
-All our simulations have been done with the $220\un{m}$ station is sector 56. The proton tracks have been simulated from $z=217\un{m}$ (the point corresponding to $z=0$ in \Eq{al local track}). We have tried a number of track distributions, but the impact on the alignment results was small, as it should. For the figures in this section, we have used a track distribution which resembles the one observed in the LHC data -- both track slopes $a_x$ and $a_y$ generated according to a normal distribution with zero mean and variance $\si_a^2$, the intercepts $b_x$ and $b_y$ according to normal distributions with zero means and variances $\si_x = 6\un{mm}$ and $\si_y= 8\un{mm}$.
+All our simulations have been done with the $220\un{m}$ station in sector 56. We have tried a number of track distributions, but the impact on the alignment results has been small, as it should. For the figures in this section, we have used a track distribution which resembles the one observed in the LHC data -- both track slopes $a_x$ and $a_y$ generated according to a normal distribution with zero mean and standard deviation $\si_a$, the intercepts $b_x$ and $b_y$ (at $z=217\un{m}$) according to normal distributions with zero means and standard deviations $\si_x = 6\un{mm}$ and $\si_y= 8\un{mm}$.
 
 Our first MC tests have been to verify the statistical behavior of the alignment results. In particular how the statistical and systematic errors depend on the size of a track sample used. For each sample size we have generated 20 samples (with different random seeds). For each sample we have made two simulations, each followed by an alignment analysis. For the \em{realistic simulation}, the sensor hit positions have been rounded to the nearest (inter-)strip position (see \Sc{fast simu}) and fitted track parameters (that is $\hat\mat\Ga$) have been used. This corresponds to the alignment application to real data. The second simulation has been made to get a reference alignment result with no errors included. For this \em{reference simulation} the sensor hit positions have not been rounded and true track parameters (that is $\mat\Ga$) have been used. The alignment analyses have been performed in three iterations, yielding a result and its uncertainty estimate. Then, from the 20 samples of the same size we have calculated the following quantities.
 \eqref{\vbox{\halign{\quad\strut#\qquad&#\quad\cr\ln
@@ -863,24 +863,24 @@ A similar study has been made for the systematic error induced by constraining t
 
 \subsection[al data sel]{Input data selection}
 
-With the fast Monte-Carlo one a priory knows that there was exactly one track per event and that all detector hits belong to this track. Consequently all track-fit residuals follow from misalignments. This is not true for real data. There might be a number of tracks per event, moreover different in every RP. There might be a number of hits that do not belong to any particle track -- noise, data corruption. That is why it is necessary to select carefully the input for the track-based alignment. It is better to loose some statistics than to bias the results with false input.
+In the above MC tests we have simulated one proton track per event. Thus, we have known a priory that all detector hits have belonged to the track of a given event. For real LHC data, the situation is more complicated. There might be a number of tracks per event, moreover different in every RP. There might be a number of hits that do not belong to any particle track -- noise, data corruption, etc. That is why it is necessary to select carefully the input for the track-based alignment. It is better to loose some statistics than to bias the results with false input.
 
-The selection algorithm has two components: hit selection and event selection. In the first one some hits are removed, since they are doubtful. In the latter one, entire events are dropped.
+The selection algorithm has two components: \em{hit selection} and \em{event selection}. In the first one, doubtful hits may be removed. In the latter, entire events may be dropped, if found suspicious..
 
 The hit selection is integrated with track fitting and can be described as follows.
 \bitm
-\itm Input: the collection of all hits from all detectors and all RPs.
-\itm Local track fit (parameterization \Eq{local track}).
-\itm Outlier removal: remove all points for which
-\eqref{m_i - \hat m_i > \pmt{maxResidualToSigma}\, \si(m_i)\ ,}{al outlier cond}
-where $\hat m_i = \vec d_i \cdot (\hat\vec a^n z_i + \hat\vec b^n)$ is the track interpolation and $\si(m_i)$ is the corresponding measurement error. \pmt{maxResidualToSigma} is a parameter of the algorithm.
-\itm Remove all hits from RPs where there are less hits per projection than a given limit\break \pmt{minimumHitsPerProjectionPerRP}.
-\itm If some points have been removed, go back to step 2. Stop otherwise.
+\itm Input: the collection of all hits from all sensors (in all RPs).
+\itm Local track fit -- a least squares fit with track parameterization \Eq{al local track}. This is the fit which determines the $\hat\vec a$ and $\hat\vec b$ (or shortly $\hat\vec\ta$) track parameters used in \Eq{al tau linearization}.
+\itm Outlier removal. From the hit collection, we remove all hits for which
+\eqref{m_i - \hat m_i > \pmt{maxResidualToSigma}\ \si(m_i)\ ,}{al outlier cond}
+where $\hat m_i = \vec d_i \cdot (\hat\vec a^n z_i + \hat\vec b^n)$ is the track-fit interpolation and $\si(m_i)$ is the corresponding measurement uncertainty (i.e. a square root of the corresponding diagonal element of a $\mat V^n$ matrix, see \Eq{al mat V}). \pmt{maxResidualToSigma} is a parameter of the algorithm.
+\itm Suspicious pot removal. We remove all hits from the RPs where there are less hits per projection than a given limit \pmt{minimumHitsPerProjectionPerRP}.
+\itm If some points have been removed in steps 3 or 4, go back to step 2; stop otherwise.
 \eitm
 
-The event selection starts with a $\ch^2$ cut, that is all events with track fits the $\ch^2/\hbox{n.d.f.}$ of which exceeds a limit \pmt{chiSqPerNdfCut} are discarded. Then, there are few optional (they can be switched on or off) boolean checks, see \Tb{al alg flags}.
+The event selection starts with a $\ch^2$ cut, that is all events with track fits the $\ch^2/\hbox{n.d.f.}$ of which exceeds a limit \pmt{chiSqPerNdfCut} are discarded. Then, there are several optional checks, see \Tb{al alg flags}. They can control which event types are used for the alignment.
 
-\tab[\strut\hfil#\ &#\hfil\cr]{al alg flags}{The boolean settings of alignment data selection.}{\ln
+\tab[\strut\hfil#\ &#\hfil\cr]{al alg flags}{The options of the event selection algorithm.}{\ln
 parameter							& meaning\cr\ln
 \pmt{removeImpossible} 				& remove events with signal in a top and a bottom pot simultaneously\cr
 \pmt{requireBothUnits} 				& require signal in both units\cr
@@ -888,40 +888,37 @@ parameter							& meaning\cr\ln
 \pmt{requireAtLeast3PotsInOverlap}	& if there is signal in the overlap, require signal in at least three pots\cr\ln
 }
 
-\TODO{
-\> iterations, making cuts more strict
-\> the cuts -- depend on situation, don't give values here but only later
-}
+The values of the selection algorithms parameters will be given for each analysis in \Sc{al exp res}. Let us only remark that some of these parameters will be changed during iterations. For example the parameter of the outlier cut \Eq{al outlier cond} or the one of the $\ch^2$ cut will be made increasingly strict, as we will approach the expected alignment corrections (see the \rhs~column in \Tb{al iter}) decrease.
 
-\subsection[al rp fac]{Alignment of sensor packages}
 
-The basic structures in the track-based alignment are the detectors (sensors). Only these provide measurements and only these can be aligned. On the other side, the sensors are inserted (per groups) in RPs and thus, they share (per groups) common misalignments. One could, therefore, try to extract these common misalignments and call them \em{RP alignments}. However, this should be still understood in the sense of common shifts and rotations of the sensors in a RP. In no way, the track-based alignment can determine the positions of inactive elements, like the thin window.
+\subsection[al rp fac]{Alignment of detector packages}
 
-\fig{fig/pdf/al_rp_misalignment.pdf}{al rp misalignment}{A side view on a RP (for simplicity only 4 planes are drawn). The displaced detectors are drawn in black, their centers are marked with dots. The centers of non-displaced detectors are shown as gray dots. The blue arrows represent $\vec c_i$ vectors from \Eq{al rp de c}. The green arrow represents the RP shift $\vec s^{\rm RP}$.}
+The basic structures in the track-based alignment are the detectors (sensors). Only these provide measurements and only these can be aligned. On the other side, the sensors are inserted (per groups) in RPs and thus, they share (per groups) common misalignments. One could, therefore, try to extract these common misalignments and call them \em{DP alignments}. However, this should be still understood in the sense of common shifts and rotations of the sensors in a DP. In no way, the track-based alignment can determine the positions of inactive elements, like the thin window.
 
-Any RP misalignment can be decomposed to the shift of its center $\vec s^{\rm RP}$ and the rotation about its center. The rotation can be represented by a matrix $\mat R^{\rm RP}$, an equivalent of the rotation matrix for sensors (cf.~\Eq{global to local}). Let us define the center of a RP ($\vec c^{\rm RP}$) as the mean of its sensors' centers. The RP misalignments are naturally inherited by all sensors of this RP, but moreover, the rotation may give rise to additional shifts, see \Fg{al rp misalignment}. The center of $i$-th detector is
-\eqref{\vec c'_i = \mat R^{\rm RP} (\vec c_i - \vec c^{\rm RP}) + \vec c^{\rm RP} + \vec s^{\rm RP}\ ,}{al rp c'}
-where $\vec c$ would be its nominal center (without the RP misalignment). The only non-negligible component of $\vec c_i - \vec c^{\rm RP}$ vector is the $z$ one. Furthermore, since the expected mis-rotations are of the order \TODO{?? reference}, we can use the approximation \Eq{rotation parameterization approximated} for the rotation matrix $\mat R^{\rm RP}$. Then, keeping only $x$ and $y$ components, one finds
-\eqref{\De\vec c_i \equiv \vec c'_i - \vec c_i = \vec s^{\rm RP} + \pmatrix{\rh_y^{\rm RP}\cr \rh_x^{\rm RP}} z_i^{\rm eff}, \qquad z_i^{\rm eff} = c_{z_i} - c_z^{\rm RP}\ .}{al rp de c}
-Since the sensors are placed in RPs in regular $z$ intervals, one can expect the shifts to be linearly dependent on the plane number. And indeed, this can be seen in experimental data, for example in \Fg{al comp det per unit}. The shifts in read-out direction (this is what is determined by track-based alignment) can be compactly written
+\fig{fig/pdf/al_rp_misalignment.pdf}{al rp misalignment}{A side view on a DP (for simplicity only 4 planes are drawn). The displaced detectors are drawn in black, their centers are marked with dots. The centers of non-displaced detectors are shown as gray dots. The blue arrows represent $\vec c_i$ vectors from \Eq{al rp de c}. The green arrow represents the DP shift $\vec s^{\rm DP}$.}
+
+Any DP misalignment can be decomposed to the shift of its center $\vec s^{\rm DP}$ and the rotation about its center. The rotation can be represented by a matrix $\mat R^{\rm DP}$, an equivalent of the rotation matrix for sensors (cf.~\Eq{al global to local}). Let us define the center of a DP ($\vec c^{\rm DP}$) as the mean of its sensors' centers. The DP misalignments are naturally inherited by all sensors of this DP, but moreover, the rotation may give rise to additional shifts, see \Fg{al rp misalignment}. The center of $i$-th detector is
+\eqref{\vec c'_i = \mat R^{\rm DP} (\vec c_i - \vec c^{\rm DP}) + \vec c^{\rm DP} + \vec s^{\rm DP}\ ,}{al rp c'}
+where $\vec c$ would be its nominal center (without the DP misalignment). The only non-negligible component of $\vec c_i - \vec c^{\rm DP}$ vector is the $z$ one. Furthermore, since the expected mis-rotations are of the order \TODO{?? reference}, we can use the approximation \Eq{al rotation parameterization approximated} for the rotation matrix $\mat R^{\rm DP}$. Then, keeping only $x$ and $y$ components, one finds
+\eqref{\De\vec c_i \equiv \vec c'_i - \vec c_i = \vec s^{\rm DP} + \pmatrix{\rh_y^{\rm DP}\cr \rh_x^{\rm DP}} z_i^{\rm eff}, \qquad z_i^{\rm eff} = c_{z_i} - c_z^{\rm DP}\ .}{al rp de c}
+Since the sensors are placed in DPs in regular $z$ intervals, one can expect the shifts to be linearly dependent on the plane number. And indeed, this can be seen in experimental data, for example in \Fg{al comp det per unit}. The shifts in read-out direction (this is what is determined by track-based alignment) can be compactly written
 \eqref{
-\pmatrix{\vdots\cr \De s_i\cr \vdots} = \mat F \pmatrix{s_x^{\rm RP}\cr s_y^{\rm RP}\cr \rh_x^{\rm RP}\cr \rh_y^{\rm RP}\cr}, \qquad
+\pmatrix{\vdots\cr \De s_i\cr \vdots} = \mat F \pmatrix{s_x^{\rm DP}\cr s_y^{\rm DP}\cr \rh_x^{\rm DP}\cr \rh_y^{\rm DP}\cr}, \qquad
 \mat F = \pmatrix{
 \vdots & \vdots & \vdots & \vdots\cr
 d_{x_i} & d_{y_i} & d_{x_i}\,z_i^{\rm eff} & d_{y_i}\,z_i^{\rm eff} \cr
 \vdots & \vdots & \vdots & \vdots\cr
 }\ ,}{al rp fit matrix}
-where $i$ lists all sensors in the given RP. The last equality can easily be combined with the Least Squares method in order to determine the RP misalignments from experimental data:
-\eqref{\pmatrix{s_x^{\rm RP}\cr s_y^{\rm RP}\cr \rh_x^{\rm RP}\cr \rh_y^{\rm RP}\cr} = (\mat F^\T \mat V^{-1} \mat F)^{-1} \mat F^\T \mat V^{-1} \pmatrix{\vdots\cr \De s_i\cr \vdots}\ ,}{al rp fit}
+where $i$ lists all sensors in the given DP. The last equality can easily be combined with the Least Squares method in order to determine the DP misalignments from experimental data:
+\eqref{\pmatrix{s_x^{\rm DP}\cr s_y^{\rm DP}\cr \rh_x^{\rm DP}\cr \rh_y^{\rm DP}\cr} = (\mat F^\T \mat V^{-1} \mat F)^{-1} \mat F^\T \mat V^{-1} \pmatrix{\vdots\cr \De s_i\cr \vdots}\ ,}{al rp fit}
 where $\mat V$ is the covariance matrix of the $\De s$ vector. The results of the track-based alignment is on the r.h.s. and the LS estimate on the l.h.s. 
 
-As it has been said above, all sensors in a pot inherit its rotation misalignment. Since we can determine sensors' rotations about $z$, we can extract the RP rotation by simply taking the mean rotation
-\eqref{\rh_z^{\rm RP} = {\sum_i {\rh_{z_i}\over \si^2_i} \over \sum_i {1\over\si_i^2}}\ .}{al rp rotz fit}
-Again, $i$ lists all sensors in the given RP and $\si_i$ abbreviates the uncertainty of $\rh_{z_i}$.
+As it has been said above, all sensors in a pot inherit its rotation misalignment. Since we can determine sensors' rotations about $z$, we can extract the DP rotation by simply taking the mean rotation
+\eqref{\rh_z^{\rm DP} = {\sum_i {\rh_{z_i}\over \si^2_i} \over \sum_i {1\over\si_i^2}}\ .}{al rp rotz fit}
+Again, $i$ lists all sensors in the given DP and $\si_i$ abbreviates the uncertainty of $\rh_{z_i}$.
 
-Some results extracted from the LHC data can be found in \Fg{al comp rp all rot}.
+All three DP rotations extracted from LHC data can be found in \Fg{al comp rp all rot}.
 
-\TODO{why slopes not extracted, why errors not used : they are used in the end!}
 
 \subsection[al exp res]{Experimental results}
 
