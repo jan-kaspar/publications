@@ -39,26 +39,7 @@ strip	& 0 to 127		\cr
 
 \>> give idea about the dimensions (for reference reasons later), + spacing between sensors (total stack size), detector pitch, detector orientation
 
-0
-4.6
-9
-13.6
-18
-22.6
-27
-31.6
-36
-40.6
-
-
-\> define u, v (the system rotating with sensor) and U, V (45 deg. rotation of about s of the xys system), strips along u, read-out direction is v
-\TODO{make sure this is used everywhere}
-
-
-\>> mention BPMs and BLMs
-
-
-\htab{rp station}{The structure of the RP stations. The $z$ positions of the RP centers.}{
+\htab{ttm rp station}{The $s$ positions of the RP centers, in meters from the IP5.}{
 \omit&\multispan6\bhrulefill\cr
 \omit&\multispan3\strut\bvrule\hfil near unit\hfil&\multispan3\vrule\hfil far unit\hfil\cr
 \omit&\multispan6\bhrulefill\cr
@@ -67,9 +48,25 @@ strip	& 0 to 127		\cr
 \hbox{220 m station} & 214.628 & 214.628 & 215.078 & 219.550 & 220.000 & 220.000 \cr\bln
 }
 
+\htab{ttm det package}{The positions of silicon sensors in a detector package (relative to the center of a RP). In milimeters. Sensor 1 is the nearest to the IP5.}{\bln
+\hbox{sensor}	& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \cr\bln
+\hbox{position}	& -20.3 & -15.7 & -11.3 & -6.7 & -2.3 & 2.3 & 6.7 & 11.3 & 15.7 & 20.3 \cr\bln
+}
+
+In 56, top pots, V sensors shifted in x by +0.514mm, U sensors by -0.514mm.
+
+\> define u, v (the system rotating with sensor) and U, V (45 deg. rotation of about s of the xys system), strips along u, read-out direction is v
+\TODO{make sure this is used everywhere}
+
+
+\>> mention BPMs and BLMs
+
+
+
+
 \iffalse
 \bmfig
-\fig[8cm]{fig/external/RP_stations_original.pdf}{rp stations}{[7cm]RP stations}
+\fig[8cm]{fig/external/RP_stations_original.pdf}{s}{[7cm]RP stations}
 \fig[6cm]{fig/external/rp_unit.jpg}{rp unit}{[7cm]RP unit}
 \emfig
 

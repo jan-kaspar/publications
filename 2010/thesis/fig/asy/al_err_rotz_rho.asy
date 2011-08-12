@@ -2,12 +2,13 @@ import pad_layout;
 include "../alignment/common_code.asy";
 
 StdFonts();
-xSizeDef = 6cm;
+xSizeDef = 5.9cm;
 
 //---------------------------------------------------------------------------------------------------------------------
 
 string rhos[] = { "0.2E-3", "0.4E-3", "0.6E-3", "0.8E-3", "1E-3", "2E-3", "3E-3", "4E-3", "5E-3", 
-	"10E-3", "20E-3", "30E-3", "40E-3", "50E-3", "500E-3", "1000" };
+	"10E-3", "20E-3", "30E-3", "40E-3", "50E-3", "100E-3", "200E-3", "300E-3", "400E-3",
+	"500E-3", "1000" };
 
 real de_rh_typ = 2; // mrad
 
@@ -18,7 +19,7 @@ scale(Log, Log);
 guide graphs[];
 for (int ti : rhos.keys) {
 	Alignment a;
-	ParseXML("../alignment/rotation_errors/uv_rho/"+rhos[ti]+"/results_Jan.xml", a);
+	ParseXML("../alignment/rotation_errors/uv_rho/ext_fit=f/"+rhos[ti]+"/results_Jan.xml", a);
 	real th = (real)(rhos[ti]);
 
 	for (int di : a.rotz_e.keys) {
@@ -27,8 +28,8 @@ for (int ti : rhos.keys) {
 		if (!graphs.initialized(di))
 			graphs[di] = nullpath;
 		
-		// mrad vs. mrad, transition from 1E3 to 1E5 events (resolution improves by sqrt(100))
-		graphs[di] = graphs[di] -- Scale((th*1e3, a.rotz_e[di]/10));
+		// mrad vs. mrad
+		graphs[di] = graphs[di] -- Scale((th*1e3, a.rotz_e[di]));
 	}
 }
 
@@ -41,7 +42,7 @@ void Draw(int idx, pen c, string l="")
 
 //---------------------------------------------------------------------------------------------------------------------
 
-NewPad("$\si_\rh \un{mrad}$", "rotation uncertainty $(\rm mrad)$");
+NewPad("$\si_\rh \un{mrad}$", "rotation uncertainty $\un{mrad}$");
 scale(Log, Log);
 
 Draw(1202, heavygreen, "near-top");

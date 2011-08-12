@@ -2,7 +2,7 @@ import pad_layout;
 include "../alignment/common_code.asy";
 
 StdFonts();
-xSizeDef = 6cm;
+xSizeDef = 5.9cm;
 
 //---------------------------------------------------------------------------------------------------------------------
 
@@ -33,8 +33,7 @@ for (int ti : thetas.keys) {
 		if (!graphs.initialized(di))
 			graphs[di] = nullpath;
 
-		// transition from 1E3 to 1E5 events (resolution improves by sqrt(100))
-		graphs[di] = graphs[di] -- Scale((th, a.shz_e[di]/10));
+		graphs[di] = graphs[di] -- Scale((th, a.shz_e[di]));
 	}
 }
 
@@ -47,7 +46,7 @@ void Draw(int idx, pen c, string l="")
 
 //---------------------------------------------------------------------------------------------------------------------
 
-NewPad("$\si_a\un{rad}$", "$z$ shift uncertainty $(\rm mm)$");
+NewPad("$\si_a\un{rad}$", "$z$ shift uncertainty $\un{mm}$");
 scale(Log, Log);
 
 Draw(1202, black, "near-top");

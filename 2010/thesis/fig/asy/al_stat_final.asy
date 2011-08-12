@@ -16,7 +16,7 @@ RPs = "120,121,122,123,124,125";
 optimized = "sr";
 tr_dist = "gauss_6_8,th=0.1E-3";
 
-string[] plots = {"systematical error", "estimated uncertainty", "stat. err. / estim. unc."};
+string[] plots = {"systematic error", "estimated uncertainty", "stat. err. / estim. unc."};
 string[] tags = { "e_m", "u_m", "eR"};
 real[] p_scales = { 1e3, 1e3, 1.};
 
@@ -34,7 +34,7 @@ void MakePlots(string dirLabel, string fileNameLabel, string xLabel, real x_from
 		for (int p : plots.keys) {
 			NewPad(
 				(q == 2) ? xLabel : "",
-				(p == 0) ? labels[q] + "   $\un{" + units[q] + "}$" : ""
+				(p == 0) ? "" : ""
 			);
 			scale((xLog) ? Log : Linear, Linear(true));
 			string opt = "l,p,ec";
@@ -83,13 +83,19 @@ void MakePlots(string dirLabel, string fileNameLabel, string xLabel, real x_from
 //----------------------------------------------------------------------------------------------------
 
 NewPad(false, 0, -1);
-label("systematical error");
+label("systematic error");
 
 NewPad(false, 1, -1);
 label("estimated uncertainty");
 
 NewPad(false, 2, -1);
 label("stat. error / uncertainty");
+
+NewPad(false, -1, 0);
+label(rotate(90)*Label("read-out shift\quad$(\rm\mu m)$"));
+
+NewPad(false, -1, 1);
+label(rotate(90)*Label("rotation about $z$\quad $(\rm mrad)$"));
 
 detNum = 3;
 

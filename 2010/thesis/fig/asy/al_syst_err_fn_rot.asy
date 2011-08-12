@@ -62,7 +62,7 @@ void MakePage(string dir, string file1, string file2)
 
 	int j = 0;
 	for (int rp_i : rps.keys) {
-		NewPad("$\De_{F-N} \rh \un{mrad}$", "shift syst. error $\un{\mu m}$", 0, j);
+		NewPad("$\rh_{\rm F-N} \un{mrad}$", "shift syst. error $\un{\mu m}$", 0, j);
 		int i = 0;
 		for (int d_i : dets.keys) {
 			int id = rps[rp_i]*10 + dets[d_i];
@@ -72,9 +72,9 @@ void MakePage(string dir, string file1, string file2)
 			draw(s_graphs[id], p, mCi+p);
 			++i;
 		}
-		limits((0, -6), (200, +3), Crop);
+		limits((0, -5), (200, +2.5), Crop);
 	
-		NewPad("$\De_{F-N} \rh \un{mrad}$", "rotation syst. error $\un{mrad}$", 1, j);
+		NewPad("$\rh_{\rm F-N} \un{mrad}$", "rotation syst. error $\un{mrad}$", 1, j);
 		int i = 0;
 		for (int d_i : dets.keys) {
 			int id = rps[rp_i]*10 + dets[d_i];
@@ -98,7 +98,7 @@ void MakePage(string dir, string file1, string file2)
 //MakePage("random/theta=10E-3", "precise3_expanded_results_Ideal.xml", "precise3_expanded_results_Jan.xml");
 //NewPage();
 
-MakePage("random/theta=0.1E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
+MakePage("random-gauss/theta=0.1E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
 //NewPage();
 //MakePage("random/theta=10E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
 
