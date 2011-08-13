@@ -39,9 +39,9 @@ This also gives estimate about the rotation
 
 \htab{al exp misal}{Expected misalignments orders. \TODO{}}{\bln
 	& \hbox{sensors within a package} & \hbox{package within a station} \cr\bln
-\hbox{transverse shift}	& 20\un{\mu m} 			& 100\un{\mu m} \cr\ln
-\hbox{shift in }z 		& ??					& \approx 1\un{mm} ??\cr\ln
-\hbox{rotations}		& \hbox{few }\rm mrad	& \hbox{few }\rm mrad \cr\bln
+\hbox{transverse shift}	& 20\un{\mu m} 				& \hbox{few } 100\un{\mu m} \cr\ln
+\hbox{shift in }z 		& \hbox{few } 100\un{\mu m}	& \hbox{below } 1\un{mm}\cr\ln
+\hbox{rotations}		& \hbox{few }\rm mrad		& \hbox{few }\rm mrad \cr\bln
 }
 
 \section[al collim]{Collimation alignment}
@@ -660,7 +660,7 @@ We have seen that a set of constraints must fulfill certain conditions, see \Eq{
 	\vdots		& \vdots		& \vdots	& \vdots \cr
 }\ ,\qquad i\hbox{ going through all detectors.}}{al hom cnst ex}
 
-\> Another natural choice is to select a subset of reference sensors, fix their positions and let the other sensors align with respect to the reference ones. We will call this option \em{fixed-detectors constraints}. Both singular and weak modes can be constrained in this way.
+\> Another natural choice is to select a subset of reference sensors, fix their positions and let the other sensors align with respect to the reference ones. We will call this option \em{fixed-sensors constraints}. Both singular and weak modes can be constrained in this way.
 \par\parindent\itindent\indent\hang For an example, we consider again the case with read-out-direction shifts only. There we face four singular modes, thus we need to fix the positions of four detectors, let us take first two and last two:
 \eqref{\mat C = \pmatrix{
 	1		& 0			& 0 		& 0 		\cr
@@ -805,13 +805,13 @@ quantity & label\cr\ln
 \hbox{standard deviation (realistic result - reference result)}& \hbox{statistical error} \cr
 \hbox{mean (realistic uncertainty)} 					& \hbox{estimated uncertainty} \cr\ln
 }}}{al stat quan def}
-Two examples of such statistical studies can be found in \Fg{al stat fixDet} (with a set of fixed-detector constraints) and \Fg{al stat final} (with the final constraints).
+Two examples of such statistical studies can be found in \Fg{al stat fixDet} (with a set of fixed-sensors constraints) and \Fg{al stat final} (with the final constraints).
 
 For \Fg{al stat fixDet} the rotations have been fixed only in the near unit. Following our discussion of weak modes in \Sc{al sing modes} (see especially \Fg{al eig theta}), we may expect high alignment uncertainties for the far unit. The figure confirms this expectation (compare top and bottom two rows). Let us make three more observations. First, the systematic error is compatible with zero within the its uncertainty (semi-transparent band). Second, the estimated uncertainty falls as $1/\sqrt{N_{\rm events}}$, which confirms our rule of thumb mentioned below \Eq{al resolution err mod}. Third, the ratio of the statistical error to the estimated uncertainty is almost flat, but below the expected value of one. This means that the uncertainty estimated with the help of the model \Er{al resolution err mod} is slightly overestimated. This might, in fact, partly compensate our neglecting the multiple scattering.
 
 The same three observations could be made for \Fg{al stat final}, which corresponds to the final constraints. These fix the far-near unit rotation weak mode, thereby the alignment uncertainties are similar for both near and far unit.
 
-\fig{fig/pdf/al_stat_fixDet.pdf}{al stat fixDet}{A statistical study of the alignment method with a set of fixed-detector constraints. For the read-out-direction shifts we have fixed the first two sensors in the top-near and the last two sensors in the top-far pot. Regarding the rotations, the first two sensors have been fixed. The simulations have been performed with a realistic track slope spread $\si_a = 0.1\un{mrad}$. Each curve corresponds to the third sensor of a pot, see the legend. The near/far unit plots are at the top/bottom of the figure. The semi-transparent areas show $1\si$ error bands. The vertical dotted line marks a typical number of events in LHC runs.
+\fig{fig/pdf/al_stat_fixDet.pdf}{al stat fixDet}{A statistical study of the alignment method with a set of fixed-sensors constraints. For the read-out-direction shifts we have fixed the first two sensors in the top-near and the last two sensors in the top-far pot. Regarding the rotations, the first two sensors have been fixed. The simulations have been performed with a realistic track slope spread $\si_a = 0.1\un{mrad}$. Each curve corresponds to the third sensor of a pot, see the legend. The near/far unit plots are at the top/bottom of the figure. The semi-transparent areas show $1\si$ error bands. The vertical dotted line marks a typical number of events in LHC runs.
 %[20 repetitions, geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad, 3 iterations]
 }
 
@@ -821,7 +821,7 @@ The same three observations could be made for \Fg{al stat final}, which correspo
 
 In the above figures we have not showed any plots for the $z$ shifts. The reason is their quite special behavior. We recall that the $\ga$ coefficients related to the shifts in $z$ are proportional to the track angle (see \Tb{al alignment quantities}). Thus if the variation of the track angles is too small, one can expect a bad resolution. This fact is documented in \Fg{al err shz theta}. For the LHC-typical angular spread (see \Tb{al lhc datasets}), the uncertainty is about $1\un{m}$, which is much worse than the misalignment expectation, see \Tb{al exp misal}. Since the track-based alignment can not improve our knowledge about the detectors' $z$-positions, we will focus on read-out-direction shifts and rotations only it in what follows.
 
-\fig{fig/pdf/al_err_shz_theta.pdf}{al err shz theta}{The estimated uncertainty of $z$ shifts as a function of the track angular spread $\si_a$. Simulations performed with $10^5$ events and a set of fixed-detectors constraints (for $z$ shifts: first two sensors in near-top and last two sensors in far-top pot). For each pot, the uncertainty of 2nd or 3rd sensor (according to its $U$ or $V$ orientation) is shown, for the other sensors the situation is very similar. The vertical dotted line shows the typical track angular spread for LHC data.
+\fig{fig/pdf/al_err_shz_theta.pdf}{al err shz theta}{The estimated uncertainty of $z$ shifts as a function of the track angular spread $\si_a$. Simulations performed with $10^5$ events and a set of fixed-sensors constraints (for $z$ shifts: first two sensors in near-top and last two sensors in far-top pot). For each pot, the uncertainty of 2nd or 3rd sensor (according to its $U$ or $V$ orientation) is shown, for the other sensors the situation is very similar. The vertical dotted line shows the typical track angular spread for LHC data.
 %No misalignment, fix-ext constraints (rotz in 1200, 1201; shz in 1200, 1201, 1248 and 1249), extfit=f.
 }
 
@@ -829,7 +829,7 @@ Let us have a more detailed look at the weak modes now. From \Sc{al sing modes} 
 
 A similar transition is shown in \Fg{al err rotz rho}. Again, a series of geometries has been considered, starting with the nominal one and adding rotation misalignments, randomly generated according to a normal distribution with zero mean and standard deviation $\si_\rh$ (on the horizontal axis). For this plot, we have fixed the rotation of one sensor only: the first one in near-top RP. It is a $V$ sensor. Consequently, the alignment uncertainties for all $V$ sensors (left plot) are practically $\si_\rh$-independent. In contrary for the $U$ sensors (right plot), the uncertainties grow with decreasing $\si_\rh$, as expected. The uncertainties for the far unit pots are higher than for the near unit (we recall that the fixed sensor is in the near one). This is related to the other weak mode (far-near unit rotation), which will be discussed later, in \Fg{al err rotz theta}. Focusing on the near unit, we see that for the expected misalignments (the dotted vertical line) the uncertainty for $V$ sensors is between $10^{-2}$ and $10^{-1}\un{mrad}$, while for the $U$ sensors it grows over $1\un{mrad}$. For this plot a sample of $10^5$ tracks has been used, it is a typical number for the LHC runs. Now, comparing the results to the expected misalignments in \Tb{al exp misal}, drawn as the dotted horizontal line, we conclude that the track-based alignment can not provide reasonable corrections to the $U$ sensors' rotations. We recall that the $U$ sensors turn out to be problematic in this example as we have fixed the rotation of the $V$ sensors by the constraints. Generally, the troublesome mode is the relative rotation between $U$ and $V$ sensors.
 
-\fig{fig/pdf/al_err_rotz_rho.pdf}{al err rotz rho}{The estimated uncertainty of the rotations about $z$ as a function of geometry. The geometries considered have been derived from the nominal one by applying rotation misalignments to each sensor. These misalignments have been randomly generated according to a normal distribution with zero mean and variance $\si_\rh^2$ (the quantity on the horizontal axis). The expected misalignment is marked by the vertical dotted line. The simulations have been done with $10^5$ events, track angular spread $\si_a = 0.1\un{mrad}$ and a set of fixed-detectors constraints. The only sensor with fixed rotation has been the first one in the top-near RP (it is a $V$ sensor). Each line corresponds to the uncertainty of the 2nd or 3rd sensor (according to its $U$ or $V$ orientation) of a RP. Solid lines have been used for RPs in the near, dashed for RPs in the far unit. The lines for far vertical pots are overlapping. The horizontal dotted line shows the expected rotation misalignment.
+\fig{fig/pdf/al_err_rotz_rho.pdf}{al err rotz rho}{The estimated uncertainty of the rotations about $z$ as a function of geometry. The geometries considered have been derived from the nominal one by applying rotation misalignments to each sensor. These misalignments have been randomly generated according to a normal distribution with zero mean and variance $\si_\rh^2$ (the quantity on the horizontal axis). The expected misalignment is marked by the vertical dotted line. The simulations have been done with $10^5$ events, track angular spread $\si_a = 0.1\un{mrad}$ and a set of fixed-sensors constraints. The only sensor with fixed rotation has been the first one in the top-near RP (it is a $V$ sensor). Each line corresponds to the uncertainty of the 2nd or 3rd sensor (according to its $U$ or $V$ orientation) of a RP. Solid lines have been used for RPs in the near, dashed for RPs in the far unit. The lines for far vertical pots are overlapping. The horizontal dotted line shows the expected rotation misalignment.
 %No misalignment (misaligned and real geometry contain detectors rotated with the given rho distribution).  Extfit=false. fix-bas, 1 iteration, 1 repetition
 }
 
@@ -839,7 +839,7 @@ As indicated by \Fg{al eig theta}, the weakness of this mode depends on the angu
 
 Let us repeat the reason for the saturation at the high-$\si_a$ side of \Fg{al err rotz theta}. The maximal angle that can be detected by both units simultaneously is about $10^{-2}\un{rad}$, therefore even if the track sample includes higher angle tracks, they do not contribute to the alignment analysis.
 
-\fig{fig/pdf/al_err_rotz_theta.pdf}{al err rotz theta}{The estimated uncertainty of the rotations about $z$ as a function of the track angular spread $\si_a$. The simulations have been performed with $10^5$ tracks and fixed-detectors constraints (rotations fixed for the first two sensors in the near-top pot). Each curve corresponds to a sensor (2nd or 3rd, depending on its $U$ or $V$ orientation) in a RP. The curves for near-unit pots are drawn solid, those for far-unit pots dashed. The vertical dotted line shows the realistic angular spread, the horizontal dotted line marks the expected rotation misalignment.
+\fig{fig/pdf/al_err_rotz_theta.pdf}{al err rotz theta}{The estimated uncertainty of the rotations about $z$ as a function of the track angular spread $\si_a$. The simulations have been performed with $10^5$ tracks and fixed-sensors constraints (rotations fixed for the first two sensors in the near-top pot). Each curve corresponds to a sensor (2nd or 3rd, depending on its $U$ or $V$ orientation) in a RP. The curves for near-unit pots are drawn solid, those for far-unit pots dashed. The vertical dotted line shows the realistic angular spread, the horizontal dotted line marks the expected rotation misalignment.
 %No misalignment, extfit=f. , 1 iteration, 1 repetition
 }
 
@@ -929,119 +929,115 @@ Two examples of such an analysis can be found in \Fg{al comp rp all rot} and \Tb
 
 \subsection[al int res]{Internal alignment results}
 
-There are 3 sources: optical metrology, beam and cosmic tests in H8 and LHC data.
+In this section we are going to compare the alignment of sensors within a package (the internal alignment) obtained from three sources. The first one is an optical metrology, the other two are track-based alignment analyses of two types of data -- beam test/cosmic rays and LHC runs.
 
 \caption{Optical metrology}
 
-The position of the detectors within the RP assembly has been measured. There are 3 reference points on a detector and one point on the RP. For each detector a zoomed high resolution photo was taken and a relative position of the points 1 and 2 (see \Fg{al optical metrology}) and the RP reference point was measured. Theoretical values and results are summarized in \Tb{metrology theoretical}. The precision of this measurement is $\approx 10\un{\mu m}$.
+The position of the sensors with respect to their hybrids was measured during the package assembly. A high-zoom camera was used to photograph each sensor on hits hybrid, which allowed to measure the positions of two sensor fiducial marks with respect to a reference point on the hybrid frame, see \Fg{al optical metrology}. Each coordinate was determined with a precision about $10\un{\mu m}$.
 
-\fig{fig/pdf/al_optical_metrology.pdf}{al optical metrology}{An illustration of the optical metrology measurement. \TODO{points on detector or hybrid?} \TODO{add mark photo}}
+\fig{fig/pdf/al_optical_metrology.pdf}{al optical metrology}{An illustration of the optical metrology measurement. The two fiducial marks are drawn in blue, the reference mark on the hybrid frame in red. The numbers give the ideal measurements.}
 
-\tab{metrology theoretical}{The theoretical values for the optical measurement of RPs (the positions of the fiducial marks).}{\bln
-\multispan{2}\strut\bvrule\hfil reference point 1\hfil&\multispan{2}\strut\vrule\hfil reference point 2\hfil& \omit\bvrule\hfil control\hfil\cr
-\multispan4\hrulefill&\cr
-x\un{(mm)}	& y\un{(mm)}	& x\un{(mm)}	& y\un{(mm)}	& \omit\bvrule\hfil\ distance (mm)\hfil\	\cr\bln
-75.068 & 31.631 & 25.932 & 31.631 & 49.136\cr\bln
+From the four measured coordinates one can extract the (misalignment) shift and rotation of each sensor:
+\eqref{
+	\hbox{rotation} = {y_2 - y_1\over x_2 - x_1}\ ,\qquad
+	x\hbox{ shift} = {x_1 + x_2\over 2} - \bar x\ ,\qquad
+	y\hbox{ shift} = {y_1 + y_2\over 2} - \bar y\ ,
+}{al metrology ext}
+where $\bar x$ and $\bar y$ are the arithmetic means of the ideal values shown in \Fg{al optical metrology}. The shifts in the read-out direction $\De s$ then follow from \Eq{al shr def}. By error propagation, the expected uncertainty is about $7\un{\mu m}$ for shifts and about $0.3\un{\mu rad}$ for rotations.
+
+Most of the results will be presented later in comparison with the other methods. But let us remark that this is the only method sensitive to the rotation between $U$ and $V$ sensors. See \Tb{al opt uv rot} for a list of the $U$-$V$ rotations determined per pot. These rotation are about an order of magnitude smaller that the expected rotation misalignments (\Tb{al exp misal}).
+
+\htab{al opt uv rot}{The rotation between $U$ and $V$ sensors (in $\rm mrad$) as determined from the optical metrology.}{
+\omit&\multispan6\hrulefill\cr
+\omit&\multispan3\strut\bvrule\hfil near unit\hfil&\multispan3\bvrule\hfil far unit\hfil\cr
+\omit&\multispan6\hrulefill\cr
+\omit&\omit\bvrule\strut\hfil\hbox{top} &\hbox{bot} & \hbox{hor} & \hbox{top} & \hbox{bot} & \hbox{hor}\cr\ln
+\hbox{sector 45, $220\un{m}$ station} & 0.03 & -0.08 & -0.08 & -0.13 & -0.10 & 0.06\cr\ln
+\hbox{sector 56, $220\un{m}$ station} & 0.19 & -0.24 & -0.21 & 0.51 & 0.00 & -0.07\cr\bln
 }
 
-\iffalse
-\eqref{\hbox{control distance}\ d_c = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}}{metrology distance}
+Let us repeat that this metrology measured the relative position of a sensor on its hybrid frame. It is only one component of the internal alignment. The other component is the alignment of the hybrid frames in the detector packages. The latter contribution is expected small, but is unfortunately unknown.
 
-\fig{fig/pdf/opticalMetrologyControlDistance.pdf}{opticalMetrologyControlDistance}{The distribution of the control distance around the theoretical value (the dashed line) -- a measure of the statistical uncertainty.}
+\caption{Beam test and cosmic rays runs}
 
-If one assumes that the uncertainty of a measurement in any direction is $\si_m$, then the error of the control distance is approximately $\si_m \sqrt2$. This follows from the error propagation via \Eq{metrology distance} and considering that $y_2-y_1\approx 0$ while $x_1-x_2\approx d_c$. Then, the distribution in \Fg{opticalMetrologyControlDistance} suggests that $\si_m \approx 1\un{\mu m}$. However, since the measurements enter \Eq{metrology distance} in differences, this error estimate is only valid for rotations as defined by \Eq{metrology rot}. For shifts, we will keep the more conservative estimate $10\un{\mu m}$
-\fi
+Every RP was tested with a muon beam or cosmic rays prior to its installation in the LHC. These tests took place at a TOTEM test facility at H8 (a CERN test hall). That is why we will refer to these tests as H8 tests. There was always one RP studied at a time. What will turn out important is that, at H8 the RPs were kept a different temperature than in the LHC.
 
-Shifts and rotations are extracted as follows
-\eqref{\hbox{rotation} = {y_2 - y_1\over x_2 - x_1}}{metrology rot}
-\eqref{x\hbox{ shift} = {x_1 + x_2\over 2} - \bar x,\qquad y\hbox{ shift} = {y_1 + y_2\over 2} - \bar y}{metrology shift}
-where $\bar x$ and $\bar y$ are the arithmetic means of the theoretical values displayed in \Tb{metrology theoretical}
-
-\htab{al opt uv rot}{Mean $U$-$V$ rotations determined from the optical metrology. Values in $\rm mrad$.}{\bln
-\hbox{DP}	 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12\cr\ln
-\De_{U-V}\rh & -0.13 & 0.51 & -0.07 & 0.00 & 0.19 & -0.24 & -0.21 & -0.08 & -0.10 & 0.06 & 0.03 & -0.08\cr\bln
+\tab{al H8 stat}{Statistics on the H8 data used for alignment. $\si(a_x)$ and $\si(a_y)$ denote the standard deviations of track angles in the horizontal and vertical direction.}{\bln
+\hbox{sector}&\hbox{unit}&\hbox{pot}	&\hbox{detector} &  \hbox{particle} & \hbox{events} & \hbox{tracks} & \si(a_x) & \si(a_y)\cr
+&&\hbox{as RP}            	&\hbox{package}	&  \hbox{type} & \hbox{total} & \hbox{used} & \rm mrad & \rm mrad\cr\bln
+%              
+&			&\hbox{top} 	&\hbox{11} 		&  \hbox{muons} & 1\cdot10^{4} & 4\cdot10^{3} & 2.6 & 2.1\cr
+\multispan2&\multispan7\hrulefill\cr
+&\hbox{near}&\hbox{bot} 	&\hbox{12} 		&  \hbox{muons} & 6\cdot10^{4} & 2\cdot10^{4} & 2.3 & 2.1\cr
+\multispan2&\multispan7\hrulefill\cr
+&			&\hbox{hor} 	&\hbox{8}  		&  \hbox{muons} & 2\cdot10^{5} & 3\cdot10^{4} & 2.6 & 2.7\cr
+\omit\hss\vbox to0pt{\vss\hbox{45}\vss}\hss&\multispan8\hrulefill\cr
+&			&\hbox{hor}  	&\hbox{1}  		&  \hbox{muons} & 2\cdot10^{4} & 1\cdot10^{4} & 4.9 & 4.9\cr
+\multispan2&\multispan7\hrulefill\cr
+&\hbox{far}	&\hbox{top}  	&\hbox{9}  		&  \hbox{muons} & 3\cdot10^{4} & 1\cdot10^{4} & 2.1 & 2.1\cr
+\multispan2&\multispan7\hrulefill\cr
+&			&\hbox{bot}  	&\hbox{10} 		&  \hbox{muons} & 2\cdot10^{4} & 7\cdot10^{3} & 2.2 & 2.8\cr
+\bln                           
+&			&\hbox{top} 	&\hbox{5}  		&  \hbox{cosmics} & 4\cdot10^{2} & 2\cdot10^{2} & 54.6 & 53\cr
+\multispan2&\multispan7\hrulefill\cr
+&\hbox{near}&\hbox{bot} 	&\hbox{6}  		&  \hbox{cosmics} & 4\cdot10^{2} & 1\cdot10^{2} & 56.7 & 45.2\cr
+\multispan2&\multispan7\hrulefill\cr
+&			&\hbox{hor} 	&\hbox{7}  		&  \hbox{cosmics} & 6\cdot10^{2} & 3\cdot10^{2} & 52.8 & 54.5\cr
+\omit\hss\vbox to0pt{\vss\hbox{56}\vss}\hss&\multispan8\hrulefill\cr
+&			&\hbox{hor}  	&\hbox{2}  		&  \hbox{muons} & 4\cdot10^{4} & 2\cdot10^{4} & 3.4 & 3.9\cr
+\multispan2&\multispan7\hrulefill\cr
+&\hbox{far}	&\hbox{top}  	&\hbox{4}  		&  \hbox{cosmics} & 6\cdot10^{2} & 3\cdot10^{2} & 55.3 & 53.5\cr
+\multispan2&\multispan7\hrulefill\cr
+&			&\hbox{bot}  	&\hbox{3}  		&  \hbox{cosmics} & 9\cdot10^{2} & 4\cdot10^{2} & 53.4 & 53.1\cr\bln
 }
 
-\caption{H8 tests}
-
-These are beam-test and/or cosmics ray data taken at H8 \TODO{explain H8}. The tests were done with one pot at a time.
-
-The track-based alignment has been done with the following settings:
-{\itskip0pt\itindent=\parindent
-\> \pmt{minimumHitsPerProjectionPerRP} = 4,
-\> \pmt{removeImpossible} = True,
-\> \pmt{requireBothUnits} = False,
-\> \pmt{requireOverlap} = False and
-\> \pmt{requireAtLeast3PotsInOverlap} = False.
-}
-
-In total 5 iterations have been performed. In the first two only the read-out shifts have been optimized, in the rest the rotations about $z$ have been added. Some of the cuts have been made increasingly more strict, see \Tb{al H8 iter par}. \TODO{Justify the choice of the values}.
-\htab{al H8 iter par}{The iteration-dependent alignment parameters as used in the H8 data analysis. s stands for read-out shifts, r for rotations about $z$.}{\bln
-\hbox{iteration}&1 & 2 & 3 & 4 & 5\cr\bln
-\hbox{quantities optimized}& \rm s & \rm s & \rm s+r & \rm s+r & \rm s+r \cr
-\hbox{\pmt{maxResidualToSigma}}&10 & 7 & 3 & 3 & 3\cr
-\hbox{\pmt{chiSqPerNdfCut}}&50 & 25 & 5 & 5 & 5\cr\bln
-}
-
-We have applied fixed-detector constraints. The fixed planes for read-out shifts were 0, 1, 8 and 9 (for every RP), same planes for rotations about $z$. We have made an attempt to fix only two planes for rotations (0 and 1), but the linearly-progressive rotation turned out to be badly constraint, spoiling the results -- see \Fg{al comp det per pot dp1 ext}.
-
-\tab{al H8 stat}{Some statistics on the H8 data.}{\bln
-\hbox{detector} & \hbox{later installed}  & \hbox{particle} & \hbox{events} & \hbox{events} & \si(a_x) & \si(a_y)\cr
-\hbox{package} & \hbox{as RP}             & \hbox{type} & \hbox{total} & \hbox{used} & \rm mrad & \rm mrad\cr\bln
-\hbox{1}  & \hbox{45-220-far-hor}  & \hbox{muons} & 2\cdot10^{4} & 1\cdot10^{4} & 4.9 & 4.9\cr\ln
-\hbox{2}  & \hbox{56-220-far-hor}  & \hbox{muons} & 4\cdot10^{4} & 2\cdot10^{4} & 3.4 & 3.9\cr\ln
-\hbox{3}  & \hbox{56-220-far-bot}  & \hbox{cosmics} & 9\cdot10^{2} & 4\cdot10^{2} & 53.4 & 53.1\cr\ln
-\hbox{4}  & \hbox{56-220-far-top}  & \hbox{cosmics} & 6\cdot10^{2} & 3\cdot10^{2} & 55.3 & 53.5\cr\ln
-\hbox{5}  & \hbox{56-220-near-top} & \hbox{cosmics} & 4\cdot10^{2} & 2\cdot10^{2} & 54.6 & 53\cr\ln
-\hbox{6}  & \hbox{56-220-near-bot} & \hbox{cosmics} & 4\cdot10^{2} & 1\cdot10^{2} & 56.7 & 45.2\cr\ln
-\hbox{7}  & \hbox{56-220-near-hor} & \hbox{cosmics} & 6\cdot10^{2} & 3\cdot10^{2} & 52.8 & 54.5\cr\ln
-\hbox{8}  & \hbox{45-220-near-hor} & \hbox{muons} & 2\cdot10^{5} & 3\cdot10^{4} & 2.6 & 2.7\cr\ln
-\hbox{9}  & \hbox{45-220-far-top}  & \hbox{muons} & 3\cdot10^{4} & 1\cdot10^{4} & 2.1 & 2.1\cr\ln
-\hbox{10} & \hbox{45-220-far-bot}  & \hbox{muons} & 2\cdot10^{4} & 7\cdot10^{3} & 2.2 & 2.8\cr\ln
-\hbox{11} & \hbox{45-220-near-top} & \hbox{muons} & 1\cdot10^{4} & 4\cdot10^{3} & 2.6 & 2.1\cr\ln
-\hbox{12} & \hbox{45-220-near-bot} & \hbox{muons} & 6\cdot10^{4} & 2\cdot10^{4} & 2.3 & 2.1\cr\bln
-}
-
-\caption{LHC runs}
-
-Track-based alignment with the same settings as for H8 data applied on the LHC runs (see \Tb{al lhc datasets})
+\Tb{al H8 stat} presents some statistics about the data sample collected for each pot. Besides the total number of events and the number of tracks used for alignment, we have indicated the track angular spreads. The trend is clear, muon beams compared to cosmic rays provided many more events, but with more collimated tracks.
 
 
-\fig{fig/pdf/al_comp_det_per_pot_dp2_ext.pdf}{al comp det per pot dp1 ext}{An attempt to determine the $z$ rotations with one fixed plane per projection (planes 0 and 1).}
+The track-based alignment has been performed with the following settings.
 
-\fig{fig/pdf/al_comp_det_per_pot_dp1_ext2.pdf}{al comp det per pot dp1 ext2}{Internal alignment comparison for DP1 (an example of bad match). All LHC points are overlapping (one can see only the top orange) and thus only few data-sets are shown.
+\hbox to\hsize{\hss\vtop{\halign{\quad\strut\hfil#\quad&#\hfil\quad\cr\ln
+\pmt{minimumHitsPerProjectionPerRP} & 4\cr
+\pmt{removeImpossible} & True\cr
+\pmt{requireBothUnits} & False\cr
+\pmt{requireOverlap} & False\cr
+\pmt{requireAtLeast3PotsInOverlap} & False\cr\ln
+}}\hss\vtop{\halign{\strut\quad\hfil#\ &\ \hfil#\hfil\ &\ \hfil#\hfil\ &\ \hfil#\hfil\ &\ \hfil#\hfil\ &\ \hfil#\hfil\quad\cr\ln
+iteration 				& 1 & 2  & 3   & 4   & 5\cr\ln
+quantities optimized	& s & s  & s+r & s+r & s+r\cr
+\pmt{maxResidualToSigma}&10 & 7  & 3   & 3   & 3\cr
+\pmt{chiSqPerNdfCut}	&50 & 25 & 5   & 5   & 5\cr\ln
+}}\hss}
+
+\noindent Five iterations have been performed in total. In the first two, only the read-out shifts have been optimized (s in the table), in the rest the rotations about $z$ have been added (s+r). This has been done in order to increase stability -- during our MC tests the shifts have proven to be more resistant to any sort of problems. That is why we have added the rotations only when the cuts could have been set tight enough to select very good tracks only. On contrary, in the first iteration we have started with rather loose cuts -- hit residuals allowed up ten times the hit uncertainty. Since the uncertainty is most often $19\un{\mu m}$, the residual cut has been $190\un{\mu m}$. Comparing this value to the expected internal misalignments (the first column in \Tb{al exp misal}), one may find it exaggerated, but our goal has been to allow for even very large misalignments.
+
+%The value of the \pmt{chiSqPerNdfCut} parameter has been derived from \pmt{maxResidualToSigma}. 
+%\TODO{chi**2 cut = maxResidualToSigma**2 / 2. Why the division}
+
+We have used a set of fixed-sensors constraints. First we have tried to constrain for rotations only one sensor per projection. But as it is shown in \Fg{al comp det per pot dp1 ext}, the linearly-progressive rotation (the weak mode \Eq{al sm rotz sol la}) is poorly determined and spoils the results. Therefore we have constrained two more sensors -- eventually constraining first and last two sensors (for both shifts and rotations).
+
+\fig{fig/pdf/al_comp_det_per_pot_dp2_ext.pdf}{al comp det per pot dp1 ext}{An attempt to determine the rotations about $z$ with one fixed sensor per projection (first two sensors of the RP).}
+
+As suggested in \Sc{al err}, it is a good idea to split the event sample into several subsamples and compare the alignment results among them. In this way one can check for present of problems like data corruption. For the H8 data, we have performed alignment analyses with full sample and two subsamples -- with even and odd event numbers. All results will be shown later, in a comparison to the optical metrology and LHC data alignment analyses.
+
+
+\caption{LHC runs and comparisons}
+
+We have also analyzed data from a number of LHC runs (see the list in \Tb{al lhc datasets}). The track-based alignment has been performed in very much the same way as for the H8 runs. \Fg{al comp det per pot dp1 ext2,al comp det per pot dp2 ext2} show the comparisons of the tree internal-alignment methods for two RPs. The former figure represents the RPs with a bad match between the methods, the former shows one of the best matches the we have observed.
+
+\fig{fig/pdf/al_comp_det_per_pot_dp1_ext2.pdf}{al comp det per pot dp1 ext2}{Internal alignment comparison for RP 45-220-far-hor (an example of bad match among the tree methods). All LHC points are overlapping (one can see only the top orange) and thus only few data-sets are shown.
 %ext2 constraints
 }
 
-\fig{fig/pdf/al_comp_det_per_pot_dp2_ext2.pdf}{al comp det per pot dp2 ext2}{Internal alignment comparison for DP2 (an example of good match). All LHC points are overlapping (one can see only the top orange) and thus only few data-sets are shown.
+\fig{fig/pdf/al_comp_det_per_pot_dp2_ext2.pdf}{al comp det per pot dp2 ext2}{Internal alignment comparison for RP 56-220-far-hor (an example of good match among the three methods). All LHC points are overlapping (one can see only the top orange) and thus only few data-sets are shown.
 %ext2 constraints
 }
 
-\TODO{A conclusion:
-\> compatibility of results?
-\> which rotations can be determined - no way for U-V? Difficult event last-first plane.
-}
+Let us conclude the comparisons (generally, even for the ten other comparisons not shown). First observation is that all LHC results are perfectly consistent with each other. Similarly, there is no remarkable difference between the H8 analyses using the full sample or either from the subsamples. These are, with no doubt, pleasant outcomes. Generally, the match is better for the rotations. Regarding the optical metrology this might be partially understood by noticing that a part (systematic shift) of the measurement errors cancels for rotations in \Eq{al metrology ext}. Also quite generally, the H8 and LHC results match better together than with the optical metrology. This might be an indication that the alignment component not taken into account in the optical metrology, is in fact important. The difference between the H8 and LHC results may be understood as a consequence of different temperatures of the pots. Due to the thermal expansion, the mechanical stresses might lay out slightly differently, provoking slightly different misalignments.
 
 \subsection[al lhc res]{LHC alignment results}
 
-To analyze the LHC data we selected the runs with horizontal RPs in, see \Tb{al lhc datasets}. \TODO{Usually the horizontal RPs were inserted in the very end, sometimes the beam died even before.} The alignment was applied with the following parameters:
-{\itskip0pt\itindent=\parindent
-\> \pmt{minimumHitsPerProjectionPerRP} = 4,
-\> \pmt{removeImpossible} = True,
-\> \pmt{requireBothUnits} = True,
-\> \pmt{requireOverlap} = False (some analyses done with True, these will be \TODO{noted})
-\> \pmt{requireAtLeast3PotsInOverlap} = True.
-}
-
-In total five iterations were performed. In the first two only the read-out shifts were optimized, then the rotations about $z$ were added. The reason was to remove as many pathological evens as possible before the rotations are optimized. The rotations are sensitive and if used from the very beginning, the convergence might be endangered. Some of the selection cuts were tightened during iterations, see \Tb{al LHC iter par}. \TODO{Justify the values}.
-\htab{al LHC iter par}{The iteration-dependent alignment parameters as used in the LHC data analysis. s stands for read-out shifts, r for rotations about $z$.}{\bln
-\hbox{iteration}&1 & 2 & 3 & 4 & 5\cr\bln
-\hbox{quantities optimized}& \rm s & \rm s & \rm s+r & \rm s+r & \rm s+r \cr
-\hbox{\pmt{maxResidualToSigma}}&100 & 10 & 10 & 3 & 3\cr
-\hbox{\pmt{chiSqPerNdfCut}}&5000 & 50 & 50 & 5 & 5\cr\bln
-}
-
-Indeed, the final constraints were imposed.
+To analyze the LHC data we selected the runs with horizontal RPs in (need overlap), see \Tb{al lhc datasets}. \TODO{Usually the horizontal RPs were inserted in the very end, sometimes the beam died even before.}
 
 \tab{al lhc datasets}{List of data takings \TODO{what data-takings}. The RP position gives an approximate distance of the vertical pot thin windows from the beam, in terms of beam sigmas.}{
 \multispan3&\multispan6\bhrulefill\cr
@@ -1062,9 +1058,30 @@ Indeed, the final constraints were imposed.
 \hbox{29-30 Oct} &  7\,\sigma & 3723,3725,3728 & 2.5 & 0.2 & 0.2 & 2.9 & 0.3 & 0.2\cr\bln
 }
 
+
+The alignment was applied with the following parameters:
+
+\hbox to\hsize{\hss\vtop{\halign{\quad\strut\hfil#\quad&#\hfil\quad\cr\ln
+\pmt{minimumHitsPerProjectionPerRP} & 4\cr
+\pmt{removeImpossible} & True\cr
+\pmt{requireBothUnits} & True\cr
+\pmt{requireOverlap} & False/True\cr
+\pmt{requireAtLeast3PotsInOverlap} & True\cr\ln
+}}\hss\vtop{\halign{\strut\quad\hfil#\ &\ \hfil#\hfil\ &\ \hfil#\hfil\ &\ \hfil#\hfil\ &\ \hfil#\hfil\ &\ \hfil#\hfil\quad\cr\ln
+iteration 				& 1 & 2  & 3   & 4   & 5\cr\ln
+quantities optimized	& s & s  & s+r & s+r & s+r\cr
+\pmt{maxResidualToSigma}&100 & 10 & 10 & 3 & 3\cr
+\pmt{chiSqPerNdfCut}	&5000 & 50 & 50 & 5 & 5\cr\bln
+}}\hss}
+
+In total five iterations were performed. In the first two only the read-out shifts were optimized, then the rotations about $z$ were added. The reason was to remove as many pathological evens as possible before the rotations are optimized. The rotations are sensitive and if used from the very beginning, the convergence might be endangered. Some of the selection cuts were tightened during iterations, see \Tb{al LHC iter par}. \TODO{Justify the values}.
+
+
+
 $U$-$V$ rotation is impossible to determine, not even showing. However, the optical metrology suggests that is rather small, see \Tb{al opt uv rot}.
 
 An attempt to determine the far-near rotations is in \Fg{al comp det per unit weak}. Here all runs are used (even those without horizontal RPs). The standard results (i.e. with final constraints) are taken as the starting point, then 5 iterations made with fixed-detectors constraints (fixed rotation planes: 1200 and 1201). The results are practically identical in the near unit, but incompatible in the far one. Moreover, in the far unit, the results have ''the same shape'' but are ''shifted by a constant''.
+
 
 \TODO{remove the text below, already done in \Eq{al fit eq eigen one}}
 This outcome is quite easy to understand. The alignment equation \Eq{alignment equation} (dropping the constraints for a moment) reads
@@ -1079,7 +1096,9 @@ can become big. In our case, the important weak modes are far-near rotations (fo
 
 \fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment comparison with fixed-detectors constraints (for rotations: 1200 and 1201). Top row: near unit, bottom row: far unit. October 24 (black), 26 (red), 29-30 (blue).}
 
-As expected, it is not possible to determine the far-near rotations with sufficient precision and therefore we will use the final constraints. Such an example, for 56-220-near unit, is in \Fg{al comp det per unit}. On the first sight, one can see the shift points forming lines. This is exactly what one expects with rotated RPs, see \Sc{al rp fac}. The second interesting outcome is the stability of the results, especially for the shifts. The stability of the shifts means that the RP rotations about $x$ and $y$ do not change in time and the stability of the rotations infers the stability of the rotations about $z$ (see also \Fg{al comp rp all rot}). 
+Later, the final constraints were imposed.
+
+As expected, it is not possible to determine the far-near rotations with sufficient precision and therefore we will use the final constraints. Such an example, for 56-220-near unit, is in \Fg{al comp det per unit}. On the first look, one can see the shift points forming lines. This is exactly what one expects with rotated RPs, see \Sc{al rp fac}. The second interesting outcome is the stability of the results, especially for the shifts. The stability of the shifts means that the RP rotations about $x$ and $y$ do not change in time and the stability of the rotations infers the stability of the rotations about $z$ (see also \Fg{al comp rp all rot}). 
 
 
 \fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with the final constraints for 56-220-near unit. Each point corresponds to a data-taking from \Tb{al lhc datasets}. The dashed lines correspond to the fits \Eq{al rp fit,al rp rotz fit}. The internal shift/rotation is the sensor shift/rotation with respect to the RP shift/rotation.
