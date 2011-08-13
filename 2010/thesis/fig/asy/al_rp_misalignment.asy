@@ -14,7 +14,8 @@ real al = -10;
 real dot_r = 1;
 
 draw((c0+(-1*d, 0))--(c0+(d*n)), dotted);
-draw(rotate(al)*((c+(-1*d, 0))--(c+(d*n))), dotted);
+draw(rotate(al)*((c+(-1*d, 0))--(c+(d*(n-1)/2))), EndBar(10));
+draw(Label("$\ze$", 1), rotate(al)*((c+((n-1)/2*d, 0))--(c+(d*n))), EndArrow);
 
 draw(Label("$\De\rh_x^{\rm DP}$", 0.5, E), arc(rotate(al)*c, 3.5*d, 0, al), dotted);
 
@@ -32,7 +33,7 @@ for (int i = 0; i < n; ++i) {
 	draw(rotate(al) * ((c + (i*d, -l))--(c + (i*d, +l))), black);
 }
 
-draw(Label("$\vec s^{\rm DP}$", 0.5, SW, UnFill), (c0 + ((n-1)/2*d, 0))--(rotate(al)*(c+((n-1)/2*d, 0))), heavygreen, EndArrow(10));
+draw(Label("$\De\vec c^{\rm DP}$", 0.5, SW, UnFill), (c0 + ((n-1)/2*d, 0))--(rotate(al)*(c+((n-1)/2*d, 0))), heavygreen, EndArrow(10));
 
 real x_min = -d-5, x_max = 4*d+5, y_min = -5, y_max = 25;
 draw(Label("z", 1), (x_min, y_min)--(x_max, y_min), EndArrow);
