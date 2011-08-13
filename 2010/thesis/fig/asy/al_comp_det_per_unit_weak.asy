@@ -228,7 +228,7 @@ void NewUnit(string _arm, string _unit)
 
 	string xLabel = (_unit == "far") ? "plane number" : "";
 
-	pFRotZV = NewPad(xLabel, "rotation around $z\quad(\rm mrad)$");
+	pFRotZV = NewPad(xLabel, "rotation about $z\quad(\rm mrad)$");
 	pFRotZU = NewPad(xLabel, "");
 }
 
@@ -253,12 +253,12 @@ string units[] = { "near", "far" };
 	
 NewPad(drawAxes = false, 0, -1);
 picture p; 
-label(p, rotate(0)*Label("V detectors"));
+label(p, rotate(0)*Label("$V$ sensors"));
 attach(bbox(p, 1mm, nullpen, Fill(markupColor)));
 
 NewPad(drawAxes = false, 1, -1);
 picture p; 
-label(p, rotate(0)*Label("U detectors"));
+label(p, rotate(0)*Label("$U$ sensors"));
 attach(bbox(p, 1mm, nullpen, Fill(markupColor)));
 
 for (int a_i : arms.keys) {

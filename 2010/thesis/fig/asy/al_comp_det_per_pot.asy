@@ -101,25 +101,25 @@ void DrawDP(int _dp, string constr, bool drawShR, bool drawRotZ, bool drawLegend
 
 	NewPad(drawAxes = false);
 	picture p; 
-	label(p, rotate(0)*Label("V detectors"));
+	label(p, rotate(0)*Label("$V$ sensors"));
 	attach(bbox(p, 1mm, nullpen, Fill(markupColor)));
 	
 	NewPad(drawAxes = false);
 	picture p; 
-	label(p, rotate(0)*Label("U detectors"));
+	label(p, rotate(0)*Label("$U$ sensors"));
 	attach(bbox(p, 1mm, nullpen, Fill(markupColor)));
 	NewRow();
 	
 	if (drawShR) {
 		yTicksDef = RightTicks(Step=20, step=5);
-		pShRV = NewPad("", "internal shift $\quad(\rm\mu m)$");
+		pShRV = NewPad("", "read-out shift $\quad(\rm\mu m)$");
 		pShRU = NewPad("", "");
 		NewRow();
 	}
 
 	if (drawRotZ) {
 		yTicksDef = RightTicks(Step=1, step=0.5);
-		pRotZV = NewPad("plane number", "internal rotation $\quad(\rm mrad)$");
+		pRotZV = NewPad("plane number", "rotation about $z$ $\quad(\rm mrad)$");
 		pRotZU = NewPad("plane number", "");
 	}
 
@@ -127,7 +127,7 @@ void DrawDP(int _dp, string constr, bool drawShR, bool drawRotZ, bool drawLegend
 	forceError = true;
 	f_shr = -1.;
 	f_shr_e = 7;
-	f_rotz_e = 0.2;
+	f_rotz_e = 0.3;
 	pen p = std_pens[1];
 	v_rot_corr = v_rot_corr_opt; u_rot_corr = u_rot_corr_opt;
 
@@ -197,7 +197,7 @@ void DrawDP(int _dp, string constr, bool drawShR, bool drawRotZ, bool drawLegend
 
 	if (drawLegend) {
 		AddToLegend("fixed planes", (marker)(mCi+false+black+2.5pt));
-		frame lf = Legend("DP "+format("%u", dp)+" ("+RPName(rp)+")", O);	
+		frame lf = Legend(RPName(rp)+format(" (DP %u)", dp), O);	
 		NewPad(false, 2, 1);
 		add(lf);
 		FixPad(10cm, y_leg);

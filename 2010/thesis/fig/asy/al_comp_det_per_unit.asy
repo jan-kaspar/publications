@@ -268,19 +268,19 @@ void NewUnit(string _arm, string _unit)
 
 	NewPad(drawAxes = false, 0, -1);
 	picture p; 
-	label(p, rotate(0)*Label("V detectors"));
+	label(p, rotate(0)*Label("$V$ sensors"));
 	attach(bbox(p, 1mm, nullpen, Fill(markupColor)));
 	
 	NewPad(drawAxes = false, 1, -1);
 	picture p; 
-	label(p, rotate(0)*Label("U detectors"));
+	label(p, rotate(0)*Label("$U$ sensors"));
 	attach(bbox(p, 1mm, nullpen, Fill(markupColor)));
 	
 
-	pShRV = NewPad("", "internal shift $\quad(\rm\mu m)$");
+	pShRV = NewPad("", "read-out shift $\quad(\rm\mu m)$");
 	pShRU = NewPad();
 	NewRow();
-	pRotZV = NewPad("", "internal rotation $\quad(\rm mrad)$");
+	pRotZV = NewPad("", "rotation about $z$ $\quad(\rm mrad)$");
 	pRotZU = NewPad();
 	NewRow();
 	pFRotZV = NewPad("plane number", "full rotation $\quad(\rm mrad)$");
