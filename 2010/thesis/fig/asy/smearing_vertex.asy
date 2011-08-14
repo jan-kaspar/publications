@@ -2,8 +2,8 @@ unitsize(1cm);
 
 StdFonts();
 
-real w = 4, h = 4, lp = 4, al = 30;
-real wp = 2, hp = 2;
+real w = 5, h = 2.5, lp = 4, al = 20;
+real wp = 1.5, hp = 1.5;
 real bw = 0.75, bh = 0.25, bp = 3, ba = 2.5;
 
 

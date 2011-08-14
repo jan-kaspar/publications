@@ -1,6 +1,7 @@
 import pad_layout;
 
 StdFonts();
+ySizeDef = 4cm;
 
 NewPad(false, false);
 

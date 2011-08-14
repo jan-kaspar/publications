@@ -5,20 +5,35 @@ StdFonts();
 unitsize(1cm);
 
 real m = 0.05;
-real dy = -1.8, dx = 5.6; 
+real dy = -1.35, dx = 5.6; 
 
-void DrawBox(real x1, real x2, real y1, real y2, string s, pen pf, pen pb)
+real y0 = 0;
+real y1 = y0 + dy;
+real y2 = y1 + dy;
+real y3 = y2 + dy - 0.4;
+real y4 = y3 + dy + 0.1;
+real y5 = y4 + dy + 0.05;
+real y6 = y5 + dy + 0.2;
+real y7 = y6 + dy;
+real y8 = y7 + dy - 0.17;
+real y9 = y8 + dy - 0.1;
+
+//----------------------------------------------------------------------------------------------------
+
+void DrawBox(real x1, real x2, real y1, real y2, string s, pen pf, pen pb, pair labP=(0, 0))
 {
-	filldraw((x1*dx+m, y1*dy-m)--(x1*dx+m, y2*dy+m)--(x2*dx-m, y2*dy+m)--(x2*dx-m, y1*dy-m)--cycle, pf, pb);
+	filldraw((x1*dx+m, y1-m)--(x1*dx+m, y2+m)--(x2*dx-m, y2+m)--(x2*dx-m, y1-m)--cycle, pf, pb);
 
-	label(rotate(90)*Label(s), (x2*dx, y1*dy), 2*SW+2*S, pb);
+	if (labP == (0, 0))
+		labP = (x2*dx, y1);
+	label(rotate(90)*Label(s), labP, 1.3*SW, pb);
 }
 
-DrawBox(-0.5, 0.5, -0.5, 4, "simulation", palegreen, darkgreen);
-DrawBox(-0.5, 0.5, 4, 9.5, "reconstruction", paleblue, darkblue);
-DrawBox(-1.5, -0.5, 3.5, 9.5, "alignment", palered, darkred);
-DrawBox(0.5, 1.3, 1.5, 4, "raw-data", paleyellow, olive);
-DrawBox(0.5, 1.3, 4, 5.9, "trigger", palegray, black);
+DrawBox(-0.5, 0.5, y0+1, y4, "simulation", palegreen, darkgreen);
+DrawBox(-0.5, 0.5, y4, y9-0.9, "reconstruction", paleblue, darkblue, (0.5dx, y6));
+DrawBox(-1.5, -0.5, y4+0.9, y9-0.9, "alignment", palered, darkred, (-1.5dx+0.6, y6));
+DrawBox(0.5, 1.3, y2+0.5, y4, "raw-data", paleyellow, olive);
+DrawBox(0.5, 1.3, y4, y5-1, "trigger", palegray, black);
 
 //----------------------------------------------------------------------------------------------------
 
@@ -39,32 +54,32 @@ void AlgBlk(string label, pair p)
 }
 
 
-AlgBlk("physics event\cr MC generator", (0dx, 0dy));
-AlgBlk("smearing", (0dx, 1dy));
-AlgBlk("Geant4 + proton\cr transport", (0dx, 2dy));
-AlgBlk("detector response\cr and electronics\cr simulation", (0dx, 3dy));
+AlgBlk("physics event\cr MC generator", (0dx, y0));
+AlgBlk("smearing", (0dx, y1));
+AlgBlk("Geant4 + proton\cr transport", (0dx, y2));
+AlgBlk("detector response\cr and electronics\cr simulation", (0dx, y3));
 
-DataBlk("DIGI", (0.5dx, 4dy));
+DataBlk("DIGI", (0.5dx, y4));
 
-DataBlk("raw data", (0.9dx, 2dy));
-AlgBlk("raw-data\cr validation", (0.9dx, 3dy));
+DataBlk("raw data", (0.9dx, y2));
+AlgBlk("raw-data\cr validation", (0.9dx, y3));
 
-AlgBlk("clusterization", (0dx, 5dy));
-DataBlk("RECO", (0dx, 6dy));
-AlgBlk("pattern\cr recognition", (0dx, 7dy));
-AlgBlk("one-RP track\cr fit", (0dx, 8dy));
-AlgBlk("general\cr physics\cr reconstruction", (-0.25dx, 9dy));
-AlgBlk("elastic\cr reconstruction", (0.25dx, 9dy));
+AlgBlk("clusterization", (0dx, y5));
+DataBlk("RECO", (0dx, y6));
+AlgBlk("pattern\cr recognition", (0dx, y7));
+AlgBlk("one-RP track\cr fit", (0dx, y8));
+AlgBlk("general\cr physics\cr reconstruction", (-0.25dx, y9));
+AlgBlk("elastic\cr reconstruction", (0.25dx, y9));
 
-AlgBlk("coincidence-chip\cr and trigger\cr analyses", (0.9dx, 5dy));
+AlgBlk("coincidence-chip\cr and trigger\cr analyses", (0.9dx, y5));
 
 
-AlgBlk("fast\cr simulation", (-0.75dx, 4dy));
-AlgBlk("fast station\cr simulation", (-1.25dx, 4dy));
-//DataBlk("true track", (-1.5dx, 6dy));
-AlgBlk("station track\cr fit", (-1dx, 8dy));
-AlgBlk("track-based\cr alignment", (-1.25dx, 9dy));
-AlgBlk("profile\cr alignment", (-0.75dx, 9dy));
+AlgBlk("fast\cr simulation", (-0.75dx, y4));
+AlgBlk("fast station\cr simulation", (-1.25dx, y4));
+//DataBlk("true track", (-1.5dx, y6));
+AlgBlk("station track\cr fit", (-1dx, y8));
+AlgBlk("track-based\cr alignment", (-1.25dx, y9));
+AlgBlk("profile\cr alignment", (-0.75dx, y9));
 
 
 

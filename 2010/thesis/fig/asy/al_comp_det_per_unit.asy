@@ -84,10 +84,12 @@ void AddFits(string file)
 			real rot = al.rp_rotz[r];
 			draw((x_min, rot)--(x_max, rot), dashed);
 			
+			/*
 			pad p = (proj == 0) ? pRotZV : pRotZU;
 			SetPad(p);
 			real rot = 0;
 			draw((x_min, rot)--(x_max, rot), dashed);
+			*/
 		}
 	}	
 }
@@ -121,14 +123,14 @@ void AddData(string file, string label)
 		//write("   ", vDet);
 
 		pad pShR = (vDet) ? pShRV : pShRU;
-		pad pRotZ = (vDet) ? pRotZV : pRotZU;
+		//pad pRotZ = (vDet) ? pRotZV : pRotZU;
 		pad pFRotZ = (vDet) ? pFRotZV : pFRotZU;
 
 		SetPad(pShR);
 		DrawResult(id, f_shr*a.shr[id], a.shr_e[id], p, m);
 		
-		SetPad(pRotZ);
-		DrawResult(id, a.rotz[id], a.rotz_e[id], p, m);
+		//SetPad(pRotZ);
+		//DrawResult(id, a.rotz[id], a.rotz_e[id], p, m);
 		
 		SetPad(pFRotZ);
 		DrawResult(id, a.rotz[id]+a.rp_rotz[rp], a.rotz_e[id], p, m);
@@ -192,6 +194,7 @@ void Finalize()
 	label("\strut "+RPName(rp_min+1, "%r"), (rp_min*10+14.5, laby));
 	label("\strut "+RPName(rp_min+2, "%r"), (rp_min*10+24.5, laby));
 
+	/*
 	Step = 1; step = 0.2; laby = -1.5;
 	SetPad(pRotZV);
 	limits((rp_min*10-0.5, -2), (rp_min*10+29.5, +2), Crop);
@@ -210,6 +213,7 @@ void Finalize()
 	label("\strut "+RPName(rp_min+0, "%r"), (rp_min*10+4.5, laby));
 	label("\strut "+RPName(rp_min+1, "%r"), (rp_min*10+14.5, laby));
 	label("\strut "+RPName(rp_min+2, "%r"), (rp_min*10+24.5, laby));
+	*/
 	
 	Step = 5; step = 1; laby = -10;
 	SetPad(pFRotZV);
@@ -235,7 +239,7 @@ void Finalize()
 
 //---------------------------------------------------------------------------------------------------------------------
 
-xSizeDef = 6.5cm;
+xSizeDef = 6.4cm;
 ySizeDef = 4cm;
 
 pen markupColor = white;
@@ -277,13 +281,13 @@ void NewUnit(string _arm, string _unit)
 	attach(bbox(p, 1mm, nullpen, Fill(markupColor)));
 	
 
-	pShRV = NewPad("", "read-out shift $\quad(\rm\mu m)$");
+	pShRV = NewPad("", "");
 	pShRU = NewPad();
 	NewRow();
-	pRotZV = NewPad("", "rotation about $z$ $\quad(\rm mrad)$");
-	pRotZU = NewPad();
-	NewRow();
-	pFRotZV = NewPad("plane number", "full rotation $\quad(\rm mrad)$");
+	//pRotZV = NewPad("", "");
+	//pRotZU = NewPad();
+	//NewRow();
+	pFRotZV = NewPad("plane number", "");
 	pFRotZU = NewPad("plane number", "");
 }
 
@@ -320,6 +324,15 @@ string units[] = {
 	"near",
 //	"far"
 };
+
+NewPad(false, -1, 0);
+label(rotate(90)*Label("read-out shift $\quad(\rm\mu m)$"));
+//NewPad(false, -1, 1);
+//label(rotate(90)*Label("internal rotation $\quad(\rm mrad)$"));
+//NewPad(false, -1, 1);
+//label(rotate(90)*Label("full rotation $\quad(\rm mrad)$"));
+NewPad(false, -1, 1);
+label(rotate(90)*Label("rotation about $z$ $\quad(\rm mrad)$"));
 
 for (int a_i : arms.keys) {
 	string rps = (arms[a_i] == "45") ? "20,21,22,23,24,25" : "120,121,122,123,124,125";

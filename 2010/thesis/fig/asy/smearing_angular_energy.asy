@@ -2,7 +2,7 @@ unitsize(1cm);
 
 StdFonts();
 
-real w = 4, h = 2, l = 3, lp = 4, al = 20, c1 = 5, c2 = 10, xi1 = -0.1, xi2 = 0.2;
+real w = 4, h = 1.7, l = 3, lp = 4, al = 20, c1 = 5, c2 = 10, xi1 = -0.1, xi2 = 0.2;
 
 
 draw(Label("$z$", 1), (-w, 0)--(+w, 0), EndArrow);

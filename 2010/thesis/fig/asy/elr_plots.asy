@@ -2,6 +2,7 @@ import root;
 import pad_layout;
 
 StdFonts();
+ySizeDef = 4cm;
 
 string dir = "../elastic_reco_val";
 
@@ -29,9 +30,9 @@ GShipout("elr_1535_rs");
 
 NewPad("$\De\th_x^*,\ \De\th_y^*\un{\mu rad}$");
 rGetObj(file, "theta/reco global vs. original/th_x_rgo_diff"); robj.vExec("Rebin", 2); draw(xscale(1e6), robj, blue, "$\De\th_x^*$");
-label("RMS = "+format("$%.2f$", robj.rExec("GetRMS")*1e6)+"$\ \rm\mu rad$", (-1.05, 2300), blue);
+label("RMS = "+format("$%.2f$", robj.rExec("GetRMS")*1e6)+"$\ \rm\mu rad$", (-1.05, 2250), blue);
 rGetObj(file, "theta/reco global vs. original/th_y_rgo_diff"); robj.vExec("Rebin", 2); draw(xscale(1e6), robj, red, "$\De\th_y^*$");
-label("RMS = "+format("$%.2f$", robj.rExec("GetRMS")*1e6)+"$\ \rm\mu rad$", (-1.05, 2100), red);
+label("RMS = "+format("$%.2f$", robj.rExec("GetRMS")*1e6)+"$\ \rm\mu rad$", (-1.05, 2000), red);
 limits((-2, 0), (+2, 2.5e3), Crop);
 AttachLegend();
 
@@ -39,9 +40,9 @@ GShipout("elr_1535_dth");
 
 NewPad("$\De x^*,\ \De y^*\un{mm}$");
 rGetObj(file, "vertex/reco global vs. original/vtx_x_ro_diff"); robj.vExec("Rebin", 4); draw(xscale(1e3), robj, blue, "$\De x^*$");
-label("RMS = "+format("$%#.2f$", robj.rExec("GetRMS")*1e3)+"$\ \rm mm$", (-5, 1.4e4), blue);
+label("RMS = "+format("$%#.2f$", robj.rExec("GetRMS")*1e3)+"$\ \rm mm$", (-5, 1.37e4), blue);
 rGetObj(file, "vertex/reco global vs. original/vtx_y_ro_diff"); robj.vExec("Rebin", 4); draw(xscale(1e3), robj, red, "$\De y^*$");
-label("RMS = "+format("$%#.2f$", robj.rExec("GetRMS")*1e3)+"$\ \rm mm$", (-5, 1.3e4), red);
+label("RMS = "+format("$%#.2f$", robj.rExec("GetRMS")*1e3)+"$\ \rm mm$", (-5, 1.25e4), red);
 limits((-10, 0), (+10, 1.5e4), Crop);
 AttachLegend();
 
@@ -79,9 +80,9 @@ GShipout("elr_90_rs");
 
 NewPad("$\De\th_x^*,\ \De\th_y^*\un{\mu rad}$");
 rGetObj(file, "theta/reco global vs. original/th_x_rgo_diff"); robj.vExec("Rebin", 4); draw(xscale(1e6), robj, blue, "$\De\th_x^*$");
-label("RMS = "+format("$%.1f$", robj.rExec("GetRMS")*1e6)+"$\ \rm\mu rad$", (-7, 1650), blue);
+label("RMS = "+format("$%.1f$", robj.rExec("GetRMS")*1e6)+"$\ \rm\mu rad$", (-7, 1620), blue);
 rGetObj(file, "theta/reco global vs. original/th_y_rgo_diff"); robj.vExec("Rebin", 4); draw(xscale(1e6), robj, red, "$\De\th_y^*$");
-label("RMS = "+format("$%.1f$", robj.rExec("GetRMS")*1e6)+"$\ \rm\mu rad$", (-7, 1500), red);
+label("RMS = "+format("$%.1f$", robj.rExec("GetRMS")*1e6)+"$\ \rm\mu rad$", (-7, 1470), red);
 limits((-15, 0), (+15, 1.8e3), Crop);
 AttachLegend();
 
@@ -89,10 +90,10 @@ GShipout("elr_90_dth");
 
 NewPad("$\De x^*,\ \De y^*\un{mm}$");
 rGetObj(file, "vertex/reco global vs. original/vtx_x_ro_diff"); robj.vExec("Rebin", 1); draw(xscale(1e3), robj, blue, "$\De x^*$");
-label("RMS = "+format("$%#.2f$", robj.rExec("GetRMS")*1e3)+"$\ \rm mm$", (-0.52, 1400), blue);
+label("RMS = "+format("$%#.2f$", robj.rExec("GetRMS")*1e3)+"$\ \rm mm$", (-0.52, 1370), blue);
 rGetObj(file, "vertex/reco global vs. original/vtx_y_ro_diff"); //robj.vExec("Rebin", 1); draw(xscale(1e3), robj, red, "$\De y^*$");
 AddToLegend("$\De y^*$", red);
-label("RMS = "+format("$%#.1f$", robj.rExec("GetRMS")*1e3)+"$\ \rm mm$", (-0.52, 1300), red);
+label("RMS = "+format("$%#.1f$", robj.rExec("GetRMS")*1e3)+"$\ \rm mm$", (-0.52, 1250), red);
 limits((-1, 0), (+1, 1500), Crop);
 AttachLegend();
 

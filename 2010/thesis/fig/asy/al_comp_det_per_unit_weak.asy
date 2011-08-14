@@ -105,7 +105,7 @@ void AttLeg()
 	AttachLegend(legendTitle, (0, 0), (0, 0));
 	*/
 
-	NewPad(false, -1, yGridHintDef);
+	NewPad(false, 2, yGridHintDef);
 	label(rotate(90)*Label(legendTitle));
 }
 
@@ -205,7 +205,7 @@ void NewUnit(string _arm, string _unit)
 	string label = arm+"-"+unit;
 
 	attachLegend = true;
-	legendTitle = label;
+	legendTitle = unit+" unit";
 	labels.delete();
 	marks.delete();
 	dataset_idx = 0;

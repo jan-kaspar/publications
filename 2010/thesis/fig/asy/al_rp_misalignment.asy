@@ -14,7 +14,7 @@ real al = -10;
 real dot_r = 1;
 
 draw((c0+(-1*d, 0))--(c0+(d*n)), dotted);
-draw(rotate(al)*((c+(-1*d, 0))--(c+(d*(n-1)/2))), EndBar(10));
+draw(Label("0", 1, NE), rotate(al)*((c+(-1*d, 0))--(c+(d*(n-1)/2))), EndBar(10));
 draw(Label("$\ze$", 1), rotate(al)*((c+((n-1)/2*d, 0))--(c+(d*n))), EndArrow);
 
 draw(Label("$\De\rh_x^{\rm DP}$", 0.5, E), arc(rotate(al)*c, 3.5*d, 0, al), dotted);
