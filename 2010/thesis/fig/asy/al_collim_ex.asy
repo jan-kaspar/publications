@@ -47,6 +47,7 @@ draw(gB, blue, "bottom RP");
 currentpad.xSize = 12cm;
 currentpad.ySize = 4cm;
 currentpad.xTicks = LeftTicks(SecToTime);
+currentpad.yTicks = RightTicks(Step=5, step=1);
 
 limits((tMin, -10), (tMax, 10), Crop);
 
