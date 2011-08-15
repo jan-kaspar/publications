@@ -35,21 +35,24 @@ For the second step, a number of methods is available. Undoubtedly, one of the m
 
 Let's first asses what may go wrong and what are the corresponding misalignment estimates.
 
-\noindent\em{Internal misalignments} arise from finite precision of fixing the detectors within a package. The precision is estimated to be
+\> two components -- internal and DP
+\>> make sure not to double define internal and DP (mis)alignments -- see \Sc{al rp fac}
+
+\> \em{Internal misalignments} arise from finite precision of fixing the detectors within a package. The precision is estimated to be
 \eqref{20\un{\mu m}\ .}{internal misalignment shift}
 This also gives estimate about the rotation
 \eqref{\De\rh \approx {2\cdot 20\un{\mu m}\over 4\un{cm}} = 1\un{mrad}\ .}{internal misalignment rotation}
 
-\noindent\em{Errors in RP positions}
-\> z shifts
-\> errors in LVDT $~10\un{\mu m}$
-\> RP frame deformation ???
+\> \em{Detector package (DP) misalignments}
+\>> errors in LVDT $~10\un{\mu m}$
+\>> RP frame deformation ???
+\>> uncertainty of the collimation alignment (the preceding step) \Eq{al window to dp uncer}, with the same uncertainty we put the RPs where we want them
 
-\> ref to \Eq{al window to dp uncer}
 
-\htab{al exp misal}{Expected misalignments orders. \TODO{}}{
+\htab{al exp misal}{The expected misalignments.}{
 \omit&\multispan2\bhrulefill\cr
-\omit					&\omit\bvrule\tskip\bstrut sensors within a package\tskip	& \hbox{package within a station} \cr\bln
+\omit					&\omit\bvrule\tskip\bstrut sensors within a package\tskip	& \hbox{packages within a station} \cr
+\omit					&\omit\bvrule\tskip\bstrut (internal misalignments)\tskip	& \hbox{(DP misalignments)} \cr\bln
 \hbox{transverse shift}	& \hbox{about } 20\un{\mu m} 								& \hbox{few } 100\un{\mu m} \cr\ln
 \hbox{shift in }z 		& \hbox{few } 100\un{\mu m}									& \hbox{below } 1\un{mm}\cr\ln
 \hbox{rotations}		& \hbox{few }\rm mrad										& \hbox{few }\rm mrad \cr\bln
@@ -239,7 +242,7 @@ With this notation, relations of the type \Eq{al vec mu} can be written
 }{al effective measurement all}
 The left-hand part of $\mat A$ matrix is block-diagonal (with matrices $\mat\al^n$ on the diagonal). The right-hand part is built from $\mat\Ga_j^n$ matrices, the index $n$ increases in top-down direction, the index $j$ in the left-right one.
 
-This form of \Eq{al effective measurement all} is convenient for an application of the linear Least Squares method (see e.g. Sec.~6.6 in \bref{barlow}). The method gives the following prescription for the estimate of the parameter vector $\vec P$:
+This form of \Eq{al effective measurement all} is convenient for an application of the linear least squares (LS) method (see e.g.~Sec.~6.6 in \bref{barlow}). The method gives the following prescription for the estimate of the parameter vector $\vec P$:
 \eqref{\hat\vec P = (\mat A^\T \mat V^{-1} \mat A)^{-1} \mat A^\T \mat V^{-1}\,\vec M\.}{al P estimate exact}
 We use the hat in $\hat\vec P$ to emphasize that it is an estimate. The $\mat V$ matrix is the covariance matrix for the measurements $\vec M$. Since the measurements from different events are independent (as random variables), $\mat V$ has a block-diagonal structure
 \eqref{\mat V = \pmatrix{
@@ -911,25 +914,25 @@ The values of the selection algorithms parameters will be given for each analysi
 
 \subsection[al rp fac]{Alignment of detector packages}
 
-As anticipated in the introduction, the elementary objects for the track-based alignment are the sensors. However, the sensors are stacked into rigid detector packages (see \Sc{ttm}) and therefore each sensor inherits the misalignment of its package. Moreover, the expected misalignments of sensors within a package are much smaller than the misalignments of packages within a station (see \Tb{al exp misal}). Thus it makes sense to extract the common misalignments of all sensors of a package and call them \em{detector-package (DP) misalignments}.
+As anticipated in the introduction, the elementary objects for the track-based alignment are the sensors. However, the sensors are stacked into rigid detector packages (see \Sc{ttm}) and therefore each sensor inherits the misalignment of its package. Moreover, the expected misalignments of sensors within a package are much smaller than the misalignments of packages within a station (see \Tb{al exp misal}). Thus it makes sense to extract the common misalignments of all sensors of a package and call them \em{detector-package (DP) misalignments}. The residual misalignments, that means the misalignments of a sensor with respect to its package, will be called \em{internal misalignments}.
 
 It is straight-forward to introduce the DP misalignments in the formalism presented in \Sc{al psi}. One has to split the global (station) to local (sensor) coordinate transformation \Eq{al global to local} into two steps: station to DP and DP to sensor. This naturally defines the placement of a DP in a station and the placement of a sensor in a DP. Each placement may in reality differ from the nominal, in other words there may be an misalignment (c.f.~\Eq{al misalignments}). Then, repeating the steps leading to \Eq{al hit v} yields
 \eqref{
 	\De\rh_{z_i} = \De\rh_z^{\rm DP} + \De\rh_{z_i}^{\rm S}\ ,\qquad
 	\De\vec c_i = \De\vec c^{\rm DP} + \De\vec c_i^{\rm S} - \pmatrix{\rh_y^{\rm DP}\cr \rh_x^{\rm DP}} \ze_i\ .
 }{al dp sen al}
-For the rotations about $z$, the interpretation is simple: the full rotation of the $i$-th sensor is given by a sum of the rotation of the DP within the station ($\De\rh_z^{\rm DP}$) and the rotation of the sensor within the DP ($\De\rh_z^{\rm S}$). The transverse-shift part can be interpreted similarly, with the exception of the last term, which reflects the fact that the entire DP is rotated about the $x$ and $y$ axes (see the illustration in \Fg{al rp misalignment}). The rotations angles $\rh_x^{\rm DP}$ and $\rh_y^{\rm DP}$ are defined by \Eq{al rotation parameterization}. The parameter $\ze_i$ gives the $z$ distance of the $i$-th sensor from the center of the DP (see \Tb{ttm det package}).
+For the rotations about $z$, the interpretation is simple: the full rotation of the $i$-th sensor is given by a sum of the rotation of the DP within the station (DP rotation $\De\rh_z^{\rm DP}$) and the rotation of the sensor within the DP (internal rotation $\De\rh_z^{\rm S}$). The transverse-shift part can be interpreted similarly, with the exception of the last term, which reflects the fact that the entire DP is rotated about the $x$ and $y$ axes (see the illustration in \Fg{al rp misalignment}). The rotations angles $\rh_x^{\rm DP}$ and $\rh_y^{\rm DP}$ are defined by \Eq{al rotation parameterization}. The parameter $\ze_i$ gives the $z$ distance of the $i$-th sensor from the center of the DP (see \Tb{ttm det package}).
 
 \fig{fig/pdf/al_rp_misalignment.pdf}{al rp misalignment}{A side view on a detector package (for simplicity only four sensors are drawn). The DP is shifted by $\De c^{\rm DP}$ (green arrow) and rotated by $\De\rh_x^{\rm DP}$ about the $x$ axis. The shifts of the individual sensors $\De\vec c_i$ are drawn as the blue arrows. For simplicity we have not considered the sensor shifts within the package, that is $\De\vec c_i^{\rm S} = 0$. The hollow/full dots mark the nominal/actual positions of sensor centers.}
 
-As already mentioned, the sensor misalignments within a package are expected to be much smaller that the misalignments of DPs in a station. This means that the $\De\rh_{z_i}^{\rm S}$ and $ \De\vec c_i^{\rm S}$ terms play a minor role in \Eq{al dp sen al}. Treating these terms as perturbations, one may apply the LS method in order to calculate the DP misalignments. For the rotations about $z$, the fit equation may be written
+As already mentioned, the internal misalignments are expected to be much smaller that the DP misalignments. This means that the $\De\rh_{z_i}^{\rm S}$ and $ \De\vec c_i^{\rm S}$ terms play a minor role in \Eq{al dp sen al}. Treating these terms as perturbations, one may apply the least squares method (see e.g.~Sec.~6.6 in \bref{barlow}) in order to estimate the DP misalignments. For the rotations about $z$, the fit equation may be written
 \eqref{
 	\De\rh_z^{\rm DP} = (\mat F^\T \mat V^{-1} \mat F)^{-1} \mat F^\T \mat V^{-1} \pmatrix{\vdots\cr \De\rh_i\cr\vdots}\ ,\qquad
 	\mat F = \pmatrix{\vdots\cr 1\cr\vdots}\ .
 }{al dp rotz}
 The $(\ldots, \De\rh_i, \ldots)^\T$ vector groups the rotation alignment results (from \Eq{al alignment equation}) for all sensors of a given DP. The covariance matrix of this vector is denoted $V$. In fact, this formula corresponds to a weighted mean over the $\De\rh_i$ values. We have used this form as the same one can be used for the other DP alignment parameters.
 
-The other two DP rotations and its transverse shift components can be extracted from the vector of the read-out-direction shifts:
+The other two DP rotations and the transverse DP shift components can be extracted from the vector of the read-out-direction shifts:
 \eqref{
 	\pmatrix{c_x^{\rm DP}\cr c_y^{\rm DP}\cr \rh_x^{\rm DP}\cr \rh_y^{\rm DP}\cr} =
 	(\mat F^\T \mat V^{-1} \mat F)^{-1} \mat F^\T \mat V^{-1}
@@ -942,7 +945,7 @@ The other two DP rotations and its transverse shift components can be extracted 
 }{al dp shr}
 Again, the index $i$ goes through all the sensors of a given package. The $\mat V$ symbol represents the covariance matrix of the $(\ldots, \De s _i, \ldots)^\T$ vector.
 
-Two examples of such an analysis can be found in \Fg{al comp rp all rot} and \Tb{al rp rot}.
+Two examples of extracting DP alignments can be found in \Fg{al comp rp all rot} and \Tb{al rp rot}.
 
 
 \subsection[al int res]{Internal alignment results}

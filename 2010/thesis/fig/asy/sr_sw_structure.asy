@@ -29,7 +29,7 @@ void DrawBox(real x1, real x2, real y1, real y2, string s, pen pf, pen pb, pair 
 	label(rotate(90)*Label(s), labP, 1.3*SW, pb);
 }
 
-DrawBox(-0.5, 0.5, y0+1, y4, "simulation", palegreen, darkgreen);
+DrawBox(-0.5, 0.5, y0+0.5, y4, "simulation", palegreen, darkgreen);
 DrawBox(-0.5, 0.5, y4, y9-0.9, "reconstruction", paleblue, darkblue, (0.5dx, y6));
 DrawBox(-1.5, -0.5, y4+0.9, y9-0.9, "alignment", palered, darkred, (-1.5dx+0.6, y6));
 DrawBox(0.5, 1.3, y2+0.5, y4, "raw-data", paleyellow, olive);
@@ -54,7 +54,7 @@ void AlgBlk(string label, pair p)
 }
 
 
-AlgBlk("physics event\cr MC generator", (0dx, y0));
+AlgBlk("event generator", (0dx, y0));
 AlgBlk("smearing", (0dx, y1));
 AlgBlk("Geant4 + proton\cr transport", (0dx, y2));
 AlgBlk("detector response\cr and electronics\cr simulation", (0dx, y3));

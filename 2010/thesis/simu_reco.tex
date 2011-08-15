@@ -12,58 +12,59 @@ In \Sc{rp measurement} we have described how scattered protons can be detected b
 
 Our contribution to the software mostly complements the work described in \bref{hubert}. Below we will briefly describe all the essential components and later will give details for our modules.
 
-\em{Event generator}.
+\> {\bf Event generator}.
 The simulation process starts with generation of particles at the interaction point. This can be either a \em{particle gun} or a \em{physics event generator}. Particle guns generate particles according to some given distributions and are useful for specialized tests. Physics event generators simulate physics processes such as elastic scattering, single diffraction etc. We use common generators like Pythia \bref{pyhia6,pythia8} or Phojet \bref{phojet} and a custom developed Elegent (see \Sc{elegent}).
 
-\em{Smearing}.
+\> Smearing.
 Most Monte Carlo generators simulate head-to-head collisions of particles of a fixed energy at a given point. However, in reality there are two bunches collided under a certain crossing angle. Within a bunch, particles do not have identical energy (energy smearing) and they are not all collinear (angular smearing). The bunches have non-zero dimensions and therefore the collision may take place at various points (vertex smearing). This module introduces these smearing effects in order to obtain realistic simulations. It will be discussed in detail in \Sc{beam smearing}
 
-\em{Geant4 and proton transport}.
+\> Geant4 and proton transport.
 This module performs two actions: simulates energy depositions in sensitive volumes and propagates protons in between. The sensitive volumes are located around the IP5 (CMS, T1 and T2) and at the RP stations at $\pm 147\un{m}$ and $\pm 220\un{m}$. Both actions are implemented within the Geant4 \bref{geant4} simulation kit. The proton transport uses a polynomial parameterization model described in Chap.~6 of \bref{hubert}. For details on the implementation see Sec.~7.3 in \bref{hubert}.
 
-\em{Detector response and electronics simulation}. The energy deposited in the silicon detectors gives raise to electron-hole pairs, which are collected by the strips and then processed by the VFAT2 chips \bref{vfat}. Details can be found in Sec.~7.4 in \bref{hubert}.
+\> Detector response and electronics simulation.
+The energy deposited in the silicon detectors gives raise to electron-hole pairs, which are collected by the strips and then processed by the VFAT2 chips \bref{vfat}. Details can be found in Sec.~7.4 in \bref{hubert}.
 
-\em{DIGI}.
+\> DIGI.
 Since the VFAT chips are digital, their output is a boolean value per silicon sensor channel. We call these data DIGI. This is the meeting point of the simulation and raw-data chains and is the start point for reconstructions and analyses.
 
-\em{Raw data}.
+\> Raw data.
 Raw data are those saved by the DAQ system.
 
-\em{Raw-data validation}.
+\> Raw-data validation.
 The form of raw data is given by the DAQ and can change during time according to needs. Hence before the data is used, they must be converted to a common format -- DIGI in our case. The DAQ system has only a limited possibility to run error checks online, therefore most of then must of run offline. This is the main duty of this module.
 \TODO{Standalone section?}
 
-\em{Fast simulation}
+\> Fast simulation
 \Sc{fast simu}
 
 
-\em{Clusterization}
+\> Clusterization
 is the first step of the reconstruction chain. Due to charge-sharing effects, it is possible that one track fires two or more neighbouring strips. Such strip clusters need be found and later treated as a single hit.
 
-\em{RECO}.
+\> RECO.
 The position of a cluster can be turned into the distance (in the read-out direction) from the center of the sensor. We call such data RECO.
 
 
-\em{Pattern recognition}.
+\> Pattern recognition.
 In this step we would like to find RECO hits belonging to (a) track(s) and suppress those which are result of noise of errors. For that we may use the fact that we have five planes in every projection and that particle tracks are straight lines. Hence hits forming line patterns are likely to come from a particle track, isolated hits are likely to be noise. Such an algorithm will be discussed in \Sc{pattern reco}. An alternative to this method -- road search algorithm -- is presented in Sec.~8.1.4 in \bref{hubert}. It is based on an additional piece of knowledge that physics protons are always very parallel to the beam. However, a possibility to reconstruct tracks with high angles will turn out important for alignment applications (see \Fg{al eig theta}). \TODO{problem with multiple tracks}
 
-\em{One-RP track fitting}.
+\> One-RP track fitting.
 In this step, hits from $U$ and $V$ projections are combined into one $xyz$ fit, see Sec.~8.1.5 in \bref{hubert}.
 
-\em{Station track fitting} is similar to one-RP track fit, but here all hits from an entire (or a part) station are combined. This module has been developed mainly for alignment purposes. In order to select really clean tracks, it also comprises outlier removal procedure. It will be discussed in \Sc{al data sel}.
+\> Station track fitting is similar to one-RP track fit, but here all hits from an entire (or a part) station are combined. This module has been developed mainly for alignment purposes. In order to select really clean tracks, it also comprises outlier removal procedure. It will be discussed in \Sc{al data sel}.
 
-\em{Physics reconstruction}.
+\> Physics reconstruction.
 In this step, the one-RP track fits are used to reconstruct proton kinematics at IP5. There are two versions -- \em{general} suitable for any diffractive protons and \em{elastic} which is a lighter version for elastic events. The latter one will be discussed in \Sc{el reco}.
 
-\em{Alignment} modules perform a special analyses focused on the alignment of RP sensors wrt.~each other and wrt.~the beam. The entire Chapter~\sref{al} will be devoted to RP alignment. \TODO{Standalone section with implementation details?? In this chapter or the Alignment one??}
+\> Alignment modules perform a special analyses focused on the alignment of RP sensors wrt.~each other and wrt.~the beam. The entire Chapter~\sref{al} will be devoted to RP alignment. \TODO{Standalone section with implementation details?? In this chapter or the Alignment one??}
 
-Various \em{coincidence-chip and trigger analyses} have been performed to validate the performance of the trigger system.
+\> Various \em{coincidence-chip and trigger analyses} have been performed to validate the performance of the trigger system.
 
 \section[elegent]{Elegent}
 
 Elegent is acronym for ELastic Event GENeraTor. It generates elastic $\rm pp$ and $\rm\bar pp$ collisions with $\d\si/\d t$ distributions according to the four phenomenological models discussed in \Sc{el models}.
 
-It uses the inversion method (see \bref{wikipedia} key ''Inverse transform sampling''). This means one has to prepare cumulative distribution functions (cdfs.) first. The Elegent package contains a standalone program to do so. For a chosen energy and interaction type ($\rm pp$ or $\rm\bar pp$), the program calculates (samples in a given range) cdfs.~for every models and saves them as a ROOT file. In fact, for each hadronic model, there are three cdfs.~with various levels of Coulomb interaction inclusion: pure hadron (Coulomb effects are completely neglected), West-Yennie (\Eq{el WY}) and Kundr\' at-Lokaj\' i\v cek (\Eq{el KL}).
+It uses the inversion method (see e.g.~Sc.~2.2 in \bref{lemieux}). This means one has to prepare cumulative distribution functions (cdfs.) first. The Elegent package contains a standalone program to do so. For a chosen energy and interaction type ($\rm pp$ or $\rm\bar pp$), the program calculates (samples in a given range) cdfs.~for every models and saves them as a ROOT file. In fact, for each hadronic model, there are three cdfs.~with various levels of Coulomb interaction inclusion: pure hadron (Coulomb effects are completely neglected), West-Yennie (\Eq{el WY}) and Kundr\' at-Lokaj\' i\v cek (\Eq{el KL}).
 
 The generation program itself loads a selected cdf., can reduce the available $t$-region and inverts the cdf. The generated events are saved in the standard HepMC \TODO{ref} format. Technical details and usage hints can be found in \bref{elegent}.
 
@@ -188,7 +189,7 @@ The input to this module is a list of RECO hits among which we would like to fin
 %For example, imagine two tracks in a pot. We would find two patterns in both projections, yielding four possible combinations. However, two of them are real and two are fake (ghosts).
 Even if we applied rotational alignment corrections, the deviations from the U and V read-out directions would be insufficient to perform a 2D pattern search. 
 
-Our algorithm is an optimization of the Hough transform pattern search (see e.g. \bref{wikipedia} key ''hough transform''). Let us parameterize the line patterns in the following way ($q$ stands for either $u$ or $v$)
+Our algorithm is an optimization of the Hough transform pattern search (see e.g.~Sc.2.4.3.4.~in\bref{bock}). Let us parameterize the line patterns in the following way ($q$ stands for either $u$ or $v$)
 \eqref{q = a (z - z_0) + b\ .}{pr line par}
 $z_0$ refers to the center of the RP (this is the ''nearest'' place to all the planes, therefore it minimizes the extrapolation error in $b$ determination). The Hough transform assignes to each point $(z, q)$ a line in $ab$ space:
 \eqref{(z, q) \rightarrow b = - (z - z_0) a + q \ .}{pr transform}
@@ -228,7 +229,6 @@ maxHitsPerPlaneToSearch& 4\cr
 minPlanesPerProjectionToSearch& 3\cr
 threshold& 2.99\cr\ln
 }
-
 
 \fig{fig/pdf/sr_pattern_reco_ex.pdf}{sr pattern reco ex}{An example of the patter recognition. Run 3230, file 0, event 111, unit 45-220-near. Left: a track plus noise in the bottom pot (V sensors). Right: many tracks in the horizontal pot (U sensors). The red lines correspond to the recognized patterns (cluster centers).}
 
