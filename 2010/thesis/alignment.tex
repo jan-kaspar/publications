@@ -1249,7 +1249,9 @@ The $a$ and $b$ cut parameters were determined empirically in several iterations
 
 Since the relations \Eq{al el dxdx,al el dyy,al el x} involve the misalignment parameters, they can be used for alignment purposes. In the rest of this section we will present a few alignment methods. The first one is dedicated to the horizontal alignment, methods 2a-c are several attempts for the vertical alignment. As we will see later on, the precision of the absolute vertical alignment will to be fully satisfactory. That is why we will mention also methods 3 and 4, which can resolve certain relative components of the vertical alignment.
 
-\em{Method 1}: vertical fit in $y$ vs.~$x$ plots. According to \Eq{al el x}, the horizontal shift $\De x = a \De y - b$. The $a$ and $b$ parameters are the result of the fit and $\De y$ can be determined from methods 2a-c. NB: the influence of $\De y$ is small because of the tilts $a$ are small (see \Tb{al el yx}). If $\De y$ would be of the order of $100\un{\mu m}$ and would completely neglect it, the error of $\De x$ would be of the order of $4\un{\mu m}$.
+\caption{Method 1}
+
+Vertical fit in $y$ vs.~$x$ plots. According to \Eq{al el x}, the horizontal shift $\De x = a \De y - b$. The $a$ and $b$ parameters are the result of the fit and $\De y$ can be determined from methods 2a-c. NB: the influence of $\De y$ is small because of the tilts $a$ are small (see \Tb{al el yx}). If $\De y$ would be of the order of $100\un{\mu m}$ and would completely neglect it, the error of $\De x$ would be of the order of $4\un{\mu m}$.
 
 The fits were performed with the parameterization \Eq{al el x}. To reduce the impact of any possible outliers, every hit was assigned weight (one of the suggested outlier treatments from \bref{millepede})
 \eqref{w = \left\lbrace \matrix{
@@ -1268,60 +1270,29 @@ The results are summarized in \Tb{al el yx}.
 
 \fig{fig/pdf/al_el_plots_yx.pdf}{al el plots yx}{Illustration of the alignment method 1 (unit 45-220-far). The red line fits the red points only, similarly for the blue one. The green line represents a global fit.}
 
-{\SmallerFonts
 \htab{al el yx}{The results of the elastic alignment method 1 -- vertical fits of y vs.~x data. Slope $a$ in $\rm mrad$, intercept $b$ in $\rm\mu m$.}{
 \omit&\multispan8\bhrulefill\cr
 \omit&\multispan2\strut\bvrule\hfil 45 near\hfil & \multispan2\vrule\hfil 45 far\hfil  & \multispan2\vrule\hfil 56 near\hfil & \multispan2\vrule\hfil 56 far\hfil\cr
 \omit&\multispan8\hrulefill\cr
 \omit\strut & a & b & a & b & a & b & a & b\cr\bln
-\hbox{21 Sep}    & -35.3 \pm    0.8& -33.4 \pm    3.5& -29.8 \pm    0.7& -46.1 \pm    3.2&  43.5 \pm    0.7& -23.1 \pm    3.4&  38.7 \pm    0.7& -26.3 \pm    3.4\cr\ln
-\hbox{05 Oct}    & -36.7 \pm    0.5& -42.9 \pm    4.4& -32.4 \pm    0.5& -36.0 \pm    3.9&  44.0 \pm    0.5& -23.6 \pm    4.4&  38.4 \pm    0.5& -24.4 \pm    4.4\cr\ln
-\hbox{07 Oct}    & -37.7 \pm    0.4&   1.9 \pm    3.6& -31.3 \pm    0.4& -11.7 \pm    3.2&  42.7 \pm    0.4& -38.1 \pm    3.5&  39.4 \pm    0.4& -27.2 \pm    3.5\cr\ln
-\hbox{24 Oct}    & -37.7 \pm    0.2& -46.2 \pm    2.1& -32.2 \pm    0.2& -34.2 \pm    1.8&  43.8 \pm    0.2& -37.6 \pm    2.0&  39.5 \pm    0.2& -14.8 \pm    2.1\cr\ln
-\hbox{26 Oct}    & -37.2 \pm    0.2& -24.3 \pm    1.8& -32.4 \pm    0.2& -20.3 \pm    1.6&  43.9 \pm    0.2& -35.2 \pm    1.7&  38.9 \pm    0.2& -67.5 \pm    1.7\cr\ln
-\hbox{29-30 Oct} & -36.4 \pm    0.2& -25.5 \pm    0.7& -31.7 \pm    0.2&  -4.0 \pm    0.7&  44.3 \pm    0.1&  -6.5 \pm    0.7&  38.4 \pm    0.1&  -5.7 \pm    0.7\cr\bln
-}}
-
-
-
-\em{Method 2a}. The vertical distribution of elastic hits shall be symmetric around the position of the beam. This remains true even if the axis of elastic scattering is tilted with respect to $y$ axis. In this case, the $y$ distribution shrinks, but symmetrically around the beam's position. Hence a way to determine the position of the beam is to fit a symmetric function through the data registered by a top and bottom pot of the same unit. Looking at the data in \Fg{al el plots y full}, a Gaussian fit looks as a plausible choice. 
-
-The results are summarized in \Tb{al el y full}. The quoted errors are statistical only. They do not reflect the fact that we fit tails of the distribution only (data from 5 Oct), neither the deviations from Gaussian shape (data from 29-30 Oct). The latter deficiency will lead us to a fit improvement, see method 2b.
-
-
-\fig{fig/pdf/al_el_plots_y_full.pdf}{al el plots y full}{Illustration of the alignment method 2a (unit 56-220-far). The violet curve shows a Gaussian fit.}
-
-\htab{al el y full}{The results of the elastic alignment method 2a -- Gaussian fits of $y$ distributions. Values in $\rm \mu m$, uncertainties are statistical only.}{
-\omit&\multispan4\bhrulefill\cr
-\omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
-\hbox{21 Sep}    & -54.3 \pm   18.7&  24.5 \pm   21.9& -61.4 \pm   31.3& -26.1 \pm   31.3\cr\ln
-\hbox{05 Oct}    &  72.2 \pm   20.5&  93.0 \pm   35.0& -81.8 \pm   39.6&-214.1 \pm   45.6\cr\ln
-\hbox{07 Oct}    &  42.6 \pm   16.8&  85.6 \pm   24.0& -48.7 \pm   28.6& -76.6 \pm   30.7\cr\ln
-\hbox{24 Oct}    & -88.4 \pm   12.9& -20.4 \pm   15.5&  39.5 \pm   29.2&   8.7 \pm   38.4\cr\ln
-\hbox{26 Oct}    &  91.8 \pm    9.9& 160.1 \pm   10.8&-248.2 \pm   22.1&-217.5 \pm   23.8\cr\ln
-\hbox{29-30 Oct} &  12.4 \pm   11.0&  99.9 \pm   10.4& -36.7 \pm   13.3& -32.9 \pm   14.1\cr\bln
+\hbox{21 Sep}    & -35.3 \pm    0.8& -33 \pm    4& -29.8 \pm    0.7& -46 \pm    3&  43.5 \pm    0.7& -23 \pm    3&  38.7 \pm    0.7& -26 \pm    3\cr\ln
+\hbox{05 Oct}    & -36.7 \pm    0.5& -43 \pm    4& -32.4 \pm    0.5& -36 \pm    4&  44.0 \pm    0.5& -24 \pm    4&  38.4 \pm    0.5& -24 \pm    4\cr\ln
+\hbox{07 Oct}    & -37.7 \pm    0.4&   2 \pm    4& -31.3 \pm    0.4& -12 \pm    3&  42.7 \pm    0.4& -38 \pm    4&  39.4 \pm    0.4& -27 \pm    4\cr\ln
+\hbox{24 Oct}    & -37.7 \pm    0.2& -46 \pm    2& -32.2 \pm    0.2& -34 \pm    2&  43.8 \pm    0.2& -38 \pm    2&  39.5 \pm    0.2& -15 \pm    2\cr\ln
+\hbox{26 Oct}    & -37.2 \pm    0.2& -24 \pm    2& -32.4 \pm    0.2& -20 \pm    2&  43.9 \pm    0.2& -35 \pm    2&  38.9 \pm    0.2& -68 \pm    2\cr\ln
+\hbox{29-30 Oct} & -36.4 \pm    0.2& -26 \pm    1& -31.7 \pm    0.2&  -4 \pm    1&  44.3 \pm    0.1&  -7 \pm    1&  38.4 \pm    0.1&  -6 \pm    1\cr\bln
 }
 
 
-
-\em{Method 2b}. In the previous method we fitted the $y$ distributions with a Gaussian, without any justification. In fact, one may expect an (approximately) Gaussian shape for for sufficiently small $|y|$. Here is the reason. $y$ is (approximately) proportional to $\th_y$ and that is proportional to $\th_y^*$ and$\th_y^*$ is normally distributed as far as $\d\si/\d t$ falls off exponentially. This is (approximately) true for $|t|$ below the elastic dip. Actually, the ''elastic dip structures'' can be seen in \Fg{al el plots y gauss} right as the bumps on the tails. Hence one should restrain the Gaussian fit to the data below the elastic dip. In terms of $y$, the limit is $\approx 4.2\un{mm}$ (see the dotted lines in the figure).
-
-For the case of 29-30 Oct, the fit quality improved significantly. For 5 Oct there is no fit, since there are no data in the ''Gaussian'' region, the RPs were not close enough. Unfortunately, this is the case for most data-takings. \Tb{al el y gauss} summarizes the results for the two data-takings where we could apply this method.
-
-The results of methods 2a and 2b (\Tb{al el y full,al el y gauss}) compare surprisingly well. The differences fall below the error estimate (with the only exception of the shift of 56-220-far for the data from 29-30 Oct).
-
-\fig{fig/pdf/al_el_plots_y_gauss.pdf}{al el plots y gauss}{Illustration of the alignment method 2b (unit 56-220-far). The violet curve shows a Gaussian fit through the data in the fit region (delimited by the vertical dotted lines). The selected data points are marked in green. There are no data and no fit in the left plot.}
-
-\htab{al el y gauss}{The results of the elastic alignment method 2b -- Gaussian fits of $y$ distributions, low $|y|$ regions only. Values in $\rm \mu m$, uncertainties are statistical only.}{
-\omit&\multispan4\bhrulefill\cr
-\omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
-\hbox{21 Sep}    & -56.3 \pm   10.5&  30.0 \pm   16.3& -62.2 \pm   25.3& -25.0 \pm   30.8\cr\ln
-\hbox{29-30 Oct} &   8.6 \pm    7.6&  89.5 \pm    8.5& -18.8 \pm   10.8&  -2.5 \pm   15.0\cr\bln
-}
+\caption{Method 2}
 
 \bmfig
 \vbox{\hsize9cm\noindent\leftskip0pt\rightskip0pt\parfillskip0pt plus1fil
-\em{Method 2c}. Another approach to mitigate the deficiency of the method 2a is to remove the Gaussian-shape assumption. The only assumption would be that the $y$ distributions measured from the top and bottom pots are parts (cut by acceptance) of the same distribution. One can flip the $y$ distribution from the bottom pot (blue in \Fg{al el shift test}) and shift it such that it matches to the distribution from the top pot (red). When the best match is found, the position of the beam is given
+The vertical distribution of elastic hits shall be symmetric around the position of the beam. This remains true even if the axis of elastic scattering is tilted with respect to $y$ axis. In this case, the $y$ distribution shrinks, but symmetrically around the beam's position.
+
+beam div $\si \approx 18\un{\mu rad}$, see \Eq{felm unf sigma proj}, for $\De y = L\De\th$ it gives $3\si$ about $1.2\un{mm}$ -- this is what is to be cut off from the beggining of the distribution (confirmed by a MC study).
+
+Another approach to mitigate the deficiency of the method 2a is to remove the Gaussian-shape assumption. The only assumption would be that the $y$ distributions measured from the top and bottom pots are parts (cut by acceptance) of the same distribution. One can flip the $y$ distribution from the bottom pot (blue in \Fg{al el shift test}) and shift it such that it matches to the distribution from the top pot (red). When the best match is found, the position of the beam is given
 $${f_B + f_T + s\over 2}\ ,$$
 where $f_B$ is the position of the highest bottom pot bin, $f_T$ the lowest top pot bin and $s$ the shift of the blue histogram (left edge) wrt. the red one. Indeed, $s$ can only by a multiple of the bin size. The best match is the one which gives the lowest value of
 }%
@@ -1338,19 +1309,16 @@ The results are summarized in \Tb{al el y shift}. Comparing these to the method 
 
 \fig{fig/pdf/al_el_plots_y_shift.pdf}{al el plots y shift}{Illustration of the alignment method 2c (unit 56-220-far). The $y$ distribution from the bottom pot (blue) has been shifted to match the best to the distribution from the top pot (red).}
 
-\htab{al el y shift}{The results of the elastic alignment method 2c -- shift matching the $y$ distributions from the top and bottom pot. All values in $\rm \mu m$. The ucertainty can be estimated as a half of the bin size. That is $25\un{\mu m}$ for 26 and 29-30 Oct and $50\un{\mu m}$ for the others.}{
+\htab{al el y shift}{The results of the elastic alignment method 2 -- shift matching the $y$ distributions from the top and bottom pot. All values in $\rm \mu m$. The ucertainty can be estimated as a half of the bin size. Bin size $15\un{\mu m}$.}{
 \omit&\multispan4\bhrulefill\cr
 \omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
-\hbox{21 Sep}    & -50.0&   0.0&-100.0&   0.0\cr\ln
-\hbox{05 Oct}    & 150.0& 150.0& -50.0&-200.0\cr\ln
-\hbox{07 Oct}    & 100.0& 150.0& -50.0& -50.0\cr\ln
-\hbox{24 Oct}    &-100.0&   0.0&  50.0&  50.0\cr\ln
-\hbox{26 Oct}    & 100.0& 200.0&-200.0&-200.0\cr\ln
-\hbox{29-30 Oct} &   0.0& 100.0& -50.0& -50.0\cr\bln
+\hbox{29-30 Oct} &   60 & -60 & 120 & 150 \cr\bln
 }
 
 
-\em{Method 3} is based on \Eq{al el dyy}. The slopes $a$ turn out to be of the order of $20\un{mrad}$ (see \Fg{al el plots dyy}) therefore neglecting the middle term would create an error of $\approx 2\un{\mu m}$, assuming $\De y_n$ is of the order of $100\un{\mu m}$. The $2\un{\mu m}$ are a negligible error compared to the corrections one may get with this method. Thus, we will use
+\caption{Method 3}
+
+Is based on \Eq{al el dyy}. The slopes $a$ turn out to be of the order of $20\un{mrad}$ (see \Fg{al el plots dyy}) therefore neglecting the middle term would create an error of $\approx 2\un{\mu m}$, assuming $\De y_n$ is of the order of $100\un{\mu m}$. The $2\un{\mu m}$ are a negligible error compared to the corrections one may get with this method. Thus, we will use
 $$b = \De y_N - \De y_F\ .$$
 In other words, the intercept gives the relative far-near vertical misalignment.
 
@@ -1360,24 +1328,22 @@ The fits are performed in a similar manner as in method 1, with the difference t
 
 \fig{fig/pdf/al_el_plots_dyy.pdf}{al el plots dyy}{Illustration of the alignment method 3 (sector 45). The red line fits the red points only (top pots), blue line blue points (bottom pot). The green line represents a global fit.}
 
-\bgroup
-\def\ln{\multispan3\hrulefill&&\multispan2\hrulefill\cr}
-\def\bln{\multispan3\bhrulefill&&\multispan2\bhrulefill\cr}
-\htab{al el dyy}{Left: the results of the elastic alignment method 3 -- intercepts of $\De_{F-N} y$ vs.~$y$ data fits. Right: a comparison to method 2a (\Tb{al el y full}).}{
-\omit&\multispan2\bhrulefill&&\multispan2\bhrulefill\cr
-\omit&\strut\hbox{sector 45}&\hbox{sector 56}&&\hbox{sector 45}&\hbox{sector 56}\cr\bln
-\hbox{21 Sep}    &  69.3 \pm    0.7&  37.9 \pm    0.7 & \hskip1mm & -10 \pm 29 & -3   \pm 44\cr\ln
-\hbox{05 Oct}    &  70.4 \pm    0.8&  12.8 \pm    1.3 & \hskip1mm & 50  \pm 41 & -145 \pm 60\cr\ln
-\hbox{07 Oct}    &  72.0 \pm    0.9&   6.0 \pm    1.0 & \hskip1mm & 29  \pm 29 & -34  \pm 42\cr\ln
-\hbox{24 Oct}    &  86.8 \pm    0.4&  -1.4 \pm    0.6 & \hskip1mm & 19  \pm 20 & -29  \pm 48\cr\ln
-\hbox{26 Oct}    &  79.6 \pm    0.5&  -7.9 \pm    0.6 & \hskip1mm & 11  \pm 15 & 39   \pm 32\cr\ln
-\hbox{29-30 Oct} &  79.6 \pm    0.2&  -1.1 \pm    0.2 & \hskip1mm & -8  \pm 15 & 5    \pm 19\cr\bln
+\htab{al el dyy}{Left: the results of the elastic alignment method 3 -- intercepts of $\De_{F-N} y$ vs.~$y$ data fits. \TODO{}}{
+\omit&\multispan2\bhrulefill\cr
+\omit&\strut\hbox{sector 45}&\hbox{sector 56}\cr\bln
+\hbox{21 Sep}    &  69.3 \pm    0.7&  37.9 \pm    0.7 \cr\ln
+\hbox{05 Oct}    &  70.4 \pm    0.8&  12.8 \pm    1.3 \cr\ln
+\hbox{07 Oct}    &  72.0 \pm    0.9&   6.0 \pm    1.0 \cr\ln
+\hbox{24 Oct}    &  86.8 \pm    0.4&  -1.4 \pm    0.6 \cr\ln
+\hbox{26 Oct}    &  79.6 \pm    0.5&  -7.9 \pm    0.6 \cr\ln
+\hbox{29-30 Oct} &  79.6 \pm    0.2&  -1.1 \pm    0.2 \cr\bln
 }
-\egroup
 
 
 
-\em{Method 4}. The correlation between $y$ hit positions left and right can be written (follows from \Eq{el transport}):
+\caption{Method 4}
+
+The correlation between $y$ hit positions left and right can be written (follows from \Eq{el transport}):
 \eqref{y^{56} =
 \underbrace{ {L_y^{56}\over L_y^{45}} }_{-1+a}  y^{45}
 + \underbrace{ {L_y^{56}\over L_y^{45}} \De y^{45} - \De y^{56} }_b
@@ -1387,48 +1353,29 @@ The fits are performed in a similar manner as in method 1, with the difference t
 
 \fig{fig/pdf/al_el_plots_ylyr.pdf}{al el plots ylyr}{Illustration of the alignment method 4 (far units). The red line fits the red points only (diagonal 45 top -- 56 bottom), blue line blue points (diagonal 45 bottom -- 56 top). The green line represents a global fit. The dark points have been cut off not to bias the fit because of the asymmetric acceptance.}
 
-\bgroup
-\def\ln{\multispan3\hrulefill&&\multispan2\hrulefill\cr}
-\def\bln{\multispan3\bhrulefill&&\multispan2\bhrulefill\cr}
-\htab{al el ylyr}{
-Left: the results of the elastic alignment method 4 -- fits of $y^{56}$ vs.~$y^{45}$ data. Right: a comparison to method 2a (\Tb{al el y full}).
-}{
-\omit&\multispan2\bhrulefill&&\multispan2\bhrulefill\cr
-\omit&\strut\hbox{near units}&\hbox{far units}&&\hbox{near units}&\hbox{far units}\cr\bln
-\hbox{21 Sep}    & -40.4 \pm   21.3&  78.6 \pm   21.4 & \hskip1mm & 75   \pm 42 & 80   \pm 44\cr\ln
-\hbox{05 Oct}    & 170.8 \pm   26.3& 264.5 \pm   28.6 & \hskip1mm & 180  \pm 52 & 386  \pm 64\cr\ln
-\hbox{07 Oct}    &  95.4 \pm   20.2& 181.9 \pm   21.8 & \hskip1mm & 102  \pm 39 & 173  \pm 45\cr\ln
-\hbox{24 Oct}    & -75.8 \pm   10.7&  15.3 \pm   11.4 & \hskip1mm & -27  \pm 34 & 27   \pm 43\cr\ln
-\hbox{26 Oct}    &  19.5 \pm    9.1&  98.6 \pm    9.9 & \hskip1mm & 176  \pm 26 & 156  \pm 28\cr\ln
-\hbox{29-30 Oct} &-240.9 \pm    4.9&-158.3 \pm    4.9 & \hskip1mm & -217 \pm 18 & -225 \pm 18\cr\bln
-}
-\egroup
-
-
-\TODO{A summary -- how shall the beam position be determined for each data-taking. 21 Sep and 29-30 Oct using 2b, what for the others?}
-
 \iffalse
-RP position corrections (only dy vs. y data used)								
-	45 near		45 far		56 near		56 far	
-	x	y	x	y	x	y	x	y
-2010_09_21	-33	0	-48	69	-23	0	-25	38
-2010_10_05	-43	0	-38	70	-24	0	-24	13
-2010_10_07	2	0	-14	72	-38	0	-27	6
-2010_10_24	-46	0	-37	87	-38	0	-15	-1
-2010_10_26	-24	0	-23	80	-35	0	-68	-8
-2010_10_29-30	-26	0	-7	80	-7	0	-6	-1
-								
-								
-RP position corrections (y distributions data used)								
-	45 near		45 far		56 near		56 far	
-	x	y	x	y	x	y	x	y
-2010_09_21	-31	-54	-47	25	-26	-61	-27	-26
-2010_10_05	-46	72	-39	93	-27	-82	-33	-214
-2010_10_07	0	43	-14	86	-40	-49	-30	-77
-2010_10_24	-43	-88	-34	-20	-36	40	-14	9
-2010_10_26	-28	92	-25	160	-46	-248	-76	-218
-2010_10_29-30	-26	12	-7	100	-8	-37	-7	-33
+\htab{al el ylyr}{
+Left: the results of the elastic alignment method 4 -- fits of $y^{56}$ vs.~$y^{45}$ data. \TODO{}}{
+\omit&\multispan2\bhrulefill\cr
+\omit&\strut\hbox{near units}&\hbox{far units}\cr\bln
+\hbox{21 Sep}    & -40.4 \pm   21.3&  78.6 \pm   21.4\cr\ln
+\hbox{05 Oct}    & 170.8 \pm   26.3& 264.5 \pm   28.6\cr\ln
+\hbox{07 Oct}    &  95.4 \pm   20.2& 181.9 \pm   21.8\cr\ln
+\hbox{24 Oct}    & -75.8 \pm   10.7&  15.3 \pm   11.4\cr\ln
+\hbox{26 Oct}    &  19.5 \pm    9.1&  98.6 \pm    9.9\cr\ln
+\hbox{29-30 Oct} &-240.9 \pm    4.9&-158.3 \pm    4.9\cr\bln
+}
+
+-80		\pm30	&27		\pm31
+377		\pm69	&477	\pm77
+192		\pm55	&284	\pm61
+-84		\pm30	&5		\pm33
+56		\pm24	&145	\pm27
+-270	\pm7	&-187	\pm7
 \fi
+
+
+
 
 
 \section[al sum]{Summary}

@@ -132,44 +132,26 @@ For standard LHC runs one may expect relative error of beam momentum measurement
 and the proton-to-proton momentum fluctuation
 \eqref{\si_\xi = \O{10^{-4}}\ .}{ttm energy fl}
 
+Since the optics \Eq{ttm lin par} relates the kinematics of a proton at the IP and the RP stations, it defines what protons can be detected with the (finite-size) RP detectors. Formally, one could think of an \em{acceptance} function $A(\th_x^*, x^*, \th_y^*, y^*, \xi)$ which gives $1$ if such a proton can be detected and $0$ otherwise. One can also take an average over the quantities that are not of interest. This may lead to, for example to acceptance $A(t, \xi)$, which gives the ratio protons with momentum transfer $t$ and momentum loss $\xi$ that can be detected. Similarly one may define the \em{elastic acceptance} $A(t)$ as the detected ratio of the elastic events with momentum transfer $t$. Several examples of the elastic acceptance are shown in \Fg{ttm elastic acceptance}.
 
-\> the concept of acceptance
-\>> acceptance of for a single proton, function A(t, phi, xi), plus averaging over parameters up to A(t)
-\>> elastic acceptance - combined acceptance of two protons that we would be able to see an elastic event
-\>> $t_{30}$
+%In an elastic measurement analysis (see e.g.~\Sc{felm}) one needs to correct for the limited acceptance. It is clear that when the acceptance is too low, the \em{acceptance correction} is large and 
 
+\fig{fig/pdf/ttm_elastic_acceptance.pdf}{ttm elastic acceptance}{The elastic acceptances for the three optics types. Calculated for $\sqrt{s} = 14\un{TeV}$ and with RP sensors at $10\si + 0.5\un{mm}$. The horizontal line marks the points $|t_{30}|$ where the acceptances reach $30\percent$.}
 
-\> the tree optics classes - high beta, medium beta, low beta
-\>> classify by the optical functions (it controls what the optics is good for): Lx, Ly, D
-\>> associated quantities - emittance + resulting beam divergence, vertex smearing
-\>> nominal detector distance = 10 si bd, this sets minimal t: $t_{30}$ ($2\cdot10^{-3}$ for 1535, $4\cdot10^{-2}$ for 90 and $2.5$ for 2)
-\>> goal of the optics (this sets the requirements for the luminosity)
-\>> luminosity
+The rich physics programme of TOTEM requires several running scenarios, including several optics. We will now review the foreseen scenarios, classified by the beta-function at the interaction point $\be^*$. Certain parameters have been calculated assuming the CMS energy of $\sqrt s = 14\un{TeV}$.
 
-The versatile programme of TOTEM requires several running scenarios
+\> The \em{high $\be^*$} scenario is dedicated to the measurement of the total cross-section and low-$|t|$ elastic scattering. The optics with $\be^* = 1535\un{m}$ provides high effective lengths: $L_x$ up to $110\un{m}$ and $L_y$ up to $270\un{m}$ (both in the $220\un{m}$ stations). This ensures a good $t$-resolution (see \Sc{elr 1535}). To improve it further, this scenario counts with a reduced normalized emittance of $\ep_N=1\un{\mu m\ rad}$. This leads to a very low beam divergence at the IP $\si_{\th^*} = 0.3\un{\mu m}\ rad$. The expected beam sizes (i.e. the beam sigmas) at the $220\un{m}$ stations are $\si_x = 0.03\un{mm}$ and $\si_y = 0.085\un{mm}$. The beam size, quite generally, determines the approach of the RPs to the beam -- a typical approach is about $10\si$ in each direction. The resulting elastic acceptance is drawn in red in \Fg{ttm elastic acceptance}. The acceptance reaches $30\percent$ at $|t_{30}| = 2\cdot10^{-3}\un{GeV^2}$. This scenario will use a rather low luminosity ${\cal L} \approx 10^{29} \hbox{ -- } 10^{30}\un{cm^{-2}s^{-1}}$.
 
-\> \em{high $\be^*$}
-\>> $\be^* = 1535\un{m}$
-\>> ${\cal L} \approx 10^{28} \div 10^{29}\un{cm^{-2}s^{-1}}$
-\>> elastic resolution: $\si(\th_x) \approx 0.23\un{\mu rad}$, $\si(\th_y) \approx 0.22\un{\mu rad}$
-\>> vertical sensors at $1.35\un{mm}$ from beam center
+\> The \em{medium $\be^*$} scenario is based on a very universal optics with $\be^* = 90\un{m}$. It combines the properties of high and low $\be^*$ scenarios allowing for measurements of the total cross-section, medium-$|t|$ elastic scattering and certain diffractive processes. In the $220\un{m}$ stations the horizontal effective length $L_x$ is rather small, below $2.9\un{m}$, while in the vertical direction $L_y$ goes up to $260\un{m}$, which is similar to the high-$\be^*$ optics. The standard normalized emittance $\ep_{\rm N} = 3.75\un{\mu m\ rad}$ is planned to be used, leading to a beam divergence of about $2.4\un{\mu rad}$. The expected beam sizes at the $220\un{m}$ stations are $\si_x = 0.4\un{mm}$ and $\si_y = 0.59\un{mm}$. In other words, the pots will have to stay much further from the beam center than in the case of the high-$\be^*$ optics. Consequently, the elastic acceptance (blue histogram in \Fg{ttm elastic acceptance}) starts much later -- it reaches $30\percent$ only at $4\cdot 10^{-2}\un{GeV^2}$. This scenario counts with a luminosity of ${\cal L} \approx 10^{30}\un{cm^{-2}s^{-1}}$.
 
-\> \em{medium $\be^*$}
-\>> $\be^* = 90\un{m}$
-\>> ${\cal L} \approx 10^{30}\un{cm^{-2}s^{-1}}$
-\>> elastic resolution: $\si(\th_x) \approx 5\un{\mu rad}$ (low effective length), $\si(\th_y) \approx 1.7\un{\mu rad}$
-\>> vertical sensors at $6.4\un{mm}$ from beam center
+\> The \em{low $\be^*$} runs will be used for large-$\xi$ diffractive studies and large-$|t|$ elastic scattering measurements (the data analyzed in \Sc{felm} were obtained with this type of optics). These scenarios with $\be^*$ between $0.5$ and $3\un{m}$ are optimized for high luminosities ${\cal L} \approx 10^{32} \hbox{ -- } 10^{33}\un{cm^{-2}s^{-1}}$ and not for forward proton detection -- the effective length at the $220\un{m}$ stations do not exceed $L_x = 2\un{m}$ and $20\un{m}$. With the standard normalized emittance $\ep_{\rm N} = 3.75\un{\mu m\ rad}$ the beam divergence is rather large: $\si_{\th^*} \approx 16\un{\mu rad}$. The beam sizes at the $220\un{m}$ are about $\si_x = 0.1\un{mm}$ and $\si_y = 0.3\un{mm}$. The elastic acceptance (green histogram in \Fg{ttm elastic acceptance}) reaches $30\percent$ at $|t_{30}| = 2.5\un{GeV^2}$.
 
-\> \em{low $\be^*$}
-\>> $\be^* = 0.5\div 2\un{m}$ (early running: $p = 5\un{TeV}$, $\be^* \sim 3\un{m}$)
-\>> ${\cal L} \approx 10^{33}\un{cm^{-2}s^{-1}}$
-\>> elastic resolution: $\si(\th_x) \approx 16\un{\mu rad}$, $\si(\th_y) \approx 12\un{\mu rad}$
-\>> vertical sensors at $3.3\un{mm}$ from beam center
+\vskip\itskip
+
+\Fg{ttm hit distribution} illustrates the properties of the three types of optics. The horizontal (vertical) spread of hits is controlled by the horizontal effective length $L_x$ (the vertical $L_y$). That is why the $\be^* = 90$ and $2\un{m}$ optics yield very narrow elastic scattering hit distributions. The gray ellipses show $10\si$ contours, thereby controlling the positions of the RPs.
 
 
-
-\fig{fig/pdf/hit_distribution.pdf}{hit distribution}{Simulated distribution of elastic-scattering protons \TODO{what unit} for the three types of optics.}
-\fig{fig/pdf/elastic_acceptance.pdf}{elastic acceptance}{$\sqrt{s} = 14\un{TeV}$, the dashed horizontal line gives the $t_{30}$}
+\fig{fig/pdf/ttm_hit_distribution.pdf}{ttm hit distribution}{Simulated distributions of elastic-scattering protons in the 56-220-far unit, each color corresponds to an optics type. The gray ellipses show $10$ beam sigma contours. The RP sensors are place at $10\si + 0.5\un{mm}$.}
 
 
 
@@ -194,7 +176,7 @@ The versatile programme of TOTEM requires several running scenarios
 	{\cal L} = (1+\rh^2) {(N_{\rm el} + N_{\rm inel})^2\over \d N/\d t|_{t=0} }
 }{ttm li meth}
 
-The differential rate at $t=0\un{GeV^2}$ can not be measured directly, it needs to be extrapolated from measured low $|t|$ data. As shown in \Fg{elastic acceptance}, there are two optics that extend to sufficiently low $|t|$ values: $\be^* = 1535$ and $90\un{m}$. This extrapolation procedure is important also for the (integral) elastic rate $N_{\rm el}$ measurement as it allows to correct for the events missed due to the finite acceptance.
+The differential rate at $t=0\un{GeV^2}$ can not be measured directly, it needs to be extrapolated from measured low $|t|$ data. As shown in \Fg{ttm elastic acceptance}, there are two optics that extend to sufficiently low $|t|$ values: $\be^* = 1535$ and $90\un{m}$. This extrapolation procedure is important also for the (integral) elastic rate $N_{\rm el}$ measurement as it allows to correct for the events missed due to the finite acceptance.
 
 
 \>> B looks ``parabolic'' -- polynomial fit to B from data

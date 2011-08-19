@@ -21,13 +21,14 @@ for (int d_i: dates.keys) {
 
 	NewPad("$y \un{mm}$", "");
 	scale(Linear(true), Linear);
-	draw(rGetObj(file, name + "#1"), "e", red);
-	draw(rGetObj(file, name + "#2"), "e", blue);
+	draw(rGetObj(file, name + "|hR"), "e", red);
+	draw(rGetObj(file, name + "|hL"), "e", blue);
+	draw(rGetObj(file, name + "|hLS", error=false), "e", heavygreen);
 
 	if (d_i == 0)
-		limits((8, 0), (12, 100), Crop);
+		limits((-12, 0), (12, 80), Crop);
 	else
-		limits((3, 0), (9, 1500), Crop);
+		limits((-9, 0), (9, 1200), Crop);
 
 	AddToLegend(Date(dates[d_i]));
 	AttachLegend("Method 2c", NE, NE);
