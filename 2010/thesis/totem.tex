@@ -106,38 +106,38 @@ This definition follows, in fact, from the low-scattering-angle approximation in
 
 Since the magnetic field within the RP stations is negligible, protons follow a straight trajectory there. The relation between RP sensor measurements and the parameters of the trajectory is, therefore simple (for details see \Sc{al psi}). What is much more interesting is the proton transport from the IP to the RP stations. We will discuss it in the rest of this section.
 
-\> analytical description
-\>> the solution to Hill's equation, define beta function, emittance, phase advance (+ref)
-\>> alternative: the matrix equations (ref to Hubert, +); define optics, optical functions: effective length, magnification, dispersion
+The transverse motion of protons in the LHC can be described by a solution of the Hill's equation (see e.g.~Sc.~3.3 in \bref{wilson}):
+\eqref{x(s) = \sqrt{\be(s) \ep}\ \cos\big(\phi(s) + \phi_0\big)\ .}{ttm hill sol}
+We have written the solution for the horizontal direction only, for the vertical it is analogous. The solution has a form of oscillations with the amplitude given by the emittance $\ep$ (a measure of the beam size and divergence\footnote{%
+A quantity which is used more often is the normalized emittance $\ep_{\rm N} = \be\ga \ep$. $\be$ and $\ga$ are the relativistic factors, see \Eq{sm lorentz}. The advantage of the normalized emittance is that it does not change during beam acceleration, see Sc.~4.1 in~\bref{wilson}.
+}) and the $\be(s)$ function (reflects the layout and strengths of the LHC magnets). The phase of the oscillations is given by $\phi(s)$ which is related to $\be(s)$ by $\d\phi/\d s = 1/\be(s)$.
 
-\> numerical tools; MAD-X
+From \Eq{ttm hill sol} one can read off the amplitude of the oscillations, which effectively determines the beam size:
+\eqref{\si(s) = \sqrt{\be(s)\ep}\ .}{ttm beam sigma}
+This quantity is often called a \em{beam sigma}. The beam size is of a special interest at the interaction point -- it controls the vertex distribution. Denoting $\be^*$ the value of the $\be(s)$ function at the interaction point, one can write
+\eqref{\si_{x^*} = \sqrt{\be^* \ep}\ .}{ttm vertex sm}
+By differentiating \Eq{ttm hill sol} one can obtain the evolution proton angles $\th_x = \d x/\d s$. Again, one can extract the amplitude of its oscillations, that is a measure of the beam angular divergence. Evaluating it at the IP yields
+\eqref{\si_{\th^*} = \sqrt{\ep\over\be^*}\ .}{ttm beam div}
 
-\> optics parameterizations
-\>> linearized
-\eqref{\eqnarray{
-x(s) &=&\ L_x(s, \ldots)\, \th_x^* + v_x(s,\ldots)\, x^* + D_x(s,\ldots)\cr
-y(s) &=&\ L_y(s, \ldots)\, \th_y^* + v_y(s,\ldots)\, y^* + D_y(s,\ldots)\cr
-}}{to lin par}
-\>> polynomial, ref to Hubert
+The solution \Eq{ttm hill sol} was derived for protons of the nominal momentum $p_{\rm nom}$. If the actual proton momentum differs by $\De p = \xi p_{\rm nom}$, one has to add a term $D(s) \xi$ to the solution, see Sc.~5.2 in~\bref{wilson}. Then, for the proton transport from the IP to a position $s$ one can write (see Sc.~5.2.4 in~\bref{wilson})
+\eqref{x(s) =\ L_x(s, \ldots)\, \th_x^* + v_x(s,\ldots)\, x^* + D_x(s,\ldots)\,\xi}{ttm lin par}
+and equivalently for the vertical direction. In the previous relation we have introduced the \em{effective length} $L$, the \em{magnification} $v$ and the \em{dispersion} $D$, we will refer to them as \em{optical functions}. These functions depend on the distance $s$ from the IP, but may also depend on the variables $\th_x^*$, $x^*$ and $\xi$. For the optics of practical interest, however, the dependence on $\xi$ is the only relevant one.
 
-\> so far one proton only, in reality bunches: non-zero spatial, momentum and angular spread --> beam smearing
-\>> beam divergence
+Strictly speaking, the form of \Eq{ttm lin par} is oversimplified. Due to higher order corrections, $x$ and $y$ projections are not strictly independent and consequently one should include also dependence on $\th_y^*$ and $y^*$. For the nominal optics these terms are negligible. However in reality, due to magnet misalignments (mostly their rotations), the binding between $x$ and $y$ projections may become important, see e.g.~\Fg{al el plots yx}.
 
-\eqref{\si_{\th^*} = }{to beam div}
+In practice the optical functions are calculated with dedicated computer programs such as MAD-X \bref{mad-x}. Since they might be to slow for large Monte Carlo simulations, TOTEM's software (see \Sc{sr}) includes a module that calculates a polynomial parameterization of a MAD-X output, for details see Sc.~6.4 in \bref{hubert}.
 
-\>> vertex smearing
+For standard LHC runs one may expect relative error of beam momentum measurement
+\eqref{\bar\xi = \O{10^{-3}}}{ttm energy off}
+and the proton-to-proton momentum fluctuation
+\eqref{\si_\xi = \O{10^{-4}}\ .}{ttm energy fl}
 
-\eqref{\si_{x^*} = }{to vertex sm}
-
-\>> energy fluctuation and offset
-
-\eqref{\si_\xi = }{to energy fl}
-
-\eqref{\bar\xi = }{to energy off}
 
 \> the concept of acceptance
 \>> acceptance of for a single proton, function A(t, phi, xi), plus averaging over parameters up to A(t)
 \>> elastic acceptance - combined acceptance of two protons that we would be able to see an elastic event
+\>> $t_{30}$
+
 
 \> the tree optics classes - high beta, medium beta, low beta
 \>> classify by the optical functions (it controls what the optics is good for): Lx, Ly, D
@@ -146,38 +146,30 @@ y(s) &=&\ L_y(s, \ldots)\, \th_y^* + v_y(s,\ldots)\, y^* + D_y(s,\ldots)\cr
 \>> goal of the optics (this sets the requirements for the luminosity)
 \>> luminosity
 
-\iffalse
-\itskip0pt
-\indent 1) {\fgt\bf high $\be^*$\fg}
-\> $\be^* = 1535\un{m}$
-\> ${\cal L} \approx 10^{28} \div 10^{29}\un{cm^{-2}s^{-1}}$
-\> elastic resolution: $\si(\th_x) \approx 0.23\un{\mu rad}$, $\si(\th_y) \approx 0.22\un{\mu rad}$
-\> vertical sensors at $1.35\un{mm}$ from beam center
+The versatile programme of TOTEM requires several running scenarios
 
-\vfil
-2) {\fgt\bf medium $\be^*$\fg}
-\> $\be^* = 90\un{m}$
-\> ${\cal L} \approx 10^{30}\un{cm^{-2}s^{-1}}$
-\> elastic resolution: $\si(\th_x) \approx 5\un{\mu rad}$ (low effective length), $\si(\th_y) \approx 1.7\un{\mu rad}$
-\> vertical sensors at $6.4\un{mm}$ from beam center
+\> \em{high $\be^*$}
+\>> $\be^* = 1535\un{m}$
+\>> ${\cal L} \approx 10^{28} \div 10^{29}\un{cm^{-2}s^{-1}}$
+\>> elastic resolution: $\si(\th_x) \approx 0.23\un{\mu rad}$, $\si(\th_y) \approx 0.22\un{\mu rad}$
+\>> vertical sensors at $1.35\un{mm}$ from beam center
 
-\vfil
-3) {\fgt\bf low $\be^*$\fg}
+\> \em{medium $\be^*$}
+\>> $\be^* = 90\un{m}$
+\>> ${\cal L} \approx 10^{30}\un{cm^{-2}s^{-1}}$
+\>> elastic resolution: $\si(\th_x) \approx 5\un{\mu rad}$ (low effective length), $\si(\th_y) \approx 1.7\un{\mu rad}$
+\>> vertical sensors at $6.4\un{mm}$ from beam center
 
-\> $\be^* = 0.5\div 2\un{m}$ (early running: $p = 5\un{TeV}$, $\be^* \sim 3\un{m}$)
-\> ${\cal L} \approx 10^{33}\un{cm^{-2}s^{-1}}$
-\> elastic resolution: $\si(\th_x) \approx 16\un{\mu rad}$, $\si(\th_y) \approx 12\un{\mu rad}$
-\> vertical sensors at $3.3\un{mm}$ from beam center
+\> \em{low $\be^*$}
+\>> $\be^* = 0.5\div 2\un{m}$ (early running: $p = 5\un{TeV}$, $\be^* \sim 3\un{m}$)
+\>> ${\cal L} \approx 10^{33}\un{cm^{-2}s^{-1}}$
+\>> elastic resolution: $\si(\th_x) \approx 16\un{\mu rad}$, $\si(\th_y) \approx 12\un{\mu rad}$
+\>> vertical sensors at $3.3\un{mm}$ from beam center
 
-\vfil
-\> sensors at $10\si + 0.5\un{mm}$ from beam center
-\> resolution (usually) limited by beam divergence
-\fi
 
-\bmfig
+
+\fig{fig/pdf/hit_distribution.pdf}{hit distribution}{Simulated distribution of elastic-scattering protons \TODO{what unit} for the three types of optics.}
 \fig{fig/pdf/elastic_acceptance.pdf}{elastic acceptance}{$\sqrt{s} = 14\un{TeV}$, the dashed horizontal line gives the $t_{30}$}
-\fig{fig/pdf/hit_distribution.pdf}{hit distribution}{Distribution of elastic hits for the three types of optics.}
-\emfig
 
 
 
@@ -185,7 +177,6 @@ y(s) &=&\ L_y(s, \ldots)\, \th_y^* + v_y(s,\ldots)\, y^* + D_y(s,\ldots)\cr
 
 
 
-\iffalse
 
 \section{The total cross-section}
 
@@ -268,5 +259,3 @@ N_{\rm inel}	& \vbox{\hsize7cm\noindent\strut Total inelastic rate (error domina
 &\hbox{Total for } \si_{\rm tot} & 5\percent & 1\div2\percent \cr\bln
 &\hbox{Total for } {\cal L} & 7\percent & 2\percent \cr\bln
 }
-
-\fi

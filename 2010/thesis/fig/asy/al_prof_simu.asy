@@ -2,6 +2,8 @@ import root;
 import pad_layout;
 
 StdFonts();
+xSizeDef = 5cm;
+ySizeDef = 4cm;
 
 string dir = "/afs/cern.ch/exp/totem/scratch/Release/validation/rel3.3/validation/";
 string file_el = dir+"valRPelasticBeta2.5Energy3.5TeV/valRPelasticBeta2.5Energy3.5TeV_RPHitDists.root";
@@ -40,4 +42,4 @@ draw((0, -10)--(0, 10), dotted);
 limits((-10, -10), (10, 10), Crop);
 AttachLegend("simulation");
 
-GShipout(hSkip=1mm);
+//GShipout(hSkip=1mm);

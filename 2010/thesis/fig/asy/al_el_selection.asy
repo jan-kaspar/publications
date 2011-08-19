@@ -2,8 +2,7 @@ import root;
 import pad_layout;
 
 StdFonts();
-
-//xSizeDef = 3.6cm; ySizeDef = xSizeDef;
+ySizeDef = 4cm;
 
 //----------------------------------------------------------------------------------------------------
 
@@ -48,7 +47,7 @@ NewPad("$\left. x_F - x_N \right|_{45}\un{mm}$", "$\left. x_F - x_N \right|_{56}
 TGraph_lowLimit = -1;
 TGraph_highLimit = +1;
 
-real w = 0.8, h = 0.08;
+real w = 1.8, h = 0.08;
 path p = (-w, -h)--(w, -h)--(w, h)--(-w, h)--cycle;
 DrawRegion(shift(0, dxdx_d56t_b)*rotate(atan2(dxdx_d56t_a, 1)*180/3.141593)*p);
 

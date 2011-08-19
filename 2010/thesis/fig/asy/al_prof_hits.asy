@@ -5,8 +5,8 @@ string base_dir = "../alignment/lhc_old/2010_09_21_vsym2/profiles";
 
 StdFonts();
 
-//xSizeDef = 3.7cm;
-//ySizeDef = 3.7cm;
+xSizeDef = 5cm;
+ySizeDef = 4cm;
 
 //----------------------------------------------------------------------------------------------------
 
@@ -105,4 +105,4 @@ AddToLegend("56 far");
 AttachLegend();
 */
 
-GShipout(hSkip=1mm);
+//GShipout(hSkip=1mm);

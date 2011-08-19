@@ -3,8 +3,8 @@ import pad_layout;
 
 StdFonts();
 
-//xSizeDef = 3.7cm;
-//ySizeDef = 3.7cm;
+xSizeDef = 5cm;
+ySizeDef = 4cm;
 
 string base_dir = "../alignment/lhc_old/2010_09_21_vsym2/profiles";
 
@@ -31,4 +31,4 @@ draw(rGetObj(base_dir+"/122.root", "56_3#2#0"), "l", blue);
 limits((-2, -10), (8, 10));
 */
 
-GShipout(hSkip=1mm);
+//GShipout(hSkip=1mm);

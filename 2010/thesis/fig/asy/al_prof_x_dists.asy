@@ -2,6 +2,8 @@ import root;
 import pad_layout;
 
 StdFonts();
+xSizeDef = 5cm;
+ySizeDef = 4cm;
 
 //string file = "../alignment/lhc/2010_10_29-30/profiles/3719,3720/after_tb/profiles.root";
 string file = "../alignment/lhc/2010_10_29-30/profiles/3719,3720/improved fits/refit.root";
@@ -23,4 +25,4 @@ draw(rGetObj(file, "slice#0"), red+1pt);
 limits((-10, 0), (15, 3000), Crop);
 AttachLegend("$6 < y/{\rm mm} < 6.5$");
 
-GShipout(hSkip=5mm);
+//GShipout(hSkip=5mm);

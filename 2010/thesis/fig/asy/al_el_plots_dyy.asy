@@ -3,6 +3,7 @@ import pad_layout;
 include "../alignment/common_code.asy";
 
 StdFonts();
+ySizeDef = 4cm;
 
 string dates[] = {
 	"2010_10_05",
@@ -23,9 +24,9 @@ for (int d_i: dates.keys) {
 	draw(rGetObj(file, name + "#1"), "p", red);
 	draw(rGetObj(file, name + "#3"), "p", blue);
 
-	draw(rGetObj(file, name + "#2"), red);
-	draw(rGetObj(file, name + "#4"), blue);
-	draw(rGetObj(file, name + "#5"), heavygreen);
+	//draw(rGetObj(file, name + "#2"), red);
+	//draw(rGetObj(file, name + "#4"), blue);
+	draw(rGetObj(file, name + "#5"), black);
 
 	limits((-12, -0.5), (+12, +0.5), Crop);
 	

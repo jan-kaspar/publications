@@ -3,6 +3,7 @@ import pad_layout;
 include "../alignment/common_code.asy";
 
 StdFonts();
+ySizeDef = 4cm;
 
 string dates[] = {
 	"2010_10_05",

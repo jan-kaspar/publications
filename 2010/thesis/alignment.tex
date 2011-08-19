@@ -60,11 +60,11 @@ This also gives estimate about the rotation
 
 \section[al collim]{Collimation alignment}
 
-The collimation alignment is a part of the RP commissioning procedure, where the RPs are aligned with respect to the collimators of the LHC \TODO{reference}. Moreover it provides important data for the alignment of RPs themselves.
+The collimation alignment is a part of the RP commissioning procedure, where the RPs are aligned with respect to the collimators of the LHC (a similar procedure to the beam-based alignment of the collimators, see \bref{bracco2010}). Moreover it provides important data for the alignment of RPs themselves.
 
 We recall (from \Sc{ttm}) that the position of each RP is monitored by a linear voltage differential transformator (LVDT). This device measures the distance of the thin window from the beam-pipe axis. The position of the beam, again with respect to the beam-pipe axis, is measured by the beam position monitors (BPMs). There are two of them at each station: at the upstream end (near BPM) and at the downstream end (far BPM). Each BPM measures both horizontal and vertical beam position. For the collimation alignment one more tool is used -- a series of beam loss monitors (BLMs) measures the radiation (from beam losses) at several locations downstream of each station.
 
-At the beginning of the collimation alignment, the collimators scrape the beam at a given number $n$ of beam sigmas $\si_0$ (i.e. beam sigmas at the collimator location, see \Fg{al collim}). Due to the multi-turn effect, the beam is scraped symmetrically about the center of the beam. Thus after the scraping, the beam has sharp edges on both sides and consequently the beam width and center are well defined. Then, a RP is approached to the beam (see the top plot in \Fg{al collim ex}), until it touches its edge. At this moment, particles from the beam surface are scattered off the RP edge and give rise to peaks in the BLMs downstream (see \Fg{al collim ex} bottom). This is the moment where the RP (its thin window) is at the same beam-sigma-distance $n$ as the collimators. Denoting the beam sigma at the RP location $\si$ (as in \Fg{al collim}), the RP position is $n\si$. The beam widths $\si_0$ and $\si$ are related via the optics and therefore the position of the beam can be calculated as
+At the beginning of the collimation alignment, the collimators scrape the beam at a given number $n$ of beam sigmas $\si_0$. This beam sigma stands for the standard deviation of the beam profile at the collimator location, see \Fg{al collim}. Due to the multi-turn effect, the beam is scraped symmetrically about the center of the beam (see e.g. section ``Beam based alignment'' in \bref{bracco10}). Thus after the scraping, the beam has sharp edges on both sides and consequently the beam width and center are well defined. Then, a RP is approached to the beam (see the top plot in \Fg{al collim ex}), until it touches its edge. At this moment, particles from the beam surface are scattered off the RP edge and give rise to peaks in the BLMs downstream (see \Fg{al collim ex} bottom). This is the moment where the RP (its thin window) is at the same beam-sigma-distance $n$ as the collimators. Denoting the beam sigma at the RP location $\si$ (as in \Fg{al collim}), the RP position is $n\si$. The beam widths $\si_0$ and $\si$ are related via the optics, see \Eq{ttm beam sigma}, and therefore the position of the beam can be calculated as
 \eqref{n\si - t\ ,}{al vc m1}
 where $t$ denotes the corresponding LVDT reading.
 
@@ -1328,7 +1328,7 @@ where $f_B$ is the position of the highest bottom pot bin, $f_T$ the lowest top 
 \fig{fig/pdf/al_el_shift_test.pdf}{al el shift test}{[]To the explanation of the shift test}%
 \emfig
 
-\eqref{S^2/N = {1\over N} \sum_{i\ \in \hbox{overlapping bins}} \left( C_{\rm red}(i) - C_{\rm blue}(i) \right)^2\ ,}{al el shift test}
+\eqref{S^2/N = {1\over N} \sum_{i\ \in \hbox{overlapping bins}} \left[ C_{\rm red}(i) - C_{\rm blue}(i) \right]^2\ ,}{al el shift test}
 where $N$ is the number of overlapping bins and $C_{\rm red}(i)$ represents the contents of the bin $i$ of the red histogram.
 
 
@@ -1351,7 +1351,7 @@ The results are summarized in \Tb{al el y shift}. Comparing these to the method 
 
 
 \em{Method 3} is based on \Eq{al el dyy}. The slopes $a$ turn out to be of the order of $20\un{mrad}$ (see \Fg{al el plots dyy}) therefore neglecting the middle term would create an error of $\approx 2\un{\mu m}$, assuming $\De y_n$ is of the order of $100\un{\mu m}$. The $2\un{\mu m}$ are a negligible error compared to the corrections one may get with this method. Thus, we will use
-$$b = \De y_F - \De y_N\ .$$
+$$b = \De y_N - \De y_F\ .$$
 In other words, the intercept gives the relative far-near vertical misalignment.
 
 The fits are performed in a similar manner as in method 1, with the difference that the RMS of distance-to-cut-line distribution is attributed to $\De_{F-N} y$ quantity. An example of the fits is shown if \Fg{al el plots dyy}. Again the one-side fits are compatible with each other and the global fit (with the exception of the red fit in the left-hand side plot). This means that the far-near misalignments are the same for top and bottom pots, a result that is expected after a track-based alignment step.

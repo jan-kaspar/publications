@@ -3,6 +3,7 @@ import pad_layout;
 include "../alignment/common_code.asy";
 
 StdFonts();
+ySizeDef = 4cm;
 
 string dates[] = {
 	"2010_10_05",
@@ -24,9 +25,9 @@ for (int d_i: dates.keys) {
 	draw(switch, rGetObj(file, name + "#1"), "p", red);
 	draw(switch, rGetObj(file, name + "#3"), "p", blue);
 
-	draw(switch, rGetObj(file, name + "#2"), "l", red);
-	draw(switch, rGetObj(file, name + "#4"), "l", blue);
-	draw(switch, rGetObj(file, name + "#5"), "l", heavygreen);
+	//draw(switch, rGetObj(file, name + "#2"), "l", red);
+	//draw(switch, rGetObj(file, name + "#4"), "l", blue);
+	draw(switch, rGetObj(file, name + "#5"), "l", black);
 
 	limits((-5, -10), (5, 10), Crop);
 	AddToLegend(Date(dates[d_i]));

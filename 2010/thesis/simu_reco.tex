@@ -3,7 +3,7 @@ RP, MC, IP5, CMS, T1, T2, VFAT, DIGI, RECO, LAB, LHC, LS, DPE, MC, TOTEM, RMS, n
 \fi
 
 
-\chapter{RP simulation and reconstruction methods}
+\chapter[sr]{RP simulation and reconstruction methods}
 
 
 \fig{fig/pdf/sr_sw_structure.pdf}{sr sw structure}{The structure of the RP simulation and reconstruction software.}
@@ -111,7 +111,7 @@ where $S(\chi)$ stands for the energy scaling procedure.
 
 The above formula provides a method to apply angular and energy smearing to MC particles. The missing step to have a smearing MC generator is to know the distributions of the quantities $\vec\be$, $\vec a$, $\om$ and $\ch$. But these can be calculated from beam smearing parameters as discussed in \Sc{rp measurement}. Assuming the crossing angle $\al$, see \Fg{smearing angular energy}, one can parameterize the momenta of the incident particles as
 \eqref{\vec p_i = \pm p_{\rm nom}\,(1 + \xi_i)\,\pmatrix{\cos\al & 0 & \mp \sin\al\cr 0 & 1 & 0 \cr \pm\sin\al & 0 & \cos\al\cr}\,\pmatrix{C_i\cr S_i\cr \sqrt{1 - C_i^2 - S_i^2}}\ ,}{sm momenta par}
-where $i\in {1, 2}$ and the upper/bottom sign corresponds to particle 1/2. $C_i$ and $S_i$ describe the angular smearing in X and Y and according to \Eq{to beam div} one assign them distributions $N(0, \si_\th^2)$. In fact, the tails of the normal distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_\th \ll 1$, the effect is negligible. The $\xi$ parameter accounts for the energy smearing, the expected distribution is $N(\bar\xi, \si_\xi^2)$ (see \Eq{to energy fl}).
+where $i\in {1, 2}$ and the upper/bottom sign corresponds to particle 1/2. $C_i$ and $S_i$ describe the angular smearing in X and Y and according to \Eq{ttm beam div} one assign them distributions $N(0, \si_\th^2)$. In fact, the tails of the normal distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_\th \ll 1$, the effect is negligible. The $\xi$ parameter accounts for the energy smearing, the expected distribution is $N(\bar\xi, \si_\xi^2)$ (see \Eq{ttm energy off,ttm energy fl}).
 
 The smearing effects and the crossing angle are rather small: $\si_\th \sim \O{10^{-6}}$, $\al \sim \O{10^{-4}}$ and $\si_\xi \sim \O{10^{-4}}$ (see \Sc{rp measurement} \TODO{better ref?}). Therefore, one may simplify \Eq{sm mc to lab} by keeping just the first oder terms. It will yield an easily iterpretable forumula which will become useful reconstruction uncertainty estimates. Also, bearing in mind the LHC energies, we will approximate $E\approx p$ for all the particles involved.
 
@@ -240,7 +240,7 @@ We will constrain ourselves to the most interesting results, for the others we r
 
 As shown in diagram \Fg{sr sw structure}, the elastic reconstruction follows the one-RP-track fit step. In the note \bref{el reco} we showed that the lever-arm of single RP is too short for a reasonable angular reconstruction. That is why we take only the hit position from the one-RP-track fit.
 
-Elastic protons have, by definition, no momentum loss, that is $\xi \equiv 0$. For such protons, the transport equation \Eq{to lin par} simplifies to:
+Elastic protons have, by definition, no momentum loss, that is $\xi \equiv 0$. For such protons, the transport equation \Eq{ttm lin par} simplifies to:
 \eqref{x(s) = L_x(s)\, \th_x^* + v_x(s)\, x^*\ ,\qquad y(s) = L_y(s)\, \th_y^* + v_y(s)\, y^*\ .}{elr track param}
 We have written the optical functions as functions of $s$ only since in a very good approximation they do not depended on proton's scattering parameters $x^*$, $y^*$, $\th^*_x$ and $\th^*_y$ \TODO{ref to note by Valentina etc?}. 
 
