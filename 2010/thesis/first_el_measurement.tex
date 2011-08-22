@@ -8,38 +8,49 @@ This chapter is devoted to the first measurement of the elastic scattering diffe
 
 This analysis is based on the data from 29-30 October, when the RPs were approached to $7\si$ from the beam and the LHC was running at the standard 2010 optics with $\be^* = 3.5\un{m}$. The horizontal pots were inserted only at the end of the run, just for alignment reasons. Most of the running time they were retracted not to distort the elastic proton measurement (done with vertical pots only, see e.g.~\Fg{ttm hit distribution} right). The event sample used for the analysis (with horizontal RPs retracted) corresponds to an integrated luminosity of $6.1\un{nb^-1}$.
 
+\TODO{only 220 stations}
+
 \fig{fig/pdf/felm_scheme.pdf}{felm scheme}{The analysis work-flow, from raw data to the differential cross-section of the elastic scattering.}
 
-In \Fg{felm scheme} we review the analysis steps, with a brief description below.
+\Fg{felm scheme} reviews the analysis steps, each of them is briefly described below. But before going into details, let us explain the terminology used. The sector 45 (56) is called left (right) arm of the TOTEM experiment. The elastic events involve two protons with practically opposite directions (up to beam divergence). Thus from detector point of view, they split into two groups -- with top RPs active in the sector 45 (so called \em{diagonal} 45 top -- 56 bottom) or with top RPs active in the sector 56 (diagonal 45 bottom -- 56 top).
 
-\> {\bf Alignment}.
-\>> as described in chapter \Sc{al}
-\> $\th_y$ matching between diagonals for the vertical alignment wrt. the beam.
+\> The {\bf alignment} has been performed almost as described in \Sc{al}. We have used the LVDT callibration from the latest collimation alignment (see \Tb{al lvdt off}), then the track-based alignment method (with the final constraints) has been applied (see \Sc{al lhc res}). These have been followed by the profile alignment (\Sc{al prof}), but no elastic alignment (\Sc{al elast}) has  been performed. The reason has been to refrain from biasing the event selection in any way. However, an alternative of method 1 from \Sc{al elast} has been employed. For that a sample of low-$\xi$ protons has been used. In this way we have obtained the horizontal alignment with a reasonable precision (below $10\un{\mu m}$), but the vertical misalignment has remained of the order \Eq{al window to dp uncer} -- this will be addressed in the step ``final vertical alignment''.
 
-\> {\bf Optics tuning}.
+\> {\bf Optics tuning}. Various measurable quantities (including the elastic peak titls, see \Tb{al el yx}) have been used to finetune the optics by optimzing the rotations and strengths of the LHC magnets within their nominal uncertainties.
 
-\> {\bf Reconstruction}.
+\> In the {\bf reconstruction} step, the projections of the scattering angle at IP (see \Eq{ttm th x y}) are deduced from the RP measurements. For each projection a different strategy is used, in order to minimize the impact of the uncertainty of the optical functions. For the vertical projection ($y$), the phase advance $\phi+\phi_0$ in \Eq{ttm hill sol} is close to $0$, thereby maximizing the amplitude of $y$ and minimizing the impact of the phase advance uncertainties. In contrary, for the horizontal projection ($x$), the phase advance is close $\pi/2$. Consequently, it is better to use the angle $\th_x = \d x/\d s$, where the cosine term is replaced by a sine. With the given phase advance, the sine is close to its maximum, moreover the impact of phase advance variations is minimized. The angle $\th_x$ can be reconstructed within each station as $(x_{\rm F} - x_{\rm N}) / d$, where $d$ denotes the distance between near and far RPs (see \Tb{ttm rp station}). To summarize, the scattering angle projections have been reconstructed as follows:
+\eqref{\eqnarray{
+\hat \th_x^* &=& {1\over 2} \left [
+		{x^{56}_{\rm F} - x^{56}_{\rm N}\over L^{56}_{x,\rm F} - L^{56}_{x,\rm N}}
+		+ {x^{45}_{\rm F} - x^{45}_{\rm N}\over L^{45}_{x,\rm F} - L^{45}_{x,\rm N}}
+	\right]\cr
+\hat \th_y^* &=& {1\over 2} \left[
+		{1\over 2} \left( {y^{56}_{\rm F}\over L^{56}_{y, \rm F} } + {y^{56}_{\rm N}\over L^{56}_{y, \rm N} } \right)
+		+ {1\over 2} \left( {y^{45}_{\rm F}\over L^{45}_{y, \rm F} } + {y^{45}_{\rm N}\over L^{45}_{y, \rm N} } \right)
+	\right]\ ,
+}}{felm xy reco}
+where for example $x^{56}_{\rm F}$ is the $x$ component of the hit in the 56-220-far unit and $L^{56}_{x, \rm F}$ is the corresponding effective length. The magnification terms in \Eq{ttm lin par} are small for this optics and have been treated as a perturbation, such as the beam divergence.
 
-\> {\bf Event selection}.
+\> The elastic {\bf event selection} requires a track in each of the four pots of a diagonal. Moreover the cuts summarized in \Fg{felm cuts} are imposed.
 
 \> {\bf Final vertical alignment}.
+\>> \TODO{$\th_y$ matching between diagonals for the vertical alignment wrt. the beam.}
 
-\> {\bf Background subtraction}.
+\> {\bf Background subtraction}. The event-selection cuts have been applied on the $3\si$ level, thus one may expect a very good efficiency. However, there might have been handful of non-elastic events that have passed the cuts (i.e.~background). The background study presented in \Sc{felm bckg} is an updated version of the one published in \bref{totem11}. In the old one, the background was subtracted before the acceptance correction, as shown in \Fg{felm scheme}. This approach assumes the same acceptance corrections for signal (elastic scattering) and background. In the update version, the background acceptance correction is performed separately, and the background is subtracted only afterwards. Within \Fg{felm scheme}, it could be described by switching the background and acceptance correction steps.
 
-\> {\bf Acceptance correction}.
+\> The {\bf acceptance correction}, as described in \Sc{rp measurement}, is a procedure to correct for the finite size of RP detectors (in other words to correct for some elastic/background events not being detected.)
 
-\> {\bf Unsmearing}.
+\> The {\bf unsmearing} is a procedure that corrects for the finite resolution of the RPs detectors, for details see \Sc{felm unfold}.
 
-\> {\bf Normalization}.
+\> In the {\bf normalization} step, the relative frequency histograms $\d N/\d t$ are transformed in the differential cross-section histograms $\d\si/\d t$. For that, the luminosity and various efficiency factors (trigger, detection, reconstruction, etc.) are used.
 
-\> {\bf Merging diagonals}.
-
-
-
-Before going to details, let us (re)define the terminology used. The sector 45 (56) is called left (right) arm of the TOTEM experiment. The elastic events involve two protons with practically opposite directions (up to beam divergence). Thus from detector point of view, they split into two groups -- with top RPs active in the sector 45 (so called \em{diagonal} 45 top -- 56 bottom) or with top RPs active in the sector 56 (diagonal 45 bottom -- 56 top).
+\> {\bf Merging diagonals}. The results from both diagonals are merged and the final differential cross-section histogram is produced.
 
 
-\section{Background}
+
+
+
+\section[felm bckg]{Background}
 
 The elastic-event-selection cuts for the final analysis have evolved compared to those used in \Sc{al elast}. At the end six cuts have been used, as shown in \Fg{felm cuts}. They are qualitatively similar to those presented in \Fg{al el selection}, the cut condition could be written as
 \eqref{|q_i| < 3 \si_i\ ,}{felm cut}
@@ -189,11 +200,11 @@ with parameters
 The uncertainty has been obtained by varying the $b_x$ and $b_y$ parameters within their errors quoted in \Tb{felm fit}.
 \fi
 
-\section{Unfolding}
+\section[felm unfold]{Unfolding}
 
 The scattering angles $\th_x'$ and $\th_y'$ \footnote{
-In this section we will always mean the physics scattering angles (i.e. at the interaction point, see \Sc{rp measurement}). To meet our notation we should use star superscripts $^*$, however this would lead to expressions graphically difficult and thus we will drop them here. Moreover, we will use the traditional distinction between measured/reconstructed (with prime) and true/original (without primes) quantities.
-} are reconstructed by taking the average over the two one-arm measurements:
+In this section we will always mean the physics scattering angles (i.e.~at the interaction point, see \Sc{rp measurement}). To meet our notation from \Sc{rp measurement} we should use star superscripts $^*$, however this would lead to expressions graphically too heavy and thus we will drop them in this section. Moreover, we will use the traditional distinction between measured/reconstructed (with prime) and true/original (without primes) quantities.
+} are reconstructed by taking the average over the two one-arm measurements (the first terms in the square brackets of \Eq{felm xy reco} correspond to the left, the last terms to the right-arm measurements):
 \eqref{\th_x' \equiv {\th_x^{\rm L} + \th_x^{\rm R}\over 2} = \th_x + \De\th_x}{felm unf th err}
 and equivalently for the $y$ projection. The left and right angle measurements are subject to an error, our estimation of which is summarized by \Eq{elr th err proj sig}. We expect two main contributions: due to the beam-divergence ($\si_{\rm B} \approx 17\un{\mu rad}$) and due to the finite resolution of the silicon detectors (
 % Lx ~ 1.68 m, Ly ~ 21.45
