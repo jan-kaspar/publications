@@ -18,7 +18,7 @@ real s = 1/sqrt(2);
 transform rot = (0, 0, s, s, -s, s);
 
 for (int d_i: dates.keys) {
-	string name_f = "far: y_56 vs. y_45, full";
+	//string name_f = "far: y_56 vs. y_45, full";
 	string name_c = "far: y_56 vs. y_45, cut";
 	string file = "../alignment/elastic/"+dates[d_i]+"/alignment_analysis.root";
 	write(dates[d_i]);
@@ -26,10 +26,10 @@ for (int d_i: dates.keys) {
 	NewPad("$y_{45} \un{mm}$", "$y_{56} \un{mm}$");
 	//AddToLegend("far");
 	AddToLegend(Date(dates[d_i]));
-	draw(rot, rGetObj(file, name_f + "#1"), "p", darkred+opacity(0.2));
+	//draw(rot, rGetObj(file, name_f + "#1"), "p", darkred+opacity(0.2));
 	draw(rot, rGetObj(file, name_c + "#1"), "p", red);
-	draw(rot, rGetObj(file, name_f + "#3"), "p", darkblue+opacity(0.2));
-	draw(rot, rGetObj(file, name_c + "#3"), "p", blue);
+	//draw(rot, rGetObj(file, name_f + "#3"), "p", darkred+opacity(0.2)); // blue
+	draw(rot, rGetObj(file, name_c + "#3"), "p", red); // blue
 
 	//draw(rot, rGetObj(file, name_c + "#2"), "l", red);
 	//draw(rot, rGetObj(file, name_c + "#4"), "l", blue);

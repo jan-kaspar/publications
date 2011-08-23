@@ -94,7 +94,7 @@ void DrawDyY(int rp1, int rp2, int rp3, int rp4, real a, real b)
 	draw(rGetObj(file, diag2+"/cut 1/"+format("%u", rp3)+", "+format("%u", rp4)+": (y_F - y_N) vs. y_N"), "p", black);
 	
 	draw(rGetObj(file, diag1+"/cut 2/"+format("%u", rp1)+", "+format("%u", rp2)+": (y_F - y_N) vs. y_N"), "p", red);
-	draw(rGetObj(file, diag2+"/cut 2/"+format("%u", rp3)+", "+format("%u", rp4)+": (y_F - y_N) vs. y_N"), "p", blue);
+	draw(rGetObj(file, diag2+"/cut 2/"+format("%u", rp3)+", "+format("%u", rp4)+": (y_F - y_N) vs. y_N"), "p", red); //blue
 	
 	limits((-10, -0.3), (10, 0.3), Crop);
 	//AttachLegend(format("%u", rp1) +", " + format("%u", rp3));
@@ -132,7 +132,7 @@ void DrawXY(int rp1, int rp2, real a, real b)
 	draw(rGetObj(file, diag1+"/cut 3/"+format("%u", rp1)+": y vs. x"), "p", red);
 	
 	draw(rGetObj(file, diag2+"/cut 2/"+format("%u", rp2)+": y vs. x"), "p", black);
-	draw(rGetObj(file, diag2+"/cut 3/"+format("%u", rp2)+": y vs. x"), "p", blue);
+	draw(rGetObj(file, diag2+"/cut 3/"+format("%u", rp2)+": y vs. x"), "p", red); // blue
 	
 	limits((-2, -10), (2, 10), Crop);
 	AttachLegend("cut 3, 45 near");

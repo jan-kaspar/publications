@@ -22,12 +22,12 @@ for (int d_i: dates.keys) {
 	write(dates[d_i]);
 
 	NewPad("$x \un{mm}$", "$y \un{mm}$");
-	draw(switch, rGetObj(file, name + "#1"), "p", red);
-	draw(switch, rGetObj(file, name + "#3"), "p", blue);
+	draw(switch, rGetObj(file, name + "#1"), "p", black);
+	draw(switch, rGetObj(file, name + "#3"), "p", black); // blue
 
-	//draw(switch, rGetObj(file, name + "#2"), "l", red);
-	//draw(switch, rGetObj(file, name + "#4"), "l", blue);
-	draw(switch, rGetObj(file, name + "#5"), "l", black);
+	draw(switch, rGetObj(file, name + "#2"), "l", red);
+	draw(switch, rGetObj(file, name + "#4"), "l", blue);
+	draw(switch, rGetObj(file, name + "#5"), "l", heavygreen);
 
 	limits((-5, -10), (5, 10), Crop);
 	AddToLegend(Date(dates[d_i]));

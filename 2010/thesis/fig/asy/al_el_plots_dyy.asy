@@ -20,9 +20,9 @@ for (int d_i: dates.keys) {
 	string file = "../alignment/elastic/"+dates[d_i]+"/alignment_analysis.root";
 	write(dates[d_i]);
 
-	NewPad("$y_N \un{mm}$", "$y_F - y_N \un{mm}$");
+	NewPad("$y_{\rm N} \un{mm}$", "$y_{\rm F} - y_{\rm N} \un{mm}$");
 	draw(rGetObj(file, name + "#1"), "p", red);
-	draw(rGetObj(file, name + "#3"), "p", blue);
+	draw(rGetObj(file, name + "#3"), "p", red); // blue
 
 	//draw(rGetObj(file, name + "#2"), red);
 	//draw(rGetObj(file, name + "#4"), blue);

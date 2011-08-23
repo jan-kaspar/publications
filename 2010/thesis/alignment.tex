@@ -1170,7 +1170,7 @@ $$q(\hbox{reconstructed with thought geometry}) = q(\hbox{real}) - \De q$$
 
 The expected hit-distribution symmetries depend on the considered physical processes as well as on the optics. However, for the nominal optics, the vertical symmetry around the beam can be assumed quite generally. Was there no crossing-angle, the scattering at the IP would have full azimuthal symmetry (about the beam axis). Even if the crossing-angle is non-zero, it acts in the horizontal plane, thus the up-down symmetry is preserved. On the optics side, most of them are designed with vanishing vertical dispersion $D_y$ (however this will turn out false for the optics from 2010, see e.g.~\Fg{al prof hits}), therefore the vertical symmetry would remain also after the proton transport, that means it would be observable in the hit distribution (see e.g.~\Fg{al prof simu}).
 
-\fig{fig/pdf/al_prof_simu.pdf}{al prof simu}{A MC simulation of hit distributions at the RPs of the 56-220-near unit. The green points represent elastic scattering (Elegent, PPP3), blue SD (Pythia) and red DPE (Phojet). All processes simulated at $\sqrt s = 3.5\un{GeV}$ and with nominal optics with $\be^* = 2.5\un{m}$. The black solid lines are the contours of the sensors. The dotted lines represent symmetry axes, the middle black dot marks the position of the beam.}
+\fig{fig/pdf/al_prof_simu.pdf}{al prof simu}{A MC simulation of hit distributions at the RPs of the 56-220-near unit. The green points represent elastic scattering (Elegent, PPP3), blue SD (Pythia) and red DPE (Phojet). All processes simulated at $\sqrt s = 3500\un{GeV}$ and with nominal optics with $\be^* = 2.5\un{m}$. The black solid lines are the contours of the sensors. The dotted lines represent symmetry axes, the middle black dot marks the position of the beam.}
 
 \Fg{al prof simu} shows typical hit distributions (MC simulation) for several important forward-physics processes. Beyond the aforementioned vertical symmetry, one can immediately spot the horizontal symmetry of the green points (elastic scattering). The entire next section \Sc{al elast} will be devoted to the alignment with elastic scattering events, here let us comment on how to use this symmetry even without selecting a sample of elastic events. The ``hot spot'' close to $x\approx 0\un{mm}$ contains also a contribution from non-elastic processes with low $\xi$ (see for example the red dots -- DPE). Due to the horizontal dispersion, the hits are shifted to the right and the symmetry is broken. This can be well seen in \Fg{al prof x dists}: the elastic peak is narrow and close to zero, but the non-elastic events form a broad structure shifted towards higher $x$ values. But what is important is that around $x=0$, the distribution is dominated by elastics events and their peak can be well fitted, as illustrated in the figure.
 
@@ -1184,7 +1184,7 @@ The expected hit-distribution symmetries depend on the considered physical proce
 
 \> The \em{unexpected distribution of the diffractive hits} (around the magenta line), mainly for the sector 56. The distribution is tilted and deformed. We understand the tilt as an effect of non-zero vertical dispersion $D_y$. The dispersion terms in the proton transport \Eq{ttm lin par} then move diffractive protons along the axis with tilt $D_y/D_x$.
 
-\fig{fig/pdf/al_prof_x_dists.pdf}{al prof x dists}{Horizontal hit distributions in the 56-220-near-top pot (data from 29-30 Oct). Left: all hits, Right: one horizontal slice only. The peaks are mostly formed by elastic events, the background is dominated by DPE. The orange curves are Gaussian fits with a parabolic background.}
+\fig{fig/pdf/al_prof_x_dists.pdf}{al prof x dists}{Horizontal hit distributions in the 56-220-near-top pot (data from 29-30 October). Left: all hits, Right: one horizontal slice only. The peaks are mostly formed by elastic events, the background is dominated by DPE. The orange curves are Gaussian fits with a parabolic background.}
 
 As a consequence of the elastic peak tilt, the peaks in the $x$ distributions widen up, see \Fg{al prof x dists} left, and their centers do not correspond to the $x$ position of the beam. To mitigate this problem, one may divide the scatter plot into horizontal slices and fit the $x$ distributions for each of them (an example is in \Fg{al prof x dists} right; note the thinner peak). The results can then be plotted versus the center of the slice, see an example in \Fg{al prof fits} left. The vertical error bands represent the slice widths, the horizontal are coming from the peak fit uncertainty. The points in gray have been removed as outliers. The green line represents a common fit through the top and bottom pot data and it confirms that the tilt is the same for both RPs. Then, the green line shall go through the beam center.
 
@@ -1202,83 +1202,74 @@ Practically, the profile alignment is used as the step prior to the alignment wi
 
 \section[al elast]{Elastic Alignment}
 
-\TODO{Certain statements hold only for the low $\be$ optics.}
+In this section we will show how elastic events may be used for alignment purposes. In particular to determine the misalignments in the modes inaccessible to the track-based method. Regarding transverse shifts, these inaccessible modes can be described as horizontal ($x$) and vertical ($y$) shifts of the vertical RPs in each station (cf.~the final constraints \Eq{al final constraints}).
 
-One first needs to select a sample of elastic events...
+Before discussing the alignment application, let us show how to select elastic events. Elastically scattered protons retain the incident momentum, thus their momentum loss $\xi = 0$ and consequently the transport equation \Eq{ttm lin par} simplifies to
+\eqref{x(s) = L_x(s)\, \th_x^* + v_x(s)\, x^*\ .}{al el transport}
+We have written (and we will do so in what follows) the relation explicitly for the $x$ projection only, but for the $y$ projection an equivalent relation holds too. Now focusing on the standard 2010 optics with $\be^*=3.5\un{m}$ one may conclude that the second (vertex) term is negligible compared to the first one. Moreover the optics was almost left--right symmetric: $L_x(s) \approx - L_x(-s)$. Furthermore, the horizontal effective length $L_x$ was rather low, thus the elastic hits cumulated around $x\approx 0\un{mm}$ (cf.~\Fg{al prof hits}).
 
-The transport of elastic events can be well described as \TODO{reference}:
-\eqref{\eqnarray{
-q(s) &= L_q(s) \th_q^* + v_q(s) q^*\ ,& \qquad q = x, y\cr
-\th_q \equiv {\d q\over\d s} &= L_q'(s) \th_q^* + v_q'(s) q^*\ ,& \qquad L_q' \equiv {\d L_q\over \d s}\cr
-}}{el transport}
-Moreover, the vertex terms can be neglected \TODO{reference}. In addition, the optics is rather symmetric \TODO{reference}, that is:
-\eqref{L_q(s) \approx L_q(-s),\quad L_q'(s) \approx - L_q'(-s)\ .}{al el sym opt}
-Furthermore, the optics is such that the phase advance $\ph$ (see Hill's equation \Eq{hill eq}) at the $220\un{m}$ stations is close to $\pi/2$ in $x$ or $0$ in $y$ \TODO{reference}. This means that $L_x(220)$ almost vanishes, but $L_x'(220)$ is large and vice versa for the vertical projection.
 
-The $q(s)$ gives the true hit position (wrt. the beam), however a detector (i.e. a RP) misaligned by $\De q$ would make a measurement $q'$:
-\eqref{q' = q - \De q\ .}{al el misal}
-
-Later on, we will use the relation between the angle $\th_q$ and far-near difference $q_F - q_N$:
-\eqref{q_F - q_N = \th_q \, d\ ,}{al FN diff}
-where $d$ stands for the distance between far and near RPs (see \Tb{ttm rp station}).
-
-The above considerations will help us find the properties useful for both, elastic event selection and alignment.
-
-First of all, the angles left and right should be highly correlated. We recall that left stands for sector 45 and right for sector 56. Given the phase advance conditions make the angular resolution in $x$ much better, thus will focus on the horizontal projection. Using the far-near difference, one finds:
-\eqref{\De_{F-N} x^{56} \approx \underbrace{ {L_x^{56'}\over L_x^{45'}} }_{-1 + a} \De_{F-N} x^{45} + 
-\underbrace{ {L_x^{56'}\over L_x^{45'}} (\De x_F^{45} - \De x_N^{45}) - (\De x_F^{56} - \De x_N^{56}) }_{b} \ .
+Now considering that the RPs are actually shifted by $\De x$, a measurement by a RP can be written
+\eqref{x \approx L_x\, \th_x^* - \De x\ ,}{al el meas}
+where $L_x$ is the effective length corresponding to the RP. Then one can relate far-near hit difference measured in the sectors 45 and 56:
+\eqref{
+	x^{56}_{\rm F} - x^{56}_{\rm N} \equiv \De_{\rm F-N} x^{56} \approx
+	\underbrace{ {L_{x,\rm F}^{56} - L_{x,\rm N}^{56}\over L_{x,\rm F}^{45} - L_{x,\rm N}^{45} } }_{-1 + a} \De_{\rm F-N} x^{45} + 
+	\underbrace{ {L_{x,\rm F}^{56} - L_{x,\rm N}^{56}\over L_{x,\rm F}^{45} - L_{x,\rm N}^{45} } (\De x_{\rm F}^{45} - \De x_{\rm N}^{45}) - (\De x_{\rm F}^{56} - \De x_{\rm N}^{56}) }_{b} \ .
 }{al el dxdx}
-The small slope correction $a$ arises from small asymmetries in the optics, the intercept $b$ is an effect of the RP misalignments. The relation is, indeed, just an approximations -- this will be discussed later -- but let's remark that the elastic events will be distributed along the above line, see \Fg{al el selection} (cut 1).
+The small slope correction $a$ arises from small asymmetries in the optics, the intercept $b$ is an effect of the RP misalignments. This relation provides our first elastic-selection cut, see \Fg{al el selection} top row.
 
-When the vertex terms in \Eq{el transport} are negligible, there is a high correlation between the hit position and the track angle -- the hits will cumulate along line
-\eqref{\De_{F-N} y \approx
-\underbrace{ {L_y^{N'}\, d\over L_y^N} }_a y_N 
-+ \underbrace{ {L_y^{N'}\, d\over L_y^N} \De y_N - (\De y_F - \De y_N) }_b \ .
+To obtain our second cut, one may relate the far-near hit difference to the hit position in the RP:
+\eqref{
+	\De_{\rm F-N} y \approx
+	\underbrace{ {L_{y, \rm F} - L_{y, \rm N}\over L_{y, \rm N}} }_a y_N 
+	+ \underbrace{ {L_{y, \rm F} - L_{y, \rm N}\over L_y^N} \De y_N - (\De y_F - \De y_N) }_b \ .
 }{al el dyy}
+The parameters $a$ and $b$ give the slope and intercept of the line along which the elastic events cumulate, see \Fg{al el selection} middle row.
 
-In the above relation, we used the vertical projection, since the resolution in $x$ is poor -- $L_x\approx 0$ follows from the phase advance settings. This fact can also be used for elastic event selection. In \Sc{al prof} we saw that the actual optics gave rise to the tilts ($a$) of the elastic peaks, the axes of which can be described as
+Our third cut comes out from the observation that the elastic hits cumulate along a slightly-tilted vertical axis (see \Fg{al prof hits}). Denoting the tilt $a$ and considering that this axis shall go through the beam center $(-\De x, -\De y)$ yields the following relation.
 \eqref{x \approx ay + \underbrace{a \De y - \De x}_{b}\ .}{al el x} 
 
+All the cuts \Eq{al el dxdx,al el dyy,al el x} require ``the distance from a certain line to be smaller than a given threshold'', see the summary \Tb{al el cuts}. The distribution of events around the cut lines has two sources: the beam smearing and the proton transport approximations that we have made. These distributions have a Gaussian shape as can be seen in \Fg{al el selection} and their standard deviations have been used to set the cut thresholds -- they correspond to about $2.5$ multiple of the standard deviation.
 
-\tab[\strut\hfil\ #\ \hfil&\ #\ \hfil&\hfil\ #\ \hfil&\hfil\ #\ \hfil\cr]{al el cuts}{The cuts used for elastic event selection. The threshold gives the maximal permitted distance from the line. The right-most column gives the ratio of the threshold to the RMS of the distance-to-line distribution (see the rhs.~plots in \Fg{al el selection}).}{\ln
-cut & line & threshold & num.~of sigmas \cr\ln
-1 & $\De_{F-N} x^{56} = (-1+a) \De_{F-N} x^{45} + b$	& $80\un{\mu m}$	& $2.5$ \cr
-2 & $\De_{F-N} y = a y_N + b$							& $45\un{\mu m}$	& $2.5$ \cr
-3 & $x = ay + b$ 										& $400\un{\mu m}$	& $2.5$ \cr\ln
+
+\tab[\quad\bstrut\hfil\ #\ \hfil&\ #\ \hfil&\hfil\ #\ \hfil\qquad\cr]{al el cuts}{The cuts used for the elastic-event selection. The threshold gives the maximal permitted distance from the line. This permitted region is drawn as a green band in \Fg{al el selection}.}{\ln
+cut & line & threshold\cr\ln
+1 & $\De_{\rm F-N} x^{56} = (-1+a) \De_{\rm F-N} x^{45} + b$	& $80\un{\mu m}$ \cr
+2 & $\De_{\rm F-N} y = a y_{\rm N} + b$							& $45\un{\mu m}$ \cr
+3 & $x = ay + b$ 										& $400\un{\mu m}$ \cr\ln
 }
 
-The relations \Eq{al el dxdx,al el dyy,al el x} provide the basis for our elastic selection cuts. All of them can be expressed as ''distance from a line must be smaller than a given threshold.'' The details are summarized in \Tb{al el cuts}. The distribution of events around the cut lines has two sources: the beam smearing and the proton transport approximations that we have made. The distributions have a Gaussian shape as can be seen in \Fg{al el selection} and their RMS values were used to set the cut thresholds -- they roughly correspond to $2.5$ multiple of the RMS.
+The $a$ and $b$ cut parameters have been determined empirically in a few iterations. Starting with the values given by the ideal optics and no misalignments, a tentative selection has been made with very liberal thresholds. Then, new values of the $a$ and $b$ have been obtained by fitting the selected events. In the next iteration, stricter thresholds have been used.
 
-The $a$ and $b$ cut parameters were determined empirically in several iterations. Starting with the values coming from the ideal optics and no misalignments and with liberal cuts. After a selection, the resulting graphs were fitted and improved values of the cut parameters were obtained.
+Let us note that one could build more elastic-selection cuts than presented in \Tb{al el cuts}. A more complete list has been used for the first elastic scattering analysis as presented in \Sc{felm}, see in particular \Fg{felm cuts}. Still, the cuts used in this section provide a reasonably pure sample of elastic events, good for alignment purposes.
 
-\fig{fig/pdf/al_el_selection.pdf}{al el selection}{Selection of elastic events (data from 21 September). Each row corresponds to a cut. Left: the events before (black) and after (colorful) the cut. The red dots belong to 45 bottom -- 56 top diagonal, the blue to the other one. The lightgreen area represents the cut requirement. Right: the distribution of events around the cut line (black) with a Gaussian fit (red). The dotted lines show the cut thresholds, cf. \Tb{al el cuts}.}
 
-Since the relations \Eq{al el dxdx,al el dyy,al el x} involve the misalignment parameters, they can be used for alignment purposes. In the rest of this section we will present a few alignment methods. The first one is dedicated to the horizontal alignment, methods 2a-c are several attempts for the vertical alignment. As we will see later on, the precision of the absolute vertical alignment will to be fully satisfactory. That is why we will mention also methods 3 and 4, which can resolve certain relative components of the vertical alignment.
+\fig{fig/pdf/al_el_selection.pdf}{al el selection}{An illustration of the elastic-event selection cuts (data from 21 September). Each row corresponds to one cut. Left: the events before (black) and after (red) the cut. The light-green area represents the cut requirement. Right: the distribution of events around the cut line (black) with a Gaussian fit (red). The dotted lines show the cut thresholds, cf. \Tb{al el cuts}.}
+
+Since the relations \Eq{al el dxdx,al el dyy,al el x} involve the misalignment parameters, they can be used for alignment too. In the rest of this section we will present several alignment methods. The first one is dedicated to the horizontal alignment, methods two to four to the vertical alignment.
 
 \caption{Method 1}
 
-Vertical fit in $y$ vs.~$x$ plots. According to \Eq{al el x}, the horizontal shift $\De x = a \De y - b$. The $a$ and $b$ parameters are the result of the fit and $\De y$ can be determined from methods 2a-c. NB: the influence of $\De y$ is small because of the tilts $a$ are small (see \Tb{al el yx}). If $\De y$ would be of the order of $100\un{\mu m}$ and would completely neglect it, the error of $\De x$ would be of the order of $4\un{\mu m}$.
+This method is based on fitting the parameterization \Eq{al el x} through $y$ vs. $x$ data for each top-bottom RP pair. The fit yields the $a$ and $b$ parameters and the horizontal shift can be calculated as $\De x = a \De y - b$. In principle the vertical shift $\De y$ can be obtained from methods 2-4. If not, one does not make a large error by neglecting the $a\De y$ term. The vertical misalignment is of the order $100\un{\mu m}$ (see \Eq{al window to dp uncer}), the tilts $a$ are about $40\un{mrad}$ (see \Tb{al el yx}). Thus one may expect $a\De y \sim \O{4\un{\mu m}}$.
 
-The fits were performed with the parameterization \Eq{al el x}. To reduce the impact of any possible outliers, every hit was assigned weight (one of the suggested outlier treatments from \bref{millepede})
+The fits have been done in several iterations. To reduce the impact of any possible outliers (including non-elastic events passing the selection cuts), every hit has been assigned a weight (one of the suggested outlier treatments from \bref{millepede})
 \eqref{w = \left\lbrace \matrix{
 \strut 1				& \de < c_H \cr
 \strut c_H^2\over\de^2	& \de > c_H \cr
 }\right.\ ,\qquad c_H = 1.345\ .}{al el fit weight}
-Here, $\de$ stands for the ratio of the hit distance to the fit line and the RMS of the distance distribution. We made five fit iterations.
+Here, $\de$ stands for the ratio of the hit distance from the fit line and the standard deviation of the distance distribution. Before the first iteration all weights have been set to 1. In total five iterations have been performed. The uncertainty of the final fit has been determined as from the LS method (see e.g.~(6.24) in \bref{barlow}). As the error input, we assigned the standard deviation of the cut-line distance as the error of $x$ variable.The results are summarized in \Tb{al el yx}.
 
-The uncertainty of the fit was determined as from the Least-Squares method \TODO{reference}. As the error input, we assigned the RMS of the cut-line distance as the error of $x$ variable.
+An illustration of the method is shown in \Fg{al el plots yx}. Similar illustrations will be shown for all other methods. The left plot will always refer to the data from 5~October (an $18\si$ run with low statistics), while the right plot to data from 29-30~October (a $7\si$ run with high statistics).
 
-An illustration of the method is shown in \Fg{al el plots yx}. Similar illustrations will be shown for all other methods. The left plot will always be done for the data from 5~Oct (a $18\si$ run with low statistics), while the right plot from 29-30~Oct (a $7\si$ run with high statistics).
+The \Fg{al el plots yx} shows the separate top (red) and bottom (blue) RP fits are compatible with each other and the global fit (green). This means that the shifts of the top and bottom RPs are the same. This confirms that the track-base alignment, the previous step, has worked correctly.
 
-The \Fg{al el plots yx} shows the top and bottom RP fits (red and blue) are compatible with each other and the global one (green). This means that the shifts of the top and bottoms are the same. This confirms that the track-base alignment, the previous step, worked correctly.
 
-The results are summarized in \Tb{al el yx}.
+\fig{fig/pdf/al_el_plots_yx.pdf}{al el plots yx}{An illustration of the alignment method 1 (unit 45-220-far). The red (blue) line corresponds to a fit of top (bottom) RP hits only, the green line represents a global fit.}
 
-\fig{fig/pdf/al_el_plots_yx.pdf}{al el plots yx}{Illustration of the alignment method 1 (unit 45-220-far). The red line fits the red points only, similarly for the blue one. The green line represents a global fit.}
-
-\htab{al el yx}{The results of the elastic alignment method 1 -- vertical fits of y vs.~x data. Slope $a$ in $\rm mrad$, intercept $b$ in $\rm\mu m$.}{
+\htab{al el yx}{The results of the elastic alignment method 1 -- vertical fits of y vs.~x data. The slope $a$ in $\rm mrad$, the intercept $b$ in $\rm\mu m$. The errors are statistical only.}{
 \omit&\multispan8\bhrulefill\cr
-\omit&\multispan2\strut\bvrule\hfil 45 near\hfil & \multispan2\vrule\hfil 45 far\hfil  & \multispan2\vrule\hfil 56 near\hfil & \multispan2\vrule\hfil 56 far\hfil\cr
+\omit&\multispan2\strut\bvrule\hfil 45-near\hfil & \multispan2\vrule\hfil 45-far\hfil  & \multispan2\vrule\hfil 56-near\hfil & \multispan2\vrule\hfil 56-far\hfil\cr
 \omit&\multispan8\hrulefill\cr
 \omit\strut & a & b & a & b & a & b & a & b\cr\bln
 \hbox{21 Sep}    & -35.3 \pm    0.8& -33 \pm    4& -29.8 \pm    0.7& -46 \pm    3&  43.5 \pm    0.7& -23 \pm    3&  38.7 \pm    0.7& -26 \pm    3\cr\ln
@@ -1315,7 +1306,7 @@ The results are summarized in \Tb{al el y shift}. Comparing these to the method 
 
 \fig{fig/pdf/al_el_plots_y_shift.pdf}{al el plots y shift}{Illustration of the alignment method 2c (unit 56-220-far). The $y$ distribution from the bottom pot (blue) has been shifted to match the best to the distribution from the top pot (red).}
 
-\htab{al el y shift}{The results of the elastic alignment method 2 -- shift matching the $y$ distributions from the top and bottom pot. All values in $\rm \mu m$. The ucertainty can be estimated as a half of the bin size. Bin size $15\un{\mu m}$.}{
+\htab{al el y shift}{The results of the elastic alignment method 2 -- shift matching the $y$ distributions from the top and bottom pot. All values in $\rm \mu m$. The ucertainty can be estimated as a half of the bin size. Bin size $30\un{\mu m}$.}{
 \omit&\multispan4\bhrulefill\cr
 \omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
 \hbox{29-30 Oct} &   60 & -60 & 120 & 150 \cr\bln
@@ -1330,7 +1321,7 @@ In other words, the intercept gives the relative far-near vertical misalignment.
 
 The fits are performed in a similar manner as in method 1, with the difference that the RMS of distance-to-cut-line distribution is attributed to $\De_{F-N} y$ quantity. An example of the fits is shown if \Fg{al el plots dyy}. Again the one-side fits are compatible with each other and the global fit (with the exception of the red fit in the left-hand side plot). This means that the far-near misalignments are the same for top and bottom pots, a result that is expected after a track-based alignment step.
 
-\Tb{al el dyy} summarizes the results (left part) and provides a comparison to method 2a (right part) -- the $\De y$ results from \Tb{al el y full} were used to predict the intercepts. With the exception of the sector 56 measurement from 5 Oct data, all the differences lie below the estimated error.
+\Tb{al el dyy} summarizes the results (left part) and provides a comparison to method 2a (right part) -- the $\De y$ results from \Tb{al el y full} were used to predict the intercepts. With the exception of the sector 56 measurement from 5 October data, all the differences lie below the estimated error.
 
 \fig{fig/pdf/al_el_plots_dyy.pdf}{al el plots dyy}{Illustration of the alignment method 3 (sector 45). The red line fits the red points only (top pots), blue line blue points (bottom pot). The green line represents a global fit.}
 
