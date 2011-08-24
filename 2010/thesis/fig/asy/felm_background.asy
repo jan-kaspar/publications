@@ -29,6 +29,7 @@ void GetSignal(rObject o)
 	g_s = o.rExec("GetParameter", 1);
 }
 
+/*
 //----------------------------------------------------------------------------------------------------
 // INTEGRAL
 
@@ -89,14 +90,15 @@ limits((0, 1e-1), (2.5, 1e3), Crop);
 GShipout("felm_background_dist_tx");
 
 //--------------------
+*/
 
 NewPad("$|t|\un{GeV^2}$", "$\d N_{\rm B}/\d t$");
 scale(Linear, Log);
 draw(rGetObj(dir+"/mc2.root", "h_el"), red);
-draw(rGetObj(dir+"/mc2.root", "h_el|ffel"), heavygreen+1pt);
+draw(rGetObj(dir+"/mc2.root", "h_el|ffel"), heavygreen+2pt);
 
 draw(rGetObj(dir+"/mc2.root", "h_el_acc"), blue);
-draw(rGetObj(dir+"/mc2.root", "h_el_acc|ffel"), heavygreen+1pt);
+draw(rGetObj(dir+"/mc2.root", "h_el_acc|ffel"), heavygreen+2pt);
 limits((0, 1e1), (2.5, 1e6), Crop);
 
 GShipout("felm_background_dist_t_el");
@@ -108,10 +110,15 @@ NewPage();
 NewPad("$|t|\un{GeV^2}$", "$\d N/\d t$");
 scale(Linear, Log);
 draw(shift(0, log10(1/0.05)), rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "h_t"), black+1pt, "signal+background");
+
+//old background calculation
 draw(rGetObj(dir+"/background_with_errors2_45b_56t.root", "bckg_with_err"), "l,ec", red+1pt, "background new");
+draw(rGetObj(dir+"/background_with_errors_45b_56t.root", "bckg_with_err"), "l,ec", green+1pt, "background old");
 
 draw(rGetObj(dir+"/mc2.root", "h_el_acc"), blue);
 draw(rGetObj(dir+"/mc2.root", "h_el_acc|ffel"), black+1pt);
+
+draw(rGetObj(dir+"/mc2.root", "h_el"), red);
 
 limits((0, 1e1), (2.5, 1e6), Crop);
 yaxis(XEquals(0.36, false), dashed);

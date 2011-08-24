@@ -6,19 +6,17 @@ DPE, SD, MC
 
 This chapter is devoted to the first measurement of the elastic scattering differential cross-section at the LHC. This achievement, published in \bref{totem11}, is a result of efforts of the entire TOTEM collaboration. After a brief overview of the analysis procedure, we will focus on the contributions by the author of this thesis.
 
-This analysis is based on the data from 29-30 October, when the RPs were approached to $7\si$ from the beam and the LHC was running at the standard 2010 optics with $\be^* = 3.5\un{m}$. The horizontal pots were inserted only at the end of the run, just for alignment reasons. Most of the running time they were retracted not to distort the elastic proton measurement (done with vertical pots only, see e.g.~\Fg{ttm hit distribution} right). The event sample used for the analysis (with horizontal RPs retracted) corresponds to an integrated luminosity of $6.1\un{nb^-1}$.
-
-\TODO{only 220 stations}
+This analysis is based on the data from 29-30 October, when the RPs were approached to $7\si$ from the beam and the LHC was running at the standard 2010 optics with $\be^* = 3.5\un{m}$. Only the $220\un{m}$ stations were used. The horizontal pots were inserted only at the end of the run, just for alignment reasons. Most of the running time they were retracted not to distort the elastic proton measurement (done with vertical pots only, see e.g.~\Fg{ttm hit distribution} right). The event sample used for the analysis (with horizontal RPs retracted) corresponds to an integrated luminosity of $6.1\un{nb^-1}$.
 
 \fig{fig/pdf/felm_scheme.pdf}{felm scheme}{The analysis work-flow, from raw data to the differential cross-section of the elastic scattering.}
 
 \Fg{felm scheme} reviews the analysis steps, each of them is briefly described below. But before going into details, let us explain the terminology used. The sector 45 (56) is called left (right) arm of the TOTEM experiment. The elastic events involve two protons with practically opposite directions (up to beam divergence). Thus from detector point of view, they split into two groups -- with top RPs active in the sector 45 (so called \em{diagonal} 45 top -- 56 bottom) or with top RPs active in the sector 56 (diagonal 45 bottom -- 56 top).
 
-\> The {\bf alignment} has been performed almost as described in \Sc{al}. We have used the LVDT callibration from the latest collimation alignment (see \Tb{al lvdt off}), then the track-based alignment method (with the final constraints) has been applied (see \Sc{al lhc res}). These have been followed by the profile alignment (\Sc{al prof}), but no elastic alignment (\Sc{al elast}) has  been performed. The reason has been to refrain from biasing the event selection in any way. However, an alternative of method 1 from \Sc{al elast} has been employed. For that a sample of low-$\xi$ protons has been used. In this way we have obtained the horizontal alignment with a reasonable precision (below $10\un{\mu m}$), but the vertical misalignment has remained of the order \Eq{al window to dp uncer} -- this will be addressed in the step ``final vertical alignment''.
+\> The {\bf alignment} has been performed almost as described in \Sc{al}. We have used the LVDT callibration from the latest collimation alignment (see \Tb{al lvdt off}), then the track-based alignment method (with the final constraints) has been applied (see \Sc{al lhc res}). These have been followed by the profile alignment (\Sc{al prof}), but no elastic alignment (\Sc{al elast}) has  been performed. The reason has been to refrain from biasing the event selection in any way. However, an alternative of method 1 from \Sc{al elast} has been employed. For that a sample of low-$\xi$ protons has been used. In this way we have obtained the horizontal alignment with a reasonable precision (below $10\un{\mu m}$), but the vertical misalignment has remained of the order $\O{100\un{\mu m}}$ (see \Eq{al window to dp uncer}) -- this will be addressed in the step ``final vertical alignment''.
 
 \> {\bf Optics tuning}. Various measurable quantities (including the elastic peak titls, see \Tb{al el yx}) have been used to finetune the optics by optimzing the rotations and strengths of the LHC magnets within their nominal uncertainties.
 
-\> In the {\bf reconstruction} step, the projections of the scattering angle at IP (see \Eq{ttm th x y}) are deduced from the RP measurements. For each projection a different strategy is used, in order to minimize the impact of the uncertainty of the optical functions. For the vertical projection ($y$), the phase advance $\phi+\phi_0$ in \Eq{ttm hill sol} is close to $0$, thereby maximizing the amplitude of $y$ and minimizing the impact of the phase advance uncertainties. In contrary, for the horizontal projection ($x$), the phase advance is close $\pi/2$. Consequently, it is better to use the angle $\th_x = \d x/\d s$, where the cosine term is replaced by a sine. With the given phase advance, the sine is close to its maximum, moreover the impact of phase advance variations is minimized. The angle $\th_x$ can be reconstructed within each station as $(x_{\rm F} - x_{\rm N}) / d$, where $d$ denotes the distance between near and far RPs (see \Tb{ttm rp station}). To summarize, the scattering angle projections have been reconstructed as follows:
+\> In the {\bf reconstruction} step, the projections of the scattering angle at IP (see \Eq{ttm th x y}) are deduced from the RP measurements. For each projection a different strategy is used, in order to minimize the impact of the uncertainty of the optical functions. For the vertical projection ($y$), the phase advance $\phi+\phi_0$ in \Eq{ttm hill sol} is close to $0$, thereby maximizing the amplitude of $y$ and minimizing the impact of the phase advance uncertainties. Thus the scattering angle can be determined directly from $y$ (cf. \Eq{ttm lin par}): $\th_y^* = y/L_y$. In contrary, for the horizontal projection ($x$), the phase advance is close $\pi/2$. Consequently, it is better to use the angle $\th_x = \d x/\d s$, where the cosine term is replaced by a sine. With the given phase advance, the sine is close to its maximum, moreover the impact of phase advance variations is minimized. The angle $\th_x$ can be reconstructed within each station as $(x_{\rm F} - x_{\rm N}) / d$, where $d$ denotes the distance between near and far RPs (see \Tb{ttm rp station}). To summarize, the scattering angle projections have been reconstructed as follows:
 \eqref{\eqnarray{
 \hat \th_x^* &=& {1\over 2} \left [
 		{x^{56}_{\rm F} - x^{56}_{\rm N}\over L^{56}_{x,\rm F} - L^{56}_{x,\rm N}}
@@ -29,12 +27,14 @@ This analysis is based on the data from 29-30 October, when the RPs were approac
 		+ {1\over 2} \left( {y^{45}_{\rm F}\over L^{45}_{y, \rm F} } + {y^{45}_{\rm N}\over L^{45}_{y, \rm N} } \right)
 	\right]\ ,
 }}{felm xy reco}
-where for example $x^{56}_{\rm F}$ is the $x$ component of the hit in the 56-220-far unit and $L^{56}_{x, \rm F}$ is the corresponding effective length. The magnification terms in \Eq{ttm lin par} are small for this optics and have been treated as a perturbation, such as the beam divergence.
+where for example $x^{56}_{\rm F}$ is the $x$ component of the hit in the 56-220-far unit and $L^{56}_{x, \rm F}$ is the corresponding effective length. 
+
+\par\parindent\itindent\indent\hang
+Let us comment on the vertex terms (see \Eq{ttm lin par}) that might seem to be omitted in our reconstruction formulae \Eq{felm xy reco}. The typical values of the magnification $v_{x, y}$ were about $-3.5$, the vertex smearing (see \Eq{ttm beam sigma}) was about $20\un{\mu m}$. Thus the vertex terms lead to a fluctuation with spread about $70\un{\mu m}$. However, the form \Eq{felm xy reco} is such that most of the vertex terms cancels. The differences between the magnifications left and right and near and far are on the level of $0.1$. Consequently the net effect of the vertex terms to the reconstruction is of the order $0.1 \cdot 20\un{\mu m} = 2\un{\mu m}$, which can be treated as small (random) perturbation.
 
 \> The elastic {\bf event selection} requires a track in each of the four pots of a diagonal. Moreover the cuts summarized in \Fg{felm cuts} are imposed.
 
-\> {\bf Final vertical alignment}.
-\>> \TODO{$\th_y$ matching between diagonals for the vertical alignment wrt. the beam.}
+\> {\bf Final vertical alignment}. After the initial alignment (the first step in \Fg{felm scheme}), the vertical alignment with respect to the beam has been rather unsatisfactory, causing a shift $\De\th_y^*$ in the reconstructed vertical scattering angle $\hat \th_y^*$. Since the distribution of true vertical angles $\th_y^*$ is symmetric about zero, the reconstructed vertical angles $\hat\th_y^*$ are symmetric about $\De\th_y^*$. Due to the limited acceptance, only the tails of the $\hat\th_y^*$ distribution are available (each tail from one diagonal). This situation is very similar to fitting $y$ distributions in method 2 in \Sc{al elast}. Thus also the method (see \Fg{al el shift test}) could have been reused.
 
 \> {\bf Background subtraction}. The event-selection cuts have been applied on the $3\si$ level, thus one may expect a very good efficiency. However, there might have been handful of non-elastic events that have passed the cuts (i.e.~background). The background study presented in \Sc{felm bckg} is an updated version of the one published in \bref{totem11}. In the old one, the background was subtracted before the acceptance correction, as shown in \Fg{felm scheme}. This approach assumes the same acceptance corrections for signal (elastic scattering) and background. In the update version, the background acceptance correction is performed separately, and the background is subtracted only afterwards. Within \Fg{felm scheme}, it could be described by switching the background and acceptance correction steps.
 
@@ -64,7 +64,10 @@ As \Eq{felm cut} suggests, all cuts have been applied on a $3\si$-level. Therefo
 
 The task can be split into two parts: the \em{integral}, the number of background events which have passed the selection, and the \em{distribution}, the contribution of background to the elastic $t$-distribution.
 
-But before the analysis, let us mention what background contributions we expect. Since these data were taken in a low luminosity run (\TODO{avg. num. of in. per bunch cr.}), we expect the pile-up contributions (SD, beam gas, etc.) to be dominated by DPE. For DPE, a naive cross-section guess could be \TODO{ref}
+But before the analysis, let us mention what background contributions we expect. Since these data were taken in a low luminosity run
+%\TODO{avg. num. of in. per bunch cr.})
+, we expect the pile-up contributions (SD, beam gas, etc.) to be dominated by DPE. For DPE, a naive cross-section guess could be
+%\TODO{ref}
 \eqref{{\d\si^{\rm DPE}\over\d\xi_{\rm L} \d t_{\rm L} \d\xi_{\rm R} \d t_{\rm R} } \propto {\e^{-b t_{\rm L}}\over \xi_{\rm L}} {\e^{-b t_{\rm R}}\over \xi_{\rm R}}\ .}{felm dpe cs}
 
 \caption{The integral}
@@ -79,7 +82,9 @@ Such a procedure can be repeated for each cut quantity, in principle yielding si
 
 \fig{fig/pdf/felm_background_int_dg_fit.pdf}{felm background int dg fit}{An example of the one-cut-quantity distributions (diagonal 45 bottom -- 56 top). The blue curve represents a double-Gaussian fit, with the red curve being its background part.}
 
-Two examples of the one-cut-quantity distributions are shown in \Fg{felm background int dg fit}. It turns out reasonable to describe the signal+background data as a superposition of two Gaussians (\TODO{1: $\ch^2/\hbox{ndf} = 1.6$, 4: $3.1$}). Although the $\ch^2/\hbox{ndf} \approx$ in both shown cases, there is an important difference. For cut 1 (left), there are enough background events on both sides of the signal peak. Thus, the background fit is trustworthy. In contrary, for cut 4 (right), there is nearly no background in the right tail -- the fit is doubtful in this case. Unfortunately this the case for most cuts. It is related to a simple observation that every cut has a different discrimination power. From this point of view, cut 1 is the best one and that is why there is enough background at both tails, allowing for a reasonable fit.
+Two examples of the one-cut-quantity distributions are shown in \Fg{felm background int dg fit}. It turns out reasonable to describe the signal+background data as a superposition of two Gaussians.
+%\TODO{1: $\ch^2/\hbox{ndf} = 1.6$, 4: $3.1$}). Although the $\ch^2/\hbox{ndf} \approx$ in both shown cases
+There is an important difference between the two plots. For cut 1 (left), there are enough background events on both sides of the signal peak. Thus, the background fit is trustworthy. In contrary, for cut 4 (right), there is nearly no background in the right tail -- the fit is doubtful in this case. Unfortunately this the case for most cuts. It is related to a simple observation that every cut has a different discrimination power. From this point of view, cut 1 is the best one and that is why there is enough background at both tails, allowing for a reasonable fit.
 
 Besides the double-Gauss fits we have tried single-Gauss fits through the tail data only. Eventually, we have calculated a weighted mean (the weight reflecting our confidence in a given result), yielding the values in \Tb{felm bckg int result}.
 
@@ -118,32 +123,28 @@ Therefore, there is no correlation created by the trigger.
 \fig{fig/pdf/felm_background_dist_tx.pdf}{felm background dist tx}{[7cm]The observed $t_x$-distribution (left arm, diagonal 45 bottom -- 56 top) with an $\exp(b t_x)/\sqrt{-t_x}$ fit (red curve).}
 \emfig
 
-An example of such a one-side distribution is shown in \Fg{felm background dist txty}. To build the histogram, we have used only the events that have failed cut 1 ($\th_x$ collinearity), which anyway provides most background events. One can clearly see the acceptance cut around $|t_y| = 0.3\un{GeV^2}$ \TODO{ref to table?}, the effect of the of the last $\Th$ function in \Eq{felm bckg dist obs}. The distribution seems decreasing exponentially with $t = t_x + t_y$, something one would naively expect from the DPE cross-section \Eq{felm dpe cs}. However, if $t$ was distributed exponentially $\exp(b t)$, the corresponding distribution of $t_x$ and $t_y$ would be $\exp(b t_x + b t_y)/\sqrt{t_x t_y}$
+An example of such a one-side distribution is shown in \Fg{felm background dist txty}. To build the histogram, we have used only the events that have failed cut 1 ($\th_x$ collinearity), which anyway provides most background events. One can clearly see the acceptance cut around $|t_y| = 0.3\un{GeV^2}$ (see also \Tb{felm bckg results}), the effect of the of the last $\Th$ function in \Eq{felm bckg dist obs}. The distribution seems decreasing exponentially with $t = t_x + t_y$, something one would naively expect from the DPE cross-section \Eq{felm dpe cs}. However, if $t$ was distributed exponentially $\exp(b t)$, the corresponding distribution of $t_x$ and $t_y$ would be $\exp(b t_x + b t_y)/\sqrt{t_x t_y}$
 %(the square-root factor comes from the Jacobian)
 . Moreover, we reconstruct the background protons as elastic: the effect of non-zero $\xi$ is absorbed into the observed $t_x$ vs.~$t_y$ distribution. Since the dispersion acts mostly in the horizontal direction, we may expect the $t_x$-distribution to be altered. This consideration has led us to try the suggested parameterization with $b$'s independent for $x$ and $y$:
 \eqref{h_{\rm O}(t_x, t_y) \propto {\e^{b_x t_x}\over \sqrt{-t_x}} {\e^{b_y t_y}\over \sqrt{-t_y}}\ .}{felm dist param}
 
 As a first test, one can compare the $t_x$-distribution with the $x$ part of the suggested parameterization. \Fg{felm background dist tx} shows an excellent match. Then, we have performed a careful fit of the $t_x$ vs. $t_y$ data. For that we have cut off the part of the histogram which is full of empty bins and we have removed the closest bins to the acceptance cut. The resulting bin selection is shown as the red dashed triangle in \Fg{felm background dist txty}. The results of the fit are summarized in \Tb{felm fit}, note the very good $\ch^2$ (with about 120 bins contributing). Whereas the slopes are clearly different between the $x$ and $y$ projection, their values are consistent within all four fits. This has led us to the conclusion that the background distribution is the same left and right and for both diagonals. Further on, we will use the mean slopes (last row of the table). The error of the mean has been calculated as the standard deviation of the 4 measurements divided by $\sqrt{n = 4}$.
 
-\tab{felm fit}{The result of a fit of parameterization \Eq{felm dist param} through $t_x$ vs.~$t_y$ data. \TODO{transpose to match the other tables}}{
-\multispan2&\multispan3\bhrulefill\cr
-\multispan2&\omit\bvrule\bstrut\hfil\tskip $b_x\ \rm (GeV^{-2})$\tskip\hfil& b_y\ \rm (GeV^{-2}) & \ch^2/\hbox{ndf}\cr
-\multispan2\bhrulefill&\multispan3\bhrulefill\cr
-& \hbox{left} & 3.3 \pm 0.2 & 5.4 \pm 0.2 & 1.5\cr
-\multispan1\vbox to 0pt{\vss\hbox{ 45 bottom -- 56 top }\vss}&\multispan4\hrulefill\cr
-& \hbox{right} & 2.1 \pm 0.2 & 4.9 \pm 0.2 & 0.8\cr
-\bln
-& \hbox{left} & 2.5 \pm 0.2 & 4.7 \pm 0.2 & 1.1\cr
-\multispan1\vbox to 0pt{\vss\hbox{ 45 top -- 56 bottom }\vss}&\multispan4\hrulefill\cr
-& \hbox{right} & 2.7 \pm 0.2 & 4.5 \pm 0.2 & 0.9\cr
-\bln
-\multispan1&\omit\bvrule\bstrut\tskip\hbox{mean}\tskip& 2.7 \pm 0.3 & 4.9\pm 0.2&\cr
-\multispan1&\multispan4\bhrulefill\cr
+\tab[\bvrule\hfil\ #\ \hfil&\bvrule\bstrut\hfil\ #\ \hfil&\vrule\hfil\ #\ \hfil&\vrule\hfil\ #\ \hfil&\vrule\hfil\ #\ \hfil&\bvrule\hfil\ #\ \hfil\bvrule\cr]{felm fit}{The result of a fit of parameterization \Eq{felm dist param} through $t_x$ vs.~$t_y$ data.}{%
+\omit&\multispan4\bhrulefill&\omit\cr
+\omit&\multispan2\bstrut\bvrule\hfil 45 bottom -- 56 top\hss&\multispan2\vrule\hss\hbox{45 top -- 56 bottom}\hss&\omit\bvrule\hss\cr
+\omit&\multispan4\hrulefill&\omit\bhrulefill\cr
+\omit&left&right&left&right&mean\cr\bln
+$b_x\ ({\rm GeV^{-2}})$ & $3.3 \pm 0.2$ & $2.1 \pm 0.2$ & $2.5 \pm 0.2$ & $2.7 \pm 0.2$ & $2.7 \pm 0.3$\cr\ln
+$b_y\ ({\rm GeV^{-2}})$ & $5.4 \pm 0.2$ & $4.9 \pm 0.2$ & $4.7 \pm 0.2$ & $4.5 \pm 0.2$ & $4.9\pm 0.2$\cr
+\multispan5\hrulefill&\omit\bhrulefill\cr
+$\ch^2/\hbox{ndf}$ & 1.5 & 0.8& 1.1 &\omit\vrule\hfil 0.9\hfil\bvrule & \omit\cr
+\multispan5\bhrulefill&\omit\cr
 }
 
 \caption{The background contribution to the elastic $t$-distribution}
 
-Our fit \Eq{felm dist param} determines the two-proton background distribution \Eq{felm bckg dist fact} up to a normalization constant. But this is fixed by the known integral of the background events, see \Tb{felm bckg int result}. This integral gives the number of observed (i.e. within acceptance) background events that satisfy the selection cuts. It can be calculated as:
+Our fit \Eq{felm dist param} determines the two-proton background distribution \Eq{felm bckg dist fact} up to a normalization constant. But this is fixed by the known integral of the background events, see \Tb{felm bckg int result}. This integral gives the number of observed (i.e.~within acceptance) background events that satisfy the selection cuts. It can be calculated as:
 \eqref{\eqnarray{
 N_{\rm B} & = & \int \d t_x^{\rm L}\, \d t_y^{\rm L}\, \d t_x^{\rm R}\, \d t_y^{\rm R}\ h_{\rm 2p}(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R})
 	\ \Th(\hbox{acceptance})\ \Th(\hbox{selection})\ ,\cr
@@ -170,11 +171,11 @@ where $\Th(\hbox{acceptance})$ requires the $t$ values to be such that the event
 
 \> one could add $\Th(\hbox{acceptance})$ to get the el-like bckg before the acceptance correction.
 
-\> one can parameterize
+\> one can parameterize - how were the parameters calculated and their errors
 
 \eqref{{\d N_{\rm B, el}\over \d t} = a \e^{b t + c t^2}}{felm bckg el t dist param}
 
-\tab{felm bckg results}{bla}{
+\tab{felm bckg results}{\TODO{after acceptance correction = without acceptance requirement}}{
 \omit&\multispan2\bhrulefill\cr
 \omit&\omit\bvrule\bstrut\tskip 45 bottom -- 56 top\tskip&\hbox{45 top -- 56 bottom}\cr\bln
 |t_{y}^{\rm L}|_{\rm min}\ \rm (GeV^{-2}) & 0.315 \pm 0.01 & 0.335 \pm 0.01\cr\ln
@@ -185,8 +186,8 @@ c\ \rm (GeV^{-4}) & 0.4 \pm 0.1 & 0.4 \pm 0.1 \cr\bln
 }
 
 \bmfig
-\fig{fig/pdf/felm_background_dist_t_el.pdf}{felm background dist t el}{[7cm]The background contamination in the elastic $t$-distribution before acceptance correction (blue) and after (red).  The green curves represent fits according to parameterization \Eq{felm bckg el t dist param}. \TODO{Update me}}
-\fig{fig/pdf/felm_background_cmp.pdf}{felm background cmp}{[7cm]A signal-to-background comparison (for diagonal 45 bottom -- 56 top), before acceptance correction. Black: signal+background, blue: background estimation. Red: THE OLD estimate. \TODO{dashed line as for unfolding} \TODO{Update me}}
+\fig{fig/pdf/felm_background_dist_t_el.pdf}{felm background dist t el}{[7cm]The background contamination in the elastic $t$-distribution from one diagonal. Before acceptance correction (blue) and after (red). The green curves represent fits according to parameterization \Eq{felm bckg el t dist param}.}
+\fig{fig/pdf/felm_background_cmp.pdf}{felm background cmp}{[7cm]A signal-background comparison (for diagonal 45 bottom -- 56 top), before acceptance correction. Black: signal+background, blue: background estimation. Red: THE OLD estimate. \TODO{dashed line as for unfolding} \TODO{Update me}}
 \emfig
 
 \iffalse
@@ -213,7 +214,7 @@ $\si_{\rm R} \approx 0.4\un{\mu rad}$ for $y$ and $5.7\un{\mu rad}$ for $x$ proj
 
 Suppose that $h(\th)$ is the true distribution of the (non-smeared) scattering angle $\th$
 %($h(\th)$ proportional to $\d\si/\d\th$ cross-section)
-. Then, after the acceptance correction etc., we would reconstruct a distribution $h'(\th')$ smeared due to the final angular resolution. These distributions can be related by an integral transformation (see e.g. \TODO{ref}):
+. Then, after the acceptance correction etc., we would reconstruct a distribution $h'(\th')$ smeared due to the final angular resolution. These distributions can be related by an integral transformation (see e.g.~Sc.~16.6.1 in \bref{riley10} or Sc.~1.8.2 in \bref{becvar}):
 \eqref{h'(\th') = \int {\d\ph\over 2\pi} \int \d\De\th_x\ G(\De\th_x) \int \d\De\th_y\ G(\De\th_y)
 	\ \left| \d\th\over\d\th' \right|\ h(\th)\ ,
 }{felm unf sm model}

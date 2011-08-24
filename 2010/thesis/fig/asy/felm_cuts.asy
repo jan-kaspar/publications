@@ -3,8 +3,8 @@ import pad_layout;
 
 StdFonts();
 
-xSizeDef = 5cm;
-ySizeDef = 5cm;
+xSizeDef = 5.5cm;
+ySizeDef = 4cm;
 
 string dir = "../background";
 
@@ -66,7 +66,7 @@ for (int i = 0; i < 6; ++i) {
 	AttachLegend("cut "+format("%u", i+1));
 }
 
-GShipout(hSkip=10mm, vSkip=2mm);
+GShipout(hSkip=7mm, vSkip=2mm);
 
 /*
 
