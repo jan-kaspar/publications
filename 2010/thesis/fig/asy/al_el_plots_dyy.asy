@@ -21,12 +21,12 @@ for (int d_i: dates.keys) {
 	write(dates[d_i]);
 
 	NewPad("$y_{\rm N} \un{mm}$", "$y_{\rm F} - y_{\rm N} \un{mm}$");
-	draw(rGetObj(file, name + "#1"), "p", red);
-	draw(rGetObj(file, name + "#3"), "p", red); // blue
+	draw(rGetObj(file, name + "#1"), "p", black);
+	draw(rGetObj(file, name + "#3"), "p", black); // blue
 
-	//draw(rGetObj(file, name + "#2"), red);
-	//draw(rGetObj(file, name + "#4"), blue);
-	draw(rGetObj(file, name + "#5"), black);
+	draw(rGetObj(file, name + "#2"), red+1pt);
+	draw(rGetObj(file, name + "#4"), blue+1pt);
+	draw(rGetObj(file, name + "#5"), heavygreen+1pt);
 
 	limits((-12, -0.5), (+12, +0.5), Crop);
 	

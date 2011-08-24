@@ -2,7 +2,7 @@ unitsize(1cm);
 
 StdFonts();
 
-real mean = 0, sigma = 0.7, amp = 5;
+real mean = 0, sigma = 0.7, amp = 3;
 
 void DrawGauss(real x_min = -4sigma, real x_max = +4sigma, pen p=black)
 {
@@ -24,8 +24,8 @@ DrawGauss(x_max=f_B, blue);
 DrawGauss(x_min=-f_B, heavygreen+1pt);
 
 draw(Label("center", 1), (0, 0)--(0, 1.1amp), dashed);
-draw(Label("$f_B$", 0), (f_B, 0)--(f_B, 0.2amp), blue+dashed);
-draw(Label("$f_T$", 0), (f_T, 0)--(f_T, 0.8amp), red+dashed);
+draw(Label("$f_{\rm B}$", 0), (f_B, 0)--(f_B, 0.2amp), blue+dashed);
+draw(Label("$f_{\rm T}$", 0), (f_T, 0)--(f_T, 0.8amp), red+dashed);
 
 draw((-f_B, 0.1amp)--(-f_B, 0.8amp), heavygreen+dashed);
 

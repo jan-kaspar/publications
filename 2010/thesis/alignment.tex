@@ -11,8 +11,6 @@ What is important is the relative position between RP sensors (the other parts d
 
 Coordinate system such that the beam is at x=y=0
 
-\> define internal misalignments ?
-
 \caption{Alignment procedure}
 
 Three steps:
@@ -1251,14 +1249,15 @@ Since the relations \Eq{al el dxdx,al el dyy,al el x} involve the misalignment p
 
 \caption{Method 1}
 
-This method is based on fitting the parameterization \Eq{al el x} through $y$ vs. $x$ data for each top-bottom RP pair. The fit yields the $a$ and $b$ parameters and the horizontal shift can be calculated as $\De x = a \De y - b$. In principle the vertical shift $\De y$ can be obtained from methods 2-4. If not, one does not make a large error by neglecting the $a\De y$ term. The vertical misalignment is of the order $100\un{\mu m}$ (see \Eq{al window to dp uncer}), the tilts $a$ are about $40\un{mrad}$ (see \Tb{al el yx}). Thus one may expect $a\De y \sim \O{4\un{\mu m}}$.
+This method is based on fitting the parameterization \Eq{al el x} through $y$ vs. $x$ data for each top-bottom RP pair. The fit yields the $a$ and $b$ parameters and the horizontal shift can be calculated as $\De x = a \De y - b$. In principle the vertical shift $\De y$ can be obtained from methods 2-4. If not, one does not make a large error by neglecting the $a\De y$ term. The vertical misalignment is of the order $100\un{\mu m}$ (see \Eq{al window to dp uncer}), the tilts $a$ are about $40\un{mrad}$ (see \Tb{al el yx}). Thus one may expect
+\eqref{\De x = - b + \O{4\un{\mu m}}\ .}{al el m1 de x}
 
 The fits have been done in several iterations. To reduce the impact of any possible outliers (including non-elastic events passing the selection cuts), every hit has been assigned a weight (one of the suggested outlier treatments from \bref{millepede})
 \eqref{w = \left\lbrace \matrix{
 \strut 1				& \de < c_H \cr
 \strut c_H^2\over\de^2	& \de > c_H \cr
 }\right.\ ,\qquad c_H = 1.345\ .}{al el fit weight}
-Here, $\de$ stands for the ratio of the hit distance from the fit line and the standard deviation of the distance distribution. Before the first iteration all weights have been set to 1. In total five iterations have been performed. The uncertainty of the final fit has been determined as from the LS method (see e.g.~(6.24) in \bref{barlow}). As the error input, we assigned the standard deviation of the cut-line distance as the error of $x$ variable.The results are summarized in \Tb{al el yx}.
+Here, $\de$ stands for the ratio of the hit distance from the fit line and the standard deviation of the distance distribution. Before the first iteration all weights have been set to 1. In total five iterations have been performed. The uncertainty of the final fit has been determined as from the LS method (see e.g.~(6.24) in \bref{barlow}). As the error input, we assigned the standard deviation of the cut-line distance to the error of the $x$ component of the hits. The results are summarized in \Tb{al el yx}.
 
 An illustration of the method is shown in \Fg{al el plots yx}. Similar illustrations will be shown for all other methods. The left plot will always refer to the data from 5~October (an $18\si$ run with low statistics), while the right plot to data from 29-30~October (a $7\si$ run with high statistics).
 
@@ -1267,7 +1266,7 @@ The \Fg{al el plots yx} shows the separate top (red) and bottom (blue) RP fits a
 
 \fig{fig/pdf/al_el_plots_yx.pdf}{al el plots yx}{An illustration of the alignment method 1 (unit 45-220-far). The red (blue) line corresponds to a fit of top (bottom) RP hits only, the green line represents a global fit.}
 
-\htab{al el yx}{The results of the elastic alignment method 1 -- vertical fits of y vs.~x data. The slope $a$ in $\rm mrad$, the intercept $b$ in $\rm\mu m$. The errors are statistical only.}{
+\htab{al el yx}{The results of the elastic alignment method 1. The slope $a$ (elastic peak tilt) is in milliradians, the intercept $b$ (related to $\De x$ via \Eq{al el m1 de x}) in micrometers. The errors are statistical only.}{
 \omit&\multispan8\bhrulefill\cr
 \omit&\multispan2\strut\bvrule\hfil 45-near\hfil & \multispan2\vrule\hfil 45-far\hfil  & \multispan2\vrule\hfil 56-near\hfil & \multispan2\vrule\hfil 56-far\hfil\cr
 \omit&\multispan8\hrulefill\cr
@@ -1283,30 +1282,23 @@ The \Fg{al el plots yx} shows the separate top (red) and bottom (blue) RP fits a
 
 \caption{Method 2}
 
-\bmfig
-\vbox{\hsize9cm\noindent\leftskip0pt\rightskip0pt\parfillskip0pt plus1fil
 The vertical distribution of elastic hits shall be symmetric around the position of the beam. This remains true even if the axis of elastic scattering is tilted with respect to $y$ axis. In this case, the $y$ distribution shrinks, but symmetrically around the beam's position.
 
-beam div $\si \approx 18\un{\mu rad}$, see \Eq{felm unf sigma proj}, for $\De y = L\De\th$ it gives $3\si$ about $1.2\un{mm}$ -- this is what is to be cut off from the beggining of the distribution (confirmed by a MC study).
+\fig{fig/pdf/al_el_shift_test.pdf}{al el shift test}{A method to determine the center of a symmetrical distribution from its tails. The bottom-pot distribution (blue) is flipped around the vertical axis and shifted with respect to the top-pot distribution (red) until the best match is found (green).}
 
-Another approach to mitigate the deficiency of the method 2a is to remove the Gaussian-shape assumption. The only assumption would be that the $y$ distributions measured from the top and bottom pots are parts (cut by acceptance) of the same distribution. One can flip the $y$ distribution from the bottom pot (blue in \Fg{al el shift test}) and shift it such that it matches to the distribution from the top pot (red). When the best match is found, the position of the beam is given
-$${f_B + f_T + s\over 2}\ ,$$
-where $f_B$ is the position of the highest bottom pot bin, $f_T$ the lowest top pot bin and $s$ the shift of the blue histogram (left edge) wrt. the red one. Indeed, $s$ can only by a multiple of the bin size. The best match is the one which gives the lowest value of
-}%
-\fig{fig/pdf/al_el_shift_test.pdf}{al el shift test}{[]To the explanation of the shift test}%
-\emfig
+Due to the limited acceptance, the central part of the $y$ distribution is missing, see \Fg{al el plots y shift}. Still, one can determine the center of the distribution with a method illustrated in \Fg{al el shift test}. The bottom-pot tail (blue) is flipped about the vertical axis and shifted left and right with respect to the top-pot tail (red) until the best match is found (green). The match can be measured by
+\eqref{S^2/N = {1\over N} \sum_{i\ \in \hbox{overlapping bins}} \left[ C_{\rm red}(i) - C_{\rm green}(i) \right]^2\ ,}{al el shift test}
+where for example $C_{\rm red}(i)$ stands for the contents of the $i$-th bin of the red distribution and $N$ is the number of overlapping bins. The best match corresponds to a minimum of this function. Then the center of the distribution is given ($s$ denotes the best-match shift)
+\eqref{-\De y = \hbox{center} = {f_{\rm B} + f_{\rm T} + s\over 2}\ .}{al el shift center}
+The center corresponds to the beam position which is related to the vertical misalignment $\De y$ as stated above. To see that, one shall consider that the center of the beam corresponds to $\th_y^* = 0\un{mrad}$. Then the relation to the misalignment follows from \Eq{al el meas}. $f_{\rm B}$ and $f_{\rm T}$ represent the edges of the bottom and top-pot distributions. However, one shall first remove the parts that may be affected by the acceptance and thus be asymmetric. These parts are, indeed, those close to $y=0\un{mm}$. Taking the beam divergence $18\un{\mu rad}$ and effective length $L_y\approx 22\un{m}$ yields a cutoff ($3\si$) of about $1.2\un{mm}$ (this number has been verified with a MC simulation).
 
-\eqref{S^2/N = {1\over N} \sum_{i\ \in \hbox{overlapping bins}} \left[ C_{\rm red}(i) - C_{\rm blue}(i) \right]^2\ ,}{al el shift test}
-where $N$ is the number of overlapping bins and $C_{\rm red}(i)$ represents the contents of the bin $i$ of the red histogram.
+We performing the shift tests, we have used this cutoff, moreover only bins with 10 and more hits have been used. For the distribution matching we have only considered shifts providing 10 and more overlapping bins. It has turned out that only the data set from 29-30 October had enough data to perform this test, see \Fg{al el plots y shift} and \Tb{al el y shift}.
 
+\fig{fig/pdf/al_el_plots_y_shift.pdf}{al el plots y shift}{An illustration of the alignment method 2 (unit 56-220-far). The color code is the same as in the explanation \Fg{al el shift test}.}
 
-As measure of uncertainty, one may take a half of the bin size. Of course, this does not reflect systematic errors that may appear because incompatible distributions from the top and bottom RP. An example of this incompatibility can be seen in \Fg{al el plots y shift} left. For the right plot, it is less pronounced, but still present. The differences in shape may come from different acceptances, trigger, detector and reconstruction efficiencies etc. For a fine alignment one would need to correct for all these effects.
+Since the shift $s$ can only be a multiple of the bin size, a half of the bin size can be taken as a measure of the uncertainty. For the data from 29-30 October we have used a bin size of $30\un{\mu m}$ (for smaller values the bin fluctuation became too excessive), thus the uncertainty estimate is $15\un{\mu m}$. Of course, this does not reflect any systematic errors. 
 
-The results are summarized in \Tb{al el y shift}. Comparing these to the method 2a (\Tb{al el y full}), one finds differences with RMS of roughly $30\un{\mu m}$, that is well below the estimated uncertainty.
-
-\fig{fig/pdf/al_el_plots_y_shift.pdf}{al el plots y shift}{Illustration of the alignment method 2c (unit 56-220-far). The $y$ distribution from the bottom pot (blue) has been shifted to match the best to the distribution from the top pot (red).}
-
-\htab{al el y shift}{The results of the elastic alignment method 2 -- shift matching the $y$ distributions from the top and bottom pot. All values in $\rm \mu m$. The ucertainty can be estimated as a half of the bin size. Bin size $30\un{\mu m}$.}{
+\htab{al el y shift}{The results of the elastic alignment method 2: the vertical misalignment $\De y$ in micrometers. Our uncertainty estimate (half of the bin size) is $15\un{\mu m}$.}{
 \omit&\multispan4\bhrulefill\cr
 \omit&\strut\hbox{45 near}&\hbox{45 far}&\hbox{56 near}&\hbox{56 far}\cr\bln
 \hbox{29-30 Oct} &   60 & -60 & 120 & 150 \cr\bln
@@ -1315,17 +1307,22 @@ The results are summarized in \Tb{al el y shift}. Comparing these to the method 
 
 \caption{Method 3}
 
-Is based on \Eq{al el dyy}. The slopes $a$ turn out to be of the order of $20\un{mrad}$ (see \Fg{al el plots dyy}) therefore neglecting the middle term would create an error of $\approx 2\un{\mu m}$, assuming $\De y_n$ is of the order of $100\un{\mu m}$. The $2\un{\mu m}$ are a negligible error compared to the corrections one may get with this method. Thus, we will use
-$$b = \De y_N - \De y_F\ .$$
-In other words, the intercept gives the relative far-near vertical misalignment.
+Since the method 2 could determine the vertical misalignments only for the data from 29-30 October, we had to search for additional methods usable for the other data sets. These additional methods do not resolve completely the vertical misalignments, for example this method (method 3) determines only the relative vertical shift of the near unit with respect to the far one.
 
-The fits are performed in a similar manner as in method 1, with the difference that the RMS of distance-to-cut-line distribution is attributed to $\De_{F-N} y$ quantity. An example of the fits is shown if \Fg{al el plots dyy}. Again the one-side fits are compatible with each other and the global fit (with the exception of the red fit in the left-hand side plot). This means that the far-near misalignments are the same for top and bottom pots, a result that is expected after a track-based alignment step.
+This method is based on \Eq{al el dyy}. Since the slopes $a$ turn out to be of the order of $20\un{mrad}$ (see \Fg{al el plots dyy}) and the scale of the vertical misalignments is about $100\un{\mu m}$ (see \Eq{al window to dp uncer}), we may write
+\eqref{b = \De y_{\rm N} - \De y_{\rm F} + \O{2\un{\mu m}} \ .}{al el m2 b}
+Clearly, the last term is rather negligible and the intercept gives the relative near-far vertical misalignment.
 
-\Tb{al el dyy} summarizes the results (left part) and provides a comparison to method 2a (right part) -- the $\De y$ results from \Tb{al el y full} were used to predict the intercepts. With the exception of the sector 56 measurement from 5 October data, all the differences lie below the estimated error.
+The parameters $a$ and $b$ have been obtained by fitting the parameterization \Eq{al el dyy} through $\De_{\rm F-N} y$ vs. $y_{N}$ data, see \Fg{al el plots dyy}. The fits have been performed in a similar manner as in method 1, with the difference that the standard deviation of the distance-to-cut-line distribution is assigned to the error of $\De_{\rm F-N} y$.
 
-\fig{fig/pdf/al_el_plots_dyy.pdf}{al el plots dyy}{Illustration of the alignment method 3 (sector 45). The red line fits the red points only (top pots), blue line blue points (bottom pot). The green line represents a global fit.}
+As shown in \Fg{al el plots dyy}, the one-side fits (red and blue) are compatible with each other and the global fit (green), with the exception of the red fit in the left-hand side plot. This means that the far-near misalignments are the same for top and bottom pots, a result that is expected after the track-based alignment step.
 
-\htab{al el dyy}{Left: the results of the elastic alignment method 3 -- intercepts of $\De_{F-N} y$ vs.~$y$ data fits. \TODO{}}{
+\fig{fig/pdf/al_el_plots_dyy.pdf}{al el plots dyy}{An illustration of the alignment method 3 (sector 45). The red (blue) line corresponds to a fit of top (bottom) RP hits only, the green line represents a global fit.
+}
+
+The results are summarized in \Tb{al el dyy}. For the data set from 29-30 October, one can make comparison to method 2 -- this yields near-far shifts $(-30\pm 20)\un{\mu m}$ for sector 45 and $(120\pm 20)\un{\mu m}$ for sector 56. This means a discrepancy of $1.5\si$ (sector 45) and $2\si$ (sector 56). Keeping in mind that the errors are statistical only, it is a reasonable agreement.
+
+\htab{al el dyy}{The results of the elastic alignment method 3: the relative near-far vertical shift $\De y_{\rm N} - \De y_{\rm F} $ in micrometers. The errors are statistical only.}{
 \omit&\multispan2\bhrulefill\cr
 \omit&\strut\hbox{sector 45}&\hbox{sector 56}\cr\bln
 \hbox{21 Sep}    &  69.3 \pm    0.7&  37.9 \pm    0.7 \cr\ln
@@ -1336,19 +1333,22 @@ The fits are performed in a similar manner as in method 1, with the difference t
 \hbox{29-30 Oct} &  79.6 \pm    0.2&  -1.1 \pm    0.2 \cr\bln
 }
 
-
-
 \caption{Method 4}
 
-The correlation between $y$ hit positions left and right can be written (follows from \Eq{el transport}):
+\Eq{al el meas} predicts a correlation between $y$ hit positions in sectors 45 and 56:
+
 \eqref{y^{56} =
-\underbrace{ {L_y^{56}\over L_y^{45}} }_{-1+a}  y^{45}
-+ \underbrace{ {L_y^{56}\over L_y^{45}} \De y^{45} - \De y^{56} }_b
+	\underbrace{ {L_y^{56}\over L_y^{45}} }_{-1+a}  y^{45}
+	+ \underbrace{ {L_y^{56}\over L_y^{45}} \De y^{45} - \De y^{56} }_b\ .
 }{al el yy}
+Since the optical length differ between the sectors about $10\percent$ and the vertical misalignment scale is about $100\un{\mu m}$  (see \Eq{al window to dp uncer}), one can write
+\eqref{b = \De y^{45} - \De y^{56} + \O{10\un{\mu m}}\ .}{al el yy b}
 
-\TODO{Method 4 does not compare well to the method 2a, but it is consistent with method 3.}
+The parameters $a$ and $b$ have been obtained by fitting as in methods 1 and 3. But before fitting, we have removed tips of the distributions that are affected by the acceptance. These are tips of triangular shape extending towards the point $y_{45} = y_{56} = 0\un{mm}$. Since they are not symmetric about the fit line and since they are densely populated, they might bias the fit results. The fits are illustrated in \Fg{al el plots ylyr}.
 
-\fig{fig/pdf/al_el_plots_ylyr.pdf}{al el plots ylyr}{Illustration of the alignment method 4 (far units). The red line fits the red points only (diagonal 45 top -- 56 bottom), blue line blue points (diagonal 45 bottom -- 56 top). The green line represents a global fit. The dark points have been cut off not to bias the fit because of the asymmetric acceptance.}
+\fig{fig/pdf/al_el_plots_ylyr.pdf}{al el plots ylyr}{An illustration of the alignment method 4 (220-far units). The green line is a fit according to the parameterization \Eq{al el yy}.}
+
+Unfortunately, the results are not compatible with methods 2 and 3. We have verified the correctness of the method with a MC study including angular, vertex and energy smearing (as described in \Sc{beam smearing}). However, for this MC we have considered elastic events only. The experimental sample obtained with cuts from \Tb{al el cuts} contains also a background contribution. Since the point distribution for method 4 (see \Fg{al el plots ylyr}) is rather wide (more than a millimeter), we assume that the background might have a non-negligible effect on the fit results. Consequently, the systematic error of this method is such that the method is not of a practical use.
 
 \iffalse
 \htab{al el ylyr}{
@@ -1373,22 +1373,33 @@ Left: the results of the elastic alignment method 4 -- fits of $y^{56}$ vs.~$y^{
 
 
 
-
-
 \section[al sum]{Summary}
 
-\> tasks accomplished/non-accomplished
-\>> TBA left 4 shift and 4 rotation modes unresolved
-\>> Elastic/profile methods fixed the 4 shift modes
-\>> From Optical alignment there is no indication of U-V rotation.
-\>> Once optics is known better, the far-near rotation could be determined from the shift of the elastic peaks.
+In the introduction of this chapter, we have drawn the alignment procedure in three steps -- collimation alignment, track-based alignment and alignment with physics processes. Let us now review the tasks accomplished for each of them.
 
-\> final uncertainty
-\>> internal shifts and rotations
-\>> inter-RP shifts and rotations
-\>> x al. wrt beam
-\>> y al. far-near
-\>> y al. absolute wrt beam
+\> During the collimation alignment, the LVDT offsets have been resolved, see \Tb{al lvdt off}. Consequently, the distances of the RP thin windows from the beam can be determined with a precision about $50\un{\mu m}$. Due to the poorly known distance between the thin windows and the sensors, the position of the sensors with respect to the beam has an uncertainty of the order of $100\un{\mu m}$, see \Eq{al window to dp uncer}.
 
-\> error impact on the physics reconstruction (of elastic $t$)
-\>> errors and unresolved modes
+\> The track-based alignment has eventually been applied with the final constraints (see \Sc{al constr}) that fix 4 shift and 4 rotation singular/weak modes per station. Regarding shifts, these modes can be interpreted as horizontal and vertical shifts of each unit. They have been addressed by the alignment with physics processes, see below. The rotation singular/weak modes comprise the rotations between $U$ and $V$ planes and the rotations between near and far units. Regarding the former, the optical alignment has shown no indication for non-negligible misalignments, see \Tb{al opt uv rot}. The near-far unit rotations are linked with the optics perturbations, see for example the elastic peak tilts in \Fg{al prof hits}. In principle, if the optics was well known, the near-far rotations can be determined from the tilt measurements.
+
+\par\parindent\itindent\indent\hang
+The typical precision of the track-based alignment applied to the 2010 LHC runs (see \Tb{al lhc datasets}) has been about $1\un{\mu m}$ for shifts and about $0.1\un{mrad}$. We have noticed very little run-to-run variations (see \Fg{al comp rp all rot} and \Tb{al rp rot}) except the rotation about $z$ for several RPs. There the run-to-run standard deviation have been up to $0.2\un{mrad}$.
+
+\> With the elastic alignment we have determined some of the misalignments inaccessible to the track-based alignment. Using method 1 (see \Sc{al elast}), we have determined the horizontal shifts of each unit with an uncertainty about $5\un{\mu m}$. With method 2 we have determined the vertical shifts of each unit with an uncertainty about $15\un{\mu m}$ (systematic error not included), but only for one data set. For the others there has not been enough data. We have used the method 3 to determine the vertical shifts between far and near units with an uncertainty of few micrometers.
+
+\vskip\itskip
+
+To conclude, let us demonstrate the magnitude of the residual misalignment by evaluating its impact on the elastic scattering reconstruction. We will consider the standard 2010 LHC optics (see \Sc{felm}) and the reconstruction formulae \Eq{felm xy reco}. For the horizontal projection, the alignment error for one-arm reconstruction can be estimated as follows:
+\eqref{
+	\De\th_x^*
+	= {\De x_{\rm F} - \De x_{\rm N} \over L_{x, \rm F} - L_{x, \rm N} }
+	= {\sqrt 2\, \si(\De x) \over L_{x, \rm F} - L_{x, \rm N} }
+	\approx {\sqrt{2} \cdot 5\un{\mu m}\over 1.6\un{m}} \approx 5 \un{\mu rad}\ ,
+}{al sum th x err}
+where $\si(\De x) \approx 5\un{\mu m}$ denotes a typical horizontal (residual) misalignment. For a scale feeling, the result may be compared to the (one-arm) beam divergence which was about $17\un{\mu rad}$, see \Sc{felm unfold}. Indeed, these two errors are different in nature -- beam divergence leads to a statistical error, whereas a misalignment to a systematic shift in $\th_x^*$. For the vertical direction, the alignment induced error may be estimated:
+\eqref{
+	\De\th_y^*
+	= {1\over 2} \left( {\De y_{\rm F}\over L_{y, \rm F}} + {\De y_{\rm N}\over L_{y, \rm N}} \right)
+	\approx {\si(\De y)\over L_y \sqrt 2}
+	\approx {\si(\De y)\over 21\un{m} \cdot \sqrt 2}\ .
+}{al sum th y err}
+Again, $\si(\De y)$ denotes a typical vertical misalignment (after the whole alignment procedure). For the data from 29-30 October, where the method 2 could be used, the residual vertical misalignment is of the order $\si(\De y) \approx 15\un{\mu m}$. This leads to an angular shift $\De \th_y^* \approx 0.5\un{\mu rad}$. For the other data sets only the method 3 could be used. There, one may assume that this method reduces the residual misalignment to a half, that is $\si(\De y)\approx 50 \un{\mu m}$. This corresponds to an angular shift of $1.7\un{\mu rad}$.

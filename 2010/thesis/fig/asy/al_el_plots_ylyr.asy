@@ -27,13 +27,13 @@ for (int d_i: dates.keys) {
 	//AddToLegend("far");
 	AddToLegend(Date(dates[d_i]));
 	//draw(rot, rGetObj(file, name_f + "#1"), "p", darkred+opacity(0.2));
-	draw(rot, rGetObj(file, name_c + "#1"), "p", red);
+	draw(rot, rGetObj(file, name_c + "#1"), "p", black);
 	//draw(rot, rGetObj(file, name_f + "#3"), "p", darkred+opacity(0.2)); // blue
-	draw(rot, rGetObj(file, name_c + "#3"), "p", red); // blue
+	draw(rot, rGetObj(file, name_c + "#3"), "p", black); // blue
 
-	//draw(rot, rGetObj(file, name_c + "#2"), "l", red);
-	//draw(rot, rGetObj(file, name_c + "#4"), "l", blue);
-	draw(rot, rGetObj(file, name_c + "#5"), "l", black);
+	//draw(rot, rGetObj(file, name_c + "#2"), "l", red+1pt);
+	//draw(rot, rGetObj(file, name_c + "#4"), "l", blue+1pt);
+	draw(rot, rGetObj(file, name_c + "#5"), "l", heavygreen+1pt);
 
 	limits((-18, -12), (+18, +12), Crop);
 	AttachLegend("Method 4", NE, NE);

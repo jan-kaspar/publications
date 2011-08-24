@@ -25,9 +25,9 @@ for (int d_i: dates.keys) {
 	draw(switch, rGetObj(file, name + "#1"), "p", black);
 	draw(switch, rGetObj(file, name + "#3"), "p", black); // blue
 
-	draw(switch, rGetObj(file, name + "#2"), "l", red);
-	draw(switch, rGetObj(file, name + "#4"), "l", blue);
-	draw(switch, rGetObj(file, name + "#5"), "l", heavygreen);
+	draw(switch, rGetObj(file, name + "#2"), "l", red+1pt);
+	draw(switch, rGetObj(file, name + "#4"), "l", blue+1pt);
+	draw(switch, rGetObj(file, name + "#5"), "l", heavygreen+1pt);
 
 	limits((-5, -10), (5, 10), Crop);
 	AddToLegend(Date(dates[d_i]));
