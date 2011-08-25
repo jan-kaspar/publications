@@ -185,25 +185,8 @@ b\ \rm (GeV^{-2}) & 6.9 \pm 0.6 & 6.9 \pm 0.6 \cr\ln
 c\ \rm (GeV^{-4}) & 0.4 \pm 0.1 & 0.4 \pm 0.1 \cr\bln
 }
 
+\TODO{a summary -- link to the next step?}
 
-\iffalse
-\bmfig
-\fig{fig/pdf/felm_background_dist_t_el.pdf}{felm background dist t el}{[7cm]The background contamination in the elastic $t$-distribution (diagoanl 45 bottom - 56 top). Before acceptance correction (blue) and after (red). The green curves represent fits according to parameterization \Eq{felm bckg el t dist param}.}
-\fig{fig/pdf/felm_background_cmp.pdf}{felm background cmp}{[7cm]A signal-background comparison (for diagonal 45 bottom -- 56 top), before acceptance correction. Black: signal+background, blue: background estimation. Red: THE OLD estimate. \TODO{dashed line as for unfolding} \TODO{Update me}}
-\emfig
-\fi
-
-
-\iffalse
-In order to see how the background events would distribute within the elastic $t$-distribution, we should define ``the elastic $t$'' also for the background events. It follows from the reconstruction procedure (averaging the left and right scattering angles):
-Then, the background contamination in the elastic $t$-distribution is given by
-where the $\Th$ factor represents the $t_x$ and $t_y$ selection cuts (cuts 1 and 2). The $h_{\rm 2p}$ distribution can be deduced from our parameterization \Eq{felm dist param} fits and assuming that the parameterization is correct in the region inaccessible due to the acceptance. In fact, in this way one attains the ``acceptance correction'' for the observed background.
-
-The easiest way to evaluate the integral \Eq{felm bckg el t dist} is perhaps a MC method, the result is shown in \Fg{felm background dist t el}. The distribution deviates slightly from a pure exponential decrease, but is it possible to describe it (set the red curve) by
-with parameters
-\eqref{b = (6.5\pm 0.5)\un{GeV^{-2}},\qquad c = (0.2 \pm 0.2)\un{GeV^{-4}}\ .}{felm dist el fit}
-The uncertainty has been obtained by varying the $b_x$ and $b_y$ parameters within their errors quoted in \Tb{felm fit}.
-\fi
 
 \section[felm unfold]{Unfolding}
 
@@ -295,3 +278,5 @@ The correction functions (compatible with the definition \Eq{felm unf fm sm corr
 The fit-based and bin-based methods are compared in \Fg{felm unfolding m1m2 cmp}. Despite the large fluctuation of the bin-based result, a very good match is evident. The discrepancy at low $\th$ values is practically irrelevant because it falls below the analysis cut (drawn as the dashed line). Generally speaking we trust more the fit-based result, we consider the bin-based method rather as a reassuring cross-check.
 
 \fig{fig/pdf/felm_unfolding_m1m2_cmp.pdf}{felm unfolding m1m2 cmp}{A comparison of the fit-based and bin-based method (for diagonal 45 top -- 56 bottom and with $\si(\De\th) = 12\un{\mu rad}$).}
+
+\TODO{a summary -- link to the next step?}

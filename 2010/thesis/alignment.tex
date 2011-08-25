@@ -1,55 +1,38 @@
 \chapter[al]{Alignment of Roman Pots}
 
-\TODO{!! ADD CITATIONS !!}
+%\TODO{!! ADD CITATIONS !!}
+%\TODO{experience from other experiments}
 
-MOTIVATION: An accurate alignment is of major importance for the TOTEM experiment in order to deliver precise measurements. Among the subdetectors of TOTEM, the alignment of the RPs presents the biggest challenge since they are movable. The importance of alignment is most pronounced at the $\be^* = 1535\un{m}$ optics, where the beam divergence (the dominant smearing effect) is rather low and thus the impact of any misalignment has a large relevance. To give a feeling, a $100\un{\mu m}$ displacement of a vertical RP would lead to angular shift of about $0.4\un{\mu rad}$ (based on an effective length $L_y\approx 270\un{m}$, typical for this optics). This is to be compared to the spread of the beam divergence $0.3\un{\mu rad}$.
+An accurate detector alignment is of major importance for the TOTEM experiment in order to deliver precise measurements. Among the sub-detectors of TOTEM, the alignment of the Roman Pots (RPs) presents the biggest challenge since they are movable and, in principle, they can be at a different position for every run. \Tb{al reco impact} illustrates the impact of a misalignment on physics reconstruction. To give a representative overview we have included two optics -- the high-$\be^*$ (left column) and a low-$\be^*$ (right column, this is the standard 2010 LHC optics discussed later in \Sc{felm}). For both of them we have considered a vertical misalignment $\De y$ of $100\un{\mu}$ (a typical order, cf.~\Tb{al exp misal}). The impact on the vertical scattering angle reconstruction (see e.g.~\Eq{felm xy reco}) can be estimated by $\De y/L_y$, where $L_y$ denotes a typical effective length. To obtain a scale feeling, this misalignment-induced angular shift may be compared to the beam divergence $\si_{\th^*}$ (usually one of the leading error sources) or to the minimal scattering angle $\th_{\rm min}$ that can be reconstructed with a given optics. From this comparison, it is clear that the $\be^* = 1535\un{m}$ optics is much more sensitive to misalignments than the low-$\be^*$ optics. The misalignment-induced error is larger than the beam divergence and reaches almost $7\percent$ of the minimal angle $\th_{\rm min}$.
 
-\TODO{experience from other experiments}
-
-WHAT WE ALIGN, WRT WHAT:
-What is important is the relative position between RP sensors (the other parts do not matter much) and the beam. Hence there are two players in the game -- RP positions and beam positions.
-
-Coordinate system such that the beam is at x=y=0
-
-\caption{Alignment procedure}
-
-Three steps:
-
-1) Approach the pots to the desired positions as precisely as possible; retrieve the position - LVDTs + their callibration by collimation alignment, later hope to use BPMs, \Sc{al collim}
-
-2) track-based alignment, \Sc{al tb}
-
-3) alignment with physics processes -- to correct the singular and weak modes of the TB al. -- profile \Sc{al prof} and elastic \Sc{al elast}
-
-\iffalse
-The procedure has two steps. First, move the pots to the desired position as precisely as possible. Then take data, analyze them and find what error has been done in the first step.
-
-The first step relies mainly on two types devices -- RP motor control and Beam Position Monitors (BPMs). Both are calibrated to determine position of outer edge of the window or the beam with respect to the ideal beam-pipe center.
-
-For the second step, a number of methods is available. Undoubtedly, one of the most powerful ones is the track-based alignment. It uses the tracks passing through the overlap between vertical and horizontal RPs and is, therefore, capable of determining the relative position between the pots. Its strength is underlined by the fact that it is based on a single assumption: tracks are straight lines. To determine the position of the beam, other methods must be used. One may profit from know symmetries of certain physics processes. Here, the analysis becomes delicate because in the observables the properties of the processes are mixed with the properties of the optics. This gives a certain superiority to elastic scattering. This process is often easy to separate and thus can provide a clean sample, as the first argument. As the second one, it comprises two protons exactly in the opposite direction and can thus be used for the alignment of the opposite arms of the experiment. Yet another advantage the protons have, by definition, zero momentum-loss and therefore, the dependence on the optics is largely reduced.
-\fi
-
-\caption{Expected misalignments}
-
-Let's first asses what may go wrong and what are the corresponding misalignment estimates.
-
-\> two components -- internal and DP
-\>> make sure not to double define internal and DP (mis)alignments -- see \Sc{al rp fac}
-
-\> \em{Internal misalignments} arise from finite precision of fixing the detectors within a package. The precision is estimated to be
-\eqref{20\un{\mu m}\ .}{internal misalignment shift}
-This also gives estimate about the rotation
-\eqref{\De\rh \approx {2\cdot 20\un{\mu m}\over 4\un{cm}} = 1\un{mrad}\ .}{internal misalignment rotation}
-
-\> \em{Detector package (DP) misalignments}
-\>> errors in LVDT $~10\un{\mu m}$
-\>> RP frame deformation ???
-\>> uncertainty of the collimation alignment (the preceding step) \Eq{al window to dp uncer}, with the same uncertainty we put the RPs where we want them
-
-
-\htab{al exp misal}{The expected misalignments.}{
+\htab{al reco impact}{An illustration of misalignment impact on the angular reconstruction. $L_y$ denotes a typical vertical effective length (see \Eq{ttm lin par}), $\si_{\th^*}$ the beam divergence (see \Eq{ttm beam div}) and $\th_{\rm min}$ is the minimal scattering angle that may be reconstructed (cf.~$|t|_{30}$ in \Fg{ttm elastic acceptance}). $\De y$ is the vertical misalignment that we consider (cf.~\Tb{al exp misal}) and $\De\th_y$ represents its impact on the angular reconstruction.}{
 \omit&\multispan2\bhrulefill\cr
-\omit					&\omit\bvrule\tskip\bstrut sensors within a package\tskip	& \hbox{packages within a station} \cr
+\omit& \be^* = 1535\un{m},\ \sqrt s = 14\un{TeV} & \be^* = 3.5\un{m},\ \sqrt s = 7\un{TeV}\cr\bln
+L_y							& 270\un{m}			& 21\un{m} \cr\ln
+\si_{\th^*}					& 0.3\un{\mu rad}	& 18\un{\mu rad} \cr\ln
+\th_{\rm min}				& 6\un{\mu rad}		& 160\un{\mu rad} \cr\bln
+\De y						&\multispan2\bvrule\hfil $100\un{\mu m}$\hfil \cr\ln
+\De\th_y \equiv \De y/L_y	& 0.4\un{\mu rad}	& 5\un{\mu rad} \cr\bln
+}
+
+Let us define a bit more precisely what we mean by the RP alignment. For physics reconstruction we use the data from RPs sensors (i.e. the sensitive components of the RPs, see \Sc{ttm}). The data correspond to tracks of particles that are deflected from the beam due to a scattering. The beam axis can be understood as a track of an ideal particle that has not undergone any scattering. Therefore, what matters for physics reconstruction is the relative position of RP sensors to the beam axis. And this is what we will mean by RP alignment.
+
+%Coordinate system such that the beam is at x=y=0
+
+In this chapter we will describe a RP alignment procedure that comprises the three steps below.
+\bitm
+\itm First the RPs shall be approached to the desired position as precisely as possible, then their position with respect to the beam shall be verified  with dedicated devices such as the beam position monitors (BPMs) and the linear voltage differential transformators (LVDTs), for details see \Sc{al collim}.
+\itm A lot of information on the relative alignment between the RP sensors can be obtained by studying the reconstructed tracks. The underlying idea is that sensor misalignments give raise to residuals, that is elongations of hit positions from track fits. This track-based alignment will be discussed in detail in \Sc{al tb}.
+\itm However, not all misalignments induce residuals (e.g.~a global shift or rotation), thus these misalignment modes are inaccessible to the track-based alignment. To overcome this limitation, one may use known symmetries of certain physics processes, for details see \Sc{al prof}. From this point of view, elastic scattering looks extremely useful. Elastic scattering events include two protons of the incident momentum (thus the optics transport is simplified, see \Eq{al el transport}) and of almost opposite directions (thus they can be used for aligning the opposite arms of the RP system). The alignment with elastic events will be described in \Sc{al elast}.
+\eitm
+
+\vskip\itskip
+Before discussing the alignment methods, let us first asses what misalignments may be expected. Generally, the misalignments may arise on two levels -- misalignments of sensors within a detector package (\em{internal misalignments}) and misalignments of detector packages with respect to the beam (\em{detector package (DP) misalignments}). Our expectations for these misalignments are summarized in \Tb{al exp misal}. The uncertainty of sensor placement in the DP is estimated to about $20\un{\mu m}$. Considering the size of a sensor to be about $4\un{cm}$ (see \Sc{ttm}), one can estimate the order of the internal rotation misalignment as $2\cdot 220\un{\mu m} / 4\un{cm} \approx 1\un{mrad}$. The transverse shift of DP of the order of $100\un{\mu m}$ is related to the uncertainty of the LVDT calibration and to the poorly known distance between RP thin windows and the DPs, see \Sc{al collim}. The misalignments along $z$ are not critical for physics reconstruction. With typical track angles of the order of $0.1\un{mrad}$ (see \Tb{al lhc datasets}), a $z$-shift of $1\un{mm}$ leads to a measurement error of $0.1\un{\mu m}$, which is practically negligible (for instance compared to the strip pitch $66\un{\mu m}$).
+
+
+\htab{al exp misal}{The expected misalignments. The transverse shift means a shift perpendicular to $z$, the beam axis (see \Fg{al proton sensor interaction}).}{
+\omit&\multispan2\bhrulefill\cr
+\omit					&\omit\bvrule\tskip\bstrut sensors within a package\tskip	& \hbox{packages with respect to the beam} \cr
 \omit					&\omit\bvrule\tskip\bstrut (internal misalignments)\tskip	& \hbox{(DP misalignments)} \cr\bln
 \hbox{transverse shift}	& \hbox{about } 20\un{\mu m} 								& \hbox{few } 100\un{\mu m} \cr\ln
 \hbox{shift in }z 		& \hbox{few } 100\un{\mu m}									& \hbox{below } 1\un{mm}\cr\ln
@@ -101,17 +84,17 @@ This gives the order of misalignments that are present the initial geometry for 
 
 \section[al tb]{Track--based alignment}
 
-\> Intro, partially the same as above: tracks should be straight lines, misalignments move the hits slightly off the track. They can be determined by an appropriate analysis of the residuals. \TODO{define residuals}
+The basic idea of the track-based alignment is that sensor misalignments create residuals in track fits. By residuals we mean elongations of the individual hits from the fitted track. Thus, by an appropriate residual analysis one may resolve (some of) the misalignments. Such a method will be developed in the following sections.
 
-\> The basic structures in the track-based alignment are the detectors (sensors). Only these provide measurements and only these can be aligned... may be not that strong, one can get some idea about DP misalignments too
+Our track-based alignment method will be used for aligning RP sensors within a station. Within each station, due to negligible magnetic field, proton tracks can be described as simply as by straight lines. The basic entities of the method will be the RP sensors (those are the RP elements which deliver hits, or residuals after a track fit). However, since the misalignments are generated on two levels -- internal and detector-package (see \Tb{al exp misal}) -- one will be able to factorize the results into the internal and detector-package components (see \Sc{al dp fac}). In that sense, also the detector packages can be aligned with the track-based method.
 
-\subsection[al psi]{The relation between proton kinimatics and RP measurements}
+\subsection[al psi]{The relation between proton kinematics and RP measurements}
 
 Since the magnetic field within RP stations is negligible, protons follow a straight trajectory, as drawn in the side view of \Fg{al proton sensor interaction} (the same is shown in \Fg{ttm proton transport}, but with the third axis called $s$). The track can be described
 \eqref{\pmatrix{x\cr y\cr z} = \pmatrix{a_x\cr a_y\cr 1} z + \pmatrix{b_x\cr b_y\cr 0}\ ,}{al local track}
 where $a$ and $b$ parameters give the track slopes and intercepts.
 
-When a proton enters the sensitive volume of a silicon sensor, it creates electron-hole pairs along its trajectory. This charge is collected by neighbouring strips, giving rise to measurable signal. While details of this charge sharing process can be found, for example, in Sec.~7.4~in \bref{hubert}, here, we will assume that just the nearest strips is active (drawn in green in the front view of \Fg{al proton sensor interaction}). It is a reasonable assumption for the TOTEM sensors. Then, the measurement outcome $m$ can be written
+When a proton enters the sensitive volume of a silicon sensor, it creates electron-hole pairs along its trajectory. This charge is collected by neighbouring strips, giving rise to measurable signal. While details of this charge sharing process can be found, for example, in Sc.~7.4~in \bref{hubert}, here, we will assume that just the nearest strips is active (drawn in green in the front view of \Fg{al proton sensor interaction}). It is a reasonable assumption for the TOTEM sensors. Then, the measurement outcome $m$ can be written
 \eqref{m = v + \De m\ ,}{al measurement}
 where $v$ gives the projection of the hit point in the $\vec v$ direction (i.e. the read-out direction). $\De m$ is the \em{resolution error}, that is the error made by rounding $v$ to the nearest strip position.
 
@@ -173,12 +156,12 @@ m_i^n = (\vec d_i + \De\rh_i\,\vec d_{\perp i})^\T \left[\vec a^n (z_i + \De z_i
 where for brevity reasons we have made a replacement
 $$c_{z,i} \longrightarrow z_i\ ,\qquad \De c_{z,i} \longrightarrow \De z_i\ .$$
 
-In what follows, we will drop the last two terms on the \rhs, they will be treat as an error, see \Sc{al err}. The first term can be expanded
+In what follows, we will drop the last two terms on the \rhs, they will be treated as an error, see \Sc{al err}. The first term can be expanded
 \eqref{\eqnarray{
 \mu_i^n \equiv m_i^n + \vec d_i^\T \vec c_i = & &\cr
 & +\vec d_i^\T (\vec a^n z_i + \vec b^n)&\qquad 10^{-2}\un{m}\cr
 & -\vec d_i^\T \De\vec c_i&\qquad 10^{-5}\un{m}\cr
-& +\vec d_i^\T \vec a^n \De z_i&\qquad 10^{-??}\un{m} \cr
+& +\vec d_i^\T \vec a^n \De z_i&\qquad 10^{-6}\un{m} \cr
 & +\De \rh_i\ \vec d_{\perp i}^\T (\vec a^n z_i + \vec b^n - \vec c_i) &\qquad 10^{-5}\un{m} \cr
 & +\De \rh_i\ \vec d_{\perp i}^\T (\vec a^n \De z_i - \De\vec c_i) &\qquad 10^{-8}\un{m}\ , \cr
 }}{al effective measurement}
@@ -199,7 +182,7 @@ j & \hbox{quantity} & \ch_{j, i}					& \ga_{j, i}^n\cr\bln
 
 From \Eq{al effective measurement} it is clear that the measurement is only sensitive to one component of the detector shift, in particular the \em{shift in the read-out direction}:
 \eqref{\De s_i \equiv \vec d_i \cdot \De\vec c_i\ .}{al shr def}
-Thus, this is the only shift component that can be determined by the track-based alignment on a sensor level. For a RP package both transverse shift components can be determined, see \Sc{al rp fac}.
+Thus, this is the only shift component that can be determined by the track-based alignment on a sensor level. For a RP package both transverse shift components can be determined, see \Sc{al dp fac}.
 
 
 \subsection[al sim fit]{Simultaneous fit of track and alignment parameters}
@@ -240,7 +223,7 @@ With this notation, relations of the type \Eq{al vec mu} can be written
 }{al effective measurement all}
 The left-hand part of $\mat A$ matrix is block-diagonal (with matrices $\mat\al^n$ on the diagonal). The right-hand part is built from $\mat\Ga_j^n$ matrices, the index $n$ increases in top-down direction, the index $j$ in the left-right one.
 
-This form of \Eq{al effective measurement all} is convenient for an application of the linear least squares (LS) method (see e.g.~Sec.~6.6 in \bref{barlow}). The method gives the following prescription for the estimate of the parameter vector $\vec P$:
+This form of \Eq{al effective measurement all} is convenient for an application of the linear least squares (LS) method (see e.g.~Sc.~6.6 in \bref{barlow}). The method gives the following prescription for the estimate of the parameter vector $\vec P$:
 \eqref{\hat\vec P = (\mat A^\T \mat V^{-1} \mat A)^{-1} \mat A^\T \mat V^{-1}\,\vec M\.}{al P estimate exact}
 We use the hat in $\hat\vec P$ to emphasize that it is an estimate. The $\mat V$ matrix is the covariance matrix for the measurements $\vec M$. Since the measurements from different events are independent (as random variables), $\mat V$ has a block-diagonal structure
 \eqref{\mat V = \pmatrix{
@@ -910,7 +893,9 @@ parameter							& meaning\cr\ln
 The values of the selection algorithms parameters will be given for each analysis in \Sc{al int res,al lhc res}. Let us only remark that some of these parameters will be changed during iterations. For example the parameter of the outlier cut \Eq{al outlier cond} or the one of the $\ch^2$ cut will be made increasingly strict, as we will approach the expected alignment corrections (see the \rhs~column in \Tb{al iter}) decrease.
 
 
-\subsection[al rp fac]{Alignment of detector packages}
+\subsection[al dp fac]{Alignment of detector packages}
+
+\TODO{internal/DP misalignments already defined in the introduction}
 
 As anticipated in the introduction, the elementary objects for the track-based alignment are the sensors. However, the sensors are stacked into rigid detector packages (see \Sc{ttm}) and therefore each sensor inherits the misalignment of its package. Moreover, the expected misalignments of sensors within a package are much smaller than the misalignments of packages within a station (see \Tb{al exp misal}). Thus it makes sense to extract the common misalignments of all sensors of a package and call them \em{detector-package (DP) misalignments}. The residual misalignments, that means the misalignments of a sensor with respect to its package, will be called \em{internal misalignments}.
 
@@ -923,7 +908,7 @@ For the rotations about $z$, the interpretation is simple: the full rotation of 
 
 \fig{fig/pdf/al_rp_misalignment.pdf}{al rp misalignment}{A side view on a detector package (for simplicity only four sensors are drawn). The DP is shifted by $\De c^{\rm DP}$ (green arrow) and rotated by $\De\rh_x^{\rm DP}$ about the $x$ axis. The shifts of the individual sensors $\De\vec c_i$ are drawn as the blue arrows. For simplicity we have not considered the sensor shifts within the package, that is $\De\vec c_i^{\rm S} = 0$. The hollow/full dots mark the nominal/actual positions of sensor centers.}
 
-As already mentioned, the internal misalignments are expected to be much smaller that the DP misalignments. This means that the $\De\rh_{z_i}^{\rm S}$ and $ \De\vec c_i^{\rm S}$ terms play a minor role in \Eq{al dp sen al}. Treating these terms as perturbations, one may apply the least squares method (see e.g.~Sec.~6.6 in \bref{barlow}) in order to estimate the DP misalignments. For the rotations about $z$, the fit equation may be written
+As already mentioned, the internal misalignments are expected to be much smaller that the DP misalignments. This means that the $\De\rh_{z_i}^{\rm S}$ and $ \De\vec c_i^{\rm S}$ terms play a minor role in \Eq{al dp sen al}. Treating these terms as perturbations, one may apply the least squares method (see e.g.~Sc.~6.6 in \bref{barlow}) in order to estimate the DP misalignments. For the rotations about $z$, the fit equation may be written
 \eqref{
 	\De\rh_z^{\rm DP} = (\mat F^\T \mat V^{-1} \mat F)^{-1} \mat F^\T \mat V^{-1} \pmatrix{\vdots\cr \De\rh_i\cr\vdots}\ ,\qquad
 	\mat F = \pmatrix{\vdots\cr 1\cr\vdots}\ .
@@ -1103,7 +1088,7 @@ Here all runs are used (even those without horizontal RPs). The standard results
 
 \fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment results with rotations constrained only in the near unit (first two sensors in the top RP). This figure shows the results for the $220\un{m}$ station in the sector 45. The top row shows the near unit, the bottom the far unit. Each color corresponds to a data set: October 24 (black), 26 (red), 29-30 (blue).}
 
-For further analyses we have used the final constraints, where the far-near rotation is fixed. An example is in \Fg{al comp det per unit}. On the first look, one can see that the read-out-direction shift results (top row) form lines. It is a consequence of the detector packages being rotated about $x$ and $y$ axes, see \Sc{al rp fac}. Generally (also for the rotations -- see the bottom row), this figure supports our expectation that the sensor misalignments within a package (deviations from the fit lines) are much smaller that the misalignments of DP packages within a station. The other interesting (and pleasant) outcome is the stability of the results -- the misalignments do not seem to change in time.
+For further analyses we have used the final constraints, where the far-near rotation is fixed. An example is in \Fg{al comp det per unit}. On the first look, one can see that the read-out-direction shift results (top row) form lines. It is a consequence of the detector packages being rotated about $x$ and $y$ axes, see \Sc{al dp fac}. Generally (also for the rotations -- see the bottom row), this figure supports our expectation that the sensor misalignments within a package (deviations from the fit lines) are much smaller that the misalignments of DP packages within a station. The other interesting (and pleasant) outcome is the stability of the results -- the misalignments do not seem to change in time.
 
 \fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with the final constraints for 56-220-near unit. Each color corresponds to a data set from \Tb{al lhc datasets}. The dashed lines show fits of \Eq{al dp sen al} and correspond to the DP alignments. For example for rotations, the position of the dashed line marks the DP rotation $\De\rh^{\rm DP}_z$.
 %The internal rotation is the rotation of a sensor with respect to its DP (i.e. the full rotation minus $\De\rh^{\rm DP}_z$).
@@ -1189,7 +1174,6 @@ As a consequence of the elastic peak tilt, the peaks in the $x$ distributions wi
 \fig{fig/pdf/al_prof_fits.pdf}{al prof fits}{The results of the sliced fits for the 56-220-near unit and the data from 21 September. Left: fit of the elastic peaks, Right: fit of the diffractive hit distribution. The fit lines use the same color code as in \Fg{al prof hits}. The gray points have been excluded from the fit as outliers.}
 
 In principle, the same slicing method could be applied to the diffractive hits (see \Fg{al prof fits} right), however it is complicated by two facts. First, the profile is non-linear. It can be seen already in \Fg{al prof hits} right, if inspected carefully.  Then, it is quantified in \Fg{al prof fits} right. Thus the linear-fit result will be burdened by an important systematic error. Since the diffractive hit distribution is wide and therefore the statistical error of the fit is large as well. This all is made even worse by the second complication: since there is just one horizontal pot, the fit must be extrapolated to the beam position. At the end, the error propagation makes this method uninteresting.
-
 
 %\TODO{broken symmetries - asymmetric acceptance, optics deviations, aperture limitations, trigger and detector efficiency bias}
 

@@ -5,6 +5,8 @@ RP, MC, IP5, CMS, T1, T2, VFAT, DIGI, RECO, LAB, LHC, LS, DPE, MC, TOTEM, RMS, n
 
 \chapter[sr]{RP simulation and reconstruction methods}
 
+\TODO{mention Monitor/TotemDQM}
+
 
 \fig{fig/pdf/sr_sw_structure.pdf}{sr sw structure}{The structure of the RP simulation and reconstruction software.}
 
@@ -19,10 +21,10 @@ The simulation process starts with generation of particles at the interaction po
 Most Monte Carlo generators simulate head-to-head collisions of particles of a fixed energy at a given point. However, in reality there are two bunches collided under a certain crossing angle. Within a bunch, particles do not have identical energy (energy smearing) and they are not all collinear (angular smearing). The bunches have non-zero dimensions and therefore the collision may take place at various points (vertex smearing). This module introduces these smearing effects in order to obtain realistic simulations. It will be discussed in detail in \Sc{beam smearing}
 
 \> Geant4 and proton transport.
-This module performs two actions: simulates energy depositions in sensitive volumes and propagates protons in between. The sensitive volumes are located around the IP5 (CMS, T1 and T2) and at the RP stations at $\pm 147\un{m}$ and $\pm 220\un{m}$. Both actions are implemented within the Geant4 \bref{geant4} simulation kit. The proton transport uses a polynomial parameterization model described in Chap.~6 of \bref{hubert}. For details on the implementation see Sec.~7.3 in \bref{hubert}.
+This module performs two actions: simulates energy depositions in sensitive volumes and propagates protons in between. The sensitive volumes are located around the IP5 (CMS, T1 and T2) and at the RP stations at $\pm 147\un{m}$ and $\pm 220\un{m}$. Both actions are implemented within the Geant4 \bref{geant4} simulation kit. The proton transport uses a polynomial parameterization model described in Chap.~6 of \bref{hubert}. For details on the implementation see Sc.~7.3 in \bref{hubert}.
 
 \> Detector response and electronics simulation.
-The energy deposited in the silicon detectors gives raise to electron-hole pairs, which are collected by the strips and then processed by the VFAT2 chips \bref{vfat}. Details can be found in Sec.~7.4 in \bref{hubert}.
+The energy deposited in the silicon detectors gives raise to electron-hole pairs, which are collected by the strips and then processed by the VFAT2 chips \bref{vfat}. Details can be found in Sc.~7.4 in \bref{hubert}.
 
 \> DIGI.
 Since the VFAT chips are digital, their output is a boolean value per silicon sensor channel. We call these data DIGI. This is the meeting point of the simulation and raw-data chains and is the start point for reconstructions and analyses.
@@ -46,10 +48,10 @@ The position of a cluster can be turned into the distance (in the read-out direc
 
 
 \> Pattern recognition.
-In this step we would like to find RECO hits belonging to (a) track(s) and suppress those which are result of noise of errors. For that we may use the fact that we have five planes in every projection and that particle tracks are straight lines. Hence hits forming line patterns are likely to come from a particle track, isolated hits are likely to be noise. Such an algorithm will be discussed in \Sc{pattern reco}. An alternative to this method -- road search algorithm -- is presented in Sec.~8.1.4 in \bref{hubert}. It is based on an additional piece of knowledge that physics protons are always very parallel to the beam. However, a possibility to reconstruct tracks with high angles will turn out important for alignment applications (see \Fg{al eig theta}). \TODO{problem with multiple tracks}
+In this step we would like to find RECO hits belonging to (a) track(s) and suppress those which are result of noise of errors. For that we may use the fact that we have five planes in every projection and that particle tracks are straight lines. Hence hits forming line patterns are likely to come from a particle track, isolated hits are likely to be noise. Such an algorithm will be discussed in \Sc{pattern reco}. An alternative to this method -- road search algorithm -- is presented in Sc.~8.1.4 in \bref{hubert}. It is based on an additional piece of knowledge that physics protons are always very parallel to the beam. However, a possibility to reconstruct tracks with high angles will turn out important for alignment applications (see \Fg{al eig theta}). \TODO{problem with multiple tracks}
 
 \> One-RP track fitting.
-In this step, hits from $U$ and $V$ projections are combined into one $xyz$ fit, see Sec.~8.1.5 in \bref{hubert}.
+In this step, hits from $U$ and $V$ projections are combined into one $xyz$ fit, see Sc.~8.1.5 in \bref{hubert}.
 
 \> Station track fitting is similar to one-RP track fit, but here all hits from an entire (or a part) station are combined. This module has been developed mainly for alignment purposes. In order to select really clean tracks, it also comprises outlier removal procedure. It will be discussed in \Sc{al data sel}.
 
