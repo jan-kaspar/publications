@@ -18,14 +18,12 @@ This analysis is based on the data from 29-30 October, when the RPs were approac
 
 \> In the {\bf reconstruction} step, the projections of the scattering angle at IP (see \Eq{ttm th x y}) are deduced from the RP measurements. For each projection a different strategy is used, in order to minimize the impact of the uncertainty of the optical functions. For the vertical projection ($y$), the phase advance $\phi+\phi_0$ in \Eq{ttm hill sol} is close to $0$, thereby maximizing the amplitude of $y$ and minimizing the impact of the phase advance uncertainties. Thus the scattering angle can be determined directly from $y$ (cf. \Eq{ttm lin par}): $\th_y^* = y/L_y$. In contrary, for the horizontal projection ($x$), the phase advance is close $\pi/2$. Consequently, it is better to use the angle $\th_x = \d x/\d s$, where the cosine term is replaced by a sine. With the given phase advance, the sine is close to its maximum, moreover the impact of phase advance variations is minimized. The angle $\th_x$ can be reconstructed within each station as $(x_{\rm F} - x_{\rm N}) / d$, where $d$ denotes the distance between near and far RPs (see \Tb{ttm rp station}). To summarize, the scattering angle projections have been reconstructed as follows:
 \eqref{\eqnarray{
-\hat \th_x^* &=& {1\over 2} \left [
-		{x^{56}_{\rm F} - x^{56}_{\rm N}\over L^{56}_{x,\rm F} - L^{56}_{x,\rm N}}
-		+ {x^{45}_{\rm F} - x^{45}_{\rm N}\over L^{45}_{x,\rm F} - L^{45}_{x,\rm N}}
-	\right]\cr
-\hat \th_y^* &=& {1\over 2} \left[
-		{1\over 2} \left( {y^{56}_{\rm F}\over L^{56}_{y, \rm F} } + {y^{56}_{\rm N}\over L^{56}_{y, \rm N} } \right)
-		+ {1\over 2} \left( {y^{45}_{\rm F}\over L^{45}_{y, \rm F} } + {y^{45}_{\rm N}\over L^{45}_{y, \rm N} } \right)
-	\right]\ ,
+	\hat\th_x^* = {\th_x^{\rm L} + \th_x^{\rm R}\over 2}\ ,\qquad
+		& \th_x^{\rm L} = {x^{45}_{\rm F} - x^{45}_{\rm N}\over L^{45}_{x,\rm F} - L^{45}_{x,\rm N}}\ ,\qquad
+		& \th_x^{\rm R} = {x^{56}_{\rm F} - x^{56}_{\rm N}\over L^{56}_{x,\rm F} - L^{56}_{x,\rm N}}\cr
+	\hat\th_y^* = {\th_y^{\rm L} + \th_y^{\rm R}\over 2}\ ,\qquad
+		& \th_y^{\rm L} = {1\over 2} \left( {y^{45}_{\rm F}\over L^{45}_{y, \rm F} } + {y^{45}_{\rm N}\over L^{45}_{y, \rm N} } \right)\ ,\qquad
+		& \th_y^{\rm R} = {1\over 2} \left( {y^{56}_{\rm F}\over L^{56}_{y, \rm F} } + {y^{56}_{\rm N}\over L^{56}_{y, \rm N} } \right)\ ,\cr
 }}{felm xy reco}
 where for example $x^{56}_{\rm F}$ is the $x$ component of the hit in the 56-220-far unit and $L^{56}_{x, \rm F}$ is the corresponding effective length. 
 
@@ -62,7 +60,7 @@ Cuts 1 and 2 represent collinearity requirements, that is the left and right pro
 
 As \Eq{felm cut} suggests, all cuts have been applied on a $3\si$-level. Therefore we expect them to be of a very high efficiency. That is the number of true elastic events that fail the selection cuts is negligible. On the other hand, we expect a number of non-elastic ($\equiv$ background) events to pass the cuts -- these events will be studied in this section.
 
-The task can be split into two parts: the \em{integral}, the number of background events which have passed the selection, and the \em{distribution}, the contribution of background to the elastic $t$-distribution.
+The task can be split into three parts: the \em{integral} (the number of background events which have passed the selection), the \em{distribution} (in $t_x$ and $t_y$) and the \em{contribution to the elastic $t$-distribution}.
 
 But before the analysis, let us mention what background contributions we expect. Since these data were taken in a low luminosity run
 %\TODO{avg. num. of in. per bunch cr.})
@@ -126,7 +124,7 @@ Therefore, there is no correlation created by the trigger.
 An example of such a one-side distribution is shown in \Fg{felm background dist txty}. To build the histogram, we have used only the events that have failed cut 1 ($\th_x$ collinearity), which anyway provides most background events. One can clearly see the acceptance cut around $|t_y| = 0.3\un{GeV^2}$ (see also \Tb{felm bckg results}), the effect of the of the last $\Th$ function in \Eq{felm bckg dist obs}. The distribution seems decreasing exponentially with $t = t_x + t_y$, something one would naively expect from the DPE cross-section \Eq{felm dpe cs}. However, if $t$ was distributed exponentially $\exp(b t)$, the corresponding distribution of $t_x$ and $t_y$ would be $\exp(b t_x + b t_y)/\sqrt{t_x t_y}$
 %(the square-root factor comes from the Jacobian)
 . Moreover, we reconstruct the background protons as elastic: the effect of non-zero $\xi$ is absorbed into the observed $t_x$ vs.~$t_y$ distribution. Since the dispersion acts mostly in the horizontal direction, we may expect the $t_x$-distribution to be altered. This consideration has led us to try the suggested parameterization with $b$'s independent for $x$ and $y$:
-\eqref{h_{\rm O}(t_x, t_y) \propto {\e^{b_x t_x}\over \sqrt{-t_x}} {\e^{b_y t_y}\over \sqrt{-t_y}}\ .}{felm dist param}
+\eqref{h_{\rm 1p}(t_x, t_y) \propto {\e^{b_x t_x}\over \sqrt{-t_x}} {\e^{b_y t_y}\over \sqrt{-t_y}}\ .}{felm dist param}
 
 As a first test, one can compare the $t_x$-distribution with the $x$ part of the suggested parameterization. \Fg{felm background dist tx} shows an excellent match. Then, we have performed a careful fit of the $t_x$ vs. $t_y$ data. For that we have cut off the part of the histogram which is full of empty bins and we have removed the closest bins to the acceptance cut. The resulting bin selection is shown as the red dashed triangle in \Fg{felm background dist txty}. The results of the fit are summarized in \Tb{felm fit}, note the very good $\ch^2$ (with about 120 bins contributing). Whereas the slopes are clearly different between the $x$ and $y$ projection, their values are consistent within all four fits. This has led us to the conclusion that the background distribution is the same left and right and for both diagonals. Further on, we will use the mean slopes (last row of the table). The error of the mean has been calculated as the standard deviation of the 4 measurements divided by $\sqrt{n = 4}$.
 
@@ -144,7 +142,7 @@ $\ch^2/\hbox{ndf}$ & 1.5 & 0.8& 1.1 &\omit\vrule\hfil 0.9\hfil\bvrule & \omit\cr
 
 \caption{The background contribution to the elastic $t$-distribution}
 
-Our fit \Eq{felm dist param} determines the two-proton background distribution \Eq{felm bckg dist fact} up to a normalization constant. But this is fixed by the known integral of the background events, see \Tb{felm bckg int result}. This integral gives the number of observed (i.e.~within acceptance) background events that satisfy the selection cuts. It can be calculated as:
+Our fit \Eq{felm dist param} determines the two-proton background distribution \Eq{felm bckg dist fact} up to a normalization constant. But this is fixed by the known integral of the background events, see \Tb{felm bckg int result}. This integral gives the number of observed (i.e.~within acceptance) background events that satisfy the selection cuts. It relates to the background distributions as:
 \eqref{\eqnarray{
 N_{\rm B} & = & \int \d t_x^{\rm L}\, \d t_y^{\rm L}\, \d t_x^{\rm R}\, \d t_y^{\rm R}\ h_{\rm 2p}(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R})
 	\ \Th(\hbox{acceptance})\ \Th(\hbox{selection})\ ,\cr
@@ -153,29 +151,31 @@ N_{\rm B} & = & \int \d t_x^{\rm L}\, \d t_y^{\rm L}\, \d t_x^{\rm R}\, \d t_y^{
 }}{felm bckg dist norm cond}
 where $\Th(\hbox{acceptance})$ requires the $t$ values to be such that the event falls into the acceptance (cf. \Eq{felm bckg dist obs}). Similarly, $\Th(\hbox{selection})$ implements the first two ($\th_x$ and $\th_y$ collinearity) selection requirements.
 
-\> the t val. that we attach to a background event
-
+When a background event passes the selection cuts, it is assigned an ``elastic'' $t$-value (cf.~\Eq{felm xy reco}):
 \eqref{\bar t(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R})
-= \left( \sqrt{t_x^{\rm L}} + \sqrt{t_x^{\rm R}}\over 2 \right)^2 + \left( \sqrt{t_y^{\rm L}} + \sqrt{t_y^{\rm R}}\over 2 \right)^2}{felm bckg t el}
-
-\> extending h2 into the unobserved region: automatic acceptance correction
-
-\> (acceptance corrected) elastic-like background
-
+= \left( \sqrt{t_x^{\rm L}} + \sqrt{t_x^{\rm R}}\over 2 \right)^2 + \left( \sqrt{t_y^{\rm L}} + \sqrt{t_y^{\rm R}}\over 2 \right)^2\ .}{felm bckg t el}
+Thus, the background contribution to the elastic $t$-distribution is given by the distribution of $\bar t$, indeed within the selection cuts:
 \eqref{{\d N_{\rm B, el}\over \d t}(t) = \int
 	\d t_x^{\rm L}\, \d t_y^{\rm L}\, \d t_x^{\rm R}\, \d t_y^{\rm R}
 	\ h_{\rm 2p}(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R})
 	\ \de\!\left(t - \bar t(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R}) \right)
-	\Th(\hbox{selection})\ ,
+	\Th(\hbox{selection})\ .
 }{felm bckg el t dist}
+That corresponds to the background contribution ``after the acceptance correction''. For the background, the acceptance correction has been achieved by simply extending the $h_{\rm 2p}$ distribution to the non-observed region (outside acceptance). One can easily modify \Eq{felm bckg el t dist} in order to obtain the background contribution the the elastic $\d N/\d t$ before the acceptance correction -- it is enough to add $\Th(\hbox{acceptance})$ to the \rhs
 
-\> one could add $\Th(\hbox{acceptance})$ to get the el-like bckg before the acceptance correction.
-
-\> one can parameterize - how were the parameters calculated and their errors
-
+We have evaluated the integral \Eq{felm bckg el t dist} with the aid of MC techniques (see the blue histograms in \Fg{felm background cmp}). We have found that the resulting distributions can well be parameterized as:
 \eqref{{\d N_{\rm B, el}\over \d t} = a \e^{b t + c t^2}}{felm bckg el t dist param}
+at the parts not affected by the acceptance (see the red solid lines in \Fg{felm background cmp}). In fact, we have made a number of MC simulations. We have taken the mean $h_{\rm 1p}$ parameters from \Tb{felm fit} and varied them within their uncertainties. We have done the same for the background integral $N_{\rm B}$ from \Tb{felm bckg int result}. This has led to the $\d N_{\rm B,el}/\d t$ uncertainties which are drawn as red dashed lines in \Fg{felm background cmp}. The mean fit parameters $a$, $b$ and $c$ with their uncertainties are summarized in \Tb{felm bckg results}.
 
-\tab{felm bckg results}{\TODO{after acceptance correction = without acceptance requirement}}{
+% both for the diagonal 45b - 56t
+% blue: dN_B/dt simulation
+% red: fit with parameterization \Eq{felm bckg el t dist param}
+% dashed red: 1\si error contours calcualted from the uncertainties of b_x, b_y and N_B
+% black: dN/dt for signal+background
+\fig{fig/pdf/felm_background_cmp.pdf}{felm background cmp}{\TODO{}}
+
+
+\tab{felm bckg results}{The background contribution to the elastic $t$-distribution (after the acceptance correction) parameterized as \Eq{felm bckg el t dist param}.}{
 \omit&\multispan2\bhrulefill\cr
 \omit&\omit\bvrule\bstrut\tskip 45 bottom -- 56 top\tskip&\hbox{45 top -- 56 bottom}\cr\bln
 |t_{y}^{\rm L}|_{\rm min}\ \rm (GeV^{-2}) & 0.315 \pm 0.01 & 0.335 \pm 0.01\cr\ln
@@ -185,10 +185,14 @@ b\ \rm (GeV^{-2}) & 6.9 \pm 0.6 & 6.9 \pm 0.6 \cr\ln
 c\ \rm (GeV^{-4}) & 0.4 \pm 0.1 & 0.4 \pm 0.1 \cr\bln
 }
 
+
+\iffalse
 \bmfig
-\fig{fig/pdf/felm_background_dist_t_el.pdf}{felm background dist t el}{[7cm]The background contamination in the elastic $t$-distribution from one diagonal. Before acceptance correction (blue) and after (red). The green curves represent fits according to parameterization \Eq{felm bckg el t dist param}.}
+\fig{fig/pdf/felm_background_dist_t_el.pdf}{felm background dist t el}{[7cm]The background contamination in the elastic $t$-distribution (diagoanl 45 bottom - 56 top). Before acceptance correction (blue) and after (red). The green curves represent fits according to parameterization \Eq{felm bckg el t dist param}.}
 \fig{fig/pdf/felm_background_cmp.pdf}{felm background cmp}{[7cm]A signal-background comparison (for diagonal 45 bottom -- 56 top), before acceptance correction. Black: signal+background, blue: background estimation. Red: THE OLD estimate. \TODO{dashed line as for unfolding} \TODO{Update me}}
 \emfig
+\fi
+
 
 \iffalse
 In order to see how the background events would distribute within the elastic $t$-distribution, we should define ``the elastic $t$'' also for the background events. It follows from the reconstruction procedure (averaging the left and right scattering angles):
@@ -205,7 +209,7 @@ The uncertainty has been obtained by varying the $b_x$ and $b_y$ parameters with
 
 The scattering angles $\th_x'$ and $\th_y'$ \footnote{
 In this section we will always mean the physics scattering angles (i.e.~at the interaction point, see \Sc{rp measurement}). To meet our notation from \Sc{rp measurement} we should use star superscripts $^*$, however this would lead to expressions graphically too heavy and thus we will drop them in this section. Moreover, we will use the traditional distinction between measured/reconstructed (with prime) and true/original (without primes) quantities.
-} are reconstructed by taking the average over the two one-arm measurements (the first terms in the square brackets of \Eq{felm xy reco} correspond to the left, the last terms to the right-arm measurements):
+} are reconstructed by taking the average over the two one-arm measurements (cf.~\Eq{felm xy reco}):
 \eqref{\th_x' \equiv {\th_x^{\rm L} + \th_x^{\rm R}\over 2} = \th_x + \De\th_x}{felm unf th err}
 and equivalently for the $y$ projection. The left and right angle measurements are subject to an error, our estimation of which is summarized by \Eq{elr th err proj sig}. We expect two main contributions: due to the beam-divergence ($\si_{\rm B} \approx 17\un{\mu rad}$) and due to the finite resolution of the silicon detectors (
 % Lx ~ 1.68 m, Ly ~ 21.45

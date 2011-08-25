@@ -90,15 +90,14 @@ limits((0, 1e-1), (2.5, 1e3), Crop);
 GShipout("felm_background_dist_tx");
 
 //--------------------
-*/
 
 NewPad("$|t|\un{GeV^2}$", "$\d N_{\rm B}/\d t$");
 scale(Linear, Log);
-draw(rGetObj(dir+"/mc2.root", "h_el"), red);
-draw(rGetObj(dir+"/mc2.root", "h_el|ffel"), heavygreen+2pt);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el"), red);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el|ffel"), heavygreen+2pt);
 
-draw(rGetObj(dir+"/mc2.root", "h_el_acc"), blue);
-draw(rGetObj(dir+"/mc2.root", "h_el_acc|ffel"), heavygreen+2pt);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc"), blue);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc|ffel"), heavygreen+2pt);
 limits((0, 1e1), (2.5, 1e6), Crop);
 
 GShipout("felm_background_dist_t_el");
@@ -112,17 +111,58 @@ scale(Linear, Log);
 draw(shift(0, log10(1/0.05)), rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "h_t"), black+1pt, "signal+background");
 
 //old background calculation
-draw(rGetObj(dir+"/background_with_errors2_45b_56t.root", "bckg_with_err"), "l,ec", red+1pt, "background new");
-draw(rGetObj(dir+"/background_with_errors_45b_56t.root", "bckg_with_err"), "l,ec", green+1pt, "background old");
+//draw(rGetObj(dir+"/background_with_errors2_45b_56t.root", "bckg_with_err"), "l,ec", red+1pt, "background new");
+//draw(rGetObj(dir+"/background_with_errors_45b_56t.root", "bckg_with_err"), "l,ec", green+1pt, "background old");
 
-draw(rGetObj(dir+"/mc2.root", "h_el_acc"), blue);
-draw(rGetObj(dir+"/mc2.root", "h_el_acc|ffel"), black+1pt);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc|ffel"), blue);
+draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_max"), blue+dashed);
+draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_min"), blue+dashed);
 
-draw(rGetObj(dir+"/mc2.root", "h_el"), red);
+
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el|ffel"), red);
+draw(rGetObj(dir+"/mc2_anal.root", "h_el/graphs|g_max"), red+dashed);
+draw(rGetObj(dir+"/mc2_anal.root", "h_el/graphs|g_min"), red+dashed);
 
 limits((0, 1e1), (2.5, 1e6), Crop);
 yaxis(XEquals(0.36, false), dashed);
 //AttachLegend("diagonal 45 bottom -- 56 top");
 
+
+GShipout("felm_background_cmp");
+*/
+
+//--------------------
+
+NewPad("$|t|\un{GeV^2}$", "$\d N/\d t$");
+scale(Linear, Log);
+draw(shift(0, log10(1/0.05)), rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "h_t"), black, "");
+
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc"), blue);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc|ffel"), red+1.5pt);
+
+TGraph_lowLimit = 0.6;
+draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_max"), red+dashed);
+draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_min"), red+dashed);
+TGraph_lowLimit = -inf;
+
+limits((0, 1e1), (2.5, 1e7), Crop);
+//yaxis(XEquals(0.36, false), dashed);
+AttachLegend("bbefore acceptance correction");
+
+
+NewPad("$|t|\un{GeV^2}$", "$\d N/\d t$");
+scale(Linear, Log);
+
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el"), blue);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el|ffel"), red+1.5pt);
+TGraph_lowLimit = 0.3;
+draw(rGetObj(dir+"/mc2_anal.root", "h_el/graphs|g_max"), red+dashed);
+draw(rGetObj(dir+"/mc2_anal.root", "h_el/graphs|g_min"), red+dashed);
+TGraph_lowLimit = -inf;
+
+
+limits((0, 1e1), (2.5, 1e7), Crop);
+//yaxis(XEquals(0.36, false), dashed);
+AttachLegend("after acceptance correction");
 
 GShipout("felm_background_cmp");
