@@ -33,6 +33,42 @@ int N = 120;
 
 //----------------------------------------------------------------------------------------------------
 
+string ref_lab[], ref_val[];
+
+int LoadReference(string filename)
+{
+	file f = input(filename, false);
+	if (error(f))
+		return 1;
+
+	while (!eof(f)) {
+		string line = f;
+		string bits[] = split(line, "{");
+
+		if (bits.length != 3 || bits[0] != "\makecom")
+			continue;
+		
+		ref_lab.push(replace(bits[1], "}", ""));
+		ref_val.push(replace(bits[2], "}", ""));
+	}
+	
+	return 0;
+}
+
+string Ref(string lab)
+{
+	for (int i : ref_lab.keys) {
+		if (ref_lab[i] == lab)
+			return ref_val[i];
+	}
+
+	return "?"+lab+"?";
+}
+
+LoadReference("../../thesis.ref");
+
+//----------------------------------------------------------------------------------------------------
+
 guide[] GetGraphs(string dir)
 {
 	guide[] graphs;
@@ -126,23 +162,23 @@ void MakeFile(string g, string t, string what, int o)
 
 		if (op == 0) {
 			label("\vtop{\hbox{\bf shitfs in the read-out direction}}", (5, 6), S+3E);
-			label("$\}$ four singular modes (4.37)", (5, -12.5), 3E);
+			label("$\}$ four singular modes ("+Ref("eq:al sm shr sol")+")", (5, -12.5), 3E);
 		}
 		
 		if (op == 1) {
 			label("\vtop{\hbox{\bf shitfs in the read-out direction}\hbox{\bf and rotations}}", (5, 6), S+3E);
-			label("singular mode (4.47) with $\De\rh$ different for $U$ and $V$", (5, -1.5), 3E);
-			label("$\Big\rbrace$ \raise2pt\vbox to0pt{\vss\hbox{singular modes (4.37) and}"+
-				"\hbox{singular mode (4.47) with $\De\rh$ equal for $U$ and $V$}\vss}", (5, -11.5), 3E);
+			label("singular mode ("+Ref("eq:al sm rotz sol")+") with $\De\rh$ different for $U$ and $V$", (5, -1.5), 3E);
+			label("$\Big\rbrace$ \raise2pt\vbox to0pt{\vss\hbox{singular modes ("+Ref("eq:al sm shr sol")+") and}"+
+				"\hbox{singular mode ("+Ref("eq:al sm rotz sol")+") with $\De\rh$ equal for $U$ and $V$}\vss}", (5, -11.5), 3E);
 		}
 		
 		if (op == 2) {
 			label("\vtop{\hbox{\bf shitfs in the read-out direction,}\hbox{\bf rotations and $z$-shifts}}", (5, 6), S+3E);
-			label("singular mode (4.47) with $\De\rh$ different for $U$ and $V$", (5, -1), 3E);
-			label("\vbox{\hbox{singular modes (4.41) with $\al$ and $\be$}\hbox{different for $U$ and $V$}}", (5, -6.5), 3E);
-			label("$\Bigg\rbrace$ \raise4pt\vbox to0pt{\vss\hbox{singular modes (4.37),}"+
-				"\hbox{singular mode (4.47) with $\De\rh$ equal for $U$ and $V$}"+
-				"\hbox{and singular modes (4.42)}\vss}", (5, -12.5), 3E);
+			label("singular mode ("+Ref("eq:al sm rotz sol")+") with $\De\rh$ different for $U$ and $V$", (5, -1), 3E);
+			label("\vbox{\hbox{singular modes ("+Ref("eq:al sm shz sol 2g")+") with $\al$ and $\be$}\hbox{different for $U$ and $V$}}", (5, -6.5), 3E);
+			label("$\Bigg\rbrace$ \raise4pt\vbox to0pt{\vss\hbox{singular modes ("+Ref("eq:al sm shr sol")+"),}"+
+				"\hbox{singular mode ("+Ref("eq:al sm rotz sol")+") with $\De\rh$ equal for $U$ and $V$}"+
+				"\hbox{and singular modes ("+Ref("eq:al sm shz sol 3g")+")}\vss}", (5, -12.5), 3E);
 		}
 	}
 }
