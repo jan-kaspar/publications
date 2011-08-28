@@ -3,84 +3,86 @@ RP, MC, IP5, CMS, T1, T2, VFAT, DIGI, RECO, LAB, LHC, LS, DPE, MC, TOTEM, RMS, n
 \fi
 
 
-\chapter[sr]{RP simulation and reconstruction methods}
-
-\TODO{mention Monitor/TotemDQM}
+\chapter[sr]{Roman Pot simulation and reconstruction software}
 
 
-\fig{fig/pdf/sr_sw_structure.pdf}{sr sw structure}{The structure of the RP simulation and reconstruction software.}
+\TODO{better intro -- motivation}. In \Sc{rp measurement} we have described how scattered protons can be detected by the RP detectors. This processes can be simulated by computer programs which is essential for development and tuning of reconstruction techniques. That is for processes where the scattered proton kinematics is deduced from the RP hits.
 
-In \Sc{rp measurement} we have described how scattered protons can be detected by the RP detectors. This processes can be simulated by computer programs which is essential for development and tuning of reconstruction techniques. That for processes where the scattered proton kinematics is deduced from the RP hits. The structure of the simulation and reconstruction software is sketched in \Fg{sr sw structure}. Beyond the aforemetined \em{simulation} and \em{reconstruction} blocks, you can see three more: \em{alignment} (special reconstruction focused to the alignment of RP detectors), \em{raw-data} (experimental data preprocessing) and \em{trigger} (trigger related analyses).
+\fig{fig/pdf/sr_sw_structure.pdf}{sr sw structure}{The structure of the RP simulation and reconstruction software. Rectangles are used for software modules (algorithm implementations), bevels for data types.}
 
-Our contribution to the software mostly complements the work described in \bref{hubert}. Below we will briefly describe all the essential components and later will give details for our modules.
+
+The structure of the simulation and reconstruction software is sketched in \Fg{sr sw structure}. Beyond the aforemetined \em{simulation} and \em{reconstruction} blocks, you can see three more: \em{alignment} (special reconstruction focused to the alignment of RP detectors), \em{raw-data} (experimental data preprocessing) and \em{trigger} (trigger related analyses).
+
+The contributions by this thesis' author mostly complement the work described in \bref{hubert}. We will focus on these contributions, but let us first briefly describe the software components (modules) from \Fg{sr sw structure}.
 
 \> {\bf Event generator}.
-The simulation process starts with generation of particles at the interaction point. This can be either a \em{particle gun} or a \em{physics event generator}. Particle guns generate particles according to some given distributions and are useful for specialized tests. Physics event generators simulate physics processes such as elastic scattering, single diffraction etc. We use common generators like Pythia \bref{pyhia6,pythia8} or Phojet \bref{phojet} and a custom developed Elegent (see \Sc{elegent}).
+The simulation process starts with generation of particles at the interaction point. This can be either a \em{particle gun} or a \em{physics event generator}. Particle guns generate particles according to some given distributions and are useful for specialized tests and software debugging. Physics event generators build events according to physics models. We use general-pourpose physics generators like Pythia \bref{pythia6,pythia8} or Phojet \bref{phojet} and a custom developed Elegent (see \Sc{elegent}).
 
-\> Smearing.
-Most Monte Carlo generators simulate head-to-head collisions of particles of a fixed energy at a given point. However, in reality there are two bunches collided under a certain crossing angle. Within a bunch, particles do not have identical energy (energy smearing) and they are not all collinear (angular smearing). The bunches have non-zero dimensions and therefore the collision may take place at various points (vertex smearing). This module introduces these smearing effects in order to obtain realistic simulations. It will be discussed in detail in \Sc{beam smearing}
+\> The aim of the {\bf beam smearing} module is to account for the beam smearing effects that are usually not considered by event generators. These smearing effects can be divided intro three classes: \em{angular smearing} (the particles within a bunch are not all parallel), \em{energy smearing} (there is an energy fluctuation within a bunch) and \em{vertex smearing} (the bunches have non-zero dimensions, thus the interactions can take place in various space points).
 
-\> Geant4 and proton transport.
-This module performs two actions: simulates energy depositions in sensitive volumes and propagates protons in between. The sensitive volumes are located around the IP5 (CMS, T1 and T2) and at the RP stations at $\pm 147\un{m}$ and $\pm 220\un{m}$. Both actions are implemented within the Geant4 \bref{geant4} simulation kit. The proton transport uses a polynomial parameterization model described in Chap.~6 of \bref{hubert}. For details on the implementation see Sc.~7.3 in \bref{hubert}.
+\> The {\bf Geant4 and proton transport} module performs two actions: simulates energy depositions in sensitive volumes and propagates protons in between. The sensitive volumes are located around the IP5 (CMS, T1 and T2) and at the RP stations. Both actions are implemented within the Geant4 \bref{geant4} simulation kit. For the proton transfer through the LHC a polynomial parameterization model is used (see Ch.~6 in \bref{hubert}). For details on the implementation we refer the reader to Sc.~7.3 in \bref{hubert}.
 
-\> Detector response and electronics simulation.
-The energy deposited in the silicon detectors gives raise to electron-hole pairs, which are collected by the strips and then processed by the VFAT2 chips \bref{vfat}. Details can be found in Sc.~7.4 in \bref{hubert}.
+\> The energy deposited in the silicon sensors gives raise to electron-hole pairs, which are collected by the strips and the resulting electric signal is processed by the VFAT chips \bref{vfat}. A simulation of these processes takes place in the {\bf sensor response and electronics simulation} modules, details can be found in Sc.~7.4 in \bref{hubert}.
 
-\> DIGI.
-Since the VFAT chips are digital, their output is a boolean value per silicon sensor channel. We call these data DIGI. This is the meeting point of the simulation and raw-data chains and is the start point for reconstructions and analyses.
+\> The VFATs chips are digital, their output is a boolean value (hit/no hit) per sensor channel. A collection of VFAT data is called the {\bf DIGI} data type. This is the meeting point of the simulation and raw-data chains and is the start point for reconstructions and analyses.
 
-\> Raw data.
-Raw data are those saved by the DAQ system.
+\> The {\bf raw data} type refers to a data format in which detector data are collected and saved by the data acquision (DAQ) system.
 
-\> Raw-data validation.
-The form of raw data is given by the DAQ and can change during time according to needs. Hence before the data is used, they must be converted to a common format -- DIGI in our case. The DAQ system has only a limited possibility to run error checks online, therefore most of then must of run offline. This is the main duty of this module.
-\TODO{Standalone section?}
+\> The DAQ system has only a limited possibilities to perform consistency checks at run-time. Therefore it is essential to peform a {\bf raw-data validation} when converting the raw-data to DIGI offline. This validation relies on checking various frame check sums, constant bits and comparing chip IDs, event and bunch-crossing numbers to the expected values.
 
-\> Fast simulation
-\Sc{fast simu}
+\> The {\bf fast simulation} modules (see \Sc{fast simu}) provide a less detailed, but faster alternative to the Geant4-based simulation. They are primarily intended for statistical studies of the track-based alignment.
+
+\> The {\bf clusterization} is the first step of the reconstruction chain. Due to charge-sharing effects, it is possible that one track fires two or more neighbouring strips. Such strip clusters need be identified and later treated as a single hit.
+
+\> The position of a cluster can be converted into the distance (in the read-out direction) from the center of the sensor. A collection of such cluster positions is called the {\bf RECO} data type.
 
 
-\> Clusterization
-is the first step of the reconstruction chain. Due to charge-sharing effects, it is possible that one track fires two or more neighbouring strips. Such strip clusters need be found and later treated as a single hit.
+\> The aim of the {\bf pattern recognition} is to match sensor hits with particle tracks. This implicitly includes suppressing noise hits that are not associated with any track. There are two pattern recognition algorithms in the TOTEM software. Both of them search for linear patterns within the hits in each RP. The algorithm described in \Sc{pattern reco} can be used with tracks with arbitrary angles, the algorithm presented in Sc.~8.1.4 in \bref{hubert} is designed for the protons coming from the IP -- such protons are very parallel to the beam.
 
-\> RECO.
-The position of a cluster can be turned into the distance (in the read-out direction) from the center of the sensor. We call such data RECO.
+\> During {\bf one-RP track fitting}, the hits from $U$ and $V$ sensors of each RP are combined into one $xyz$ (global reference frame) fit, see Sc.~8.1.5 in \bref{hubert}.
+
+\> The purpose of {\bf station track fitting} is similar to the one-RP track fitting, but here all hits from a station are combined. This module has been developed mainly for alignment purposes. For a good noise suppression efficiency, this algorithm comprises also an outlier removal procedure. It will be discussed in \Sc{al data sel}.
+
+\> In the {\bf physics reconstruction} step, the one-RP track fits are used to reconstruct proton(s) kinematics at the interaction point and consequently determine the type and parameters of the event. There are two versions -- one suitable for any diffractive protons and a lighter alternative for elastic events. The latter one will be discussed in \Sc{elr}.
+
+\> The {\bf alignment} modules implement the RP alignment methods presented in \Sc{al}. There is no standardized module for the elastic alignment (\Sc{al elast}) yet, so far it has been performed together with elastic scattering analyses.
+
+\> The DIGI data contain also some trigger-related data, which can be used for validations of the trigger system performance -- these are drawn as the {\bf trigger analyses} module.
+
+\> The {\bf data quality monitor} (TotemDQM) is an interactive program that can visualize the results of all the steps shown in \Fg{sr sw structure}. It has primarily been designed for (quasi)-online control of the data being acquired. But it can also be used for event scanning (visual inspection of the events' details) or for software tuning and debugging. For more information see \Sc{dqm}.
 
 
-\> Pattern recognition.
-In this step we would like to find RECO hits belonging to (a) track(s) and suppress those which are result of noise of errors. For that we may use the fact that we have five planes in every projection and that particle tracks are straight lines. Hence hits forming line patterns are likely to come from a particle track, isolated hits are likely to be noise. Such an algorithm will be discussed in \Sc{pattern reco}. An alternative to this method -- road search algorithm -- is presented in Sc.~8.1.4 in \bref{hubert}. It is based on an additional piece of knowledge that physics protons are always very parallel to the beam. However, a possibility to reconstruct tracks with high angles will turn out important for alignment applications (see \Fg{al eig theta}). \TODO{problem with multiple tracks}
-
-\> One-RP track fitting.
-In this step, hits from $U$ and $V$ projections are combined into one $xyz$ fit, see Sc.~8.1.5 in \bref{hubert}.
-
-\> Station track fitting is similar to one-RP track fit, but here all hits from an entire (or a part) station are combined. This module has been developed mainly for alignment purposes. In order to select really clean tracks, it also comprises outlier removal procedure. It will be discussed in \Sc{al data sel}.
-
-\> Physics reconstruction.
-In this step, the one-RP track fits are used to reconstruct proton kinematics at IP5. There are two versions -- \em{general} suitable for any diffractive protons and \em{elastic} which is a lighter version for elastic events. The latter one will be discussed in \Sc{el reco}.
-
-\> Alignment modules perform a special analyses focused on the alignment of RP sensors wrt.~each other and wrt.~the beam. The entire Chapter~\sref{al} will be devoted to RP alignment. \TODO{Standalone section with implementation details?? In this chapter or the Alignment one??}
-
-\> Various \em{coincidence-chip and trigger analyses} have been performed to validate the performance of the trigger system.
 
 \section[elegent]{Elegent}
 
-Elegent is acronym for ELastic Event GENeraTor. It generates elastic $\rm pp$ and $\rm\bar pp$ collisions with $\d\si/\d t$ distributions according to the four phenomenological models discussed in \Sc{el models}.
+Elegent is an acronym for ELastic Event GENeraTor. It generates elastic $\rm pp$ and $\rm\bar pp$ collisions with $\d\si/\d t$ distributions according to the four phenomenological models discussed in \Sc{el models}.
 
-It uses the inversion method (see e.g.~Sc.~2.2 in \bref{lemieux}). This means one has to prepare cumulative distribution functions (cdfs.) first. The Elegent package contains a standalone program to do so. For a chosen energy and interaction type ($\rm pp$ or $\rm\bar pp$), the program calculates (samples in a given range) cdfs.~for every models and saves them as a ROOT file. In fact, for each hadronic model, there are three cdfs.~with various levels of Coulomb interaction inclusion: pure hadron (Coulomb effects are completely neglected), West-Yennie (\Eq{el WY}) and Kundr\' at-Lokaj\' i\v cek (\Eq{el KL}).
+The package consists of two components. The first one prepares a set of cumulative distribution functions (cdfs). This set is saved as a ROOT file and corresponds to a chosen energy ($\sqrt s$) and interaction type $\rm pp$ or $\rm \bar pp$. For each of the six model variants from \Sc{el models}, four cdfs.~are calculated: ignoring the Coulomb interaction and treating the Coulomb-hadronic interference according to the West-Yennie (\Eq{el phase WY}), simplified West-Yennie (\Eq{el phase SWY}) and (corrected) Kundr\' at-Lokaj\' i\v cek (\Eq{el phase CKL}) approaches.
 
-The generation program itself loads a selected cdf., can reduce the available $t$-region and inverts the cdf. The generated events are saved in the standard HepMC \TODO{ref} format. Technical details and usage hints can be found in \bref{elegent}.
+The second package component loads a chosen cdf.~and generates random elastic events (the inversion method is used, see e.g.~Sc.~2.2 in \bref{lemieux}), which are stored in the HepMC format \bref{hepmc}.
+
+For technical details and usage instructions we refer the reader to the manual page \bref{elegent}.
+
 
 
 \section[beam smearing]{Beam smearing}
 
-The aim of this module is to include beam smearing effects that are usually not considered by event generators. As it has been mentioned above, the beam smearing comprises three components: \em{angular smearing} (the particles in a bunch are not all parallel), \em{energy smearing} (there is energy fluctuation within a bunch) and \em{vertex smearing} (the bunches have non-zero dimensions, hence the interactions can take place in various space points).
+Most physics event generators consider head-to-head collisions of particles of a fixed energy at a given space point. However, in reality there are two bunches collided under a certain crossing angle (see \Fg{smearing vertex}). Within each bunch, the particles do not have identical energies (energy smearing) and their momenta are not all parallel (angular smearing). The bunches have non-zero dimensions and therefore the interactions may take place at various space points (vertex smearing). The {\bf beam smearing} module adds these smearing effects to the events from physics generators, see \Sc{beam smearing}.
 
 This section is an updated version the internal note \bref{smearing}.
 
 
 \subsection{Angular and energy smearing}
 
-Let's discuss angular and energy smearing first. A collision in LAB frame (a frame bound to the accelerator). On the other hand, MC generators use a different frame to describe events -- a frame where incident particles have same momenta and opposite directions parallel to $z$ axis. This frame will be referred as the MC frame. Obviously, we want to find a transformation between these two frames. It will be done in two steps. 
+\Fg{smearing angular energy} shows a collision event in a reference frame bound to the accelerator (LAB frame). A physics generator would describe this event in a different frame (MC frame), where the particles approach each other along the $z$ axis with equal momenta. Thus one part of the angular and energy smearing can be described by a Lorentz transform from MC to LAB frame. The other part reflects the fact that the smearing alters the center-of-mass energy $\sqrt s$.
+
+\fig[8cm]{fig/pdf/smearing_angular_energy.pdf}{smearing angular energy}{Sketch of angular and energy smearing in $xz$ plane. \TODO{LAB??}, \TODO{$\al$ is crossing angle}}
+
+
+
+\vskip1cm\hrule\vskip1cm
+
+A collision in LAB frame (a frame bound to the accelerator). On the other hand, MC generators use a different frame to describe events -- a frame where incident particles have same momenta and opposite directions parallel to $z$ axis. This frame will be referred as the MC frame. Obviously, we want to find a transformation between these two frames. It will be done in two steps. 
 
 First, we find the Lorentz boost which makes incident particles have equal momenta and opposite directions. If we write the transformation of a four-momentum $(E|\vec p)$ to $(E'|\vec p')$ in the following form
 \eqref{\eqalign{
@@ -109,7 +111,6 @@ To summarize, if $(E|\vec p)_{\rm MC}$ is the four-momentum for a particle produ
 where $S(\chi)$ stands for the energy scaling procedure.
 
 
-\fig[8cm]{fig/pdf/smearing_angular_energy.pdf}{smearing angular energy}{Sketch of angular and energy smearing in $xz$ plane.}
 
 The above formula provides a method to apply angular and energy smearing to MC particles. The missing step to have a smearing MC generator is to know the distributions of the quantities $\vec\be$, $\vec a$, $\om$ and $\ch$. But these can be calculated from beam smearing parameters as discussed in \Sc{rp measurement}. Assuming the crossing angle $\al$, see \Fg{smearing angular energy}, one can parameterize the momenta of the incident particles as
 \eqref{\vec p_i = \pm p_{\rm nom}\,(1 + \xi_i)\,\pmatrix{\cos\al & 0 & \mp \sin\al\cr 0 & 1 & 0 \cr \pm\sin\al & 0 & \cos\al\cr}\,\pmatrix{C_i\cr S_i\cr \sqrt{1 - C_i^2 - S_i^2}}\ ,}{sm momenta par}
@@ -146,46 +147,51 @@ Using the statistical properties suggested in the previous section yields the fo
 
 \subsection{Vertex smearing}
 
-\fig[8cm]{fig/pdf/smearing_vertex.pdf}{smearing vertex}{Bunch collision with crossing angle $\al$.}
+\fig[8cm]{fig/pdf/smearing_vertex.pdf}{smearing vertex}{A bunch collision under a crossing angle $\al$, described in the LAB frame.}
 
-\Eq{in luminosity}, one of the luminosity definitions \TODO{ref formanek?} Eq.~(5.2) in \bref{formanek QFT}, suggests that function
-\eqref{h(x, y, z; t) = {1\over {\cal L}_{int}}\,j(x, y, z; t)\ \rh_T(x, y, z; t)}{sm pdf}
-can be interpreted as the probability density function of finding an interaction (vertex) at position $(x, y, z)$ and time $t$. Recalling that $j$ stands for the flux of bombarding particles and $\rh_T$ is the density of target particles. This formula can well be adatped for a collision of two bunches, as depicted in \Fg{smearing vertex}. The two bunches, each propagating (in the LAB frame) with speed $v$, are collided under a crossing angle $\al$. The flux $j$ in \Eq{sm pdf} can be expressed as $v_{\rm rel}\,\rh$, where $v_{\rm rel} = 2v\cos\al$ is the relative velocity of the two bunches and $\rh$ is the density of one of them. Therefore one can write
-\eqref{h(x, y, z; t) = {2v\cos\al\over {\cal L}_{int}}\ \rh_1(x, y, z; t)\, \rh_2(x, y, z; t)\.}{sm pdf2}
-The $\rh_{1,2}$ densities correspond to the two bunches (note that the formula is symmetric against swap of the two bunches, as it should be).
+Let us imagine a collision of two bunches as shown in \Fg{smearing vertex}. Each of them is propagating with a speed $v$ in the LAB frame, they collide under a crossing angle $\al$. The particle densities of the bunches at a time $t$ can be described by functions $\rh_{1, 2}(x, y, z; t)$. Then, from Sc.~4.5 in \bref{peskin} (in particular Eq.~(4.60)) one can conclude that the probability of finding an interaction (vertex) at a position $(x, y, z)$ and time $t$ is proportional to the product of the two densities:
+\eqref{h(x, y, z; t) \propto \rh_1(x, y, z; t)\, \rh_2(x, y, z; t)\ .}{sm pdf2}
 
-If $\rh_0(\tilde x, \tilde y, \tilde z)$ is a (time-independent) particle density in the rest frame of bunch 2 (the tilded frame in \Fg{smearing vertex}), then the (time-dependent) particle density $\rh_2(x, y, z)$ in the LAB frame (the non-tilded one) can be obtained by means of coordinate transformation (we assume that the origins of the tilded and the non-tilded frame coincide in $t=t'=0$)
-\eqref{\eqnarray{
-\tilde x &= x\cos\al\ - z\sin\al \cr
-\tilde y &= y\cr
-\tilde z &= \ga \left( z\cos\al\ + x\sin\al + vt \right),\qquad \ga = {1\over\sqrt{1 - v^2}}\ .\cr
-}}{sm coord trans}
-The result reads
-\eqref{\rh_2(x, y, z; t) = \ga\, \rh_0\Big(x\cos\al - z\sin\al, y, \ga(z\cos\al + x\sin\al + vt) \Big)\ .}{sm density2}
-The overall factor $\ga$ is needed to preserve normalization:
+In a good approximation one may assume that each of the bunch densities is time-independent when described in the rest frame of the bunch. Denoting this rest-frame density $\rh_0(\tilde x, \tilde y, \tilde z)$ (tildes are used for the rest-frame coordinates, see \Fg{smearing vertex}), one may write for the second bunch:
+\eqref{\rh_2(x, y, z; t) = \ga\, \rh_0\Big(x\cos\al - z\sin\al, y, \ga(z\cos\al + x\sin\al + vt) \Big)\ ,}{sm density2}
+which follows from the Lorentz transform (the origins of the LAB and rest frames coincide at $t=0$):
+\eqref{
+	\tilde x = x\cos\al\ - z\sin\al\ ,\qquad
+	\tilde y = y\ ,\qquad
+	\tilde z = \ga \left( z\cos\al\ + x\sin\al + vt \right)\ ,\qquad
+	\ga = {1\over\sqrt{1 - v^2}}\ .
+}{sm coord trans}
+The leading $\ga$ factor on the \rhs~of \Eq{sm density2} is needed to preserve the normalization
 \eqref{\int \rh_0(\tilde x, \tilde y, \tilde z)\ \d\tilde x\d\tilde y\d\tilde z = \int \rh_2(x, y, z)\ \d x\d y\d z\ .}{sm rho normalization}
-The density for bunch 1 can be obtained analogically
+The density for the first bunch can be obtained analogically:
 \eqref{\rh_1(x, y, z; t) = \ga\, \rh_0\Big(x\cos\al + z\sin\al, y, \ga(z\cos\al - x\sin\al - vt) \Big)\ .}{sm density1}
 
-The Lorentz contracted particle density of each bunch can be well approximated by a Gaussian \TODO{reference}
-\eqref{\ga \rh_0(x, y, \ga z) = {n_B\over (2\pi)^{3/2}\si_x\si_y\si_z}\,\exp\left(-{ x^2\over 2\si_x^2}-{ y^2\over 2\si_y^2}-{ z^2\over 2\si_z^2}\right),}{sm density}
-where $n_B$ is the number of protons in a bunch and the variances $\si_x, \si_y$ and $\si_z$ refer to the bunch dimensions in the LAB frame.
+The Lorentz-contracted particle density of each bunch can well be approximated by a Gaussian \TODO{reference}
+\eqref{\ga \rh_0(x, y, \ga z) \propto \exp\left(-{ x^2\over 2\si_{x^*}^2}-{ y^2\over 2\si_{y^*}^2}-{ z^2\over 2\si_{z^*}^2}\right),}{sm density}
+where the spreads $\si_{x^*}, \si_{y^*}$ and $\si_{z^*}$ refer to the bunch dimensions in the LAB frame (cf.~\Eq{ttm vertex sm}).
 
-Inserting \Eq{sm density1,sm density2,sm density} to \Eq{sm pdf2} yields
-\eqref{h(x, y, z; t) \propto \exp\left[- {\cos^2\al\over\si^2_x} x^2 - {y^2\over\si^2_y} - \left({\sin^2\al\over\si^2_x} + {\cos^2\al\over\si^2_z}\right)z^2 - {(vt + x\sin\al)^2\over\si^2_z}\right]\.}{sm vertex full distribution}
-This means that the random variables $x$ and $t$ are not independent. But as we are not interested in the time of collision, we can integrate over the time $t$ and obtain the \hbox{p.d.f.} only for the spatial coordinates of the vertex
-\eqref{h(x, y, z) \propto \exp\left[- {\cos^2\al\over\si^2_x} x^2 - {y^2\over\si^2_y} - \left({\sin^2\al\over\si^2_x} + {\cos^2\al\over\si^2_z}\right)z^2\right]\.}{sm vertex distribution}
-We can see that the vertex distribution retains a Gaussian form. The mean values of $x, y$ and $z$ are zero while the effective variations are
-\eqref{\si_{x,\rm ef\!f} = {\si_x\over\sqrt{2}\cos\al},\quad \si_{y,\rm ef\!f} = {\si_y\over\sqrt{2}},\quad \si_{z,\rm ef\!f} = {\si_z\over\sqrt{2}}\,{\si_x\over\sqrt{\si_z^2\sin^2\al + \si_x^2\cos^2\al}} \.}{sm effective variations}
+Now we have collected all the ingredients to evaluate the vertex distribution $h$ from \Eq{sm pdf2}. Moreover, since we are not interested in the time of collisions, we may integrate over the time $t$ and obtain the spatial distribution of vertices:
+\eqref{h(x, y, z) \propto \exp\left[- {\cos^2\al\over\si_{x^*}^2} x^2 - {y^2\over\si_{y^*}^2} - \left({\sin^2\al\over\si_{x^*}^2} + {\cos^2\al\over\si_{z^*}^2}\right)z^2\right]\.}{sm vertex distribution}
+This distribution has a Gaussian form with spreads
+\eqref{
+	\si_{x} = {\si_{x^*}\over\sqrt{2}\cos\al},\quad
+	\si_{y} = {\si_{y^*}\over\sqrt{2}},\quad
+	\si_{z} = {\si_{z^*}\over\sqrt{2}}\,{\si_{x^*}\over\sqrt{\si_{z^*}^2\sin^2\al + \si_{x^*}^2\cos^2\al}} \.}{sm effective variations}
+This formula is used by the software module to account for the vertex smearing.
+
 
 \section[fast simu]{Fast simulation}
 
-In order to verify the functionality of our track-based alignment (see Chapter~\sref{al}) we had perform a number of MC simulations. With full Geant4 simulation it would have had taken an enormous time. Instead we developped a fast simulation modules. As indicated in \Fg{sr sw structure}, there are two versions: \em{Fast full simulation} and \em{fast station simulation}. The first one takes as input smeared particles at IP5 and transport them to the RP station with the polynomial optics approximation (the one used later for reconstruction). The latter version generates random tracks at the beginning of a chosen station. Subsequent processing is in common for both versions. Within a station, the tracks are interpolated linearly and intersections with all sensors are calculated. If \pmt{roundToPitch} is set to True, then the hit point is rounded to the nearest strip or inter-strip position. The mechanism is illsutrated in \Fg{sr fast simulation scheme}. If the intersection falls in the blue region, the creation of a double-strip cluster is assumed and the hit position is rounded to the inter-strip position (dash-dotted line). Otherwise one-strip clusters are assumed and the position is rounded to the nearest strip. The strip pitch can be set by \pmt{pitch} parameter, the size of the double-strip-cluster region (blue) by \pmt{dscrWidth} parameter. All hits are assigned errors of pitch$/\sqrt{12}$ unless \pmt{dscReduceUncertainty} = True. In that case, the error of double-strip cluster hits reduced to half.
+In order to verify the functionality of the track-based alignment (see \Sc{al}), we have performed a large number of MC simulations. With full Geant4 simulation it would have had taken an enormous time. Instead we developped a fast simulation modules. As indicated in \Fg{sr sw structure}, there are two versions: \em{Fast full simulation} and \em{fast station simulation}. The first one takes as input smeared particles at IP5 and transport them to the RP station with the polynomial optics approximation (the one used later for reconstruction). The latter version generates random tracks at the beginning of a chosen station. Subsequent processing is in common for both versions. Within a station, the tracks are interpolated linearly and intersections with all sensors are calculated. If \pmt{roundToPitch} is set to True, then the hit point is rounded to the nearest strip or inter-strip position. The mechanism is illsutrated in \Fg{sr fast simulation scheme}. If the intersection falls in the blue region, the creation of a double-strip cluster is assumed and the hit position is rounded to the inter-strip position (dash-dotted line). Otherwise one-strip clusters are assumed and the position is rounded to the nearest strip. The strip pitch can be set by \pmt{pitch} parameter, the size of the double-strip-cluster region (blue) by \pmt{dscrWidth} parameter. All hits are assigned errors of pitch$/\sqrt{12}$ unless \pmt{dscReduceUncertainty} = True. In that case, the error of double-strip cluster hits reduced to half.
 
 \fig{fig/pdf/sr_fast_simulation_scheme.pdf}{sr fast simulation scheme}{One and two-strip cluster regions as used in the fast simulation. The solid lines represent the strip centers, the dash-dotted lines mark the half way between the strips. The blue areas correspond to the double-strip-cluster regions, the white ones to the regions where one-strip clusters are created.}
 
 
 \section[pattern reco]{Pattern recognition}
+
+\TODO{angles -- important for alignment}
+\TODO{problem with multiple tracks}
+
 
 The input to this module is a list of RECO hits among which we would like to find those lying around particle tracks. This search is performed pot per pot, where any physics track is a straight line. Thus our task is to find straight line patterns within the data. The fact, that there are just two read-out directions (U and V) makes it special. In a way simpler -- one 2-dimensional task can be split into two 1-dimensional ones (one per projection). In a way more complicated -- if there are several tracks in a RP, we may find line patterns it both projections, but there is now clue how to combine them togher.
 %For example, imagine two tracks in a pot. We would find two patterns in both projections, yielding four possible combinations. However, two of them are real and two are fake (ghosts).
@@ -268,7 +274,7 @@ The module includes a simple \em{hit selection} (to suppress noise and backgroun
 
 In total, there are three parameters per projection (\pmt{road-size}, \pmt{angular tolerance} and \pmt{vertex tolerance}). For most optics \TODO{ref}, the dominant smearing effect is the beam divergence. Therefore the \pmt{angular tolerance} should be set to few times the standard deviation of the beam divergence \TODO{a ref?}. Similar argument applies to the \pmt{road-size} parameter. There one should also account for neglecting the $v$ terms in the proton transport \Eq{elr track param}. Thus reasonable values will be larger than those for \pmt{angular tolerance}. In fact, the best way to determine reasonable settings is to run a MC with elastic events only, do the reconstruction with no cuts and look at the distributions of the parameters. This will be done later on in \Sc{elr 1535,elr 90}.
 
-But before turning to optics-dependent results, let us discuss what measurement uncertainties we expect for the quantities of interest -- most notably the scattering angle $\th$ and the momentum-transfer squared $t$. The measurement (fit) uncertainties can be determined from the covariance matrix \Eq{elr fit err}. Moreover, the typical TOTEM optics \TODO{ref} have such properties that will allow us to derive a much simpler formula. First, the effect of the $v$ terms in the proton transport \Eq{elr track param} can be neglected to those of the $L$ terms. Second, let us constrain to the situation where only $220\un{m}$ stations are used \TODO{typical up to 2011}. The variation of the effective lengths $L_x(s)$ with a station is not large, hence we might think of a ``typical effective length'' $L_x$. Under these simplifications, the scattering angle estimator becomes:
+But before turning to optics-dependent results, let us discuss what measurement uncertainties we expect for the quantities of interest -- most notably the scattering angle $\th$ and the momentum-transfer squared $t$. The measurement (fit) uncertainties can be determined from the covariance matrix \Eq{elr fit err}. Moreover, the typical TOTEM optics \TODO{ref} have such properties that will allow us to derive a much simpler formula. First, the effect of the $v$ terms in the proton transport \Eq{elr track param} can be neglected to those of the $L$ terms. Second, let us constrain to the situation where only $220\un{m}$ stations are used \TODO{typical up to 2011}. The variation of the effective lengths $L_x(s)$ with a station is not large, thus we might think of a ``typical effective length'' $L_x$. Under these simplifications, the scattering angle estimator becomes:
 \eqref{\th_x^*
 	\quad\mathop{\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\longrightarrow}\limits^{v \hbox{\SmallerFonts\ neglected}}\quad
 		{\sum L x\over \sum L^2}
@@ -358,4 +364,15 @@ The analytical estimate \Eq{elr t err sig} for the $t$-resolution, drawn in \Fg{
 
 \fig{fig/pdf/elr_90_res_t.pdf}{elr 90 res t}{[7cm]The $t$-resolution.}
 
-\input elasticReco.tex
+
+
+\section[dqm]{Data quality monitor}
+
+The data quality monitor (TotemDQM) is an interactive program that can visualize all steps of data processing. It has been designed for data quality control during data acquisition, but it has also proved very useful for visual event scanning (inspection of events' details such as hit topologies) and for software tuning and debugging.
+
+The TotemDQM provides a multi-window/tab user interface, each of the windows contains a configurable grid of plots, see an example in \Fg{dqm ex}. The plots can be either \em{cumulative} (built from the whole event sample) of \em{event-related} (showing details of a chosen event). Cumulative plots are for example $U$ and $V$ hit profiles (bottom-right window in \Fg{dqm ex}) or $xy$ hit maps (top-right window). Several event-related plots are shown in the background window (left-hand side): track fits in $U$ and $V$ projections and a $3D$ view of the fitted track within the detector package.
+
+
+\fig[\the\hsize]{fig/external/dqm.png}{dqm ex}{A screen shot of several TotemDQM windows.}
+
+The TotemDQM is fully integrated in the TOTEM offline software. Its predecessor (Monitor) is a simpler and standalone program of similar kind. It was and still is used for low (VFAT) level tests such as RP sensor production tests or system calibrations before data-taking.

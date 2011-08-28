@@ -15,7 +15,7 @@ L_y							& 270\un{m}			& 21\un{m} \cr\ln
 \De\th_y \equiv \De y/L_y	& 0.4\un{\mu rad}	& 5\un{\mu rad} \cr\bln
 }
 
-Let us define a bit more precisely what we mean by the RP alignment. For physics reconstruction we use the data from RPs sensors (i.e. the sensitive components of the RPs, see \Sc{ttm}). The data correspond to tracks of particles that are deflected from the beam due to a scattering. The beam axis can be understood as a track of an ideal particle that has not undergone any scattering. Therefore, what matters for physics reconstruction is the relative position of RP sensors to the beam axis. And this is what we will mean by RP alignment.
+Let us define a bit more precisely what we mean by the RP alignment. For physics reconstruction we use the data from RPs sensors (i.e. the sensitive components of the RPs, see \Sc{ttm det}). The data correspond to tracks of particles that are deflected from the beam due to a scattering. The beam axis can be understood as a track of an ideal particle that has not undergone any scattering. Therefore, what matters for physics reconstruction is the relative position of RP sensors to the beam axis. And this is what we will mean by RP alignment.
 
 %Coordinate system such that the beam is at x=y=0
 
@@ -27,7 +27,7 @@ In this chapter we will describe a RP alignment procedure that comprises the thr
 \eitm
 
 \vskip\itskip
-Before discussing the alignment methods, let us first asses what misalignments may be expected. Generally, the misalignments may arise on two levels -- misalignments of sensors within a detector package (\em{internal misalignments}) and misalignments of detector packages with respect to the beam (\em{detector package (DP) misalignments}). Our expectations for these misalignments are summarized in \Tb{al exp misal}. The uncertainty of sensor placement in the DP is estimated to about $20\un{\mu m}$. Considering the size of a sensor to be about $4\un{cm}$ (see \Sc{ttm}), one can estimate the order of the internal rotation misalignment as $2\cdot 220\un{\mu m} / 4\un{cm} \approx 1\un{mrad}$. The transverse shift of DP of the order of $100\un{\mu m}$ is related to the uncertainty of the LVDT calibration and to the poorly known distance between RP thin windows and the DPs, see \Sc{al collim}. The misalignments along $z$ are not critical for physics reconstruction. With typical track angles of the order of $0.1\un{mrad}$ (see \Tb{al lhc datasets}), a $z$-shift of $1\un{mm}$ leads to a measurement error of $0.1\un{\mu m}$, which is practically negligible (for instance compared to the strip pitch $66\un{\mu m}$).
+Before discussing the alignment methods, let us first asses what misalignments may be expected. Generally, the misalignments may arise on two levels -- misalignments of sensors within a detector package (\em{internal misalignments}) and misalignments of detector packages with respect to the beam (\em{detector package (DP) misalignments}). Our expectations for these misalignments are summarized in \Tb{al exp misal}. The uncertainty of sensor placement in the DP is estimated to about $20\un{\mu m}$. Considering the size of a sensor to be about $4\un{cm}$ (see \Sc{ttm det}), one can estimate the order of the internal rotation misalignment as $2\cdot 220\un{\mu m} / 4\un{cm} \approx 1\un{mrad}$. The transverse shift of DP of the order of $100\un{\mu m}$ is related to the uncertainty of the LVDT calibration and to the poorly known distance between RP thin windows and the DPs, see \Sc{al collim}. The misalignments along $z$ are not critical for physics reconstruction. With typical track angles of the order of $0.1\un{mrad}$ (see \Tb{al lhc datasets}), a $z$-shift of $1\un{mm}$ leads to a measurement error of $0.1\un{\mu m}$, which is practically negligible (for instance compared to the strip pitch $66\un{\mu m}$).
 
 
 \htab{al exp misal}{The expected misalignments. The transverse shift means a shift perpendicular to $z$, the beam axis (see \Fg{al proton sensor interaction}).}{
@@ -36,14 +36,14 @@ Before discussing the alignment methods, let us first asses what misalignments m
 \omit					&\omit\bvrule\tskip\bstrut (internal misalignments)\tskip	& \hbox{(DP misalignments)} \cr\bln
 \hbox{transverse shift}	& \hbox{about } 20\un{\mu m} 								& \hbox{few } 100\un{\mu m} \cr\ln
 \hbox{shift in }z 		& \hbox{few } 100\un{\mu m}									& \hbox{below } 1\un{mm}\cr\ln
-\hbox{rotations}		& \hbox{few }\rm mrad										& \hbox{few }\rm mrad \cr\bln
+\hbox{rotations}		& 1\un{mrad}												& \hbox{few }\rm mrad \cr\bln
 }
 
 \section[al collim]{Collimation alignment}
 
-The collimation alignment is a part of the RP commissioning procedure, where the RPs are aligned with respect to the collimators of the LHC (a similar procedure to the beam-based alignment of the collimators, see \bref{bracco2010}). Moreover it provides important data for the alignment of RPs themselves.
+The collimation alignment is a part of the RP commissioning procedure, where the RPs are aligned with respect to the collimators of the LHC (a similar procedure to the beam-based alignment of the collimators, see \bref{bracco10}). Moreover it provides important data for the alignment of RPs themselves.
 
-We recall (from \Sc{ttm}) that the position of each RP is monitored by a linear voltage differential transformator (LVDT). This device measures the distance of the thin window from the beam-pipe axis. The position of the beam, again with respect to the beam-pipe axis, is measured by the beam position monitors (BPMs). There are two of them at each station: at the upstream end (near BPM) and at the downstream end (far BPM). Each BPM measures both horizontal and vertical beam position. For the collimation alignment one more tool is used -- a series of beam loss monitors (BLMs) measures the radiation (from beam losses) at several locations downstream of each station.
+We recall (from \Sc{ttm det}) that the position of each RP is monitored by a linear voltage differential transformator (LVDT). This device measures the distance of the thin window from the beam-pipe axis. The position of the beam, again with respect to the beam-pipe axis, is measured by the beam position monitors (BPMs). There are two of them at each station: at the upstream end (near BPM) and at the downstream end (far BPM). Each BPM measures both horizontal and vertical beam position. For the collimation alignment one more tool is used -- a series of beam loss monitors (BLMs) measures the radiation (from beam losses) at several locations downstream of each station.
 
 At the beginning of the collimation alignment, the collimators scrape the beam at a given number $n$ of beam sigmas $\si_0$. This beam sigma stands for the standard deviation of the beam profile at the collimator location, see \Fg{al collim}. Due to the multi-turn effect, the beam is scraped symmetrically about the center of the beam (see e.g. section ``Beam based alignment'' in \bref{bracco10}). Thus after the scraping, the beam has sharp edges on both sides and consequently the beam width and center are well defined. Then, a RP is approached to the beam (see the top plot in \Fg{al collim ex}), until it touches its edge. At this moment, particles from the beam surface are scattered off the RP edge and give rise to peaks in the BLMs downstream (see \Fg{al collim ex} bottom). This is the moment where the RP (its thin window) is at the same beam-sigma-distance $n$ as the collimators. Denoting the beam sigma at the RP location $\si$ (as in \Fg{al collim}), the RP position is $n\si$. The beam widths $\si_0$ and $\si$ are related via the optics, see \Eq{ttm beam sigma}, and therefore the position of the beam can be calculated as
 \eqref{n\si - t\ ,}{al vc m1}
@@ -124,7 +124,7 @@ This three shifts and three rotations reflect the position of a sensor in the gl
 \eqref{\rh_i' = \rh_i + \De\rh_i\ ,\qquad c_i' = c_i + \De c_i\ ,}{al misalignments}
 where $\De\rh_i$ and $\De c_i$ represent the \em{misalignment} or, on the other hand, \em{alignment corrections}.
 
-The nominal sensors' positions (see \Sc{ttm}) are perpendicular to the $z$ axis, that is $\rh_x=\rh_y=0$. The order angular misalignments $\De\rh$ in summarized in \Tb{al exp misal}. Taking $5\un{mrad}$ as the order of these angles, one obtains
+The nominal sensors' positions (see \Sc{ttm det}) are perpendicular to the $z$ axis, that is $\rh_x=\rh_y=0$. The order angular misalignments $\De\rh$ in summarized in \Tb{al exp misal}. Taking $5\un{mrad}$ as the order of these angles, one obtains
 \eqref{\cos\rh_{x,y}' = 1 + \O{10^{-5}},\qquad \sin\rh_{x,y}' = \rh_{x,y}' + \O{2\cdot 10^{-8}}}{al small rotation approximation}
 and thus it is a good approximation to take just the lowest terms in the Taylor expansion. A similar statement holds for $\rh_z'$ too, just the expansion shall be made at the nominal value $\rh_z$.
 
@@ -344,8 +344,6 @@ Let us close this section with a simple example -- let us consider only the shif
 }{al fit eq ex}
 Hence the $\tilde\vec T$ vector is given by the sum of the normalized residuals, the $\tilde\mat S$ embodies the relation between the residuals and the misalignment shifts $\De s_i$.
 
-\TODO{Conclusion? Bridge to the next chapter}.
-
 \subsection[al sing modes]{Singular and weak modes}
 
 In the previous section we have derived the fit equation \Eq{al fit equation}. If the matrix $\mat S$ were regular, one could obtain the alignment parameters $\hat\vec\ch$ by means of matrix inversion. But let us look closer on the fit equation. Note that the sensors' measurements enter the \rhs{} in the form of residuals. That means that any misalignment mode that does not generate residuals can not be revealed by the track-based algorithm. These misalignment modes are those where the misalignments $\vec\ch_j$ can be compensated (keeping measurements $\vec\mu^n$ unchanged) by varying the track parameters $\vec\ta^n \to {\vec\ta '}^n$ (cf. \Eq{al vec mu}):
@@ -374,7 +372,7 @@ In the rest of this section we will identify all singular modes that may appear 
 
 \caption{Geometrical singular modes}
 
-In this part we will discuss the singular modes corresponding to each alignment quantity class, one by one. But prior to that, let us remark one characteristics of the RP sensors -- all of their nominal read-out directions are parallel (or anti-parallel) to either $U$ or $V$ axes (see \Sc{ttm}). This could be written as $\vec\d_i \in \{\pm U, \pm V\}$. We will consider a bit more general case, where the sensors, classified by their read-out directions, split into several \em{read-out groups}:
+In this part we will discuss the singular modes corresponding to each alignment quantity class, one by one. But prior to that, let us remark one characteristics of the RP sensors -- all of their nominal read-out directions are parallel (or anti-parallel) to either $U$ or $V$ axes (see \Sc{ttm det}). This could be written as $\vec\d_i \in \{\pm U, \pm V\}$. We will consider a bit more general case, where the sensors, classified by their read-out directions, split into several \em{read-out groups}:
 \eqref{\vec d_i \in \lbrace \pm\vec\de_1, \pm\vec\de_2, \ldots \rbrace \ ,
 	%\qquad |\vec\de_i \cdot \vec\de_j| \neq 1\hbox{ for } i \neq j\ .
 }{al read-out groups}
@@ -468,7 +466,7 @@ It reasonable to expect that the eigenvalues of $\tilde\mat S$ would be proporti
 which are used in \Fg{al eig rho}.
 
 
-\fig{fig/pdf/al_eigenvalues_rho.pdf}{al eig rho}{\TODO{correct eq numbers}. The spectrum of normalized eigenvalues of the $\tilde\mat S$ matrix ($\la_{\rm N}$) as a function of geometry. The geometries considered have been created from the nominal one-station geometry by applying rotation misalignment to each sensor. The misalignments have been randomly generated according to a normal distribution with zero mean and variance $\si^2_\rh$ -- the quantity on the horizontal axis. The case $\si_\rh = 0$ corresponds to the nominal geometry, which contains two read-out groups. Increasing $\si_\rh$ then represents a smooth transition to configurations with three and more read-out groups.
+\fig{fig/pdf/al_eigenvalues_rho.pdf}{al eig rho}{The spectrum of normalized eigenvalues of the $\tilde\mat S$ matrix ($\la_{\rm N}$) as a function of geometry. The geometries considered have been created from the nominal one-station geometry by applying rotation misalignment to each sensor. The misalignments have been randomly generated according to a normal distribution with zero mean and variance $\si^2_\rh$ -- the quantity on the horizontal axis. The case $\si_\rh = 0$ corresponds to the nominal geometry, which contains two read-out groups. Increasing $\si_\rh$ then represents a smooth transition to configurations with three and more read-out groups.
 The colors correspond to the eigenvalue order (bottom-top). Therefore, when two curves representing two alignment modes cross, they exchange their colors (e.g. the mode (4.47) in the bottom plot).
 % Theta 10 mrad, geometry 2.7x3.3, overlap=f
 }
@@ -512,9 +510,7 @@ For two groups, the $\al_g$ parameters are independent for both groups. There ar
 
 Note that the $\De s_i$ part of the rotation singular vectors \Eq{al sm rotz sol,al sm rotz sol la} can be compensated by the read-out-direction shift singular modes \Eq{al sm shr sol}. It is therefore sufficient to consider the rotation singular modes in a form:
 \eqref{\De\rh_i = \al_g z_i + \be_g\ .}{al sm rotz full sol}
-$\be_g$ (equivalent of $\De\rh_g$ in \Eq{al sm rotz sol}) represents a global rotation, $\al_g$ leads to a linearly-progressive rotation.
-
-\TODO{ref to \Fg{al sing modes rotz al}, for a summary see \Tb{al sing mode overview}.}
+$\be_g$ (equivalent of $\De\rh_g$ in \Eq{al sm rotz sol}) represents a global rotation, $\al_g$ leads to a linearly-progressive rotation as show in \Fg{al sing modes rotz al}. For a summary see \Tb{al sing mode overview}.
 
 \fig{fig/pdf/al_sing_modes_rotz_al.pdf}{al sing modes rotz al}{An illustration of the singular modes \Eq{al sm rotz full sol}: a front view on a sensor package. Each sensor is represented by a dot (its center $\vec c$) and an arrow (its read-out direction $\vec d$), cf.~the front view in \Fg{al proton sensor interaction}. The hollow dots and dashed arrows/lines show the nominal positions and read-out directions, the full dots and solid arrows represent the misalignment mode. For simplicity we have considered a simplified package of six sensors only (see the numbers), moreover with an equal spacing $\De z$. There are two read-out groups (like in the nominal geometry): the $U$ (red) and $V$ (blue) sensors are regularly alternating, the first one is at $z = 0$. For three and more groups the situation looks very similar, only the $\al$ and $\be$ parameters are the same for all the groups. To keep the figure simple, we assumed $\bar\vec a = 0$, that is why all detector centers lie on a circle.
 }
@@ -531,9 +527,8 @@ It would be possible to draw a similar line of arguments for a situation where $
 
 At the end, let us remark that parallel tracks do not introduce new weak modes for the shifts in the read-out directions. The corresponding singular mode condition \Eq{al sm shr sol} is completely independent of the track slopes $\vec a^n$, therefore their vanishing spread makes no difference. Regarding the shifts in $z$, it makes little sense to consider the case of parallel tracks -- there the $z$-shifts can not be determined at all. The singular and weak modes for all considered configurations are summarized in \Tb{al sing mode overview}.
 
-\htab{al sing mode overview}{An overview of the singular and weak modes. The bold numbers give the number of singular/weak modes that are listed afterwards. The ''gl.'' abbreviation stands for ''global'' which is used to refer to a mode with constant coefficients for every sensor. The ''l.p.'' stands for ''linearly-progressive'' which means a mode the coefficients of which are proportional to $z_i$. Note that the additional modes for the parallel-track case are weak only.
-\TODO{one read-out group: such det. apparatus can determine one track projection only}
-\TODO{parallel tracks make no sense for $z$-shifts}
+\htab{al sing mode overview}{An overview of the singular and weak modes. The bold numbers give the number of singular/weak modes that are listed afterwards. The ''gl.'' abbreviation stands for ''global'' which is used to refer to a mode with constant coefficients for every sensor. The ''l.p.'' stands for ''linearly-progressive'' which means a mode the coefficients of which are proportional to $z_i$. Note that the additional modes for the parallel-track case are weak only.\hfil\break
+We have not considered the situation with one read-out group only. Such a detector apparatus could determine one hit position projection only and would thus be very different from the RP detector system. Also, regarding the $z$-shifts, it makes no sense to consider a sample of parallel tracks. In that case the $\ga$ coefficients (see \Tb{al alignment quantities}) would all be constant and consequently the $z$-shift alignment would not be possible at all.
 }{
 \omit&\multispan{4}\bhrulefill\cr
 \omit			&\multispan2\bvrule\strut\hfil two read-out groups\hfil &\multispan2\strut\vrule\hfil three and more read-out groups\hfil\cr
@@ -569,7 +564,7 @@ In the previous section we have shown that the $\tilde\mat S$ is singular, which
 \ ,}{al constraints}
 where $\vec c_i$ and $v_i$ are the constraint vectors and values ($i$ enumerates the constraints). The constraints require that the ``projection'' of the solution $\hat\vec\ch$ to the ``direction'' $\vec c_i$ is $v_i$. We have used the quotes since we do not require the vectors $\vec c_i$ to be of unit size. Still we find this interpretation of the constraints quite intuitive.
 
-The fit equation \Eq{al fit equation} has been derived by pursuing a least squares fit (simultaneously for misalignment and track parameters, see \Sc{al sim fit}). Now introducing the constraints, we have to deal with a constrained least squares problem. It can be addressed by the Lagrange-multipliers technique (see e.g.~\bref{Millepede}):
+The fit equation \Eq{al fit equation} has been derived by pursuing a least squares fit (simultaneously for misalignment and track parameters, see \Sc{al sim fit}). Now introducing the constraints, we have to deal with a constrained least squares problem. It can be addressed by the Lagrange-multipliers technique (see e.g.~\bref{millepede}):
 \eqref{
 	\pmatrix{
 		\tilde\mat S & \mat C \cr
@@ -895,16 +890,14 @@ The values of the selection algorithms parameters will be given for each analysi
 
 \subsection[al dp fac]{Alignment of detector packages}
 
-\TODO{internal/DP misalignments already defined in the introduction}
+In the introduction (see \Tb{al exp misal}) we have shown that the sensor misalignments receive two contributions -- internal (misalignments of sensors within a detector package) and DP misalignments (misalignments of DPs with respect to a global reference such as the beam). Since the internal misalignments are much smaller than the DP misalignments, one can determine the misalignment of a DP as the alignment corrections common to all its sensors. The residual alignment corrections of the individual sensors with respect to the DP can then be identified with the internal alignments.
 
-As anticipated in the introduction, the elementary objects for the track-based alignment are the sensors. However, the sensors are stacked into rigid detector packages (see \Sc{ttm}) and therefore each sensor inherits the misalignment of its package. Moreover, the expected misalignments of sensors within a package are much smaller than the misalignments of packages within a station (see \Tb{al exp misal}). Thus it makes sense to extract the common misalignments of all sensors of a package and call them \em{detector-package (DP) misalignments}. The residual misalignments, that means the misalignments of a sensor with respect to its package, will be called \em{internal misalignments}.
-
-It is straight-forward to introduce the DP misalignments in the formalism presented in \Sc{al psi}. One has to split the global (station) to local (sensor) coordinate transformation \Eq{al global to local} into two steps: station to DP and DP to sensor. This naturally defines the placement of a DP in a station and the placement of a sensor in a DP. Each placement may in reality differ from the nominal, in other words there may be an misalignment (c.f.~\Eq{al misalignments}). Then, repeating the steps leading to \Eq{al hit v} yields
+In \Sc{al psi} we have not explicitly separated the internal and DP misalignments, however it is straight-forward to do so. One has to split the global (wrt.~the beam) to local (sensor) coordinate transformation \Eq{al global to local} into two steps: global to DP and DP to sensor. This naturally defines the placement of a DP wrt.~the beam and the placement of a sensor within a DP. Each placement may in reality differ from the nominal, in other words they may be altered by an misalignment (c.f.~\Eq{al misalignments}). Then, repeating the steps leading to \Eq{al hit v} yields
 \eqref{
 	\De\rh_{z_i} = \De\rh_z^{\rm DP} + \De\rh_{z_i}^{\rm S}\ ,\qquad
 	\De\vec c_i = \De\vec c^{\rm DP} + \De\vec c_i^{\rm S} - \pmatrix{\rh_y^{\rm DP}\cr \rh_x^{\rm DP}} \ze_i\ .
 }{al dp sen al}
-For the rotations about $z$, the interpretation is simple: the full rotation of the $i$-th sensor is given by a sum of the rotation of the DP within the station (DP rotation $\De\rh_z^{\rm DP}$) and the rotation of the sensor within the DP (internal rotation $\De\rh_z^{\rm S}$). The transverse-shift part can be interpreted similarly, with the exception of the last term, which reflects the fact that the entire DP is rotated about the $x$ and $y$ axes (see the illustration in \Fg{al rp misalignment}). The rotations angles $\rh_x^{\rm DP}$ and $\rh_y^{\rm DP}$ are defined by \Eq{al rotation parameterization}. The parameter $\ze_i$ gives the $z$ distance of the $i$-th sensor from the center of the DP (see \Tb{ttm det package}).
+For the rotations about $z$, the interpretation is simple: the full rotation of the $i$-th sensor is given by a sum of the rotation of the DP wrt.~the beam (DP rotation $\De\rh_z^{\rm DP}$) and the rotation of the sensor within the DP (internal rotation $\De\rh_z^{\rm S}$). The transverse-shift part can be interpreted similarly, with the exception of the last term, which reflects the fact that the entire DP is rotated about the $x$ and $y$ axes (see the illustration in \Fg{al rp misalignment}). The rotations angles $\rh_x^{\rm DP}$ and $\rh_y^{\rm DP}$ are defined by \Eq{al rotation parameterization}. The parameter $\ze_i$ gives the $z$ distance of the $i$-th sensor from the center of the DP (see \Tb{ttm det package}).
 
 \fig{fig/pdf/al_rp_misalignment.pdf}{al rp misalignment}{A side view on a detector package (for simplicity only four sensors are drawn). The DP is shifted by $\De c^{\rm DP}$ (green arrow) and rotated by $\De\rh_x^{\rm DP}$ about the $x$ axis. The shifts of the individual sensors $\De\vec c_i$ are drawn as the blue arrows. For simplicity we have not considered the sensor shifts within the package, that is $\De\vec c_i^{\rm S} = 0$. The hollow/full dots mark the nominal/actual positions of sensor centers.}
 
