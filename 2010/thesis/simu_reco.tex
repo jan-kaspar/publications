@@ -18,7 +18,7 @@ The contributions by this thesis' author mostly complement the work described in
 \> {\bf Event generator}.
 The simulation process starts with generation of particles at the interaction point. This can be either a \em{particle gun} or a \em{physics event generator}. Particle guns generate particles according to some given distributions and are useful for specialized tests and software debugging. Physics event generators build events according to physics models. We use general-pourpose physics generators like Pythia \bref{pythia6,pythia8} or Phojet \bref{phojet} and a custom developed Elegent (see \Sc{elegent}).
 
-\> The aim of the {\bf beam smearing} module is to account for the beam smearing effects that are usually not considered by event generators. These smearing effects can be divided intro three classes: \em{angular smearing} (the particles within a bunch are not all parallel), \em{energy smearing} (there is an energy fluctuation within a bunch) and \em{vertex smearing} (the bunches have non-zero dimensions, thus the interactions can take place in various space points).
+\> The aim of the {\bf beam smearing} module (see \Sc{beam smearing}) is to account for the beam smearing effects that are usually not considered by event generators. These smearing effects can be divided into three classes: \em{angular smearing} (the particles within a bunch are not all parallel), \em{energy smearing} (there is an energy fluctuation within a bunch) and \em{vertex smearing} (the bunches have non-zero dimensions, thus the interactions can take place in various space points). 
 
 \> The {\bf Geant4 and proton transport} module performs two actions: simulates energy depositions in sensitive volumes and propagates protons in between. The sensitive volumes are located around the IP5 (CMS, T1 and T2) and at the RP stations. Both actions are implemented within the Geant4 \bref{geant4} simulation kit. For the proton transfer through the LHC a polynomial parameterization model is used (see Ch.~6 in \bref{hubert}). For details on the implementation we refer the reader to Sc.~7.3 in \bref{hubert}.
 
@@ -67,24 +67,22 @@ For technical details and usage instructions we refer the reader to the manual p
 
 \section[beam smearing]{Beam smearing}
 
-Most physics event generators consider head-to-head collisions of particles of a fixed energy at a given space point. However, in reality there are two bunches collided under a certain crossing angle (see \Fg{smearing vertex}). Within each bunch, the particles do not have identical energies (energy smearing) and their momenta are not all parallel (angular smearing). The bunches have non-zero dimensions and therefore the interactions may take place at various space points (vertex smearing). The {\bf beam smearing} module adds these smearing effects to the events from physics generators, see \Sc{beam smearing}.
-
-This section is an updated version the internal note \bref{smearing}.
+Most physics event generators consider head-to-head collisions of particles of a fixed energy at a given space point. However, in reality there are two bunches collided under a certain crossing angle (see \Fg{smearing vertex}). Within each bunch, the particles do not have identical energies (energy smearing) and their momenta are not all parallel (angular smearing). The bunches have non-zero dimensions and therefore the interactions may take place at various space points (vertex smearing). In the following two subsections we will describe these effects in detail. This text is an updated version the internal note \bref{smearing}.
 
 
 \subsection{Angular and energy smearing}
 
-\Fg{smearing angular energy} shows a collision event in a reference frame bound to the accelerator (LAB frame). A physics generator would describe this event in a different frame (MC frame), where the particles approach each other along the $z$ axis with equal momenta. Thus one part of the angular and energy smearing can be described by a Lorentz transform from MC to LAB frame. The other part reflects the fact that the smearing alters the center-of-mass energy $\sqrt s$.
+Most event generators describe the collisions in a reference frame (MC frame), where the incident particles approach each other along the $z$ axis, each with the momentum $p_{\rm nom}$. However, a real collision in the LAB frame (bound to the accelerator) looks different, see \Fg{smearing angular energy}. Because of the energy smearing each incident proton has slightly different momentum (the $\xi$ factors, cf.~\Eq{ttm energy fl}) and because of the crossing angle $\al$ and angular smearing (the $C$ factors, cf.~\Eq{ttm beam div}) they do not collide head to head.
 
-\fig[8cm]{fig/pdf/smearing_angular_energy.pdf}{smearing angular energy}{Sketch of angular and energy smearing in $xz$ plane. \TODO{LAB??}, \TODO{$\al$ is crossing angle}}
+\fig[8cm]{fig/pdf/smearing_angular_energy.pdf}{smearing angular energy}{A collision seen in the $xz$ plane of the LAB frame (bound to the accelerator). The momenta of the protons are altered due to the energy smearing (the $\xi$ factors), the directions are modified due to the crossing angle $\al$ and angular smearing (the angles $C$).}
 
+Therefore a part of these smearing effects can be described by a Lorentz transformation from the MC to the LAB frame. But there is another part, reflecting the fact that the smearing alters the center-of-mass energy $\sqrt s$. Thus to simulate the smearing correctly, one should first generate the smearing parameters ($\xi$ and $C$) for every event, then calculate the center-of-mass energy $\sqrt{s_{\rm LAB}}$ and then ask the event generator to build an event for this energy $\sqrt{s_{\rm LAB}}$. However, this is technically difficult, most event generators generate events for a fixed energy $\sqrt{s_{\rm MC}}$. Since the energy smearing is a small effect (see \Eq{ttm energy fl}), we have decided to use an approximation -- each event is generated for a center-of-mass energy $\sqrt{s_{\rm MC}}$, but then the four-momenta of all particles involved are rescaled such that the center-of-mass energy is $\sqrt{s_{\rm LAB}}$. This means to scale the energy of each particle as
+\eqref{E^{\rm MC} \rightarrow \chi\, E^{\rm MC},\qquad \chi = \sqrt{s_{\rm LAB}\over s_{\rm MC}}\ .}{sm energy scaling}
+The momenta are scaled such that the masses are preserved. Later on, we will refer to this scaling procedure as $S(\ch)$.
 
+Now let us come back to the Lorentz-transform part of the smearing effects. This part transforms the event kinematics from \Fg{smearing angular energy} to the situation where the particles collide with equal momenta and along the $z$ axis. This transform can be decomposed into a boost (making the momenta $\vec p_1$ and $\vec p_2$ have the same magnitude and opposite direction) and a rotation (making the momenta be parallel to the $z$ axis).
 
-\vskip1cm\hrule\vskip1cm
-
-A collision in LAB frame (a frame bound to the accelerator). On the other hand, MC generators use a different frame to describe events -- a frame where incident particles have same momenta and opposite directions parallel to $z$ axis. This frame will be referred as the MC frame. Obviously, we want to find a transformation between these two frames. It will be done in two steps. 
-
-First, we find the Lorentz boost which makes incident particles have equal momenta and opposite directions. If we write the transformation of a four-momentum $(E|\vec p)$ to $(E'|\vec p')$ in the following form
+If we write the boost transformation of a four-momentum $(E|\vec p)$ to $(E'|\vec p')$ in the following form ($\vec\be$ denotes the relative velocity between the two reference frames)
 \eqref{\eqalign{
 E'      &= \ga\,(E - \vec p\cdot\vec\be)\cr
 \vec p' &= \vec p  +  (\ga - 1) {\vec p \cdot \vec \be\over \be^2}\vec\be - \ga E \vec\be\cr
@@ -94,55 +92,38 @@ E'      &= \ga\,(E - \vec p\cdot\vec\be)\cr
 \ ,}{sm lorentz}
 one can find that the $\vec\be$ needed for our purpose is
 \eqref{\vec\be = {\vec p_1 + \vec p_2\over E_1 + E_2}\ ,}{sm beta}
-where $\vec p_1, \vec p_2$ are the momenta and $E_1, E_2$ are the energies of the incident particles in the LAB frame. Let's denote this transformation $L(\vec\be)$ and the boosted momenta of the incident particles $\vec p_1'$ and $\vec p_2'$.
+where $\vec p_1, \vec p_2$ are the momenta and $E_1, E_2$ are the energies of the incident particles in the LAB frame (as shown in \Fg{smearing angular energy}). Let us denote this transformation $L(\vec\be)$ and the boosted momenta of the incident particles $\vec p_1'$ and $\vec p_2'$.
 
-In the second step, we rotate the vectors $\vec p_1'$ and $\vec p_2'$ to be parallel to the MC frame $z$ axis. We use Rodrigues' formula to describe the rotation of a vector $\vec v$ around a unit vector (axis) $\vec a$:
-\eqref{R(a, \om)\, \vec v = \vec v\,\cos\om + \vec a\times\vec v\,\sin\om + \vec a\cdot\vec v\,\vec a\,(1 - \cos\om)\ .}{sm rotation}
-For our purpose, one may identify\footnote{In fact, this is just one of the possible solutions, rotation around $\vec a$ axis is arbitrary.}
+Using the Rodrigues' formula to describe the rotation of a vector $\vec v$ around a unit vector (axis) $\vec a$:
+\eqref{R(a, \om)\, \vec v = \vec v\,\cos\om + \vec a\times\vec v\,\sin\om + \vec a\cdot\vec v\,\vec a\,(1 - \cos\om)\ ,}{sm rotation}
+one can find a rotation that makes the boosted momenta $\vec p_{1, 2}'$ parallel to the $z$ axis:
 \eqref{\vec a = {\vec p_1' \times \hat z\over |\vec p_1' \times \hat z|}, \qquad \cos\om = {\vec p_1' \cdot \hat z\over |\vec p_1'|}}{sm axis angle}
-where $\hat z$ is the unit vector in the $z$ direction in the frame after the boost. Obviously, the coordinate representation is $\hat z = (0, 0, 1)$.
+where $\hat z = (0, 0, 1)$ is the unit vector in the $z$ direction in the frame after the boost.
 
-Unfortunately, this is not the full story. MC generators usually produce events for a fixed center-of-mass energy $\sqrt{s}$. However, in the real case, $\sqrt{s}$ varies slightly due to the smearing effects. Since the variation is small it might be neglected. But for consistency reason, one had better make sure that the scattering products sum up to the same $\sqrt{s}$ as for which the event has been produced. There is generally no correct way how to accomplish that. Nevertheless, as the variations are small, it does not matter much. Therefore, let's scale the energy of the outgoing particles
-\eqref{E_i^{\rm MC} \rightarrow \chi\, E_i^{\rm MC},\qquad \chi = \sqrt{s_{\rm LAB}\over s_{\rm MC}}\ .}{sm energy scaling}
-The momenta of the particles are scaled such that their masses are preserved.
-
-To summarize, if $(E|\vec p)_{\rm MC}$ is the four-momentum for a particle produced in a MC event, then the LAB four-momentum can be written
-\eqref{(E|\vec p)_{LAB} = L(-\vec\be)\,R(\vec a, -\om)\, S(\chi)\, (E|\vec p)_{MC}\ ,}{sm mc to lab}
-where $S(\chi)$ stands for the energy scaling procedure.
+To summarize, if $(E|\vec p)_{\rm MC}$ is the four-momentum of a particle produced in a MC event, then the smeared LAB four-momentum of that particle can be written as
+\eqref{(E|\vec p)_{\rm LAB} = L(-\vec\be)\ R(\vec a, -\om)\ S(\chi)\ (E|\vec p)_{\rm MC}\ .}{sm mc to lab}
 
 
-
-The above formula provides a method to apply angular and energy smearing to MC particles. The missing step to have a smearing MC generator is to know the distributions of the quantities $\vec\be$, $\vec a$, $\om$ and $\ch$. But these can be calculated from beam smearing parameters as discussed in \Sc{rp measurement}. Assuming the crossing angle $\al$, see \Fg{smearing angular energy}, one can parameterize the momenta of the incident particles as
+The above formula provides a method to apply angular and energy smearing to events from MC generators. What is still missing is a specification of the $\vec\be$, $\vec a$, $\om$ and $\ch$ distributions. But these can be calculated from the beam-smearing parameters as discussed in \Sc{rp measurement}. Considering the crossing angle $\al$, see \Fg{smearing angular energy}, one can parameterize the momenta of the incident particles as
 \eqref{\vec p_i = \pm p_{\rm nom}\,(1 + \xi_i)\,\pmatrix{\cos\al & 0 & \mp \sin\al\cr 0 & 1 & 0 \cr \pm\sin\al & 0 & \cos\al\cr}\,\pmatrix{C_i\cr S_i\cr \sqrt{1 - C_i^2 - S_i^2}}\ ,}{sm momenta par}
-where $i\in {1, 2}$ and the upper/bottom sign corresponds to particle 1/2. $C_i$ and $S_i$ describe the angular smearing in X and Y and according to \Eq{ttm beam div} one assign them distributions $N(0, \si_\th^2)$. In fact, the tails of the normal distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_\th \ll 1$, the effect is negligible. The $\xi$ parameter accounts for the energy smearing, the expected distribution is $N(\bar\xi, \si_\xi^2)$ (see \Eq{ttm energy off,ttm energy fl}).
+where $i = 1, 2$ and the upper (bottom) sign corresponds to particle 1 (2). The $C_i$ and $S_i$ parameters describe the angular smearing in the horizontal ($x$) and vertical ($y$) projections. According to \Eq{ttm beam div}, they can be assigned Gaussian distributions \TODO{ref for gaussian} with a of spread $\si_{\th^*}$. In fact, the tails of the distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_{\th^*} \ll 1$, the effect is negligible. The $\xi$ parameter accounts for the energy smearing, the expected distribution is a Gaussian with mean $\bar\xi$ and variance $\si_\xi^2$, see \Eq{ttm energy off,ttm energy fl}.
 
-The smearing effects and the crossing angle are rather small: $\si_\th \sim \O{10^{-6}}$, $\al \sim \O{10^{-4}}$ and $\si_\xi \sim \O{10^{-4}}$ (see \Sc{rp measurement} \TODO{better ref?}). Therefore, one may simplify \Eq{sm mc to lab} by keeping just the first oder terms. It will yield an easily iterpretable forumula which will become useful reconstruction uncertainty estimates. Also, bearing in mind the LHC energies, we will approximate $E\approx p$ for all the particles involved.
+The smearing software module uses the above distributions and the parameterization \Eq{sm momenta par} to generate the smearing parameters and \Eq{sm mc to lab} to apply the smearing to MC generated events.
 
-In this approximation \Eq{sm beta} gives
+The smearing effects and the crossing angle are rather small: $\si_{\th^*} \sim \O{10^{-6}\un{rad}}$, $\al \sim \O{10^{-4}}$ and $\si_\xi \sim \O{10^{-4}}$ (see \Sc{rp measurement}). Therefore, one may simplify \Eq{sm mc to lab} by keeping just the first oder terms. It will yield a formula with an instructive interpretation which will become useful reconstruction-uncertainty estimates. Also, bearing in mind the LHC energies, we will approximate $E\approx p$ for all the particles involved. In this approximation \Eq{sm beta} gives
 \eqref{\vec\be \simeq {1\over 2}\pmatrix{-2\al + C_1 - C_2\cr S_1 - S_2\cr \xi_1 - \xi_2}}{sm beta expl}
-and thus $\ga\simeq 1$ (all other terms are of second and higher orders). Then, the Lorentz boost \Eq{sm lorentz} and rotation \Eq{sm rotation} simplify to
+and thus $\ga\simeq 1$ (all other terms are of second and higher orders). Then, the boost \Eq{sm lorentz}, rotation \Eq{sm rotation} and scaling factor \Eq{sm energy scaling} simplify to
 \eqref{\vec p' \simeq \vec p - |\vec p| \vec\be,\qquad E' \simeq E - \vec p\cdot\vec\be\ ,}{sm lorentz expl}
-\eqref{R(\vec a, \om)\,\vec v \simeq \vec v + {1\over 2}\pmatrix{S_1 + S_2\cr -C_1 - C_2\cr 0} \times \vec v\ .}{sm rotation expl}
-The energy scaling factor turns out
+\eqref{R(\vec a, \om)\,\vec v \simeq \vec v + {1\over 2}\pmatrix{S_1 + S_2\cr -C_1 - C_2\cr 0} \times \vec v\ ,}{sm rotation expl}
 \eqref{\ch \simeq 1 + {\xi_1 + \xi_2\over 2}\ .}{sm energy scaling expl}
-
-Now we are ready to apply \Eq{sm mc to lab} to an outgoing (MC generated) particle with momentum $\vec p_{\rm MC}$. Let's limit ourselves to particles that can reach the RP stations, that means particles scattered to small angles $\th \ls 10^{-3}$. A convenient parameterization, thus, is
+Now we are ready to apply \Eq{sm mc to lab} to an outgoing (MC generated) particle with momentum $\vec p_{\rm MC}$. Let us limit ourselves to particles that can reach the RP stations, that means particles scattered to small angles $\th \ls 10^{-3}\un{rad}$. A convenient parameterization, thus, is
 \eqref{\vec p_{\rm MC} = \pm p\,\pmatrix{\th\cos\ph\cr \th\sin\ph\cr 1\cr} \.}{sm diff mc}
-The particles with $+$ sign can be detected in the right arm stations, with $-$ sign in the left arm. Still working in the leading approximation, one finds
+The particles with $+$ ($-$) sign can be detected in the right (left) arm RP stations. Still working in the leading approximation, one finds
 \eqref{\vec p_{\rm LAB} = \pm p\,\pmatrix{\th\cos\ph + \De\th_x\cr \th\sin\ph + \De\th_y\cr 1 + \xi\cr},
 \quad \xi = \left\{\matrix{\xi_1\cr\cr \xi_2}\right.,
 \quad \De\th_x = \left\{\matrix{C_1 - \al\cr\cr C_2 + \al\cr}\right.,
 \quad \De\th_y = \left\{\matrix{S_1\qquad\hbox{for right arm}\cr\cr S_2\qquad\hbox{ for left arm}\cr}\right.\ .}{sm diff lab} %}}}
-
-The interpretation is quite intuitive. Let us take, for instance, a forward proton targeting the right arm and let us focus on the X projection. Its full scattering angle is a sum of three components: the original (MC) scattering angle ($\th\cos\ph$), crossing angle ($-\al$) and the X component of the beam divergence ($C_1$). The proton inherits the energy shift $\xi_1$ from the first incident proton.
-
-\iffalse
-Using the statistical properties suggested in the previous section yields the following relation between variances (recalling $\si_\th$ refers to the beam divergence)
-\eqref{\si_{\De\th_x} = \si_{\De\th_y} = \si_{C_1} = \si_{C_2} = \si_{S_1} = \si_{S_2} = \cases{
-{\si_\th\over\sqrt2}\qquad\hbox{for parameterization \Eq{mom par 1}}\cr
-\si_\th\qquad\hbox{for parameterization \Eq{mom par 2}}\cr
-}\ .}{delta th sigma}
-\fi
+The interpretation is quite intuitive. Let us take, for instance, a proton heading the right arm and let us focus on the horizontal ($x$) projection. Its full scattering angle is a sum of three components: the original (MC) scattering angle ($\th\cos\ph$), crossing angle ($-\al$) and the $x$ component of the beam divergence ($C_1$). The proton inherits the relative-momentum shift $\xi_1$ from the first incident proton.
 
 
 \subsection{Vertex smearing}
@@ -177,7 +158,7 @@ This distribution has a Gaussian form with spreads
 	\si_{x} = {\si_{x^*}\over\sqrt{2}\cos\al},\quad
 	\si_{y} = {\si_{y^*}\over\sqrt{2}},\quad
 	\si_{z} = {\si_{z^*}\over\sqrt{2}}\,{\si_{x^*}\over\sqrt{\si_{z^*}^2\sin^2\al + \si_{x^*}^2\cos^2\al}} \.}{sm effective variations}
-This formula is used by the software module to account for the vertex smearing.
+This formula is used by the software module. For each event a random vertex is generated according to this distribution and the interaction (of the event) is placed at this vertex.
 
 
 \section[fast simu]{Fast simulation}
