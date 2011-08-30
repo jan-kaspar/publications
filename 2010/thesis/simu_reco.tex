@@ -6,17 +6,14 @@ RP, MC, IP5, CMS, T1, T2, VFAT, DIGI, RECO, LAB, LHC, LS, DPE, MC, TOTEM, RMS, n
 \chapter[sr]{Roman Pot simulation and reconstruction software}
 
 
-\TODO{better intro -- motivation}. In \Sc{rp measurement} we have described how scattered protons can be detected by the RP detectors. This processes can be simulated by computer programs which is essential for development and tuning of reconstruction techniques. That is for processes where the scattered proton kinematics is deduced from the RP hits.
-
 \fig{fig/pdf/sr_sw_structure.pdf}{sr sw structure}{The structure of the RP simulation and reconstruction software. Rectangles are used for software modules (algorithm implementations), bevels for data types.}
 
-
-The structure of the simulation and reconstruction software is sketched in \Fg{sr sw structure}. Beyond the aforemetined \em{simulation} and \em{reconstruction} blocks, you can see three more: \em{alignment} (special reconstruction focused to the alignment of RP detectors), \em{raw-data} (experimental data preprocessing) and \em{trigger} (trigger related analyses).
+A good understanding of the processes that scattered protons undergo until they are detected by the RP detectors is essential for the development and tuning of reconstruction techniques (techniques where the scattered proton kinematics is deduced from the RP measurements). For this purpose computer Monte Carlo (MC) simulation provides a very valuable tool. Consequently, the simulation and reconstruction modules form a significant part of the TOTEM RP software, the structure of which is sketched in \Fg{sr sw structure}. Beyond the simulation and reconstruction blocks, you can see three more: alignment (special reconstruction and analysis focused on the alignment of RP detectors), raw-data (experimental data preprocessing) and trigger (trigger-related analyses).
 
 The contributions by this thesis' author mostly complement the work described in \bref{hubert}. We will focus on these contributions, but let us first briefly describe the software components (modules) from \Fg{sr sw structure}.
 
 \> {\bf Event generator}.
-The simulation process starts with generation of particles at the interaction point. This can be either a \em{particle gun} or a \em{physics event generator}. Particle guns generate particles according to some given distributions and are useful for specialized tests and software debugging. Physics event generators build events according to physics models. We use general-pourpose physics generators like Pythia \bref{pythia6,pythia8} or Phojet \bref{phojet} and a custom developed Elegent (see \Sc{elegent}).
+The simulation process starts with generation of particles at the interaction point. This can be either a \em{particle gun} or a \em{physics event generator}. Particle guns generate particles according to some given distributions and are useful for specialized tests and software debugging. Physics event generators build events according to physics models. We use general-purpose physics generators like Pythia \bref{pythia6,pythia8} or Phojet \bref{phojet} and a custom developed Elegent (see \Sc{elegent}).
 
 \> The aim of the {\bf beam smearing} module (see \Sc{beam smearing}) is to account for the beam smearing effects that are usually not considered by event generators. These smearing effects can be divided into three classes: \em{angular smearing} (the particles within a bunch are not all parallel), \em{energy smearing} (there is an energy fluctuation within a bunch) and \em{vertex smearing} (the bunches have non-zero dimensions, thus the interactions can take place in various space points). 
 
@@ -26,9 +23,9 @@ The simulation process starts with generation of particles at the interaction po
 
 \> The VFATs chips are digital, their output is a boolean value (hit/no hit) per sensor channel. A collection of VFAT data is called the {\bf DIGI} data type. This is the meeting point of the simulation and raw-data chains and is the start point for reconstructions and analyses.
 
-\> The {\bf raw data} type refers to a data format in which detector data are collected and saved by the data acquision (DAQ) system.
+\> The {\bf raw data} type refers to a data format in which detector data are collected and saved by the data acquisition (DAQ) system.
 
-\> The DAQ system has only a limited possibilities to perform consistency checks at run-time. Therefore it is essential to peform a {\bf raw-data validation} when converting the raw-data to DIGI offline. This validation relies on checking various frame check sums, constant bits and comparing chip IDs, event and bunch-crossing numbers to the expected values.
+\> The DAQ system has only a limited possibilities to perform consistency checks at run-time. Therefore it is essential to perform a {\bf raw-data validation} when converting the raw-data to DIGI offline. This validation relies on checking various frame check sums, constant bits and comparing chip IDs, event and bunch-crossing numbers to the expected values.
 
 \> The {\bf fast simulation} modules (see \Sc{fast simu}) provide a less detailed, but faster alternative to the Geant4-based simulation. They are primarily intended for statistical studies of the track-based alignment.
 

@@ -18,7 +18,7 @@
 \Reftrue
 \Toctrue
 
-\iftrue
+\iffalse
 	% to show labels
 	\ShowLabelstrue \advance\hoffset-1cm
 \else
@@ -33,12 +33,17 @@
 	\vskip\baselineskip
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------
+
+\pdfdest name {TitlePage} xyz
+\pdfoutline goto name {TitlePage} count 0 {Title page}%
+
 
 \centerline{\fPbxiv Charles University in Prague}
 \centerline{\fPbxiv Faculty of Mathematics and Physics}
 \vskip2	cm
-\centerline{\fPbxx PhD THESIS}
+\centerline{\fPbxx DOCTORAL THESIS}
 \vskip1cm
 \centerline{\IncludeSizedGraphics{5cm}{fig/mffLogo.pdf}}
 %\vskip5cm
@@ -50,17 +55,76 @@
 \vskip2cm
 \centerline{\fPbxiv Institute of Particle and Nuclear Physics}
 \ialign to\hsize{\tabskip 0pt plus1fil\strut #&\hfil\fPbxiv #\ \tabskip0pt&\fPbxiv #\hfil\tabskip 0pt plus1fil\cr
-&Supervisors:&		RNDr. Vojt\v ech Kundr\' at, DrSc.\cr
-&&					Mario Deile, PhD\cr
-&Field of study:&	Physics, Nuclear and Particle Physics\cr}
+&Supervisors:		& RNDr. Vojt\v ech Kundr\' at, DrSc.\cr
+&					& Mario Deile, PhD\cr
+&Study Programme:	& Physics\cr
+&Specialization:	& Subnuclear Physics\cr
+}
+\vskip2cm
+\centerline{\fPbxiv Prague 2011}
 
-\vfil\eject\forceoddpage
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vfil\eject
+
+%----------------------------------------------------------------------------------------------------
+
+The ``thanks page''.
+
+\vfil\eject
+
+%----------------------------------------------------------------------------------------------------
+
+\hbox{}\vfil
+
+I declare that I carried out this doctoral thesis independently, and only with the cited sources, literature and other professional sources.
+
+I understand that my work relates to the rights and obligations under the Act No.~121/2000 Coll., the Copyright Act, as amended, in particular the fact that the Charles University in Prague has the right to conclude a license agreement on the use of this work as a school work pursuant to Section 60 paragraph 1 of the Copyright Act.
+
+\vskip2\baselineskip
+
+In Prague, date
+
+\vskip2\baselineskip
+\eject
+
+%----------------------------------------------------------------------------------------------------
+
+\hbox{}\vfil
+
+\halign{\hbox to 5.3cm{\strut#\hss}&\vbox{\advance\hsize-5.3cm\noindent\ #}\cr
+N\' azev pr\' ace: 		&Elastick\' y rozptyl na LHC\cr
+Autor:					& Jan Ka\v spar\cr
+Katedra:				& \' Ustav \v c\' asticov\' e a jadern\' e fyziky\cr
+Vedoucí doktorské práce:& RNDr. Vojt\v ech Kundr\' at, DrSc., Fyzik\' aln\' i \' ustav AV \v CR, v.~v.~i.\cr
+						& Mario Deile, PhD, CERN, \v Zeneva\cr
+Abstrakt:				& [abstract of 80-200 words in Czech]\cr
+Kl\v i\v cov\' a slova:	& [3-5 keywords in Czech]\cr
+}
+
+\vfil
+
+\halign{\hbox to 5.3cm{\strut#\hss}&\vbox{\advance\hsize-5.3cm\noindent\ #}\cr
+Title:		& Elastic scattering at the LHC\cr
+Author:		& Jan Ka\v spar\cr
+Departement:& Institute of Particle and Nuclear Physics\cr
+Supervisors of the doctoral thesis:& RNDr. Vojt\v ech Kundr\' at, DrSc., Institute of Physics AS CR\cr
+			& Mario Deile, PhD, CERN, Geneva\cr
+Abstract:	& [abstract of 80-200 words in English]\cr
+Keywords:	& [ 3-5 keywords in English]\cr
+}
+
+\vfil
+\eject\forceoddpage
+
+%----------------------------------------------------------------------------------------------------
+
+% \TODO{remove headers and footers, delay page numbering to the introduction} 
 
 \InsertToc
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\eject\forceoddpage
+
+%----------------------------------------------------------------------------------------------------
 
 \BeginText
 
@@ -75,12 +139,17 @@
 
 %\input appendices.tex
 
-\references
+%----------------------------------------------------------------------------------------------------
+
+\SpecialChapter{Bibliography}
 \PrintReferences
+
+%----------------------------------------------------------------------------------------------------
 
 \SpecialChapter{List of Tables}
 \PrintListOfTables
 
+%----------------------------------------------------------------------------------------------------
 
 \SpecialChapter{List of Abbreviations}
 
@@ -109,8 +178,6 @@
 \DefAbb{TOTEM}{TOTal and Elastic Measurements}{An LHC experiment focused on the forward hadronic phenomena.}
 \DefAbb{TPE}{Two Photon Exchange}{An approximation in QED.}
 \DefAbb{WY}{West-Yennie}{Refers to the Coulomb-interference formula Eq.~\ref{el phase WY}.}
-
-% Eq., Tb., Fg. (+Fgs, ...), Sc. + Ch.
 
 \PrintAbbreviations
 

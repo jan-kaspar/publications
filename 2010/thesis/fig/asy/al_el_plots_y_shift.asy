@@ -31,7 +31,7 @@ for (int d_i: dates.keys) {
 		limits((-9, 0), (9, 1200), Crop);
 
 	AddToLegend(Date(dates[d_i]));
-	AttachLegend("Method 2c", NE, NE);
+	AttachLegend("Method 2", NE, NE);
 }
 
 GShipout(hSkip=5mm, vSkip=1mm);
