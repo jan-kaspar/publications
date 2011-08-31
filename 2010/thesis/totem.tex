@@ -19,7 +19,11 @@ HOW (detectors): This challenging program brings special requirements for the de
 
 \TODO{acceptance overview plot? Our acceptance starts where CMS stops}
 
+\fig{fig/pdf/ttm_acceptance_overview.pdf}{ttm acceptance overview}{acceptance overview}
+
 \section[ttm det]{Detector apparatus}
+
+\> data from my La Thuile talk or JINST article
 
 \fig[12cm]{fig/external/totem_detectors.png}{totem detectors}{TOTEM detectors}
 
@@ -183,6 +187,7 @@ The rich physics programme of TOTEM requires several running scenarios, includin
 \section{The total cross-section}
 
 \> tot cs due to the hadronic interaction only, the one for the em int. is infinite
+\> what $\sqrt s$ ?? $7\un{TeV}$
 
 \> Luminosity independent method
 \>> discuss the two amplitudes (spin averaged and spin preserving)
@@ -196,68 +201,75 @@ The rich physics programme of TOTEM requires several running scenarios, includin
 	{\cal L} = (1+\rh^2) {(N_{\rm el} + N_{\rm inel})^2\over \d N/\d t|_{t=0} }
 }{ttm li meth}
 
-The differential rate at $t=0\un{GeV^2}$ can not be measured directly, it needs to be extrapolated from measured low $|t|$ data. As shown in \Fg{ttm elastic acceptance}, there are two optics that extend to sufficiently low $|t|$ values: $\be^* = 1535$ and $90\un{m}$. This extrapolation procedure is important also for the (integral) elastic rate $N_{\rm el}$ measurement as it allows to correct for the events missed due to the finite acceptance.
+The differential rate $\d N/\d t$ at $t=0\un{GeV^2}$ can not be measured directly, it can only be extrapolated from the measured low $|t|$ data. As discussed in \Sc{rp measurement}, there are two optics that extend to sufficiently low $|t|$ values: $\be^* = 1535$ and $90\un{m}$ (see the acceptance curves in \Fg{ttm elastic acceptance}). This extrapolation procedure is important also for the (integral) elastic rate $N_{\rm el}$ measurement as it allows to correct for the events missed due to the finite acceptance.
 
+Looking at the low-$|t|$ elastic cross-section predictions in \Fg{el mod dsdt narrow}, one can see an ``almost'' exponential decrease. This observation can be better quantified by plotting the exponential slope \Eq{el B}, see \Fg{ext B}. The slope is not strictly constant, but for most models (except the one of Islam et al.) its variation is not large up to $|t| \approx 0.25\un{GeV^2}$. Moreover, the shape of the curves suggests that they can be well approximated by a polynomial of a low degree (such as a parabola). Thus the modulus of the hadronic amplitude can be parameterized as:
+\eqref{|\FH(t)| = \e^{M(t)}\ ,\qquad M(t) \hbox{ a polynomial.}}{ext M par}
 
-\>> B looks ``parabolic'' -- polynomial fit to B from data
+\fig{fig/pdf/ext_B.pdf}{ext B}{The exponential slope as predicted by the models discussed in \Sc{el models}. The vertical dashed lines mark the acceptance starts ($|t_{30}|$ values) for each of the considered optics (see \Sc{rp measurement}).}
 
-\iffalse
-islam_bfkl, 9E-01, 3E-01, 2E-02, 1E-03, 3E-04
- islam_cgc, 9E-01, 3E-01, 2E-02, 1E-03, 3E-04
-      ppp2, 6E-02, 4E-03, 1E-04, 3E-06, 1E-06
-      ppp3, 8E-01, 2E-01, 4E-03, 4E-03, 2E-03
-       bsw, 5E-01, 2E-01, 1E-03, 2E-04, 2E-04
-        bh, 2E+00, 3E-01, 7E-03, 3E-03, 2E-03
-      mean, 8E-01, 2E-01, 8E-03, 1E-03, 8E-04
-\fi
-
-\fig{fig/pdf/ext_B.pdf}{ext B}{[7cm]bla}
-
-\> what one measures is $h(t')$ -- includes smearing and acceptance and both interactions (hadronic + em)
-\>> one needs to correct measured to hadronic (+unsmeared, acc. corr.)
-\>> for 1535 smearing is not a problem (need a justification), but Coulomb can go large (below few$\cdot 10^{-3}\un{GeV^2}$)
-\>> for 90 (in the range of its acceptance) Coulomb effect is small, but smearing is an issue - mostly because t x resolution
+The previous parameterization is related to the hadronic amplitude $\FH$. However, the measured $t$-distribution relates to the cross-section due to both hadronic and Coulomb interactions: $\d\si^{\rm C+H}/\d t$ (see \Sc{el coulomb}). Moreover the experimental $t$-distribution is affected by the limited acceptance and detector resolution. These two effects need to be taken into account in the extrapolation procedure. Looking at the \Fg{ext C}, one may conclude that while the effect of the Coulomb interaction is important for the $1535\un{m}$ optics, it is practically negligible for the $90\un{m}$ optics (staying below $|t| \approx 0.25\un{GeV^2}$). It is the other way round for the smearing effects -- negligible for the $1535\un{m}$ and relevant for the $90\un{m}$ optics, see \Fg{ext smearing}.
 
 \bmfig
-\fig{fig/pdf/ext_C.pdf}{ext C}{[7cm]bla}
-\fig{fig/pdf/ext_smearing.pdf}{ext smearing}{[7cm](smeared - orig) / orig, smearing sigma as from \Sc{elr}}
+\fig{fig/pdf/ext_C.pdf}{ext C}{[7cm]The relative difference between cross-sections with and without the Coulomb interaction (included according to the \KL{} formula \Eq{el phase CKL}). The dashed lines mark the acceptance starts $t_{30}$.}
+\fig{fig/pdf/ext_smearing.pdf}{ext smearing}{[7cm]The relative difference between cross-sections after and before the resolution smearing. The expected angular resolutions are shown in \Fg{elr 1535 dth} ($1535\un{m}$ optics) and \Fg{elr 90 dth} ($90\un{m}$ optics).}
 \emfig
 
-\> corrections by iterations: data = U0 (U is uncorrected, C is corrected), guess C0 (e.g. by taking C0 = U0), then iterate:
-Ci --> Ui --> corr(i) = Ci/Ui --> C(i+1) = U0 * corr(i) and again unless |C(i+1) - C(i)| < threshold
+\caption{Extrapolation for $\be^* = 1535\un{m}$ optics}
 
-\> a very old extrapolation study, unpublished, before OfflineSW existed
-\>> no G4 simulation, however simulation of beam smearing as in \Sc{beam smearing} and simulation of detector resolution similar to the one in \Sc{fast simu}
-\>> proton transport with a parameterized optics \TODO{ref}
-\>> realistic statistics (1 day of data-taking at a realistic luminosity)
+Since the Coulomb-interaction effects are relevant for this optics and since these effects act on the level of amplitude (not cross-section, see \Sc{el coulomb}), we need to extend the parameterization \Eq{ext M par} to include also a phase component. \Fg{el mod phase} suggests that, for $|t| \ls 0.25\un{GeV^2}$, a polynomial parameterization is adequate again. Thus, the hadronic amplitude can be parameterized as:
+\eqref{\FH(t) = \e^{M(t)} \e^{\i P(t)}\ ,\qquad M(t), P(t) \hbox{ polynomials.}}{ext MP par}
 
-\> generally optimized: lever-arm (fit from ... to ...), the binning, the degree of modulus and phase polynomial, number of coulomb and anti-smearing correction iterations
+In the rest of this section we will present the main results of an old extrapolation study, made even before the TOTEM offline software (see \Sc{sr}) existed. That is why we used only a simplified MC simulation -- comparable with the fast simulation presented in \Sc{fast simu}, including a simulation of the beam smearing effects similar to \Sc{beam smearing}. The size of the MC sample was chosen to correspond to about a day of data-taking with a realistic luminosity (see \Sc{rp measurement}).
 
-\> try to do it in a model independent way -- used the 6 models as presented in \Sc{el}, optimizing for the mean discrepancy
+The fitting procedure was based on the parameterization \Eq{ext MP par}. In principle this should be inserted into the Coulomb-interference formulae \Eq{el F CH decomp H,el phase CKL} and cross-section definition \Eq{el dsdt} in order to obtain a full fitting model. However, pursuing this approach would be too time consuming, mainly due to the numerical integrations in \Eq{el phase CKL}. Instead, we performed data fits directly with the parameterization \Eq{ext MP par}, but in several iterations. After each iteration we used the fit parameters to correct the input data for the presence of the Coulomb-interaction. After such a correction, the data effectively corresponded to the hadronic part of the cross-section only.
 
-\> here we show the most interesting results, the dependence on a hypothetical low $|t|$ bound of the fit
+% corrections by iterations: data = U0 (U is uncorrected, C is corrected), guess C0 (e.g. by taking C0 = U0), then iterate: Ci --> Ui --> corr(i) = Ci/Ui --> C(i+1) = U0 * corr(i) and again unless |C(i+1) - C(i)| < threshold
 
-\> 1535: cubic fit for modulus, constant in phase, one coulomb iteration, upper bound 0.054
-\>> discuss the phase: the one percent result might be too good
+We made a number of fits, trying to find such fit settings that minimize the deviation of the extrapolated cross-section at $t=0\un{GeV^2}$ from its original value. The parameters to optimize included: the lever-arm (the lower $|t|_{\rm low}$ and upper bound $|t|_{\rm up}$ of the fit), the binning of the input data, the degrees of modulus $M(t)$ and phase $P(t)$ polynomials and the number of Coulomb-correction iterations. We aimed at performing this optimization in a ``model independent way'' -- we used five model variants from \Sc{el models} and tried to minimize the mean extrapolated-original deviation.
 
-\fig{fig/pdf/ext_results.pdf}{ext results}{delta on the level of cross-section at t=0: (extrapolated - orig) / orig}
+\Fg{ext results 1535} shows probably the most interesting result of the study -- the dependence of the extrapolation deviation on the lower bound of the fit. This extrapolation was performed with a cubic modulus polynomial $M(t)$, constant phase polynomial $P(t)$, one Coulomb-correction iteration and the upper bound $|t|_{\rm up} = 0.054\un{GeV^2}$. For most of the models, the deviation lies in a band $\pm 0.2\percent$. The increasing deviation of the model of Islam et al.~might be explained by its exponential slope behavior, see \Fg{ext B}. It is deviating most from a constant value and the polynomial approximation is likely to be less accurate than for the other models.
 
-\> two options for 90 m
-\>> heavy unsmearing
-\>> or use t y dist only (preferred)
+%\>> discuss the phase: the one percent result might be too good
 
-\> 90m: the t y fit procedure
-\>> no unsmearing done -- the -2 percent shift
-\>> ty fit on 0.04 to 0.25
+\fig{fig/pdf/ext_results_1535.pdf}{ext results 1535}{The extrapolation deviation of the cross-section at $t=0\un{GeV^2}$, as a function of the fit lower bound $|t|_{\rm low}$. The deviation is calculated as (extrapolated - original) / original, where e.g.~original denotes the original (true) value of $\d\si^{\rm H}/\d t|_{0}$.}
+
+
+
+\caption{Extrapolation for $\be^* = 90\un{m}$ optics}
+
+For the $\be^* = 90\un{m}$, the situation is quite different. The acceptance only starts at higher $|t|$ values, where the Coulomb effects can be neglected (see \Fg{ext C}). This means that it is not necessary to include a phase part of the hadronic amplitude $\FH$ as in \Eq{ext MP par} and one can use the parameterization \Eq{ext M par}. 
+
+Another difference compared to the $1535\un{m}$ optics is the much more pronounced beam smearing, its effects are quantified in \Fg{ext smearing}. The dominant error contribution is coming from the horizontal scattering angle $\th_x^*$ reconstruction, see \Fg{elr 90 dth}.
+
+In principle, for the extrapolation one may use a very similar method as for the $1535\un{m}$ optics. One would just replace the Coulomb-correction iterations with smearing-correction iterations. However, we tried another approach. An approach that might be used even if $t_x$ could not be measured at all. In such a case, one can only work with a ``vertical'' cross-section $\d\si/\d t_y$. This can be transformed into the full cross-section $\d\si/\d t$ by exploiting the azimuthal symmetry (thus $\d\si/\d t_x = \d\si/\d t_y$) and the first relation from \Eq{ttm t th}:
+\eqref{{\d\si\over\d t}(t) \propto \int\limits_t^0 \d u\, {\d\si\over\d t_y}(u)\, {\d\si\over\d t_y}(t - u)\ .}{ext dsdty to dsdt}
+However, since low $|t_y|$ information is missing (out of acceptance), an extrapolation step would be needed just for this transformation. It therefore turns out better to transform the $t$-parameterization \Eq{ext M par} in a $t_y$-parameterization and fit it directly through $t_y$ data. The transform follows from the relation between $t$ and $t_y$ \Eq{ttm t x y}. Again, assuming the azimuthal symmetry ($\ph$ is uniformly distributed), one can write
+\eqref{{\d\si\over\d t_y}(t_y) = {2\over\pi} \int\limits_{0}^{\pi/2} {\d\ph\over\sin^2\ph}\ \ {\d\si\over\d t}\!\left(t_y\over\sin^2\ph\right)\ .}{ext dsdt dsdty}
+This transform can now by applied to the parameterization \Eq{ext M par}. Moreover, considering that the quadratic and higher terms of the polynomial $M(t)$ do not carry essential contributions (see \Fg{ext B}), one can approximate:
+\eqref{{\d\si\over\d t} = e^{a\, +\, bt\, +\, ct^2\, +\, \ldots} \quad\Rightarrow\quad {\d\si\over\d t_y}(t_y) \approx {1\over\sqrt{\pi}}\, {e^{a\, +\, bt_y\, +\, ct_y^2\, +\, \ldots}\over\sqrt{|b\,t_y|}}\ .}{ext dsdt dsdty app}
+
+To test this extrapolation approach, we used the same (simplified) MC simulation as for the $1535\un{m}$ optics. The main results are shown in \Fg{ext results 90}. We fitted the $t_y$ distribution with the parameterization \Eq{ext dsdt dsdty app} to extract the $a$ parameter, which determines the cross-section at $t=0\un{GeV^2}$. The fits were carried out on intervals from $|t_y|_{\rm low}$ (horizontal axis) to $|t_y| = 0.25\un{GeV^2}$. No attempt was made to correct for the smearing effects, which results to the overall offset $-2\percent$. But there is no problem to include such a correction in future. Most models fall in a band $\pm 1\percent$ around the offset $-2\percent$. The model of Islam et al.~deviates a bit more. Looking back to \Fg{ext B} one can see the exponential slope $B(t)$ being more curved for the model of Islam than for the others. Therefore the approximation \Eq{ext dsdt dsdty app} is less accurate for this model.
+
+
+\fig{fig/pdf/ext_results_90.pdf}{ext results 90}{The extrapolation deviation as a function of the fit lower bound $|t_y|_{\rm low}$. The deviation is calculated as (extrapolated - original) / original, where e.g.~original denotes the original (true) value of $\d\si^{\rm H}/\d t|_{0}$.}
+
+
+
+\caption{Summary}
 
 \> propagation of the errors, the standard table
+\> dN/dt: the worst case
 
 \htab{ext error summary}{bla}{
-	&	& \be^* = 90\un{m} & 1535\un{m} \cr\bln
+\multispan2&\multispan2\bhrulefill\cr
+\multispan2	&\omit\bvrule\hfil\bstrut\tskip $\be^* = 90\un{m}$\hfil\tskip & \be^* = 1535\un{m} \cr\bln
 \d N/\d t|_0	& \hbox{Extrapolation of elastic rate to } t = 0 & 4\percent & 0.2 \percent \cr\ln
 N_{\rm el}	& \hbox{Total elastic rate (correlated with extrapolation)} & 2\percent & 0.1\percent \cr\ln
 N_{\rm inel}	& \vbox{\hsize7cm\noindent\strut Total inelastic rate (error dominated by Single Diffractive trigger losses)} & 1\percent & 0.8\percent \cr\ln
-\rh\equiv\Re A(t)/\Im A(t)|_{t = 0} & \vcenter{\hsize7cm\noindent\strut Error contribution from $(1 + \rh^2)$ (using full COMPETE error band)\phantom{g}} &\multispan2\vrule\hfil $1.2\percent$\hfil \cr\bln
+\rh & \vcenter{\hsize7cm\noindent\strut Error contribution from $(1 + \rh^2)$ (using full COMPETE error band)\phantom{g}} &\multispan2\vrule\hfil $1.2\percent$\hfil \cr\bln
 &\hbox{Total for } \si_{\rm tot} & 5\percent & 1\div2\percent \cr\bln
 &\hbox{Total for } {\cal L} & 7\percent & 2\percent \cr\bln
 }
+
+

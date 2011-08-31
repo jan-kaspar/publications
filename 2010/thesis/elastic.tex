@@ -13,7 +13,8 @@ CMS, QCD, QFT, LHC, BFKL, HP, LxG, RMS, QED, QM, OPE, TPE, IR, KL, CKL, WY, SWY
 ATLAS ALFA, TDR
 \fi
 
-\chapter{Elastic scattering of protons}
+\chapter[el]{Elastic scattering of protons}
+
 
 \fig{fig/pdf/el_scat_scheme.pdf}{el scat scheme}{The kinematical of equal-mass elastic scattering in the center-of-mass system. The labels give the four-momenta of the particles involved ($z$ axis is horizontal, $x$ vertical).}
 
@@ -199,7 +200,7 @@ So far, we have discussed the hadronic and electromagnetic interactions separate
 \caption{Interference in non-relativistic QM}
 
 One of the first authors to tackle the interference problem was Bethe. In his work \bref{bethe58} he studied particle scattering by nuclei. He proposed a model based on two assumptions. First, the spatial distribution of protons and neutrons is the same. He parameterized this distribution by a Gaussian, with parameter $a$ governing its width (and thus the size of the nucleus). The second assumption is that the nuclear potential is proportional to the nucleon density. His total amplitude for $\rm pp$ and $\rm \bar pp$ scattering (upper and lower sign respectively) could be written:
-\eqref{F^{\rm C+H}(t) = \pm {\al s\over t} \e^{i \al \Ph(t)} + F^{\rm H}(t)}{el F CH decomp C}
+\eqref{F^{\rm C+H}(t) = \pm {\al s\over t} \e^{\i \al \Ph(t)} + F^{\rm H}(t)}{el F CH decomp C}
 with the Coulomb-hadronic phase $\Ph$
 \eqref{\Ph_{\rm Bethe}(t) = \pm 2 \log {1.06\over a\sqrt{|t|}}\ .}{el phase bethe}
 We recall that the hadronic amplitude $F^{\rm H}(t)$ reflects Bethe's hadronic model and thus one cannot use his interference formula for a generic hadronic model. This fact may seem as a major disadvantage nowadays. We are mentioning Bethe's work because most of his successors have derived formulae formally very similar to \Eq{el F CH decomp C}. The common feature is that the total amplitude $F^{\rm C+H}(t)$ hides an infinite phase factor which is not observable in differential cross-section. In that sense, \Eq{el dsdt} is valid for $F^{\rm C+H}(t)$ but \Eq{el si tot} not.
@@ -219,14 +220,14 @@ where the (residual) functions $g^{\rm H, C}(t)$ are IR-divergence free. The inf
 \underbrace{\FH \e^{\al (\Re A_{\rm H} + B)} \left(1 + \al g^{\rm H}_1 + \ldots \right)}_{G^{\rm H}}
 +
 \underbrace{\FC_{\rm OPE} \e^{\al (\Re A_{\rm C} + B)} \left(1 + \al g^{\rm C}_1 + \ldots \right)}_{\FC}
-\e^{i\al \Im (A_{\rm C} - A_{\rm H})}
+\e^{\i\al \Im (A_{\rm C} - A_{\rm H})}
 }{el wy 3}
 such that the terms $\Re A_{\rm H, C}(t) + B(t)$ are finite. In the last equation an infinite phase factor $\exp(-iA_{\rm H}(t))$ has been absorbed to the amplitude $\FCH(t)$, similarly as in Bethe's formula. We used the braces to identify the complete Coulomb amplitude $\FC(t)$ and Coulomb-modified hadronic amplitude $G^{\rm H}(t)$.
 
 To the lowest order in $\al$ one may approximate
 \eqref{G^{\rm H}(t) \approx \FH(t)\ ,\qquad \FC(t) \approx \FC_{\rm OPE}(t)}{el wy 4}
 and thus the total amplitude reads
-\eqref{\FCH(t) \approx \pm {\al s\over t} \e^{i \al \Ph(t)} + F^{\rm H}(t)\ ,}{el wy 5}
+\eqref{\FCH(t) \approx \pm {\al s\over t} \e^{\i \al \Ph(t)} + F^{\rm H}(t)\ ,}{el wy 5}
 where we have identified the interference phase
 \eqref{\Ph(t) = \Im \Big( A_{\rm C}(t) - A_{\rm H}(t) \Big)\ .}{el wy 6}
 Note that this phase is, by construction, a real function.
@@ -265,13 +266,13 @@ Cahn \bref{cahn82} also started by rederiving the formula of \WY. By inserting \
 \right ]\ .
 }{el cahn 1}
 For the complete Coulomb formula $\FC(t)$ he obtained (in the lowest order in $\al$)
-\eqref{\FC(t) = \pm {\al s\over t} \e^{i\al \et(t)}\ ,\qquad \et(t) = \log {\la^2\over -t}\ .}{el cahn 2}
+\eqref{\FC(t) = \pm {\al s\over t} \e^{\i\al \et(t)}\ ,\qquad \et(t) = \log {\la^2\over -t}\ .}{el cahn 2}
 We recall that $\la$ represents the fictitious photon mass. The only difference compared to the Born approximation \Eq{el coul born} is the presence of the Coulomb phase $\et(t)$. This phase diverges for vanishing $\la$ and therefore it is not possible to apply the $\la\to 0\un{GeV}$ limit in a straight-forward manner. However, Cahn showed that the terms in square brackets in \Eq{el cahn 1} have the same $\log\la^2$ divergence in their phase. Thus it is possible to factor out this term and absorb it into the amplitude $\FCH(t)$ (just as in the treatments of Bethe and \WY). Cahn's final result reads
-\eqref{\FCH(t) = \pm {\al s\over t} + \FH(t)\, \big[1 + i \al \Ps(t) \big]}{el F CH decomp H lin}
+\eqref{\FCH(t) = \pm {\al s\over t} + \FH(t)\, \big[1 + \i \al \Ps(t) \big]}{el F CH decomp H lin}
 with the interference phase:
 \eqref{\Ps_{\rm Cahn}(t) = \pm \lim\limits_{T \to -\infty} \left[ \log {t\over T} - \int\limits_{T}^{0} {\d t'\over |t' - t|} \left ( {\FH(t')\over \FH(t)} - 1 \right) \right] + \O{\al}}{el phase Cahn}
-Within the $\O{\al}$ approximation in the phase, one can complete the term $1+i\al\Ps$ to the exponential:
-\eqref{\FCH(t) = \pm {\al s\over t} + \FH(t)\, \e^{i \al \Ps(t)}\ .}{el F CH decomp H}
+Within the $\O{\al}$ approximation in the phase, one can complete the term $1+\i\al\Ps$ to the exponential:
+\eqref{\FCH(t) = \pm {\al s\over t} + \FH(t)\, \e^{\i \al \Ps(t)}\ .}{el F CH decomp H}
 This expression is similar to \Eq{el F CH decomp C,el wy 5}, only the phase factor is attached to the hadronic amplitude. That is why we used symbol $\Ps$ for the phase here, to distinguish it from phases $\Ph$ that are attached to the Coulomb amplitude.
 
 Then, Cahn turned to the discussion of the influence of the electromagnetic form factors. He calculated the complete Coulomb amplitude with a low-$|t|$ approximation of $G_{\rm eff}(t) = F_{\rm d}(t)$. The result had a form just as \Eq{el cahn 2}, just the Coulomb phase gained a shift:

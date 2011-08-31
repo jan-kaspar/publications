@@ -2,7 +2,7 @@ import graph;
 
 StdFonts();
 
-size(10cm, 10cm, IgnoreAspect);
+size(6cm, 6cm, IgnoreAspect);
 
 real t1_min = 3.1, t1_max = 4.7;
 real t2_min = 5.3, t2_max = 6.5;
