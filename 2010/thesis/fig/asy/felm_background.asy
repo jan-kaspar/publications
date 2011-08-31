@@ -134,8 +134,10 @@ GShipout("felm_background_cmp");
 //--------------------
 
 NewPad("$|t|\un{GeV^2}$", "$\d N/\d t$");
+currentpad.xTicks = LeftTicks(Step=0.5, step=0.1);
 scale(Linear, Log);
-draw(shift(0, log10(1/0.05)), rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "h_t"), black, "");
+//draw(shift(0, log10(1/0.05)), rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "h_t"), black, "");
+draw(shift(0, log10(exp(11.6575) / exp(-3.7151))), rGetObj(dir+"/hubert/52_00a_correction_steps_bot_45_top_56.root", "tc|bot45_top56_t"), black, "");
 
 draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc"), blue);
 draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc|ffel"), red+1.5pt);
@@ -145,13 +147,16 @@ draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_max"), red+dashed);
 draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_min"), red+dashed);
 TGraph_lowLimit = -inf;
 
-limits((0, 1e1), (2.5, 1e7), Crop);
+limits((0, 1e1), (2.5, 2e7), Crop);
 //yaxis(XEquals(0.36, false), dashed);
-AttachLegend("bbefore acceptance correction");
+AttachLegend("before acceptance correction");
 
 
 NewPad("$|t|\un{GeV^2}$", "$\d N/\d t$");
+currentpad.xTicks = LeftTicks(Step=0.5, step=0.1);
 scale(Linear, Log);
+
+draw(shift(0, log10(exp(11.6575) / exp(-3.7151))), rGetObj(dir+"/hubert/52_00a_correction_steps_bot_45_top_56.root", "tc|bot45_top56_t_corr_dist"), black, "");
 
 draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el"), blue);
 draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el|ffel"), red+1.5pt);
@@ -161,7 +166,7 @@ draw(rGetObj(dir+"/mc2_anal.root", "h_el/graphs|g_min"), red+dashed);
 TGraph_lowLimit = -inf;
 
 
-limits((0, 1e1), (2.5, 1e7), Crop);
+limits((0, 1e1), (2.5, 2e7), Crop);
 //yaxis(XEquals(0.36, false), dashed);
 AttachLegend("after acceptance correction");
 
