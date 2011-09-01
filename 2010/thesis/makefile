@@ -1,5 +1,6 @@
 files = $(wildcard fig/asy/*.asy)
 timestamps = $(patsubst fig/asy/%, fig/.timecache/%.pdf, $(files))
+ASYOPT = -tex pdftex
 
 .PHONY: all asy tex info
 

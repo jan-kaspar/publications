@@ -4,36 +4,101 @@ TOTEM, RP, T1, T2, IP, BPM, BLM
 
 \chapter[ttm]{The TOTEM experiment}
 
-MOTIVATION: The forward hadronic physics is one of the least explored and understood areas of the particle physics.
+% Approach: why, what, how
 
-WHAT: The physics programme of the TOTEM experiment includes:
+\TODO{Briefly repeat the motivation from the introduction: The forward hadronic physics is one of the least explored and understood areas of the particle physics.}
+
+The TOTEM experiment \bref{totem04,totem08,totem10} is dedicated to measurement of forward hadronic phenomena at the LHC. The tree pillars of its physics programme are:
 \> elastic scattering measurement in a wide $t$-range,
 \> total cross-section measurement and
 \> a study of soft and hard diffraction.
 
-\> define SD and DPE
 
-\TODO{add the phi vs. eta diagram to explain the forwardness?}
+We have discussed theoretical/phenomenological description of the elastic scattering in \Sc{el}. Looking at the model predictions in \Fg{el mod dsdt large}, one can see differences of several orders of magnitude. TOTEM plans to measure the differential cross-section in the $|t|$-range from about $10^{-3}\un{GeV^2}$ (the domain of Coulomb-hadronic interference) to more than $10\un{GeV^2}$. This large coverage can be achieved by exploiting several running scenarios -- see the end of \Sc{rp measurement}. \TODO{decisive measurement}
 
-HOW (detectors): This challenging program brings special requirements for the detector apparatus. In particular large rapidity coverage - to detect most fragments from inelastic collisions and excellent acceptance for outgoing elastic and diffractive protons. To accomplish this task, TOTEM comprises three subdetectors: the telescopes T1 and T2 to detect products of inelastic collisions and a system of Roman Pots (RP) for surviving proton detection.
+As much as the model predictions differ for the elastic cross-section, they differ for the total-cross section. From Tb.~2 in \bref{kklp11} one can read a variation between $95$ and $110\un{mb}$. Extrapolations from lower energy measurements, see \Fg{sigma tot}, yield even higher uncertainty: from about $85\un{mb}$ to $120\un{mb}$. TOTEM plans to measure the total cross-section with the luminosity independent method, see \Sc{ttm tcs} for details. This method takes as an input the elastic and inelastic event rates and thus is closely related to the other two points of the physics programme. TOTEM aims at the final precision about $1\percent$, which would provide a decisive answer to many total-cross-related hypothesis.
 
-\TODO{acceptance overview plot? Our acceptance starts where CMS stops}
+\Fg{ttm processes} shows typical event topologies for certain diffractive-process classes that TOTEM plans to measure. Looking at the cross-section estimates, one can see that these processes form a large part of the total cross-section. A characteristic property of these processes is the presence of scattering products at very forward directions. Using the definition of pseudorapidity
+\eqref{\et = - \log \tan {\th\over 2}}{pseudorapidity}
+the one can say the presence of products at high pseudorapidity regions. \TODO{...}
 
-\fig{fig/pdf/ttm_acceptance_overview.pdf}{ttm acceptance overview}{acceptance overview}
+\fig{fig/pdf/ttm_processes.pdf}{ttm processes}{Diffractive process classes with a cross-section estimate for the center-of-mass energy $\sqrt s = 14\un{TeV}$. For each class there are two types of diagrams (using the same color code). Left: a Feynman-like diagram showing the nature of the process, with Pomeron exchange (the double lines) as an effective description of the diffraction phenomena. Single external lines denote protons, the tripled outgoing lines represent proton dissociation. Right: a sample hit map in the pseudorapidity ($\et$) vs.~azimuthal angle ($\ph$) space.}
+
+
+TOTEM's physics programme thus sets special requirements for the detector apparatus. In particular large rapidity coverage - to detect most fragments from inelastic collisions and excellent acceptance for outgoing elastic and diffractive protons. To accomplish this task, TOTEM comprises three sub-detectors: the telescopes T1 and T2 to detect products of inelastic collisions and a system of Roman Pots (RP) for surviving proton detection.
+
+
+%\TODO{add the phi vs. eta diagram to explain the forwardness?}
+%\fig{fig/pdf/ttm_acceptance_overview.pdf}{ttm acceptance overview}{acceptance overview}
+
+
+
 
 \section[ttm det]{Detector apparatus}
 
-\> data from my La Thuile talk or JINST article
 
-\fig[12cm]{fig/external/totem_detectors.png}{totem detectors}{TOTEM detectors}
+\fig{fig/pdf/ttm_det_overview.pdf}{ttm det overview}{An overview of the TOTEM detectors. All detectors are installed symmetrically left (sector 45) and right (sector 56) of the interaction point 5 (IP5), only the \rhs~shown in the figure. Bottom part: the structure of the LHC around IP5. The vertical boxes represent quadrupole (Q) and dipole (D) magnets. D1 is the separation magnet -- splitting each beam to its proper beam-line, see the \rhs~of the figure. The RP stations at $147$ and $220\un{m}$ are shown by red dots (each dot represents a unit). Upper box: zoomed region (see the guiding dashed lines) around the IP5 -- the telescopes (red) T1 and T2 embedded into the CMS detector (gray).
+}
 
-\> brief description of T1 and T2 with a few pictures
-\>> reference to more detailed information: \bref{totem04,totem08,totem10}
+\Fg{ttm det overview} shows an overview of the detector apparatus of TOTEM. symmetrically, all LV1 capable
+
+
+Telescopes -- inelastic trigger, vertex reconstruction (background rejection)
+
+\caption{Telescopes T1}
+
+ (in the center of the CMS end-cap), $7.5$ to $10.5\un{m}$ from the IP, Sc.~5.2 in \bref{totem08}
+
+\> $3.1 < \et < 4.7$
+
+\> 1 telescope per side of IP5
+\> each telescopes: 5 planes, equally spaced in $z$
+\> each plane: 6 trapezoidal CSC detectors, each about $60^\circ$ in $\ph$
+\>> $3^\circ$ rotation and overlap between adjacent planes
+
+\> CSC (Cathode Strip Chamber) detector
+\>> 3 coordinates: 2 cathode strips, 1 anode wire
+\>> Anode wires: diameter $30\un{\mu m}$, $3\un{mm}$ pitch
+\>> Cathode strips: $4.5\un{mm}$ width, $5\un{mm}$ pitch
+\>> cathodes at $\pm 60^\circ$ wrt. anode wires
+\>> Trigger with anode wires
+\>> Gas Mixture $\rm Ar/CO_2/CF_4$
+\>> Gas gap: 10 mm
+\>> Max size: $\approx 1\un{m} x 0.68\un{m}$
+\>> Resolution $\approx\ls 1\un{mm}$
+
 
 \bmfig
 \fig[,5cm]{fig/external/t1_quarter.jpg}{t1 quarter}{[7cm]T1 quarter}
 \fig[,5cm]{fig/external/t1_installed.jpg}{t1 installed}{[7cm]T1 installation}
 \emfig
+
+
+\caption{Telescopes T2}
+
+(after CMS HF calorimeter), centered around $13.5\un{m}$ from the IP, Sc.~5.3 in \bref{totem08}
+
+\> installed in the forward shielding of CMS between the vacuum chamber and the inner shielding of the HF calorimeter.
+
+\> $5.3 < \et < 6.5$
+
+\> one telescope on each side of IP5
+\> each telescope: two quarters
+\> each quarter: $5\times$ 2 (back-to-back mounted) GEM detectors (semi-circular modules)
+\>> back-to-back assembly and overlap between modules
+
+\> triple Gas Electron Multiplier detectors
+\>> double readout: strips (radial) and pads (coarse radial and azimuthal)
+\>> strip radius from $43$ to $144\un{mm}$, pads from $2\times 2\un{mm^2}$ to $7\times 7\un{mm^2}$
+\>> resolution: radial $0.15\un{mm}$, azimuthal $0.8^\circ$
+\>> Trigger from Pads, 1560/chamber,
+
+\>> gas detector, radiation hard, high rate, good spatial, and timing resolution
+\>> Electrodes: $50\un{\mu m}$ kapton + $2\times 5\un{\mu m}$ Cu
+\>> Density: $50-100\un{holes/mm^2}$
+\>> Electric field (channel) $\approx 100\un{KV/cm} \Rightarrow$ electron cascade
+\>> Gain: 10 - 100
+
 
 \bmfig
 \fig[,5cm]{fig/external/t2_quarter.jpg}{t2 quarter}{[7cm]T2 quarter}
@@ -41,7 +106,10 @@ HOW (detectors): This challenging program brings special requirements for the de
 \emfig
 
 
-\> describe the RP system
+\caption{The RPs system}
+
+\> details in Ch.~4 in \bref{totem08}
+
 \>> motivation: very small angles -- need move close to the beam and detectors far from the IP
 \>> break down with pictures, few info about the sensors, define hybrid
 \>> introduce (with pictures BPMs, BLMs, LVDTs)
@@ -63,6 +131,20 @@ HOW (detectors): This challenging program brings special requirements for the de
 \fig[,5cm]{fig/external/rp_hybrid.jpg}{rp hybrid}{[7cm]A hybrid with a silicon detector and four VFAT chips.}
 \fig[,5cm]{fig/external/rp_blm_bpm.jpg}{rp sensor}{[7cm]BPM and BLM at a RP station.}
 \emfig
+
+\> thin window: front face $500\un{\mu m}$, $150\un{\mu m}$ thick
+
+\> edgeless silicon detectors with current terminating structure, Sc.~4.3 in \bref{totem08}
+\>> current terminating ring (CTR) collects the current generated in the highly damaged region at the cut edge, avoiding its diffusion into the sensitive volume, and is separated from the biasing electrode.
+\>> one more ring (clean-up ring CR) to prevent any further diffusion of this edge current into the sensitive area.
+\>> insensitive edge about $50\un{\mu m}$
+
+\> single-sided $\rm p^+-n$ micro-strip detectors with $512$ strips at a pitch $P = 66\un{\mu m}$ processed on very high resistivity n-type silicon wafers $> 10\un{k\Om\ cm}$
+\>> strips at $45^\circ$ wrt.~the edge facing the beam.
+\>> bias voltage $\approx 100\un{V}$ ??
+\>> temperature $\approx -10^\circ\rm C$
+
+\> read out per 128 channels by 4 VFAT chips
 
 \tab[\strut\quad#\quad\hfil&\quad#\quad\hfil&\quad#\quad\hfil\cr]{rp naming schemes}{The RP naming scheme.}{\ln
 arm		& 45 (=left), 56 (=right)		\cr
@@ -179,15 +261,13 @@ The rich physics programme of TOTEM requires several running scenarios, includin
 
 
 
-
-
-
-
-
-\section{The total cross-section}
+\section[ttm tcs]{The total cross-section}
 
 \> tot cs due to the hadronic interaction only, the one for the em int. is infinite
-\> what $\sqrt s$ ?? $7\un{TeV}$
+
+\fig{fig/pdf/sigma_tot.pdf}{sigma tot}{Fits from the COMPETE collaboration \bref{cudell02} to all available $\rm pp$ and $\rm \bar pp$ data on the total cross-section. The thick solid line represents the best fit with statistical error band. The dashed lines show the total error band from all models considered.}
+
+\> below, what $\sqrt s$ ?? $7\un{TeV}$ ??
 
 \> Luminosity independent method
 \>> discuss the two amplitudes (spin averaged and spin preserving)
