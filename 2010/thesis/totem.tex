@@ -25,7 +25,15 @@ the one can say the presence of products at high pseudorapidity regions. \TODO{.
 \fig{fig/pdf/ttm_processes.pdf}{ttm processes}{Diffractive process classes with a cross-section estimate for the center-of-mass energy $\sqrt s = 14\un{TeV}$. For each class there are two types of diagrams (using the same color code). Left: a Feynman-like diagram showing the nature of the process, with Pomeron exchange (the double lines) as an effective description of the diffraction phenomena. Single external lines denote protons, the tripled outgoing lines represent proton dissociation. Right: a sample hit map in the pseudorapidity ($\et$) vs.~azimuthal angle ($\ph$) space.}
 
 
+\> why about detectors:
+
 TOTEM's physics programme thus sets special requirements for the detector apparatus. In particular large rapidity coverage - to detect most fragments from inelastic collisions and excellent acceptance for outgoing elastic and diffractive protons. To accomplish this task, TOTEM comprises three sub-detectors: the telescopes T1 and T2 to detect products of inelastic collisions and a system of Roman Pots (RP) for surviving proton detection.
+
+Telescopes -- inelastic trigger, vertex reconstruction (background rejection), high radiation
+
+All detectors are trigger capable -- important for 
+
+RP motivation: very small angles -- need move close to the beam and detectors far from the IP, instable beams in the beginning, must be movable
 
 
 %\TODO{add the phi vs. eta diagram to explain the forwardness?}
@@ -36,81 +44,52 @@ TOTEM's physics programme thus sets special requirements for the detector appara
 
 \section[ttm det]{Detector apparatus}
 
+\> how about detectors:
 
-\fig{fig/pdf/ttm_det_overview.pdf}{ttm det overview}{An overview of the TOTEM detectors. All detectors are installed symmetrically left (sector 45) and right (sector 56) of the interaction point 5 (IP5), only the \rhs~shown in the figure. Bottom part: the structure of the LHC around IP5. The vertical boxes represent quadrupole (Q) and dipole (D) magnets. D1 is the separation magnet -- splitting each beam to its proper beam-line, see the \rhs~of the figure. The RP stations at $147$ and $220\un{m}$ are shown by red dots (each dot represents a unit). Upper box: zoomed region (see the guiding dashed lines) around the IP5 -- the telescopes (red) T1 and T2 embedded into the CMS detector (gray).
+\Fg{ttm det overview} shows an overview of the detector apparatus of TOTEM. All detectors are placed symmetrically about IP5 (which is shared with the CMS experiment). All detectors are trigger capable.
+
+\fig{fig/pdf/ttm_det_overview.pdf}{ttm det overview}{An overview of the TOTEM detectors. All detectors are installed symmetrically left (sector 45) and right (sector 56) of the interaction point 5 (IP5). Only the \rhs~is shown in the figure. Bottom part: the structure of the LHC around IP5. The vertical boxes represent quadrupole (Q) and dipole (D) magnets. D1 is the separation magnet -- splitting each beam to its proper beam-line, see the \rhs~of the figure. The RP stations at $147$ and $220\un{m}$ are shown by red dots (each dot represents a unit). Upper box: zoomed region (see the guiding dashed lines) around the IP5 -- the telescopes (red) T1 and T2 embedded into the CMS detector (gray). The T1 telescopes are installed inside the CMS end-caps, the T2 telescopes on the outer side of the CMS HF calorimeters.
 }
-
-\Fg{ttm det overview} shows an overview of the detector apparatus of TOTEM. symmetrically, all LV1 capable
-
-
-Telescopes -- inelastic trigger, vertex reconstruction (background rejection)
 
 \caption{Telescopes T1}
 
- (in the center of the CMS end-cap), $7.5$ to $10.5\un{m}$ from the IP, Sc.~5.2 in \bref{totem08}
+The T1 telescopes are installed inside the CMS end-caps, they extend in the forward areas from $7.5$ to $10.5\un{m}$ on both sides of the interaction point. They cover pseudorapidity regions $3.1 < \et < 4.7$.
 
-\> $3.1 < \et < 4.7$
-
-\> 1 telescope per side of IP5
-\> each telescopes: 5 planes, equally spaced in $z$
-\> each plane: 6 trapezoidal CSC detectors, each about $60^\circ$ in $\ph$
-\>> $3^\circ$ rotation and overlap between adjacent planes
-
-\> CSC (Cathode Strip Chamber) detector
-\>> 3 coordinates: 2 cathode strips, 1 anode wire
-\>> Anode wires: diameter $30\un{\mu m}$, $3\un{mm}$ pitch
-\>> Cathode strips: $4.5\un{mm}$ width, $5\un{mm}$ pitch
-\>> cathodes at $\pm 60^\circ$ wrt. anode wires
-\>> Trigger with anode wires
-\>> Gas Mixture $\rm Ar/CO_2/CF_4$
-\>> Gas gap: 10 mm
-\>> Max size: $\approx 1\un{m} x 0.68\un{m}$
-\>> Resolution $\approx\ls 1\un{mm}$
-
+There is one telescope on each side of IP5 (see \Fg{t1 installed}). Each telescope consists of two quarters (see \Fg{t1 quarter}). Each quarter is formed by 5 planes equally spaced in $z$ (along the beam pipe). Each plane includes 3 trapezoidal Cathode Strip Chamber (CSC) detectors, each covering about $60^\circ$ in azimuth. There is $3^\circ$ rotation and overlap between adjacent planes.
 
 \bmfig
-\fig[,5cm]{fig/external/t1_quarter.jpg}{t1 quarter}{[7cm]T1 quarter}
-\fig[,5cm]{fig/external/t1_installed.jpg}{t1 installed}{[7cm]T1 installation}
+\fig[,5cm]{fig/external/t1_installed.jpg}{t1 installed}{[7.5cm]Installation of a T1 telescope into a CMS end-cap. The telescope is opened -- split into two quarters left and right of the beam pipe.}
+\fig[,5cm]{fig/external/t1_quarter.jpg}{t1 quarter}{[6.6cm]A T1 quarter contains 5 planes, each of them consist of 3 CSC detectors.}
 \emfig
+
+The CSC detectors are gaseous detectors (multi-wire proportional chambers) with both cathode plates segmented into strips. These strips and the anode wires are oriented at $60^\circ$ with respect to each other. Thus there are 3 read-out coordinates, which enables reconstruction of events with several 
+tracks. The cathode strips are $4.5\un{mm}$ wide and placed with $5\un{mm}$ pitch. The anode wires, used for triggering, have a diameter of $30\un{\mu m}$ and are installed with $3\un{mm}$ pitch. The gas gap is as wide as $10\un{mm}$ filled with $\rm Ar/CO_2/CF_4$ mixture. The size of the detectors is growing with increasing distance from the IP, reaching the maximum of $\approx 1\un{m} \times 0.68\un{m}$. The spatial resolution of one CSC detector is about $1\un{mm}$. For further details we refer the reader to Sc.~5.2 in \bref{totem08}.
+
 
 
 \caption{Telescopes T2}
 
-(after CMS HF calorimeter), centered around $13.5\un{m}$ from the IP, Sc.~5.3 in \bref{totem08}
+The T2 telescopes are installed in the forward shielding of CMS between the vacuum chamber and the inner shielding of the CMS HF calorimeter, they are centered about $13.5\un{m}$ from the interaction point. The T2 telescopes cover the pseudorapidity region $5.3 < \et < 6.5$.
 
-\> installed in the forward shielding of CMS between the vacuum chamber and the inner shielding of the HF calorimeter.
+There is one telescope on each side of IP5, see \Fg{t2 installed}. Each telescope consists of two quarters as shown in \Fg{t2 quarter}. Each quarter includes 5 semicircular planes, each equipped with 2 back-to-back mounted Gas Electron Multiplier (GEM) detectors. Each detector has an azimuthal coverage of $192^\circ$, therefore there is an overlap between the two quarters within each telescope.
 
-\> $5.3 < \et < 6.5$
+The GEM detectors are gaseous detectors where the electron multiplication is realized by three perforated Cu-clad polyimide foils, separated by $2\un{mm}$. The inner radius of the perforation holes is $65\un{\mu m}$, their density lies between $50$ and $100/\un{mm^2}$ \TODO{check}. With an electric field about $3.6 \un{kV/cm}$ between the GEM foils, the overall gas overall amplification is roughly $8000$. The GEM detectors have double read-out: strips (radial coordinate) and pads (coarse radial and azimuthal). The strip radia range from $43$ to $144\un{mm}$, their width and spacing is $80$ and $400\un{\mu m}$ respectively. The pads, used for triggering, are of sizes from $2\times 2\un{mm^2}$ to $7\times 7\un{mm^2}$. The spatial resolution is about $0.15\un{mm}$ in the radial direction and $0.8^\circ$ in the azimuthal one. Further details can be found in Sc.~5.3 in \bref{totem08}.
 
-\> one telescope on each side of IP5
-\> each telescope: two quarters
-\> each quarter: $5\times$ 2 (back-to-back mounted) GEM detectors (semi-circular modules)
-\>> back-to-back assembly and overlap between modules
-
-\> triple Gas Electron Multiplier detectors
-\>> double readout: strips (radial) and pads (coarse radial and azimuthal)
-\>> strip radius from $43$ to $144\un{mm}$, pads from $2\times 2\un{mm^2}$ to $7\times 7\un{mm^2}$
-\>> resolution: radial $0.15\un{mm}$, azimuthal $0.8^\circ$
-\>> Trigger from Pads, 1560/chamber,
-
-\>> gas detector, radiation hard, high rate, good spatial, and timing resolution
-\>> Electrodes: $50\un{\mu m}$ kapton + $2\times 5\un{\mu m}$ Cu
-\>> Density: $50-100\un{holes/mm^2}$
-\>> Electric field (channel) $\approx 100\un{KV/cm} \Rightarrow$ electron cascade
-\>> Gain: 10 - 100
+% gas detector, radiation hard, high rate, good spatial, and timing resolution
 
 
 \bmfig
-\fig[,5cm]{fig/external/t2_quarter.jpg}{t2 quarter}{[7cm]T2 quarter}
-\fig[,5cm]{fig/external/t2_installed.jpg}{t2 installed}{[7cm]T2 installation}
+\fig[,5cm]{fig/external/t2_installed.jpg}{t2 installed}{[7.5cm]A T2 telescope installed in the shielding of a CMS HF calorimeter.}
+\fig[,5cm]{fig/external/t2_quarter.jpg}{t2 quarter}{[7.4cm]A T2 quarter consists of 5 planes with 2 back-to-back mounted GEM detectors.}
 \emfig
 
 
 \caption{The RPs system}
 
+The system of Roman Pots (RPs) consists of four stations (see \Fg{ttm det overview})
+
 \> details in Ch.~4 in \bref{totem08}
 
-\>> motivation: very small angles -- need move close to the beam and detectors far from the IP
 \>> break down with pictures, few info about the sensors, define hybrid
 \>> introduce (with pictures BPMs, BLMs, LVDTs)
 \>> define the standard naming: \bref{totem-rp-naming}
@@ -118,18 +97,19 @@ Telescopes -- inelastic trigger, vertex reconstruction (background rejection)
 %\fig[15cm]{fig/external/RP_stations_original.pdf}{s}{[7cm]RP stations}
 
 \bmfig
-\fig[,5cm]{fig/external/rp_station.jpg}{rp station}{[7cm]RP station}
-\fig[,5cm]{fig/external/rp_unit.jpg}{rp unit}{[7cm]RP unit}
+\fig{fig/pdf/rp_station.pdf}{rp station}{[7.3cm]A RP station installed in the tunnel. The green frames show the two units (only top and horizontal pots are visible)}
+\fig{fig/pdf/rp_unit.pdf}{rp unit}{[7.3cm]A RP unit with horizontal, top and bottom RP and a BPM.}
 \emfig
 
 \bmfig
-\fig[,5cm]{fig/external/rp_pot.jpg}{rp pot}{[7cm]A Roman Pot}
-\fig[,5cm]{fig/external/rp_package.jpg}{rp package}{[7cm]Detector package}
+\fig{fig/pdf/rp_pot.pdf}{rp pot}{[6.8cm]A Roman Pot with a thin window around the silicon sensors.}
+\fig{fig/pdf/rp_package.pdf}{rp package}{[7cm]A package of 10 detector hybrids mounted on a RP.}
 \emfig
 
 \bmfig
-\fig[,5cm]{fig/external/rp_hybrid.jpg}{rp hybrid}{[7cm]A hybrid with a silicon detector and four VFAT chips.}
-\fig[,5cm]{fig/external/rp_blm_bpm.jpg}{rp sensor}{[7cm]BPM and BLM at a RP station.}
+\fig{fig/pdf/rp_hybrid.pdf}{rp hybrid}{[7cm]A detail of a hybrid zoomed on the silicon detector and four VFAT chips.}
+\hskip5mm
+\fig{fig/pdf/rp_blm_bpm.pdf}{rp blm bpm}{[7cm]A BPM and a BLM at a RP station. A piece of a top RP can be seen in the top-left corner. The beam pipes can be seen in the bottom-right corner (outgoing beam top, incoming bottom).}
 \emfig
 
 \> thin window: front face $500\un{\mu m}$, $150\un{\mu m}$ thick
@@ -191,7 +171,7 @@ In 56, top pots, V sensors shifted in x by +0.514mm, U sensors by -0.514mm.
 
 Imagine a collision which takes place at a \em{vertex}
 \eqref{(x^*, y^*, s^*)^\T}{ttm ip vertex}
-and where a proton is created, as sketched in \Fg{ttm proton transport}. One may relate the momentum $p$ of the outgoing proton to the nominal beam momentum
+and where a proton is emitted, as sketched in \Fg{ttm proton transport}. One may relate the momentum $p$ of the outgoing proton to the nominal beam momentum
 \eqref{p^* = p_{\rm nom} (1 - \xi^*)\ ,}{ttm xi}
 where $\xi^*$ is the \em{momentum loss}. The direction of the proton is described by the \em{scattering angle} $\th^*$ and the \em{azimuthal angle} $\ph^*$:
 \eqref{\vec p^* = p^* \pmatrix{\sin\th^* \cos\ph^*\cr \sin\th^*\sin\ph^* \cr \cos\th^*}
@@ -199,9 +179,9 @@ where $\xi^*$ is the \em{momentum loss}. The direction of the proton is describe
 \ .}{ttm mom comp}
 The coordinate system $(x, y, s)$ is illustrated in \Fg{ttm proton transport}, the $s$ axis represents the beam axis.
 
-The protons of our interest are scattered to low angles and therefore they stay close the outgoing beam and they enter the LHC magnet lattice. When the outgoing proton reaches the region of a RP station, it has momentum $p$, direction described by angles $\th$ and $\ph$ and may hit the detectors at points $x_{\rm N}$ and $x_{\rm F}$ just as shown in \Fg{ttm proton transport}.
+The protons of our interest are scattered to low angles and therefore stay close to the outgoing beam and they enter the LHC magnet lattice. When the outgoing proton reaches the region of a RP station, it has momentum $p$, direction described by angles $\th$ and $\ph$ and may hit the detectors at points $y_{\rm N}$ and $y_{\rm F}$ just as shown in \Fg{ttm proton transport}.
 
-We will use the notation that quantities related to the IP will be denoted with a star superscript, those without will be related to RP stations. Energy of the protons shall be conserved during the LHC transport from the IP to RP stations, therefore $p = p^*$ and $\xi = \si^*$. Thus we will not make distinction between their IP and RP values.
+We will use the notation that quantities related to the IP will be denoted with a star superscript, those without will be related to RP stations. The energy of the protons is conserved during the LHC transport from the IP to RP stations, therefore $p = p^*$ and $\xi = \si^*$. Thus we will not make distinction between their IP and RP values.
 
 It will be useful to define the \em{projections of the scattering angle} (both for IP and RP-station quantities)
 \eqref{\th_x = \th \cos\ph\ ,\qquad \th_y = \th \sin\ph\ .}{ttm th x y}
@@ -210,7 +190,7 @@ Similarly, one can define the projections of the momentum transfer $t$:
 This definition follows, in fact, from the low-scattering-angle approximation in \Eq{el t}, which we will commonly use in what follows (the scattering angles of interest are at most of the order $10^{-3}\un{rad}$, see e.g. \Fg{el mod dsdt large}). The definitions \Eq{ttm th x y,ttm t x y} yield relations
 \eqref{t = t_x + t_y = - p^2 \th^{*2} = - p^2 (\th_x^{*2} + \th_y^{*2})\ .}{ttm t th}
 
-Since the magnetic field within the RP stations is negligible, protons follow a straight trajectory there. The relation between RP sensor measurements and the parameters of the trajectory is, therefore simple (for details see \Sc{al psi}). What is much more interesting is the proton transport from the IP to the RP stations. We will discuss it in the rest of this section.
+Since the magnetic field within the RP stations is negligible, protons follow a straight trajectory there. The relation between RP sensor measurements and the parameters of the trajectory is therefore simple (for details see \Sc{al psi}). What is much more interesting is the proton transport from the IP to the RP stations. We will discuss it in the rest of this section.
 
 The transverse motion of protons in the LHC can be described by a solution of the Hill's equation (see e.g.~Sc.~3.3 in \bref{wilson} or Ch.~4 in \bref{dolezal}):
 \eqref{x(s) = \sqrt{\be(s) \ep}\ \cos\big(\phi(s) + \phi_0\big)\ .}{ttm hill sol}
@@ -220,7 +200,7 @@ A quantity which is used more often is the normalized emittance $\ep_{\rm N} = \
 
 From \Eq{ttm hill sol} one can read off the amplitude of the oscillations, which effectively determines the beam size:
 \eqref{\si(s) = \sqrt{\be(s)\ep}\ .}{ttm beam sigma}
-This quantity is often called a \em{beam sigma}. The beam size is of a special interest at the interaction point -- it controls the vertex distribution. Denoting $\be^*$ the value of the $\be(s)$ function at the interaction point, one can write
+This quantity is often called a \em{beam sigma}. The beam size is of a special interest at the interaction point -- it characterizes the vertex distribution. Denoting $\be^*$ the value of the $\be(s)$ function at the interaction point, one can write
 \eqref{\si_{x^*} = \sqrt{\be^* \ep}\ .}{ttm vertex sm}
 By differentiating \Eq{ttm hill sol} one can obtain the evolution proton angles $\th_x = \d x/\d s$. Again, one can extract the amplitude of its oscillations, that is a measure of the beam angular divergence. Evaluating it at the IP yields
 \eqref{\si_{\th^*} = \sqrt{\ep\over\be^*}\ .}{ttm beam div}

@@ -18,11 +18,11 @@
 \Reftrue
 \Toctrue
 
-\iffalse
+\iftrue
 	% to show labels
 	\ShowLabelstrue \advance\hoffset-1cm
 \else
-	\def\FootText{(VERSION 8)}
+	\def\FootText{(VERSION 9)}
 \fi
 
 \def\pmt#1{{\tt #1}}
@@ -118,8 +118,6 @@ Keywords:	& [ 3-5 keywords in English]\cr
 
 %----------------------------------------------------------------------------------------------------
 
-% \TODO{remove headers and footers, delay page numbering to the introduction} 
-
 \InsertToc
 
 \eject\forceoddpage
@@ -134,9 +132,9 @@ Keywords:	& [ 3-5 keywords in English]\cr
 \input simu_reco.tex
 \input alignment.tex
 \input first_el_measurement.tex
+\input conclusion.tex
 
-\appendices
-
+%\appendices
 %\input appendices.tex
 
 %----------------------------------------------------------------------------------------------------
@@ -153,14 +151,15 @@ Keywords:	& [ 3-5 keywords in English]\cr
 
 \SpecialChapter{List of Abbreviations}
 
-\DefAbb{ATLAS ALFA}{}{}
-\DefAbb{BFKL}{Balitsky-Fadin-Kuraev-Lipatov}{Resumation of gluon ladders leading to a ``hard pomeron'', see e.g. Ch.~8 in \abref{barone}.}
+\DefAbb{ALFA}{}{}
+\DefAbb{ATLAS}{}{}
+\DefAbb{BFKL}{Balitsky-Fadin-Kuraev-Lipatov}{Resumation of gluon ladders leading to a ``hard pomeron'', see e.g. Ch.~8 in [\abref{barone}].}
 \DefAbb{BLM}{Beam Loss Monitor}{}
 \DefAbb{BPM}{Beam Position Monitor}{}
 \DefAbb{CERN}{Conseil Europ\' eenne pour la Recherche Nucl\' eaire}{European Organization for Nuclear Research in Geneva.}
 \DefAbb{CKL}{corrected Kundr\' at-Lokaj\' i\v cek}{Refers to the Coulomb-interference formula Eq.~\ref{el phase CKL}.}
 \DefAbb{CMS}{Center Of Mass reference system}{}
-\DefAbb{HP}{Hard Pomeron}{A version of the model of Islam et al., see Sec.~\sref{el models}.}
+\DefAbb{HP}{Hard Pomeron}{A version of the model of Islam et al., see Sc.~\sref{el models}.}
 \DefAbb{IR}{InfraRed}{}
 \DefAbb{KL}{Kundr\' at-Lokaj\' i\v cek}{Refers to the Coulomb-interference formula Eq.~\ref{el phase KL}.}
 \DefAbb{LHC}{Large Hadron Collider}{The largest collider in the world.}
@@ -172,7 +171,7 @@ Keywords:	& [ 3-5 keywords in English]\cr
 \DefAbb{QCD}{Quantum ChromoDynamics}{}
 \DefAbb{QM}{Quantum Mechanics}{}
 \DefAbb{RMS}{Root Mean Square}{}
-\DefAbb{RP}{Roman Pot}{A a pot-shaped movable beam-pipe insertion, see section \TODO{?}}
+\DefAbb{RP}{Roman Pot}{A a pot-shaped movable beam-pipe insertion, see Sc.~\sref{ttm det}.}
 \DefAbb{SWY}{Simplified West-Yennie}{Refers to the Coulomb-interference formula Eq.~\ref{el phase SWY}.}
 \DefAbb{TDR}{Technical Design Report}{}
 \DefAbb{TOTEM}{TOTal and Elastic Measurements}{An LHC experiment focused on the forward hadronic phenomena.}
