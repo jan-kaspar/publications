@@ -1,1 +1,0 @@
-../../../../totem figures/station_3D.asy
