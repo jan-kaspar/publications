@@ -65,7 +65,7 @@ There was also an indication of a LVDT-related problem. As we have said, the ver
 
 All these methods can be reconciled by assuming that each LVDT scale has its own origin (offset), as shown in \Fg{al collim}. These offsets can easily be determined:
 \eqref{o_t = n\si - t,\qquad o_b = -n\si - b\ ,}{al lvdt offsets}
-where $t$ and $b$ are the top and bottom pot LVDT readings. Note that the offsets are given with respect to the beam center (not the beam-pipe center), which is, in fact, exactly what is needed. The offsets calculated after the collimation alignment on 21 September 2010 (see Tb.~1 in \bref{al collim}) are shown in \Tb{al lvdt off}. The uncertainty has two components -- from the step size (between $20$ and $50\un{\mu m}$) and from the calculation of the beam size $\si$, which is unfortunately difficult to estimate.
+where $t$ and $b$ are the top and bottom pot LVDT readings. Note that the offsets are given with respect to the beam center (not the beam-pipe center), which is, in fact, exactly what is needed. The offsets calculated after the collimation alignment on 21 September 2010 (see Tab.~1 in \bref{al collim}) are shown in \Tb{al lvdt off}. The uncertainty has two components -- from the step size (between $20$ and $50\un{\mu m}$) and from the calculation of the beam size $\si$, which is unfortunately difficult to estimate.
 
 \fig{fig/pdf/al_collim.pdf}{al collim}{A sketch of the collimation alignment including the LVDT-scale origins (drawn as red dots). The beam is drawn in blue, its surface with solid and its center with dash-dotted line. The collimators scrape the beam at the distance of $n\si_0$, where $\si_0$ is the beam sigma at the collimator location. The RPs touch the beam at distance $n\si$, where $\si$ is the beam sigma at the RP location.}
 
@@ -94,7 +94,7 @@ Since the magnetic field within RP stations is negligible, protons follow a stra
 \eqref{\pmatrix{x\cr y\cr z} = \pmatrix{a_x\cr a_y\cr 1} z + \pmatrix{b_x\cr b_y\cr 0}\ ,}{al local track}
 where $a$ and $b$ parameters give the track slopes and intercepts.
 
-When a proton enters the sensitive volume of a silicon sensor, it creates electron-hole pairs along its trajectory. This charge is collected by neighbouring strips, giving rise to measurable signal. While details of this charge sharing process can be found, for example, in Sc.~7.4~in \bref{hubert}, here, we will assume that just the nearest strips is active (drawn in green in the front view of \Fg{al proton sensor interaction}). It is a reasonable assumption for the TOTEM sensors. Then, the measurement outcome $m$ can be written
+When a proton enters the sensitive volume of a silicon sensor, it creates electron-hole pairs along its trajectory. This charge is collected by neighbouring strips, giving rise to measurable signal. While details of this charge sharing process can be found, for example, in Sec.~7.4~in \bref{hubert}, here, we will assume that just the nearest strips is active (drawn in green in the front view of \Fg{al proton sensor interaction}). It is a reasonable assumption for the TOTEM sensors. Then, the measurement outcome $m$ can be written
 \eqref{m = v + \De m\ ,}{al measurement}
 where $v$ gives the projection of the hit point in the $\vec v$ direction (i.e. the read-out direction). $\De m$ is the \em{resolution error}, that is the error made by rounding $v$ to the nearest strip position.
 
@@ -223,7 +223,7 @@ With this notation, relations of the type \Eq{al vec mu} can be written
 }{al effective measurement all}
 The left-hand part of $\mat A$ matrix is block-diagonal (with matrices $\mat\al^n$ on the diagonal). The right-hand part is built from $\mat\Ga_j^n$ matrices, the index $n$ increases in top-down direction, the index $j$ in the left-right one.
 
-This form of \Eq{al effective measurement all} is convenient for an application of the linear least squares (LS) method (see e.g.~Sc.~6.6 in \bref{barlow}). The method gives the following prescription for the estimate of the parameter vector $\vec P$:
+This form of \Eq{al effective measurement all} is convenient for an application of the linear least squares (LS) method (see e.g.~Sec.~6.6 in \bref{barlow}). The method gives the following prescription for the estimate of the parameter vector $\vec P$:
 \eqref{\hat\vec P = (\mat A^\T \mat V^{-1} \mat A)^{-1} \mat A^\T \mat V^{-1}\,\vec M\.}{al P estimate exact}
 We use the hat in $\hat\vec P$ to emphasize that it is an estimate. The $\mat V$ matrix is the covariance matrix for the measurements $\vec M$. Since the measurements from different events are independent (as random variables), $\mat V$ has a block-diagonal structure
 \eqref{\mat V = \pmatrix{
@@ -249,7 +249,7 @@ Now we would like to extract the vector of misalignment estimates $\hat\vec\ch =
 \udots	& 											&\ddots &\vrule &\udots & 														& \ddots\cr
 }
 \ .}{al mat ATA}
-can be obtained (let us assume momentarily that the inverse exists) with the aid of the following block matrix inverse rule (see e.g.~Sc.~4.3.2 in \bref{barnett}):
+can be obtained (let us assume momentarily that the inverse exists) with the aid of the following block matrix inverse rule (see e.g.~Sec.~4.3.2 in \bref{barnett}):
 \eqref{\pmatrix{
 	\cal A	&\strut\vrule	&\cal B	\cr
 	\noalign{\hrule}
@@ -727,7 +727,7 @@ An important property of the resolution error is that the errors in different ev
 
 \vskip\itskip
 
-In \Sc{al psi} when describing the interaction of a proton with a silicon sensor, we wrote the proton creates electron-hole pairs along its trajectory. But in addition the proton can interact with silicon nuclei, leading to an angular deflection. This phenomenon is often called \em{multiple scattering}. In Sc.~7.5.2 in \bref{hubert} the size of this effect was evaluated for the TOTEM RPs. The result for a single RP is that the angular deflection is a random variable with zero mean and standard deviation about $0.55\un{\mu rad}$. With the lever-arm given by the length of a $220\un{m}$ station (the worst situation), it leads to an elongation about $3\un{\mu m}$. Since the multiple scattering is a random process, the resulting error would add up with the resolution error. From \Eq{al resolution err mod} we get the standard deviation $19.05\un{\mu m}$, when the multiple scattering is added it increases to $19.29\un{\mu m}$. The multiple scattering is thus a minor effect for the alignment application.
+In \Sc{al psi} when describing the interaction of a proton with a silicon sensor, we wrote the proton creates electron-hole pairs along its trajectory. But in addition the proton can interact with silicon nuclei, leading to an angular deflection. This phenomenon is often called \em{multiple scattering}. In Sec.~7.5.2 in \bref{hubert} the size of this effect was evaluated for the TOTEM RPs. The result for a single RP is that the angular deflection is a random variable with zero mean and standard deviation about $0.55\un{\mu rad}$. With the lever-arm given by the length of a $220\un{m}$ station (the worst situation), it leads to an elongation about $3\un{\mu m}$. Since the multiple scattering is a random process, the resulting error would add up with the resolution error. From \Eq{al resolution err mod} we get the standard deviation $19.05\un{\mu m}$, when the multiple scattering is added it increases to $19.29\un{\mu m}$. The multiple scattering is thus a minor effect for the alignment application.
 
 Now let us rewrite some of the above statements a bit more formally. The $\tilde\vec T$ vector that appears on the \rhs.~of the alignment equation \Eq{al alignment equation} can be calculated from \Eq{al exact fit equation}. Considering that the measurements $\vec\mu$ gain a contribution $\De\vec\mu$ from the resolution error, we can write
 \eqref{\tilde\vec T =
@@ -901,7 +901,7 @@ For the rotations about $z$, the interpretation is simple: the full rotation of 
 
 \fig{fig/pdf/al_rp_misalignment.pdf}{al rp misalignment}{A side view on a detector package (for simplicity only four sensors are drawn). The DP is shifted by $\De c^{\rm DP}$ (green arrow) and rotated by $\De\rh_x^{\rm DP}$ about the $x$ axis. The shifts of the individual sensors $\De\vec c_i$ are drawn as the blue arrows. For simplicity we have not considered the sensor shifts within the package, that is $\De\vec c_i^{\rm S} = 0$. The hollow/full dots mark the nominal/actual positions of sensor centers.}
 
-As already mentioned, the internal misalignments are expected to be much smaller that the DP misalignments. This means that the $\De\rh_{z_i}^{\rm S}$ and $ \De\vec c_i^{\rm S}$ terms play a minor role in \Eq{al dp sen al}. Treating these terms as perturbations, one may apply the least squares method (see e.g.~Sc.~6.6 in \bref{barlow}) in order to estimate the DP misalignments. For the rotations about $z$, the fit equation may be written
+As already mentioned, the internal misalignments are expected to be much smaller that the DP misalignments. This means that the $\De\rh_{z_i}^{\rm S}$ and $ \De\vec c_i^{\rm S}$ terms play a minor role in \Eq{al dp sen al}. Treating these terms as perturbations, one may apply the least squares method (see e.g.~Sec.~6.6 in \bref{barlow}) in order to estimate the DP misalignments. For the rotations about $z$, the fit equation may be written
 \eqref{
 	\De\rh_z^{\rm DP} = (\mat F^\T \mat V^{-1} \mat F)^{-1} \mat F^\T \mat V^{-1} \pmatrix{\vdots\cr \De\rh_i\cr\vdots}\ ,\qquad
 	\mat F = \pmatrix{\vdots\cr 1\cr\vdots}\ .
