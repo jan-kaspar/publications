@@ -10,7 +10,7 @@ string diag = "45t_56b";
 
 //--------------------------------------------------
 
-NewPad("$\th\un{\mu rad}$", "arbitrary units");
+NewPad("$\th'\un{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
 scale(Linear, Log);
 TGraph_errorBarPen = black+0.2pt;
 draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "fit#1"), "p,sebc", mCi, "data");
@@ -38,7 +38,7 @@ GShipout("felm_unfolding_m1_correction");
 
 //--------------------------------------------------
 
-NewPad("$\th\un{\mu rad}$", "arbitrary units");
+NewPad("$\th'\un{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
 scale(Linear, Log);
 draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "mc test#1#0"), "p,sebc", mCi, "data");
 draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "mc test#1|th_smear_test"), "", red+1pt, "re-smeared");
@@ -78,7 +78,7 @@ for (int xi = 0; xi < 4; ++xi) {
 
 GShipout("felm_unfolding_m2_scheme");
 
-NewPad("$\th\un{\mu rad}$", "arbitrary units");
+NewPad("$\th'\un{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
 scale(Linear, Log);
 draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 1"), red+1pt, "meas. + extrap.");
 draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 2"), blue+1pt, "1 extra sm.");
@@ -92,7 +92,7 @@ GShipout("felm_unfolding_m2_addsm");
 
 //--------------------------------------------------
 
-NewPad("$\th\un{\mu rad}$");
+NewPad("$\th\un{\mu rad}$", "smearing correction");
 draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_01"), black+1pt, "correction");
 draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_12"), red+1pt, "correction 1");
 draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_23"), blue+1pt, "correction 2");
@@ -105,7 +105,7 @@ GShipout("felm_unfolding_m2_corrections");
 
 //--------------------------------------------------
 
-NewPad("$\th\un{\mu rad}$");
+NewPad("$\th\un{\mu rad}$", "smearing correction");
 draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "th_corr_with_err"), "l,ec", red, "fit-based method");
 draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_01"), blue, "bin-based method");
 limits((134, 0), (500, 2), Crop);

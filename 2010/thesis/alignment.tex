@@ -21,7 +21,7 @@ Let us define a bit more precisely what we mean by the RP alignment. For physics
 
 In this chapter we will describe a RP alignment procedure that comprises the three steps below.
 \bitm
-\itm First the RPs shall be approached to the desired position as precisely as possible, then their position with respect to the beam shall be verified  with dedicated devices such as the beam position monitors (BPMs) and the linear voltage differential transformators (LVDTs), for details see \Sc{al collim}.
+\itm First the RPs shall be approached to the desired position as precisely as possible, then their position with respect to the beam shall be verified  with dedicated devices such as the beam position monitors (BPMs) and the linear voltage differential transformers (LVDTs), for details see \Sc{al collim}.
 \itm A lot of information on the relative alignment between the RP sensors can be obtained by studying the reconstructed tracks. The underlying idea is that sensor misalignments give raise to residuals, that is elongations of hit positions from track fits. This track-based alignment will be discussed in detail in \Sc{al tb}.
 \itm However, not all misalignments induce residuals (e.g.~a global shift or rotation), thus these misalignment modes are inaccessible to the track-based alignment. To overcome this limitation, one may use known symmetries of certain physics processes, for details see \Sc{al prof}. From this point of view, elastic scattering looks extremely useful. Elastic scattering events include two protons of the incident momentum (thus the optics transport is simplified, see \Eq{al el transport}) and of almost opposite directions (thus they can be used for aligning the opposite arms of the RP system). The alignment with elastic events will be described in \Sc{al elast}.
 \eitm
@@ -43,34 +43,34 @@ Before discussing the alignment methods, let us first asses what misalignments m
 
 The collimation alignment is a part of the RP commissioning procedure, where the RPs are aligned with respect to the collimators of the LHC (a similar procedure to the beam-based alignment of the collimators, see \bref{bracco10}). Moreover it provides important data for the alignment of RPs themselves.
 
-We recall (from \Sc{ttm det}) that the position of each RP is monitored by a linear voltage differential transformator (LVDT). This device measures the distance of the thin window from the beam-pipe axis. The position of the beam, again with respect to the beam-pipe axis, is measured by the beam position monitors (BPMs). There are two of them at each station: at the upstream end (near BPM) and at the downstream end (far BPM). Each BPM measures both horizontal and vertical beam position. For the collimation alignment one more tool is used -- a series of beam loss monitors (BLMs) measures the radiation (from beam losses) at several locations downstream of each station.
+We recall (from \Sc{ttm det}) that the position of each RP is monitored by a linear voltage differential transformer (LVDT). This device measures the distance of the thin window from the beam-pipe axis. The position of the beam, again with respect to the beam-pipe axis, is measured by the beam position monitors (BPMs). There are two of them at each station: at the upstream end (near BPM) and at the downstream end (far BPM). Each BPM measures both horizontal and vertical beam position. For the collimation alignment one more tool is used -- a series of beam loss monitors (BLMs) measures the radiation (from beam losses) at several locations downstream of each station.
 
-At the beginning of the collimation alignment, the collimators scrape the beam at a given number $n$ of beam sigmas $\si_0$. This beam sigma stands for the standard deviation of the beam profile at the collimator location, see \Fg{al collim}. Due to the multi-turn effect, the beam is scraped symmetrically about the center of the beam (see e.g. section ``Beam based alignment'' in \bref{bracco10}). Thus after the scraping, the beam has sharp edges on both sides and consequently the beam width and center are well defined. Then, a RP is approached to the beam (see the top plot in \Fg{al collim ex}), until it touches its edge. At this moment, particles from the beam surface are scattered off the RP edge and give rise to peaks in the BLMs downstream (see \Fg{al collim ex} bottom). This is the moment where the RP (its thin window) is at the same beam-sigma-distance $n$ as the collimators. Denoting the beam sigma at the RP location $\si$ (as in \Fg{al collim}), the RP position is $n\si$. The beam widths $\si_0$ and $\si$ are related via the optics, see \Eq{ttm beam sigma}, and therefore the position of the beam can be calculated as
+At the beginning of the collimation alignment, the collimators scrape the beam at a given number $n$ of beam sigmas $\si_0$. This beam sigma stands for the standard deviation of the beam profile at the collimator location, see \Fg{al collim}. Due to the betatron oscillation in multiple turns, the beam is scraped symmetrically about the center of the beam (see e.g. section ``Beam based alignment'' in \bref{bracco10}). Thus after the scraping, the beam has sharp edges on both sides and consequently the beam width and center are well defined. Then, a RP is approached to the beam (see the top plot in \Fg{al collim ex}), until it touches its edge. At this moment, particles from the beam surface are scattered off the RP edge and give rise to peaks in the BLMs downstream (see \Fg{al collim ex} bottom). This is the moment where the RP (its thin window) is at the same beam-sigma-distance $n$ as the collimators. Denoting the beam sigma at the RP location $\si$ (as in \Fg{al collim}), the RP position is $n\si$. The beam widths $\si_0$ and $\si$ are related via the optics, see \Eq{ttm beam sigma}, and therefore the position of the beam can be calculated as
 \eqref{n\si - t\ ,}{al vc m1}
 where $t$ denotes the corresponding LVDT reading.
 
-For the vertical beam position one need not rely on the optics (which always includes certain uncertainty). Suppose that the top pot has just touched the beam (as in \Fg{al collim ex}). Then the bottom pot can be approached until a touch is signalized by the BLMs. At the moment of the touch, the beam center is right in between the pots. Thus the beam center can be calculated from the LVDT readings only ($t$ for the top, $b$ for the bottom RP):
+For the vertical beam position one need not rely on the optics (which always includes certain uncertainty). Suppose that the top pot has just touched the beam (as in \Fg{al collim ex}). Then the bottom pot can be approached until a touch is signalled by the BLMs. At the moment of the touch, the beam center is right in between the pots. Thus the beam center can be calculated from the LVDT readings only ($t$ for the top, $b$ for the bottom RP):
 \eqref{{t + b\over 2}\ .}{al vc m2}
 This procedure can be repeated few times (as shown in \Fg{al collim ex}) to improve the precision.
 
-The uncertainty is given mostly by the RP-movement step size ($250\un{\mu m}$ in the figure, except the last one). Because of limited time resolution one cannot determine when exactly was the beam touched. One should thus aim at steps as small as possible. On the other hand, the smaller step, the less scraping and the lower peak in the BLM signal. If the step is too small, the induced beam loss can not be distinguished from the noise. We have observed a step of $20\un{\mu m}$ to be on the practical limit.
+The uncertainty is given mostly by the RP-movement step size ($250\un{\mu m}$ in the figure, except the last one). Because of limited time resolution one cannot determine when exactly was the beam touched. One should thus aim at steps as small as possible. On the other hand, the smaller the step, the less scraping and the lower the peak in the BLM signal. If the step is too small, the induced beam loss can not be distinguished from the noise. We have observed a step of $20\un{\mu m}$ to be the practical limit.
 
 \fig{fig/pdf/al_collim_ex.pdf}{al collim ex}{An example of the collimation alignment (data for 56-220-near unit from 29 November 2009). The top and bottom pot movements (upper plot) induced signals in the BLMs (bottom plot). The correspondence between the movements and BLM peaks is visualized by the dotted lines. The time is given in minutes from the start of the test.}
 
-Thus from \Fg{al collim ex} one can deduce the vertical beam position at $(313\pm 63)\un{\mu m}$ (assuming the beam was touched in the middle of the movement). This can be compared to the BPM reading $(-550\pm50)\un{\mu m}$: there is an evident discrepancy. The BPMs at that time were known to have an unknown offset in their readings and moreover to be rather sensitive to temperature and beam intensity. The latter leading to drifts as can be seen in \Fg{al collim bpm problem}. This has led us to consider the BPMs to be unreliable and not to use them for alignment purposes.
+Thus from \Fg{al collim ex} one can deduce the vertical beam position at $(313\pm 63)\un{\mu m}$ (assuming the beam was touched in the middle of the movement). This can be compared to the BPM reading $(-550\pm50)\un{\mu m}$: there is an evident discrepancy. The BPMs at that time were known to have an offset in their readings and moreover to be rather sensitive to temperature and beam intensity. The latter led to drifts as can be seen in \Fg{al collim bpm problem}. This has led us to consider the BPMs as unreliable and not to use them for alignment purposes until their systematics will have been studied and calibrated by the beam instrumentation group.
 
 \fig{fig/pdf/al_collim_bpm_problem.pdf}{al collim bpm problem}{The readings from the BPMs in station 56-220 from 25 June 2010. Note the pronounced drifts.}
 
 There was also an indication of a LVDT-related problem. As we have said, the vertical beam center can be determined by two methods: \Eq{al vc m1,al vc m2}. The results of these two methods did not agree. A valuable hint was then provided by the track-based alignment (see \Sc{al tb}) which determined the distances of the top and bottom RPs (or detector packages to be more precise). The track-based alignment clearly favored the optics-based method \Eq{al vc m1}.
 
-All these methods can be reconciled by assuming that each LVDT scale has its own origin (offset), as shown in \Fg{al collim}. These offsets can easily be determined:
+All these methods can be reconciled by considering that the top and bottom LVDTs are independent devices and subject to drifts after the last calibration. Thus each LVDT scale has its own origin (offset), as shown in \Fg{al collim}. These offsets can easily be determined:
 \eqref{o_t = n\si - t,\qquad o_b = -n\si - b\ ,}{al lvdt offsets}
 where $t$ and $b$ are the top and bottom pot LVDT readings. Note that the offsets are given with respect to the beam center (not the beam-pipe center), which is, in fact, exactly what is needed. The offsets calculated after the collimation alignment on 21 September 2010 (see Tab.~1 in \bref{al collim}) are shown in \Tb{al lvdt off}. The uncertainty has two components -- from the step size (between $20$ and $50\un{\mu m}$) and from the calculation of the beam size $\si$, which is unfortunately difficult to estimate.
 
 \fig{fig/pdf/al_collim.pdf}{al collim}{A sketch of the collimation alignment including the LVDT-scale origins (drawn as red dots). The beam is drawn in blue, its surface with solid and its center with dash-dotted line. The collimators scrape the beam at the distance of $n\si_0$, where $\si_0$ is the beam sigma at the collimator location. The RPs touch the beam at distance $n\si$, where $\si$ is the beam sigma at the RP location.}
 
 
-\htab{al lvdt off}{The vertical LVDT offsets in millimeters, determined from the test on 21 September 2010. The signs follow $y$ axis in \Fg{al collim}.}{\bln
+\htab{al lvdt off}{The vertical LVDT offsets in millimeters, determined from the test on 21 September 2010. The signs follow the $y$ axis in \Fg{al collim}.}{\bln
 \hbox{unit} & o_t & o_b \cr\bln
 \hbox{45-220-near} & +0.515 & +0.135\cr\ln
 \hbox{45-220-far} & +0.389 & +0.111\cr\bln
@@ -90,15 +90,15 @@ Our track-based alignment method will be used for aligning RP sensors within a s
 
 \subsection[al psi]{The relation between proton kinematics and RP measurements}
 
-Since the magnetic field within RP stations is negligible, protons follow a straight trajectory, as drawn in the side view of \Fg{al proton sensor interaction} (the same is shown in \Fg{ttm proton transport}, but with the third axis called $s$). The track can be described
+Since the magnetic field within RP stations is negligible, protons follow a straight trajectory, as drawn in the side view of \Fg{al proton sensor interaction} (the same is shown in \Fg{ttm proton transport}, but with the third axis called $s$). The track can be described by
 \eqref{\pmatrix{x\cr y\cr z} = \pmatrix{a_x\cr a_y\cr 1} z + \pmatrix{b_x\cr b_y\cr 0}\ ,}{al local track}
-where $a$ and $b$ parameters give the track slopes and intercepts.
+where the parameters $a$ and $b$ give the track slopes and intercepts.
 
-When a proton enters the sensitive volume of a silicon sensor, it creates electron-hole pairs along its trajectory. This charge is collected by neighbouring strips, giving rise to measurable signal. While details of this charge sharing process can be found, for example, in Sec.~7.4~in \bref{hubert}, here, we will assume that just the nearest strips is active (drawn in green in the front view of \Fg{al proton sensor interaction}). It is a reasonable assumption for the TOTEM sensors. Then, the measurement outcome $m$ can be written
+When a proton enters the sensitive volume of a silicon sensor, it creates electron-hole pairs along its trajectory. This charge is collected by neighbouring strips, giving rise to a measurable signal. While details of this charge sharing process can be found, for example, in Sec.~7.4~in \bref{hubert}, here, we will assume that just the nearest strips is active (drawn in green in the front view of \Fg{al proton sensor interaction}). It is a reasonable assumption for the TOTEM sensors. Then, the measurement outcome $m$ can be written as
 \eqref{m = v + \De m\ ,}{al measurement}
 where $v$ gives the projection of the hit point in the $\vec v$ direction (i.e. the read-out direction). $\De m$ is the \em{resolution error}, that is the error made by rounding $v$ to the nearest strip position.
 
-\fig{fig/pdf/al_proton_sensor_interaction.pdf}{al proton sensor interaction}{A scheme of a proton interaction with a sensor. Left (side view when $\rh_y = 0$): the thick black line represents a sensor, the blue line a proton track. The blue dot marks the point where the proton hits the sensor. It has the same meaning in the right (front view) figure. There, the thick blue line shows the hit point projection into the read-out ($\vec v$) direction. The strip drawn in green is the active strip, the resolution error is drawn in red.}
+\fig{fig/pdf/al_proton_sensor_interaction.pdf}{al proton sensor interaction}{A schematic view of a proton interaction with a sensor. Left (side view when $\rh_y = 0$): the thick black line represents a sensor, the blue line a proton track. The blue dot marks the point where the proton hits the sensor. It has the same meaning in the right (front view) figure. There, the thick blue line shows the hit point projection into the read-out ($\vec v$) direction. The strip drawn in green is the active strip, the resolution error is drawn in red.}
 
 The value of $v$ can be related to the track parameters with the aid of a transformation from (global) coordinate system $xyz$ to (local) system $uvz'$. The transformation can be written as follows
 \eqref{\pmatrix{u\cr v\cr z'} = \mat R \left[ \pmatrix{x\cr y\cr z}  - \pmatrix{c_x\cr c_y\cr c_z}  \right] \ .}{al global to local}
@@ -120,12 +120,12 @@ The $c$ parameters give the position of sensor's center, the rotation $\mat R$ c
 		0 & -\sin\rh_x & \cos\rh_x\cr
 	}\ .
 }{al rotation parameterization}
-This three shifts and three rotations reflect the position of a sensor in the global coordinate frame. In reality, despite our best efforts, the position can not be exactly the nominal one. It is therefore important to distinguish between \em{true/actual} (with primes) and \em{nominal/thought} (without primes) position parameters:
+These three shifts and three rotations reflect the position of a sensor in the global coordinate frame. In reality, despite our best efforts, the position can not be exactly the nominal one. It is therefore important to distinguish between \em{true/actual} (with primes) and \em{nominal/thought} (without primes) position parameters:
 \eqref{\rh_i' = \rh_i + \De\rh_i\ ,\qquad c_i' = c_i + \De c_i\ ,}{al misalignments}
 where $\De\rh_i$ and $\De c_i$ represent the \em{misalignment} or, on the other hand, \em{alignment corrections}.
 
-The nominal sensors' positions (see \Sc{ttm det}) are perpendicular to the $z$ axis, that is $\rh_x=\rh_y=0$. The order angular misalignments $\De\rh$ in summarized in \Tb{al exp misal}. Taking $5\un{mrad}$ as the order of these angles, one obtains
-\eqref{\cos\rh_{x,y}' = 1 + \O{10^{-5}},\qquad \sin\rh_{x,y}' = \rh_{x,y}' + \O{2\cdot 10^{-8}}}{al small rotation approximation}
+The nominal sensors' orientations (see \Sc{ttm det}) are perpendicular to the $z$ axis, that is $\rh_x=\rh_y=0$. The order of angular misalignments $\De\rh$ is summarized in \Tb{al exp misal}. Taking $5\un{mrad}$ as the order of these angles, one obtains
+\eqref{\cos\rh_{x,y}' = 1 - \O{10^{-5}},\qquad \sin\rh_{x,y}' = \rh_{x,y}' + \O{2\cdot 10^{-8}}}{al small rotation approximation}
 and thus it is a good approximation to take just the lowest terms in the Taylor expansion. A similar statement holds for $\rh_z'$ too, just the expansion shall be made at the nominal value $\rh_z$.
 
 The fact that the track \Eq{al local track} hits a sensor can be expressed as $z' = 0$. Then it is straightforward to calculate the $v$ coordinate of the hit:
@@ -142,7 +142,7 @@ The fact that the track \Eq{al local track} hits a sensor can be expressed as $z
 	\Bigg]^\T
 	+ \O{10^{-7}\un{m}}\ .
 }{al hit v}
-In fact, we have displayed just the most important terms, the others are included in the $\cal O$ factor. The separation follows from the following order estimates: $c_z \sim 1\un{m}$ (distances between pots in a station), $(b - c)_{x, y} \sim 10^{-2}\un{m}$ (size of the sensors) and $a_{x, y} \sim 10^{-2}\un{rad}$ (the maximal angle that can be detected by near and far units simultaneously). The last estimate is rather an upper bound, see the typical track angles in \Tb{al lhc datasets}. Thus for realistic data the neglected terms would be rather $\O{10^{-8}\un{m}}$.
+In fact, we have displayed just the most important terms, the others are included in the $\cal O$ term. The separation follows from the following order estimates: $c_z \sim 1\un{m}$ (distances between pots in a station), $(b - c)_{x, y} \sim 10^{-2}\un{m}$ (size of the sensors) and $a_{x, y} \sim 10^{-2}\un{rad}$ (the maximal angle that can be detected by near and far units simultaneously). The last estimate is rather an upper bound, see the typical track angles in \Tb{al lhc datasets}. Thus for realistic data the neglected terms would be rather $\O{10^{-8}\un{m}}$.
 
 In \Eq{al hit v} we have defined the \em{unit} vector $\vec d$ which represents the (nominal/thought) \em{read-out direction}. The vector $\vec d_\perp$ is perpendicular to the read-out direction, see \Fg{al proton sensor interaction}. The terms if the left-hand bracket represent the true/actual read-out direction. The vectors $\vec a$, $\vec b$, $\vec c$ and $\De \vec c$ represent two-dimensional vectors of the track slope, the track intercept, sensor's center and the sensor's position misalignment.
 
@@ -165,7 +165,7 @@ In what follows, we will drop the last two terms on the \rhs, they will be treat
 & +\De \rh_i\ \vec d_{\perp i}^\T (\vec a^n z_i + \vec b^n - \vec c_i) &\qquad 10^{-5}\un{m} \cr
 & +\De \rh_i\ \vec d_{\perp i}^\T (\vec a^n \De z_i - \De\vec c_i) &\qquad 10^{-8}\un{m}\ , \cr
 }}{al effective measurement}
-where we have introduced an \em{effective measurement}. It differs from the full one just by constant $\vec d^\T \vec c$ (projection of sensor's center to its read-out direction). From the order estimates (shown above on the right-hand side) it is clear that one may neglect the last term. This is an important result since the remaining terms are (at most) linear in the misalignment parameters $\De \vec c_i$, $\De z_i$ and $\De \rh_i$. Furthermore, one can split the contributions of a track measurement by a sensor at the nominal position and the effect of misalignments:
+where we have introduced an \em{effective measurement}. It differs from the full one just by the constant $\vec d^\T \vec c$ (projection of sensor's center to its read-out direction). From the order estimates (shown above on the right-hand side) it is clear that one may neglect the last term. This is an important result since the remaining terms are (at most) linear in the misalignment parameters $\De \vec c_i$, $\De z_i$ and $\De \rh_i$. Furthermore, one can split the contributions of a track measurement by a sensor at the nominal position and the effect of misalignments:
 \eqref{\mu_i^n =
 \underbrace{\vec d_i^\T (\vec a^n z_i + \vec b^n)}_{\hbox{track}}
 +
@@ -177,21 +177,21 @@ In the above relation we have unified the notation for all misalignment quantiti
 j & \hbox{quantity} & \ch_{j, i}					& \ga_{j, i}^n\cr\bln
 1 & \hbox{shift in read-out direction} & \De s_i 	& -1\cr\ln
 2 & \hbox{shift in }z & \De z_i						& \vec d_i^\T \vec a^n  \cr\ln
-3 & \hbox{rotation around}z & \De\rh_i				& \vec d_{\perp i}^\T (\vec a^n z_i + \vec b^n - \vec c_i)\cr\bln
+3 & \hbox{rotation around }z & \De\rh_i				& \vec d_{\perp i}^\T (\vec a^n z_i + \vec b^n - \vec c_i)\cr\bln
 }
 
-From \Eq{al effective measurement} it is clear that the measurement is only sensitive to one component of the detector shift, in particular the \em{shift in the read-out direction}:
+From \Eq{al effective measurement} it is clear that the measurement is only sensitive to one component of the detector shift, i.e.~the \em{shift in the read-out direction}:
 \eqref{\De s_i \equiv \vec d_i \cdot \De\vec c_i\ .}{al shr def}
 Thus, this is the only shift component that can be determined by the track-based alignment on a sensor level. For a RP package both transverse shift components can be determined, see \Sc{al dp fac}.
 
 
 \subsection[al sim fit]{Simultaneous fit of track and alignment parameters}
 
-From \Eq{al effective measurement 2} we see that sensors' measurements depend on the track parameters $\vec a$ and $\vec b$ and misalignment parameters $\ch$. One might thus fit sensors' data from a sample of events with the parameterization \Eq{al effective measurement 2}. This would result in misalignment parameter estimates and, as a byproduct, estimates of the track parameters.
+From \Eq{al effective measurement 2} we see that sensors' measurements depend on the track parameters $\vec a$ and $\vec b$ and misalignment parameters $\ch$. One might thus fit the sensors' data from a sample of events with the parameterization \Eq{al effective measurement 2}. This would result in misalignment parameter estimates and, as a byproduct, estimates of the track parameters.
 
-This idea was first implemented in Millepede (see \bref{millepede}). Here we use different notation as our work as been done independently.
+This idea was first implemented in Millepede (see \bref{millepede}). Here we use a different notation as our work has been done independently.
 
-In order to perform the fit, it is useful to switch into a matrix formalism. Let us put all effective measurements in $n$-th event into vector $\vec\mu^n$. Then \Eq{al effective measurement 2} can be recast into:
+In order to perform the fit, it is useful to exploit a matrix formalism. Let us put all effective measurements in the $n$-th event into vector $\vec\mu^n$. Then \Eq{al effective measurement 2} can be recast into:
 \eqref{\vec\mu^n =
 	\underbrace{\mat\al^n \vec\ta^n}_{\hbox{track}}
 	+
@@ -207,9 +207,9 @@ is the vector of the track parameters and
 }, \quad i\hbox{ goes through all sensors involved in }n\hbox{-th event.}}{al mat alpha}
 The vector $\vec\ch_j$ groups all the misalignments of the $j$-th type for all sensors. The matrices $\mat\Ga_j^n$ contain the coefficients $\ga^n_{j,i}$ as introduced in \Eq{al effective measurement 2}.
 
-Let us remark that starting with \Eq{al vec mu}, the superscripts are reserved for event numbers, while subscripts fro the misalignment quantity class (see \Tb{al alignment quantities}).
+Let us remark that starting with \Eq{al vec mu}, the superscripts are reserved for event numbers, while subscripts stand for the misalignment quantity class (see \Tb{al alignment quantities}).
 
-Now we may put the measurement from all events into one vector:
+Now we may put the measurements from all events into one vector:
 \eqref{\vec M = (\vec\mu^1, \vec\mu^2, \ldots)^\T}{al vec M}
 and similarly for the track and misalignment parameters
 \eqref{\vec P = (\vec\ta^1, \vec\ta^2, \ldots || \vec\ch_1, \vec\ch_2, \ldots)^\T\ .}{al vec P}
@@ -221,7 +221,7 @@ With this notation, relations of the type \Eq{al vec mu} can be written
 		&		& \ddots	&\vrule	&\udots	&				&\ddots	\cr
 	}\ .
 }{al effective measurement all}
-The left-hand part of $\mat A$ matrix is block-diagonal (with matrices $\mat\al^n$ on the diagonal). The right-hand part is built from $\mat\Ga_j^n$ matrices, the index $n$ increases in top-down direction, the index $j$ in the left-right one.
+The left-hand part of the $\mat A$ matrix is block-diagonal (with matrices $\mat\al^n$ on the diagonal). The right-hand part is built from $\mat\Ga_j^n$ matrices, the index $n$ increases in top-down direction, the index $j$ in the left-right one.
 
 This form of \Eq{al effective measurement all} is convenient for an application of the linear least squares (LS) method (see e.g.~Sec.~6.6 in \bref{barlow}). The method gives the following prescription for the estimate of the parameter vector $\vec P$:
 \eqref{\hat\vec P = (\mat A^\T \mat V^{-1} \mat A)^{-1} \mat A^\T \mat V^{-1}\,\vec M\.}{al P estimate exact}
@@ -233,7 +233,7 @@ We use the hat in $\hat\vec P$ to emphasize that it is an estimate. The $\mat V$
 }\ ,}{al mat V}
 where a block $\mat V^n$ represents the covariance matrix of measurements from the $n$-th event (see \Sc{al err} for more details).
 
-Unfortunately, \Eq{al P estimate exact} can not be applied directly. The problem comes from the fact that the $\ga^n_{j,i}$ coefficients (see \Tb{al alignment quantities}), which are contained in $\mat\Ga_j^n$ and $\mat A$ matrices, depend on the track parameters. And these are unknown at the fit time. Instead, one may adopt an \em{iterative} approach and use track parameter estimates obtained via a model where all misalignments are neglected. This is basically using $\mat \al^n$ as fit matrix for $\vec \mu^n$ data. Let us denote $\mat\Ga$ and $\mat A$ matrices obtained in this way with tildas:
+Unfortunately, \Eq{al P estimate exact} can not be applied directly. The problem comes from the fact that the $\ga^n_{j,i}$ coefficients (see \Tb{al alignment quantities}), which are contained in $\mat\Ga_j^n$ and $\mat A$ matrices, depend on the track parameters. And these are unknown at the fit time. Instead, one may adopt an \em{iterative} approach and use track parameter estimates obtained via a model where all misalignments are neglected. This is basically using $\mat \al^n$ as fit matrix for $\vec \mu^n$ data. Let us denote $\mat\Ga$ and $\mat A$ matrices obtained in this way with tildes:
 \eqref{\vec\ta \rightarrow \hat\vec\ta: \quad \mat\Ga \rightarrow \tilde\mat\Ga, \mat A \rightarrow \tilde\mat A\ .}{al tau linearization}
 This step brings in a necessity for several iterations, we will discuss them in \Sc{al err}.
 
@@ -265,7 +265,7 @@ The matrix $\tilde\mat S$ can be written
 			& \sum_n {\tilde\mat\Ga_i}^{n^\T} \mat\si^n {\tilde\mat\Ga}_j^n 	& \cr
 	\udots	& 																		& \ddots\cr
 }\ ,}{al mat S}
-where we have used
+where we have introduced 
 \eqref{\mat\si^n = \mat V^{n^{-1}} - \mat V^{n^{-1}} \mat\al^n({\mat\al^n}^\T \mat V^{n^{-1}} \mat\al^n)^{-1} \mat {\mat\al^n}^\T V^{n^{-1}}\ .}{al sigma n}
 The second bit needed for \Eq{al P estimate exact} is
 \eqref{\tilde\mat A^\T \mat V^{-1}\,\vec M = \pmatrix{
@@ -277,7 +277,7 @@ The second bit needed for \Eq{al P estimate exact} is
 	\sum_n{\tilde\mat\Ga_j}^{n^\T} \mat V^{n^{-1}} \, \vec \mu^n\cr
 	\vdots\cr
 }\ .}{al vec ATm}
-Putting all together yields
+Putting all together yields \TODO{Mario: rupture of text strategy}
 \eqref{\tilde\mat S \hat\vec\ch \equiv
 \tilde\mat S \pmatrix{
 	\vdots\cr
@@ -285,7 +285,7 @@ Putting all together yields
 	\vdots\cr
 }
 =\tilde\vec T\ ,\qquad
-\tilde\vec T = \pmatrix{
+\tilde\vec T \equiv \pmatrix{
 	\vdots\cr
 	\sum_n {\tilde\mat\Ga_j}^{n^\T} \mat\,\mat\si^n\,\vec \mu^n\cr
 	\vdots\cr
@@ -293,8 +293,8 @@ Putting all together yields
 \ .}{al fit equation}
 
 In fact, the elements of $\mat\si^n\,\vec \mu^n$ vector are residuals for the $n$-track divided by the corresponding measurement uncertainty. We will call this ratio \em{normalized residuals} and denote $\vec r^n$. The \em{full residuals} will be denoted by $\vec R^n$:
-
 \eqref{\mat\si^n\,\vec \mu^n \equiv \vec r^n = \mat V^{n^{-1}} \vec R^n\ .}{al vec R}
+\TODO{dimension problem?}
 
 It is worth mentioning some properties of the $\mat\si^n$ matrix -- it is symmetric, singular\footnote{%
 Each column of $\mat\al^n$ provides a non-trivial solution to $\mat\si^{n} \vec w = 0$ and thus $\mat\si^n$ is singular (see e.g.~theorem 1.5.3 in \bref{anton}).} and its product with $\mat V^n$ is idempotent
@@ -304,7 +304,7 @@ Each column of $\mat\al^n$ provides a non-trivial solution to $\mat\si^{n} \vec 
 	(\mat V^n \mat\si^n)^2 = \mat V^n \mat\si^n\ .
 }{al prop sigma n}
 
-Above, we have assumed that the $\mat S$ matrix is regular (and thus the matrix inversion in \Eq{al P estimate exact} can be performed). However, in \Sc{al sing modes} we will demonstrate the opposite -- this just reflects the fact that certain misalignment are inaccessible to the track-based alignment. Despite the deficiency, the result \Eq{al fit equation} is almost correct. An easy way to see it is to plug \Eq{al vec mu} to the definition of $\tilde\vec T$ in \Eq{al fit equation}, it yields
+Above, we have assumed that the $\mat S$ matrix is regular (and thus the matrix inversion in \Eq{al P estimate exact} can be performed). However, in \Sc{al sing modes} we will demonstrate the opposite -- this just reflects the fact that certain misalignment modes are inaccessible to the track-based alignment. Despite the deficiency, the result \Eq{al fit equation} is almost correct. An easy way to see it is to plug \Eq{al vec mu} to the definition of $\tilde\vec T$ in \Eq{al fit equation}, it yields
 \eqref{\tilde\vec T =
 \pmatrix{
 	\vdots \cr
@@ -322,9 +322,9 @@ Above, we have assumed that the $\mat S$ matrix is regular (and thus the matrix 
 \bar\mat S \vec\ch
 }{al exact fit equation}
 
-The only difference between $\tilde\mat S$ in \Eq{al fit equation} and $\bar\mat S$ in \Eq{al exact fit equation} is that $\tilde\mat S$ contains both $\mat\Ga$ matrices with tildes (see \Eq{al mat S}). This difference represents the error we make by the simplification step \Eq{al tau linearization}. Since the expected misalignments are small, the difference between $\mat\Ga$ and $\tilde\mat\Ga$ shall be small too and it is reasonable to expect that the solution $\hat\vec\ch$ of \Eq{al fit equation} would be close to the actual misalignments $\vec\ch$. The error can be reduced by taking several iterations, it will be discussed in \Sc{al err}.
+The only difference between $\tilde\mat S$ in \Eq{al fit equation} and $\bar\mat S$ in \Eq{al exact fit equation} is that $\tilde\mat S$ contains both $\mat\Ga$ matrices with tildes (see \Eq{al mat S}). This difference represents the error we make by the simplification step \Eq{al tau linearization}. Since the expected misalignments are small, the difference between $\mat\Ga$ and $\tilde\mat\Ga$ shall be small too and it is reasonable to expect that the solution $\hat\vec\ch$ of \Eq{al fit equation} would be close to the actual misalignments $\vec\ch$. The error can be reduced by performing several iterations, which will be discussed in \Sc{al err}.
 
-Let us close this section with a simple example -- let us consider only the shifts in the read-out direction and a data sample where all sensors are active in all events. In such a case the coefficients $\ga^n = -1$ (cf. \Tb{al alignment quantities}) and thus matrices $\mat\Ga^n = -1$. Note that the $\ga^n$ coefficients are independent of the track parameters $\vec a^n$ and $\vec b^n$. Thus there is no need for the simplification \Eq{al tau linearization}, which effectively means $\tilde\mat S = \bar\mat S$ and there is no difference between the exact fit equation \Eq{al exact fit equation} and the simplified one \Eq{al fit equation}. They can be written (here the indeces $i,j$ identify the sensors):
+Let us close this section with a simple example -- let us consider only the shifts in the read-out direction and a data sample where all sensors are active in all events. In such a case the coefficients $\ga^n = -1$ (cf. \Tb{al alignment quantities}) and thus matrices $\mat\Ga^n = -1$. Note that the $\ga^n$ coefficients are independent of the track parameters $\vec a^n$ and $\vec b^n$. Thus there is no need for the simplification \Eq{al tau linearization}, which effectively means $\tilde\mat S = \bar\mat S$ and there is no difference between the exact fit equation \Eq{al exact fit equation} and the simplified one \Eq{al fit equation}. They can be written (here the indices $i,j$ identify the sensors):
 \eqref{\tilde\mat S \hat\vec\ch = \tilde\vec T\ , \quad
 	\tilde\mat S = \pmatrix{
 		\ddots	&						&\udots	\cr

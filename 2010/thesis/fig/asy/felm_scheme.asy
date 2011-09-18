@@ -20,7 +20,7 @@ block b_acc = rectangle("\strut acceptance correction", (12.7, -1.2), white); dr
 
 block b_unsm = rectangle("\strut unsmearing", (12.7, -2.4), white); draw(b_unsm);
 block b_norm = rectangle("\strut normalization", (9.5, -2.4), white); draw(b_norm);
-block b_mrg = rectangle("\strut diaglonals merged", (6, -2.4), white); draw(b_mrg);
+block b_mrg = rectangle("\strut diagonals merged", (6, -2.4), white); draw(b_mrg);
 block b_dsdt = bevel("\strut $\d\si/\d t$", (3, -2.4), white); draw(b_dsdt);
 
 
