@@ -25,7 +25,7 @@ Let us start by describing the kinematics of elastic scattering events. \Fg{el s
 
 For the total scattering energy squared one can write:
 \eqref{s \equiv (P_1 + P_2)^2 = 4E^2 = 4p^2 + 4m^2 \approx 4p^2\ ,}{el s}
-where $P_1$ and $P_2$ are the four-momenta of the incident particles. The last approximation holds in the \em{high-energy} limit
+where the capital $P$'s stand for the the four-momenta of particles as shown in \Fg{el scat scheme} -- here the incident particles. The last approximation holds in the \em{high-energy} limit
 \eqref{{m\over p}\to 0\ ,}{el high energy}
 which will be often used. The four-momentum transfer squared (we will often use the abbreviation momentum transfer) can be expressed as:
 \eqref{t \equiv (P_{1'} - P_1)^2 = -2p^2 (1 - \cos\th) \approx -(p\th)^2\ .}{el t}
@@ -35,7 +35,7 @@ The definition \Eq{el t} sets bounds on the four-momentum transfer:
 \eqref{t_{\rm min} \le t \le 0\ ,\qquad t_{\rm min} = - 4p^2 \approx -s\ ,}{el t min}
 where again the high-energy approximation has been used in the last relation.
 
-The quantum theory describes particle collisions as a transition from an initial state $\ket i$ to an final state $\ket f$. The transition is reflected in the S-matrix operator $\op S$, such that the probability amplitude for the transition is given by the matrix element $\mel{f}{\op S}{i}$ \TODO{ref}. Were protons spin-less particles, the above-derived kinematic parameters $s$, $t$ and $\ph$ would fully describe the initial and final states (given our choice of the CM frame as shown in \Fg{el scat scheme}). However, since the protons carry spin $1/2$, we need to specify their spin states before and after the collision. For that purpose one traditionally uses the helicity $h$ -- the projection of spin into the momentum direction. Since proton's helicity can only have two values: $+1/2$ (will be denoted by symbol $+$) and $-1/2$ (denoted by $-$), there are $16$ spin amplitudes $\mel{s, t, \ph; h_{1'} h_{2'}}{\op S}{s; h_1, h_2}$. But if parity, time-reversal and proton-exchange invariance is assumed, only five of these amplitudes are independent (see e.g.~\bref{jacob59}). Explicit relations between the 16 amplitudes are summarized in (2.23) in \bref{bystricky78}. The five independent amplitudes are typically written in the following form (called \em{helicity amplitudes}):
+The quantum theory describes particle collisions as a transition from an initial state $\ket i$ to an final state $\ket f$. The transition is reflected in the S-matrix operator $\op S$, such that the probability amplitude for the transition is given by the matrix element $\mel{f}{\op S}{i}$ (see e.g.~Sec.~4.5 in \bref{peskin} or Sec.~4.2 in \bref{formanek QM}). Were protons spin-less particles, the above-derived kinematic parameters $s$, $t$ and $\ph$ would fully describe the initial and final states (given our choice of the CM frame as shown in \Fg{el scat scheme}). However, since the protons carry spin $1/2$, we need to specify their spin states before and after the collision. For that purpose one traditionally uses the helicity $h$ -- the projection of spin into the momentum direction. Since proton's helicity can only have two values: $+1/2$ (will be denoted by symbol $+$) and $-1/2$ (denoted by $-$), there are $16$ spin amplitudes $\mel{s, t, \ph; h_{1'} h_{2'}}{\op S}{s; h_1, h_2}$. But if parity, time-reversal and proton-exchange invariance is assumed, only five of these amplitudes are independent (see e.g.~\bref{jacob59}). Explicit relations between the 16 amplitudes are summarized in (2.23) in \bref{bystricky78}. The five independent amplitudes are typically written in the following form (called \em{helicity amplitudes}):
 \eqref{\eqnarray{
 \phi_1(s, t, \ph) = \mel{++}{\op S}{++}\ ,&\quad& \phi_2(s, t, \ph) = \mel{++}{\op S}{--}\cr
 \phi_3(s, t, \ph) = \mel{+-}{\op S}{+-}\ ,&\quad& \phi_4(s, t, \ph) = \mel{+-}{\op S}{-+}\cr
@@ -47,7 +47,7 @@ Most often the experiments are performed with unpolarized beams and the spin cha
 \eqref{{\d\si\over\d t} = {\pi\over 2sp^2} \left( |\phi_1|^2 + |\phi_2|^2 + |\phi_3|^2 + |\phi_4|^2 + 4 |\phi_5|^2 \right)\ .}{el hel dsdt}
 Note that if the beams are unpolarized, there is no preferred direction in the transverse plane of the CM frame (plane $xy$ in \Fg{el scat scheme}) and consequently all azimuthal angles $\ph$ are equivalent. This means that, for unpolarized scattering, the $\ph$ distribution must be uniform. That is why we have not mentioned the $\ph$ dependence in \Eq{el hel dsdt}. We have neither indicated the cross-section dependence on $s$ -- this will be tacitly assumed in what follows.
 
-The optical theorem \TODO{ref} relates the total cross-section $\si_{\rm tot}$ to the amplitudes that preserve the spin states. From \Eq{el hel amp} we see that those are the amplitudes $\phi_1$ and $\phi_3$. Using the normalization from \bref{buttimore78} one can write:
+The optical theorem (see e.g.~Sec.~7.3 in \bref{peskin} or Sec.~5.1.3 in \bref{formanek QFT}) relates the total cross-section $\si_{\rm tot}$ to the amplitudes that preserve the spin states. From \Eq{el hel amp} we see that those are the amplitudes $\phi_1$ and $\phi_3$. Using the normalization from \bref{buttimore78} one can write:
 \eqref{\si_{\rm tot} = {2\pi\over p\sqrt s}\, \Im (\phi_1 + \phi_3)|_{t=0}\ .}{el hel si tot}
 
 Out of the five amplitudes introduced in \Eq{el hel amp}, each is of different importance. For example in Sec.~3.3 in \bref{donnachie02} the authors describe the elastic scattering by a pomeron exchange. The pomeron couples to quarks as the photon does, thus does not alter the helicity of the quarks. This does not yet mean that the proton helicity shall be conserved, since the quarks within the proton have intrinsic transverse momenta. But still, one may expect the helicity-changing amplitudes to be relatively small. Furthermore, the authors argue that the leading Regge exchanges (pomeron, $\rm\rh$, $\rm\om$, $f_2$, $a_2$) can only contribute to combinations $\phi_1+\phi_3$, $\phi_2 - \phi_4$ and $\phi_5$. Thus these amplitude combinations should be dominant at high energies. In addition, the authors express their expectation that $\phi_1 \approx \phi_3$ and $\phi_2 \approx - \phi_4$.
@@ -59,26 +59,17 @@ Even stronger expectations are summarized in Sec.~3.1 in \bref{kroll78}. For the
 }{el spinless si}
 Note that these relations for differential and total cross-sections are exact for elastic scattering of spin-less particles. Therefore this approximation gives the same result as neglecting proton spins from the very beginning.
 
-\TODO{$\rm\bar pp$ scattering, crossing symmetry}, models on nucleon nucleon scattering, nucleon = proton or antiproton.
-
-\iffalse
-cross-section def (norm)
-si = |F|^2
-Opt Theorem
-crossing sym
-
-\bref{formanek QM}
-\bref{formanek QFT}
-\bref{peskin}
-\bref{barone}
-\bref{donnachie92}
-\fi
+Within this approximation, the amplitude $F$ (if analytically continued) describes $\rm pp$ as well as $\rm \bar pp$ scattering. It is a consequence of the crossing symmetry (see e.g.~Sec.~4.5 in \bref{barone}) which states that the matrix element does not change if an outgoing particle with four-momentum $P$ is replaced by an incoming antiparticle with four-momentum $-P$. This statement can be derived in quantum field theory, see e.g.~the end of Sec.~7.2 in \bref{peskin}. Then, the $\rm \bar pp$ scattering amplitude $F'(s, t)$ for the scattering from \Fg{el scat scheme}, where particles $2$ and $2'$ are anti-protons, can be related to the $\rm pp$ scattering amplitude $F(s, t)$ as follows:
+\eqref{F'(s, t) = F(4m^2 - s - t, t)\ .}{el app amp}
+Since one amplitude describes both $\rm pp$ and $\rm\bar pp$ scattering processes, one often uses the term \em{nucleon} to refer to either proton or anti-proton. Then one can simply say that the amplitude $F$ accounts for nucleon-nucleon scattering.
 
 The scattering amplitudes $\phi_i$ or $F$ reflect the interactions acting between the colliding particles. Out of the four fundamental forces only two are relevant for elastic scattering of protons. The gravity is too weak on the mass and length scales characteristic for particle physics experiments. The four-momentum transfer typical for the elastic scattering of protons is $|t| \ls 10\un{GeV^2}$. Compared to that the carriers of the weak forces are much heavier, thus the influence of the weak interaction is negligible. The contribution of the strong interaction to the scattering amplitude will be discussed in the next section, electromagnetic interaction and its interference with the strong one will be the topic of \Sc{el coulomb}.
 
 \section[el models]{Hadronic models}
 
-At present, the QCD is believed to be the best theory of strong interactions available (see e.g. \bref{chyla}). However, like for most field theories, it is uneasy to handle it non-perturbatively. At the same time perturbative calculations of elastic scattering amplitude fail because of the strong coupling being too large in the typical four-momentum-transfer range ($|t| \ls 10\un{GeV^2}$). Instead, elastic scattering is described and studied with models that are more or less QCD-inspired. The most frequent theoretical grounds are the Regge theory and eikonal description (see e.g. \bref{barone}). Traditionally, these models are called hadronic models, where hadronic refers to the strong interaction. We will now discuss some of the models in a greater detail (an alternative description of these models can be found in \bref{kklp11}).
+At present, the QCD is believed to be the most accurate theory of strong interactions available (see e.g. \bref{chyla}). However, like for most field theories, it is uneasy to handle it non-perturbatively. At the same time perturbative calculations of elastic scattering amplitude fail because of the strong coupling being too large in the typical four-momentum-transfer range ($|t| \ls 10\un{GeV^2}$). Instead, elastic scattering is described and studied with models that are more or less QCD-inspired. The most frequent theoretical grounds are the Regge theory and eikonal description (see e.g. Chs.~5 and 6 in \bref{barone}). Traditionally, these models are called hadronic models, where hadronic refers to the strong interaction. We will now discuss some of the models in a greater detail (an alternative description of these models can be found in \bref{kklp11}).
+
+Most of the models neglect the spin effects -- they use the approximation \Eq{el spinless si}. In other words they only provide the scattering amplitude $F$.
 
 \caption{The model of Islam et al. \bref{islam87,islam03,islam04,islam06,islam07}}
 
@@ -117,8 +108,6 @@ The authors extend the model to $\rm\ga p$ and $\rm\ga\ga$ interactions, by prop
 The model has 12 parameters in total, 5 of them control the high-energy behavior.
 
 \section[el pred]{Predictions for the LHC}
-
-\> \TODO{no spin measurement, spin averaged predictions}
 
 We have implemented the aforementioned models in a computer program (see the description of the Elegent package \Sc{elegent}), which allowed us to calculate predictions for the LHC energies -- we will use values of $\sqrt s = 7$ and $14\un{TeV}$ as a representative sample.
 

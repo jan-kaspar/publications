@@ -225,27 +225,29 @@ Now let us describe the run conditions used for the first elastic scattering mea
 
 \section[ttm tcs]{The total cross-section}
 
-\> tot cs due to the hadronic interaction only, the one for the em int. is infinite
+An important parameter of the hadronic (strong) interaction is its total cross-section. This not to be confused with the total cross-section of the proton-proton scattering. The latter is infinite due to the long range of the electromagnetic force. Whenever we write the total cross-section or $\si_{\rm tot}$ we will mean the one due to the hadronic interaction only.
 
-\> the approximation \Eq{el spinless si} is rather an expectation than a rigorously proved statement, thus some skepticism is due -- like in Martin
+\> TOTEM is going to measure it
+\>> how important that is
+\>> use the new picture
 
 \fig{fig/pdf/sigma_tot.pdf}{sigma tot}{Fits from the COMPETE collaboration \bref{cudell02} to all available $\rm pp$ and $\rm \bar pp$ data on the total cross-section. The thick solid line represents the best fit with statistical error band. The dashed lines show the total error band from all models considered.}
 
-\> below, what $\sqrt s$ ?? $7\un{TeV}$ ??
-
-\> Luminosity independent method
-\>> discuss the two amplitudes (spin averaged and spin preserving)
-\>> 4 inputs: el cs at 0, rho at 0, N el and N inel
-\>> N inel by T1 and T2, not discussed here, refere
-\> rho at 0 (ref to \Eq{el rh}): Coulomb-interference or an external input
-
+TOTEM plans to use the luminosity-independent method. This method avoids using any luminosity measurement, which is usually subject to a large uncertainty. Instead, the method exploits the optical theorem. If one takes its ``spin-less'' approximation \Eq{el spinless si} and combines it with the definition of luminosity $N = {\cal L} \si$ (relating an event rate $N$ to an cross-section $\si$) and with the decomposition of the total cross-section to the elastic and inelastic part $\si_{\rm tot} = \si_{\rm el} + \si_{\rm inel}$, one obtains:
 \eqref{
-	\si_{\rm tot} = {1\over 1+\rh^2} {\d N/\d t|_{t=0}\over N_{\rm el} + N_{\rm inel}}
+	\si_{\rm tot} = {1\over 1+\rh^2} {\d N_{\rm el}/\d t|_{t=0}\over N_{\rm el} + N_{\rm inel}}
 	\ ,\qquad
-	{\cal L} = (1+\rh^2) {(N_{\rm el} + N_{\rm inel})^2\over \d N/\d t|_{t=0} }
+	{\cal L} = (1+\rh^2) {(N_{\rm el} + N_{\rm inel})^2\over \d N_{\rm el}/\d t|_{t=0} }\ .
 }{ttm li meth}
+Here, $\rh = \Re F(0) / \Im F(0)$ (cf.~\Eq{el rh}), i.e.~it gives the ratio of the real to the imaginary part of the elastic scattering amplitude $F$ at $t = 0\un{GeV^2}$.
 
-The differential rate $\d N/\d t$ at $t=0\un{GeV^2}$ can not be measured directly, it can only be extrapolated from the measured low $|t|$ data. As discussed in \Sc{rp measurement}, there are two optics that extend to sufficiently low $|t|$ values: $\be^* = 1535$ and $90\un{m}$ (see the acceptance curves in \Fg{ttm elastic acceptance}). This extrapolation procedure is important also for the (integral) elastic rate $N_{\rm el}$ measurement as it allows to correct for the events missed due to the finite acceptance.
+The approximation \Eq{el spinless si} is rather an expectation than a rigorously proved statement, thus some skepticism is due. Martin questioned the negligibility of the spin effects in \bref{martin85}. He compared the $\si_{\rm tot}$ measurements from the ISR and $\rm SP\bar PS$, where several methods (including the luminosity-independent one) had been used. In both cases, he found all methods to give compatible results. However, the large luminosity uncertainty at the $\rm SP\bar PS$ still allows for non-negligible effects. It is thus difficult to draw any conclusion, especially in the view of extrapolating it to the LHC energies. Therefore it will be important to use several $\si_{\rm tot}$-determination methods and compare the results also at the LHC.
+
+Coming back to the luminosity-independent method, \Eq{ttm li meth}, one can identify four inputs: $\d N_{\rm el}/\d t|_{t=0}$, $N_{\rm el}$, $N_{\rm inel}$ and $\rh$. The inelastic rate $N_{\rm inel}$ will be measured with the telescopes T1 and T2, for details see Sec.~6.3 in \bref{totem08}. The value of $\rh$ may be determined by analyzing the elastic differential cross-section in the Coulomb-interference region (if acceptance permits), or it can be taken from an external source (such as the COMPETE fits \bref{cudell02}). Since the expected value of $\rh$ is about $0.14$ and since it enters the $\si_{\rm tot}$ expression as $1 + \rh^2$, the influence of any $\rh$ errors are small.
+
+The differential rate $\d N/\d t$ at $t=0\un{GeV^2}$ can not be measured directly, it can only be extrapolated from the measured low-$|t|$ data. As discussed in \Sc{rp measurement}, there are two optics that extend to sufficiently low $|t|$ values: $\be^* = 1535$ and $90\un{m}$ (see the acceptance curves in \Fg{ttm elastic acceptance}). This extrapolation procedure is important also for the (integral) elastic rate $N_{\rm el}$ measurement as it allows to correct for the events missed due to the finite acceptance.
+
+In the rest of this section, we will discuss the extrapolation techniques and show the results for the nominal $\be^* = 1535$ and $90\un{m}$ optics at $\sqrt s = 14\un{TeV}$.
 
 Looking at the low-$|t|$ elastic cross-section predictions in \Fg{el mod dsdt narrow}, one can see an ``almost'' exponential decrease. This observation can be better quantified by plotting the exponential slope \Eq{el B}, see \Fg{ext B}. The slope is not strictly constant, but for most models (except the one of Islam et al.) its variation is not large up to $|t| \approx 0.25\un{GeV^2}$. Moreover, the shape of the curves suggests that they can be well approximated by a polynomial of a low degree (such as a parabola). Thus the modulus of the hadronic amplitude can be parameterized as:
 \eqref{|\FH(t)| = \e^{M(t)}\ ,\qquad M(t) \hbox{ a polynomial.}}{ext M par}
