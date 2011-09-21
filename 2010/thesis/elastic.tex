@@ -9,59 +9,72 @@
 
 
 \iffalse
-CMS, QCD, QFT, LHC, BFKL, HP, LxG, RMS, QED, QM, OPE, TPE, IR, KL, CKL, WY, SWY
+CM, QCD, QFT, LHC, BFKL, HP, LxG, RMS, QED, QM, OPE, TPE, IR, KL, CKL, WY, SWY
 ATLAS ALFA, TDR
 \fi
 
 \chapter[el]{Elastic scattering of protons}
 
+In this chapter we will discuss the elastic scattering of protons from a theoretical or phenomenological point of view. After defining our terminology on the kinematics and dynamics, we will review some of the most prominent models of $pp$ and $\bar pp$ elastic scattering (see \Sc{el models}). In \Sc{el pred} we will summarize the predictions of these models for two LHC-relevant energies $\sqrt s = 7$ and $14\un{TeV}$. The last section of this chapter, \Sc{el coulomb} will be devoted to the interference between the Coulomb and hadronic interactions.
+\TODO{Move this paragraph into introduction?}
 
-\fig{fig/pdf/el_scat_scheme.pdf}{el scat scheme}{The kinematics of equal-mass elastic scattering in the center-of-mass system. The labels give the four-momenta of the particles involved ($z$ axis is horizontal, $x$ vertical).}
+Let us start by describing the kinematics of elastic scattering events. \Fg{el scat scheme} show such an event viewed in the center-of-mass (CM) frame (we will always use this frame, unless stated differently). The two incident protons (blue), each with mass $m$, momentum $p$ and energy $E$, approach each other other along the $z$ axis. After the collision, the scattered protons (red) keep the same energy $E$, but their directions are modified. They are described by the \em{scattering angle} $\th$ and \em{azimuthal angle} $\ph$, see \Fg{el scat scheme}.
 
-Let us start by defining our notation and terms used later on. A scattering event of particles with equal mass $m$ in the center-of-mass (CMS) frame is sketched in \Fg{el scat scheme}. $E$ and $p$ stand for the CMS energy and momentum (we will always assume kinematic quantities to be evaluated in the CMS frame, unless stated differently). $\th$ is the scattering angle in the CMS frame. The total scattering energy squared reads:
-\eqref{s = 4E^2 = 4p^2 + 4m^2 \approx 4p^2\ ,}{el s}
-where the last approximation holds in \em{high-energy} limit
+\fig{fig/pdf/el_scat_scheme.pdf}{el scat scheme}{The kinematics of a $\rm pp$ scattering event in the CM frame. The arrows represent the momenta of the incident (blue) and scattered (red) protons. The black dot in the origin marks the interaction.
+}
+
+For the total scattering energy squared one can write:
+\eqref{s \equiv (P_1 + P_2)^2 = 4E^2 = 4p^2 + 4m^2 \approx 4p^2\ ,}{el s}
+where $P_1$ and $P_2$ are the four-momenta of the incident particles. The last approximation holds in the \em{high-energy} limit
 \eqref{{m\over p}\to 0\ ,}{el high energy}
 which will be often used. The four-momentum transfer squared (we will often use the abbreviation momentum transfer) can be expressed as:
-\eqref{t = -2p^2 (1 - \cos\th) \approx -(p\th)^2\ .}{el t}
+\eqref{t \equiv (P_{1'} - P_1)^2 = -2p^2 (1 - \cos\th) \approx -(p\th)^2\ .}{el t}
 The last step is valid in the \em{low-scattering-angle} limit
 \eqref{\th\to 0\qquad\hbox{or equivalently}\qquad {t\over p^2}\to 0\ .}{el low angle}
 The definition \Eq{el t} sets bounds on the four-momentum transfer:
 \eqref{t_{\rm min} \le t \le 0\ ,\qquad t_{\rm min} = - 4p^2 \approx -s\ ,}{el t min}
 where again the high-energy approximation has been used in the last relation.
 
-In principle, one more parameter (for example the azimuthal angle $\ph$ giving the rotation about the scattering axis $z$) is needed to fully describe an elastic scattering event. However, the azimuthal symmetry will be assumed throughout this chapter. Thereby the $\ph$-distribution will be trivially flat and we will not even mention it.
+The quantum theory describes particle collisions as a transition from an initial state $\ket i$ to an final state $\ket f$. The transition is reflected in the S-matrix operator $\op S$, such that the probability amplitude for the transition is given by the matrix element $\mel{f}{\op S}{i}$ \TODO{ref}. Were protons spin-less particles, the above-derived kinematic parameters $s$, $t$ and $\ph$ would fully describe the initial and final states (given our choice of the CM frame as shown in \Fg{el scat scheme}). However, since the protons carry spin $1/2$, we need to specify their spin states before and after the collision. For that purpose one traditionally uses the helicity $h$ -- the projection of spin into the momentum direction. Since proton's helicity can only have two values: $+1/2$ (will be denoted by symbol $+$) and $-1/2$ (denoted by $-$), there are $16$ spin amplitudes $\mel{s, t, \ph; h_{1'} h_{2'}}{\op S}{s; h_1, h_2}$. But if parity, time-reversal and proton-exchange invariance is assumed, only five of these amplitudes are independent (see e.g.~\bref{jacob59}). Explicit relations between the 16 amplitudes are summarized in (2.23) in \bref{bystricky78}. The five independent amplitudes are typically written in the following form (called \em{helicity amplitudes}):
+\eqref{\eqnarray{
+\phi_1(s, t, \ph) = \mel{++}{\op S}{++}\ ,&\quad& \phi_2(s, t, \ph) = \mel{++}{\op S}{--}\cr
+\phi_3(s, t, \ph) = \mel{+-}{\op S}{+-}\ ,&\quad& \phi_4(s, t, \ph) = \mel{+-}{\op S}{-+}\cr
+\phi_5(s, t, \ph) = \mel{++}{\op S}{+-}\ ,&\quad& \cr
+}}{el hel amp}
+where for brevity we have omitted the $s$, $t$ and $\ph$ parameters in the brakets on the \rhs
 
-In contrary, a very interesting quantity is the $t$-distribution of elastic events (at a fixed energy $s$). It can be expressed in the form of differential cross-section $\d\si/\d t$ (\TODO{which is moreover normalized}, see e.g. \TODO{...}). In the framework of quantum theory, the differential cross-section is related to the scattering amplitude $F(s, t)$ (see e.g. \TODO{...})
-\eqref{{\d\si\over\d t}(s) = {\pi\over s p^2} |F(s, t)|^2\ .}{el dsdt}
-This relation, in fact, fixes our normalization of the scattering amplitude. Its phase is fixed by writing the optical theorem (see e.g. \TODO{...})
-\eqref{\si_{\rm tot}(s) = {4\pi\over p \sqrt{s}} \Im F(s, t = 0)\ .}{el si tot}
+Most often the experiments are performed with unpolarized beams and the spin characteristics of the scattered protons are not measured. Such experiments can only measure unpolarized differential cross-section (see e.g.~Sec.~D in \bref{buttimore78})
+\eqref{{\d\si\over\d t} = {\pi\over 2sp^2} \left( |\phi_1|^2 + |\phi_2|^2 + |\phi_3|^2 + |\phi_4|^2 + 4 |\phi_5|^2 \right)\ .}{el hel dsdt}
+Note that if the beams are unpolarized, there is no preferred direction in the transverse plane of the CM frame (plane $xy$ in \Fg{el scat scheme}) and consequently all azimuthal angles $\ph$ are equivalent. This means that, for unpolarized scattering, the $\ph$ distribution must be uniform. That is why we have not mentioned the $\ph$ dependence in \Eq{el hel dsdt}. We have neither indicated the cross-section dependence on $s$ -- this will be tacitly assumed in what follows.
 
-In what follows, we will often drop the $s$ dependence of cross-sections and amplitudes, it will be tacitly assumed.
+The optical theorem \TODO{ref} relates the total cross-section $\si_{\rm tot}$ to the amplitudes that preserve the spin states. From \Eq{el hel amp} we see that those are the amplitudes $\phi_1$ and $\phi_3$. Using the normalization from \bref{buttimore78} one can write:
+\eqref{\si_{\rm tot} = {2\pi\over p\sqrt s}\, \Im (\phi_1 + \phi_3)|_{t=0}\ .}{el hel si tot}
 
-\> LHC: no spin measurement, pp scattering
+Out of the five amplitudes introduced in \Eq{el hel amp}, each is of different importance. For example in Sec.~3.3 in \bref{donnachie02} the authors describe the elastic scattering by a pomeron exchange. The pomeron couples to quarks as the photon does, thus does not alter the helicity of the quarks. This does not yet mean that the proton helicity shall be conserved, since the quarks within the proton have intrinsic transverse momenta. But still, one may expect the helicity-changing amplitudes to be relatively small. Furthermore, the authors argue that the leading Regge exchanges (pomeron, $\rm\rh$, $\rm\om$, $f_2$, $a_2$) can only contribute to combinations $\phi_1+\phi_3$, $\phi_2 - \phi_4$ and $\phi_5$. Thus these amplitude combinations should be dominant at high energies. In addition, the authors express their expectation that $\phi_1 \approx \phi_3$ and $\phi_2 \approx - \phi_4$.
 
-\TODO{spin}
+Even stronger expectations are summarized in Sec.~3.1 in \bref{kroll78}. For the (near-)forward direction, the authors find indications that $|\phi_1 + \phi_3| \gg |\phi_2|, |\phi_1-\phi_3|, |\phi_4|$ and $|\phi_5|$. Then, quoting the authors ``the situation away from $t=0$ is not so clear-cut, but there are several indications that these inequalities continue to hold throughout the range $|t| < 0.7\un{GeV^2}$'' (at $\sqrt s = 2.8\un{GeV}$). The inequality $|\phi_1 + \phi_3| \gg |\phi_1-\phi_3|$ can only be satisfied if $|\phi_1| \approx |\phi_3|$ and $\arg\phi_1 \approx \arg\phi_3$. In short, the inequality requires $\phi_1 \approx \phi_3$, which has already been claimed in the previous paragraph. The authors conclude their observations in \bref{kroll79}: ``by far the most dominant amplitude in elastic $\rm pp$ scattering is the spin-averaged amplitude $F = (\phi_1+\phi_3)/2$''. Since $F\approx \phi_1 \approx \phi_3$, we may recast \Eq{el hel dsdt,el hel si tot} to:
+\eqref{%
+	{\d\si\over\d t} \approx {\pi\over s p^2}\, |F|^2\ ,\qquad
+	\si_{\rm tot} \approx {4\pi\over p \sqrt{s}}\, \Im F|_{t = 0}\ .
+}{el spinless si}
+Note that these relations for differential and total cross-sections are exact for elastic scattering of spin-less particles. Therefore this approximation gives the same result as neglecting proton spins from the very beginning.
 
 \TODO{$\rm\bar pp$ scattering, crossing symmetry}, models on nucleon nucleon scattering, nucleon = proton or antiproton.
-
-\bref{donnachie02}
 
 \iffalse
 cross-section def (norm)
 si = |F|^2
 Opt Theorem
 crossing sym
-(QCD - Chyla)
 
 \bref{formanek QM}
 \bref{formanek QFT}
 \bref{peskin}
 \bref{barone}
+\bref{donnachie92}
 \fi
 
-
-The scattering amplitude $F(s, t)$ reflects the interactions acting between the colliding particles. Out of the four fundamental forces only two are relevant for elastic scattering of protons. The gravity is too weak on the mass and length scales characteristic for particle physics experiments. The four-momentum transfer typical for the elastic scattering of protons is $|t| \ls 10\un{GeV^2}$. Compared to that the carriers of the weak forces are much heavier, thus the influence of the weak interaction is negligible. The contribution of the strong interaction to the scattering amplitude will be discussed in the next section, electromagnetic interaction and its interference with the strong one will be the topic of \Sc{el coulomb}.
+The scattering amplitudes $\phi_i$ or $F$ reflect the interactions acting between the colliding particles. Out of the four fundamental forces only two are relevant for elastic scattering of protons. The gravity is too weak on the mass and length scales characteristic for particle physics experiments. The four-momentum transfer typical for the elastic scattering of protons is $|t| \ls 10\un{GeV^2}$. Compared to that the carriers of the weak forces are much heavier, thus the influence of the weak interaction is negligible. The contribution of the strong interaction to the scattering amplitude will be discussed in the next section, electromagnetic interaction and its interference with the strong one will be the topic of \Sc{el coulomb}.
 
 \section[el models]{Hadronic models}
 
@@ -104,6 +117,8 @@ The authors extend the model to $\rm\ga p$ and $\rm\ga\ga$ interactions, by prop
 The model has 12 parameters in total, 5 of them control the high-energy behavior.
 
 \section[el pred]{Predictions for the LHC}
+
+\> \TODO{no spin measurement, spin averaged predictions}
 
 We have implemented the aforementioned models in a computer program (see the description of the Elegent package \Sc{elegent}), which allowed us to calculate predictions for the LHC energies -- we will use values of $\sqrt s = 7$ and $14\un{TeV}$ as a representative sample.
 
