@@ -184,25 +184,35 @@ Since the degree of the polynomial in the denominator is higher by two compared 
 
 \caption{Electromagnetic scattering in eikonal description}
 
-\> \bref{adachi65,adachi66,adachi66-2,adachi66-4,adachi66-5,adachi66-3,adachi70,adachi70-2,adachi88}
-\> \bref{adachi68,adachi68-2}
-\> \bref{islam75} he obtained a unique eikonal representation valid for any energy and any scattering angle.
-\> \bref{islam67}
+In literature, there are many treatments that are called eikonal (or impact-parameter) descriptions, models or approximations. Since many of them are very different in nature, let us comment on the most widely used ones, in order to make our later argumentation clear.
 
-The eikonal approximation is a high-energy and low-scattering-angle (i.e. the kinematic domain of elastic scattering at the LHC) approximation in QM (see e.g. Sec.~2.3 in \bref{barone} or Sec.~4.2.7 in \bref{formanek QM}). It relates the scattering amplitude $F(t)$ to the eikonal function $\de(b)$
-\eqref{F(t) = {s\over 2i}\int\limits_0^\infty b\,\d b\,J_0(b\sqrt{|t|})\,\left( \e^{2i\de(b)} - 1 \right)}{el eik rep}
+The \em{classical eikonal approximation} (e.g. Sec.~2.3 in \bref{barone} or Sec.~4.2.7 in \bref{formanek QM}) is a high-energy and low-scattering-angle (i.e. the kinematic domain of elastic scattering at the LHC) approximation in QM . It relates the scattering amplitude $F(t)$ to the eikonal function $\de(b)$
+\eqref{F(t) = {s\over 2\i}\int\limits_0^\infty b\,\d b\,J_0(b\sqrt{-t})\,\left( \e^{2\i\de(b)} - 1 \right)}{el eik app F}
 (using the normalization of Cahn \bref{cahn82}). The \em{eikonal} function can be calculated from a potential $V(x, y, z)$
-\eqref{\de(b) = - {1\over 4 p_{\rm lab}} \int\limits_{-\infty}^{\infty} V(\vec b, z)\ \d z}{el eik app}
+\eqref{\de(b) = - {1\over 4 p_{\rm lab}} \int\limits_{-\infty}^{\infty} V(\vec b, z)\ \d z}{el eik app de}
 ($p_{\rm lab}$ stands for the laboratory-frame momentum) or from a Born amplitude
-\eqref{\de(b) = {1\over s} \int\limits_0^\infty q\,\d q\,J_0(bq)\, F_{\rm Born}(t = -q^2)\ .}{el eik app born}
+\eqref{\de(b) = {1\over s} \int\limits_0^\infty q\,\d q\,J_0(bq)\, F_{\rm Born}(t = -q^2)\ .}{el eik app de born}
 
-With the Coulomb potential $V(r) = \pm \al/r$ one gets
+The relation \Eq{el eik app F} may be regarded as one direction of the \em{eikonal representation}
+\eqref{
+	F(t = -q^2) = s \int\limits_{0}^{\infty} b \d b\ J_0(bq)\ A(b)\ ,\qquad
+	A(b) = {1\over s} \int\limits_{0}^{\infty} q \d q\ J_0(bq)\ F(t = - q^2)\ ,
+}{el eik rep}
+where we have introduced the \em{impact-parameter amplitude} $A(b) = [\exp(2\i\de) - 1] / 2\i$.  The Fourier-Bessel transform is used to express the scattering amplitude $F(t)$ in the space of the impact parameter $b$ (see e.g.~\bref{adachi65} for details). Since the original relation \Eq{el eik app F} was derived under the high-energy approximation (where $t_{\rm min} \to -\infty$), it is not surprising that the second transform in \Eq{el eik rep} requires the knowledge of the amplitude $F(t)$ at all negative values of $t$. However, this is causes troubles if the representation is to be applied at a finite energy, where the amplitude $F(t)$ is defined only in the physical region $t > t_{\rm min}$ (see \Eq{el t min}). This difficulty may be overcome by following the prescription developed by Adachi et al. \bref{adachi65,adachi66,adachi66-2,adachi66-4,adachi66-5} and Islam \bref{islam67}. The suggestion is to extend the amplitude $F(t)$ by a specification in the non-physical region (function $\la$ in (III.4) in \bref{islam67}). Then, the impact-parameter amplitude $A(b)$ receives two contributions: from the physical and from the non-physical region (functions $a_1$ and $a_2$ in (III.8) in \bref{islam67}). This construction does not, however, imply how the amplitude $F(t)$ should be extended to the non-physical region. This brings in certain arbitrariness. For example, in the works of Adachi et al.~the amplitude is set to zero throughout the non-physical region. In \bref{islam75}, the author suggests to use Watson-Sommerfeld transform to continue the amplitude from the physical to the non-physical region. Yet another approach is chosen in Sec.~3 of \bref{kl03}: some requirements on the impact-parameter amplitude are raised following a statistical interpretation of the amplitude.
+
+As much as the eikonal representation \Eq{el eik rep} can be made mathematically consistent (and valid for any energy and scattering angle), it does not provide any relation to the dynamical specification of the studied system, such as potential. In other words, the works presented in the previous paragraph do not provide any equivalent of \Eq{el eik app de} and are thus unable to answer the question what is the scattering amplitude $F(t)$ for a given potential $V$.
+
+This question is answered, for example, in the classical eikonal approximation. This approximation was later reviewed by Adachi et al.~\bref{adachi68,adachi68-2}. The authors managed to (re)derive the relations \Eq{el eik app F,el eik app de} after relaxing the low-angle restriction (but still keeping the high-energy one). An alternative answer to this question may be obtained in the framework of Islam (see Sec.~VI in \bref{islam67}). The author avoids using Schr\" odinger equation (which implicitly enters the formulae \Eq{el eik app F,el eik app de}) and the high-energy and low-scattering-angle approximations. Instead, he builds his framework directly on \Eq{el eik app F}. The Born amplitude is defined by the inversion of \Eq{el eik app de born} and is assumed to be specified for all negative $t$ values. In Islam's approach, the concept of potential is introduced (a posteriori) by the (three-dimensional) Fourier transform of the Born amplitude. Having postulated these relations, the formula \Eq{el eik app de} is obtained. In other words, Islam's framework employs the same formulae \Eq{el eik app F,el eik app de} as in the classical eikonal approximation. The difference is only in the way of derivation and the interpretation of the potential. 
+
+To conclude, apart from derivation and interpretation issues, the relations \Eq{el eik app F,el eik app de} hold in all eikonal descriptions we are aware of.
+
+Now let us use these formulae to calculate the Coulomb scattering amplitude. With the potential $V(r) = \pm \al/r$ one gets
 \eqref{F^{\rm C}_{\rm Born}(t) = \pm {\al s\over t}\ .}{el coul born}
 This result is to be compared to the one-photon-exchange prediction by QED \Eq{el dsdt em} (both amplitudes are of the order $\O{\al}$). We see that the more general QED result differs only by the presence of the effective form factor $G_{\rm eff}(t)$. We will use the same form factor also within the eikonal formalism:
 \eqref{F^{\rm C}_{\rm Born}(t) = \pm {\al s\over t}\, G^2_{\rm eff}(t) \.}{el coul born ff}
 In that sense, the latter amplitude includes more than just pure Coulomb scattering (magnetic influence is accounted for too), but we will retain the traditional label ``Coulomb''.
 
-The Coulomb eikonal can, in principle, be calculated by \Eq{el eik app born}. However, a direct application to amplitudes \Eq{el coul born,el coul born ff} is not possible because of their singularity at $t=0\un{GeV^2}$. This issue can be circumvented by introducing temporarily a fictitious photon mass $\la$. This alters the denominators to $t - \la^2$ and the eikonal can be evaluated. The complete amplitude $\FC(t)$ can then be obtained by \Eq{el eik rep} in the limit $\la \to 0\un{GeV}$. An concrete example of such a calculation will be show later, when discussing the Coulomb interference, see \Eq{el cahn 2}.
+The Coulomb eikonal can, in principle, be calculated by \Eq{el eik app de born}. However, a direct application to amplitudes \Eq{el coul born,el coul born ff} is not possible because of their singularity at $t=0\un{GeV^2}$. This issue can be circumvented by introducing temporarily a fictitious photon mass $\la$. This alters the denominators to $t - \la^2$ and the eikonal can be evaluated. The complete amplitude $\FC(t)$ can then be obtained by \Eq{el eik app F} in the limit $\la \to 0\un{GeV}$. An concrete example of such a calculation will be show later, when discussing the Coulomb interference, see \Eq{el cahn 2}.
 
 \vskip\baselineskip
 
@@ -265,10 +275,12 @@ It is perhaps fair to mention two works that preceded the article of \WaY{} \bre
 
 \caption{Interference in the eikonal description}
 
-If electromagnetic and hadronic interactions could be described by potentials $V^{\rm C}$ and $V^{\rm H}$, the total potential would be given by their sum $V^{\rm C} + V^{\rm H}$. Since the eikonal is linear in potential, see \Eq{el eik app}, the total eikonal is a sum of Coulomb and hadronic eikonals
+If electromagnetic and hadronic interactions could be described by potentials $V^{\rm C}$ and $V^{\rm H}$, the total potential would be given by their sum $V^{\rm C} + V^{\rm H}$. Since the eikonal is linear in potential, see \Eq{el eik app de}, the total eikonal is a sum of Coulomb and hadronic eikonals\footnote{%
+In the eikonal framework of Islam (Sec.~VI in \bref{islam67}), the additivity of eikonals follows from the (postulated) additivity of Born amplitudes.
+}
 \eqref{\de^{\rm C+H}(b) = \de^{\rm C}(b) + \de^{\rm H}(b)\ .}{el de CH}
-The total scattering amplitude can be obtained from \Eq{el eik rep}
-\eqref{\FCH(t) = {s\over 2i}\int\limits_0^\infty b\,\d b\,J_0(b\sqrt{|t|})\,\left( \e^{2i\de^{\rm C+H}(b)} - 1 \right)\ .}{el F CH eik}
+The total scattering amplitude can be obtained from \Eq{el eik app F}
+\eqref{\FCH(t) = {s\over 2\i}\int\limits_0^\infty b\,\d b\,J_0(b\sqrt{|t|})\,\left( \e^{2\i\de^{\rm C+H}(b)} - 1 \right)\ .}{el F CH eik}
 
 These steps can be found in the beginning of a number of works, aiming primarily at rederiving the formulae of Bethe \bref{bethe58} and \WY{} \bref{wy68}.
   For example Islam \bref{islam67} (first building his own eikonal formalism) rederived the formula of Bethe and found it more accurate than Bethe's original assumptions.
@@ -278,7 +290,7 @@ These steps can be found in the beginning of a number of works, aiming primarily
 Cahn \bref{cahn82} also started by rederiving the formula of \WY. By inserting \Eq{el de CH} to \Eq{el F CH eik} he obtained
 \eqref{\FCH(t) = \FC(t)
 + \FH(t) \left[ 1 +
-{s\over 2i \FH(t)}\int\limits_0^\infty b\,\d b\,J_0(b\sqrt{|t|})\,\left( \e^{2i\de^{\rm C}(b)} - 1 \right) \left( \e^{2i\de^{\rm H}(b)} - 1 \right)
+{s\over 2\i \FH(t)}\int\limits_0^\infty b\,\d b\,J_0(b\sqrt{|t|})\,\left( \e^{2\i\de^{\rm C}(b)} - 1 \right) \left( \e^{2\i\de^{\rm H}(b)} - 1 \right)
 \right ]\ .
 }{el cahn 1}
 For the complete Coulomb formula $\FC(t)$ he obtained (in the lowest order in $\al$)
@@ -324,7 +336,7 @@ In this part we will review the results summarized above and discuss their valid
 
 The first quantity to review is the Coulomb amplitude. We have pursued two approaches to derive it -- the QED and the eikonal model. While we consider QED the best available tool to describe electromagnetic interactions, we have presented the leading order (OPE) to the scattering amplitude only, see \Eq{el dsdt em}. A natural question could be raised -- is the leading order good enough? An answer can be found in the already quoted works on form factors \bref{arrington07,puckett10}. The authors used two methods for extracting the form factors. One is based on comparing the measured differential cross-section $\d\si/\d t$ with the one expected for point like particles (Mott formula, calculated also in OPE order, see e.g. \bref{chyla}). In the other method a longitudinally polarized electron beam is used and the polarization of the recoil proton is measured (more details e.g. in \bref{gayou02}). Then, these two methods are found to disagree for $|t| \gs 1\un{GeV^2}$ (see e.g. Fig.~2 in \bref{arrington07}). The authors argue that most of the discrepancy disappears if two-photon-exchange (TPE) contributions are included. Moreover these corrections alter mostly the results of the cross-section method (which is very similar to our form-factor application). This leads us to the conclusion that the OPE cross-section presented in \Eq{el dsdt em} is only accurate for $|t|$ below $1\un{GeV^2}$.
 
-We have also calculated the Coulomb amplitude in the eikonal formalism, see \Eq{el cahn 2}. This amplitude receives contributions of all orders of $\al$ and thus may seem to include the TPE corrections. It is only partially true. The amplitude has been generated via the eikonal relation \Eq{el eik rep} with the eikonal calculated from the OPE amplitude. According to Sec.~6.2 in \bref{barone}, this procedure is for large $s$ equivalent to summing diagrams of the type \Fg{el diagrams2} A. Hence only this type of diagrams is included in the eikonal calculation. We have seen that the eikonal complete amplitude differs from the Born ($\equiv$ OPE) one merely by phase (\Eq{el cahn 2}). This keeps the corresponding cross-section unchanged and thus it is insufficient to reconcile the two form-factor-extraction methods. These facts bring us to the conclusion that neither the eikonal full amplitude can be trusted above $|t|\approx 1\un{GeV^2}$.
+We have also calculated the Coulomb amplitude in the eikonal formalism, see \Eq{el cahn 2}. This amplitude receives contributions of all orders of $\al$ and thus may seem to include the TPE corrections. It is only partially true. The amplitude has been generated via the eikonal relation \Eq{el eik app F} with the eikonal calculated from the OPE amplitude. According to Sec.~6.2 in \bref{barone}, this procedure is for large $s$ equivalent to summing diagrams of the type \Fg{el diagrams2} A. Hence only this type of diagrams is included in the eikonal calculation. We have seen that the eikonal complete amplitude differs from the Born ($\equiv$ OPE) one merely by phase (\Eq{el cahn 2}). This keeps the corresponding cross-section unchanged and thus it is insufficient to reconcile the two form-factor-extraction methods. These facts bring us to the conclusion that neither the eikonal full amplitude can be trusted above $|t|\approx 1\un{GeV^2}$.
 
 \fig{fig/pdf/el_diagrams2.pdf}{el diagrams2}{A: The type of diagrams that is included in the eikonal calculation of the complete Coulomb amplitude. B -- E: the lowest order sub-diagrams missing in the eikonal calculation. The double line in E represents an excited state of a proton.}
 
@@ -387,14 +399,14 @@ $\ze(t) \approx 1$ when both amplitudes are similar and tends to zero if either 
 
 %\TODO{WY wrong, Cahn OK: weird}
 
-So far we have been using only the model of Bourrely et al. It provides a prescription for the hadronic eikonal $\de^{\rm H}(b)$ and therefore it is easy to apply \Eq{el F CH eik}. However, many hadronic models give only an amplitude in the $t$-space $\FH(t)$. Then, the hadronic eikonal $\de^{\rm H}(b)$ could, in principle, be obtained by the inverse Fourier-Bessel transform (cf. \Eq{el eik rep})
-\eqref{\de^{\rm H}(b) = {1\over 2i} \log \left[ 1 + {2i\over s} \int\limits_0^\infty q\ \d q\ J_0(b q)\ \FH(t = -q^2)  \right ]\ .}{el eik rep inv}
+So far we have been using only the model of Bourrely et al. It provides a prescription for the hadronic eikonal $\de^{\rm H}(b)$ and therefore it is easy to apply \Eq{el F CH eik}. However, many hadronic models give only an amplitude in the $t$-space $\FH(t)$. Then, the hadronic eikonal $\de^{\rm H}(b)$ could, in principle, be obtained by the inverse Fourier-Bessel transform (cf. \Eq{el eik app F})
+\eqref{\de^{\rm H}(b) = {1\over 2\i} \log \left[ 1 + {2\i\over s} \int\limits_0^\infty q\ \d q\ J_0(b q)\ \FH(t = -q^2)  \right ]\ .}{el eik app F inv}
 However, this equation requires the knowledge of the hadronic amplitude outside the physical region, that is for $t < t_{\rm min}$.
 %\footnote{There might be an interesting parallel between the complications in adopting eikonal and QFT approaches. In the former, one is missing the hadronic amplitude beyond the physical region, in the latter, one is missing the amplitude off mass shell.}
 While this is a serious conceptual issue, it has little practical impact for calculating the Coulomb-interference. It is due to the rapid fall off of the hadronic amplitude (it drops by $\gs 6$ orders of magnitude between $|t|=0$ and $20\un{GeV^2}$, see \Fg{el mod dsdt large}). Moreover the hadronic amplitude enters the interference formula \Eq{el phase Cahn} as a ratio $\FH(t') / \FH(t)$, where $t$ is the point of evaluation and $t'$ is the integration variable. Therefore the ratio must vanish when $t'$ is much larger than $t$ (i.e. $T$ is sufficiently large):
 \eqref{{\FH(t')\over \FH(t)} \approx 0\ , \quad\hbox{ for }\quad t' \gs t + T\ .}{el T 1}
 Assuming that this stays valid even if $t'$ enters the kinematically forbidden region\footnote{%
-This can be justified for at least most of the eikonal-formulated hadronic models. Their eikonal amplitudes ($\equiv \exp(2i\de(b)) - 1$) are typically of a Gaussian-like profile with the RMS of about $1\un{fm}$ (see e.g. Fig.~6.6 in \bref{barone}). The $t$-amplitude can be calculated through \Eq{el eik rep}. For very high $|t|$ values the factor $J_0(b\sqrt{-t})$ becomes a rapidly oscillating function and one may expect a heavy suppression of the integral. No matter whether $t$ falls into kinematically allow region. It also explains the fast decrease of the hadronic cross-section. 
+This can be justified for at least most of the eikonal-formulated hadronic models. Their eikonal amplitudes ($\equiv \exp(2\i\de(b)) - 1$) are typically of a Gaussian-like profile with the RMS of about $1\un{fm}$ (see e.g. Fig.~6.6 in \bref{barone}). The $t$-amplitude can be calculated through \Eq{el eik app F}. For very high $|t|$ values the factor $J_0(b\sqrt{-t})$ becomes a rapidly oscillating function and one may expect a heavy suppression of the integral. No matter whether $t$ falls into kinematically allow region. It also explains the fast decrease of the hadronic cross-section. 
 }, \Eq{el phase Cahn} yields
 \eqref{\Ps_{\rm Cahn}(t) =
 \pm \underbrace{\lim\limits_{\ta \to -\infty} \left[
