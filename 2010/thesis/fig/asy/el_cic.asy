@@ -44,6 +44,8 @@ AttachLegend("no form factor", SW, SW);
 NewPad("$|t|\un{GeV^2}$", "$\arg F^{\rm C} / \pi$");
 scale(Log, Linear);
 for (int li : las.keys) {
+	if (las[li] == 1e-4)
+		TGraph_skipPoints.push(459);
 	draw(yscale(1/3.141593), rGetObj(f4, "none/F_C#3|F_C_arg,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
 	draw(yscale(1/3.141593), rGetObj(f4, "none/F_C#3|F_C_arg_th,la="+format("%.0E", las[li])), colors[li]+longdashed, "$\la="+es(las[li])+"\,\rm GeV$");
 }
@@ -58,8 +60,11 @@ NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ci : cModes.keys)
 	draw(rGetObj(f4, "none/interference#0|cmp_"+cModes[ci]+"_CH_phase_re"), cm_colors[ci]+longdashed, cNames[ci]);
-for (int li : las.keys)
+for (int li : las.keys) {
+	if (las[li] == 1e-4)
+		TGraph_skipPoints.push(459);
 	draw(rGetObj(f4, "none/interference#0|CH_phase_re,la="+format("%.0E", las[li])), colors[li]);
+}
 limits((t_min, -0.2), (t_max, 0.7), Crop);
 AttachLegend("no form factor", NW, NW);
 
@@ -192,6 +197,10 @@ draw(rGetObj(f4, "Puckett/interference#0|cmp_KL_CH_phase_re"), black+longdashed,
 for (int li : las.keys) {
 	if (li == 0)
 		continue;
+	if (las[li] == 1e-4) {
+		TGraph_skipPoints.push(454);
+		TGraph_skipPoints.push(459);
+	}
 	draw(rGetObj(f4, "Puckett/interference#0|CH_phase_re,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
 }
 limits((t_min, -0.05), (t_max, 0.06), Crop);
@@ -199,8 +208,11 @@ limits((t_min, -0.05), (t_max, 0.06), Crop);
 NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#1|cmp_KL_CH_phase_im"), black+longdashed, "CKL");
-for (int li : las.keys)
+for (int li : las.keys) {
+	if (las[li] == 1e-4)
+		TGraph_skipPoints.push(459);
 	draw(rGetObj(f4, "Puckett/interference#1|CH_phase_im,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
+}
 limits((t_min, -0.01), (t_max, 0.1), Crop);
 AttachLegend("Puckett form factor", NE, NE);
 
@@ -242,15 +254,21 @@ write("* el_cic_diff_Z_eik");
 NewPad("$|t|\un{GeV^2}$", "$Z\un{\%}$");
 scale(Log, Linear);
 draw(yscale(100), rGetObj(f4, "Puckett/interference#2|cmp_KL_CH_Z"), black+longdashed, "CKL");
-for (int li : las.keys)
+for (int li : las.keys) {
+	if (las[li] == 1e-4)
+		TGraph_skipPoints.push(459);
 	draw(yscale(100), rGetObj(f4, "Puckett/interference#2|CH_Z,la="+format("%.0E", las[li])), colors[li]);
+}
 limits((t_min, -20), (t_max, 0), Crop);
 AttachLegend("Puckett form factor", SE, SE);
 
 NewPad("$|t|\un{GeV^2}$", "$\zeta$");
 scale(Log, Linear);
-for (int li : las.keys)
+for (int li : las.keys) {
+	if (las[li] == 1e-4)
+		TGraph_skipPoints.push(459);
 	draw(yscale(1), rGetObj(f4, "Puckett/interference#3|CH_zeta,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
+}
 limits((t_min, 0), (t_max, 1.2), Crop);
 AttachLegend(NE, NE);
 

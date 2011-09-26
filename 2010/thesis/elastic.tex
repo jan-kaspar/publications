@@ -2,8 +2,8 @@
 \def\FH{F^{\rm H}}
 \def\FCH{F^{\rm C+H}}
 
-\def\KL{Kundr\' at-Lokaj\' i\v cek}
-\def\KaL{Kundr\' at and Lokaj\' i\v cek}
+\def\KL{Kundr\' at-Lokaj\char237\char232 ek}
+\def\KaL{Kundr\' at and Lokaj\char237\char232 ek}
 \def\WY{West-Yennie}
 \def\WaY{West and Yennie}
 
@@ -71,7 +71,8 @@ At present, the QCD is believed to be the most accurate theory of strong interac
 
 Most of the models neglect the spin effects -- they use the approximation \Eq{el spinless si}. In other words they only provide the scattering amplitude $F$.
 
-\caption{The model of Islam et al. \bref{islam87,islam03,islam04,islam06,islam07}}
+\def\OutlineLabel{The model of Islam et al.}
+\block{The model of Islam et al. \bref{islam87,islam03,islam04,islam06,islam07}}
 
 The authors picture the proton in an effective QFT model. They proposed a soliton solution with a mass comparable to the one of proton. This soliton divides the proton into two distinct layers: an outer cloud of quark-antiquark condensate and an inner core of topological charge. Later on, a third, the inner-most layer has been added -- a valence-quark bag. These three layers give rise to three mechanisms contributing to elastic proton-proton scattering. Each of them drives the amplitude in a range of momentum-transfer $t$.
 
@@ -79,7 +80,8 @@ For the lowest $|t|$ values ($\ls 0.5\un{GeV^2}$ at LHC energies) it is the diff
 
 The model contains 19 parameters in the hard-pomeron version HP or 20 in the low-$x$ gluon version LxG.
 
-\caption{The model of Petrov et al. \bref{ppp02}}
+\def\OutlineLabel{The model of Petrov et al.}
+\block{The model of Petrov et al. \bref{ppp02}}
 
 This model describes the collision of nucleons as an exchange of several reggeons. Besides the meson trajectories $\rm\rh$ and $\rm\om$, it includes a number of pomerons and an odderon. The authors argue that one pomeron (i.e. a Regge trajectory with the intercept higher than one) is insufficient to describe data on nucleon-nucleon scattering. Therefore they consider options with two (will be denoted 2P) and three (3P) pomerons. The latter one is found to be preferred by data fits.
 
@@ -87,7 +89,8 @@ The model is formulated in the eikonal description, which automatically guarante
 
 The model comprises 16 free (fitted) parameters for the two pomeron variant or 20 for three pomerons. In addition, there are 4 fixed parameters.
 
-\caption{The model of Bourrely et al. \bref{bsw79,bsw84,bsw03,bsw10}}
+\def\OutlineLabel{The model of Bourrely et al.}
+\block{The model of Bourrely et al. \bref{bsw79,bsw84,bsw03,bsw10}}
 
 This is also an eikonal model. The eikonal has two components: from a pomeron exchange and a Regge background. The latter is described as an exchange of $\rm A_2$, $\rm \rh$ and $\rm \om$ trajectories, having the traditional energy dependence $s^{\al(t)}$ and exponential $t$-dependence. The Regge background is responsible for the difference between $\rm pp$ and $\rm\bar pp$ scattering at low energies, but is negligible for high (LHC) energies.
 
@@ -97,7 +100,8 @@ Thanks to this construction, the model can be easily extended to describe other 
 
 The model has 18 parameters in total (for $\rm pp$ and $\rm \bar p p$ interactions), however, only 6 of them are relevant for high energy scattering.
 
-\caption{The model of Block et al. \bref{bh99,bh11}}
+\def\OutlineLabel{The model of Block et al.}
+\block{The model of Block et al. \bref{bh99,bh11}}
 
 This model is a QCD-inspired, eikonal-formulated model. Similarly to the previous models, the eikonal receives two contributions. One that controls high energy behavior (the authors call it even) and one responsible for the difference between $\rm pp$ and $\rm\bar pp$ scattering at low energies.
 
@@ -113,17 +117,15 @@ We have implemented the aforementioned models in a computer program (see the des
 
 We recall that all results presented in this section are due to the strong interaction only. The influence of the electromagnetic force will only be discussed in the following section.
 
-The first quantity to look at is the differential cross-section. It is shown in \Fg{el mod dsdt narrow,el mod dsdt large} (narrower and larger $|t|$ range). All the predictions are very similar up to the first dip/shoulder which occurs between $|t| = 0.4$ and $0.6\un{GeV^2}$. Up to this point, the cross-section falls off almost exponentially. The first dip is very shallow in the prediction by Islam et al., for $7\un{TeV}$ it is merely a shoulder. For this model this is the only structure on the cross-section curve (for both HP and LxG variants). On contrary, the other models predict secondary dips/shoulders. Their size and position is often quite different for the two energies shown, especially for higher $|t|$ values. The value of the differential cross-section at the first dip differs up to a factor $10$ between the models. More precisely, the models split into two groups with a similar value of the cross-section in the first dip -- Islam et al. (both variants) and Petrov et al. with 2 pomerons (lower cross-section) and Bourrely et al., Petrov et al. (3P) and Block et al. (higher value).
+The first quantity to look at is the differential cross-section. It is shown in \Fg{el mod dsdt narrow,el mod dsdt large} (narrower and larger $|t|$ range). All the predictions are very similar up to the first dip/shoulder which occurs between $|t| = 0.4$ and $0.6\un{GeV^2}$. Up to this point, the cross-section falls off almost exponentially. The first dip is very shallow in the prediction by Islam et al., for $7\un{TeV}$ it is merely a shoulder. For this model this is the only structure on the cross-section curve (for both HP and LxG variants). On contrary, the other models predict secondary dips/shoulders. Their size and position is often quite different for the two energies shown, especially for higher $|t|$ values. The value of the differential cross-section at the first dip differs up to a factor $10$ between the models. More precisely, the models split into two groups with a similar value of the cross-section in the first dip -- Islam et al. (both variants) and Petrov et al. with 2 pomerons (lower cross-section) and Bourrely et al., Petrov et al. (3P) and Block et al. (higher value). For a comparison to the first LHC data see \Fg{ttm mod cmp dsdt} (in the conclusion chapter).
 
-\fig{fig/pdf/el_mod_dsdt_narrow.pdf}{el mod dsdt narrow}{Differential cross-section as predicted by the four models, in the $|t|$ range $0$ to $5\un{GeV^2}$.}
+\fig{fig/pdf/el_mod_dsdt_narrow.pdf}{el mod dsdt narrow}{Differential cross-section as predicted by the four models, in the $|t|$ range from $0$ to $5\un{GeV^2}$.}
 
-\fig{fig/pdf/el_mod_dsdt_large.pdf}{el mod dsdt large}{Differential cross-section as predicted by the four models, in the $|t|$ range $0$ to $20\un{GeV^2}$.}
-
-\TODO{ref to TOTEM measurement} \Fg{ttm mod cmp dsdt}
+\fig{fig/pdf/el_mod_dsdt_large.pdf}{el mod dsdt large}{Differential cross-section as predicted by the four models, in the $|t|$ range from $0$ to $20\un{GeV^2}$.}
 
 We have already said that all models predict almost exponential decrease of the cross-section for the lowest $|t|$ values. To evaluate this statement more precisely, it is useful to plot the exponential slope
 \eqref{B(t) = {\d\over \d t} \log {\d\si\over\d t}(t) = {\d\over \d t} \log |F(t)|^2\ .}{el B}
-Considering the total variation of the slope $B(t)$ roughly from $-10$ to $30\un{GeV^{-2}}$, the slope for $|t|$ values below the first dip could be thought of constant. But still, there are non-negligible variations. The highest slope is reached by the model of Islam et al. at $t=0\un{GeV^2}$ ($28$ and $31\un{GeV^{-2}}$ for $7$ and $14\un{TeV}$ respectively). For the other models, the slope has approximately a parabolic shape reaching the maximum just before the first dip and having the minimum on a half way. For both energies the lowest values are reached by the model of Bourrely et al. ($17.6$ and $18.9\un{GeV^{-2}}$), the highest by Block et al. ($24.7$ and $28.5\un{GeV^{-2}}$ for $7$ and $14\un{TeV}$ respectively).
+Considering the total variation of the slope $B(t)$ roughly from $-10$ to $30\un{GeV^{-2}}$, the slope for $|t|$ values below the first dip could be thought of constant. But still, there are non-negligible variations. The highest slope is reached by the model of Islam et al. at $t=0\un{GeV^2}$ ($28$ and $31\un{GeV^{-2}}$ for $7$ and $14\un{TeV}$ respectively). For the other models, the slope has approximately a parabolic shape reaching the maximum just before the first dip and having the minimum on a half way. For both energies the lowest values are reached by the model of Bourrely et al. ($17.6$ and $18.9\un{GeV^{-2}}$), the highest by Block et al. ($24.7$ and $28.5\un{GeV^{-2}}$ for $7$ and $14\un{TeV}$ respectively). For a comparison to the first LHC data see \Fg{ttm mod cmp B} (in the conclusion chapter).
 
 The exponential slope is also useful for a localization of the dips/shoulders. A dip occurs whenever the slope crosses zero value (dotted line in the \Fg{el mod B}) from positive to negative values. When the slope gets close or reaches zero but does not cross it actually (e.g. Islam et al. at $7\un{TeV}$), it signifies a shoulder.
 
@@ -149,9 +151,10 @@ The scattering amplitude due to the electromagnetic force can be calculated in a
 
 But first of all let us define the terminology that we will use. We will call \em{Born amplitude} the $\O{\al}$ contribution to a scattering amplitude. $\al$ stands for the fine structure constant. A \em{complete} amplitude will denote an amplitude summed to all orders of $\al$. A \em{Coulomb}/\em{hadronic} amplitude will stand for an amplitude due to electromagnetic/strong interaction only. This notation is not precise, but very traditional. The amplitude due to the simultaneous action of both interactions will be called \em{total}.
 
-We premise that we will often use high-energy and low-scattering-angle approximations to compare the results of several authors.
+We will first review some of the most important results (present them much as they were published) and only later give our comments and show various comparisons. We premise that we will often use high-energy and low-scattering-angle approximations to compare the results of several authors.
 
-\caption{Electromagnetic scattering in QED}
+
+\block{Electromagnetic scattering in QED}
 
 QED is a relativistic QFT that can naturally account for the structure of the proton and its anomalous magnetic moment (see e.g. Sec.~6.2 in \bref{peskin} or Sec.~5.2 in \bref{chyla}). These are described by two form factors, the electric $G_{\rm E}(t)$ and the magnetic $G_{\rm M}(t)$, which are related to the distributions of charge and magnetization in the proton (see e.g. Sachs \bref{sachs62}). The leading contribution (one photon exchange, $\O{\al^2}$) to the cross-section has been calculated in \bref{block06} (Eq.~(29)). Since we are interested in the LHC energies ($\approx 7\un{TeV}$) and momentum transfers smaller than $|t| = 10\un{GeV^2}$, we may use high-energy and low-momentum-transfer limits \Eq{el high energy,el low angle}. Then, the result reads (both for $\rm pp$ and $\rm \bar p p$ scattering)
 \eqref{{\d\si^{\rm EM}_{\rm QED, OPE}\over\d t} = {4\pi \al^2\over t^2} G_{\rm eff}^4(t)\ .}{el dsdt em}
@@ -182,7 +185,7 @@ Since the degree of the polynomial in the denominator is higher by two compared 
 
 \fig{fig/pdf/el_ff_comparison.pdf}{el ff comparison}{Comparison of electric (dashed) and effective (solid) form factors. The dotted line represents the dipole expression $F_{\rm d}(t)$.}
 
-\caption{Electromagnetic scattering in eikonal description}
+\block{Electromagnetic scattering in eikonal description}
 
 In literature, there are many treatments that are called eikonal (or impact-parameter) descriptions, models or approximations. Since many of them are very different in nature, let us comment on the most widely used ones, in order to make our later argumentation clear.
 
@@ -218,7 +221,7 @@ The Coulomb eikonal can, in principle, be calculated by \Eq{el eik app de born}.
 
 So far, we have discussed the hadronic and electromagnetic interactions separately. Now we turn to the question what is the amplitude describing these forces acting simultaneously. This \em{Coulomb-hadronic} interference has been studied by a number of authors within a number of formalism. We will first review some of the most important results and eventually discuss the differences and provide numerical comparisons, especially with our eikonal calculation to all orders of $\al$.
 
-\caption{Interference in non-relativistic QM}
+\block{Interference in non-relativistic QM}
 
 One of the first authors to tackle the interference problem was Bethe. In his work \bref{bethe58} he studied particle scattering by nuclei. He proposed a model based on two assumptions. First, the spatial distribution of protons and neutrons is the same. He parameterized this distribution by a Gaussian, with parameter $a$ governing its width (and thus the size of the nucleus). The second assumption is that the nuclear potential is proportional to the nucleon density. His total amplitude for $\rm pp$ and $\rm \bar pp$ scattering (upper and lower sign respectively) could be written:
 \eqref{F^{\rm C+H}(t) = \pm {\al s\over t} \e^{\i \al \Ph(t)} + F^{\rm H}(t)}{el F CH decomp C}
@@ -230,7 +233,7 @@ The decomposition \Eq{el F CH decomp C} has become as traditional as calling the
 We recall that the hadronic amplitude $F^{\rm H}(t)$ reflects Bethe's hadronic model and thus one cannot use his interference formula for a generic hadronic model. This fact may seem as a major disadvantage nowadays. We are mentioning Bethe's work because most of his successors have derived formulae formally very similar to \Eq{el F CH decomp C}. The common feature is that the total amplitude $F^{\rm C+H}(t)$ hides an infinite phase factor which is not observable in the differential cross-section.
 
 
-\caption{Interference in perturbative QFT (Feynman diagrams)}
+\block{Interference in perturbative QFT (Feynman diagrams)}
 
 \fig{fig/pdf/el_diagrams.pdf}{el diagrams}{Some of the Feynman diagrams contributing to proton-proton scattering. A: one photon exchange (OPE) diagram. B: a representation of complete hadronic scattering, that is the sum of all diagrams without photon exchange. C and D: the lowest order diagram contributing to the Coulomb-hadronic interference phase.}
 
@@ -262,7 +265,7 @@ Note that this phase is, by construction, a real function.
 \WY, later on, argued that the dominant contribution to the interference phase $\Ph$ comes from the diagrams \Fg{el diagrams} C (plus the inverted one) and D. While the evaluation of the diagram D is, in principle, straight forward, the diagram C presents a major difficulty -- its evaluation requires the knowledge of $\FH(t)$ off the mass shell. In contrary, we are not aware of any hadronic model which provides also an off-shell amplitude (cf.~\Sc{el models}). The authors tried to evaluate at least a contribution to the phase $\Ph(t)$ which is independent on the off-shell amplitude. They used a number of simplifying assumptions some of which can be partially justified if the phase of the hadronic amplitude $\FH(t)$ is not rapidly varying. While this point will be discussed later on, the final result of \WY{} reads: \footnote{%
 Note that in \bref{wy68} there is a number of inconsistencies between Eq.~(17) and (23), the latter one is likely to contain a misprint: the sign of the second term shall read minus, i.e. as in our \Eq{el phase WY}.
 }
-\eqref{\Ph_{\rm WY}(t) = \mp \log {t\over t_{\rm min}} \pm \int\limits_{t_{\rm min}} {\d t'\over |t' - t|} \left( {\FH(t')\over \FH(t)} - 1 \right) + \O{\al}\ .}{el phase WY}
+\eqref{\Ph_{\rm WY}(t) = \mp \log {t\over t_{\rm min}} \pm \int\limits_{t_{\rm min}}^{0} {\d t'\over |t' - t|} \left( {\FH(t')\over \FH(t)} - 1 \right) + \O{\al}\ .}{el phase WY}
 The authors estimate the uncertainty of this formula to be of the order of $\al$.
 
 In the time when \WY{} published their work, it seemed perfectly plausible to describe the hadronic amplitude as $\FH(t) \propto \e^{Bt/2}$, where $B$ is the diffractive slope (constant). Then the interference phase would simplify (in the limit of low scattering-angles and high energies) to
@@ -273,7 +276,7 @@ It is perhaps fair to mention two works that preceded the article of \WaY{} \bre
 
 
 
-\caption{Interference in the eikonal description}
+\block{Interference in the eikonal description}
 
 If electromagnetic and hadronic interactions could be described by potentials $V^{\rm C}$ and $V^{\rm H}$, the total potential would be given by their sum $V^{\rm C} + V^{\rm H}$. Since the eikonal is linear in potential, see \Eq{el eik app de}, the total eikonal is a sum of Coulomb and hadronic eikonals\footnote{%
 In the eikonal framework of Islam (Sec.~VI in \bref{islam67}), the additivity of eikonals follows from the (postulated) additivity of Born amplitudes.
@@ -308,7 +311,9 @@ Then, Cahn turned to the discussion of the influence of the electromagnetic form
 \eqref{\nu_{\rm Cahn}(t) = - {4t\over \La^2} \log {\La^2\over -4t} + {2t\over \La^2}}{el nu Cahn}
 ($\La$ is the parameter of the dipole form factor, see \Eq{el ff dipole}).
 
-Cahn eventually derived an interference formula for a generic hadronic amplitude and a generic set of form factors, however his formula was unnecessarily complicated. This issue was circumvented by \KaL{} \bref{kl94}. Moreover they identified Cahn's integration bound $T$ (see \Eq{el phase Cahn}) with the boundary of the kinematicaly allowed region $t_{\rm min}$, such that the integration in \Eq{el phase Cahn} is constrained to the physical region only. Their result reads:
+Cahn eventually derived an interference formula for a generic hadronic amplitude and a generic set of form factors. However his formula was expressed in a rather complicated way in terms of an angularly-averaged hadronic amplitude. This issue was circumvented by \KaL{} \bref{kl94}\footnote{%
+The programme of \KaL{} could be described as a derivation of a Coulomb-hadronic interference formula that would be mathematically consistent, consistent in application and computationally fast. By the mathematical consistency we mean that the derivation should not use contradictory assumptions and it should not impose any requirements on the hadronic amplitude. In particular, the formula should allow for hadronic amplitudes with non-constant exponential slope and peripheral phase (for a discussion on the peripheral/central character of elastic collisions see e.g.~\bref{kll81}). By the consistency in application we mean that one formula should be used for all $|t|$ values -- in contrast to a common practice where the low-$|t|$ data are described by the simplified \WaY{} formula while higher-$|t|$ data by the hadronic amplitude only. \KaL{} aimed at a formula that could be used for real data analyses (see e.g.~Sec.~4 in \bref{kl94}) and therefore with a fast implementation in a computer program. That is why they preferred analytical simplifications over heavy numerical calculations.
+}. Moreover they identified Cahn's integration bound $T$ (see \Eq{el phase Cahn}) with the boundary of the physics region of momentum transfer $t_{\rm min}$, such that the integration in \Eq{el phase Cahn} is constrained to the physical region only (see also the discussion above \Eq{el T 1}). Their result reads:
 \eqref{\Ps_{\rm KL}(t) =
 	\mp \int\limits_{t_{\rm min}}^{0} \log {t'\over t}\ {\d\phantom{t'}\over\d t'} G_{\rm eff}^2(t')
 	\pm \int\limits_{t_{\rm min}}^{0} \d t' \left ( {\FH(t')\over \FH(t)} - 1 \right)\, {I(t, t')\over 2\pi}
@@ -316,23 +321,25 @@ Cahn eventually derived an interference formula for a generic hadronic amplitude
 }{el phase KL}
 where
 \eqref{I(t, t') = \int\limits_{0}^{2\pi}\d\ph\ {G_{\rm eff}^2(t'')\over t''}\ ,\qquad t'' = t + t' + 2\sqrt{t t'} \cos\ph\ .}{el KL I}
-The authors used the assumption of vanishing form factors at $t_{\rm min}$. Unfortunately, this makes the connection with Cahn's formula \Eq{el phase Cahn} uneasy. But one can easily recover the lost term and correct the result of \KL{}:
+The authors used the assumption of vanishing form factors at $t_{\rm min}$. While this is (at least numerically) a reasonable move, it prevents from using the formula without form factors (our aim is to make comparisons between the interference formulae with and without including form factors). But one can easily recover the lost term and ``correct'' the result of \KL{} to
 \eqref{\Ps_{\rm CKL}(t) =
 	\mp \int\limits_{T}^{0} \log {t'\over t}\ {\d\phantom{t'}\over\d t'} G_{\rm eff}^2(t')
 	\pm \int\limits_{T}^{0} \d t' \left ( {F^H(t')\over F^H(t)} - 1 \right)\, {I(t, t')\over 2\pi}
 	\pm G_{\rm eff}^2(T)\,\log {t\over T}
 	+ \O{\al}
 }{el phase CKL}
-We will discuss the meaning of the parameter $T$ later on; for the time being we can identify $T = t_{\rm min}$ to recover the formula of \KL{} or let $T\to -\infty$ for Cahn's formula (for no form factor $G_{\rm eff}^2(t) \equiv 1$ one can simplify $I(t, t') = -2\pi / |t' - t|$).
+We will discuss the meaning of the parameter $T$ later on (see the text around \Eq{el T 2}). For the time being we can identify $T = t_{\rm min}$ to recover the formula of \KL{} or let $T\to -\infty$ for Cahn's formula (for no form factor $G_{\rm eff}^2(t) \equiv 1$ one can simplify $I(t, t') = -2\pi / |t' - t|$).
 
-The work of Selyugin \bref{selyugin99} provides a refinement of Cahn's $\nu(t)$ calculation. In contrary to Cahn, Selyugin used the full dipole form factor $F_{\rm d}(t)$. However both calculations were performed on the same level of approximation -- the phase modification has been extracted from oder $\al$ and $\al^2$ contributions to $\FC(t)$. Selyugin's expression for $\nu(t)$ is rather complicated and thus he proposed a simpler form that approximates the full result well:
+The work of Selyugin \bref{selyugin99} provides a refinement of Cahn's $\nu(t)$ calculation. In contrary to Cahn, Selyugin used the full dipole form factor $F_{\rm d}(t)$. However both calculations were performed on the same level of approximation -- the phase modifications were extracted from the order $\al$ and $\al^2$ contributions to $\FC(t)$. Selyugin's expression for $\nu(t)$ is rather complicated and thus he proposed a simpler form that approximates the full result well:
 \eqref{\nu_{\rm Selyugin}(t) = c_1 \log (1 - c_2^2 t),\qquad c_1 = 0.11,\qquad c_2 = 200\un{GeV^{-1}}\ .}{el nu Selyugin}
 
 One of the most recent works on the field of the Coulomb-interference is from Kopeliovich et al. \bref{kopeliovich01}. They aimed at describing proton-carbon collisions and from the beginning they fixed the electromagnetic form factors (exponential) and hadronic model (constant slope and phase).
 
-\caption{Critique and discussion}
+\block{Critique and discussion}
 
 In this part we will review the results summarized above and discuss their validity and the relations among them.
+
+%%%%% critique of F^C calculations %%%%%
 
 The first quantity to review is the Coulomb amplitude. We have pursued two approaches to derive it -- the QED and the eikonal model. While we consider QED the best available tool to describe electromagnetic interactions, we have presented the leading order (OPE) to the scattering amplitude only, see \Eq{el dsdt em}. A natural question could be raised -- is the leading order good enough? An answer can be found in the already quoted works on form factors \bref{arrington07,puckett10}. The authors used two methods for extracting the form factors. One is based on comparing the measured differential cross-section $\d\si/\d t$ with the one expected for point like particles (Mott formula, calculated also in OPE order, see e.g. \bref{chyla}). In the other method a longitudinally polarized electron beam is used and the polarization of the recoil proton is measured (more details e.g. in \bref{gayou02}). Then, these two methods are found to disagree for $|t| \gs 1\un{GeV^2}$ (see e.g. Fig.~2 in \bref{arrington07}). The authors argue that most of the discrepancy disappears if two-photon-exchange (TPE) contributions are included. Moreover these corrections alter mostly the results of the cross-section method (which is very similar to our form-factor application). This leads us to the conclusion that the OPE cross-section presented in \Eq{el dsdt em} is only accurate for $|t|$ below $1\un{GeV^2}$.
 
@@ -344,29 +351,64 @@ The diagrams \Fg{el diagrams2} B and C lead to the renormalization of the proton
 
 The diagram E goes beyond the scope of the QED. It reflects the fact that a photon-interaction can bring the proton to an excited state. In principle, such an excited state can be exchanged instead of a proton in any of the internal fermion propagators in diagrams B, C and D, too. Similarly, the loop in the diagram D can contain any fermion. This makes the calculation of the TPE corrections rather difficult and we refer the reader to the above-quoted papers \bref{arrington07,puckett10}.
 
-\WaY{} used a series of assumptions in deriving their interference phase \Eq{el phase WY}. One of the most limiting was that the phase of the hadronic amplitude is a slowly varying function only. They wrote: ``One can hope, therefore, that in the region where $\Ph(t)$ gets its major contribution, corrections due to the variation of the phase of $F^H(t)$ are not large. Nevertheless, this represents another source of our ignorance whose magnitude cannot be estimated without detailed knowledge of the strong interactions.'' Therefore it makes no sense applying \WaY{} formula to hadronic models with a rapidly varying phase which, unfortunately, is the case for most phenomenological models -- see \Fg{el mod phase}. In such cases, the interference ``phase'' (\rhs{} of \Eq{el phase WY}) turns out complex, however the phase has been derived as an imaginary part of a quantity (thus purely real) -- see \Eq{el wy 6}. The imaginary component of the phase $\Ph_{\rm WY}$ can be seen in \Fg{el cic noff Psi} (right). In similar words, the interference phase of \WaY{} can only be real if the phase of the hadronic amplitude is constant (this theorem has been proved by Kundr\' at et al. \bref{klv07}).
+%%%%% critique of WY formula %%%%%
+
+Let us now turn to the interference formulae. \WaY{} used a series of assumptions in deriving their interference phase \Eq{el phase WY}. One of the most limiting was that the phase of the hadronic amplitude is a slowly varying function only. They wrote: ``One can hope, therefore, that in the region where $\Ph(t)$ gets its major contribution, corrections due to the variation of the phase of $F^H(t)$ are not large. Nevertheless, this represents another source of our ignorance whose magnitude cannot be estimated without detailed knowledge of the strong interactions.'' Therefore it makes no sense applying \WaY{} formula to hadronic models with a rapidly varying phase which, unfortunately, is the case for most phenomenological models -- see \Fg{el mod phase}. In such cases, the interference ``phase'' (\rhs{} of \Eq{el phase WY}) turns out complex, however the phase has been derived as an imaginary part of a quantity (thus purely real) -- see \Eq{el wy 6}. The imaginary component of the phase $\Ph_{\rm WY}$ can be seen in \Fg{el cic noff Psi} (right). In similar words, the interference phase of \WaY{} can only be real if the phase of the hadronic amplitude is constant (this theorem has been proved by Kundr\' at et al. \bref{klv07}).
 
 The simplified \WaY{} formula, \Eq{el phase SWY}, brings yet another assumption -- constant slope $B$, which is undoubtedly ruled out by experimental data. No surprise that the prediction of the simplified formula deviates significantly from the non-simplified one for $|t| \gs 3\cdot 10^{-2}\un{GeV^2}$, see \Fg{el cic noff Psi,el cic diff Psi ff}. We may only wonder why it is still used, see for instance Eq.~2-7 in ATLAS ALFA TDR \bref{alfa}.
 %May be even higher level of ignorance was shown
 Or in works \bref{ppp03,ppp05}. The authors fitted $\rm pp$ and $\rm\bar pp$ scattering data with their own hadronic model and several interference formulae. Even though their model has a non-constant slope (see red curves in \Fg{el mod B}) and non-constant phase (see \Fg{el mod phase}) they used the simplified \WY{} formula. They included Cahn's formula too, but again a simplified version, which assumes a constant slope $B$.
 
-Let's discuss Cahn's interference formula \Eq{el phase Cahn} now. Using his words, he ``abused'' a relation (used it beyond its domain of validity) in deriving the complete Coulomb amplitude \Eq{el cahn 2}. His interference phase is clearly neglecting terms of order $\O{\al}$. Therefore one may naively expect a precision of $\al\approx 1\percent$. However a question is whether some enhancements may appear. In addition, he performed a series of rather benevolent manipulations with terms like $\al \log t/ t'$, where $t'$ is an integration variable ranging from $t_{\rm min}$. Taking some values of interest: $|t| = 1\un{GeV^2}$ and $|t_{\rm min}| \approx s = (7\un{TeV})^2$ yields a correction of $-13\percent$, which is rather important.
+%%%%% critique of Cahn's formula %%%%%
 
-All the above doubts led us to verify Cahn's formula by a numerical calculation based on the eikonal formula \Eq{el F CH eik}. To carry out the calculations we had to use the fictitious photon mass $\la$ non-zero. We have chosen, however, such a low value that it has had no influence on the results in within the $|t|$ range of our interest. To demonstrate this we have used, in fact, three values of $\la$: $10^{-2}$, $10^{-3}$ and $10^{-4}\un{GeV}$. In a great portion of the studied $|t|$ interval the results for all three values coincide. The curves for $\la = 10^{-2} \un{GeV}$ tend to deviate for low $|t|$ values, signalizing that this value is not small enough. There is no relevant difference between the results for $\la = 10^{-3}$ and $10^{-4}\un{GeV}$, which gives us confidence of no $\la$-dependence in these results.
+Let us discuss Cahn's interference formula \Eq{el phase Cahn} now. Using his words, he ``abused'' a relation (his Eq.~(18) used beyond its domain of validity) in deriving the complete Coulomb amplitude \Eq{el cahn 2}. Furthermore, his interference phase is clearly neglecting terms of order $\O{\al}$. Therefore one may naively expect a precision of $\al\approx 1\percent$. However a question is whether some enhancements may appear. In addition, he performed a series of rather benevolent manipulations with terms like $\al \log t/ t'$, where $t'$ is an integration variable ranging from $t_{\rm min}$. Taking some values of interest: $|t| = 1\un{GeV^2}$ and $|t_{\rm min}| \approx s = (7\un{TeV})^2$ yields a correction of $-13\percent$, which is rather important.
 
-\Fg{el cic noff FC} shows our eikonal calculation of the complete Coulomb amplitude $\FC(t)$ with no form factor ($G_{\rm eff}(t) = 1$). Our calculation is in perfect agreement with Cahn's result \Eq{el cahn 2}. When the form factor of Puckett has been used, we have obtained \Fg{el cic diff FC}. It supports the hypothesis of Cahn, that the presence of a form factor modifies mostly the phase of the complete Coulomb amplitude -- its modulus is indistinguishable from the Born approximation. The form-factor-induced modification of the phase, expressed by function $\nu(t)$, is shown in \Fg{el cic diff nu}. One can see that the modification is rather small (it is to be compared with the phase with no form factor, see \Fg{el cic noff FC} right). Cahn's expression for $\nu$ matches with our calculation rather well for $|t| \ls 10^{-2}\un{GeV^2}$, Selyugin's is not too bad up to $0.2\un{GeV^2}$. Let us recall that both expression have been derived assuming the dipole form factor, thus they shall be compared to the red curve.
+The above doubts led us to verify Cahn's formula by a numerical calculation based on the eikonal formula \Eq{el F CH eik}. To carry out the calculations we had to use the fictitious photon mass $\la$ non-zero. We have chosen, however, such a low value that it has had no influence on the results in within the $|t|$ range of our interest. To demonstrate this we have used, in fact, three values of $\la$: $10^{-2}$, $10^{-3}$ and $10^{-4}\un{GeV}$. In a great portion of the studied $|t|$ interval the results for all three values coincide. The curves for $\la = 10^{-2} \un{GeV}$ tend to deviate for low $|t|$ values, signalizing that this value is not small enough. There is no relevant difference between the results for $\la = 10^{-3}$ and $10^{-4}\un{GeV}$, which gives us confidence of no $\la$-dependence in these results.
 
-\fig{fig/pdf/el_cic_noff_F_C.pdf}{el cic noff FC}{Complete Coulomb amplitude calculated with \Eq{el F CH eik}, no form factor used. Left: the modulus of the amplitude calculated with the eikonal formula (for three values of $\la$) compared to the Born approximation \Eq{el coul born ff} (entirely hidden by the green and blue curves). Right: the argument of the amplitude (solid lines) compared to Cahn's $\et(t)$ (dashed lines, often hidden by the solid lines).}
+\Fg{el cic noff FC} shows our eikonal calculation of the complete Coulomb amplitude $\FC(t)$ with no form factor ($G_{\rm eff}(t) = 1$). Our calculation is in perfect agreement with Cahn's result \Eq{el cahn 2} (thus his ``abusing'' formula (18) turns out harmless). When the form factor of Puckett has been used, we have obtained \Fg{el cic diff FC}. It supports the hypothesis of Cahn, that the presence of a form factor modifies mostly the phase of the complete Coulomb amplitude -- its modulus is indistinguishable from the Born approximation. The form-factor-induced modification of the phase $\nu(t)$ is shown in \Fg{el cic diff nu}. One can see that the modification is rather small (it is to be compared with the phase with no form factor, see \Fg{el cic noff FC} right). Cahn's expression for $\nu$ matches with our calculation rather well for $|t| \ls 10^{-2}\un{GeV^2}$, Selyugin's is not too bad up to $0.2\un{GeV^2}$. Let us recall that both expression have been derived assuming the dipole form factor, thus they shall be compared to the red curve. For higher $|t|$ values, neither of the analytic calculations approximates the eikonal calculation well. Apparently, considering contributions up to the order $\al^2$ is not sufficient.
+
+\fig{fig/pdf/el_cic_noff_F_C.pdf}{el cic noff FC}{Complete Coulomb amplitude calculated with \Eq{el F CH eik} at $\sqrt s = 7\un{TeV}$, no form factor used. Left: the modulus of the amplitude calculated with the eikonal formula (for three values of $\la$) compared to the Born approximation \Eq{el coul born ff} (entirely hidden by the green and blue curves). Right: the argument of the amplitude (solid lines) compared to Cahn's $\et(t)$ (dashed lines, often hidden by the solid lines).}
 
 \bmfig
-\fig{fig/pdf/el_cic_diff_F_C.pdf}{el cic diff FC}{[7cm]The modulus of the complete Coulomb amplitude calculated with the eikonal formula and Puckett form factor. The Born curve is overlapped with the green and blue curves.}
+\fig{fig/pdf/el_cic_diff_F_C.pdf}{el cic diff FC}{[7cm]The modulus of the complete Coulomb amplitude calculated for $\sqrt s = 7\un{TeV}$ with the eikonal formula and Puckett form factor. The Born curve is overlapped with the green and blue curves.}
 %
-\fig{fig/pdf/el_cic_diff_nu.pdf}{el cic diff nu}{[7cm]The form-factor-induced Coulomb phase shift $\nu(t)$. Colorful lines calculated with eikonal formula ($\la = 10^{-4}\un{GeV}$).}
+\fig{fig/pdf/el_cic_diff_nu.pdf}{el cic diff nu}{[7cm]The form-factor-induced Coulomb phase shift $\nu(t)$. The colorful lines have been calculated with eikonal formula ($\la = 10^{-4}\un{GeV}$).}
 \emfig
 
-Now we are going to compare the interference phase calculated with the eikonal, \WY{} and (corrected) \KL{} formulae (which includes the one of Cahn as the no-form factor limit). For simplicity, we will use one hadronic model only. We have chosen the model of Bourrely et al. It is one of the models giving a prescription for the hadronic eikonal $\de_{\rm H}(b)$ and therefore \Eq{el F CH eik} can be used directly.
 
-\Fg{el cic noff Psi} compares the interference phases with no form factor used. (On the next page we will show that the most reasonable comparison between $\Ph$ and $\Ps$ phases is $\Ps \sim - \Ph$). The simplified \WY{} formula does not provide a reasonable approximation above $|t| \gs 10^{-2}\un{GeV^2}$. \WY{} and corrected \KL{} results are identical, as they should, however, they are significantly different from our eikonal calculation. We believe that this is a consequence of the $\O{\al}$ approximation in \Eq{el phase WY,el phase Cahn}.
+%So far we have been using only the model of Bourrely et al. It provides a prescription for the hadronic eikonal $\de^{\rm H}(b)$ and therefore it is easy to apply \Eq{el F CH eik}. However, many hadronic models give only an amplitude in the $t$-space $\FH(t)$. Then, the hadronic eikonal $\de^{\rm H}(b)$ could, in principle, be obtained by the inverse Fourier-Bessel transform (cf. \Eq{el eik app F})
+%\eqref{\de^{\rm H}(b) = {1\over 2\i} \log \left[ 1 + {2\i\over s} \int\limits_0^\infty q\ \d q\ J_0(b q)\ \FH(t = -q^2)  \right ]\ .}{el eik app F inv}
+
+Let us mention one conceptual issue of Cahn's interference formula \Eq{el phase Cahn} -- since the lower bound $T$ of the integral shall be taken to $-\infty$, the formula requires the knowledge of the hadronic amplitude $\FH(t)$ also outside the physical region, that is for $t < t_{\rm min}$. The origin of this trouble can be traced back to Cahn's using the eikonal approximation that assumes infinitely high energies (and thus $t_{\rm min} \to -\infty$), see our comments below \Eq{el eik rep}. While this is a serious issue from a theoretical point of view,  it has little practical impact for calculating the Coulomb-interference. Too see this, one should consider the rapid fall off of the hadronic amplitude (it drops by more than six orders of magnitude between $|t|=0$ and $20\un{GeV^2}$, see \Fg{el mod dsdt large}). Moreover the hadronic amplitude enters the interference formula \Eq{el phase Cahn} as the ratio $\FH(t') / \FH(t)$, where $t$ is the point of evaluation and $t'$ is the integration variable. Therefore the ratio becomes negligible when $t'$ is much larger than $t$ -- in other words when $T$ is sufficiently large:
+\eqref{{\FH(t')\over \FH(t)} \approx 0\ , \quad\hbox{ for }\quad t' \gs t + T\ .}{el T 1}
+Assuming that this stays valid even if $t'$ enters the non-physical region\footnote{%
+This can be justified for at least most of the eikonal-formulated hadronic models. Their impact-parameter amplitudes $A(b)$ are typically of a Gaussian-like profile with the RMS of about $1\un{fm}$ (see e.g. Fig.~6.6 in \bref{barone}). The $t$-amplitude can be calculated through \Eq{el eik rep}. For very high $|t|$ values the factor $J_0(b\sqrt{-t})$ becomes a rapidly oscillating function and one may expect a heavy suppression of the integral. No matter whether $t$ falls into the physical or non-physical region. It also explains the fast decrease of the hadronic differential cross-section. 
+}, Cahn's formula \Eq{el phase Cahn} (without form factors) can be recast:
+\eqref{\Ps_{\rm Cahn}(t) =
+\pm \underbrace{\lim\limits_{\ta \to -\infty} \left[
+	\log {t\over \ta}
+	- \int\limits_{\ta}^{T+t} {\d t'\over |t' - t|} \bigg ( \overbrace{\FH(t')\over \FH(t)}^{\approx 0} - 1 \bigg)
+\right]}_{\log {t\over T}}
+\mp \int\limits_{T+t}^{0} {\d t'\over |t' - t|} \left ( {\FH(t')\over \FH(t)} - 1 \right)
++ \O{\al}\ .}{el T 2}
+If $|T| \gg |t|$, one may further neglect $t$ in the lower bound of the second integral: $T+t\rightarrow T$. For example if we put $T=t_{\rm min}$, we may write (still not considering the form factors): $\Ps_{\rm Cahn} \simeq \Ps_{\rm CKL}|_{T=t_{\rm min}} = \Ps_{\rm KL} = - \Ph_{\rm WY}$. This reveals the relation between the four phases and provides the interpretation of the lower bound $T$ in \Eq{el phase CKL}.
+
+Similar steps could be repeated for the interference formulae including form factors with the result that we have already presented in \Eq{el phase CKL}. We see that the lower integration bound $T$ is quite arbitrary -- it only needs to be of a sufficiently high value, such that there is no $T$ dependence in the phase. In our calculations ($\sqrt s = 7 \hbox{ and } 14\un{TeV}$) we have found a value of $T=50\un{GeV^2}$ sufficient.
+
+%%%%% critique of KL formula %%%%%
+
+Now, let us turn our attention to the interference formula of \KaL{}. First we have to make a remark about the eikonal descriptions discussed at the beginning of Sec.~2 in \bref{kl94}. The authors aim at using a mathematically rigorous formulation of the eikonal representation and they refer to works of Adachi et al.~\bref{adachi65,adachi66,adachi66-5,adachi66-2} and Islam \bref{islam67}. As we have mentioned earlier in the block ``Electromagnetic scattering in eikonal description'', the formulation by Adachi et al.~does not provide any relation between the scattering amplitude and the dynamical specification of the studied system. In particular, Eq.~(6) in \bref{kl94} does not follow from their works. This relation is a part of the Islam's eikonal framework. However, this relation as well as the additivity of eikonals (Eq.~(7) in \bref{kl94}) is a direct consequence of the framework's postulates. Moreover, if Islam's optical potential is identified with the traditional potential (as suggested in \bref{islam67}), the predictions of Islam's framework coincide with the classical (called approximate in \bref{kl94}) eikonal approximation (see \Eq{el eik app F,el eik app de}).
+
+Then, the publication \bref{94} contains a miss-print below Eq.~(11) -- the symbol $\Om_{q'}$ stands for the set of all momentum transfers, i.e.~$\mathbb{R}^2$. Otherwise their Eq.~(9) would not hold and their Eqs.~(12) and (13) would not yield Eq.~(14). However later, starting with their Eq.~(17), the symbol $\Om_{q'}$ really refers to the physical region $|\vec q'| < \sqrt{-t_{\rm min}}$. The authors forgot to mention their assumption (motivated by their intuition) that the Coulomb amplitude $\FC$ vanishes outside the physics region of momentum transfers. Taking this assumption the integration regions of the integrals in their Eqs.~(9) and (17) shrink from $\mathbb R^2$ to $\Om_{q'}$. However, strictly speaking, this assumption contradicts their Eq.~(15), where the Coulomb amplitude $\FC(t) \propto 1/t$ does not vanish for $t < t_{\rm min}$. Although it does not strictly vanish, its values are very small. This is even reinforced by the rapid decrease of the hadronic amplitude $\FH(t)$, see \Eq{el T 2}. Therefore one may conclude that the net effect of truncating the integrals in \Eq{el phase KL} at $t_{\rm min}$ is entirely negligible.
+
+Eventually, let us remark that the formula of \KaL{} neglects the form-factor-induced modification of the Coulomb phase $\nu(t)$. However, we have shown that this correction is small -- compare \Fg{el cic diff nu} to \Fg{el cic noff FC} (right) -- and thus has only a marginal impact on the measurable cross-section, see e.g. \Fg{el cic noff Z}.
+
+
+\block{Comparison of interference formulae}
+
+Now we are going to compare the interference phase calculated with the eikonal, \WY{} and (corrected) \KL{} formulae (which includes the one of Cahn as the no-form factor limit). For simplicity, we will use one hadronic model only. We have chosen the model of Bourrely et al. It is one of the models giving a prescription for the hadronic eikonal $\de_{\rm H}(b)$ and therefore \Eq{el F CH eik} can be used directly. All our calculations will be done for the scattering energy $\sqrt s = 7\un{TeV}$.
+
+\Fg{el cic noff Psi} compares the interference phases with no form factor used (as indicated below \Eq{el T 2}, the most reasonable comparison between $\Ph$ and $\Ps$ phases is $\Ps \sim - \Ph$). The simplified \WY{} formula does not provide a good approximation above $|t| \gs 10^{-2}\un{GeV^2}$. \WY{} and corrected \KL{} results are identical, as they should, however, they are significantly different from our eikonal calculation. We believe that this is a consequence of the $\O{\al}$ approximation in \Eq{el phase WY,el phase Cahn}.
 
 \Fg{el cic diff Psi ff} compares the interference phases calculated with different form factors. It shows once again that the approximation of the simplified \WaY{} formula is not admissible for higher $|t|$ values.
 
@@ -399,33 +441,8 @@ $\ze(t) \approx 1$ when both amplitudes are similar and tends to zero if either 
 
 %\TODO{WY wrong, Cahn OK: weird}
 
-So far we have been using only the model of Bourrely et al. It provides a prescription for the hadronic eikonal $\de^{\rm H}(b)$ and therefore it is easy to apply \Eq{el F CH eik}. However, many hadronic models give only an amplitude in the $t$-space $\FH(t)$. Then, the hadronic eikonal $\de^{\rm H}(b)$ could, in principle, be obtained by the inverse Fourier-Bessel transform (cf. \Eq{el eik app F})
-\eqref{\de^{\rm H}(b) = {1\over 2\i} \log \left[ 1 + {2\i\over s} \int\limits_0^\infty q\ \d q\ J_0(b q)\ \FH(t = -q^2)  \right ]\ .}{el eik app F inv}
-However, this equation requires the knowledge of the hadronic amplitude outside the physical region, that is for $t < t_{\rm min}$.
-%\footnote{There might be an interesting parallel between the complications in adopting eikonal and QFT approaches. In the former, one is missing the hadronic amplitude beyond the physical region, in the latter, one is missing the amplitude off mass shell.}
-While this is a serious conceptual issue, it has little practical impact for calculating the Coulomb-interference. It is due to the rapid fall off of the hadronic amplitude (it drops by $\gs 6$ orders of magnitude between $|t|=0$ and $20\un{GeV^2}$, see \Fg{el mod dsdt large}). Moreover the hadronic amplitude enters the interference formula \Eq{el phase Cahn} as a ratio $\FH(t') / \FH(t)$, where $t$ is the point of evaluation and $t'$ is the integration variable. Therefore the ratio must vanish when $t'$ is much larger than $t$ (i.e. $T$ is sufficiently large):
-\eqref{{\FH(t')\over \FH(t)} \approx 0\ , \quad\hbox{ for }\quad t' \gs t + T\ .}{el T 1}
-Assuming that this stays valid even if $t'$ enters the kinematically forbidden region\footnote{%
-This can be justified for at least most of the eikonal-formulated hadronic models. Their eikonal amplitudes ($\equiv \exp(2\i\de(b)) - 1$) are typically of a Gaussian-like profile with the RMS of about $1\un{fm}$ (see e.g. Fig.~6.6 in \bref{barone}). The $t$-amplitude can be calculated through \Eq{el eik app F}. For very high $|t|$ values the factor $J_0(b\sqrt{-t})$ becomes a rapidly oscillating function and one may expect a heavy suppression of the integral. No matter whether $t$ falls into kinematically allow region. It also explains the fast decrease of the hadronic cross-section. 
-}, \Eq{el phase Cahn} yields
-\eqref{\Ps_{\rm Cahn}(t) =
-\pm \underbrace{\lim\limits_{\ta \to -\infty} \left[
-	\log {t\over \ta}
-	- \int\limits_{\ta}^{T+t} {\d t'\over |t' - t|} \bigg ( \overbrace{\FH(t')\over \FH(t)}^{\approx 0} - 1 \bigg)
-\right]}_{\log {t\over T}}
-\mp \int\limits_{T+t}^{0} {\d t'\over |t' - t|} \left ( {\FH(t')\over \FH(t)} - 1 \right)
-+ \O{\al}}{el T 2}
-If $|T| \gg |t|$, then one may neglect $t$ in the lower bound of the second integral: $T+t\rightarrow T$. For example if we put $T=t_{\rm min}$, we obtain the above anticipated relation: $\Ps_{\rm Cahn}(t) = - \Ph_{\rm WY}(t)$. Thus the presence of the limit in Cahn's formula does not make it differ from the one of \WaY.
 
-Similar steps could be repeated for the interference formulae including form factors with the result that we have already presented in \Eq{el phase CKL}. Thus the lower integration bound $T$ is quite arbitrary -- in only needs to be of a sufficiently high value, such that there is no $T$ dependence in the phase. In our calculations ($\sqrt s = 7 \hbox{ and } 14\un{TeV}$) we have found a value of $T=50\un{GeV^2}$ sufficient.
-
-Let's turn to the interference formula of \KaL{} now. The authors realized the issue with the hadronic eikonal $\de^{\rm H}(b)$ and tried to circumvent it by truncating the integrals at $T = t_{\rm min}$. This step, if unjustified, may seem very controversial. Their derivation (based on the work of Cahn) needs, at least formally, infinite lower bound $T\to -\infty$. For example, Cahn's Eq.~(15) in \bref{cahn82} would not hold otherwise. However, it should be clear from the discussion above that thanks to the rapid decrease of the hadronic amplitude, one is allowed to cut the final integral in \Eq{el phase KL} at an appropriate value $T$, such as $t_{\rm min}$. This justifies the step of \KaL.
-
-The formula of \KaL{} possesses another deficiency -- the authors have completely neglected the form-factor-induced modification of the Coulomb phase $\nu(t)$. However, this correction is small, compare \Fg{el cic diff nu} to \Fg{el cic noff FC} (right), with marginal influence on the measurable cross-section, see e.g. \Fg{el cic noff Z}.
-
-\vskip\baselineskip
-\em{Coulomb interference for different hadronic models}
-\vskip\baselineskip
+\block{Coulomb interference for different hadronic models}
 
 So far we have used only the model of Bourrely et al. In the next few plots we will show some interference-related quantities calculated with the formula of \KaL{} (\Eq{el phase KL}) including the form factor of Puckett. \Fg{el mod Z} shows the importance of the interference term. As expected, the peaks occur at the positions of dips and shoulders of the hadronic cross-section, cf. \Fg{el mod dsdt narrow}.
 
@@ -443,7 +460,7 @@ As we have written above, the simplified formula of \WaY{} is still used despite
 
 \fig{fig/pdf/el_mod_R.pdf}{el mod R}{The difference between WY and KL formulae as a function of $t$. Calculated with CKL formula and Puckett form factor.}
 
-\caption{Summary and conclusions}
+\block{Summary and conclusions}
 
 We have reviewed the calculation of Coulomb amplitude. We have found that the influence of proton's magnetic moment can not be neglected for $|t| \gs 0.1\un{GeV^2}$. We have described the scattering amplitude with the help of an effective form factor that combines the electric and magnetic effects relevant for low-$|t|$ elastic scattering.
 

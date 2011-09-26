@@ -41,7 +41,7 @@ TOTEM's physics programme thus sets special requirements for the detector appara
 \fig{fig/pdf/ttm_det_overview.pdf}{ttm det overview}{An overview of the TOTEM detectors. All detectors are installed symmetrically left (sector 45) and right (sector 56) of the interaction point 5 (IP5). Only the \rhs~is shown in the figure. Bottom part: the structure of the LHC around IP5. The vertical boxes represent quadrupole (Q) and dipole (D) magnets. D1 is the separation magnet -- splitting each beam to its proper beam-line, see the \rhs~of the figure. The RP stations at $147$ and $220\un{m}$ are shown by red dots (each dot represents a unit). Upper box: zoomed region (see the guiding dashed lines) around the IP5 -- the telescopes (red) T1 and T2 embedded into the CMS detector (gray). The T1 telescopes are installed inside the CMS end-caps, the T2 telescopes on the outer side of the CMS HF calorimeters.
 }
 
-\caption{Telescopes T1}
+\block{Telescopes T1}
 
 The T1 telescopes are installed inside the CMS end-caps, they extend in the forward areas from $7.5$ to $10.5\un{m}$ on both sides of the interaction point. They cover pseudorapidity regions $3.1 < \et < 4.7$.
 
@@ -57,7 +57,7 @@ tracks. The cathode strips are $4.5\un{mm}$ wide and placed with $5\un{mm}$ pitc
 
 
 
-\caption{Telescopes T2}
+\block{Telescopes T2}
 
 The T2 telescopes are installed in the forward shielding of CMS between the vacuum chamber and the inner shielding of the CMS HF calorimeter, they are centered about $13.5\un{m}$ from the interaction point. The T2 telescopes cover the pseudorapidity region $5.3 < \et < 6.5$.
 
@@ -74,7 +74,7 @@ The GEM detectors are gaseous detectors where the electron multiplication is rea
 \emfig
 
 
-\caption{The RPs system}
+\block{The RPs system}
 
 The system of Roman Pots (RPs) consists of four stations as shown in \Fg{ttm det overview}. Each station (see \Fg{rp station}) is formed by two units. Each unit includes horizontal, top and bottom RP and a Beam Position Monitor (BPM), see \Fg{rp unit}. A Roman Pot itself is shown in \Fg{rp pot}. In order to minimize the material budget in the path of detectable protons, the RP walls are replaced by the thin window around the sensors. Its front face is $500\un{\mu m}$ thick, the face exposed to the beam only $150\un{\mu m}$. Inside each RP, there is a detector package (DP), see \Fg{rp package}. It is package of 5 back-to-back mounted pairs of hybrids. A hybrid is an electronic board carrying an edgeless silicon sensor and four read-out (VFAT) chips, as shown in \Fg{rp hybrid}. Each RP station is followed by a series of Beam Loss Monitors (BLM), the role of which is to monitor the beam losses induced by the RP operations. One of the nearest BLMs is shown in \Fg{rp blm bpm}. Further details on the RP system can be found in Ch.~4 in \bref{totem08}.
 
@@ -261,14 +261,15 @@ The previous parameterization is related to the hadronic amplitude $\FH$. Howeve
 \fig{fig/pdf/ext_smearing.pdf}{ext smearing}{[7cm]The relative difference between cross-sections after and before the resolution smearing. The expected angular resolutions are shown in \Fg{elr 1535 dth} ($1535\un{m}$ optics) and \Fg{elr 90 dth} ($90\un{m}$ optics).}
 \emfig
 
-\caption{Extrapolation for $\be^* = 1535\un{m}$ optics}
+\def\OutlineLabel{Extrapolation for be* = 1535 m optics}
+\block{Extrapolation for $\be^* = 1535\un{m}$ optics}
 
 Since the Coulomb-interaction effects are relevant for this optics and since these effects act on the level of amplitude (not cross-section, see \Sc{el coulomb}), we need to extend the parameterization \Eq{ext M par} to include also a phase component. \Fg{el mod phase} suggests that, for $|t| \ls 0.25\un{GeV^2}$, a polynomial parameterization is adequate again. Thus, the hadronic amplitude can be parameterized as:
 \eqref{\FH(t) = \e^{M(t)} \e^{\i P(t)}\ ,\qquad M(t), P(t) \hbox{ polynomials.}}{ext MP par}
 
 In the rest of this section we will present the main results of an old extrapolation study, made even before the TOTEM offline software (see \Sc{sr}) existed. That is why we used only a simplified MC simulation -- comparable with the fast simulation presented in \Sc{fast simu}, including a simulation of the beam smearing effects similar to \Sc{beam smearing}. The size of the MC sample was chosen to correspond to about a day of data-taking with a realistic luminosity (see \Sc{rp measurement}).
 
-The fitting procedure was based on the parameterization \Eq{ext MP par}. In principle this should be inserted into the Coulomb-interference formulae \Eq{el F CH decomp H,el phase CKL} and cross-section definition \Eq{el dsdt} in order to obtain a full fitting model. However, pursuing this approach would be too time consuming, mainly due to the numerical integrations in \Eq{el phase CKL}. Instead, we performed data fits directly with the parameterization \Eq{ext MP par}, but in several iterations. After each iteration we used the fit parameters to correct the input data for the presence of the Coulomb-interaction. After such a correction, the data effectively corresponded to the hadronic part of the cross-section only.
+The fitting procedure was based on the parameterization \Eq{ext MP par}. In principle this should be inserted into the Coulomb-interference formulae \Eq{el F CH decomp H,el phase CKL} and cross-section definition \Eq{el spinless si} in order to obtain a full fitting model. However, pursuing this approach would be too time consuming, mainly due to the numerical integrations in \Eq{el phase CKL}. Instead, we performed data fits directly with the parameterization \Eq{ext MP par}, but in several iterations. After each iteration we used the fit parameters to correct the input data for the presence of the Coulomb-interaction. After such a correction, the data effectively corresponded to the hadronic part of the cross-section only.
 
 % corrections by iterations: data = U0 (U is uncorrected, C is corrected), guess C0 (e.g. by taking C0 = U0), then iterate: Ci --> Ui --> corr(i) = Ci/Ui --> C(i+1) = U0 * corr(i) and again unless |C(i+1) - C(i)| < threshold
 
@@ -282,7 +283,8 @@ We made a number of fits, trying to find such fit settings that minimize the dev
 
 
 
-\caption{Extrapolation for $\be^* = 90\un{m}$ optics}
+\def\OutlineLabel{Extrapolation for beta* = 90 m optics}
+\block{Extrapolation for $\be^* = 90\un{m}$ optics}
 
 For the $\be^* = 90\un{m}$, the situation is quite different. The acceptance only starts at higher $|t|$ values, where the Coulomb effects can be neglected (see \Fg{ext C}). This means that it is not necessary to include a phase part of the hadronic amplitude $\FH$ as in \Eq{ext MP par} and one can use the parameterization \Eq{ext M par}. 
 
@@ -302,7 +304,7 @@ To test this extrapolation approach, we used the same (simplified) MC simulation
 
 
 
-\caption{Summary}
+\block{Summary}
 
 \> propagation of the errors, the standard table
 \> dN/dt: the worst case

@@ -68,7 +68,7 @@ But before the analysis, let us mention what background contributions we expect.
 {\d\si^{\rm DPE}\over\d\xi_{\rm L} \d t_{\rm L} \d\xi_{\rm R} \d t_{\rm R} } \sim {\e^{b t_{\rm L}}\over \xi^{1+\ep}_{\rm L}} {\e^{b t_{\rm R}}\over \xi_{\rm R}}
 \ .}{felm sd dpe cs}
 
-\caption{The integral}
+\block{The integral}
 
 If $h_{\rm B}(q_1, \ldots , q_6)$ was the distribution of the background events in the six cut quantities, then the number of background events passing the selection cuts would be
 \eqref{N_{\rm B} = \int\limits_{-3\si_1}^{+3\si_1} \d q_1\ \ldots\!\! \int\limits_{-3\si_6}^{+3\si_6} \d q_6\  h_{\rm B}(q_1, \ldots , q_6)\ .}{felm bckg int}
@@ -92,7 +92,7 @@ Besides the double-Gauss fits we have tried single-Gauss fits through the tail d
 N_{\rm B} & 2500 \pm 300 & 2700 \pm 300\cr\bln
 }
 
-\caption{The distribution}
+\block{The distribution}
 
 We will assume that the left and right protons are independent in the background events. First of all, it is a reasonable assumption. For pile-up background (SD, beam-gas) it is evident. For DPE described by the cross-section \Eq{felm sd dpe cs} it holds too. Had we enough background data, we could test this hypothesis, however we will see that the statistics is not rich. Taking the assumption, we can factorize the two-proton distribution $h_{\rm 2p}$ into one-proton distributions $h_{\rm 1p}$:
 \eqref{h_{\rm 2p}(t_x^{\rm L}, t_y^{\rm L}, t_x^{\rm R}, t_y^{\rm R}) = h_{\rm 1p}(t_x^{\rm L}, t_y^{\rm L})\ h_{\rm 1p}(t_x^{\rm R}, t_y^{\rm R})\ .}{felm bckg dist fact}
@@ -138,7 +138,7 @@ $\ch^2/\hbox{ndf}$ & 1.5 & 0.8& 1.1 &\omit\vrule\hfil 0.9\hfil\bvrule & \omit\cr
 \multispan5\bhrulefill&\omit\cr
 }
 
-\caption{The background contribution to the elastic $t$-distribution}
+\block{The background contribution to the elastic $t$-distribution}
 
 Our fit \Eq{felm dist param} determines the two-proton background distribution \Eq{felm bckg dist fact} up to a normalization constant. But this is fixed by the known integral of the background events, see \Tb{felm bckg int result}. This integral gives the number of observed (i.e.~within acceptance) background events that satisfy the selection cuts. It relates to the background distributions as:
 \eqref{\eqnarray{
@@ -214,7 +214,7 @@ The simplified smearing model \Eq{felm unf sm model sim} is technically advantag
 We will now describe two unsmearing methods: a fit-based and a bin-based method. Each of them has advantages and disadvantages. The bin-based method suffers from the bin-content fluctuations which are further reinforced by the unsmearing procedure. A fit may, by its nature, provide smoothing of the data, hence remove the troublesome fluctuations. However, there is a certain arbitrariness of the data description within their errors. It is thus reassuring to find both methods giving compatible results, as we will show at the end.
 
 
-\caption{The fit-based method}
+\block{The fit-based method}
 
 The idea of this method is to describe the data with a function for which the unsmearing (reverse transform \Eq{felm unf sm model sim}) can be done analytically. Moreover, the function shall provide a realistic extrapolation to the low-$\th$ region, where we miss acceptance. In that region we expect the cross-section to be well approximated by $\d\si/\d t \propto \exp(bt)$. This translates into the $\th$-distribution as $h(\th) \propto \th \exp(-bp^2 \th^2)$.
 
@@ -249,7 +249,7 @@ Before we move to the second method, let us verify the validity of the simplifie
 
 \fig{fig/pdf/felm_unfolding_m1_test.pdf}{felm unfolding m1 test}{Our unsmearing result smeared again with the full model \Eq{felm unf sm model}, compared to the input data.}
 
-\caption{The bin-based method}
+\block{The bin-based method}
 
 The idea of this method is to ``learn'' the trend of the smearing corrections by applying several additional (extra) smearing steps, as depicted in \Fg{felm unfolding m2 scheme}. The ultimate correction (from measured to unsmeared distributions) can then be extrapolated from corrections 1 to 3.
 
@@ -266,7 +266,7 @@ The correction functions (compatible with the definition \Eq{felm unf fm sm corr
 \fig{fig/pdf/felm_unfolding_m2_corrections.pdf}{felm unfolding m2 corrections}{[7cm]The smearing correction functions as defined in \Fg{felm unfolding m2 scheme}.}
 \emfig
 
-\caption{Method comparison}
+\block{Method comparison}
 
 The fit-based and bin-based methods are compared in \Fg{felm unfolding m1m2 cmp}. Despite the large fluctuation of the bin-based result, a very good match is evident. The discrepancy at low $\th$ values is practically irrelevant because it falls below the analysis cut (drawn as the dashed line). Generally speaking we trust more the fit-based result, we consider the bin-based method rather as a reassuring cross-check.
 

@@ -370,7 +370,7 @@ The vectors $\De\vec a^n$ and $\De\vec b^n$ are merely an alternative descriptio
 
 In the rest of this section we will identify all singular modes that may appear in the alignment of the RP sensors. We will first focus on the singular modes that arise from the interplay between the geometry of the detector apparatus and the geometry of the tracks. Afterwards we will turn our attention to the singular modes provoked by special (pathological) track distributions.
 
-\caption{Geometrical singular modes}
+\block{Geometrical singular modes}
 
 In this part we will discuss the singular modes corresponding to each alignment quantity class, one by one. But prior to that, let us remark one characteristics of the RP sensors -- all of their nominal read-out directions are parallel (or anti-parallel) to either $U$ or $V$ axes (see \Sc{ttm det}). This could be written as $\vec\d_i \in \{\pm U, \pm V\}$. We will consider a bit more general case, where the sensors, classified by their read-out directions, split into several \em{read-out groups}:
 \eqref{\vec d_i \in \lbrace \pm\vec\de_1, \pm\vec\de_2, \ldots \rbrace \ ,
@@ -471,7 +471,7 @@ The colors correspond to the eigenvalue order (bottom-top). Therefore, when two 
 % Theta 10 mrad, geometry 2.7x3.3, overlap=f
 }
 
-\caption{Pathological track distributions}
+\block{Pathological track distributions}
 
 Besides the singular modes derived above, there could be singular modes arising from special track distributions. One could immediately think of a case where the sensors split into several groups such that no track can go through sensors of different groups at a time. Regarding RPs, this situation may appear when the pots are not inserted close enough and therefore no track can go through the overlap between the vertical and horizontal pots. In this case, the alignment task would split into several smaller tasks (one per group) and for each of them one could write an alignment equation like \Eq{al fit equation}. Each of these equations contains a $\tilde\mat S$ matrix with its singular modes as discussed above. Therefore the number of singular modes gets multiplied by the number of groups.
 
@@ -928,7 +928,7 @@ Two examples of extracting DP alignments can be found in \Fg{al comp rp all rot}
 
 In this section we are going to compare the alignment of sensors within a package (the internal alignment) obtained from three sources. The first one is an optical metrology, the other two are track-based alignment analyses of two types of data -- beam test/cosmic rays and LHC runs.
 
-\caption{Optical metrology}
+\block{Optical metrology}
 
 The position of the sensors with respect to their hybrids was measured during the package assembly. A high-zoom camera was used to photograph each sensor on hits hybrid, which allowed to measure the positions of two sensor fiducial marks with respect to a reference point on the hybrid frame, see \Fg{al optical metrology}. Each coordinate was determined with a precision about $10\un{\mu m}$.
 
@@ -955,7 +955,7 @@ Most of the results will be presented later in comparison with the other methods
 
 Let us repeat that this metrology measured the relative position of a sensor on its hybrid frame. It is only one component of the internal alignment. The other component is the alignment of the hybrid frames in the detector packages. The latter contribution is expected small, but is unfortunately unknown.
 
-\caption{Beam test and cosmic rays runs}
+\block{Beam test and cosmic rays runs}
 
 Every RP was tested with a muon beam or cosmic rays prior to its installation in the LHC. These tests took place at a TOTEM test facility at H8 (a CERN test hall). That is why we will refer to these tests as H8 tests. There was always one RP studied at a time. What will turn out important is that, at H8 the RPs were kept a different temperature than in the LHC.
 
@@ -1018,7 +1018,7 @@ We have used a set of fixed-sensors constraints. First we have tried to constrai
 As suggested in \Sc{al err}, it is a good idea to split the event sample into several subsamples and compare the alignment results among them. In this way one can check for present of problems like data corruption. For the H8 data, we have performed alignment analyses with full sample and two subsamples -- with even and odd event numbers. All results will be shown later, in a comparison to the optical metrology and LHC data alignment analyses.
 
 
-\caption{LHC runs and comparisons}
+\block{LHC runs and comparisons}
 
 We have also analyzed data from a number of 2010 LHC runs (see the list in \Tb{al lhc datasets}). The track-based alignment has been performed in very much the same way as for the H8 runs. \Fg{al comp det per pot dp1 ext2,al comp det per pot dp2 ext2} show the comparisons of the tree internal-alignment methods for two RPs. The former figure represents the RPs with a bad match between the methods, the former shows one of the best matches the we have observed.
 
@@ -1224,7 +1224,7 @@ Let us note that one could build more elastic-selection cuts than presented in \
 
 Since the relations \Eq{al el dxdx,al el dyy,al el x} involve the misalignment parameters, they can be used for alignment too. In the rest of this section we will present several alignment methods. The first one is dedicated to the horizontal alignment, methods two to four to the vertical alignment.
 
-\caption{Method 1}
+\block{Method 1}
 
 This method is based on fitting the parameterization \Eq{al el x} through $y$ vs. $x$ data for each top-bottom RP pair. The fit yields the $a$ and $b$ parameters and the horizontal shift can be calculated as $\De x = a \De y - b$. In principle the vertical shift $\De y$ can be obtained from methods 2-4. If not, one does not make a large error by neglecting the $a\De y$ term. The vertical misalignment is of the order $100\un{\mu m}$ (see \Eq{al window to dp uncer}), the tilts $a$ are about $40\un{mrad}$ (see \Tb{al el yx}). Thus one may expect
 \eqref{\De x = - b + \O{4\un{\mu m}}\ .}{al el m1 de x}
@@ -1257,7 +1257,7 @@ The \Fg{al el plots yx} shows the separate top (red) and bottom (blue) RP fits a
 }
 
 
-\caption{Method 2}
+\block{Method 2}
 
 The vertical distribution of elastic hits shall be symmetric around the position of the beam. This remains true even if the axis of elastic scattering is tilted with respect to $y$ axis. In this case, the $y$ distribution shrinks, but symmetrically around the beam's position.
 
@@ -1282,7 +1282,7 @@ Since the shift $s$ can only be a multiple of the bin size, a half of the bin si
 }
 
 
-\caption{Method 3}
+\block{Method 3}
 
 Since the method 2 could determine the vertical misalignments only for the data from 29-30 October, we had to search for additional methods usable for the other data sets. These additional methods do not resolve completely the vertical misalignments, for example this method (method 3) determines only the relative vertical shift of the near unit with respect to the far one.
 
@@ -1310,7 +1310,7 @@ The results are summarized in \Tb{al el dyy}. For the data set from 29-30 Octobe
 \hbox{29-30 Oct} &  79.6 \pm    0.2&  -1.1 \pm    0.2 \cr\bln
 }
 
-\caption{Method 4}
+\block{Method 4}
 
 \Eq{al el meas} predicts a correlation between $y$ hit positions in sectors 45 and 56:
 
