@@ -13,7 +13,7 @@ thesis.pdf : thesis.tex references.tex $(timestamps) \
 	first_el_measurement.tex
 	@echo "* TeX"
 	@#pdftex -fmt encpdftex -interaction batchmode thesis.tex &> /dev/nul
-	@pdftex -interaction batchmode thesis.tex &> /dev/null || pdftex thesis.tex
+	@pdftex -fmt encpdftex -interaction batchmode thesis.tex &> /dev/null || pdftex -fmt encpdftex thesis.tex
 
 references.tex : references.bib
 	@echo "* bib -> tex"
