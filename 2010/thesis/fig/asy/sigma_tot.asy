@@ -1,7 +1,8 @@
 import pad_layout;
 import settings;
 
-StdFonts();
+//StdFonts();
+fonts8();
 
 void AddPoint(real E, real si, real err)
 {
@@ -15,8 +16,24 @@ pair p = incp.calculateTransform() * truepoint(incp, SW);
 frame incF = shift(-p) * incp.fit();
 
 NewPad("$\sqrt s\un{GeV}$", "$\si_{\rm tot}\un{mb}$");
+real f[] = {10, 100, 1000, 10000};
+real g[] = {1, 1.5, 2, 3, 4, 5, 6, 7, 8, 9};
+
+for (int fi : f.keys)
+	for (int gi : g.keys) {
+		real x = g[gi] * f[fi];
+		draw((log10(x), 30)--(log10(x), 130), (gi == 0) ? blue+0.2pt : blue+0.05pt);
+	}
+
+for (int y = 30; y <= 130; y += 2) {
+	draw((0, y)--(log10(2e4), y), (y % 10 == 0) ? blue+0.2pt : blue+0.05pt);
+}
+
 add(incF, (0.97, 28.9));
 
+
+
+/*
 // ISR
 AddPoint(23.5, 39.1, 0.4);
 AddPoint(30.6, 40.5, 0.5);
@@ -46,6 +63,7 @@ label(rotate(90)*Label("CDF"), (log10(1800), 83), N);
 real e = 1, y = 50, x = log10(14e3);
 draw((x, y+e)--(x, y-e));
 label(rotate(90)*Label("TOTEM error"), (x, y), W);
+*/
 
 limits((1, 30), (4+log10(2), 130), true);
 scale(Log, Linear);
