@@ -189,6 +189,28 @@ sign = +1; draw(graph(SigmaTotFit, 10, 1e5, 100), black);
 sign = -1; draw(graph(SigmaTotFit, 10, 1e5, 100), black);
 //draw(graph(SigmaElFit, 10, 1e5, 100), dashed);
 
+draw(
+(log10(1e2), 47.3).. 
+(log10(2e2), 53.3).. 
+(log10(4e2), 60.5).. 
+(log10(1e3), 72.2).. 
+(log10(2e3), 82.5).. 
+(log10(4e3), 94.6).. 
+(log10(1e4), 112.0).. 
+(log10(2e4), 127.0), dashed 
+);
+
+draw(
+(log10(1e2), 46.2).. 
+(log10(2e2), 51.7).. 
+(log10(4e2), 58.0).. 
+(log10(1e3), 67.3).. 
+(log10(2e3), 73.4).. 
+(log10(4e3), 78.9).. 
+(log10(1e4), 85.0).. 
+(log10(2e4), 88.9), dashed 
+);
+
 // PDG sigma tot data
 DrawDataSet("pbarp_total.dat", heavygreen+0.2pt, mCi);
 DrawDataSet("pp_total.dat", blue+0.2pt, mCi);
@@ -203,6 +225,7 @@ AddToLegend("$\rm pp$ (PDG)", nullpen, mCi+blue+false+1.5pt);
 
 // fit labels
 AddToLegend("best COMPETE fits", black);
+AddToLegend("total COMPETE error", dashed);
 //AddToLegend("parabolic $\si_{\rm el}$ fit", dashed);
 
 // TOTEM data
@@ -211,8 +234,8 @@ DrawPoint(7e3, 98.3, 2.77, 3., red+0.8pt, mCi+true+1.7pt+red);		// tot
 //DrawPoint(7e3, 24.8, 1.26, 1.26, red+0.8pt, mCi+true+1.7pt+red);	// el
 AddToLegend("TOTEM", nullpen, mCi+red+true+1.7pt);
 
-DrawPoint(5e3, 98.3, 0.98, 0.98, magenta+0.8pt, mPl+true+1pt+magenta);		// tot
-label(rotate(90)*Label("\vbox{\hbox{TOTEM}\hbox{ultimate}\hbox{error}}"), (3.75, 100), NW, magenta);
+DrawPoint(7e3, 120, 0.98, 0.98, magenta+0.8pt, mPl+true+1pt+magenta);		// tot
+label(Label("\vbox{\hbox{TOTEM}\hbox{ultimate}\hbox{error}}"), (3.8, 110), NW, magenta);
 
 //label("$\si_{\rm tot}$", (3, 75), black);
 //label("$\si_{\rm el}$", (3, 21), black);

@@ -10,19 +10,13 @@ The TOTEM experiment \bref{totem04,totem08,totem10} is dedicated to measurement 
 \> elastic scattering measurement in a wide $t$-range,
 \> total cross-section measurement and
 \> a study of soft and hard diffraction.
+\vskip\itskip
 
-We have discussed theoretical/phenomenological description of the elastic scattering in \Sc{el}. Looking at the model predictions in \Fg{el mod dsdt large}, one can see differences of several orders of magnitude. TOTEM plans to measure the differential cross-section in the $|t|$-range from about $10^{-3}\un{GeV^2}$ (the domain of Coulomb-hadronic interference) to more than $10\un{GeV^2}$. This large coverage can be achieved by exploiting several running scenarios -- see the end of \Sc{rp measurement}. \TODO{The aimed precision is such that TOTEM will be able to confirm or rule out the model predictions and thus focus the direction of the theoretical research.}
+We have discussed several theoretical/phenomenological descriptions of the elastic scattering in \Sc{el}. Looking at the model predictions in \Fg{el mod dsdt large}, one can see differences of several orders of magnitude. TOTEM plans to measure the differential cross-section in the $|t|$-range from about $10^{-3}\un{GeV^2}$ (the domain of Coulomb-hadronic interference) to more than $10\un{GeV^2}$. This large coverage can be achieved by exploiting several running scenarios -- see the end of \Sc{rp measurement}. The discriminative power of such measurement can already be seen in the first TOTEM results, see \Fg{ttm mod cmp dsdt} in the conclusion chapter.
 
-%\fig{fig/pdf/sigma_tot.pdf}{sigma tot}{Fits from the COMPETE collaboration \bref{cudell02} to all available $\rm pp$ and $\rm \bar pp$ data on the tota%l cross-section. The thick solid line represents the best fit with statistical error band. The dashed lines show the total error band from all models c%onsidered.}
+\fig{fig/pdf/ttm_sigma_tot.pdf}{sigma tot}{The total cross-section as a function of the centre-of-mass energy. The green ($\rm\bar pp$) and blue ($\rm pp$) hollow dots represent the data from PDG \bref{pdg10}. For some of the points we have marked the source experiments (the vertical order of the labels respects the vertical order of the points). The red dot is a recent result from TOTEM \bref{totem11-2}. This new measurement is not included in the COMPETE fits \bref{cudell02}. The solid black line represents their best fit, the dashed lines show the total error band from all models considered. The magenta cross represents the aimed precision of the TOTEM experiment.}
 
-\fig{fig/pdf/ttm_sigma_tot.pdf}{sigma tot}{\TODO{...}
-COMPETE collaboration \bref{cudell02} to all available $\rm pp$ and $\rm \bar pp$ data on the total cross-section.
-The thick solid line represents the best fit. \TODO{added the errors from the other models}
-TOTEM \bref{totem11-2}
-PDG \bref{pdg10}
-}
-
-As much as the model predictions differ for the elastic cross-section, they differ for the total-cross section. From Tab.~2 in \bref{kklp11} one can read a variation between $95$ and $110\un{mb}$. Extrapolations from lower energy measurements, see \Fg{sigma tot}, yield even higher uncertainty: from about $85\un{mb}$ to $120\un{mb}$. TOTEM plans to measure the total cross-section with the luminosity independent method, see \Sc{ttm tcs} for details. This method takes as an input the elastic and inelastic event rates and thus is closely related to the other two points of the physics programme. TOTEM aims at the final precision about $1\percent$, which would provide a decisive answer to many total-cross-related hypothesis.
+As much as the model predictions differ for the elastic cross-section, they differ for the total-cross section. From Tab.~2 in \bref{kklp11} one can read a variation between $95$ and $110\un{mb}$ for the energy of $14\un{TeV}$. Extrapolations from lower energy measurements yield even higher uncertainty: from about $85\un{mb}$ to $120\un{mb}$ (see the dashed lines in \Fg{sigma tot}). TOTEM plans to measure the total cross-section with the luminosity independent method, see \Sc{ttm tcs} for details. This method takes as an input the elastic and inelastic event rates and thus is closely related to the other two items of the physics programme. TOTEM aims at the final precision about $1\percent$, which would provide a decisive answer to many total-cross-related hypothesis.
 
 \Fg{ttm processes} shows typical event topologies for certain diffractive-process classes that TOTEM plans to measure. Looking at the cross-section estimates, one can see that these processes form a large part of the total cross-section. A characteristic property of these processes is the presence of scattering products at very forward directions. Using the definition of pseudorapidity ($\th$ denotes the scattering angle)
 \eqref{\et = - \log \tan {\th\over 2}\ ,}{pseudorapidity}
@@ -232,7 +226,7 @@ Now let us describe the run conditions used for the first elastic scattering mea
 
 \section[ttm tcs]{The total cross-section}
 
-\TODO{An important parameter of the hadronic (strong) interaction is its total cross-section}. This not to be confused with the total cross-section of the proton-proton scattering. The latter is infinite due to the long range of the electromagnetic force. Whenever we write the total cross-section or $\si_{\rm tot}$ we will mean the one due to the hadronic interaction only.
+One of the items on the physics programme of TOTEM is the measurement of the total cross-section. This implicitly means the total cross-section due to the strong (hadronic) interaction only. If the electromagnetic interaction was included, the total cross-section would become infinite (consequence of the long range of the electromagnetic force).
 
 TOTEM plans to use the luminosity-independent method. This method avoids using any luminosity measurement, which is usually subject to a large uncertainty. Instead, the method exploits the optical theorem. If one takes its ``spin-less'' approximation \Eq{el spinless si} and combines it with the definition of luminosity $N = {\cal L} \si$ (relating an event rate $N$ to an cross-section $\si$) and with the decomposition of the total cross-section to the elastic and inelastic part $\si_{\rm tot} = \si_{\rm el} + \si_{\rm inel}$, one obtains:
 \eqref{
@@ -307,16 +301,19 @@ To test this extrapolation approach, we used the same (simplified) MC simulation
 
 \block{Summary}
 
-\> propagation of the errors, the standard table
-\> dN/dt: the worst case
+The uncertainty estimates of the luminosity-independent method can be obtained by error propagation through \Eq{ttm li meth}. Taking the worst cases of the extrapolations from \Fg{ext results 1535,ext results 90} and the other parameter uncertainties from Sec.~6.3 in \bref{totem08} yields \Tb{ext error summary}.
 
-\htab{ext error summary}{bla}{
+\htab{ext error summary}{Uncertainty estimates for the luminosity-independent method.}{
 \multispan2&\multispan2\bhrulefill\cr
 \multispan2	&\omit\bvrule\hfil\bstrut\tskip $\be^* = 90\un{m}$\hfil\tskip & \be^* = 1535\un{m} \cr\bln
-\d N/\d t|_0	& \hbox{Extrapolation of elastic rate to } t = 0 & 4\percent & 0.2 \percent \cr\ln
-N_{\rm el}	& \hbox{Total elastic rate (correlated with extrapolation)} & 2\percent & 0.1\percent \cr\ln
-N_{\rm inel}	& \vbox{\hsize7cm\noindent\strut Total inelastic rate (error dominated by Single Diffractive trigger losses)} & 1\percent & 0.8\percent \cr\ln
-\rh & \vcenter{\hsize7cm\noindent\strut Error contribution from $(1 + \rh^2)$ (using full COMPETE error band)\phantom{g}} &\multispan2\vrule\hfil $1.2\percent$\hfil \cr\bln
-&\hbox{Total for } \si_{\rm tot} & 5\percent & 1\div2\percent \cr\bln
-&\hbox{Total for } {\cal L} & 7\percent & 2\percent \cr\bln
+\d N/\d t|_0	& \vcenter{\hsize7.3cm\noindent\bstrut Extrapolation of elastic rate to $t=0\un{GeV^2}$} & 4\percent & 0.2 \percent \cr\ln
+N_{\rm el}	& \vcenter{\hsize7.3cm\noindent\bstrut Total elastic rate (correlated with extrapolation)} & 2\percent & 0.1\percent \cr\ln
+N_{\rm inel}	& \vcenter{\hsize7.3cm\noindent\bstrut Total inelastic rate (error dominated by Single Diffractive trigger losses)} & 1\percent & 0.8\percent \cr\ln
+\rh & \vcenter{\hsize7.3cm\noindent\bstrut Error contribution from $(1 + \rh^2)$ (using full COMPETE \bref{cudell02} error band)\phantom{g}} &\multispan2\vrule\hfil $1.2\percent$\hfil \cr\bln
+\omit&\omit\bvrule\bstrut\tskip Total for $\si_{\rm tot}$\hfil& 5\percent & 1\div2\percent \cr
+\omit&\multispan3\hrulefill\cr
+\omit&\omit\bvrule\bstrut\tskip  Total for ${\cal L}$\hfil & 7\percent & 2\percent \cr
+\omit&\multispan3\bhrulefill\cr
 }
+
+Since we have used the nominal (expected) optics and beam parameters, these results are of a rather preliminary nature. For instance, the LHC has recently been running with normalized emittances as low as $2 \un{\mu m\ rad}$, which is about a half of the expected value. Also, now it seems that $t_x$ can be reconstructed reasonably well for the $\be^* = 90\un{m}$ optics too (see \bref{totem11-2}). Thus, one could use the same extrapolation method as for the high-$\be^*$ optics. To conclude, we have indications that uncertainty for $90\un{m}$ optics could be significantly lower than what is mentioned in the table.
