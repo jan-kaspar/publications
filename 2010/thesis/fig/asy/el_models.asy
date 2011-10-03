@@ -2,9 +2,10 @@ include root;
 include pad_layout;
 
 StdFonts();
-xSizeDef = ySizeDef = 6.1cm;
+xSizeDef = 6.1cm;
+ySizeDef = 6.1cm;
 
-string base_dir = "/mnt/pctotem31/software/offline/311/user/elastic_models/data";
+string base_dir = "/mnt/pctotem31/software/offline/311.old/user/elastic_models/data";
 
 string[] files = {
 	"3500GeV_0_20_4E3", 

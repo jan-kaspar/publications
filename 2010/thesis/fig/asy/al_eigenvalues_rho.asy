@@ -4,7 +4,7 @@ import root;
 StdFonts();
 
 xSizeDef = 5.5cm;
-ySizeDef = 5.5cm;
+ySizeDef = 5.0cm;
 	
 string[] geometries = {
 //	"RP_V:1.2_H:0.65",

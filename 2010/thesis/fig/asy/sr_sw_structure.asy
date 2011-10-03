@@ -89,10 +89,12 @@ for (int i = 0; i < blocks.length; ++i) {
 
 //----------------------------------------------------------------------------------------------------
 
+real as = 6;
+
 void DrawPath(picture pic, transform t, int i1, int i2)
 {
 	for (int i = i1; i < i2; ++i) {
-		draw(pic, blocks[i].bottom(t)--blocks[i+1].top(t), Arrow);
+		draw(pic, blocks[i].bottom(t)--blocks[i+1].top(t), Arrow(as));
 	}
 }
 
@@ -104,19 +106,19 @@ add(new
 		DrawPath(pic, t, 7, 11);
 		DrawPath(pic, t, 15, 16);
 		
-		draw(pic, blocks[3].bottomright(t)--blocks[4].topleft(t), Arrow);
-		draw(pic, blocks[6].bottomleft(t)--blocks[4].topright(t), Arrow);
-		draw(pic, blocks[4].bottomleft(t)--blocks[7].top(t), Arrow);
-		draw(pic, blocks[4].bottomright(t)--blocks[12].top(t), Arrow);
+		draw(pic, blocks[3].bottom(t)--blocks[4].topleft(t), Arrow(as));
+		draw(pic, blocks[6].bottom(t)--blocks[4].topright(t), Arrow(as));
+		draw(pic, blocks[4].bottomleft(t)--blocks[7].top(t), Arrow(as));
+		draw(pic, blocks[4].bottomright(t)--blocks[12].top(t), Arrow(as));
 
-		draw(pic, blocks[15].bottom(t)--blocks[17].top(t), Arrow);
+		draw(pic, blocks[15].bottom(t)--blocks[17].top(t), Arrow(as));
 		
-		draw(pic, blocks[1].left(t)..{0, -1}blocks[13].top(t), Arrow);
+		draw(pic, blocks[1].left(t)..{0, -1}blocks[13].top(t), Arrow(as));
 		
-		draw(pic, blocks[13].bottom(t)..{1, -0.1}blocks[8].topleft(t), Arrow);
-		draw(pic, blocks[14].bottom(t)..{1, 0}blocks[8].left(t), Arrow);
+		draw(pic, blocks[13].bottom(t)..{1, -0.1}blocks[8].topleft(t), Arrow(as));
+		draw(pic, blocks[14].bottom(t)..{1, 0}blocks[8].left(t), Arrow(as));
 		
-		draw(pic, blocks[9].left(t){-1, 0}..{0, -1}blocks[15].top(t), Arrow);
+		draw(pic, blocks[9].left(t){-1, 0}..{0, -1}blocks[15].top(t), Arrow(as));
 	}
 );
 

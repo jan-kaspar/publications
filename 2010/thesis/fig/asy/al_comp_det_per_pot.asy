@@ -5,7 +5,7 @@ include "../alignment/common_code.asy";
 StdFonts();
 
 xSizeDef = 4.5cm;
-ySizeDef = 4.5cm;
+ySizeDef = 4.0cm;
 
 string opt_dir = "../alignment/optical";
 string tb_dir = "../alignment/testbeam";

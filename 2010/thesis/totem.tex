@@ -16,7 +16,7 @@ As much as the model predictions differ for the elastic cross-section, they diff
 
 \Fg{ttm processes} shows typical event topologies for certain diffractive-process classes that \abb{TOTEM} plans to measure. Looking at the cross-section estimates, one can see that these processes form a large part of the total cross-section. A characteristic property of these processes is the presence of scattering products at very forward directions. Using the definition of pseudorapidity ($\th$ denotes the scattering angle)
 \eqref{\et = - \log \tan {\th\over 2}\ ,}{pseudorapidity}
-it can be rephrased as the presence of scattering products at high pseudorapidity regions. \TODO{...}
+it can be rephrased as the presence of scattering products at high pseudorapidity regions.
 
 \fig{fig/pdf/ttm_processes.pdf}{ttm processes}{Diffractive process classes with a cross-section estimate for the center-of-mass energy $\sqrt s = 14\un{TeV}$. For each class there are two types of diagrams (using the same color code). Left: a Feynman-like diagram showing the nature of the process, with Pomeron exchange (the double lines) as an effective description of the diffraction phenomena. Single external lines denote protons, the tripled outgoing lines represent proton dissociation. Right: a sample hit map in the pseudorapidity ($\et$) vs.~azimuthal angle ($\ph$) space.}
 
@@ -60,7 +60,7 @@ The \abb{T2} telescopes are installed in the forward shielding of \abb{CMS} betw
 
 There is one telescope on each side of \abb{IP}5, see \Fg{t2 installed}. Each telescope consists of two quarters as shown in \Fg{t2 quarter}. Each quarter includes 5 semicircular planes, each equipped with 2 back-to-back mounted Gas Electron Multiplier (\abb{GEM}) detectors. Each detector has an azimuthal coverage of $192^\circ$, therefore there is an overlap between the two quarters within each telescope.
 
-The \abb{GEM} detectors are gaseous detectors where the electron multiplication is realized by three perforated Cu-clad polyimide foils, separated by $2\un{mm}$. The inner radius of the perforation holes is $65\un{\mu m}$, their density lies between $50$ and $100/\un{mm^2}$ \TODO{check}. With an electric field about $3.6 \un{kV/cm}$ between the \abb{GEM} foils, the overall gas overall amplification is roughly $8000$. The \abb{GEM} detectors have double read-out: strips (radial coordinate) and pads (coarse radial and azimuthal). The strip radia range from $43$ to $144\un{mm}$, their width and spacing is $80$ and $400\un{\mu m}$ respectively. The pads, used for triggering, are of sizes from $2\times 2\un{mm^2}$ to $7\times 7\un{mm^2}$. The spatial resolution is about $0.15\un{mm}$ in the radial direction and $0.8^\circ$ in the azimuthal one. Further details can be found in Sec.~5.3 in \bref{totem08}.
+The \abb{GEM} detectors are gaseous detectors where the electron multiplication is realized by three perforated Cu-clad polyimide foils, separated by $2\un{mm}$. The inner radius of the perforation holes is $65\un{\mu m}$, their density lies between $50$ and $100/\un{mm^2}$ \TODO{check}. With an electric field about $3.6 \un{kV/cm}$ between the \abb{GEM} foils, the overall gas amplification is roughly $8000$. The \abb{GEM} detectors have double read-out: strips (radial coordinate) and pads (coarse radial and azimuthal). The strip radia range from $43$ to $144\un{mm}$, their width and spacing is $80$ and $400\un{\mu m}$ respectively. The pads, used for triggering, are of sizes from $2\times 2\un{mm^2}$ to $7\times 7\un{mm^2}$. The spatial resolution is about $0.15\un{mm}$ in the radial direction and $0.8^\circ$ in the azimuthal one. Further details can be found in Sec.~5.3 in \bref{totem08}.
 
 % gas detector, radiation hard, high rate, good spatial, and timing resolution
 
@@ -210,11 +210,10 @@ The rich physics programme of \abb{TOTEM} requires several running scenarios, in
 
 \> The \em{low $\be^*$} scenarios ($\be^*$ between $0.5$ and $3.5\un{m}$) were designed for diffractive studies and large-$|t|$ elastic scattering measurements. They are optimized for high luminosities ${\cal L} \approx 10^{32} \hbox{ -- } 10^{33}\un{cm^{-2}s^{-1}}$ and not for forward proton detection -- the effective lengths at the $220\un{m}$ stations do not exceed $L_x = 2\un{m}$ and $L_y = 20\un{m}$. With the standard normalized emittance $\ep_{\rm N} = 3.75\un{\mu m\ rad}$ the beam divergence is rather large: $\si_{\th^*} \approx 16\un{\mu rad}$. The beam sizes at the $220\un{m}$ are about $\si_x = 0.1\un{mm}$ and $\si_y = 0.3\un{mm}$. The elastic acceptance (green histogram in \Fg{ttm elastic acceptance}) reaches $30\percent$ at $|t_{30}| = 2.5\un{GeV^2}$.
 
-\vskip\itskip
+\fig{fig/pdf/ttm_hit_distribution.pdf}{ttm hit distribution}{Simulated distributions of elastic-scattering protons in the 56-220-far unit, each color corresponds to an optics type. The gray ellipses show $10$ beam sigma contours. The \abb{RP} sensors are placed at $10\si + 0.5\un{mm}$.}
 
 \Fg{ttm hit distribution} illustrates the properties of the three types of optics. The horizontal (vertical) spread of hits is determined by the horizontal effective length $L_x$ (the vertical $L_y$). That is why the $\be^* = 90$ and $2\un{m}$ optics yield very narrow elastic scattering hit distributions. The gray ellipses show $10\si$ contours, thereby controlling the positions of the \abb{RP}s.
 
-\fig{fig/pdf/ttm_hit_distribution.pdf}{ttm hit distribution}{Simulated distributions of elastic-scattering protons in the 56-220-far unit, each color corresponds to an optics type. The gray ellipses show $10$ beam sigma contours. The \abb{RP} sensors are placed at $10\si + 0.5\un{mm}$.}
 
 Now let us describe the run conditions used for the first elastic scattering measurement (the data analysis presented in \Sc{felm}). The center-of-mass energy was $\sqrt s = 7\un{TeV}$ and the standard 2010 \abb{LHC} optics with $\be^* = 3.5\un{m}$ was used. This optics falls into the group of low-$\be^*$ optics (as described above). The vertical effective lengths in the $220\un{m}$ stations (the only stations used for the measurement) lied in the range $L_y = (22 \hbox{ -- } 23)\un{m}$. The horizontal effective lengths were too small for proton reconstruction and thus the horizontal scattering angle $\th_x^*$ was calculated from the horizontal angles $\th_x = (x_{\rm F} - x_{\rm N})/(z_{\rm F} - z_{\rm N})$ measured in each station. These angles are related by the factor $\d L_{x}/\d z$ which had values of about $0.31$ for this optics. A dedicated run with four low-luminosity bunches ($7\cdot10^{10}$ protons per bunch) was used. The normalized emittance was about $2\un{\mu m\ rad}$, which yielded the beam divergence $\si_{\th^*} \approx 17\un{\mu rad}$. For this special run the \abb{RP}s were approached as close as $7\si$ from the beam. This allowed us to measure the elastic differential cross-section down to $|t| = 0.36\un{GeV^2}$.
 
@@ -245,12 +244,12 @@ Looking at the low-$|t|$ elastic cross-section predictions in \Fg{el mod dsdt na
 
 \fig{fig/pdf/ext_B.pdf}{ext B}{The exponential slope as predicted by the models discussed in \Sc{el models}. The vertical dashed lines mark the acceptance starts ($|t_{30}|$ values) for each of the considered optics (see \Sc{rp measurement}).}
 
-The previous parameterization is related to the hadronic amplitude $\FH$. However, the measured $t$-distribution relates to the cross-section due to both hadronic and Coulomb interactions: $\d\si^{\rm C+H}/\d t$ (see \Sc{el coulomb}). Moreover the experimental $t$-distribution is affected by the limited acceptance and detector resolution. These two effects need to be taken into account in the extrapolation procedure. Looking at the \Fg{ext C}, one may conclude that while the effect of the Coulomb interaction is important for the $1535\un{m}$ optics, it is practically negligible for the $90\un{m}$ optics (staying below $|t| \approx 0.25\un{GeV^2}$). It is the other way round for the smearing effects -- negligible for the $1535\un{m}$ and relevant for the $90\un{m}$ optics, see \Fg{ext smearing}.
-
 \bmfig
-\fig{fig/pdf/ext_C.pdf}{ext C}{[7cm]The relative difference between cross-sections with and without the Coulomb interaction (included according to the \KL{} formula \Eq{el phase CKL}). The dashed lines mark the acceptance starts $t_{30}$.}
+\fig{fig/pdf/ext_C.pdf}{ext C}{[7.2cm]The relative difference between cross-sections with and without the Coulomb interaction (included according to the \KL{} formula \Eq{el phase CKL}). The dashed lines mark the acceptance starts $t_{30}$.}
 \fig{fig/pdf/ext_smearing.pdf}{ext smearing}{[7cm]The relative difference between cross-sections after and before the resolution smearing. The expected angular resolutions are shown in \Fg{elr 1535 dth} ($1535\un{m}$ optics) and \Fg{elr 90 dth} ($90\un{m}$ optics).}
 \emfig
+
+The parameterization \Eq{ext M par} is related to the hadronic amplitude $\FH$. However, the measured $t$-distribution relates to the cross-section due to both hadronic and Coulomb interactions: $\d\si^{\rm C+H}/\d t$ (see \Sc{el coulomb}). Moreover the experimental $t$-distribution is affected by the limited acceptance and detector resolution. These two effects need to be taken into account in the extrapolation procedure. Looking at the \Fg{ext C}, one may conclude that while the effect of the Coulomb interaction is important for the $1535\un{m}$ optics, it is practically negligible for the $90\un{m}$ optics (staying below $|t| \approx 0.25\un{GeV^2}$). It is the other way round for the smearing effects -- negligible for the $1535\un{m}$ and relevant for the $90\un{m}$ optics, see \Fg{ext smearing}.
 
 \def\OutlineLabel{Extrapolation for beta* = 1535 m optics}
 \block{Extrapolation for $\be^* = 1535\un{m}$ optics}
@@ -266,11 +265,12 @@ The fitting procedure was based on the parameterization \Eq{ext MP par}. In prin
 
 We made a number of fits, trying to find such fit settings that minimize the deviation of the extrapolated cross-section at $t=0\un{GeV^2}$ from its original value. The parameters to optimize included: the lever-arm (the lower $|t|_{\rm low}$ and upper bound $|t|_{\rm up}$ of the fit), the binning of the input data, the degrees of modulus $M(t)$ and phase $P(t)$ polynomials and the number of Coulomb-correction iterations. We aimed at performing this optimization in a ``model independent way'' -- we used five model variants from \Sc{el models} and tried to minimize the mean extrapolated-original deviation.
 
+\fig{fig/pdf/ext_results_1535.pdf}{ext results 1535}{The extrapolation deviation of the cross-section at $t=0\un{GeV^2}$, as a function of the fit lower bound $|t|_{\rm low}$. The deviation is calculated as (extrapolated - original) / original, where e.g.~original denotes the original (true) value of $\d\si^{\rm H}/\d t|_{0}$.}
+
 \Fg{ext results 1535} shows probably the most interesting result of the study -- the dependence of the extrapolation deviation on the lower bound of the fit. This extrapolation was performed with a cubic modulus polynomial $M(t)$, constant phase polynomial $P(t)$, one Coulomb-correction iteration and the upper bound $|t|_{\rm up} = 0.054\un{GeV^2}$. For most of the models, the deviation lies in a band $\pm 0.2\percent$. The increasing deviation of the model of Islam et al.~might be explained by its exponential slope behavior, see \Fg{ext B}. It is deviating most from a constant value and the polynomial approximation is likely to be less accurate than for the other models.
 
 %\>> discuss the phase: the one percent result might be too good
 
-\fig{fig/pdf/ext_results_1535.pdf}{ext results 1535}{The extrapolation deviation of the cross-section at $t=0\un{GeV^2}$, as a function of the fit lower bound $|t|_{\rm low}$. The deviation is calculated as (extrapolated - original) / original, where e.g.~original denotes the original (true) value of $\d\si^{\rm H}/\d t|_{0}$.}
 
 
 
@@ -289,7 +289,6 @@ This transform can now by applied to the parameterization \Eq{ext M par}. Moreov
 \eqref{{\d\si\over\d t} = e^{a\, +\, bt\, +\, ct^2\, +\, \ldots} \quad\Rightarrow\quad {\d\si\over\d t_y}(t_y) \approx {1\over\sqrt{\pi}}\, {e^{a\, +\, bt_y\, +\, ct_y^2\, +\, \ldots}\over\sqrt{|b\,t_y|}}\ .}{ext dsdt dsdty app}
 
 To test this extrapolation approach, we used the same (simplified) \abb{MC} simulation as for the $1535\un{m}$ optics. The main results are shown in \Fg{ext results 90}. We fitted the $t_y$ distribution with the parameterization \Eq{ext dsdt dsdty app} to extract the $a$ parameter, which determines the cross-section at $t=0\un{GeV^2}$. The fits were carried out on intervals from $|t_y|_{\rm low}$ (horizontal axis) to $|t_y| = 0.25\un{GeV^2}$. No attempt was made to correct for the smearing effects, which results to the overall offset $-2\percent$. But there is no problem to include such a correction in future. Most models fall in a band $\pm 1\percent$ around the offset $-2\percent$. The model of Islam et al.~deviates a bit more. Looking back to \Fg{ext B} one can see the exponential slope $B(t)$ being more curved for the model of Islam than for the others. Therefore the approximation \Eq{ext dsdt dsdty app} is less accurate for this model.
-
 
 \fig{fig/pdf/ext_results_90.pdf}{ext results 90}{The extrapolation deviation as a function of the fit lower bound $|t_y|_{\rm low}$. The deviation is calculated as (extrapolated - original) / original, where e.g.~original denotes the original (true) value of $\d\si^{\rm H}/\d t|_{0}$.}
 

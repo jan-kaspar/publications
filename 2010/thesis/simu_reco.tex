@@ -48,7 +48,7 @@ The simulation process starts with generation of particles at the interaction po
 
 Elegent is an acronym for ELastic Event GENeraTor. It generates elastic $\rm pp$ and $\rm\bar pp$ collisions with $\d\si/\d t$ distributions according to the four phenomenological models discussed in \Sc{el models}.
 
-The package consists of two components. The first one prepares a set of cumulative distribution functions (\abb{CDF}s). This set is saved as a ROOT file and corresponds to a chosen energy ($\sqrt s$) and interaction type $\rm pp$ or $\rm \bar pp$. For each of the six model variants from \Sc{el models}, four cdfs.~are calculated: ignoring the Coulomb interaction and treating the Coulomb-hadronic interference according to the West-Yennie (\Eq{el phase WY}), simplified West-Yennie (\Eq{el phase SWY}) and (corrected) Kundr\' at-Lokaj\' i\v cek (\Eq{el phase CKL}) approaches.
+The package consists of two components. The first one prepares a set of cumulative distribution functions (\abb{CDF}s). This set is saved as a ROOT file and corresponds to a chosen energy $\sqrt s$ and interaction type $\rm pp$ or $\rm \bar pp$. For each of the six model variants from \Sc{el models}, four cdfs.~are calculated: ignoring the Coulomb interaction and treating the Coulomb-hadronic interference according to the West-Yennie (\Eq{el phase WY}), simplified West-Yennie (\Eq{el phase SWY}) and (corrected) Kundr\' at-Lokaj\' i\v cek (\Eq{el phase CKL}) approaches.
 
 The second package component loads a chosen \abb{CDF} and generates random elastic events (the inversion method is used, see e.g.~Sec.~2.2 in \bref{lemieux}), which are stored in the HepMC format \bref{hepmc}.
 
@@ -97,7 +97,9 @@ To summarize, if $(E|\vec p)_{\rm MC}$ is the four-momentum of a particle produc
 
 The above formula provides a method to apply angular and energy smearing to events from \abb{MC} generators. What is still missing is a specification of the $\vec\be$, $\vec a$, $\om$ and $\ch$ distributions. But these can be calculated from the beam-smearing parameters as discussed in \Sc{rp measurement}. Considering the crossing angle $\al$, see \Fg{smearing angular energy}, one can parameterize the momenta of the incident particles as
 \eqref{\vec p_i = \pm p_{\rm nom}\,(1 + \xi_i)\,\pmatrix{\cos\al & 0 & \mp \sin\al\cr 0 & 1 & 0 \cr \pm\sin\al & 0 & \cos\al\cr}\,\pmatrix{C_i\cr S_i\cr \sqrt{1 - C_i^2 - S_i^2}}\ ,}{sm momenta par}
-where $i = 1, 2$ and the upper (bottom) sign corresponds to particle 1 (2). The $C_i$ and $S_i$ parameters describe the angular smearing in the horizontal ($x$) and vertical ($y$) projections. According to \Eq{ttm beam div}, they can be assigned Gaussian distributions \TODO{ref for gaussian} with a of spread $\si_{\th^*}$. In fact, the tails of the distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_{\th^*} \ll 1$, the effect is negligible. The $\xi$ parameter accounts for the energy smearing, the expected distribution is a Gaussian with mean $\bar\xi$ and variance $\si_\xi^2$, see \Eq{ttm energy off,ttm energy fl}.
+where $i = 1, 2$ and the upper (bottom) sign corresponds to particle 1 (2). The $C_i$ and $S_i$ parameters describe the angular smearing in the horizontal ($x$) and vertical ($y$) projections. According to \Eq{ttm beam div}, they can be assigned Gaussian distributions
+%\TODO{ref for gaussian}
+with a of spread $\si_{\th^*}$. In fact, the tails of the distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_{\th^*} \ll 1$, the effect is negligible. The $\xi$ parameter accounts for the energy smearing, the expected distribution is a Gaussian with mean $\bar\xi$ and variance $\si_\xi^2$, see \Eq{ttm energy off,ttm energy fl}.
 
 The smearing software module uses the above distributions and the parameterization \Eq{sm momenta par} to generate the smearing parameters and \Eq{sm mc to lab} to apply the smearing to \abb{MC} generated events.
 
@@ -138,7 +140,8 @@ The leading $\ga$ factor on the \rhs~of \Eq{sm density2} is needed to preserve t
 The density for the first bunch can be obtained analogically:
 \eqref{\rh_1(x, y, z; t) = \ga\, \rh_0\Big(x\cos\al + z\sin\al, y, \ga(z\cos\al - x\sin\al - vt) \Big)\ .}{sm density1}
 
-The Lorentz-contracted particle density of each bunch can well be approximated by a Gaussian \TODO{reference}
+The Lorentz-contracted particle density of each bunch can well be approximated by a Gaussian
+%\TODO{reference}
 \eqref{\ga \rh_0(x, y, \ga z) \propto \exp\left(-{ x^2\over 2\si_{x^*}^2}-{ y^2\over 2\si_{y^*}^2}-{ z^2\over 2\si_{z^*}^2}\right),}{sm density}
 where the spreads $\si_{x^*}, \si_{y^*}$ and $\si_{z^*}$ refer to the bunch dimensions in the \abb{LAB} frame (cf.~\Eq{ttm vertex sm}).
 
@@ -208,6 +211,7 @@ threshold& 2.99\cr\ln
 
 \fig{fig/pdf/sr_pattern_reco_ex.pdf}{sr pattern reco ex}{An example of the pattern recognition (run 3230, file 0, event 111, 45-220-near unit). Left: a track plus noise in the bottom pot ($V$ sensors). Right: many tracks in the horizontal pot ($V$ sensors). The red lines correspond to the recognized patterns.}
 
+\eject %!
 \section[elr]{Reconstruction of elastic events}
 
 In the note \bref{el reco} the author of this thesis described a module performing a reconstruction of elastic events. It is a light-weight alternative to the inelastic proton reconstruction (see Sec.~8.2 in \bref{hubert}). The primary aim of this study (performed during the simulation phase of the experiment) was to quantify the capabilities of the \abb{RP} system with various optics. Here in this section, we will present an update to that note. One of the main differences is the use of a more accurate beam smearing description (as presented in \Sc{beam smearing}). Compared to the old study, the beam divergence has effectively increased by a factor of $\sqrt 2$ (cf. Eq.~(17) in \bref{smearing}).
@@ -348,9 +352,8 @@ The analytical estimate \Eq{elr t err sig} for the $t$-resolution, drawn in \Fg{
 
 The data quality monitor (Totem\abb{DQM}) is an interactive program that can visualize all steps of data processing. It has been designed for data quality control during data acquisition, but it has also proved very useful for visual event scanning (inspection of events' details such as hit topologies) and for software tuning and debugging.
 
-The Totem\abb{DQM} provides a multi-window/tab user interface, each of the windows contains a configurable grid of plots, see an example in \Fg{dqm ex}. The plots can be either \em{cumulative} (built from the whole event sample) of \em{event-related} (showing details of a chosen event). Cumulative plots are for example $U$ and $V$ hit profiles (bottom-right window in \Fg{dqm ex}) or $xy$ hit maps (top-right window). Several event-related plots are shown in the background window (left-hand side): track fits in $U$ and $V$ projections and a $3D$ view of the fitted track within the detector package.
-
-
 \fig[\the\hsize]{fig/external/dqm.png}{dqm ex}{A screen shot of several Totem\abb{DQM} windows.}
+
+The Totem\abb{DQM} provides a multi-window/tab user interface, each of the windows contains a configurable grid of plots, see an example in \Fg{dqm ex}. The plots can be either \em{cumulative} (built from the whole event sample) of \em{event-related} (showing details of a chosen event). Cumulative plots are for example $U$ and $V$ hit profiles (bottom-right window in \Fg{dqm ex}) or $xy$ hit maps (top-right window). Several event-related plots are shown in the background window (left-hand side): track fits in $U$ and $V$ projections and a $3D$ view of the fitted track within the detector package.
 
 The Totem\abb{DQM} is fully integrated in the \abb{TOTEM} offline software. Its predecessor (Monitor) is a simpler and standalone program of similar kind. It was and still is used for low (\abb{VFAT}) level tests such as \abb{RP} sensor production tests or system calibrations before data-taking.
