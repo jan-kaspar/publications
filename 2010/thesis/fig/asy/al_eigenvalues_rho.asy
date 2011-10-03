@@ -162,23 +162,29 @@ void MakeFile(string g, string t, string what, int o)
 
 		if (op == 0) {
 			label("\vtop{\hbox{\bf shitfs in the read-out direction}}", (5, 6), S+3E);
-			label("$\}$ four singular modes ("+Ref("eq:al sm shr sol")+")", (5, -12.5), 3E);
+			label("$\}$ 4 singular modes ("+Ref("eq:al sm shr sol")+")", (5, -12.5), 3E);
 		}
 		
 		if (op == 1) {
 			label("\vtop{\hbox{\bf shitfs in the read-out direction}\hbox{\bf and rotations}}", (5, 6), S+3E);
-			label("singular mode ("+Ref("eq:al sm rotz sol")+") with $\De\rh$ different for $U$ and $V$", (5, -1.5), 3E);
-			label("$\Big\rbrace$ \raise2pt\vbox to0pt{\vss\hbox{singular modes ("+Ref("eq:al sm shr sol")+") and}"+
-				"\hbox{singular mode ("+Ref("eq:al sm rotz sol")+") with $\De\rh$ equal for $U$ and $V$}\vss}", (5, -11.5), 3E);
+
+			label("\raise2pt\vbox to0pt{\vss\hbox{1 singular/weak mode ("+Ref("eq:al sm rotz sol")+")}"+
+				"\hbox{with $\De\rh$ different for $U$ and $V$}\vss}", (5, -1.5), 3E);
+
+			label("$\Big\rbrace$ \raise2pt\vbox to0pt{\vss\hbox{4 singular modes ("+Ref("eq:al sm shr sol")+") and}"+
+				"\hbox{1 singular mode ("+Ref("eq:al sm rotz sol")+") with $\De\rh$ equal for $U$ and $V$}\vss}", (5, -11.5), 3E);
 		}
 		
 		if (op == 2) {
 			label("\vtop{\hbox{\bf shitfs in the read-out direction,}\hbox{\bf rotations and $z$-shifts}}", (5, 6), S+3E);
-			label("singular mode ("+Ref("eq:al sm rotz sol")+") with $\De\rh$ different for $U$ and $V$", (5, -1), 3E);
-			label("\vbox{\hbox{singular modes ("+Ref("eq:al sm shz sol 2g")+") with $\al$ and $\be$}\hbox{different for $U$ and $V$}}", (5, -6.5), 3E);
-			label("$\Bigg\rbrace$ \raise4pt\vbox to0pt{\vss\hbox{singular modes ("+Ref("eq:al sm shr sol")+"),}"+
-				"\hbox{singular mode ("+Ref("eq:al sm rotz sol")+") with $\De\rh$ equal for $U$ and $V$}"+
-				"\hbox{and singular modes ("+Ref("eq:al sm shz sol 3g")+")}\vss}", (5, -12.5), 3E);
+
+			label("\raise2pt\vbox to0pt{\vss\hbox{1 singular/weak mode ("+Ref("eq:al sm rotz sol")+")}"+
+				"\hbox{with $\De\rh$ different for $U$ and $V$}\vss}", (5, -1.5), 3E);
+
+			label("\vbox{\hbox{2 singular modes ("+Ref("eq:al sm shz sol 2g")+") with $\al$ and $\be$}\hbox{different for $U$ and $V$}}", (5, -6.5), 3E);
+			label("$\Bigg\rbrace$ \raise4pt\vbox to0pt{\vss\hbox{4 singular modes ("+Ref("eq:al sm shr sol")+"),}"+
+				"\hbox{1 singular mode ("+Ref("eq:al sm rotz sol")+") with $\De\rh$ equal for $U$ and $V$}"+
+				"\hbox{and 2 singular modes ("+Ref("eq:al sm shz sol 3g")+")}\vss}", (5, -12.5), 3E);
 		}
 	}
 }

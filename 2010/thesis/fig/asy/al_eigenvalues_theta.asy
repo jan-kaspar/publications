@@ -39,6 +39,42 @@ int N = 120;
 
 //----------------------------------------------------------------------------------------------------
 
+string ref_lab[], ref_val[];
+
+int LoadReference(string filename)
+{
+	file f = input(filename, false);
+	if (error(f))
+		return 1;
+
+	while (!eof(f)) {
+		string line = f;
+		string bits[] = split(line, "{");
+
+		if (bits.length != 3 || bits[0] != "\makecom")
+			continue;
+		
+		ref_lab.push(replace(bits[1], "}", ""));
+		ref_val.push(replace(bits[2], "}", ""));
+	}
+	
+	return 0;
+}
+
+string Ref(string lab)
+{
+	for (int i : ref_lab.keys) {
+		if (ref_lab[i] == lab)
+			return ref_val[i];
+	}
+
+	return "?"+lab+"?";
+}
+
+LoadReference("../../thesis.ref");
+
+//----------------------------------------------------------------------------------------------------
+
 guide[] GetGraphs(string dir)
 {
 	guide[] graphs;
@@ -160,11 +196,11 @@ for (int o: options.keys) {
 	label("almost parallel $\longrightarrow$ non-parallel tracks", (-5, 6), -S);
 
 	if (o == 0) {
-		label(rotate(37)*Label("sing. modes (4.52)"), (-6, -5));
+		label(rotate(37)*Label("modes ("+Ref("eq:al sm rotz sol la")+")"), (-6, -5));
 	}
 
 	if (o == 1) {
-		label(rotate(20)*Label("weak modes (4.52)"), (-6.3, -3));
+		label(rotate(20)*Label("modes ("+Ref("eq:al sm rotz sol la")+")"), (-6.3, -3));
 	}
 }
 

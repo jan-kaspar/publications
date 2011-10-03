@@ -22,7 +22,7 @@
 	% to show labels
 	\ShowLabelstrue \advance\hoffset-1.5cm
 \else
-	\def\FootText{(VERSION 11)}
+	\def\FootText{(VERSION 12)}
 \fi
 
 \def\pmt#1{{\tt #1}}
@@ -120,14 +120,14 @@ Autor:					& Jan Kašpar\cr
 Katedra:				& Ústav částicové a jaderné fyziky\cr
 Vedoucí doktorské práce:& RNDr.~Vojtěch Kundrát, DrSc., Fyzikální ústav AV ČR, v.~v.~i.\cr
 						& Mario Deile, PhD, CERN, Ženeva\cr
-Abstrakt:				& [abstract of 80-200 words in Czech]\cr
+Abstrakt:				& \TODO{přeložit anglický abstrakt}\cr
 Klíčová slova:			& elastický rozptyl protonů, TOTEM, římské hrnce, alignment\cr
 }
 \egroup
 
 \vfil
 
-\halign{\hbox to 5.4cm{\strut#\hss\ }&\vtop{\advance\hsize-5.4cm\noindent#}\cr
+\halign{\hbox to 5.4cm{\strut#\hss\ }&\vtop{\advance\hsize-5.4cm\noindent\strut#\strut}\cr
 Title:		& Elastic scattering at the LHC\cr
 Author:		& Jan Ka\v spar\cr
 Departement:& Institute of Particle and Nuclear Physics\cr
@@ -135,9 +135,7 @@ Supervisors of the doctoral thesis:& RNDr.~Vojt\v ech Kundr\' at, DrSc., Institu
 			& Mario Deile, PhD, CERN, Geneva\cr
 %Abstract:	& [abstract of 80-200 words in English]\cr
 Abstract:	& 
-The elastic scattering of protons is the simplest $\rm pp$ interaction possible, however, it still presents a challenge for the theory. In this thesis we discuss the elastic scattering from theoretical as well as experimental point of view. In the theory part, we present several models and their predictions for the LHC. We also discuss the Coulomb-hadronic interference, where we present a new eikonal calculation to all orders of $\al$, the fine-structure constant. In the experimental part we introduce the TOTEM experiment which is dedicated, among others, to the measurement of the elastic scattering at the LHC. This measurement is performed primarily with Roman Pot (RP) detectors -- movable beam-pipe insertions hundreds of meters from the interaction point, that can detect protons scattered to very small angles. We discuss some aspects of the RP simulation and reconstruction software. A great detail is devoted to the technique of RP alignment -- a method of determination of the relative positions among the RP sensors and their position with respect to the beam. The thesis terminates with a presentation of the analysis of the first elastic scattering measurement at the LHC, made by TOTEM.
-
-\cr
+The elastic scattering of protons is the simplest $\rm pp$ interaction possible, however, it still presents a challenge for the theory. In this thesis we discuss the elastic scattering from theoretical as well as experimental point of view. In the theory part, we present several models and their predictions for the LHC. We also discuss the Coulomb-hadronic interference, where we present a new eikonal calculation to all orders of $\al$, the fine-structure constant. In the experimental part we introduce the TOTEM experiment which is dedicated, among others, to the measurement of the elastic scattering at the LHC. This measurement is performed primarily with the Roman Pot (RP) detectors -- movable beam-pipe insertions hundreds of meters from the interaction point, that can detect protons scattered to very small angles. We discuss some aspects of the RP simulation and reconstruction software. A great detail is devoted to the technique of RP alignment -- a method of determination of the relative positions among the RP sensors and their positions with respect to the beam. At the end we present the analysis of TOTEM's first elastic scattering measurement at the LHC.\cr
 %Keywords:	& [ 3-5 keywords in English]\cr
 Keywords:	& elastic scattering of protons, TOTEM, Roman Pots, alignment\cr
 }
@@ -177,34 +175,59 @@ Keywords:	& elastic scattering of protons, TOTEM, Roman Pots, alignment\cr
 
 \SpecialChapter{List of Abbreviations}
 
-\DefAbb{ALFA}{}{}
-\DefAbb{ATLAS}{}{}
-\DefAbb{BFKL}{Balitsky-Fadin-Kuraev-Lipatov}{Resumation of gluon ladders leading to a ``hard pomeron'', see e.g. Ch.~8 in [\abref{barone}].}
-\DefAbb{BLM}{Beam Loss Monitor}{}
-\DefAbb{BPM}{Beam Position Monitor}{}
-\DefAbb{CERN}{Conseil Europ\' eenne pour la Recherche Nucl\' eaire}{European Organization for Nuclear Research in Geneva.}
-\DefAbb{CKL}{corrected Kundr\' at-Lokaj\' i\v cek}{Refers to the Coulomb-interference formula Eq.~\ref{el phase CKL}.}
-\DefAbb{CMS}{Center Of Mass reference system}{}
-\DefAbb{HP}{Hard Pomeron}{A version of the model of Islam et al., see Sec.~\sref{el models}.}
-\DefAbb{IR}{InfraRed}{}
-\DefAbb{KL}{Kundr\' at-Lokaj\' i\v cek}{Refers to the Coulomb-interference formula Eq.~\ref{el phase KL}.}
-\DefAbb{LHC}{Large Hadron Collider}{The largest collider in the world.}
-\DefAbb{LxG}{Low-$x$ gluons}{A version of the model of Islam et al., see Sec.~\sref{el models}.}
-\DefAbb{LVDT}{Linear Voltage Differential Transformator}{A device that determines positions of TOTEM Roman Pots.}
-\DefAbb{OPE}{One Photon Exchange}{An approximation in QED.}
-\DefAbb{QED}{Quantum ElectroDynamics}{}
-\DefAbb{QFT}{Quantum Field Theory}{}
-\DefAbb{QCD}{Quantum ChromoDynamics}{}
-\DefAbb{QM}{Quantum Mechanics}{}
-\DefAbb{RMS}{Root Mean Square}{}
-\DefAbb{RP}{Roman Pot}{A a pot-shaped movable beam-pipe insertion, see Sec.~\sref{ttm det}.}
-\DefAbb{SWY}{Simplified West-Yennie}{Refers to the Coulomb-interference formula Eq.~\ref{el phase SWY}.}
-\DefAbb{TDR}{Technical Design Report}{}
-\DefAbb{TOTEM}{TOTal and Elastic Measurements}{An LHC experiment focused on the forward hadronic phenomena.}
-\DefAbb{TPE}{Two Photon Exchange}{An approximation in QED.}
-\DefAbb{WY}{West-Yennie}{Refers to the Coulomb-interference formula Eq.~\ref{el phase WY}.}
+\ListAbb{ALICE}{A Large Ion Collider Experiment}{An LHC experiment.}
+\ListAbb{ALFA}{Absolute Luminosity For Atlas}{The very forward tracker system of the ATLAS detector.}
+\ListAbb{ATLAS}{A Toroidal LHC Apparatus}{An LHC experiment.}
+\ListAbb{BFKL}{Balitsky-Fadin-Kuraev-Lipatov}{Resumation of gluon ladders leading to a ``hard pomeron'', see e.g.~Ch.~8 in \bref{barone}.}
+\ListAbb{BLM}{Beam Loss Monitor}{A device to detect beam losses.}
+\ListAbb{BPM}{Beam Position Monitor}{A device to determine the position of the beam.}
+\ListAbb{CDF}{Cumulative Distribution Function}{}
+\ListAbb{CERN}{Conseil Europ\' eenne pour la Recherche Nucl\' eaire}{European Organization for Nuclear Research in Geneva.}
+\ListAbb{CKL}{corrected \KL}{Refers to the Coulomb-interference formula \Eq{el phase CKL}.}
+\ListAbb{CM}{Center Of Mass}{Used to refer to the center-of-mass reference frame.}
+\ListAbb{CMS}{the Compact Muon Solenoid}{An LHC experiment.}
+\ListAbb{CSC}{Cathode Strip Chamber}{A type of gaseous particle detectors, see \Sc{ttm det}.}
+\ListAbb{CTS}{Current Terminating Structure}{A ring structure along the active of edge of the TOTEM silicon sensors, see \Sc{ttm det}.}
+\ListAbb{DAQ}{Data AcQusition}{A system to collect data from detectors and save them in a computer storage.}
+\ListAbb{DIGI}{DIGItal}{A format of data as received from the VFAT chips, i.e.~one boolean value (hit/no hit) per detector channel.}
+\ListAbb{DP}{Detector Package}{A package of ten hybrids with silicon detectors, see \Sc{ttm det}.}
+\ListAbb{DPE}{Double Pomeron Exchange}{A class of diffractive processes, see \Fg{ttm processes}.}
+\ListAbb{DQM}{Data Quality Monitor}{A computer program to inspect the quality of data being acquired.}
+\ListAbb{GEM}{Gas Electron Multiplier}{A type of gaseous particle detectors, see \Sc{ttm det}.}
+\ListAbb{H8}{}{A test hall at CERN, where TOTEM detectors were/are tested.}
+\ListAbb{HP}{Hard Pomeron}{A version of the model of Islam et al., see Sec.~\sref{el models}.}
+\ListAbb{IP}{Interaction Point}{The point where the two beams collide.}
+\ListAbb{IR}{InfraRed}{Generally used to refer to a low-energy region.}
+\ListAbb{KL}{\KL}{Refers to the Coulomb-interference formula Eq.~\ref{el phase KL}.}
+\ListAbb{LAB}{LABoratory frame}{A reference frame bound to the laboratory, e.g.~the accelerator}
+\ListAbb{LS}{the method of Least Squares}{}
+\ListAbb{MC}{Monte Carlo}{A technique of random number generation, integral calculations or physics simulations.}
+\ListAbb{LHC}{Large Hadron Collider}{The world's largest and most powerful collider.}
+\ListAbb{LHCb}{Large Hadron Collider beauty}{An LHC experiment.}
+\ListAbb{LHCf}{Large Hadron Collider forward}{An LHC experiment.}
+\ListAbb{LxG}{Low-$x$ gluons}{A version of the model of Islam et al., see Sec.~\sref{el models}.}
+\ListAbb{LVDT}{Linear Voltage Differential Transformer}{A device that determines the positions of TOTEM Roman Pots.}
+\ListAbb{OPE}{One Photon Exchange}{An approximation in QED.}
+\ListAbb{QED}{Quantum ElectroDynamics}{}
+\ListAbb{QFT}{Quantum Field Theory}{}
+\ListAbb{QCD}{Quantum ChromoDynamics}{}
+\ListAbb{QM}{Quantum Mechanics}{}
+\ListAbb{RECO}{RECOnstruced}{A format of data consisting of coordinate specifications of every reconstructed hit cluster.}
+\ListAbb{RMS}{Root Mean Square}{}
+\ListAbb{RP}{Roman Pot}{A a pot-shaped movable beam-pipe insertion with detectors. A system of Roman Pots is one sub-detector of the TOTEM experiment, see \Sc{ttm det}.}
+\ListAbb{SD}{Single Diffraction}{A class of diffractive processes, see \Fg{ttm processes}.}
+\ListAbb{SWY}{Simplified West-Yennie}{Refers to the Coulomb-interference formula Eq.~\ref{el phase SWY}.}
+\ListAbb{T1}{Telescope 1}{A sub-detector of the TOTEM experiment, see \Sc{ttm det}.}
+\ListAbb{T2}{Telescope 2}{A sub-detector of the TOTEM experiment, see \Sc{ttm det}.}
+\ListAbb{TDR}{Technical Design Report}{}
+\ListAbb{TOTEM}{TOTal and Elastic Measurements}{An LHC experiment devoted to the forward hadronic phenomena, see \Sc{ttm}.}
+\ListAbb{TPE}{Two Photon Exchange}{An approximation in QED.}
+\ListAbb{VFAT}{Very Forward Atlas and Totem}{The front-end chip used to read out the TOTEM's detectors.}
+\ListAbb{WY}{West-Yennie}{Refers to the Coulomb-interference formula Eq.~\ref{el phase WY}.}
 
-\PrintAbbreviations
+%\PrintAbbreviations
+
+\vfil\eject\forceoddpage
 
 \EndText
 
