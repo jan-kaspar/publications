@@ -40,7 +40,7 @@ GShipout("felm_unfolding_m1_correction");
 
 NewPad("$\th'\un{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
 scale(Linear, Log);
-draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "mc test#1#0"), "p,sebc", mCi, "data");
+draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "mc test#1#0"), "p,sebc", mCi, "input data");
 draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "mc test#1|th_smear_test"), "", red+1pt, "re-smeared");
 AddToLegend("distribution");
 
