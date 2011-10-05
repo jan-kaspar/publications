@@ -4,7 +4,7 @@ import root;
 StdFonts();
 
 xSizeDef = 5.5cm;
-ySizeDef = 5.0cm;
+ySizeDef = 4.8cm;
 	
 string[] geometries = {
 //	"RP_V:1.2_H:0.65",
@@ -161,12 +161,12 @@ void MakeFile(string g, string t, string what, int o)
 		DrawSet(graphs, sm, 5, (opt == "s"), (opt == "srz"));
 
 		if (op == 0) {
-			label("\vtop{\hbox{\bf shitfs in the read-out direction}}", (5, 6), S+3E);
+			label("\vtop{\hbox{\bf shifts in the read-out direction}}", (5, 6), S+3E);
 			label("$\}$ 4 singular modes ("+Ref("eq:al sm shr sol")+")", (5, -12.5), 3E);
 		}
 		
 		if (op == 1) {
-			label("\vtop{\hbox{\bf shitfs in the read-out direction}\hbox{\bf and rotations}}", (5, 6), S+3E);
+			label("\vtop{\hbox{\bf shifts in the read-out direction}\hbox{\bf and rotations}}", (5, 6), S+3E);
 
 			label("\raise2pt\vbox to0pt{\vss\hbox{1 singular/weak mode ("+Ref("eq:al sm rotz sol")+")}"+
 				"\hbox{with $\De\rh$ different for $U$ and $V$}\vss}", (5, -1.5), 3E);
@@ -176,7 +176,7 @@ void MakeFile(string g, string t, string what, int o)
 		}
 		
 		if (op == 2) {
-			label("\vtop{\hbox{\bf shitfs in the read-out direction,}\hbox{\bf rotations and $z$-shifts}}", (5, 6), S+3E);
+			label("\vtop{\hbox{\bf shifts in the read-out direction,}\hbox{\bf rotations and $z$-shifts}}", (5, 6), S+3E);
 
 			label("\raise2pt\vbox to0pt{\vss\hbox{1 singular/weak mode ("+Ref("eq:al sm rotz sol")+")}"+
 				"\hbox{with $\De\rh$ different for $U$ and $V$}\vss}", (5, -1.5), 3E);
