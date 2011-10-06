@@ -74,7 +74,7 @@ TGraph_highLimit = +inf;
 NewPad("distance from band center$\un{mm}$");
 draw(rGetObj(file_e, "dx_56 vs. dx_45 (45b-56t)"), "lR", black);
 draw(rGetObj(file_e, "dx_56 vs. dx_45 (45b-56t)#0"), red+1pt);
-limits((-0.2, 0), (0.2, 100), Crop);
+limits((-0.2, 0), (0.2, 350), Crop);
 yaxis(XEquals(-0.08, false), dotted);
 yaxis(XEquals(+0.08, false), dotted);
 AttachLegend();

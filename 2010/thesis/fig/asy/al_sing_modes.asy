@@ -182,7 +182,7 @@ draw(pn--(pn + rotate(135)*(len, 0)), blue+dashed, EndArrow);
 draw(pa--(pa + rotate(135)*(len, 0)), blue+dashed);
 draw(pa--(pa + rotate(135+dr_v)*(len, 0)), blue, EndArrow);
 draw(Label("\SmallerFonts $\De\rh$"), arc(pa, len*0.9, 135, 135+dr_v), black);
-label("\SmallerFonts 2,4,6", pa, 2W, blue);
+label("\SmallerFonts 1,3,5", pa, 2W, blue);
 
 
 real x0 = -3.5, y0 = 0, xm = +3.5, ym = 4;

@@ -11,8 +11,11 @@ pen pObj = black+4pt;
 
 draw((zs, 0)--(ze, 0), dashdotted+blue);
 
-draw((zs, hs)..(z0, h0)..(zm, hm)..(z1, h1)..(ze, he), blue);
-draw((zs, -hs)..(z0, -h0)..(zm, -hm)..(z1, -h1)..(ze, -he), blue);
+path bs = (zs, hs)..(z0, h0)..(zm, hm)..(z1, h1)..(ze, he);
+path bsp = reflect((0, 0), (1, 0)) * reverse(bs);
+filldraw(bs--bsp--cycle, blue+opacity(0.02), nullpen);
+draw(bs, blue);
+draw(bsp, blue);
 
 draw((z0, h0)--(z0, h0+hobj), pObj);
 draw((z1, h1)--(z1, h1+hobj), pObj);

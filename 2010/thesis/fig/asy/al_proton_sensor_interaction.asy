@@ -97,8 +97,8 @@ dot((0, b)-eta*(1, a), blue);
 currentpicture = new picture;
 unitsize(1cm);
 
-label("Front view", (12, +5));
+label("front view", (12, +5));
 attach(pFV.fit(), (12, 0));
 
-label("Side view", (3, +5));
+label("side view", (3, +5));
 attach(pSV.fit(), (0, 0));
