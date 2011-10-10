@@ -14,7 +14,7 @@ void DrawT30(real y)
 
 //----------------------------------------------------------------------------------------------------
 
-string base_dir = "/mnt/pctotem31/software/offline/311/user/elastic_models/data";
+string base_dir = "/mnt/pctotem31/software/offline/311.old/user/elastic_models/data";
 string[] files = { "7000GeV_0_20_4E3" };
 
 string[] tags = {"islam_bfkl", "islam_cgc", "ppp2", "ppp3", "bsw", "bh" };
@@ -118,7 +118,7 @@ add(shift(0, 15mm)*lf);
 
 GShipout("ext_results_1535", hSkip=5mm);
 
-//---------------
+//----------------------------------------------------------------------------------------------------
 
 string f = "../root/extrapolation_90_ty.root";
 
@@ -137,3 +137,39 @@ add(shift(0, 15mm)*lf);
 
 	
 GShipout("ext_results_90", hSkip=5mm);
+
+//----------------------------------------------------------------------------------------------------
+
+string f = "../root/extrapolation_1535.root";
+
+NewPad("$|t|_{\rm low}\un{GeV^2}$", "$\d\si^{\rm H}/\d t|_{0}$ deviation $\un{\%}$");
+currentpad.yTicks = RightTicks(Step=1,step=0.2);
+for (int ti : tags.keys) {
+	draw(rGetObj(f, "dev|"+tags[ti]), "l,p", colors[ti], mCi+1pt+colors[ti], labelsS[ti]);
+}
+	
+limits((0.002, -3), (0.02, 1), Crop);
+xaxis(YEquals(0, false), dotted);
+
+AttachLegend(SW, SW);
+
+currentpicture.legend.delete();
+AttachLegend("$\be^* = 1535\,\rm m$");
+
+//---------------
+
+string f = "../root/extrapolation_90_ty.root";
+
+NewPad("$|t_y|_{\rm low}\un{GeV^2}$", "$\d\si^{\rm H}/\d t|_{0}$ deviation $\un{\%}$");
+for (int ti : tags.keys) {
+	draw(rGetObj(f, tags[ti]+"/dev"), "l,p,ieb", colors[ti], mCi+1pt+colors[ti], labelsS[ti]);
+}
+
+
+limits((0.04, -6), (0.08, 2), Crop);
+xaxis(YEquals(0, false), dotted);
+
+currentpicture.legend.delete();
+AttachLegend("$\be^* = 90\,\rm m$");
+
+GShipout("ext_results_sum", hSkip=4mm);

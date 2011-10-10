@@ -9,7 +9,7 @@ all: asy tex
 tex: thesis.pdf
 
 thesis.pdf : thesis.tex references.tex $(timestamps) \
-	alignment.tex appendices.tex  elastic.tex introduction.tex references.tex \
+	alignment.tex elastic.tex introduction.tex references.tex \
 	first_el_measurement.tex
 	@echo "* TeX"
 	@#pdftex -fmt encpdftex -interaction batchmode thesis.tex &> /dev/nul

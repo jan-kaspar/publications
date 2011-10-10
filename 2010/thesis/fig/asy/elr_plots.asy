@@ -109,3 +109,26 @@ limits((0, 0), (0.5, 20), Crop);
 AttachLegend();
 
 GShipout("elr_90_res_t");
+
+//----------------------------------------------------------------------------------------------------
+
+TGraph_errorBarPen = black+0.2pt;
+
+string file = dir + "/ElRecoVal_7000_1535_4E3.root";
+NewPad("$|t|\un{GeV^2}$", "$\si(t)/t\un{\%}$");
+draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution"), "p,sebc", black, mCi+black+1pt);
+draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution|user"), "", heavygreen+1pt);
+AddToLegend(format("$%.1E\ {\rm GeV}/\sqrt{|t|}$", robj.rExec("GetParameter", 0)), heavygreen+1pt);
+limits((0, 0), (0.5, 4), Crop);
+AttachLegend("$\be^* = 1535\,\rm m$");
+
+string file = dir + "/ElRecoVal_7000_90_4E3.root";
+NewPad("$|t|\un{GeV^2}$", "$\si(t)/t\un{\%}$");
+TGraph_highLimit = 0.4;
+draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution"), "p,sebc", black, mCi+black+1pt);
+draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution|user"), "", heavygreen+1pt);
+AddToLegend(format("$%.1E\ {\rm GeV}/\sqrt{|t|}$", robj.rExec("GetParameter", 0)), heavygreen+1pt);
+limits((0, 0), (0.5, 20), Crop);
+AttachLegend("$\be^* = 90\,\rm m$");
+
+GShipout("elr_res_t_sum");

@@ -190,7 +190,6 @@ GShipout("el_cic_diff_Psi_ff", hSkip=5mm);
 //--------------------------------------------------
 write("* el_cic_diff_Psi_eik");
 
-
 NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#0|cmp_KL_CH_phase_re"), black+longdashed, "CKL");
@@ -217,6 +216,27 @@ limits((t_min, -0.01), (t_max, 0.1), Crop);
 AttachLegend("Puckett form factor", NE, NE);
 
 GShipout("el_cic_diff_Psi_eik", hSkip=5mm);
+
+//--------------------------------------------------
+write("* el_cic_diff_Psi_sum");
+
+NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
+scale(Linear, Linear);
+draw(rGetObj(f4, "Puckett/interference#0|cmp_KL_CH_phase_re"), black, "CKL");
+draw(rGetObj(f4, "Puckett/interference#0|cmp_SWY_CH_phase_re"), red, "SWY");
+draw(rGetObj(f4, "Puckett/interference#0|CH_phase_re,la="+format("%.0E", 1e-3)), blue, "eikonal $\la=10^{-3}\,\rm GeV$");
+limits((t_min, -0.05), (t_max, 0.06), Crop);
+
+NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
+scale(Linear, Linear);
+draw(rGetObj(f4, "Puckett/interference#1|cmp_KL_CH_phase_im"), black, "CKL");
+draw(rGetObj(f4, "Puckett/interference#1|cmp_SWY_CH_phase_im"), red, "SWY");
+draw(rGetObj(f4, "Puckett/interference#1|CH_phase_im,la="+format("%.0E", 1e-3)), blue, "eikonal");
+//AddToLegend("$\la=10^{-3}\,\rm GeV$");
+limits((t_min, -0.01), (t_max, 0.1), Crop);
+AttachLegend("Puckett form factor, $7\,\rm TeV$", NE, NE);
+
+GShipout("el_cic_diff_Psi_sum", hSkip=5mm);
 
 //--------------------------------------------------
 write("* el_cic_diff_Z_ff");
@@ -273,3 +293,19 @@ limits((t_min, 0), (t_max, 1.2), Crop);
 AttachLegend(NE, NE);
 
 GShipout("el_cic_diff_Z_eik", hSkip=5mm);
+
+//--------------------------------------------------
+write("* el_cic_diff_Z_sum");
+
+NewPad("$|t|\un{GeV^2}$", "$Z\un{\%}$");
+scale(Log, Linear);
+draw(yscale(100), rGetObj(f4, "Puckett/interference#2|cmp_KL_CH_Z"), black, "CKL");
+draw(yscale(100), rGetObj(f4, "Puckett/interference#2|cmp_SWY_CH_Z"), red, "SWY");
+draw(yscale(100), rGetObj(f4, "Puckett/interference#2|CH_Z,la="+format("%.0E", 1e-3)), blue, "eikonal");
+limits((t_min, -20), (t_max, 10), Crop);
+AttachLegend(S, S+0.1E);
+
+currentpicture.legend.delete();
+AttachLegend("Puckett form factor, $7\,\rm TeV$", NW, NW);
+
+GShipout("el_cic_diff_Z_sum", hSkip=5mm);
