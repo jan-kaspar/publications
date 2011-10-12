@@ -39,7 +39,7 @@
 \centerline{\fPbxiv Charles University in Prague}
 \centerline{\fPbxiv Faculty of Mathematics and Physics}
 \vskip2	cm
-\centerline{\fPbxx DOCTORAL THESIS}
+\centerline{\fPbxx Doctoral Thesis}
 \vskip1cm
 \centerline{\IncludeSizedGraphics{5cm}{fig/mffLogo.pdf}}
 %\vskip5cm
@@ -51,7 +51,7 @@
 \vskip2cm
 \centerline{\fPbxiv Institute of Particle and Nuclear Physics}
 \ialign to\hsize{\tabskip 0pt plus1fil\strut #&\hfil\fPbxiv #\ \tabskip0pt&\fPbxiv #\hfil\tabskip 0pt plus1fil\cr
-&Supervisor:		& RNDr. Vojt\v ech Kundr\' at, DrSc.\cr
+&Supervisor:		& RNDr.~Vojt\v ech Kundr\' at, DrSc.\cr
 %&					& Mario Deile, PhD\cr
 &Study Programme:	& Physics\cr
 &Specialization:	& Subnuclear Physics\cr
@@ -59,38 +59,46 @@
 \vskip2cm
 \centerline{\fPbxiv Prague 2011}
 
-
 \vfil\eject
+\forceoddpage
 
 %----------------------------------------------------------------------------------------------------
 
-\line{\hss To my family -- for their amazing support}
+\pdfdest name {Acknowledgements} xyz
+\pdfoutline goto name {Acknowledgements} count 0 {Acknowledgements}%
+
+\line{\hss To my family -- for their admirable support}
 \bgroup
 \input utf8-csf
 \line{\hss Mé rodině -- za jejich svkělou podporu}
-\egroup
 
 \vfil
 
-The thanks...
-\iffalse
-\> Vojtech and Mario -- my supervisors, did a lot for me
+First of all, I would like to thank my advisors Vojtěch Kundrát (for the theoretical part) and Mario Deile (for the experimental part). I am grateful for their knowledge and expertise -- I have learnt a lot from them. I am grateful for their time that they never hesitated to spend with me, my question and my problems. I am grateful for their friendly and motivating leadership. Last but not least, I am grateful for their having read the thesis manuscript and the handful of useful comments and suggestions.
 
-\> the TOTEM team -- my work would not be possible otherwise
-\>> especially the software group -- for ... collaboration, Leszek for repository maintanace
-\> Hubert and Karsten -- many interesting, stimulating and "making thinking" discussions
-\> Valentina -- ever ready to help, reading the Ch. 3
-\> Simone -- cooperation on Ch. 5
+I would like thank to the whole team of the TOTEM experiment. Without them it would not have been possible to write this thesis. Let me thank in particular to the members of the software group for a constructive collaboration. Many thanks to Leszek Grzanka for the software repository maintenance. 
 
-\> my family -- as above -- for their support and ecouragement
-\>> especially to my wife Pavla and my parents Marie and Jaroslav
-\fi
+I am grateful to Karsten Eggert, Kenneth \"Osterberg, Simone Giani, Valentina Avati and Hubert Niewiadomski for many interesting and stimulating discussions. I have learnt a lot from them. I am indebted to Valentina and Simone for reading this thesis and giving me a plenty of valuable hints.
+
+I would like to acknowledge the CERN Doctoral Student Programme and the CERN TOTEM group for supporting my research and this thesis.
+
+Finally, let me express my profound gratitude to my family, especially to my wife Pavla and my parents Marie and Jaroslav, for their endless support and 
+encouragement. It has meant a lot for me. Thanks!
+
+\vskip3\baselineskip
+
+Závěrem bych rád vyjádřil svou vděčnost mé rodině, především mé ženě Pavle a mým rodičům Marii a Jaroslavovi, za jejich báječnou podporu slovem i skutkem. Znamená to pro mě hodně. Děkuju!
+
+
+\egroup
 
 \eject
+\forceoddpage
 
 %----------------------------------------------------------------------------------------------------
 
-\hbox{}\vfil
+\pdfdest name {Declaration} xyz
+\pdfoutline goto name {Declaration} count 0 {Declaration}%
 
 I declare that I carried out this doctoral thesis independently, and only with the cited sources, literature and other professional sources.
 
@@ -98,10 +106,13 @@ I understand that my work relates to the rights and obligations under the Act No
 
 \vskip2\baselineskip
 
-In\hskip 2cm, date
+In Geneva, \TODO{date}
 
 \vskip2\baselineskip
-\eject
+\line{\hss Jan Ka\v spar}
+
+\vfil\eject
+\forceoddpage
 
 %----------------------------------------------------------------------------------------------------
 

@@ -19,12 +19,8 @@
 \Reftrue
 \Toctrue
 
-\iftrue
-	% to show labels
-	\ShowLabelstrue \advance\hoffset-1.5cm
-\else
-	\def\FootText{(VERSION 1)}
-\fi
+\def\FootText{(VERSION 1)}
+
 
 %----------------------------------------------------------------------------------------------------
 
@@ -96,7 +92,7 @@
 }
 
 \def\InsertToc{%
-	\vfil\eject\forceoddpage\vskip3cm%
+	\vskip3cm%
 	\def\currentChapterName{Contents} \def\currentPartName{}%
 	\pdfdest name {TOC} xyz
 	\pdfoutline goto name {TOC} count 0 {\currentChapterName}%
@@ -111,14 +107,135 @@
 }
 
 %----------------------------------------------------------------------------------------------------
+% title in English
+
+\pdfdest name {EnTitlePage} xyz
+\pdfoutline goto name {EnTitlePage} count 0 {Title page in English}%
+
+
+\centerline{\fPbxiv Charles University in Prague}
+\centerline{\fPbxiv Faculty of Mathematics and Physics}
+\vskip2	cm
+\centerline{\fPbxx Summary of Doctoral Thesis}
+\vskip1cm
+\centerline{\IncludeSizedGraphics{5cm}{fig/mffLogo.pdf}}
+%\vskip5cm
+\vskip3cm
+\centerline{\fPbxiv Jan Ka\v spar}
+\vskip1cm
+\centerline{\fPbxx Elastic scattering at the LHC}
+\centerline{\fPbxx\FootText}
+\vskip2cm
+\centerline{\fPbxiv Institute of Particle and Nuclear Physics}
+\ialign to\hsize{\tabskip 0pt plus1fil\strut #&\hfil\fPbxiv #\ \tabskip0pt&\fPbxiv #\hfil\tabskip 0pt plus1fil\cr
+&Supervisor:		& RNDr. Vojt\v ech Kundr\' at, DrSc.\cr
+%&					& Mario Deile, PhD\cr
+&Study Programme:	& Physics\cr
+&Specialization:	& Subnuclear Physics\cr
+}
+\vskip2cm
+\centerline{\fPbxiv Prague 2011}
+
+\vfil\eject
+
+%----------------------------------------------------------------------------------------------------
+% title in Czech
+
+\bgroup
+\input utf8-csf
+
+\pdfdest name {CzTitlePage} xyz
+\pdfoutline goto name {CzTitlePage} count 0 {Title page in Czech}%
+
+\centerline{\fPbxiv Univerzita Karlova v Praze}
+\centerline{\fPbxiv Matematicko-fyzikální fakulta}
+\vskip2	cm
+\centerline{\fPbxx Autoreferát doktorské disertační práce}
+\vskip1cm
+\centerline{\IncludeSizedGraphics{5cm}{fig/mffLogo.pdf}}
+%\vskip5cm
+\vskip3cm
+\centerline{\fPbxiv Jan Kašpar}
+\vskip1cm
+\centerline{\fPbxx Elastický rozptyl na LHC}
+\centerline{\fPbxx\FootText}
+\vskip2cm
+\centerline{\fPbxiv Ústav částicové a jaderné fyzkiky}
+\ialign to\hsize{\tabskip 0pt plus1fil\strut #&\hfil\fPbxiv #\ \tabskip0pt&\fPbxiv #\hfil\tabskip 0pt plus1fil\cr
+&Supervisor:		& RNDr.~Vojtěch Kundrát, DrSc.\cr
+%&					& Mario Deile, PhD\cr
+&Study Programme:	& Fyzika\cr
+&Specialization:	& Subjaderná fyzika\cr
+}
+\vskip2cm
+\centerline{\fPbxiv Praha 2011}
+
+\egroup
+
+\vfil\eject
+
+%----------------------------------------------------------------------------------------------------
+% announcement in Czech
+
+\bgroup
+\input utf8-csf
+
+\parindent0pt
+
+\pdfdest name {AnnouncementPage} xyz
+\pdfoutline goto name {AnnouncementPage} count 0 {Announcement page}%
+
+\TODO{Tato disertační práce byla vypracována v rámci interního doktorandského studia, které uchazeč absolvoval na Matematicko-fyzikální fakultě Univerzity Karlovy v Praze v letech 2005-2011}.
+
+\vfil
+
+\halign{\hbox to 5.4cm{\strut#\hss\ }&\vtop{\advance\hsize-5.4cm\noindent\strut#\strut}\cr
+Doktorand:			& Jan Kašpar\cr
+&\cr
+Školitel:			& RNDr.~Vojtěch Kundrát, DrSc.\cr
+&\cr
+Školící pracoviště:	& Fyzikální ústav Akademie věd, v.~v.~i. \cr
+					& Na Slovance 1999/2, 182 21 Praha 8\cr
+&\cr
+Oponenti:			& jméno\cr
+					& katedra\cr
+					& adresa\cr
+&\cr
+					& jméno\cr
+					& katedra\cr
+					& adresa\cr
+}
+
+\vfil
+
+Autoreferát byl rozeslán dne ...
+
+\vfil
+
+Obhajoba disertační práce se koná dne ... v ... hodin před komisí pro obhajoby disertačních prací v oboru F9 na Ústavu částicové a jaderné fyziky, V Holešovičkách 2, 180 00 Praha 8, v místnosti ...
+
+\vfil
+
+\halign{\hbox to 5.4cm{\strut#\hss\ }&\vtop{\advance\hsize-5.4cm\noindent\strut#\strut}\cr
+Předseda oborové rady oboru F9:	& prof.~Ing.~Josef Žáček, DrSc.\cr
+								& Ústav částicové a jaderné fyziky\cr
+								& V Holešovičkách 2, 180 00 Praha 8\cr
+}
+
+\egroup
+
+\vfil\eject
+
+%----------------------------------------------------------------------------------------------------
 
 \InsertToc
-
 \vfill\eject
 
 %----------------------------------------------------------------------------------------------------
 
 \BeginText
+\footline={\hss\the\pageno\hss}
+\def\makeheadline{}
 
 \SpecialChapter{Introduction}
 
@@ -130,15 +247,10 @@ Let us also remark that the elastic scattering -- a process, where the protons u
 The forward elastic scattering is connected with the total cross-section by the optical theorem. It thus not surprising to find quite large theoretical uncertainty in total cross-section predictions for the LHC. As we will show in \Fg{sigma tot}, the spread of predictions may be as large as from $85$ to $110\un{mb}$ for the energy of $14\un{TeV}$. This is partially due to a wide class of plausible energy dependences of the total cross-section (ranging from $s^{\al}$ to $\log^2 s$, see e.g.~Sec.~7.1 in \bref{barone}) and partially due to large uncertainties of the cosmic-ray data and the conflicting Tevatron measurements. With these data, one can hardly favor any of the proposed theoretical descriptions over another. Again, it is evident that new and precise data are needed (in fact, TOTEM has recently made its first measurement of the total cross-section, as indicated in \Fg{sigma tot}).
 % Froissart?
 
-In the previous paragraphs we have shown the need for new measurements of the elastic and total cross-sections in the high-energy regions. For that purpose, the TOTEM experiment has been built at the LHC accelerator at CERN.
-
-\TODO{Shorten!}
-Despite the name of CERN derived from French ``Conseil Europ\' een pour la Recherche Nucl\' eaire'', CERN \bref{cern} is the world's largest center for particle-physics research. It is located on the French-Swiss border near Geneva and it includes several interlinked particle accelerators. CERN's and also world's largest accelerator is the LHC \bref{lhc} (Large Hadron Collider). It has a circular shape (see \Fg{lhc}) with a circumference of almost $27\un{km}$. It accelerates two beams of opposite directions. The beams can either consist of protons or lead ions. The maximum design energy is $7\un{TeV}$ for protons and $2.76\un{TeV}$ per nucleon for ions. For the moment, the LHC accelerates protons to the energy of $3.5\un{TeV}$, which still makes a world record. The accelerator is not a perfect circle -- it consists of eight arcs and eight straight sections for insertions. Each of the arcs contains 154 superconducting bending magnets operated at $1.9\un{K}$ and producing a magnetic field of $8.3\un{T}$. Some of the eight insertions (drawn as red dots in \Fg{lhc}) are used by physics experiments, some are allocated for service tasks such as beam injection, cleaning and dump. In total, there are six experiments at the LHC: ALICE (A Large Ion Collider Experiment), ATLAS (A Toroidal LHC Apparatus), CMS (the Compact Muon Solenoid), LHCb (the Large Hadron Collider beauty), LHCf (the Large Hadron Collider forward) and TOTEM (TOTal Elastic and diffractive cross section Measurement). For their physics programmes see for example \bref{cern}.
-
-The TOTEM experiment is dedicated to forward hadronic phenomena. It will measure (or have already made first measurements of) the total cross-section, elastic scattering differential cross-section in a wide kinematic range and a large spectrum of diffractive processes. We will describe the experiment in \Sc{ttm} in a greater detail.
+In the previous paragraphs we have shown the need for new measurements of the elastic and total cross-sections in the high-energy regions. For that purpose, the TOTEM experiment has been built at the LHC accelerator at CERN. The TOTEM experiment is dedicated to forward hadronic phenomena. It will measure (or have already made first measurements of) the total cross-section, elastic scattering differential cross-section in a wide kinematic range and a large spectrum of diffractive processes.
 
 
-\TODO{Very short plan of thesis}
+\TODO{Very short plan of thesis - from abstract}
 
 Comparisons of the model predictions from \Sc{el} to the measurement results from \Sc{felm} will be shown in the conclusion chapter.
 
@@ -162,11 +274,15 @@ In this thesis, we will devote the first chapter to a theoretical discussion of 
 
 \fig{fig/pdf/el_mod_Z.pdf}{el mod Z}{The importance of the interference term (see \Eq{el Z}) as a function of $t$. Calculated with CKL formula and Puckett form factor.}
 
+In the first chapter we have presented a number of predictions of the best known hadronic models of elastic $\rm pp$ scattering for two LHC energies $\sqrt s = 7$ and $14\un{TeV}$. A comparison to the first LHC data at $\sqrt s = 7\un{TeV}$ will be shown at the end of this conclusion chapter. Then, in \Sc{el coulomb} we have discussed the interference between the electromagnetic (Coulomb) and strong (hadronic) interactions. For the electromagnetic scattering, we have first proposed an effective form-factor that combines the electric and magnetic form factors of the proton. We have expressed our doubt that the commonly used OPE approximation may not be accurate for momentum transfers $|t|$ above $1\un{GeV^2}$. We outlined several approaches to the Coulomb-hadronic interference. We have found the derivation of \WaY{} formula inconsistent. We have identified a complication in the derivation of \KaL{} formula which, however, has practically no numerical consequences. All the discussed formulae were derived in $\O{\al}$ approximations. We have compared their predictions to a new eikonal calculation to all orders of $\al$. When the form factors have been omitted, we have found a significant differences. Generally, we have found the formula of \KaL{} the best tool available for experimental data analyses. But still, for momentum transfers above $1\un{GeV^2}$ we expect sizable corrections due to multi-photon exchange effects that are not included in the present eikonal description.
+
+
 %----------------------------------------------------------------------------------------------------
 \chapter[ttm]{The TOTEM experiment}
 
 The TOTEM experiment \bref{totem04,totem08,totem10} is dedicated to measurement of forward hadronic phenomena at the LHC. The tree pillars of its physics programme are: elastic scattering measurement in a wide $t$-range, total cross-section measurement and a study of soft and hard diffraction.
 
+\TODO{shorten - move to introduction}
 We presented several theoretical/phenomenological descriptions of the elastic scattering in \Sc{el}. Looking at the model predictions in \Fg{el mod dsdt large}, one can see differences of several orders of magnitude. TOTEM plans to measure the differential cross-section in the $|t|$-range from about $10^{-3}\un{GeV^2}$ to more than $10\un{GeV^2}$. This large coverage can be achieved by exploiting several running scenarios. The discriminative power of such measurement can already be seen in the first TOTEM results, see \Fg{ttm mod cmp dsdt} in the conclusion chapter.
 
 As much as the model predictions differ for the elastic cross-section, they differ for the total-cross section. From Tab.~2 in \bref{kklp11} one can read a variation between $95$ and $110\un{mb}$ for the energy of $14\un{TeV}$. Extrapolations from lower energy measurements yield even higher uncertainty (see \bref{cudell02}): from about $85\un{mb}$ to $120\un{mb}$. TOTEM plans to measure the total cross-section with the luminosity independent method. This method takes as an input the elastic and inelastic event rates and thus is closely related to the other two items of the physics programme. TOTEM aims at the final precision about $1\percent$, which would provide a decisive answer to many total-cross-related hypothesis.
@@ -179,7 +295,7 @@ The forward protons, before being registered by the RP detectors, pass through t
 
 \> The \em{high-$\be^*$} scenario with $\be^* = 1535\un{m}$ optics and luminosity ${\cal L} \approx 10^{28} \un{cm^{-2}s^{-1}}$ is dedicated to the measurement of the total cross-section and low-$|t|$ elastic scattering. In this scenario, the RPs have an excellent angular resolution $0.3\un{mrad}$. The elastic cross-section will be measured down to $|t| \approx 2\cdot10^{-3}\un{GeV^2}$.
 
-\> The \em{medium-$\be^*$} scenario with $\be^* = 90\un{m}$ optics and luminosity ${\cal L} \approx 10^{28} \hbox{ -- } 10^{29}\un{cm^{-2}s^{-1}}$ combines the properties of high and low $\be^*$ scenarios allowing for measurements of the total cross-section, medium-$|t|$ elastic scattering and all diffractive processes. The angular resolutions is about $2.4\un{\mu rad}$, the elastic cross-section can be measured down to $|t| \approx 4\cdot 10^{-2}\un{GeV^2}$.
+\> The \em{medium-$\be^*$} scenario with $\be^* = 90\un{m}$ optics and luminosity ${\cal L} \approx 10^{28} \hbox{ -- } 10^{29}\un{cm^{-2}s^{-1}}$ combines the properties of high and low $\be^*$ scenarios allowing for measurements of the total cross-section, medium-$|t|$ elastic scattering and all diffractive processes. The vertical angular resolution is about $2.4\un{\mu rad}$, the elastic cross-section can be measured down to $|t| \approx 4\cdot 10^{-2}\un{GeV^2}$.
 
 \> The \em{low-$\be^*$} scenarios with $\be^*$ between $0.5$ and $3.5\un{m}$ were primarily designed for high luminosities ${\cal L} \approx 10^{32} \hbox{ -- } 10^{33}\un{cm^{-2}s^{-1}}$. They allow for diffractive studies and large-$|t|$ elastic scattering measurements. The angular resolutions is about $16\un{\mu rad}$. The lowest measurable elastic $|t|$ depends on the actual $\be^*$ value. For the standard 2010 optics ($\be^* = 3.5\un{m}$ and $\sqrt s = 7\un{TeV}$), the elastic cross-section was determined down to $|t| \approx 0.4\un{GeV^2}$.
 
@@ -190,62 +306,94 @@ $$
 $$
 It relates the total cross-section $\si_{\rm tot}$ to the forward elastic rate $\d N_{\rm el}/\d t|_{t=0}$, integral elastic rate $N_{\rm el}$, integral inelastic rate $N_{\rm inel}$ and the ratio of the real to imaginary part of the forward elastic amplitude $\rh$.
 
-\fig{fig/pdf/ext_results_sum.pdf}{ext results 1535}{The extrapolation deviation of the cross-section at $t=0\un{GeV^2}$, as a function of the fit lower bound $|t|_{\rm low}$. The deviation is calculated as (extrapolated - original) / original, where e.g.~original denotes the original (true) value of $\d\si^{\rm H}/\d t|_{0}$.}
-
 The inelastic rate $N_{\rm inel}$ will be measured with the telescopes T1 and T2.
 %The value of $\rh$ may be determined by analyzing the elastic differential cross-section in the Coulomb-interference region (if acceptance permits), or it can be taken from an external source (such as the COMPETE fits \bref{cudell02}). Since the expected value of $\rh$ is about $0.14$ and since it enters the $\si_{\rm tot}$ expression as $1 + \rh^2$, the influence of any $\rh$ errors is small.
 The differential elastic rate $\d N_{\rm el}/\d t$ at $t=0\un{GeV^2}$ can not be measured directly, it can only be extrapolated from the measured low-$|t|$ data. There are two optics that extend to sufficiently low $|t|$ values: $\be^* = 1535$ and $90\un{m}$. This extrapolation procedure is important also for the integral elastic rate $N_{\rm el}$ measurement as it allows to correct for the events missed due to the finite acceptance.
 
-\vskip1cm\hrule
+For the extrapolation, one needs an adequate parameterization of the $t$ distribution. Based on the theoretical models, we showed that the low-$|t|$ hadronic amplitude can well be described by $A \exp[B(t) + \i P(t)]$, where $A^2$ is proportional to the searched forward elastic rate and $B$ and $P$ are polynomials of low degrees. However the measured $t$ distribution is affected by the electromagnetic interaction and by the limited acceptance and resolution of the detectors. These two effects must be taken into account in the extrapolation procedure. We showed that the Coulomb-hadronic interference is relevant only for the $\be^*=1535\un{m}$ optics and the smearing effects are sizable only for the $90\un{m}$ optics. Both interference and smearing effects are rather small (few percent) and are treated as perturbations -- they are unfolded in an iterative manner.
 
-Looking at the low-$|t|$ elastic cross-section predictions in \Fg{el mod dsdt narrow}, one can see an ``almost'' exponential decrease. This observation can be better quantified by plotting the exponential slope \Eq{el B}, see \Fg{ext B}. The slope is not strictly constant, but for most models (except the one of Islam et al.) its variation is not large up to $|t| \approx 0.25\un{GeV^2}$. Moreover, the shape of the curves suggests that they can be well approximated by a polynomial of a low degree (such as a parabola). Thus the modulus of the hadronic amplitude can be parameterized as:
-\eqref{|\FH(t)| = \e^{M(t)}\ ,\qquad M(t) \hbox{ a polynomial.}}{ext M par}
+To study the extrapolation procedure, we made a simple MC simulation corresponding to about a day of data-taking. We considered two optics as two extreme cases: $\be^* = 1535\un{m}$ (both transverse components of $t$ can be determined) and $90\un{m}$ (only the vertical component $t_y$ can be measured). For each case a different strategy was proposed.
 
-The parameterization \Eq{ext M par} is related to the hadronic amplitude $\FH$. However, the measured $t$-distribution relates to the cross-section due to both hadronic and Coulomb interactions: $\d\si^{\rm C+H}/\d t$ (see \Sc{el coulomb}). Moreover the experimental $t$-distribution is affected by the limited acceptance and detector resolution. These two effects need to be taken into account in the extrapolation procedure. Looking at the \Fg{ext C}, one may conclude that while the effect of the Coulomb interaction is important for the $1535\un{m}$ optics, it is practically negligible for the $90\un{m}$ optics (staying below $|t| \approx 0.25\un{GeV^2}$). It is the other way round for the smearing effects -- negligible for the $1535\un{m}$ and relevant for the $90\un{m}$ optics, see \Fg{ext smearing}.
+For the $1535\un{m}$ optics, the measured $t$-distribution was simply fitted with the suggested parameterization. The Coulomb-interference effects were separated in a few iterations. We tried to optimize the fit parameters: lever-arm (lower and upper bounds), binning and the moduli of the $B$ and $P$ polynomials. This was done in a ``model independent way'' -- we used five different models, but only optimized only the extrapolation deviation. An example of the outcome is shown in \Fg{ext results sum} left.
+
+For the $90\un{m}$ optics, we first converted the suggested $t$ parameterization into a $t_y$ parameterization. Then we performed a similar optimization as for the other optics. An example result is show in \Fg{ext results sum} right. There, no smearing correction was applied, leading to an overall shift of about $-2\%$.
+
+\fig{fig/pdf/ext_results_sum.pdf}{ext results sum}{The extrapolation deviation of the cross-section at $t=0\un{GeV^2}$, as a function of the fit lower bound $|t|_{\rm low}$. The deviation is calculated as (extrapolated - original) / original, where e.g.~original denotes the original (true) value of $\d\si^{\rm H}/\d t|_{0}$.}
+
+The error propagation leads to total cross-section measurement uncertainties $1-2\%$ (for $1535\un{m}$ optics) and about $5\%$ (for $90\un{m}$ optics). There are several reasons to regard these values as very preliminary, most notably the expected optics and beam parameters were used. Recently TOTEM has made its first measurements with the $90\un{m}$ optics (see \bref{totem11-2}) and it seems that the emittance can easily be reduced to about a half and that the horizontal scattering angle can be reconstructed with a reasonable precision. Consequently, one could exploit the same extrapolation technique as for the high-$\be^*$ optics. This brings us to an optimistic conclusion that for the medium-$\be^*$ optics one may expect a better precision than the above quoted uncertainty.
+
+
 
 %----------------------------------------------------------------------------------------------------
 \chapter[sr]{Roman Pot simulation and reconstruction software}
 
+In order to develop and tune the reconstruction algorithms (techniques where the scattered proton kinematics is deduced from the RP measurements), it is essential to understand the processes that scattered protons undergo until they are detected by the RP detectors. For this purpose computer Monte Carlo (MC) simulation provides a very valuable tool. Consequently, the simulation and reconstruction modules form a significant part of the TOTEM RP software. The contributions by this thesis' author (outlined below) mostly complement the work described in \bref{hubert}.
 
-In the third chapter, we will describe the Roman Pot simulation and reconstruction software. The simulation part is used to obtain a detailed information on the processes that occur between an emission of a proton in an interaction and the detection of the proton by the Roman Pot detectors. This includes beam-smearing effects, interaction of the proton with the magnetic field of the LHC, interaction of the proton in the Roman Pots, energy deposition in the silicon sensors and signal processing in the front-end chips. A good understanding of these effects is essential for developing and tuning the reconstruction modules. That means modules that deduce the scattered proton kinematics from the Roman Pot measurements.
+\> {\bf Elegent} (ELastic Event GENeraTor) is MC generator of elastic $\rm pp$ and $\rm\bar pp$ collisions with $\d\si/\d t$ distributions given by the models discussed in \Sc{el}. It supports four modes of treating the Coulomb-hadronic interference: entirely neglected, according to full and simplified \WY{} formula and according to the (corrected) \KL{} formula.
 
-\> {\bf Event generator}.
-The simulation process starts with generation of particles at the interaction point. This can be either a \em{particle gun} or a \em{physics event generator}. Particle guns generate particles according to some given distributions and are useful for specialized tests and software debugging. Physics event generators build events according to physics models. We use general-purpose physics generators like Pythia \bref{pythia6,pythia8} or Phojet \bref{phojet} and a custom developed Elegent (see \Sc{elegent}).
+\> The aim of the {\bf beam smearing} module is to account for the beam smearing effects that are usually not considered by event generators. These smearing effects can be divided into three classes: \em{angular smearing} (the particles within a bunch are not all parallel), \em{energy smearing} (there is an energy fluctuation within a bunch) and \em{vertex smearing} (the bunches have non-zero dimensions, thus the interactions are distributed in space). 
 
-\> The aim of the {\bf beam smearing} module (see \Sc{beam smearing}) is to account for the beam smearing effects that are usually not considered by event generators. These smearing effects can be divided into three classes: \em{angular smearing} (the particles within a bunch are not all parallel), \em{energy smearing} (there is an energy fluctuation within a bunch) and \em{vertex smearing} (the bunches have non-zero dimensions, thus the interactions are distributed in space). 
+\> The {\bf fast simulation} modules provide a less detailed, but faster alternative to the Geant4-based simulation. They are primarily intended for statistical studies of the track-based alignment.
 
-\> The \abb{DAQ} system has only a limited possibility to perform consistency checks at run-time. Therefore it is essential to perform a {\bf raw-data validation} when converting the raw-data to \abb{DIGI} offline. This validation relies on checking various frame check sums, constant bits and comparing chip IDs, event and bunch-crossing numbers to the expected values.
+\> The aim of the {\bf pattern recognition} is to match sensor hits with particle tracks. This implicitly includes suppressing noise hits that are not associated with any track. Our algorithm exploits an optimization of the Hough transform and can be used with tracks with arbitrary angles (advantageous for track-based alignment applications).
 
-\> The {\bf fast simulation} modules (see \Sc{fast simu}) provide a less detailed, but faster alternative to the Geant4-based simulation. They are primarily intended for statistical studies of the track-based alignment.
+\> The {\bf elastic-event reconstruction} module provides a light-weight alternative to the inelastic proton reconstruction (see Sec.~8.2 in \bref{hubert}). The primary aim of this study (performed during the simulation phase of the experiment) was to quantify the capabilities of the RP system with various optics. An outcome example (elastic $t$ resolutions) can be seen in \Fg{elr res t sum}.
 
-\> The aim of the {\bf pattern recognition} is to match sensor hits with particle tracks. This implicitly includes suppressing noise hits that are not associated with any track. There are two pattern recognition algorithms in the \abb{TOTEM} software. Both of them search for linear patterns within the (\abb{RECO}) hits in each \abb{RP}. The algorithm described in \Sc{pattern reco} can be used with tracks with arbitrary angles (advantageous for track-based alignment applications), the algorithm presented in Sec.~8.1.4 in \bref{hubert} is designed for the protons coming from the \abb{IP} -- such protons are almost parallel to the beam.
+\fig{fig/pdf/elr_res_t_sum.pdf}{elr res t sum}{$t$ resolution in elastic-scattering reconstruction for two optics: $\be^* = 1535\un{m}$ (left) and $90\un{m}$ (right).}
 
-\> In the {\bf physics reconstruction} step, the one-\abb{RP} track fits are used to reconstruct proton(s) kinematics at the interaction point and consequently determine the type and parameters of the event. There are two versions -- one suitable for any diffractive protons and a lighter alternative for elastic events. The latter one will be discussed in \Sc{elr}.
+\> The {\bf data quality monitor} (TotemDQM) is an interactive program that can visualize the results of all the reconstruction steps. It has primarily been designed for (quasi)-online control of the data being acquired. But it can also be used for event scanning (visual inspection of the events' details) or for software tuning and debugging.
 
 
-\fig{fig/pdf/elr_res_t_sum.pdf}{elr res t sum}{$t$ resolution}
-
-\> The {\bf data quality monitor} (Totem\abb{DQM}) is an interactive program that can visualize the results of all the steps shown in \Fg{sr sw structure}. It has primarily been designed for (quasi)-online control of the data being acquired. But it can also be used for event scanning (visual inspection of the events' details) or for software tuning and debugging. For more information see \Sc{dqm}.
 
 %----------------------------------------------------------------------------------------------------
 \chapter[al]{Alignment of Roman Pots}
 
-The fourth chapter is dedicated to Roman Pot detector alignment -- that is a determination of the positions of the Roman Pot sensors with respect to each other and with respect to the beam. This procedure has three steps: collimation alignment, track-based alignment and alignment with physics processes. During the collimation alignment, \Sc{al collim}, the Roman Pot motor control is calibrated with respect to the collimators of the LHC and consequently with respect to the beam. The track-based alignment, \Sc{al tb}, analyses the track hits recorded by the Roman Pots. Their residuals (distances from the track fit) are used to extract sensor misalignments (deviations from their nominal positions). Thanks to the overlap between the vertical and horizontal Roman Pots, the track-based technique can establish the relative alignment of all sensors within each station. Then, physics processes can be used to align the sensors with respect to the beam. For that purpose one may exploit the symmetries of certain physics process -- see \Sc{al prof}. A particularly good candidate is the elastic scattering. It possesses the azimuthal symmetry and moreover its two anti-parallel protons can be used for aligning the Roman Pots in the opposite arms. This method will be discussed in \Sc{al elast}.
+An accurate detector alignment is of major importance for the TOTEM experiment in order to deliver precise measurements. Among the sub-detectors of TOTEM, the alignment of the Roman Pots (RPs) presents the biggest challenge since they are movable and, in principle, they can be at a different position for every run. The impact of misalignment is most pronounced for the high-$\be^*$ optics, where the beam smearing and resolution effects are very low.
 
-\fig{fig/pdf/al_stat_final.pdf}{al stat final}{A statistical study of the alignment method with the final constraints. The simulations have been performed with a realistic track slope spread $\si_a = 0.1\un{mrad}$. Each curve corresponds to the third sensor of a RP, see the legend. The semi-transparent areas represent $1\si$ error bands. The vertical dotted lines mark a typical number of tracks in LHC runs.
+We presented a RP alignment procedure that comprises the three steps below.
+\bitm
+\itm First the RPs are approached to the desired position as precisely as possible, then their position with respect to the beam is verified with dedicated devices such as the linear voltage differential transformers (LVDTs). The LVDTs are regularly calibrated against the LHC collimators (\em{collimation alignment}). We found that each LVDT had to be treated as an independent device with its own offset from a global reference frame.
+%
+\itm A lot of information on the relative alignment between the RP sensors can be obtained by studying the reconstructed tracks. The underlying idea of this \em{track-based alignment} is that sensor misalignments give rise to residuals (hit distances from track fits). Thanks to the overlap between the vertical and horizontal pots, one can determine the relative positions of all RP sensors within each station.
+%
+\itm However, not all misalignments induce residuals (e.g.~a global shift or rotation), thus these misalignment modes are inaccessible to the track-based alignment. To overcome this limitation, one may exploit use known symmetries of certain physics processes -- \em{profile alignment}. From this point of view, elastic scattering (\em{elastic alignment}) looks extremely useful. Not only it posses the full azimuthal symmetry, also its two anti-collinear protons can be used for aligning the opposite arms.
+\eitm
+
+\vskip1mm
+By studying the impact of misalignment to the RP detector measurements we found that the track-based alignment is only sensitive (within the expected uncertainties) to transverse shifts and rotations about the longitudinal (beam) axis. In order to extract the misalignment information from track measurements, we pursued the approach of Millepede \bref{millepede} -- the simultaneous fit of the track and misalignment parameters.
+
+We discussed, quite generally, what misalignment modes are inaccessible (\em{singular modes}) to the track-based alignment. For the RP system these modes include: global and linearly progressive shift in both transverse directions (4 modes) and global rotations of $U$ and $V$ detector subsets (2 modes). Moreover we identified the \em{weak modes} of the track-based alignment -- the modes that can be resolved with a large uncertainty only. These modes emerge since the LHC track sample is very well collimated. For the RP system the weak modes include: linearly progressive rotations of $U$ and $V$ detector subsets.
+
+We presented a set of constraints that fix the 8 singular and weak modes and thus enable to solve the track-based alignment task. Most of these inaccessible modes are addressed by other methods presented in the thesis.
+
+We discussed both statistical and systematic errors of the track-based alignment. The statistical error is a caused by the finite resolution of the silicon sensors. This error can be propagated to the alignment parameters, thus every alignment result is complemented with its statistical uncertainty. The systematic errors may come from the approximations we made in building the track-based algorithm. We argued that these errors would be negligible.
+
+In order to validate the track-based alignment we made a number of (fast) MC simulations. An example is show in \Fg{al stat final}. For both alignment classes (shifts and rotations), the systematic error is compatible with zero (within the uncertainty). The uncertainty estimate falls as $1/N_{\rm tracks}$ with increasing number of tracks. The right-hand side column shows that the uncertainty estimate slightly overshoots the statistical error.
+
+\fig{fig/pdf/al_stat_final.pdf}{al stat final}{A statistical study of the track-based alignment.
+%method with the final constraints. The simulations have been performed with a realistic track slope spread $\si_a = 0.1\un{mrad}$.
+Each curve corresponds to the third sensor of a RP, see the legend. The semi-transparent areas represent $1\si$ error bands. The vertical dotted lines mark a typical number of tracks in LHC runs.
 %(20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad.
 }
 
-\fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with the final constraints for the 56-220-near unit. Each color corresponds to a data set from \Tb{al lhc datasets}. The dashed lines show fits of \Eq{al dp sen al} and correspond to the DP alignments. For example for rotations, the position of the dashed line marks the DP rotation $\De\rh^{\rm DP}_z$.
+Eventually, the track-based alignment was applied to the LHC data, see an example in \Fg{al comp det per unit}. The pattern of these points reflects the two-fold origin of the misalignments -- the misalignment of detector packages (DPs) within stations (dashed lines) and the misalignment of sensors within DPs (the residuals from the dashed fit lines). Since every DP contains 5 $U$ and 5 $V$ sensors, one can extract both transverse shift components and all three rotations. This is to be compared to a single sensor for which only one shift component (in its read-out direction) and only the rotation about the beam axis can be determined. Coming back to \Fg{al comp det per unit}, notice the stability of the results -- all nine point sets (representing data taking campaigns from August to October) are overlapping. 
+
+\fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Track-based alignment applied to the 2010 LHC runs (showing results for 56-220-near unit). Each color corresponds to one data set (9 in total). The dashed lines represent the DP misalignments, the residuals (distances point-dashed line) show the internal (within DP) misalignments.
 %The internal rotation is the rotation of a sensor with respect to its DP (i.e.~the full rotation minus $\De\rh^{\rm DP}_z$).
 %overlap=f
 }
+
+The typical precision of the track-based alignment for the 2010 LHC runs was about $1\un{\mu m}$ for the transverse shifts and about $0.1\un{mrad}$ for the rotations about the beam axis.
+
+The singular modes related to the transverse shifts include the horizontal and vertical, global and linearly progressive shifts. These can be alternatively expressed as the horizontal and vertical shifts of the near and far unit of each station. These shifts are inaccessible to the track-based alignment, but can be determined by locating the beam with respect to the displaced detectors. For that purpose, one may exploit hit-pattern symmetries. The nominal optics were conceived with zero vertical dispersion, which assures the vertical symmetry of hits about the beam center. Furthermore the elastic-scattering hit pattern was expected to be symmetric about the vertical axis crossing the beam center. In reality -- see \Fg{al prof hits} -- the picture is more complicated. Due to the optics imperfections the vertical dispersion is non-zero (the magenta line has a slope) and the axis of the elastic hits (green) is tilted. Since there are two vertical RPs (top and bottom) in each unit, the green fit can still be used for alignment purposes. We split the hit distribution into horizontal slices and determined the peak of the horizontal distribution in each of them (the elastic peak dominates the asymmetric low-$\xi$ diffraction). In principle the same can be done for the magenta line fits, however, since there is only one horizontal RP per unit, the fit must be extrapolated to the beam location and the final precision in uninteresting for alignment applications.
 
 \fig{fig/pdf/al_prof_hits.pdf}{al prof hits}{Typical hit distributions at the $220\un{m}$ stations (scoring planes at $\pm 217\un{m}$). Data from 21 September. The colorful lines represent fits of low-$\xi$ (green) and large-$\xi$ (magenta) hits.
 % analysis with vsym2 geometry
 }
 
-\fig{fig/pdf/al_el_plots_sum.pdf}{al el plots sum}{}
+One can make a stronger use of the hit symmetries if a sample of elastic hits is selected, see an illustration in \Fg{al el plots sum}. The vertical beam position (dash-dotted line) is determined in the right-hand plot. The bottom-pot (blue) distribution (after having removed the part affected by the acceptance) is flipped (green) and moved up and down until a match with the top-pot (red) distribution is found. In this way one obtains the center of the vertical hit distribution -- the vertical beam position. The horizontal beam position is determined in the left plot by the intersection of the green fit with the dash-dotted line (the vertical beam position). For the data from 29-30 October (the data used for the first elastic scattering measurement described in \Sc{felm}) this alignment has uncertainty of about $5\un{\mu m}$ (horizontally) and $15\un{\mu m}$ (vertically).
+
+\fig{fig/pdf/al_el_plots_sum.pdf}{al el plots sum}{RP alignment with elastic scattering. Left: hit map in a unit, Right: the vertical profiles from the top (red) and bottom (blue) RP of that unit.}
 
 %----------------------------------------------------------------------------------------------------
 \chapter[felm]{The first elastic scattering measurement at the LHC}
@@ -306,15 +454,7 @@ The fit-based and bin-based methods are compared in \Fg{felm unfolding m1m2 cmp}
 %----------------------------------------------------------------------------------------------------
 \SpecialChapter{Conclusion}
 
-In the first chapter we have presented a number of predictions of the best known hadronic models of elastic $\rm pp$ scattering for two LHC energies $\sqrt s = 7$ and $14\un{TeV}$. A comparison to the first LHC data at $\sqrt s = 7\un{TeV}$ will be shown at the end of this conclusion chapter. Then, in \Sc{el coulomb} we have discussed the interference between the electromagnetic (Coulomb) and strong (hadronic) interactions. For the electromagnetic scattering, we have first proposed an effective form-factor that combines the electric and magnetic form factors of the proton. We have expressed our doubt that the commonly used OPE approximation may not be accurate for momentum transfers $|t|$ above $1\un{GeV^2}$. We outlined several approaches to the Coulomb-hadronic interference. We have found the derivation of \WaY{} formula inconsistent. We have identified a complication in the derivation of \KaL{} formula which, however, has practically no numerical consequences. All the discussed formulae were derived in $\O{\al}$ approximations. We have compared their predictions to a new eikonal calculation to all orders of $\al$. When the form factors have been omitted, we have found a significant differences. Generally, we have found the formula of \KaL{} the best tool available for experimental data analyses. But still, for momentum transfers above $1\un{GeV^2}$ we expect sizable corrections due to multi-photon exchange effects that are not included in the present eikonal description.
-
-In \Sc{ttm tcs} we have presented the luminosity-independent method of total cross-section measurement and suggested two methods of the extrapolation to $t=0\un{GeV^2}$. We have calculated total cross-section uncertainty estimates $1\div2\percent$ for the high-$\be^*$ optics and $5\percent$ for the medium-$\be^*$ optics. There are several reasons to regard these values as very preliminary, most notably the nominal (expected) optics and beam parameters have been used. Recently TOTEM has made its first measurements with the $90\un{m}$ optics (see \bref{totem11-2}) and it seems that the emittance can easily be reduced to about a half and that the horizontal scattering angle can be reconstructed with a reasonable precision. Consequently, one could exploit the same extrapolation technique as for the high-$\be^*$ optics. This brings us to an optimistic conclusion that for the medium-$\be^*$ optics one may expect a better precision than the above quoted uncertainty.
-
-In the third chapter, we have described the RP simulation and reconstruction software. The modules developed by the author of this thesis have been then discussed in detail.
-
-When the alignment procedure from \Sc{al} was applied to the 2010 LHC runs, the relative misalignments among the sensors of one unit were reduced to about $1\un{\mu m}$ of transverse shift and $0.1\un{mrad}$ of rotation about the beam axis. The alignment of units with respect to the beam was achieved with an uncertainty of about $5\un{\mu m}$ in the horizontal direction and $15\un{\mu m}$ in the vertical (for the run used for the elastic cross-section determination in \Sc{felm}).
-
-In the fifth chapter, we have presented TOTEM's first measurement of the $\rm pp$ differential cross-section at $\sqrt s = 7\un{TeV}$. The final result, compared to the predictions of the models from \Sc{el models} and the model of Jenkovszky et al.~\bref{jenkovszky11}, is shown in \Fg{ttm mod cmp dsdt}. The discriminative power of TOTEM's measurement is evident. In the region below the diffractive dip, $|t| \ls 0.5\un{GeV^2}$, there is a relatively good agreement among the models themselves and the measurement. But for momentum transfers $|t|$ between $0.5$ and $1\un{GeV^2}$ the models exhibit rather large spread in their predictions (one and half orders). Moreover the measurement of TOTEM does not favour any the presented models. The measurement falls into a gap between two bands of predictions (one band is formed by the models of Islam et al., Petrov et al.~with two pomerons and Jenkovszky et al., the other band is formed by the models of Block et al., Bourrely et al.~and Petrov et al.~with three pomerons).
+In the previous chapter, we have presented TOTEM's first measurement of the $\rm pp$ differential cross-section at $\sqrt s = 7\un{TeV}$. The final result, compared to the predictions of the models from \Sc{el} and the model of Jenkovszky et al.~\bref{jenkovszky11}, is shown in \Fg{ttm mod cmp dsdt}. The discriminative power of TOTEM's measurement is evident. In the region below the diffractive dip, $|t| \ls 0.5\un{GeV^2}$, there is a relatively good agreement among the models themselves and the measurement. But for momentum transfers $|t|$ between $0.5$ and $1\un{GeV^2}$ the models exhibit rather large spread in their predictions (one and half orders). Moreover the measurement of TOTEM does not favour any the presented models. The measurement falls into a gap between two bands of predictions (one band is formed by the models of Islam et al., Petrov et al.~with two pomerons and Jenkovszky et al., the other band is formed by the models of Block et al., Bourrely et al.~and Petrov et al.~with three pomerons).
 
 \fig{fig/pdf/ttm_mod_cmp_dsdt.pdf}{ttm mod cmp dsdt}{Comparison of model predictions and TOTEM's first measurement of $\rm pp$ differential cross-section at $\sqrt s = 7\un{TeV}$.}
 

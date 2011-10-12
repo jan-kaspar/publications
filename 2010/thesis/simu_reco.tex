@@ -94,11 +94,9 @@ To summarize, if $(E|\vec p)_{\rm MC}$ is the four-momentum of a particle produc
 \eqref{(E|\vec p)_{\rm LAB} = L(-\vec\be)\ R(\vec a, -\om)\ S(\chi)\ (E|\vec p)_{\rm MC}\ .}{sm mc to lab}
 
 
-The above formula provides a method to apply angular and energy smearing to events from \abb{MC} generators. What is still missing is a specification of the $\vec\be$, $\vec a$, $\om$ and $\ch$ distributions. But these can be calculated from the beam-smearing parameters introduced in \Sc{rp measurement}. Considering a crossing angle $\al$, see \Fg{smearing angular energy}, one can parameterize the momenta of the incident particles as
+The above formula provides a method to apply the angular and energy smearing to events from \abb{MC} generators. What is still missing is a specification of the $\vec\be$, $\vec a$, $\om$ and $\ch$ distributions. But these can be calculated from the beam-smearing parameters introduced in \Sc{rp measurement}. Considering a crossing angle $\al$, see \Fg{smearing angular energy}, one can parameterize the momenta of the incident particles as
 \eqref{\vec p_i = \pm p_{\rm nom}\,(1 + \xi_i)\,\pmatrix{\cos\al & 0 & \mp \sin\al\cr 0 & 1 & 0 \cr \pm\sin\al & 0 & \cos\al\cr}\,\pmatrix{C_i\cr S_i\cr \sqrt{1 - C_i^2 - S_i^2}}\ ,}{sm momenta par}
-where $i = 1, 2$ and the upper (bottom) sign corresponds to particle 1 (2). The $C_i$ and $S_i$ parameters describe the angular smearing in the horizontal ($x$) and vertical ($y$) projections. According to \Eq{ttm beam div}, they can be assigned Gaussian distributions
-%\TODO{ref for gaussian}
-with a of spread $\si_{\th^*}$. In fact, the tails of the distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_{\th^*} \ll 1$, the effect is negligible. The $\xi$ parameter accounts for the energy smearing, the expected distribution is a Gaussian with mean $\bar\xi$ and variance $\si_\xi^2$, see \Eq{ttm energy off,ttm energy fl}.
+where $i = 1, 2$ and the upper (bottom) sign corresponds to particle 1 (2). The $C_i$ and $S_i$ parameters describe the angular smearing in the horizontal ($x$) and vertical ($y$) projections. In a good approximation, these parameters are normally distributed with a of spread $\si_{\th^*}$, cf.~\Eq{ttm beam div}. To be precise, the tails of the distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_{\th^*} \ll 1$, the effect is negligible. The $\xi$ parameter accounts for the energy smearing, the expected distribution is a Gaussian with mean $\bar\xi$ and variance $\si_\xi^2$, see \Eq{ttm energy off,ttm energy fl}.
 
 The smearing software module uses the above distributions and the parameterization \Eq{sm momenta par} to generate the smearing parameters and \Eq{sm mc to lab} to apply the smearing to \abb{MC} generated events.
 
@@ -139,8 +137,7 @@ The leading $\ga$ factor on the \rhs~of \Eq{sm density2} is needed to preserve t
 The density for the first bunch can be obtained analogically:
 \eqref{\rh_1(x, y, z; t) = \ga\, \rh_0\Big(x\cos\al + z\sin\al, y, \ga(z\cos\al - x\sin\al - vt) \Big)\ .}{sm density1}
 
-The Lorentz-contracted particle density of each bunch can well be approximated by a Gaussian
-%\TODO{reference}
+The Lorentz-contracted particle density of each bunch can be, in a first approximation (see \bref{white10}), described by a Gaussian:
 \eqref{\ga \rh_0(x, y, \ga z) \propto \exp\left(-{ x^2\over 2\si_{x^*}^2}-{ y^2\over 2\si_{y^*}^2}-{ z^2\over 2\si_{z^*}^2}\right),}{sm density}
 where the spreads $\si_{x^*}, \si_{y^*}$ and $\si_{z^*}$ correspond to the bunch dimensions in the \abb{LAB} frame (cf.~\Eq{ttm vertex sm}).
 
