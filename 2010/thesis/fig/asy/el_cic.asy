@@ -220,14 +220,14 @@ GShipout("el_cic_diff_Psi_eik", hSkip=5mm);
 //--------------------------------------------------
 write("* el_cic_diff_Psi_sum");
 
-NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
+NewPad("$|t|\un{GeV^2}$", "real part of interference phase");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#0|cmp_KL_CH_phase_re"), black, "CKL");
 draw(rGetObj(f4, "Puckett/interference#0|cmp_SWY_CH_phase_re"), red, "SWY");
 draw(rGetObj(f4, "Puckett/interference#0|CH_phase_re,la="+format("%.0E", 1e-3)), blue, "eikonal $\la=10^{-3}\,\rm GeV$");
 limits((t_min, -0.05), (t_max, 0.06), Crop);
 
-NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
+NewPad("$|t|\un{GeV^2}$", "imaginary part of interference phase");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#1|cmp_KL_CH_phase_im"), black, "CKL");
 draw(rGetObj(f4, "Puckett/interference#1|cmp_SWY_CH_phase_im"), red, "SWY");

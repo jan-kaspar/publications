@@ -58,5 +58,7 @@ label("$\leftarrow$ sector 45", (-5.36, -0.8), W, black);
 draw(Label("\SmallerFonts $9\,\rm m$", 0.5, N), (-6.3, 2.5)--(-1.7, 2.5), EndArrow(4));
 draw(Label("\SmallerFonts $13.5\,\rm m$", 0.5, S), (-6.3, 2.3)--(0.7, 2.3), EndArrow(4));
 
+label("detail at IP5", (5.5, 7.1), SW);
+
 
 shipout(bbox(2mm, nullpen));
