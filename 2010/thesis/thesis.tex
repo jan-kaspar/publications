@@ -78,6 +78,7 @@ First of all, I would like to thank my advisors Vojtěch Kundrát (for the theor
 
 I would like thank to the whole team of the TOTEM experiment. Without them it would not have been possible to write this thesis. Let me thank in particular to the members of the software group for a constructive collaboration. Many thanks to Leszek Grzanka for the software repository maintenance. 
 
+% Munir ??
 I am grateful to Karsten Eggert, Kenneth \"Osterberg, Simone Giani, Valentina Avati and Hubert Niewiadomski for many interesting and stimulating discussions. I have learnt a lot from them. I am indebted to Valentina and Simone for reading this thesis and giving me a plenty of valuable hints.
 
 I would like to acknowledge the CERN Doctoral Student Programme and the CERN TOTEM group for supporting my research and this thesis.
@@ -125,30 +126,32 @@ In Geneva, \TODO{date}
 
 \bgroup
 \input utf8-csf
-\halign{\hbox to 5.3cm{\strut#\hss}&\vbox{\advance\hsize-5.3cm\noindent\ #}\cr
+\halign{\hbox to 4cm{\strut#\hss\ }&\vtop{\advance\hsize-4cm\noindent\strut#\strut}\cr
 Název práce: 			& Elastický rozptyl na LHC\cr
 Autor:					& Jan Kašpar\cr
 Katedra:				& Ústav částicové a jaderné fyziky\cr
 Vedoucí doktorské práce:& RNDr.~Vojtěch Kundrát, DrSc., Fyzikální ústav AV ČR, v.~v.~i.\cr
 %						& Mario Deile, PhD, CERN, Ženeva\cr
-Abstrakt:				& \TODO{přeložit anglický abstrakt}\cr
-Klíčová slova:			& elastický rozptyl protonů, TOTEM, římské hrnce, alignment\cr
+Abstrakt:				&
+Elastický rozptyl protonů, přestože proces zdánlivě jednoduchý, představuje pro teorii stále velkou výzvu. V této práci se zabýváme elastikým rozptylem z teoretického i experimentálního hlediska. V teoretické části shrneme několik modelů a jejich předpovědi pro LHC. V diskuzi věnované interferenci mezi Coulombickou a hadronovou interakcí představíme nový eikonálový výpočet do všech řádů v konstantě jemné strutury $\al$. V experimentální části práce popíšeme experiment TOTEM, který je mimo jiné zasvěcen měření elastického rozptylu protonů na LHC. Toto měření je realizováno především detektory v římských hrncích (ŘH). To jsou pohyblivé vakuové nádoby zasouvající se do urychlovačové trubice stovky metrů od interakčního bodu. Díky tomu jsou ŘH schopny detekovat částice rozptýlené do velmi malých úhlů. V práci taktéž diskutujeme některé aspekty simulačního a rekonstrukčního softwaru pro ŘH. Velký prostor je věnován alignmentu ŘH, tj.~určení pozic sensorů v ŘH navzájem i vůči svazku. V závěru práce popíšeme první analýzu elastického rozptylu naměřeného experimentem TOTEM na LHC. Výsledný differenciální účinný průřez je srovnán s modelovými předpověďmi.
+\cr
+Klíčová slova:			& elastický rozptyl protonů, Coulomb-hadronová interference, TOTEM, římské hrnce, alignment\cr
 }
 \egroup
 
 \vfil
 
-\halign{\hbox to 5.4cm{\strut#\hss\ }&\vtop{\advance\hsize-5.4cm\noindent\strut#\strut}\cr
+\halign{\hbox to 4cm{\strut#\hss\ }&\vtop{\advance\hsize-4cm\noindent\strut#\strut}\cr
 Title:		& Elastic scattering at the LHC\cr
 Author:		& Jan Ka\v spar\cr
 Departement:& Institute of Particle and Nuclear Physics\cr
-Supervisor of the doctoral thesis:& RNDr.~Vojt\v ech Kundr\' at, DrSc., Institute of Physics AS CR\cr
+Supervisor of the thesis:& RNDr.~Vojt\v ech Kundr\' at, DrSc., Institute of Physics AS CR\cr
 %			& Mario Deile, PhD, CERN, Geneva\cr
 %Abstract:	& [abstract of 80-200 words in English]\cr
 Abstract:	& 
-The elastic scattering of protons is the simplest $\rm pp$ interaction possible, however, it still presents a challenge for the theory. In this thesis we discuss the elastic scattering from theoretical as well as experimental point of view. In the theory part, we present several models and their predictions for the LHC. We also discuss the Coulomb-hadronic interference, where we present a new eikonal calculation to all orders of $\al$, the fine-structure constant. In the experimental part we introduce the TOTEM experiment which is dedicated, among others, to the measurement of the elastic scattering at the LHC. This measurement is performed primarily with the Roman Pot (RP) detectors -- movable beam-pipe insertions hundreds of meters from the interaction point, that can detect protons scattered to very small angles. We discuss some aspects of the RP simulation and reconstruction software. A great detail is devoted to the technique of RP alignment -- a method of determination of the relative positions among the RP sensors and their positions with respect to the beam. At the end we present the analysis of TOTEM's first elastic scattering measurement at the LHC.\cr
+The seemingly simple elastic scattering of protons still presents a challenge for the theory. In this thesis we discuss the elastic scattering from theoretical as well as experimental point of view. In the theory part, we present several models and their predictions for the LHC. We also discuss the Coulomb-hadronic interference, where we present a new eikonal calculation to all orders of $\al$, the fine-structure constant. In the experimental part we introduce the TOTEM experiment which is dedicated, among other subjects, to the measurement of the elastic scattering at the LHC. This measurement is performed primarily with the Roman Pot (RP) detectors -- movable beam-pipe insertions hundreds of meters from the interaction point, that can detect protons scattered to very small angles. We discuss some aspects of the RP simulation and reconstruction software. A central point is devoted to the techniques of RP alignment -- determining the RP sensor positions relative to each other and to the beam. At the end we present the analysis of TOTEM's first elastic scattering measurement at the LHC. The resulting differential cross-section is compared to model predictions.\cr
 %Keywords:	& [ 3-5 keywords in English]\cr
-Keywords:	& elastic scattering of protons, TOTEM, Roman Pots, alignment\cr
+Keywords:	& elastic scattering of protons, Coulomb-hadronic interference, TOTEM, Roman Pots, alignment\cr
 }
 
 \vfil
@@ -184,7 +187,27 @@ Keywords:	& elastic scattering of protons, TOTEM, Roman Pots, alignment\cr
 
 %----------------------------------------------------------------------------------------------------
 
-\SpecialChapter{List of Abbreviations}
+\SpecialChapter{List of Abbreviations and Symbols}
+
+\noindent The following table summarizes the typographical conventions used in this thesis.
+\vskip1mm
+
+\centerline{\vbox{\halign{\bstrut\qquad #\hfil&\qquad #\hfil&\qquad #\hfil\qquad\cr\ln
+structure			& example				& font/symbol\cr\ln
+scalar				& $s$ 					& italics\cr
+vector				& $\vec v$				& bold\cr
+element of vector	& $v_i$					& italics\cr
+dot product			& $\vec v\cdot \vec w$	& middle dot\cr
+cross product		& $\vec v\times \vec w$	& cross\cr
+matrix				& $\mat M$				& slanted\cr
+state				& $\ket\ps$				& ket\cr
+operator element	& $\mel{\ph}{\op A}{\ps}$ & bra-ket, operator with hat\cr
+software parameter  & \pmt{parameter}		& typewriter\cr\ln
+}}}
+
+\vskip2\baselineskip
+
+\noindent The list of abbreviations used in thesis.
 
 \ListAbb{ALICE}{A Large Ion Collider Experiment}{An LHC experiment.}
 \ListAbb{ALFA}{Absolute Luminosity For Atlas}{The very forward tracker system of the ATLAS detector.}
