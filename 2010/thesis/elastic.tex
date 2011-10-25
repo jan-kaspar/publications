@@ -83,6 +83,18 @@ The model is formulated in the eikonal description, which automatically guarante
 
 The model comprises 16 free (fitted) parameters for the two pomeron variant or 20 for three pomerons. In addition, there are 4 fixed parameters.
 
+Amplitude (integration bound $B = 60\un{GeV^{-1}}$)
+\eqref{F(t) = \i p\sqrt s \int\limits_0^B \d b\,b\, J_0(b \sqrt{-t}) \left( 1 - \e^{2\i \de(b)}\right)}{el ppp F}
+Eikonal (upper $\rm pp$, lower $\rm\bar pp$), the last term only in the 3P version
+\eqref{\de(b) = i\de_{\rm P_{1}}(b) + i\de_{\rm P_{2}}(b) \pm i\de_{\rm O}(b) + i\de_{\rm f}(b) \pm i\de_{\rm\om}(b) + \left( i\de_{\rm P_{3}}(b) \right)}{el ppp de}
+Each of the sub-eikonals follows from a trajectory
+\eqref{
+	\de_j(b) = {\ga_j\over 4\pi\rh^2_j} \e^{-{b^2\over \rh^2_j}}\ ,\quad
+	\ga_j = {c_j\over s_0} \left( -i {s\over s_0} \right)^{\al_0 - 1}\ ,\quad
+	\rh_j^2 = 4 \al'_j \log {s\over s_0} + r_j^2
+}{el ppp de j}
+$s_0$ fixed at $1\un{GeV^2}$
+
 \def\OutlineLabel{The model of Bourrely et al.}
 \block{The model of Bourrely et al. \bref{bsw79,bsw84,bsw03,bsw10}}
 
@@ -94,6 +106,26 @@ Thanks to this construction, the model can be easily extended to describe other 
 
 The model has 18 parameters in total (for $\rm pp$ and $\rm \bar p p$ interactions), however, only 6 of them are relevant for high energy scattering.
 
+Amplitude (integration bound $B = 50\un{GeV^{-1}}$)
+\eqref{F(t) = \i p\sqrt s \int\limits_0^B \d b\,b\, J_0(b \sqrt{-t}) \left( 1 - \e^{\Om_0(b)}\right)}{el bsw F}
+Eikonal (integration bound $T = -400\un{GeV^2}$) pre-calculated -- $10^4$ samples on $(0, B)$, later linearly interpolated
+\eqref{\Om_0(b) = {1\over 2} \int\limits_T^0 \d t\, J_0(b\sqrt{-t})\, \tilde\Om_0(t)}{el bsw Om}
+$S_0$ in fact also fcn of $t$, the factor before the background term is problematic
+\eqref{\tilde\Om_0(t) = S_0(s)\, F_0(t) + {1\over s} R_0(t)}{el bsw tilde Om}
+\eqref{F_0(t) = f \left[1\over \left(1 - {t\over m_1^2}\right) \left(1 - {t\over m_2^2}\right) \right]^2 {a^2 + t\over a^2 - t}}{el bsw F0}
+\eqref{
+	S_0(s) = {s^c\over (\log s)^{c'}} + {u^c\over (\log u)^{c'}}\ ,\qquad
+	u = 4m^2 - s - t \approx -s = s \e^{-\i \pi}
+}{el bsw S0}
+Background Regge trajectories
+\eqref{
+	R(t) = R_{\rm a_2}(t) + R_{\rm\om}(t) + R_{\rm\rh}(t)\ ,\qquad
+	R_j = C_j\, \e^{b_j t + \al(t) \log s} \left(1 + s_j \e^{-\i \pi \al(t)} \right)\ ,\qquad
+	\al(t) = \al_0 + \al' t
+}{el bsw R}
+
+
+
 \def\OutlineLabel{The model of Block et al.}
 \block{The model of Block et al. \bref{bh99,bh11}}
 
@@ -104,6 +136,20 @@ The even eikonal has three components accounting for quark-quark, quark-gluon an
 The authors extend the model to $\rm\ga p$ and $\rm\ga\ga$ interactions, by proposing that the photon behaves as a quark-antiquark system in strong interactions.
 
 The model has 12 parameters in total, 5 of them control the high-energy behavior.
+
+
+Amplitude (integration bound $B = 50\un{GeV^{-1}}$)
+\eqref{F(t) = \i p\sqrt s \int\limits_0^B \d b\,b\, J_0(b \sqrt{-t}) \left( 1 - \e^{-\ch'(b)}\right)}{el bh F}
+Eikonal (the leading one-half factor is not the paper, but is needed to get reasonable predictions)
+\eqref{\ch'(b) = {1\over 2} \sum\limits_{j\in\lbrace \hbox{\SmallerFonts gg, qg, qq, odd} \rbrace} \si_j\, W(b, \mu_j)}{el bh ch}
+Impact-parameter distribution
+\eqref{W(b, \mu) = {\mu^2\over 96\pi} (\mu b)^3 K_3(\mu b)}{el bh W}
+Sub-process cross-sections; SUM in Eq.~(B5) in \bref{bh99}
+\eqref{\si_{\rm gg} = C'_{\rm gg} \Si_{\rm gg} N_{\rm g}^2 [SUM]}{el bh si gg}
+\eqref{\si_{\rm qq} = \Si_{\rm gg} \left(C + C^{\rm even}_{\rm Regge} {m_0\over \sqrt s} \e^{\i{\pi\over 4}} \right)}{el bh si qq}
+\eqref{\si_{\rm qg} = \Si_{\rm gg} C^{\rm log}_{\rm qg} \left( \log {s\over s_0} - \i {\pi\over 2} \right)}{el bh si qg}
+\eqref{\si_{\rm odd} = -\i C_{\rm odd} \Si_{\rm gg} {m_0\over \sqrt s}  \e^{\i{\pi\over 4}} }{el bh si odd}
+
 
 \section[el pred]{Predictions for the LHC}
 
