@@ -63,92 +63,170 @@ The scattering amplitudes $\phi_i$ or $F$ reflect the interactions acting betwee
 
 At present, the quantum chromodynamics (\abb{QCD}) is believed to be the most accurate theory of strong interactions available (see e.g.~\bref{chyla}). However, like for most field theories, it is uneasy to handle it non-perturbatively. At the same time perturbative calculations of elastic scattering amplitude fail because of the strong coupling being too large in the typical four-momentum-transfer range ($|t| \ls 10\un{GeV^2}$). Instead, elastic scattering is described and studied with models that are more or less \abb{QCD}-inspired. The most frequent theoretical grounds are the Regge theory and eikonal description (see e.g.~Chs.~5 and 6 in \bref{barone}). Traditionally, these models are called hadronic models, where hadronic refers to the strong interaction. We will now discuss some of the models in a greater detail (an alternative description of these models can be found in \bref{kklp11}).
 
-Most of the models neglect the spin effects -- they use the approximation \Eq{el spinless si}. In other words they only provide the scattering amplitude $F$.
+Most of the models neglect the spin effects -- they use the approximation \Eq{el spinless si}. In other words they only provide the scattering amplitude $F(t)$.
+
+\TODO{Formulae adapted for calculations}
 
 \def\OutlineLabel{The model of Islam et al.}
 \block{The model of Islam et al. \bref{islam87,islam03,islam04,islam06,islam07}}
 
 The authors picture the proton in an effective quantum-field-theory (\abb{QFT}) model. They proposed a soliton solution with a mass comparable to the one of proton. This soliton divides the proton into two distinct layers: an outer cloud of quark-antiquark condensate and an inner core of topological charge. Later on, a third, the inner-most layer has been added -- a valence-quark bag. These three layers give rise to three mechanisms contributing to elastic proton-proton scattering. Each of them drives the amplitude in a range of momentum-transfer $t$.
 
+% 1. This concerns the statement: "The corresponding scattering amplitude is formulated in the eikonal approach (see e.g. Ch 6 in [10]), with a Gaussian-like profile function". The first part of the statement is correct, but not the second part: "with a Gaussian-like profile function". We chose an even Fermi-profile function [13] ( Eq.(3) ), not a Gaussian one. Furthermore, we pointed out that with lns-dependent parameters, we obtain a diffraction amplitude that satisfies the general properties associated with diffraction, e.g., qualitative saturation of Froissart-Martin bound for the total cross section, asymptotic behavior of rho(s) (Re F(s,0)/ImF(s,0)) etc.[14].
+
+% This comment is about placing the references in your description of our model. I suggest: a)  after the sentence "Their spatial distribution . . . from the nucleon's center", insert the reference : Islam, Luddy, Prokudin, Int. J. Mod. Phys., 2006, vol. A21, p. 1- 42 as ref. [15]. b) Then after the sentence "In the first one (we will refer to it as HP) . . . (gluon ladders in BFKL)", insert ref. Islam, luddy, Prokudin, Phys. Lett., 2005, vol. B605, p. 115 - 122 as ref. [16]. c) Change your reference [17] to Islam, Kaspar, Luddy, Deep-Elastic pp Scattering at LHC from Low-x Gluons, Mod. Phys. Lett., 2009, vol.A24, no. 7,p. 485 - 496, and insert it at the end of the sentence"In the second (LxG), . . . that surround the valence quarks".
+
 For the lowest $|t|$ values ($\ls 0.5\un{GeV^2}$ at \abb{LHC} energies) it is the diffraction scattering, originating from a glancing overlapping of the outer clouds. The corresponding scattering amplitude is formulated in the eikonal approach (see e.g.~Ch.~6 in \bref{barone}), with a Gaussian-like profile function. For higher $|t|$ values (up to $\approx 5\un{GeV^2}$ at \abb{LHC} energies) the leading mechanism is the core-core scattering. The \abb{QFT} model suggests that it is mediated by the $\rm\om$ meson, behaving as an elementary particle (not like a Regge pole in many other models). For even higher values of $|t|$, the scattering is probing the inner-most layer of valence quarks. Their spatial distribution is assumed to fall off exponentially as departing from the nucleon's center. There are two alternatives for the interaction of two valence quarks. In the first one (we will refer to it as \abb{HP}), the quarks interact via a hard pomeron (gluon ladders in \abb{BFKL}). In the second (\abb{LxG}), the interaction is mediated by the low-$x$ gluons that surround the valence quarks.
 
 The model contains 19 parameters in the hard-pomeron version \abb{HP} or 20 in the low-$x$ gluon version \abb{LxG}.
 
+The three amplitude components
+\eqref{F(t) = F_{\rm diff}(t) + F_{\rm core} + F_{\rm qq}}{el is F}
+Diffraction, $B = 50\un{GeV^{-1}}$
+\eqref{
+	F_{\rm diff}(t) = {\cal D} \int\limits_0^B \d b\, b\, J_0(b \sqrt{-t})\, \Ga_{\rm D}\ ,\qquad
+	{\cal D} = \i p \sqrt s \left(1 - \La(\et_0, c_0, \si) \right) {1 + \e^{-{R\over a}} \over 1 - \e^{- {R\over a}}}
+}{el is F diff}
+Crossing-even function
+\eqref{\La(a, b, c) = a + {b\over \left(s \e^{-\i {\pi\over 2}}\right)^c}}{el is La}
+Profile, from effective theory
+\eqref{\Ga_{\rm D} =
+	{1\over 1 + \e^{b-R\over a}}
+	+ {1\over 1 + \e^{-b-R\over a}}
+	- 1
+}{el is Ga}
+\eqref{
+	R = R_0 + R_1 \left(\log s - \i {\pi\over 2}\right)\ ,\qquad
+	a = a_0 + a_1 \left(\log s - \i {\pi\over 2}\right)
+}{el is R a}
+Core amplitude, $\om$ exchange
+\eqref{F_{\rm core} = {\cal C} {\cal H}\, F_{\rm\om}^2(t)\, {1\over m_\om^2 - t}}{el is F core}
+Upper $pp$, lower $\bar pp$
+\eqref{{\cal C} = \mp 1\ ,\qquad {\cal H} = s \La(\hat\ga_0, \hat\ga_1, \hat\si) \left[ \La(\et_0, c_0, \si) \pm \i \La(\la_0, -d_0, \al) \right]}{el is C H}
+Form factor
+\eqref{\be \sqrt{m^2_\om -t}\ \ K_1\!\left(\be \sqrt{m_\om^2 - t}\right)}{el is F om}
+Valence quark scattering
+\eqref{
+	F_{\rm qq}(t) = {\cal H} \, {\cal F}^2(q_\perp) \, T_{\rm qq}(t)\ ,\qquad
+	q_\perp = \sqrt{t\left( {t\over t_{\rm min}} - 1 \right)}
+}{el is F qq}
+Form factor modeling the confinement
+\eqref{
+	{\cal F}(q_\perp) = {m\, m_0^5\over 8\pi} \int\limits_0^1 \d x\, {x^{1+\om}\over \al^2}\, I(q_\perp, \al)a\ ,\qquad
+	\al^2 = {m_0^2\over 4} + m^2 x^2
+}{el is cal F}
+\eqref{
+	I(q_\perp, \al) = {1\over 8\al^4} \left[
+		\left( {2\over a^2} + {1\over a'^2} - {3a'^2\over a^4} \right) {\log (a + a')\over a a'}
+		- {1\over a^2 a'^2}
+		+ {3\over a^4}
+	\right ]\ ,\qquad
+	a' = {q_\perp\over 2\al}\ ,\qquad
+	a = \sqrt{a'^2 + 1}
+}{el is I}
+Hard pomeron: $T_{\rm qq} = F_{\rm HP}$
+\eqref{F_{\rm HP}(t) = {\i \tilde\ga_{\rm qq} \left(s \e^{-\i \pi} \right)^\om \over {1\over r_0^2} - t} }{el is F HP}
+Low-$x$ gluons: $T_{\rm qq} = F_{\rm LxG}$
+\eqref{F_{\rm LxG}(t) = {\i \tilde\ga_{\rm gg} \left(s \e^{-\i \pi} \right)^\la \over \left(1 - {t\over m_c^2} \right)^{5\over 2}} }{el is F HP}
+
+
 \def\OutlineLabel{The model of Petrov et al.}
 \block{The model of Petrov et al. \bref{ppp02}}
 
-This model describes the collision of nucleons as an exchange of several reggeons. Besides the meson trajectories $\rm\rh$ and $\rm\om$, it includes a number of pomerons and an odderon. The authors argue that one pomeron (i.e.~a Regge trajectory with the intercept higher than one) is insufficient to describe data on nucleon-nucleon scattering. Therefore they consider options with two (will be denoted 2P) and three (3P) pomerons. The latter one is found to be preferred by data fits.
+This model describes the collision of nucleons as an exchange of several reggeons. The scattering amplitude is formulated in eikonal formalism:
+\eqref{F(t) = \i p\sqrt s \int\limits_0^B \d b\,b\, J_0(b \sqrt{-t}) \left( 1 - \e^{2\i \de(b)}\right)\ .}{el ppp F}
+Again, $B$ stands for the theoretically infinite integration bound. In computer calculations we have used a value of $60\un{GeV^{-1}}$. The eikonal $\de(b)$ receives contributions from each considered reggeon exchange (several pomerons, an odderon and the $f$ and $\om$ trajectories):
+\eqref{\de(b) = \i\de_{\rm P_{1}}(b) + \i\de_{\rm P_{2}}(b) \pm \de_{\rm O}(b) + \i\de_{\rm f}(b) \pm \de_{\rm\om}(b) \ \  \left[ + \i\de_{\rm P_{3}}(b) \right]\ ,}{el ppp de}
+where the upper (lower) sign refers to $\rm pp$ ($\rm \bar pp$) scattering. The authors argue that one pomeron (i.e.~a Regge trajectory with the intercept higher than one) is insufficient to describe data on nucleon-nucleon scattering. Therefore they consider options with two (will be denoted 2P) and three (3P) pomerons. The latter one is found to be preferred by data fits.
 
-The model is formulated in the eikonal description, which automatically guarantees the required properties of a scattering amplitude such as unitarity. The total eikonal is a sum of per-trajectory eikonals. Each of them has the typical Regge energy dependence $s^{\al(t)}$, where $\al(t) = \al_0 + \al' t$ is a linear Regge trajectory. The impact-parameter dependence of the eikonals is chosen Gaussian, which would in $t$-space (in Born approximation) correspond to a constant exponential slope.
-
-The model comprises 16 free (fitted) parameters for the two pomeron variant or 20 for three pomerons. In addition, there are 4 fixed parameters.
-
-Amplitude (integration bound $B = 60\un{GeV^{-1}}$)
-\eqref{F(t) = \i p\sqrt s \int\limits_0^B \d b\,b\, J_0(b \sqrt{-t}) \left( 1 - \e^{2\i \de(b)}\right)}{el ppp F}
-Eikonal (upper $\rm pp$, lower $\rm\bar pp$), the last term only in the 3P version
-\eqref{\de(b) = i\de_{\rm P_{1}}(b) + i\de_{\rm P_{2}}(b) \pm i\de_{\rm O}(b) + i\de_{\rm f}(b) \pm i\de_{\rm\om}(b) + \left( i\de_{\rm P_{3}}(b) \right)}{el ppp de}
-Each of the sub-eikonals follows from a trajectory
+Each of the reggeon eikonals $\de_j(b)$ is parameterized as a Gaussian with a width that grows logarithmically with $s$:
 \eqref{
-	\de_j(b) = {\ga_j\over 4\pi\rh^2_j} \e^{-{b^2\over \rh^2_j}}\ ,\quad
-	\ga_j = {c_j\over s_0} \left( -i {s\over s_0} \right)^{\al_0 - 1}\ ,\quad
-	\rh_j^2 = 4 \al'_j \log {s\over s_0} + r_j^2
+	\de_j(b) = {\ga_j\over 4\pi\rh^2_j}\ \e^{-{b^2\over \rh^2_j}}\ ,\quad
+	\ga_j = {c_j\over s_0} \left( -i {s\over s_0} \right)^{\al_j(0) - 1}\ ,\quad
+	\rh_j^2 = 4 \al'_j \log {s\over s_0} + r_j^2\ .
 }{el ppp de j}
-$s_0$ fixed at $1\un{GeV^2}$
+The Regge trajectories are considered in a linear approximation $\al(t) = \al(0) + \al' t$. The energy scale $s_0$ is fixed at $1\un{GeV^2}$.
+
+Altogether, the model comprises 16 free (fitted) parameters for the two pomeron variant or 20 for three pomerons. In addition, there are 5 fixed parameters ($s_0$, $\rm f$ and $\om$ trajectory slopes $\al'$ and intercepts $\al(0)$).
+
+
 
 \def\OutlineLabel{The model of Bourrely et al.}
 \block{The model of Bourrely et al. \bref{bsw79,bsw84,bsw03,bsw10}}
 
-This is also an eikonal model. The eikonal has two components: from a pomeron exchange and a Regge background. The latter is described as an exchange of $\rm A_2$, $\rm \rh$ and $\rm \om$ trajectories, having the traditional energy dependence $s^{\al(t)}$ and exponential $t$-dependence. The Regge background is responsible for the difference between $\rm pp$ and $\rm\bar pp$ scattering at low energies, but is negligible for high (\abb{LHC}) energies.
+This model is also formulated in the eikonal description (the upper integration bound $B$ has been kept at $50\un{GeV^{-1}}$ in our computer programs):
+\eqref{F(t) = \i p\sqrt s \int\limits_0^B \d b\,b\, J_0(b \sqrt{-t}) \left( 1 - \e^{\Om_0(b)}\right)\ .}{el bsw F}
+The eikonal $\Om_0(b)$ is given in terms of Fourier-Bessel transform by its $t$-space partner $\tilde\Om_0(t)$:
+\eqref{\Om_0(b) = {1\over 2} \int\limits_T^0 \d t\, J_0(b\sqrt{-t})\, \tilde\Om_0(t)\ .}{el bsw Om}
+The lower integration bound was set to $T = -400\un{GeV^2}$ in our programs. In order to increase the performance of our numerical calculations, we first sample ($10^4$ points) the eikonal $\Om_0(b)$ on the interval $\langle 0, B\rangle$. Then, we employ a linear interpolation in \Eq{el bsw F}.
 
-The eikonal of the pomeron is assumed to factorize to an energy dependence and a dependence on impact parameter. The first is deduced from asymptotic \abb{QFT} behavior \bref{wu70}. The latter is implied from the assumption of similar distributions of the electric charge and the hadronic matter in the nucleon. The charge distribution is extracted from the electromagnetic form factor (a dipole parameterization is used). The hadronic matter distribution is then obtained by correcting with a slowly-varying function (of $t$).
+The model includes two scattering mechanisms: a pomeron exchange and a Regge background. These are reflected by the following two terms\footnote{%
+All the quoted papers contain \Eq{el bsw tilde Om} (or its Fourier-Bessel transform) without the $-\i/s$ factor in front of the background term $R_0(t)$. This gives too much weight to the background and the resulting predictions are incompatible with the published ones. In \bref{bsw84} (in the footnote with four stars), the authors comment on a miss-print in their earlier publication \bref{bsw79}: the equation should have read $\i s S_0 F_0 + R_0$. This gives a more correct ratio of the pomeron to the background term, however, the overall normalization is wrong. That is why we have ``moved'' the $\i s$ factor to the background term in \Eq{el bsw tilde Om}. This gives correct predictions at high energies. At lower energies, we have not been complete able to reproduce the published results, but our predictions are not far.
+}:
+\eqref{\tilde\Om_0(t) = S_0(s)\ F_0(t) - {\i\over s} R_0(t)\ .}{el bsw tilde Om}
+The pomeron contribution is factorized into an energy dependence ($S_0$) and $t$-dependence ($F_0$). The energy dependence is deduced from asymptotic \abb{QFT} behavior \bref{wu70}:
+\eqref{
+	S_0(s) = {s^c\over (\log s)^{c'}} + {u^c\over (\log u)^{c'}}\ ,\qquad
+	u = 4m^2 - s - t \approx -s = s \e^{-\i \pi}\ .
+}{el bsw S0}
+Strictly speaking, this parameterization violates the $s$-$t$ factorization in \Eq{el bsw tilde Om}, since $S_0(s)$ depends on $t$ too. However, for high energies and low scattering angles, the dependence on $t$ is negligible as one may well approximate $u \approx -s$. The $t$-dependence of the pomeron-exchange amplitude is implied by assuming similar distributions of the electric charge and the hadronic matter in the nucleon. The charge distribution is extracted from the electromagnetic form factor, see the dipole parameterization in brackets below. The hadronic matter distribution is then obtained by correcting with a slowly-varying function (the fraction on the right-hand side):
+\eqref{F_0(t) = f \left[1\over \left(1 - {t\over m_1^2}\right) \left(1 - {t\over m_2^2}\right) \right]^2 {a^2 + t\over a^2 - t}\ .}{el bsw F0}
+
+The Regge background is described as an exchange of $\rm A_2$, $\rm \rh$ and $\rm \om$ trajectories:
+\eqref{
+	R_0(t) = R_{\rm A_2}(t) + R_{\rm\om}(t) + R_{\rm\rh}(t)\ ,\qquad
+	R_j(t) = C_j\, \e^{b_j t + \al(t) \log s} \left(1 + s_j \e^{-\i \pi \al(t)} \right)\ ,\qquad
+	\al(t) = \al_0 + \al' t
+}{el bsw R}
+The parameterization has the traditional energy dependence $s^{\al(t)}$ and exponential $t$-dependence. This Regge background is responsible for the difference between $\rm pp$ and $\rm\bar pp$ scattering at low energies, but is negligible for high (\abb{LHC}) energies.
 
 Thanks to this construction, the model can be easily extended to describe other scattering processes such as $\rm \pi p$ or $\rm Kp$. The only change is to replace the form factor of the proton by a form factor of another particle.
 
-The model has 18 parameters in total (for $\rm pp$ and $\rm \bar p p$ interactions), however, only 6 of them are relevant for high energy scattering.
-
-Amplitude (integration bound $B = 50\un{GeV^{-1}}$)
-\eqref{F(t) = \i p\sqrt s \int\limits_0^B \d b\,b\, J_0(b \sqrt{-t}) \left( 1 - \e^{\Om_0(b)}\right)}{el bsw F}
-Eikonal (integration bound $T = -400\un{GeV^2}$) pre-calculated -- $10^4$ samples on $(0, B)$, later linearly interpolated
-\eqref{\Om_0(b) = {1\over 2} \int\limits_T^0 \d t\, J_0(b\sqrt{-t})\, \tilde\Om_0(t)}{el bsw Om}
-$S_0$ in fact also fcn of $t$, the factor before the background term is problematic
-\eqref{\tilde\Om_0(t) = S_0(s)\, F_0(t) + {1\over s} R_0(t)}{el bsw tilde Om}
-\eqref{F_0(t) = f \left[1\over \left(1 - {t\over m_1^2}\right) \left(1 - {t\over m_2^2}\right) \right]^2 {a^2 + t\over a^2 - t}}{el bsw F0}
-\eqref{
-	S_0(s) = {s^c\over (\log s)^{c'}} + {u^c\over (\log u)^{c'}}\ ,\qquad
-	u = 4m^2 - s - t \approx -s = s \e^{-\i \pi}
-}{el bsw S0}
-Background Regge trajectories
-\eqref{
-	R(t) = R_{\rm a_2}(t) + R_{\rm\om}(t) + R_{\rm\rh}(t)\ ,\qquad
-	R_j = C_j\, \e^{b_j t + \al(t) \log s} \left(1 + s_j \e^{-\i \pi \al(t)} \right)\ ,\qquad
-	\al(t) = \al_0 + \al' t
-}{el bsw R}
+The model has 18 parameters in total (for $\rm pp$ and $\rm \bar p p$ interactions), however, only 6 of them are relevant for high energy scattering ($c$, $c'$, $f$, $m_1$, $m_2$ and $a$).
 
 
 
 \def\OutlineLabel{The model of Block et al.}
 \block{The model of Block et al. \bref{bh99,bh11}}
 
-This model is a \abb{QCD}-inspired, eikonal-formulated model. Similarly to the previous models, the eikonal receives two contributions. One that controls high energy behavior (the authors call it even) and one responsible for the difference between $\rm pp$ and $\rm\bar pp$ scattering at low energies.
+This model is a \abb{QCD}-inspired, eikonal-formulated model. The scattering amplitude is given in terms of the Fourier-Bessel transform:
+\eqref{F(t) = \i p\sqrt s \int\limits_0^B \d b\,b\, J_0(b \sqrt{-t}) \left( 1 - \e^{-\ch'(b)}\right)\ .}{el bh F}
+The upper integration bound has been set to $B = 50\un{GeV^{-1}}$ in our computer programs. The eikonal $\ch'(b)$ receives four contributions\footnote{%
+The leading factor $1/2$ is not present in the quoted articles. We had to add it to our computer programs in order to obtain the same results as published in the articles.
+}:
+\eqref{\ch'(b) = {1\over 2} \left[
+	\si_{\rm gg}(s)\, W(b, \mu_{\rm gg}) 
+	+ \si_{\rm qg}(s)\, W(b, \mu_{\rm qg}) 
+	+ \si_{\rm qq}(s)\, W(b, \mu_{\rm qq}) 
+	+ \si_{\rm odd}(s)\, W(b, \mu_{\rm odd}) 
+\right]}{el bh ch}
+reflecting (in the same order) gluon-gluon, quark-gluon, quark-quark interactions and an odderon exchange. The odderon term is responsible for the difference between $\rm pp$ and $\rm\bar pp$ scattering at low energies and is negligible at higher (\abb{LHC}) energies. Each of the eikonal contributions is factorized into the energy dependence $\si(s)$ and the impact-parameter profile $W(b, \mu)$. The parameters $\mu$ describe the ``areas'' occupied by quarks or gluons in the nucleon. The impact-parameter profiles are parameterized as follows:
+\eqref{W(b, \mu) = {\mu^2\over 96\pi}\, (\mu b)^3\, K_3(\mu b)\ ,}{el bh W}
+which corresponds to a Fourier-Bessel transform of a dipole form factor.
 
-The even eikonal has three components accounting for quark-quark, quark-gluon and gluon-gluon interactions. Each of them takes a form with factorized energy dependence (proportional to the integral cross-section of that interaction at a given energy) and impact-parameter dependence. The latter is parameterized as the Fourier transform of a dipole form factor, with the control parameter given by the ``area'' of the nucleon occupied by the partons. The quark-gluon cross-section is assumed to rise logarithmically with energy, the quark-quark cross-section has a constant and a $1/\sqrt s$ contribution. The gluon-gluon cross-section is deduced from the gluonic structure functions of the nucleon.
+The $\si(s)$ functions in \Eq{el bh ch} can be interpreted (in Born approximation) as the integral cross-sections of the four sub-processes. The gluon-gluon cross-section is modelled after QCD (as an $s$-channel exchange of a particle with mass $m_0$ between two gluons carrying fractions $x_1$ and $x_2$ of their parent protons' energies):
+\eqref{
+	\si_{\rm gg}(s) = C_{\rm gg}\, \Si_{\rm gg} \int\!\!\int \Th(s\, x_1 x_2 - m_0^2)\, f_g(x_1)\, f(x_2)\,\d x_1\, \d x_2\ ,\qquad
+	\Si_{\rm gg} = {9\pi \al_{\rm s}\over m_0^2}\ .
+}{el bh si gg}
+Here, $\al_s$ stands for the strong coupling constant (fixed at the value of $0.5$) and $f_g(x)$ represents the gluon distribution function. The authors parameterized it as
+\eqref{f_g(x) = N_{\rm g} {(1-x)^5\over x^{1+\ep}}\ ,\qquad N_{\rm g} = {1\over 2\cdot 5!}\, (6 - \ep) \cdots (1 - \ep)}{al bh fg} 
+and calculated the integral in \Eq{el bh si gg} analytically (this yields a long expression that can be found in Eq.~(B5) in \bref{bh99}).
+
+The quark-quark cross-section is simulated by a constant and falling component:
+\eqref{\si_{\rm qq}(s) = \Si_{\rm gg} \left(C + C^{\rm even}_{\rm Regge}\, {m_0\over \sqrt s}\, \e^{\i{\pi\over 4}} \right)\ .}{el bh si qq}
+The quark-gluon interaction is modelled by a logarithmic energy dependence:
+\eqref{\si_{\rm qg}(s) = \Si_{\rm gg}\, C^{\rm log}_{\rm qg} \left( \log {s\over s_0} - \i {\pi\over 2} \right)}{el bh si qg}
+The parameterization of the odderon-exchange cross-section reads:
+\eqref{\si_{\rm odd}(s) = -\i\, C_{\rm odd}\, \Si_{\rm gg}\, {m_0\over \sqrt s}\,  \e^{\i{\pi\over 4}}\ .}{el bh si odd}
+Due to the $\sqrt s$ factor in the denominator, this contribution is irrelevant at high energies.
+
+
+In total, the model has 6 fixed ($m_0$, $\ep$, $\mu_{\rm qq}$, $\mu_{\rm gg}$, $\mu_{\rm odd}$ and $\al_{\rm s}$) and 6 fitted parameters ($C$, $C^{\rm log}_{\rm qg}$, $C'_{\rm gg}$, $C^{\rm even}_{\rm Regge}$, $C_{\rm odd}$ and $s_0$). The high-energy behavior is controlled by the gluon-gluon component, which is described by 5 parameters ($m_0$, $\ep$, $\mu_{\rm gg}$, $\al_{\rm s}$ and $C'_{\rm gg}$).
 
 The authors extend the model to $\rm\ga p$ and $\rm\ga\ga$ interactions, by proposing that the photon behaves as a quark-antiquark system in strong interactions.
 
-The model has 12 parameters in total, 5 of them control the high-energy behavior.
 
-
-Amplitude (integration bound $B = 50\un{GeV^{-1}}$)
-\eqref{F(t) = \i p\sqrt s \int\limits_0^B \d b\,b\, J_0(b \sqrt{-t}) \left( 1 - \e^{-\ch'(b)}\right)}{el bh F}
-Eikonal (the leading one-half factor is not the paper, but is needed to get reasonable predictions)
-\eqref{\ch'(b) = {1\over 2} \sum\limits_{j\in\lbrace \hbox{\SmallerFonts gg, qg, qq, odd} \rbrace} \si_j\, W(b, \mu_j)}{el bh ch}
-Impact-parameter distribution
-\eqref{W(b, \mu) = {\mu^2\over 96\pi} (\mu b)^3 K_3(\mu b)}{el bh W}
-Sub-process cross-sections; SUM in Eq.~(B5) in \bref{bh99}
-\eqref{\si_{\rm gg} = C'_{\rm gg} \Si_{\rm gg} N_{\rm g}^2 [SUM]}{el bh si gg}
-\eqref{\si_{\rm qq} = \Si_{\rm gg} \left(C + C^{\rm even}_{\rm Regge} {m_0\over \sqrt s} \e^{\i{\pi\over 4}} \right)}{el bh si qq}
-\eqref{\si_{\rm qg} = \Si_{\rm gg} C^{\rm log}_{\rm qg} \left( \log {s\over s_0} - \i {\pi\over 2} \right)}{el bh si qg}
-\eqref{\si_{\rm odd} = -\i C_{\rm odd} \Si_{\rm gg} {m_0\over \sqrt s}  \e^{\i{\pi\over 4}} }{el bh si odd}
 
 
 \section[el pred]{Predictions for the LHC}
