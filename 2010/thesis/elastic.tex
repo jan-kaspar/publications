@@ -70,50 +70,53 @@ Most of the models neglect the spin effects -- they use the approximation \Eq{el
 \def\OutlineLabel{The model of Islam et al.}
 \block{The model of Islam et al. \bref{islam87,islam03,islam04,islam06,islam07}}
 
-The authors picture the proton in an effective quantum-field-theory (\abb{QFT}) model. They proposed a soliton solution with a mass comparable to the one of proton. This soliton divides the proton into two distinct layers: an outer cloud of quark-antiquark condensate and an inner core of topological charge. Later on, a third, the inner-most layer has been added -- a valence-quark bag. These three layers give rise to three mechanisms contributing to elastic proton-proton scattering. Each of them drives the amplitude in a range of momentum-transfer $t$.
 
-% 1. This concerns the statement: "The corresponding scattering amplitude is formulated in the eikonal approach (see e.g. Ch 6 in [10]), with a Gaussian-like profile function". The first part of the statement is correct, but not the second part: "with a Gaussian-like profile function". We chose an even Fermi-profile function [13] ( Eq.(3) ), not a Gaussian one. Furthermore, we pointed out that with lns-dependent parameters, we obtain a diffraction amplitude that satisfies the general properties associated with diffraction, e.g., qualitative saturation of Froissart-Martin bound for the total cross section, asymptotic behavior of rho(s) (Re F(s,0)/ImF(s,0)) etc.[14].
+The authors picture the proton in an effective quantum-field-theory model (gauged non-linear sigma modle). They proposed a soliton solution with a mass comparable to the one of proton. This soliton divides the proton into two distinct layers: an outer cloud of quark-antiquark condensate and an inner core of topological charge. Later on, a third, the inner-most layer has been added -- a valence-quark bag. These three layers give rise to three mechanisms contributing to elastic proton-proton scattering -- diffraction scattering ($F_{\rm D}$) originating from a glancing overlapping of the outer clouds, the core-core scattering ($F_{\rm H}$) and the valence-quark scattering ($F_{\rm Q}$):
+\eqref{F(t) = F_{\rm D}(t) + F_{\rm H}(t) + F_{\rm Q}(t)\ .}{el is F}
+Each of the contributions drives the scattering amplitude in a range of momentum-transfer $t$. At the \abb{LHC} energies, the diffraction dominates for $|t| \ls 0.5\un{GeV^2}$, then the core-core scattering takes over, to be overruled by the valence-quark scattering at about $5\un{GeV^2}$.
 
-% This comment is about placing the references in your description of our model. I suggest: a)  after the sentence "Their spatial distribution . . . from the nucleon's center", insert the reference : Islam, Luddy, Prokudin, Int. J. Mod. Phys., 2006, vol. A21, p. 1- 42 as ref. [15]. b) Then after the sentence "In the first one (we will refer to it as HP) . . . (gluon ladders in BFKL)", insert ref. Islam, luddy, Prokudin, Phys. Lett., 2005, vol. B605, p. 115 - 122 as ref. [16]. c) Change your reference [17] to Islam, Kaspar, Luddy, Deep-Elastic pp Scattering at LHC from Low-x Gluons, Mod. Phys. Lett., 2009, vol.A24, no. 7,p. 485 - 496, and insert it at the end of the sentence"In the second (LxG), . . . that surround the valence quarks".
-
-For the lowest $|t|$ values ($\ls 0.5\un{GeV^2}$ at \abb{LHC} energies) it is the diffraction scattering, originating from a glancing overlapping of the outer clouds. The corresponding scattering amplitude is formulated in the eikonal approach (see e.g.~Ch.~6 in \bref{barone}), with a Gaussian-like profile function. For higher $|t|$ values (up to $\approx 5\un{GeV^2}$ at \abb{LHC} energies) the leading mechanism is the core-core scattering. The \abb{QFT} model suggests that it is mediated by the $\rm\om$ meson, behaving as an elementary particle (not like a Regge pole in many other models). For even higher values of $|t|$, the scattering is probing the inner-most layer of valence quarks. Their spatial distribution is assumed to fall off exponentially as departing from the nucleon's center. There are two alternatives for the interaction of two valence quarks. In the first one (we will refer to it as \abb{HP}), the quarks interact via a hard pomeron (gluon ladders in \abb{BFKL}). In the second (\abb{LxG}), the interaction is mediated by the low-$x$ gluons that surround the valence quarks.
-
-The model contains 19 parameters in the hard-pomeron version \abb{HP} or 20 in the low-$x$ gluon version \abb{LxG}.
-
-The three amplitude components
-\eqref{F(t) = F_{\rm diff}(t) + F_{\rm core} + F_{\rm qq}}{el is F}
-Diffraction, $B = 50\un{GeV^{-1}}$
+The diffraction amplitude $F_{\rm D}(t)$ is formulated in the eikonal formalism (see e.g.~Ch.~6 in \bref{barone}):
 \eqref{
-	F_{\rm diff}(t) = {\cal D} \int\limits_0^B \d b\, b\, J_0(b \sqrt{-t})\, \Ga_{\rm D}\ ,\qquad
-	{\cal D} = \i p \sqrt s \left(1 - \La(\et_0, c_0, \si) \right) {1 + \e^{-{R\over a}} \over 1 - \e^{- {R\over a}}}
-}{el is F diff}
-Crossing-even function
-\eqref{\La(a, b, c) = a + {b\over \left(s \e^{-\i {\pi\over 2}}\right)^c}}{el is La}
-Profile, from effective theory
-\eqref{\Ga_{\rm D} =
-	{1\over 1 + \e^{b-R\over a}}
-	+ {1\over 1 + \e^{-b-R\over a}}
-	- 1
+	F_{\rm D}(t) = \i p \sqrt s \int\limits_0^B \d b\, b\, J_0(b \sqrt{-t})\, \Ga_{\rm D}^+(b)
+}{el is F D}
+The upper integration bound $B$ should theoretically tend to infinity. This is, however, unrealizable for computer programs. In our calculations we have found a value of $B = 50\un{GeV^{-1}}$ reasonable. The eikonal $\Ga_{\rm D}^+(b)$ represents the crossing-even component (thus identical for $\rm pp$ and $\rm\bar pp$ scatterings). The authors argue that for the $t$-range where the diffraction dominates, the crossing-odd component is negligible. The eikonal is described by a Fermi profile function:
+\eqref{\Ga_{\rm D}^+(b) =
+	g(s)\, \left[
+		{1\over 1 + \e^{b-R\over a}}
+		+ {1\over 1 + \e^{-b-R\over a}}
+		- 1
+	\right]
 }{el is Ga}
+The parameter $R$ gives the ``size'' of the proton and the parameter $a$ determines the ``sharpness of its edge''. These parameters grow logarithmically with energy:
 \eqref{
 	R = R_0 + R_1 \left(\log s - \i {\pi\over 2}\right)\ ,\qquad
 	a = a_0 + a_1 \left(\log s - \i {\pi\over 2}\right)
 }{el is R a}
-Core amplitude, $\om$ exchange
-\eqref{F_{\rm core} = {\cal C} {\cal H}\, F_{\rm\om}^2(t)\, {1\over m_\om^2 - t}}{el is F core}
-Upper $pp$, lower $\bar pp$
-\eqref{{\cal C} = \mp 1\ ,\qquad {\cal H} = s \La(\hat\ga_0, \hat\ga_1, \hat\si) \left[ \La(\et_0, c_0, \si) \pm \i \La(\la_0, -d_0, \al) \right]}{el is C H}
-Form factor
-\eqref{\be \sqrt{m^2_\om -t}\ \ K_1\!\left(\be \sqrt{m_\om^2 - t}\right)}{el is F om}
-Valence quark scattering
+The energy dependence of the crossing-even eikonal was chosen as follows:
 \eqref{
-	F_{\rm qq}(t) = {\cal H} \, {\cal F}^2(q_\perp) \, T_{\rm qq}(t)\ ,\qquad
-	q_\perp = \sqrt{t\left( {t\over t_{\rm min}} - 1 \right)}
+	g(s) =  \left[1 - \La(\et_0, c_0, \si) \right] {1 + \e^{-{R\over a}} \over 1 - \e^{- {R\over a}}}\ ,
+}{el is g}
+with $\La$ denoting a crossing-even function
+\eqref{\La(a, b, c) = a + {b\over \left(s \e^{-\i {\pi\over 2}}\right)^c}\ .}{el is La}
+The authors have shown (e.g.~\bref{islam03}) that this diffraction amplitude satisfies the general properties associated with diffraction, e.g., qualitative saturation of Froissart-Martin bound ($\si_{\rm tot} \sim (a_0 + a_1\log s)^2$) or asymptotic behavior of $\rh \equiv \Re F_{\rm D}(0) / \Im F_{\rm D}(0)$ ($\rh \sim \pi a_1 / (a_0 + a_1 \log s)$).
+
+The underlying quantum-field-theory (\abb{QFT}) model suggests that core-core scattering (amplitude $F_{\rm H}$) it is mediated by the $\rm\om$ meson, acting as an elementary particle (not like a Regge pole in many other models):
+\eqref{F_{\rm H}(t) = \mp {\cal H}(s)\, {s\, F_{\rm\om}^2(t) \over m_\om^2 - t}\ .}{el is F core}
+Hereafter, the upper (lower) sign will correspond to $\rm pp$ ($\rm\bar pp$) scattering. The form factor $F_\om(t)$ was determined by requiring the core-core amplitude $F_{\rm H}(t)$ to fall off exponentially \bref{TODO}:
+\eqref{F_\om(t)^2 = \be \sqrt{m^2_\om -t}\ \ K_1\!\left(\be \sqrt{m_\om^2 - t}\right)}{el is F om}
+The parameter $\be$ represents the size of the nucleon core. The factor ${\cal H}(s)$ reflects the fact that the core-core interaction is accompanied by the diffraction (causing absorption) and is parameterized by
+\eqref{{\cal H}(s) = \La(\hat\ga_0, \hat\ga_1, \hat\si) \left[ \La(\et_0, c_0, \si) \pm \i \La(\la_0, -d_0, \al) \right]\ .}{el is C H}
+
+The valence-quark amplitude $F_{\rm Q}(t)$ accounts for high-$|t|$ scattering where the inner-most proton layers (the valence quarks in this model) interact. Besides the diffraction-absorption factor ${\cal H}(s)$, the amplitude includes a form factor ${\cal F}$ reflecting the quark confinement and an amplitude $F_{\rm qq}$ describing the basic interaction of two quarks:
+\eqref{
+	F_{\rm Q}(t) = {\cal H}(s) \, {\cal F}^2(q_\perp) \, F_{\rm qq}(t)\ ,\qquad
+	%q_\perp = \sqrt{t\left( {t\over t_{\rm min}} - 1 \right)}
+	q_\perp \simeq \sqrt{-t}\ .
 }{el is F qq}
-Form factor modeling the confinement
+The basic idea of the form-factor construction is that the quarks have a certain spatial distribution within the quark bag. This distribution is described by an exponential $\exp(- m_0 r)$, where $r$ gives the distance from proton's center and $m_0$ is constant inversely proportional to the quark-bag size. At the end, the form factor is expressed as:
 \eqref{
-	{\cal F}(q_\perp) = {m\, m_0^5\over 8\pi} \int\limits_0^1 \d x\, {x^{1+\om}\over \al^2}\, I(q_\perp, \al)a\ ,\qquad
-	\al^2 = {m_0^2\over 4} + m^2 x^2
+	{\cal F}(q_\perp) = {m\, m_0^5\over 8\pi} \int\limits_0^1 \d x\, {x^{1+\om}\over \al^2}\, I(q_\perp, \al)\ ,\qquad
+	\al^2(x) = {m_0^2\over 4} + m^2 x^2\ ,
 }{el is cal F}
 \eqref{
 	I(q_\perp, \al) = {1\over 8\al^4} \left[
@@ -122,12 +125,29 @@ Form factor modeling the confinement
 		+ {3\over a^4}
 	\right ]\ ,\qquad
 	a' = {q_\perp\over 2\al}\ ,\qquad
-	a = \sqrt{a'^2 + 1}
+	a = \sqrt{a'^2 + 1}\ .
 }{el is I}
-Hard pomeron: $T_{\rm qq} = F_{\rm HP}$
-\eqref{F_{\rm HP}(t) = {\i \tilde\ga_{\rm qq} \left(s \e^{-\i \pi} \right)^\om \over {1\over r_0^2} - t} }{el is F HP}
-Low-$x$ gluons: $T_{\rm qq} = F_{\rm LxG}$
-\eqref{F_{\rm LxG}(t) = {\i \tilde\ga_{\rm gg} \left(s \e^{-\i \pi} \right)^\la \over \left(1 - {t\over m_c^2} \right)^{5\over 2}} }{el is F HP}
+Regarding the basic quark-quark amplitude $F_{\rm qq}(t)$, the model comprises two variants. In the first one (we will refer to it as \abb{HP} variant) \TODO{ref \bref{islam05} }, the quarks interact via the hard pomeron (reggeized gluon ladders, as described by next-to-leading order \abb{BFKL}). In the model of Islam et al., the hard pomeron is approximated by a single pole (with position determined by $r_0$). The intercept of the pomeron is given by the parameter $\om$: $\al_{\rm BFKL} = 1 + \om$. The hard-pomeron amplitude reads:
+\eqref{F_{\rm HP}(t) = {\i\, \tilde\ga_{\rm qq}\, s\, \left(s \e^{-\i {\pi\over 2}} \right)^\om \over {1\over r_0^2} - t} \ .}{el is F HP}
+
+In the other variant (see \bref{islam09}, denoted \abb{LxG}), the interaction is mediated by the low-$x$ gluons that surround the valence quarks:
+\eqref{F_{\rm LxG}(t) = {\i\, \tilde\ga_{\rm gg}\, s\, \left(s \e^{-\i {\pi\over 2}} \right)^\la \over \left(1 - {t\over m_c^2} \right)^{5\over 2}}\ .}{el is F HP}
+The parameter $m_c$ is inversely proportional to the size of the gluon cloud around the valence quarks. $\la$ controls the low-$x$ gluon distribution function, which can be approximated by $x^{-\la}$. For details...
+
+
+\vskip1cm\hrule\vskip1cm
+
+% This comment is about placing the references in your description of our model. I suggest: a)  after the sentence "Their spatial distribution . . . from the nucleon's center", insert the reference : Islam, Luddy, Prokudin, Int. J. Mod. Phys., 2006, vol. A21, p. 1- 42 as ref. [15]. b) Then after the sentence "In the first one (we will refer to it as HP) . . . (gluon ladders in BFKL)", insert ref. Islam, luddy, Prokudin, Phys. Lett., 2005, vol. B605, p. 115 - 122 as ref. [16]. c) Change your reference [17] to Islam, Kaspar, Luddy, Deep-Elastic pp Scattering at LHC from Low-x Gluons, Mod. Phys. Lett., 2009, vol.A24, no. 7,p. 485 - 496, and insert it at the end of the sentence"In the second (LxG), . . . that surround the valence quarks".
+
+19 parameters in total
+
+diff (7): $R_0$, $R_1$, $a_0$, $a_1$, $\et_0$, $c_0$, $\si$
+core (2): $\be$, $m_\om$
+absorption (6): $\hat\ga_0$, $\hat\ga_1$, $\hat\si$, $\la_0$, $d_0$, $\al$
+confinement (1): $m_0$
+hard pomeron (3): $\tilde\ga_{\rm qq}$, $\om$, $r_0$
+low-$x$ gluons (3): $\tilde\ga_{\rm gg}$, $\la$, $m_c$
+
 
 
 \def\OutlineLabel{The model of Petrov et al.}
