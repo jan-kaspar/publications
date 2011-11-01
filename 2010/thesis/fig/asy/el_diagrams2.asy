@@ -4,8 +4,8 @@ unitsize(0.4mm);
 StdFonts();
 fmdefaults();
 
-overpaint = false;
-doublelinespacing = 2;
+//overpaint = false;
+doublelinespacing = 0.5;
 linemargin = 0;
 photonratio = 10;
 
@@ -79,7 +79,6 @@ drawVertex(b);
 drawVertex(r);
 drawVertex(l);
 
-
 label("B", (c, -10));
 
 //----------------------- C ---------------------------
@@ -132,27 +131,20 @@ label("D", (c, -10));
 //----------------------- E ---------------------------
 
 c += 50;
+transform tr = shift(c, 5) * scale(0.65);
 
-transform tf = shift(c, 5) * scale(0.5*80/60) * shift(-10);
+pair l = tr*(-20, 50);
+pair r = tr*(20, 50);
+pair b = tr*(0, 40);
+pair t = tr*(0, 60);
+pair le = tr*(-40, 60);
+pair re = tr*(40, 60);
+pair be = tr*(0, 0);
 
-pair te = tf*(0, 60);
-pair t = tf*(0, 40);
-pair tr = tf*(20, 40);
-pair b = tf*(0, 20);
-pair br = tf*(20, 20);
-pair be = tf*(0, 0);
+drawFermion(le--b);
+drawDoubleLine(b--re, MidArrow(FillDraw(black, black)));
 
-drawFermion(te--t);
-drawFermion(b--be);
-
-real ep = 0.5;
-draw(shift(+ep, 0)*(t--b));
-draw(shift(-ep, 0)*(t--b));
-
-drawVertex(b);
-drawVertex(t);
-
-drawPhoton(t--tr, 2, 5.4);
-drawPhoton(b--br, 2, 5.4);
+drawPhoton(b--be);
+drawVertexO(b);
 
 label("E", (c, -10));

@@ -672,7 +672,7 @@ If we neglect the experimental errors that enter the $\tilde\vec T$ vector, it c
 
 So far we have focused on constraining the singular modes. Looking back to \Eq{al fit eq eigen one} we remind that there might be also weak modes, which would still allow for a solution, however they would severely deteriorate the accuracy. In such a situation, one might want to constrain some of the weak modes too. In principle, the alignment equation \Eq{al alignment equation} still may be used. But since the number of constraints and the number of singular modes is different now, the results \Eq{al ETC reg} and onwards can not be applied. A discussion on a general level would be too complicated, let us focus on a practical case instead.
 
-As already mentioned, singular modes look like weak to any computer program (due to limited calculation accuracy their eigenvalues are not exactly zero). In such a situation, the $\tilde\mat S$ matrix is not singular, but has a number of weak modes that need to be constrained. Then two important results can be derived for the solution of \Eq{al alignment equation} \footnote{%
+As already mentioned, singular modes look like weak to any computer program (due to limited calculation accuracy their eigenvalues are not exactly zero). In such a situation, the $\tilde\mat S$ matrix is not singular, but has a number of weak modes that need to be constrained. Then two important results can be derived for the solution of \Eq{al alignment equation}.\footnote{%
 The derivation is lengthy, here we just sketch the main steps. Since $\tilde\mat S$ is regular now, the solution of \Eq{al alignment equation} can be written
 $$
 	\hat\vec\ch = \tilde\mat S^{-1} \big[ 1 - \mat C \mat M \mat C^\T \tilde\mat S^{-1} \big]
@@ -687,7 +687,7 @@ $$ \mat M = \big[
 Since $\mat l$ contains the weak eigenvalues, which are small, the first term is dominating. To perform the inversion, one may use the recurrent relation:
 $$(\mat A+\mat B)^{-1} = \mat A^{-1} - \mat A^{-1} \mat B \mat A^{-1} + \mat A^{-1} \mat B \mat A^{-1} \mat B \mat A^{-1} \ldots\ ,$$
 identifying $\mat A$ with the first term in the square brackets. Since each $\mat A$ contains a $\mat l$ factor, the above expansion represents a sort of power series. Then it is just a matter of some algebra to obtain this type of power expansion for the solution $\hat\vec\ch$. Provided that $\mat Q_{\rm w}^\T \mat C$ is regular, the expansion involves non-negative powers of $\mat l$ only. Thus, it is finite in the limit $\mat l\to 0$. Moreover, in this limit, the solution gains the form of \Eq{al cnst sol}.
-}.
+}
 First, the weak modes are constrained if
 \eqref{\mat Q_{\rm w}^\T \mat C \hbox{ is regular} \ .}{al WTC reg}
 Similarly to the definition of $\mat Q_{\rm s}$, the $\mat Q_{\rm w}$ matrix contains the weak modes as columns.
