@@ -72,7 +72,7 @@ AlgBlk("pattern\cr recognition", (0dx, y7));
 AlgBlk("one-RP track\cr fit", (0dx, y8));
 AlgBlk("physics\cr reconstruction", (0dx, y9));
 
-AlgBlk("trigger\cr analyses", (0.7dx, y5));
+AlgBlk("trigger\cr analysis", (0.7dx, y5));
 
 AlgBlk("fast\cr simulation", (-0.6dx, y4));
 AlgBlk("fast station\cr simulation", (-1.1dx, y4));

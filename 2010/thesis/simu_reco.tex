@@ -7,7 +7,7 @@ A good understanding of the processes that scattered protons undergo until they 
 The contributions by this thesis' author mostly complement the work described in \bref{hubert}. We will focus on these contributions, but let us first briefly describe the software components (modules) from \Fg{sr sw structure}.
 
 \> {\bf Event generator}.
-The simulation process starts with generation of particles at the interaction point. This can be either a \em{particle gun} or a \em{physics event generator}. Particle guns generate particles according to some given distributions and are useful for specialized tests and software debugging. Physics event generators build events according to physics models. We use general-purpose physics generators like Pythia \bref{pythia6,pythia8} or Phojet \bref{phojet} and a custom developed Elegent (see \Sc{elegent}).
+The simulation process starts with generation of particles at the interaction point. This can be either a \em{particle gun} or a \em{physics event generator}. Particle guns generate particles according to some given distributions and are useful for specialized tests and software debugging. Physics event generators build events according to physics models. We use general-purpose physics generators like Pythia \bref{pythia6,pythia8} or Phojet \bref{phojet} and the custom developed Elegent (see \Sc{elegent}).
 
 \> The aim of the {\bf beam smearing} module (see \Sc{beam smearing}) is to account for the beam smearing effects that are usually not considered by event generators. These smearing effects can be divided into three classes: \em{angular smearing} (the particles within a bunch are not all parallel), \em{energy smearing} (there is an energy fluctuation within a bunch) and \em{vertex smearing} (the bunches have non-zero dimensions, thus the interactions are distributed in space). 
 
@@ -25,7 +25,7 @@ The simulation process starts with generation of particles at the interaction po
 
 \> The {\bf clusterization} is the first step of the reconstruction chain. Due to charge-sharing effects, it is possible that one track fires two or more neighbouring strips. Such strip clusters need be identified and later treated as a single hit.
 
-\> The position of a cluster can be converted into the distance (in the read-out direction, see \Fg{rp station 3d}) from the center of the sensor. A collection of such cluster positions is called the {\bf \abb{RECO}} data type.
+\> The position of a cluster can be expressed as the distance (in the read-out direction, see \Fg{rp station 3d}) from the center of the sensor. A collection of such cluster positions is called the {\bf \abb{RECO}} data type.
 
 \> The aim of the {\bf pattern recognition} is to match sensor hits with particle tracks. This implicitly includes suppressing noise hits that are not associated with any track. There are two pattern recognition algorithms in the \abb{TOTEM} software. Both of them search for linear patterns within the (\abb{RECO}) hits in each \abb{RP}. The algorithm described in \Sc{pattern reco} can be used with tracks with arbitrary angles (advantageous for track-based alignment applications), the algorithm presented in Sec.~8.1.4 in \bref{hubert} is designed for the protons coming from the \abb{IP} -- such protons are almost parallel to the beam.
 
@@ -33,15 +33,16 @@ The simulation process starts with generation of particles at the interaction po
 
 \> The purpose of {\bf station track fitting} is similar to the one-\abb{RP} track fitting, but here all hits from a station are combined. This module has been developed mainly for alignment purposes. For a good noise suppression efficiency, this algorithm comprises also an outlier removal procedure. It will be discussed in \Sc{al data sel}.
 
-\> In the {\bf physics reconstruction} step, the one-\abb{RP} track fits are used to reconstruct proton(s) kinematics at the interaction point and consequently determine the type and parameters of the event. There are two versions -- one suitable for any diffractive protons and a lighter alternative for elastic events. The latter one will be discussed in \Sc{elr}.
+\> In the {\bf physics reconstruction} step, the one-\abb{RP} track fits are used to reconstruct proton(s) kinematics at the interaction point and consequently determine the type and kinematic parameters of the event. There are two versions -- one suitable for any diffractive protons and a lighter alternative for elastic events. The latter one will be discussed in \Sc{elr}.
 
 \> The {\bf alignment} modules implement the \abb{RP} alignment methods presented in \Sc{al}.
 %There is no standardized module for the elastic alignment (\Sc{al elast}) yet, so far it has been performed together with elastic scattering analyses.
 
-\> The \abb{DIGI} data contain also some trigger-related information, which can be used for validations of the trigger system performance -- these are drawn as the {\bf trigger analyses} module.
+\> The \abb{DIGI} data contain also some trigger-related information, which can be used for validations of the trigger system performance -- these are drawn as the {\bf trigger analysis} module.
 
-\> The {\bf data quality monitor} (Totem\abb{DQM}) is an interactive program that can visualize the results of all the steps shown in \Fg{sr sw structure}. It has primarily been designed for (quasi)-online control of the data being acquired. But it can also be used for event scanning (visual inspection of the events' details) or for software tuning and debugging. For more information see \Sc{dqm}.
+\> The {\bf data quality monitor} (Totem\abb{DQM}) is an interactive program that can visualize the results of all the steps shown in \Fg{sr sw structure}. It has primarily been designed for (quasi)-online control of the data being acquired. But it has also proved useful for event scanning (visual inspection of the events' details) or for software tuning and debugging. The Totem\abb{DQM} \bref{totemdqm} provides a multi-window/tab user interface, each of the windows contains a configurable grid of plots, see an example in \Fg{dqm ex}. The plots can be either \em{cumulative} (built from the entire event sample) of \em{event-related} (showing details of a chosen event). Cumulative plots are for example $U$ and $V$ hit profiles (bottom-right window in \Fg{dqm ex}) or $xy$ hit maps (top-right window). Several event-related plots are shown in the background window (left-hand side): track fits in $U$ and $V$ projections and a $3D$ view of the fitted track within the detector package.
 
+\fig[10cm]{fig/external/dqm.png}{dqm ex}{A screen shot of several Totem\abb{DQM} windows.}
 
 
 \section[elegent]{Elegent}
@@ -63,7 +64,7 @@ Most physics event generators consider head-to-head collisions of particles of a
 
 \subsection{Angular and energy smearing}
 
-Most event generators describe the collisions in a reference frame (\abb{MC} frame), where the incident particles approach each other along the $z$ axis, each with the nominal momentum $p_{\rm nom}$. However, a real collision in the \abb{LAB} frame (bound to the accelerator) looks different, see \Fg{smearing angular energy}. Because of the energy smearing each incident proton has slightly different momentum (the $\xi$ factors, cf.~\Eq{ttm energy fl}) and because of the crossing angle $\al$ and the angular smearing (the $C$ factors, cf.~\Eq{ttm beam div}) they do not collide head to head.
+Most event generators describe the collisions in a reference frame (\abb{MC} frame), where the incident particles approach each other along the $z$ axis, each with the nominal momentum $p_{\rm nom}$. However, a real collision in the \abb{LAB} frame (bound to the accelerator) looks different, see \Fg{smearing angular energy}. Because of the energy smearing each incident proton has slightly different momentum (the $\xi$ factors) and because of the crossing angle $\al$ and the angular smearing (the $C$ factors) they do not collide head on.
 
 \fig[8cm]{fig/pdf/smearing_angular_energy.pdf}{smearing angular energy}{A collision seen in the $xz$ plane of the \abb{LAB} frame (bound to the accelerator). The momenta of the protons are altered due to the energy smearing (the $\xi$ factors), the directions are modified due to the crossing angle $\al$ and angular smearing (the angles $C$).}
 
@@ -71,7 +72,7 @@ Therefore a part of these smearing effects can be described by a Lorentz transfo
 \eqref{E^{\rm MC} \rightarrow \chi\, E^{\rm MC},\qquad \chi = \sqrt{s_{\rm LAB}\over s_{\rm MC}}\ .}{sm energy scaling}
 The momenta are scaled such that the masses are preserved. Later on, we will refer to this scaling procedure as $S(\ch)$.
 
-Now let us come back to the Lorentz-transform part of the smearing effects. This part transforms the event kinematics from \Fg{smearing angular energy} to the situation where the particles collide with equal momenta and along the $z$ axis. The transform can be decomposed into a boost (making the momenta $\vec p_1$ and $\vec p_2$ have the same magnitude and opposite direction) and a rotation (making the momenta be parallel to the $z$ axis).
+Now let us come back to the Lorentz-transformation part of the smearing effects. This part transforms the event kinematics from \Fg{smearing angular energy} to the situation where the particles collide with equal momenta and along the $z$ axis. The transformation can be decomposed into a boost (making the momenta $\vec p_1$ and $\vec p_2$ have the same magnitude and opposite direction) and a rotation (making the momenta be parallel to the $z$ axis).
 
 If we write the boost transformation of a four-momentum $(E|\vec p)$ to $(E'|\vec p')$ in the following form ($\vec\be$ denotes the relative velocity between the two reference frames)
 \eqref{\eqalign{
@@ -85,7 +86,7 @@ one can find that the $\vec\be$ needed for our purpose is
 \eqref{\vec\be = {\vec p_1 + \vec p_2\over E_1 + E_2}\ ,}{sm beta}
 where $\vec p_1, \vec p_2$ are the momenta and $E_1, E_2$ are the energies of the incident particles in the \abb{LAB} frame (as shown in \Fg{smearing angular energy}). Let us denote this transformation $L(\vec\be)$ and the boosted momenta of the incident particles $\vec p_1'$ and $\vec p_2'$.
 
-Using the Rodrigues' formula to describe the rotation of a vector $\vec v$ around a unit vector (axis) $\vec a$:
+Using the Rodrigues' formula to describe the rotation of a vector $\vec v$ by an angle $\om$ around a unit vector (axis) $\vec a$:
 \eqref{R(a, \om)\, \vec v = \vec v\,\cos\om + \vec a\times\vec v\,\sin\om + \vec a\cdot\vec v\,\vec a\,(1 - \cos\om)\ ,}{sm rotation}
 one can find a rotation that makes the boosted momenta $\vec p_{1, 2}'$ parallel to the $z$ axis:
 \eqref{\vec a = {\vec p_1' \times \hat z\over |\vec p_1' \times \hat z|}, \qquad \cos\om = {\vec p_1' \cdot \hat z\over |\vec p_1'|}}{sm axis angle}
@@ -97,11 +98,11 @@ To summarize, if $(E|\vec p)_{\rm MC}$ is the four-momentum of a particle produc
 
 The above formula provides a method to apply the angular and energy smearing to events from \abb{MC} generators. What is still missing is a specification of the $\vec\be$, $\vec a$, $\om$ and $\ch$ distributions. But these can be calculated from the beam-smearing parameters introduced in \Sc{rp measurement}. Considering a crossing angle $\al$, see \Fg{smearing angular energy}, one can parameterize the momenta of the incident particles as
 \eqref{\vec p_i = \pm p_{\rm nom}\,(1 + \xi_i)\,\pmatrix{\cos\al & 0 & \mp \sin\al\cr 0 & 1 & 0 \cr \pm\sin\al & 0 & \cos\al\cr}\,\pmatrix{C_i\cr S_i\cr \sqrt{1 - C_i^2 - S_i^2}}\ ,}{sm momenta par}
-where $i = 1, 2$ and the upper (bottom) sign corresponds to particle 1 (2). The $C_i$ and $S_i$ parameters describe the angular smearing in the horizontal ($x$) and vertical ($y$) projections. In a good approximation, these parameters are normally distributed with a of spread $\si_{\th^*}$, cf.~\Eq{ttm beam div}. To be precise, the tails of the distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_{\th^*} \ll 1$, the effect is negligible. The $\xi$ parameter accounts for the energy smearing, the expected distribution is a Gaussian with mean $\bar\xi$ and variance $\si_\xi^2$, see \Eq{ttm energy off,ttm energy fl}.
+where $i = 1, 2$ and the upper (bottom) sign corresponds to particle 1 (2). The $C_i$ and $S_i$ parameters describe the angular smearing in the horizontal ($x$) and vertical ($y$) projections. In a good approximation, these parameters are normally distributed with a spread $\si_{\th^*}$ defined in \Eq{ttm beam div}. To be precise, the tails of the distribution must be cut off since the parameterization requires $S_{1,2}^2 + C_{1,2}^2 \leq 1$. But as any realistic $\si_{\th^*} \ll 1$, the effect is negligible. The $\xi$ parameter accounts for the energy smearing, the expected distribution is a Gaussian with mean $\bar\xi$ and variance $\si_\xi^2$, see \Eq{ttm energy off,ttm energy fl}.
 
 The smearing software module uses the above distributions and the parameterization \Eq{sm momenta par} to generate the smearing parameters and \Eq{sm mc to lab} to apply the smearing to \abb{MC} generated events.
 
-The smearing effects and the crossing angle are rather small: $\si_{\th^*} \sim \O{10^{-6}\un{rad}}$, $\al \sim \O{10^{-4}}$ and $\si_\xi \sim \O{10^{-4}}$, see \Sc{rp measurement}. Therefore, one may simplify \Eq{sm mc to lab} by keeping just the first oder terms. It will yield a formula with an instructive interpretation which will become useful for reconstruction-uncertainty estimates. Also, bearing in mind the \abb{LHC} energies, we will approximate $E\approx p$ for all the particles involved. In this approximation \Eq{sm beta} gives
+The smearing effects and the crossing angle are rather small: $\si_{\th^*} \sim \O{10^{-6}\un{rad}}$, $\al \sim \O{10^{-4}}$ and $\si_\xi \sim \O{10^{-4}}$, see \Sc{rp measurement}. Therefore, one may simplify \Eq{sm mc to lab} by keeping just the first order terms. It will yield a formula with an instructive interpretation which will become useful for reconstruction-uncertainty estimates. Also, bearing in mind the \abb{LHC} energies, we will approximate $E\approx p$ for all the particles involved. In this approximation \Eq{sm beta} gives
 \eqref{\vec\be \simeq {1\over 2}\pmatrix{-2\al + C_1 - C_2\cr S_1 - S_2\cr \xi_1 - \xi_2}}{sm beta expl}
 and thus $\ga\simeq 1$ (all other terms are of second and higher orders). Then, the boost \Eq{sm lorentz}, rotation \Eq{sm rotation} and scaling factor \Eq{sm energy scaling} simplify to
 \eqref{\vec p' \simeq \vec p - |\vec p| \vec\be,\qquad E' \simeq E - \vec p\cdot\vec\be\ ,}{sm lorentz expl}
@@ -114,7 +115,7 @@ The particles with $+$ ($-$) sign can be detected in the right (left) arm \abb{R
 \quad \xi = \left\{\matrix{\xi_1\cr\cr \xi_2}\right.,
 \quad \De\th_x = \left\{\matrix{C_1 - \al\cr\cr C_2 + \al\cr}\right.,
 \quad \De\th_y = \left\{\matrix{S_1\qquad\hbox{for right arm}\cr\cr S_2\qquad\hbox{ for left arm}\cr}\right.\ .}{sm diff lab} %}}}
-The interpretation is quite intuitive. Let us take, for instance, a proton heading the right arm and let us focus on the horizontal ($x$) projection. Its full scattering angle is a sum of three components: the original (\abb{MC}) scattering angle ($\th\cos\ph$), crossing angle ($-\al$) and the $x$ component of the beam divergence ($C_1$). The proton inherits the relative-momentum shift $\xi_1$ from the first incident proton.
+The interpretation is quite intuitive. Let us take, for instance, a proton heading for the right arm and let us focus on the horizontal ($x$) projection. Its full scattering angle is a sum of three components: the original (\abb{MC}) scattering angle ($\th\cos\ph$), crossing angle ($-\al$) and the $x$ component of the beam divergence ($C_1$). The proton inherits the relative-momentum shift $\xi_1$ from the first incident proton.
 
 
 \subsection{Vertex smearing}
@@ -126,7 +127,7 @@ Let us imagine a collision of two bunches as shown in \Fg{smearing vertex}. Each
 
 In a good approximation one may assume that each of the bunch densities is time-independent when described in the rest frame of the bunch. Denoting this rest-frame density $\rh_0(\tilde x, \tilde y, \tilde z)$ (tildes are used for the rest-frame coordinates, see \Fg{smearing vertex}), one may write for the second bunch:
 \eqref{\rh_2(x, y, z; t) = \ga\, \rh_0\Big(x\cos\al - z\sin\al, y, \ga(z\cos\al + x\sin\al + vt) \Big)\ ,}{sm density2}
-which follows from the Lorentz transform (the origins of the \abb{LAB} and rest frames coincide at $t=0$):
+which follows from the Lorentz transformation (the origins of the \abb{LAB} and rest frames coincide at $t=0$):
 \eqref{
 	\tilde x = x\cos\al\ - z\sin\al\ ,\qquad
 	\tilde y = y\ ,\qquad
@@ -154,9 +155,10 @@ This formula is used by the software module. For each event a random vertex is g
 
 \section[fast simu]{Fast simulation}
 
-In order to test the performance of the track-based alignment (see \Sc{al tb}), we have made a large number of \abb{MC} simulations. With a Geant4-based approach it would have taken an enormous amount of computer resources. Instead, we have developed two fast simulation modules (see \Fg{sr sw structure}): \em{fast simulation} and \em{fast (one-)station simulation}. The first one takes a smeared event as an input and transports the forward protons to the \abb{RP} stations using the polynomial optics approximation (the same as used for reconstruction). This module thus performs a fast simulation of physics events. However, background tracks (such as beam halo or products from beam-gas interactions) can be used for alignment too. For these tracks one can expect wider angular distribution which is advantageous for alignment purposes, see e.g.~\Fg{al err rotz theta}. To study the influence of the track distribution on the alignment performance, we have developed the other fast simulation module -- the one-station simulation. This module generates random tracks (according to a given distribution) at the beginning of a chosen station.
+In order to test the performance of the track-based alignment (see \Sc{al tb}), we have made a large number of \abb{MC} simulations. With a Geant4-based approach it would have taken an enormous amount of computer resources. Instead, we have developed two fast simulation modules (see \Fg{sr sw structure}): \em{fast simulation} and \em{fast (one-)station simulation}. The first one takes a smeared event as an input and transports the forward protons to the \abb{RP} stations using the polynomial optics approximation (the same as used for reconstruction). This module thus performs a fast simulation of physics events. However, background tracks (such as beam halo or products from beam-gas interactions) can be used for alignment too. For these tracks one can expect wider angular distribution which is advantageous for alignment purposes, see e.g.~\Fg{al err rotz theta}. To study the influence of the track distribution on the alignment performance, we have developed the other fast simulation module -- the one-station simulation. This module generates random tracks (according to a given distribution) at the entrance of a chosen station.
 
-Further proton track processing is in common for both modules. Within a station, the tracks are interpolated linearly and the intersections with all sensors are calculated. If the \pmt{roundToPitch} parameter is set to true, then the hit position is rounded to the nearest strip or inter-strip position. The mechanism is illustrated in \Fg{sr fast simulation scheme}. If the intersection falls in one of the blue regions, the creation of a double-strip cluster is assumed and the hit position is rounded to the inter-strip position (dash-dotted line). Otherwise one-strip clusters are assumed and the position is rounded to the nearest strip. The strip pitch $P$ can be set by the \pmt{pitch} parameter, the size of the double-strip-cluster region (blue) by the \pmt{dscrWidth} parameter. Each hit is assigned an uncertainty of $P/\sqrt{12}$ unless the \pmt{dscReduceUncertainty} parameter is set to true. In that case, the uncertainty of double-strip hits is reduced to a half: $P/\sqrt{48}$.
+Further proton track processing is in common for both modules. Within a station, the tracks are interpolated linearly and the intersections with all sensors are calculated. If the \pmt{roundToPitch} parameter is set to true, then the hit position is rounded to the nearest strip or inter-strip position. The mechanism is illustrated in \Fg{sr fast simulation scheme}. If the intersection falls in one of the blue regions, the creation of a double-strip cluster is assumed and the hit position is rounded to the inter-strip position (dash-dotted line). Otherwise one-strip clusters are assumed and the position is rounded to the nearest strip. The strip pitch $P$ can be set by the \pmt{pitch} parameter, the size of the double-strip-cluster region (blue) by the \pmt{dscrWidth} parameter. Each hit is assigned an uncertainty of $\si_{\rm P} = P/\sqrt{12}$.
+% unless the \pmt{dscReduceUncertainty} parameter is set to true. In that case, the uncertainty of double-strip hits is reduced to a half: $P/\sqrt{48}$.
 
 \fig{fig/pdf/sr_fast_simulation_scheme.pdf}{sr fast simulation scheme}{One and two-strip cluster regions as used in the fast simulation. The solid lines represent the strip centers, the dash-dotted lines mark the half way between the strips. The blue areas correspond to the double-strip-cluster regions, the white ones to the regions where one-strip clusters are created.}
 
@@ -167,22 +169,22 @@ The aim of this module is to associate sensor hits with particle tracks. The inp
 
 The fact that there are just two read-out directions ($U$ and $V$) makes the task special. The line-pattern search in $UVz$ space (see \Fg{rp station 3d}) can be decomposed into searches in the $Uz$ and $Vz$ projections. However, this also means that there is no hint how to combine the recognized patterns from the two projections. Consequently, only events with one track per pot (only one combination of $Uz$ and $Vz$ line patterns) can be fully reconstructed. For example, imagine two tracks in a pot. Then, two line patterns would be found in each projection, yielding four possible $UVz$ combinations. However, two of them correspond to the real tracks and the other two are fake combinations (ghosts). Even if we consider the rotation misalignment (see \Tb{al exp misal}), the deviations from the $U$ and $V$ read-out directions are insufficient to remove this ambiguity. 
 
-Our algorithm is an optimization of the Hough transform pattern search (see e.g.~Sec.~2.4.3.4.~in \bref{bock}). Let us parameterize the line patterns by a slope $a$ and an intercept $b$ ($q$ stands for either $u$ or $v$):
+Our algorithm is an optimization of the Hough transformation pattern search (see e.g.~Sec.~2.4.3.4.~in \bref{bock}). Let us parameterize the line patterns by a slope $a$ and an intercept $b$ ($q$ stands for either $u$ or $v$):
 \eqref{q = a (z - z_0) + b\ .}{pr line par}
-Here, $z_0$ refers to the center of the \abb{RP}. This is an advantageous choice since it is the ''nearest'' point to all the planes, therefore it minimizes the impact of the slope $a$ determination error on the intercept $b$ determination. The Hough transform assigns to each point $(z, q)$ a line in the $ab$ space:
+Here, $z_0$ refers to the center of the \abb{RP}. This is an advantageous choice since it is the ''nearest'' point to all the planes, therefore it minimizes the impact of the slope $a$ determination error on the intercept $b$ determination. The Hough transformation assigns to each point $(z, q)$ a line in the $ab$ space:
 \eqref{(z, q)\qquad \longrightarrow\qquad b = - (z - z_0) a + q \ .}{pr transform}
-This process is shown in \Fg{sr pattern reco}: each of the points in the left plot is transformed into a line (of the same color) in the right plot. The effect is evident -- the intersections of colorful lines (corresponding to the colorful points that lie around a line) cumulate together, but the intersections of the black line (representing a noise hit) are scattered around. Hence the task of finding line patterns is reduced to an (intersection) cluster search.
+This process is shown in \Fg{sr pattern reco}: each of the points in the left plot is transformed into a line (of the same color) in the right plot. The effect is evident -- the intersections of colored lines (corresponding to the colored points that lie around a line) cumulate together, but the intersections of the black line (representing a noise hit) are scattered around. Hence the task of finding line patterns is reduced to an (intersection) cluster search.
 
 Since the hit positions are multiples of the pitch $P$, it is natural to measure the intercept $b$ in the units of $P$. Similarly, we will give the slopes $a$ in multiples of $a_0 \equiv P / d$, where $d = 9 \un{mm}$ is the nominal distance between two adjacent planes of the same strip orientation (see \Sc{ttm det}).
 
-\fig{fig/pdf/sr_pattern_reco.pdf}{sr pattern reco}{An illustration of the pattern recognition method. Left: side-view on the five sensors (black vertical lines) of identical strip orientation ($U$ or $V$). The horizontal ticks represent the strip positions. The thick inclined line shows a track, the colorful points around mark the measurements by the five sensors. The black dot in the upper-left corner represents a noise hit. Right: the corresponding Hough diagram. The colors of the lines correspond to the colors of the points in the left plot. The line intersections are marked with black dots. The gray region represents a cluster (of the optimal size -- see \Tb{pattern reco par}).}
+\fig{fig/pdf/sr_pattern_reco.pdf}{sr pattern reco}{An illustration of the pattern recognition method. Left: side-view on the five sensors (black vertical lines) of identical strip orientation ($U$ or $V$). The horizontal ticks represent the strip positions. The thick inclined line shows a track, the colored points around mark the measurements by the five sensors. The black dot in the upper-left corner represents a noise hit. Right: the corresponding Hough diagram. The colors of the lines correspond to the colors of the points in the left plot. The line intersections are marked with black dots. The gray region represents a cluster (of the optimal size -- see \Tb{pattern reco par}).}
 
 Now, let us describe the cluster-search algorithm. Each hit is assigned a weight $w = \si_0/\si$, where $\si$ the uncertainty of the hit and $\si_0 = 66/\sqrt{12} \un{\mu m}$ is the uncertainty of a 1-strip cluster. The weight of a line crossing is given by the sum of the two contributing hit weights. Then, the algorithm can be described as follows.
 
 \bitm
 \itm Build clusters: go through all crossings, try to match each crossing with any of the already existing clusters. A crossing matches with a cluster if
 \eqref{|a - a_c| < \pmt{clusterSize\_a}/2 \quad \hbox{ and }\quad |b - b_c| < \pmt{clusterSize\_b}/2\ ,}{pr cluster match}
-where $a$ and $b$ are the coordinates of the crossing and $a_c$ and $b_c$ give the position of the cluster. The cluster position is calculated as a weighed mean over all contributing crossings, for example: $a_c = \sum a_i w_i / \sum w_i$. If the line crossing matches with a cluster, it is added to that cluster. If the line crossing does not match with any cluster, a new cluster is created, containing this crossing only.
+where $a$ and $b$ are the coordinates of the crossing and $a_c$ and $b_c$ give the position of the cluster. The cluster position is calculated as a weighted mean over all contributing crossings, for example: $a_c = \sum a_i w_i / \sum w_i$. If the line crossing matches with a cluster, it is added to that cluster. If the line crossing does not match with any cluster, a new cluster is created, containing this crossing only.
 \itm For each cluster a weight is calculated as the sum of the weights of the hits involved in the cluster.
 \itm Take the cluster with the highest weight. If its weight is lower than the \pmt{threshold} parameter, stop. If it is higher, the cluster corresponds to a recognized track. Hits corresponding to that cluster are removed from the list and one returns to the step 1 to recognize more line patterns.
 \eitm
@@ -190,11 +192,11 @@ where $a$ and $b$ are the coordinates of the crossing and $a_c$ and $b_c$ give t
 \vskip\itskip
 The \pmt{threshold} parameter gives an effective minimal number of hits for a cluster to be trusted as a reasonable line. The other two important parameters are the cluster sizes. If set too low, real tracks would not be recognized, if set too high, noise hits may get selected too or even multiple tracks may be merged. The needed cluster size depends on the expected deviations of the individual measurements from the track. These deviations have two major ingredients: the pitch size and misalignments. To find the optimal cluster sizes we have made a simple \abb{MC} test and a real data analysis, see \Fg{sr pattern reco tune}. For the \abb{MC} test, we have simulated  1000 (internal) misalignment scenarios compatible with \Tb{al exp misal}%
 %(slope $50\un{\mu m}$ per detector, deviations with the variation of $20\un{\mu m}$)
-. For each misalignment, we have simulated 1000 tracks through 5 planes separated by the nominal distance $d$, the angular spread of tracks has been $\si_\th = 5\un{mrad}$. For each track we have calculated the cluster sizes and filled the values in the blue histograms. The red histograms correspond to an analysis of physics data (run 3728). For both projection we have required each of the five planes to contain exactly one hit -- a perfect track. Looking at \Fg{sr pattern reco tune}, one can see non-negligible differences between the two histograms at lower cluster-size values (the \abb{MC} has been too simple), but both agree that there are practically no events above $3a_0$ and $4P$. Therefore we have decided to use these values as the optimal cluster sizes.
+. For each misalignment, we have simulated 1000 tracks through 5 planes separated by the nominal distance $d$, the angular spread of tracks has been $\si_\th = 5\un{mrad}$. For each track we have calculated the cluster size and filled the values in the blue histograms. The red histograms correspond to an analysis of \abb{LHC} physics data (run 3728). For both projections we have required each of the five planes to contain exactly one hit -- a perfect track. Looking at \Fg{sr pattern reco tune}, one can see non-negligible differences between the two histograms at lower cluster-size values (the \abb{MC} has been too simple), but both agree that there are practically no events above $3a_0$ and $4P$. Therefore we have decided to use these values as the optimal cluster sizes.
 
 \fig{fig/pdf/sr_pattern_reco_tune.pdf}{sr pattern reco tune}{Cluster-size distributions: \abb{MC} simulation (blue) and run 3728 (red).}
 
-In order to optimize the performance of the software module, we skip the events with less reasonable planes per projection than \pmt{minPlanesPerProjectionToSearch}. By reasonable planes we mean those, where the number of hits is non-zero but smaller than \pmt{maxHitsPerPlaneToSearch}. We recall that only events with one track can be fully reconstructed.
+In order to optimize the performance of the software module, we skip the events with fewer reasonable planes per projection than \pmt{minPlanesPerProjectionToSearch}. By reasonable planes we mean those, where the number of hits is non-zero but smaller than \pmt{maxHitsPerPlaneToSearch}. We recall that only events with one track can be fully reconstructed.
 
 \Tb{pattern reco par} summarizes the parameters of the algorithm and gives their default/optimal values. \Fg{sr pattern reco ex} provides an example of the recognition results.
 
@@ -203,7 +205,7 @@ clusterSize\_a& 3a_0\cr
 clusterSize\_b& 4P\cr
 maxHitsPerPlaneToSearch& 4\cr
 minPlanesPerProjectionToSearch& 3\cr
-threshold& 2.99\cr\ln
+threshold& 3\cr\ln
 }
 
 \fig{fig/pdf/sr_pattern_reco_ex.pdf}{sr pattern reco ex}{An example of the pattern recognition (run 3230, file 0, event 111, 45-220-near unit). Left: a track plus noise in the bottom pot ($V$ sensors). Right: many tracks in the horizontal pot ($V$ sensors). The red lines correspond to the recognized patterns.}
@@ -211,15 +213,14 @@ threshold& 2.99\cr\ln
 \eject %!
 \section[elr]{Reconstruction of elastic events}
 
-In the note \bref{el reco} the author of this thesis described a module performing a reconstruction of elastic events. It is a light-weight alternative to the inelastic proton reconstruction (see Sec.~8.2 in \bref{hubert}). The primary aim of this study (performed during the simulation phase of the experiment) was to quantify the capabilities of the \abb{RP} system with various optics. In this section, we will present an update to that note. One of the main differences is the use of a more accurate beam smearing description (as presented in \Sc{beam smearing}). Compared to the old study, the beam divergence has effectively increased by a factor of $\sqrt 2$ (cf.~Eq.~(17) in \bref{smearing}).
-
-We will constrain ourselves to the most interesting results, for the others we refer the reader to the original note \bref{el reco}. We will skip the studies of the hypothetical situations without beam smearing. We will also skip the discussion of the peak structures appearing in certain histograms. These only occur with perfectly aligned detectors, therefore they correspond to a hypothetical situation too.
+In the note \bref{el reco} we described a module performing a reconstruction of elastic events. It is a light-weight alternative to the inelastic proton reconstruction (see Sec.~8.2 in \bref{hubert}). The primary aim of this study (performed during the simulation phase of the experiment) was to quantify the capabilities of the \abb{RP} system with various optics. In this section, we will present an update to that note. One of the main differences is the use of a more accurate beam smearing description (as presented in \Sc{beam smearing}). Compared to the old study, the beam divergence has effectively increased by a factor of $\sqrt 2$ (cf.~Eq.~(17) in \bref{smearing}). We will constrain ourselves to the most interesting results, for the others we refer the reader to the original note \bref{el reco}.
+%We will skip the studies of the hypothetical situations without beam smearing. We will also skip the discussion of the peak structures appearing in certain histograms. These only occur with perfectly aligned detectors, therefore they correspond to a hypothetical situation too.
 
 The elastic reconstruction (a type of physics reconstruction, see \Fg{sr sw structure}) follows after the one-\abb{RP}-track fitting. In the note \bref{el reco} we showed that the lever-arm of single \abb{RP} is too short for a reasonable angular reconstruction. That is why we take only the hit position from the one-\abb{RP}-track fits.
 
 Elastic protons have by definition no momentum loss, that is $\xi \equiv 0$. For such protons, the transport equation \Eq{ttm lin par} simplifies to:
 \eqref{x(s) = L_x(s)\, \th_x^* + v_x(s)\, x^*\ ,\qquad y(s) = L_y(s)\, \th_y^* + v_y(s)\, y^*\ .}{elr track param}
-We have written the optical functions as functions of the distance $s$ from \abb{IP} only, since in a very good approximation they do not depended on proton's scattering parameters $x^*$, $y^*$, $\th^*_x$ and $\th^*_y$ (see e.g.~\bref{avati05}).
+We have written the optical functions as functions of the distance $s$ from \abb{IP} only, since in a very good approximation they do not depended on the proton's scattering parameters $x^*$, $y^*$, $\th^*_x$ and $\th^*_y$ (see e.g.~\bref{avati05}).
 
 The hit positions $x$ and $y$ are known from the one-\abb{RP}-track fits. Assuming that we know the optical functions corresponding to all \abb{RP}s involved in the event, we may use the least squares (\abb{LS}) estimation to obtain the scattering parameters (see e.g.~Sec.~6.6 in \bref{barlow}):
 \eqref{\pmatrix{x^*\cr\th_x^*} = {1\over \sum v^2 \sum L^2 - \sum vL \sum vL} \pmatrix{\sum L^2 \sum x v - \sum vL \sum x L\cr -\sum vL \sum x v + \sum v^2 \sum x L}\ ,}{elr fit}
@@ -234,7 +235,7 @@ The module includes a simple \em{hit selection} (to suppress noise etc.) and an 
 \bitm
 \itm \em{Hit selection}. The aim is to suppress hits (one-\abb{RP} track fits) that do not belong to the elastic event. The implementation is based on the fact that the $L\th^*$ terms dominate in the proton transport \Eq{elr track param}
 %(\TODO{more justification})
-. When a $x/L_x$ histogram is build, the hits of an elastic event tend to cluster together, as illustrated in \Fg{elr road search}. The size of the cluster is optics-dependent and thus is a parameter of the algorithm, called \pmt{road-size}.
+. When a $x/L_x$ histogram is build, the hits of an elastic event tend to cluster together, as illustrated in \Fg{elr road search}. The typical cluster-size is optics-dependent and thus is a parameter of the algorithm, called \pmt{road-size}.
 
 \fig{fig/pdf/elr_road_search.pdf}{elr road search}{An illustration of the hit selection. Left: sample \abb{RP} hits shown vs\hbox{.} the corresponding effective length. The hits by elastic protons are drawn in blue, background/noise in red. Right: the corresponding histogram of ratios $x/L_x$.}
 
@@ -250,26 +251,26 @@ In total, there are three parameters per projection (\pmt{road-size}, \pmt{angul
 
 But before turning to optics-dependent results, let us discuss what measurement uncertainties we expect for the quantities of interest -- most notably the scattering angle $\th^*$ and the momentum-transfer $t$. The measurement (fit) uncertainties can be determined from the covariance matrix \Eq{elr fit err}. Moreover, typical \abb{TOTEM} optics
 %\TODO{ref}
-have such properties that will allow us to derive a much simpler formula. First, the effect of the $v$ terms in the proton transport \Eq{elr track param} can be neglected to those of the $L$ terms. Second, let us constrain ourselves to the situation where only the $220\un{m}$ stations are used (typical until the end of 2010). The variation of the effective lengths $L_x(s)$ within a station is not large, thus we might think of a ``typical effective length'' $L_x$. Under these simplifications, the scattering angle estimator becomes:
+have properties that will allow us to derive a much simpler formula. First, the effect of the $v$ terms in the proton transport \Eq{elr track param} can often be neglected to the effect of the $L$ terms (with the exception of the horizontal projection at the $\be^*=90\un{m}$ optics, which we will discuss later). Second, let us constrain ourselves to the situation where only the $220\un{m}$ stations are used (typical until the end of 2010). The variation of the effective lengths $L_x(s)$ within a station is not large, thus we might think of a ``typical effective length'' $L_x$. Under these simplifications, the scattering angle estimator becomes:
 \eqref{\th_x^*
 	\quad\mathop{\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\longrightarrow}\limits^{v \hbox{\SmallerFonts\ neglected}}\quad
 		{\sum L x\over \sum L^2}
 	\quad\mathop{\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\longrightarrow}\limits^{\hbox{\SmallerFonts\ typical }L}\quad
 	{\sum_{\rm R} x - \sum_{\rm L} x\over (N_{\rm R} + N_{\rm L}) L_x}
 \ ,}{elr th fit sim} 
-where for example $\sum_{\rm R}$ represents the sum over the right hits only and $N_{\rm R}$ is the number of the right-arm hits. In this model, the error contributions to a measurement can be written as
+where for example $\sum_{\rm R}$ represents the sum over the right-arm hits only and $N_{\rm R}$ is the number of the right-arm hits. In this model, the error contributions to a measurement can be written as
 \eqref{x = L_x (\th_x^* + \De\th_x) + \De x\ .}{elr x meas}
 $\th_x^*$ represents the true scattering angle, $\De\th_x$ its alternation due to the beam smearing, see \Eq{sm diff lab}, which is independent for left and right arms. The error $\De x$ combines two effects -- misalignment and the error due the finite resolution of the silicon detectors. The misalignment leads to a systematic shift and we will not discuss it here (see e.g.~\Tb{al reco impact}). Had we only one sensor per \abb{RP} (per projection), the finite-resolution error could be well described by an uniform distribution between plus and minus half of the strip pitch $P$, which would give a standard deviation $\si_{\rm P} = P/\sqrt{12}\approx 19\un{\mu m}$. In reality, there are five sensors per projection in each \abb{RP}, thus one might naively expect the standard deviation to reduce by a factor $\sqrt 5$. But since physics tracks are almost perpendicular to the sensors, they most often hit the same strip in all five sensors and thus the reduction is not justified. Because of small misalignments of the sensors within a stack, the distribution of $\De x$ is rather Gaussian-like, but the standard deviation $\si_{\rm P}$ is retained (see Fig.~4.19 in \bref{totem08}).
 
 Inserting \Eq{elr x meas} to the rhs.~of \Eq{elr th fit sim} yields an estimate for the reconstruction error (reconstructed value minus the original one)
 \eqref{\De\th_x^* = \De_{\rm B}\th_x^* + \De_{\rm R}\th_x^*\ ,
 	\quad \De_{\rm B}\th_x^* = {N_{\rm R} \De\th_x^{\rm R} - N_{\rm L} \De\th_x^{\rm L}\over N_{\rm R} + N_{\rm L}}\ ,
-	\quad \De_{\rm R}\th_x^* = {\sum_{\rm R} \De x - \sum_{\rm L} \De x\over  N_{\rm R} + N_{\rm L}}\ ,
+	\quad \De_{\rm R}\th_x^* = {1\over L_x} {\sum_{\rm R} \De x - \sum_{\rm L} \De x\over  N_{\rm R} + N_{\rm L}}\ ,
 }{elr th err proj}
 where we have introduced the error components due to the beam divergence $\De_{\rm B}\th_x^*$ and due to the finite resolution $\De_{\rm R}\th_x^*$. To a good approximation, both components have zero mean value and their standard deviations can be estimated to
 \eqref{
 	\si_{\rm B} = {\sqrt{N_{\rm R}^2 + N_{\rm L}^2} \over N_{\rm R} + N_{\rm L}}\, \si_{\th^*}\ ,\qquad
-	\si_{\rm R} = {1\over L} {1\over \sqrt{N_{\rm R} + N_{\rm L}}}\, \si_{\rm P}\ ,
+	\si_{\rm R} = {1\over L_x} {1\over \sqrt{N_{\rm R} + N_{\rm L}}}\, \si_{\rm P}\ ,
 }{elr th err comp sig}
 where $\si_{\th^*}$ is the beam divergence defined in \Eq{ttm beam div} (see also the text below \Eq{sm momenta par}). The standard deviation of the $\th_x^*$ reconstruction is then
 \eqref{\si^2(\th_x^*) = \si_{\rm B}^2 + \si^2_{\rm R}\ .}{elr th err proj sig}
@@ -297,8 +298,8 @@ In this section we will present the performance of the elastic reconstruction mo
 \Fg{elr 1535 rs} illustrates that it is safe to set the \pmt{road size} parameter to about $2\un{\mu rad}$ for both projections.
 
 \bmfig
-\fig{fig/pdf/elr_1535_ndf.pdf}{elr 1535 ndf}{[7cm]A histogram of the number of degrees of freedom in fit \Eq{elr fit} (the two histograms are overlapping).}
-\fig{fig/pdf/elr_1535_rs.pdf}{elr 1535 rs}{[7cm]A histogram of the road sizes.}
+\fig{fig/pdf/elr_1535_ndf.pdf}{elr 1535 ndf}{[7cm]Histogram of the numbers of degrees of freedom in fit \Eq{elr fit} for $x$ and $y$ (the two histograms are indistinguishable).}
+\fig{fig/pdf/elr_1535_rs.pdf}{elr 1535 rs}{[7cm]Histogram of the road sizes.}
 \emfig
 
 The angular resolutions are nearly the same for $x$ and $y$ projections, as shown in \Fg{elr 1535 dth}. The dominant error contribution is the beam smearing with $\si_{\th^*} = 0.3\un{\mu rad}$, which gives rise to $\si_{\rm B} = 0.21 \un{\mu rad}$ for the 2+2 configuration (i.e.~two pots active in both arms) or $\si_{\rm B} = 0.22\un{\mu rad}$ for the 2+4 configuration.
@@ -344,7 +345,7 @@ The analytical estimate \Eq{elr t err sig} for the $t$-resolution, drawn in \Fg{
 \fig{fig/pdf/elr_90_res_t.pdf}{elr 90 res t}{[7cm]The $t$-resolution.}
 
 
-
+\iffalse
 \section[dqm]{Data quality monitor}
 
 The data quality monitor (Totem\abb{DQM}) is an interactive program that can visualize all steps of data processing. It has been designed for data quality control during data acquisition, but it has also proved very useful for visual event scanning (inspection of events' details such as hit topologies) and for software tuning and debugging.
@@ -354,3 +355,4 @@ The data quality monitor (Totem\abb{DQM}) is an interactive program that can vis
 The Totem\abb{DQM} \bref{totemdqm} provides a multi-window/tab user interface, each of the windows contains a configurable grid of plots, see an example in \Fg{dqm ex}. The plots can be either \em{cumulative} (built from the entire event sample) of \em{event-related} (showing details of a chosen event). Cumulative plots are for example $U$ and $V$ hit profiles (bottom-right window in \Fg{dqm ex}) or $xy$ hit maps (top-right window). Several event-related plots are shown in the background window (left-hand side): track fits in $U$ and $V$ projections and a $3D$ view of the fitted track within the detector package.
 
 The Totem\abb{DQM} is fully integrated in the \abb{TOTEM} offline software. Its predecessor (Monitor \bref{monitor}) is a simpler and standalone program of similar kind. It was and still is used for low (\abb{VFAT}) level tests such as \abb{RP} sensor production tests or system calibrations before data-taking.
+\fi
