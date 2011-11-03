@@ -210,7 +210,6 @@ threshold& 3\cr\ln
 
 \fig{fig/pdf/sr_pattern_reco_ex.pdf}{sr pattern reco ex}{An example of the pattern recognition (run 3230, file 0, event 111, 45-220-near unit). Left: a track plus noise in the bottom pot ($V$ sensors). Right: many tracks in the horizontal pot ($V$ sensors). The red lines correspond to the recognized patterns.}
 
-\eject %!
 \section[elr]{Reconstruction of elastic events}
 
 In the note \bref{el reco} we described a module performing a reconstruction of elastic events. It is a light-weight alternative to the inelastic proton reconstruction (see Sec.~8.2 in \bref{hubert}). The primary aim of this study (performed during the simulation phase of the experiment) was to quantify the capabilities of the \abb{RP} system with various optics. In this section, we will present an update to that note. One of the main differences is the use of a more accurate beam smearing description (as presented in \Sc{beam smearing}). Compared to the old study, the beam divergence has effectively increased by a factor of $\sqrt 2$ (cf.~Eq.~(17) in \bref{smearing}). We will constrain ourselves to the most interesting results, for the others we refer the reader to the original note \bref{el reco}.
@@ -251,7 +250,7 @@ In total, there are three parameters per projection (\pmt{road-size}, \pmt{angul
 
 But before turning to optics-dependent results, let us discuss what measurement uncertainties we expect for the quantities of interest -- most notably the scattering angle $\th^*$ and the momentum-transfer $t$. The measurement (fit) uncertainties can be determined from the covariance matrix \Eq{elr fit err}. Moreover, typical \abb{TOTEM} optics
 %\TODO{ref}
-have properties that will allow us to derive a much simpler formula. First, the effect of the $v$ terms in the proton transport \Eq{elr track param} can often be neglected to the effect of the $L$ terms (with the exception of the horizontal projection at the $\be^*=90\un{m}$ optics, which we will discuss later). Second, let us constrain ourselves to the situation where only the $220\un{m}$ stations are used (typical until the end of 2010). The variation of the effective lengths $L_x(s)$ within a station is not large, thus we might think of a ``typical effective length'' $L_x$. Under these simplifications, the scattering angle estimator becomes:
+have properties that will allow us to derive a much simpler formula. First, the effect of the $v$ terms in the proton transport \Eq{elr track param} can often be neglected to the effect of the $L$ terms (with the exception of the horizontal projection at the $\be^*=90\un{m}$ optics). Second, let us constrain ourselves to the situation where only the $220\un{m}$ stations are used (typical until the end of 2010). The variation of the effective lengths $L_x(s)$ within a station is not large, thus we might think of a ``typical effective length'' $L_x$. Under these simplifications, the scattering angle estimator becomes:
 \eqref{\th_x^*
 	\quad\mathop{\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\longrightarrow}\limits^{v \hbox{\SmallerFonts\ neglected}}\quad
 		{\sum L x\over \sum L^2}
@@ -326,14 +325,14 @@ For this optics, the hits are concentrated around $x=0\un{mm}$ (the effective le
 
 Since the effective length $L_x$ is too small, the road-search algorithm is not efficient for the $x$ projection (the road sizes are excessively large). For the $y$ projection a road-size value of about $12$ is safe, see \Fg{elr 90 rs}.
 
+The $\th_y$ angular resolution is dominated by the beam divergence which corresponds to $\si_{\rm B} = 1.7\un{\mu rad}$. For the $x$ projection it is deteriorated by the low $L_x$ values.
+
+The values of magnification $v$ are very different for the $x$ and $y$ projections. While the vertical magnification $v_y \approx 10^{-2}$ is too small for a reasonable vertex reconstruction, the horizontal magnification $v_x$ is of the order of $-2$ and thus allows for a decent vertex determination as shown in \Fg{elr 90 dvtx}.
+
 \bmfig
 \fig{fig/pdf/elr_90_ndf.pdf}{elr 90 ndf}{[7cm]A histogram of the number of degrees of freedom in fit \Eq{elr fit} (the two histograms are overlapping).}
 \fig{fig/pdf/elr_90_rs.pdf}{elr 90 rs}{[7cm]A histogram of the road sizes.}
 \emfig
-
-The $\th_y$ angular resolution is dominated by the beam divergence which corresponds to $\si_{\rm B} = 1.7\un{\mu rad}$. For the $x$ projection it is deteriorated by the low $L_x$ values.
-
-The values of magnification $v$ are too small (of the order of $-2$ for the horizontal and $10^{-2}$ for the vertical projection) for a reasonable vertex resolution, see \Fg{elr 90 dvtx} (the curve for the $y$ projection is not even drawn).
 
 \bmfig
 \fig{fig/pdf/elr_90_dth.pdf}{elr 90 dth}{[7cm]The angular reconstruction error.}

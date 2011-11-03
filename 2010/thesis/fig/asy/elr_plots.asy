@@ -6,8 +6,6 @@ ySizeDef = 4cm;
 
 string dir = "../elastic_reco_val";
 
-exit();
-
 //----------------------------------------------------------------------------------------------------
 
 string file = dir + "/ElRecoVal_7000GeV_1535_4E3.root";
@@ -15,7 +13,7 @@ string file = dir + "/ElRecoVal_7000GeV_1535_4E3.root";
 NewPad("ndf");
 draw(rGetObj(file, "statistics/global/ndf_x_global"), blue, "$x$ projection");
 draw(rGetObj(file, "statistics/global/ndf_y_global"), red, "$y$ projection");
-limits((-0.5, 0), (6.5, 4e4), Crop);
+limits((-0.5, 0), (6.5, 5e4), Crop);
 AttachLegend(NW, NW);
 
 GShipout("elr_1535_ndf");
@@ -90,13 +88,13 @@ AttachLegend();
 
 GShipout("elr_90_dth");
 
-NewPad("$\De x^*,\ \De y^*\un{mm}$");
-rGetObj(file, "vertex/reco global vs. smeared/vtx_x_rs_diff"); robj.vExec("Rebin", 1); draw(xscale(1e3), robj, blue, "$\De x^*$");
-label("RMS = "+format("$%#.2f$", robj.rExec("GetRMS")*1e6)+"$\ \rm\mu m$", (-0.52, 1370), blue);
+NewPad("$\De x^*,\ \De y^*\un{\mu m}$");
+rGetObj(file, "vertex/reco global vs. smeared/vtx_x_rs_diff"); robj.vExec("Rebin", 1); draw(xscale(1e6), robj, blue, "$\De x^*$");
+label("RMS = "+format("$%#.2f$", robj.rExec("GetRMS")*1e6)+"$\ \rm\mu m$", (-15, 4500), blue);
 rGetObj(file, "vertex/reco global vs. smeared/vtx_y_rs_diff"); //robj.vExec("Rebin", 1); draw(xscale(1e3), robj, red, "$\De y^*$");
 AddToLegend("$\De y^*$", red);
-label("RMS = "+format("$%#.1f$", robj.rExec("GetRMS")*1e3)+"$\ \rm mm$", (-0.52, 1250), red);
-limits((-1, 0), (+1, 1500), Crop);
+label("RMS = "+format("$%#.1f$", robj.rExec("GetRMS")*1e3)+"$\ \rm mm$", (-15, 4000), red);
+limits((-30, 0), (+30, 5000), Crop);
 AttachLegend();
 
 GShipout("elr_90_dvtx");
@@ -104,6 +102,7 @@ GShipout("elr_90_dvtx");
 TGraph_errorBarPen = black+0.2pt;
 NewPad("$|t|\un{GeV^2}$", "$\si(t)/t\un{\%}$");
 TGraph_highLimit = 0.4;
+TGraph_skipPoints.push(0);
 draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution"), "p,sebc", black, mCi+black+1pt);
 draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution|user"), "", heavygreen+1pt);
 AddToLegend(format("$%.1E\ {\rm GeV}/\sqrt{|t|}$", robj.rExec("GetParameter", 0)), heavygreen+1pt);
@@ -116,7 +115,7 @@ GShipout("elr_90_res_t");
 
 TGraph_errorBarPen = black+0.2pt;
 
-string file = dir + "/ElRecoVal_7000_1535_4E3.root";
+string file = dir + "/ElRecoVal_7000GeV_1535_4E3.root";
 NewPad("$|t|\un{GeV^2}$", "$\si(t)/t\un{\%}$");
 draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution"), "p,sebc", black, mCi+black+1pt);
 draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution|user"), "", heavygreen+1pt);
@@ -124,9 +123,10 @@ AddToLegend(format("$%.1E\ {\rm GeV}/\sqrt{|t|}$", robj.rExec("GetParameter", 0)
 limits((0, 0), (0.5, 4), Crop);
 AttachLegend("$\be^* = 1535\,\rm m$");
 
-string file = dir + "/ElRecoVal_7000_90_4E3.root";
+string file = dir + "/ElRecoVal_7000GeV_90_4E3.root";
 NewPad("$|t|\un{GeV^2}$", "$\si(t)/t\un{\%}$");
 TGraph_highLimit = 0.4;
+TGraph_skipPoints.push(0);
 draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution"), "p,sebc", black, mCi+black+1pt);
 draw(yscale(100), rGetObj(file, "t/reco global vs. original/t_rgo_res/resolution|user"), "", heavygreen+1pt);
 AddToLegend(format("$%.1E\ {\rm GeV}/\sqrt{|t|}$", robj.rExec("GetParameter", 0)), heavygreen+1pt);

@@ -33,6 +33,9 @@ As much as the model predictions differ for the elastic cross section, they diff
 \section[ttm det]{Detector apparatus}
 
 \Fg{ttm det overview} shows an overview of the detector apparatus of \abb{TOTEM}. All detectors are placed symmetrically about the interaction point 5 which is shared with the \abb{CMS} experiment.
+
+% All detectors are read out with the same front-end chip \abb{VFAT} chips \bref{vfat}.
+
 %See \Fg{lhc} (in the introduction chapter) for the geographical location of \abb{IP}5 and the orientation of the sectors 45 and 56.
 
 \fig{fig/pdf/ttm_det_overview.pdf}{ttm det overview}{An overview of the \abb{TOTEM} detectors. All detectors are installed symmetrically left (sector 45) and right (sector 56) of the interaction point 5 (\abb{IP}5). Only the right arm (56) is shown in the figure. Bottom part: the structure of the \abb{LHC} around \abb{IP}5. The vertical boxes represent quadrupole (Q) and dipole (D) magnets.
@@ -245,6 +248,8 @@ Looking at the low-$|t|$ elastic cross section predictions in \Fg{el mod dsdt na
 
 The parameterization \Eq{ext M par} is related to the hadronic amplitude $\FH$. However, the measured $t$-distribution relates to the cross section due to both hadronic and Coulomb interactions: $\d\si^{\rm C+H}/\d t$ (see \Sc{el coulomb}). Moreover the experimental $t$-distribution is affected by the limited acceptance and detector resolution. These two effects need to be taken into account in the extrapolation procedure. Looking at the \Fg{ext C}, one may conclude that while the effect of the Coulomb interaction is important for the $1535\un{m}$ optics, it is practically negligible for the $90\un{m}$ optics (staying below $|t| \approx 0.25\un{GeV^2}$). It is the other way round for the smearing effects -- negligible for the $1535\un{m}$ and relevant for the $90\un{m}$ optics, see \Fg{ext smearing}.
 
+\eject
+
 \def\OutlineLabel{Extrapolation for beta* = 1535 m optics}
 \def\TOCLabel{Extrapolation for $\be^* = 1535$ m optics}
 \subsection{Extrapolation for $\be^* = 1535\un{m}$ optics}
@@ -268,7 +273,6 @@ We made a number of fits, trying to find such fit settings that minimize the dev
 
 
 
-
 \def\OutlineLabel{Extrapolation for beta* = 90 m optics}
 \def\TOCLabel{Extrapolation for $\be^* = 90$ m optics}
 \subsection{Extrapolation for $\be^* = 90\un{m}$ optics}
@@ -287,6 +291,7 @@ This transform can now by applied to the parameterization \Eq{ext M par}. Moreov
 To test this extrapolation approach, we used the same (simplified) \abb{MC} simulation as for the $1535\un{m}$ optics. The main results are shown in \Fg{ext results 90}. We fitted the $t_y$ distribution with the parameterization \Eq{ext dsdt dsdty app} to extract the $a$ parameter, which determines the cross section at $t=0\un{GeV^2}$. The fits were carried out on the intervals from $|t_y|_{\rm low}$ (horizontal axis) to $|t_y|_{\rm up} = 0.25\un{GeV^2}$. No attempt was made to correct for the smearing effects, which results in the overall offset $-2\percent$. But there is no principal problem to include such a correction in future. Most models fall in a band $\pm 1\percent$ around the offset $-2\percent$. The model of Islam et al.~deviates slightly more. Looking back to \Fg{ext B} one can see the exponential slope $B(t)$ being more curved for the model of Islam than for the others. Therefore the approximation \Eq{ext dsdt dsdty app} is less accurate for this model.
 
 \fig{fig/pdf/ext_results_90.pdf}{ext results 90}{The extrapolation deviation as a function of the fit lower bound $|t_y|_{\rm low}$. The deviation is calculated as (extrapolated - original) / original, where e.g.~original denotes the original (true) value of $\d\si^{\rm H}/\d t|_{0}$.}
+
 
 
 
