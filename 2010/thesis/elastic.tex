@@ -71,7 +71,7 @@ The scattering amplitudes $\phi_i$ or $F$ reflect the interactions acting betwee
 
 \section[el models]{Hadronic models}
 
-At present, the quantum chromodynamics (\abb{QCD}) is believed to be the most accurate theory of strong interactions available (see e.g.~\bref{chyla}). However, like for most field theories, it is uneasy to handle it non-perturbatively. At the same time perturbative calculations of elastic scattering amplitude fail because of the strong coupling being too large in the typical four-momentum-transfer range ($|t| \ls 10\un{GeV^2}$). Instead, elastic scattering is described and studied with models that are more or less \abb{QCD}-inspired. The most frequent theoretical grounds are the Regge theory and eikonal description (see e.g.~Chs.~5 and 6 in \bref{barone}). Traditionally, these models are called \em{hadronic models}, where hadronic refers to the strong interaction. We will now outline some of the models (an alternative description of these models can be found in \bref{kklp11}). Let us remark that most of the models neglect the spin effects -- they use the approximation \Eq{el spinless si}. In other words they only provide the scattering amplitude $F(t)$ from \Eq{el spinless si}.
+At present, the quantum chromodynamics (\abb{QCD}) is believed to be the most accurate theory of strong interactions available (see e.g.~\bref{chyla}). However, like for most field theories, it is uneasy to handle it non-perturbatively. At the same time perturbative calculations of elastic scattering amplitude fail because of the strong coupling being too large in the typical four-momentum-transfer range ($|t| \ls 10\un{GeV^2}$). Instead, elastic scattering is described and studied with models that are more or less \abb{QCD}-inspired. The most frequent theoretical grounds are the Regge theory and eikonal description (see e.g.~Chs.~5 and 6 in \bref{barone} or \bref{glauber58}). Traditionally, these models are called \em{hadronic models}, where hadronic refers to the strong interaction. We will now outline some of the models (an alternative description of these models can be found in \bref{kklp11}). Let us remark that most of the models neglect the spin effects -- they use the approximation \Eq{el spinless si}. In other words they only provide the scattering amplitude $F(t)$ from \Eq{el spinless si}.
 
 
 \subsection{The model of Islam et al.}
@@ -291,8 +291,6 @@ We will first review some of the most influential results (present them much as 
 
 \subsection[em sc qed]{Electromagnetic scattering in QED and form factors}
 
-\TODO{\bref{kundrat11}}
-
 \abb{QED} is a \abb{QFT} model of the electromagnetic interaction. Moreover, it can naturally account for the structure of the proton and its anomalous magnetic moment (see e.g.~Sec.~6.2 in \bref{peskin} or Sec.~5.2 in \bref{chyla}). These are described by two form factors, the electric $G_{\rm E}(t)$ and the magnetic $G_{\rm M}(t)$, which are related to the distributions of charge and magnetization in the proton (see e.g.~Sachs \bref{sachs62}). The leading contribution to the cross section (one photon exchange, $\O{\al^2}$) was calculated in \bref{block06} (Eq.~(31)). Since we are interested in the \abb{LHC} energies (few $\rm TeV$) and momentum transfers smaller than $|t| = 10\un{GeV^2}$, we may use the high-energy and low-momentum-transfer limits \Eq{el high energy,el low angle}. Then, the result reads (both for $\rm pp$ and $\rm \bar p p$ scattering)
 \eqref{{\d\si^{\rm EM}_{\rm QED, OPE}\over\d t} = {4\pi \al^2\over t^2} G_{\rm eff}^4(t)\ .}{el dsdt em}
 The symbol $G_{\rm eff}(t)$ represents an ``effective'' form factor that is a combination of the electric and magnetic form factors:
@@ -323,7 +321,7 @@ The values of the parameters $c_{{\rm E}, i}$, $w_{{\rm E}, i}$, $c_{{\rm M}, i}
 
 Kelly \bref{kelly04} proposed a class of form-factor parameterizations that is consistent with dimensional scaling at high $|t|$. His parameterization is given by a ratio of two polynomials:
 \eqref{G(t) = {\sum_k^n a_k \ta^k \over \sum_k^{n+2} b_k \ta^k}\ .}{el ff kelly}
-Since the degree of the polynomial in the denominator is higher by two compared to the one in the numerator, the form factor falls off as $|t|^{-2}$ as $|t|\to\infty$. Kelly's parameterization was used by Arrington et al. \bref{arrington07} and Puckett \bref{puckett10} who, moreover, included more recent data sets.
+Since the degree of the polynomial in the denominator is higher by two compared to the one in the numerator, the form factor falls off as $|t|^{-2}$ as $|t|\to\infty$. Kelly's parameterization was used by Arrington et al. \bref{arrington07} and Puckett \bref{puckett10} who, moreover, included more recent data sets. Recently, Kundr\' at et al.~\bref{kundrat11} showed that the Borkowski's parameterization can well approximate the electric form factor of Puckett.
 
 \Fg{el ff comparison} compares the aforementioned form factors. We observe very little difference among Kelly's, Arrington's and Puckett's form factors. On the other hand, for $|t| \gs 0.1\un{GeV^2}$ there is a significant difference between the effective (solid lines) and electric (dashed lines) form factors. The same holds for the difference between Hofstadter's effective form factor and the dipole function $F_{\rm d}$ (dotted line).
 
@@ -481,10 +479,9 @@ An evaluation of the second integral in \Eq{el phase KL} needs a bit of care. Th
 }{el phase KL}
 where
 \eqref{I(t, t') = \int\limits_{0}^{2\pi}\d\ph\ {G_{\rm eff}^2(t'')\over t''}\ ,\qquad t'' = t + t' + 2\sqrt{t t'} \cos\ph\ .}{el KL I}
-This phase is to used with the decomposition \Eq{el F CH decomp H lin ff} (in the original publication \bref{kl94} only the electric form factor was considered instead of $G_{\rm eff}$).
+This phase is to be used with the decomposition \Eq{el F CH decomp H lin ff} (in the original publication \bref{kl94} only the electric form factor was considered instead of $G_{\rm eff}$).
 
-In order to derive \Eq{el phase KL}, \KaL{} used the assumption of negligible form factors at $t_{\rm min}$. While this is a reasonable move, it prevents from using the formula without form factors (our aim is to make comparisons between the interference formulae with and without including form factors). But one can easily recover the lost term and ``correct'' the result of \KL{} to
-\eject
+In order to derive \Eq{el phase KL}, \KaL{} used the assumption of negligible form factors at $t_{\rm min}$. While this is a reasonable move, it prevents from using the formula without form factors (our aim is to make comparisons between the interference formulae with and without including form factors). But one can easily recover the lost term and ``correct'' the result of \KL{} to:
 \formula{corrected \KL{} (CKL) formula:}
 \eqref{\Ps_{\rm CKL}(t) =
 	\mp \int\limits_{T}^{0} \log {t'\over t}\ {\d\phantom{t'}\over\d t'} G_{\rm eff}^2(t')
@@ -531,8 +528,6 @@ Let us discuss Cahn's interference formula \Eq{el phase Cahn} now. Using his wor
 
 These doubts led us to verify Cahn's formula by a complete eikonal calculation based on \Eq{el F C eik comp}. In order to carry out the calculations, we had to use the fictitious photon mass $\la$ non-zero, as suggested in \Eq{el F C reg}. We have chosen, however, such a low value that it has had no influence on the results in within the $|t|$ range of our interest. To demonstrate this we have used, in fact, three values of $\la$: $10^{-2}$, $10^{-3}$ and $10^{-4}\un{GeV}$. In a great portion of the studied $|t|$ interval the results for all three values coincide. The curves for $\la = 10^{-2} \un{GeV}$ tend to deviate for low $|t|$ values, signalizing that this value is not small enough. There is no relevant difference between the results for $\la = 10^{-3}$ and $10^{-4}\un{GeV}$, which gives us confidence of no $\la$-dependence in these results.
 
-\Fg{el cic noff FC} shows our eikonal calculation (\Eq{el F C eik comp}) of the complete Coulomb amplitude $\FC(t)$ with no form factor ($G_{\rm eff}(t) = 1$). Our calculation is in perfect agreement with Cahn's result \Eq{el cahn 2}. Thus his ``abusing'' formula (18) turns out harmless. When the form factor of Puckett has been used, we have obtained \Fg{el cic diff FC}. It supports the hypothesis of Cahn, that the presence of a form factor modifies mostly the phase of the complete Coulomb amplitude -- its modulus is indistinguishable from the Born approximation. The form-factor-induced modification of the phase $\nu(t)$ is shown in \Fg{el cic diff nu}. One can see that the modification is rather small (it is to be compared with the phase with no form factor, see \Fg{el cic noff FC} right). Cahn's expression for $\nu$ matches with our calculation rather well for $|t| \ls 10^{-2}\un{GeV^2}$, Selyugin's is not too bad up to $0.2\un{GeV^2}$. Let us recall that both expression were derived assuming the dipole form factor, thus they shall be compared to the red curve. For higher $|t|$ values, neither of the analytic calculations approximates the complete-eikonal calculation well. Apparently, considering contributions up to the order $\al^2$ is not sufficient.
-
 \fig{fig/pdf/el_cic_noff_F_C.pdf}{el cic noff FC}{Complete Coulomb amplitude calculated with \Eq{el F C eik comp} at $\sqrt s = 7\un{TeV}$, no form factor used. Left: the modulus of the amplitude (for three values of $\la$) compared to the Born approximation \Eq{el coul born ff} (entirely hidden by the green and blue curves). Right: the argument of the amplitude (solid lines) compared to Cahn's $\et(t)$ (dashed lines, often hidden by the solid lines).}
 
 \bmfig
@@ -540,6 +535,9 @@ These doubts led us to verify Cahn's formula by a complete eikonal calculation b
 %
 \fig{fig/pdf/el_cic_diff_nu.pdf}{el cic diff nu}{[7.5cm]The form-factor-induced Coulomb phase shift $\nu(t)$. The colored lines have been calculated with \Eq{el F C eik comp} and $\la = 10^{-4}\un{GeV}$.}
 \emfig
+
+\eject
+\Fg{el cic noff FC} shows our eikonal calculation (\Eq{el F C eik comp}) of the complete Coulomb amplitude $\FC(t)$ with no form factor ($G_{\rm eff}(t) = 1$). Our calculation is in perfect agreement with Cahn's result \Eq{el cahn 2}. Thus his ``abusing'' formula (18) turns out harmless. When the form factor of Puckett has been used, we have obtained \Fg{el cic diff FC}. It supports the hypothesis of Cahn, that the presence of a form factor modifies mostly the phase of the complete Coulomb amplitude -- its modulus is indistinguishable from the Born approximation. The form-factor-induced modification of the phase $\nu(t)$ is shown in \Fg{el cic diff nu}. One can see that the modification is rather small (it is to be compared with the phase with no form factor, see \Fg{el cic noff FC} right). Cahn's expression for $\nu$ matches with our calculation rather well for $|t| \ls 10^{-2}\un{GeV^2}$, Selyugin's is not too bad up to $0.2\un{GeV^2}$. Let us recall that both expression were derived assuming the dipole form factor, thus they shall be compared to the red curve. For higher $|t|$ values, neither of the analytic calculations approximates the complete-eikonal calculation well. Apparently, considering contributions up to the order $\al^2$ is not sufficient.
 
 
 %So far we have been using only the model of Bourrely et al. It provides a prescription for the hadronic eikonal $\de^{\rm H}(b)$ and therefore it is easy to apply \Eq{el F CH eik}. However, many hadronic models give only an amplitude in the $t$-space $\FH(t)$. Then, the hadronic eikonal $\de^{\rm H}(b)$ could, in principle, be obtained by the inverse Fourier-Bessel transform (cf.~\Eq{el eik app F})
@@ -583,18 +581,20 @@ Now, we are going to compare the interference phases calculated with
 
 For simplicity, the comparisons will be performed with one hadronic model only. We have chosen the model of Bourrely et al. It is one of the models giving a prescription for the hadronic eikonal $\de^{\rm H}(b)$ and therefore \Eq{el F CH eik} can be used directly. All our calculations will be done for the centre-of-mass energy $\sqrt s = 7\un{TeV}$.
 
+\Fg{el cic noff Psi} compares the interference phases with no form factor used. We have indicated below \Eq{el T 2} that the most reasonable comparison between $\Ph$ and $\Ps$ phases is $\Ps \sim - \Ph$. The figure shows that the simplified \WY{} formula does not provide a good approximation above $|t| \gs 10^{-2}\un{GeV^2}$ (below that, the discrepancy is on per-mill level). The \WY{} and corrected \KL{} results are identical, as they should, however, they are significantly different from the complete-eikonal calculation. We believe that this is a consequence of the $\O{\al}$ approximations in \Eq{el phase WY,el phase Cahn}.
+
+
 \fig{fig/pdf/el_cic_noff_Psi.pdf}{el cic noff Psi}{Comparison of the Coulomb-interference phases with no form factor. Solid curves have been calculated with the complete-eikonal formula. WY and CKL results are entirely overlapping.}
 
-\Fg{el cic noff Psi} compares the interference phases with no form factor used. We have indicated below \Eq{el T 2} that the most reasonable comparison between $\Ph$ and $\Ps$ phases is $\Ps \sim - \Ph$. The figure shows that the simplified \WY{} formula does not provide a good approximation above $|t| \gs 10^{-2}\un{GeV^2}$ (below that, the discrepancy is on per-mill level). The \WY{} and corrected \KL{} results are identical, as they should, however, they are significantly different from the complete-eikonal calculation. We believe that this is a consequence of the $\O{\al}$ approximations in \Eq{el phase WY,el phase Cahn}.
+
+\fig{fig/pdf/el_cic_diff_Psi_ff.pdf}{el cic diff Psi ff}{The Coulomb-interference phases with different form factors and according to different formulae.}
+
+\fig{fig/pdf/el_cic_diff_Psi_eik.pdf}{el cic diff Psi eik}{Comparison of the Coulomb-interference phases with Puckett form factor between CKL and CE formulae.}
 
 
 \Fg{el cic diff Psi ff} compares the interference phases calculated with different form factors. It shows once again that the approximation of the simplified \WaY{} formula is not admissible for higher $|t|$ values.
 
 \Fg{el cic diff Psi eik} compares the \KL{} formula to the complete-eikonal calculation. Whereas the real part shows significant differences (even for rather low $|t|$ values), both formulae agree well on the imaginary part.
-
-\fig{fig/pdf/el_cic_diff_Psi_ff.pdf}{el cic diff Psi ff}{The Coulomb-interference phases with different form factors and according to different formulae.}
-
-\fig{fig/pdf/el_cic_diff_Psi_eik.pdf}{el cic diff Psi eik}{Comparison of the Coulomb-interference phases with Puckett form factor between CKL and CE formulae.}
 
 Cahn found his result \Eq{el phase Cahn} agree with the one of \WY{} \Eq{el phase WY}. However, we can see two differences. The first is the limit $T\to -\infty$ in Cahn's formula. But as discussed below \Eq{el T 2} the limit presents no actual numerical difference. The second difference is related to the decompositions \Eq{el F CH decomp C,el F CH decomp H}. In the case of Cahn the phase factor is plugged to the hadronic amplitude, in the case of \WaY{} to the Coulomb amplitude. If the phases were real, then the formulae would truly be equivalent (the difference in phase would be absorbed to $\FCH(t)$). However, we have just shown that the phases have non-negligible imaginary parts and therefore the formulae of Cahn \Eq{el phase Cahn} and \WY{} \Eq{el phase WY} are not equivalent.
 
@@ -629,11 +629,11 @@ It is evident that the electromagnetic contribution can not be neglected even fo
 
 \fig{fig/pdf/el_mod_C.pdf}{el mod C}{The influence of the Coulomb interaction (see \Eq{el C}) as a function of $t$. Calculated with CKL formula and Puckett form factor.}
 
+As we have written above, the simplified formula of \WaY{} is still used despite its inconsistencies. \Fg{el mod R} compares this formula with the one of \KaL{} by presenting the relative error $R$ made by employing the SWY phase:
+\eqref{R(t) = {|F^{\rm C+H}_{\rm CKL}(t)|^2 - |F^{\rm C+H}_{\rm SWY}(t)|^2 \over |F^{\rm C+H}_{\rm CKL}(t)|^2}\ .}{el R}
+
 \fig{fig/pdf/el_mod_R.pdf}{el mod R}{The difference between WY and KL formulae as a function of $t$. Calculated with CKL formula and Puckett form factor.}
 
-As we have written above, the simplified formula of \WaY{} is still used despite its inconsistencies. \Fg{el mod R} compares this formula with the one of \KaL{} by presenting the relative error $R$ made by employing the SWY phase:
-
-\eqref{R(t) = {|F^{\rm C+H}_{\rm CKL}(t)|^2 - |F^{\rm C+H}_{\rm SWY}(t)|^2 \over |F^{\rm C+H}_{\rm CKL}(t)|^2}\ .}{el R}
 
 
 \subsection[int sum]{Summary and conclusions}

@@ -199,7 +199,7 @@ GShipout("el_mod_rho", hSkip=2mm);
 
 // ---------- C -----------
 
-ySizeDef = 5.5cm;
+//ySizeDef = 5.5cm;
 
 TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=1, step=0.2);

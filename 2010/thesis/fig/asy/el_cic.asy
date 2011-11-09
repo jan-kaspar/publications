@@ -56,6 +56,7 @@ GShipout("el_cic_noff_F_C", hSkip=5mm);
 //--------------------------------------------------
 write("* el_cic_noff_Psi");
 
+ySizeDef = 5.37cm;
 NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ci : cModes.keys)
@@ -83,6 +84,7 @@ GShipout("el_cic_noff_Psi", hSkip=5mm);
 //--------------------------------------------------
 write("* el_cic_noff_Z");
 
+ySizeDef = 5.5cm;
 NewPad("$|t|\un{GeV^2}$", "$Z\un{\%}$");
 scale(Log, Linear);
 for (int ci : cModes.keys)
@@ -165,6 +167,7 @@ GShipout("el_cic_diff_nu", hSkip=5mm);
 //--------------------------------------------------
 write("* el_cic_diff_Psi_ff");
 
+ySizeDef = 5.37cm;
 NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ffi : FFs.keys) {
@@ -220,6 +223,7 @@ GShipout("el_cic_diff_Psi_eik", hSkip=5mm);
 //--------------------------------------------------
 write("* el_cic_diff_Psi_sum");
 
+ySizeDef = 5.5cm;
 NewPad("$|t|\un{GeV^2}$", "real part of interference phase");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#0|cmp_KL_CH_phase_re"), black, "CKL");
