@@ -14,7 +14,7 @@ for (int fi : ffs.keys) {
 	draw(rGetObj(file, ffs[fi]+"/FF_e_r"), std_pens[fi]+dashed);
 }
 
-limits((1e-4, -1), (1e2, 5), Crop);
+limits((1e-3, -1), (1e2, 5), Crop);
 xaxis(YEquals(1, false), black+dotted);
 
 AttachLegend(NW, NW);

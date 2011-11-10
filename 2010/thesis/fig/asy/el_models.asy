@@ -5,7 +5,7 @@ StdFonts();
 xSizeDef = 6.1cm;
 ySizeDef = 6.1cm;
 
-string base_dir = "/mnt/pctotem31/software/offline/311.old/user/elastic_models/data";
+string base_dir = "../elastic_models/data";
 
 string[] files = {
 	"3500GeV_0_20_4E3", 
@@ -197,70 +197,93 @@ for (int f = 0; f < files.length; ++f) {
 
 GShipout("el_mod_rho", hSkip=2mm);
 
-// ---------- C -----------
-
-//ySizeDef = 5.5cm;
-
-TGraph_reducePoints = 3;
-xTicksDef = LeftTicks(Step=1, step=0.2);
-
-for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$C(t)\un{\%}$");
-	scale(Linear, Linear);
-
-	for (int t : tags.keys) {
-		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "C/" + tags[t], error=false);
-		if (o.valid)
-			draw(yscale(100), o, colors[t]);
-	}
-
-	limits((0, -15), (5, +2), Crop);
-		
-	AdjustPlot(f, true, SE);
-}
-
-GShipout("el_mod_C", hSkip=2mm);
-
 // ---------- Z -----------
 
-TGraph_reducePoints = 3;
+ySizeDef = 5.5cm;
+TGraph_reducePoints = 1;
+//xTicksDef = LeftTicks();
 xTicksDef = LeftTicks(Step=1, step=0.2);
+yTicksDef = RightTicks(Step=2, step=1);
 
 for (int f = 0; f < files.length; ++f) {
 	NewPad("$|t|\un{GeV^2}$", "$Z(t)\un{\%}$");
 	scale(Linear, Linear);
 
 	for (int t : tags.keys) {
+		//TGraph_lowLimit = 5e-2; TGraph_highLimit = +inf;
 		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "Z/" + tags[t], error=false);
 		if (o.valid)
 			draw(yscale(100), o, colors[t]);
+		/*
+		TGraph_lowLimit = -inf; TGraph_highLimit = 1e-1;
+		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "low |t| Z/" + tags[t], error=false, search=false);
+		if (o.valid)
+			draw(yscale(100), o, colors[t]);
+		*/
 	}
 
-	limits((0, -15), (5, +2), Crop);
+	limits((0, -16), (5, +2), Crop);
 		
 	AdjustPlot(f, true, SE);
 }
 
-GShipout("el_mod_Z", hSkip=2mm);
+GShipout("el_mod_Z", hSkip=10mm);
 
-// ---------- R -----------
+// ---------- C -----------
 
-TGraph_reducePoints = 3;
-xTicksDef = LeftTicks(Step=1, step=0.2);
+TGraph_reducePoints = 1;
+xTicksDef = LeftTicks();
+//xTicksDef = LeftTicks(Step=1, step=0.2);
+yTicksDef = RightTicks(Step=2, step=1);
 
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$R(t)\un{\%}$");
-	scale(Linear, Linear);
+	NewPad("$|t|\un{GeV^2}$", "$C(t)\un{\%}$");
+	scale(Log, Linear);
 
 	for (int t : tags.keys) {
-		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "R/" + tags[t], error=false);
+		TGraph_lowLimit = 5e-2; TGraph_highLimit = +inf;
+		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "C/" + tags[t], error=false);
+		if (o.valid)
+			draw(yscale(100), o, colors[t]);
+		
+		TGraph_lowLimit = -inf; TGraph_highLimit = 1e-1;
+		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "low |t| C/" + tags[t], error=false, search=false);
 		if (o.valid)
 			draw(yscale(100), o, colors[t]);
 	}
 
-	limits((0, -25), (5, +5), Crop);
+	limits((1e-3, -12), (5, +2), Crop);
 		
-	AdjustPlot(f, true, SE);
+	AdjustPlot(f, true, SW);
 }
 
-GShipout("el_mod_R", hSkip=2mm);
+GShipout("el_mod_C", hSkip=10mm);
+
+// ---------- R -----------
+
+TGraph_reducePoints = 1;
+xTicksDef = LeftTicks();
+//xTicksDef = LeftTicks(Step=1, step=0.2);
+yTicksDef = RightTicks(Step=3, step=1);
+for (int f = 0; f < files.length; ++f) {
+	NewPad("$|t|\un{GeV^2}$", "$R(t)\un{\%}$");
+	scale(Log, Linear);
+
+	for (int t : tags.keys) {
+		TGraph_lowLimit = 5e-2; TGraph_highLimit = +inf;
+		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "R/" + tags[t], error=false);
+		if (o.valid)
+			draw(yscale(100), o, colors[t]);
+		
+		TGraph_lowLimit = -inf; TGraph_highLimit = 1e-1;
+		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "low |t| R/" + tags[t], error=false, search=false);
+		if (o.valid)
+			draw(yscale(100), o, colors[t]);
+	}
+
+	limits((1e-3, -27), (5, +3), Crop);
+		
+	AdjustPlot(f, true, SW);
+}
+
+GShipout("el_mod_R", hSkip=10mm);
