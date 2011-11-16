@@ -1,3 +1,5 @@
+/* NOT USED
+
 import root;
 import pad_layout;
 include "../alignment/common_code.asy";
@@ -32,3 +34,4 @@ for (int d_i: dates.keys) {
 }
 
 GShipout(hSkip=5mm, vSkip=1mm);
+*/

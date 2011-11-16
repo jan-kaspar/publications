@@ -25,7 +25,7 @@ string[] labelsS = {"Islam et al. (HP)", "Islam et al. (LxG)", "Petrov et al. (2
 
 //----------------------------------------------------------------------------------------------------
 
-TGraph_reducePoints = 3;
+TGraph_reducePoints = 1;
 for (int f = 0; f < files.length; ++f) {
 	NewPad("$|t|\un{GeV^2}$", "$B(t)\un{GeV^{-2}}$");
 	currentpad.xSize = 9cm;
@@ -50,7 +50,7 @@ GShipout("ext_B", hSkip=2mm);
 
 //----------------------------------------------------------------------------------------------------
 
-TGraph_reducePoints = 3;
+TGraph_reducePoints = 1;
 for (int f = 0; f < files.length; ++f) {
 	NewPad("$|t|\un{GeV^2}$", "effect of Coulomb interaction$\un{\%}$");
 	scale(Log, Linear);
