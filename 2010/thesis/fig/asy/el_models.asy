@@ -59,9 +59,9 @@ void DrawOptimized(real min, real max, real yScale, rObject obj, pen p, string l
 
 //----------------------------------------------------------------------------------------------------
 
-void AdjustPlot(int f, bool l=false, pair alig=NE)
+void AdjustPlot(int f, bool l=false, pair alig=NE, bool eraseYLabel=true, real legLineLength=1cm)
 {
-	if (f > 0)
+	if (f > 0 && eraseYLabel)
 		currentpad.yLabel = "";
 
 	currentpicture.legend.delete();
@@ -78,7 +78,8 @@ void AdjustPlot(int f, bool l=false, pair alig=NE)
 		}
 	}
 
-	AttachLegend(flabels[f], alig, alig);
+	//AttachLegend(flabels[f], alig, alig);
+	add(Legend(flabels[f], legLineLength, alig), point(alig), Fill(white));
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -199,7 +200,7 @@ GShipout("el_mod_rho", hSkip=2mm);
 
 // ---------- Z -----------
 
-ySizeDef = 5.5cm;
+xSizeDef = ySizeDef = 5.5cm;
 TGraph_reducePoints = 1;
 //xTicksDef = LeftTicks();
 xTicksDef = LeftTicks(Step=1, step=0.2);
@@ -224,10 +225,10 @@ for (int f = 0; f < files.length; ++f) {
 
 	limits((0, -16), (5, +2), Crop);
 		
-	AdjustPlot(f, true, SE);
+	AdjustPlot(f, true, SE, false, 7mm);
 }
 
-GShipout("el_mod_Z", hSkip=10mm);
+GShipout("el_mod_Z", hSkip=15mm);
 
 // ---------- C -----------
 
@@ -254,10 +255,10 @@ for (int f = 0; f < files.length; ++f) {
 
 	limits((1e-3, -12), (5, +2), Crop);
 		
-	AdjustPlot(f, true, SW);
+	AdjustPlot(f, true, SW, false, 7mm);
 }
 
-GShipout("el_mod_C", hSkip=10mm);
+GShipout("el_mod_C", hSkip=15mm);
 
 // ---------- R -----------
 
@@ -283,7 +284,7 @@ for (int f = 0; f < files.length; ++f) {
 
 	limits((1e-3, -27), (5, +3), Crop);
 		
-	AdjustPlot(f, true, SW);
+	AdjustPlot(f, true, SW, false, 7mm);
 }
 
-GShipout("el_mod_R", hSkip=10mm);
+GShipout("el_mod_R", hSkip=15mm);

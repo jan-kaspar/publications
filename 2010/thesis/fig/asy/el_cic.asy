@@ -101,7 +101,7 @@ for (int li : las.keys)
 limits((t_min, 0), (t_max, 1.2), Crop);
 AttachLegend(NE, N+0.88E);
 
-GShipout("el_cic_noff_Z", hSkip=5mm);
+GShipout("el_cic_noff_Z", hSkip=15mm);
 
 //--------------------------------------------------
 //--------------------------------------------------
@@ -270,7 +270,7 @@ for (int ffi : FFs.keys) {
 limits((t_min, 0), (t_max, 1.2), Crop);
 */
 
-GShipout("el_cic_diff_Z_ff", hSkip=5mm);
+GShipout("el_cic_diff_Z_ff", hSkip=15mm);
 
 //--------------------------------------------------
 write("* el_cic_diff_Z_eik");
@@ -296,7 +296,7 @@ for (int li : las.keys) {
 limits((t_min, 0), (t_max, 1.2), Crop);
 AttachLegend(NE, NE);
 
-GShipout("el_cic_diff_Z_eik", hSkip=5mm);
+GShipout("el_cic_diff_Z_eik", hSkip=15mm);
 
 //--------------------------------------------------
 write("* el_cic_diff_Z_sum");

@@ -156,7 +156,7 @@ m_i^n = (\vec d_i + \De\rh_i\,\vec d_{\perp i})^\T \left[\vec a^n (z_i + \De z_i
 where for brevity reasons we have made a replacement
 $$c_{z,i} \longrightarrow z_i\ ,\qquad \De c_{z,i} \longrightarrow \De z_i\ .$$
 
-In what follows, we will drop the last two terms on the \rhs, they will be treated as an error, see \Sc{al err}. The first term can be expanded yielding
+In what follows, we will drop the last two terms on the right-hand side -- they will be treated as an error, see \Sc{al err}. The first term can be expanded yielding
 \eqref{\eqnarray{
 \mu_i^n \equiv m_i^n + \vec d_i^\T \vec c_i = & &\cr
 & +\vec d_i^\T (\vec a^n z_i + \vec b^n)&\qquad 10^{-2}\un{m}\cr
@@ -250,7 +250,7 @@ Let us denote the $\mat\Ga$ and $\mat A$ matrices obtained in this way with tild
 \eqref{\vec\ta \rightarrow \hat\vec\ta: \quad \mat\Ga \rightarrow \tilde\mat\Ga, \mat A \rightarrow \tilde\mat A\ .}{al tau linearization}
 This step brings in a necessity for several iterations, we will discuss them in \Sc{al err}.
 
-Now we would like to extract the vector of misalignment estimates $\hat\vec\ch = (\hat\vec\ch_1, \hat\vec\ch_2, \ldots)^\T$ from the full parameter vector $\hat\vec P$ (see \Eq{al vec P}). It can be done by a straightforward evaluation of the \rhs{} of \Eq{al P estimate exact}. The inverse of
+Now we would like to extract the vector of misalignment estimates $\hat\vec\ch = (\hat\vec\ch_1, \hat\vec\ch_2, \ldots)^\T$ from the full parameter vector $\hat\vec P$ (see \Eq{al vec P}). It can be done by a straightforward evaluation of the right-hand side of \Eq{al P estimate exact}. The inverse of
 \eqref{\tilde\mat A^\T \mat V^{-1}\tilde\mat A =
 \pmatrix{
 \ddots 	& 											& 		&\vrule &\ddots & 														& \udots\cr
@@ -378,7 +378,7 @@ where $N_{\rm events}$ represents the number of events. The last equation has a 
 
 In the previous section we have derived the fit equation \Eq{al fit equation}. If the matrix $\tilde\mat S$ was regular, one could obtain the alignment parameters $\hat\vec\ch$ by means of matrix inversion. In this section we will show that $\tilde\mat S$ is singular and we will identify the regular (accessible to track-based alignment) and singular (inaccessible) misalignment modes.
 
-First, let us look closer on the fit equation. Note that the sensors' measurements enter the \rhs{} in the form of residuals. That means that any misalignment mode that does not generate residuals can not be revealed by the track-based algorithm. These misalignment modes are those where the misalignments $\vec\ch_j$ can be compensated (keeping measurements $\vec\mu^n$ unchanged) by varying the track parameters $\vec\ta^n \to {\vec\ta '}^n$ (cf.~\Eq{al vec mu}):
+First, let us look closer on the fit equation. Note that the sensors' measurements enter the right-hand side in the form of residuals. That means that any misalignment mode that does not generate residuals can not be revealed by the track-based algorithm. These misalignment modes are those where the misalignments $\vec\ch_j$ can be compensated (keeping measurements $\vec\mu^n$ unchanged) by varying the track parameters $\vec\ta^n \to {\vec\ta '}^n$ (cf.~\Eq{al vec mu}):
 \eqref{\mat\al^n {\vec\ta}^n + \sum_j \mat\Ga_j^n \vec\ch_j = \vec\mu^n = \mat\al^n {\vec\ta'}^n\ .}{al tau chi equiv}
 Considering that the $\mat\Ga$ matrices may depend on the track parameters (see \Tb{al alignment quantities}), this can be recast to
 \eqref{\sum_j \mat\Ga_j(\vec\ta^n)\, \vec\ch_j = \al^n\, (\underbrace{{\vec\ta'}^n - \vec\ta^n}_{\De\vec\ta^n})\ .}{al sm con}
@@ -392,7 +392,7 @@ which is a consequence of $\mat\si^n \mat\al^n = 0$, see \Eq{al prop sigma n}. T
 
 Let us come back to \Eq{al sm con}. The key point was to find a $\De\vec\ta^n$ vector for any vector $\vec\ta^n$ -- no matter whether $\vec\ta^n$ was a vector of true or estimated track parameters (cf.~\Eq{al tau linearization}). This is exactly what makes the difference between $\mat\Ga$ and $\tilde\mat\Ga$. Since this difference is irrelevant for \Eq{al sm con}, it can be written with tilded $\mat\Ga$ matrix too. Consequently, the result of \Eq{al sm} is also valid for $\bar\mat S$ and $\tilde\mat S$ (the difference among $\mat S$, $\bar\mat S$ and $\tilde\mat S$ matrices is only the use of $\mat\Ga$ or $\tilde\mat\Ga$). To conclude, the singular modes found in \Eq{al sm} are also singular modes for $\bar\mat S$ and $\tilde\mat S$ matrices.
 
-Later, we will find useful to use the definition of the $\mat\al$ matrix \Eq{al mat alpha} and rewrite the \rhs{} of \Eq{al sm con} as
+Later, we will find useful to use the definition of the $\mat\al$ matrix \Eq{al mat alpha} and rewrite the right-hand side of \Eq{al sm con} as
 \eqref{\mat\al^n\, \De\vec\ta^n = \pmatrix{
 	\vdots\cr
 	\vec d_i \cdot (\De\vec a^n z_i + \De\vec b^n)\cr
@@ -420,7 +420,7 @@ For shifts in the read-out direction, the condition \Eq{al sm con} reads (using 
 	- \vec d_i \cdot ( \De\vec a^n z_i + \De\vec b^n )\ .
 }{al sm shr sol}
 
-Since the \lhs{} does not depend on the event number $n$, neither must the \rhs{}. That is why the ${\De\vec a}=(\De a_x, \De a_y)^\T$ and ${\De\vec b=(\De b_x, \De b_y)^\T}$ vectors do not need to carry a superscript. These two vectors define the structure of the singular modes -- they correspond to \em{global} ($\De\vec b$) and \em{linearly-progressive} ($\De\vec a\, z_i$) shifts in $x$ and $y$. By global shift we mean a shift that is common for all sensors. The size of a linearly-progressive shift is proportional to the $z$-position of a sensor. There are four free parameters (both $\De\vec a$ and $\De\vec b$ are two-dimensional), thereby four singular modes. The situation is illustrated in \Fg{al sing modes shr}.
+Since the left-hand side does not depend on the event number $n$, neither must the right-hand side. That is why the ${\De\vec a}=(\De a_x, \De a_y)^\T$ and ${\De\vec b=(\De b_x, \De b_y)^\T}$ vectors do not need to carry a superscript. These two vectors define the structure of the singular modes -- they correspond to \em{global} ($\De\vec b$) and \em{linearly-progressive} ($\De\vec a\, z_i$) shifts in $x$ and $y$. By global shift we mean a shift that is common for all sensors. The size of a linearly-progressive shift is proportional to the $z$-position of a sensor. There are four free parameters (both $\De\vec a$ and $\De\vec b$ are two-dimensional), thereby four singular modes. The situation is illustrated in \Fg{al sing modes shr}.
 
 \fig{fig/pdf/al_sing_modes_shr.pdf}{al sing modes shr}{An illustration of the singular modes \Eq{al sm shr sol}: a front view on a sensor package. Each sensor is represented by a dot (its center $\vec c$) and an arrow (its read-out direction $\vec d$), cf.~the front view in \Fg{al proton sensor interaction}. The hollow dots mark the nominal positions, the solid ones represent the misalignment mode. For simplicity we have considered a simplified package of six sensors only (see the numbers), moreover with an equal spacing $\De z$. The $U$ (red) and $V$ (blue) sensors are regularly alternating, the first one is at $z = 0$.}
 
@@ -505,7 +505,7 @@ where $\mat D$ is a diagonal matrix containing the eigenvalues $\la$ of $\tilde\
 	\mathop{\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\relbar\joinrel\longrightarrow}\limits^{\hbox{\SmallerFonts measurement error}}
 	{\tilde T^{\rm E}_m + \De\tilde T^{\rm E}_m \over \la_m}
 \ .}{al fit eq eigen one}
-If $\la_m = 0$, the equation cannot be solved -- the mode $m$ is a singular mode. However one may expect troubles even if $\la_m$ is non-zero but small. One should keep in mind that the $\tilde T^{\rm E}$ is built from measurements, see \Eq{al fit equation}, and as such it is subject to an experimental error. Formally, this is expressed by adding the $\De\tilde T^{\rm E}_m$ term on the \rhs{} above. If $\la_m$ is small, the ratio $\De\tilde T^{\rm E}_m/\la_m$ may grow large, in other words $\hat\ch^{\rm E}_m$ can only be determined with a large uncertainty. In that sense, the eigenvalue $\la_m$ controls the determination power of the alignment mode $m$. If the eigenvalue is small, the determination is weak -- that is why we will call these modes \em{weak modes} in what follows. For a more complete discussion of the uncertainties, see \Sc{al err}.
+If $\la_m = 0$, the equation cannot be solved -- the mode $m$ is a singular mode. However one may expect troubles even if $\la_m$ is non-zero but small. One should keep in mind that the $\tilde T^{\rm E}$ is built from measurements, see \Eq{al fit equation}, and as such it is subject to an experimental error. Formally, this is expressed by adding the $\De\tilde T^{\rm E}_m$ term on the right-hand side above. If $\la_m$ is small, the ratio $\De\tilde T^{\rm E}_m/\la_m$ may grow large, in other words $\hat\ch^{\rm E}_m$ can only be determined with a large uncertainty. In that sense, the eigenvalue $\la_m$ controls the determination power of the alignment mode $m$. If the eigenvalue is small, the determination is weak -- that is why we will call these modes \em{weak modes} in what follows. For a more complete discussion of the uncertainties, see \Sc{al err}.
 
 Whereas the singular and weak modes are very different from the theoretical point of view, they look the same for computer programs. Any numerical calculation of eigenvalues has a limited accuracy (we have used ROOT matrix libraries \bref{root matrix} at double precision). Therefore the eigenvalues corresponding to singular modes are found small but non-zero. In order to distinguish between regular and singular (or very weak) modes one thus needs to set a finite \em{singular limit}. \Fg{al eig rho} shows that a value of $10^{-9}$ is reasonable.
 
@@ -746,7 +746,7 @@ To summarize, for every unit, these four constraints are imposed:
 }{al final cnst ex}
 \fi
 
-As the last comment, let us recall that the $\tilde\mat S$ matrix scales approximately with the number of events $N_{\rm events}$ (see \Eq{al S norm eig val}). In order to simplify the interpretation of the eigenvalues of the alignment matrix (the \lhs~of \Eq{al alignment equation}), it is advantageous to let the $\mat C$ matrix scale with $N_{\rm events}$ too. This effectively means to use
+As the last comment, let us recall that the $\tilde\mat S$ matrix scales approximately with the number of events $N_{\rm events}$ (see \Eq{al S norm eig val}). In order to simplify the interpretation of the eigenvalues of the alignment matrix (the left-hand side of \Eq{al alignment equation}), it is advantageous to let the $\mat C$ matrix scale with $N_{\rm events}$ too. This effectively means to use
 \eqref{\mat C = N_{\rm events}\, \mat C^0\ ,}{al C scaled}
 where $\mat C^0$ is one of the constraint choices above. With this normalization, the entire alignment matrix scales with $N_{\rm events}$.
 
@@ -775,7 +775,7 @@ An important property of the resolution error is that the errors in different ev
 
 In \Sc{al psi} when describing the interaction of a proton with a silicon sensor, we wrote that the proton creates electron-hole pairs along its trajectory. But in addition the proton can interact with silicon atoms, leading to an angular deflection. This phenomenon is often called \em{multiple scattering}. In Sec.~7.5.2 in \bref{hubert} the size of this effect was evaluated for the \abb{TOTEM} \abb{RP}s. The result for a single \abb{RP} is that the angular deflection is a random variable with zero mean and standard deviation about $0.55\un{\mu rad}$. With the lever-arm given by the length of a $220\un{m}$ station (the worst situation), it leads to an elongation of about $3\un{\mu m}$. Since the multiple scattering is a random process, the resulting error would add up with the resolution error. From \Eq{al resolution err mod} we get the standard deviation $19.05\un{\mu m}$, when the multiple scattering is added it increases to $19.29\un{\mu m}$. The multiple scattering is thus a minor effect for the alignment application.
 
-Now let us rewrite some of the above statements a bit more formally. The $\tilde\vec T$ vector that appears on the \rhs.~of the alignment equation \Eq{al alignment equation} can be calculated from \Eq{al exact fit equation}. Considering that the measurements $\vec\mu$ receive a contribution $\De\vec\mu$ from the resolution error, we can write
+Now let us rewrite some of the above statements a bit more formally. The $\tilde\vec T$ vector that appears on the right-hand side of the alignment equation \Eq{al alignment equation} can be calculated from \Eq{al exact fit equation}. Considering that the measurements $\vec\mu$ receive a contribution $\De\vec\mu$ from the resolution error, we can write
 \eqref{\tilde\vec T =
 	\tilde\mat S \vec\ch
 	+ \underbrace{(\bar\mat S - \tilde\mat S) \vec\ch}_{\De\vec T_{\rm syst}}
@@ -933,19 +933,19 @@ parameter							& meaning\cr\ln
 \pmt{requireAtLeast3PotsInOverlap}	& if there is signal in the overlap, require signal in at least three pots\cr\ln
 }
 
-The values of the selection algorithms parameters will be given for each analysis in \Sc{al int res,al lhc res}. Let us only remark that some of these parameters will be changed during iterations. For example the parameter of the outlier cut \Eq{al outlier cond} or the one of the $\ch^2$ cut will be made increasingly more strict, as the expected alignment corrections (see the \rhs~column in \Tb{al iter}) decrease.
+The values of the selection algorithms parameters will be given for each analysis in \Sc{al int res,al lhc res}. Let us only remark that some of these parameters will be changed during iterations. For example the parameter of the outlier cut \Eq{al outlier cond} or the one of the $\ch^2$ cut will be made increasingly more strict, as the expected alignment corrections (see the right-hand side column in \Tb{al iter}) decrease.
 
 
 \subsection[al dp fac]{Alignment of detector packages}
 
 In the introduction (see \Tb{al exp misal}) we have shown that the sensor misalignments receive two contributions -- internal (misalignments of sensors within a detector package) and \abb{DP} misalignments (misalignments of \abb{DP}s with respect to a global reference such as the beam). Since the internal misalignments are much smaller than the \abb{DP} misalignments, one can determine the misalignment of a \abb{DP} as the alignment corrections common to all its sensors. The residual alignment corrections of the individual sensors with respect to the \abb{DP} can then be identified with the internal alignments.
 
-In \Sc{al psi} we have not explicitly separated the internal and \abb{DP} misalignments, however it is straight-forward to do so. One has to split the global (wrt.~the beam) to local (sensor) coordinate transformation \Eq{al global to local} into two steps: global to \abb{DP} and \abb{DP} to sensor. This naturally defines the placement of a \abb{DP} wrt.~the beam and the placement of a sensor within a \abb{DP}. Each placement may in reality differ from the nominal, in other words they may be altered by a misalignment (c.f.~\Eq{al misalignments}). Then, repeating the steps leading to \Eq{al hit v} yields
+In \Sc{al psi} we have not explicitly separated the internal and \abb{DP} misalignments, however it is straight-forward to do so. One has to split the global (with respect to the beam) to local (sensor) coordinate transformation \Eq{al global to local} into two steps: global to \abb{DP} and \abb{DP} to sensor. This naturally defines the placement of a \abb{DP} with respect to the beam and the placement of a sensor within a \abb{DP}. Each placement may in reality differ from the nominal, in other words they may be altered by a misalignment (c.f.~\Eq{al misalignments}). Then, repeating the steps leading to \Eq{al hit v} yields
 \eqref{
 	\De\rh_{z_i} = \De\rh_z^{\rm DP} + \De\rh_{z_i}^{\rm S}\ ,\qquad
 	\De\vec c_i = \De\vec c^{\rm DP} + \De\vec c_i^{\rm S} - \pmatrix{\rh_y^{\rm DP}\cr \rh_x^{\rm DP}} \ze_i\ .
 }{al dp sen al}
-For the rotations about $z$, the interpretation is simple: the full rotation of the $i$-th sensor is given by a sum of the rotation of the \abb{DP} wrt.~the beam (\abb{DP} rotation $\De\rh_z^{\rm DP}$) and the rotation of the sensor within the \abb{DP} (internal rotation $\De\rh_z^{\rm S}$). The transverse-shift part can be interpreted similarly, with the exception of the last term, which reflects the fact that the entire \abb{DP} is rotated about the $x$ and $y$ axes (see the illustration in \Fg{al rp misalignment}). The rotation angles $\rh_x^{\rm DP}$ and $\rh_y^{\rm DP}$ are defined by \Eq{al rotation parameterization}. The parameter $\ze_i$ gives the $z$ distance of the $i$-th sensor from the center of the \abb{DP} (see \Tb{ttm det package}).
+For the rotations about $z$, the interpretation is simple: the full rotation of the $i$-th sensor is given by a sum of the rotation of the \abb{DP} with respect to the beam (\abb{DP} rotation $\De\rh_z^{\rm DP}$) and the rotation of the sensor within the \abb{DP} (internal rotation $\De\rh_z^{\rm S}$). The transverse-shift part can be interpreted similarly, with the exception of the last term, which reflects the fact that the entire \abb{DP} is rotated about the $x$ and $y$ axes (see the illustration in \Fg{al rp misalignment}). The rotation angles $\rh_x^{\rm DP}$ and $\rh_y^{\rm DP}$ are defined by \Eq{al rotation parameterization}. The parameter $\ze_i$ gives the $z$ distance of the $i$-th sensor from the center of the \abb{DP} (see \Tb{ttm det package}).
 
 \fig{fig/pdf/al_rp_misalignment.pdf}{al rp misalignment}{A side view on a detector package (for simplicity only four sensors are drawn). The \abb{DP} is shifted by $\De c^{\rm DP}$ (green arrow) and rotated by $\De\rh_x^{\rm DP}$ about the $x$ axis. The shifts of the individual sensors $\De\vec c_i$ are drawn as the blue arrows. For simplicity we have not considered the sensor shifts within the package, that is $\De\vec c_i^{\rm S} = 0$. The hollow/full dots mark the nominal/actual positions of sensor centers.}
 

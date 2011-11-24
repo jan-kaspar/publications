@@ -134,7 +134,7 @@ which follows from the Lorentz transformation (the origins of the \abb{LAB} and 
 	\tilde z = \ga \left( z\cos\al\ + x\sin\al + vt \right)\ ,\qquad
 	\ga = {1\over\sqrt{1 - v^2}}\ .
 }{sm coord trans}
-The leading $\ga$ factor on the \rhs~of \Eq{sm density2} is needed to preserve the normalization:
+The leading $\ga$ factor on the right-hand side of \Eq{sm density2} is needed to preserve the normalization:
 \eqref{\int \rh_0(\tilde x, \tilde y, \tilde z)\ \d\tilde x\,\d\tilde y\,\d\tilde z = \int \rh_2(x, y, z)\ \d x\,\d y\,\d z\ .}{sm rho normalization}
 The density for the first bunch can be obtained analogically:
 \eqref{\rh_1(x, y, z; t) = \ga\, \rh_0\Big(x\cos\al + z\sin\al, y, \ga(z\cos\al - x\sin\al - vt) \Big)\ .}{sm density1}
@@ -261,7 +261,7 @@ where for example $\sum_{\rm R}$ represents the sum over the right-arm hits only
 \eqref{x = L_x (\th_x^* + \De\th_x) + \De x\ .}{elr x meas}
 $\th_x^*$ represents the true scattering angle, $\De\th_x$ its alternation due to the beam smearing, see \Eq{sm diff lab}, which is independent for left and right arms. The error $\De x$ combines two effects -- misalignment and the error due the finite resolution of the silicon detectors. The misalignment leads to a systematic shift and we will not discuss it here (see e.g.~\Tb{al reco impact}). Had we only one sensor per \abb{RP} (per projection), the finite-resolution error could be well described by an uniform distribution between plus and minus half of the strip pitch $P$, which would give a standard deviation $\si_{\rm P} = P/\sqrt{12}\approx 19\un{\mu m}$. In reality, there are five sensors per projection in each \abb{RP}, thus one might naively expect the standard deviation to reduce by a factor $\sqrt 5$. But since physics tracks are almost perpendicular to the sensors, they most often hit the same strip in all five sensors and thus the reduction is not justified. Because of small misalignments of the sensors within a stack, the distribution of $\De x$ is rather Gaussian-like, but the standard deviation $\si_{\rm P}$ is retained (see Fig.~4.19 in \bref{totem08}).
 
-Inserting \Eq{elr x meas} to the rhs.~of \Eq{elr th fit sim} yields an estimate for the reconstruction error (reconstructed value minus the original one)
+Inserting \Eq{elr x meas} to the right-hand side of \Eq{elr th fit sim} yields an estimate for the reconstruction error (reconstructed value minus the original one)
 \eqref{\De\th_x^* = \De_{\rm B}\th_x^* + \De_{\rm R}\th_x^*\ ,
 	\quad \De_{\rm B}\th_x^* = {N_{\rm R} \De\th_x^{\rm R} - N_{\rm L} \De\th_x^{\rm L}\over N_{\rm R} + N_{\rm L}}\ ,
 	\quad \De_{\rm R}\th_x^* = {1\over L_x} {\sum_{\rm R} \De x - \sum_{\rm L} \De x\over  N_{\rm R} + N_{\rm L}}\ ,
@@ -325,14 +325,14 @@ For this optics, the hits are concentrated around $x=0\un{mm}$ (the effective le
 
 Since the effective length $L_x$ is too small, the road-search algorithm is not efficient for the $x$ projection (the road sizes are excessively large). For the $y$ projection a road-size value of about $12$ is safe, see \Fg{elr 90 rs}.
 
-The $\th_y$ angular resolution is dominated by the beam divergence which corresponds to $\si_{\rm B} = 1.7\un{\mu rad}$. For the $x$ projection it is deteriorated by the low $L_x$ values.
-
-The values of magnification $v$ are very different for the $x$ and $y$ projections. While the vertical magnification $v_y \approx 10^{-2}$ is too small for a reasonable vertex reconstruction, the horizontal magnification $v_x$ is of the order of $-2$ and thus allows for a decent vertex determination as shown in \Fg{elr 90 dvtx}.
-
 \bmfig
 \fig{fig/pdf/elr_90_ndf.pdf}{elr 90 ndf}{[7cm]A histogram of the number of degrees of freedom in fit \Eq{elr fit} (the two histograms are overlapping).}
 \fig{fig/pdf/elr_90_rs.pdf}{elr 90 rs}{[7cm]A histogram of the road sizes.}
 \emfig
+
+The $\th_y$ angular resolution is dominated by the beam divergence which corresponds to $\si_{\rm B} = 1.7\un{\mu rad}$. For the $x$ projection it is deteriorated by the low $L_x$ values.
+
+The values of magnification $v$ are very different for the $x$ and $y$ projections. While the vertical magnification $v_y \approx 10^{-2}$ is too small for a reasonable vertex reconstruction, the horizontal magnification $v_x$ is of the order of $-2$ and thus allows for a decent vertex determination as shown in \Fg{elr 90 dvtx}.
 
 \bmfig
 \fig{fig/pdf/elr_90_dth.pdf}{elr 90 dth}{[7cm]The angular reconstruction error.}
