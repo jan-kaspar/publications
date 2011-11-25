@@ -1,8 +1,8 @@
 include "../alignment/common_code.asy";
 import pad_layout;
 
-xSizeDef = 5.8cm;
-ySizeDef = 4.9cm;
+xSizeDef = 5.5cm;
+ySizeDef = 5.5cm;
 
 StdFonts();
 
@@ -102,4 +102,4 @@ MakePage("random-gauss/theta=0.1E-3", "it3_expanded_results_Jan.xml", "precise3_
 //NewPage();
 //MakePage("random/theta=10E-3", "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
 
-GShipout(hSkip=1mm, vSkip=1mm);
+GShipout(hSkip=5mm, vSkip=1mm);

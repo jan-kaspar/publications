@@ -19,7 +19,14 @@
 \Reftrue
 \Toctrue
 
-\def\FootText{(VERSION 3)}
+%\def\FootText{(VERSION 3)}
+\def\FootText{}
+
+% for display version
+\def\linkColor{\cmykBlue}
+
+% for print version
+\def\linkColor{\cmykBlack}
 
 
 %----------------------------------------------------------------------------------------------------
@@ -185,7 +192,7 @@
 \pdfdest name {AnnouncementPage} xyz
 \pdfoutline goto name {AnnouncementPage} count 0 {Announcement page}%
 
-\TODO{Tato disertační práce byla vypracována v rámci interního doktorandského studia, které uchazeč absolvoval na Matematicko-fyzikální fakultě Univerzity Karlovy v Praze v letech 2005-2011}.
+%\TODO{Tato disertační práce byla vypracována v rámci interního doktorandského studia, které uchazeč absolvoval na Matematicko-fyzikální fakultě Univerzity Karlovy v Praze v letech 2005-2011}.
 
 \vfil
 
@@ -197,22 +204,22 @@ Doktorand:			& Jan Kašpar\cr
 Školící pracoviště:	& Fyzikální ústav Akademie věd, v.~v.~i. \cr
 					& Na Slovance 1999/2, 182 21 Praha 8\cr
 &\cr
-Oponenti:			& jméno\cr
-					& katedra\cr
-					& adresa\cr
+Oponenti:			& ?? jméno ??\cr
+					& ?? katedra ??\cr
+					& ?? adresa ??\cr
 &\cr
-					& jméno\cr
-					& katedra\cr
-					& adresa\cr
+					& ?? jméno ??\cr
+					& ?? katedra ??\cr
+					& ?? adresa ??\cr
 }
 
 \vfil
 
-Autoreferát byl rozeslán dne ...
+Autoreferát byl rozeslán dne ??. ??. ????
 
 \vfil
 
-Obhajoba disertační práce se koná dne ... v ... hodin před komisí pro obhajoby disertačních prací v oboru F9 na Ústavu částicové a jaderné fyziky, V Holešovičkách 2, 180 00 Praha 8, v místnosti ...
+Obhajoba disertační práce se koná dne ??. ??. ???? v ?? hodin před komisí pro obhajoby disertačních prací v oboru F9 na Ústavu částicové a jaderné fyziky, V Holešovičkách 2, 180 00 Praha 8, v místnosti ????
 
 \vfil
 
@@ -396,13 +403,15 @@ The singular modes related to the transverse shifts include the horizontal and v
 
 One can make a stronger use of the hit symmetries if a sample of elastic hits is selected, see an illustration in \Fg{al el plots sum}. The vertical beam position (dash-dotted line) is determined from the right-hand plot. The bottom-pot (blue) distribution (after having removed the part affected by the acceptance) was flipped (green) and moved up and down until a match with the top-pot (red) distribution was found. In this way obtain the center of the vertical hit distribution -- the vertical beam position. The horizontal beam position is determined from the left plot by the intersection of the green fit with the dash-dotted line (the vertical beam position). For the data from 29-30 October (the data used for the first elastic scattering measurement described in \Sc{felm}) this alignment had the uncertainty of about $5\un{\mu m}$ (horizontally) and $15\un{\mu m}$ (vertically).
 
+\kern-5mm
 \fig{fig/pdf/al_el_plots_sum.pdf}{al el plots sum}{RP alignment with elastic scattering. Left: hit map in a unit, Right: the vertical profiles from the top (red) and bottom (blue) RP of that unit. The dotted lines show the acceptance cuts (in the left plot they coincide with the sensor contours).}
 
 %----------------------------------------------------------------------------------------------------
 \chapter[felm]{The first elastic scattering measurement at the LHC}
 
-In this chapter we describ the first elastic scattering measurement at the LHC, made by TOTEM \bref{totem11}. In particular we focus on the contributions by this thesis author -- the background estimation and subtraction and the unfolding of resolution effects.
+In this chapter we describe the first elastic scattering measurement at the LHC, made by TOTEM \bref{totem11}. In particular we focus on the contributions by this thesis author -- the background estimation and subtraction and the unfolding of resolution effects.
 
+\kern-5mm
 \fig{fig/pdf/felm_scheme.pdf}{felm scheme}{The analysis work-flow, from raw data to the differential cross-section of the elastic scattering.}
 
 We analyzed the data from 29-30 October 2010, when the RPs were approached to $7\si$ from the beam and the LHC was running at the standard 2010 optics with $\be^* = 3.5\un{m}$. Only the $220\un{m}$ stations were used. The horizontal pots were inserted only at the end of the run, just for alignment reasons. Most of the running time they were retracted not to disturb the elastic proton measurement. The event sample used for the analysis corresponds to an integrated luminosity of $6.1\un{nb^{-1}}$. The analysis procedure is sketched in \Fg{felm scheme} described below.
@@ -457,6 +466,9 @@ The fit-based and bin-based methods are compared in \Fg{felm unfolding m1m2 cmp}
 
 The final cross-section result, compared to the predictions of the models from \Sc{el} and the model of Jenkovszky et al.~\bref{jenkovszky11}, is shown in \Fg{ttm mod cmp dsdt}. The discriminative power of TOTEM's measurement is evident. In the region below the diffractive dip, $|t| \ls 0.5\un{GeV^2}$, there is a relatively good agreement among the models themselves and the measurement. But for momentum transfers $|t|$ between $0.5$ and $1\un{GeV^2}$ the models exhibit a rather large spread in their predictions (one and half orders). Moreover the measurement of TOTEM does not favour any of the presented models. The measurement falls into a gap between two bands of predictions (one band is formed by the models of Islam et al., Petrov et al.~with two pomerons and Jenkovszky et al., the other band is formed by the models of Block et al., Bourrely et al.~and Petrov et al.~with three pomerons).
 
+\eject
+\vbox{}
+\kern-14mm
 \fig{fig/pdf/ttm_mod_cmp_dsdt.pdf}{ttm mod cmp dsdt}{Comparison of model predictions to TOTEM's first measurement of $\rm pp$ differential cross-section at $\sqrt s = 7\un{TeV}$.}
 
 %----------------------------------------------------------------------------------------------------

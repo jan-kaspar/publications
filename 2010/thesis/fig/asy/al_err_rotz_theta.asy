@@ -2,7 +2,7 @@ import pad_layout;
 include "../alignment/common_code.asy";
 
 StdFonts();
-xSizeDef = 5.9cm;
+xSizeDef = ySizeDef = 5.5cm;
 
 //---------------------------------------------------------------------------------------------------------------------
 
@@ -110,4 +110,4 @@ label("$V$ sensors");
 NewPad(false, 1, -1);
 label("$U$ sensors");
 
-GShipout(hSkip=5mm, vSkip=1mm);
+GShipout(hSkip=10mm, vSkip=1mm);

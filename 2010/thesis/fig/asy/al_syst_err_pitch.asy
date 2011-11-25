@@ -1,8 +1,8 @@
 include "../alignment/common_code.asy";
 import pad_layout;
 
-xSizeDef = 6cm;
-ySizeDef = 6cm;
+xSizeDef = 5.5cm;
+ySizeDef = 5.5cm;
 
 StdFonts();
 
@@ -129,4 +129,4 @@ for (int s_i : simulations.keys) {
 	MakePage(simulations[s_i], "it3_expanded_results_Jan.xml", "precise3_expanded_results_Jan.xml");
 }
 
-GShipout(hSkip=1mm, vSkip=1mm);
+GShipout(hSkip=5mm, vSkip=1mm);

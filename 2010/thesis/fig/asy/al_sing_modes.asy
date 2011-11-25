@@ -21,18 +21,18 @@ for (int i = 0; i < N_d; ++i) {
 	if (i % 2 == 0) {
 		pair p = nom_v + b + i*a;
 		filldraw(shift(p)*scale(rad)*unitcircle, blue, nullpen);
-		draw(p--(p + rotate(135)*(alen, 0)), blue, EndArrow);
+		draw(p--(p + rotate(135)*(alen, 0)), blue, EndArrow(TeXHead));
 		label("\SmallerFonts "+format("%u", i+1), p, (i == 0) ? W : E, blue);
 	} else {
 		pair p = nom_u + b + i*a;
 		filldraw(shift(p)*scale(rad)*unitcircle, red, nullpen);
-		draw(p--(p + rotate(45)*(alen, 0)), red, EndArrow);
+		draw(p--(p + rotate(45)*(alen, 0)), red, EndArrow(TeXHead));
 		label("\SmallerFonts "+format("%u", i+1), p, W, red);
 	}
 }
 
 draw(Label("$\De\vec b$", 0.5, 2*S, UnFill),(nom_v)--(nom_v + b), black, EndArrow);
-draw(rotate(-20)*Label("$\De\vec a\,2\De z$", 0.5, NW), (nom_v + b + 0*a)--(nom_v + b + 2*a), black, EndArrow);
+draw(rotate(-21.8)*Label("$\De\vec a\,2\De z$", 0.7, NW), (nom_v + b + 0*a)--(nom_v + b + 2*a), black, EndArrow);
 
 real x0 = -2, y0 = 0.5, xm = 5, ym = 4;
 draw(Label("$x$", 1, E), (x0, y0)--(xm, y0), EndArrow);
@@ -52,13 +52,13 @@ for (int i = 0; i < N_d; ++i) {
 		real z0 = z_s + dz * i, dz = al_v*(dz*i) + be_v, z = z0 + dz;
 		draw(shift(z0, x_v)*scale(rad)*unitcircle, blue);
 		filldraw(shift(z, x_v)*scale(rad)*unitcircle, blue, nullpen);
-		draw((z0, x_v)--(z0, x_v-alen), blue, EndArrow);
+		draw((z0, x_v)--(z0, x_v-alen), blue, EndArrow(TeXHead));
 		label("\SmallerFonts "+format("%u", i+1), (z0, x_v), W, blue);
 	} else {
 		real z0 = z_s + dz * i, dz = al_u*(dz*i) + be_u, z = z0 + dz;
 		draw(shift(z0, x_u)*scale(rad)*unitcircle, red);
 		filldraw(shift(z, x_u)*scale(rad)*unitcircle, red, nullpen);
-		draw((z0, x_u)--(z0, x_u+alen), red, EndArrow);
+		draw((z0, x_u)--(z0, x_u+alen), red, EndArrow(TeXHead));
 		label("\SmallerFonts "+format("%u", i+1), (z0, x_u), W, red);
 	}
 }
@@ -80,14 +80,14 @@ for (int i = 0; i < N_d; ++i) {
 		real z0 = z_s + dz * i, dz = al_v*(dz*i) + be_v, z = z0 + dz;
 		draw(shift(z0, x_v)*scale(rad)*unitcircle, blue);
 		filldraw(shift(z, x_v)*scale(rad)*unitcircle, blue, nullpen);
-		draw((z0, x_v)--(z0, x_v-alen), blue, EndArrow);
+		draw((z0, x_v)--(z0, x_v-alen), blue, EndArrow(TeXHead));
 		label("\SmallerFonts "+format("%u", i+1), (z0, x_v), W, blue);
 	} else {
 		pen col = (i == 3) ? heavygreen : red;
 		real z0 = z_s + dz * i, dz = al_u*(dz*i) + be_u, z = z0 + dz;
 		draw(shift(z0, x_u)*scale(rad)*unitcircle, col);
 		filldraw(shift(z, x_u)*scale(rad)*unitcircle, col, nullpen);
-		draw((z0, x_u)--(z0, x_u+ ((i==3) ? 0.6 : alen)), col, EndArrow);
+		draw((z0, x_u)--(z0, x_u+ ((i==3) ? 0.6 : alen)), col, EndArrow(TeXHead));
 		label("\SmallerFonts "+format("%u", i+1), (z0, x_u), W, col);
 	}
 }
@@ -119,9 +119,9 @@ pa = rotate(rh_u+dr_u)*(r, 0); filldraw(shift(pa)*scale(rad)*unitcircle, red, nu
 draw((0, 0)--pn, dotted);
 draw((0, 0)--pa, dotted);
 draw(Label("\SmallerFonts $\De\rh_U$"), arc((0, 0), r*fa, rh_u, rh_u+dr_u), black);
-draw(pn--(pn + rotate(45)*(len, 0)), red+dashed, EndArrow);
+draw(pn--(pn + rotate(45)*(len, 0)), red+dashed, EndArrow(TeXHead));
 draw(pa--(pa + rotate(45)*(len, 0)), red+dashed);
-draw(pa--(pa + rotate(45+dr_u)*(len, 0)), red, EndArrow);
+draw(pa--(pa + rotate(45+dr_u)*(len, 0)), red, EndArrow(TeXHead));
 draw(Label("\SmallerFonts $\De\rh_U$"), arc(pa, len*fa, 45, 45+dr_u), black);
 label("\SmallerFonts 2,4,6", pn, 2E, red);
 draw(Label("$\De\vec c$"), pn--pa, black, EndArrow);
@@ -131,9 +131,9 @@ pa = rotate(rh_v+dr_v)*(r, 0); filldraw(shift(pa)*scale(rad)*unitcircle, blue, n
 draw((0, 0)--pn, dotted);
 draw((0, 0)--pa, dotted);
 draw(Label(""), arc((0, 0), r*fa, rh_v, rh_v+dr_v), black);
-draw(pn--(pn + rotate(135)*(len, 0)), blue+dashed, EndArrow);
+draw(pn--(pn + rotate(135)*(len, 0)), blue+dashed, EndArrow(TeXHead));
 draw(pa--(pa + rotate(135)*(len, 0)), blue+dashed);
-draw(pa--(pa + rotate(135+dr_v)*(len, 0)), blue, EndArrow);
+draw(pa--(pa + rotate(135+dr_v)*(len, 0)), blue, EndArrow(TeXHead));
 draw(Label("\SmallerFonts $\De\rh_V$"), arc(pa, len*0.9, 135, 135+dr_v), black);
 label("\SmallerFonts 1,3,5", pa, 2W, blue);
 
@@ -156,9 +156,9 @@ pa = (x_s, 0)+rotate(rh_u+dr_u)*(r, 0); filldraw(shift(pa)*scale(rad)*unitcircle
 draw((x_s, 0)--pn, dotted);
 draw((x_s, 0)--pa, dotted);
 draw(Label(""), arc((x_s, 0), r*fa, rh_u, rh_u+dr_u), black);
-draw(pn--(pn + rotate(45)*(len, 0)), red+dashed, EndArrow);
+draw(pn--(pn + rotate(45)*(len, 0)), red+dashed, EndArrow(TeXHead));
 draw(pa--(pa + rotate(45)*(len, 0)), red+dashed);
-draw(pa--(pa + rotate(45+dr_u)*(len, 0)), red, EndArrow);
+draw(pa--(pa + rotate(45+dr_u)*(len, 0)), red, EndArrow(TeXHead));
 draw(Label("\SmallerFonts $\De\rh$"), arc(pa, len*fa, 45, 45+dr_u), black);
 label("\SmallerFonts 2,6", pn, 2E, red);
 
@@ -167,9 +167,9 @@ pa = (x_s, 0)+rotate(rh_t+dr_u)*(r, 0); filldraw(shift(pa)*scale(rad)*unitcircle
 draw((x_s, 0)--pn, dotted);
 draw((x_s, 0)--pa, dotted);
 draw(Label(""), arc((x_s, 0), r*fa, rh_t, rh_t+dr_t), black);
-draw(pn--(pn + rotate(0)*(len, 0)), heavygreen+dashed, EndArrow);
+draw(pn--(pn + rotate(0)*(len, 0)), heavygreen+dashed, EndArrow(TeXHead));
 draw(pa--(pa + rotate(0)*(len, 0)), heavygreen+dashed);
-draw(pa--(pa + rotate(0+dr_t)*(len, 0)), heavygreen, EndArrow);
+draw(pa--(pa + rotate(0+dr_t)*(len, 0)), heavygreen, EndArrow(TeXHead));
 draw(Label("\SmallerFonts $\De\rh$"), arc(pa, len*fa, 0, 0+dr_t), black);
 label("\SmallerFonts 4", pn, 2NE, heavygreen);
 
@@ -178,9 +178,9 @@ pa = (x_s, 0)+rotate(rh_v+dr_v)*(r, 0); filldraw(shift(pa)*scale(rad)*unitcircle
 draw((x_s, 0)--pn, dotted);
 draw((x_s, 0)--pa, dotted);
 draw(Label(""), arc((x_s, 0), r*fa, rh_v, rh_v+dr_v), black);
-draw(pn--(pn + rotate(135)*(len, 0)), blue+dashed, EndArrow);
+draw(pn--(pn + rotate(135)*(len, 0)), blue+dashed, EndArrow(TeXHead));
 draw(pa--(pa + rotate(135)*(len, 0)), blue+dashed);
-draw(pa--(pa + rotate(135+dr_v)*(len, 0)), blue, EndArrow);
+draw(pa--(pa + rotate(135+dr_v)*(len, 0)), blue, EndArrow(TeXHead));
 draw(Label("\SmallerFonts $\De\rh$"), arc(pa, len*0.9, 135, 135+dr_v), black);
 label("\SmallerFonts 1,3,5", pa, 2W, blue);
 
@@ -205,11 +205,11 @@ draw(arc((x_s, 0), r, 0, 180), black+dotted);
 
 pair pn, pa;
 pn = rotate(rh_u)*(r, 0); draw(shift(pn)*scale(rad)*unitcircle, red);
-draw(pn--(pn + rotate(45)*(len, 0)), red+dashed, EndArrow);
+draw(pn--(pn + rotate(45)*(len, 0)), red+dashed, EndArrow(TeXHead));
 draw((0, 0)--pn, dotted);
 
 pn = rotate(rh_v)*(r, 0); draw(shift(pn)*scale(rad)*unitcircle, blue);
-draw(pn--(pn + rotate(135)*(len, 0)), blue+dashed, EndArrow);
+draw(pn--(pn + rotate(135)*(len, 0)), blue+dashed, EndArrow(TeXHead));
 draw((0, 0)--pn, dotted);
 
 string lab[] = { "\al_U\,\De z + \be_U", "\al_U\,3\De z + \be_U", "\al_U\,5\De z + \be_U" };
@@ -221,7 +221,7 @@ for (int i = 0; i < 3; ++i) {
 	draw((0, 0)--pn, dotted);
 	draw((0, 0)--pa, dotted);
 	draw(pa--(pa + rotate(45)*(len, 0)), red+dashed);
-	draw(pa--(pa + rotate(45+dr_u)*(len, 0)), red, EndArrow);
+	draw(pa--(pa + rotate(45+dr_u)*(len, 0)), red, EndArrow(TeXHead));
 	draw(Label("\SmallerFonts $"+lab[i]+"$", 0.5, rotate(45+dr_u/2)*(1, 0)), arc(pa, len*fa, 45, 45+dr_u), black);
 	label("\SmallerFonts "+format("%u", 2*i+2), pa, rotate(-45+dr_u/2)*(1.5, 0), red, UnFill);
 	
@@ -231,7 +231,7 @@ for (int i = 0; i < 3; ++i) {
 
 	draw((0, 0)--pa, dotted);
 	//draw(pa--(pa + rotate(135)*(len, 0)), blue+dashed);
-	draw(pa--(pa + rotate(135+dr_v)*(len, 0)), blue, EndArrow);
+	draw(pa--(pa + rotate(135+dr_v)*(len, 0)), blue, EndArrow(TeXHead));
 	if (i == 0)
 		draw(Label("\SmallerFonts $\be_V$", 0.5, rotate(rh_v+dr_v/2)*(1, 0)), arc((0, 0), r*0.7, rh_v, rh_v+dr_v), black);
 	label("\SmallerFonts "+format("%u", 2*i+1), pa, 1.5*S, blue, UnFill);

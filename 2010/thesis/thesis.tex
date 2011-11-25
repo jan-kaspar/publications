@@ -18,12 +18,21 @@
 \Reftrue
 \Toctrue
 
-\iffalse
-	% to show labels
-	\ShowLabelstrue \advance\hoffset-1.5cm
-\else
-	%\def\FootText{(VERSION 15)}
-\fi
+%\iffalse
+%	% to show labels
+%	\ShowLabelstrue \advance\hoffset-1.5cm
+%\else
+%	\def\FootText{(VERSION 15)}
+%\fi
+
+% this leads to 2cm margins at top, bottom and outer edges, 3cm margins at the inner edge
+\pageamp=5mm
+
+% for display version
+\def\linkColor{\cmykBlue}
+
+% for print version
+%\def\linkColor{\cmykBlack}
 
 \def\pmt#1{{\tt #1}}
 
@@ -69,15 +78,15 @@
 \line{\hss To my family -- for their admirable support}
 \bgroup
 \input utf8-csf
-\line{\hss Mé rodině -- za jejich svkělou podporu}
+\line{\hss Mé rodině -- za jejich skvělou podporu}
 
 \vfil
 
-First of all, I would like to thank my advisors Vojtěch Kundrát (for the theoretical part) and Mario Deile (for the experimental part). I am grateful for their knowledge and expertise -- I have learnt a lot from them. I am grateful for their time that they never hesitated to spend with me, my question and my problems. I am grateful for their friendly and motivating leadership. Last but not least, I am grateful for their having read the thesis manuscript and the handful of useful comments and suggestions.
+First of all, I would like to thank my advisors Vojtěch Kundrát (for the theoretical part) and Mario Deile (for the experimental part). I am grateful for their knowledge and expertise -- I have learnt a lot from them. I am grateful for their time that they never hesitated to spend with me, my questions and my problems. I am grateful for their friendly and motivating leadership. Last but not least, I am grateful for their having read the thesis manuscript and the handful of useful comments and suggestions.
 
 I would like thank to the whole team of the TOTEM experiment. Without them it would not have been possible to write this thesis. Let me thank in particular to the members of the software group for a constructive collaboration. Many thanks to Leszek Grzanka for the software repository maintenance. 
 
-I am grateful to Karsten Eggert, Kenneth \"Osterberg, Simone Giani, Valentina Avati, Hubert Niewiadomski and Munir Islam for many interesting and stimulating discussions. I have learnt a lot from them. I am indebted to Valentina and Simone for reading this thesis and giving me a plenty of valuable hints.
+I am grateful to Karsten Eggert, Kenneth \"Osterberg, Simone Giani, Valentina Avati, Hubert Niewiadomski and Munir Islam for many interesting and stimulating discussions. They gave me a lot. I am indebted particularly to Valentina and Simone for reading this thesis and giving me a plenty of valuable hints.
 
 I would like to acknowledge the CERN Doctoral Student Programme and the CERN TOTEM group for supporting my research and this thesis.
 
@@ -105,7 +114,7 @@ I understand that my work relates to the rights and obligations under the Act No
 
 \vskip2\baselineskip
 
-In Geneva, \TODO{date}
+In Geneva, 25 November, 2011
 
 \vskip2\baselineskip
 \line{\hss Jan Ka\v spar}

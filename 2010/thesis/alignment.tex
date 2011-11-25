@@ -15,6 +15,8 @@ L_y							& 270\un{m}			& 21\un{m} \cr\ln
 \De\th_y \equiv \De y/L_y	& 0.4\un{\mu rad}	& 5\un{\mu rad} \cr\bln
 }
 
+
+\vskip-1mm
 Let us define a bit more precisely what we mean by the \abb{RP} alignment. For physics reconstruction we use the data from \abb{RP}s sensors (i.e.~the sensitive components of the \abb{RP}s, see \Sc{ttm det}). The data correspond to tracks of particles that are deflected from the beam due to a scattering event. The beam axis can be regarded as a track of an ideal particle that has not undergone any scattering. Therefore, what matters for physics reconstruction is the relative position of the \abb{RP} sensors to the beam axis. And this is what we mean by \abb{RP} alignment.
 
 %Coordinate system such that the beam is at x=y=0
@@ -55,13 +57,13 @@ This procedure can be repeated few times (as shown in \Fg{al collim ex}) to impr
 
 The uncertainty is given mostly by the \abb{RP}-movement step size ($250\un{\mu m}$ in the figure, except the last one). Because of limited time resolution one cannot determine when exactly the beam was touched. One should thus aim at steps as small as possible. On the other hand, the smaller the step, the less scraping and the lower the peak in the \abb{BLM} signal. If the step is too small, the induced beam loss can not be distinguished from the noise. We have observed a step of $20\un{\mu m}$ to be the practical limit (for typical beam intensities).
 
-\fig{fig/pdf/al_collim_ex.pdf}{al collim ex}{An example of the collimation alignment (data for 56-220-near unit from 29 November 2009). The top and bottom pot movements (upper plot) induced signals in the \abb{BLM}s (bottom plot). The correspondence between the movements and the \abb{BLM} peaks is visualized by the dotted lines. The time is given in minutes from the start of the test.}
-
 Thus from \Fg{al collim ex} one can deduce the vertical beam position at $(313\pm 63)\un{\mu m}$ (assuming the beam was touched in the middle of the movement). This can be compared to the \abb{BPM} reading $(-550\pm50)\un{\mu m}$: there is an evident discrepancy. The \abb{BPM}s at that time were known to have an offset in their readings and moreover to be rather sensitive to temperature and beam intensity. The latter caused drifts like those in \Fg{al collim bpm problem}. This has led us to consider the \abb{BPM}s as unreliable and not to use them for alignment purposes until their systematics will have been studied and calibrated by the beam instrumentation group.
 
-\fig{fig/pdf/al_collim_bpm_problem.pdf}{al collim bpm problem}{The readings from the \abb{BPM}s in station 56-220 from 25 June 2010. Notice the pronounced drifts.}
-
 There was also an indication of a \abb{LVDT}-related problem. As we have said, the vertical beam center can be determined by two methods: \Eq{al vc m1,al vc m2}. The results of these two methods did not agree. A valuable hint was then provided by the track-based alignment (see \Sc{al tb}) which determined the distances of the top and bottom \abb{RP}s (or detector packages to be more precise). The track-based alignment clearly favored the optics-based method \Eq{al vc m1}.
+
+\fig{fig/pdf/al_collim_ex.pdf}{al collim ex}{An example of the collimation alignment (data for 56-220-near unit from 29 November 2009). The top and bottom pot movements (upper plot) induced signals in the \abb{BLM}s (bottom plot). The correspondence between the movements and the \abb{BLM} peaks is visualized by the dotted lines. The time is given in minutes from the start of the test.}
+
+\fig{fig/pdf/al_collim_bpm_problem.pdf}{al collim bpm problem}{The readings from the \abb{BPM}s in station 56-220 from 25 June 2010. Notice the pronounced drifts.}
 
 All these methods can be reconciled by considering that the top and bottom \abb{LVDT}s are independent devices and subject to drifts after the last calibration. Thus each \abb{LVDT} scale has its own origin (offset), as shown in \Fg{al collim}. These offsets can easily be determined:
 \eqref{o_t = n\si - t,\qquad o_b = -n\si - b\ ,}{al lvdt offsets}
@@ -94,11 +96,11 @@ Since the magnetic field within \abb{RP} stations is negligible, protons follow 
 \eqref{\pmatrix{x\cr y\cr z} = \pmatrix{a_x\cr a_y\cr 1} z + \pmatrix{b_x\cr b_y\cr 0}\ ,}{al local track}
 where the parameters $a$ and $b$ give the track slopes and intercepts.
 
+\fig{fig/pdf/al_proton_sensor_interaction.pdf}{al proton sensor interaction}{A schematic view of a proton interaction with a sensor. Left (side view when $\rh_y = 0$): the thick black line represents a sensor, the blue line a proton track. The blue dot marks the point where the proton hits the sensor. It has the same meaning in the right (front view) figure. There, the thick blue line shows the hit point projection into the read-out ($\vec v$) direction. The active strip is drawn in green, the resolution error is drawn in red.}
+
 When a proton enters the sensitive volume of a silicon sensor, it creates electron-hole pairs along its trajectory. This charge is collected by neighbouring strips, giving rise to a measurable signal. While details of this charge sharing process can be found for example in Sec.~7.4~in \bref{hubert}, here we will assume that just the nearest strip is active (drawn in green in the front view of \Fg{al proton sensor interaction}). It is a reasonable assumption for the \abb{TOTEM} sensors. Then, the measurement $m$ can be written as
 \eqref{m = v + \De m\ ,}{al measurement}
 where $v$ gives the projection of the hit point in the $\vec v$ direction (i.e.~the read-out direction). $\De m$ is the \em{resolution error}, that is the error made by rounding $v$ to the nearest strip position.
-
-\fig{fig/pdf/al_proton_sensor_interaction.pdf}{al proton sensor interaction}{A schematic view of a proton interaction with a sensor. Left (side view when $\rh_y = 0$): the thick black line represents a sensor, the blue line a proton track. The blue dot marks the point where the proton hits the sensor. It has the same meaning in the right (front view) figure. There, the thick blue line shows the hit point projection into the read-out ($\vec v$) direction. The active strip is drawn in green, the resolution error is drawn in red.}
 
 The value of $v$ can be related to the track parameters with the aid of a transformation from (global) coordinate system $xyz$ to (local) system $uvz'$. The transformation can be written as follows
 \eqref{\pmatrix{u\cr v\cr z'} = \mat R \left[ \pmatrix{x\cr y\cr z}  - \pmatrix{c_x\cr c_y\cr c_z}  \right] \ .}{al global to local}
@@ -412,6 +414,7 @@ where the (non-collinear) vectors $\vec\de_g$ represent the read-out directions 
 
 \vskip1\baselineskip
 \indent\em{Shifts in the read-out direction}
+\vskip0.5\baselineskip
 
 For shifts in the read-out direction, the condition \Eq{al sm con} reads (using \Eq{al sm track par} and \Tb{al alignment quantities})
 \eqref{
@@ -426,6 +429,7 @@ Since the left-hand side does not depend on the event number $n$, neither must t
 
 \vskip1\baselineskip
 \indent\em{Shifts in $z$}
+\vskip0.5\baselineskip
 
 Writing the condition \Eq{al sm con} using \Tb{al alignment quantities} for each read-out group yields
 \eqref{\vec\de_g \cdot \vec a^n \De z_i = \vec\de_g \cdot (
@@ -450,6 +454,7 @@ Right: a hypothetical situation with a third read-out group added (sensor four d
 
 \vskip1\baselineskip
 \indent\em{Rotations around $z$}
+\vskip0.5\baselineskip
 
 Here, one shall keep both rotation and read-out-direction shift misalignments, when applying the condition \Eq{al sm con}. It will turn out that they can not be separated. Written for each read-out group the condition reads:
 \eqref{
@@ -490,8 +495,14 @@ For three and more groups, $\De\rh$ is a constant, thus there is just one singul
 
 \vskip1\baselineskip
 \indent\em{Monte-Carlo tests}
+\vskip0.5\baselineskip
 
 To illustrate the structure of the singular modes we have made a number of \abb{MC} studies. We have considered a series of geometries, starting with the nominal one and adding rotation misalignments to all sensors. These mis-rotations have been randomly generated according to a normal distribution with a variable variance. Going from zero variance to positive values represents a smooth transition from a geometry with two read-out groups to geometries with more groups. For certain alignment modes this means a transition from singular to non-singular state, see \Fg{al eig rho}.
+
+\fig{fig/pdf/al_eigenvalues_rho.pdf}{al eig rho}{The spectrum of normalized eigenvalues of the $\tilde\mat S$ matrix ($\la_{\rm N}$) as a function of geometry. The geometries considered have been created from the nominal one-station geometry by applying rotation misalignment to each sensor. The misalignments have been randomly generated according to a normal distribution with zero mean and variance $\si^2_\rh$ -- the quantity on the horizontal axis. The case $\si_\rh = 0\un{mrad}$ corresponds to the nominal geometry, which contains two read-out groups. Increasing $\si_\rh$ then represents a smooth transition to configurations with three and more read-out groups.
+The colors correspond to the eigenvalue order (bottom-top). Therefore, when two curves representing two alignment modes cross, they exchange their colors (e.g.~the mode \Eq{al sm rotz sol} in the bottom plot).
+% Theta 10 mrad, geometry 2.7x3.3, overlap=f
+}
 
 A convenient way to visualize the structure of the $\tilde\mat S$ matrix is to plot its eigen-spectrum. The singular modes are represented by zero eigenvalues, the modes accessible to the track-based alignment by non-zero values. In fact the eigenvalues have an important meaning for the alignment application. To unveil it, let us rewrite the fit equation \Eq{al fit equation} in ``eigen-coordinates'' -- coordinates relative to an orthonormal set of $\tilde\mat S$ eigenvectors. Denoting $\mat Q$ a matrix containing this set as columns, one can write (see e.g.~Eq.(6.85) in \bref{barnett}):
 \eqref{
@@ -512,11 +523,6 @@ Whereas the singular and weak modes are very different from the theoretical poin
 It makes sense to expect that the eigenvalues of $\tilde\mat S$ are proportional to the number of events $N_{\rm events}$. To see this, one should consider that the $\tilde\mat S$ is defined as a sum over events, see \Eq{al mat S}. Assuming there is a certain distribution of track patterns contributing to that sum, the number of events $N_{\rm events}$ can be regarded as a scaling factor. Then, in order to make the eigen-spectra event-number independent, it makes sense to define \em{normalized eigenvalues}:
 \eqref{\la_{\rm N} = \hbox{eigenvalue of }\tilde\mat S/N_{\rm events}\ ,}{al S norm eig val}
 which are used in \Fg{al eig rho}.
-
-\fig{fig/pdf/al_eigenvalues_rho.pdf}{al eig rho}{The spectrum of normalized eigenvalues of the $\tilde\mat S$ matrix ($\la_{\rm N}$) as a function of geometry. The geometries considered have been created from the nominal one-station geometry by applying rotation misalignment to each sensor. The misalignments have been randomly generated according to a normal distribution with zero mean and variance $\si^2_\rh$ -- the quantity on the horizontal axis. The case $\si_\rh = 0\un{mrad}$ corresponds to the nominal geometry, which contains two read-out groups. Increasing $\si_\rh$ then represents a smooth transition to configurations with three and more read-out groups.
-The colors correspond to the eigenvalue order (bottom-top). Therefore, when two curves representing two alignment modes cross, they exchange their colors (e.g.~the mode \Eq{al sm rotz sol} in the bottom plot).
-% Theta 10 mrad, geometry 2.7x3.3, overlap=f
-}
 
 
 \block{Pathological track distributions}
@@ -563,18 +569,16 @@ $\be_g$ (equivalent of $\De\rh_g$ in \Eq{al sm rotz sol}) represents a global ro
 \fig{fig/pdf/al_sing_modes_rotz_al.pdf}{al sing modes rotz al}{An illustration of the singular modes \Eq{al sm rotz full sol}: a front view on a sensor package. Each sensor is represented by a dot (its center $\vec c$) and an arrow (its read-out direction $\vec d$), cf.~the front view in \Fg{al proton sensor interaction}. The hollow dots and dashed arrows/lines show the nominal positions and read-out directions, the full dots and solid arrows represent the misalignment mode. For simplicity we have considered a simplified package of six sensors only (see the numbers), moreover with an equal spacing $\De z$. There are two read-out groups (like in the nominal geometry): the $U$ (red) and $V$ (blue) sensors are regularly alternating, the first one is at $z = 0$. For three and more groups the situation looks very similar, only the $\al$ and $\be$ parameters are the same for all the groups. To keep the figure simple, we assumed $\bar\vec a = 0$, that is why all detector centers lie on a circle.
 }
 
+Unlike the geometrical singular modes, the modes \Eq{al sm rotz sol la} are singular for $\mat S$ and $\bar\mat S$ only, not for $\tilde\mat S$. The reason is that the transition \Eq{al tau linearization} from true to estimated track parameters brings in an experimental error (finite resolution of the sensors and their misalignment). Thus even if the true tracks were perfectly parallel, the reconstructed ones would be not. Consequently the modes \Eq{al sm rotz sol la} correspond only to small, but non-zero eigenvalues of $\tilde\mat S$ -- they are weak modes.
+
+\Fg{al eig theta} shows a transition from almost parallel (low $\si_a$) to non-parallel (high $\si_a$) tracks. There are two alignment modes very sensitive to the track angular spread $\si_a$ -- see the labelled blue and red curves. Regarding the $\mat S$ matrix (left panel), these modes become singular in the parallel limit $\si_a \to 0$. Not so for the $\tilde\mat S$ matrix (right panel). The eigenvalues stop reducing at about $\si_a\approx 1\un{\mu rad}$, which compares well to the angular resolution of a station. This saturation demonstrates the effect discussed in the previous paragraph. A similar saturation takes place (in both panels) at the high-$\si_a$ end. It starts about $\si_a \approx 10\un{mrad}$, which corresponds well to the maximal angle which can be detected by both near and far units. Thus tracks with higher angles can not contribute to the alignment of a station.
+
+
 \fig{fig/pdf/al_eigenvalues_theta.pdf}{al eig theta}{Spectra of normalized eigenvalues ($\la_{\rm N}$) of the $\mat S$ (left) and $\tilde\mat S$ (right) matrices, with only the read-out-direction shifts and rotations included. The spectra are plotted as a function of the track-angle spread $\si_a$ (same values used for $x$ and $y$ projections). Zero value of the spread means perfectly parallel tracks. The simulations have been done for a \abb{RP} station of the nominal geometry (two read-out groups). For more groups there would be just one line instead of the labeled red and blue curves. The vertical dotted line marks the typical slope spread in the \abb{LHC} data.
 % shr\_rotz=0. 2.7x33, overlap=f
 }
 
-Unlike the geometrical singular modes, the modes \Eq{al sm rotz sol la} are singular for $\mat S$ and $\bar\mat S$ only, not for $\tilde\mat S$. The reason is that the transition \Eq{al tau linearization} from true to estimated track parameters brings in an experimental error (finite resolution of the sensors and their misalignment). Thus even if the true tracks were perfectly parallel, the reconstructed ones would be not. Consequently the modes \Eq{al sm rotz sol la} correspond only to small, but non-zero eigenvalues of $\tilde\mat S$ -- they are weak modes.
-
-
-\Fg{al eig theta} shows a transition from almost parallel (low $\si_a$) to non-parallel (high $\si_a$) tracks. There are two alignment modes very sensitive to the track angular spread $\si_a$ -- see the labelled blue and red curves. Regarding the $\mat S$ matrix (left panel), these modes become singular in the parallel limit $\si_a \to 0$. Not so for the $\tilde\mat S$ matrix (right panel). The eigenvalues stop reducing at about $\si_a\approx 1\un{\mu rad}$, which compares well to the angular resolution of a station. This saturation demonstrates the effect discussed in the previous paragraph. A similar saturation takes place (in both panels) at the high-$\si_a$ end. It starts about $\si_a \approx 10\un{mrad}$, which corresponds well to the maximal angle which can be detected by both near and far units. Thus tracks with higher angles can not contribute to the alignment of a station.
-
 It would be possible to draw a similar line of arguments for a situation where $\vec b^n\to \bar\vec b = $ const. But keeping in mind the application to \abb{LHC} proton tracks, this turns out to be very unrealistic scenario.
-
-At the end, let us remark that parallel tracks do not introduce new weak modes for the shifts in the read-out directions. The corresponding singular mode condition \Eq{al sm shr sol} is completely independent of the track slopes $\vec a^n$, therefore their vanishing spread makes no difference. Regarding the shifts in $z$, it makes little sense to consider the case of parallel tracks -- there the $z$-shifts can not be determined at all. The singular and weak modes for all considered configurations are summarized in \Tb{al sing mode overview}.
 
 \htab{al sing mode overview}{An overview of the singular and weak modes. The bold numbers give the number of singular/weak modes that are listed afterwards. The ''gl.'' abbreviation stands for ''global'' which is used to refer to a mode with constant coefficients for every sensor. The ''l.p.'' stands for ''linearly-progressive'' which means a mode the coefficients of which are proportional to $z_i$. Note that the additional modes for the parallel-track case are weak only.\hfil\break
 We have not considered the situation with one read-out group only. Such a detector apparatus could determine one hit position projection only and would thus be very different from the \abb{RP} detector system. Also, regarding the $z$-shifts, it makes no sense to consider a sample of parallel tracks. In that case the $\ga$ coefficients (see \Tb{al alignment quantities}) would all be constant and consequently the $z$-shift alignment would not be possible at all. Formally, this corresponds to the number of singular modes as large as the number of sensors $N_{\rm sensors}$.
@@ -593,6 +597,8 @@ We have not considered the situation with one read-out group only. Such a detect
 \hbox{shifts in }z	& \hbox{shifts in }z & N_{\rm sensors} & \hbox{shift in }z& N_{\rm sensors} \cr
 & \hbox{for $U$ and $V$ indep.} &&&\cr\bln
 }
+
+At the end, let us remark that parallel tracks do not introduce new weak modes for the shifts in the read-out directions. The corresponding singular mode condition \Eq{al sm shr sol} is completely independent of the track slopes $\vec a^n$, therefore their vanishing spread makes no difference. Regarding the shifts in $z$, it makes little sense to consider the case of parallel tracks -- there the $z$-shifts can not be determined at all. The singular and weak modes for all considered configurations are summarized in \Tb{al sing mode overview}.
 
 \subsection[al constr]{Imposed constraints}
 
@@ -850,41 +856,42 @@ quantity & label\cr\ln
 }}}{al stat quan def}
 Two examples of such statistical studies can be found in \Fg{al stat fixDet} (with a set of fixed-sensors constraints) and \Fg{al stat final} (with the final constraints).
 
-In \Fg{al stat fixDet} the rotations have been fixed only in the near unit. Following our discussion of weak modes in \Sc{al sing modes} (see especially \Fg{al eig theta}), we may expect high alignment uncertainties for the far unit. This applies to shifts too since every rotation is accompanied by a shift, see \Eq{al sm rotz shr}. \Fg{al stat fixDet} confirms this expectation (compare top and bottom two rows). Let us make three more observations. First, the estimate of the systematic error deviates from zero by less than $2\si$ ($\si$ given by the semi-transparent band). Moreover, the discrepancy practically vanishes with the increasing sample-size. Second, the estimated uncertainty falls as $1/\sqrt{N_{\rm events}}$, which confirms our rule of thumb mentioned below \Eq{al resolution err mod}. Third, the ratio of the statistical error to the estimated uncertainty is almost flat, but below the expected value of one. This means that the uncertainty estimated with the help of the model \Er{al resolution err mod} is slightly overestimated. This might, in fact, partly compensate our neglecting the multiple scattering.
-
-Similar three observations could be made for \Fg{al stat final}. The first observation could be stated even stronger here: the systematic error is compatible with zero within its uncertainty (semi-transparent band). This figure corresponds to the final constraints. These fix the far-near unit rotation weak mode, thereby the alignment uncertainties are similar for both near and far unit.
-
 \fig{fig/pdf/al_stat_fixDet.pdf}{al stat fixDet}{A statistical study of the alignment method with a set of fixed-sensors constraints. For the read-out-direction shifts we have fixed the first two sensors in the top-near and the last two sensors in the top-far pot. Regarding the rotations, the first two sensors in the near-top pot have been fixed. The simulations have been performed with a realistic track slope spread $\si_a = 0.1\un{mrad}$. Each curve corresponds to the third sensor of a pot, see the legend. The near (far) unit plots are at the top (bottom) of the figure. The semi-transparent areas show $1\si$ error bands. The vertical dotted lines mark a typical number of events in \abb{LHC} runs.
 %[20 repetitions, geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad, 3 iterations]
 }
+
+\eject
+In \Fg{al stat fixDet} the rotations have been fixed only in the near unit. Following our discussion of weak modes in \Sc{al sing modes} (see especially \Fg{al eig theta}), we may expect high alignment uncertainties for the far unit. This applies to shifts too since every rotation is accompanied by a shift, see \Eq{al sm rotz shr}. \Fg{al stat fixDet} confirms this expectation (compare top and bottom two rows). Let us make three more observations. First, the estimate of the systematic error deviates from zero by less than $2\si$ ($\si$ given by the semi-transparent band). Moreover, the discrepancy practically vanishes with the increasing sample-size. Second, the estimated uncertainty falls as $1/\sqrt{N_{\rm events}}$, which confirms our rule of thumb mentioned below \Eq{al resolution err mod}. Third, the ratio of the statistical error to the estimated uncertainty is almost flat, but below the expected value of one. This means that the uncertainty estimated with the help of the model \Er{al resolution err mod} is slightly overestimated. This might, in fact, partly compensate our neglecting the multiple scattering.
+
+Similar three observations could be made for \Fg{al stat final}. The first observation could be stated even stronger here: the systematic error is compatible with zero within its uncertainty (semi-transparent band). This figure corresponds to the final constraints. These fix the far-near unit rotation weak mode, thereby the alignment uncertainties are similar for both near and far unit.
 
 \fig{fig/pdf/al_stat_final.pdf}{al stat final}{A statistical study of the alignment method with the final constraints. The simulations have been performed with a realistic track slope spread $\si_a = 0.1\un{mrad}$. Each curve corresponds to the third sensor of a \abb{RP}, see the legend. The semi-transparent areas represent $1\si$ error bands. The vertical dotted lines mark a typical number of tracks in \abb{LHC} runs.
 %(20 repetitions), geometry 2.7x3.3, misalignment rotz4, gauss6,8, 0.1mrad.
 }
 
+In the above figures we have not shown any plots for the $z$ shifts. The reason is their quite special behavior. We recall that the $\ga$ coefficients related to the shifts in $z$ are proportional to the track angle (see \Tb{al alignment quantities}). Thus if the variation of the track angles is too small, one can expect a bad resolution. This fact is documented in \Fg{al err shz theta}. For the \abb{LHC}-typical angular spread (see \Tb{al lhc datasets}), the uncertainty is about $1\un{m}$, which is much worse than the misalignment expectation, see \Tb{al exp misal}. Since the track-based alignment can not improve our knowledge about the sensors' $z$-positions, we will focus on the read-out-direction shifts and rotations only it in what follows.
+
 \fig{fig/pdf/al_err_shz_theta.pdf}{al err shz theta}{The estimated uncertainty of $z$ shifts as a function of the track angular spread $\si_a$. Simulations performed with $10^5$ events and a set of fixed-sensors constraints (for $z$ shifts: first two sensors in near-top and last two sensors in far-top pot). For each pot, the uncertainty of 2nd or 3rd sensor (according to its $U$ or $V$ orientation) is shown, for the other sensors the situation is very similar. The vertical dotted lines show a typical track angular spread for \abb{LHC} data.
 %No misalignment, fix-ext constraints (rotz in 1200, 1201; shz in 1200, 1201, 1248 and 1249), extfit=f.
 }
-
-In the above figures we have not shown any plots for the $z$ shifts. The reason is their quite special behavior. We recall that the $\ga$ coefficients related to the shifts in $z$ are proportional to the track angle (see \Tb{al alignment quantities}). Thus if the variation of the track angles is too small, one can expect a bad resolution. This fact is documented in \Fg{al err shz theta}. For the \abb{LHC}-typical angular spread (see \Tb{al lhc datasets}), the uncertainty is about $1\un{m}$, which is much worse than the misalignment expectation, see \Tb{al exp misal}. Since the track-based alignment can not improve our knowledge about the sensors' $z$-positions, we will focus on the read-out-direction shifts and rotations only it in what follows.
-
-Let us have a more detailed look at the weak modes now. From \Sc{al sing modes} we know that there are two of them for \abb{TOTEM} \abb{RP}s: the rotation between $U$ and $V$ sensors and the rotation between far and near units. The former is a singular mode for the nominal geometry (which comprises two read-out groups only), see \Tb{al sing mode overview}. However, because of rotation misalignments, the true geometry is not a two-group one and consequently the singular mode becomes weak only -- see the transition in \Fg{al eig rho} (middle row).
-
-A similar transition is shown in \Fg{al err rotz rho}. A series of geometries has been considered, starting with the nominal one and adding rotation misalignments randomly generated according to a normal distribution with zero mean and standard deviation $\si_\rh$ (on the horizontal axis). For this figure, we have fixed the rotation of one sensor only: the first one in near-top \abb{RP}. It is a $V$ sensor. Consequently, the alignment uncertainties for all $V$ sensors (left plot) are practically $\si_\rh$-independent. In contrary for the $U$ sensors (right plot), the uncertainties grow with decreasing $\si_\rh$, as expected. The uncertainties for the far unit pots are higher than for the near unit (we recall that the fixed sensor is in the near one). This is related to the other weak mode (far-near unit rotation), which will be discussed later, in \Fg{al err rotz theta}. Focusing on the near unit, we see that for the expected misalignments (about $1\un{mrad}$ -- the dotted vertical line) the uncertainty for $V$ sensors is between $10^{-2}$ and $10^{-1}\un{mrad}$, while for the $U$ sensors it grows over $2\un{mrad}$. For this plot a sample of $10^5$ tracks has been used, it is a typical number for the \abb{LHC} runs. Now, comparing the results to the expected misalignments in \Tb{al exp misal}, drawn as the dotted horizontal line, we conclude that the track-based alignment can not provide reasonable corrections to the $U$ sensors' rotations. We recall that the $U$ sensors turn out to be problematic in this example as we have fixed the rotation of the $V$ sensors by the constraints. Generally, the troublesome mode is the relative rotation between $U$ and $V$ sensors.
 
 \fig{fig/pdf/al_err_rotz_rho.pdf}{al err rotz rho}{The estimated uncertainty of the rotations about $z$ as a function of geometry. The geometries considered have been derived from the nominal one by applying rotation misalignments to each sensor. These misalignments have been randomly generated according to a normal distribution with zero mean and variance $\si_\rh^2$ (horizontal axis). The expected misalignment is marked by the vertical dotted line. The simulations have been done with $10^5$ events, track angular spread $\si_a = 0.1\un{mrad}$ and a set of fixed-sensors constraints. The only sensor with fixed rotation has been the first one in the top-near \abb{RP} (it is a $V$ sensor). Each line corresponds to the uncertainty of the 2nd or 3rd sensor (according to its $U$ or $V$ orientation) of a \abb{RP}. Solid lines have been used for \abb{RP}s in the near, dashed for \abb{RP}s in the far unit. The lines for far vertical pots are overlapping. The horizontal dotted lines show the expected rotation misalignment.
 %No misalignment (misaligned and real geometry contain detectors rotated with the given rho distribution).  Extfit=false. fix-bas, 1 iteration, 1 repetition
 }
 
+Let us have a more detailed look at the weak modes now. From \Sc{al sing modes} we know that there are two of them for \abb{TOTEM} \abb{RP}s: the rotation between $U$ and $V$ sensors and the rotation between far and near units. The former is a singular mode for the nominal geometry (which comprises two read-out groups only), see \Tb{al sing mode overview}. However, because of rotation misalignments, the true geometry is not a two-group one and consequently the singular mode becomes weak only -- see the transition in \Fg{al eig rho} (middle row).
+
+A similar transition is shown in \Fg{al err rotz rho}. A series of geometries has been considered, starting with the nominal one and adding rotation misalignments randomly generated according to a normal distribution with zero mean and standard deviation $\si_\rh$ (on the horizontal axis). For this figure, we have fixed the rotation of one sensor only: the first one in near-top \abb{RP}. It is a $V$ sensor. Consequently, the alignment uncertainties for all $V$ sensors (left plot) are practically $\si_\rh$-independent. In contrary for the $U$ sensors (right plot), the uncertainties grow with decreasing $\si_\rh$, as expected. The uncertainties for the far unit pots are higher than for the near unit (we recall that the fixed sensor is in the near one). This is related to the other weak mode (far-near unit rotation), which will be discussed later, in \Fg{al err rotz theta}. Focusing on the near unit, we see that for the expected misalignments (about $1\un{mrad}$ -- the dotted vertical line) the uncertainty for $V$ sensors is between $10^{-2}$ and $10^{-1}\un{mrad}$, while for the $U$ sensors it grows over $2\un{mrad}$. For this plot a sample of $10^5$ tracks has been used, it is a typical number for the \abb{LHC} runs. Now, comparing the results to the expected misalignments in \Tb{al exp misal}, drawn as the dotted horizontal line, we conclude that the track-based alignment can not provide reasonable corrections to the $U$ sensors' rotations. We recall that the $U$ sensors turn out to be problematic in this example as we have fixed the rotation of the $V$ sensors by the constraints. Generally, the troublesome mode is the relative rotation between $U$ and $V$ sensors.
+
 The other weak mode is related to the rotation between the far and near units. More precisely, what we have derived in \Eq{al sm rotz sol la}, is a linearly-progressive rotation. But looking at the structure of $220\un{m}$ stations (\Tb{ttm rp station}), we see that the \abb{RP}s cluster into two units -- each about $45\un{cm}$ in length and separated by about $5.5\un{m}$. Since their distance is much higher than their size, the linearly progressive rotation effectively reduces to a rotation of the near unit and a rotation of the far unit. Moreover, the global rotation must be constrained (see the singular mode \Eq{al sm rotz sol}), thus what is left for the weak mode is the relative far-near unit rotation.
-
-As indicated by \Fg{al eig theta}, the weakness of this mode depends on the angular spread $\si_a$ of the tracks used. Since the weakness is related to the alignment uncertainty, see \Eq{al fit eq eigen one}, one may expect growing uncertainty with reducing angular spread (and increasing weakness of the weak mode). This trend is well confirmed by \Fg{al err rotz theta}. For that figure we have fixed the rotations of the first two sensors (that is one $U$ and one $V$ sensor) in the near-top pot. The uncertainties of near top and bottom pot sensors (having nearly the same $z$ position) are practically flat. The near horizontal pot, being about $45\un{cm}$ from the constrained sensors, already feels some dependence on the angular spread. For the pots in the far unit the effect is even stronger. Considering a realistic value of the angular spread $\si_a =  0.1\un{mrad}$ (vertical dotted line) and a typical number of tracks $10^5$ (see \Tb{al lhc datasets}), the rotation uncertainty is $10^{-2}$ to $10^{-1}\un{mrad}$ for near and about $1\un{mrad}$ for far unit \abb{RP}s. This is to be compared with the expected misalignments from \Tb{al exp misal} (drawn as the horizontal dotted line). One may conclude that the track-based alignment can hardly improve our knowledge on the far-near unit rotation.
-
-Let us repeat the reason for the saturation at the high-$\si_a$ side of \Fg{al err rotz theta}. The maximal angle that can be detected by both units simultaneously is about $10^{-2}\un{rad}$, therefore even if the track sample includes higher angle tracks, they do not contribute to the alignment analysis.
 
 \fig{fig/pdf/al_err_rotz_theta.pdf}{al err rotz theta}{The estimated uncertainty of the rotations about $z$ as a function of the track angular spread $\si_a$. The simulations have been performed with $10^5$ tracks and fixed-sensors constraints (rotations fixed for the first two sensors in the near-top pot). Each curve corresponds to a sensor (2nd or 3rd, depending on its $U$ or $V$ orientation) in a \abb{RP}. The curves for near-unit pots are drawn solid, those for far-unit pots dashed. The vertical dotted lines show a realistic angular spread, the horizontal dotted lines mark the expected rotation misalignment.
 %No misalignment, extfit=f. , 1 iteration, 1 repetition
 }
+
+As indicated by \Fg{al eig theta}, the weakness of this mode depends on the angular spread $\si_a$ of the tracks used. Since the weakness is related to the alignment uncertainty, see \Eq{al fit eq eigen one}, one may expect growing uncertainty with reducing angular spread (and increasing weakness of the weak mode). This trend is well confirmed by \Fg{al err rotz theta}. For that figure we have fixed the rotations of the first two sensors (that is one $U$ and one $V$ sensor) in the near-top pot. The uncertainties of near top and bottom pot sensors (having nearly the same $z$ position) are practically flat. The near horizontal pot, being about $45\un{cm}$ from the constrained sensors, already feels some dependence on the angular spread. For the pots in the far unit the effect is even stronger. Considering a realistic value of the angular spread $\si_a =  0.1\un{mrad}$ (vertical dotted line) and a typical number of tracks $10^5$ (see \Tb{al lhc datasets}), the rotation uncertainty is $10^{-2}$ to $10^{-1}\un{mrad}$ for near and about $1\un{mrad}$ for far unit \abb{RP}s. This is to be compared with the expected misalignments from \Tb{al exp misal} (drawn as the horizontal dotted line). One may conclude that the track-based alignment can hardly improve our knowledge on the far-near unit rotation.
+
+Let us repeat the reason for the saturation at the high-$\si_a$ side of \Fg{al err rotz theta}. The maximal angle that can be detected by both units simultaneously is about $10^{-2}\un{rad}$, therefore even if the track sample includes higher angle tracks, they do not contribute to the alignment analysis.
 
 \Fg{al err rotz rho,al err rotz theta} tell us to constrain the $U$-$V$ and far-near rotations in order to get reasonable alignment results. However, in \Sc{al err} we have mentioned that constraining weak modes may lead to a systematic error (when the constraints are not compatible with the true misalignment). Although we have not observed any sizable effect of that sort in \Fg{al stat final} (the final constraints include both types weak modes), let us verify it explicitly.
 
@@ -903,7 +910,6 @@ A similar study has been made for the systematic error induced by constraining t
 %geometry 2.7x3.3, 3 iterations, Jan(round=f, extfit=f) - Jan(f, t), 1E4 events
 }
 
-\eject %!
 \subsection[al data sel]{Input data selection}
 
 In the above \abb{MC} tests we have simulated one proton track per event. Thus, we known a priori that all sensor hits belong to the track of a given event. For real \abb{LHC} data, the situation is more complicated. There might be a number of tracks per event, moreover different in every \abb{RP}. There might be a number of hits that do not belong to any particle track -- noise, data corruption, etc. That is why it is necessary to select carefully the input for the track-based alignment. It is better to lose some statistics than to bias the results with false input.
@@ -1065,20 +1071,22 @@ We have used a set of fixed-sensors constraints. First we have tried to constrai
 
 As suggested in \Sc{al err}, it is a good idea to split the event sample into several subsamples and compare the alignment results among them. In this way one can check for problems like data corruption. For the \abb{H8} data, we have performed alignment analyses with full sample and two subsamples -- with even and odd event numbers. All results will be shown later, in a comparison to the optical metrology and \abb{LHC} data alignment analyses.
 
-
 \block{LHC runs and comparisons}
-
-\fig{fig/pdf/al_comp_det_per_pot_dp1_ext2.pdf}{al comp det per pot dp1 ext2}{Internal alignment comparison for \abb{RP} 45-220-far-hor (an example of bad match among the tree methods). All \abb{LHC} points are overlapping (one can see only the top orange) and thus only few data-sets are shown.
-%ext2 constraints
-}
 
 We have also analyzed data from a number of 2010 \abb{LHC} runs (see the list in \Tb{al lhc datasets}). The track-based alignment has been performed in very much the same way as for the \abb{H8} runs. \Fg{al comp det per pot dp1 ext2,al comp det per pot dp2 ext2} show the comparisons of the three internal-alignment methods for two \abb{RP}s. The former figure represents the \abb{RP}s with a bad match between the methods, the later shows one of the best matches we have observed.
 
+Let us summarize the comparisons (generally, even for the ten other comparisons not shown). First observation is that all \abb{LHC} results are perfectly consistent one with each other. Similarly, there is no remarkable difference between the \abb{H8} analyses using the full sample or any of the subsamples. These are, with no doubt, pleasant outcomes. Generally, the match is better for the rotations. Regarding the optical metrology this might be partially understood by noticing that a part (systematic shift) of the measurement errors cancels for rotations in \Eq{al metrology ext}. Also quite generally, the \abb{H8} and \abb{LHC} results match better together than with the optical metrology. This might be an indication that the hybrid-to-hybrid alignment not taken into account in the optical metrology, is in fact important. The difference between the \abb{H8} and \abb{LHC} results may be understood as a consequence of different temperatures of the pots. Due to the thermal expansion, the mechanical stresses might be slightly different, provoking slightly different misalignments.
+
+\eject
+\vbox to0pt{\hbox{}}
+\kern-15.5mm
+\fig{fig/pdf/al_comp_det_per_pot_dp1_ext2.pdf}{al comp det per pot dp1 ext2}{Internal alignment comparison for \abb{RP} 45-220-far-hor (an example of bad match among the tree methods). All \abb{LHC} points are overlapping (one can see only the top orange) and thus only few data-sets are shown.
+%ext2 constraints
+}
+\kern-7mm
 \fig{fig/pdf/al_comp_det_per_pot_dp2_ext2.pdf}{al comp det per pot dp2 ext2}{Internal alignment comparison for \abb{RP} 56-220-far-hor (an example of good match among the three methods). All \abb{LHC} points are overlapping (one can see only the top orange) and thus only few data-sets are shown.
 %ext2 constraints
 }
-
-Let us summarize the comparisons (generally, even for the ten other comparisons not shown). First observation is that all \abb{LHC} results are perfectly consistent one with each other. Similarly, there is no remarkable difference between the \abb{H8} analyses using the full sample or any of the subsamples. These are, with no doubt, pleasant outcomes. Generally, the match is better for the rotations. Regarding the optical metrology this might be partially understood by noticing that a part (systematic shift) of the measurement errors cancels for rotations in \Eq{al metrology ext}. Also quite generally, the \abb{H8} and \abb{LHC} results match better together than with the optical metrology. This might be an indication that the hybrid-to-hybrid alignment not taken into account in the optical metrology, is in fact important. The difference between the \abb{H8} and \abb{LHC} results may be understood as a consequence of different temperatures of the pots. Due to the thermal expansion, the mechanical stresses might be slightly different, provoking slightly different misalignments.
 
 
 \subsection[al lhc res]{LHC alignment results}
@@ -1127,8 +1135,9 @@ At first we have tried to run the alignment without fixing the linearly progress
 
 For further analyses we have used the final constraints, where the far-near rotation is fixed. An example is shown in \Fg{al comp det per unit}. On the first look, one can see that the read-out-direction shift results (top row) form lines. It is a consequence of the detector packages being rotated about $x$ and $y$ axes, see \Sc{al dp fac}. Generally (also for the rotations -- see the bottom row), this figure supports our expectation that the sensor misalignments within a package (deviations from the fit lines) are much smaller that the misalignments of \abb{DP} packages within a station. The other interesting (and pleasant) outcome is the stability of the results -- the misalignments do not seem to change in time.
 
+\kern-6mm
 \fig{fig/pdf/al_comp_det_per_unit_weak.pdf}{al comp det per unit weak}{Alignment results with rotations constrained only in the near unit (first two sensors in the top \abb{RP}). This figure shows the results for the $220\un{m}$ station in the sector 45. The top row shows the near unit, the bottom the far unit. Each color corresponds to a data set: October 24 (black), 26 (red), 29-30 (blue).}
-
+\kern-7mm
 \fig{fig/pdf/al_comp_det_per_unit.pdf}{al comp det per unit}{Alignment comparison with the final constraints for the 56-220-near unit. Each color corresponds to a data set from \Tb{al lhc datasets}. The dashed lines show fits of \Eq{al dp sen al} and correspond to the \abb{DP} alignments. For example for rotations, the position of the dashed line marks the \abb{DP} rotation $\De\rh^{\rm DP}_z$.
 %The internal rotation is the rotation of a sensor with respect to its \abb{DP} (i.e.~the full rotation minus $\De\rh^{\rm DP}_z$).
 %overlap=f
