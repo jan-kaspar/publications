@@ -102,8 +102,10 @@ We will use the symbol $\Th$ for a function that has value 1 if the condition in
 }
 
 \bmfig
-\fig{fig/pdf/felm_background_dist_txty.pdf}{felm background dist txty}{[7cm]The distribution of background $h_{\rm O}$ (diagonal 45 bottom -- 56 top, left arm). The color scale follows logarithmically the bin contents in the order: white, blue, green, red and black.}
-\fig{fig/pdf/felm_background_dist_tx.pdf}{felm background dist tx}{[7cm]The observed $t_x$-distribution (left arm, diagonal 45 bottom -- 56 top) with an $\exp(b t_x)/\sqrt{-t_x}$ fit (red curve).}
+\fig{fig/pdf/felm_background_dist_txty.pdf}{felm background dist txty}{[7cm]The distribution of background $h_{\rm O}$ (diagonal 45 bottom -- 56 top, left arm).
+%The color scale follows logarithmically the bin contents in the order: white, blue, green, red and black.
+}
+\fig{fig/pdf/felm_background_dist_tx.pdf}{felm background dist tx}{[6.1cm]The observed $t_x$-distribution (left arm, diagonal 45 bottom -- 56 top) with an $\exp(b t_x)/\sqrt{-t_x}$ fit (red curve).}
 \emfig
 
 The background distribution observed in one arm (the left one for instance) can then be expressed as
@@ -123,6 +125,8 @@ An example of such distribution is shown in \Fg{felm background dist txty}. To b
 \eqref{h_{\rm 1p}(t_x, t_y) \propto {\e^{b_x t_x}\over \sqrt{-t_x}} {\e^{b_y t_y}\over \sqrt{-t_y}}\ .}{felm dist param}
 
 As a first test, one can compare the $t_x$-distribution with the $x$ part of the suggested parameterization. \Fg{felm background dist tx} shows an excellent match. Then, we have performed a careful fit of the $t_x$ vs.~$t_y$ data. For that we have cut off the part of the histogram which is full of empty bins and we have removed the closest bins to the acceptance cut. The resulting bin selection is shown as the red dashed triangle in \Fg{felm background dist txty}. The results of the fit are summarized in \Tb{felm fit}, note the very good $\ch^2$ (with about 120 bins contributing). Whereas the slopes are clearly different between the $x$ and $y$ projection, their values are consistent within all four fits. This has led us to the conclusion that the background distribution is the same left and right and for both diagonals. Further on, we will use the mean slopes (last row of the table). The error of the mean has been calculated as the standard deviation of the 4 measurements divided by $\sqrt{n = 4}$.
+
+\eject % to keep synchronization with the submitted version
 
 \tab[\bvrule\hfil\ #\ \hfil&\bvrule\bstrut\hfil\ #\ \hfil&\vrule\hfil\ #\ \hfil&\vrule\hfil\ #\ \hfil&\vrule\hfil\ #\ \hfil&\bvrule\hfil\ #\ \hfil\bvrule\cr]{felm fit}{The result of a fit of parameterization \Eq{felm dist param} through $t_x$ vs.~$t_y$ data.}{%
 \omit&\multispan4\bhrulefill&\omit\cr

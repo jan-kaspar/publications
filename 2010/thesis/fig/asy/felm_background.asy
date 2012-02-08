@@ -68,9 +68,10 @@ GShipout("felm_background_int_dg_fit");
 //----------------------------------------------------------------------------------------------------
 // DISTRIBUTION
 
-NewPad("$|t_x|\un{GeV^2}$", "$|t_y|\un{GeV^2}$");
-TH2_process = TH2_log;
-draw(rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "hxy_L"), "p,i");
+NewPad("$|t_x|\un{GeV^2}$", "$|t_y|\un{GeV^2}$", 5.2cm, 5.2cm, axesAbove=true);
+scale(Linear, Linear, Log);
+//TH2_palette = Gradient(white, blue, green, red);
+draw(rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "hxy_L"), "p");
 limits((0, 0), (1.2, 1.2), Crop);
 
 draw((0, 0.35)--(1.2, 0.35)--(0, 1.2)--cycle, red+dashed+1pt);
@@ -79,7 +80,7 @@ GShipout("felm_background_dist_txty");
 
 //--------------------
 
-NewPad("$|t_x|\un{GeV^2}$", "$\d N/\d t_x$");
+NewPad("$|t_x|\un{GeV^2}$", "$\d N/\d t_x$", 5.2cm, 5.2cm);
 scale(Linear, Log);
 draw(rGetObj(dir+"/h_x_r_45b_fit.root", "Canvas_1|hx_R"), black);
 TF1_lowLimit = 0.01;

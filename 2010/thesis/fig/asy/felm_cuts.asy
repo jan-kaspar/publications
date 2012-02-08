@@ -3,7 +3,7 @@ import pad_layout;
 
 StdFonts();
 
-xSizeDef = 5.5cm;
+xSizeDef = 4cm;
 ySizeDef = 4cm;
 
 string dir = "../background";
@@ -46,6 +46,8 @@ real aul[] = { 1.5e-4, 5e-4, 2, 2, 20, -6 };
 real bll[] = { -1.5e-4, -5e-4, -1.5e-4, -1.5e-4, -0.1 , -0.2};
 real bul[] = { 1.5e-4, -1.5e-4, 1.5e-4, 1.5e-4	, +0.3, +0.2};
 
+TH2_palette = Gradient(white, blue, heavygreen, red);
+
 for (int i = 0; i < 6; ++i) {
 	write("* ", i);
 
@@ -54,8 +56,9 @@ for (int i = 0; i < 6; ++i) {
 
 	transform tr = scale(x_scale[i], y_scale[i]);
 	
-	NewPad(x_lab[i], y_lab[i]);
-	draw(tr, rGetObj(f, "sp"+format("%u", i+1)), "p,i");
+	NewPad(x_lab[i], y_lab[i], axesAbove=true);
+	scale(Linear, Linear, Log);
+	draw(tr, rGetObj(f, "sp"+format("%u", i+1)), "p");
 
 	draw(tr*((all[i], (-a[i]*all[i] + 3si[i] + c[i]) / b[i])--(aul[i], (-a[i]*aul[i] + 3si[i] + c[i]) / b[i])), black+1pt);
 	draw(tr*((all[i], (-a[i]*all[i] + 0si[i] + c[i]) / b[i])--(aul[i], (-a[i]*aul[i] + 0si[i] + c[i]) / b[i])), black+1pt+dotted);
@@ -66,7 +69,7 @@ for (int i = 0; i < 6; ++i) {
 	AttachLegend("cut "+format("%u", i+1));
 }
 
-GShipout(hSkip=7mm, vSkip=2mm);
+GShipout(hSkip=5mm, vSkip=2mm);
 
 /*
 
