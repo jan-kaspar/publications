@@ -3,8 +3,8 @@ import pad_layout;
 
 StdFonts();
 
-xSizeDef = 4cm;
-ySizeDef = 4cm;
+xSizeDef = 4.3cm;
+ySizeDef = 4.15cm;
 
 string dir = "../background";
 
@@ -58,7 +58,7 @@ for (int i = 0; i < 6; ++i) {
 	
 	NewPad(x_lab[i], y_lab[i], axesAbove=true);
 	scale(Linear, Linear, Log);
-	draw(tr, rGetObj(f, "sp"+format("%u", i+1)), "p");
+	draw(tr, rGetObj(f, "sp"+format("%u", i+1)), "p,bar");
 
 	draw(tr*((all[i], (-a[i]*all[i] + 3si[i] + c[i]) / b[i])--(aul[i], (-a[i]*aul[i] + 3si[i] + c[i]) / b[i])), black+1pt);
 	draw(tr*((all[i], (-a[i]*all[i] + 0si[i] + c[i]) / b[i])--(aul[i], (-a[i]*aul[i] + 0si[i] + c[i]) / b[i])), black+1pt+dotted);
@@ -69,7 +69,7 @@ for (int i = 0; i < 6; ++i) {
 	AttachLegend("cut "+format("%u", i+1));
 }
 
-GShipout(hSkip=5mm, vSkip=2mm);
+GShipout(hSkip=7mm, vSkip=2mm);
 
 /*
 
