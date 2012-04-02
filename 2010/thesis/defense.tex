@@ -1,0 +1,505 @@
+\input slides
+\input utf8-csf
+
+%----------------------------------------------------------------------------------------------------
+
+\makecom{toc indent 0}{0mm}
+\makecom{toc indent 1}{7mm}
+\makecom{toc indent 2}{14mm}
+
+\def\TOCline#1#2#3{%
+	\edef\Indent{\csname toc indent #1\endcsname}%
+	\hbox{%
+		\hbox to\Indent{\hss}%
+		\vtop{\hsize7cm\advance\hsize-\Indent\noindent #2\ #3}%
+	}%
+}
+
+\def\Question#1{{\bf ``#1''}}
+
+%----------------------------------------------------------------------------------------------------
+
+\StdBackground
+
+%----------------------------------------------------------------------------------------------------
+
+\footline={}
+\hbox{}
+\vfil
+\title{Elastic Scattering at the LHC}
+\vfil
+\centerline{Jan Kašpar}
+\vfil
+\centerline{doctoral thesis defense, 10 April 2012}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{(Reduced) Table of Contents}
+
+\lineskip7pt
+\line{\hss\vtop{%
+\TOCline{0}{}{Introduction}
+\TOCline{0}{1}{Elastic scattering of protons}
+\TOCline{1}{1.1}{Hadronic models}
+\TOCline{1}{1.2}{Predictions for the LHC}
+\TOCline{1}{1.3}{Coulomb interference}
+\TOCline{0}{2}{The TOTEM experiment}
+\TOCline{1}{2.2}{Proton Measurement with Roman Pot detectors}
+\TOCline{1}{2.3}{The total cross section}
+\TOCline{0}{3}{Roman Pot simulation and reconstruction software}
+\TOCline{1}{3.1}{Elegent}
+\TOCline{1}{3.2}{Beam smearing}
+\TOCline{1}{3.3}{Fast simulation}
+\TOCline{1}{3.4}{Pattern recognition}
+\TOCline{1}{3.5}{Reconstruction of elastic events}
+}\hskip 5mm plus1fil\vtop{%
+\TOCline{0}{4}{Alignment of Roman Pots}
+\TOCline{1}{4.1}{Collimation alignment}
+\TOCline{1}{4.2}{Track--based alignment}
+\TOCline{2}{4.2.1-2}{The method}
+\TOCline{2}{4.2.3}{Singular and weak misalignment modes}
+\TOCline{2}{4.2.4}{Imposed constraints}
+\TOCline{2}{4.2.6}{Monte-Carlo tests}
+\TOCline{2}{4.2.9}{Internal alignment results}
+\TOCline{2}{4.2.8}{Alignment of detector packages}
+\TOCline{1}{4.3}{Profile methods}
+\TOCline{1}{4.4}{Elastic Alignment}
+\TOCline{1}{4.5}{Summary}
+\TOCline{0}{5}{The first elastic scattering measurement at the LHC}
+\TOCline{1}{5.1}{Background}
+\TOCline{1}{5.2}{Unfolding}
+\TOCline{1}{5.3}{Results and comparison to models}
+}\hss}
+
+%\newpage%------------------------------------------------------------------------------------------
+%\title{Introduction}
+%\> motivation
+%\> the need of hadronic models
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{1. Elastic Scattering of Protons -- Kinematics}
+
+\> process: p($1$) + p($2$) $\longrightarrow$ p($1'$) + p($2'$)
+
+\line{\hss\fig*{fig/pdf/el_scat_scheme.pdf}\hss}
+
+\> scattering angle $\th$
+\> azimuthal angle $\ph$
+
+\> projections of scattering angle
+\>> horizontal $\th_x = \th \cos\ph$
+\>> vertical $\th_y = \th \sin\ph$
+
+\> proton momentum $p$
+
+\> four-momentum transfer squared (and its components)
+$$t = -2p^2 (1 - \cos\th) \simeq -(p\th)^2\ \,\qquad t_x = t \cos^2\ph\ ,\qquad t_y = \cos^2\ph$$
+
+\newpage%------------------------------------------------------------------------------------------
+\title{1. Elastic Scattering of Protons -- Dynamics}
+
+\> just two forces relevant
+
+1) Electromagnetic interaction
+
+\> effective FF: magnetic FF included -- non-negligible above $|t|\gs 0.1\un{GeV^2}$
+\> indications that OPE approximation is insufficient above $|t| \gs 1\un{GeV^2}$
+
+\centerline{\fig*[,1cm]{fig/pdf/el_ff_comparison.pdf}}
+\centerline{\fig*[,1cm]{fig/pdf/el_diagrams2.pdf}}
+
+2) Strong interaction
+
+\> QCD cannot be applied directly
+\> need models
+
+3) Interference between electromagnetic and strong interaction effects
+
+\newpage%------------------------------------------------------------------------------------------
+\title{1.1-2 Hadronic Models}
+
+\itskip0pt
+
+\> typical model constructions
+\>> Regge theory
+\>> eikonal description
+
+\> model references
+
+\>> Islam et al. (Int. J. Mod. Phys. A21: 1-42, 2006)
+\>> Petrov et al. (Eur. Phys. J. C28: 525-533, 2003)
+\>> Bourrely et al. (Eur. Phys. J. C28: 97-105, 2003)
+\>> Block et al. (Phys. Rev. D60: 054024, 1999)
+\>> Jenkovszky et al. (arXiv:1105.1202, 2011)
+
+\> predictions for (some) LHC energies:
+
+\centerline{\fig*[,5cm]{fig/pdf/el_mod_dsdt_large.pdf}}
+
+\> implemented within Elegent MC generator
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{1.3 Coulomb Interference}
+
+$$F^{\rm C+H}(t) = F^{\rm C}(t) + F^{\rm H}(t) \, \e^{\i \al \Ps(t)}$$
+
+\> several approaches
+
+1) perturbative QFT
+
+\centerline{\fig*[8cm]{fig/pdf/el_diagrams.pdf}}
+
+\> West-Yennie (WY) formula
+\>> exponentiation of infrared divergences, relative Coulomb-hadronic phase $\Ps$ finite (and real by definition)
+\>> number of approximation (on-shell contribution to diagram only, ...)
+
+\> simplified West-Yennie (SWY) formula -- assumes exponential decrease of the hadronic amplitude
+
+
+2) eikonal description
+
+$$
+	F^{\rm C+H}(t) = {s\over 2\i}\int\limits_0^\infty b\,\d b\,J_0(b\sqrt{-t})\,\left( \e^{2\i\de^{\rm C+H}(b)} - 1 \right)
+	\ ,\qquad
+	\de^{\rm C+H}(b) = \de^{\rm C}(b) + \de^{\rm H}(b)
+$$
+
+\> Cahn, Kundrát-Lokajíček: $\O{\al}$ approximations for $F^{\rm C+H}$
+\> this thesis: also direct calculation (all order of $\al$, but not all relevant diagrams)
+
+\newpage%------------------------------------------------------------------------------------------
+\title{1.3 Coulomb Interference -- Results I}
+
+\> quantity $\Ps$ in different approaches
+
+\centerline{\fig*[,3.5cm]{fig/pdf/el_cic_diff_Psi_sum.pdf}}
+
+\> SWY only reliable for very low $|t|$
+\> non-negligible differences between CKL and eikonal calculations
+\> $\Psi$ real only in SWY calculation
+
+\newpage%------------------------------------------------------------------------------------------
+\title{1.3 Coulomb Interference -- Results II}
+
+\> importance of the interference term:
+$$Z(t) = {|F^{\rm C+H}(t)|^2 - |F^{\rm C}(t)|^2 - |F^{\rm H}(t)|^2\over |F^{\rm C+H}(t)|^2}$$
+
+\> left: comparison between interference formulae, right: comparison between hadronic models
+
+\line{%
+	\hss
+	\fig*[,3.5cm]{fig/pdf/el_cic_diff_Z_sum.pdf}%
+	\hss
+	\fig*[,3.5cm]{fig/pdf/el_mod_Z.pdf}%
+	\hss
+}
+
+\> SWY reliable only for small $|t|$
+\> differences between CKL and CE less pronounced (only $1\%$ difference at the peak at $|t| \approx -0.5\un{GeV^2}$)
+\> suppression understood -- interference can only be important if Coulomb and hadronic amplitudes are comparable in size $\Rightarrow$ importance sees enhancements in minima of hadronic models
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{1.3 Coulomb Interference -- Results III}
+
+\> comparison between
+\>> SWY formula (often used, but based on inconsistent assumptions)
+\>> CKL formula (TODO)
+
+$$R(t) = {|F^{\rm C+H}_{\rm CKL}(t)|^2 - |F^{\rm C+H}_{\rm SWY}(t)|^2 \over |F^{\rm C+H}_{\rm CKL}(t)|^2}$$
+
+\centerline{\fig*[,4cm]{fig/pdf/el_mod_R.pdf}}
+
+\> at low $|t|$ discrepancy of few per-mile
+\> discrepancy pronounced at dips of hadronic amplitude
+
+\newpage%------------------------------------------------------------------------------------------
+\title{2. The TOTEM Experiment}
+
+\> TOTEM -- forward hadronic phenomena at the LHC:
+\>> elastic scattering measurement in a wide $t$-range,
+\>> total cross section measurement and
+\>> a study of soft and hard diffraction.
+
+\centerline{$\Downarrow$}
+
+\> requirements
+\>> detect most fragments fragments from inelastic collisions
+\>> excellent acceptance for outgoing elastic and diffractive protons
+
+\centerline{$\Downarrow$}
+
+\> detector apparatus -- symmetric left (sector 45) -- right (sector 56)
+
+\line{\hss\fig*[,5cm]{fig/pdf/ttm_det_overview.pdf}\hss}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{2.1 The Roman Pot system}
+
+\> 2 stations ($220\un{m}$, $147\un{m}$) in each arm
+
+\line{\hss
+	\vbox{\hbox{2 units in each station}\hbox{\fig*[,3.5cm]{fig/pdf/rp_station.pdf}}}%
+	\hss
+	\vbox{\hbox{3 RPs in each unit}\hbox{\fig*[,3.5cm]{fig/pdf/rp_unit.pdf}}}%
+	\hss
+}
+
+\line{\hss
+	\vbox{\hbox{\strut Roman Pot (RP)}\hbox{\fig*[,3.5cm]{fig/pdf/rp_pot.pdf}}}%
+	\hss
+	\vbox{\hbox{\strut 5+5 Si strip sensors in each RP}\hbox{\fig*[,3.5cm]{fig/pdf/rp_package.pdf}}}%
+	\hss
+	\vbox{\hbox{\strut sensor}\hbox{\fig*[,3.5cm]{fig/pdf/rp_hybrid.pdf}}}%
+	\hss
+}
+
+\> stack of 5+5 back-to-back mounted ``edge-less'' Si sensors with strip pitch $66\un{\mu m}$
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{2.2 Proton Measurement with Roman Pot Detectors}
+
+\line{\hss\fig*[,3cm]{fig/pdf/ttm_proton_transport.pdf}\hss}
+
+\> fro elastic protons, the proton transport ($\equiv$ optics):
+$$y(s) \simeq L_y(s)\, \th_y^* + v_y(s)\, y^*$$
+
+\> optical functions: effective length $L_y$, magnification $v_y$, ...
+
+\> optics defines what and how can be seen
+\>> sample of elastic events under three TOTEM-relevant optics scenarios
+
+\line{\hss\fig*[,3cm]{fig/pdf/ttm_hit_distribution.pdf}\hss}
+
+\> TODO sometimes very low $L_x$
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{2.3 The Total Cross Section}
+
+%\line{\hss\fig*[,3cm]{fig/pdf/ttm_sigma_tot.pdf}\hss}
+
+% emphasis: very old study, now we know that we can do better
+
+% mention 16\pi
+
+\> elastic cross section related to total (hadronic) cross section
+$$
+	\si_{\rm tot} = {16\pi\over 1+\rh^2} {\d N_{\rm el}/\d t |_0 \over N_{\rm el} + N_{\rm inel}}\ ,\qquad
+	\si_{\rm tot}^2 = {16\pi\over 1+\rh^2} \left. {\d\si_{\rm el}\over\d t} \right|_0
+$$
+
+\> elastic differential rate/cross section needs to be extrapolated to $t=0\un{GeV^2}$
+\> models: guide for parameterization $F^{\rm H} = \e^{M(t)}\, \e^{\i P(t)}$
+
+\> two cases considered (very old study)
+
+\line{\hss\vbox{\hsize6cm
+\centerline{$\mathbf{\be^*=1535\un{m}}$}
+\> both $t_x$ and $t_y$ can be measured
+\> CKL formula used
+
+\line{\hss\fig*[,3.5cm]{fig/pdf/ext_results_1535.pdf}\hss}
+}\hskip2mm plus 1fil\vbox{\hsize6cm
+\centerline{$\mathbf{\be^*=90\un{m}}$}
+\> only $t_y$ can be measured
+\> phase completely inaccessible
+
+\line{\hss\fig*[,3.5cm]{fig/pdf/ext_results_90.pdf}\hss}
+}}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{3. Roman Pot Simulation and Reconstruction Software}
+
+\> importance
+
+\line{\hss\fig*[,4cm]{fig/pdf/sr_sw_structure.pdf}\hss}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{3.1 Elegent}
+
+\> ref back
+
+\title{3.2 Beam Smearing}
+
+\line{%
+	\hss
+	\fig*[,1.7cm]{fig/pdf/smearing_angular_energy.pdf}%
+	\hss
+	\fig*[,1.7cm]{fig/pdf/smearing_vertex.pdf}%
+	\hss
+}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{3.3 Fast Simulation}
+
+\> why
+\> how
+
+\title{3.4 Pattern Recognition}
+
+\line{\hss\fig*[,2cm]{fig/pdf/sr_pattern_reco.pdf}\hss}
+\line{\hss\fig*[,2cm]{fig/pdf/sr_pattern_reco_ex.pdf}\hss}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{3.5 Reconstruction of Elastic Events}
+
+\line{\hss
+	\vbox{\hbox{$\be ^* = 1535\un{m}$}\hbox{\fig*[,3.5cm]{fig/pdf/elr_1535_res_t.pdf}}}%
+	\hss
+	\vbox{\hbox{$\be^* = 90\un{m}$}\hbox{\fig*[,3.5cm]{fig/pdf/elr_90_res_t.pdf}}}%
+	\hss
+}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{3.x Data Quality Monitor}
+
+\> add to TOC ??
+
+%\line{\hss\fig*[,2cm]{fig/external/dqm.png}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4 Alignment of Roman Pots}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4.1 Collimation Alignment}
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_collim.pdf}\hss}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4.2.1-2 Track--based Alignment, The Method}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4.2.3-4 Weak Modes and Imposed Constraints}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4.2.6 Monte-Carlo Tests}
+
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_stat_final.pdf}\hss}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4.2.9 Internal Alignment Results}
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_comp_det_per_pot_dp2_ext2.pdf}\hss}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4.2.8 Alignment of Detector Packages}
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_comp_det_per_unit.pdf}\hss}
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_rp_misalignment.pdf}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4.2.10 LHC Results}
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_comp_rp_all_rot.pdf}\hss}
+
+\> add to TOC?
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4.3 Profile Methods}
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_prof_hits.pdf}\hss}
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_prof_x_dists.pdf}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4.4 Elastic Alignment I}
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_el_plots_sum.pdf}\hss}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4.4 Elastic Alignment II}
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_el_plots_dyy.pdf}\hss}
+
+\> remove?
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_el_plots_ylyr.pdf}\hss}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{4.5 Summary}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{5 The First Elastic Scattering Measurement at the LHC}
+
+\line{\hss\fig*[,4cm]{fig/pdf/felm_scheme.pdf}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{5.1 Background}
+
+\line{\hss\fig*[,4cm]{fig/pdf/felm_background_int_dg_fit.pdf}\hss}
+
+\line{\hss\fig*[,4cm]{fig/pdf/felm_background_dist_txty.pdf}\hss}
+
+\line{\hss\fig*[,4cm]{fig/pdf/felm_background_cmp.pdf}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{5.2 Unfolding}
+
+\line{\hss\fig*[,4cm]{fig/pdf/felm_unfolding_m1_fit.pdf}\hss}
+%\line{\hss\fig*[,4cm]{fig/pdf/felm_unfolding_m2_corrections.pdf}\hss}
+\line{\hss\fig*[,2cm]{fig/pdf/felm_unfolding_m2_scheme.pdf}\hss}
+\line{\hss\fig*[,4cm]{fig/pdf/felm_unfolding_m1m2_cmp.pdf}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{5.3 Results and Comparison to Models}
+
+\line{\hss\fig*[,4cm]{fig/pdf/ttm_mod_cmp_dsdt.pdf}\hss}
+
+
+%----------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------
+
+
+
+
+
+\newpage%------------------------------------------------------------------------------------------
+\hbox{}\vfil
+\title{Answers to Referees' Questions and Comments}
+
+\newpage%------------------------------------------------------------------------------------------
+
+\Question{From the thesis' text, it is not absolutely clear what has been done by J.\ Kašpar himself... I'd be grateful to see the author defining his contribution more precisely during the defense.}
+
+\newpage%------------------------------------------------------------------------------------------
+
+\Question{... From this point of view, I find the last chapter (final measurement of elastic cross section) the weakest. The author writes that he focuses mainly on his own contribution, namely data correction due to acceptance and finite detector-resolution. But I miss certain information even in these parts. For sure, it would be interesting to see a measurement of angular resolution directly from the data. The author merely mentions the result. For the procedure of the data correction, it would be interesting to see the distribution itself -- most importantly how well it is approximated by a normal distribution, eventually used in the procedure. ...}
+
+\newpage%------------------------------------------------------------------------------------------
+
+\Question{... I find the final presentation of results weak. First of all, I miss a table with the measured cross section along with its statistical and systematic errors. These are neither shown in Fig.~5.14.~It is impossible, therefore, to find out how important the author's data corrections (and their uncertainties) are for the final result. In the same way, it prevents from judging the relevance of the observed discrepancy between the data and phenomenological models.}
+
+\newpage%------------------------------------------------------------------------------------------
+
+\Question{Why does the error in Eq.~(3.31) scale with inverse square root of the number of hits, while the preceding paragraph reads that the spatial resolution is practically independent of it?}
+
+\newpage%------------------------------------------------------------------------------------------
+
+\Question{How was the longitudinal (along beam axis) smearing treated?}
+
+\newpage%------------------------------------------------------------------------------------------
+
+\Question{Relatively little data were used for the alignment analyses -- only data where both vertical and horizontal pots were inserted. Wouldn't it have been possible to exploit other data, at least for a partial alignment?}
+
+\newpage%------------------------------------------------------------------------------------------
+
+\Question{How precisely was the LHC magnetic field tuned on the basis of the measured parameters a and b in Eq.~(4.90)?}
+
+\newpage%------------------------------------------------------------------------------------------
+
+\Question{What exactly was used to determine the $t$-scale? In other words, since the position and strength of the LHC magnets was not precisely known (leading to the track rotation), could that be that the track angle (i.e.~their distance from the beam center) was affected too? What does determine the conversion of the observed angle to the actual one? For a given measured value of $t$, what is the expected uncertainty due to imperfect knowledge of the LHC magnetic field?}
+
+\bye
