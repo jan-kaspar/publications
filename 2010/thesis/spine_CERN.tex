@@ -1,0 +1,32 @@
+\input utf8-csf
+
+% page size
+\newdimen\pagewidth  		\pagewidth=297mm
+\newdimen\pageheight 		\pageheight=10mm
+
+\hsize=\pagewidth
+\vsize=\pageheight
+
+\pdfpagewidth=\pagewidth
+\pdfpageheight=\pageheight
+
+\hoffset=-1in
+\voffset=-1in
+
+
+\footline={}
+
+% text
+\parindent0pt
+\font\fPbxx	= pplb8z at 15pt
+\font\fPbixx	= pplbi8z at 15pt
+
+\setbox0=\line{\fPbxx\hskip1cm Jan Kašpar\hfil DOCTORAL THESIS\hfil\fPbixx Elastic scattering at the LHC\hfil\fPbxx 2011\hskip1cm}%
+
+\vbox to\vsize{%
+	\vss
+	\kern\dp0\box0
+	\vss
+}
+
+\bye

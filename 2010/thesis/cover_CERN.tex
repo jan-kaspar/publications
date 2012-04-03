@@ -1,0 +1,88 @@
+\input base
+\input colors
+\input utf8-csf
+
+\font\fPbxx = pplb8z at 20pt
+\font\fPbixx = pplbi8z at 20pt
+\footline={}
+
+% ----- first version -----
+\iffalse
+\centerline{\fPbxx Charles University in Prague}
+\vskip0.5\baselineskip
+\centerline{\fPbxx Faculty of Mathematics and Physics}
+\vskip3\baselineskip
+\centerline{\IncludeSizedGraphics{5cm}{fig/mffLogo.pdf}}
+\vskip3\baselineskip
+\centerline{\fPbxx DOCTORAL THESIS}
+\vfil
+\centerline{\fPbixx Elastic scattering at the LHC}
+\vfil
+\line{\fPbxx 2011\hss Jan Kašpar}
+\fi
+
+
+% ----- second version -----
+\bgroup
+\advance\hsize+1in
+
+\setbox1=\vbox{\vskip3mm\IncludeSizedGraphics{25mm}{fig/mffLogo.pdf}\vskip3mm}%
+
+\setbox0=\hbox to\hsize{%
+	\hskip1in
+	\raise0.5\ht1\vbox to0pt{%
+		\vss
+		\hbox{\fPbxx Charles University in Prague}%
+		\kern3mm
+		\hbox{\fPbxx Faculty of Mathematics and Physics}%
+		\vss
+	}%
+	\hss
+	\box1
+	\hskip3mm
+}
+
+\parindent-1in
+\indent\hbox{%
+	\cmyk{\cmykBlack}%
+	\hbox to0pt{\vrule width\wd0 height\ht0 depth\dp0\hss}%
+	\cmyk{\cmykWhite}%
+	\box0
+}
+\egroup
+
+
+\cmyk{\cmykBlack}%
+
+\vfil
+
+\centerline{\fPbxx DOCTORAL THESIS}
+
+\vfil
+
+\centerline{\fPbixx Elastic scattering at the LHC}
+
+\vfil
+
+
+\bgroup
+\advance\hsize+1in
+\setbox0=\hbox to\hsize{%
+	\vbox{%
+		\vskip5mm
+		\hbox to \hsize{\fPbxx\hskip1in Jan Kašpar\hss 2011\hskip1in}%
+		\vskip3mm
+	}%
+}
+
+\indent\hbox{%
+	\cmyk{\cmykBlack}%
+	\hbox to0pt{\vrule width\wd0 height\ht0 depth\dp0\hss}%
+	\cmyk{\cmykWhite}%
+	\box0
+}
+\egroup
+
+
+\eject
+\bye

@@ -13,21 +13,21 @@ string dir = "../background";
 string f = dir+"/bckg_45b_56t.root";
 
 string x_lab[] = {
-	"$\th_x^{\rm R} \un{\mu rad}$",
-	"$\th_y^{*\rm R} \un{\mu rad}$",
-	"$x_{\rm F}^{\rm R}\un{mm}$",
-	"$x_{\rm F}^{\rm L}\un{mm}$",
-	"$y_{\rm F}^{\rm R} + y_{\rm N}^{\rm R} \un{mm}$",
-	"$y_{\rm F}^{\rm L} + y_{\rm N}^{\rm L} \un{mm}$"
+	"$\th_x^{\rm R} \ung{\mu rad}$",
+	"$\th_y^{*\rm R} \ung{\mu rad}$",
+	"$x_{\rm F}^{\rm R}\ung{mm}$",
+	"$x_{\rm F}^{\rm L}\ung{mm}$",
+	"$y_{\rm F}^{\rm R} + y_{\rm N}^{\rm R} \ung{mm}$",
+	"$y_{\rm F}^{\rm L} + y_{\rm N}^{\rm L} \ung{mm}$"
 };
 
 string y_lab[] = {
-	"$\th_x^{\rm L} \un{\mu rad}$",
-	"$\th_y^{*\rm L} \un{\mu rad}$",
-	"$\th_x^{\rm R} \un{\mu rad}$",
-	"$\th_x^{\rm L} \un{\mu rad}$",
-	"$y_{\rm F}^{\rm R} - y_{\rm N}^{\rm R} \un{mm}$",
-	"$y_{\rm F}^{\rm L} - y_{\rm N}^{\rm L} \un{mm}$"
+	"$\th_x^{\rm L} \ung{\mu rad}$",
+	"$\th_y^{*\rm L} \ung{\mu rad}$",
+	"$\th_x^{\rm R} \ung{\mu rad}$",
+	"$\th_x^{\rm L} \ung{\mu rad}$",
+	"$y_{\rm F}^{\rm R} - y_{\rm N}^{\rm R} \ung{mm}$",
+	"$y_{\rm F}^{\rm L} - y_{\rm N}^{\rm L} \ung{mm}$"
 };
 
 
@@ -46,7 +46,7 @@ real aul[] = { 1.5e-4, 5e-4, 2, 2, 20, -6 };
 real bll[] = { -1.5e-4, -5e-4, -1.5e-4, -1.5e-4, -0.1 , -0.2};
 real bul[] = { 1.5e-4, -1.5e-4, 1.5e-4, 1.5e-4	, +0.3, +0.2};
 
-TH2_palette = Gradient(white, blue, heavygreen, red);
+TH2_palette = Gradient(blue, heavygreen, yellow, red);
 
 for (int i = 0; i < 6; ++i) {
 	write("* ", i);
@@ -79,8 +79,8 @@ string f = dir+"/bckg_45t_56b.root";
 
 !! NEEDS UPDATE !!
 
-string y_lab[] = { "$\th_x^R$", "$\th_y^{*R}$", "$x_F^R\un{mm}$", "$x_F^L\un{mm}$", "$y_F^R\un{mm}$", "$y_F^L\un{mm}$" };
-string x_lab[] = { "$\th_x^L$", "$\th_y^{*L}$", "$\th_x^R$", "$\th_x^L$", "$y_N^R\un{mm}$", "$y_N^L\un{mm}$" };
+string y_lab[] = { "$\th_x^R$", "$\th_y^{*R}$", "$x_F^R\ung{mm}$", "$x_F^L\ung{mm}$", "$y_F^R\ung{mm}$", "$y_F^L\ung{mm}$" };
+string x_lab[] = { "$\th_x^L$", "$\th_y^{*L}$", "$\th_x^R$", "$\th_x^L$", "$y_N^R\ung{mm}$", "$y_N^L\ung{mm}$" };
 
 real a[] = { -7.04547e-01 , -6.97510e-01 , -3.83597e-04 , -2.80017e-04 , -6.98033e-01 , -7.02238e-01 };
 real b[] = { -7.09656e-01 , -7.16574e-01 , -9.99999e-01 , +9.99999e-01 , +7.16065e-01 , +7.11941e-01 };

@@ -6,7 +6,7 @@ StdFonts();
 xSizeDef = 9cm;
 //ySizeDef = 8cm;
 
-string mod_dir = "/mnt/pctotem31/software/offline/311/user/elastic_models/data";
+string mod_dir = "../elastic_models/data";
 string ttm_dir = "../elastic_data_model_cmp";
 
 string[] files = {
@@ -28,7 +28,21 @@ xTicksDef = LeftTicks(Step=0.5, step=0.1);
 
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$|t|\un{GeV^2}$", "$\d\si/\d t\un{mb/GeV^2}$");
+void AddErrorBars(real t, real s, real et, real esp, real esm, pen color=orange)
+{
+	//dotfactor = 5;
+	//dot((t, log10(s)), red);
+	
+	//draw((t*(1-et/100), log10(s))--(t*(1+et/100), log10(s)), red, Bars);
+	//draw((t, log10(s*(1+esm/100)))--(t, log10(s*(1+esp/100))), red, Bars);
+
+	real l = t-0.01, r = t+0.01, b = log10(s*(1+esm/100)), t = log10(s*(1+esp/100));
+	filldraw((l, b)--(r, b)--(r, t)--(l, t)--cycle, color, nullpen);
+}
+
+//----------------------------------------------------------------------------------------------------
+
+NewPad("$|t|\ung{GeV^2}$", "$\d\si/\d t\ung{mb/GeV^2}$");
 scale(Linear, Log);
 
 for (int t : tags.keys) {
@@ -43,7 +57,19 @@ for (int t : tags.keys) {
 //draw(rGetObj("ostapchenko.root", "ostapchenko"), cyan, "Ostapchenko");
 //draw(rGetObj("menon.root", "menon"), red, "Fagundes et al.");
 
-draw(rGetObj(ttm_dir+"/merged.root", "tc|merged_background_subtracted_unfolded"), "e", black+1pt, "TOTEM");
+draw(rGetObj(ttm_dir+"/merged.root", "tc|merged_background_subtracted_unfolded"), "vl,ec", black+1.5pt, "TOTEM");
+
+AddErrorBars(0.4, 0.13, 13, +25, -37);
+AddErrorBars(0.5, 0.019, 12, +28, -39);
+AddErrorBars(1.5, 0.0011, 7, +27, -30);
+
+label("\SmallerFonts TOTEM measurement uncertainties", (0.1, log10(2e-4)), E);
+
+AddErrorBars(0.15, 9e-5, 0, +30, -30, black+opacity(0.3));
+label("\SmallerFonts statistical", (0.15, log10(9e-5)), E);
+
+AddErrorBars(0.15, 4e-5, 0, +30, -30, orange);
+label("\SmallerFonts systematic (at $|t| = 0.4, 0.5$ and $1.5\un{GeV^2}$)", (0.15, log10(4e-5)), E);
 
 limits((0, 1e-5), (2.5, 1e0), Crop);
 frame fl = Legend();
@@ -56,7 +82,7 @@ GShipout("ttm_mod_cmp_dsdt", hSkip=3mm);
 //----------------------------------------------------------------------------------------------------
 
 xTicksDef = LeftTicks(Step=0.1, step=0.02);
-NewPad("$|t|\un{GeV^2}$", "$B \un{GeV^{-2}}$");
+NewPad("$|t|\ung{GeV^2}$", "$B \ung{GeV^{-2}}$");
 for (int t : tags.keys) {
 	rObject o = rGetObj(mod_dir+"/"+files[0] + ".details.root", "B/PH/" + tags[t], error=false);
 	if (o.valid)

@@ -29,12 +29,13 @@ void GetSignal(rObject o)
 	g_s = o.rExec("GetParameter", 1);
 }
 
+
 //----------------------------------------------------------------------------------------------------
 // INTEGRAL
 
 NewPad("$q_1/\si_1$", "$h_1$");
 //scale(Linear, Log);
-draw(rGetObj(dir+"/bckg_45b_56t.root", "cq1_dist_sel"), "p");
+draw(rGetObj(dir+"/bckg_45b_56t.root", "cq1_dist_sel"), "vl,ec");
 draw(rGetObj(dir+"/bckg_45b_56t.root", "cq1_dist_sel|ff"), blue+1pt);
 
 //GetSignal(robj);
@@ -50,7 +51,7 @@ AttachLegend("cut 1");
 
 NewPad("$q_4/\si_4$", "$h_2$");
 //scale(Linear, Log);
-draw(rGetObj(dir+"/bckg_45b_56t.root", "cq4_dist_sel"), "p");
+draw(rGetObj(dir+"/bckg_45b_56t.root", "cq4_dist_sel"), "vl,ec");
 draw(rGetObj(dir+"/bckg_45b_56t.root", "cq4_dist_sel|ff"), blue+1pt);
 
 //GetSignal(robj);
@@ -66,12 +67,37 @@ AttachLegend("cut 4");
 GShipout("felm_background_int_dg_fit");
 
 //----------------------------------------------------------------------------------------------------
+
+NewPad("$(\th_x^{*R} - \th_x^{*L})/\si$", "$$");
+//scale(Linear, Log);
+
+filldraw((-3, 0)--(+3, 0)--(+3, 200)--(-3, 200)--cycle, palegreen, nullpen);
+label(rotate(90)*Label("selection region"), (0, 130), heavygreen);
+
+draw(rGetObj(dir+"/bckg_45b_56t.root", "cq1_dist_sel"), "vl,ec");
+draw(rGetObj(dir+"/bckg_45b_56t.root", "cq1_dist_sel|ff"), blue+1pt);
+
+label("signal", (5.5, 150), blue);
+label(rotate(-35)*Label("background"), (7.5, 30), red);
+
+//GetSignal(robj);
+//draw(graph(gauss, -12, +12, 1000), heavygreen+1pt);
+
+GetGauss(robj);
+draw(graph(gauss, -12, +12, 1000), red+1pt);
+
+limits((-12, 1e-0), (+12, 200), Crop);
+
+
+GShipout("felm_background_int_dg_fit_cut1");
+
+//----------------------------------------------------------------------------------------------------
 // DISTRIBUTION
 
-NewPad("$|t_x|\un{GeV^2}$", "$|t_y|\un{GeV^2}$", 5.2cm, 5.2cm, axesAbove=true);
+NewPad("$|t_x|\ung{GeV^2}$", "$|t_y|\ung{GeV^2}$", 5.2cm, 5.2cm, axesAbove=true);
 scale(Linear, Linear, Log);
-//TH2_palette = Gradient(white, blue, green, red);
-draw(rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "hxy_L"), "p");
+TH2_palette = Gradient(blue, green, red, black);
+draw(rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "hxy_L"), "p,bar");
 limits((0, 0), (1.2, 1.2), Crop);
 
 draw((0, 0.35)--(1.2, 0.35)--(0, 1.2)--cycle, red+dashed+1pt);
@@ -80,23 +106,23 @@ GShipout("felm_background_dist_txty");
 
 //--------------------
 
-NewPad("$|t_x|\un{GeV^2}$", "$\d N/\d t_x$", 5.2cm, 5.2cm);
+NewPad("$|t_x|\ung{GeV^2}$", "$\d N/\d t_x$", 5.2cm, 5.2cm);
 scale(Linear, Log);
-draw(rGetObj(dir+"/h_x_r_45b_fit.root", "Canvas_1|hx_R"), black);
+draw(rGetObj(dir+"/h_x_r_45b_fit.root", "Canvas_1|hx_R"), "vl,ec", black);
 TF1_lowLimit = 0.01;
 draw(rGetObj(dir+"/h_x_r_45b_fit.root", "Canvas_1|hx_R|PrevFitTMP"), red+1pt);
-limits((0, 1e-1), (2.5, 1e3), Crop);
+limits((0, 1e0), (2, 1e3), Crop);
 
 GShipout("felm_background_dist_tx");
 
 //--------------------
 
-NewPad("$|t|\un{GeV^2}$", "$\d N_{\rm B}/\d t$");
+NewPad("$|t|\ung{GeV^2}$", "$\d N_{\rm B}/\d t$");
 scale(Linear, Log);
-draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el"), red);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el"), "vl,ec", red);
 draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el|ffel"), heavygreen+2pt);
 
-draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc"), blue);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc"), "vl,ec", blue);
 draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc|ffel"), heavygreen+2pt);
 limits((0, 1e1), (2.5, 1e6), Crop);
 
@@ -107,7 +133,7 @@ GShipout("felm_background_dist_t_el");
 
 /*
 NewPage();
-NewPad("$|t|\un{GeV^2}$", "$\d N/\d t$");
+NewPad("$|t|\ung{GeV^2}$", "$\d N/\d t$");
 scale(Linear, Log);
 draw(shift(0, log10(1/0.05)), rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "h_t"), black+1pt, "signal+background");
 
@@ -131,20 +157,50 @@ yaxis(XEquals(0.36, false), dashed);
 
 GShipout("felm_background_cmp");
 */
-
 //--------------------
 
-NewPad("$|t|\un{GeV^2}$", "$\d N/\d t$");
+NewPad("$|t|\ung{GeV^2}$", "$\d N/\d t$");
 currentpad.xTicks = LeftTicks(Step=0.5, step=0.1);
 scale(Linear, Log);
 //draw(shift(0, log10(1/0.05)), rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "h_t"), black, "");
-draw(shift(0, log10(exp(11.6575) / exp(-3.7151))), rGetObj(dir+"/hubert/52_00a_correction_steps_bot_45_top_56.root", "tc|bot45_top56_t"), black, "");
+draw(shift(0, log10(exp(11.6575) / exp(-3.7151))), rGetObj(dir+"/hubert/52_00a_correction_steps_bot_45_top_56.root", "tc|bot45_top56_t"), "vl,ec", black, "");
+
+label(rotate(-40)*Label("signal+background"), (1.5, 3.7));
 
 // old
 //draw(rGetObj(dir+"/background_with_errors2_45b_56t.root", "bckg_with_err"), "l,ec", red+1pt, "background new");
 //draw(rGetObj(dir+"/background_with_errors_45b_56t.root", "bckg_with_err"), "l,ec", green+1pt, "background old");
 
-draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc"), blue);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc"), "vl,ec", blue);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc|ffel"), red+1.5pt);
+
+label(rotate(-49)*Label("background"), (1.2, 2.7), blue);
+
+TGraph_lowLimit = 0.6;
+draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_max"), red+dashed);
+draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_min"), red+dashed);
+TGraph_lowLimit = -inf;
+
+limits((0, 1e1), (2.5, 1e6), Crop);
+//yaxis(XEquals(0.36, false), dashed);
+AttachLegend("before acceptance correction");
+
+
+GShipout("felm_background_before");
+
+//--------------------
+
+NewPad("$|t|\ung{GeV^2}$", "$\d N/\d t$");
+currentpad.xTicks = LeftTicks(Step=0.5, step=0.1);
+scale(Linear, Log);
+//draw(shift(0, log10(1/0.05)), rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "h_t"), black, "");
+draw(shift(0, log10(exp(11.6575) / exp(-3.7151))), rGetObj(dir+"/hubert/52_00a_correction_steps_bot_45_top_56.root", "tc|bot45_top56_t"), "vl,ec", black, "");
+
+// old
+//draw(rGetObj(dir+"/background_with_errors2_45b_56t.root", "bckg_with_err"), "l,ec", red+1pt, "background new");
+//draw(rGetObj(dir+"/background_with_errors_45b_56t.root", "bckg_with_err"), "l,ec", green+1pt, "background old");
+
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc"), "vl,ec", blue);
 draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc|ffel"), red+1.5pt);
 
 TGraph_lowLimit = 0.6;
@@ -157,13 +213,13 @@ limits((0, 1e1), (2.5, 2e7), Crop);
 AttachLegend("before acceptance correction");
 
 
-NewPad("$|t|\un{GeV^2}$", "$\d N/\d t$");
+NewPad("$|t|\ung{GeV^2}$", "$\d N/\d t$");
 currentpad.xTicks = LeftTicks(Step=0.5, step=0.1);
 scale(Linear, Log);
 
-draw(shift(0, log10(exp(11.6575) / exp(-3.7151))), rGetObj(dir+"/hubert/52_00a_correction_steps_bot_45_top_56.root", "tc|bot45_top56_t_corr_dist"), black, "");
+draw(shift(0, log10(exp(11.6575) / exp(-3.7151))), rGetObj(dir+"/hubert/52_00a_correction_steps_bot_45_top_56.root", "tc|bot45_top56_t_corr_dist"), "vl,ec", black, "");
 
-draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el"), blue);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el"), "vl,ec", blue);
 draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el|ffel"), red+1.5pt);
 TGraph_lowLimit = 0.3;
 draw(rGetObj(dir+"/mc2_anal.root", "h_el/graphs|g_max"), red+dashed);
@@ -177,14 +233,13 @@ AttachLegend("after acceptance correction");
 
 GShipout("felm_background_cmp");
 
-
 //--------------------
 
-NewPad("$|t|\un{GeV^2}$", "$\d N/\d t$");
+NewPad("$|t|\ung{GeV^2}$", "$\d N/\d t$");
 currentpad.xTicks = LeftTicks(Step=0.5, step=0.1);
 scale(Linear, Log);
 
-draw(shift(0, log10(exp(11.6575) / exp(-3.7151))), rGetObj(dir+"/hubert/52_00a_correction_steps_bot_45_top_56.root", "tc|bot45_top56_t_corr_dist"), black, "signal+background");
+draw(shift(0, log10(exp(11.6575) / exp(-3.7151))), rGetObj(dir+"/hubert/52_00a_correction_steps_bot_45_top_56.root", "tc|bot45_top56_t_corr_dist"), "vl,ec", black, "signal+background");
 
 //draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el"), blue);
 draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el|ffel"), red+1.5pt, "background");
