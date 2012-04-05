@@ -31,7 +31,7 @@ void MakePlots(string dirLabel, string fileNameLabel, string xLabel, real x_from
 		if (find(optimized, oTags[q]) == -1)
 			continue;
 
-		for (int p : plots.keys) {
+		for (int p : tags.keys) {
 			NewPad(
 				(q == 2) ? xLabel : "",
 				(p == 0) ? "" : ""
@@ -67,7 +67,7 @@ void MakePlots(string dirLabel, string fileNameLabel, string xLabel, real x_from
 			
 			yaxis(XEquals(1e5, false), dotted);
 
-			if (q == 0 && p > 0) {
+			if (q == 0 && p > 0 && tags.length > 2) {
 				if (p == 1)
 					currentpicture.legend.delete(3, 5);
 				if (p == 2)
@@ -107,3 +107,30 @@ MakePlots("fcn_of_N/iteration>" + iteration, "_fcnN", "tracks analyzed", 1e2, 1e
 
 
 GShipout(hSkip=1mm, vSkip=1mm);
+
+//----------------------------------------------------------------------------------------------------
+
+tags = new string[] { "e_m", "u_m" };
+
+NewPad(false, 0, -1);
+label("systematic error");
+
+NewPad(false, 1, -1);
+label("estimated uncertainty");
+
+NewPad(false, -1, 0);
+label(rotate(0)*Label("read-out shift\quad$(\rm\mu m)$"));
+
+NewPad(false, -1, 1);
+label(rotate(0)*Label("rotation about $z$\quad $(\rm mrad)$"));
+
+detNum = 3;
+
+rps = new int[] { 120, 121, 122, 123, 124, 125 };
+ylimits = new real[] { 6., 0, 1.};
+y_Steps = new real[] {1., 0, 0.5};
+y_steps = new real[] {0.5, 0, 0.1};
+MakePlots("fcn_of_N/iteration>" + iteration, "_fcnN", "tracks analyzed", 1e2, 1e6, true);
+
+
+GShipout("al_stat_final_slides", hSkip=5mm, vSkip=1mm);

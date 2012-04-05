@@ -118,7 +118,7 @@ guide[] GetGraphs(string dir)
 
 void DrawSet(guide[] graphs, int sm, real mx)
 {
-	NewPad("$\si_a\un{rad}$", "$|\la_{\rm N}|$");
+	NewPad("$\si_a\ung{rad}$", "$|\la_{\rm N}|$");
 	scale(Log, Log);
 	for (int j = 0; j < N; ++j) {
 		pen p = stdPens[j % 5];
@@ -205,3 +205,27 @@ for (int o: options.keys) {
 }
 
 GShipout(hSkip=1mm, vSkip=1mm);
+
+//----------------------------------------------------------------------------------------------------
+
+for (int o = 0; o < 1; ++o) {
+	for (int g: geometries.keys) {
+		for (int r: rho_sigmas.keys) {
+			MakeFile(options[o], geometries[g], rho_sigmas[r]);
+		}
+	}
+
+	label("almost parallel $\longrightarrow$ non-parallel tracks", (-5, 6), -S);
+
+	/*
+	if (o == 0) {
+		label(rotate(37)*Label("modes ("+Ref("eq:al sm rotz sol la")+")"), (-6, -5));
+	}
+
+	if (o == 1) {
+		label(rotate(20)*Label("modes ("+Ref("eq:al sm rotz sol la")+")"), (-6.3, -3));
+	}
+	*/
+}
+
+GShipout("al_eigenvalues_theta_slides");

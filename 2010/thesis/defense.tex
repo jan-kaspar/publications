@@ -21,7 +21,7 @@
 
 %----------------------------------------------------------------------------------------------------
 
-%\StdBackground
+\StdBackground
 
 %----------------------------------------------------------------------------------------------------
 
@@ -34,34 +34,36 @@
 \vfil
 \centerline{doctoral thesis defense, 10 April 2012}
 
+
 \newpage%------------------------------------------------------------------------------------------
 \title{(Reduced) Table of Contents}
 
 \line{\offinterlineskip\hss\vtop{%
-\TOCline{0}{}{Introduction}{\FgColor}
+%\TOCline{0}{}{Introduction}{\FgColor}
 \TOCline{0}{1}{Elastic scattering of protons}{\FgColor}
 \TOCline{1}{1.1-2}{Hadronic models and Their Predictions for the LHC}{\FgColor}
 \TOCline{1}{1.3}{Coulomb interference}{\FgColor}
 \TOCline{0}{2}{The TOTEM experiment}{\FgColor}
 \TOCline{1}{2.1}{The Roman Pot system}{\FgColor}
 \TOCline{1}{2.2}{Proton Measurement with Roman Pot detectors}{\FgColor}
-\TOCline{1}{2.3}{The total cross section}{\FgColor}
+%\TOCline{1}{2.3}{The total cross section}{\FgColor}
 \TOCline{0}{3}{Roman Pot simulation and reconstruction software}{\FgColor}
 \TOCline{1}{3.1}{Elegent}{\FgColor}
 \TOCline{1}{3.2}{Beam smearing}{\FgColor}
 \TOCline{1}{3.3}{Fast simulation}{\FgColor}
 \TOCline{1}{3.4}{Pattern recognition}{\FgColor}
 \TOCline{1}{3.5}{Reconstruction of elastic events}{\FgColor}
-\TOCline{1}{3.x}{Data Quality Monitor}{\FgColor}
+%\TOCline{1}{3.x}{Data Quality Monitor}{\FgColor}
 }\hskip 5mm plus1fil\vtop{%
 \TOCline{0}{4}{Alignment of Roman Pots}{\FgColor}
 \TOCline{1}{4.1}{Collimation alignment}{\FgColor}
-\TOCline{2}{4.2.1-2}{Track--based alignment, The method}{\FgColor}
+\TOCline{2}{4.2.1-2}{Track--based alignment}{\FgColor}
 \TOCline{2}{4.2.3}{Singular and weak misalignment modes}{\FgColor}
 \TOCline{2}{4.2.4}{Imposed constraints}{\FgColor}
 \TOCline{2}{4.2.6}{Monte-Carlo tests}{\FgColor}
-\TOCline{2}{4.2.9}{Internal alignment results}{\FgColor}
 \TOCline{2}{4.2.8}{Alignment of detector packages}{\FgColor}
+\TOCline{2}{4.2.10}{LHC Alignment Results}{\FgColor}
+\TOCline{2}{4.2.9}{Internal alignment results}{\FgColor}
 \TOCline{1}{4.3}{Profile methods}{\FgColor}
 \TOCline{1}{4.4}{Elastic Alignment}{\FgColor}
 \TOCline{1}{4.5}{Summary}{\FgColor}
@@ -78,7 +80,9 @@
 
 
 \newpage%------------------------------------------------------------------------------------------
-\title{1. Elastic Scattering of Protons -- Kinematics}
+\title{Chapter 1. Elastic Scattering of Protons}
+\vskip-3mm
+\subtitle{Kinematics}
 
 \> process: p($1$) + p($2$) $\longrightarrow$ p($1'$) + p($2'$)
 
@@ -97,29 +101,43 @@
 $$t = -2p^2 (1 - \cos\th) \simeq -(p\th)^2\ \,\qquad t_x = t \cos^2\ph\ ,\qquad t_y = \cos^2\ph$$
 
 \newpage%------------------------------------------------------------------------------------------
-\title{1. Elastic Scattering of Protons -- Dynamics}
+\title{Chapter 1. Elastic Scattering of Protons}
+\vskip-3mm
+\subtitle{Dynamics}
 
-\> just two forces relevant
+\> only two forces relevant
 
-1) Electromagnetic interaction
+{
+\itindent7mm
+\iitindent10mm
 
-\> effective FF: magnetic FF included -- non-negligible above $|t|\gs 0.1\un{GeV^2}$
-\> indications that OPE approximation is insufficient above $|t| \gs 1\un{GeV^2}$
+\vfil
+\noindent \cmyk{\TitColor}1) Electromagnetic interaction\cmyk{\FgColor}
 
-\centerline{\fig*[,1cm]{fig/pdf/el_ff_comparison.pdf}}
-\centerline{\fig*[,1cm]{fig/pdf/el_diagrams2.pdf}}
+\line{\raise8mm\vbox{\hsize10cm
+\> QED can be used
+\> effective form factor: combines electric and magnetic 
+\>> magnetic non-negligible above $|t|\gs 0.1\un{GeV^2}$
+\> one-photon-exchange approximation is insufficient above $|t| \gs 1\un{GeV^2}$
+\>> need to account for diagrams with proton excitations
+}\hskip3mm plus1fil\fig*[,4.5cm]{fig/pdf/el_ff_comparison_slides.pdf}}
+%\centerline{\fig*[,1cm]{fig/pdf/el_diagrams2.pdf}}
 
-2) Strong interaction
+\vfil
+\noindent \cmyk{\TitColor}2) Strong interaction\cmyk{\FgColor}
 
 \> QCD cannot be applied directly
-\> need models
+\> phenomenological models needed
 
-3) Interference between electromagnetic and strong interaction effects
+\vfil
+\noindent \cmyk{\TitColor}1+2) Interference between electromagnetic and strong interaction effects\cmyk{\FgColor}
+
+}
 
 \newpage%------------------------------------------------------------------------------------------
+\context{1. Elastic Scattering of Protons}
 \title{1.1-2 Hadronic Models}
 
-\itskip0pt
 
 \> typical model constructions
 \>> Regge theory
@@ -137,147 +155,761 @@ $$t = -2p^2 (1 - \cos\th) \simeq -(p\th)^2\ \,\qquad t_x = t \cos^2\ph\ ,\qquad 
 
 \centerline{\fig*[,5cm]{fig/pdf/el_mod_dsdt_large.pdf}}
 
-\> implemented within Elegent MC generator
+\> implemented within Elegent MC generator (chapter 3)
 
 
 \newpage%------------------------------------------------------------------------------------------
+\context{1. Elastic Scattering of Protons}
 \title{1.3 Coulomb Interference}
 
-$$F^{\rm C+H}(t) = F^{\rm C}(t) + F^{\rm H}(t) \, \e^{\i \al \Ps(t)}$$
 
-\> several approaches
 
-1) perturbative QFT
+\centerline{\cmyk{\TitColor}Perturbative QFT\cmyk{\FgColor}}
 
 \centerline{\fig*[8cm]{fig/pdf/el_diagrams.pdf}}
 
-\> West-Yennie (WY) formula
-\>> exponentiation of infrared divergences, relative Coulomb-hadronic phase $\Ps$ finite (and real by definition)
-\>> number of approximation (on-shell contribution to diagram only, ...)
+\> {\bf West-Yennie (WY) formula}
+\>> exponentiation of infrared divergences
+$$F^{\rm C+H}(t) = F^{\rm C}(t) + F^{\rm H}(t) \, \e^{\i \al \Ps(t)}$$
+\>> relative Coulomb-hadronic phase $\Ps$ finite (and real by definition)
+\>> number of approximation: on-shell contribution to diagram C only, ...
+\>> consistency problem: $\Ps$ in final formula may become complex
 
-\> simplified West-Yennie (SWY) formula -- assumes exponential decrease of the hadronic amplitude
+\> {\bf simplified West-Yennie (SWY) formula}
+\>> assumes constant exponential slope (ruled out by measurements)
 
+\vfil
+\centerline{\cmyk{\TitColor}Eikonal description\cmyk{\FgColor}}
 
-2) eikonal description
-
+\> additivity of eikonals
 $$
 	F^{\rm C+H}(t) = {s\over 2\i}\int\limits_0^\infty b\,\d b\,J_0(b\sqrt{-t})\,\left( \e^{2\i\de^{\rm C+H}(b)} - 1 \right)
 	\ ,\qquad
 	\de^{\rm C+H}(b) = \de^{\rm C}(b) + \de^{\rm H}(b)
 $$
 
-\> Cahn, Kundrát-Lokajíček: $\O{\al}$ approximations for $F^{\rm C+H}$
-\> this thesis: also direct calculation (all order of $\al$, but not all relevant diagrams)
+\> {\bf Cahn}, {\bf Kundrát-Lokajíček} formulae: $\O{\al}$ approximations for $F^{\rm C+H}$
+\> {\bf this thesis}: also direct calculation (all order of $\al$, but not all relevant diagrams)
 
 \newpage%------------------------------------------------------------------------------------------
-\title{1.3 Coulomb Interference -- Results I}
+\context{1. Elastic Scattering of Protons}
+\title{1.3 Coulomb Interference}
 
-\> quantity $\Ps$ in different approaches
+\> most interference formulae have form:
+$$F^{\rm C+H}(t) = F^{\rm C}(t) + F^{\rm H}(t) \, \e^{\i \al \Ps(t)}$$
 
-\centerline{\fig*[,3.5cm]{fig/pdf/el_cic_diff_Psi_sum.pdf}}
+\vfil
+\centerline{\bf Quantity $\Ps$ in different approaches}
+\vskip3mm
+
+\centerline{\fig*[12cm]{fig/pdf/el_cic_diff_Psi_slides.pdf}}
 
 \> SWY only reliable for very low $|t|$
-\> non-negligible differences between CKL and eikonal calculations
-\> $\Psi$ real only in SWY calculation
+\> non-negligible differences between CKL and ``this thesis'' calculations
+\> $\Ps$ real only in SWY calculation
 
 \newpage%------------------------------------------------------------------------------------------
-\title{1.3 Coulomb Interference -- Results II}
+\context{1. Elastic Scattering of Protons}
+\title{1.3 Coulomb Interference}
 
-\> importance of the interference term:
+\vskip-3mm
+
+\> effect of $\Ps$ in cross section?
+
+\vfil
+
+\centerline{\bf Importance of the interference term}
+
 $$Z(t) = {|F^{\rm C+H}(t)|^2 - |F^{\rm C}(t)|^2 - |F^{\rm H}(t)|^2\over |F^{\rm C+H}(t)|^2}$$
 
-\> left: comparison between interference formulae, right: comparison between hadronic models
+\vskip2mm
+{
+\iitskip4pt
+\line{\fig*[4cm]{fig/pdf/el_cic_diff_Z_slides.pdf}\hss\raise8mm\vbox{\hsize10.5cm
+\> comparison between interference formulae
+\>> SWY reliable only for small $|t|$
+\>> differences between CKL and ``this thesis'' less pronounced (only $1\%$ difference at the peak at $|t| \approx 0.5\un{GeV^2}$)
+\>> suppression understood -- interference can only be important if $|F^{\rm C}| \approx |F^{\rm H}|$
+}}
+
+\line{\fig*[4cm]{fig/pdf/el_mod_Z_slides.pdf}\hss\raise30mm\vtop{\hsize10.5cm
+\> comparison between hadronic models -- interference important in 
+\>> ``Coulomb region'' ($|t|\approx 10^{-3}\un{GeV^2}$)
+\>> minima of hadronic models
+}}
+}
+
+
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{Chapter 2: The TOTEM Experiment}
+
+\itskip0pt
+
+\centerline{\bf physics programme}
+\vskip1mm
+\> elastic scattering measurement in a wide $t$-range
+\> total cross section measurement
+\> a study of soft and hard diffraction
+
+\vfil
+\vskip-5mm
+$$\Downarrow$$
+\vfil
+
+\centerline{\bf requirements}
+\vskip1mm
+\> detect most fragments from inelastic collisions
+\> excellent acceptance for scattered forward protons
+
+\vfil
+\vskip-3mm
+$$\Downarrow$$
+\vfil
+
+\centerline{\bf detector apparatus}
+\vskip1mm
+% SAY: symmetric left (sector 45) -- right (sector 56)
 
 \line{%
 	\hss
-	\fig*[,3.5cm]{fig/pdf/el_cic_diff_Z_sum.pdf}%
-	\hss
-	\fig*[,3.5cm]{fig/pdf/el_mod_Z.pdf}%
-	\hss
-}
-
-\> SWY reliable only for small $|t|$
-\> differences between CKL and CE less pronounced (only $1\%$ difference at the peak at $|t| \approx -0.5\un{GeV^2}$)
-\> suppression understood -- interference can only be important if Coulomb and hadronic amplitudes are comparable in size $\Rightarrow$ importance sees enhancements in minima of hadronic models
-
-
-\newpage%------------------------------------------------------------------------------------------
-\title{1.3 Coulomb Interference -- Results III}
-
-\> comparison between
-\>> SWY formula (often used, but based on inconsistent assumptions)
-\>> CKL formula (TODO)
-
-$$R(t) = {|F^{\rm C+H}_{\rm CKL}(t)|^2 - |F^{\rm C+H}_{\rm SWY}(t)|^2 \over |F^{\rm C+H}_{\rm CKL}(t)|^2}$$
-
-\centerline{\fig*[,4cm]{fig/pdf/el_mod_R.pdf}}
-
-\> at low $|t|$ discrepancy of few per-mile
-\> discrepancy pronounced at dips of hadronic amplitude
-
-\newpage%------------------------------------------------------------------------------------------
-\title{2. The TOTEM Experiment}
-
-\> TOTEM -- forward hadronic phenomena at the LHC:
-\>> elastic scattering measurement in a wide $t$-range,
-\>> total cross section measurement and
-\>> a study of soft and hard diffraction.
-
-\centerline{$\Downarrow$}
-
-\> requirements
-\>> detect most fragments fragments from inelastic collisions
-\>> excellent acceptance for outgoing elastic and diffractive protons
-
-\centerline{$\Downarrow$}
-
-\> detector apparatus -- symmetric left (sector 45) -- right (sector 56)
-
-\line{\hss\fig*[,5cm]{fig/pdf/ttm_det_overview.pdf}\hss}
-
-\newpage%------------------------------------------------------------------------------------------
-\title{2.1 The Roman Pot system}
-
-\> 2 stations ($220\un{m}$, $147\un{m}$) in each arm
-
-\line{\hss
-	\vbox{\hbox{2 units in each station}\hbox{\fig*[,3.5cm]{fig/pdf/rp_station.pdf}}}%
-	\hss
-	\vbox{\hbox{3 RPs in each unit}\hbox{\fig*[,3.5cm]{fig/pdf/rp_unit.pdf}}}%
+	\fig*[,5.5cm]{fig/pdf/lhc.pdf}%
+	\hskip0mm
+	\fig*[,5.5cm]{fig/pdf/ttm_det_overview.pdf}%
 	\hss
 }
 
-\line{\hss
-	\vbox{\hbox{\strut Roman Pot (RP)}\hbox{\fig*[,3.5cm]{fig/pdf/rp_pot.pdf}}}%
+\newpage%------------------------------------------------------------------------------------------
+\context{2. The TOTEM Experiment}
+\title{2.1 The Roman Pot System}
+
+\line{\hss\fig*[15.9cm]{fig/external/lhc_layout.pdf}\hss}
+
+\vfil
+
+\bgroup
+\advance\hsize5mm
+\line{\hskip-5mm\hss\offinterlineskip
+	\vbox{\hbox{\FigLabel\strut 2 units in each station}\hbox{\fig*[,3.5cm]{fig/pdf/rp_station.pdf}}}%
 	\hss
-	\vbox{\hbox{\strut 5+5 Si strip sensors in each RP}\hbox{\fig*[,3.5cm]{fig/pdf/rp_package.pdf}}}%
+	\vbox{\hbox{\FigLabel\strut 3 RPs in each unit}\hbox{\fig*[,3.5cm]{fig/pdf/rp_unit.pdf}}}%
 	\hss
-	\vbox{\hbox{\strut sensor}\hbox{\fig*[,3.5cm]{fig/pdf/rp_hybrid.pdf}}}%
+	\vbox{\hbox{\FigLabel\strut Roman Pot (RP)}\hbox{\fig*[,3.5cm]{fig/pdf/rp_pot.pdf}}}%
 	\hss
 }
 
-\> stack of 5+5 back-to-back mounted ``edge-less'' Si sensors with strip pitch $66\un{\mu m}$
+\vfil
 
-\> U and V projections
+\line{\hskip-5mm\hss\offinterlineskip
+	\vbox{\hbox{\FigLabel\strut detector package (DP) in each RP}\hbox{\fig*[,3.5cm]{fig/pdf/rp_package.pdf}}}%
+	\hss
+	\vbox{\hbox{\FigLabel\strut ``edge-less'' silicon sensor}\hbox{\fig*[,3.5cm]{fig/pdf/rp_hybrid.pdf}}}%
+	\hss
+	\vbox{\hbox{\FigLabel\strut strip orientations within a DP}\hbox{\fig*[,3.5cm]{fig/external/strip_orientation.pdf}}}%
+	\hss
+}
+\egroup
+
+\vfil
+
+\> DP = stack of $5U$ + $5V$ back-to-back mounted ``edge-less'' Si sensors with strip pitch $66\un{\mu m}$
 
 
 \newpage%------------------------------------------------------------------------------------------
-\title{2.2 Proton Measurement with Roman Pot Detectors}
+\context{2. The TOTEM Experiment}
+\title{2.2 Proton Measurement with Roman RPs}
 
-\line{\hss\fig*[,3cm]{fig/pdf/ttm_proton_transport.pdf}\hss}
+\line{\hss\fig*[11cm]{fig/pdf/ttm_proton_transport.pdf}\hss}
 
-\> fro elastic protons, the proton transport ($\equiv$ optics):
+\line{\hss\vtop{\hsize7.5cm
+\> proton transport ($\equiv$ optics) in \em{general}
+
+\line{\hss\fig*[7cm]{fig/external/proton_transport.png}\hss}
+}\hskip3mm\vtop{\hsize7.5cm
+\> proton transport for \em{elastic} protons
+$$x(s) \simeq L_x(s)\, \th_x^* + v_x(s)\, x^*$$
 $$y(s) \simeq L_y(s)\, \th_y^* + v_y(s)\, y^*$$
+\> optical functions: effective lengths $L$, magnifications $v$
+}\hss}
 
-\> optical functions: effective length $L_y$, magnification $v_y$, ...
+\vfil
 
-\> optics defines what and how can be seen
+\> optics defines what can be seen and how it looks like
 \>> sample of elastic events under three TOTEM-relevant optics scenarios
 
-\line{\hss\fig*[,3cm]{fig/pdf/ttm_hit_distribution.pdf}\hss}
+\line{\hss\fig*[,4cm]{fig/pdf/ttm_hit_distribution.pdf}\hss}
 
-\> TODO sometimes very low $L_x$
+% comment: sometimes very low $L_x$ -> application for horizontal alignment
 
+
+\newpage%------------------------------------------------------------------------------------------
+\title{Chapter 3: Roman Pot Simulation and Reconstruction Software}
+
+% mention: importance
+
+\line{\hss\fig*[,10.5cm]{fig/pdf/sr_sw_structure_slides.pdf}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{3. RP Software}
+\title{3.1 Elegent}
+
+\line{\hss\fig[7cm]{fig/pdf/sr_sw_structure_slides_eg.pdf}\hskip5mm\raise6.8cm\vtop{\hsize8cm
+\> ELastic Event GENeraTor
+\> generates random elastic scattering events according to a chosen phenomenological model (chapter 1)
+\> output in standard format (HepMC)
+}\hss}
+
+\newpage%------------------------------------------------------------------------------------------
+\context{3. RP Software}
+\title{3.2 Beam Smearing}
+
+\line{\hss\fig[7cm]{fig/pdf/sr_sw_structure_slides_bs.pdf}\hskip5mm\raise6.8cm\vtop{\hsize8cm
+\> accounts for beam-smearing effects
+\>> vertex smearing
+\>> angular smearing
+\>> energy smearing
+
+\bls
+
+\line{%
+	\hss
+	\fig*[7cm]{fig/pdf/smearing_vertex.pdf}%
+	\hss
+}
+
+\bls
+\bls
+
+\line{%
+	\hss
+	\fig*[7cm]{fig/pdf/smearing_angular_energy.pdf}%
+	\hss
+}
+}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{3. RP Software}
+\title{3.3 Fast Simulation}
+
+\line{\hss\fig[7cm]{fig/pdf/sr_sw_structure_slides_fs.pdf}\hskip5mm\raise6.8cm\vtop{\hsize8cm
+\> alternative to time-expensive Geant4 simulation
+\> RP hits calculated
+\>> by direct use of optics parameterization
+\>> and a simple strip-discretization algorithm
+\> used for alignment MC simulations
+% argue that it is all OK for that purpose
+}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{3. RP Software}
+\title{3.4 Pattern Recognition}
+
+\line{\hss\fig[7cm]{fig/pdf/sr_sw_structure_slides_pr.pdf}\hskip5mm\raise6.8cm\vtop{\hsize8cm
+\> recognizes linear-track patterns within RP hits
+\> independently in $U$ and $V$ projections
+\> employs an optimized Hough-transform\\ algorithm 
+
+\vskip\baselineskip
+
+\line{%
+	\offinterlineskip
+	\hss
+	\vbox{%
+		\hbox{\FigLabel hit $(x, y)$ transformed into line $b = -xa + y$}%
+		\fig*[7cm]{fig/pdf/sr_pattern_reco.pdf}%
+	}%
+	\hss
+}
+
+\bls
+
+\line{%
+	\offinterlineskip
+	\hss
+	\vbox{%
+		\hbox{\FigLabel recognition results for two events}%
+		\fig*[7cm]{fig/pdf/sr_pattern_reco_ex.pdf}%
+	}%
+	\hss
+}
+}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{3. RP Software}
+\title{3.5 Reconstruction of Elastic Events}
+
+\line{\hss\fig[7cm]{fig/pdf/sr_sw_structure_slides.pdf}\hskip5mm\raise6.8cm\vtop{\hsize8cm
+
+\> elastic reconstruction performance study
+
+\> test of entire chain
+
+\bls
+
+\line{\offinterlineskip
+	\hss
+	\vbox{\FigLabel\hbox{$\be ^* = 1535\un{m}$}\hbox{\fig*[5.2cm]{fig/pdf/elr_1535_res_t.pdf}}}%
+	\hss
+}
+
+\bls
+
+\line{\offinterlineskip
+	\hss
+	\vbox{\FigLabel\hbox{$\be^* = 90\un{m}$}\hbox{\fig*[5.2cm]{fig/pdf/elr_90_res_t.pdf}}}%
+	\hss
+}
+
+}\hss}
+
+
+% 90m: fit doesn't describe the data
+
+
+\newpage%------------------------------------------------------------------------------------------
+\title{Chapter 4: Alignment of Roman Pots}
+
+%\line{\hss\vbox{\htab*{
+%\omit&\multispan2\bhrulefill\cr
+%\omit& \be^* = 1535\un{m},\ \sqrt s = 14\un{TeV} & \be^* = 3.5\un{m},\ \sqrt s = 7\un{TeV}\cr\bln
+%L_y							& 270\un{m}			& 21\un{m} \cr\ln
+%\th_{\rm min}				& 6\un{\mu rad}		& 160\un{\mu rad} \cr\bln
+%\De y						&\multispan2\bvrule\hfil $100\un{\mu m}$\hfil \cr\ln
+%\De\th_y \equiv \De y/L_y	& 0.4\un{\mu rad}	& 5\un{\mu rad} \cr\ln
+%\De\th_y / \th_{\rm min}	& 7\%	& 3\%	\cr\bln
+%}}\hss}
+
+% what is specific to RP alignment
+
+\> RPs movable devices
+\>> alignment for every run
+\>> RP position depends beam conditions
+
+\vfil
+
+\> RPs detect very small angles (down to few $\mu\rm rad$)\\
+$\Rightarrow$ tracks at very small distances from the beam\\
+$\Rightarrow$ very accurate alignment needed
+
+\vfil
+
+\line{\raise8mm\vbox{\hsize11cm
+\> 2 levels of alignment
+\>> alignment of RPs (passive material): beam-based alignment
+\>> alignment of sensors (active material): track-based alignment 
+}\hskip3mm plus1fil
+\fig*[3.cm]{fig/pdf/al_rp_scheme.pdf}}
+
+\vfil
+
+\> ultimate goal: alignment of sensors wrt.\ beam
+
+\vfil
+
+\line{\raise8mm\vbox{\hsize11cm
+\> several complementary methods
+\>> collimation alignment: rough alignment of RPs wrt.~beam
+\>> track-based alignment: relative alignment of sensors of one station
+\>> alignment with elastic events: fine alignment of sensors wrt.~beam
+}\hskip3mm plus1fil
+\fig*[3.cm]{fig/pdf/detector_overlap.pdf}}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{Chapter 4: Alignment of Roman Pots}
+\title{4.1 Collimation Alignment}
+
+\vskip-3mm
+\itskip0pt
+
+\> prior to any data-taking
+\> alignment of RPs (passive material)
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_collim_scheme.pdf}\hss}
+\line{\fig*[,5.5cm]{fig/pdf/al_collim_ex.pdf}\hss\vbox{\hsize6cm
+\> precision
+\>> alignment of RPs: $\approx 20\un{\mu m}$ (step)
+\>> alignment of sensors: $\approx 100\un{\mu m}$ only (poorly defined placement of sensors in within a RP)
+}\hss}
+
+%\> beam scraped by collimator(s) at a given distance
+%\> RPs approached until ``touch'' is signalized by beam-loss monitors downstream
+%\> beam scraped symmetrically around beam center\\
+%$\Rightarrow$ vertical RPs aligned wrt.~beam axis\\
+%$\Rightarrow$ calibration of the position-measurement offsets
+%
+%\line{\hss\fig*[,4cm]{fig/pdf/al_collim.pdf}\hss}
+%
+%\> horizontal pots (one jaw only): need to rely on the calculation of beam $\si$ (can be verified/improved later)
+
+
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{Chapter 4. Alignment of Roman Pots}
+\title{4.2.1-2 Track--based Alignment}
+
+\centerline{\bf sensor misalignments}
+\vskip1mm
+
+\line{\hss\raise1cm\vbox{\hsize7cm
+\> generally 3 shift and 3 rotations
+$$\Downarrow$$
+\> only 2 misalignments relevant
+\>> shift in read-out direction $\De s$
+\>> rotation about beam axis $\De\rh$
+
+}\hskip3mm\fig*[,3.5cm]{fig/pdf/al_sensor_misalignments.pdf}\hss}
+
+\vfil
+
+\centerline{\bf track based alignment method}
+\vskip1mm
+
+\line{\hss\fig*[,3.5cm]{fig/pdf/al_proton_sensor_interaction_slides.pdf}\hskip3mm\vbox{\hsize7.3cm
+\> a sensor's measurement outcome:
+$$m \simeq \underbrace{\vec d\cdot(\vec a z + \vec b - \vec c)}_{\hbox{track}} \underbrace{\hskip2mm - \hskip2mm \De s\hskip2mm + \hskip2mm\ldots \cdot \De\rh}_{\hbox{effect of misalignments}}$$
+
+\> simultaneous fit of track ($\vec a$, $\vec b$) and misalignment parameters ($\De s$, $\De\rh$)
+$$\downarrow$$
+\> misalignment parameters determined by\break a ``residual analysis''
+}\hss}
+
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{4.2. Track--based Alignment}
+\title{4.2.3 Singular Modes}
+\vskip-3mm
+\itskip0pt
+
+\> \hbox{\vtop{\hsize8cm\noindent misalignments determined by a ``residual analysis''}\hskip5mm $:$\hskip5mm $\vec v_{\rm residuals} = \mat S\, \vec v_{\rm misalignments}$}
+\> \hbox{\vtop{\hsize8cm\noindent some misalignment modes don't yield residuals}\hskip5mm $:$\hskip5mm\hbox{$\mat S$ is singular}}
+\vskip-3mm
+$$\Downarrow$$
+\> \hbox{\vtop{\hsize8cm\noindent singular modes}\hskip5mm $:$\hskip5mm\hbox{modes with zero eigenvalue}}
+
+\vfil
+
+\> number of singular modes depends on the geometry and track distribution
+
+\line{\hss\fig*[,4cm]{fig/pdf/al_eigenvalues_theta_slides.pdf}\vbox{\hsize9cm
+\noindent $\leftarrow$ regular modes
+\vskip9mm
+\noindent $\leftarrow$ weak modes (transition from singular to regular)
+\vskip5mm
+\noindent $\leftarrow$ singular modes
+\vskip9mm
+}\hss}
+
+
+\> singular modes in realistic case ($U$ and $V$ read-out directions, very parallel tracks)
+\>> unit shifts in $x$ and $y$
+\>> unit rotation about beam axis
+
+%{\SmallerFonts\line{\hss\vbox{\htab*{
+%\omit&\multispan{4}\bhrulefill\cr
+%\omit			&\multispan2\bvrule\strut\hfil two read-out groups\hfil &\multispan2\strut\vrule\hfil three and more read-out groups\hfil\cr
+%\omit\bhrulefill&\multispan{4}\hrulefill\cr
+%						& \hbox{non-parallel tracks} & \hbox{parallel tracks} & \hbox{non-parallel tracks} & \hbox{parallel tracks} \cr\bln
+%\hbox{read-out shifts}	&\multispan4\bvrule\hfil {\bf 4}: $x$ and $y$ global and linearly progressive shifts\hfil\cr\ln
+%%
+%&\hbox{{\bf 2}: gl. rot.}  &\hbox{{\bf 4}: gl. and l.p. rots.} &\hbox{{\bf 1}: gl. rot.} &\hbox{{\bf 2}: gl. and l.p. rot.} \cr
+%\omit\vbox to 0pt{\vss\hbox{ rotations about $z$ }\vss}&\multispan4\cr
+%& \hbox{for $U$ and $V$ indep.} & \hbox{for $U$ and $V$ indep.}&&\cr\ln
+%%
+%& \hbox{{\bf 4}: gl. and l.p.} &  & \hbox{{\bf 2}: gl. and l.p.}  & \cr
+%\hbox{shifts in }z	& \hbox{shifts in }z & N_{\rm sensors} & \hbox{shift in }z& N_{\rm sensors} \cr
+%& \hbox{for $U$ and $V$ indep.} &&&\cr\bln
+%}}\hss}}
+
+\vfil
+\title{4.2.4 Imposed Constraints}
+\vskip-3mm
+
+\> singular modes can be regularized by imposing additional constraints (e.g.~mean sensor shift within a station is zero)
+
+\> actual values of singular modes are determined at later stages of alignment (profile, elastic)
+
+\newpage%------------------------------------------------------------------------------------------
+\context{4.2. Track--based Alignment}
+\title{4.2.6 Monte-Carlo Tests}
+
+\centerline{\bf statistical test of alignment algorithm}
+\centerline{(one color per each RP of a station)}
+
+\line{\hss\fig*[,8.2cm]{fig/pdf/al_stat_final_slides.pdf}\hss}
+
+\> systematic error compatible with zero
+\> estimated uncertainty falls with $\sqrt{N_{\rm tracks}}$
+
+\newpage%------------------------------------------------------------------------------------------
+\context{4.2. Track--based Alignment}
+\title{4.2.8 Alignment of Detector Packages}
+\vskip-3mm
+
+\> rotation of detector package $\longrightarrow$ \em{rotation} of each sensor and \em{shift} of each sensor
+\>> shift linearly dependent on sensor's longitudinal ($z$) position
+
+\line{%
+	\hss
+	\fig*[,3cm]{fig/pdf/rp_package.pdf}
+	\hss
+	\fig*[,3cm]{fig/pdf/al_rp_misalignment.pdf}
+	\hss
+}
+
+\vfil
+
+\title{4.2.10 LHC Alignment Results}
+\vskip-3mm
+
+\line{\hss\fig*[8cm]{fig/pdf/al_comp_det_per_unit.pdf}\hskip3mm\raise1mm\vbox{\hsize7.0cm
+\> can determine all 3 DP rotations (order of $1\un{mrad}$)
+\> shifts in within the package compatible with our expectation (order of $20\un{\mu m}$)
+\> sensor rotations about the beam axis share a common component (DP rotation, order of $1\un{mrad}$)
+\bls
+\> note the result stability (10 LHC data-sets overlaid)
+}}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{4.2. Track--based Alignment}
+\title{4.2.9 Internal Alignment Results}
+
+\centerline{\bf alignment of sensors within one RP}
+
+\> comparison of results from
+\>> optical measurement in lab
+\>> track-based alignment applied to beam-test and cosmic data (H8)
+\>> track-based alignment applied to LHC data
+
+\line{\hss\fig*[,6cm]{fig/pdf/al_comp_det_per_pot_dp2_ext2.pdf}\hss}
+
+\> good agreement, differences due to
+\>> optical measurement insensitive to shifts among planes
+\>> different conditions (mainly temperature) for beam-test and LHC data
+
+
+%\newpage%------------------------------------------------------------------------------------------
+%\title{4.2.10 LHC Results}
+%
+%\line{\hss\fig*[7cm]{fig/pdf/al_comp_rp_all_rot.pdf}\hss}
+%
+%\> add to TOC?
+
+\newpage%------------------------------------------------------------------------------------------
+\context{Chapter 4: Alignment of Roman Pots}
+\title{4.3 Profile Methods}
+
+\> account for singular modes of track-based alignment: unit $x, y$ shifts and rotation about $z$
+\> alignment wrt.~beam: determining shifts $\equiv$ determining beam position
+
+\> expected event symmetries
+\>> up-down symmetry for all processes (zero vertical dispersion) $\Rightarrow$ vertical alignment
+\>> left-right symmetry for elastic scattering (zero momentum loss) $\Rightarrow$ horizontal alignment
+
+\vfil
+\centerline{\bf observed hit distribution}
+\vskip3mm
+\line{\hss\fig*[6cm]{fig/pdf/al_prof_hits_slides.pdf}\hskip3mm\raise5mm\vbox{\hsize9cm
+\> elastic axis (green)
+\>> tilted due to $x$--$y$ coupling in optics
+\>> still can be well fitted $\Rightarrow$ horizontal alignment with\break $\approx 10\un{\mu m}$ uncertainty
+
+\bls
+
+\> diffractive proton distribution (around violet line)
+\>> influenced by non-zero vertical dispersion
+\>> fitting difficult (profiles non-linear)
+\>> vertical alignment needs extrapolation $\Rightarrow$ unsatisfactory precision
+}}
+
+%\line{\hss\fig*[4cm]{fig/pdf/al_prof_x_dists.pdf}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{Chapter 4: Alignment of Roman Pots}
+\title{4.4 Elastic Alignment}
+
+\centerline{\bf determination of beam position (per unit) with elastic events}
+\vskip2mm
+
+\line{\hss\fig*[,4.7cm]{fig/pdf/al_el_plots_sum_slides.pdf}\hss}
+
+\line{\vtop{\hsize4.5cm
+\centerline{\bf elastic event selection}
+}\hfil\vtop{\hsize4.9cm
+\centerline{\bf vertical alignment}
+
+\> remove data affected by acceptance effects
+\> bottom-RP distribution (blue)\\ flipped (black)
+\> shifted up-down to match the top-RP distribution (red)
+\> best match found (green)
+}\hfil\vtop{\hsize4.9cm
+\centerline{\bf horizontal alignment}
+\> $xy$ distribution fitted (violet)
+\> interpolated to vertical beam position
+}}
+
+%\> check/refinement of relative near-far vertical alignment
+%\line{\hss\fig*[,4cm]{fig/pdf/al_el_plots_dyy_one.pdf}\hss}
+
+%\newpage%------------------------------------------------------------------------------------------
+%\title{4.4 Elastic Alignment II}
+%
+%\> remove?
+%
+%\line{\hss\fig*[,4cm]{fig/pdf/al_el_plots_ylyr.pdf}\hss}
+
+\newpage%------------------------------------------------------------------------------------------
+\context{Chapter 4: Alignment of Roman Pots}
+\title{4.5 Alignment Summary}
+
+\line{\hss\AddBckg[1mm]{\offinterlineskip\vbox{\cmyk{\cmykBlack}\halign{\bstrut\bvrule\ #\hfil\ &\bstrut\bvrule\ \hfil#\hfil\ &\vrule\bstrut\hfil\ #\ \hfil\bvrule\cr
+\omit&\multispan2\bhrulefill\cr
+\omit& internal alignment & among detector packages \cr\bln
+misalignment & \vbox{\hbox{\bstrut shifts $\sim 20\un{\mu m}$}\hbox{rotations $\sim 1\un{mrad}$}} & \vbox{\hbox{\bstrut shifts $< 1\un{mm}$}\hbox{rotations $\sim \hbox{few }\un{mrad}$}} \cr
+&&$\Downarrow$\cr
+uncertainty after collimation alignment &  & \vbox{\hbox{\bstrut shifts $\sim 100\un{\mu m}$}\hbox{rotations $\sim \hbox{few}\un{mrad}$}}\cr\bln
+\multispan3\vbox to3mm{\vss}\cr
+\omit&\omit\hfil$\Downarrow$\hfil&\omit\cr
+\multispan3\vbox to3mm{\vss}\cr
+\omit&\multispan2\bhrulefill\cr
+\omit& relative alignment & global alignment wrt.~beam \cr
+\omit& (regular modes) & (singular modes) \cr\bln
+uncertainty after track-based alignment & \vbox{\hbox{\bstrut shifts $\ls 1\un{\mu m}$}\hbox{rotations $\ls 0.1\un{mrad}$}} & \vbox{\hbox{\bstrut shifts $\sim 100\un{\mu m}$}\hbox{rotations $\sim \hbox{few}\un{mrad}$}} \cr
+&&$\Downarrow$\cr
+uncertainty after elastic alignment &  & \vbox{\hbox{\bstrut hor.~shifts $\ls 5\un{\mu m}$}\hbox{\bstrut vert.~shifts $\ls 20\un{\mu m}$}\hbox{\bstrut rotations $\ls \hbox{few}\un{mrad}$}} \cr\bln
+}}}\hss}
+
+\newpage%------------------------------------------------------------------------------------------
+\title{Chapter 5: The First Elastic Scattering Measurement at the LHC}
+
+\line{\hss\fig*[,4.5cm]{fig/pdf/felm_scheme_slides.pdf}\hss}
+
+\vfil
+
+\> angular reconstruction (optimized robustness against optics perturbations):
+
+$$\eqnarray{
+	\hat\th_x^* = {\th_x^{\rm L} + \th_x^{\rm R}\over 2}\ ,\qquad
+		& \th_x^{\rm L} = {1\over {\d L^{45}_x\over \d z}} {x^{45}_{\rm F} - x^{45}_{\rm N}\over d}\cr
+	\hat\th_y^* = {\th_y^{\rm L} + \th_y^{\rm R}\over 2}\ ,\qquad
+		& \th_y^{\rm L} = {1\over 2} \left( {y^{45}_{\rm F}\over L^{45}_{y, \rm F} } + {y^{45}_{\rm N}\over L^{45}_{y, \rm N} } \right)\cr
+}$$
+
+\vfil
+
+\> event selection: 6 cuts
+\>> left-right collinearity ($x$ and $y$ projections)
+\>> low momentum loss: correlation between local (RP) angle and hit position (per arm per projection)
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{Chapter 5: The First Elastic Scattering Measurement at the LHC}
+\title{5.1 Background}
+
+\> background = everything that passes selection cuts but is not elastic
+
+\bls
+
+\line{\hss\vbox{%
+	\fig*[4.5cm]{fig/pdf/felm_background_int_dg_fit_cut1.pdf}
+	\fig*[4.5cm]{fig/pdf/felm_background_before.pdf}
+	}\hskip3mm\raise12mm\vbox{\hsize10.5cm
+	
+\> background integral
+\>> relax one of the cuts: e.g. $\th_x$ collinearity
+\>> plot $\th_x^{*R} - \th_x^{*L}$
+\>> fit signal (blue) in central (green) region
+\>> fit the tails for background (red)
+\>> number of background events: integral of red curve over the selection (green) region
+
+\bls
+\bls
+
+\> background distribution
+%\>> reasonable assumption: dominant contribution is left-right independent
+\>> parameterize the distribution of background events on the cut tails
+\>> interpolate it to the cut selection region (green)
+
+\bls
+\bls
+
+\> background contribution to elastic distribution
+\>> impose collinearity cuts on the background fit
+
+}\hss}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{Chapter 5: The First Elastic Scattering Measurement at the LHC}
+\title{5.2 Unfolding}
+
+\vskip-3mm
+
+\> accounts for the finite resolution of the RP detector system
+\>> dominant contribution comes from beam divergence
+
+\vskip-3mm
+
+\line{\raise15mm\vbox{\hsize10.5cm
+\> method 1: analytic unsmearing
+\>> data fitted with sum of 3 Gaussians and $\th\cdot$Gaussian
+\>> analytic unsmearing simply by modifying parameters
+}\hss\fig*[4cm]{fig/pdf/felm_unfolding_m1_fit_slides.pdf}}
+
+\vskip-3mm
+
+\> method 2: learning the trend of corrections + back extrapolation
+
+\line{\hss\fig*[10cm]{fig/pdf/felm_unfolding_m2_scheme.pdf}\hss}
+
+
+\line{\raise15mm\vbox{\hsize10.5cm
+\> results (multiplicative correction factor)
+\>> both methods in agreement
+\>> right plot indicates the value of the correction and its uncertainty
+}\hss\fig*[4cm]{fig/pdf/felm_unfolding_m1m2_cmp.pdf}}
+
+
+\newpage%------------------------------------------------------------------------------------------
+\context{Chapter 5: The First Elastic Scattering Measurement at the LHC}
+\title{5.3 Results and Comparison to Models}
+
+\> TOTEM's elastic $\d\si/\d t$ measurement at $\sqrt s = 7\un{TeV}$ compared to model predictions\\
+(an updated plot version)
+
+\line{\hss\fig*[15cm]{fig/pdf/ttm_mod_cmp_dsdt.pdf}\hss}
+
+
+%----------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------
+
+\newpage%------------------------------------------------------------------------------------------
+\hbox{}\vfil
+\title{Backup Slides}
+
+%\newpage%------------------------------------------------------------------------------------------
+%\title{1.3 Coulomb Interference -- Results III}
+%
+%\> comparison between
+%\>> SWY formula (often used, but based on inconsistent assumptions)
+%\>> CKL formula (TODO)
+%
+%$$R(t) = {|F^{\rm C+H}_{\rm CKL}(t)|^2 - |F^{\rm C+H}_{\rm SWY}(t)|^2 \over |F^{\rm C+H}_{\rm CKL}(t)|^2}$$
+%
+%\centerline{\fig*[,4cm]{fig/pdf/el_mod_R.pdf}}
+%
+%\> at low $|t|$ discrepancy of few per-mile
+%\> discrepancy pronounced at dips of hadronic amplitude
 
 \newpage%------------------------------------------------------------------------------------------
 \title{2.3 The Total Cross Section}
@@ -313,75 +945,8 @@ $$
 \line{\hss\fig*[,3.5cm]{fig/pdf/ext_results_90.pdf}\hss}
 }}
 
-
 \newpage%------------------------------------------------------------------------------------------
-\title{3. Roman Pot Simulation and Reconstruction Software}
-
-% mention: importance
-
-\line{\hss\fig*[,6cm]{fig/pdf/sr_sw_structure.pdf}\hss}
-
-\> implemented in CMSSW
-
-\newpage%------------------------------------------------------------------------------------------
-\title{3.1 Elegent}
-
-\> ELastic Event GENeraTor
-\> generates random elastic scattering events according to a chosen phenomenological model
-\> output in HepMC format
-
-\vfil
-\title{3.2 Beam Smearing}
-
-\> accounts for beam-smearing effects
-\>> vertex smearing
-\>> angular smearing
-\>> energy smearing
-
-\line{%
-	\hss
-	\fig*[,1.8cm]{fig/pdf/smearing_vertex.pdf}%
-	\hss
-	\fig*[,1.8cm]{fig/pdf/smearing_angular_energy.pdf}%
-	\hss
-}
-
-\newpage%------------------------------------------------------------------------------------------
-\title{3.3 Fast Simulation}
-
-\> an alternative to time-expensive Geant4 simulation
-\> RP hits calculated
-\>> by direct use of optics parameterization
-\>> and a simple strip-discretization algorithm
-\> used for alignment MC simulations
-% argue that it is all OK for that purpose
-
-\vfil
-\title{3.4 Pattern Recognition}
-
-\> recognizes linear-track patterns within RP hits
-\> search performed independently in $U$ and $V$ projections
-\> employs an optimized Hough-transform algorithm 
-
-\vskip\baselineskip
-
-\line{%
-	\offinterlineskip
-	\hss
-	\vbox{%
-		\hbox{\FigLabel hit $(x, y)$ transformed into line $b = -xa + y$}%
-		\fig*[,2.7cm]{fig/pdf/sr_pattern_reco.pdf}%
-	}%
-	\hskip3mm plus1fil
-	\vbox{%
-		\hbox{\FigLabel recognition results for two events}%
-		\fig*[,2.7cm]{fig/pdf/sr_pattern_reco_ex.pdf}%
-	}%
-	\hss
-}
-
-\newpage%------------------------------------------------------------------------------------------
-\title{3.5 Reconstruction of Elastic Events}
+\title{3. RP Software\hfill 3.5 Reconstruction of Elastic Events}
 
 \> module to study elastic reconstruction performance (simulation phase of the experiment)
 
@@ -409,7 +974,7 @@ $$x(s) = L_x(s)\,\th_x^* + v_x(s)\,x^*$$
 % 90m: fit doesn't describe the data
 
 \newpage%------------------------------------------------------------------------------------------
-\title{3.x Data Quality Monitor}
+\title{3.6 Data Quality Monitor}
 
 \> interactive program to visualize results of the reconstruction steps
 
@@ -419,545 +984,6 @@ $$x(s) = L_x(s)\,\th_x^* + v_x(s)\,x^*$$
 \>> reconstruction software tuning and debugging
 
 \line{\hss\fig*[,7cm]{fig/external/dqm.png}\hss}
-
-
-\newpage%------------------------------------------------------------------------------------------
-\title{4 Alignment of Roman Pots}
-
-\line{\hss\vbox{\htab*{
-\omit&\multispan2\bhrulefill\cr
-\omit& \be^* = 1535\un{m},\ \sqrt s = 14\un{TeV} & \be^* = 3.5\un{m},\ \sqrt s = 7\un{TeV}\cr\bln
-L_y							& 270\un{m}			& 21\un{m} \cr\ln
-\th_{\rm min}				& 6\un{\mu rad}		& 160\un{\mu rad} \cr\bln
-\De y						&\multispan2\bvrule\hfil $100\un{\mu m}$\hfil \cr\ln
-\De\th_y \equiv \De y/L_y	& 0.4\un{\mu rad}	& 5\un{\mu rad} \cr\ln
-\De\th_y / \th_{\rm min}	& 7\%	& 3\%	\cr\bln
-}}\hss}
-
-\vfil
-
-\> 2 levels of alignment
-\>> alignment of RPs (passive material): beam-based alignment
-\>> alignment of sensors (active material): track-based alignment 
-
-\vfil
-
-\> ultimate goal: alignment of sensors wrt.\ beam
-
-\vfil
-
-\> several complementary methods
-\>> collimation alignment: rough alignment of RPs wrt.~beam
-\>> track-based alignment: relative alignment of sensors of one station
-\>> alignment with elastic events: fine alignment of sensors wrt.~beam
-
-\newpage%------------------------------------------------------------------------------------------
-\title{4.1 Collimation Alignment}
-
-\> ``online'' procedure, alignment of RPs (passive material)
-
-\> beam scraped by collimator(s) at a given distance
-\> RPs approached until ``touch'' is signalized by beam-loss monitors downstream
-\> beam scraped symmetrically around beam center\\
-$\Rightarrow$ vertical RPs aligned wrt.~beam axis\\
-$\Rightarrow$ calibration of the position-measurement offsets
-
-\line{\hss\fig*[,4cm]{fig/pdf/al_collim.pdf}\hss}
-
-\> horizontal pots (one jaw only): need to rely on the calculation of beam $\si$ (can be verified/improved later)
-
-\> implication on the sensor alignment: precision $\approx 100\un{\mu m}$ only (poorly defined placement of sensors in within a RP)
-
-\newpage%------------------------------------------------------------------------------------------
-\title{4.2.1-2 Track--based Alignment, The Method}
-
-\> sensor misalignments
-\>> transverse and longitudinal shifts
-\>> 3 rotations (only rotation about beam axis relevant) 
-
-\line{\hss\fig*[,3.5cm]{fig/pdf/al_proton_sensor_interaction.pdf}\hss}
-
-\> measurement outcome of a sensor:
-$$m = \underbrace{\vec d\cdot(\vec a z + \vec b - \vec c)}_{\hbox{track}} + \underbrace{\sum_i \ga_i\,\ch_i}_{\hbox{effect of misalignments}} + \hbox{ (negligible non-linear terms)}$$
-\vskip-4mm
-$$\swarrow \hskip6cm \searrow$$
-
-\line{\vtop{\hsize7cm
-\> the only relevant transverse shift is in read-out direction
-$$\downarrow$$
-\> 3 $\ch$ parameters per sensor: read-out and longitudinal shifts and rotation about beam axis
-}\hss\vtop{\hsize7cm
-\> simultaneous fit of track ($\vec a$, $\vec b$) and misalignment parameters ($\ch_i$)
-$$\downarrow$$
-\> misalignment parameters $\ch$ determined by a ``residual analysis''
-}}
-
-
-\newpage%------------------------------------------------------------------------------------------
-\title{4.2.3 Singular Modes}
-\vskip-3mm
-
-\> misalignment parameters $\ch$ determined by a ``residual analysis''
-\> some misalignment modes don't yield residuals (they only bias fitted track parameters)\\
-	$\Rightarrow$ singular modes
-
-\> geometrical singular modes
-\>> global shifts, shearings, rotations
-\>> if only two read-out directions (e.g.~$U$ and $V$), then rotations independently for each group
-
-\> singular modes because of special track distributions
-\>> e.g.: tracks all parallel $\Rightarrow$ more singular modes (+ linearly progressive rotation)
-
-{\SmallerFonts\line{\hss\vbox{\htab*{
-\omit&\multispan{4}\bhrulefill\cr
-\omit			&\multispan2\bvrule\strut\hfil two read-out groups\hfil &\multispan2\strut\vrule\hfil three and more read-out groups\hfil\cr
-\omit\bhrulefill&\multispan{4}\hrulefill\cr
-						& \hbox{non-parallel tracks} & \hbox{parallel tracks} & \hbox{non-parallel tracks} & \hbox{parallel tracks} \cr\bln
-\hbox{read-out shifts}	&\multispan4\bvrule\hfil {\bf 4}: $x$ and $y$ global and linearly progressive shifts\hfil\cr\ln
-%
-&\hbox{{\bf 2}: gl. rot.}  &\hbox{{\bf 4}: gl. and l.p. rots.} &\hbox{{\bf 1}: gl. rot.} &\hbox{{\bf 2}: gl. and l.p. rot.} \cr
-\omit\vbox to 0pt{\vss\hbox{ rotations about $z$ }\vss}&\multispan4\cr
-& \hbox{for $U$ and $V$ indep.} & \hbox{for $U$ and $V$ indep.}&&\cr\ln
-%
-& \hbox{{\bf 4}: gl. and l.p.} &  & \hbox{{\bf 2}: gl. and l.p.}  & \cr
-\hbox{shifts in }z	& \hbox{shifts in }z & N_{\rm sensors} & \hbox{shift in }z& N_{\rm sensors} \cr
-& \hbox{for $U$ and $V$ indep.} &&&\cr\bln
-}}\hss}}
-
-\vfil
-\title{4.2.4 Imposed Constraints}
-\vskip-3mm
-
-\> singular modes can be regularized by imposing additional constraints (e.g.~mean sensor shift within a station is zero)
-
-\> actual values of singular modes are determined at later stages of alignment (profile, elastic)
-
-\newpage%------------------------------------------------------------------------------------------
-\title{4.2.6 Monte-Carlo Tests}
-
-\> insufficient sensitivity (tracks too parallel) to improve longitudinal alignment (shifts in $z$)
-\> statistical behaviour for the other two parameters:
-
-\line{\hss\fig*[,7cm]{fig/pdf/al_stat_final.pdf}\hss}
-
-\> systematic error compatible with zero
-\> estimated uncertainty falls with $\sqrt{N_{\rm tracks}}$
-\> ratio of stat.~error and est.~uncertainty is flat but slightly below zero (uncertainty overestimated)
-
-\newpage%------------------------------------------------------------------------------------------
-\title{4.2.9 Internal Alignment Results}
-
-\> internal alignment = alignment of sensors in one RP
-\> imposed constraints: first and last planes' shift and rotation fixed at zero
-
-\> comparison of
-\>> optical measurement in lab
-\>> TBA applied to (muon) beam-test data
-\>> TBA applied to LHC data
-
-\line{\hss\fig*[,6cm]{fig/pdf/al_comp_det_per_pot_dp2_ext2.pdf}\hss}
-
-\> quite pleasant agreement, differences due to
-\>> optical measurement insensitive to shifts among hybrids
-\>> different conditions (mainly temperature) for beam-test and LHC data
-
-\newpage%------------------------------------------------------------------------------------------
-\title{4.2.8 Alignment of Detector Packages}
-
-\> rotation of detector package $\longrightarrow$ rotation of each sensor and shift of each sensor
-\>> shift linearly dependent on sensor's longitudinal ($z$) position
-
-\line{\hss\fig*[6cm]{fig/pdf/al_rp_misalignment.pdf}\hss}
-
-\> observation:
-
-\line{\hss\fig*[8cm]{fig/pdf/al_comp_det_per_unit.pdf}\hskip3mm\raise1cm\vbox{\hsize7.0cm
-\> can determine all 3 DP rotations (order of $1\un{mrad}$)
-\> shifts in within the package compatible with our expectation (order of $20\un{\mu m}$)
-\> sensor rotations about the beam axis share a common component (DP rotation, order of $1\un{mrad}$)
-}}
-
-\> note the result stability (10 LHC data-sets overlaid)
-
-
-%\newpage%------------------------------------------------------------------------------------------
-%\title{4.2.10 LHC Results}
-%
-%\line{\hss\fig*[7cm]{fig/pdf/al_comp_rp_all_rot.pdf}\hss}
-%
-%\> add to TOC?
-
-\newpage%------------------------------------------------------------------------------------------
-\title{4.3 Profile Methods}
-
-\> TBA singular modes: unit transverse ($x, y$) shifts and rotation about $z$
-\> determining shifts equivalent to determining the beam position
-
-\> expected event symmetries
-\>> up-down symmetry for all processes
-\>> left-right symmetry for elastic scattering
-
-\> observed hit distribution:
-
-\line{\hss\fig*[8cm]{fig/pdf/al_prof_hits.pdf}\hskip3mm\vbox{\hsize7cm
-\> tilt of green (elastic) axis: $x$--$y$ coupling in optics
-\> tilt of violet axis: non-zero vertical dispersion
-}}
-
-\> need to understand the optics: TODO
-
-\> despite the unexpected complications, the horizontal beam position can be determined sufficiently well
-
-%\line{\hss\fig*[4cm]{fig/pdf/al_prof_x_dists.pdf}\hss}
-
-
-\newpage%------------------------------------------------------------------------------------------
-\title{4.4 Elastic Alignment}
-
-\> alignment with a sample of elastic events
-
-\> determination of beam position (per unit)
-
-\line{\hss\fig*[,4cm]{fig/pdf/al_el_plots_sum.pdf}\hskip3mm\raise3mm\vbox{\hsize6cm
-\> vertical (right plot): bottom RP distribution (blue) is flipped (green) and shifted up and down until the best match to the top RP distribution (red) is found
-\> horizontal (left plot): the $xy$ distribution if fitted and interpolated to vertical beam position (dash-dotted line)
-}\hss}
-
-\> check/refinement of relative near-far vertical alignment
-
-\line{\hss\fig*[,4cm]{fig/pdf/al_el_plots_dyy_one.pdf}\hss}
-
-%\newpage%------------------------------------------------------------------------------------------
-%\title{4.4 Elastic Alignment II}
-%
-%\> remove?
-%
-%\line{\hss\fig*[,4cm]{fig/pdf/al_el_plots_ylyr.pdf}\hss}
-
-\newpage%------------------------------------------------------------------------------------------
-\title{4.5 Alignment Summary}
-
-\line{\hss\AddBckg[1mm]{\offinterlineskip\vbox{\cmyk{\cmykBlack}\halign{\bstrut\bvrule\ #\hfil\ &\bstrut\bvrule\ \hfil#\hfil\ &\vrule\bstrut\hfil\ #\ \hfil\bvrule\cr
-\omit&\multispan2\bhrulefill\cr
-\omit& internal alignment & among pots \cr\bln
-initial situation & \vbox{\hbox{\bstrut shifts $\sim 20\un{\mu m}$}\hbox{rotations $\sim 1\un{mrad}$}} & \vbox{\hbox{\bstrut shifts $< 1\un{mm}$}\hbox{rotations $\sim \hbox{few }\un{mrad}$}} \cr\ln
-after collimation alignment & \vbox{\hbox{\bstrut shifts $\sim 20\un{\mu m}$}\hbox{rotations $\sim 1\un{mrad}$}} & \vbox{\hbox{\bstrut shifts $\sim 100\un{\mu m}$}\hbox{rotations $\sim \hbox{few}\un{mrad}$}}\cr\bln
-\multispan3\vbox to1mm{}\cr
-\omit&\multispan2\bhrulefill\cr
-\omit& regular modes & singular modes \cr
-\omit& (relative alignment) & (global alignment wrt.~beam) \cr\bln
-after track-based alignment & \vbox{\hbox{\bstrut shifts $\ls 1\un{\mu m}$}\hbox{rotations $\ls 0.1\un{mrad}$}} & \vbox{\hbox{\bstrut shifts $\sim 100\un{\mu m}$}\hbox{rotations $\sim \hbox{few}\un{mrad}$}} \cr\ln
-after elastic alignment & \vbox{\hbox{\bstrut shifts $\ls 1\un{\mu m}$}\hbox{rotations $\ls 0.1\un{mrad}$}} & \vbox{\hbox{\bstrut hor.~shifts $\ls 5\un{\mu m}$}\hbox{\bstrut vert.~shifts $\ls 20\un{\mu m}$}\hbox{rotations $\ls \hbox{few}\un{mrad}$}} \cr\bln
-}}}\hss}
-
-\newpage%------------------------------------------------------------------------------------------
-\title{5 The First Elastic Scattering Measurement at the LHC}
-
-\> the analysis work-flow
-
-\line{\hss\fig*[,4cm]{fig/pdf/felm_scheme.pdf}\hss}
-
-\> angular reconstruction (robustness against optics perturbations):
-
-$$\eqnarray{
-	\hat\th_x^* = {\th_x^{\rm L} + \th_x^{\rm R}\over 2}\ ,\qquad
-		& \th_x^{\rm L} = {1\over {\d L^{45}_x\over \d z}} {x^{45}_{\rm F} - x^{45}_{\rm N}\over d}\cr
-	\hat\th_y^* = {\th_y^{\rm L} + \th_y^{\rm R}\over 2}\ ,\qquad
-		& \th_y^{\rm L} = {1\over 2} \left( {y^{45}_{\rm F}\over L^{45}_{y, \rm F} } + {y^{45}_{\rm N}\over L^{45}_{y, \rm N} } \right)\cr
-}$$
-
-\> event selection -- 6 cuts:
-\>> left-right collinearity ($x$ and $y$ projections)
-\>> low-$\xi$ cuts: correlation between local (RP) angle and hit position (per arm per projection)
-
-
-\newpage%------------------------------------------------------------------------------------------
-\title{5.1 Background}
-
-\vskip-5mm
-
-\line{\hss\fig*[3.5cm]{fig/pdf/felm_background_int_dg_fit_cut1.pdf}\hskip3mm\vbox{\hsize11cm
-\> background = what passes selection cuts but is not elastic
-\> three steps: integral, distribution, contribution to elastic distribution
-
-\bls
-
-\> background integral
-\>> relax one of the cuts, plot distribution of its quantity
-\>> fit central part (green) for signal (blue), then fit the tails for background (red) 
-\>> background contamination: integral of red curve through the selection (green) region
-}}
-
-\line{\hss\fig*[3.5cm]{fig/pdf/felm_background_dist_txty.pdf}\hskip3mm\vbox{\hsize11cm
-\> background distribution
-\>> reasonable assumption: dominant contribution is left-right independent
-\>> parameterize the ``elastically reconstructed'' $t_y$ vs.~$t_x$ distribution
-}}
-
-\line{\hss\fig*[3.5cm]{fig/pdf/felm_background_before.pdf}\hskip3mm\raise1cm\vbox{\hsize11cm
-\> background contribution to elastic distribution
-\>> fitted ``one-side'' background distribution $\Rightarrow$ ``elastic'' $t$-distribution of background
-\>> blue: MC calculation, red: fit of MC calculation, red dashed: statistical uncertainty
-}}
-
-
-\newpage%------------------------------------------------------------------------------------------
-\title{5.2 Unfolding}
-
-\vskip-3mm
-
-\> accounts for the finite resolution of the RP detector system
-\>> dominant contribution comes from beam divergence
-
-\vskip-3mm
-
-\line{\raise1cm\vbox{\hsize10.8cm
-\> method 1: iterative procedure
-\bitm
-\itskip0pt
-\itm fit the data (reasonable smoothing)
-\itm use the fit for a MC with and without beam smearing
-\itm extract smearing correction
-\itm correct the data and go back to 1)
-\eitm
-}\hskip3mm\fig*[3.8cm]{fig/pdf/felm_unfolding_m1_fit.pdf}\hss}
-
-\vskip-3mm
-
-\> method 2: learning the trend of corrections + back extrapolation
-
-\line{\hss\fig*[10cm]{fig/pdf/felm_unfolding_m2_scheme.pdf}\hss}
-
-\> comparison of methods
-\vskip-4mm
-\line{\hss\fig*[4cm]{fig/pdf/felm_unfolding_m1m2_cmp.pdf}\hss}
-
-
-\newpage%------------------------------------------------------------------------------------------
-\title{5.3 Results and Comparison to Models}
-
-\> TOTEM's elastic $\d\si/\d t$ measurement at $\sqrt s = 7\un{TeV}$ compared to model predictions\\
-(an updated plot version)
-
-\line{\hss\fig*[15cm]{fig/pdf/ttm_mod_cmp_dsdt.pdf}\hss}
-
-
-%----------------------------------------------------------------------------------------------------
-%----------------------------------------------------------------------------------------------------
-%----------------------------------------------------------------------------------------------------
-
-
-
-
-
-\newpage%------------------------------------------------------------------------------------------
-\hbox{}\vfil
-\title{Response to Referees' Questions and Comments}
-
-\newpage%------------------------------------------------------------------------------------------
-
-\Question{From the thesis' text, it is not absolutely clear what has been done by J.\ Kašpar himself... I'd be grateful to see the author defining his contribution more precisely during the defense.}
-
-\vskip-1mm
-\> legend:
-\cmyk{\cmykYellow}mostly material from others%
-\cmyk{\cmykWhite};
-\cmyk{\cmykGreen}my contribution significant, but many other contributions%
-\cmyk{\cmykWhite};
-\cmyk{\cmykRed} predominantly results of myself
-\cmyk{\cmykWhite}
-
-\vskip2mm
-
-\bgroup
-\SmallerFonts
-\offinterlineskip
-\line{\hss\vbox{%
-\TOCline{0}{}{Introduction}{\cmykYellow}
-\TOCline{0}{1}{Elastic scattering of protons}{\cmykYellow}
-\TOCline{1}{1.1}{Hadronic models}{\cmykYellow}
-%\TOCline{2}{1.1.1}{The model of Islam et al.}{\cmykRed}
-%\TOCline{2}{1.1.2}{The model of Petrov et al.}{\cmykRed}
-%\TOCline{2}{1.1.3}{The model of Bourrely et al.}{\cmykRed}
-%\TOCline{2}{1.1.4}{The model of Block et al.}{\cmykRed}
-\TOCline{1}{1.2}{Predictions for the LHC}{\cmykRed}
-\TOCline{1}{1.3}{Coulomb interference}{\cmykGreen}
-\TOCline{2}{1.3.1}{Electromagnetic scattering in QED and form factors}{\cmykYellow}
-\TOCline{2}{1.3.2}{Electromagnetic scattering in eikonal\\ description}{\cmykYellow}
-\TOCline{2}{1.3.3}{Interference in non-relativistic QM}{\cmykYellow}
-\TOCline{2}{1.3.4}{Interference in perturbative QFT (Feynman diagrams)}{\cmykYellow}
-\TOCline{2}{1.3.5}{Interference in the eikonal description}{\cmykYellow}
-\TOCline{2}{1.3.6}{Critique and discussion}{\cmykGreen}
-\TOCline{2}{1.3.7}{Comparison of interference formulae}{\cmykRed}
-\TOCline{2}{1.3.8}{Coulomb interference for different\\ hadronic models}{\cmykRed}
-\TOCline{2}{1.3.9}{Summary and conclusions}{\cmykRed}
-\TOCline{0}{2}{The TOTEM experiment}{\cmykYellow}
-\TOCline{1}{2.1}{Detector apparatus}{\cmykYellow}
-\TOCline{1}{2.2}{Proton Measurement with Roman Pot detectors}{\cmykYellow}
-\TOCline{1}{2.3}{The total cross section}{\cmykRed}
-\TOCline{2}{2.3.1}{Extrapolation for $\be ^* = 1535$ m optics}{\cmykRed}
-\TOCline{2}{2.3.2}{Extrapolation for $\be ^* = 90$ m optics}{\cmykRed}
-\TOCline{2}{2.3.3}{Summary}{\cmykRed}
-\TOCline{0}{3}{Roman Pot simulation and reconstruction software}{\cmykGreen}
-\TOCline{1}{3.1}{Elegent}{\cmykRed}
-}\hskip7mm\vbox{%
-\TOCline{1}{3.2}{Beam smearing}{\cmykRed}
-\TOCline{1}{3.3}{Fast simulation}{\cmykRed}
-\TOCline{1}{3.4}{Pattern recognition}{\cmykRed}
-\TOCline{1}{3.5}{Reconstruction of elastic events}{\cmykRed}
-\TOCline{0}{4}{Alignment of Roman Pots}{\cmykRed}
-\TOCline{1}{4.1}{Collimation alignment}{\cmykRed}
-\TOCline{1}{4.2}{Track--based alignment}{\cmykRed}
-\TOCline{2}{4.2.1}{The relation between proton kinematics and RP measurements}{\cmykRed}
-\TOCline{2}{4.2.2}{Simultaneous fit of track and alignment parameters}{\cmykRed}
-\TOCline{2}{4.2.3}{Singular and weak misalignment modes}{\cmykRed}
-\TOCline{2}{4.2.4}{Imposed constraints}{\cmykRed}
-\TOCline{2}{4.2.5}{Errors}{\cmykRed}
-\TOCline{2}{4.2.6}{Monte-Carlo tests}{\cmykRed}
-\TOCline{2}{4.2.7}{Input data selection}{\cmykRed}
-\TOCline{2}{4.2.8}{Alignment of detector packages}{\cmykRed}
-\TOCline{2}{4.2.9}{Internal alignment results}{\cmykRed}
-\TOCline{2}{4.2.10}{LHC alignment results}{\cmykRed}
-\TOCline{1}{4.3}{Profile methods}{\cmykRed}
-\TOCline{1}{4.4}{Elastic Alignment}{\cmykRed}
-\TOCline{1}{4.5}{Summary}{\cmykRed}
-\TOCline{0}{5}{The first elastic scattering measurement at the LHC}{\cmykGreen}
-\TOCline{1}{5.1}{Background}{\cmykRed}
-\TOCline{1}{5.2}{Unfolding}{\cmykRed}
-\TOCline{1}{5.3}{Results and comparison to models}{\cmykGreen}
-}\hss}
-
-\egroup
-
-\newpage%------------------------------------------------------------------------------------------
-
-\Question{... From this point of view, I find the last chapter (final measurement of elastic cross section) the weakest. The author writes that he focuses mainly on his own contribution, namely data correction due to acceptance and finite detector-resolution. But I miss certain information even in these parts. For sure, it would be interesting to see a measurement of angular resolution directly from the data. The author merely mentions the result. For the procedure of the data correction, it would be interesting to see the distribution itself -- most importantly how well it is approximated by a normal distribution, eventually used in the procedure. ...}
-
-\> TOTEM strategy was
-\>> fast and short publication of first results
-\>> should have been followed by a comprehensive analysis paper: including the analysis details missing in my thesis, data tables etc.
-
-\> distribution left-right difference in $\th_y$
-\>> divide RMS by 2 for elastic $\th_y$ resolution
-
-\line{\hss\fig*[10cm]{fig/external/de_th_y.png}\hss}
-
-\newpage%------------------------------------------------------------------------------------------
-
-\Question{... I find the final presentation of results weak. First of all, I miss a table with the measured cross section along with its statistical and systematic errors. These are neither shown in Fig.~5.14.~It is impossible, therefore, to find out how important the author's data corrections (and their uncertainties) are for the final result. In the same way, it prevents from judging the relevance of the observed discrepancy between the data and phenomenological models.}
-
-\vskip1mm
-
-\line{%
-	\hss
-	\vbox{\hbox{\FigLabel background correction}\fig*[,4cm]{fig/pdf/felm_background_before.pdf}}%
-	\hss
-	\vbox{\hbox{\FigLabel unsmearing correction}\fig*[,4cm]{fig/pdf/felm_unfolding_m1m2_cmp.pdf}}%
-	\hss
-}
-
-\vfil
-
-\line{%
-	\hss
-	\vbox{\hbox{\FigLabel updated version of Fig.~5.14}\fig*[,4cm]{fig/pdf/ttm_mod_cmp_dsdt.pdf}}%
-	\hss
-}
-
-\newpage%------------------------------------------------------------------------------------------
-
-\Question{Why does the error in Eq.~(3.31) scale with inverse square root of the number of hits, while the preceding paragraph reads that the spatial resolution is practically independent of it?}
-
-\> spatial resolution of one RP ($5U$ and $5V$ planes) is almost independent of the number of active planes
-\>> hit positions in the 5 planes strongly correlated (position change due to track angle negligible to strip pitch) $\Rightarrow$ ``naive'' uncertainty reduction by $1/\sqrt5$ can not be applied
-
-\vfil
-
-\> resolution of a system of RPs
-\>> RPs far (meters) from each other $\Rightarrow$ no hit position correlation due to the strip pitch
-\>> uncertainty reduces with increasing number of RPs involved in an measurement
-
-$$\Downarrow$$
-
-\> $N_{\rm R}$, $N_{\rm L}$ represent the numbers of RPs in the right/left arm involved in the measurement
-$$
-	\si_{\rm B} = {\sqrt{N_{\rm R}^2 + N_{\rm L}^2} \over N_{\rm R} + N_{\rm L}}\, \si_{\th^*}\ ,\qquad
-	\si_{\rm R} = {1\over L_x} {1\over \sqrt{N_{\rm R} + N_{\rm L}}}\, \si_{\rm P}\ ,
-	\eqno{(3.31)}
-$$
-
-
-
-\newpage%------------------------------------------------------------------------------------------
-
-\Question{How was the longitudinal (along beam axis) smearing treated?}
-
-\> no special treatment, implicitly included in ``unsmearing'' procedure
-
-\> vertex $z$ shift can be compensated by transverse shift:
-
-\line{\hss\fig*[5cm]{fig/pdf/z_smearing.pdf}\hss}
-
-\> for $\be^* = 3.5\un{m}$ and $\sqrt s = 7\un{TeV}$ optics
-\>> transverse vertex contribution neglected in angular reconstruction\\
-$\Rightarrow$ transverse vertex contribution acts as smearing\\
-$\Rightarrow$ already included in our determination of smearing sigma (left-right angular differences)
-
-\> for $\be^* = 3.5\un{m}$ and $\sqrt s = 7\un{TeV}$ optics
-\>> $\si(z^*) \approx 5\un{cm}$
-\>> angles in analysis: $\th^* \ls 500\un{\mu rad}$
-\>> ``effective'' transverse vertex shifts $\De y^* \ls 25\un{\mu m}$
-\>> to be compared with nominal transverse vertex distribution: $\si(y^*) \approx 42\un{\mu m}$
-\>> error induced in angular reconstruction: $ \De\th_y^* \ls {<v_y> \cdot 25\un{\mu m}\over <L_y>} \approx 5\un{\mu rad}$
-\>> to be compared to beam divergence: $\approx 17\un{\mu rad}$
-
-
-\newpage%------------------------------------------------------------------------------------------
-
-\Question{Relatively little data were used for the alignment analyses -- only data where both vertical and horizontal pots were inserted. Wouldn't it have been possible to exploit other data, at least for a partial alignment?}
-
-\> yes, more data could be used
-\> but what would one gain?
-\>> if there is no overlap, only far and near pots can be aligned simultaneously
-\>> singular modes: alignment of far and near units is done separately
-\>> effectively only internal alignment (within single RP) could be improved
-
-\> already with the data used so far
-\>> internal shifts $\ls 1\un{\mu m}$, internal rotations $\ls 0.1\un{mrad}$
-\>> negligible impact for reconstruction
-
-\newpage%------------------------------------------------------------------------------------------
-
-\Question{How precisely was the LHC magnetic field tuned on the basis of the measured parameters a and b in Eq.~(4.90)?}
-
-\> as far as I know: no direct feedback for machine
-
-\> however important input for TOTEM (see next slide)
-
-\newpage%------------------------------------------------------------------------------------------
-
-\Question{What exactly was used to determine the $t$-scale? In other words, since the position and strength of the LHC magnets was not precisely known (leading to the track rotation), could that be that the track angle (i.e.~their distance from the beam center) was affected too? What does determine the conversion of the observed angle to the actual one? For a given measured value of $t$, what is the expected uncertainty due to imperfect knowledge of the LHC magnetic field?}
-
-\> stringent quality requirements for each LHC magnet (current, alignment)\\
-$\Rightarrow$ MC to estimate the variations around the nominal ($\be^*=3.5\un{m}$) optics:
-$$\de L_y \ls 2\%\ ,\qquad\de \d L_x/\d s \ls 1\%$$
-
-\> optics knowledge can be improved:\\
-nominal optics $\longrightarrow$ matching with TOTEM measurements $\longrightarrow$ refined optics
-
-\line{\raise15mm\vbox{\hsize10.5cm
-\> optics matching
-\>> a number of optics-related quantities observable with RPs:
-$$L_y^{\rm L} / L_y^{\rm R},\quad {\d L_y\over \d s} / L_y,\quad s(L_x = 0),\quad xy\hbox{ coupling}, \ldots$$
-\>> identified 12 most influential magnet parameters per beam
-\>> considered energy deviation of each beam
-\>> $\ch^2$ minimization (within parameter tolerances)
-
-
-\> after matching -- optics uncertainty reduced:
-$$\de L_y \ls 0.1\%\ ,\qquad\de \d L_x/\d s \ls 0.1\%$$
-
-}\hskip3mm\fig[4cm]{fig/external/optics_matching.png}\hss}
 
 
 \bye

@@ -10,7 +10,7 @@ string diag = "45t_56b";
 
 //--------------------------------------------------
 
-NewPad("$\th'\un{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
+NewPad("$\th'\ung{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
 scale(Linear, Log);
 TGraph_errorBarPen = black+0.2pt;
 draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "fit#1"), "p,sebc", mCi, "data");
@@ -21,10 +21,23 @@ AttachLegend();
 
 GShipout("felm_unfolding_m1_fit");
 
+//--------------------------------------------------
+
+NewPad("$\th\ung{\mu rad}$", "$\d N / \d\th$");
+scale(Linear, Log);
+TGraph_errorBarPen = black+0.2pt;
+draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "fit#1"), "p,sebc", mCi, "data");
+draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "fit#0"), red+1pt, "fit");
+limits((134, 1e-2), (500, 1e5), Crop);
+yaxis(XEquals(170, false), dashed);
+AttachLegend();
+
+GShipout("felm_unfolding_m1_fit_slides");
+
 
 //--------------------------------------------------
 
-NewPad("$\th\un{\mu rad}$", "smearing correction");
+NewPad("$\th\ung{\mu rad}$", "smearing correction");
 draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "th_corr_with_err"), "l,ec", red, "$\si=12\,\rm\mu rad$");
 draw(xscale(1e6), rGetObj(dir+"/method1_13_"+diag+".root", "th_correction"), blue, "$\si=13\,\rm\mu rad$");
 
@@ -38,7 +51,7 @@ GShipout("felm_unfolding_m1_correction");
 
 //--------------------------------------------------
 
-NewPad("$\th'\un{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
+NewPad("$\th'\ung{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
 scale(Linear, Log);
 draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "mc test#1#0"), "p,sebc", mCi, "input data");
 draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "mc test#1|th_smear_test"), "", red+1pt, "re-smeared");
@@ -78,7 +91,7 @@ for (int xi = 0; xi < 4; ++xi) {
 
 GShipout("felm_unfolding_m2_scheme");
 
-NewPad("$\th'\un{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
+NewPad("$\th'\ung{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
 scale(Linear, Log);
 draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 1"), red+1pt, "meas. + extrap.");
 draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 2"), blue+1pt, "1 extra sm.");
@@ -92,7 +105,7 @@ GShipout("felm_unfolding_m2_addsm");
 
 //--------------------------------------------------
 
-NewPad("$\th\un{\mu rad}$", "smearing correction");
+NewPad("$\th\ung{\mu rad}$", "smearing correction");
 draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_01"), black+1pt, "correction");
 draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_12"), red+1pt, "correction 1");
 draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_23"), blue+1pt, "correction 2");
@@ -105,9 +118,9 @@ GShipout("felm_unfolding_m2_corrections");
 
 //--------------------------------------------------
 
-NewPad("$\th\un{\mu rad}$", "smearing correction");
+NewPad("$\th\ung{\mu rad}$", "smearing correction");
 draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "th_corr_with_err"), "l,ec", red, "fit-based method");
-draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_01"), blue, "bin-based method");
+draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_01"), "vl", blue, "bin-based method");
 limits((134, 0), (500, 2), Crop);
 yaxis(XEquals(170, false), dashed);
 xaxis(YEquals(1, false), black+dashed);

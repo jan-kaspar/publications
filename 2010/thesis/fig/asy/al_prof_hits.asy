@@ -40,7 +40,7 @@ TGraph_reducePoints = 5;
 useDefaultLabel = false;
 bool drawHits = true;
 
-NewPad("$x\un{mm}$", "$y\un{mm}$");
+NewPad("$x\ung{mm}$", "$y\ung{mm}$");
 if (drawHits)
 	draw(rGetObj(file, "station fits/Unit 20/hit map"), "p");
 // 20+21
@@ -56,7 +56,7 @@ AttachLegend("station 45-220");
 
 
 /*
-NewPad("$x\un{mm}$", "$y\un{mm}$");
+NewPad("$x\ung{mm}$", "$y\ung{mm}$");
 if (drawHits)
 	draw(rGetObj(file, "station fits/Unit 21/hit map"), "p");
 // 24+25
@@ -76,7 +76,7 @@ NewRow();
 */
 
 
-NewPad("$x\un{mm}$", "$y\un{mm}$");
+NewPad("$x\ung{mm}$", "$y\ung{mm}$");
 if (drawHits)
 	draw(rGetObj(file, "station fits/Unit 120/hit map"), "p");
 // 120+121
@@ -90,7 +90,7 @@ AttachLegend("station 56-220", NW, NW);
 
 
 /*
-NewPad("$x\un{mm}$", "$y\un{mm}$");
+NewPad("$x\ung{mm}$", "$y\ung{mm}$");
 if (drawHits)
 	draw(rGetObj(file, "station fits/Unit 121/hit map"), "p");
 // 124+125
@@ -105,4 +105,20 @@ AddToLegend("56 far");
 AttachLegend();
 */
 
-//GShipout(hSkip=1mm);
+GShipout();
+
+//----------------------------------------------------------------------------------------------------
+
+NewPad("$x\ung{mm}$", "$y\ung{mm}$");
+if (drawHits)
+	draw(rGetObj(file, "station fits/Unit 120/hit map"), "p");
+// 120+121
+DrawFit(a = 2.462253e+01, b = -1.031655e+01, heavygreen);
+// 122
+DrawFit(a = 1.920159e-01, b = 4.638875e-01, magenta);
+// vertOfVert 120+121
+//DrawFit(1.843455e-01, b = -1.115744e-01, heavygreen);
+Limit();
+AttachLegend("station 56-220", NW, NW);
+
+GShipout("al_prof_hits_slides");

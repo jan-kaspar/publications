@@ -163,22 +163,22 @@ NewPad("$|t|\ung{GeV^2}$", "$\d N/\d t$");
 currentpad.xTicks = LeftTicks(Step=0.5, step=0.1);
 scale(Linear, Log);
 //draw(shift(0, log10(1/0.05)), rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "h_t"), black, "");
-draw(shift(0, log10(exp(11.6575) / exp(-3.7151))), rGetObj(dir+"/hubert/52_00a_correction_steps_bot_45_top_56.root", "tc|bot45_top56_t"), "vl,ec", black, "");
+draw(shift(0, log10(exp(11.6575) / exp(-3.7151))), rGetObj(dir+"/hubert/52_00a_correction_steps_bot_45_top_56.root", "tc|bot45_top56_t"), "vl,ec", blue, "");
 
-label(rotate(-40)*Label("signal+background"), (1.5, 3.7));
+label(rotate(-40)*Label("signal+background"), (1.5, 3.7), blue);
 
 // old
 //draw(rGetObj(dir+"/background_with_errors2_45b_56t.root", "bckg_with_err"), "l,ec", red+1pt, "background new");
 //draw(rGetObj(dir+"/background_with_errors_45b_56t.root", "bckg_with_err"), "l,ec", green+1pt, "background old");
 
-draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc"), "vl,ec", blue);
-draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc|ffel"), red+1.5pt);
+draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc"), "vl,ec", red);
+//draw(rGetObj(dir+"/mc2.root", "nx=+0.0, ny=+0.0/h_el_acc|ffel"), red+1.5pt);
 
-label(rotate(-49)*Label("background"), (1.2, 2.7), blue);
+label(rotate(-49)*Label("background"), (1.2, 2.7), red);
 
 TGraph_lowLimit = 0.6;
-draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_max"), red+dashed);
-draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_min"), red+dashed);
+//draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_max"), red+dashed);
+//draw(rGetObj(dir+"/mc2_anal.root", "h_el_acc/graphs|g_min"), red+dashed);
 TGraph_lowLimit = -inf;
 
 limits((0, 1e1), (2.5, 1e6), Crop);

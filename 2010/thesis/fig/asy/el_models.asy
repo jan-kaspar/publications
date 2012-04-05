@@ -91,7 +91,7 @@ TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=2, step=0.5);
 
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$\d\si/\d t\un{mb/GeV^2}$");
+	NewPad("$|t|\ung{GeV^2}$", "$\d\si/\d t\ung{mb/GeV^2}$");
 	scale(Linear, Log);
 
 	for (int t : tags.keys) {
@@ -113,7 +113,7 @@ TGraph_reducePoints = 1;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$\d\si/\d t\un{mb/GeV^2}$");
+	NewPad("$|t|\ung{GeV^2}$", "$\d\si/\d t\ung{mb/GeV^2}$");
 	scale(Linear, Log);
 
 	for (int t : tags.keys) {
@@ -135,7 +135,7 @@ TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$B(t)\un{GeV^{-2}}$");
+	NewPad("$|t|\ung{GeV^2}$", "$B(t)\ung{GeV^{-2}}$");
 	scale(Linear, Linear);
 
 	for (int t : tags.keys) {
@@ -159,7 +159,7 @@ TGraph_reducePoints = 3;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$\arg F(t)/\pi$");
+	NewPad("$|t|\ung{GeV^2}$", "$\arg F(t)/\pi$");
 	scale(Linear, Linear);
 
 	for (int t : tags.keys) {
@@ -182,7 +182,7 @@ TGraph_reducePoints = 1;
 xTicksDef = LeftTicks(Step=1, step=0.2);
 
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$\rh(t)$");
+	NewPad("$|t|\ung{GeV^2}$", "$\rh(t)$");
 	scale(Linear, Linear);
 
 	for (int t : tags.keys) {
@@ -207,7 +207,7 @@ xTicksDef = LeftTicks(Step=1, step=0.2);
 yTicksDef = RightTicks(Step=2, step=1);
 
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$Z(t)\un{\%}$");
+	NewPad("$|t|\ung{GeV^2}$", "$Z(t)\ung{\%}$");
 	scale(Linear, Linear);
 
 	for (int t : tags.keys) {
@@ -230,6 +230,38 @@ for (int f = 0; f < files.length; ++f) {
 
 GShipout("el_mod_Z", hSkip=15mm);
 
+// ---------- Z, slides -----------
+
+xSizeDef = ySizeDef = 5.5cm;
+TGraph_reducePoints = 1;
+//xTicksDef = LeftTicks();
+xTicksDef = LeftTicks(Step=1, step=0.2);
+yTicksDef = RightTicks(Step=2, step=1);
+
+for (int f = 0; f < 1; ++f) {
+	NewPad("$|t|\ung{GeV^2}$", "$Z(t)\ung{\%}$");
+	scale(Linear, Linear);
+
+	for (int t : tags.keys) {
+		//TGraph_lowLimit = 5e-2; TGraph_highLimit = +inf;
+		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "Z/" + tags[t], error=false);
+		if (o.valid)
+			draw(yscale(100), o, colors[t]);
+		/*
+		TGraph_lowLimit = -inf; TGraph_highLimit = 1e-1;
+		rObject o = rGetObj(base_dir+"/"+files[f] + ".details.root", "low |t| Z/" + tags[t], error=false, search=false);
+		if (o.valid)
+			draw(yscale(100), o, colors[t]);
+		*/
+	}
+
+	limits((0, -16), (5, +2), Crop);
+		
+	AdjustPlot(f, false, SE, false, 7mm);
+}
+
+GShipout("el_mod_Z_slides", hSkip=15mm);
+
 // ---------- C -----------
 
 TGraph_reducePoints = 1;
@@ -238,7 +270,7 @@ xTicksDef = LeftTicks();
 yTicksDef = RightTicks(Step=2, step=1);
 
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$C(t)\un{\%}$");
+	NewPad("$|t|\ung{GeV^2}$", "$C(t)\ung{\%}$");
 	scale(Log, Linear);
 
 	for (int t : tags.keys) {
@@ -267,7 +299,7 @@ xTicksDef = LeftTicks();
 //xTicksDef = LeftTicks(Step=1, step=0.2);
 yTicksDef = RightTicks(Step=3, step=1);
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$R(t)\un{\%}$");
+	NewPad("$|t|\ung{GeV^2}$", "$R(t)\ung{\%}$");
 	scale(Log, Linear);
 
 	for (int t : tags.keys) {
@@ -288,3 +320,4 @@ for (int f = 0; f < files.length; ++f) {
 }
 
 GShipout("el_mod_R", hSkip=15mm);
+

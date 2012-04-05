@@ -29,7 +29,7 @@ string es(real x)
 //--------------------------------------------------
 write("* el_cic_noff_F_C");
 
-NewPad("$|t|\un{GeV^2}$", "$|F^{\rm C}|$");
+NewPad("$|t|\ung{GeV^2}$", "$|F^{\rm C}|$");
 scale(Log, Log);
 draw(rGetObj(f4, "none/F_C#2|cmp_F_C_mod"), black);
 for (int li : las.keys)
@@ -41,7 +41,7 @@ ClearLegend();
 AddToLegend("Born ($\la = 0$)", black);
 AttachLegend("no form factor", SW, SW);
 
-NewPad("$|t|\un{GeV^2}$", "$\arg F^{\rm C} / \pi$");
+NewPad("$|t|\ung{GeV^2}$", "$\arg F^{\rm C} / \pi$");
 scale(Log, Linear);
 for (int li : las.keys) {
 	if (las[li] == 1e-4)
@@ -57,7 +57,7 @@ GShipout("el_cic_noff_F_C", hSkip=5mm);
 write("* el_cic_noff_Psi");
 
 ySizeDef = 5.37cm;
-NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
+NewPad("$|t|\ung{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ci : cModes.keys)
 	draw(rGetObj(f4, "none/interference#0|cmp_"+cModes[ci]+"_CH_phase_re"), cm_colors[ci]+longdashed, cNames[ci]);
@@ -69,7 +69,7 @@ for (int li : las.keys) {
 limits((t_min, -0.2), (t_max, 0.7), Crop);
 AttachLegend("no form factor", NW, NW);
 
-NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
+NewPad("$|t|\ung{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ci : cModes.keys)
 	draw(rGetObj(f4, "none/interference#1|cmp_"+cModes[ci]+"_CH_phase_im"), cm_colors[ci]+longdashed);
@@ -85,7 +85,7 @@ GShipout("el_cic_noff_Psi", hSkip=5mm);
 write("* el_cic_noff_Z");
 
 ySizeDef = 5.5cm;
-NewPad("$|t|\un{GeV^2}$", "$Z\un{\%}$");
+NewPad("$|t|\ung{GeV^2}$", "$Z\ung{\%}$");
 scale(Log, Linear);
 for (int ci : cModes.keys)
 	draw(yscale(100), rGetObj(f4, "none/interference#2|cmp_"+cModes[ci]+"_CH_Z"), cm_colors[ci]+longdashed, cNames[ci]);
@@ -94,7 +94,7 @@ for (int li : las.keys)
 limits((t_min, -30), (t_max, 30), Crop);
 AttachLegend("no form factor", NW, NW);
 
-NewPad("$|t|\un{GeV^2}$", "$\zeta$");
+NewPad("$|t|\ung{GeV^2}$", "$\zeta$");
 scale(Log, Linear);
 for (int li : las.keys)
 	draw(yscale(1), rGetObj(f4, "none/interference#3|CH_zeta,la="+format("%.0E", las[li])), colors[li], "$\la="+es(las[li])+"\,\rm GeV$");
@@ -107,7 +107,7 @@ GShipout("el_cic_noff_Z", hSkip=15mm);
 //--------------------------------------------------
 write("* el_cic_diff_F_C");
 
-NewPad("$|t|\un{GeV^2}$", "$|F^{\rm C}|$");
+NewPad("$|t|\ung{GeV^2}$", "$|F^{\rm C}|$");
 scale(Log, Log);
 draw(rGetObj(f4, "Puckett/F_C#2|cmp_F_C_mod"), black);
 for (int li : las.keys) {
@@ -122,7 +122,7 @@ AddToLegend("Born ($\la = 0$)", black);
 AttachLegend("Puckett form factor", SW, SW);
 
 /*
-NewPad("$|t|\un{GeV^2}$", "$\arg F_C / \pi$");
+NewPad("$|t|\ung{GeV^2}$", "$\arg F_C / \pi$");
 scale(Log, Linear);
 for (int li : las.keys) {
 	draw(yscale(1/3.141593), rGetObj(f4, "dipole/F_C#3|F_C_arg,la="+format("%.0E", las[li])), colors[li], format("$\la=%.0E\,\rm GeV$", las[li]));
@@ -152,7 +152,7 @@ real Selyugin_nu(real mt)
 	return al * c1 * log(1 + c2*c2*mt) / 3.141593;
 }
 
-NewPad("$|t|\un{GeV^2}$", "$\al\nu / \pi$");
+NewPad("$|t|\ung{GeV^2}$", "$\al\nu / \pi$");
 scale(Log, Linear);
 for (int ffi : FFs.keys)
 	draw(yscale(1/3.141593), rGetObj(fff, FFs[ffi]+"/nu|nu_1E-04"), ff_colors[ffi], FFs[ffi]);
@@ -168,7 +168,7 @@ GShipout("el_cic_diff_nu", hSkip=5mm);
 write("* el_cic_diff_Psi_ff");
 
 ySizeDef = 5.37cm;
-NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
+NewPad("$|t|\ung{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ffi : FFs.keys) {
 	draw(rGetObj(f4, FFs[ffi]+"/interference#0|cmp_SWY_CH_phase_re"), ff_colors[ffi]+longdashed);
@@ -179,7 +179,7 @@ AddToLegend("longdashed: SWY");
 limits((t_min, -0.05), (t_max, 0.06), Crop);
 AttachLegend(SE, SE);
 
-NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
+NewPad("$|t|\ung{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 for (int ffi : FFs.keys) {
 	draw(rGetObj(f4, FFs[ffi]+"/interference#1|cmp_SWY_CH_phase_im"), ff_colors[ffi]+longdashed);
@@ -193,7 +193,7 @@ GShipout("el_cic_diff_Psi_ff", hSkip=5mm);
 //--------------------------------------------------
 write("* el_cic_diff_Psi_eik");
 
-NewPad("$|t|\un{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
+NewPad("$|t|\ung{GeV^2}$", "real part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#0|cmp_KL_CH_phase_re"), black+longdashed, "CKL");
 for (int li : las.keys) {
@@ -207,7 +207,7 @@ for (int li : las.keys) {
 }
 limits((t_min, -0.05), (t_max, 0.06), Crop);
 
-NewPad("$|t|\un{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
+NewPad("$|t|\ung{GeV^2}$", "imaginary part of $\al\Ps$ or $-\al\Ph$");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#1|cmp_KL_CH_phase_im"), black+longdashed, "CKL");
 for (int li : las.keys) {
@@ -224,14 +224,14 @@ GShipout("el_cic_diff_Psi_eik", hSkip=5mm);
 write("* el_cic_diff_Psi_sum");
 
 ySizeDef = 5.5cm;
-NewPad("$|t|\un{GeV^2}$", "real part of interference phase");
+NewPad("$|t|\ung{GeV^2}$", "real part of interference phase");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#0|cmp_KL_CH_phase_re"), black, "CKL");
 draw(rGetObj(f4, "Puckett/interference#0|cmp_SWY_CH_phase_re"), red, "SWY");
 draw(rGetObj(f4, "Puckett/interference#0|CH_phase_re,la="+format("%.0E", 1e-3)), blue, "eikonal $\la=10^{-3}\,\rm GeV$");
 limits((t_min, -0.05), (t_max, 0.06), Crop);
 
-NewPad("$|t|\un{GeV^2}$", "imaginary part of interference phase");
+NewPad("$|t|\ung{GeV^2}$", "imaginary part of interference phase");
 scale(Linear, Linear);
 draw(rGetObj(f4, "Puckett/interference#1|cmp_KL_CH_phase_im"), black, "CKL");
 draw(rGetObj(f4, "Puckett/interference#1|cmp_SWY_CH_phase_im"), red, "SWY");
@@ -243,9 +243,31 @@ AttachLegend("Puckett form factor, $7\,\rm TeV$", NE, NE);
 GShipout("el_cic_diff_Psi_sum", hSkip=5mm);
 
 //--------------------------------------------------
+write("* el_cic_diff_Psi_slides");
+
+ySizeDef = 5.5cm;
+NewPad("$|t|\ung{GeV^2}$", "$\Re \Ps(t)$");
+scale(Linear, Linear);
+draw(rGetObj(f4, "Puckett/interference#0|cmp_KL_CH_phase_re"), black, "CKL");
+draw(rGetObj(f4, "Puckett/interference#0|cmp_SWY_CH_phase_re"), red, "SWY");
+draw(rGetObj(f4, "Puckett/interference#0|CH_phase_re,la="+format("%.0E", 1e-3)), blue);
+limits((t_min, -0.05), (t_max, 0.06), Crop);
+
+NewPad("$|t|\ung{GeV^2}$", "$\Im \Ps(t)$");
+scale(Linear, Linear);
+draw(rGetObj(f4, "Puckett/interference#1|cmp_KL_CH_phase_im"), black, "CKL");
+draw(rGetObj(f4, "Puckett/interference#1|cmp_SWY_CH_phase_im"), red, "SWY");
+draw(rGetObj(f4, "Puckett/interference#1|CH_phase_im,la="+format("%.0E", 1e-3)), blue, "this thesis");
+//AddToLegend("$\la=10^{-3}\,\rm GeV$");
+limits((t_min, -0.01), (t_max, 0.1), Crop);
+AttachLegend("$\sqrt s = 7\,\rm TeV$", NE, NE);
+
+GShipout("el_cic_diff_Psi_slides", hSkip=5mm);
+
+//--------------------------------------------------
 write("* el_cic_diff_Z_ff");
 
-NewPad("$|t|\un{GeV^2}$", "$Z\un{\%}$");
+NewPad("$|t|\ung{GeV^2}$", "$Z\ung{\%}$");
 scale(Log, Linear);
 for (int ffi : FFs.keys) {
 	draw(yscale(100), rGetObj(f4, FFs[ffi]+"/interference#2|cmp_SWY_CH_Z"), ff_colors[ffi]+longdashed);
@@ -261,7 +283,7 @@ AttachLegend(NW, NW);
 
 
 /*
-NewPad("$|t|\un{GeV^2}$", "$\zeta$");
+NewPad("$|t|\ung{GeV^2}$", "$\zeta$");
 scale(Log, Linear);
 for (int ffi : FFs.keys) {
 	draw(rGetObj(f4, FFs[ffi]+"/interference#3|cmp_SWY_CH_zeta"), colors[ffi]+longdashed);
@@ -275,7 +297,7 @@ GShipout("el_cic_diff_Z_ff", hSkip=15mm);
 //--------------------------------------------------
 write("* el_cic_diff_Z_eik");
 
-NewPad("$|t|\un{GeV^2}$", "$Z\un{\%}$");
+NewPad("$|t|\ung{GeV^2}$", "$Z\ung{\%}$");
 scale(Log, Linear);
 draw(yscale(100), rGetObj(f4, "Puckett/interference#2|cmp_KL_CH_Z"), black+longdashed, "CKL");
 for (int li : las.keys) {
@@ -286,7 +308,7 @@ for (int li : las.keys) {
 limits((t_min, -20), (t_max, 0), Crop);
 AttachLegend("Puckett form factor", SE, SE);
 
-NewPad("$|t|\un{GeV^2}$", "$\zeta$");
+NewPad("$|t|\ung{GeV^2}$", "$\zeta$");
 scale(Log, Linear);
 for (int li : las.keys) {
 	if (las[li] == 1e-4)
@@ -301,7 +323,7 @@ GShipout("el_cic_diff_Z_eik", hSkip=15mm);
 //--------------------------------------------------
 write("* el_cic_diff_Z_sum");
 
-NewPad("$|t|\un{GeV^2}$", "$Z\un{\%}$");
+NewPad("$|t|\ung{GeV^2}$", "$Z\ung{\%}$");
 scale(Log, Linear);
 draw(yscale(100), rGetObj(f4, "Puckett/interference#2|cmp_KL_CH_Z"), black, "CKL");
 draw(yscale(100), rGetObj(f4, "Puckett/interference#2|cmp_SWY_CH_Z"), red, "SWY");
@@ -313,3 +335,19 @@ currentpicture.legend.delete();
 AttachLegend("Puckett form factor, $7\,\rm TeV$", NW, NW);
 
 GShipout("el_cic_diff_Z_sum", hSkip=5mm);
+
+//--------------------------------------------------
+write("* el_cic_diff_Z_slides");
+
+NewPad("$|t|\ung{GeV^2}$", "$Z\ung{\%}$");
+scale(Log, Linear);
+draw(yscale(100), rGetObj(f4, "Puckett/interference#2|cmp_KL_CH_Z"), black, "CKL");
+draw(yscale(100), rGetObj(f4, "Puckett/interference#2|cmp_SWY_CH_Z"), red, "SWY");
+draw(yscale(100), rGetObj(f4, "Puckett/interference#2|CH_Z,la="+format("%.0E", 1e-3)), blue, "this thesis");
+limits((t_min, -20), (t_max, 10), Crop);
+AttachLegend(S, S+0.1E);
+
+currentpicture.legend.delete();
+AttachLegend("$\sqrt s = 7\,\rm TeV$", NW, NW);
+
+GShipout("el_cic_diff_Z_slides", hSkip=5mm);
