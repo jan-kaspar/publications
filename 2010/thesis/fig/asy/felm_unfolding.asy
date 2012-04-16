@@ -54,7 +54,7 @@ GShipout("felm_unfolding_m1_correction");
 NewPad("$\th'\ung{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
 scale(Linear, Log);
 draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "mc test#1#0"), "p,sebc", mCi, "input data");
-draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "mc test#1|th_smear_test"), "", red+1pt, "re-smeared");
+draw(xscale(1e6), rGetObj(dir+"/method1_"+diag+".root", "mc test#1|th_smear_test"), "vl", red+1pt, "re-smeared");
 AddToLegend("distribution");
 
 limits((134, 1e-2), (500, 1e5), Crop);
@@ -93,10 +93,10 @@ GShipout("felm_unfolding_m2_scheme");
 
 NewPad("$\th'\ung{\mu rad}$", "$h'(\th')$\quad (arbitrary units)");
 scale(Linear, Log);
-draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 1"), red+1pt, "meas. + extrap.");
-draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 2"), blue+1pt, "1 extra sm.");
-draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 3"), magenta+1pt, "2 extra sm.");
-draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 4"), heavygreen+1pt, "3 extra sm.");
+draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 1"), "vl", red+1pt, "meas. + extrap.");
+draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 2"), "vl", blue+1pt, "1 extra sm.");
+draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 3"), "vl", magenta+1pt, "2 extra sm.");
+draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th dist comparison|smearing 4"), "vl", heavygreen+1pt, "3 extra sm.");
 limits((134, 1e-2), (500, 1e5), Crop);
 yaxis(XEquals(170, false), dashed);
 AttachLegend(SW, SW);
@@ -106,10 +106,10 @@ GShipout("felm_unfolding_m2_addsm");
 //--------------------------------------------------
 
 NewPad("$\th\ung{\mu rad}$", "smearing correction");
-draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_01"), black+1pt, "correction");
-draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_12"), red+1pt, "correction 1");
-draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_23"), blue+1pt, "correction 2");
-draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_34"), magenta+1pt, "correction 3");
+draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_01"), "vl", black+1pt, "correction");
+draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_12"), "vl", red+1pt, "correction 1");
+draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_23"), "vl", blue+1pt, "correction 2");
+draw(xscale(1e6), rGetObj(dir+"/method2_"+diag+".root", "th correction comparison|th_corr_34"), "vl", magenta+1pt, "correction 3");
 limits((134, 0), (500, 2), Crop);
 yaxis(XEquals(170, false), dashed);
 AttachLegend();

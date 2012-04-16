@@ -15,7 +15,7 @@ label(incp, scale(1, 1.283)*Label("\pdfximage width6cm{../external/cudell,sigma_
 pair p = incp.calculateTransform() * truepoint(incp, SW);
 frame incF = shift(-p) * incp.fit();
 
-NewPad("$\sqrt s\un{GeV}$", "$\si_{\rm tot}\un{mb}$");
+NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm tot}\ung{mb}$");
 real f[] = {10, 100, 1000, 10000};
 real g[] = {1, 1.5, 2, 3, 4, 5, 6, 7, 8, 9};
 

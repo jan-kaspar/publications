@@ -26,7 +26,7 @@ real ymin = -500, ymax = 1500;
 
 TGraph_reducePoints = 10;
 
-NewPad("time", "BPM reading$\un{\mu m}$");
+NewPad("time", "BPM reading$\ung{\mu m}$");
 draw(rGetObj(bpmFile_dip, "bpm/BPMWT.A6R5.B1/horizontalPos"), black+1pt);
 draw(rGetObj(bpmFile_dip, "bpm/BPMWT.A6R5.B1/verticalPos"), red+1pt);
 draw(rGetObj(bpmFile_dip, "bpm/BPMWT.B6R5.B1/horizontalPos"), blue+1pt);

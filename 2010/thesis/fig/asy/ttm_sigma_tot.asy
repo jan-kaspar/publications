@@ -178,7 +178,7 @@ void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red
 
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$\sqrt s\un{GeV}$", "$\si_{\rm tot}\un{mb}$");
+NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm tot}\ung{mb}$");
 currentpad.xSize = 10cm;
 //currentpad.ySize = 9cm;
 

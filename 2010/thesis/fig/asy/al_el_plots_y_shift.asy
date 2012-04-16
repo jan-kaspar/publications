@@ -19,11 +19,11 @@ for (int d_i: dates.keys) {
 	string file = "../alignment/elastic/"+dates[d_i]+"/alignment_analysis.root";
 	write(dates[d_i]);
 
-	NewPad("$y \un{mm}$", "");
+	NewPad("$y \ung{mm}$", "");
 	scale(Linear(true), Linear);
-	draw(rGetObj(file, name + "|hR"), "e", red);
-	draw(rGetObj(file, name + "|hL"), "e", blue);
-	draw(rGetObj(file, name + "|hLS", error=false), "e", heavygreen);
+	draw(rGetObj(file, name + "|hR"), "vl,ec", red);
+	draw(rGetObj(file, name + "|hL"), "vl,ec", blue);
+	draw(rGetObj(file, name + "|hLS", error=false), "vl,ec", heavygreen);
 
 	if (d_i == 0)
 		limits((-12, 0), (12, 80), Crop);

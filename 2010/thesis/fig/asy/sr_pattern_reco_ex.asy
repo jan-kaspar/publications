@@ -7,13 +7,13 @@ ySizeDef = 4cm;
 
 string file = "../root/output_run_32300000_event_111_0.root";
 
-NewPad("$z\un{mm}$", "$v\un{mm}$");
+NewPad("$z\ung{mm}$", "$v\ung{mm}$");
 rObject obj = rGetObj(file, "RP/sector 45/station 220/nr_bt/rp_45_220_nr_bt : actual track - v projection");
 draw(obj.oExec("Get", "vHitsAll"), "p,ieb", mCr+2pt);
 draw(obj.oExec("Get", ";1"), "l", red);
 limits((-22, -20), (22, 20));
 
-NewPad("$z\un{mm}$", "$u\un{mm}$");
+NewPad("$z\ung{mm}$", "$u\ung{mm}$");
 rObject obj = rGetObj(file, "RP/sector 45/station 220/nr_hr/rp_45_220_nr_hr : actual track - u projection");
 draw(obj.oExec("Get", "uHitsAll"), "p,ieb", mCr+2pt);
 draw(obj.oExec("Get", ";1"), "l", red);

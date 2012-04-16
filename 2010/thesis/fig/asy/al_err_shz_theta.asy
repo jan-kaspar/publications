@@ -46,7 +46,7 @@ void Draw(int idx, pen c, string l="")
 
 //---------------------------------------------------------------------------------------------------------------------
 
-NewPad("$\si_a\un{rad}$", "$z$ shift uncertainty $\un{mm}$");
+NewPad("$\si_a\ung{rad}$", "$z$ shift uncertainty $\ung{mm}$");
 scale(Log, Log);
 
 Draw(1202, black, "near-top");
@@ -72,7 +72,7 @@ AttachLegend();
 
 //---------------------------------------------------------------------------------------------------------------------
 
-NewPad("$\si_a\un{rad}$", "");
+NewPad("$\si_a\ung{rad}$", "");
 scale(Log, Log);
 
 Draw(1203, black);

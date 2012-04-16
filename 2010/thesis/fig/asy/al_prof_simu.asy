@@ -10,7 +10,7 @@ string file_el = dir+"valRPelasticBeta2.5Energy3.5TeV/valRPelasticBeta2.5Energy3
 string file_sd = dir+"valRPT1T2pythiaSDbeta2.5energy3.5TeV/valRPT1T2pythiaSDbeta2.5energy3.5TeV_RPHitDists.root";
 string file_dpe = dir+"valRPT1T2phojetDPEbeta2.5energy3.5TeV/valRPT1T2phojetDPEbeta2.5energy3.5TeV_RPHitDists.root";
 
-NewPad("$x\un{mm}$", "$y\un{mm}$");
+NewPad("$x\ung{mm}$", "$y\ung{mm}$");
 
 
 

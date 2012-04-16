@@ -42,7 +42,7 @@ TGraph_N_limit = 2000;
 //----------------------------------------------------------------------------------------------------
 
 // ----- th_x equal left and right -----
-NewPad("$\left. x_F - x_N \right|_{45}\un{mm}$", "$\left. x_F - x_N \right|_{56}\un{mm}$");
+NewPad("$\left. x_F - x_N \right|_{45}\ung{mm}$", "$\left. x_F - x_N \right|_{56}\ung{mm}$");
 
 TGraph_lowLimit = -1;
 TGraph_highLimit = +1;
@@ -59,7 +59,7 @@ limits((-1, -1), (1, 1), Crop);
 AttachLegend("cut 1");
 
 /*
-NewPad("$\left. x_F - x_N \right|_{45}\un{mm}$", "$\left. x_F - x_N \right|_{56}\un{mm}$");
+NewPad("$\left. x_F - x_N \right|_{45}\ung{mm}$", "$\left. x_F - x_N \right|_{56}\ung{mm}$");
 DrawRegion(shift(0, dxdx_d56b_b)*rotate(atan2(dxdx_d56b_a, 1)*180/3.141593)*p);
 
 draw(rGetObj(file, diag2+"/cut 0/dx_56 vs dx_45"), "p", black);
@@ -71,8 +71,8 @@ limits((-1, -1), (1, 1), Crop);
 TGraph_lowLimit = -inf;
 TGraph_highLimit = +inf;
 
-NewPad("distance from band center$\un{mm}$");
-draw(rGetObj(file_e, "dx_56 vs. dx_45 (45b-56t)"), "lR", black);
+NewPad("distance from band center$\ung{mm}$");
+draw(rGetObj(file_e, "dx_56 vs. dx_45 (45b-56t)"), "vl,ec,lR", black);
 draw(rGetObj(file_e, "dx_56 vs. dx_45 (45b-56t)#0"), red+1pt);
 limits((-0.2, 0), (0.2, 350), Crop);
 yaxis(XEquals(-0.08, false), dotted);
@@ -85,7 +85,7 @@ NewRow();
 // ----- th_y proportional to y -----
 void DrawDyY(int rp1, int rp2, int rp3, int rp4, real a, real b)
 {
-	NewPad("$y_N\un{mm}$", "$y_F - y_N\un{mm}$");
+	NewPad("$y_N\ung{mm}$", "$y_F - y_N\ung{mm}$");
 	real h = 0.045;
 	real w1 = -10, w2 = 10;
 	path p = (w1, -h)--(w2, -h)--(w2, h)--(w1, h)--cycle;
@@ -105,9 +105,9 @@ void DrawDyY(int rp1, int rp2, int rp3, int rp4, real a, real b)
 DrawDyY(21, 25, 20, 24, dyy_45_a, dyy_45_b);
 //DrawDyY(120, 124, 121, 125, dyy_56_a, dyy_56_b);
 
-NewPad("distance from band center$\un{mm}$");
+NewPad("distance from band center$\ung{mm}$");
 currentpad.yTicks = RightTicks(Step=100, step=20);
-draw(rGetObj(file_e, "45: dy vs. y"), "lR", black);
+draw(rGetObj(file_e, "45: dy vs. y"), "vl,ec,lR", black);
 draw(rGetObj(file_e, "45: dy vs. y#0"), red+1pt);
 limits((-0.2, 0), (0.2, 500), Crop);
 yaxis(XEquals(-0.045, false), dotted);
@@ -122,7 +122,7 @@ NewRow();
 
 void DrawXY(int rp1, int rp2, real a, real b)
 {
-	NewPad("$x\un{mm}$", "$y\un{mm}$");
+	NewPad("$x\ung{mm}$", "$y\ung{mm}$");
 	
 	real h1 = -11, h2 = 11;
 	real w1 = -0.4, w2 = 0.4;
@@ -146,8 +146,8 @@ DrawXY(21, 20, -0.036, -0.029);
 //DrawXY(120, 121, 0.042, -0.031);
 //DrawXY(124, 125, 0.038, -0.030);
 
-NewPad("distance from band center$\un{mm}$");
-draw(rGetObj(file_e, "45 near: y vs. x"), "lR", black);
+NewPad("distance from band center$\ung{mm}$");
+draw(rGetObj(file_e, "45 near: y vs. x"), "vl,ec,lR", black);
 draw(rGetObj(file_e, "45 near: y vs. x#0"), red+1pt);
 limits((-1, 0), (1, 150), Crop);
 yaxis(XEquals(-0.4, false), dotted);

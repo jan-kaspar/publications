@@ -62,7 +62,7 @@ void MakePage(string dir, string file1, string file2)
 	
 	int j = 0;
 	for (int rp_i : rps.keys) {
-		NewPad("$\rh_{U-V} \un{mrad}$", "shift syst.~error $\un{\mu m}$", 0, j);
+		NewPad("$\rh_{U-V} \ung{mrad}$", "shift syst.~error $\ung{\mu m}$", 0, j);
 		int i = 0;
 		for (int d_i : dets.keys) {
 			int id = rps[rp_i]*10 + dets[d_i];
@@ -74,7 +74,7 @@ void MakePage(string dir, string file1, string file2)
 		}
 		limits((0, -0.2), (200, +0.4), Crop);
 	
-		NewPad("$\rh_{U-V} \un{mrad}$", "rotation syst.~error $\un{mrad}$", 1, j);
+		NewPad("$\rh_{U-V} \ung{mrad}$", "rotation syst.~error $\ung{mrad}$", 1, j);
 		int i = 0;
 		for (int d_i : dets.keys) {
 			int id = rps[rp_i]*10 + dets[d_i];

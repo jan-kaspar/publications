@@ -96,7 +96,8 @@ GShipout("felm_background_int_dg_fit_cut1");
 
 NewPad("$|t_x|\ung{GeV^2}$", "$|t_y|\ung{GeV^2}$", 5.2cm, 5.2cm, axesAbove=true);
 scale(Linear, Linear, Log);
-TH2_palette = Gradient(blue, green, red, black);
+//TH2_palette = Gradient(blue, green, red, black);
+TH2_palette = Gradient(blue, heavygreen, yellow, red, black);
 draw(rGetObj(dir+"/bckg_t_dist_from_th_x_45b_56t.root", "hxy_L"), "p,bar");
 limits((0, 0), (1.2, 1.2), Crop);
 

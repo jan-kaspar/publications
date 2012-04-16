@@ -42,7 +42,7 @@ void Draw(int idx, pen c, string l="")
 
 //---------------------------------------------------------------------------------------------------------------------
 
-NewPad("$\si_\rh \un{mrad}$", "rotation uncertainty $\un{mrad}$");
+NewPad("$\si_\rh \ung{mrad}$", "rotation uncertainty $\ung{mrad}$");
 scale(Log, Log);
 
 Draw(1202, heavygreen, "near-top");
@@ -72,7 +72,7 @@ AttachLegend(2);
 
 //---------------------------------------------------------------------------------------------------------------------
 
-NewPad("$\si_\rh \un{mrad}$", "");
+NewPad("$\si_\rh \ung{mrad}$", "");
 scale(Log, Log);
 Draw(1203, heavygreen);
 Draw(1213, red);

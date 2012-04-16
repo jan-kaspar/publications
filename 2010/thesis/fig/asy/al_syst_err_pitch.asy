@@ -78,7 +78,7 @@ void MakePage(string dir, string file1, string file2)
 	for (int rp_i : rps.keys) {
 		xTicksDef = LeftTicks(Step=50, step=10);
 		
-		NewPad("pitch $\un{\mu m}$", "shift syst. error $\un{\mu m}$", j, 1);
+		NewPad("pitch $\ung{\mu m}$", "shift syst. error $\ung{\mu m}$", j, 1);
 		currentpad.yTicks = RightTicks(Step=1, step=0.2);
 		int i = 0;
 		for (int d_i : dets.keys) {
@@ -93,7 +93,7 @@ void MakePage(string dir, string file1, string file2)
 		xaxis(YEquals(0, false), dotted);
 	
 		/*
-		NewPad("pitch $\un{\mu m}$", "rotation syst. error $\un{mrad}$", j, 2);
+		NewPad("pitch $\ung{\mu m}$", "rotation syst. error $\ung{mrad}$", j, 2);
 		currentpad.yTicks = RightTicks(Step=0.1, step=0.02);
 		int i = 0;
 		for (int d_i : dets.keys) {

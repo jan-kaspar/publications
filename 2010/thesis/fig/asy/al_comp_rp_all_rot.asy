@@ -9,9 +9,9 @@ ySizeDef = 3.5cm;
 
 yTicksDef = NoTicks();
 
-//string q_labels[] = { "$g_x\un{\mu m}$", "$g_y\un{\mu m}$", "$h_y\un{mrad}$", "$h_x\un{mrad}$", "$\rh_z\un{mrad}$" };
-string q_labels[] = { "$c_x^{\rm DP}\un{\mu m}$", "$c_y^{\rm DP}\un{\mu m}$", "$\rh_x^{\rm DP}\un{mrad}$",
-	"$\rh_y^{\rm DP}\un{mrad}$", "$\rh_z^{\rm DP}\un{mrad}$" };
+//string q_labels[] = { "$g_x\ung{\mu m}$", "$g_y\ung{\mu m}$", "$h_y\ung{mrad}$", "$h_x\ung{mrad}$", "$\rh_z\ung{mrad}$" };
+string q_labels[] = { "$c_x^{\rm DP}\ung{\mu m}$", "$c_y^{\rm DP}\ung{\mu m}$", "$\rh_x^{\rm DP}\ung{mrad}$",
+	"$\rh_y^{\rm DP}\ung{mrad}$", "$\rh_z^{\rm DP}\ung{mrad}$" };
 real q_range[] = { 20, 20,	0.5, 0.5,	0.5 };
 real q_Steps[] = { 20, 20,	0.5, 0.5,	0.5 };
 real q_steps[] = { 2, 2, 	0.1, 0.1,	0.1 };

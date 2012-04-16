@@ -35,4 +35,4 @@ for (int i = 0; i > -6; --i) {
 	label(lab, (eta, pi), N);
 }
 
-label("scattering angle\quad$\th\un{rad}$", (13, pi+0.5), NW);
+label("scattering angle\quad$\th\ung{rad}$", (13, pi+0.5), NW);

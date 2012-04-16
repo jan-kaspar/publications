@@ -23,7 +23,7 @@ for (int d_i: dates.keys) {
 	string file = "../alignment/elastic/"+dates[d_i]+"/alignment_analysis.root";
 	write(dates[d_i]);
 
-	NewPad("$y_{45} \un{mm}$", "$y_{56} \un{mm}$");
+	NewPad("$y_{45} \ung{mm}$", "$y_{56} \ung{mm}$");
 	//AddToLegend("far");
 	AddToLegend(Date(dates[d_i]));
 	//draw(rot, rGetObj(file, name_f + "#1"), "p", darkred+opacity(0.2));

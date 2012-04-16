@@ -23,7 +23,7 @@ for (int d_i: dates.keys) {
 	string file = "../alignment/elastic/"+dates[d_i]+"/alignment_analysis.root";
 	write(dates[d_i]);
 
-	NewPad("$y \un{mm}$", "");
+	NewPad("$y \ung{mm}$", "");
 
 	draw(rGetObj(file, name + "#0"), black);
 	draw(rGetObj(file, name + "#1#0"), magenta+1pt);

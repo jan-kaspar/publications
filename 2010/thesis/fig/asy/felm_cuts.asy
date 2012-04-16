@@ -46,7 +46,7 @@ real aul[] = { 1.5e-4, 5e-4, 2, 2, 20, -6 };
 real bll[] = { -1.5e-4, -5e-4, -1.5e-4, -1.5e-4, -0.1 , -0.2};
 real bul[] = { 1.5e-4, -1.5e-4, 1.5e-4, 1.5e-4	, +0.3, +0.2};
 
-TH2_palette = Gradient(blue, heavygreen, yellow, red);
+TH2_palette = Gradient(blue, heavygreen, yellow, red, black);
 
 for (int i = 0; i < 6; ++i) {
 	write("* ", i);

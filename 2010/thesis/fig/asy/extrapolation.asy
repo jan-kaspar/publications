@@ -27,7 +27,7 @@ string[] labelsS = {"Islam et al. (HP)", "Islam et al. (LxG)", "Petrov et al. (2
 
 TGraph_reducePoints = 1;
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "$B(t)\un{GeV^{-2}}$");
+	NewPad("$|t|\ung{GeV^2}$", "$B(t)\ung{GeV^{-2}}$");
 	currentpad.xSize = 9cm;
 	scale(Linear, Linear);
 
@@ -52,7 +52,7 @@ GShipout("ext_B", hSkip=2mm);
 
 TGraph_reducePoints = 1;
 for (int f = 0; f < files.length; ++f) {
-	NewPad("$|t|\un{GeV^2}$", "effect of Coulomb interaction$\un{\%}$");
+	NewPad("$|t|\ung{GeV^2}$", "effect of Coulomb interaction$\ung{\%}$");
 	scale(Log, Linear);
 
 	for (int t : tags.keys) {
@@ -73,15 +73,15 @@ GShipout("ext_C", hSkip=2mm);
 
 string f = "../extrapolation/SmearingTest.root";
 
-NewPad("$|t|\un{GeV^2}$", "effect of beam smearing$\un{\%}$");
+NewPad("$|t|\ung{GeV^2}$", "effect of beam smearing$\ung{\%}$");
 
 AddToLegend("$\be^* = 1535\ \rm m$");
-draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_1535.root", tags[0]+"/h_r"), blue, labelsS[0]);
-draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_1535.root", tags[5]+"/h_r"), blue+dashed, labelsS[5]);
+draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_1535.root", tags[0]+"/h_r"), "vl", blue, labelsS[0]);
+draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_1535.root", tags[5]+"/h_r"), "vl", blue+dashed, labelsS[5]);
 
 AddToLegend("$\be^* = 90\ \rm m$");
-draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_90.root", tags[0]+"/h_r"), red, labelsS[0]);
-draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_90.root", tags[5]+"/h_r"), red+dashed, labelsS[5]);
+draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_90.root", tags[0]+"/h_r"), "vl", red, labelsS[0]);
+draw(yscale(100)*shift(0, -1), rGetObj("../extrapolation/SmearingTest_90.root", tags[5]+"/h_r"), "vl", red+dashed, labelsS[5]);
 
 scale(Log, Linear);
 
@@ -102,7 +102,7 @@ string[] labelsS = {"Islam et al. (HP)", "Petrov et al. (2P)", "Petrov et al. (3
 
 string f = "../root/extrapolation_1535.root";
 
-NewPad("$|t|_{\rm low}\un{GeV^2}$", "$\d\si^{\rm H}/\d t|_{0}$ deviation $\un{\%}$");
+NewPad("$|t|_{\rm low}\ung{GeV^2}$", "$\d\si^{\rm H}/\d t|_{0}$ deviation $\ung{\%}$");
 currentpad.yTicks = RightTicks(Step=1,step=0.2);
 for (int ti : tags.keys) {
 	draw(rGetObj(f, "dev|"+tags[ti]), "l,p", colors[ti], mCi+1pt+colors[ti], labelsS[ti]);
@@ -122,7 +122,7 @@ GShipout("ext_results_1535", hSkip=5mm);
 
 string f = "../root/extrapolation_90_ty.root";
 
-NewPad("$|t_y|_{\rm low}\un{GeV^2}$", "$\d\si^{\rm H}/\d t|_{0}$ deviation $\un{\%}$");
+NewPad("$|t_y|_{\rm low}\ung{GeV^2}$", "$\d\si^{\rm H}/\d t|_{0}$ deviation $\ung{\%}$");
 for (int ti : tags.keys) {
 	draw(rGetObj(f, tags[ti]+"/dev"), "l,p,ieb", colors[ti], mCi+1pt+colors[ti], labelsS[ti]);
 }
@@ -142,7 +142,7 @@ GShipout("ext_results_90", hSkip=5mm);
 
 string f = "../root/extrapolation_1535.root";
 
-NewPad("$|t|_{\rm low}\un{GeV^2}$", "$\d\si^{\rm H}/\d t|_{0}$ deviation $\un{\%}$");
+NewPad("$|t|_{\rm low}\ung{GeV^2}$", "$\d\si^{\rm H}/\d t|_{0}$ deviation $\ung{\%}$");
 currentpad.yTicks = RightTicks(Step=1,step=0.2);
 for (int ti : tags.keys) {
 	draw(rGetObj(f, "dev|"+tags[ti]), "l,p", colors[ti], mCi+1pt+colors[ti], labelsS[ti]);
@@ -160,7 +160,7 @@ AttachLegend("$\be^* = 1535\,\rm m$");
 
 string f = "../root/extrapolation_90_ty.root";
 
-NewPad("$|t_y|_{\rm low}\un{GeV^2}$", "$\d\si^{\rm H}/\d t|_{0}$ deviation $\un{\%}$");
+NewPad("$|t_y|_{\rm low}\ung{GeV^2}$", "$\d\si^{\rm H}/\d t|_{0}$ deviation $\ung{\%}$");
 for (int ti : tags.keys) {
 	draw(rGetObj(f, tags[ti]+"/dev"), "l,p,ieb", colors[ti], mCi+1pt+colors[ti], labelsS[ti]);
 }

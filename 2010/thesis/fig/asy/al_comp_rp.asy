@@ -9,7 +9,7 @@ ySizeDef = 3.1cm;
 
 yTicksDef = NoTicks();
 
-string q_labels[] = { "$x\un{\mu m}$", "$y\un{\mu m}$", "$\rh\un{mrad}$" };
+string q_labels[] = { "$x\ung{\mu m}$", "$y\ung{\mu m}$", "$\rh\ung{mrad}$" };
 real q_range[] = { 20, 20, 1 };
 real q_Steps[] = { 10, 10, 0.5 };
 real q_steps[] = { 2, 2, 0.1 };

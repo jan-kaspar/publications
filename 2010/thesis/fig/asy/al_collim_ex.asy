@@ -41,7 +41,7 @@ while (true) {
 	gB = gB--(time, x[3]);
 }
 
-NewPad("time", "LVDT readings $\rm(mm)$");
+NewPad("time", "LVDT readings$\ung{mm}$");
 draw(gT, red, "top RP");
 draw(gB, blue, "bottom RP");
 currentpad.xSize = 12cm;
@@ -87,7 +87,7 @@ pen[] colors = { heavygreen, red, blue };
 
 string file = "/home/jkaspar/software/dip/data/2009_11_29/blm.root";
 
-NewPad("time", "beam losses$\ \rm(G/s)$");
+NewPad("time", "beam losses$\ung{G/s}$");
 currentpad.xSize = 12cm;
 currentpad.ySize = 4cm;
 currentpad.xTicks = LeftTicks(SecToTime);

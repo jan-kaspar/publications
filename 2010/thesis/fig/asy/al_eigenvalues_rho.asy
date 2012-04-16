@@ -112,7 +112,7 @@ guide[] GetGraphs(string dir)
 
 void DrawSet(guide[] graphs, int sm, real mx, bool first, bool last)
 {
-	NewPad((last) ? "$\si_\rh \un{mrad}$" : "", "$|\la_{\rm N}|$");
+	NewPad((last) ? "$\si_\rh \ung{mrad}$" : "", "$|\la_{\rm N}|$");
 	scale(Linear, Log);
 	for (int j = 0; j < N; ++j) {
 		pen p = stdPens[j % 5];

@@ -23,7 +23,7 @@ void DrawDets(real o)
 
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$x\un{mm}$", "$y\un{mm}$");
+NewPad("$x\ung{mm}$", "$y\ung{mm}$");
 TGraph_reducePoints = 10;
 string file = "../root/hitDistributions_1535.root";
 pen hitPen = red + 0.5pt;
@@ -33,11 +33,11 @@ draw(rGetObj(file, "unit_123|det_125"), "p", hitPen);
 DrawDets(1.35);
 filldraw(ellipse((0, 0), 0.3, 0.85), gray, nullpen);
 
-AttachLegend("$\be^*=1535\ {\rm m}$");
+AttachLegend("$\be^*=1535\un{m}$");
 
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$x\un{mm}$");
+NewPad("$x\ung{mm}$");
 TGraph_reducePoints = 1;
 string file = "../root/hitDistributions_90.root";
 pen hitPen = blue + 0.5pt;
@@ -47,11 +47,11 @@ draw(rGetObj(file, "unit_123|det_125"), "p", hitPen);
 DrawDets(6.4);
 filldraw(ellipse((0, 0), 3.99, 5.9), gray, nullpen);
 
-AttachLegend("$\be^*=90\ {\rm m}$");
+AttachLegend("$\be^*=90\un{m}$");
 
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$x\un{mm}$");
+NewPad("$x\ung{mm}$");
 TGraph_reducePoints = 1;
 string file = "../root/hitDistributions_2.root";
 pen hitPen = heavygreen + 0.5pt;
@@ -61,6 +61,6 @@ draw(rGetObj(file, "unit_123|det_125"), "p", hitPen);
 DrawDets(3.3);
 filldraw(ellipse((0, 0), 1.1, 2.8), gray, nullpen);
 
-AttachLegend("$\be^*=2\ {\rm m}$");
+AttachLegend("$\be^*=2\un{m}$");
 
 GShipout(hSkip=1mm);
