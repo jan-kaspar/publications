@@ -1,13 +1,18 @@
 import root;
 import pad_layout;
+import latex_aux_parser;
+
+ParseAuxFile("../elastic.aux");
+
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string base_dir = "/afs/cern.ch/exp/totem/scratch/jkaspar/software/offline/424/user/elastic_analysis/low_t/";
-string f = base_dir + "comparisons/dataset_cmp.root";
-string fg = base_dir + "comparisons/dsdt_graph.root";
+string f =  "../tabulation/dataset_cmp.root";
+string fg = "../tabulation/tab_this_pub.root";
 
 real xs = 0.004;
 
-xSizeDef = 15cm;
+xSizeDef = 15.5cm;
 ySizeDef = 8cm;
 
 xTicksDef = LeftTicks(Step=0.05, step=0.01);
@@ -36,10 +41,10 @@ void DrawErrSep(real t, real atd, real an, real ln)
 
 //----------------------------------------------------------------------------------------------------
 
-void DrawErr(real t, real atd, real an, real ln, bool separate=false)
+void DrawErr(real t, real atd, real an, real ln, real y_sug = -1)
 {
 	real a = 500.9, b = -19.46, c = -2.853;
-	real y = a * exp(b*t + c*t*t);
+	real y = (y_sug < 0) ? a * exp(b*t + c*t*t) : y_sug;
 	real den = 100.;
 
 	real tot = sqrt(atd^2 + an^2 + ln^2);
@@ -55,6 +60,7 @@ void DrawErr(real t, real atd, real an, real ln, bool separate=false)
 
 //----------------------------------------------------------------------------------------------------
 
+/*
 //NewPad("$|t|\ung{GeV^2}$");
 NewPad("", "$\d\si_{\rm el}/\d t$ uncertainty$\ung{\%}$", ySize=4.5cm, yTicks = RightTicks(Step=5, step=1));
 
@@ -80,32 +86,12 @@ AddToLegend("total", red+3pt);
 AttachLegend(2, NW, NW);
 
 NewRow();
+*/
 
 //----------------------------------------------------------------------------------------------------
 
 NewPad("$|t|\ung{GeV^2}$", "$\d\si_{\rm el}/\d t\ung{mb/GeV^2}$");
 scale(Linear, Log);
-
-AddToLegend("this publication", black);
-
-draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/publication1.root", "tc#1"), "vl,ec", blue+1pt, "EPL 95");
-//draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/publication2.root", "c1#1"), "l,ec", heavygreen, "EPL 96");
-
-draw(rGetObj(f, "h_avg"), "vl,d0,ec");
-
-TF1_lowLimit = 0; TF1_highLimit = 0.2;
-draw(rGetObj(fg, "ff2"), "l", heavygreen);
-TGraph_lowLimit = 0.2; TGraph_highLimit = +inf;
-draw(rGetObj(fg, "g_dsdt"), "p,ieb", mCi+1pt+black, "");
-
-DrawErr(0.01, 1.0, 1.3, 4.);
-DrawErr(0.06, 0.3, 1.3, 4.);
-DrawErr(0.10, 0.9, 1.3, 4.);
-DrawErr(0.12, 1.2, 1.3, 4.);
-DrawErr(0.16, 3.0, 1.3, 4.);
-DrawErr(0.20, 4.5, 1.3, 4.);
-DrawErr(0.30, 8.3, 1.3, 4.);
-DrawErr(0.40, 12.3, 1.3, 4.);
 
 for (real y = -1; y <= 2; y += 1)
 	draw((0, y)--(0.45, y), dotted);
@@ -120,12 +106,36 @@ filldraw((x1, y1)--(x2, y1)--(x2, y2)--(x1, y2)--cycle, white, nullpen);
 real w = 0.002, h = 0.15, wh = 0.01;
 real x = 0.05, y = 0, y0 = 0.5;
 
+AddToLegend("this publication", black);
+
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/publication1.root", "tc#1"), "vl,ec", blue+1pt, "Ref.~["+GetLatexReference("bibcite", "epl95")+"]");
+//draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/publication2.root", "c1#1"), "l,ec", heavygreen, "EPL 96");
+
+
+TF1_lowLimit = 0; TF1_highLimit = 0.2;
+draw(rGetObj(fg, "ff2"), "l", heavygreen+1pt);
+
+draw(rGetObj(f, "h_avg"), "vl,d0,ec");
+
+TGraph_lowLimit = 0.2; TGraph_highLimit = +inf;
+draw(rGetObj(fg, "g_stat_err"), "p,ieb", mCi+1pt+black, "");
+
+DrawErr(0.01, 1.0, 1.3, 4.);
+DrawErr(0.06, 0.3, 1.3, 4.);
+DrawErr(0.10, 0.9, 1.3, 4.);
+DrawErr(0.12, 1.2, 1.3, 4.);
+DrawErr(0.16, 3.0, 1.3, 4.);
+DrawErr(0.20, 4.5, 1.3, 4., 9.31);
+DrawErr(0.30, 8.3, 1.3, 4., 1.257);
+DrawErr(0.40, 12.3, 1.3, 4., 0.109);
+
+
 y = y0-0.2;
-draw((x-wh, y)--(x+wh, y), heavygreen);
+draw((x-wh, y)--(x+wh, y), heavygreen+1pt);
 label("low-$|t|$ extrapolation", (x+wh, y), 2E);
 
 y = y0-0.6;
-draw((x, y), mCi+1pt+black); label("bin control points", (x+wh, y), 2E);
+draw((x, y), mCi+1pt+black); label("bin representative points", (x+wh, y), 2E);
 
 y = y0-1;
 filldraw((x-w, y-h)--(x+w, y-h)--(x+w, y+h)--(x-w, y+h)--cycle, black+opacity(TH1_errorContourOpacity), nullpen);

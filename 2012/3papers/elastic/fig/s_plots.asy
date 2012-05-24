@@ -3,6 +3,8 @@ import root;
 
 StdFonts();
 
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
+
 pen[] paletteColor2 = {blue, green, yellow, red};
 TH2_palette = paletteColor2;
 

@@ -20,12 +20,14 @@ Abstract of the paper.}
 
 \def\d{{\rm d}}
 \def\un#1{\,{\rm #1}}
-\def\ung#1{\quad({\rm #1})}
-\def\unt#1{({\rm #1})}
+\def\ung#1{\quad[{\rm #1}]}
+\def\unt#1{[{\rm #1}]}
 \def\e{{\rm e}}
 
-\setbox123\hbox{0}
-\xdef\S{\hbox to\wd123{\hss}}
+\setbox123\hbox{$0$}
+\setbox124\hbox{$.$}
+\def\S{\hbox to\wd123{\hss}}
+\def\.{\hbox to\wd124{\hss}}
 
 
 \begin{document}
@@ -53,7 +55,7 @@ TODO: The measurement is performed with the vertical RPs in $220\un{m}$ stations
 
 \subsection{Optics}
 
-Proton transport for $\beta^* = 90\un{m}$ optics
+Elastic proton transport for $\beta^* = 90\un{m}$ optics:
 
 \begin{equation}
 \label{transport}
@@ -65,12 +67,17 @@ y = L_y\,\theta^*_y + v_y\,y^*
 
 TODO: brief description of optics, refer to \cite{epl96} where details are discussed
 
+TODO: define $\xi$
+
+Kinematics reconstruction from one-arm measurement:
 \begin{equation}
 \label{reconstruction}
 x^* = {x^{\rm F}\over v_x}\ ,\quad
 \theta^*_x = {1\over {\d L_x\over \d s}} \left( \theta_x - {\d v_x\over \d s} x^* \right)\ ,\quad
 \theta^*_y = {y\over L_y}\ .
 \end{equation}
+
+For elastic events, we averaged the angles reconstructed from left and right arms, which further reduces the uncertainty.
 
 %--------------------------------------------------
 \section{Data taking}
@@ -82,11 +89,11 @@ Several trigger schemes were used in the data-taking. For this analysis, the ess
 During the run, the Roman Pots (RPs) were driven to three different distances from the beam -- see Tab.~\ref{datasets}. While most of the statistics falls into the first dataset, the other two allowed us to measure $|t|$ values down to $4.6\cdot10^{-3}\un{GeV^2}$. Having three different datasets has enabled us to quantify and reduce certain systematic uncertainties.
 
 \begin{table}
-\caption{Description of the three collected datasets. The RP position gives the RP approach to beam in multiples of the beam size ($\sigma_{\rm beam}$). The third column summarizes the numbers of elastic events reconstructed from both diagonals. The $\mathcal{L}_{\rm eff}$ gives the effective (taking into account the DAQ efficiency) luminosity for each dataset. The last column shows the lowest $|t|$ values reached.}
+\caption{Description of the three datasets available. The RP position gives the RP approach to beam in multiples of the beam size ($\sigma_{\rm beam}$). The third column summarizes the numbers of elastic events reconstructed from both diagonals. The $\mathcal{L}_{\rm eff}$ gives the effective (taking into account the DAQ efficiency) luminosity for each dataset. The last column shows the lowest $|t|$ values reached.}
 \label{datasets}
 \begin{center}
 \vskip-3mm
-\begin{tabular}{|c|c|c|c|c|}\hline
+\begin{tabular}{ccccc}\hline
 & RP & elastic                   & $\mathcal{L}_{\rm eff}$ & $|t|_{\rm min}$     \cr
 \omit\hss\vbox to 0pt{\vss\hbox{\ dataset\ }\vss}\hss &\multispan4 \cr
  &  position &  events                   & $\unt{mb^{-1}}$         & $\unt{GeV^2}$       \cr\hline
@@ -101,32 +108,32 @@ During the run, the Roman Pots (RPs) were driven to three different distances fr
 %--------------------------------------------------
 \section{Analysis}
 
-The analysis is very similar the one of \cite{epl96}. Before we describe all the steps, let us anticipate that all datasets were analyzed separately. Moreover, most of the steps are performed separately on the subsamples coming from the two diagonal topologies (top left -- bottom right and bottom left -- top right). In this way we could control better the systematics of our analysis.
+The analysis is very similar the one of \cite{epl96}. Before describing the steps, let us anticipate that all datasets were analyzed separately. Moreover, most of the steps are performed independently for the two diagonals. In this way, we gained a better control of the systematics.
 
 %-------------------------
 \subsection{Alignment}
 
-Three complementary methods were applied. First, the RP motor control was calibrated by a beam-touching exercise. Then, proton tracks passing through the overlap between vertical and horizontal RPs were used to determine the relative alignment among the RPs of each unit. Since the elastic event tagging does not require precise alignment, we could use an elastic pre-selection for alignment fine-tuning. By exploiting the azimuthal symmetry of elastic scattering and taking advantage of the very small effective length $L_x$, we could adjust the horizontal and vertical shifts and the tilt of each unit.
-
-TODO: residual uncertainties -- effect on $\d\sigma/\d t$ smaller than $0.3\%$
+Three complementary methods were applied. First, the RP motor control was calibrated in a beam-touching exercise. Then, proton tracks passing through the overlap between vertical and horizontal RPs were used to determine the relative alignment among the RPs of each unit. Since the elastic event tagging does not require precise alignment, we could use an elastic pre-selection for alignment fine-tuning. By exploiting the azimuthal symmetry of elastic scattering and taking advantage of the very small effective length $L_x$, we could adjust the horizontal and vertical shifts and the tilt of each unit. The effect of residual misalignments on $\d\sigma_{\rm el}/\d t$ was thus smaller than $0.3\%$ for every $t$-bin.
 
 %-------------------------
 \subsection{Elastic tagging}
 
-The cuts used to select the elastic events are summarized in Tab.~\ref{cuts}. The first two require the reconstructed track collinearity between the left and right arm. The cuts 3-6 effectively work as low-$\xi$ cuts. If $\xi$ is non-negligible, the vertex ($x^*$) reconstruction is broken. So is the correlation between the scattering angle $\theta_y^*$ and the vertical hit difference between far and near RPs. The cut 7 compares the horizontal position reconstructed from the left and right arms. It is the strongest single cut and is very effective against the beam-halo background, see Fig.~\ref{hit dist}.
+The cuts used to select the elastic events are summarized in Tab.~\ref{cuts}. The cuts 1 and 2 require the reconstructed track collinearity between the left and right arms. The cuts 3-6 effectively work as low-$\xi$ cuts. If $\xi$ is non-negligible, the vertex ($x^*$) reconstruction Eq.~\ref{reconstruction} is broken. So is the correlation between the track position ($y^{\rm N}$) and the track angle (proportional to $y^{\rm F} - y^{\rm N}$). The cut 7 compares the horizontal vertex position reconstructed from the left and right arms. It is the strongest single cut and is very effective against the beam-halo background, see Fig.~\ref{hit dist}.
 
 \begin{table}
-\caption{The elastic selection cuts. TODO: add sigmas? The super scripts R and L refer to the right and left arm. Similarly the N and F corresponds to near and far units. TODO: add diagonal (4 tracks out of 4) cut as number 0?}
+\caption{The elastic selection cuts. The superscripts R and L refer to the right and left arm, the N and F corresponds to the near and far units.}
 \label{cuts}
 \begin{center}
-\begin{tabular}{cc}\hline
-1 & $\theta_x^{*\rm R}$ vs. $\theta_x^{*\rm L}$			\cr
-2 & $\theta_y^{*\rm R}$ vs. $\theta_y^{*\rm L}$			\cr
-3 & $|x^{*\rm R}|$ 									\cr
-4 & $|x^{*\rm L}|$ 									\cr
-5 & $\theta_y^{*\rm R}$ vs. $y^{\rm R,F} - y^{\rm R,N}$	\cr
-6 & $\theta_y^{*\rm L}$ vs. $y^{\rm L,F} - y^{\rm L,N}$	\cr
-7 & $x^{*\rm R}$ vs. $x^{*\rm L}$					\cr\hline
+\begin{tabular}{ccc}\hline
+number & cut & threshold\cr\hline
+diagonal &\multispan2 \hss track reconstructed in all 4 diagonal RPs \hss \cr
+1 & $\theta_x^{*\rm R}$ vs. $\theta_x^{*\rm L}$		& $9.2\un{\mu rad}$	\cr
+2 & $\theta_y^{*\rm R}$ vs. $\theta_y^{*\rm L}$		& $3.5\un{\mu rad}$	\cr
+3 & $|x^{*\rm R}|$ 									& $200\un{\mu m}$	\cr
+4 & $|x^{*\rm L}|$ 									& $200\un{\mu m}$	\cr
+5 & $y^{\rm R,N}$ vs.~$y^{\rm R,F} - y^{\rm R,N}$	& $17\un{\mu m}$	\cr
+6 & $y^{\rm R,N}$ vs.~$y^{\rm L,F} - y^{\rm L,N}$	& $17\un{\mu m}$	\cr
+7 & $x^{*\rm R}$ vs. $x^{*\rm L}$					& $9\un{\mu m}$ 	\cr\hline
 \end{tabular}
 \end{center}
 \end{table}
@@ -135,43 +142,42 @@ The cuts used to select the elastic events are summarized in Tab.~\ref{cuts}. Th
 %-------------------------
 \subsection{Kinematics reconstruction}
 
-The scattering angles were reconstructed according to Eq.~\ref{reconstruction}.
-
-TODO: Optics uncertainties (one arm) $0.4\%$ and $1.3\%$ for $\theta^*_y$ and $\theta^*_x$. The latter one has more pronounced effect on $\d\sigma/\d t$ (higher value, no acceptance cut in $\theta_x$) and is the leading systematic effect for larger $|t|$ values.
+The scattering angles were reconstructed according to Eq.~\ref{reconstruction}. The optics uncertainties for (one-arm) $\theta^*_x$ and $\theta^*_y$ reconstruction were $1.3\%$ and $0.8\%$ respectively. The former one has a more pronounced effect on $\d\sigma_{\rm el}/\d t$ (due to higher value and no acceptance cut in $\theta^*_x$) and is the leading systematic uncertainty for larger $|t|$ values, cf.~Tab.~\ref{systematics}.
 
 
 %-------------------------
 \subsection{Background}
 
-The background contribution (i.e. all non-elastic events passing the selection cuts) was estimated by relaxing the strongest single cut (number 7) and analyzing the distribution of $x^{*\rm R} - x^{*\rm L}$. This distribution can be reasonable described by two Gaussians -- one for the signal and for the background. We determined the background/signal ratio to be $(0.8 \pm 0.4)\%$.
+The background contribution (i.e.~all non-elastic events passing the selection cuts) was estimated by relaxing the strongest single cut (number 7 in Tab.~\ref{cuts}) and analyzing the distribution of $x^{*\rm R} - x^{*\rm L}$. This distribution can reasonably be described by two Gaussians -- one for the signal and for the background. We determined the background/signal ratio to be $(0.8 \pm 0.4)\%$.
+
 
 %-------------------------
 \subsection{Acceptance correction}
 
-There were two acceptance limitations: the detector edge (relevant for lower $|t|$) and the LHC aperture limitation shown in Fig.~\ref{hit dist} right (relevant for higher $|t|$). Both limitations were treated by assuming azimuthal symmetry and by correcting for smearing around the limitation edges.
+We identified two acceptance limitations: the detector edge (relevant for lower $|t|$) and the LHC aperture limitation shown in Fig.~\ref{hit dist} right (relevant for higher $|t|$). Both effects were treated by assuming azimuthal symmetry of the elastic scattering and by correcting for smearing around the limitation edges. In order to keep the uncertainty on a reasonable level, we constrained ourselves to the region where the full acceptance correction was no larger than 7.5 (considering both diagonals).
 
-TODO: correction no larger than 15 (with one diagonal -- 7.5 for two).
 
 %-------------------------
 \subsection{Unfolding of resolution effects}
 
-The angular resolution was determined by comparing the scattering angles reconstructed from the left and right arm. Combining all three datasets and all diagonals yields one-arm resolutions $(6.36\pm 0.21)\un{\mu rad}$ in $\theta^*_x$ and $(2.47\pm 0.07)\un{\mu rad}$ in $\theta^*_y$. The latter one is predominantly given by the beam-divergence, the $\theta^*_x$ resolution is deteriorated by a contribution from the finite detector pitch. The resolution impact on the $t$-distribution was determined (and removed) by an iterative procedure. That starts by taking the observed (smeared) $t$-distribution as an input to a Monte-Carlo calculation of the smearing correction. The correction is applied to the observed $t$-distribution which yields a better estimate of the true $t$-distribution. In total, three iterations were made.
+The angular resolution was determined by comparing the scattering angles reconstructed from the left and right arm. Combining all three datasets and all diagonals yields one-arm resolutions $(6.36\pm 0.21)\un{\mu rad}$ in $\theta^*_x$ and $(2.47\pm 0.07)\un{\mu rad}$ in $\theta^*_y$. The latter one is predominantly given by the beam-divergence, the $\theta^*_x$ resolution is deteriorated by a contribution from the finite detector pitch.
 
-TODO: systematics (from the uncertainy of resolution) $< 0.5\%$
+The $t$-resolution impact on $\d\sigma_{\rm el}/\d t$  was determined (and eliminated) by an iterative procedure. That starts by taking the observed (smeared) $t$-distribution as an input to a Monte-Carlo calculation of the un-smearing correction. The correction is applied to the observed $t$-distribution which yields a better estimate of the true $t$-distribution. These two steps were repeated three times in total. The systematic uncertainty of this procedure (due to the uncertainty of the $\theta^*_{x, y}$ resolution) was estimated smaller than $0.5\%$.
 
 %-------------------------
 \subsection{Efficiencies}
 
-The efficiency of the RP trigger was estimated from the zero-bias data stream. We selected the elastic events in that stream and found that the RP trigger flag was on each time. Therefore, with $68\%$ confidence level, we concluded the trigger efficiency to be higher than $99.77\%$.
+The efficiency of the RP trigger was estimated using the zero-bias data stream. We repeated the elastic event selection on these data and found the RP trigger efficient for all the selected events. Therefore, on $68\%$ confidence level, we concluded the trigger efficiency to be higher than $99.8\%$.
 % 95% CL: 99.40
 
 The DAQ efficiency was determined by comparing the numbers of triggered and recorded events, yielding $(98.142 \pm 0.001)\%$.
 
 There are several reasons for reconstruction inefficiency: intrinsic RP detection inefficiency of each silicon sensor, proton interaction with the material of a RP and ``pile-up'' of several protons in one event (RPs can fully reconstruct at most one track). For the last case, the most important situation is a coincidence of an elastic proton and a beam-halo proton, see Fig.~\ref{hit dist}.
 
-Uncorrelated inefficiencies of single RPs were studied by removing the examined RP from the selection cuts (only cut 2 can be kept then) and counting the recuperated events. The result of this study was an inefficiency of $(1.5 \pm 0.2)\%$ for the near and $(3.0 \pm 0.2)\%$ for the far RPs. This difference can be explained by proton interactions in the near pot thus affecting the far RP too. This near-far correlated inefficiency can be determined ... TODO: result, confirmation from MC simulations.
+Uncorrelated inefficiencies of single RPs were studied by removing the examined RP from the selection cuts (only cut 2 can be kept then) and counting the recuperated events. The result of this study was an inefficiency of $(1.5 \pm 0.2)\%$ for the near and $(3.0 \pm 0.2)\%$ for the far RPs. This difference can be explained by proton interactions in the near pot that affect the far RP too. This near-far correlated inefficiency was determined from data by counting events with corresponding shower signatures, yielding $(1.5\pm 0.7)\%$.
+% confirmation from MC simulations.
 
-The ``pile-up'' inefficiency was determined from the zero-bias data stream by evaluating the probability of finding a track in both RPs on either side. This probability was increasing as RPs approached the beam. For instance, for the diagonal bottom-left top-right, the probabilities were $(3.9 \pm 0.4)\%$, $(6.2 \pm 0.9)\%$ and $(7.9 \pm 1.1)\%$ for the datasets 1, 2 and 3 respectively.
+The ``pile-up'' inefficiency was determined from the zero-bias data stream by evaluating the probability of finding a track in both RPs on either side. This probability was found increasing as RPs approached the beam. For instance, for the diagonal bottom-left top-right, the probabilities were $(3.9 \pm 0.3)\%$, $(6.2 \pm 0.3)\%$ and $(7.9 \pm 0.3)\%$ for the datasets 1, 2 and 3 respectively.
 
 
 \begin{figure*}
@@ -184,7 +190,7 @@ The ``pile-up'' inefficiency was determined from the zero-bias data stream by ev
 \end{figure*}
 
 %-------------------------
-\subsection{Normalization, luminosity}
+\subsection{Luminosity}
 
 TODO: Lumi from CMS, 4\% uncertainty, Ken's pedestal subtraction
 
@@ -195,29 +201,42 @@ The elastic differential cross section was extrapolated to zero with the followi
 \label{extrapolation}
 {\d\sigma_{\rm el}\over \d t} = \left. {\d\sigma_{\rm el}\over \d t}\right|_{t=0} \ \e^{-B|t|}\ .
 \end{equation}
-The fits were performed from the lowest accessible $|t|$ values (see $|t|_{\rm min}$ in Tab.~\ref{datasets}) to $|t| = 0.2\un{GeV^2}$, with a typical $\chi^2/\hbox{n.d.f.}$ of $1.2$ -- see for example the green line in the bottom plot of Fig.~\ref{dsdt}.
+The fits were performed from the lowest accessible $|t|$ values (see $|t|_{\rm min}$ in Tab.~\ref{datasets}) to $|t| = 0.2\un{GeV^2}$, with a typical $\chi^2/\hbox{n.d.f.}$ of $1.2$ -- see for example the green line in Fig.~\ref{dsdt}.
 
 %-------------------------
-\section{Uncertainty calculation}
+\section{Systematic uncertainty calculation}
 
-TODO: Statistical uncertainty negligible, see Tab.~\ref{results}.
+%TODO: Statistical uncertainty negligible, see Tab.~\ref{results}.
 
-For each of the analysis steps above, the systematic uncertainty was determined, and their combination was studied with a Monte-Carlo simulation. We treated separately analysis $t$-dependent, analysis $t$-independent (normalization) and luminosity uncertainties, the results are shown in the top plot of Fig.~\ref{dsdt}. Since there is a number of contributions in each category, we combined the uncertainties in quadrature. So we did for the total uncertainty.
+For each of the analysis steps above, the systematic uncertainty was determined, and their combination was studied with a Monte-Carlo simulation. We treated separately analysis $t$-dependent, analysis $t$-independent (normalization) and luminosity uncertainties, the results are shown in Tab.~\ref{systematics}. Since there is a number of contributions in each category, we combined the uncertainties in quadrature. So we did for the total uncertainty.
 
-The luminosity uncertainty is the leading systematic effect for $|t| < 0.2\un{GeV^2}$, above that it is the uncertainty of $\d L_x/\d s$ which dominates.The optics-related error contribution is almost vanishing around $|t| = 0.06\un{GeV^2}$ and has opposite signs left and right of that point. Therefore there is a partial error cancellation in the integrated elastic cross section. Consequently the relative error of $\sigma_{\rm el}$ is significantly lower than the one of $\d\sigma_{\rm el}/\d t|_0$ -- see Tab.~\ref{results}.
+The luminosity uncertainty is the leading systematic effect for $|t| < 0.2\un{GeV^2}$, above that it is the uncertainty of $\d L_x/\d s$ which dominates. The optics-related error contribution is almost vanishing around $|t| = 0.06\un{GeV^2}$ and has opposite signs left and right of that point. Therefore there is a partial error cancellation in the integrated elastic cross section. Consequently the relative error of $\sigma_{\rm el}$ is significantly lower than the one of $\d\sigma_{\rm el}/\d t|_0$ -- see Tab.~\ref{results}.
 
 The Monte-Carlo simulation confirms that there is a strong correlation between the errors of $\sigma_{\rm el}$ and $\d\sigma_{\rm el}/\d t|_0$ -- the correlation coefficient is $0.76$ (when both $t$-dependent and normalization contributions are included).
 
+\begin{largetable}
+\caption{Overview of systematic uncertainties}
+%\vskip-3mm
+\label{systematics}
+\begin{tabular}{cccccccccc}\hline
+$t\ung{GeV^2}$ &	0.005 &	0.01 &	0.06 &	0.1 &	0.12 &	0.16 &	0.2 &	0.3 &	0.4\cr\hline
+$t$-dependent &	1.8\% &	1.0\% &	0.3\% &	0.9\% &	1.2\% &	3.0\% &	4.4\% &	8.3\% &	12.3\%\cr
+normalization &\multispan9\hfil	1.2\%\hfil  \cr
+luminosity &\multispan9\hfil	4.0\%\hfil  \cr\hline
+total &	4.5\% &	4.3\% &	4.2\% &	4.3\% &	4.3\% &	5.1\% &	6.1\% &	9.3\% &	12.9\% \cr\hline
+
+\end{tabular}
+\end{largetable}
 
 
 %--------------------------------------------------
 \section{Results}
 
-\subsection{$t$-distribution}
+The differential cross section results obtained from different datasets and different diagonals match perfectly with each other and with our previous publication \cite{epl95}. Merging the data from all datasets and diagonals gives the differential cross section presented in Fig.~\ref{dsdt} and Tab.~\ref{data low t}. Let us note that the first (second) lowest $|t|$ bin comes from the dataset 3 (datasets 2 and 3) only -- that is why these bins have significantly higher statistical uncertainty.
 
-TODO: very good agreement among datasets and diagonals
+Tab.~\ref{data low t} gives a representative $t$ value for each bin. These points were determined from the requirement that bin-based and point-based $\chi^2$ minimizations would lead to identical results \cite{lafferty94}. In practice, each bin $B_i$ of width $w_i$ is represented by $t_i$ value that fulfils $f(t_i) = {1\over w_i} \int_{B_i} f(\tau)\, \d\tau$, where $f(t)$ stands for the $t$-distribution. The uncertainties of the representative points $t_i$ come from the uncertainty of the $f(t)$ determination (fit). Even considering both statistical (bin fluctuations) and systematic (different fit parameterizations) gives negligible uncertainties on the representative $t$-values (relative uncertainties smaller than $10^{-4}$).
 
-Shown in Fig.~\ref{dsdt}, data presented in Tab.~\ref{data low t} and in Tab.~\ref{data medium t}. Each bin $B_i$ of width $w_i$ is represented by $t_i$ value calculated to the requirement $f(t_i) = {1\over w_i} \int_{B_i} f(\tau)\, \d\tau$ (see \cite{lafferty94}), where $f(t)$ stands for the $t$-distribution. The uncertainty of this representative $t$ values comes from the uncertainty of the $f(t)$ determination. Even considering both statistical (bin fluctuations) and systematic (different fit parameterizations) gives negligible uncertainties on the representative $t$-values -- the relative uncertainties are smaller than $2\cdot10^{-5}$ for Tab.~\ref{data low t} and $3\cdot10^{-3}$ for Tab.~\ref{data medium t}).
+Tab.~\ref{data medium t} gives the $\d\sigma_{\rm el}/\d t$ continuation to higher $|t|$ values, measured with $\beta^* = 3.5\un{m}$ optics and published in \cite{epl95}.
 
 %\begin{figure*}
 %\begin{center}
@@ -227,143 +246,142 @@ Shown in Fig.~\ref{dsdt}, data presented in Tab.~\ref{data low t} and in Tab.~\r
 %\end{center}
 %\end{figure*}
 
-
-\begin{table}
-\caption{Low $|t|$ data results, $\beta^* = 90\un{m}$, this analysis. Statistical errors only, systematic ones in the top plot of Fig.~\ref{dsdt}.}
-\label{data low t}
-\begin{center}
-\vskip-3mm
-\begin{tabular}{|c|c|c|c|c|}
-\multispan2\hrulefill &\omit &\multispan2\hrulefill\cr
-$|t|$ & $\d \sigma_{\rm el}/\d t$ &\omit\ \vrule& $|t|$ & $\d \sigma_{\rm el}/\d t$\cr
-$\unt{GeV^2}$ & $\unt{mb/GeV^2}$ &\omit\ \vrule& $\unt{GeV^2}$ & $\unt{mb/GeV^2}$\cr
-\multispan2\hrulefill &\omit &\multispan2\hrulefill\cr
-$0.00515$ & $465.\S\S \pm 27.\S\S$ &\omit\ \vrule& $0.112$ & $\S54.11\S \pm 0.53\S$\cr
-$0.00650$ & $465.\S\S \pm 11.\S\S$ &\omit\ \vrule& $0.116$ & $\S51.21\S \pm 0.51\S$\cr
-$0.00818$ & $437.5\S \pm \S5.0\S$ &\omit\ \vrule& $0.119$ & $\S48.24\S \pm 0.49\S$\cr
-$0.00995$ & $411.0\S \pm \S3.3\S$ &\omit\ \vrule& $0.122$ & $\S44.99\S \pm 0.46\S$\cr
-$0.0117\S$ & $402.3\S \pm \S2.9\S$ &\omit\ \vrule& $0.126$ & $\S42.74\S \pm 0.45\S$\cr
-$0.0135\S$ & $384.5\S \pm \S2.6\S$ &\omit\ \vrule& $0.130$ & $\S39.49\S \pm 0.43\S$\cr
-$0.0154\S$ & $378.0\S \pm \S2.4\S$ &\omit\ \vrule& $0.133$ & $\S35.75\S \pm 0.43\S$\cr
-$0.0172\S$ & $360.3\S \pm \S2.3\S$ &\omit\ \vrule& $0.137$ & $\S33.63\S \pm 0.41\S$\cr
-$0.0191\S$ & $348.1\S \pm \S2.2\S$ &\omit\ \vrule& $0.141$ & $\S31.08\S \pm 0.41\S$\cr
-$0.0210\S$ & $337.0\S \pm \S2.1\S$ &\omit\ \vrule& $0.145$ & $\S28.91\S \pm 0.39\S$\cr
-$0.0229\S$ & $325.0\S \pm \S2.0\S$ &\omit\ \vrule& $0.149$ & $\S25.65\S \pm 0.38\S$\cr
-$0.0248\S$ & $307.9\S \pm \S1.9\S$ &\omit\ \vrule& $0.153$ & $\S24.16\S \pm 0.36\S$\cr
-$0.0268\S$ & $296.7\S \pm \S1.8\S$ &\omit\ \vrule& $0.157$ & $\S22.35\S \pm 0.35\S$\cr
-$0.0287\S$ & $285.9\S \pm \S1.8\S$ &\omit\ \vrule& $0.162$ & $\S20.22\S \pm 0.34\S$\cr
-$0.0307\S$ & $275.3\S \pm \S1.7\S$ &\omit\ \vrule& $0.166$ & $\S19.01\S \pm 0.32\S$\cr
-$0.0328\S$ & $263.0\S \pm \S1.6\S$ &\omit\ \vrule& $0.171$ & $\S16.92\S \pm 0.30\S$\cr
-$0.0348\S$ & $252.0\S \pm \S1.6\S$ &\omit\ \vrule& $0.175$ & $\S15.20\S \pm 0.29\S$\cr
-$0.0369\S$ & $242.8\S \pm \S1.5\S$ &\omit\ \vrule& $0.180$ & $\S13.90\S \pm 0.28\S$\cr
-$0.0390\S$ & $231.6\S \pm \S1.5\S$ &\omit\ \vrule& $0.185$ & $\S12.09\S \pm 0.26\S$\cr
-$0.0411\S$ & $222.2\S \pm \S1.4\S$ &\omit\ \vrule& $0.190$ & $\S11.26\S \pm 0.25\S$\cr
-$0.0433\S$ & $210.9\S \pm \S1.4\S$ &\omit\ \vrule& $0.196$ & $\S10.11\S \pm 0.23\S$\cr
-$0.0455\S$ & $204.8\S \pm \S1.3\S$ &\omit\ \vrule& $0.201$ & $\S\S9.31\S \pm 0.22\S$\cr
-$0.0477\S$ & $197.2\S \pm \S1.3\S$ &\omit\ \vrule& $0.207$ & $\S\S8.07\S \pm 0.21\S$\cr
-$0.0499\S$ & $187.5\S \pm \S1.3\S$ &\omit\ \vrule& $0.213$ & $\S\S6.98\S \pm 0.19\S$\cr
-$0.0522\S$ & $178.1\S \pm \S1.2\S$ &\omit\ \vrule& $0.219$ & $\S\S6.22\S \pm 0.17\S$\cr
-$0.0545\S$ & $168.8\S \pm \S1.2\S$ &\omit\ \vrule& $0.225$ & $\S\S5.38\S \pm 0.16\S$\cr
-$0.0569\S$ & $162.5\S \pm \S1.1\S$ &\omit\ \vrule& $0.232$ & $\S\S4.40\S \pm 0.14\S$\cr
-$0.0592\S$ & $155.5\S \pm \S1.1\S$ &\omit\ \vrule& $0.239$ & $\S\S4.25\S \pm 0.14\S$\cr
-$0.0616\S$ & $149.4\S \pm \S1.1\S$ &\omit\ \vrule& $0.246$ & $\S\S3.47\S \pm 0.13\S$\cr
-$0.0641\S$ & $140.2\S \pm \S1.0\S$ &\omit\ \vrule& $0.253$ & $\S\S2.82\S \pm 0.11\S$\cr
-$0.0666\S$ & $135.10 \pm \S0.99$ &\omit\ \vrule& $0.261$ & $\S\S2.52\S \pm 0.10\S$\cr
-$0.0691\S$ & $129.00 \pm \S0.96$ &\omit\ \vrule& $0.270$ & $\S\S2.142 \pm 0.097$\cr
-$0.0716\S$ & $120.53 \pm \S0.91$ &\omit\ \vrule& $0.278$ & $\S\S1.824 \pm 0.086$\cr
-$0.0742\S$ & $115.10 \pm \S0.89$ &\omit\ \vrule& $0.287$ & $\S\S1.455 \pm 0.075$\cr
-$0.0769\S$ & $109.63 \pm \S0.86$ &\omit\ \vrule& $0.297$ & $\S\S1.257 \pm 0.069$\cr
-$0.0795\S$ & $104.97 \pm \S0.83$ &\omit\ \vrule& $0.307$ & $\S\S0.848 \pm 0.055$\cr
-$0.0823\S$ & $100.22 \pm \S0.80$ &\omit\ \vrule& $0.318$ & $\S\S0.633 \pm 0.046$\cr
-$0.0850\S$ & $\S93.18 \pm \S0.76$ &\omit\ \vrule& $0.330$ & $\S\S0.558 \pm 0.043$\cr
-$0.0878\S$ & $\S89.16 \pm \S0.74$ &\omit\ \vrule& $0.342$ & $\S\S0.417 \pm 0.038$\cr
-$0.0907\S$ & $\S81.78 \pm \S0.70$ &\omit\ \vrule& $0.356$ & $\S\S0.269 \pm 0.027$\cr
-$0.0936\S$ & $\S78.85 \pm \S0.68$ &\omit\ \vrule& $0.371$ & $\S\S0.235 \pm 0.025$\cr
-$0.0966\S$ & $\S73.92 \pm \S0.65$ &\omit\ \vrule& $0.387$ & $\S\S0.136 \pm 0.019$\cr
-$0.0996\S$ & $\S68.77 \pm \S0.62$ &\omit\ \vrule& $0.405$ & $\S\S0.109 \pm 0.016$\cr
-$0.103\S\S$ & $\S65.53 \pm \S0.60$ &\omit\ \vrule& $0.425$ & $\S\S0.058 \pm 0.011$\cr
-$0.106\S\S$ & $\S61.90 \pm \S0.58$ &\omit\ \vrule& $0.448$ & $\S\S0.029 \pm 0.007$\cr
-\multispan2 &\omit &\multispan2\hrulefill\cr
-$0.109\S\S$ & $\S58.11 \pm \S0.55$\cr
-\multispan2\hrulefill &\omit &\multispan2\cr
-\end{tabular}
-\end{center}
-\end{table}
-
-\begin{table}
-\caption{Medium $|t|$ data results, $\beta^* = 3.5\un{m}$, Ref.~\cite{epl95}. NOT FINAL - just a place-holder. Statistical $\d\sigma_{\rm el}/\d t$ errors only, systematic uncertainties evaluated for three $|t|$ values: $^{+25}_{-37}\%$ at $|t|=0.4\un{GeV^2}$, $^{+28}_{-39}\%$ at $0.4\un{GeV^2}$ and $^{+27}_{-30}\%$ at $0.4\un{GeV^2}$.}
-\label{data medium t}
-\begin{center}
-\vskip-3mm
-\begin{tabular}{|c|c|c|c|c|c|c|c|}
-\multispan2\hrulefill &\omit &\multispan2\hrulefill\cr
-$|t|$ & $\d \sigma_{\rm el}/\d t$ &\omit\ \vrule& $|t|$ & $\d \sigma_{\rm el}/\d t$\cr
-$\unt{GeV^2}$ & $\unt{\mu b/GeV^2}$ &\omit\ \vrule& $\unt{GeV^2}$ & $\unt{\mu b/GeV^2}$\cr
-\multispan2\hrulefill &\omit &\multispan2\hrulefill\cr
-$ 0.364 $ & $ 299.2\S \pm 6.9\S $ &\omit\ \vrule& $ 0.831 $ & $ \S18.93\S\S \pm 0.71\S $\cr
-$ 0.371 $ & $ 251.8\S \pm 5.8\S $ &\omit\ \vrule& $ 0.847 $ & $ \S18.32\S\S \pm 0.68\S $\cr
-$ 0.377 $ & $ 225.1\S \pm 5.1\S $ &\omit\ \vrule& $ 0.863 $ & $ \S16.33\S\S \pm 0.62\S $\cr
-$ 0.384 $ & $ 174.3\S \pm 4.2\S $ &\omit\ \vrule& $ 0.880 $ & $ \S16.42\S\S \pm 0.61\S $\cr
-$ 0.391 $ & $ 157.1\S \pm 3.8\S $ &\omit\ \vrule& $ 0.897 $ & $ \S16.95\S\S \pm 0.63\S $\cr
-$ 0.398 $ & $ 133.3\S \pm 3.2\S $ &\omit\ \vrule& $ 0.913 $ & $ \S14.14\S\S \pm 0.56\S $\cr
-$ 0.405 $ & $ 116.1\S \pm 2.9\S $ &\omit\ \vrule& $ 0.931 $ & $ \S14.05\S\S \pm 0.55\S $\cr
-$ 0.412 $ & $ \S92.6\S \pm 2.4\S $ &\omit\ \vrule& $ 0.948 $ & $ \S14.10\S\S \pm 0.56\S $\cr
-$ 0.420 $ & $ \S78.1\S \pm 2.1\S $ &\omit\ \vrule& $ 0.966 $ & $ \S11.91\S\S \pm 0.48\S $\cr
-$ 0.428 $ & $ \S63.2\S \pm 1.7\S $ &\omit\ \vrule& $ 0.985 $ & $ \S12.24\S\S \pm 0.48\S $\cr
-$ 0.436 $ & $ \S53.6\S \pm 1.5\S $ &\omit\ \vrule& $ 1.00\S $ & $ \S11.31\S\S \pm 0.46\S $\cr
-$ 0.445 $ & $ \S44.7\S \pm 1.3\S $ &\omit\ \vrule& $ 1.02\S $ & $ \S10.04\S\S \pm 0.43\S $\cr
-$ 0.454 $ & $ \S33.7\S \pm 1.1\S $ &\omit\ \vrule& $ 1.04\S $ & $ \S\S8.73\S\S \pm 0.39\S $\cr
-$ 0.464 $ & $ \S30.25 \pm 0.98 $ &\omit\ \vrule& $ 1.06\S $ & $ \S\S7.87\S\S \pm 0.36\S $\cr
-$ 0.474 $ & $ \S25.54 \pm 0.85 $ &\omit\ \vrule& $ 1.09\S $ & $ \S\S8.13\S\S \pm 0.36\S $\cr
-$ 0.485 $ & $ \S21.58 \pm 0.75 $ &\omit\ \vrule& $ 1.11\S $ & $ \S\S7.20\S\S \pm 0.34\S $\cr
-$ 0.496 $ & $ \S19.44 \pm 0.70 $ &\omit\ \vrule& $ 1.13\S $ & $ \S\S6.50\S\S \pm 0.31\S $\cr
-$ 0.507 $ & $ \S18.04 \pm 0.66 $ &\omit\ \vrule& $ 1.15\S $ & $ \S\S5.09\S\S \pm 0.26\S $\cr
-$ 0.519 $ & $ \S17.06 \pm 0.63 $ &\omit\ \vrule& $ 1.18\S $ & $ \S\S5.26\S\S \pm 0.26\S $\cr
-$ 0.534 $ & $ \S16.07 \pm 0.62 $ &\omit\ \vrule& $ 1.21\S $ & $ \S\S4.96\S\S \pm 0.25\S $\cr
-$ 0.547 $ & $ \S16.85 \pm 0.66 $ &\omit\ \vrule& $ 1.23\S $ & $ \S\S4.22\S\S \pm 0.22\S $\cr
-$ 0.560 $ & $ \S18.46 \pm 0.72 $ &\omit\ \vrule& $ 1.26\S $ & $ \S\S3.40\S\S \pm 0.19\S $\cr
-$ 0.574 $ & $ \S18.26 \pm 0.72 $ &\omit\ \vrule& $ 1.29\S $ & $ \S\S3.26\S\S \pm 0.18\S $\cr
-$ 0.588 $ & $ \S20.77 \pm 0.79 $ &\omit\ \vrule& $ 1.32\S $ & $ \S\S2.69\S\S \pm 0.16\S $\cr
-$ 0.602 $ & $ \S22.85 \pm 0.85 $ &\omit\ \vrule& $ 1.36\S $ & $ \S\S2.21\S\S \pm 0.14\S $\cr
-$ 0.615 $ & $ \S22.23 \pm 0.85 $ &\omit\ \vrule& $ 1.39\S $ & $ \S\S2.00\S\S \pm 0.13\S $\cr
-$ 0.629 $ & $ \S24.23 \pm 0.90 $ &\omit\ \vrule& $ 1.43\S $ & $ \S\S1.63\S\S \pm 0.11\S $\cr
-$ 0.643 $ & $ \S24.65 \pm 0.90 $ &\omit\ \vrule& $ 1.47\S $ & $ \S\S1.47\S\S \pm 0.11\S $\cr
-$ 0.657 $ & $ \S27.43 \pm 0.97 $ &\omit\ \vrule& $ 1.51\S $ & $ \S\S1.066\S \pm 0.086 $\cr
-$ 0.671 $ & $ \S24.79 \pm 0.91 $ &\omit\ \vrule& $ 1.55\S $ & $ \S\S0.841\S \pm 0.070 $\cr
-$ 0.685 $ & $ \S25.11 \pm 0.91 $ &\omit\ \vrule& $ 1.60\S $ & $ \S\S0.747\S \pm 0.065 $\cr
-$ 0.702 $ & $ \S27.35 \pm 0.94 $ &\omit\ \vrule& $ 1.66\S $ & $ \S\S0.557\S \pm 0.054 $\cr
-$ 0.714 $ & $ \S26.52 \pm 0.94 $ &\omit\ \vrule& $ 1.71\S $ & $ \S\S0.464\S \pm 0.047 $\cr
-$ 0.728 $ & $ \S25.87 \pm 0.91 $ &\omit\ \vrule& $ 1.78\S $ & $ \S\S0.369\S \pm 0.039 $\cr
-$ 0.742 $ & $ \S25.05 \pm 0.88 $ &\omit\ \vrule& $ 1.85\S $ & $ \S\S0.216\S \pm 0.028 $\cr
-$ 0.757 $ & $ \S26.03 \pm 0.90 $ &\omit\ \vrule& $ 1.93\S $ & $ \S\S0.192\S \pm 0.025 $\cr
-$ 0.771 $ & $ \S24.07 \pm 0.85 $ &\omit\ \vrule& $ 2.03\S $ & $ \S\S0.126\S \pm 0.018 $\cr
-$ 0.786 $ & $ \S23.16 \pm 0.81 $ &\omit\ \vrule& $ 2.13\S $ & $ \S\S0.059\S \pm 0.011 $\cr
-$ 0.801 $ & $ \S21.34 \pm 0.78 $ &\omit\ \vrule& $ 2.28\S $ & $ \S\S0.0412 \pm 0.008 $\cr
-$ 0.816 $ & $ \S21.59 \pm 0.77 $ &\omit\ \vrule& $ 2.45\S $ & $ \S\S0.0230 \pm 0.005 $\cr
-\multispan2\hrulefill &\omit &\multispan2\hrulefill\cr
-\end{tabular}
-\end{center}
-\end{table}
-
-
 \begin{figure*}
 \begin{center}
 \includegraphics{fig/dsdt.pdf}
-\caption{The measured elastic differential cross section (bottom plot) with systematic uncertainty estimation (upper plot). TODO: more details}
+\caption{The measured elastic differential cross section. TODO: more description?}
 \label{dsdt}
 \end{center}
 \end{figure*}
 
 
+\begin{largetable}
+\caption{The elastic differential cross section determined in this analysis. Some details on the systematic uncertainty calculation can be found in Tab.~\ref{systematics}. This table can also be used to evaluate the correlations of the systematic uncertainties among the bins (the three contributions are independent).}
+\label{data low t}
+\begin{center}
+%\vskip-3mm
+\begin{tabular}{cccccccc}
+%\hline
+%$|t| \ung{GeV^2}$ & \multispan3 \hfil$\d \sigma_{\rm el}/\d t \ung{mb/GeV^2}$\hfil \cr
+%&&stat&syst\cr
+\multispan2\hrulefill&&\multispan2\hrulefill&&\multispan2\hrulefill\cr
+$|t|$ & $\d \sigma_{\rm el}/\d t \ung{mb/GeV^2}$ &&
+$|t|$ & $\d \sigma_{\rm el}/\d t \ung{mb/GeV^2}$ &&
+$|t|$ & $\d \sigma_{\rm el}/\d t \ung{mb/GeV^2}$ \cr
+$\unt{GeV^2}$ & \S\S\S\.\S$\pm$stat\S $\pm$syst\S\. &&
+$\unt{GeV^2}$ & \S\S\S\.\S$\pm$stat\S $\pm$syst\S\. &&
+$\unt{GeV^2}$ & \S\S\S\.\S$\pm$stat\S $\pm$syst\S\. \cr
+\multispan2\hrulefill&&\multispan2\hrulefill&&\multispan2\hrulefill\cr
+$0.00515$ & $465.\S\S \pm 27.\S\S \pm 21.\S\S$ & & $0.0691$ & $129.00 \pm 0.96 \pm 5.45$ & & $0.171$ & $16.92\S\S \pm 0.30\S\S \pm 0.91\S\S$\cr
+$0.00650$ & $465.\S\S \pm 11.\S\S \pm 21.\S\S$ & & $0.0716$ & $120.53 \pm 0.91 \pm 5.10$ & & $0.175$ & $15.20\S\S \pm 0.29\S\S \pm 0.83\S\S$\cr
+$0.00818$ & $437.5\S \pm \S5.0\S \pm 19.1\S$ & & $0.0742$ & $115.10 \pm 0.89 \pm 4.88$ & & $0.180$ & $13.90\S\S \pm 0.28\S\S \pm 0.78\S\S$\cr
+$0.00995$ & $411.0\S \pm \S3.3\S \pm 17.7\S$ & & $0.0769$ & $109.63 \pm 0.86 \pm 4.65$ & & $0.185$ & $12.09\S\S \pm 0.26\S\S \pm 0.69\S\S$\cr
+$0.0117\S$ & $402.3\S \pm \S2.9\S \pm 17.3\S$ & & $0.0795$ & $104.97 \pm 0.83 \pm 4.46$ & & $0.190$ & $11.26\S\S \pm 0.25\S\S \pm 0.66\S\S$\cr
+$0.0135\S$ & $384.5\S \pm \S2.6\S \pm 16.5\S$ & & $0.0823$ & $100.22 \pm 0.80 \pm 4.27$ & & $0.196$ & $10.11\S\S \pm 0.23\S\S \pm 0.61\S\S$\cr
+$0.0154\S$ & $378.0\S \pm \S2.4\S \pm 16.2\S$ & & $0.0850$ & $\S93.18 \pm 0.76 \pm 3.97$ & & $0.201$ & $\S9.31\S\S \pm 0.22\S\S \pm 0.57\S\S$\cr
+$0.0172\S$ & $360.3\S \pm \S2.3\S \pm 15.4\S$ & & $0.0878$ & $\S89.16 \pm 0.74 \pm 3.81$ & & $0.207$ & $\S8.07\S\S \pm 0.21\S\S \pm 0.51\S\S$\cr
+$0.0191\S$ & $348.1\S \pm \S2.2\S \pm 14.9\S$ & & $0.0907$ & $\S81.78 \pm 0.70 \pm 3.50$ & & $0.213$ & $\S6.98\S\S \pm 0.19\S\S \pm 0.45\S\S$\cr
+$0.0210\S$ & $337.0\S \pm \S2.1\S \pm 14.4\S$ & & $0.0936$ & $\S78.85 \pm 0.68 \pm 3.38$ & & $0.219$ & $\S6.22\S\S \pm 0.17\S\S \pm 0.42\S\S$\cr
+$0.0229\S$ & $325.0\S \pm \S2.0\S \pm 13.9\S$ & & $0.0966$ & $\S73.92 \pm 0.65 \pm 3.17$ & & $0.225$ & $\S5.38\S\S \pm 0.16\S\S \pm 0.37\S\S$\cr
+$0.0248\S$ & $307.9\S \pm \S1.9\S \pm 13.1\S$ & & $0.0996$ & $\S68.77 \pm 0.62 \pm 2.96$ & & $0.232$ & $\S4.40\S\S \pm 0.14\S\S \pm 0.31\S\S$\cr
+$0.0268\S$ & $296.7\S \pm \S1.8\S \pm 12.7\S$ & & $0.103\S$ & $\S65.53 \pm 0.60 \pm 2.82$ & & $0.239$ & $\S4.25\S\S \pm 0.14\S\S \pm 0.31\S\S$\cr
+$0.0287\S$ & $285.9\S \pm \S1.8\S \pm 12.2\S$ & & $0.106\S$ & $\S61.90 \pm 0.58 \pm 2.66$ & & $0.246$ & $\S3.47\S\S \pm 0.13\S\S \pm 0.26\S\S$\cr
+$0.0307\S$ & $275.3\S \pm \S1.7\S \pm 11.7\S$ & & $0.109\S$ & $\S58.11 \pm 0.55 \pm 2.50$ & & $0.253$ & $\S2.82\S\S \pm 0.11\S\S \pm 0.22\S\S$\cr
+$0.0328\S$ & $263.0\S \pm \S1.6\S \pm 11.2\S$ & & $0.112\S$ & $\S54.11 \pm 0.53 \pm 2.33$ & & $0.261$ & $\S2.52\S\S \pm 0.10\S\S \pm 0.20\S\S$\cr
+$0.0348\S$ & $252.0\S \pm \S1.6\S \pm 10.7\S$ & & $0.116\S$ & $\S51.21 \pm 0.51 \pm 2.20$ & & $0.270$ & $\S2.142\S \pm 0.097\S \pm 0.178\S$\cr
+$0.0369\S$ & $242.8\S \pm \S1.5\S \pm 10.3\S$ & & $0.119\S$ & $\S48.24 \pm 0.49 \pm 2.07$ & & $0.278$ & $\S1.824\S \pm 0.086\S \pm 0.157\S$\cr
+$0.0390\S$ & $231.6\S \pm \S1.5\S \pm \S9.8\S$ & & $0.122\S$ & $\S44.99 \pm 0.46 \pm 1.96$ & & $0.287$ & $\S1.455\S \pm 0.075\S \pm 0.129\S$\cr
+$0.0411\S$ & $222.2\S \pm \S1.4\S \pm \S9.4\S$ & & $0.126\S$ & $\S42.74 \pm 0.45 \pm 1.89$ & & $0.297$ & $\S1.257\S \pm 0.069\S \pm 0.116\S$\cr
+$0.0433\S$ & $210.9\S \pm \S1.4\S \pm \S8.9\S$ & & $0.130\S$ & $\S39.49 \pm 0.43 \pm 1.77$ & & $0.307$ & $\S0.848\S \pm 0.055\S \pm 0.081\S$\cr
+$0.0455\S$ & $204.8\S \pm \S1.3\S \pm \S8.7\S$ & & $0.133\S$ & $\S35.75 \pm 0.43 \pm 1.63$ & & $0.318$ & $\S0.633\S \pm 0.046\S \pm 0.063\S$\cr
+$0.0477\S$ & $197.2\S \pm \S1.3\S \pm \S8.3\S$ & & $0.137\S$ & $\S33.63 \pm 0.41 \pm 1.56$ & & $0.330$ & $\S0.558\S \pm 0.043\S \pm 0.058\S$\cr
+$0.0499\S$ & $187.5\S \pm \S1.3\S \pm \S7.9\S$ & & $0.141\S$ & $\S31.08 \pm 0.41 \pm 1.47$ & & $0.342$ & $\S0.417\S \pm 0.038\S \pm 0.045\S$\cr
+$0.0522\S$ & $178.1\S \pm \S1.2\S \pm \S7.5\S$ & & $0.145\S$ & $\S28.91 \pm 0.39 \pm 1.39$ & & $0.356$ & $\S0.269\S \pm 0.027\S \pm 0.030\S$\cr
+$0.0545\S$ & $168.8\S \pm \S1.2\S \pm \S7.1\S$ & & $0.149\S$ & $\S25.65 \pm 0.38 \pm 1.25$ & & $0.371$ & $\S0.235\S \pm 0.025\S \pm 0.028\S$\cr
+$0.0569\S$ & $162.5\S \pm \S1.1\S \pm \S6.8\S$ & & $0.153\S$ & $\S24.16 \pm 0.36 \pm 1.20$ & & $0.387$ & $\S0.136\S \pm 0.019\S \pm 0.017\S$\cr
+$0.0592\S$ & $155.5\S \pm \S1.1\S \pm \S6.5\S$ & & $0.157\S$ & $\S22.35 \pm 0.35 \pm 1.13$ & & $0.405$ & $\S0.109\S \pm 0.016\S \pm 0.014\S$\cr
+$0.0616\S$ & $149.4\S \pm \S1.1\S \pm \S6.3\S$ & & $0.162\S$ & $\S20.22 \pm 0.34 \pm 1.04$ & & $0.425$ & $\S0.0575 \pm 0.0110 \pm 0.0079$\cr
+$0.0641\S$ & $140.2\S \pm \S1.0\S \pm \S5.9\S$ & & $0.166\S$ & $\S19.01 \pm 0.32 \pm 1.00$ & & $0.448$ & $\S0.0285 \pm 0.0072 \pm 0.0042$\cr
+\multispan2&&\multispan2\hrulefill&&\multispan2\hrulefill\cr
+$0.0666\S$ & $135.10 \pm \S0.99 \pm \S5.70$ \cr
+\multispan2\hrulefill&&\multispan2&&\multispan2\cr
+\end{tabular}
+\end{center}
+\end{largetable}
+
+\begin{largetable}
+\caption{The elastic differential cross section as determined in \cite{epl95}. The systematic errors almost fully correlated among the bins.
+%systematic uncertainties evaluated for three $|t|$ values: $^{+25}_{-37}\%$ at $|t|=0.4\un{GeV^2}$, $^{+28}_{-39}\%$ at $0.5\un{GeV^2}$ and $^{+27}_{-30}\%$ at $1.5\un{GeV^2}$.
+}
+\label{data medium t}
+\begin{center}
+%\vskip-3mm
+\begin{tabular}{cccccccc}
+\multispan2\hrulefill&&\multispan2\hrulefill\cr
+$|t| \ung{GeV^2}$ & $\d \sigma_{\rm el}/\d t \ung{\mu b/GeV^2}$ && $|t| \ung{GeV^2}$ & $\d \sigma_{\rm el}/\d t \ung{\mu b/GeV^2}$ \cr
+& \S\S\S\S$\pm$stat $\pm$syst && & \S\S\S\S$\pm$stat $\pm$syst\cr
+\multispan2\hrulefill&&\multispan2\hrulefill\cr
+$0.3642 \pm 0.0019$   &   $299.1\S \pm 7.6\S^{+\S71.6\S}_{-108.5\S}$  &&  $0.8309 \pm 0.0045$   &   $18.93\S\S \pm 0.73\S\S^{+5.24\S\S}_{-6.82\S\S}$ \cr
+$0.3706 \pm 0.0019$   &   $251.8\S \pm 6.4\S^{+\S60.7\S}_{-\S91.7\S}$  &&  $0.8466 \pm 0.0046$   &   $18.32\S\S \pm 0.71\S\S^{+5.07\S\S}_{-6.57\S\S}$ \cr
+$0.3772 \pm 0.0019$   &   $225.1\S \pm 5.6\S^{+\S54.7\S}_{-\S82.3\S}$  &&  $0.8628 \pm 0.0048$   &   $16.33\S\S \pm 0.64\S\S^{+4.51\S\S}_{-5.84\S\S}$ \cr
+$0.3839 \pm 0.0019$   &   $174.4\S \pm 4.6\S^{+\S42.8\S}_{-\S64.0\S}$  &&  $0.8796 \pm 0.0049$   &   $16.42\S\S \pm 0.63\S\S^{+4.53\S\S}_{-5.84\S\S}$ \cr
+$0.3907 \pm 0.0020$   &   $157.1\S \pm 4.1\S^{+\S38.8\S}_{-\S57.9\S}$  &&  $0.8965 \pm 0.0049$   &   $16.95\S\S \pm 0.64\S\S^{+4.68\S\S}_{-6.00\S\S}$ \cr
+$0.3977 \pm 0.0020$   &   $133.3\S \pm 3.5\S^{+\S33.2\S}_{-\S49.3\S}$  &&  $0.9133 \pm 0.0048$   &   $14.14\S\S \pm 0.58\S\S^{+3.90\S\S}_{-4.99\S\S}$ \cr
+$0.4049 \pm 0.0021$   &   $116.1\S \pm 3.2\S^{+\S29.2\S}_{-\S43.1\S}$  &&  $0.9305 \pm 0.0051$   &   $14.05\S\S \pm 0.56\S\S^{+3.87\S\S}_{-4.93\S\S}$ \cr
+$0.4122 \pm 0.0022$   &   $\S92.6\S \pm 2.6\S^{+\S23.5\S}_{-\S34.5\S}$  &&  $0.9481 \pm 0.0051$   &   $14.10\S\S \pm 0.57\S\S^{+3.88\S\S}_{-4.93\S\S}$ \cr
+$0.4199 \pm 0.0022$   &   $\S78.1\S \pm 2.3\S^{+\S20.0\S}_{-\S29.2\S}$  &&  $0.9662 \pm 0.0054$   &   $11.92\S\S \pm 0.49\S\S^{+3.28\S\S}_{-4.15\S\S}$ \cr
+$0.4278 \pm 0.0023$   &   $\S63.2\S \pm 1.9\S^{+\S16.3\S}_{-\S23.7\S}$  &&  $0.9852 \pm 0.0056$   &   $12.25\S\S \pm 0.49\S\S^{+3.37\S\S}_{-4.24\S\S}$ \cr
+$0.4361 \pm 0.0024$   &   $\S53.6\S \pm 1.7\S^{+\S14.0\S}_{-\S20.2\S}$  &&  $1.0047 \pm 0.0056$   &   $11.31\S\S \pm 0.47\S\S^{+3.11\S\S}_{-3.90\S\S}$ \cr
+$0.4448 \pm 0.0026$   &   $\S44.7\S \pm 1.5\S^{+\S11.8\S}_{-\S16.9\S}$  &&  $1.0242 \pm 0.0056$   &   $10.04\S\S \pm 0.44\S\S^{+2.76\S\S}_{-3.44\S\S}$ \cr
+$0.4540 \pm 0.0027$   &   $\S33.7\S \pm 1.2\S^{+\S\S9.0\S}_{-\S12.8\S}$  &&  $1.0441 \pm 0.0058$   &   $\S8.74\S\S \pm 0.40\S\S^{+2.40\S\S}_{-2.98\S\S}$ \cr
+$0.4637 \pm 0.0029$   &   $\S30.2\S \pm 1.2\S^{+\S\S8.1\S}_{-\S11.6\S}$  &&  $1.0647 \pm 0.0061$   &   $\S7.87\S\S \pm 0.37\S\S^{+2.16\S\S}_{-2.67\S\S}$ \cr
+$0.4740 \pm 0.0031$   &   $\S25.5\S \pm 1.0\S^{+\S\S7.0\S}_{-\S\S9.8\S}$  &&  $1.0862 \pm 0.0064$   &   $\S8.13\S\S \pm 0.36\S\S^{+2.23\S\S}_{-2.74\S\S}$ \cr
+$0.4848 \pm 0.0031$   &   $\S21.58 \pm 0.90^{+\S\S5.94}_{-\S\S8.35}$  &&  $1.1085 \pm 0.0065$   &   $\S7.20\S\S \pm 0.34\S\S^{+1.97\S\S}_{-2.41\S\S}$ \cr
+$0.4959 \pm 0.0033$   &   $\S19.45 \pm 0.85^{+\S\S5.42}_{-\S\S7.57}$  &&  $1.1312 \pm 0.0067$   &   $\S6.50\S\S \pm 0.32\S\S^{+1.78\S\S}_{-2.17\S\S}$ \cr
+$0.5076 \pm 0.0034$   &   $\S18.04 \pm 0.81^{+\S\S5.05}_{-\S\S7.02}$  &&  $1.1548 \pm 0.0070$   &   $\S5.09\S\S \pm 0.27\S\S^{+1.39\S\S}_{-1.68\S\S}$ \cr
+$0.5201 \pm 0.0037$   &   $\S17.08 \pm 0.76^{+\S\S4.78}_{-\S\S6.63}$  &&  $1.1794 \pm 0.0073$   &   $\S5.26\S\S \pm 0.27\S\S^{+1.44\S\S}_{-1.73\S\S}$ \cr
+$0.5332 \pm 0.0038$   &   $\S16.07 \pm 0.76^{+\S\S4.49}_{-\S\S6.22}$  &&  $1.2053 \pm 0.0077$   &   $\S4.96\S\S \pm 0.25\S\S^{+1.35\S\S}_{-1.62\S\S}$ \cr
+$0.5466 \pm 0.0039$   &   $\S16.86 \pm 0.80^{+\S\S4.71}_{-\S\S6.50}$  &&  $1.2324 \pm 0.0080$   &   $\S4.22\S\S \pm 0.23\S\S^{+1.15\S\S}_{-1.37\S\S}$ \cr
+$0.5602 \pm 0.0040$   &   $\S18.46 \pm 0.86^{+\S\S5.16}_{-\S\S7.10}$  &&  $1.2608 \pm 0.0084$   &   $\S3.40\S\S \pm 0.20\S\S^{+0.93\S\S}_{-1.09\S\S}$ \cr
+$0.5739 \pm 0.0039$   &   $\S18.26 \pm 0.85^{+\S\S5.10}_{-\S\S7.00}$  &&  $1.2905 \pm 0.0087$   &   $\S3.26\S\S \pm 0.19\S\S^{+0.89\S\S}_{-1.04\S\S}$ \cr
+$0.5877 \pm 0.0040$   &   $\S20.77 \pm 0.92^{+\S\S5.80}_{-\S\S7.94}$  &&  $1.3218 \pm 0.0094$   &   $\S2.69\S\S \pm 0.16\S\S^{+0.73\S\S}_{-0.85\S\S}$ \cr
+$0.6017 \pm 0.0040$   &   $\S22.85 \pm 0.97^{+\S\S6.37}_{-\S\S8.70}$  &&  $1.3548 \pm 0.0097$   &   $\S2.21\S\S \pm 0.14\S\S^{+0.60\S\S}_{-0.69\S\S}$ \cr
+$0.6155 \pm 0.0040$   &   $\S22.24 \pm 0.96^{+\S\S6.20}_{-\S\S8.44}$  &&  $1.390\S \pm 0.011\S$   &   $\S2.00\S\S \pm 0.13\S\S^{+0.54\S\S}_{-0.62\S\S}$ \cr
+$0.6294 \pm 0.0040$   &   $\S24.2\S \pm 1.0\S^{+\S\S6.8\S}_{-\S\S9.2\S}$  &&  $1.428\S \pm 0.011\S$   &   $\S1.63\S\S \pm 0.11\S\S^{+0.44\S\S}_{-0.50\S\S}$ \cr
+$0.6434 \pm 0.0041$   &   $\S24.65 \pm 0.99^{+\S\S6.87}_{-\S\S9.30}$  &&  $1.467\S \pm 0.011\S$   &   $\S1.47\S\S \pm 0.11\S\S^{+0.40\S\S}_{-0.45\S\S}$ \cr
+$0.6572 \pm 0.0040$   &   $\S27.4\S \pm 1.1\S^{+\S\S7.6\S}_{-\S10.3\S}$  &&  $1.507\S \pm 0.012\S$   &   $\S1.066\S \pm 0.087\S^{+0.288\S}_{-0.319\S}$ \cr
+$0.6711 \pm 0.0041$   &   $\S24.79 \pm 0.98^{+\S\S6.90}_{-\S\S9.28}$  &&  $1.552\S \pm 0.014\S$   &   $\S0.841\S \pm 0.071\S^{+0.227\S}_{-0.248\S}$ \cr
+$0.6853 \pm 0.0041$   &   $\S25.11 \pm 0.97^{+\S\S6.98}_{-\S\S9.37}$  &&  $1.603\S \pm 0.015\S$   &   $\S0.747\S \pm 0.065\S^{+0.201\S}_{-0.217\S}$ \cr
+$0.6995 \pm 0.0041$   &   $\S27.3\S \pm 1.0\S^{+\S\S7.6\S}_{-\S10.2\S}$  &&  $1.656\S \pm 0.016\S$   &   $\S0.557\S \pm 0.054\S^{+0.150\S}_{-0.159\S}$ \cr
+$0.7136 \pm 0.0040$   &   $\S26.52 \pm 0.99^{+\S\S7.37}_{-\S\S9.83}$  &&  $1.713\S \pm 0.017\S$   &   $\S0.464\S \pm 0.048\S^{+0.124\S}_{-0.130\S}$ \cr
+$0.7276 \pm 0.0041$   &   $\S25.87 \pm 0.96^{+\S\S7.19}_{-\S\S9.56}$  &&  $1.777\S \pm 0.020\S$   &   $\S0.369\S \pm 0.039\S^{+0.099\S}_{-0.101\S}$ \cr
+$0.7420 \pm 0.0042$   &   $\S25.05 \pm 0.92^{+\S\S6.95}_{-\S\S9.22}$  &&  $1.851\S \pm 0.023\S$   &   $\S0.216\S \pm 0.028\S^{+0.058\S}_{-0.058\S}$ \cr
+$0.7565 \pm 0.0042$   &   $\S26.03 \pm 0.95^{+\S\S7.22}_{-\S\S9.55}$  &&  $1.932\S \pm 0.024\S$   &   $\S0.192\S \pm 0.025\S^{+0.051\S}_{-0.050\S}$ \cr
+$0.7711 \pm 0.0043$   &   $\S24.07 \pm 0.89^{+\S\S6.67}_{-\S\S8.80}$  &&  $2.024\S \pm 0.029\S$   &   $\S0.126\S \pm 0.019\S^{+0.033\S}_{-0.032\S}$ \cr
+$0.7860 \pm 0.0043$   &   $\S23.16 \pm 0.84^{+\S\S6.42}_{-\S\S8.44}$  &&  $2.133\S \pm 0.034\S$   &   $\S0.059\S \pm 0.012\S^{+0.015\S}_{-0.014\S}$ \cr
+$0.8007 \pm 0.0042$   &   $\S21.34 \pm 0.81^{+\S\S5.91}_{-\S\S7.75}$  &&  $2.272\S \pm 0.048\S$   &   $\S0.0412 \pm 0.0083^{+0.0108}_{-0.0095}$ \cr
+$0.8156 \pm 0.0044$   &   $\S21.59 \pm 0.80^{+\S\S5.98}_{-\S\S7.81}$  &&  $2.443\S \pm 0.050\S$   &   $\S0.0230 \pm 0.0055^{+0.0060}_{-0.0049}$ \cr
+\multispan2\hrulefill&&\multispan2\hrulefill\cr
+\end{tabular}
+\end{center}
+\end{largetable}
 
 
 
-\subsection{Cross sections -- need better name}
+By extrapolating the differential cross section to $t=0$ (see Eq.~\ref{extrapolation}), we determined the intercept
+$\d\sigma_{\rm el}/\d t|0 = 506\un{mb} \pm 0\%^{\rm stat} \pm 0\%^{\rm syst}$ and elastic slope
+$B = 19.9\un{GeV^{-2}} \pm 0\%^{\rm stat} \pm 0\%^{\rm syst}$ -- details on the uncertainty composition can be found in Tab.~\ref{results}. Let us remark that we observe no indication of $B$ changing for $|t| < 0.2\un{GeV^2}$. We used the extrapolation to calculate the integrated elastic cross section
+$\sigma_{\rm el} = 25.4\un{mb} \pm 0\%^{\rm stat} \pm 0\%^{\rm syst}$. Compared to our previous publication \cite{epl96}, the ratio of extrapolated to observed elastic cross section was reduced from $50$ to $10\%$ (due to a very close RP approach to the beam).
 
-TODO: Comment on the reducing ratio of extrapolated/observed $\sigma_{el}$
-
-
-TODO: Ref to Tab.~\ref{results}
+The optical theorem permits to calculate total and inelastic cross section:
+\begin{equation}
+\label{si tot}
+\sigma_{\rm tot}^2 = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d\sigma_{\rm el}\over\d t\right|_0\ ,\qquad
+\sigma_{\rm inel} = \sigma_{\rm tot} - \sigma_{\rm el}\ .
+\end{equation}
+Taking the COMPETE \cite{compete} prediction of $0.14^{+0.01}_{-0.08}$ for the $\rho$ parameter yields
+$\sigma_{\rm tot} = 98.6\un{mb} \pm 0\%^{\rm stat} \pm 0\%^{\rm syst}$ and
+$\sigma_{\rm tot} = 98.6\un{mb} \pm 0\%^{\rm stat} \pm 0\%^{\rm syst}$ (details on uncertainty composition are given in Tab.~\ref{results}).
 
 \begin{largetable}
 \caption{Result summary. The right-most column gives the total systematic uncertainty, combined in quadrature and taking into account the correlations between the contributions.}
@@ -386,11 +404,6 @@ $\sigma_{\rm inel}$ & $73.2\un{mb}$ & & $\pm 1.05\%^{\rm t-dep}$ & $\pm 0.42\%^{
 
 
 
-\begin{equation}
-\label{si tot}
-\sigma_{\rm tot} = {16\pi (\hbar c)^2\over 1 + \rho^2}\, {\d N_{\rm el}/\d t|_0\over N_{\rm el} + N_{\rm inel}}\ ,\qquad
-\sigma_{\rm inel} = \sigma_{\rm tot} - \sigma_{\rm el}
-\end{equation}
 
 
 %--------------------------------------------------
@@ -437,23 +450,28 @@ Acknowledgements -- Insert here the text.
 
 \bibitem{epl96}
     %First measurements of the total proton-proton cross section at the LHC energy of $\sqrt s =7\,\rm TeV$ CERN-PH-EP-2011-158
-	\Name{Antchev G.~et al.~(TOTEM Collaboration)}
+	\Name{Antchev G.~{\it et al.}~(TOTEM Collaboration)}
 	\REVIEW{Europhys.~Lett.}{96}{2011}{21002}
 
 \bibitem{epl95}
     %Proton-proton elastic scattering at the LHC energy of \sqrt{s} = 7 TeV, Europhys. Lett. 95 (2011) 41001,CERN-PH-EP-2011-101 
-	\Name{Antchev G.~et al.~(TOTEM Collaboration)}
+	\Name{Antchev G.~{\it et al.}~(TOTEM Collaboration)}
 	\REVIEW{Europhys.~Lett.}{95}{2011}{41001}
 
 \bibitem{jinst}
     %The TOTEM Experiment at the CERN Large Hadron Collider, JINST 3 S08007, 2008
-	\Name{Anelli G.~et al.~(TOTEM Collaboration)}
+	\Name{Anelli G.~{\it et al.}~(TOTEM Collaboration)}
 	\REVIEW{JINST}{3}{2008}{S08007}
 
 \bibitem{lafferty94}
  	%``Where to stick your data points: The treatment of measurements within wide bins,''
 	\Name{Lafferty G.~D.~and Wyatt T.~R.}
 	\REVIEW{Nucl.\ Instrum.\ Meth.}{A 355}{1995}{541}
+
+\bibitem{compete} 
+	\Name{J.~R.~Cudell {\it et al.} (COMPETE Collaboration)}
+	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
+
 
 %\bibitem{b.b}
 %  \Name{Author F. \and Author S.}
