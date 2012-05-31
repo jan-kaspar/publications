@@ -246,7 +246,7 @@ The elastic differential cross section was extrapolated to zero with the followi
 \label{extrapolation}
 {\d\sigma_{\rm el}\over \d t} = \left. {\d\sigma_{\rm el}\over \d t}\right|_{t=0} \ \e^{-B|t|}\ .
 \end{equation}
-The fits were performed from the lowest accessible $|t|$ values (see $|t|_{\rm min}$ in Tab.~\ref{datasets}) to $|t| = 0.2\un{GeV^2}$, with a typical $\chi^2/\hbox{n.d.f.}$ of $1.2$ -- see for example the green line in Fig.~\ref{dsdt}.
+The fits were performed from the lowest accessible $|t|$ values (see $|t|_{\rm min}$ in Tab.~\ref{datasets}) to $|t| = 0.2\un{GeV^2}$, with a typical $\chi^2/\hbox{n.d.f.}$ of $1.2$ -- see for example the black line in Fig.~\ref{dsdt}.
 
 %-------------------------
 \section{Systematic uncertainty calculation}
@@ -293,7 +293,7 @@ Tab.~\ref{data medium t} gives the $\d\sigma_{\rm el}/\d t$ continuation to high
 
 \begin{figure*}
 \begin{center}
-\includegraphics{fig/dsdt.pdf}
+\includegraphics{fig/dsdt_comp.pdf}
 \caption{The measured elastic differential cross section. TODO: more description?}
 \label{dsdt}
 \end{center}
@@ -403,36 +403,38 @@ $0.6294$ & $0.0040$ & $\S24.2\S$ & $1.0\S$ & $^{\s\s6.8\s}_{\s\s9.2\s}$ & & $1.0
 
 
 By extrapolating the differential cross section to $t=0$ (see Eq.~\ref{extrapolation}), we determined the intercept
-$\d\sigma_{\rm el}/\d t|0 = 506\un{mb} \pm 0\%^{\rm stat} \pm 0\%^{\rm syst}$ and elastic slope
-$B = 19.9\un{GeV^{-2}} \pm 0\%^{\rm stat} \pm 0\%^{\rm syst}$ -- details on the uncertainty composition can be found in Tab.~\ref{results}. Let us remark that we observe no indication of $B$ changing for $|t| < 0.2\un{GeV^2}$. We used the extrapolation to calculate the integrated elastic cross section
-$\sigma_{\rm el} = 25.4\un{mb} \pm 0\%^{\rm stat} \pm 0\%^{\rm syst}$. Compared to our previous publication \cite{epl96}, the ratio of extrapolated to observed elastic cross section was reduced from $50$ to $10\%$ (due to a very close RP approach to the beam).
+$\d\sigma_{\rm el}/\d t|0 = 506\un{mb} \pm 1.7\%^{\rm stat} \pm 4.5\%^{\rm syst}$ and elastic slope
+$B = 19.9\un{GeV^{-2}} \pm 0.2\%^{\rm stat} \pm 1.3\%^{\rm syst}$ -- details on the uncertainty composition can be found in Tab.~\ref{results}. Let us remark that we observe no indication of $B$ changing for $|t| < 0.2\un{GeV^2}$. We used the extrapolation to calculate the integrated elastic cross section
+$\sigma_{\rm el} = 25.4\un{mb} \pm 0.1\%^{\rm stat} \pm 4.2\%^{\rm syst}$. Compared to our previous publication \cite{epl96}, the ratio of extrapolated to observed elastic cross section was reduced from $50$ to $10\%$ (due to a very close RP approach to the beam).
 
-The optical theorem permits to calculate total and inelastic cross section:
+The optical theorem permits to calculate the total and inelastic cross sections:
 \begin{equation}
 \label{si tot}
 \sigma_{\rm tot}^2 = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d\sigma_{\rm el}\over\d t\right|_0\ ,\qquad
 \sigma_{\rm inel} = \sigma_{\rm tot} - \sigma_{\rm el}\ .
 \end{equation}
-Taking the COMPETE \cite{compete} prediction of $0.14^{+0.01}_{-0.08}$ for the $\rho$ parameter yields
-$\sigma_{\rm tot} = 98.6\un{mb} \pm 0\%^{\rm stat} \pm 0\%^{\rm syst}$ and
-$\sigma_{\rm tot} = 98.6\un{mb} \pm 0\%^{\rm stat} \pm 0\%^{\rm syst}$ (details on uncertainty composition are given in Tab.~\ref{results}).
+Taking the COMPETE \cite{compete} preferred-model prediction of $0.141\pm 0.007$ for the $\rho$ parameter yields
+$\sigma_{\rm tot} = 98.6\un{mb}  \pm 2.3\%^{\rm syst}$ and
+$\sigma_{\rm inel} = 73.2\un{mb} \pm 1.7\%^{\rm syst}$ (details on the uncertainty composition are given in Tab.~\ref{results}). Taking the full COMPETE error band (from considering a handful of fit models) for the $\rho$ parameter $^{+0.01}_{-0.08}$, would result in $\sigma_{\rm tot}$ variation of $^{+0.8}_{-0.1}\%$. Even that error would be dominated by the other uncertainty contributions.
+
+ 
 
 \begin{largetable}
 \caption{Result summary. The right-most column gives the total systematic uncertainty, combined in quadrature and taking into account the correlations between the contributions.}
 %\vskip-3mm
 \label{results}
-\begin{tabular}{cccccccl}\hline
+\begin{tabular}{clcccccl}\hline
 quantity & value & statistical u. &\multispan5\hss systematic uncertainty\hss\cr\hline
 %
-$\d\sigma_{\rm el}/\d t|_0$ & $506.4\un{mb/GeV^2}$ & $\pm 0.2\%^{\rm stat}$ & $\pm 1.7\%^{t-\rm dep}$ & $\pm 1.3\%^{\rm norm}$ & $\pm 4\%^{\rm lumi}$ &  & $\Rightarrow \pm 4.5\%^{\rm syst}$\cr
+$\d\sigma_{\rm el}/\d t|_0$ & $506\un{mb/GeV^2}$ & $\pm 0.2\%^{\rm stat}$ & $\pm 1.7\%^{t-\rm dep}$ & $\pm 1.2\%^{\rm norm}$ & $\pm 4.0\%^{\rm lumi}$ &  & $\Rightarrow \pm 4.5\%^{\rm syst}$\cr
 %
-$B$ & $19.89\un{GeV^{-2}}$ & $\pm 0.03\%^{\rm stat}$  & $\pm 0.27\%^{\rm t-dep}$ & & & & $ \Rightarrow \pm 0.27\%^{\rm syst}$\cr
+$B$ & $\S19.9\un{GeV^{-2}}$ & $\pm 0.2\%^{\rm stat}$  & $\pm 1.3\%^{\rm t-dep}$ & & & & $ \Rightarrow \pm 1.3\%^{\rm syst}$\cr
 %
-$\sigma_{\rm el}$ & $25.43\un{mb}$ & $\pm 0.1\%^{\rm stat}$ & $\pm 0.4\%^{t-\rm dep}$ & $\pm 1.3\%^{\rm norm}$ & $\pm 4\%^{\rm lumi}$ &  & $\Rightarrow \pm 4.2\%^{\rm syst}$\cr\hline
+$\sigma_{\rm el}$ & $\S25.4\un{mb}$ & $\pm 0.1\%^{\rm stat}$ & $\pm 0.4\%^{t-\rm dep}$ & $\pm 1.2\%^{\rm norm}$ & $\pm 4.0\%^{\rm lumi}$ &  & $\Rightarrow \pm 4.2\%^{\rm syst}$\cr\hline
 %
-$\sigma_{\rm tot}$ & $98.6\un{mb}$ & & $\pm 0.85\%^{\rm t-dep}$ & $\pm 0.65\%^{\rm norm}$ & $\pm 2.0\%^{\rm lumi}$ & $^{+1.14}_{-0.14} \%^{\rm rho}$ & $ \Rightarrow ^{+2.45}_{-2.19} \%^{\rm syst}$\cr
+$\sigma_{\rm tot}$ & $\S98.6\un{mb}$ & & $\pm 0.9\%^{\rm t-dep}$ & $\pm 0.6\%^{\rm norm}$ & $\pm 2.0\%^{\rm lumi}$ & $\pm 0.1 \%^{\rm rho}$ & $ \Rightarrow \pm 2.3 \%^{\rm syst}$\cr
 %
-$\sigma_{\rm inel}$ & $73.2\un{mb}$ & & $\pm 1.05\%^{\rm t-dep}$ & $\pm 0.42\%^{\rm norm}$ & $\pm 1.3\%^{\rm lumi}$ & $^{+1.54}_{-0.19} \%^{\rm rho}$ & $ \Rightarrow ^{+3.26}_{-2.90} \%^{\rm syst}$\cr\hline
+$\sigma_{\rm inel}$ & $\S73.2\un{mb}$ & & $\pm 1.1\%^{\rm t-dep}$ & $\pm 0.4\%^{\rm norm}$ & $\pm 1.3\%^{\rm lumi}$ & $\pm 0.1 \%^{\rm rho}$ & $ \Rightarrow \pm 1.7 \%^{\rm syst}$\cr\hline
 \end{tabular}
 \end{largetable}
 

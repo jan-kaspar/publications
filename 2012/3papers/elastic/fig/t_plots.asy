@@ -41,6 +41,9 @@ void DrawErrSep(real t, real atd, real an, real ln)
 
 //----------------------------------------------------------------------------------------------------
 
+pen err_pen = red;
+real w_err_bar = 0.002;
+
 void DrawErr(real t, real atd, real an, real ln, real y_sug = -1)
 {
 	real a = 500.9, b = -19.46, c = -2.853;
@@ -54,8 +57,33 @@ void DrawErr(real t, real atd, real an, real ln, real y_sug = -1)
 	//draw(Scale((t+0.5*xs, y*(1- ln/den)))--Scale((t+0.5*xs, y*(1+ ln/den))), blue+1.5pt);
 	//draw(Scale((t+1.5*xs, y*(1-tot/den)))--Scale((t+1.5*xs, y*(1+tot/den))), red+1.5pt);
 
-	real w = 0.002;
-	filldraw(Scale((t-w, y*(1-tot/den)))--Scale((t+w, y*(1-tot/den)))--Scale((t+w, y*(1+tot/den)))--Scale((t-w, y*(1+tot/den)))--cycle, red, nullpen);
+	real w = w_err_bar;
+	filldraw(Scale((t-w, y*(1-tot/den)))--Scale((t+w, y*(1-tot/den)))--Scale((t+w, y*(1+tot/den)))--Scale((t-w, y*(1+tot/den)))--cycle, err_pen, black+0.05pt);
+	/*
+	draw(Scale((t, y*(1-tot/den)))--Scale((t, y*(1+tot/den))), err_pen);
+	draw(Scale((t-w, y*(1-tot/den)))--Scale((t+w, y*(1-tot/den))), err_pen);
+	draw(Scale((t-w, y*(1+tot/den)))--Scale((t+w, y*(1+tot/den))), err_pen);
+	*/
+}
+
+//----------------------------------------------------------------------------------------------------
+
+void DrawTotalErr(real t, real y, real ep, real em)
+{
+	real den = 100.;
+
+	//draw(Scale((t-1.5*xs, y*(1-atd/den)))--Scale((t-1.5*xs, y*(1+atd/den))), heavygreen+1.5pt);
+	//draw(Scale((t-0.5*xs, y*(1- an/den)))--Scale((t-0.5*xs, y*(1+ an/den))), orange+1.5pt);
+	//draw(Scale((t+0.5*xs, y*(1- ln/den)))--Scale((t+0.5*xs, y*(1+ ln/den))), blue+1.5pt);
+	//draw(Scale((t+1.5*xs, y*(1-tot/den)))--Scale((t+1.5*xs, y*(1+tot/den))), red+1.5pt);
+
+	real w = w_err_bar;
+	filldraw(Scale((t-w, y*(1+em/den)))--Scale((t+w, y*(1+em/den)))--Scale((t+w, y*(1+ep/den)))--Scale((t-w, y*(1+ep/den)))--cycle, err_pen, black+0.05pt);
+	/*
+	draw(Scale((t, y*(1+em/den)))--Scale((t, y*(1+ep/den))), err_pen);
+	draw(Scale((t-w, y*(1+em/den)))--Scale((t+w, y*(1+em/den))), err_pen);
+	draw(Scale((t-w, y*(1+ep/den)))--Scale((t+w, y*(1+ep/den))), err_pen);
+	*/
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -150,6 +178,133 @@ limits((0, 1e-2), (0.45, 1e3), Crop);
 AttachLegend();
 
 GShipout("dsdt", vSkip=0pt);
+
+//----------------------------------------------------------------------------------------------------
+// infit plot
+
+picture infit = new picture;
+currentpicture = infit;
+
+unitsize(550mm, 16mm);
+
+scale(Linear, Log);
+
+for (real y = 2; y <= 2; y += 1)
+	draw((0, y)--(0.2, y), dotted);
+
+for (real x = 0.; x <= 0.2; x += 0.05)
+	draw((x, 1)--(x, 3), dotted);
+
+// EPL 96
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/h2.root", "h2"), "vl", heavygreen);
+TGraph_errorBar = None;
+TGraph_lowLimit = -inf; TGraph_highLimit = +inf;
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/g2.root", "g2"), "p,iebx", heavygreen);
+
+// extrapolation to 0
+TF1_lowLimit = 0; TF1_highLimit = 0.2;
+draw(rGetObj(fg, "ff2"), "l", black, "extrapolation to $t=0$");
+
+// this publication
+TH1_lowLimit = 0.; TH1_highLimit = 0.45;
+draw(rGetObj(f, "h_avg"), "vl,d0", red+0.6pt);
+draw(rGetObj(fg, "g_stat_err"), "p,iebx", red);
+
+err_pen = red;
+w_err_bar = 0.001;
+DrawErr(0.01, 1.0, 1.3, 4.);
+DrawErr(0.06, 0.3, 1.3, 4.);
+DrawErr(0.10, 0.9, 1.3, 4.);
+DrawErr(0.12, 1.2, 1.3, 4.);
+DrawErr(0.16, 3.0, 1.3, 4.);
+DrawErr(0.20, 4.5, 1.3, 4., 9.31);
+DrawErr(0.30, 8.3, 1.3, 4., 1.257);
+DrawErr(0.40, 12.3, 1.3, 4., 0.109);
+
+// t_min arrows
+real t_min = 0.005; draw(Label("$|t|_{\rm min} = 5\cdot 10^{-3}\un{GeV^2}$", 0, E, UnFill), (t_min, 1.25)--(t_min, 2.5), red, EndArrow);
+real t_min = 0.02; draw(Label("$|t|_{\rm min} = 2\cdot 10^{-2}\un{GeV^2}$", 0, E, UnFill), (t_min, 1.55)--(t_min, 2.4), heavygreen, EndArrow);
+
+limits((0, 1e1), (0.2, 1e3), Crop);
+AttachLegend();
+
+xaxis(BottomTop, LeftTicks(Step=0.05, step=0.01));
+yaxis(LeftRight, RightTicks());
+
+
+
+//----------------------------------------------------------------------------------------------------
+
+NewPad("$|t|\ung{GeV^2}$", "$\d\si_{\rm el}/\d t\ung{mb/GeV^2}$", xTicks=LeftTicks(Step=0.2, step=0.1), 15.5cm, 8cm);
+scale(Linear, Log);
+
+for (real y = -5; y <= 3; y += 1)
+	draw((0, y)--(2.5, y), dotted);
+
+for (real x = 0.; x <= 2.5; x += 0.2)
+	draw((x, -5)--(x, 3), dotted);
+
+// EPL 95
+TH1_lowLimit = -inf; TH1_highLimit = +inf;
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/h1.root", "h1"), "vl", blue, "Ref.~["+GetLatexReference("bibcite", "epl95")+"]");
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/g1.root", "g1"), "p,iebx", blue);
+
+err_pen = blue;
+w_err_bar = 0.008;
+
+DrawTotalErr(0.4, 0.13, +25, -37);
+DrawTotalErr(0.5, 0.02, +28, -39);
+DrawTotalErr(1.5, 0.0011, +27, -30);
+
+// EPL 96
+TH1_highLimit = 0.4;
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/h2.root", "h2"), "vl", heavygreen, "Ref.~["+GetLatexReference("bibcite", "epl96")+"]");
+TGraph_highLimit = 0.4;
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/g2.root", "g2"), "p,iebx", heavygreen);
+
+// this publication
+
+//TF1_lowLimit = 0; TF1_highLimit = 0.2;
+//draw(rGetObj(fg, "ff2"), "l", heavygreen+1pt);
+
+TH1_lowLimit = 0.; TH1_highLimit = 0.45;
+draw(rGetObj(f, "h_avg"), "vl,d0", red+0.6pt, "this publication");
+TGraph_highLimit = 0.45;
+draw(rGetObj(fg, "g_stat_err"), "p,iebx", red);
+
+err_pen = red;
+DrawErr(0.01, 1.0, 1.3, 4.);
+DrawErr(0.06, 0.3, 1.3, 4.);
+DrawErr(0.10, 0.9, 1.3, 4.);
+DrawErr(0.12, 1.2, 1.3, 4.);
+DrawErr(0.16, 3.0, 1.3, 4.);
+DrawErr(0.20, 4.5, 1.3, 4., 9.31);
+DrawErr(0.30, 8.3, 1.3, 4., 1.257);
+DrawErr(0.40, 12.3, 1.3, 4., 0.109);
+
+
+// uncertainties legend
+picture pse;
+unitsize(pse, 1mm);
+draw(pse, (-3, 0)--(3, 0));
+draw(pse, (0, -1)--(0, 1));
+AddToLegend("statistical uncertainties", pse.fit());
+
+picture psy;
+unitsize(psy, 1mm);
+currentpicture = psy;
+w_err_bar = 0.5;
+err_pen = lightgray;
+DrawTotalErr(0, 1., +200, -200);
+currentpicture = currentpad.pic;
+AddToLegend("systematic uncertainties", (shift(0, -1)*psy).fit());
+
+limits((0, 1e-5), (2.5, 1e3), Crop);
+AttachLegend(SW, SW);
+
+attach(bbox(infit, 1mm, FillDraw(white)), point(NE), SW*0.000000001);
+
+GShipout("dsdt_comp", vSkip=0pt);
 
 //----------------------------------------------------------------------------------------------------
 
