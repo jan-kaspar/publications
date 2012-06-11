@@ -4,11 +4,14 @@ import latex_aux_parser;
 
 ParseAuxFile("../elastic.aux");
 
+texpreamble("\SelectCMFonts\LoadFonts\NormalFonts");
+
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string base_dir = "/afs/cern.ch/exp/totem/scratch/jkaspar/software/offline/424/user/elastic_analysis/low_t/";
 string f =  "../tabulation/dataset_cmp.root";
 string fg = "../tabulation/tab_this_pub.root";
+string models_dir = "/mnt/pctotem31/software/offline/311.old/user/elastic_data_model_cmp";
 
 real xs = 0.004;
 
@@ -23,7 +26,7 @@ void DrawErrSep(real t, real atd, real an, real ln)
 {
 	real tot = sqrt(atd^2 + an^2 + ln^2);
 	
-	draw((t, -15)--(t, +15), dotted);
+	draw((t, -15)--(t, +15), dashed);
 
 	path p = (-0.5, -1)--(0.5, -1)--(0.5, 1)--(-0.5, 1)--cycle;
 
@@ -88,8 +91,60 @@ void DrawTotalErr(real t, real y, real ep, real em)
 
 //----------------------------------------------------------------------------------------------------
 
-/*
-//NewPad("$|t|\ung{GeV^2}$");
+NewPad("$|t|\ung{GeV^2}$", "$\d\si_{\rm el}/\d t\ung{mb/GeV^2}$", ySize=13cm);
+scale(Linear, Log);
+
+for (real y = -1; y <= 2; y += 1)
+	draw((0, y)--(0.45, y), dotted);
+
+for (real x = 0; x <= 0.45; x += 0.05)
+	draw((x, -2)--(x, 3), dotted);
+
+AddToLegend("this publication", black);
+
+//draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/publication1.root", "tc#1"), "vl,ec", blue+1pt, "Ref.~["+GetLatexReference("bibcite", "epl95")+"]");
+//draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/publication2.root", "c1#1"), "l,ec", heavygreen, "EPL 96");
+
+
+TF1_lowLimit = 0; TF1_highLimit = 0.2;
+draw(rGetObj(fg, "ff2"), "l", magenta+1pt, "extrapolation to $t=0$");
+
+draw(rGetObj(f, "h_avg"), "vl,d0,eb");
+
+//TGraph_lowLimit = 0.2; TGraph_highLimit = +inf;
+//draw(rGetObj(fg, "g_stat_err"), "p,ieb", mCi+1pt+black, "");
+
+DrawErr(0.01, 1.0, 1.3, 4.);
+DrawErr(0.06, 0.3, 1.3, 4.);
+DrawErr(0.10, 0.9, 1.3, 4.);
+DrawErr(0.12, 1.2, 1.3, 4.);
+DrawErr(0.16, 3.0, 1.3, 4.);
+DrawErr(0.20, 4.5, 1.3, 4., 9.31);
+DrawErr(0.30, 8.3, 1.3, 4., 1.257);
+DrawErr(0.40, 12.3, 1.3, 4., 0.109);
+
+picture pse;
+unitsize(pse, 1mm);
+draw(pse, (-3, 0)--(3, 0));
+draw(pse, (0, -1)--(0, 1));
+AddToLegend("statistical uncertainties", pse.fit());
+
+picture psy;
+unitsize(psy, 1mm);
+currentpicture = psy;
+w_err_bar = 0.5;
+err_pen = red;
+DrawTotalErr(0, 1., +200, -200);
+currentpicture = currentpad.pic;
+AddToLegend("systematic uncertainties", (shift(0, -1)*psy).fit());
+
+limits((0, 1e-2), (0.45, 1e3), Crop);
+AttachLegend();
+
+NewRow();
+
+//------------------------------------
+
 NewPad("", "$\d\si_{\rm el}/\d t$ uncertainty$\ung{\%}$", ySize=4.5cm, yTicks = RightTicks(Step=5, step=1));
 
 DrawErrSep(0.01, 1.0, 1.3, 4.);
@@ -112,70 +167,6 @@ AddToLegend("analysis normalization", orange+3pt);
 AddToLegend("luminosity", blue+3pt);
 AddToLegend("total", red+3pt);
 AttachLegend(2, NW, NW);
-
-NewRow();
-*/
-
-//----------------------------------------------------------------------------------------------------
-
-NewPad("$|t|\ung{GeV^2}$", "$\d\si_{\rm el}/\d t\ung{mb/GeV^2}$");
-scale(Linear, Log);
-
-for (real y = -1; y <= 2; y += 1)
-	draw((0, y)--(0.45, y), dotted);
-
-for (real x = 0; x <= 0.45; x += 0.05)
-	draw((x, -2)--(x, 3), dotted);
-
-real x1=0.035, x2=0.175, y1 = -1.2, y2=0.5;
-
-filldraw((x1, y1)--(x2, y1)--(x2, y2)--(x1, y2)--cycle, white, nullpen);
-
-real w = 0.002, h = 0.15, wh = 0.01;
-real x = 0.05, y = 0, y0 = 0.5;
-
-AddToLegend("this publication", black);
-
-draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/publication1.root", "tc#1"), "vl,ec", blue+1pt, "Ref.~["+GetLatexReference("bibcite", "epl95")+"]");
-//draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/publication2.root", "c1#1"), "l,ec", heavygreen, "EPL 96");
-
-
-TF1_lowLimit = 0; TF1_highLimit = 0.2;
-draw(rGetObj(fg, "ff2"), "l", heavygreen+1pt);
-
-draw(rGetObj(f, "h_avg"), "vl,d0,ec");
-
-TGraph_lowLimit = 0.2; TGraph_highLimit = +inf;
-draw(rGetObj(fg, "g_stat_err"), "p,ieb", mCi+1pt+black, "");
-
-DrawErr(0.01, 1.0, 1.3, 4.);
-DrawErr(0.06, 0.3, 1.3, 4.);
-DrawErr(0.10, 0.9, 1.3, 4.);
-DrawErr(0.12, 1.2, 1.3, 4.);
-DrawErr(0.16, 3.0, 1.3, 4.);
-DrawErr(0.20, 4.5, 1.3, 4., 9.31);
-DrawErr(0.30, 8.3, 1.3, 4., 1.257);
-DrawErr(0.40, 12.3, 1.3, 4., 0.109);
-
-
-y = y0-0.2;
-draw((x-wh, y)--(x+wh, y), heavygreen+1pt);
-label("low-$|t|$ extrapolation", (x+wh, y), 2E);
-
-y = y0-0.6;
-draw((x, y), mCi+1pt+black); label("bin representative points", (x+wh, y), 2E);
-
-y = y0-1;
-filldraw((x-w, y-h)--(x+w, y-h)--(x+w, y+h)--(x-w, y+h)--cycle, black+opacity(TH1_errorContourOpacity), nullpen);
-label("statistical uncertainty", (x+wh, y), 2E);
-
-y = y0-1.4;
-filldraw((x-w, y-h)--(x+w, y-h)--(x+w, y+h)--(x-w, y+h)--cycle, red, nullpen);
-label("systematic uncertainty", (x+wh, y), 2E);
-
-
-limits((0, 1e-2), (0.45, 1e3), Crop);
-AttachLegend();
 
 GShipout("dsdt", vSkip=0pt);
 
@@ -231,11 +222,9 @@ AttachLegend();
 xaxis(BottomTop, LeftTicks(Step=0.05, step=0.01));
 yaxis(LeftRight, RightTicks());
 
-
-
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$|t|\ung{GeV^2}$", "$\d\si_{\rm el}/\d t\ung{mb/GeV^2}$", xTicks=LeftTicks(Step=0.2, step=0.1), 15.5cm, 8cm);
+NewPad("$|t|\ung{GeV^2}$", "$\d\si_{\rm el}/\d t\ung{mb/GeV^2}$", xTicks=LeftTicks(Step=0.2, step=0.1), 15.5cm, 7.5cm);
 scale(Linear, Log);
 
 for (real y = -5; y <= 3; y += 1)
@@ -308,6 +297,169 @@ GShipout("dsdt_comp", vSkip=0pt);
 
 //----------------------------------------------------------------------------------------------------
 
+NewPad("$|t|\ung{GeV^2}$", "$\d\si_{\rm el}/\d t\ung{mb/GeV^2}$", xTicks=LeftTicks(Step=0.2, step=0.1), 15.5cm, 8cm);
+scale(Linear, Log);
+/*
+for (real y = -5; y <= 3; y += 1)
+	draw((0, y)--(2.5, y), dotted);
+
+for (real x = 0.; x <= 2.5; x += 0.2)
+	draw((x, -5)--(x, 3), dotted);
+*/
+
+// models
+TGraph_lowLimit = -inf; TGraph_highLimit = +inf;
+string[] tags = { "bh", "bsw", "islam_cgc", "jenkovszky", "ppp3" };
+pen[] colors = { red, blue, green, magenta, orange };
+string labels[] = { "Block et al.", "Bourrely et al.", "Islam et al. (LxG)", "Jenkovszky et al.", "Petrov et al. (3P)" };
+
+for (int t : tags.keys) {
+	rObject o = rGetObj(models_dir+"/3500GeV_0_20_4E3.root", "differential cross section/PH/" + tags[t]);
+	if (o.valid)
+		draw(o, colors[t], labels[t]);
+}
+
+//draw(rGetObj("khoze.root", "c1_n2|khoze1"), orange, "Khoze et al. (i)");
+//draw(rGetObj("khoze.root", "c1_n2|khoze2"), orange+dashed, "Khoze et al. (ii)");
+
+//draw(rGetObj("ostapchenko.root", "ostapchenko"), cyan, "Ostapchenko");
+//draw(rGetObj("menon.root", "menon"), red, "Fagundes et al.");
+
+// EPL 95
+TH1_lowLimit = -inf; TH1_highLimit = +inf;
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/h1.root", "h1"), "vl", black, "TOTEM");
+TGraph_lowLimit = -inf; TGraph_highLimit = +inf;
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/g1.root", "g1"), "p,iebx", black);
+
+err_pen = black;
+w_err_bar = 0.008;
+
+DrawTotalErr(0.4, 0.13, +25, -37);
+DrawTotalErr(0.5, 0.02, +28, -39);
+DrawTotalErr(1.5, 0.0011, +27, -30);
+
+// EPL 96
+//TH1_highLimit = 0.4;
+//draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/h2.root", "h2"), "vl", heavygreen, "Ref.~["+GetLatexReference("bibcite", "epl96")+"]");
+//TGraph_highLimit = 0.4;
+//draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/g2.root", "g2"), "p,iebx", heavygreen);
+
+// this publication
+
+//TF1_lowLimit = 0; TF1_highLimit = 0.2;
+//draw(rGetObj(fg, "ff2"), "l", heavygreen+1pt);
+
+TH1_lowLimit = 0.; TH1_highLimit = 0.45;
+draw(rGetObj(f, "h_avg"), "vl,d0", black+0.6pt, "");
+TGraph_lowLimit = -inf; TGraph_highLimit = 0.45;
+draw(rGetObj(fg, "g_stat_err"), "p,iebx", black);
+
+err_pen = black;
+DrawErr(0.01, 1.0, 1.3, 4.);
+DrawErr(0.06, 0.3, 1.3, 4.);
+DrawErr(0.10, 0.9, 1.3, 4.);
+DrawErr(0.12, 1.2, 1.3, 4.);
+DrawErr(0.16, 3.0, 1.3, 4.);
+DrawErr(0.20, 4.5, 1.3, 4., 9.31);
+DrawErr(0.30, 8.3, 1.3, 4., 1.257);
+DrawErr(0.40, 12.3, 1.3, 4., 0.109);
+
+// uncertainties legend
+picture pse;
+unitsize(pse, 1mm);
+draw(pse, (-3, 0)--(3, 0));
+draw(pse, (0, -1)--(0, 1));
+AddToLegend("statistical uncertainties", pse.fit());
+
+picture psy;
+unitsize(psy, 1mm);
+currentpicture = psy;
+w_err_bar = 0.5;
+err_pen = black;
+DrawTotalErr(0, 1., +200, -200);
+currentpicture = currentpad.pic;
+AddToLegend("systematic uncertainties", (shift(0, -1)*psy).fit());
+
+limits((0, 1e-5), (2.5, 1e3), Crop);
+AttachLegend(NE, NE);
+
+GShipout("dsdt_models", vSkip=0pt);
+
+
+//----------------------------------------------------------------------------------------------------
+
+NewPad("$|t|\ung{GeV^2}$", "$\d\si_{\rm el}/\d t\ung{mb/GeV^2}$", xTicks=LeftTicks(Step=0.2, step=0.1), 15.5cm, 8cm);
+scale(Linear, Log);
+
+for (real y = -8; y <= 3; y += 1)
+	draw((0, y)--(3.5, y), dotted);
+
+for (real x = 0.; x <= 3.5; x += 0.2)
+	draw((x, -8)--(x, 3), dotted);
+
+// EPL 95
+TH1_lowLimit = -inf; TH1_highLimit = 2.4;
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/h1.root", "h1"), "vl", blue, "EPL 95");
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/g1.root", "g1"), "p,iebx", blue);
+
+err_pen = blue;
+w_err_bar = 0.008;
+
+DrawTotalErr(0.4, 0.13, +25, -37);
+DrawTotalErr(0.5, 0.02, +28, -39);
+DrawTotalErr(1.5, 0.0011, +27, -30);
+
+// EPL 96
+TH1_highLimit = 0.4;
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/h2.root", "h2"), "vl", heavygreen, "EPL 96");
+TGraph_highLimit = 0.4;
+draw(rGetObj("/home/jkaspar/publications/2012/elastic scattering/g2.root", "g2"), "p,iebx", heavygreen);
+
+// this publication
+
+//TF1_lowLimit = 0; TF1_highLimit = 0.2;
+//draw(rGetObj(fg, "ff2"), "l", heavygreen+1pt);
+
+TH1_lowLimit = 0.; TH1_highLimit = 0.45;
+draw(rGetObj(f, "h_avg"), "vl,d0", red+0.6pt, "this publication");
+TGraph_highLimit = 0.45;
+draw(rGetObj(fg, "g_stat_err"), "p,iebx", red);
+
+err_pen = red;
+DrawErr(0.01, 1.0, 1.3, 4.);
+DrawErr(0.06, 0.3, 1.3, 4.);
+DrawErr(0.10, 0.9, 1.3, 4.);
+DrawErr(0.12, 1.2, 1.3, 4.);
+DrawErr(0.16, 3.0, 1.3, 4.);
+DrawErr(0.20, 4.5, 1.3, 4., 9.31);
+DrawErr(0.30, 8.3, 1.3, 4., 1.257);
+DrawErr(0.40, 12.3, 1.3, 4., 0.109);
+
+filldraw((2.3, -4.6)--(3., -8)--(3.5, -8)--(3.5, -6)--(2.3, -4.2)--cycle, orange, nullpen);
+
+// uncertainties legend
+picture pse;
+unitsize(pse, 1mm);
+draw(pse, (-3, 0)--(3, 0));
+draw(pse, (0, -1)--(0, 1));
+AddToLegend("statistical uncertainties", pse.fit());
+
+picture psy;
+unitsize(psy, 1mm);
+currentpicture = psy;
+w_err_bar = 0.5;
+err_pen = lightgray;
+DrawTotalErr(0, 1., +200, -200);
+currentpicture = currentpad.pic;
+AddToLegend("systematic uncertainties", (shift(0, -1)*psy).fit());
+
+limits((0, 1e-8), (3.5, 1e3), Crop);
+AttachLegend(SW, SW);
+
+GShipout("dsdt_outlook", vSkip=0pt);
+
+//----------------------------------------------------------------------------------------------------
+
 real edge = 3.6101;
 real cutEdge = 2.22721 / sqrt(2);
 int strips = 11;
@@ -320,11 +472,10 @@ det_shape = scale(10) * rotate(45) * det_shape;
 
 //----------------------------------------------------------------------------------------------------
 
-/*
 string dataSets[] = { "NN_2011_10_20_1", "NN_2011_10_20_2", "NN_2011_10_20_3" };
 
-xSizeDef = 6cm;
-ySizeDef = 6cm;
+xSizeDef = 5.5cm;
+ySizeDef = 5.5cm;
 
 xTicksDef = LeftTicks(Step=10, step=2);
 //yTicksDef = RightTicks(Step=0.2, step=0.1);
@@ -369,7 +520,32 @@ limits((-30, -30), (30, +30), Crop);
 AttachLegend("all cuts");
 
 GShipout("hit_dist", hSkip=0mm);
-*/
+
+//----------------------------------------------------------------------------------------------------
+
+NewPad("$|t|\ung{GeV^2}$", "$B(t)\ung{GeV^{-2}}$", xTicks=LeftTicks(Step=0.5, step=0.1));
+TGraph_highLimit = +inf;
+
+string[] tags = { "bh", "bsw", "islam_cgc", "jenkovszky", "ppp3" };
+for (int t : tags.keys) {
+	rObject o = rGetObj(models_dir+"/3500GeV_0_20_4E3.details.root", "B/PH/" + tags[t], error=false);
+	if (o.valid)
+		draw(o, black+0.3pt);
+}
+
+AddToLegend("some models", black);
+
+draw(rGetObj("../tabulation/B.root", "1/gB_5"), "p,l,ec", blue, mCi+1pt+blue, "EPL 95");
+draw(rGetObj("../tabulation/B.root", "3/gB_5"), "p,l,ec", red, mCi+1pt+red, "this analysis");
+
+AddToLegend("(smoothed over 5 adjacent bins)");
+AddToLegend("(vertical statistical uncertainties only)");
+
+
+limits((0., -10), (2.2, 30), Crop);
+AttachLegend();
+
+GShipout("B_t");
 
 //----------------------------------------------------------------------------------------------------
 

@@ -3,12 +3,17 @@ import root;
 
 StdFonts();
 
+texpreamble("\SelectCMFonts\LoadFonts\NormalFonts");
+
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 pen[] paletteColor2 = {blue, green, yellow, red};
 TH2_palette = paletteColor2;
 
 string base_dir = "/home/jkaspar/publications/2011/elastic_90m";
+
+xSizeDef = 6cm;
+ySizeDef = 5cm;
 
 //----------------------------------------------------------------------------------------------------
 // sigma tot, sigma elastic
@@ -235,15 +240,15 @@ for (real y = 15; y <= 30; y += 2)
 draw(graph(RFit, 10, 1e5, 100), black+dashed);
 
 // PDG ratio data
-DrawElToTotDataSet(base_dir+"/pbarp_total.dat", base_dir+"/pbarp_elastic.dat", heavygreen+0.2pt, mCi+false+heavygreen);
-DrawElToTotDataSet(base_dir+"/pp_total.dat", base_dir+"/pp_elastic.dat", blue+0.2pt, mCi+true+blue);
+DrawElToTotDataSet(base_dir+"/pbarp_total.dat", base_dir+"/pbarp_elastic.dat", heavygreen+0.2pt, mTU+2pt+false+heavygreen);
+DrawElToTotDataSet(base_dir+"/pp_total.dat", base_dir+"/pp_elastic.dat", blue+0.2pt, mTD+2pt+true+blue);
 
-DrawPoint(7e3, 25.7, 0.5, 0.5, red+0.8pt, mCi+true+1.7pt+red);		// tot
+DrawPoint(7e3, 25.8, 0.56, 0.56, red+0.8pt, mCi+true+2pt+red);		// totem
 
 limits((1e1, 15), (1e4, 30), Crop);
-AddToLegend("$\rm pp$", blue, mCi+true+1.4pt+blue);
-AddToLegend("$\rm \bar pp$", heavygreen, mCi+false+1.4pt+heavygreen);
-AddToLegend("this publication", red+0.8pt, mCi+true+1.4pt+red);
+AddToLegend("$\rm pp$", blue, mTD+true+2pt+blue);
+AddToLegend("$\rm \bar pp$", heavygreen, mTU+false+2pt+heavygreen);
+AddToLegend("this publication", red+0.8pt, mCi+true+2pt+red);
 AttachLegend(NW, NW);
 
 GShipout("sigma_el_to_sigma_tot");
@@ -263,39 +268,39 @@ for (real y = 12; y <= 22; y += 2)
 	draw((1, y)--(4, y), dotted);
 
 // ISR, pp
-DrawPoint(30.08, 13.0, 0.7, 0.7, blue+0.8pt, mCi+true+1.4pt+blue);	// 1971
-DrawPoint(45.06, 12.9, 0.4, 0.4, blue+0.8pt, mCi+true+1.4pt+blue);	// 1971
-DrawPoint(53.10, 13.0, 0.3, 0.3, blue+0.8pt, mCi+true+1.4pt+blue);	// 1971
+DrawPoint(30.08, 13.0, 0.7, 0.7, blue+0.8pt, mTD+true+2pt+blue);	// 1971
+DrawPoint(45.06, 12.9, 0.4, 0.4, blue+0.8pt, mTD+true+2pt+blue);	// 1971
+DrawPoint(53.10, 13.0, 0.3, 0.3, blue+0.8pt, mTD+true+2pt+blue);	// 1971
 
 // UA4, app
-DrawPoint(540, 13.7, 0.3, 0.3, heavygreen+0.8pt, mCi+false+1.4pt+heavygreen);	// 1983
-DrawPoint(546, 15.5, 0.8, 0.8, heavygreen+0.8pt, mCi+false+1.4pt+heavygreen); // 1987
+DrawPoint(540, 13.7, 0.3, 0.3, heavygreen+0.8pt, mTU+false+2pt+heavygreen);	// 1983
+DrawPoint(546, 15.5, 0.8, 0.8, heavygreen+0.8pt, mTU+false+2pt+heavygreen); // 1987
 
 // UA4/2, app
-DrawPoint(541, 15.5, 0.1, 0.1, heavygreen+0.8pt, mCi+false+1.4pt+heavygreen);	// 1993
+DrawPoint(541, 15.5, 0.1, 0.1, heavygreen+0.8pt, mTU+false+2pt+heavygreen);	// 1993
 
 // CDF, app
-DrawPoint(546, 15.28, 0.59, 0.59, heavygreen+0.8pt, mCi+false+1.4pt+heavygreen);
-DrawPoint(1800, 16.98, 0.25, 0.25, heavygreen+0.8pt, mCi+false+1.4pt+heavygreen);
+DrawPoint(546, 15.28, 0.59, 0.59, heavygreen+0.8pt, mTU+false+2pt+heavygreen);
+DrawPoint(1800, 16.98, 0.25, 0.25, heavygreen+0.8pt, mTU+false+2pt+heavygreen);
 
 // E710, app
-DrawPoint(1800, 17.2, 1.3, 1.3, heavygreen+0.8pt, mCi+false+1.4pt+heavygreen);	// 1988
-DrawPoint(1800, 16.3, 0.5, 0.5, heavygreen+0.8pt, mCi+false+1.4pt+heavygreen);	// 1988
-DrawPoint(1800, 16.3, 0.3, 0.3, heavygreen+0.8pt, mCi+false+1.4pt+heavygreen);	// 1990
-DrawPoint(1020, 16.2, 0.7, 0.7, heavygreen+0.8pt, mCi+false+1.4pt+heavygreen);	// 1993
+DrawPoint(1800, 17.2, 1.3, 1.3, heavygreen+0.8pt, mTU+false+2pt+heavygreen);	// 1988
+DrawPoint(1800, 16.3, 0.5, 0.5, heavygreen+0.8pt, mTU+false+2pt+heavygreen);	// 1988
+DrawPoint(1800, 16.3, 0.3, 0.3, heavygreen+0.8pt, mTU+false+2pt+heavygreen);	// 1990
+DrawPoint(1020, 16.2, 0.7, 0.7, heavygreen+0.8pt, mTU+false+2pt+heavygreen);	// 1993
 
 // D0, app
-DrawPoint(1.96e3, 16.54, 0.8, 0.8, heavygreen+0.8pt, mCi+false+1.4pt+heavygreen);	// 1993
+DrawPoint(1.96e3, 16.54, 0.8, 0.8, heavygreen+0.8pt, mTU+false+2pt+heavygreen);	// 1993
 
 // pp2pp, pp
-DrawPoint(200, 16.3, 1.84, 1.84, blue+0.8pt, mCi+true+1.4pt+blue);
+DrawPoint(200, 16.3, 1.84, 1.84, blue+0.8pt, mTD+true+2pt+blue);
 
 // TOTEM, pp
-DrawPoint(7e3, 20.1, 0.36, 0.36, red+0.8pt, mCi+true+1.4pt+red);
+DrawPoint(7e3, 19.9, 0.26, 0.26, red+0.8pt, mCi+true+2pt+red);
 
-AddToLegend("$\rm pp$", blue, mCi+true+1.4pt+blue);
-AddToLegend("$\rm \bar pp$", heavygreen, mCi+false+1.4pt+heavygreen);
-AddToLegend("this publication", red+0.8pt, mCi+true+1.4pt+red);
+AddToLegend("$\rm pp$", blue, mTD+true+2pt+blue);
+AddToLegend("$\rm \bar pp$", heavygreen, mTU+false+2pt+heavygreen);
+AddToLegend("this publication", red+0.8pt, mCi+true+2pt+red);
 
 limits((1e1, 12), (1e4, 22));
 AttachLegend(NW, NW);
