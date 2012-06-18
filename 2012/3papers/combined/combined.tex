@@ -152,52 +152,66 @@ of (73.5 0.6stat +1.8
 %--------------------------------------------------
 \section{Introduction}
 
-TODO: explain context
 
-This paper: explanation of how different complementary 
+TODO: how different complementary sigma tot measurements allow TOTEM to control/eliminate various systematic effects
 
-\section{Elastic \& optical point}
 
+\subsection{Elastic only}
 \begin{equation}
 \label{eq:si tot 1}
 \sigma_{\rm tot}^2 = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d\sigma_{\rm el}\over\d t\right|_0
 \end{equation}
+TODO: 2 measurements: \cite{epl96} (low lumi), \cite{P1} (high lumi)
 
-$\sigma_{\rm tot} = 98.6\un{mb} \pm 2.3\%$, $\sigma_{\rm inel} = 73.2\un{mb} \pm 1.7\%$
 
-\section{Sum of elastic and inelastic}
+\subsection{$\rho$-independent}
 
 \begin{equation}
 \label{eq:si tot 2}
 \sigma_{\rm tot} = \sigma_{\rm el} + \sigma_{\rm inel}
 \end{equation}
 
-$\rho$-independent: $\sigma_{\rm tot} = 99.1\un{mb} \pm 4.4\%$
 
-$\rho$ and $\cal L$-independent: $\sigma_{\rm el} / \sigma_{\rm inel} = 0.345 \pm 2.6\%$, $\sigma_{\rm el} / \sigma_{\rm tot} = 0.257 \pm 2.0\%$
-
+$\rho$ and $\cal L$-independent: $\sigma_{\rm el} / \sigma_{\rm inel} = 0.345 \pm 0.009$, $\sigma_{\rm el} / \sigma_{\rm tot} = 0.257 \pm 0.005$
 
 
-\section{Lumi independent total, el. and inelast. cross-sections}
+
+\section{Luminosity independent cross-sections}
 
 \begin{equation}
 \label{eq:si tot 3}
 \sigma_{\rm tot} = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, {\d N_{\rm el}/\d t|_0 \over N_{\rm el} + N_{\rm inel} }
 \end{equation}
 
-$\sigma_{\rm tot} = 98.0\un{mb} \pm 2.5\%$
-
-Using the $\sigma_{\rm el} / \sigma_{\rm tot}$ ratio from preceding paragraph:
-$\sigma_{\rm el} = 25.1\un{mb} \pm 4.3\%$ and
-$\sigma_{\rm inel} = 72.9\un{mb} \pm 2.0\%$
 
 
+\begin{figure*}
+\begin{center}
+\includegraphics[width=18cm]{fig/sigma_tot_el_inel_cmp_big.pdf}
+%\vskip-5mm
+\caption{TODO: do we want this figure}
+\label{fig:cs}
+\end{center}
+\end{figure*}
 
-%\section{Total cross section combined}
-%
-%Arithmetic average of $\sigma_{\rm tot}$ from Eqs.~\ref{eq:si tot 1}, \ref{eq:si tot 2} and \ref{eq:si tot 3}:
-%$\sigma_{\rm tot} = 98.6\un{mb} \pm 2.3\%$
 
+
+\begin{largetable}
+\caption{Cross-section summary. TODO: values in $\rm mb$, first column from \cite{epl96} syst. err. only, tot = total uncertainty. The $\rho$-uncertainties follow from the COMPETE preferred-model extrapolation $\rho = 0.141\pm 0.007$.}
+\label{tab:cs}
+%\small
+\setlength{\tabcolsep}{1pt}
+\def\ColSep{15pt}
+\begin{tabular}{c@{\hskip\ColSep}cc @{\hskip\ColSep}cccc@{$\Rightarrow$}c @{\hskip\ColSep}cccc@{$\Rightarrow$}c @{\hskip\ColSep}cccc@{$\Rightarrow$}c}
+%&\multispan{17}\hrulefill\cr
+\hline
+&\multispan2\hss elastic only, June\hss &\multispan5\hss elastic only, October\hss &\multispan5\hss $\rho$-independent\hss &\multispan5\hss $\cal L$ independent\hss\cr
+&& tot &&    el & $\cal L_{\rm int}$ & $\rho$ & tot &&    el & inel & $\cal L_{\rm int}$ & tot &&    el & inel & $\rho$ & tot\cr\hline
+$\sigma_{\rm tot}$  & $98.3$ & $\pm 2.8$ &   $98.6$ & $\pm 1.0$ & $\pm 2.0$ & $\pm 0.1$ & $\pm 2.2$  &   $99.1$ & $\pm 0.3$ & $\pm 1.7$ & $\pm 4.0$ & $\pm 4.3$ & $98.0$ & $\pm 1.8$ & $\pm 1.7$ & $\pm 0.2$ & $\pm 2.5$\cr
+$\sigma_{\rm inel}$ & $73.5$ & $\pm 1.6$ &   $73.2$ & $\pm 0.8$ & $\pm 1.0$ & $\pm 0.1$ & $\pm 1.3$  &   $73.7$ &           & $\pm 1.7$ & $\pm 3.0$ & $\pm 3.4$ & $72.9$ & $\pm 1.1$ & $\pm 0.9$ & $\pm 0.1$ & $\pm 1.5$\cr
+$\sigma_{\rm el}$   & $24.8$ & $\pm 1.2$ &   $25.4$ & $\pm 0.3$ & $\pm 1.0$ &           & $\pm 1.1$  &   $25.4$ & $\pm 0.3$ &           & $\pm 1.0$ & $\pm 1.1$ & $25.1$ & $\pm 0.6$ & $\pm 0.9$ & $\pm 0.0$ & $\pm 1.1$\cr\hline
+\end{tabular}
+\end{largetable}
 
 
 
@@ -207,26 +221,26 @@ $\sigma_{\rm inel} = 72.9\un{mb} \pm 2.0\%$
 
 \begin{equation}
 \label{eq:lumi oct}
-{\cal L} = {1 + \rho^2 \over 16\pi\, (\hbar c)^2}\, { (N_{\rm el} + N_{\rm inel})^2 \over \d N_{\rm el}/\d t|_0 }
+{\cal L_{\rm int}} = {1 + \rho^2 \over 16\pi\, (\hbar c)^2}\, { (N_{\rm el} + N_{\rm inel})^2 \over \d N_{\rm el}/\d t|_0 }
 \end{equation}
 
 
-${\cal L} = 83.7 \un{\mu b^{-1}} \pm 3.8\%$
+${\cal L_{\rm int}} = (83.7 \pm 3.2) \un{\mu b^{-1}}$
 
 \subsection{June}
 Using intercept:
 \begin{equation}
 \label{eq:lumi jun 1}
-{\cal L} =  {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d N_{\rm el}\over\d t\right|_0\, {1\over \sigma_{\rm tot}^2}
+{\cal L_{\rm int}} =  {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d N_{\rm el}\over\d t\right|_0\, {1\over \sigma_{\rm tot}^2}
 \end{equation}
-taking $\sigma_{\rm tot}$ from Eq.~\ref{eq:si tot 3} yields ${\cal L} = 1.66 \un{\mu b^{-1}} \pm 5.2\%$.
+taking $\sigma_{\rm tot}$ from Eq.~\ref{eq:si tot 3} yields ${\cal L_{\rm int}} = (1.66 \pm 0.08)\un{\mu b^{-1}}$.
 
 Using elastic cross section:
 \begin{equation}
 \label{eq:lumi jun 1}
-{\cal L} = {N_{\rm el}\over \sigma_{\rm el}}
+{\cal L_{\rm int}} = {N_{\rm el}\over \sigma_{\rm el}}
 \end{equation}
-taking $\sigma_{\rm tot}$ from below Eq.~\ref{eq:si tot 3} yields ${\cal L} = 1.65 \un{\mu b^{-1}} \pm 4.5\%$.
+taking $\sigma_{\rm tot}$ from below Eq.~\ref{eq:si tot 3} yields ${\cal L_{\rm int}} = (1.65 \pm 0.07)\un{\mu b^{-1}}$.
 
 
 
@@ -235,9 +249,9 @@ taking $\sigma_{\rm tot}$ from below Eq.~\ref{eq:si tot 3} yields ${\cal L} = 1.
 From
 \begin{equation}
 \label{eq:rho}
-\rho^2 = 16\pi\ (\hbar c)^2\ {\cal L}\ {\d N_{\rm el}/\d t|_0\over (N_{\rm el} + N_{\rm inel})^2} - 1
+\rho^2 = 16\pi\ (\hbar c)^2\ {\cal L_{\rm int}}\ {\d N_{\rm el}/\d t|_0\over (N_{\rm el} + N_{\rm inel})^2} - 1
 \end{equation}
-we obtained $\rho^2 = 0.0092 \pm 0.0558$ (mean and standard deviation). This estimate can not be translated into terms of $\rho$ in a straight-forward manner -- an important part of the $\rho^2$ distribution extends to negative values, where square root is not defined. Instead, we calculated that at $95\%$ confidence level $\rho^2 < 0.10$. This upper bound can be expressed as $\rho < 0.32$. Alternatively, one can pursue the Bayes' approach to estimate $|\rho|$. Taking a uniform prior $|\rho|$ distribution yields a posterior distribution with mean $0.145$ and standard deviation $0.091$.
+we obtained $\rho^2 = 0.009 \pm 0.056$ (mean and standard deviation). This estimate can not be translated into terms of $\rho$ in a straight-forward manner -- an important part of the $\rho^2$ distribution extends to negative values, where square root is not defined. Instead, we calculated that at $95\%$ confidence level $\rho^2 < 0.10$. This upper bound can be equally expressed as $\rho < 0.32$. Alternatively, one can pursue the Bayes' approach to estimate $|\rho|$. Taking a uniform prior $|\rho|$ distribution yields a posterior distribution with mean $0.145$ and standard deviation $0.091$.
 
 
 
@@ -285,11 +299,6 @@ Acknowledgements -- Insert here the text.
 	\Name{Anelli G.~{\it et al.}~(TOTEM Collaboration)}
 	\REVIEW{JINST}{3}{2008}{S08007}
 
-\bibitem{lafferty94}
- 	%``Where to stick your data points: The treatment of measurements within wide bins,''
-	\Name{Lafferty G.~D.~and Wyatt T.~R.}
-	\REVIEW{Nucl.\ Instrum.\ Meth.}{A 355}{1995}{541}
-
 \bibitem{compete} 
 	\Name{J.~R.~Cudell {\it et al.} (COMPETE Collaboration)}
 	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
@@ -301,6 +310,10 @@ Acknowledgements -- Insert here the text.
 \bibitem{P2} 
 	\Name{Antchev G.~{\it et al.}~(TOTEM Collaboration)}
 	\REVIEW{Europhys.~Lett.}{TODO}{2012}{TODO}
+
+\bibitem{pdg} 
+	\Name{Nakamura K.~\etal{} (Particle Data Group)}
+	\REVIEW{J.~Phys.}{G37}{2010}{075021}
 
 \end{thebibliography}
 
