@@ -20,6 +20,8 @@ ySizeDef = 8cm;
 
 xTicksDef = LeftTicks(Step=0.05, step=0.01);
 
+/*
+
 //----------------------------------------------------------------------------------------------------
 
 void DrawErrSep(real t, real atd, real an, real ln)
@@ -62,11 +64,9 @@ void DrawErr(real t, real atd, real an, real ln, real y_sug = -1)
 
 	real w = w_err_bar;
 	filldraw(Scale((t-w, y*(1-tot/den)))--Scale((t+w, y*(1-tot/den)))--Scale((t+w, y*(1+tot/den)))--Scale((t-w, y*(1+tot/den)))--cycle, err_pen, black+0.05pt);
-	/*
-	draw(Scale((t, y*(1-tot/den)))--Scale((t, y*(1+tot/den))), err_pen);
-	draw(Scale((t-w, y*(1-tot/den)))--Scale((t+w, y*(1-tot/den))), err_pen);
-	draw(Scale((t-w, y*(1+tot/den)))--Scale((t+w, y*(1+tot/den))), err_pen);
-	*/
+	//draw(Scale((t, y*(1-tot/den)))--Scale((t, y*(1+tot/den))), err_pen);
+	//draw(Scale((t-w, y*(1-tot/den)))--Scale((t+w, y*(1-tot/den))), err_pen);
+	//draw(Scale((t-w, y*(1+tot/den)))--Scale((t+w, y*(1+tot/den))), err_pen);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -82,11 +82,9 @@ void DrawTotalErr(real t, real y, real ep, real em)
 
 	real w = w_err_bar;
 	filldraw(Scale((t-w, y*(1+em/den)))--Scale((t+w, y*(1+em/den)))--Scale((t+w, y*(1+ep/den)))--Scale((t-w, y*(1+ep/den)))--cycle, err_pen, black+0.05pt);
-	/*
-	draw(Scale((t, y*(1+em/den)))--Scale((t, y*(1+ep/den))), err_pen);
-	draw(Scale((t-w, y*(1+em/den)))--Scale((t+w, y*(1+em/den))), err_pen);
-	draw(Scale((t-w, y*(1+ep/den)))--Scale((t+w, y*(1+ep/den))), err_pen);
-	*/
+	//draw(Scale((t, y*(1+em/den)))--Scale((t, y*(1+ep/den))), err_pen);
+	//draw(Scale((t-w, y*(1+em/den)))--Scale((t+w, y*(1+em/den))), err_pen);
+	//draw(Scale((t-w, y*(1+ep/den)))--Scale((t+w, y*(1+ep/den))), err_pen);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -299,13 +297,6 @@ GShipout("dsdt_comp", vSkip=0pt);
 
 NewPad("$|t|\ung{GeV^2}$", "$\d\si_{\rm el}/\d t\ung{mb/GeV^2}$", xTicks=LeftTicks(Step=0.2, step=0.1), 15.5cm, 8cm);
 scale(Linear, Log);
-/*
-for (real y = -5; y <= 3; y += 1)
-	draw((0, y)--(2.5, y), dotted);
-
-for (real x = 0.; x <= 2.5; x += 0.2)
-	draw((x, -5)--(x, 3), dotted);
-*/
 
 // models
 TGraph_lowLimit = -inf; TGraph_highLimit = +inf;
@@ -520,26 +511,29 @@ limits((-30, -30), (30, +30), Crop);
 AttachLegend("all cuts");
 
 GShipout("hit_dist", hSkip=0mm);
+*/
 
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$|t|\ung{GeV^2}$", "$B(t)\ung{GeV^{-2}}$", xTicks=LeftTicks(Step=0.5, step=0.1));
+NewPad("$|t|\ung{GeV^2}$", "$B(t)\ung{GeV^{-2}}$", xTicks=LeftTicks(Step=0.5, step=0.1), 12cm, 10cm);
 TGraph_highLimit = +inf;
 
 string[] tags = { "bh", "bsw", "islam_cgc", "jenkovszky", "ppp3" };
 for (int t : tags.keys) {
 	rObject o = rGetObj(models_dir+"/3500GeV_0_20_4E3.details.root", "B/PH/" + tags[t], error=false);
 	if (o.valid)
-		draw(o, black+0.3pt);
+		draw(o, black+0.2pt);
 }
 
-AddToLegend("some models", black);
+AddToLegend("several phenomenological models", black+0.2pt);
 
-draw(rGetObj("../tabulation/B.root", "1/gB_5"), "p,l,ec", blue, mCi+1pt+blue, "EPL 95");
-draw(rGetObj("../tabulation/B.root", "3/gB_5"), "p,l,ec", red, mCi+1pt+red, "this analysis");
+TGraph_errorBar = None;
 
-AddToLegend("(smoothed over 5 adjacent bins)");
-AddToLegend("(vertical statistical uncertainties only)");
+draw(rGetObj("../tabulation/B.root", "1/gB_var"), "p,l,eb", blue+1pt, mCi+1pt+blue, "EPL 95");
+draw(rGetObj("../tabulation/B.root", "3/gB_var"), "p,l,eb", red+1pt, mCi+1pt+red, "this analysis");
+
+AddToLegend("(vertical error bars: statistical uncertainties only)");
+AddToLegend("(horizontal error bars: fit regions)");
 
 
 limits((0., -10), (2.2, 30), Crop);
@@ -549,6 +543,7 @@ GShipout("B_t");
 
 //----------------------------------------------------------------------------------------------------
 
+/*
 xSizeDef = 6cm;
 ySizeDef = 6cm;
 
@@ -566,3 +561,4 @@ limits((0, 0.8), (0.4, 1.2), Crop);
 xaxis(YEquals(1, false), dashed);
 
 GShipout("dsdt_dataset_ratio");
+*/
