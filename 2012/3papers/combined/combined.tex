@@ -153,43 +153,50 @@ of (73.5 0.6stat +1.8
 \section{Introduction}
 
 
-TODO: how different complementary sigma tot measurements allow TOTEM to control/eliminate various systematic effects
-
-
-\subsection{Elastic only}
+The papers \cite{epl96} and \cite{P1} presented two analyses of $\rm pp$ elastic scattering, determining the integral elastic cross-section $\sigma_{\rm el}$ and the intercept of the differential cross-section $\d\sigma_{\rm el}/\d t|_{0}$. These quantities can be related to the total cross-section $\sigma_{\rm tot}$ and the inelatic cross-section $\sigma_{\rm inel}$ via the optical theorem:
 \begin{equation}
-\label{eq:si tot 1}
-\sigma_{\rm tot}^2 = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d\sigma_{\rm el}\over\d t\right|_0
+\label{eq:m el}
+	\sigma_{\rm tot}^2 = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d\sigma_{\rm el}\over\d t\right|_0\ ,\qquad
+	\sigma_{\rm inel} = \sigma_{\rm tot} - \sigma_{\rm el}\ .
 \end{equation}
-TODO: 2 measurements: \cite{epl96} (low lumi), \cite{P1} (high lumi)
+The results for the low-luminosity measurement \cite{epl96} and the higher-luminosity measurement \cite{P1} are summarized in Tab.~\ref{tab:cs}.
+
+For the $\rho$ parameter in Eq.~(\ref{eq:m el}) (the ratio of the real to the imaginary of the forward hadronic scattering amplitude), the COMPETE extrapolation \cite{compete} was used. Since this is only an extrapolation, a $\rho$-independent cross-sections will be presented and the value of $\rho$ will be constrained too.
+
+In the paper \cite{P2}, the inelastic cross-section was determined from the same dataset as the elastic measurements in paper \cite{P1}. This enables for deriving further quantities, which is the subject of this paper. The elastic and inelastic measurements can be combined in several ways, each time eliminating some of the uncertainty factors ($\rho$, luminosity, etc.).
+
+This paper is mostly based on the data collected in a run in October 2011. That run was split into three datasets with Roman Pot detectors at different positions (for details see Tab.~1 in \cite{P1}). All calculations were done independently for these three datasets, showing an excellent match. Therefore only the results for the three datasets combined will be given below. For completeness, some of the results will be compared to those of \cite{epl96}, obtained from a run from June 2011, where only the elastic part of the analysis could be performed.
 
 
-\subsection{$\rho$-independent}
+%--------------------------------------------------
+\section{$\rho$-independent quantities}
 
+Summing the elastic cross-section from \cite{P1} and the inelastic cross-section from \cite{P2} yields total cross-section
 \begin{equation}
-\label{eq:si tot 2}
+\label{eq:m rho indep}
 \sigma_{\rm tot} = \sigma_{\rm el} + \sigma_{\rm inel}
 \end{equation}
+which is manifestly $\rho$-independent. It evaluates to $\sigma_{\rm tot} = (99.1 \pm 4.3)\un{mb}$ (for details on the uncertainty composition see Tab.~\ref{tab:cs}). Apart from that, one can determine cross-section ratios which are moreover independent from the luminosity uncertainty: $\sigma_{\rm el} / \sigma_{\rm inel} = 0.345 \pm 0.009$ and $\sigma_{\rm el} / \sigma_{\rm tot} = 0.257 \pm 0.005$. TODO: link to the conclusion/interpretation
 
 
-$\rho$ and $\cal L$-independent: $\sigma_{\rm el} / \sigma_{\rm inel} = 0.345 \pm 0.009$, $\sigma_{\rm el} / \sigma_{\rm tot} = 0.257 \pm 0.005$
-
-
-
+%--------------------------------------------------
 \section{Luminosity independent cross-sections}
 
+Using the optical theorem, one can combine the elastic measurements from \cite{P1} and the inelastic measurements from \cite{P2} to derive the total cross-section that is independent from the luminosity:
 \begin{equation}
-\label{eq:si tot 3}
-\sigma_{\rm tot} = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, {\d N_{\rm el}/\d t|_0 \over N_{\rm el} + N_{\rm inel} }
+\label{eq:m lumi indep}
+	\sigma_{\rm tot} = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, {\d N_{\rm el}/\d t|_0 \over N_{\rm el} + N_{\rm inel} }\ .
 \end{equation}
+Taking the COMPETE \cite{compete} preferred-model extrapolation $\rho = 0.141\pm 0.007$ yields $\sigma_{\rm tot} = (98.0 \pm 2.5)\un{mb}$.
 
+One can use the luminosity-independent ratio $\sigma_{\rm el} / \sigma_{\rm inel}$ from the previous section to calculate the luminosity-independent $\sigma_{\rm inel} = (72.9 \pm 1.5)\un{mb}$ and $\sigma_{\rm el} = (25.1 \pm 1.1)\un{mb}$. All these cross-section values and their uncertainty compositions are summarized in Tab.~\ref{tab:cs}. TODO: ref to figure \ref{fig:cs}?
 
 
 \begin{figure*}
 \begin{center}
 \includegraphics[width=18cm]{fig/sigma_tot_el_inel_cmp_big.pdf}
 %\vskip-5mm
-\caption{TODO: do we want this figure}
+\caption{TODO: do we want this figure?}
 \label{fig:cs}
 \end{center}
 \end{figure*}
@@ -197,70 +204,90 @@ $\rho$ and $\cal L$-independent: $\sigma_{\rm el} / \sigma_{\rm inel} = 0.345 \p
 
 
 \begin{largetable}
-\caption{Cross-section summary. TODO: values in $\rm mb$, first column from \cite{epl96} syst. err. only, tot = total uncertainty. The $\rho$-uncertainties follow from the COMPETE preferred-model extrapolation $\rho = 0.141\pm 0.007$.}
+\caption{Cross-section summary. Only systematic uncertainties are indicated, the statistical uncertainties are negligible. Several uncertainty contributions are given: el (from the elastic-scattering analysis), inel (from the inelastic-scattering analysis), ${\cal L}_{\rm int}$ (from the $4\%$ uncertainty of the CMS luminosity measurement) and tot (the total uncertainty).
+The $\rho$-uncertainties follow from the COMPETE preferred-model extrapolation $\rho = 0.141\pm 0.007$.}
 \label{tab:cs}
-%\small
+\small
 \setlength{\tabcolsep}{1pt}
 \def\ColSep{15pt}
-\begin{tabular}{c@{\hskip\ColSep}cc @{\hskip\ColSep}cccc@{$\Rightarrow$}c @{\hskip\ColSep}cccc@{$\Rightarrow$}c @{\hskip\ColSep}cccc@{$\Rightarrow$}c}
+\begin{tabular}{cc@{\hskip\ColSep}rl @{\hskip\ColSep}cccc@{$\Rightarrow$}c @{\hskip\ColSep}cccc@{$\Rightarrow$}c @{\hskip\ColSep}cccc@{$\Rightarrow$}c}
 %&\multispan{17}\hrulefill\cr
 \hline
-&\multispan2\hss elastic only, June\hss &\multispan5\hss elastic only, October\hss &\multispan5\hss $\rho$-independent\hss &\multispan5\hss $\cal L$ independent\hss\cr
-&& tot &&    el & $\cal L_{\rm int}$ & $\rho$ & tot &&    el & inel & $\cal L_{\rm int}$ & tot &&    el & inel & $\rho$ & tot\cr\hline
-$\sigma_{\rm tot}$  & $98.3$ & $\pm 2.8$ &   $98.6$ & $\pm 1.0$ & $\pm 2.0$ & $\pm 0.1$ & $\pm 2.2$  &   $99.1$ & $\pm 0.3$ & $\pm 1.7$ & $\pm 4.0$ & $\pm 4.3$ & $98.0$ & $\pm 1.8$ & $\pm 1.7$ & $\pm 0.2$ & $\pm 2.5$\cr
-$\sigma_{\rm inel}$ & $73.5$ & $\pm 1.6$ &   $73.2$ & $\pm 0.8$ & $\pm 1.0$ & $\pm 0.1$ & $\pm 1.3$  &   $73.7$ &           & $\pm 1.7$ & $\pm 3.0$ & $\pm 3.4$ & $72.9$ & $\pm 1.1$ & $\pm 0.9$ & $\pm 0.1$ & $\pm 1.5$\cr
-$\sigma_{\rm el}$   & $24.8$ & $\pm 1.2$ &   $25.4$ & $\pm 0.3$ & $\pm 1.0$ &           & $\pm 1.1$  &   $25.4$ & $\pm 0.3$ &           & $\pm 1.0$ & $\pm 1.1$ & $25.1$ & $\pm 0.6$ & $\pm 0.9$ & $\pm 0.0$ & $\pm 1.1$\cr\hline
+&&\multispan2\hss elastic only (Eq.~(\ref{eq:m el})) \hss &\multispan5\hss elastic only (Eq.~(\ref{eq:m el}))\hss &\multispan5\hss $\rho$-independent (Eq.~(\ref{eq:m rho indep}))\hss &\multispan5\hss ${\cal L}_{\rm int}$-independent (Eq.~(\ref{eq:m lumi indep}))\hss\cr
+&&\multispan2\hss June 2011, Ref.~\cite{epl96} \hss &\multispan5\hss October 2011, Ref.~\cite{P1}\hss &\multispan5\hss October 2011\hss &\multispan5\hss October 2011\hss\cr\hline
+&&& tot &&    el & $\cal L_{\rm int}$ & $\rho$ & tot &&    el & inel & $\cal L_{\rm int}$ & tot &&    el & inel & $\rho$ & tot\cr\hline
+$\sigma_{\rm tot}$ & $\rm[mb]$  & $\qquad98.3$ & $\pm 2.8$ &   $98.6$ & $\pm 1.0$ & $\pm 2.0$ & $\pm 0.1$ & $\pm 2.2$  &   $99.1$ & $\pm 0.3$ & $\pm 1.7$ & $\pm 4.0$ & $\pm 4.3$ & $98.0$ & $\pm 1.8$ & $\pm 1.7$ & $\pm 0.2$ & $\pm 2.5$\cr
+$\sigma_{\rm inel}$ & $\rm[mb]$ & $\qquad73.5$ & $\pm 1.6$ &   $73.2$ & $\pm 0.8$ & $\pm 1.0$ & $\pm 0.1$ & $\pm 1.3$  &   $73.7$ &           & $\pm 1.7$ & $\pm 3.0$ & $\pm 3.4$ & $72.9$ & $\pm 1.1$ & $\pm 0.9$ & $\pm 0.1$ & $\pm 1.5$\cr
+$\sigma_{\rm el}$ & $\rm[mb]$   & $\qquad24.8$ & $\pm 1.2$ &   $25.4$ & $\pm 0.3$ & $\pm 1.0$ &           & $\pm 1.1$  &   $25.4$ & $\pm 0.3$ &           & $\pm 1.0$ & $\pm 1.1$ & $25.1$ & $\pm 0.6$ & $\pm 0.9$ & $\pm 0.0$ & $\pm 1.1$\cr\hline
 \end{tabular}
 \end{largetable}
 
 
 
+%--------------------------------------------------
 \section{Luminosity determination}
 
 \subsection{October}
 
+The optical theorem can be used in a complementary way in order to determine the luminosity integrated over the data-taking period:
 \begin{equation}
 \label{eq:lumi oct}
-{\cal L_{\rm int}} = {1 + \rho^2 \over 16\pi\, (\hbar c)^2}\, { (N_{\rm el} + N_{\rm inel})^2 \over \d N_{\rm el}/\d t|_0 }
+{\cal L_{\rm int}} = {1 + \rho^2 \over 16\pi\, (\hbar c)^2}\, { (N_{\rm el} + N_{\rm inel})^2 \over \d N_{\rm el}/\d t|_0 }\ ,
 \end{equation}
-
-
-${\cal L_{\rm int}} = (83.7 \pm 3.2) \un{\mu b^{-1}}$
+where the elastic inputs are taken from \cite{P1} and the inelastic from \cite{P2}. Using the same COMPETE value as above yields ${\cal L_{\rm int}} = (83.7 \pm 3.2) \un{\mu b^{-1}}$, which is to be compared with the CMS measurement ${\cal L_{\rm int}} = (82.8 \pm 3.3) \un{\mu b^{-1}}$. TODO: comments on the comparison, HF considerations
 
 \subsection{June}
-Using intercept:
+
+Using the total and elastic cross-sections determined from the October run, we can calculate the integrated luminosity ${\cal L}_{\rm int}^{\rm June}$ for the June run analyzed in \cite{epl96}. This can be achieved in two ways -- using the total cross-section
 \begin{equation}
-\label{eq:lumi jun 1}
-{\cal L_{\rm int}} =  {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d N_{\rm el}\over\d t\right|_0\, {1\over \sigma_{\rm tot}^2}
+\label{eq:lumi jun tot}
+{\cal L}_{\rm int}^{\rm June} =  {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d N_{\rm el}^{\rm June}\over\d t\right|_0\, {1\over \sigma_{\rm tot}^2}
 \end{equation}
-taking $\sigma_{\rm tot}$ from Eq.~\ref{eq:si tot 3} yields ${\cal L_{\rm int}} = (1.66 \pm 0.08)\un{\mu b^{-1}}$.
-
-Using elastic cross section:
+or the elastic cross-section
 \begin{equation}
-\label{eq:lumi jun 1}
-{\cal L_{\rm int}} = {N_{\rm el}\over \sigma_{\rm el}}
+\label{eq:lumi jun el}
+{\cal L}_{\rm int}^{\rm June} = {N_{\rm el}^{\rm June}\over \sigma_{\rm el}}\ .
 \end{equation}
-taking $\sigma_{\rm tot}$ from below Eq.~\ref{eq:si tot 3} yields ${\cal L_{\rm int}} = (1.65 \pm 0.07)\un{\mu b^{-1}}$.
+Taking the luminosity-independent values (below Eq.~\ref{eq:m lumi indep}) for the total $\sigma_{\rm tot}$ and elastic $\sigma_{\rm el}$ cross-sections and the June elastic measurements from \cite{epl96} yields
+${\cal L}_{\rm int}^{\rm June} = (1.66 \pm 0.08)\un{\mu b^{-1}}$ via Eq.~(\ref{eq:lumi jun tot}) and
+${\cal L}_{\rm int}^{\rm June} = (1.65 \pm 0.07)\un{\mu b^{-1}}$ via Eq.~(\ref{eq:lumi jun el}). These are to be compared with the CMS measurement
+${\cal L}_{\rm int}^{\rm June} = (1.65 \pm 0.07)\un{\mu b^{-1}}$. TODO: comments on the comparison
+
+TODO: trend of CMS/TOTEM lumi ratio from June to October
 
 
 
+%--------------------------------------------------
 \section{Rho determination}
 
-From
+The elastic (from \cite{P1}) and inelastic (from \cite{P2}) measurements can be combined in order to determine $\rho^2$:
 \begin{equation}
 \label{eq:rho}
 \rho^2 = 16\pi\ (\hbar c)^2\ {\cal L_{\rm int}}\ {\d N_{\rm el}/\d t|_0\over (N_{\rm el} + N_{\rm inel})^2} - 1
 \end{equation}
-we obtained $\rho^2 = 0.009 \pm 0.056$ (mean and standard deviation). This estimate can not be translated into terms of $\rho$ in a straight-forward manner -- an important part of the $\rho^2$ distribution extends to negative values, where square root is not defined. Instead, we calculated that at $95\%$ confidence level $\rho^2 < 0.10$. This upper bound can be equally expressed as $\rho < 0.32$. Alternatively, one can pursue the Bayes' approach to estimate $|\rho|$. Taking a uniform prior $|\rho|$ distribution yields a posterior distribution with mean $0.145$ and standard deviation $0.091$.
+yielding $\rho^2 = 0.009 \pm 0.056$ (mean and standard deviation). This estimate can not be translated into terms of $\rho$ in a straight-forward manner since an important part of the $\rho^2$ distribution extends to negative values, where square root is not defined. Instead, we calculated that at $95\%$ confidence level $\rho^2 < 0.10$. This upper bound can be equally expressed as $\rho < 0.32$. Alternatively, one can pursue the Bayes' approach to estimate $|\rho|$. Taking a uniform prior $|\rho|$ distribution yields a posterior distribution with mean $0.145$ and standard deviation $0.091$.
+
+TODO: dispersion relation determination of rho? Need to use the rho-indep sigma tot to avoid loop
 
 
 
+%--------------------------------------------------
 \section{Cosmic ray relevance}
 
+~
 
+TODO: understanding of showers in the atmosphere
 
+TODO: direct pp cross-section instead of nuclei+Glauber
+
+TODO
 	
+
+
+%--------------------------------------------------
 \section{Conclusions}
+
+~
 
 \begin{figure}
 \onefigure{fig_el/sigma_el_to_sigma_tot.pdf}
@@ -284,6 +311,8 @@ Acknowledgements -- Insert here the text.
 %--------------------------------------------------
 \begin{thebibliography}{0}
 
+% TODO: sort them
+
 \bibitem{epl96}
     %First measurements of the total proton-proton cross section at the LHC energy of $\sqrt s =7\,\rm TeV$ CERN-PH-EP-2011-158
 	\Name{Antchev G.~{\it et al.}~(TOTEM Collaboration)}
@@ -300,7 +329,7 @@ Acknowledgements -- Insert here the text.
 	\REVIEW{JINST}{3}{2008}{S08007}
 
 \bibitem{compete} 
-	\Name{J.~R.~Cudell {\it et al.} (COMPETE Collaboration)}
+	\Name{Cudell~J.~R.~{\it et al.} (COMPETE Collaboration)}
 	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
 
 \bibitem{P1} 
