@@ -14,8 +14,6 @@ void tab_epl_95_hubert()
 	TFile *inF = new TFile("publication1_graph.root");
 	TGraphErrors *g = (TGraphErrors *) inF->Get("g1");
 
-	g->Dump();
-
 	// systematic error data
 	double syst_err_t[] = { 0.4, 0.5, 1.5 };
 	double syst_err_up[] = { +25., +28., +27. };
@@ -30,15 +28,41 @@ void tab_epl_95_hubert()
 		x_e = g->GetErrorX(i);
 		y_stat_e = g->GetErrorY(i);
 
+		if (x < 0.377)
+			continue;
+
 		double y_syst_up = g_rel_syst_err_up->Eval(x) / 100. * y;
 		double y_syst_down = -g_rel_syst_err_down->Eval(x) / 100. * y;
 
-		before = 1; after = 4; digits = 2;
+
+		//printf("%3i : ", i);
+
+		before = 1; after = 3; digits = 1;
 		//PrintTuple(d.cp, d.cp_e);
-		PrintTuple(x, x_e);
+		//PrintTuple(x, x_e);
+		printf("$%.3f$ & $%.3f$", x, x_e);
+
 		printf(" | ");
-		before = 3; after = 4; digits = 2;
-		PrintTuple(y*1E3, y_stat_e*1E3, y_syst_up*1E3, y_syst_down*1E3);
+
+		//before = 3; after = 4; digits = 1;
+
+		if (i < 15) {
+			before = 3; after = 4; deci = 0;
+		}
+		if (i >= 15) {
+			before = 3; after = 4; deci = 1;
+		}
+		if (i >= 69) {
+			before = 3; after = 4; deci = 2;
+		}
+		if (i >= 77) {
+			before = 3; after = 4; deci = 3;
+		}
+
+		after = 3;
+		
+		PrintTuple2(y*1E3, y_stat_e*1E3, y_syst_up*1E3, y_syst_down*1E3);
+
 		printf(" \\cr\n");
 	}
 }

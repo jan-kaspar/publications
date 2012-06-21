@@ -148,6 +148,61 @@ void PrintTuple(const vector<double> &num)
 
 //----------------------------------------------------------------------------------------------------
 
+signed int deci = 2;
+
+void PrintTuple2(const vector<double> &num)
+{
+	/*
+	printf("* ");
+	for (unsigned int i = 0; i < num.size(); i++) {
+		printf("%.2E, ", num[i]);
+	}
+	printf("\n");
+	*/
+
+	signed int be_max = before, af_max = after, dec_max = 0;
+	for (unsigned int i = 0; i < num.size(); i++) {
+		signed int o = floor(log10(num[i]));
+		signed int ol = o - digits + 1;
+		
+		//printf("\t:: %i, %i\n", o, ol);
+
+		be_max = max(be_max, o+1);
+		af_max = max(af_max, -ol);
+		dec_max = max(dec_max, -ol);
+	}
+
+	//printf("\tbe=%i, af=%i, dec=%i\n", be_max, af_max, dec_max);
+
+	char buf[10];
+	sprintf(buf, "%%.%if", deci);
+
+	for (unsigned int i = 0; i < num.size(); i++) {
+		if (i > 0)
+			printf(" & ");
+
+		printf("$");
+		
+		signed int o = floor(log10(num[i]));
+		//signed int ol = o - digits + 1;
+		
+		for (signed int j = 0; j < be_max - max(0, o) - 1; j++)
+			printf("S");
+
+		printf(buf, num[i]);
+
+		if (deci == 0)
+			printf(".");
+		
+		for (signed int j = 0; j < af_max - deci ; j++)
+			printf("S");
+
+		printf("$");
+	}
+}
+
+//----------------------------------------------------------------------------------------------------
+
 void PrintTuple(double v, double e1=-1, double e2=-1, double e3=-1)
 {
 	vector<double> num;
@@ -160,6 +215,22 @@ void PrintTuple(double v, double e1=-1, double e2=-1, double e3=-1)
 		num.push_back(e3);
 
 	PrintTuple(num);
+}
+
+//----------------------------------------------------------------------------------------------------
+
+void PrintTuple2(double v, double e1=-1, double e2=-1, double e3=-1)
+{
+	vector<double> num;
+	num.push_back(v);
+	if (e1 > 0.)
+		num.push_back(e1);
+	if (e2 > 0.)
+		num.push_back(e2);
+	if (e3 > 0.)
+		num.push_back(e3);
+
+	PrintTuple2(num);
 }
 
 //----------------------------------------------------------------------------------------------------

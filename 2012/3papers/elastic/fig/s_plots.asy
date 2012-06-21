@@ -256,7 +256,7 @@ GShipout("sigma_el_to_sigma_tot");
 //----------------------------------------------------------------------------------------------------
 // B as a function of sqrt(s)
 
-NewPad("$\sqrt s\ung{GeV}$", "$B\ung{GeV^{-2}}$", yTicks=RightTicks(Step=2, step=1));
+NewPad("$\sqrt s\ung{GeV}$", "$B\ung{GeV^{-2}}$", yTicks=RightTicks(Step=2, step=1), 6cm, 4.2cm);
 scale(Log, Linear);
 //currentpad.xSize = 15cm;
 //currentpad.ySize = 9cm;
@@ -303,6 +303,8 @@ AddToLegend("$\rm \bar pp$", heavygreen, mTU+false+2pt+heavygreen);
 AddToLegend("this publication", red+0.8pt, mCi+true+2pt+red);
 
 limits((1e1, 12), (1e4, 22));
+
+legendLabelPen = fontcommand("\SetFontSizesVIII");
 AttachLegend(NW, NW);
 
 GShipout("B_s");
