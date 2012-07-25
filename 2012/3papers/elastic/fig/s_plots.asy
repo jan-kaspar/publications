@@ -1,5 +1,8 @@
 import pad_layout;
 import root;
+import latex_aux_parser;
+
+ParseAuxFile("../elastic.aux");
 
 StdFonts();
 
@@ -298,8 +301,8 @@ DrawPoint(200, 16.3, 1.84, 1.84, blue+0.8pt, mTD+true+2pt+blue);
 // TOTEM, pp
 DrawPoint(7e3, 19.9, 0.26, 0.26, red+0.8pt, mCi+true+2pt+red);
 
-AddToLegend("$\rm pp$", blue, mTD+true+2pt+blue);
-AddToLegend("$\rm \bar pp$", heavygreen, mTU+false+2pt+heavygreen);
+AddToLegend("$\rm pp$, Ref.~["+GetLatexReference("bibcite", "pdg")+"]", blue, mTD+true+2pt+blue);
+AddToLegend("$\rm \bar pp$, Ref.~["+GetLatexReference("bibcite", "pdg")+"]", heavygreen, mTU+false+2pt+heavygreen);
 AddToLegend("this publication", red+0.8pt, mCi+true+2pt+red);
 
 limits((1e1, 12), (1e4, 22));
