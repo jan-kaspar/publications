@@ -1,12 +1,11 @@
 \documentclass[doublecol]{../macros/epl2} 
 % or \documentclass[page-classic]{epl2} for one column style
 
-\title{Measurement of proton-proton elastic scattering and total cross-section at $\sqrt s = 7\,\rm TeV$}
+\title{Measurement of proton-proton elastic scattering and total cross-section at $\sqrt s$ = 7\,TeV}
 \shorttitle{Measurement of $\rm pp$ elastic scattering and total cross-section at $\sqrt s = 7\,\rm TeV$} %Insert here a short version of the title if it exceeds 70 characters
 
 \author{
-The TOTEM Collaboration -- !! PRELIMINARY !!\\
-\iffalse
+The TOTEM Collaboration\\
 G.~Antchev\thanks{INRNE-BAS, Institute for Nuclear Research and Nuclear Energy, Bulgarian Academy of Sciences, Sofia, Bulgaria.}\addtocounter{footnote}{-1}
 %\addtocounter{footnote}
 \and P.~Aspell\inst{8}
@@ -38,8 +37,7 @@ G.~Antchev\thanks{INRNE-BAS, Institute for Nuclear Research and Nuclear Energy, 
  \and L.~Grzanka\inst{8}\hspace{-0.15cm}\thanks{Institute of Nuclear Physics, Polish Academy of Science, Cracow, Poland.}\addtocounter{footnote}{-2}
  \and J.~Heino\inst{3a}
  \and T.~Hilden\inst{3a,3b}
- \and M.~R.~Intonti\inst{5a}
-%\and M.~Janda\inst{1b}
+ \and R.~A.~Intonti\inst{5a}
  \and J.~Ka\v{s}par\inst{1a,8}
  \and J.~Kopal\inst{1a,8}
  \and V.~Kundr\'{a}t\inst{1a}
@@ -54,17 +52,12 @@ G.~Antchev\thanks{INRNE-BAS, Institute for Nuclear Research and Nuclear Energy, 
  \and M.~Lo~Vetere\inst{6b,6a}
  \and F.~Lucas~Rodr\'{i}guez\inst{8}
  \and M.~Macr\'{\i}\inst{6a}
- \and L.~Magaletti\inst{5b,5a}
-%\and G.~Magazz\`{u}\inst{7a}
  \and T.~M\"aki\inst{3a}
  \and A.~Mercadante\inst{5b,5a}
-%\and M.~Meucci\inst7b
  \and N.~Minafra\inst{8} 
  \and S.~Minutoli\inst{6a}\addtocounter{footnote}{1}
  \and F.~Nemes\inst{4}\hspace{-0.15cm}\thanks{Department of Atomic Physics, ELTE University, Hungary.}
  \and H.~Niewiadomski\inst{8}
-%\and E.~Noschis\inst{8}
-%\and T.~Nov\'{a}k\inst{4}\thanks{KRF,  Gy\"{o}ngy\"{o}s, Hungary}
  \and E.~Oliveri\inst{7b}
  \and F.~Oljemark\inst{3a,3b}
  \and R.~Orava\inst{3a,3b}
@@ -80,9 +73,9 @@ G.~Antchev\thanks{INRNE-BAS, Institute for Nuclear Research and Nuclear Energy, 
  \and L.~Ropelewski\inst{8}
  \and G.~Ruggiero\inst{8}
  \and H.~Saarikko\inst{3a,3b}
-% \and G.~Sanguinetti\inst{7a}
  \and A.~Santroni\inst{6b,6a}
  \and A.~Scribano\inst{7b}
+ \and J.~Smajek\inst{8}
  \and W.~Snoeys\inst{8}
  \and J.~Sziklai\inst{4}
  \and C.~Taylor\inst{9}
@@ -91,9 +84,7 @@ G.~Antchev\thanks{INRNE-BAS, Institute for Nuclear Research and Nuclear Energy, 
  \and M.~Vitek\inst{1b}
  \and J.~Welti\inst{3a,3b}
  \and J.~Whitmore\inst{10}
-\fi
-\vskip5cm
- }          %ends author list
+}
 \shortauthor{The TOTEM Collaboration (G.~Antchev \etal)}
 
 \institute{
@@ -119,7 +110,7 @@ G.~Antchev\thanks{INRNE-BAS, Institute for Nuclear Research and Nuclear Energy, 
 
 
 \abstract{%
-At the LHC energy of $\sqrt s = 7\un{TeV}$, under various beam and background conditions, luminosities, and Roman Pot positions, TOTEM has measured the differential cross-section for proton-proton elastic scattering as a function of the four-momentum transfer squared $t$. The results of the different analyses are in excellent agreement demonstrating no sizeable dependence on the beam conditions. Due to the very close approach of the Roman Pot detectors to the beam center ($\approx 5\sigma_{\rm beam}$) in a dedicated run with $\beta^*=90\un{m}$, $|t|$-values down to $5\cdot10^{-3}\un{GeV^2}$ were reached. The exponential slope of the differential elastic cross-section in this newly explored $|t|$-region stayed unchanged and hence an exponential fit with only one constant $B = (19.9 \pm 0.3)\un{GeV^{-2}}$ over the large $|t|$-range from $0.005$ to $0.2\un{GeV^2}$ describes well the differential distribution. The high precision of the measurement and the large lever arm lead to an error on the slope parameter $B$ which is remarkably small compared to previous experiments. It allows a precise extrapolation over the non-visible cross-section (only  $9\%$) to $t=0$. With the luminosity from CMS, the elastic cross-section was determined to be $(25.4 \pm 1.1)\un{mb}$, and using in addition the optical theorem, the total $\rm pp$ cross-section was derived to be $(98.6 \pm 2.2)\un{mb}$.
+At the LHC energy of $\sqrt s = 7\un{TeV}$, under various beam and background conditions, luminosities, and Roman Pot positions, TOTEM has measured the differential cross-section for proton-proton elastic scattering as a function of the four-momentum transfer squared $t$. The results of the different analyses are in excellent agreement demonstrating no sizeable dependence on the beam conditions. Due to the very close approach of the Roman Pot detectors to the beam center ($\approx 5\sigma_{\rm beam}$) in a dedicated run with $\beta^*=90\un{m}$, $|t|$-values down to $5\cdot10^{-3}\un{GeV^2}$ were reached. The exponential slope of the differential elastic cross-section in this newly explored $|t|$-region stayed unchanged and hence an exponential fit with only one constant $B = (19.9 \pm 0.3)\un{GeV^{-2}}$ over the large $|t|$-range from $0.005$ to $0.2\un{GeV^2}$ describes the differential distribution well. The high precision of the measurement and the large lever arm lead to an error on the slope parameter $B$ which is remarkably small compared to previous experiments. It allows a precise extrapolation over the non-visible cross-section (only  $9\%$) to $t=0$. With the luminosity from CMS, the elastic cross-section was determined to be $(25.4 \pm 1.1)\un{mb}$, and using in addition the optical theorem, the total $\rm pp$ cross-section was derived to be $(98.6 \pm 2.2)\un{mb}$.
 %
 For model comparisons the $t$-distributions are tabulated including the large $|t|$-range of the previous measurement \cite{epl95}.
 }
@@ -153,8 +144,6 @@ To access smaller $|t|$-values (at $\sqrt s = 7\un{TeV}$ $|t| = 0.01\un{GeV^2}$ 
 
 In this paper, we concentrate on an improved $t$-distribution measurement with higher statistics and reaching even smaller $|t|$-values using different data sets taken in October 2011, with several special runs at $\beta^* = 90\un{m}$. This time, the detectors, housed in Roman Pots (RP), were put aggressively close to the beam center: $4.8 \hbox{ to } 6.5$ times the transverse beam size $\sigma_{\rm beam}$. This was possible since in this run the beams were scraped by the LHC collimators at a distance of $4\,\sigma_{\rm beam}$ for RP alignment purposes. For the definition of their position, each Roman Pot had to touch this sharp beam edge. After retraction by $0.5$ to $2\,\sigma_{\rm beam}$, TOTEM took data in very clean conditions with only a few colliding bunch pairs and reached $|t|$ values down to $5\cdot10^{-3}\un{GeV^2}$, enabling the observation of $91\%$ of the elastic cross-section -- compared to only $67\%$ previously \cite{epl96}. By extrapolating the differential elastic cross-section to the optical point $t=0$ and using the optical theorem, the total and inelastic cross-sections were also derived. The differential cross-section over the complete $t$-range combining all available measurements with its statistical and systematic uncertainties is tabulated in this article.
 
-\vskip4cm
-
 In a second paper in the same journal issue \cite{P2}, the inelastic cross-section is measured directly, based on triggers from the forward inelastic detectors. This is compared to the inelastic cross-section obtained from elastic scattering via the optical theorem, yielding a cross-section estimate for single diffraction at masses below $3\un{GeV}$ that escape our detection.
 
 A third paper \cite{P3} summarizes the cross-sections obtained with different approaches, including the luminosity independent method. Since the $\rho$ parameter (the ratio of the real to imaginary part of the hadronic scattering amplitude at $t=0$) does not enter in the method of the 2nd paper \cite{P2}, $\rho$ can be determined by comparing the results from the different methods. Furthermore, the luminosity of the LHC was extracted, confirming the more detector-dependent estimates by CMS. 
@@ -172,7 +161,7 @@ Each RP station is composed of two units (near and far) separated by a distance 
 %The RPs are moved from the garage position towards the beam center with a precision of $20\un{\mu m}$.
 The movement and the alignment of all pots are monitored with a precision better than $20\un{\mu m}$ based on track reconstruction and external alignment tools.
 
-The large lever arm between the near and the far units allows the determination of the scattering angle in both projections with a precision of about $5\un{\mu rad}$. The knowledge of both the track positions and angles is vital in the analysis. 
+The large lever arm between the near and the far units allows the determination of the scattering angle in both projections with a precision of about $5\un{\mu rad}$. The know\-ledge of both the track positions and angles is vital in the analysis. 
 
 
 
@@ -209,7 +198,7 @@ The presented data were recorded in October 2011. For this analysis, only one co
 
 During the run three data sets were recorded with different RP distances to the beam center corresponding to minimum values of the four-momentum transfer squared between $(4.6$ and $7.3)\cdot10^{-3}\un{GeV^2}$. The different data sets enabled us to reduce certain systematic uncertainties (alignment, inefficiency corrections, etc.). A run summary is given in Tab.~\ref{tab:datasets}.
 
-The 1st-level trigger benefits from the 20 possible hits (10 planes in both near and far RP) per proton track and is based on a track segment in the near or the far unit. This redundancy guarantees a high trigger efficiency (over $99\%$ per proton). A coincidence between a proton on the left and the right side of the IP is requested in the typical elastic double-arm signature in the vertical RP detectors with two diagonals (left top -- right bottom or left bottom -- right top). The characteristic of the $\beta^* = 90\un{m}$ optics forces most of the elastically scattered protons into the vertical RPs, see Fig.~\ref{fig:hit dist}.
+The 1st-level trigger benefits from the 20 possible hits (10 planes in both near and far RP) per proton track and is based on a track segment in the near or the far unit. This redundancy guarantees a high trigger efficiency (over $99\%$ per proton). A coincidence between a proton on the left and the right side of the IP is requested in the typical elastic double-arm signature in the vertical RP detectors with two diagonals (left top -- right bottom or left bottom -- right top). The characteristics of the $\beta^* = 90\un{m}$ optics force most of the elastically scattered protons into the vertical RPs, see Fig.~\ref{fig:hit dist}.
 
 \begin{table}
 \caption{Description of the three datasets available. The RP position gives the RP approach to beam in multiples of the beam size ($\sigma_{\rm beam}$). The third column summarizes the numbers of elastic events reconstructed from both diagonals. $\mathcal{L}_{\rm int}$ is the integrated
@@ -288,7 +277,7 @@ The background contribution (i.e.~all non-elastic events passing the selection c
 %-------------------------
 \subsection{Acceptance correction}
 
-We identified two acceptance limitations: the detector edge (relevant for low $|t|$) and the LHC aperture limitation shown in Fig.~\ref{fig:hit dist} right (relevant for high $|t|$). Both effects were treated by assuming azimuthal symmetry of the elastic scattering and by correcting for smearing around the limitation edges. In order to keep the uncertainty on a reasonable level, we constrained ourselves to the region where the full acceptance correction was not larger than a factor $7.5$%
+We identified two acceptance limitations: the detector edge (relevant for low $|t|$) and the LHC aperture limitation shown in Fig.~\ref{fig:hit dist} right (relevant for high $|t|$). Both effects were treated by assuming azimuthal symmetry of the elastic scattering and by correcting for smearing around the limitation edges. In order to keep the uncertainty at a reasonable level, we constrained ourselves to the region where the full acceptance correction was not larger than a factor $7.5$%
 %(considering both diagonals)
 .
 
@@ -312,7 +301,7 @@ There are several reasons for reconstruction inefficiency: intrinsic RP detectio
 
 Uncorrelated inefficiencies of single RPs were studied by removing the examined RP from the selection cuts and counting the recuperated events. For this study, only cut 2 could be kept -- the others require both near and far RP measurements. The result was an inefficiency of $(1.5 \pm 0.2)\%$ for the near and $(3.0 \pm 0.2)\%$ for the far RPs. This difference can be explained by proton interactions in the near RP that affect the far RP too. This near-far correlated inefficiency was determined from data by counting events with corresponding shower signatures, yielding $(1.5\pm 0.7)\%$ (this result is confirmed by MC simulations).
 
-The ``pile-up'' inefficiency was calculated from the probability of finding an additional track (on top of the elastic) in any station of a diagonal. This probability was determined from the zero-bias data stream and was found to increase as th RPs approached the beam. For instance, for the diagonal bottom-left top-right, the probabilities were $(3.9 \pm 0.3)\%$, $(6.2 \pm 0.3)\%$ and $(7.9 \pm 0.3)\%$ for the datasets 1, 2 and 3, respectively.
+The ``pile-up'' inefficiency was calculated from the probability of finding an additional track (on top of the elastic) in any station of a diagonal. This probability was determined from the zero-bias data stream and was found to increase as the RPs approached the beam. For instance, for the diagonal bottom-left top-right, the probabilities were $(3.9 \pm 0.3)\%$, $(6.2 \pm 0.3)\%$ and $(7.9 \pm 0.3)\%$ for the datasets 1, 2 and 3, respectively.
 
 
 \begin{figure*}
@@ -341,7 +330,7 @@ The elastic differential cross-section was extrapolated to zero with the followi
 \label{eq:extrapolation}
 {\d\sigma_{\rm el}\over \d t} = \left. {\d\sigma_{\rm el}\over \d t}\right|_{t=0} \ \e^{-B|t|}\ .
 \end{equation}
-The fits were performed from the lowest accessible $|t|$ values (see $|t|_{\rm min}$ in Tab.~\ref{tab:datasets}) to $|t| = 0.2\un{GeV^2}$, with a typical $\chi^2/\hbox{n.d.f.}$ of $1.2$ -- see for example the black line in Fig.~\ref{fig:dsdt}.
+The fits were performed from the lowest accessible $|t|$ values (see $|t|_{\rm min}$ in Tab.~\ref{tab:datasets}) to $|t| = 0.2\un{GeV^2}$, with a typical $\chi^2/\hbox{n.d.f.}$ of $1.2$ -- see for example the black line in the embedded plot in Fig.~\ref{fig:dsdt}.
 
 %-------------------------
 \section{Systematic uncertainty calculation}
@@ -398,7 +387,7 @@ $0.4$	&	$12.3\%$	& $\cdot$	& $\cdot$ 	& $12.9\%$ \cr
 \includegraphics{fig/B_s.pdf}
 \vskip-5mm
 \caption{The elastic slope $B$ (see Eq.~(\ref{eq:extrapolation})) as a function of the scattering energy $\sqrt s$.
-%$\rm pp$ and $\rm \bar pp$ data from \cite{pdg}.
+%$\rm pp$ and $\rm \bar pp$ data from \cite{B_vs_s}.
 }
 \label{fig:B s}
 \end{center}
@@ -473,7 +462,7 @@ $0.0455\S$ & $204.8$ & $\S1.3$ & $\S8.7$ && $0.103\S$ & $\S65.53$ & $0.60$ & $2.
 
 \begin{largetable}
 \hbox{}\vskip-8.4mm
-\caption{The elastic differential cross-section as given in \cite{epl95}. The systematic errors almost fully correlated among the bins.
+\caption{The elastic differential cross-section as given in \cite{epl95}. The systematic uncertainties are almost fully correlated among the bins.
 %systematic uncertainties evaluated for three $|t|$ values: $^{+25}_{-37}\%$ at $|t|=0.4\un{GeV^2}$, $^{+28}_{-39}\%$ at $0.5\un{GeV^2}$ and $^{+27}_{-30}\%$ at $1.5\un{GeV^2}$.
 }
 \label{tab:data medium t}
@@ -636,9 +625,22 @@ We are indebted to the beam optics development team ({\sc A.~Verdier} in the ini
 	%{\tt http://accelconf.web.cern.ch/AccelConf/IPAC2011/papers/mopo011.pdf}
 	arXiv:1110.5808v1
 
-\bibitem{pdg} 
-	\Name{Nakamura K.~\etal{} (Particle Data Group)}
-	\REVIEW{J.~Phys.}{G37}{2010}{075021}
+%\bibitem{pdg} 
+%	\Name{Nakamura K.~\etal{} (Particle Data Group)}
+%	\REVIEW{J.~Phys.}{G37}{2010}{075021}
+
+\bibitem{B_vs_s}
+	\Name{ISR (CR Collaboration)} \REVIEW{Phys.~Lett.}{B36}{1971}{504}\\
+	\Name{ISR (ACHGT Collaboration)} \REVIEW{Phys.~Lett.}{B39}{1972}{663}\\
+	\Name{ISR (R-211)} \REVIEW{Nucl.~Phys.}{B262}{1985}{689--714}\\
+	\Name{ISR (R-210)} \REVIEW{Phys.~Lett.}{B115}{1982}{495}\\
+	\Name{UA1} \REVIEW{Phys.~Lett.}{B147}{1984}{385--391}\\
+	\Name{UA4} \REVIEW{Phys.~Lett.}{B127}{1983}{472} and \REVIEW{Phys. Lett.}{B198}{1987}{583--589}\\
+	\Name{UA4/2} \REVIEW{Phys.~Lett.}{B316}{1993}{448--454}\\
+	\Name{CDF} \REVIEW{Phys.~Rev.}{D50}{1994}{5518–5534} \\
+	\Name{E710} \REVIEW{Phys.~Lett.}{B247}{1990}{127--130} and \REVIEW{Nuovo Cimento}{A106}{1992}{123--129}\\
+	\Name{D0} D0 Note 6056-CONF\\
+	\Name{pp2pp} \REVIEW{Phys.~Lett.}{B579}{2004}{245-250}
 
 \bibitem{lafferty94}
  	%``Where to stick your data points: The treatment of measurements within wide bins,''
