@@ -2,7 +2,7 @@ import root;
 import pad_layout;
 import latex_aux_parser;
 
-ParseAuxFile("../elastic.aux");
+ParseAuxFile("../elastic_epl.aux");
 
 texpreamble("\SelectCMFonts\LoadFonts\NormalFonts");
 

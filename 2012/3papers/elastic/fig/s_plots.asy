@@ -2,7 +2,7 @@ import pad_layout;
 import root;
 import latex_aux_parser;
 
-ParseAuxFile("../elastic.aux");
+ParseAuxFile("../elastic_epl.aux");
 
 StdFonts();
 
