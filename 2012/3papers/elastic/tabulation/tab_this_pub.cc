@@ -151,7 +151,7 @@ void tab_this_pub()
 				*/
 		
 		// fill in data
-		binData[i] = BinData(cp, cp_e, v, v_stat_e, v_syst_e);
+		binData[i] = BinData(le, he, cp, cp_e, v, v_stat_e, v_syst_e);
 	}
 
 	// write graphs
@@ -169,6 +169,22 @@ void tab_this_pub()
 		before = 3; after = 4; digits = 2;
 		PrintTuple(d.v, d.v_stat_e, d.v_syst_e);
 		printf("\n");
+	}
+	
+	// print in Durham format
+	printf(
+"           xlow"
+"          xhigh"
+"         xfocus"
+"     xfocus_err"
+"              y"
+"         +-stat"
+"          +-sys"
+"\n");
+	for (map<unsigned int, BinData>::iterator it = binData.begin(); it != binData.end(); ++it) {
+		const BinData &d = it->second;
+
+		printf("%+15.5E%+15.5E%+15.5E%+15.5E%+15.5E%+15.5E%+15.5E\n", d.bLow, d.bHigh, d.cp, d.cp_e, d.v, d.v_stat_e, d.v_syst_e);
 	}
 
 	delete outF;

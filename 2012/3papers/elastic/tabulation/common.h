@@ -237,9 +237,14 @@ void PrintTuple2(double v, double e1=-1, double e2=-1, double e3=-1)
 
 struct BinData
 {
+	double bLow, bHigh;
 	double cp, cp_e;
 	double v, v_stat_e, v_syst_e;
+	double v_syst_e_up, v_syst_e_down;
 
-	BinData(double _cp=0, double _cp_e=0, double _v=0, double _vste=0, double _vsye=0) :
-		 cp(_cp), cp_e(_cp_e), v(_v), v_stat_e(_vste), v_syst_e(_vsye) {}
+	BinData(double _bl=0, double _bh=0, double _cp=0, double _cp_e=0, double _v=0, double _vste=0, double _vsye=0) :
+		bLow(_bl), bHigh(_bh),
+		cp(_cp), cp_e(_cp_e), v(_v), v_stat_e(_vste), v_syst_e(_vsye),
+   		v_syst_e_up(0.), v_syst_e_down(0.)
+	{}
 };
