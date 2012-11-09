@@ -209,7 +209,7 @@ void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red
 
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm tot},\ \si_{\rm inel},\hbox{ and } \si_{\rm el}\ung{mb}$", 104mm, 77mm, yTicks=RightTicks(Step=20, step=10));
+NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el},\ \si_{\rm inel},\hbox{ and } \si_{\rm tot}\ung{mb}$", 104mm, 77mm, yTicks=RightTicks(Step=20, step=10));
 FixPad(-260, -77);
 
 scale(Log, Linear);
@@ -239,11 +239,11 @@ AddToLegend("$\rm pp$, Ref.~["+GetLatexReference("bibcite", "pdg")+"]", nullpen,
 
 // CMS, ATLAS and ALICE
 DrawPointE(2.76e3, 0, 0, 62.8, 4.2, 2.7, blue, mSt+false+1.5pt+blue, "");
-DrawPointE(7e3-400, 0, 0, 73.1, 5.3, 3.3, blue, mSt+false+1.5pt+blue, "ALICE, Ref.~["+GetLatexReference("bibcite", "alice inel")+"]");
+DrawPointE(7e3-400, 0, 0, 73.1, 5.3, 3.3, blue, mSt+false+1.5pt+blue, "ALICE, Ref.~["+GetLatexReference("bibcite", "alice_inel")+"]");
 
-DrawPointE(7e3-150, 0, 0, 69.1, 7.3, 7.3, blue, mTL+false+1.5pt+blue, "ATLAS, Ref.~["+GetLatexReference("bibcite", "atlas inel")+"]");
+DrawPointE(7e3-150, 0, 0, 69.1, 7.3, 7.3, blue, mTL+false+1.5pt+blue, "ATLAS, Ref.~["+GetLatexReference("bibcite", "atlas_inel")+"]");
 
-DrawPointE(7e3+150, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+1.5pt+blue, "CMS, Ref.~["+GetLatexReference("bibcite", "cms inel")+"]");
+DrawPointE(7e3+150, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+1.5pt+blue, "CMS, Ref.~["+GetLatexReference("bibcite", "cms_inel")+"]");
 
 // Auger
 DrawPointE(57e3-200, 6e3, 6e3, 92, 14.8, 13.4, blue, mSq+false+1.5pt+blue, "");
@@ -335,9 +335,9 @@ for (int i : si_inel.keys) {
 	draw((i+1, si_inel[i]-si_inel_un[i])--(i+1, si_inel[i]+si_inel_un[i]), blue);
 }
 
-DrawPointE(5, 0, 0, 73.1, 5.3, 3.3, blue, mSt+false+2pt+blue, "ALICE, Ref.~["+GetLatexReference("bibcite", "alice inel")+"]");
-DrawPointE(6, 0, 0, 69.1, 7.3, 7.3, blue, mTL+false+2pt+blue, "ATLAS, Ref.~["+GetLatexReference("bibcite", "atlas inel")+"]");
-DrawPointE(7, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+2pt+blue, "CMS, Ref.~["+GetLatexReference("bibcite", "cms inel")+"]");
+DrawPointE(5, 0, 0, 73.1, 5.3, 3.3, blue, mSt+false+2pt+blue, "ALICE, Ref.~["+GetLatexReference("bibcite", "alice_inel")+"]");
+DrawPointE(6, 0, 0, 69.1, 7.3, 7.3, blue, mTL+false+2pt+blue, "ATLAS, Ref.~["+GetLatexReference("bibcite", "atlas_inel")+"]");
+DrawPointE(7, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+2pt+blue, "CMS, Ref.~["+GetLatexReference("bibcite", "cms_inel")+"]");
 
 limits((0, 60), (8, 80), Crop);
 //AttachLegend("inelastic cross section");
@@ -352,9 +352,9 @@ string MethName(real x)
 	if (fabs(x - 2) < 0.1) return "\vbox{\hbox{elastic only (Oct)}}";
 	if (fabs(x - 3) < 0.1) return "${\cal L}_{\rm int}$-independent";
 	if (fabs(x - 4) < 0.1) return "$\rh$-independent";
-	if (fabs(x - 5) < 0.1) return "ALICE, Ref.~["+GetLatexReference("bibcite", "alice inel")+"]";
-	if (fabs(x - 6) < 0.1) return "ATLAS, Ref.~["+GetLatexReference("bibcite", "atlas inel")+"]";
-	if (fabs(x - 7) < 0.1) return "CMS, Ref.~["+GetLatexReference("bibcite", "cms inel")+"]";
+	if (fabs(x - 5) < 0.1) return "ALICE, Ref.~["+GetLatexReference("bibcite", "alice_inel")+"]";
+	if (fabs(x - 6) < 0.1) return "ATLAS, Ref.~["+GetLatexReference("bibcite", "atlas_inel")+"]";
+	if (fabs(x - 7) < 0.1) return "CMS, Ref.~["+GetLatexReference("bibcite", "cms_inel")+"]";
 	return "??";
 }
 
