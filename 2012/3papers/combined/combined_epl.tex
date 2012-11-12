@@ -155,6 +155,8 @@ This is just a placeholder. This is just a placeholder. This is just a placehold
 
 \def\TabCS{%
 \begin{largetable}
+\hbox{}%
+\vskip-5mm
 \caption{Cross-section summary. The statistical uncertainties are negligible and therefore omitted. The systematic uncertainty contributions are grouped into several categories -- \emph{el} (from the elastic-scattering analysis), \emph{inel} (from the inelastic-scattering analysis), \emph{lumi} (from the $4\%$ uncertainty of the CMS luminosity measurement) and \emph{rho} (from the COMPETE preferred-model $\rho$ extrapolation uncertainty of $\pm 0.007$)
 -- together forming the \emph{full} systematic uncertainty (components combined in quadrature, including their correlations).
 }
@@ -176,7 +178,7 @@ $\sigma_{\rm el}$   & $\rm[mb]$ & $\qquad24.8$ & $\pm 1.2$   &   $25.4$ & $\pm 0
 }
 
 \def\TabLumi{%
-\begin{table}
+\begin{largetable}
 \caption{The integrated luminosities for the October and June data sets as determined by different experiments and different methods.}
 \label{tab:lumi}
 \begin{center}
@@ -190,13 +192,36 @@ June	& TOTEM, Eq.~(\ref{eq:lumi jun el}) 	& $\S1.65 \pm 0.07$\cr
 		& CMS									& $\S1.65 \pm 0.07$\cr\hline
 \end{tabular}
 \end{center}
-\end{table}
+\end{largetable}
+}
+
+\def\FigSigmas{%
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/sigma_tot_el_inel_cmp_big.pdf}
+%\vskip-5mm
+\caption{Left: the dependences of total, inelastic and elastic cross-sections on the scattering energy $\sqrt s$. The continuous black lines (lower for $\rm pp$, upper for $\rm \bar pp$) represent the best fits of the total cross-section data by the COMPETE collaboration \cite{compete}. The dashed line results from a fit of the elastic scattering data. The dash-dotted curves correspond to the inelastic cross-section and were obtained as the difference between the continuous and dashed fits.\hfil\break
+Right: measurements of total, inelastic and elastic cross-sections at $\sqrt s = 7\un{TeV}$. The circles represent the four TOTEM measurements summarized in Tab.~\ref{tab:cs} (weighted mean given by the dotted line), the other points show the measurements of other LHC collaborations.}
+\label{fig:cs}
+\end{center}
+\vskip-5mm
+\end{figure*}
+}
+
+\def\FigRatio{%
+\begin{figure}
+\onefigure{fig/sigma_el_to_sigma_tot.pdf}
+\vskip-5mm
+\caption{The ratio of the elastic to total cross-section as a function of the scattering energy $\sqrt s$. The dashed line shows the ratio of the $\sigma_{\rm el}(s)$ and $\sigma_{\rm tot}(s)$ fits from Fig.~\ref{fig:cs}.
+}
+\label{fig:sigma rat}
+\end{figure}
 }
 
 %--------------------------------------------------
 \section{Introduction}
 
-In the previous TOTEM publications \cite{epl96,P1} the differential cross-section for elastic proton-proton scattering was presented as a function of the four-momentum transfer squared $t$. By extrapolation to $t=0$, the cross-section $\d\sigma_{\rm el}/\d t|_{0}$ at the optical point was determined. Integrating the differential distribution yields the elastic cross-section $\sigma_{\rm el}$. Applying the optical theorem, the total and the inelastic proton-proton cross-sections were derived with a weak dependence on the $\rho$ parameter (the ratio of the real to the imaginary part of the forward hadronic scattering amplitude):
+The TOTEM experiment has recently published \cite{epl96,P1} the differential cross-section for elastic proton-proton scattering as a function of the four-momentum transfer squared $t$. By extrapolation to $t=0$, the cross-section $\d\sigma_{\rm el}/\d t|_{0}$ at the optical point was determined. Integration of the differential distribution yields the elastic cross-section $\sigma_{\rm el}$. Applying the optical theorem, the total and the inelastic proton-proton cross-sections were derived with a weak dependence on the $\rho$ parameter (the ratio of the real to the imaginary part of the forward hadronic scattering amplitude):
 \begin{equation}
 \label{eq:m el}
 	\sigma_{\rm tot}^2 = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d\sigma_{\rm el}\over\d t\right|_0\ ,\qquad
@@ -205,7 +230,7 @@ In the previous TOTEM publications \cite{epl96,P1} the differential cross-sectio
 %The results for the low-luminosity measurement \cite{epl96} and the higher-luminosity measurement \cite{P1} are summarized in Tab.~\ref{tab:cs}.
 These cross-sections are exclusively based on the measurement of the elastic scattering cross-section.
 
-Moreover, taking advantage of the two triggerable forward charged-particle detectors, the inelastic cross-section was also directly measured \cite{P2} using the same data set as in \cite{P1}. A small Monte-Carlo correction ($\approx 3\%$) had to be applied to account for the non-visible events in the very forward cone $|\eta| > 6.5$, mainly due to single diffraction. The cross-sections with their systematic uncertainties are summarized in Tab.~\ref{tab:cs}.
+Moreover, with the two triggerable forward charged-particle telescopes, the inelastic cross-section was also directly measured \cite{P2} using the same data set as in \cite{P1}. A small Monte-Carlo correction ($\approx 3\%$) was applied to account for the non-visible events in the very forward cone $|\eta| > 6.5$, mainly due to single diffraction. The cross-sections values with their systematic uncertainties are summarized in Tab.~\ref{tab:cs}.
 
 The excellent agreement between the two completely different measurements of the inelastic cross-sections confirms the understanding of the systematic uncertainties and corrections applied in both methods. Taking maximum advantage of the two measurements by combining them in different ways allows extracting more information from the data, such as:
 \begin{itemize}
@@ -218,7 +243,7 @@ The excellent agreement between the two completely different measurements of the
 \item $\rho$ constraints.
 \end{itemize}
 
-This article is based on the data collected in October 2011 (for details see Tab.~1 in \cite{P1}).
+The results presented in this article are obtained from the data collected in October 2011 (for details see Tab.~1 in \cite{P1}).
 %That run was split into three datasets with Roman Pot detectors at different positions (for details see Tab.~1 in \cite{P1}). All calculations were done independently for these three datasets, showing an excellent match. Therefore only the results for the three datasets combined will be given below.
 For completeness, some of the results will be compared to those of the lower-luminosity run from June 2011 \cite{epl96}, where only the elastic part of the analysis could be performed.
 
@@ -226,7 +251,7 @@ For completeness, some of the results will be compared to those of the lower-lum
 %--------------------------------------------------
 \section{Luminosity independent cross-sections}
 
-Using the optical theorem, one can combine the elastic measurements from \cite{P1} and the inelastic measurements from \cite{P2} to derive the total cross-section that is independent from the luminosity:
+Using the optical theorem, one can combine the elastic measurements from \cite{P1} and the inelastic measurements from \cite{P2} to derive the total cross-section without the knowledge of the luminosity:
 \begin{equation}
 \label{eq:m lumi indep}
 	\sigma_{\rm tot} = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, {\d N_{\rm el}/\d t|_0 \over N_{\rm el} + N_{\rm inel} }\ ,
@@ -234,6 +259,8 @@ Using the optical theorem, one can combine the elastic measurements from \cite{P
 where the symbols $N$ stand for rates integrated over the run period. Taking $\rho = 0.141\pm 0.007$ from the COMPETE \cite{compete} preferred-model extrapolation yields the luminosity independent total cross-section, see Tab.~\ref{tab:cs}. Furthermore, using the measured ratio $N_{\rm el} / N_{\rm inel}$, the elastic and inelastic cross-sections can be derived as well independent from the luminosity. These cross-sections are also given in Tab.~\ref{tab:cs} with their uncertainty compositions.
 
 \TabCS
+\TabLumi
+\FigSigmas
 
 %--------------------------------------------------
 \section{Luminosity determination}
@@ -243,7 +270,7 @@ The optical theorem can also be applied in a complementary way such that the lum
 \label{eq:lumi oct}
 {\cal L_{\rm int}} = {1 + \rho^2 \over 16\pi\, (\hbar c)^2}\, { (N_{\rm el} + N_{\rm inel})^2 \over \d N_{\rm el}/\d t|_0 }\ .
 \end{equation}
-Thus, integrating the rates over the data-taking period during which the elastic \cite{P1} and inelastic \cite{P2} interactions have independently but simultaneously been measured, results in the integrated luminosity ${\cal L}_{\rm int}$. Using the above $\rho$ value, the luminosity determined by TOTEM for the October run is compared in Tab.~\ref{tab:lumi} to the one obtained by CMS in a completely different way. The excellent agreement between both measurements demonstrates the reliability of these luminosity determinations.
+Thus, integrating the rates over the data-taking period during which the elastic \cite{P1} and inelastic \cite{P2} interactions have independently but simultaneously been measured, results in the integrated luminosity ${\cal L}_{\rm int}$. Using the above $\rho$ value, the luminosity determined by TOTEM for the October run is compared in Tab.~\ref{tab:lumi} to the one obtained by CMS in a completely different way. The excellent agreement between both measurements demonstrates the reliability of these methods to determine luminosity.
 
 
 Once the cross-section of a process is known, it can be, in general, used for luminosity determination. In particular, knowing the total and elastic cross-sections, the integrated luminosity of the earlier June run \cite{epl96} has been calculated from the elastic scattering rates $\d N_{\rm el}/\d t|_{t=0}$ and $N_{\rm el}$, which are of course highly correlated:
@@ -256,8 +283,6 @@ Once the cross-section of a process is known, it can be, in general, used for lu
 {\cal L}_{\rm int}^{\rm June} = {N_{\rm el}^{\rm June}\over \sigma_{\rm el}}\ .
 \end{equation}
 Taking the luminosity-independent values for the total and elastic cross-sections (see Tab.~\ref{tab:cs}) yields the integrated luminosities for the June run which are again in excellent agreement with the CMS results, see Tab.~\ref{tab:lumi}.
-
-\TabLumi
 
 %--------------------------------------------------
 \section{$\rho$-independent quantities}
@@ -281,43 +306,28 @@ The elastic and inelastic measurements can be combined in order to determine $\r
 \label{eq:rho}
 \rho^2 = 16\pi\ (\hbar c)^2\ {\cal L_{\rm int}}\ {\d N_{\rm el}/\d t|_0\over (N_{\rm el} + N_{\rm inel})^2} - 1\ .
 \end{equation}
-This is a direct measurement at $\sqrt s = 7\un{TeV}$ unlike the COMPETE value extrapolated from lower-energy measurements. Inserting the values from \cite{P1,P2} yields $\rho^2 = 0.009 \pm 0.056$ (mean and standard deviation). This estimate can not be translated into terms of $\rho$ in a straight-forward manner since an important part of the $\rho^2$ distribution extends to negative values, where square root is not defined. Instead, one can state that at $95\%$ confidence level $\rho^2 < 0.10$. This upper bound can be equally expressed as $\rho < 0.32$. Alternatively, one can pursue the Bayes' approach to estimate $|\rho|$. Taking a uniform prior $|\rho|$ distribution yields a posterior distribution with mean $0.145$ and standard deviation $0.091$.
+This is a direct measurement at $\sqrt s = 7\un{TeV}$ unlike the COMPETE value extrapolated from lower-energy measurements. Inserting the values from \cite{P1,P2} yields $\rho^2 = 0.009 \pm 0.056$ (mean and standard deviation). This estimate of $\rho^2$ cannot be translated into terms of $\rho$ in a straight-forward manner since an important part of the $\rho^2$ distribution extends to negative values, where square root is not defined. Instead, one can state that at $95\%$ confidence level $\rho^2 < 0.10$. This upper bound can be equally expressed as $\rho < 0.32$. Alternatively, one can pursue the Bayes' approach to estimate $|\rho|$. Taking a uniform prior $|\rho|$ distribution yields a posterior distribution with mean $0.145$ and standard deviation $0.091$.
 
 %--------------------------------------------------
 \section{Comparison with other experiments}
 
-The total, elastic and inelastic cross-sections obtained from different methods and data sets (summarized in Tab.~\ref{tab:cs}) show excellent agreement. In particular, the inelastic cross-section arising from two completely independent measurements with the Roman Pot detectors in the very forward region close to the beams and with the more central charged-particle telescopes agree remarkably well with each other and also with the ALICE \cite{alice_inel}, ATLAS \cite{atlas_inel} and CMS \cite{cms_inel} results (see Fig.~\ref{fig:cs} right).
+The total, elastic and inelastic cross-section values obtained with different methods and data sets (summarized in Tab.~\ref{tab:cs}) show excellent agreement. In particular, the inelastic cross-section arising from two completely independent measurements with the Roman Pot detectors in the very forward region close to the beams and with the more central charged-particle telescopes agree remarkably well with each other and also with the ALICE \cite{alice_inel}, ATLAS \cite{atlas_inel} and CMS \cite{cms_inel} results (see Fig.~\ref{fig:cs} right).
 
 The energy dependence of the proton-(anti)proton cross-sections is shown in Fig.~\ref{fig:cs} left. The best fit of $\sigma_{\rm tot}(s)$ by the COMPETE Collaboration \cite{compete} (published before the TOTEM result) describes the energy dependence well even up to the highest energies.  
 
 The ratio $\sigma_{\rm el}/\sigma_{\rm tot}$ can give some insights into the shape and the opacity of the proton, subject to model-dependent theoretical interpretations. The steady rise of this ratio with energy (Fig.~\ref{fig:sigma rat}) leads to the conclusion that the proton size and its opacity increase with energy. 
 
-\begin{figure*}
-\begin{center}
-\includegraphics{fig/sigma_tot_el_inel_cmp_big.pdf}
-%\vskip-5mm
-\caption{Left: the dependences of total (red), inelastic (blue) and elastic (green) cross-sections on the scattering energy $\sqrt s$. The continuous black lines (lower for $\rm pp$, upper for $\rm \bar pp$) represent the best fits of the total cross-section data by the COMPETE collaboration \cite{compete}. The dashed line results from a fit of the elastic scattering data. The dash-dotted curves correspond to the inelastic cross-section and were obtained as the difference between the continuous and dashed fits.\hfil\break
-Right: measurements of total (red), inelastic (blue) and elastic (green) cross-sections at $\sqrt s = 7\un{TeV}$. The circles represent the four TOTEM measurements summarized in Tab.~\ref{tab:cs} (weighted mean given by the dotted line), the other points show the measurements of other LHC collaborations.}
-\label{fig:cs}
-\end{center}
-\end{figure*}
-
-
-\begin{figure}
-\onefigure{fig/sigma_el_to_sigma_tot.pdf}
-\vskip-5mm
-\caption{(Colour on-line) The ratio of the elastic to total cross-section as a function of the scattering energy $\sqrt s$. The dashed line shows the ratio of the $\sigma_{\rm el}(s)$ and $\sigma_{\rm tot}(s)$ fits from Fig.~\ref{fig:cs}.
-}
-\label{fig:sigma rat}
-\end{figure}
+\FigRatio
 
 %--------------------------------------------------
 \section{Relevance for cosmic-ray measurements}
 
-The LHC energy is starting to overlap with the energy range where large area cosmic ray showers are studied (see Fig.~\ref{fig:cs}). Investigations of high-energy proton-proton interactions at the LHC are therefore of high importance for the development of cosmic ray showers in the atmosphere and thus for high-energy cosmic ray interpretations, like e.g.~the energy spectrum and particle composition \cite{enterria}.  The most important observable is the shower maximum $X_{\rm max}$ which is related to the primary particle mass. It strongly depends on the inelastic $\rm p$-air cross-section. It is worth mentioning that calculations of hadron-nucleus cross-sections in the Glauber-Gribov formalism \cite{nagano,glauber} require the knowledge of the proton-proton elastic scattering amplitude in the small $|t|$-range rather than just the inelastic $\rm pp$ cross-section. The latest Auger measurement of the inelastic cross-section at $\sqrt s = 58\un{TeV}$ (Fig.~\ref{fig:cs}) benefits considerably from the TOTEM cross-section results. In addition, all kinds of diffractive phenomena influence the development of the shower cascade and the multiplicity fluctuations of secondary hadrons. Thus the measurements of the $\rm pp$ cross-sections and the particle flow are of high importance for the interpretation of cosmic ray showers.
+The LHC energy begins to overlap with the energy range where large area cosmic ray showers are studied (see Fig.~\ref{fig:cs}). Investigations of high-energy proton-proton interactions at the LHC are therefore of high importance for the study of the development of cosmic ray showers in the atmosphere and thus for high-energy cosmic ray interpretations, like e.g.~the energy spectrum and particle composition \cite{enterria}.  The most important observable is the shower maximum $X_{\rm max}$ which is related to the primary particle mass. It strongly depends on the inelastic $\rm p$-air cross-section. It is worth mentioning that calculations of hadron-nucleus cross-sections in the Glauber-Gribov formalism \cite{nagano,glauber} require the knowledge of the proton-proton elastic scattering amplitude in the small $|t|$-range rather than just the value of the inelastic $\rm pp$ cross-section. The latest Auger measurement of the inelastic cross-section at $\sqrt s = 57\un{TeV}$ (Fig.~\ref{fig:cs}) benefits considerably from the TOTEM cross-section results. In addition, all kinds of diffractive phenomena influence the development of the shower cascade and the multiplicity fluctuations of secondary hadrons. Thus the measurements of the $\rm pp$ cross-sections and the particle flow are of high importance for the interpretation of cosmic ray showers.
 
 %--------------------------------------------------
+\vskip-5mm
 \acknowledgments
+\vskip-4mm
 
 We are indebted to the beam optics development team
 %({\sc A.~Verdier} in the initial phase, {\sc H.~Burkhardt}, {\sc G.~M\" uller}, {\sc S.~Redaelli}, {\sc J.~Wenninger}, {\sc S.~M.~White})
@@ -326,6 +336,9 @@ for the design, the thorough preparations and the successful commissioning of th
 the LHC machine coordinators for scheduling the dedicated fills.
 
 We are grateful to CMS for providing their luminosity measurements.
+
+We thank S.~Ostapchenko and R.~Ulrich for valuable discussions on the cosmic-ray implications of our results.
+
 
 
 %--------------------------------------------------

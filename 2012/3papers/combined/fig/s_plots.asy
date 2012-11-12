@@ -226,7 +226,7 @@ void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red
 
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el} / \si_{\rm tot}\ung{\%}$", yTicks=RightTicks(Step=2, step=1));
+NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el} / \si_{\rm tot}\ung{\%}$", yTicks=RightTicks(Step=2, step=1), 6cm, 4cm);
 scale(Log, Linear);
 //currentpad.xSize = 15cm;
 //currentpad.ySize = 9cm;
@@ -234,7 +234,7 @@ scale(Log, Linear);
 for (real x = 1; x <= 4; x += 1)
 	draw((x, 15)--(x, 30), dotted);
 
-for (real y = 15; y <= 30; y += 2)
+for (real y = 16; y < 30; y += 2)
 	draw((1, y)--(4, y), dotted);
 
 
