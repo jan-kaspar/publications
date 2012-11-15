@@ -248,7 +248,7 @@ DrawElToTotDataSet(base_dir+"/pp_total.dat", base_dir+"/pp_elastic.dat", blue+0.
 DrawPoint(7e3, 25.8, 0.56, 0.56, red+0.8pt, mCi+true+2pt+red);		// totem
 
 limits((1e1, 15), (1e4, 30), Crop);
-AddToLegend("$\rm pp$, Ref.~["+GetLatexReference("bibcite", "pdg")+"]", blue, mTD+true+2pt+blue);
+AddToLegend("$\rm pp$, Ref.~["+GetLatexReference("bibcite", "pdg")+"]", blue, mTD+false+2pt+blue);
 AddToLegend("$\rm \bar pp$, Ref.~["+GetLatexReference("bibcite", "pdg")+"]", heavygreen, mTU+false+2pt+heavygreen);
 AddToLegend("this publication", red+0.8pt, mCi+true+2pt+red);
 AttachLegend(NW, NW);
