@@ -243,7 +243,8 @@ DrawPointE(7e3-400, 0, 0, 73.1, 5.3, 3.3, blue, mSt+false+1.5pt+blue, "ALICE, Re
 
 DrawPointE(7e3-150, 0, 0, 69.1, 7.3, 7.3, blue, mTL+false+1.5pt+blue, "ATLAS, Ref.~["+GetLatexReference("bibcite", "atlas_inel")+"]");
 
-DrawPointE(7e3+150, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+1.5pt+blue, "CMS, Ref.~["+GetLatexReference("bibcite", "cms_inel")+"]");
+DrawPointE(7e3+150, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+1.5pt+blue, "CMS, Ref.~["+GetLatexReference("bibcite", "cms_inel")+"]");	// CMS-PAS-FWD-11-001
+DrawPointE(7e3+300, 0, 0, 64.5, 3.4, 3.4, blue, mTR+false+1.5pt+blue, "");															// CMS-PAS-QCD-11-002
 
 // Auger
 DrawPointE(57e3-200, 6e3, 6e3, 92, 14.8, 13.4, blue, mSq+false+1.5pt+blue, "");
@@ -335,9 +336,11 @@ for (int i : si_inel.keys) {
 	draw((i+1, si_inel[i]-si_inel_un[i])--(i+1, si_inel[i]+si_inel_un[i]), blue);
 }
 
-DrawPointE(5, 0, 0, 73.1, 5.3, 3.3, blue, mSt+false+2pt+blue, "ALICE, Ref.~["+GetLatexReference("bibcite", "alice_inel")+"]");
-DrawPointE(6, 0, 0, 69.1, 7.3, 7.3, blue, mTL+false+2pt+blue, "ATLAS, Ref.~["+GetLatexReference("bibcite", "atlas_inel")+"]");
-DrawPointE(7, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+2pt+blue, "CMS, Ref.~["+GetLatexReference("bibcite", "cms_inel")+"]");
+DrawPointE(5, 0, 0, 73.1, 5.3, 3.3, blue, mSt+false+2pt+blue, "");
+DrawPointE(6, 0, 0, 69.1, 7.3, 7.3, blue, mTL+false+2pt+blue, "");
+real ep = 0.1;
+DrawPointE(7-ep, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+2pt+blue, "");	// CMS-PAS-FWD-11-001
+DrawPointE(7+ep, 0, 0, 64.5, 3.4, 3.4, blue, mTR+false+2pt+blue, "");   // CMS-PAS-QCD-11-002
 
 limits((0, 60), (8, 80), Crop);
 //AttachLegend("inelastic cross section");
