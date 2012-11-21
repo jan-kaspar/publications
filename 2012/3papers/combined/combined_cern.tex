@@ -1,132 +1,4 @@
-\documentclass[doublecol]{epl/epl2} 
-
-\title{Luminosity-independent measurements of total, elastic and inelastic cross-sections at $\sqrt{s}$ = 7\,TeV}
-%\shorttitle{Title} %Insert here a short version of the title if it exceeds 70 characters
-
-\author{
-The TOTEM Collaboration\\
-G.~Antchev\thanksInst{1}
-\and P.~Aspell\inst{8}
-\and I.~Atanassov\inst{8}\thanksInst{1}
-\and V.~Avati\inst{8}
-\and J.~Baechler\inst{8}
-\and V.~Berardi\inst{5b,5a}
-\and M.~Berretti\inst{7b}
-\and E.~Bossini\inst{7b}
-\and M.~Bozzo\inst{6b,6a}
-\and P.~Brogi\inst{7b}
-\and E.~Br\"{u}cken\inst{3a,3b}
-\and A.~Buzzo\inst{6a}
-\and F.~S.~Cafagna\inst{5a}
-\and M.~Calicchio\inst{5b,5a}
-\and M.~G.~Catanesi\inst{5a}
-\and C.~Covault\inst{9}
-\and M.~Csan\'{a}d\inst{4}\thanksInst{5}
-\and T.~Cs\"{o}rg\H{o}\inst{4}
-\and M.~Deile\inst{8}
-\and K.~Eggert\inst{9}
-\and V.~Eremin\thanksInst{2}
-\and R.~Ferretti\inst{6a,6b}
-\and F.~Ferro\inst{6a}
-\and A. Fiergolski\thanksInst{3}
-\and F.~Garcia\inst{3a}
-\and S.~Giani\inst{8}
-\and V.~Greco\inst{7b,8}
-\and L.~Grzanka\inst{8}\thanksInst{4}
-\and J.~Heino\inst{3a}
-\and T.~Hilden\inst{3a,3b}
-\and R.~A.~Intonti\inst{5a}
-\and J.~Ka\v{s}par\inst{1a,8}
-\and J.~Kopal\inst{1a,8}
-\and V.~Kundr\'{a}t\inst{1a}
-\and K.~Kurvinen\inst{3a}
-\and S.~Lami\inst{7a}
-\and G.~Latino\inst{7b}
-\and R.~Lauhakangas\inst{3a}
-\and T.~Leszko\thanksInst{3}
-\and E.~Lippmaa\inst{2}
-\and M.~Lokaj\'{\i}\v{c}ek\inst{1a}
-\and M.~Lo~Vetere\inst{6b,6a}
-\and F.~Lucas~Rodr\'{i}guez\inst{8}
-\and M.~Macr\'{\i}\inst{6a}
-\and T.~M\"aki\inst{3a}
-\and A.~Mercadante\inst{5b,5a}
-\and N.~Minafra\inst{8} 
-\and S.~Minutoli\inst{6a}
-\and F.~Nemes\inst{4}\thanksInst{5}
-\and H.~Niewiadomski\inst{8}
-\and E.~Oliveri\inst{7b}
-\and F.~Oljemark\inst{3a,3b}
-\and R.~Orava\inst{3a,3b}
-\and M.~Oriunno\inst{8}\thanksInst{6}
-\and K.~\"{O}sterberg\inst{3a,3b}
-\and P.~Palazzi\inst{7b}
-\and J.~Proch\'{a}zka\inst{1a}
-\and M.~Quinto\inst{5a}
-\and E.~Radermacher\inst{8}
-\and E.~Radicioni\inst{5a}
-\and F.~Ravotti\inst{8}
-\and E.~Robutti\inst{6a}
-\and L.~Ropelewski\inst{8}
-\and G.~Ruggiero\inst{8}
-\and H.~Saarikko\inst{3a,3b}
-\and A.~Santroni\inst{6b,6a}
-\and A.~Scribano\inst{7b}
-\and J.~Smajek\inst{8}
-\and W.~Snoeys\inst{8}
-\and J.~Sziklai\inst{4}
-\and C.~Taylor\inst{9}
-\and N.~Turini\inst{7b}
-\and V.~Vacek\inst{1b}
-\and M.~V\'itek\inst{1b}
-\and J.~Welti\inst{3a,3b}
-\and J.~Whitmore\inst{10}
-}
-
-\shortauthor{The TOTEM Collaboration (G.~Antchev \etal)}
-
-\institute{
-\inst{1a}{Institute of Physics of the Academy of Sciences of the Czech Republic, Praha, Czech Republic.}\\
-\inst{1b}{Czech Technical University, Praha, Czech Republic.}\\
-\inst{2} {National Institute of Chemical Physics and Biophysics NICPB, Tallinn, Estonia.}\\
-\inst{3a}{Helsinki Institute of Physics, Finland.}\\
-\inst{3b}{Department of Physics, University of Helsinki, Finland.}\\
-\inst{4} {MTA Wigner Research Center, RMKI, Budapest, Hungary.}\\
-\inst{5a}{INFN Sezione di Bari, Italy.}\\
-\inst{5b}{Dipartimento Interateneo di Fisica di Bari, Italy.}\\
-\inst{6a}{Sezione INFN, Genova, Italy.}\\
-\inst{6b}{Universit\`{a} degli Studi di Genova, Italy.}\\
-\inst{7a}{INFN Sezione di Pisa, Italy.}\\
-\inst{7b}{Universit\`{a} degli Studi di Siena and Gruppo Collegato INFN di Siena, Italy.}\\
-\inst{8} {CERN, Geneva, Switzerland.}\\
-\inst{9} {Case Western Reserve University, Dept. of Physics, Cleveland, OH, USA.}\\
-\inst{10}{Penn State University, Dept.~of Physics, University Park, PA, USA.}\\
-%
-\thanksRef{1}{INRNE-BAS, Institute for Nuclear Research and Nuclear Energy, Bulgarian Academy of Sciences, Sofia, Bulgaria.}
-\thanksRef{2}{Ioffe Physical -- Technical Institute of Russian Academy of Sciences.}
-\thanksRef{3}{Warsaw University of Technology, Poland.}
-\thanksRef{4}{Institute of Nuclear Physics, Polish Academy of Science, Cracow, Poland.}
-\thanksRef{5}{Department of Atomic Physics, E\"otv\"os University, Hungary.}
-\thanksRef{6}{SLAC National Accelerator Laboratory, Stanford CA, USA.}
-%
-%%%%% TODO: remove %%%%%
-\def\year{2012}
-\vbox to0pt{%
-\vss
-\centerline{\vbox{\hrule\hbox{\vrule\vrule width0pt depth10pt height15pt\qquad DRAFT FROM \today{}\qquad\vrule}\hrule}}
-\vskip15cm
-}
-%%%%%%%%%%%%%%%%%%%%%%%%
-}
-
-\pacs{13.60.Hb}{Total and inclusive cross sections (including deep-inelastic processes)}
-
-
-\abstract{%
-The TOTEM experiment at the LHC has performed the first luminosity-independent determination of the total proton-proton cross-section at $\sqrt{s} = 7\un{TeV}$. This technique is based on the optical theorem and requires simultaneous measurements of the inelastic rate -- accomplished with the forward charged-particle telescopes T1 and T2 in the range $5.3 < |\eta| < 6.4$ -- and of the elastic rate by detecting the outcoming protons with Roman Pot detectors. The data presented here were collected in a dedicated run in 2011 with special beam optics ($\beta^{*} = 90\un{m}$) and Roman Pots approaching the beam close enough to register elastic events with squared four-momentum transfers $|t|$ as low as $5 \cdot 10^{-3}\,\un{GeV^{2}}$. The luminosity-independent results for the elastic, inelastic and total cross-sections are $\sigma_{\rm el} = (25.1\pm 1.1)\un{mb}$, $\sigma_{\rm inel} = (72.9\pm 1.5)\un{mb}$ and $\sigma_{\rm tot} = (98.0\pm 2.5)\un{mb}$, respectively. At the same time this method delivers the integrated luminosity, in agreement with measurements by CMS.\\
-%
-TOTEM also exploited two complementary ways of determining the total cross-section, both using the CMS luminosity measurement as an input. The first method sums the elastic and inelastic cross-sections and thus does not depend on the $\rho$ parameter. The second applies the optical theorem to the elastic-scattering measurements only and therefore is free of the T1 and T2 measurement uncertainties. The methods, having very different systematic dependences, give results in excellent agreement. Moreover, the $\rho$-independent measurement makes a first estimate for the $\rho$ parameter at $\sqrt{s} = 7\un{TeV}$ possible: $|\rho| = 0.145 \pm 0.091$.
-}
+\documentclass[TOTEM]{cern/cernphprep}
 
 
 \def\d{{\rm d}}
@@ -135,92 +7,232 @@ TOTEM also exploited two complementary ways of determining the total cross-secti
 \def\unt#1{[{\rm #1}]}
 \def\e{{\rm e}}
 
-\setbox123\hbox{$0$}
-\setbox124\hbox{$.$}
+\setbox123\hbox{\small$0$}
 \def\S{\hbox to\wd123{\hss}}
-\def\.{\hbox to\wd124{\hss}}
+\setbox124\hbox{\small$_{0}$}
+\def\s{\hbox to\wd124{\hss}}
 
-\def\thanksInst#1{\unskip\footnotemark[#1]}
+\def\etal{et al.}
+\def\acknowledgments{\section*{Acknowledgements}}
+\def\Name#1{\textsc{#1}, }
+\def\REVIEW#1#2#3#4{{\it #1} {\bf #2} (#3) #4}
 
-\bgroup
-\catcode`\@=11
-
-\gdef\thanksRef#1#2{%
-    \protected@xdef\@thanks{\@thanks\protect\footnotetext[#1]{#2}}%
+\def\Instline#1#2{%
+	\expandafter\write1{\string\newlabel{#1}{{#1}{}}}%
+	\hbox to\hsize{\strut\hss$^{#1}$#2\hss}
 }
-\egroup
+
+
+%----------------------------------------------------------------------------------------------------
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
 
 
+\renewcommand{\EXPLOGO}{fig/logo_totem_black.pdf}
+
+\PHnumber{2012-TODO}
+\PHdate{TODO}
+
+\EXPnumber{TOTEM 2012-TODO}
+\EXPdate{TODO}
+
+\title{Luminosity-independent measurements of total, elastic and inelastic cross-sections at $\sqrt{s}$ = 7\,TeV}
+\ShortTitle{Luminosity-independent measurements of total, elastic and inelastic cross-sections at $\sqrt{s}$ = 7\,TeV}
+
+%%%%% TODO: remove %%%%%
+\def\year{2012}
+\vbox to0pt{%
+\vss
+\centerline{\vbox{\hrule\hbox{\vrule\vrule width0pt depth10pt height15pt\qquad DRAFT FROM \today{}\qquad\vrule}\hrule}}
+\vskip5cm
+}
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\Collaboration{The TOTEM Collaboration}
+\ShortAuthor{The TOTEM Collaboration (G.~Antchev \emph{\etal})}
+
+\begin{Authlist}
+G.~Antchev\Aref{a},
+P.~Aspell\Iref{8},
+I.~Atanassov\IAref{8}{a},
+V.~Avati\Iref{8},
+J.~Baechler\Iref{8},
+V.~Berardi\IIref{5b}{5a},
+M.~Berretti\Iref{7b},
+E.~Bossini\Iref{7b},
+M.~Bozzo\IIref{6b}{6a},
+P.~Brogi\Iref{7b},
+E.~Br\"{u}cken\IIref{3a}{3b},
+A.~Buzzo\Iref{6a},
+F.~S.~Cafagna\Iref{5a},
+M.~Calicchio\IIref{5b}{5a},
+M.~G.~Catanesi\Iref{5a},
+C.~Covault\Iref{9},
+M.~Csan\'{a}d\IAref{4}{e},
+T.~Cs\"{o}rg\H{o}\Iref{4},
+M.~Deile\Iref{8},
+K.~Eggert\Iref{9},
+V.~Eremin\Aref{b},
+R.~Ferretti\IIref{6a}{6b},
+F.~Ferro\Iref{6a},
+A. Fiergolski\Aref{c},
+F.~Garcia\Iref{3a},
+S.~Giani\Iref{8},
+V.~Greco\IIref{7b}{8},
+L.~Grzanka\IAref{8}{d},
+J.~Heino\Iref{3a},
+T.~Hilden\IIref{3a}{3b},
+R.~A.~Intonti\Iref{5a},
+J.~Ka\v{s}par\IIref{1a}{8},
+J.~Kopal\IIref{1a}{8},
+V.~Kundr\'{a}t\Iref{1a},
+K.~Kurvinen\Iref{3a},
+S.~Lami\Iref{7a},
+G.~Latino\Iref{7b},
+R.~Lauhakangas\Iref{3a},
+T.~Leszko\Aref{c},
+E.~Lippmaa\Iref{2},
+M.~Lokaj\'{\i}\v{c}ek\Iref{1a},
+M.~Lo~Vetere\IIref{6b}{6a},
+F.~Lucas~Rodr\'{i}guez\Iref{8},
+M.~Macr\'{\i}\Iref{6a},
+T.~M\"aki\Iref{3a},
+A.~Mercadante\IIref{5b}{5a},
+N.~Minafra\Iref{8} ,
+S.~Minutoli\Iref{6a},
+F.~Nemes\IAref{4}{e},
+H.~Niewiadomski\Iref{8},
+E.~Oliveri\Iref{7b},
+F.~Oljemark\IAref{3a}{3b},
+R.~Orava\IIref{3a}{3b},
+M.~Oriunno\IAref{8}{f},
+K.~\"{O}sterberg\IIref{3a}{3b},
+P.~Palazzi\Iref{7b},
+J.~Proch\'{a}zka\Iref{1a},
+M.~Quinto\Iref{5a},
+E.~Radermacher\Iref{8},
+E.~Radicioni\Iref{5a},
+F.~Ravotti\Iref{8},
+E.~Robutti\Iref{6a},
+L.~Ropelewski\Iref{8},
+G.~Ruggiero\Iref{8},
+H.~Saarikko\IIref{3a}{3b},
+A.~Santroni\IIref{6b}{6a},
+A.~Scribano\Iref{7b},
+J.~Smajek\Iref{8},
+W.~Snoeys\Iref{8},
+J.~Sziklai\Iref{4},
+C.~Taylor\Iref{9},
+N.~Turini\Iref{7b},
+V.~Vacek\Iref{1b},
+M.~V\'itek\Iref{1b},
+J.~Welti\IIref{3a}{3b} and 
+J.~Whitmore\Iref{10}
+\end{Authlist}
+
+\Instline{1a}{Institute of Physics of the Academy of Sciences of the Czech Republic, Praha, Czech Republic.}
+\Instline{1b}{Czech Technical University, Praha, Czech Republic.}
+\Instline{2} {National Institute of Chemical Physics and Biophysics NICPB, Tallinn, Estonia.}
+\Instline{3a}{Helsinki Institute of Physics, Finland.}
+\Instline{3b}{Department of Physics, University of Helsinki, Finland.}
+\Instline{4} {MTA Wigner Research Center, RMKI, Budapest, Hungary.}
+\Instline{5a}{INFN Sezione di Bari, Italy.}
+\Instline{5b}{Dipartimento Interateneo di Fisica di Bari, Italy.}
+\Instline{6a}{Sezione INFN, Genova, Italy.}
+\Instline{6b}{Universit\`{a} degli Studi di Genova, Italy.}
+\Instline{7a}{INFN Sezione di Pisa, Italy.}
+\Instline{7b}{Universit\`{a} degli Studi di Siena and Gruppo Collegato INFN di Siena, Italy.}
+\Instline{8} {CERN, Geneva, Switzerland.}
+\Instline{9} {Case Western Reserve University, Dept. of Physics, Cleveland, OH, USA.}
+\Instline{10}{Penn State University, Dept.~of Physics, University Park, PA, USA.}
+
+\Anotfoot{a}{INRNE-BAS, Institute for Nuclear Research and Nuclear Energy, Bulgarian Academy of Sciences, Sofia, Bulgaria.}
+\Anotfoot{b}{Ioffe Physical - Technical Institute of Russian Academy of Sciences.}
+\Anotfoot{c}{Warsaw University of Technology, Poland.}
+\Anotfoot{d}{Institute of Nuclear Physics, Polish Academy of Science, Cracow, Poland.}
+\Anotfoot{e}{Department of Atomic Physics, E\"otv\"os University, Hungary.}
+\Anotfoot{f}{SLAC National Accelerator Laboratory, Stanford CA, USA.}
+
+\newpage
+\begin{abstract}
+The TOTEM experiment at the LHC has performed the first luminosity-independent determination of the total proton-proton cross-section at $\sqrt{s} = 7\un{TeV}$. This technique is based on the optical theorem and requires simultaneous measurements of the inelastic rate -- accomplished with the forward charged-particle telescopes T1 and T2 in the range $5.3 < |\eta| < 6.4$ -- and of the elastic rate by detecting the outcoming protons with Roman Pot detectors. The data presented here were collected in a dedicated run in 2011 with special beam optics ($\beta^{*} = 90\un{m}$) and Roman Pots approaching the beam close enough to register elastic events with squared four-momentum transfers $|t|$ as low as $5 \cdot 10^{-3}\,\un{GeV^{2}}$. The luminosity-independent results for the elastic, inelastic and total cross-sections are $\sigma_{\rm el} = (25.1\pm 1.1)\un{mb}$, $\sigma_{\rm inel} = (72.9\pm 1.5)\un{mb}$ and $\sigma_{\rm tot} = (98.0\pm 2.5)\un{mb}$, respectively. At the same time this method delivers the integrated luminosity, in agreement with measurements by CMS.
+
+TOTEM also exploited two complementary ways of determining the total cross-section, both using the CMS luminosity measurement as an input. The first method sums the elastic and inelastic cross-sections and thus does not depend on the $\rho$ parameter. The second applies the optical theorem to the elastic-scattering measurements only and therefore is free of the T1 and T2 measurement uncertainties. The methods, having very different systematic dependences, give results in excellent agreement. Moreover, the $\rho$-independent measurement makes a first estimate for the $\rho$ parameter at $\sqrt{s} = 7\un{TeV}$ possible: $|\rho| = 0.145 \pm 0.091$.
+\end{abstract}
+\end{titlepage}
 
 %--------------------------------------------------
 
 \def\TabCS{%
-\begin{largetable}
-\hbox{}%
-\vskip-5mm
+\begin{table*}
+%\hbox{}%
+%\vskip-5mm
 \caption{Cross-section summary. The statistical uncertainties are negligible and therefore omitted. The systematic-uncertainty contributions are grouped into several categories -- \emph{el} (from the elastic-scattering analysis), \emph{inel} (from the inelastic-scattering analysis), \emph{lumi} (from the $4\%$ uncertainty of the CMS luminosity measurement) and \emph{rho} (from the COMPETE $\rho$ extrapolation, considering only the uncertainty of $\pm 0.007$ related to their preferred model)
 -- together forming the \emph{full} systematic uncertainty (components combined in quadrature, including their correlations).
 }
 \label{tab:cs}
-\small
-\setlength{\tabcolsep}{1pt}
-\def\ColSep{15pt}
+%\small
+\begin{center}
+\footnotesize 
+\setlength{\tabcolsep}{1pt}%
+\def\ColSep{9.5pt}%
 \begin{tabular}{cc@{\hskip\ColSep}rl @{\hskip\ColSep}cccc@{$\Rightarrow$}c @{\hskip\ColSep}cccc@{$\Rightarrow$}c @{\hskip\ColSep}cccc@{$\Rightarrow$}c}
 %&\multispan{17}\hrulefill\cr
-\hline
+\hline\hline
 &&\multispan2\hss elastic only: Eq.~(\ref{eq:m el}) \hss &\multispan5\hss elastic only: Eq.~(\ref{eq:m el})\hss &\multispan5\hss ${\cal L}_{\rm int}$-independent: Eq.~(\ref{eq:m lumi indep})\hss &\multispan5\hss $\rho$-independent: Eq.~(\ref{eq:m rho indep})\hss\cr
 &&\multispan2\hss June 2011\hss &\multispan5\hss October 2011\hss &\multispan5\hss October 2011\hss &\multispan5\hss October 2011\hss\cr
 &&\multispan2\hss published in~\cite{epl96} \hss &\multispan5\hss published in~\cite{P1}\hss &\multispan5\hss\hss &\multispan5\hss\hss\cr\hline
                     &           &              & full        &          &    el     & lumi      & rho       & full        &          &    el     & inel      & rho       & full        &          &    el     & inel      & lumi      & full      \cr\hline
 $\sigma_{\rm tot}$  & $\rm[mb]$ & $\qquad98.3$ & $\pm 2.8$   &   $98.6$ & $\pm 1.0$ & $\pm 2.0$ & $\pm 0.1$ & $\pm 2.2$   &   $98.0$ & $\pm 1.8$ & $\pm 1.7$ & $\pm 0.2$ & $\pm 2.5$   &   $99.1$ & $\pm 0.3$ & $\pm 1.7$ & $\pm 4.0$ & $\pm 4.3$ \cr
 $\sigma_{\rm inel}$ & $\rm[mb]$ & $\qquad73.5$ & $\pm 1.6$   &   $73.2$ & $\pm 0.8$ & $\pm 1.0$ & $\pm 0.1$ & $\pm 1.3$   &   $72.9$ & $\pm 1.1$ & $\pm 0.9$ & $\pm 0.1$ & $\pm 1.5$   &   $73.7$ &           & $\pm 1.7$ & $\pm 3.0$ & $\pm 3.4$ \cr
-$\sigma_{\rm el}$   & $\rm[mb]$ & $\qquad24.8$ & $\pm 1.2$   &   $25.4$ & $\pm 0.3$ & $\pm 1.0$ &           & $\pm 1.1$   &   $25.1$ & $\pm 0.6$ & $\pm 0.9$ & $\pm 0.0$ & $\pm 1.1$   &   $25.4$ & $\pm 0.3$ &           & $\pm 1.0$ & $\pm 1.1$ \cr\hline
+$\sigma_{\rm el}$   & $\rm[mb]$ & $\qquad24.8$ & $\pm 1.2$   &   $25.4$ & $\pm 0.3$ & $\pm 1.0$ &           & $\pm 1.1$   &   $25.1$ & $\pm 0.6$ & $\pm 0.9$ & $\pm 0.0$ & $\pm 1.1$   &   $25.4$ & $\pm 0.3$ &           & $\pm 1.0$ & $\pm 1.1$ \cr\hline\hline
 \end{tabular}
-\end{largetable}
+\end{center}
+\end{table*}
 }
 
 \def\TabLumi{%
-\begin{largetable}
+\begin{table*}
 \caption{The integrated luminosities for the October and June data sets as determined by different experiments and different methods.}
 \label{tab:lumi}
 \begin{center}
-\begin{tabular}{clr}\hline
+\begin{tabular}{clr}\hline\hline
 data set & method & ${\cal L}_{\rm int}\ \unt{\mu b^{-1}}$\cr\hline
 		& TOTEM, Eq.~(\ref{eq:lumi oct})		& $83.7\S \pm 3.2\S$\cr
 \omit\hfil\vbox to0pt{\vss\hbox{October}\vss}\hfil&\multispan2\cr
 		& CMS 									& $82.8\S \pm 3.3\S$\cr\hline
 		& TOTEM, Eq.~(\ref{eq:lumi jun tot}) 	& $\S1.66 \pm 0.08$\cr
 June	& TOTEM, Eq.~(\ref{eq:lumi jun el}) 	& $\S1.65 \pm 0.07$\cr
-		& CMS									& $\S1.65 \pm 0.07$\cr\hline
+		& CMS									& $\S1.65 \pm 0.07$\cr\hline\hline
 \end{tabular}
 \end{center}
-\end{largetable}
+\end{table*}
 }
 
 \def\FigSigmas{%
 \begin{figure*}
 \begin{center}
-\includegraphics{fig/sigma_tot_el_inel_cmp_big.pdf}
-\vskip-5mm
+\includegraphics{fig/sigma_tot_el_inel_cmp_big_cern.pdf}
+%\vskip-5mm
 \caption{Left: the dependences of total, inelastic and elastic cross-sections on the scattering energy $\sqrt s$. The continuous black lines (lower for $\rm pp$, upper for $\rm \bar pp$) represent the best fits of the total cross-section data by the COMPETE collaboration \cite{compete}. The dashed line results from a fit of the elastic scattering data. The dash-dotted curves correspond to the inelastic cross-section and were obtained as the difference between the continuous and dashed fits.\hfil\break
 Right: measurements of total, inelastic and elastic cross-sections at $\sqrt s = 7\un{TeV}$. The circles represent the four TOTEM measurements summarized in Tab.~\ref{tab:cs} (weighted mean given by the dotted line), the other points show the measurements of other LHC collaborations.}
 \label{fig:cs}
 \end{center}
-\vskip-10mm
+%\vskip-10mm
 \end{figure*}
 }
 
 \def\FigRatio{%
 \begin{figure}
-\onefigure{fig/sigma_el_to_sigma_tot.pdf}
-\vskip-5mm
+\begin{center}
+\includegraphics{fig/sigma_el_to_sigma_tot.pdf}
+%\vskip-5mm
 \caption{The ratio of the elastic to total cross-section as a function of the scattering energy $\sqrt s$. The dashed line shows the ratio of the $\sigma_{\rm el}(s)$ and $\sigma_{\rm tot}(s)$ fits from Fig.~\ref{fig:cs}.
 }
 \label{fig:sigma rat}
+\end{center}
 \end{figure}
 }
 
@@ -265,7 +277,7 @@ Using the optical theorem, one can combine the elastic measurements from \cite{P
 where $N_{\rm el}$ and $N_{\rm inel}$ stand for rates integrated over the run period. Taking $\rho = 0.141\pm 0.007$ from the COMPETE extrapolation \cite{compete} yields the luminosity-independent total cross-section, see Tab.~\ref{tab:cs}. Furthermore, using the measured ratio $N_{\rm el} / N_{\rm inel}$, also the elastic and inelastic cross-sections can be derived independently from the luminosity. These cross-sections are given in Tab.~\ref{tab:cs} with their uncertainty compositions.
 
 \TabCS
-\TabLumi
+
 \FigSigmas
 
 %--------------------------------------------------
@@ -289,6 +301,8 @@ Once the cross-section of a process is known, it can be, in general, used for lu
 {\cal L}_{\rm int}^{\rm June} = {N_{\rm el}^{\rm June}\over \sigma_{\rm el}}\ .
 \end{equation}
 The luminosity-independent values for the total and elastic cross-sections (see Tab.~\ref{tab:cs}) yield the integrated luminosities for the June run, which are again in excellent agreement with the CMS results, see Tab.~\ref{tab:lumi}.
+
+\TabLumi
 
 %--------------------------------------------------
 \section{$\rho$-independent quantities}
