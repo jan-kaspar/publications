@@ -289,7 +289,7 @@ currentpen = fontcommand("\SetFontSizesX");
 
 NewPad(false);
 
-label("{measurements at $\sqrt s = 7\un{TeV}$}", (0, 0), (0, 0));
+label("{Measurements at $\sqrt s = 7\un{TeV}$}", (0, 0), (0, 0));
 FixPad(-10, 49);
 
 
@@ -374,6 +374,12 @@ limits((0, 15), (8, 35), Crop);
 label(scale(1.)*Label("$\si_{\rm el}$"), (0.5, 32), E, heavygreen);
 
 xaxis(YEquals(15, false), LeftTicks(rotate(90)*Label(""), MethName, Step=1, step=1, beginlabel=false, endlabel=false));
+
+//--------------------
+
+NewPad(false);
+label("$\underbrace{\hbox to20mm{\hfil}}_{\hbox{TOTEM}}$");
+FixPad(-22, -278);
 
 //--------------------
 
