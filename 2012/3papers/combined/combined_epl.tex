@@ -153,7 +153,7 @@ TOTEM has also determined the total cross-section in two complementary ways, bot
 \begin{largetable}
 \hbox{}%
 \vskip-5mm
-\caption{Cross-section summary. The statistical uncertainties are negligible and therefore omitted. The systematic-uncertainty contributions are grouped into several categories -- \emph{el} (from the elastic-scattering analysis), \emph{inel} (from the inelastic-scattering analysis), \emph{lumi} (from the $4\%$ uncertainty of the CMS luminosity measurement) and \emph{rho} (from the COMPETE $\rho$ extrapolation, considering only the uncertainty of $\pm 0.007$ related to their preferred model)
+\caption{Cross-section summary. The statistical uncertainties are negligible and therefore omitted. The systematic-uncertainty contributions are grouped into several categories -- \emph{el} (from the elastic-scattering analysis), \emph{inel} (from the inelastic-scattering analysis), \emph{lumi} (from the $4\%$ uncertainty of the CMS luminosity measurement) and \emph{$\rho$} (from the COMPETE $\rho$ extrapolation, considering only the uncertainty of $\pm 0.007$ related to their preferred model)
 -- together forming the \emph{full} systematic uncertainty (components combined in quadrature, including their correlations).
 }
 \label{tab:cs}
@@ -166,7 +166,7 @@ TOTEM has also determined the total cross-section in two complementary ways, bot
 &&\multispan2\hss elastic only: Eq.~(\ref{eq:m el}) \hss &\multispan5\hss elastic only: Eq.~(\ref{eq:m el})\hss &\multispan5\hss ${\cal L}_{\rm int}$-independent: Eq.~(\ref{eq:m lumi indep})\hss &\multispan5\hss $\rho$-independent: Eq.~(\ref{eq:m rho indep})\hss\cr
 &&\multispan2\hss June 2011\hss &\multispan5\hss October 2011\hss &\multispan5\hss October 2011\hss &\multispan5\hss October 2011\hss\cr
 &&\multispan2\hss published in~\cite{epl96} \hss &\multispan5\hss published in~\cite{P1}\hss &\multispan5\hss\hss &\multispan5\hss\hss\cr\hline
-                    &           &              & full        &          &    el     & lumi      & rho       & full        &          &    el     & inel      & rho       & full        &          &    el     & inel      & lumi      & full      \cr\hline
+                    &           &              & full        &          &    el     & lumi      & $\rho$       & full        &          &    el     & inel      & $\rho$       & full        &          &    el     & inel      & lumi      & full      \cr\hline
 $\sigma_{\rm tot}$  & $\rm[mb]$ & $\qquad98.3$ & $\pm 2.8$   &   $98.6$ & $\pm 1.0$ & $\pm 2.0$ & $\pm 0.1$ & $\pm 2.2$   &   $98.0$ & $\pm 1.8$ & $\pm 1.7$ & $\pm 0.2$ & $\pm 2.5$   &   $99.1$ & $\pm 0.3$ & $\pm 1.7$ & $\pm 4.0$ & $\pm 4.3$ \cr
 $\sigma_{\rm inel}$ & $\rm[mb]$ & $\qquad73.5$ & $\pm 1.6$   &   $73.2$ & $\pm 0.8$ & $\pm 1.0$ & $\pm 0.1$ & $\pm 1.3$   &   $72.9$ & $\pm 1.1$ & $\pm 0.9$ & $\pm 0.1$ & $\pm 1.5$   &   $73.7$ &           & $\pm 1.7$ & $\pm 3.0$ & $\pm 3.4$ \cr
 $\sigma_{\rm el}$   & $\rm[mb]$ & $\qquad24.8$ & $\pm 1.2$   &   $25.4$ & $\pm 0.3$ & $\pm 1.0$ &           & $\pm 1.1$   &   $25.1$ & $\pm 0.6$ & $\pm 0.9$ & $\pm 0.0$ & $\pm 1.1$   &   $25.4$ & $\pm 0.3$ &           & $\pm 1.0$ & $\pm 1.1$ \cr\hline
@@ -264,9 +264,9 @@ where $N_{\rm el}$ and $N_{\rm inel}$ stand for rates integrated over the run pe
 The optical theorem can also be applied in a complementary way such that the luminosity is determined:
 \begin{equation}
 \label{eq:lumi oct}
-{\cal L_{\rm int}} = {1 + \rho^2 \over 16\pi\, (\hbar c)^2}\, { (N_{\rm el} + N_{\rm inel})^2 \over \d N_{\rm el}/\d t|_{t=0} }\ .
+{\cal L_{\rm int}^{\rm TOTEM}} = {1 + \rho^2 \over 16\pi\, (\hbar c)^2}\, { (N_{\rm el} + N_{\rm inel})^2 \over \d N_{\rm el}/\d t|_{t=0} }\ .
 \end{equation}
-Thus, integrating the rates over the data-taking period during which the elastic \cite{P1} and inelastic \cite{P2} interactions have independently but simultaneously been measured, the integrated luminosity ${\cal L}_{\rm int}$ is obtained. Using the above $\rho$ value, the luminosity determined by TOTEM for the October run is compared in Table~\ref{tab:lumi} to the one obtained by CMS in a completely different way. Both measurements agree well within their uncertainties.
+Thus, integrating the rates over the data-taking period during which the elastic \cite{P1} and inelastic \cite{P2} interactions have independently but simultaneously been measured, the integrated luminosity ${\cal L}_{\rm int}^{\rm TOTEM}$ is obtained. Using the above $\rho$ value, the luminosity determined by TOTEM for the October run is compared in Table~\ref{tab:lumi} to the one obtained by CMS in a completely different way. Both measurements agree well within their uncertainties.
 
 
 Once the cross-section of a process is known, it can be, in general, used for luminosity determination. In particular, knowing the total and elastic cross-sections, the integrated luminosity of the earlier June run \cite{epl96} has been calculated from the elastic scattering rates $\d N_{\rm el}/\d t|_{t=0}$ and $N_{\rm el}$, which are of course highly correlated:
@@ -295,14 +295,14 @@ $$
 
 
 %--------------------------------------------------
-\section{Rho determination}
+\section{$\rho$ determination}
 
 The elastic and inelastic measurements can be combined in order to determine $\rho^2$:
 \begin{equation}
 \label{eq:rho}
-\rho^2 = 16\pi\ (\hbar c)^2\ {\cal L_{\rm int}}\ {\d N_{\rm el}/\d t|_{t=0}\over (N_{\rm el} + N_{\rm inel})^2} - 1\ .
+\rho^2 = 16\pi\ (\hbar c)^2\ {\cal L_{\rm int}^{\rm CMS}}\ {\d N_{\rm el}/\d t|_{t=0}\over (N_{\rm el} + N_{\rm inel})^2} - 1\ .
 \end{equation}
-Note that this is a direct measurement at $\sqrt s = 7\un{TeV}$, not an extrapolation from lower-energy measurements. Inserting the values from \cite{P1,P2} yields $\rho^2 = 0.009 \pm 0.056$ (mean and standard deviation). This estimate of $\rho^2$ cannot be translated into terms of $\rho$ in a straight-forward manner since an important part of the $\rho^2$ distribution extends to negative values, where square root is not defined. Instead, one can state that at $95\%$ confidence level $\rho^2 < 0.10$. This upper bound can be equally expressed as $\rho < 0.32$. Alternatively, one can pursue the Bayes' approach to estimate $|\rho|$. Taking a uniform prior $|\rho|$ distribution, it yields a posterior distribution with mean $0.145$ and standard deviation $0.091$.
+Note that this is a direct measurement at $\sqrt s = 7\un{TeV}$, not an extrapolation from lower-energy measurements. Inserting the values from \cite{P1,P2} and the CMS luminosity measurement yields $\rho^2 = 0.009 \pm 0.056$ (mean and standard deviation). This estimate of $\rho^2$ cannot be translated into terms of $\rho$ in a straight-forward manner since an important part of the $\rho^2$ distribution extends to negative values, where square root is not defined. Instead, one can state that at $95\%$ confidence level $\rho^2 < 0.10$. This upper bound can be equally expressed as $\rho < 0.32$. Alternatively, one can pursue the Bayes' approach to estimate $|\rho|$. Taking a uniform prior $|\rho|$ distribution, it yields a posterior distribution with mean $0.145$ and standard deviation $0.091$.
 
 %--------------------------------------------------
 \section{Comparison with other experiments}
@@ -361,7 +361,10 @@ Finland, the OTKA grant NK 73143 (Hungary) and the NKTH-OTKA grant 74458 (Hungar
 
 \bibitem{P2} 
 	\Name{Antchev G.~{\it et al.}~(TOTEM Collaboration)}
-	\REVIEW{Europhys.~Lett.}{TODO}{2012}{TODO}
+	{\it  Measurement of proton-proton inelastic scattering cross-section at $\sqrt s = 7\un{TeV}$},
+	%CERN-PH-EP-2012-xxx, xxx 2012
+	%\REVIEW{Europhys.~Lett.}{XX}{2012}{XXXXX}
+	to be published
 
 %\bibitem{epl95}
 %    %Proton-proton elastic scattering at the LHC energy of \sqrt{s} = 7 TeV, Europhys. Lett. 95 (2011) 41001,CERN-PH-EP-2011-101 
