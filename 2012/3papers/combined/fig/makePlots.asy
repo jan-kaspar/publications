@@ -247,7 +247,7 @@ void MakePlot(real wl, real wr, real sl, string ubw, string legendFont, bool use
 	
 	if (useCMSPoints) {
 		DrawPointE(7e3+150, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+1.5pt+blue, "CMS, Ref.~["+GetLatexReference("bibcite", "cms_inel")+"]");	// CMS-PAS-FWD-11-001
-		DrawPointE(7e3+300, 0, 0, 64.5, 3.4, 3.4, blue, mTR+false+1.5pt+blue, "");															// CMS-PAS-QCD-11-002
+		//DrawPointE(7e3+300, 0, 0, 64.5, 3.4, 3.4, blue, mTR+false+1.5pt+blue, "");															// CMS-PAS-QCD-11-002
 	}
 	
 	// Auger
@@ -343,10 +343,10 @@ void MakePlot(real wl, real wr, real sl, string ubw, string legendFont, bool use
 	
 	DrawPointE(5, 0, 0, 73.1, 5.3, 3.3, blue, mSt+false+2pt+blue, "");
 	DrawPointE(6, 0, 0, 69.1, 7.3, 7.3, blue, mTL+false+2pt+blue, "");
-	real ep = 0.1;
 	if (useCMSPoints) {
+		real ep = 0.;
 		DrawPointE(7-ep, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+2pt+blue, "");	// CMS-PAS-FWD-11-001
-		DrawPointE(7+ep, 0, 0, 64.5, 3.4, 3.4, blue, mTR+false+2pt+blue, "");   // CMS-PAS-QCD-11-002
+		//DrawPointE(7+ep, 0, 0, 64.5, 3.4, 3.4, blue, mTR+false+2pt+blue, "");   // CMS-PAS-QCD-11-002
 	}
 	
 	limits((0, 60), (x_up, 80), Crop);
@@ -398,13 +398,3 @@ GShipout("sigma_tot_el_inel_cmp_big", vSkip=0);
 
 MakePlot(91mm, 37mm, -226, "18mm", "\SetFontSizesVII", true);
 GShipout("sigma_tot_el_inel_cmp_big_cern", vSkip=0);
-
-//----------------------------------------------------------------------------------------------------
-
-MakePlot(104mm, 42mm, -260, "20mm", "\SetFontSizesVIII", false);
-GShipout("sigma_tot_el_inel_cmp_big_noCMS", vSkip=0);
-
-//----------------------------------------------------------------------------------------------------
-
-MakePlot(91mm, 37mm, -226, "18mm", "\SetFontSizesVII", false);
-GShipout("sigma_tot_el_inel_cmp_big_noCMS_cern", vSkip=0);
