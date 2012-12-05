@@ -1,0 +1,28 @@
+#!/bin/bash
+
+dir=`date +"%Y_%m_%d"`
+dir="release $dir"
+
+if [ -f "$dir" ]
+then
+	echo "ERROR: directory '$dir' already exists. Remove it first"
+	exit 1
+fi
+
+mkdir "$dir"
+
+cp "elastic_epl.pdf" "$dir/full.pdf"
+
+mkdir -p "$dir/source"
+mkdir -p "$dir/source/fig"
+
+cp "elastic_epl.tex" "$dir/source/"
+
+cp "fig/hit_dist.pdf" "$dir/source/fig"
+cp "fig/B_s.pdf" "$dir/source/fig"
+cp "fig/dsdt_comp.pdf" "$dir/source/fig"
+
+cd "$dir/source"
+tar czvf ../source.tar.gz *
+cd ".."
+rm -rf "source"
