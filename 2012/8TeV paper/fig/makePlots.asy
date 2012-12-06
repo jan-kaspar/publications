@@ -235,7 +235,7 @@ AddToLegend("$\rm pp$ (PDG)", nullpen, mTD+false+1.5pt);
 
 // Auger
 DrawPointE(57e3-200, 6e3, 6e3, 92, 14.8, 13.4, blue, mSq+false+1.5pt+blue, "");
-DrawPointE(57e3+200, 6e3, 6e3, 113, 28.7, 26.7, red, mSq+false+1.5pt+red, "");
+DrawPointE(57e3+200, 6e3, 6e3, 133, 28.7, 26.7, red, mSq+false+1.5pt+red, "");
 AddToLegend("Auger + Glauber", nullpen, mSq+false+1.5pt+black);
 
 // CMS, ATLAS and ALICE
@@ -253,7 +253,7 @@ DrawPointE(7e3-400, 0, 0, 73.1, 5.3, 3.3, blue, mSt+false+1.5pt+blue, "ALICE");
 DrawPointE(7e3-150, 0, 0, 69.1, 7.3, 7.3, blue, mTL+false+1.5pt+blue, "ATLAS");
 
 DrawPointE(7e3+150, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+1.5pt+blue, "CMS");	// CMS-PAS-FWD-11-001
-//DrawPointE(7e3+300, 0, 0, 64.5, 3.4, 3.4, blue, mTR+false+1.5pt+blue, "");		// CMS-PAS-QCD-11-002	
+//DrawPointE(7e3+300, 0, 0, 64.5, 3.4, 3.4, blue, mTR+false+1.5pt+blue, "");	// CMS-PAS-QCD-11-002	
 
 
 // TOTEM 7 TeV data
