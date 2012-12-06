@@ -252,7 +252,7 @@ void MakePlot(real wl, real wr, real sl, string ubw, string legendFont, bool use
 	
 	// Auger
 	DrawPointE(57e3-200, 6e3, 6e3, 92, 14.8, 13.4, blue, mSq+false+1.5pt+blue, "");
-	DrawPointE(57e3+200, 6e3, 6e3, 113, 28.7, 26.7, red, mSq+false+1.5pt+red, "");
+	DrawPointE(57e3+200, 6e3, 6e3, 133, 28.7, 26.7, red, mSq+false+1.5pt+red, "");
 	AddToLegend("Auger + Glauber, Ref.~["+GetLatexReference("bibcite", "auger")+"]", nullpen, mSq+false+1.5pt+black);
 	
 	
