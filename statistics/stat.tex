@@ -1,0 +1,76 @@
+\input article
+
+\parindent=5mm
+
+\SetFontSizesX
+
+\section{One dimension}
+
+For a distribution $h(x)$ let us define
+\eqref{\eqnarray{
+\hbox{mean } \mu &= \int \d x\, h(x)\, x\cr
+\hbox{variance } \si^2 &= \int \d x\, h(x)\, (x-\mu)^2\cr
+\hbox{standard deviation } \si &= \sqrt{\si^2}\cr
+\hbox{fourth central moment } E_4 &= \int \d x\, h(x)\, (x-\mu)^4\ .\cr
+}}{mu si}
+
+The {\bf mean estimator}
+\eqref{\hat\mu = {1\over N}\sum_i^N x_i}{hat mu}
+is
+\eqref{\eqnarray{
+\hbox{unbiased} &: E[\hat\mu] = \mu\cr
+\hbox{consistent} &: \hat\mu \mathop{\longrightarrow}\limits^{N\to \infty} \mu\cr
+}}{hat mu prop}
+and its variation
+\eqref{V[\hat\mu] = {\si^2\over N}\ .}{V hat mu}
+
+The {\bf variance estimator}
+\eqref{\widehat{\si^2} = {1\over N - 1} \sum_i^N \left( x_i - \hat\mu \right)^2 = {1\over N-1} \left[ \sum x_i^2 - {1\over N} \left(\sum x_i\right)^2 \right]}{hat si}
+is also unbiased. The estimator has variance
+\eqref{V[\widehat{\si^2}] = {1\over N} \left( E_4 - {N-3\over N-1} \si^4 \right)\ .}{V hat si}
+
+The {\bf $E_4$ estimator}
+\eqref{
+	\widehat{E_4} = {1\over N-1}\sum_i^N (x_i - \hat\mu)^4 = 
+	{1\over N-1} \left( \sum x^4 - 4\hat\mu\sum x^3 + 6\hat\mu^2\sum x^2 - 4\hat\mu^3\sum x + \hat\mu^4 \sum 1 \right )\ .
+}{hat E 4}
+
+The {\bf standard-deviation estimator}
+\eqref{\hat\si = \sqrt{\widehat{\si^2}}}{std dev estim}
+has a variance of
+\eqref{V[\hat\si] = {V[\widehat{\si^2}]\over 4\widehat{\si^2}}\ .}{std dev estim var}
+For Gaussian distribution it reduces to
+\eqref{V[\hat\si] = {\si^2\over 2N}\ .}{std dev estim var}
+
+To {\bf summarize}, the mean and standard deviation of sample (value $\pm$ standard deviation of the estimator) can be estimated as follows:
+\eqref{\eqnarray{
+\hbox{mean} &: \hat\mu \pm \sqrt{\widehat{\si^2}\over N}\cr
+\hbox{standard deviation} &: \sqrt{\widehat{\si^2}} \pm \sqrt{A\over \widehat{\si^2}}\ ,\qquad A = {1\over N} \left[ \widehat{E_4} - {N-3\over N-1} \left(\widehat{\si^2}\right)^2 \right]\cr
+}}{summary}
+
+
+\vfil
+\eject
+
+
+\section{Two dimensions}
+
+For a distribution $h(x, y)$ let us define
+\eqref{\eqnarray{
+\hbox{mean in $x$: }\ \mu_x &= \int\!\! \int \d x\, \d y\ h(x, y)\, x\cr
+\hbox{mean in $y$: } \mu_y &= \int\!\! \int \d x\, \d y\ h(x, y)\, y\cr
+\hbox{covariance between $x$ and $y$: }\ C_{xy} &= \int\!\! \int \d x\, \d y\ h(x, y)\, (x - \mu_x) (y - \mu_y)\cr
+}}{two mu si}
+
+The {\bf mean estimators}
+\eqref{\widehat{\mu_x} = {1\over N}\sum_i^N x_i\ ,\qquad \widehat{\mu_y} = {1\over N}\sum_i^N y_i}{hat mu x y}
+are unbiased and consistent.
+
+This {\bf covariance estimator}
+\eqref{\widehat{C_{xy}}
+	= {1\over N-1} \sum\limits_i^N (x_i - \widehat{\mu_x})\, (y_i - \widehat{\mu_y})
+	= {1\over N-1} \left[ \sum x_i y_i - {1\over N} (\sum x_i)\, (\sum y_i) \right]
+}{covar estim}
+is unbiased.
+
+\bye
