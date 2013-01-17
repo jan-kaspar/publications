@@ -20,6 +20,8 @@ real p2W(real p)
 	return sqrt(2*m*(m + E));
 }
 
+bool verbose = false;
+
 int DrawDataSet(string filename, pen col, mark m, string legend="")
 {
 	file f = input(filename, false);
@@ -57,6 +59,9 @@ int DrawDataSet(string filename, pen col, mark m, string legend="")
 		draw(Scale((W_min, si))--Scale((W_max, si)), col);
 		draw(Scale((W, si-si_em))--Scale((W, si+si_ep)), col);
 		draw(Scale((W, si)), m+false+1.5pt+col);
+
+		if (verbose)
+			write(format("AddPoint(%E", W) + format(", %E", si) + format(", %E);", (abs(si_em) + abs(si_ep))/2.));
 
 		//if (W > 500 && W < 600)
 		//	write("AddPoint(" + format("%E", W) + ", " + format("%E", si) + ", " + format("%E", (si_ep+si_em)/2) +  ");");
@@ -152,10 +157,14 @@ real SigmaElFit(real W)
 {
 	real s = W*W;
 	real xi = log(s);
-	return 11.4 - 1.52*xi + 0.130*xi*xi;
 
-	real xi = log10(W);
-	return 11.4 - 7.02*xi + 2.76*xi*xi;
+	/* fit including 7 and 8 TeV TOTEM points and pp and app PDG points with sqrt s > 10 GeV
+	p0                        =      11.7359   +/-   0.318563    
+	p1                        =     -1.58513   +/-   0.0870728   
+	p2                        =     0.133567   +/-   0.00584892 
+	*/
+
+	return 11.7359 - 1.58513 *xi + 0.133567 *xi*xi;
 }
 
 real SigmaInelFit(real W)
@@ -221,6 +230,8 @@ draw(graph(SigmaElFit, 10, 1e5, 100), dashed);
 DrawDataSet("pbarp_total.dat", red+0.2pt, mTU);
 DrawDataSet("pp_total.dat", red+0.2pt, mTD);
 
+//verbose = true;
+
 // PDG sigma el data
 DrawDataSet("pbarp_elastic.dat", heavygreen+0.2pt, mTU);
 DrawDataSet("pp_elastic.dat", heavygreen+0.2pt, mTD);
@@ -276,8 +287,8 @@ fsh = 0; DrawPointRel(8e3, 102, 2.8, yellow+opacity(0.3)+2pt, mCi+true+4pt+(yell
 fsh = 0; DrawPointRel(8e3, 102, 2.8, black+0.8pt, mCi+true+1.7pt+black);
 
 // inel
-fsh = 0; DrawPointRel(8e3, 74.5, 2.1, yellow+opacity(0.3)+2pt, mCi+true+4pt+(yellow+opacity(0.3)));
-fsh = 0; DrawPointRel(8e3, 74.5, 2.1, black+0.8pt, mCi+true+1.7pt+black);
+fsh = 0; DrawPointRel(8e3, 74.7, 2.1, yellow+opacity(0.3)+2pt, mCi+true+4pt+(yellow+opacity(0.3)));
+fsh = 0; DrawPointRel(8e3, 74.7, 2.1, black+0.8pt, mCi+true+1.7pt+black);
 
 // el
 fsh = 0; DrawPointRel(8e3, 27.0, 4.8, yellow+opacity(0.3)+2pt, mCi+true+4pt+(yellow+opacity(0.3)));
@@ -292,7 +303,7 @@ label("$\si_{\rm el}$", (3, 21), heavygreen);
 
 // fit labels
 AddToLegend("best COMPETE $\si_{\rm tot}$ fits", black);
-AddToLegend("$11.4 - 1.52\ln s + 0.130\ln^2 s$", dashed);
+AddToLegend("$11.7 - 1.59\ln s + 0.134\ln^2 s$", dashed);
 
 limits((1e1, 0), (1e5, 140), Crop);
 //AttachLegend("$\si_{\rm tot}$ (red), $\si_{\rm inel}$ (blue) and $\si_{\rm el}$ (green)", 1, NW, NW);
