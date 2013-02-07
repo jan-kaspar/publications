@@ -12,7 +12,7 @@ texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 pen[] paletteColor2 = {blue, green, yellow, red};
 TH2_palette = paletteColor2;
 
-string base_dir = "/home/jkaspar/publications/2011/elastic_90m";
+string base_dir = "./";
 
 xSizeDef = 6cm;
 ySizeDef = 5cm;
@@ -125,12 +125,14 @@ int LoadFile(string fn, Meas data[])
 
 int DrawElToTotDataSet(string fileT, string fileE, pen col, mark m)
 {
+	write(">> DrawElToTotDataSet");
+
 	Meas dataT[], dataE[];
 	LoadFile(fileT, dataT);
 	LoadFile(fileE, dataE);
 
-	write(dataT.length);
-	write(dataE.length);
+	write("dataT.length = ", dataT.length);
+	write("dataE.length = ", dataE.length);
 
 	for (int idxT : dataT.keys) {
 		for (int idxE : dataE.keys) {
@@ -254,3 +256,36 @@ AddToLegend("this publication", red+0.8pt, mCi+true+2pt+red);
 AttachLegend(NW, NW);
 
 GShipout("sigma_el_to_sigma_tot");
+
+//----------------------------------------------------------------------------------------------------
+
+ParseAuxFile("../combined_cern.aux");
+
+NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el} / \si_{\rm tot}\ung{\%}$", yTicks=RightTicks(Step=2, step=1), 8cm, 6cm);
+scale(Log, Linear);
+//currentpad.xSize = 15cm;
+//currentpad.ySize = 9cm;
+
+for (real x = 1; x <= 4; x += 1)
+	draw((x, 15)--(x, 30), dotted);
+
+for (real y = 16; y < 30; y += 2)
+	draw((1, y)--(4, y), dotted);
+
+
+// fits
+draw(graph(RFit, 10, 1e5, 100), black+dashed);
+
+// PDG ratio data
+DrawElToTotDataSet(base_dir+"/pbarp_total.dat", base_dir+"/pbarp_elastic.dat", heavygreen+0.2pt, mTU+2pt+false+heavygreen);
+DrawElToTotDataSet(base_dir+"/pp_total.dat", base_dir+"/pp_elastic.dat", blue+0.2pt, mTD+2pt+true+blue);
+
+DrawPoint(7e3, 25.8, 0.56, 0.56, red+0.8pt, mCi+true+2pt+red);		// totem
+
+limits((1e1, 15), (1e4, 30), Crop);
+AddToLegend("$\rm pp$, Ref.~["+GetLatexReference("bibcite", "pdg")+"]", blue, mTD+false+2pt+blue);
+AddToLegend("$\rm \bar pp$, Ref.~["+GetLatexReference("bibcite", "pdg")+"]", heavygreen, mTU+false+2pt+heavygreen);
+AddToLegend("this publication", red+0.8pt, mCi+true+2pt+red);
+AttachLegend(NW, NW);
+
+GShipout("sigma_el_to_sigma_tot_cern");
