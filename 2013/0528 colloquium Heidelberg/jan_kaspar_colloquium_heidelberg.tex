@@ -1,0 +1,577 @@
+\input slides.tex
+\input utf8-csf
+
+\iftrue
+	\StdBackground
+\else
+	\SetBackground{fig/bg_prepare.pdf}
+	\def\cYe{\cBlack}
+	\def\cLRe{\cBlack}
+	\def\cRe{\cBlack}
+\fi
+
+%\font\TitleFont = cs-qplb-sc at 15pt
+%\font\ContextFont = cs-qplb-sc at 10pt
+\font\ExtraTitleFont = pzcmi8t at 20pt
+\font\TitleFont = pzcmi8t at 15pt
+\font\ContextFont = pzcmi8t at 10pt
+
+%%%%%%%%%%%%%%%%%%%%
+%\SetFontSizesXII
+%\itskip5mm
+%\iitskip0mm
+%\itindent3mm
+%\iitindent6mm
+%\def\NormalSettings{}
+%%%%%%%%%%%%%%%%%%%%
+
+\def\Em#1{\em{\cLRe#1\cFg}}
+\def\EM#1{{\cYe\TitleFont #1\cFg}}
+
+
+\def\date{28 May, 2013}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}\vfil
+\title{\ExtraTitleFont The TOTEM Experiment}
+\vfil
+\font\NameFont=cs-qplb at 12pt
+\centerline{\NameFont Jan Kašpar}
+\centerline{on behalf of the TOTEM collaboration}
+\vfil
+\line{\hss\hss
+	\fig[,25mm]{fig/logo_totem_white.pdf}\hss
+	\fig[,25mm]{fig/logo_cern_white.pdf}\hss
+	\fig[,25mm]{fig/logo_fzu_small_white.pdf}\hss
+	\hss}
+\vfil
+\centerline{Heidelberg Particle Physics Colloquium, \date}
+\vfil
+
+{
+\footline={}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Outline}
+}
+
+\vfil
+
+\line{\hss\vbox{\hsize8cm
+\itindent5mm
+\bitm
+\itm Physics programme
+\itm Detector apparatus
+\> forward-proton measurement with Roman Pots
+\itm Analyses and results
+\> list the analyses here?
+\itm Outlook
+\itm Summary
+\eitm
+}\hss}
+
+\vfil
+\vfil
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Physics programme}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+Forward hadronic phenomena at LHC
+
+\> low momentum transfers --> non perturbative QCD --> interesting
+
+\> forward particles
+
+\> rapidity gaps
+
+\> the traditional process figures
+
+\> xi ~ De eta
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+(non-)diffractive interactions
+
+the classical plot -- colour vs. colourless exchange 
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+\fig*[,10.5cm]{fig/ttm_processes.pdf}
+
++ comments from Hubert's presentation
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Detector apparatus}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{LHC access points}
+
+\line{\hss\fig*[,10cm]{fig/lhc.pdf}\hss}
+
+\> TOTEM shares IP with CMS --> collaboration possible
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{TOTEM Detectors}
+
+\vfil
+
+\line{%
+	\hss
+	\fig*[11.5cm]{fig/ttm_det_overview.pdf}
+	\hskip2mm
+	\raise9mm\vbox{\hsize4.1cm
+		$\leftarrow$ \cOr telescopes T1 and T2\cFg\\
+		\cYe{\it charged particles from\\ inelastic collisions}\cFg
+
+		\centerline{T1: $3.1 < |\et| < 4.7$}
+		\centerline{T2: $5.3 < |\et| < 6.5$}
+
+		\vskip8mm
+		$\leftarrow$ \cOr Roman Pots\cFg{} at the LHC\\
+		\cYe{\it elastic and diffractive protons}\cFg
+	}
+	\hss
+}
+
+\> all detectors symmetrically on both sides of IP5
+\> all detectors trigger-capable
+\> all detectors radiation tolerant
+
+\vfil
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Telescope T1}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Telescope T2}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Roman Pots}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Proton measurement with Roman Pots}
+
+\vskip-5mm
+
+\> LHC lattice between IP5 and RPs at $220\un{m}$
+
+\vskip1mm
+%\line{\hss 5 quadrupoles, 2 dipoles, corrector magnets and drift spaces:\hss}
+\line{\hss\fig*[13.5cm]{fig/RP_stations.pdf}\hss}
+
+\> \Em{proton transport}: described as in linear optics
+
+\line{\hss\fig*[11.5cm]{fig/ttm_proton_transport.pdf}\hss}
+
+\vskip1mm	
+\line{\hss$\displaystyle
+\pmatrix{x\cr \th_x\cr y\cr \th_y\cr \xi}_{\rm RP} =
+\underbrace{\pmatrix{
+	v_x & L_x & \cdot & \cdot & D_x\cr
+	\cdot & \cdot & \cdot & \cdot & \cdot\cr
+	v_y & L_y & \cdot & \cdot & D_y\cr
+	\cdot & \cdot & \cdot & \cdot & \cdot\cr
+	\cdot & \cdot & \cdot & \cdot & 1\cr
+}}_{\hbox{product from all lattice elements}}
+\pmatrix{x^*\cr \th_x^*\cr y^*\cr \th_y^*\cr \xi}_{\rm IP}
+$
+\hskip10mm
+\lower10mm\vbox{
+\hbox{\Em{optical functions:}}
+\hbox{effective length $L$}
+\hbox{magnification $v$}
+\hbox{dispersion $D$}
+\hbox{\strut}
+\hbox{$\xi = \De p / p$: momentum loss}
+}
+\hss}
+
+\> \Em{proton reconstruction}: inverted transport RPs $\longrightarrow$ IP
+
+\>> optical parameters functions of $\xi$ $\Rightarrow$ reconstruction is non-linear problem
+
+\>> \cYe good knowledge of optics is crucial\cFg
+
+%\fig*[,2.8cm]{fig/optics.pdf}%
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{LHC optics}
+
+\> optics defines \Em{what} and \Em{how} can be observed -- a CD sample seen with 2 different optics
+
+\vskip2mm
+\line{%
+	\hss
+	\vtop{\hsize7.7cm
+		\centerline{\BiggerFonts\bf\cOr$\bf\be^* = 90\un{m}$\cFg}
+		\centerline{$\displaystyle L_x \approx 0,\quad L_y \approx 260\un{m},\quad D_x \approx 4\un{cm}$}
+		
+		\centerline{diffractive protons in \cYe vertical RPs\cFg}
+		\line{\hss\fig[,4.5cm]{fig/hit_dist_90.png}\hss}
+	}%
+	\hskip2mm
+	\vtop{\hsize7.7cm
+		\centerline{\cOr{\BiggerFonts\bf low $\bf\be^*$\cFg{}}}
+		\centerline{$\displaystyle L_x \approx 1.7\un{m},\quad L_y \approx 14\un{m},\quad D_x \approx 8\un{cm}$}
+		
+		\centerline{diffractive protons in \cYe horizontal RPs\cFg}
+		\line{\hss\fig[,4.5cm]{fig/hit_dist_0p7.png}\hss}
+	}%
+	\hss
+}
+
+%\line{\hss elastic proton sample seen with different optics:\hss}
+%\line{\hss \fig*[,6cm]{fig/ttm_hit_distribution.pdf}\hss}
+
+\vfil
+\> optics carefully optimised for TOTEM special runs
+
+\vfil
+\> optics typically ``labelled'' by $\be^* \equiv$ betatron function at IP
+\>> beam width: $\sqrt{\ep \be}$, beam angular divergence: $\sqrt{\ep / \be}$; $\ep$: a measure of beam size/divergence
+\>> luminosity $\propto \hbox{(beam width at IP)}^{-2} \propto 1/\be^*$
+\>> example: \cYe high $\be^*$ $\Rightarrow$ reduced luminosity but protons ``more parallel''\cFg
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Run scenarios}
+
+{
+
+\advance\hsize\horizontalmargin\line{\kern-\horizontalmargin
+\fig[,4.47cm]{fig/acceptance_2.pdf}
+\fig[,4.47cm]{fig/acceptance_90.pdf}
+\fig[,4.47cm]{fig/acceptance_1535.pdf}\hss
+}
+
+\line{\kern-\horizontalmargin\SmallerFonts\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil\rightskip0pt plus1fil\parfillskip0pt
+	\cYe{\NormalFonts\bf low $\be^*$}\cFg
+	\hrule\vskip1mm
+	$\be^* = 0.5$ to $3\un{m}$
+	\vskip1mm
+	${\cal L} \approx 10^{30}\un{cm^{-2}s^{-1}}$
+		\vskip\baselineskip
+	elastic data available
+	$0.4 \ls |t/{\rm GeV^2}| \ls 3.5$
+		\vskip\baselineskip
+	resolution
+	$\si(\th^*) \approx 15\un{\mu rad}$
+	$\si(\xi) \approx 0.2\un{\%}$
+		\vskip3\baselineskip
+	\em{\cYe diffraction, high $|t|$ elastic scattering, low cross-section processes\cFg}
+}
+\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil\rightskip0pt plus1fil\parfillskip0pt
+	{\cYe\NormalFonts\bf medium $\be^*$\cFg}
+	\hrule\vskip1mm
+	$\be^* = 90\un{m}$
+	\vskip1mm
+	${\cal L} \approx 10^{28}\un{cm^{-2}s^{-1}}$
+		\vskip1\baselineskip
+	elastic data available
+	$ 10^{-2} < |t/{\rm GeV^2}| \ls 1.3 $
+		\vskip\baselineskip
+	resolution
+	$\si(\th^*) \approx 1.7\un{\mu rad}$
+	$\si(\xi) \approx 0.4$ to $0.6\un{\%}$
+		\vskip\baselineskip
+	all $\xi$ seen, universal optics
+		\vskip\baselineskip
+	\em{\cYe diffraction, mid $|t|$ elastic scattering, total cross section\cFg}
+}
+\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil\rightskip0pt plus1fil\parfillskip0pt
+	{\cYe\NormalFonts\bf high $\be^*$\cFg}
+	\hrule\vskip1mm
+	$\be^* \gs 1000\un{m}$
+	\vskip1mm
+	${\cal L} \approx 10^{27}\un{cm^{-2}s^{-1}}$
+		\vskip\baselineskip
+	elastic data available
+	$ 6\cdot10^{-4} < |t/{\rm GeV^2}| < 0.3$
+		\vskip\baselineskip
+	resolution
+	$\si(\th^*) \approx 0.4\un{\mu rad}$
+	%$\si(\xi) \approx 2\div 10\cdot10^{-3}$
+		\vskip2\baselineskip
+	all $\xi$ seen
+		\vskip\baselineskip
+	\em{\cYe total cross section, low $|t|$ elastic scattering\cFg}
+}
+\hss}
+
+}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Optics imperfections}
+
+\centerline{\Em{good optics knowledge essential for reconstruction}}
+
+\vfil
+\> optics imperfection sources
+\>> power-converter error: $\De I / I \approx 10^{-4}$
+\>> magnet transfer function: $\De B / B \approx 10^{-3}$
+\>> magnet rotation (< $1\un{mrad}$) and displacements ($<0.5\un{mm}$)
+\>> magnet harmonics ($\De B \approx 10^{-4}$)
+\>> beam momentum offset: $\De p / p \approx 10^{-3}$
+\>> beam crossing-angle uncertainty
+
+\vfil
+\> optics determination
+\>> direct measurement -- difficult
+\>> indirect from TOTEM observables
+
+\vfil
+\> TOTEM optics determination -- variation of magnet/beam parameters (within tolerances) to\\ match TOTEM observables:
+\>> $L_y^L / L_y^R$
+\>> ${\d L_y\over \d s} / L_y$
+\>> $s(L_x = 0)$
+\>> $xy$ coupling (tilts in $xy$ plane)
+\>> ...
+
+\vfil
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Optics refinement with TOTEM data}
+
+\centerline{\Em{example for $\be^* = $ 3.5\ m optics}}
+
+\vfil
+\line{\hss\hskip-5mm\fig[16cm]{fig/optics_refinement.png}\hss}
+
+\vfil
+
+\> optics uncertainty reduced:
+
+\centerline{x projection: from $1.6\%$ to $0.17\%$}
+\centerline{y projection: from $4.2\%$ to $0.16\%$}
+
+\vfil
+
+{\SmallerFonts
+\> details:
+\>> H. Niewiadomski, Roman Pots for beam diagnostic, OMCM, CERN, 20-23.06.2011
+\>> H. Niewiadomski, F. Nemes, LHC Optics Determination with Proton Tracks, IPAC'12, Louisiana, USA, 20-25.05.2012
+}
+
+\vfil
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Alignment of Roman Pots}
+
+\> RPs = movable insertions $\Rightarrow$ each run at different positions
+\> required angular precision micro-radians $\Rightarrow$ micro-metre alignment precision needed
+
+\vfil
+\centerline{$\Downarrow$}
+\vfil
+
+\> two types of alignment needed
+\>> alignment of mechanical RP edges $\rightarrow$ for machine protection
+\>> alignment of RP sensors $\rightarrow$ for physics
+
+\> need alignment \Em{wrt.~the beam}
+
+\vfil
+\centerline{$\Downarrow$}
+\vfil
+
+\centerline{\bf\cOr 3-step alignment procedure\cFg}
+
+\vfil
+
+\noindent1) \em{\cYe Collimation alignment}\cFg: RP alignment wrt.~beam, rough sensor alignment
+
+\line{\hss\vbox{\hsize8cm
+\> standard procedure for LHC collimators
+
+\fig[,3cm]{fig/al_collim_scheme.pdf}}\hskip1mm\hfil\fig[,4.5cm]{fig/al_collim_ex.pdf}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Alignment of Roman Pots}
+
+
+\noindent2) \em{\cYe Track-based alignment\cFg}: relative alignment among sensors
+
+\line{\raise3mm\vbox{\hsize10cm
+{\itskip1mm
+\> RP station: no magnetic field $\rightarrow$ straight tracks
+\> misalignments $\rightarrow$ residuals
+\> residual analysis $\rightarrow$ alignment corrections
+\> overlap between horizontal and vertical RPs $\rightarrow$ relative alignment among all sensors
+\> singular/weak modes: e.g.~overall shift/rotation\\
+$\Rightarrow$ need further alignment step
+}}\hss\fig[,3.8cm]{fig/overlap.pdf}}
+
+\vfil
+\noindent3) \em{\cYe Alignment with physics processes (elastic scattering)\cFg}: sensor alignment wrt.~beam
+
+\line{\hss\fig[16cm]{fig/al_el_plots_sum_slides.pdf}\hss}
+
+\vfil
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Analyses and results}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+\> ES dsigma/dt, plus extrapol. for si tot
+
+\> pre-TOTEM situation -- models with large differences
+\>> different t regions -- probing different physics/QCD regimes
+
+\> compare to older data: trends (peak shrinking and diff. min move) confirmed
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+\> si tot in all three ways
+\>> si inel
+\> ES rho
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+\> dN/deta
+\>> 7 TeV + 8 TeV
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Intermezzo: Optics for diffractive studies}
+\vskip-8mm
+$$x_{\rm RP} = v_x x^* + L_x \th_x^* + \xi D_x\ ,\qquad \xi = {\De p\over p_0}$$
+\vskip-2mm
+
+\line{%
+	\hss
+	\vtop{\hsize7.7cm
+		\centerline{\BiggerFonts\bf\cOr$\bf\be^* = 90\un{m}$\cFg}
+		%\> vertex: $160\un{\mu m}$
+		%\> beam-divergence: $2.6\un{\mu rad}$
+		\> optical functions at RP 220:
+		$$L_x \approx 0,\quad L_y \approx 260\un{m},\quad D_x \approx 4\un{cm}$$
+		
+		\centerline{$\Downarrow$}
+		\centerline{diffractive protons in \cYe vertical RPs\cFg}
+		\centerline{\SmallerFonts (a CD sample)}
+		\line{\hss\fig[,4.5cm]{fig/hit_dist_90.png}\hss}
+
+		\> $|\xi|_{\rm min} = 0\%$ $\Rightarrow$ \cYe low masses \cFg
+		\> $\xi$-resolution
+		\>> RPs only: $(0.4 \hbox{ to } 1)\%$ ($t$-dependent)
+		\>> with CMS vertex: $\approx 2\times$ better
+		\vskip\baselineskip
+		\centerline{\cYe used in 2012\cFg}
+	}%
+	\hskip2mm
+	\vrule
+	\hskip2mm
+	\vtop{\hsize7.7cm
+		\centerline{\cOr{\BiggerFonts\bf low $\bf\be^*$\cFg{}} ($0.7\un{m}$ here)}
+		%\> vertex: $14\un{\mu m}$
+		%\> beam-divergence: $29\un{\mu rad}$
+		\> optical functions at RP 220:
+		$$L_x \approx 1.7\un{m},\quad L_y \approx 14\un{m},\quad D_x \approx 8\un{cm}$$
+		
+		\centerline{$\Downarrow$}
+		\centerline{diffractive protons in \cYe horizontal RPs\cFg}
+		\centerline{\SmallerFonts (a CD sample)}
+		\line{\hss\fig[,4.5cm]{fig/hit_dist_0p7.png}\hss}
+
+		\> $|\xi|_{\rm min} = 2.8\%$  $\Rightarrow$ \cYe higher masses \cFg
+		\> $\xi$-resolution
+		\>> RPs only: $\approx 0.2\%$
+		\vskip\baselineskip
+		\vskip\baselineskip
+		\centerline{\cYe planned after long shutdown\cFg}
+	}%
+	\hss
+}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+\> SD: topologies - mass categories
+\>> dsigma/dt, dsigma/dxi
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+\> DD
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+\> DPE
+\>> dsigma/dt
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+\> DPE: TOTEM + CMS; how it works (trigger exchange etc.)
+\>> soft DPE: p+p -> p+X+p
+\>> hard DPE: p+p -> p+X+jj+p
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Outlook}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+\> upgrade plans
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Summary}
+
+TODO: make a summary
+
+\vfil
+\eject
+\bye
