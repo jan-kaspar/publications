@@ -15,13 +15,15 @@
 \font\ExtraTitleFont = pzcmi8t at 20pt
 \font\TitleFont = pzcmi8t at 15pt
 \font\ContextFont = pzcmi8t at 10pt
+\font\PartFont = cs-qplb-sc at 15pt
 
 %%%%%%%%%%%%%%%%%%%%
 %\SetFontSizesXII
 %\itskip5mm
 %\iitskip0mm
 %\itindent3mm
-%\iitindent6mm
+
+
 %\def\NormalSettings{}
 %%%%%%%%%%%%%%%%%%%%
 
@@ -73,14 +75,20 @@
 \eitm
 }\hss}
 
+TODO: roman numerals
+
 \vfil
 \vfil
 
 \newpage %-------------------------------------------------------------------------------------------
 \hbox{}
 \vfil
-\title{Physics programme}
 
+\line{\hss\TitleFont\cYe part I\cFg\hss}
+\vskip2mm
+\centerline{\PartFont\cYe Physics programme\cFg}
+
+\vfil
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -124,7 +132,12 @@ the classical plot -- colour vs. colourless exchange
 \newpage %-------------------------------------------------------------------------------------------
 \hbox{}
 \vfil
-\title{Detector apparatus}
+
+\line{\hss\TitleFont\cYe part II\cFg\hss}
+\vskip2mm
+\centerline{\PartFont\cYe Detector apparatus\cFg}
+
+\vfil
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -175,6 +188,8 @@ the classical plot -- colour vs. colourless exchange
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Roman Pots}
+
+\> typical approach: $10\un{\si}$
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -444,7 +459,27 @@ $\Rightarrow$ need further alignment step
 \newpage %-------------------------------------------------------------------------------------------
 \hbox{}
 \vfil
-\title{Analyses and results}
+
+\line{\hss\TitleFont\cYe part III\cFg\hss}
+\vskip2mm
+\centerline{\PartFont\cYe Analyses and results\cFg}
+
+\vfil
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Elastic scattering at $\sqrt{\hbox{s }}$ = 7 TeV}
+
+\vskip0pt plus0.5fil
+\line{\hss\fig[,3cm]{fig/diagram_es_lab.pdf}\hss}
+
+\vskip0pt plus0.5fil
+\line{\hss\fig[,3cm]{fig/topology_es.pdf}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Pre-TOTEM status}
+
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{}
@@ -462,6 +497,38 @@ $\Rightarrow$ need further alignment step
 \> si tot in all three ways
 \>> si inel
 \> ES rho
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Total cross-section}
+
+\vskip0pt plus0.5fil
+\line{\hss\fig[,3cm]{fig/diagram_tot.pdf}\hss}
+
+\vfil
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Pre-TOTEM status}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Elastic scattering at $\sqrt{\hbox{s }}$ = 8 TeV and $\SetFontSizesXII\rh$ value}
+
+%\vfil
+%\vskip0pt plus0.5fil
+%\line{\hss\fig[,3cm]{fig/diagram_tot.pdf}\hss}
+
+% TODO: a figure?
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Forward charged-particle multiplicities}
+
+% TODO: a figure
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{}
@@ -494,7 +561,7 @@ $$x_{\rm RP} = v_x x^* + L_x \th_x^* + \xi D_x\ ,\qquad \xi = {\De p\over p_0}$$
 		\>> RPs only: $(0.4 \hbox{ to } 1)\%$ ($t$-dependent)
 		\>> with CMS vertex: $\approx 2\times$ better
 		\vskip\baselineskip
-		\centerline{\cYe used in 2012\cFg}
+		\centerline{\Em{used so far}\cFg}
 	}%
 	\hskip2mm
 	\vrule
@@ -516,30 +583,234 @@ $$x_{\rm RP} = v_x x^* + L_x \th_x^* + \xi D_x\ ,\qquad \xi = {\De p\over p_0}$$
 		\>> RPs only: $\approx 0.2\%$
 		\vskip\baselineskip
 		\vskip\baselineskip
-		\centerline{\cYe planned after long shutdown\cFg}
+		\centerline{\Em{planned after long shutdown}\cFg}
 	}%
 	\hss
 }
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{}
+\hbox{}
+\vfil
+\title{Single diffraction}
+
+\vskip0pt plus0.5fil
+\line{\hss\fig[,3cm]{fig/diagram_sd_lab.pdf}\hss}
+
+\vskip0pt plus0.5fil
+\line{\hss\fig[,3cm]{fig/topology_sd_T1_opp.pdf}\hss}
+
+\vfil
+\line{\raise2mm\vtop{\hsize7cm
+\> {\BiggerFonts \cYe $\xi \approx e^{-\De \et}$\cFg} $\Rightarrow$ double ``determination'' of $\xi$
+\>> from proton (Roman Pots)
+\>> from rapidity gap (T1/2)
+}\hfil\vtop{\hsize6.3cm
+\> mass of diffractive system X
+$$m_X \approx \sqrt{s\xi}$$
+\> minimal mass visible (T2 acceptance):
+$$m_X \ge 3.4\un{GeV}$$
+}\hfil}
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{}
+\context{Single diffraction}
+\title{Topologies / diffractive-mass classes}
 
-\> SD: topologies - mass categories
-\>> dsigma/dt, dsigma/dxi
+\vskip-5mm
+
+%\noindent\EM{topologies}
+\> \Em{T2 opposite arm}: $m_X \approx 3.4$ to $7\un{GeV}$, $2\cdot10^{-7} < \xi < 1\cdot 10^{-6}$
+
+\line{\hss\fig[7.1cm]{fig/topology_sd_T2_opp.pdf}\hss}
+
+\> \Em{T1 opposite arm}: $m_X \approx 7$ to $350\un{GeV}$, $1\cdot10^{-6} < \xi < 2.5\cdot 10^{-3}$
+
+\line{\hss\fig[7.1cm]{fig/topology_sd_T1_opp.pdf}\hss}
+
+\> \Em{T1 same arm}: $m_X \approx 350$ to $1100\un{GeV}$, $2.5\cdot10^{-3} < \xi < 2.5\cdot 10^{-2}$
+
+\line{\hss\fig[7.1cm]{fig/topology_sd_T1_same.pdf}\hss}
+
+\> \Em{T2 same arm}: $m_X \gs 1100\un{GeV}$, $\xi > 2.5\cdot 10^{-2}$
+
+\line{\hss\fig[7.1cm]{fig/topology_sd_T2_same.pdf}\hss}
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{}
+\context{Single diffraction}
+\title{Analysis steps}
 
-\> DD
+\> available data: $\sqrt s = 7$ and $8\un{TeV}$, $\be^* = 90\un{m}$ (proton in vertical RPs)
+\>> 7 TeV analysis used here for illustration
+\>> 8 TeV data: also CMS data available
+
+\> trigger: RP \& T2
+% already quite good selection
+
+\> four RP combinations (left/right $\times$ top/bottom) $\Rightarrow$ each analysed separately $\Rightarrow$ confidence
+
+\> background: pile-up
+
+\centerline{beam halo (RP) + inelastic (T1/2) \hskip10mm or \hskip10mm SD/DPE (RP) + inelastic (T1/2)}
+
+$\Rightarrow$ proton and inelastic products independent
+
+$\Rightarrow$ subtraction method: TODO
+
+\line{\hss\fig[9cm]{fig/topology_sd_T1_opp_bckg.pdf}\hss}
+
+\>> T2 same arm complicated
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Single diffraction}
+\title{Analysis steps}
+
+\> corrections
+\>> RP proton acceptance --> FIG?
+\>> efficiencies (trigger, reconstruction, ...)
+\>> smearing in $t$ and $\xi$ (yet to be applied)
+
+\> FIG: dsigma/dxi for T2 opposite arm ==> experimental xi resolution
+
+\line{\hss\fig[7cm]{fig/sd_xi_resolution.png}\hss}
+
+\>> fit: $\si(\xi) = 0.008$
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Single diffraction}
+\title{Analysis steps}
+
+\vskip-5mm
+
+\> $|t|$-distributions (unfolding not yet applied) fitted with
+\cLRe$$\BiggerFonts \displaystyle \d\si / \d t = C\, \e^{-B t}$$\cFg
+
+\vskip-1mm
+\line{\hss\fig[,5cm]{fig/sd_t_dist_t2_opp.png}\hss\fig[,5cm]{fig/sd_t_dist_t1_opp.png}\hss}
+
+% B of SD = B of ES / 2?
+
+\> cross-section per class, including the invisible low-$|t|$ contribution (exploiting the fit above)
+\>> already for both proton sides
+\>> preliminary
+
+\centerline{\AddBckg[0.5mm]{\cBlack\tab{\bln
+\hbox{topology} & \hbox{mass range} & \hbox{slope } B & \hbox{extrapolated cross-section} \cr\bln
+\hbox{T2 opposite}	& 3.4 \hbox{ to } 7\un{GeV}		&  10.1\un{GeV^{-2}}	& 1.8 \un{mb} \cr\ln 
+\hbox{T1 opposite}	& 7 \hbox{ to } 350\un{GeV}		&  8.5\un{GeV^{-2}}	& 3.3 \un{mb} \cr\ln
+\hbox{T1 same}		& 350 \hbox{ to } 1100\un{GeV}	&  6.8\un{GeV^{-2}}	& 1.4 \un{mb} \cr\ln
+\hbox{T2 same}		& \hbox{above } 1100\un{GeV}	& \multispan2\vrule \hfil\hbox{\it effort ongoing}\hfil \cr\ln
+}}}
+
+\> very preliminary
+
+$$\si_{\rm SD}(3.4 < m_X < 1100\un{GeV}) = (6.5 \pm 1.3)\un{mb}\ ,\qquad \si_{\rm SD}(m_X < 3.4\un{GeV}) = \O{3\un{mb}} \hbox{TODO: verify, ref}$$
+% for T2 same: about 1 to 2 mb
+
+\> in progress: xi and t double differential distribution (Ken?)
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Double diffraction}
+
+\vskip0pt plus0.5fil
+\line{\hss\fig[,3cm]{fig/diagram_dd_lab.pdf}\hss}
+
+\vskip0pt plus0.5fil
+\line{\hss\fig[,3cm]{fig/topology_dd.pdf}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Double diffraction}
+
+\vskip-3mm
+
+\> method
+$$\si_{\rm DD} = {\hbox{(experimental corrections)}\cdot\hbox{(raw data)} - \hbox{(background)}\over {\cal L}}$$
+
+\> experimental challenge: background (non-diffractive, SD pile-up)
+
+\line{\hss\fig[,3cm]{fig/topology_dd_lab.pdf}\hss}
+
+\centerline{\cYe sub-sample with signal $\gg$ background $\Rightarrow$  $2\times$T2 and T1 veto\cFg}
+%\> trigger T2
+
+%\centerline{(2T2 + 2T1 swamped with background)}
+
+\> non-diffractive background
+\>> based on control sample $2\times$T2 + $2\times$T1
+\>> transferred to $2\times$T2 + $0\times$T1 using Monte-Carlo
+
+\> SD background
+\>> based on control sample $1\times$T2 + $0\times$T1
+\>> transferred to $2\times$T2 + $0\times$T1 using the measured SD distributions
+
+
+\> outputs
+\>> integral visible cross-section
+\>> cross-section as function of $\et_{\rm min}$ on both sides $\Rightarrow$ challenge:
+
+\centerline{reconstructed $\et_{\rm min}$ $\longrightarrow$ true/generator $\et_{\rm min}$ \hskip5mm (bin migration $\Rightarrow$ limited number of bins)}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Double diffraction}
+
+%\> ``acceptance'' correction = efficiencies + eta bin migration + extrapolation to non-visible regions
+%\>> based on Pythia 8
+
+\noindent\EM{7 TeV results}
+
+\> measurement
+
+\centerline{\fig[11cm]{fig/DD_meas.png}}
+
+\centerline{(T1: $3.1 < \et < 4.7$, T2: $5.3 < \et < 6.5$)}
+
+\> comparison to Monte Carlos
+
+\centerline{\fig[11cm]{fig/DD_mc_comp.png}}
+
+%\> soon to be published
+
+\vfil
+\noindent\EM{8 TeV results}
+
+{\itskip0pt
+\> similar analysis to be repeated
+\> improvement expected: data from CMS available
+}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Central diffraction -- TOTEM alone}
+
+\vskip0pt plus0.5fil
+\line{\hss\fig[,3cm]{fig/diagram_cd_lab.pdf}\hss}
+
+\vskip0pt plus0.5fil
+\line{\hss\fig[,3cm]{fig/topology_cd.pdf}\hss}
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{}
 
 \> DPE
 \>> dsigma/dt
+
+$$m_x \approx \sqrt{\xi_1 \xi_2 s}$$
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Central diffraction -- TOTEM + CMS}
+
+\vskip0pt plus0.5fil
+\line{\hss\fig[,3cm]{fig/diagram_cd_cms_lab.pdf}\hss}
+
+\vskip0pt plus0.5fil
+\line{\hss\fig[,3cm]{fig/topology_cd.pdf}\hss}
+
+\> X = particles/jets
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{}
@@ -555,13 +826,21 @@ $$x_{\rm RP} = v_x x^* + L_x \th_x^* + \xi D_x\ ,\qquad \xi = {\De p\over p_0}$$
 \newpage %-------------------------------------------------------------------------------------------
 \hbox{}
 \vfil
-\title{Outlook}
+
+\line{\hss\TitleFont\cYe part IV\cFg\hss}
+\vskip2mm
+\centerline{\PartFont\cYe Outlook\cFg}
+
+\vfil
 
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{}
+\title{Upgrade plans}
 
-\> upgrade plans
+RP upgrade --> to cope with pile-up
+
+\> multiple tracks in RPs per event --> pixels or a 3rd rotated RP
+\> timing detector --> match RP tracks with CMS vertices
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{}
