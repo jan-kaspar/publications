@@ -524,19 +524,6 @@ $\Rightarrow$ need further alignment step
 % TODO: a figure?
 
 \newpage %-------------------------------------------------------------------------------------------
-\hbox{}
-\vfil
-\title{Forward charged-particle multiplicities}
-
-% TODO: a figure
-
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
-
-\> dN/deta
-\>> 7 TeV + 8 TeV
-
-\newpage %-------------------------------------------------------------------------------------------
 \title{Intermezzo: Optics for diffractive studies}
 \vskip-8mm
 $$x_{\rm RP} = v_x x^* + L_x \th_x^* + \xi D_x\ ,\qquad \xi = {\De p\over p_0}$$
@@ -657,22 +644,40 @@ $\Rightarrow$ subtraction method: TODO
 
 \line{\hss\fig[9cm]{fig/topology_sd_T1_opp_bckg.pdf}\hss}
 
-\>> T2 same arm complicated
+\>> complicated for class {T2 same arm}
 
 \newpage %-------------------------------------------------------------------------------------------
 \context{Single diffraction}
 \title{Analysis steps}
 
+\vskip-7mm
+
 \> corrections
-\>> RP proton acceptance --> FIG?
-\>> efficiencies (trigger, reconstruction, ...)
-\>> smearing in $t$ and $\xi$ (yet to be applied)
+\>> \Em{RP proton acceptance}
 
-\> FIG: dsigma/dxi for T2 opposite arm ==> experimental xi resolution
+\line{\hss\fig[,4cm]{fig/rp_hit_patterns_90m.pdf}\hskip3mm\vbox{\hsize5cm
+\> grey regions = sensors\\ $\longrightarrow$ protons detected
+\> $L_x$ (ellipse width) strongly dependent on $\xi$
+\> $L_y$ (ellipse width) weakly dependent on $\xi$
+\> ellipse centre moves right with $|\xi|$ (dispersion $D_x$)
+}\hss}
 
-\line{\hss\fig[7cm]{fig/sd_xi_resolution.png}\hss}
+\>> \Em{efficiencies} (trigger, reconstruction, ...)
+\>> \Em{smearing in $t$ and $\xi$} (yet to be applied)
 
-\>> fit: $\si(\xi) = 0.008$
+\> experimental $\xi$ resolution from RPs
+
+\line{\hss\fig[,4cm]{fig/sd_xi_resolution.png}\hskip10mm\raise10mm\vbox{\hsize7cm
+\> class: T2 opposite arm\\
+$\Rightarrow$ T2: $2\cdot10^{-7} < \xi < 1\cdot 10^{-6}$
+
+\> plotted $\xi$ from RP reconstruction
+
+\> Gaussian fit: $\si(\xi) = 0.008$
+
+}\hss}
+
+
 
 \newpage %-------------------------------------------------------------------------------------------
 \context{Single diffraction}
@@ -697,7 +702,7 @@ $\Rightarrow$ subtraction method: TODO
 \hbox{T2 opposite}	& 3.4 \hbox{ to } 7\un{GeV}		&  10.1\un{GeV^{-2}}	& 1.8 \un{mb} \cr\ln 
 \hbox{T1 opposite}	& 7 \hbox{ to } 350\un{GeV}		&  8.5\un{GeV^{-2}}	& 3.3 \un{mb} \cr\ln
 \hbox{T1 same}		& 350 \hbox{ to } 1100\un{GeV}	&  6.8\un{GeV^{-2}}	& 1.4 \un{mb} \cr\ln
-\hbox{T2 same}		& \hbox{above } 1100\un{GeV}	& \multispan2\vrule \hfil\hbox{\it effort ongoing}\hfil \cr\ln
+\hbox{T2 same}		& \hbox{above } 1100\un{GeV}	& \multispan2\vrule \hfil\hbox{\it effort ongoing ...}\hfil \cr\ln
 }}}
 
 \> very preliminary
@@ -791,13 +796,43 @@ $$\si_{\rm DD} = {\hbox{(experimental corrections)}\cdot\hbox{(raw data)} - \hbo
 \vskip0pt plus0.5fil
 \line{\hss\fig[,3cm]{fig/topology_cd.pdf}\hss}
 
+\line{\vtop{\hsize7cm
+\> both protons detected (unprecedented) 
+}\hfil\vtop{\hsize6.3cm
+\> mass of diffractive system X
+$$m_X \approx \sqrt{s\xi_1 \xi_2}$$
+}\hfil}
+
 \newpage %-------------------------------------------------------------------------------------------
-\title{}
+\context{Central diffraction -- TOTEM alone}
+\title{First results}
 
-\> DPE
-\>> dsigma/dt
+\> available data: $\sqrt s = 7\un{TeV}$, $\be^* = 90\un{m}$\\
+$\Rightarrow$ almost complete $\xi$ acceptance, but resolution sufficient only $\xi \gs 0.03$
 
-$$m_x \approx \sqrt{\xi_1 \xi_2 s}$$
+\> trigger/event selection: $2\times$ RP
+
+\> background: ES + inelastic, beam halo + inelastic
+\>> ES: anti-elastic cuts or use forbidden topologies only (top-top, bottom-bottom)
+\>> beam-halo: cut $|y| > 11\un{\si_{\rm beam}}$ $\Rightarrow$ halo negligible
+
+\> $|t_y|$ distribution: all $\xi$ values, only acceptance correction
+
+\line{\raise8mm\vbox{\hsize7cm
+\> estimate of $\si_{\rm CD}$
+
+$${\d^2\si_{\rm CD}\over \d t_1 \d t_2} = C \e^{-B t_1} \e^{-B t_2}$$
+
+$$\Downarrow$$
+
+$$ \si_{\rm CD}
+= \int\limits^{0}_{-\infty} \d t_1 \int\limits^{0}_{-\infty} \d t_2\ C \e^{-B t_1} \e^{-B t_2} \approx 1\un{mb}$$
+
+\> final goal: $\displaystyle {\d^4\,\si_{\rm CD}\over \d t_1\, \d t_2\, \d\xi_1\, \d\xi_2}$
+}\hss\fig[8cm]{fig/cd_ty_dist_7TeV.png}\hss}
+
+
+
 
 \newpage %-------------------------------------------------------------------------------------------
 \hbox{}
@@ -810,18 +845,84 @@ $$m_x \approx \sqrt{\xi_1 \xi_2 s}$$
 \vskip0pt plus0.5fil
 \line{\hss\fig[,3cm]{fig/topology_cd.pdf}\hss}
 
-\> X = particles/jets
+\line{\vtop{\hsize7cm
+\> both protons detected (unprecedented) 
+}\hfil\vtop{\hsize6.3cm
+\> mass of diffractive system X -- double determination (unprecedented)
+\>> by TOTEM RPs
+$$m_X \approx \sqrt{s\xi_1 \xi_2}$$
+
+\>> by CMS
+
+}\hfil}
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Central diffraction -- TOTEM + CMS}
+\title{TODO}
+
+\> TOTEM and CMS independent experiments -- common runs need:
+\>> exchange of triggers (TOTEM developed a faster electrical trigger)
+\>> offline data merging (based on BunchCrossing and Orbit counters)
+
+\> TOTEM + CMS = unprecedented rapidity coverage
+\>> CMS tracker: $|η| < 2.5$
+\>> CMS calorimeters: $|η| < 5.5$
+\>> TOTEM-T1: $3.1 < |η| < 4.7$
+\>> TOTEM-T2: $5.3 < |η| < 6.5$
+\>> CMS-FSC: $6 < |η| < 8$
+
+\> data available: $\sqrt s = 8\un{TeV}$, $\be^* = 90\un{m}$
+
+\> two direction of studies
+\>> \Em{soft CD}: inclusive $X$\\
+$\Rightarrow$ analysis as with TOTEM alone
+
+\>> \Em{hard CD}: $X = \hbox{jets} + \ldots$\\
+$\Rightarrow$ interesting interplay between soft/non-perturbative and hard/perturbative QCD effects
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Central diffraction -- TOTEM + CMS}
+\title{Hard CD}
+
+\vskip-3mm
+
+\line{\raise30mm\vbox{\hsize4.7cm
+\> low cross-section processes
+\>> \Em{background critical} (typically pile-up)
+\>> \Em{more data needed}\\
+$\Rightarrow$ $90\un{m}$ optics with more bunches or low-$\be^*$ optics
+}\hskip3mm\fig[10cm]{fig/cd_totem_cms_event_display.png}\hss}
+
+\vskip-5mm
+\> pile-up removal:
+\>> 0 or 1 vertex in CMS
+\>> RP near edge area removed (1 elastic proton + beam halo or SD)
+\>> $\xi > 1.5\un{\%}$ (far enough from resolution effects)
+\>> RP $\xi$ predict event topology in central detectors
+\>> FSC empty: QCD background protection
+\>> $M_X^{\rm CMS} < M_X^{\rm TOTEM\ RPs}$
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}
+\vfil
+\title{Forward charged-particle multiplicities}
+
+% TODO: a figure
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{}
 
-\> DPE: TOTEM + CMS; how it works (trigger exchange etc.)
-\>> soft DPE: p+p -> p+X+p
-\>> hard DPE: p+p -> p+X+jj+p
+\> dN/deta - Mirko's slides
+\>> 7 TeV + 8 TeV
 
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
+\> inclusive, SD-enhanced etc.
 
+\> only T2 based, T1 in progress
+
+\> also data with shifted IP by $11\un{m}$; $6.0 < \et < 7.3$ and  $3.8 < \et < 4.8$
+
+\> future: correlations left/centre/right
 
 \newpage %-------------------------------------------------------------------------------------------
 \hbox{}
@@ -831,8 +932,8 @@ $$m_x \approx \sqrt{\xi_1 \xi_2 s}$$
 \vskip2mm
 \centerline{\PartFont\cYe Outlook\cFg}
 
-\vfil
 
+\vfil
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Upgrade plans}
