@@ -110,10 +110,6 @@ Forward hadronic phenomena at LHC
 \newpage %-------------------------------------------------------------------------------------------
 \title{}
 
-
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
-
 (non-)diffractive interactions
 
 the classical plot -- colour vs. colourless exchange 
@@ -124,10 +120,6 @@ the classical plot -- colour vs. colourless exchange
 \fig*[,10.5cm]{fig/ttm_processes.pdf}
 
 + comments from Hubert's presentation
-
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
-
 
 \newpage %-------------------------------------------------------------------------------------------
 \hbox{}
@@ -469,7 +461,7 @@ $\Rightarrow$ need further alignment step
 \newpage %-------------------------------------------------------------------------------------------
 \hbox{}
 \vfil
-\title{Elastic scattering at $\sqrt{\hbox{s }}$ = 7 TeV}
+\title{Elastic scattering}
 
 \vskip0pt plus0.5fil
 \line{\hss\fig[,3cm]{fig/diagram_es_lab.pdf}\hss}
@@ -477,26 +469,129 @@ $\Rightarrow$ need further alignment step
 \vskip0pt plus0.5fil
 \line{\hss\fig[,3cm]{fig/topology_es.pdf}\hss}
 
+\> interesting process on its own
+\> two anti-collinear protons $\Rightarrow$ excellent tool for alignment, understanding detector effects, optics, etc.
+\> TODO: definition of, $t$, $\th$, $\phi$
+
 \newpage %-------------------------------------------------------------------------------------------
+\context{Elastic scattering}
 \title{Pre-TOTEM status}
-
-
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
-
-\> ES dsigma/dt, plus extrapol. for si tot
 
 \> pre-TOTEM situation -- models with large differences
 \>> different t regions -- probing different physics/QCD regimes
 
-\> compare to older data: trends (peak shrinking and diff. min move) confirmed
+\line{\hss\fig[9cm]{fig/es_models.pdf}\hss}
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{}
+\context{Elastic scattering}
+\title{Analysis}
 
-\> si tot in all three ways
-\>> si inel
-\> ES rho
+\> entirely data-driven
+
+{\itskip0mm
+\itindent7mm
+
+\noindent\cYe{\bf 1. Kinematics reconstruction}\cFg
+
+\> proton tracks in RPs $\mathop{\longrightarrow}\limits^{\hbox{inverse optics}}$ proton kinematics at IP
+\> xi  = 0 --> relatively easy
+
+\vfil
+\noindent\cYe{\bf 2. Elastic tagging}\cFg
+
+\> elastic event = 2 anti-collinear protons from the same vertex $\Rightarrow$ compare left and right reconstructed protons
+\> each proton $\xi \approx 0$ $\Rightarrow$ correlation hit position vs.~track angle at RPs
+
+\vfil
+\noindent\cYe{\bf 3. Acceptance corrections}\cFg
+
+\> RP sensors have finite size, LHC apertures
+\> azimuthal symmetry $\Rightarrow$ geometrical correction (+ smearing around edges)
+
+\vfil
+\noindent\cYe{\bf 4. Unfolding of resolution effects}\cFg
+
+\> angular resolution from data (compare left and right protons) 
+\> Monte Carlo $\Rightarrow$ impact on $t$-distribution
+
+\vfil
+\noindent\cYe{\bf 5. Inefficiency corrections}\cFg
+
+\> uncorrelated one-RP inefficiencies
+\> near-far correlated RP inefficiencies
+\> ``pile-up'' = elastic event + another track in a RP
+
+\vfil
+\noindent\cYe{\bf 6. Luminosity}\cFg
+
+\> from CMS (if available), uncertainty $\approx 4\%$
+\> from TOTEM (see later -- TODO)
+}
+
+\> FIG: illustrations for the most important steps
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Elastic scattering}
+\title{Results}
+
+\centerline{\Em{building a puzzle from measurements with different $\be^*$}}
+
+\vfil
+
+\line{%
+	\hss
+	\vtop{\hsize7.7cm
+		\centerline{\bf\cOr$\bf\sqrt s = 7\un{\bf TeV}$\cFg}
+		\centerline{\SmallerFonts[EPL 96 (2011) 21002, EPL 101 (2013) 21002]}
+		\vskip3mm
+		\line{\hss\fig{fig/es_results_7.pdf}\hss}
+	}%
+	\hskip2mm
+	\vrule
+	\hskip2mm
+	\vtop{\hsize7.7cm
+		\centerline{\bf\cOr$\bf\sqrt s = 8\un{\bf TeV}$\cFg}
+		\centerline{\SmallerFonts[CERN-PH-EP-2012-354]}
+		\vskip3mm
+		\line{\hss\fig{fig/es_results_8.pdf}\hss}
+	}%
+	\hss
+}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Elastic scattering}
+\title{Trends}
+
+\> compare to older data: trends (peak shrinking and diff. min move) confirmed
+
+
+\line{\hss\fig[3cm]{fig/dcs_older_experiments1.png}\hss}
+%\line{\hss\fig[3cm]{fig/dcs_older_experiments2.png}\hss}
+
+\line{\hss\fig[3cm]{fig/es_B_s.pdf}\hss}
+
+\line{\hss\fig[3cm]{fig/es_results_7_mod.pdf}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Elastic scattering}
+\title{Very low $|t|$: Coulomb-hadronic interference}
+
+\> low $|t|$ possible due to
+\>> $\be^* = 1000\un{m}$ optics: large effective lengths, low beam divergence ($\approx 0.5\un{\mu rad}$)
+\>> RPs approach to $3\un{\si_{\rm beam}}$ from beam
+
+\> interesting aspects
+\>> Coulomb-hadronic interference $\Rightarrow$ determination of hadronic phase
+\>> Coulomb/hadronic separation $\Rightarrow$ hadronic extrapolation to $t = 0$ $\Rightarrow$ total-cross section implications via optical theorem
+
+$$\si_{\rm tot} \propto \Im {\cal A_{\rm el}}(t = 0)$$
+
+\line{\hss\fig[3cm]{fig/plotFitExampleComponents.pdf}\hss}
+
+\> theory
+\> analysis -- mention key elements
+\> preliminary result
 
 \newpage %-------------------------------------------------------------------------------------------
 \hbox{}
@@ -507,21 +602,61 @@ $\Rightarrow$ need further alignment step
 \line{\hss\fig[,3cm]{fig/diagram_tot.pdf}\hss}
 
 \vfil
-
 \newpage %-------------------------------------------------------------------------------------------
+\context{Total cross-section}
 \title{Pre-TOTEM status}
 
+\line{\hss\fig*[3cm]{fig/compete2002_sigma_tot.pdf}\hss}
+
+\> different extrapolations
+
 
 \newpage %-------------------------------------------------------------------------------------------
-\hbox{}
-\vfil
-\title{Elastic scattering at $\sqrt{\hbox{s }}$ = 8 TeV and $\SetFontSizesXII\rh$ value}
+\context{Total cross-section}
+\title{Methods}
 
-%\vfil
-%\vskip0pt plus0.5fil
-%\line{\hss\fig[,3cm]{fig/diagram_tot.pdf}\hss}
+\> TODO
 
-% TODO: a figure?
+\line{\hss\fig[10cm]{fig/tot_cs_methods.pdf}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Total cross-section}
+\title{Inelastic cross-section measurement}
+
+\> TODO
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Total cross-section}
+\title{Results}
+
+
+\line{%
+	\hss
+	\vtop{\hsize7.7cm
+		\centerline{\bf\cOr$\bf\sqrt s = 7\un{\bf TeV}$\cFg}
+		\centerline{\SmallerFonts[EPL 101 (2013) 21004]}
+		\vskip3mm
+		\line{\hss\fig{fig/tot_cs_methods_res7.pdf}\hss}
+	}%
+	\hskip2mm
+	\vrule
+	\hskip2mm
+	\vtop{\hsize7.7cm
+		\centerline{\bf\cOr$\bf\sqrt s = 8\un{\bf TeV}$\cFg}
+		\centerline{\SmallerFonts[CERN-PH-EP-2012-354]}
+		\vskip3mm
+		\line{\hss\fig{fig/tot_cs_methods_res8.pdf}\hss}
+		\centerline{\SmallerFonts(CMS luminosity unavailable)}
+	}%
+	\hss
+}
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Total cross-section}
+\title{Results in context}
+
+\line{\hss\fig[14cm]{fig/sigma_tot_el_inel_cmp_big.pdf}\hss}
+
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Intermezzo: Optics for diffractive studies}
@@ -724,7 +859,8 @@ $$\si_{\rm SD}(3.4 < m_X < 1100\un{GeV}) = (6.5 \pm 1.3)\un{mb}\ ,\qquad \si_{\r
 \line{\hss\fig[,3cm]{fig/topology_dd.pdf}\hss}
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{Double diffraction}
+\context{Double diffraction}
+\title{Method}
 
 \vskip-3mm
 
@@ -757,7 +893,8 @@ $$\si_{\rm DD} = {\hbox{(experimental corrections)}\cdot\hbox{(raw data)} - \hbo
 
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{Double diffraction}
+\context{Double diffraction}
+\title{Results}
 
 %\> ``acceptance'' correction = efficiencies + eta bin migration + extrapolation to non-visible regions
 %\>> based on Pythia 8
@@ -910,47 +1047,129 @@ $\Rightarrow$ $90\un{m}$ optics with more bunches or low-$\be^*$ optics
 
 % TODO: a figure
 
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
-
-\> dN/deta - Mirko's slides
-\>> 7 TeV + 8 TeV
-
-\> inclusive, SD-enhanced etc.
-
-\> only T2 based, T1 in progress
-
-\> also data with shifted IP by $11\un{m}$; $6.0 < \et < 7.3$ and  $3.8 < \et < 4.8$
-
-\> future: correlations left/centre/right
 
 \newpage %-------------------------------------------------------------------------------------------
-\hbox{}
+\context{Forward charged-particle multiplicities}
+\title{TODO}
+
+\> $\d N_{\rm ch} / \d\et$ : mean number of charged particles per event and per unit of pseudorapidity
+
+\> probes (non-)perturbative strong interactions and hadronisation 
+
+\> primary particles only: primary = lifetime $> 30\un{ps}$ (definition consistent with other LHC experiments)
+
+\> T1 and T2 extend $\et$ range to forward directions
+\>> T1 analyses yet in early phase
+
+\> measurement based on T2 only
+\>> still $\approx 95\un{\%}$ of inelastic events seen
+\>> almost all non-diffractive events visible
+\>> almost all diffraction with $m_X \gs 3.4\un{GeV}$ detected
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Forward charged-particle multiplicities}
+\title{Method}
+
+\line{\vbox{\hsize9cm
+$$
+\left. {\De N_{\rm ch} \over \De\et} \right|_{\et = \et_0}
+	= {1\over N_{\rm ev}} \sum\limits_{\rm events} \ \sum\limits_{\rm \vbox{\SmallerFonts\hbox{tracks}\hbox{in bin $\et_0$}} } {\hbox{corrections}\over \De\et}
+$$
+
+$$
+\hbox{corrections} = {W(\et_0, z_{\rm impact})\over \ep(\et_0, m)}\, \sum\limits_j B_j(\et_0)\ G(\et_0)\ S_p(\et_0)\ {2\pi\over \Ph}\ H\ P
+$$
+
+\vskip3mm
+
+\> \Em{$W(\et_0, z_{\rm impact})$}: probability of a track to be primary
+
+\> \Em{$\ep(\et_0, m)$}: primary-track efficiency, function of pad multiplicity $m$; value: $0.7$ to $0.9$
+
+\> \Em{$B_j(\et_0)$}: bin migration (MC based)
+
+}\hskip3mm\fig[6.2cm]{fig/dNdeta_zimpact.png}\hss}
+
+
+\> \Em{$G(\et_0)$}: primary particles not reaching T2 (MC based); value $\approx 1.05$
+
+\> \Em{$S_p(\et_0)$}: impurity of primary selection, mainly due to $K_S^0$ and $\pi^0\rightarrow \ga$'s; MC based; value $0.8$ to $0.9$
+
+\> \Em{$2\pi/\Ph$}: geometrical acceptance of 1 quarter; analyses performed per quarter $\Rightarrow$ confidence
+
+\> \Em{$H$}: correction for large-shower events discarded in the analysis (MC based); value $\approx 1.08$
+
+\> \Em{$P$}: pile-up correction (estimated from zero-bias data stream); value $\approx 1.03$
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Forward charged-particle multiplicities}
+\title{7 TeV Results}
+
+\> published: EPL 98 (2012) 31002
+
+\> main contributions to systematic uncertainty ($\approx 10\un{\%}$)
+\>> subtraction of a large fraction of secondaries (about $80\un{\%}$ of all T2 tracks)
+\>> track efficiency and misalignment uncertainties
+
+\line{\hss\fig[,5.4cm]{fig/dNdeta_totem_7TeV.png}\hskip1mm\fig[,5.4cm]{fig/dNdeta_7TeV_allLHC.png}\hss}
+
+% no MC describes data well
+
+\> gap LHCb -- TOTEM T2 will be filled
+\>> analysis of T1 data in progress
+\>> data with shifted IP by $11\un{m}$ $\Rightarrow$ shift of T2 acceptance: $6.0 < \et < 7.3$ or  $3.8 < \et < 4.8$
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\context{Forward charged-particle multiplicities}
+\title{8 TeV: combined analysis TOTEM + CMS}
+
+\vskip-3mm
+
+\> combined TOTEM + CMS analysis
+\>> the same T2-triggered data sample
+\>> unified track selection
+
+\> number of improvements wrt.~7 TeV analysis
+\>> improved simulation of T2 detector response
+\>> vertex information from CMS reduces pile-up correction
+\>> MC better tuned to reproduce LHC data
+
 \vfil
+\line{\fig[9.5cm]{fig/dNdeta_totem_cms_8TeV.png}\hskip2mm\raise30mm\vbox{\hsize5.3cm
+\centerline{PRELIMINARY RESULT:}
+\noindent corrections and correlated systematics between CMS and TOTEM\break under study
+}\hss}
 
-\line{\hss\TitleFont\cYe part IV\cFg\hss}
+\newpage %-------------------------------------------------------------------------------------------
+\context{Forward charged-particle multiplicities}
+\title{8 TeV: event classes}
+
+\> TOTEM stand-alone analysis performed also for different event classes:
+\>> \Em{inclusive}: as before
+\>> \Em{non-single-diffractive enhanced}: requiring both hemispheres of T2 on
+\>> \Em{single-diffractive enhanced}: requiring only one hemisphere of T2 on
+
 \vskip2mm
-\centerline{\PartFont\cYe Outlook\cFg}
-
+\line{\hss\fig[10cm]{fig/dNdeta_totem_8TeV.png}\hss}
 
 \vfil
+\> in future: also correlations left/centre/right
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{Upgrade plans}
+\title{Summary \& Outlook}
+
+\noindent \EM{Summary}
+
+TODO: make a summary
+
+\vfil
+\noindent \EM{Outlook}
 
 RP upgrade --> to cope with pile-up
 
 \> multiple tracks in RPs per event --> pixels or a 3rd rotated RP
 \> timing detector --> match RP tracks with CMS vertices
-
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
-
-
-\newpage %-------------------------------------------------------------------------------------------
-\title{Summary}
-
-TODO: make a summary
 
 \vfil
 \eject
