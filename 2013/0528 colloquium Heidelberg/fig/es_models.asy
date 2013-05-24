@@ -116,7 +116,7 @@ if (o.valid)
 
 draw(Label("diffraction/Pomeron exchange", 1, E), (0.5, 0.5)--(2, 0.5), BeginArrow);
 
-draw(Label("TODO", 1, S), (2, -4)--(2, -7), BeginArrow);
+draw(Label("\vbox{\hbox{diffractive structures}\hbox{($\om$ exchange)}}", 1, S+0.2E), (2, -4)--(2, -7), BeginArrow);
 
 draw(Label("parton scattering/pQCD", 1, S), (7, -7.2)--(7, -10), BeginArrow);
 
