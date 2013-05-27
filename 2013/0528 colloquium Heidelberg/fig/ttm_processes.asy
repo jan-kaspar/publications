@@ -58,7 +58,7 @@ void Finish(real col, real row)
 
 //----------------------------------------------------------------------------------------------------
 
-New("{\bf Elastic Scattering} (ES),\quad $\approx 30\,\rm mb$");
+New("{\bf Elastic Scattering} (ES),\quad $\approx 25\,\rm mb$");
 
 currentpicture = dp;
 drawFermion(ti--tm);
@@ -74,6 +74,8 @@ drawVertex(bm);
 currentpicture = gp;
 dot((-11, 2), red);
 dot((11, -2), blue);
+
+draw(Label("\SmallerFonts rapidity gap", 0.5, N), (-10, 0)--(+10, 0), Arrows(5));
 
 Finish(0, 0);
 
@@ -101,11 +103,13 @@ for (int i = 0; i < 10; ++i) {
 	dot((4+unitrand()*8, -3.14+unitrand()*2*3.14), blue);
 }
 
+draw(Label("\SmallerFonts rapidity gap", 0.5, N), (-10, 0)--(+5, 0), Arrows(5));
+
 Finish(0, 1);
 
 //--------------------
 
-New("{\bf Double Diffraction} (DD),\quad $\approx 7\,\rm mb$");
+New("{\bf Double Diffraction} (DD),\quad $\approx 5\,\rm mb$");
 
 currentpicture = dp;
 drawFermion(ti--tm);
@@ -128,6 +132,8 @@ for (int i = 0; i < 10; ++i)
 
 for (int i = 0; i < 10; ++i)
 	dot((4+unitrand()*8, -3.14+unitrand()*2*3.14), blue);
+
+draw(Label("\SmallerFonts rapidity gap", 0.5, N), (-6, 0)--(+3, 0), Arrows(5));
 
 
 Finish(0, 2);
@@ -159,6 +165,42 @@ dot((11, -2), blue);
 for (int i = 0; i < 10; ++i)
 	dot((-3+unitrand()*6, -3.14+unitrand()*2*3.14), heavygreen);
 
+draw(Label("\SmallerFonts rap.~gap", 0.5, N), (-10, 0)--(-3, 0), Arrows(5));
+draw(Label("\SmallerFonts rap.~gap", 0.5, N), (+3, 0)--(+10, 0), Arrows(5));
+
 Finish(0, 3);
 
-shipout(bbox(2mm, nullpen));
+shipout("ttm_diffractive_processes", bbox(2mm, nullpen));
+
+//--------------------
+
+mp = new picture;
+
+New("{\bf Non-Diffractive process} (ND)");
+
+currentpicture = dp;
+drawFermion(ti--tm);
+drawFermion(tm--to, black);
+drawFermion(bi--bm);
+drawFermion(bm--bo, black);
+
+drawFermion((m+(0, +6))--(mo+(0, +15)), black, false);
+drawFermion((m+(0, +4))--(mo+(0, +10)), black, false);
+drawFermion((m+(0, +2))--(mo+(0, +5)), black, false);
+drawFermion(m--mo, black, false);
+drawFermion((m+(0, -2))--(mo+(0, -5)), black, false);
+drawFermion((m+(0, -4))--(mo+(0, -10)), black, false);
+drawFermion((m+(0, -6))--(mo+(0, -15)), black, false);
+
+drawGluon(bm--tm, erasebg=false);
+
+drawVertex(tm);
+drawVertex(bm);
+
+currentpicture = gp;
+for (int i = 0; i < 30; ++i)
+	dot((-6+unitrand()*12, -3.14+unitrand()*2*3.14), black);
+
+Finish(0, 0);
+
+shipout("ttm_non_diffractive_process", bbox(2mm, nullpen));

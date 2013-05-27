@@ -1,13 +1,15 @@
 \input slides.tex
 \input utf8-csf
 
-\iftrue
+\iffalse
 	\StdBackground
 \else
-	\SetBackground{fig/bg_prepare.pdf}
+	%\SetBackground{fig/bg_prepare.pdf}
 	\def\cYe{\cBlack}
 	\def\cLRe{\cBlack}
 	\def\cRe{\cBlack}
+	\def\cOr{\cBlack}
+	\def\cGr{\cBlack}
 \fi
 
 %\font\TitleFont = cs-qplb-sc at 15pt
@@ -98,31 +100,40 @@
 
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{}
+\title{TOTEM: forward hadronic phenomena at LHC}
 
-Forward hadronic phenomena at LHC
+\> LHC: $\approx 1/3$ of $\si_{\rm tot}$ flows more \Em{forward} than conventional experiments can detect
 
-\> low momentum transfers --> non perturbative QCD --> interesting
+\> forward $\rightarrow$ \Em{low momentum transfer(s)} $\rightarrow$ \Em{non-perturbative QCD} $\rightarrow$ little explored/understood\\ ($\rightarrow$ interesting)
 
-\> forward particles
+\> \Em{diffractive processes} $\Rightarrow$ non-suppressed \Em{rapidity gaps} $\Leftarrow$ \Em{exchange of colourless objects}
 
-\> rapidity gaps
+\vskip2mm
 
-\> the traditional process figures
+\centerline{\fig*[,8cm]{fig/ppInteraction.png}}
 
-\> xi ~ De eta
+% non-diffractive event: exponential suppression of rapidity gaps
 
-\> non-diffractive event: exponential suppression of rapidity gaps
-
-\fig*[,5cm]{fig/ppInteraction.png}
+%\> xi ~ De eta
 
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{}
+\title{(Some) processes of interest}
 
-\fig*[,10.5cm]{fig/ttm_processes.pdf}
+\vskip-3mm
 
-+ comments from Hubert's presentation
+\line{\fig*[5.8cm]{fig/ttm_diffractive_processes.pdf}\hskip3mm\vbox{\hsize9cm
+\noindent$\leftarrow$ double line in diagrams: exchange of ``Pomeron'' -- a colourless object with vacuum quantum numbers
+$$\Downarrow$$
+\centerline{consequence: rapidity gap}
+
+\vskip5cm
+
+\line{\hss\hbox to5.8cm{\hss in contrast:\hss}}
+\line{\hss\fig*[5.8cm]{fig/ttm_non_diffractive_process.pdf}}
+
+}\hss}
+
 
 \newpage %-------------------------------------------------------------------------------------------
 \hbox{}
@@ -134,6 +145,7 @@ Forward hadronic phenomena at LHC
 
 \vfil
 
+%\bye
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{TOTEM at LHC}
@@ -175,18 +187,79 @@ Forward hadronic phenomena at LHC
 \newpage %-------------------------------------------------------------------------------------------
 \title{Telescope T1}
 
+\line{\AddBckg[0.2mm]{\fig[7cm]{fig/t1_installed.jpg}}\hskip3mm\raise15mm\vbox{\hsize7.5cm
+\> installed inside CMS end-caps
+\> at $7.5$ to $10.5\un{m}$ from the IP
+\> one \cYe\em{telescope}\cFg{} on each side of IP
+\> each telescope consists of two \cYe\em{quarters}\cFg{}
+}\hss}
+
+\vfil
+\line{\AddBckg[0.2mm]{\fig[7cm]{fig/t1_quarter.jpg}}\hskip3mm\raise15mm\vbox{\hsize7.5cm
+\> each quarter formed by 5 \cYe\em{planes\cFg} equally spaced along beam
+\> each plane consists of 3 trapezoidal \em{\cYe CSC\break detectors\cFg}, each covering $60\un{^\circ}$ in azimuth
+\> Cathode Strip Chamber: gaseous detector with 3 read-out coordinates (at $60\un{^\circ}$ wrt.~each other)
+}\hss}
 
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Telescope T2}
 
+\line{\AddBckg[0.2mm]{\fig[7.5cm]{fig/t2_installed.jpg}}\hskip3mm\raise15mm\vbox{\hsize7.0cm
+\> installed inside CMS shielding between HF and Castor calorimeters
+\> centred about $13.5\un{m}$ from the IP
+\> one \cYe\em{telescope}\cFg{} on each side of IP
+\> each telescope consists of two \cYe\em{quarters}\cFg{}
+}\hss}
+
+\vfil
+\line{\AddBckg[0.2mm]{\fig[7.5cm]{fig/t2_quarter.jpg}}\hskip3mm\vbox{\hsize6.8cm
+\> each quarter formed by 10 semi-circular\break \cYe\em{planes\cFg}, assembled in 5 back-to-back\break mounted pairs
+\> each plane equipped with a \em{\cYe Gas Electron Multiplier\cFg} detector
+\>> gaseous detector, electron multiplication by 3 perforated foils ($2\un{mm}$ separation)
+\>> radial segmentation: \Em{strips} (resolution $\approx 0.15\un{mm}$)
+\>> coarse radial$\times$azimuthal segmentation:\break \Em{pads} (for triggering, azimuthal resolution $0.8\un{^\circ}$)
+}\hss}
 
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Roman Pots}
 
-\> typical approach: $10\un{\si}$
+\vskip-3mm
 
+\line{\AddBckg[0.2mm]{\fig[5cm]{fig/rp_station.pdf}}\hskip3mm\raise20mm\vbox{\hsize10cm
+\> \cYe\em{stations}\cFg{} installed at $\pm 220\un{m}$ in the outgoing LHC beam-pipe
+\> each station has two \cYe\em{units}\cFg{}, separated by $\approx 5\un{m}$
+}\hss}
+
+\line{\AddBckg[0.2mm]{\fig[5cm]{fig/rp_unit.pdf}}\hskip3mm\raise7mm\vbox{\hsize10cm
+\> each unit contains 3 \cYe\em{Roman Pots}\cFg{}: top, bottom and horizontal
+\> Roman Pot = movable beam-pipe insertion
+\>> \Em{beam unstable} $\Rightarrow$ RPs retracted to safe position
+\>> \Em{beam stable} $\Rightarrow$ RPs as close to beam as reasonable
+\> typical approach: $10\un{\si_{\rm beam}}$ (record $3\un{\si_{\rm beam}}$)
+}\hss}
+
+\line{\AddBckg[0.2mm]{\fig[5cm]{fig/rp_pot.pdf}}\hskip3mm\raise30mm\vbox{\hsize10cm
+\> Roman Pot: container for sensors
+}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{``Edgeless'' silicon sensors}
+
+\line{\AddBckg[0.2mm]{\fig[6cm]{fig/rp_package.pdf}}\hskip3mm\raise39mm\vbox{\hsize10cm
+\> each RP contains a \cYe\em{package}\cFg{} of 10 silicon sensors
+\> 5 pairs of back-to-back mounted strip sensors
+}\hss}
+
+\vfil
+\line{\AddBckg[0.2mm]{\fig[6cm]{fig/rp_hybrid.pdf}}\hskip3mm\raise23mm\vbox{\hsize10cm
+\> custom developed \cYe\em{``edgeless'' sensors}\cFg\\
+$\Rightarrow$ \Em{insensitive edge $\approx 50\un{\mu m}$} (standard about $1\un{mm}$)
+\> single-sided $\rm p^+$-n
+\> 512 strips at pitch of $66\un{\mu m}$, at $45\un{^\circ}$ wrt.~cut edge
+\> operated at $\approx -20\un{^\circ C}$, bias voltage $\approx 100\un{V}$
+}\hss}
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Proton measurement with Roman Pots}
@@ -199,7 +272,7 @@ Forward hadronic phenomena at LHC
 %\line{\hss 5 quadrupoles, 2 dipoles, corrector magnets and drift spaces:\hss}
 \line{\hss\fig*[13.5cm]{fig/RP_stations.pdf}\hss}
 
-\> \Em{proton transport}: described as in linear optics
+\> \em{\cYe proton transport\cFg}: described as in linear optics
 
 \line{\hss\fig*[11.5cm]{fig/ttm_proton_transport.pdf}\hss}
 
@@ -226,11 +299,11 @@ $
 }
 \hss}
 
-\> \Em{proton reconstruction}: inverted transport RPs $\longrightarrow$ IP
+\> \em{\cYe proton reconstruction\cFg}: inverted transport RPs $\longrightarrow$ IP
 
 \>> optical parameters functions of $\xi$ $\Rightarrow$ reconstruction is non-linear problem
 
-\>> \cYe good knowledge of optics is crucial\cFg
+\>> \cLRe good knowledge of optics is crucial\cFg
 
 %\fig*[,2.8cm]{fig/optics.pdf}%
 
@@ -267,8 +340,9 @@ $
 \> optics carefully optimised for TOTEM special runs
 
 \vfil
-\> optics typically ``labelled'' by $\be^* \equiv$ betatron function at IP
-\>> beam width: $\sqrt{\ep \be}$, beam angular divergence: $\sqrt{\ep / \be}$; $\ep$: a measure of beam size/divergence
+\> optics typically ``labelled'' by \cLRe $\be^* \equiv$ betatron function at IP\cFg
+\>> \cLRe beam width\cFg: $\sqrt{\ep \be}$
+\>> \cLRe beam angular divergence\cFg: $\sqrt{\ep / \be}$ ($\ep$: a measure of beam size/divergence)
 \>> luminosity $\propto \hbox{(beam width at IP)}^{-2} \propto 1/\be^*$
 \>> example: \cYe high $\be^*$ $\Rightarrow$ reduced luminosity but protons ``more parallel''\cFg
 
@@ -276,12 +350,16 @@ $
 \newpage %-------------------------------------------------------------------------------------------
 \title{Run scenarios}
 
+\vskip-3mm
+\centerline{\SmallerFonts ($t \approx -p^2 \th^2$: four-momentum transfer squared; $\xi = \De p / p$: fractional momentum loss)}
+\vskip1mm
+
 {
 
 \advance\hsize\horizontalmargin\line{\kern-\horizontalmargin
-\fig[,4.47cm]{fig/acceptance_2.pdf}
-\fig[,4.47cm]{fig/acceptance_90.pdf}
-\fig[,4.47cm]{fig/acceptance_1535.pdf}\hss
+\fig[,4.37cm]{fig/acceptance_2.pdf}
+\fig[,4.37cm]{fig/acceptance_90.pdf}
+\fig[,4.37cm]{fig/acceptance_1535.pdf}\hss
 }
 
 \line{\kern-\horizontalmargin\SmallerFonts\hss
@@ -391,9 +469,9 @@ $
 \vfil
 
 {\SmallerFonts
-\> details:
-\>> H. Niewiadomski, Roman Pots for beam diagnostic, OMCM, CERN, 20-23.06.2011
-\>> H. Niewiadomski, F. Nemes, LHC Optics Determination with Proton Tracks, IPAC'12, Louisiana, USA, 20-25.05.2012
+\noindent [H. Niewiadomski, Roman Pots for beam diagnostic, OMCM, CERN, 20-23.06.2011]
+
+\noindent [H. Niewiadomski, F. Nemes, LHC Optics Determination with Proton Tracks, IPAC'12, Louisiana, USA, 20-25.05.2012]
 }
 
 \vfil
@@ -597,20 +675,22 @@ $$t \simeq - p^2 \th^2$$
 
 \vskip-3mm
 
-\line{\raise12mm\vbox{\hsize6.7cm
+\line{\raise27mm\vbox{\hsize6.7cm
 \> no theoretical/phenomenological model describes completely TOTEM data
 
-\> at low $|t|$: nearly exponential decrease
+\> at low $|t|$: \cLRe nearly exponential decrease\cFg
 $${\d\si\over \d t} \approx \e^{-B |t|}$$
 
 }\hss\fig[,5cm]{fig/es_results_7_mod.pdf}\hss}
 
-\line{\raise17mm\vbox{\hsize5cm
+\line{\raise13mm\vbox{\hsize5cm
 \> previously observed trends\\ confirmed: as $\sqrt{s}$ grows
 \>> \Em{``forward peak'' shrinks}\\
 $\Rightarrow$ minimum moves to lower values
+\vskip2mm
 \>> \Em{intercept at $t = 0$ increases}\\
 $\Rightarrow$ related to $\si_{\rm tot}$ increase
+\vskip2mm
 \>> \Em{forward slope $B$ increases}
 }\hskip2mm\fig[,5cm]{fig/dcs_older_experiments1.png}\hskip1mm\fig[,5cm]{fig/es_B_s.pdf}\hss}
 
@@ -624,7 +704,7 @@ $\Rightarrow$ related to $\si_{\rm tot}$ increase
 
 \vskip-3mm
 
-\> $|t|$ as low as $6\cdot10^{-4}\un{GeV^2}$ accessible thanks to
+\> $|t|$ as low as $6\cdot10^{-4}\un{GeV^2}$ (i.e.~$\th \approx 6\un{\mu rad}$) accessible thanks to
 \>> $\be^* = 1000\un{m}$ optics: large effective lengths, low beam divergence ($\approx 0.5\un{\mu rad}$)
 \>> RPs approach of $3\un{\si_{\rm beam}}$ from beam
 
@@ -645,7 +725,7 @@ $$\cYe\si_{\rm tot} \propto \Im {\cal A_{\rm el}}(t = 0)\cFg$$
 \context{Elastic scattering}
 \title{Hadronic phase: first results}
 
-\noindent\EM{Theory}
+\noindent{\cYe\PartFont Theory\cFg}
 
 \line{\hss\raise2mm\vbox{\hsize5.5cm
 $${\d\si\over \d t} \propto |{\cal A}^{\rm C+H}|^2$$
@@ -664,11 +744,11 @@ $${\cal A}^{\rm C+H} = \hbox{COMBINATION}({\cal A^{\rm C}}, {\cal A}^{\rm H})$$
 
 
 \line{\vbox{\hsize9cm
-\noindent\EM{Fits}
+\noindent{\cYe\PartFont Fits\cFg}
 
 \> various fit metrics: generalised $\ch^2$, Kolmogorov-like
 
-\> combination of choices: little impact on the fit
+\> combination of above choices: little impact on the fit
 
 \> very PRELIMINARY result
 
@@ -691,9 +771,8 @@ $$
 \context{Total cross-section}
 \title{Pre-TOTEM status}
 
-\line{\hss various $\si_{\rm tot}$ extrapolations by COMPETE\hss}
-%\line{\hss\fig*[10cm]{fig/compete2002_sigma_tot.pdf}\hss}
-\line{\hss\fig*[8.5cm]{fig/sigma,tot.pdf}\hss}
+\line{\hss various $\si_{\rm tot}$ fits by COMPETE\hss}
+\line{\hss\fig*[11cm]{fig/ttm_sigma_tot.pdf}\hss}
 
 \vfil
 \> various models/theories:
@@ -703,7 +782,7 @@ $$\si_{\rm tot} \sim \log s\ ,\qquad \si_{\rm tot} \sim \log^2 s\ ,\qquad \si_{\
 $$90\un{mb} < \si_{\rm tot} < 130\un{mb} \Rightarrow 40\un{\%}\hbox{ uncertainty}$$
 
 
-\> available data not decisive (incompatible CDF/E810 measurements)
+\> available data not decisive (incompatible Tevatron measurements)
 
 \vfil
 
@@ -810,8 +889,8 @@ $\Rightarrow$ but can be constrained from data
 \newpage %-------------------------------------------------------------------------------------------
 \title{Intermezzo: Optics for diffractive studies}
 \vskip-8mm
-$$x_{\rm RP} = v_x x^* + L_x \th_x^* + \xi D_x\ ,\qquad \xi = {\De p\over p_0}$$
-\vskip-2mm
+$$x_{\rm RP} = v_x x^* + L_x \th_x^* + \xi D_x\ ,\qquad \xi = {\De p / p_0}$$
+\vskip+2mm
 
 \line{%
 	\hss
@@ -872,7 +951,7 @@ $$x_{\rm RP} = v_x x^* + L_x \th_x^* + \xi D_x\ ,\qquad \xi = {\De p\over p_0}$$
 
 \vfil
 \line{\raise2mm\vtop{\hsize7cm
-\> {\BiggerFonts \cYe $\xi \approx e^{-\De \et}$\cFg} $\Rightarrow$ double ``determination'' of $\xi$
+\> kinematics: {\BiggerFonts \cYe $\xi \approx e^{-\De \et}$\cFg}\\ $\Rightarrow$ double ``determination'' of $\xi$
 \>> from proton (Roman Pots)
 \>> from rapidity gap (T1/2)
 }\hfil\vtop{\hsize6.3cm
@@ -971,30 +1050,32 @@ $\Rightarrow$ T2: $2\cdot10^{-7} < \xi < 1\cdot 10^{-6}$
 
 \vskip-5mm
 
-\> $|t|$-distributions (unfolding not yet applied) fitted with
-\cLRe$$\BiggerFonts \displaystyle \d\si / \d t = C\, \e^{-B t}$$\cFg
+\> $|t|$-distributions (unfolding not yet applied) fitted with \cLRe$\BiggerFonts \displaystyle \d\si / \d t = C\, \e^{-B t}$\cFg
 
-\vskip-1mm
-\line{\hss\fig[,5cm]{fig/sd_t_dist_t2_opp.png}\hss\fig[,5cm]{fig/sd_t_dist_t1_opp.png}\hss}
+%\vskip-1mm
+\line{\hss\fig[,4.8cm]{fig/sd_t_dist_t2_opp.png}\hss\fig[,4.8cm]{fig/sd_t_dist_t1_opp.png}\hss}
 
 % B of SD = B of ES / 2?
 
 \> cross-section per class, including the invisible low-$|t|$ contribution (exploiting the fit above)
-\>> already for both proton sides
-\>> preliminary
 
-\centerline{\AddBckg[0.5mm]{\cBlack\tab{\bln
+\line{\AddBckg[0.5mm]{\cBlack\tab{\bln
 \hbox{topology} & \hbox{mass range} & \hbox{slope } B & \hbox{extrapolated cross-section} \cr\bln
 \hbox{T2 opposite}	& 3.4 \hbox{ to } 7\un{GeV}		&  10.1\un{GeV^{-2}}	& 1.8 \un{mb} \cr\ln 
 \hbox{T1 opposite}	& 7 \hbox{ to } 350\un{GeV}		&  8.5\un{GeV^{-2}}	& 3.3 \un{mb} \cr\ln
 \hbox{T1 same}		& 350 \hbox{ to } 1100\un{GeV}	&  6.8\un{GeV^{-2}}	& 1.4 \un{mb} \cr\ln
 \hbox{T2 same}		& \hbox{above } 1100\un{GeV}	& \multispan2\vrule \hfil\hbox{\it effort ongoing ...}\hfil \cr\ln
-}}}
+}}\raise10mm\vbox{\hsize3cm
+\>> already for both\\ proton sides
+\vskip1mm
+\>> PRELIMINARY
+}\hss}
 
 \> very preliminary
-
+\vskip-4mm
 $$\si_{\rm SD}(3.4 < m_X < 1100\un{GeV}) = (6.5 \pm 1.3)\un{mb}\ ,\qquad \si_{\rm SD}(m_X < 3.4\un{GeV}) = \O{2.5\un{mb}}$$
 % for T2 same: about 1 to 2 mb
+\vskip-1mm
 
 \> final goal: $\xi$ and $t$ double-differential distribution
 
@@ -1050,17 +1131,19 @@ $$\si_{\rm DD} = {\hbox{(experimental corrections)}\cdot\hbox{(raw data)} - \hbo
 %\> ``acceptance'' correction = efficiencies + eta bin migration + extrapolation to non-visible regions
 %\>> based on Pythia 8
 
+\vskip-2mm
+
 \noindent\EM{7 TeV results}
 
 \> measurement
 
-\centerline{\fig[11cm]{fig/DD_meas.png}}
+\centerline{\fig[10.5cm]{fig/DD_meas.png}}
 
 \centerline{(T1: $3.1 < \et < 4.7$, T2: $5.3 < \et < 6.5$)}
 
 \> comparison to Monte Carlos
 
-\centerline{\fig[11cm]{fig/DD_mc_comp.png}}
+\centerline{\fig[10.5cm]{fig/DD_mc_comp.png}}
 
 %\> soon to be published
 
@@ -1148,19 +1231,22 @@ $$m_X \approx \sqrt{s\xi_1 \xi_2}$$
 \context{Central diffraction -- TOTEM + CMS}
 \title{Combined TOTEM+CMS analyses}
 
-\> TOTEM and CMS independent experiments -- common runs need:
+\> TOTEM and CMS independent experiments -- \Em{common runs} need:
 \>> exchange of triggers (TOTEM developed a faster electrical trigger)
 \>> offline data merging (based on BunchCrossing and Orbit counters)
 
-\> TOTEM + CMS = unprecedented rapidity coverage
+\vfil
+\> TOTEM + CMS = \Em{unprecedented rapidity coverage}
 \>> CMS tracker: $|η| < 2.5$
 \>> CMS calorimeters: $|η| < 5.5$
 \>> TOTEM-T1: $3.1 < |η| < 4.7$
 \>> TOTEM-T2: $5.3 < |η| < 6.5$
 \>> CMS-FSC: $6 < |η| < 8$
 
+\vfil
 \> data available: $\sqrt s = 8\un{TeV}$, $\be^* = 90\un{m}$
 
+\vfil
 \> two direction of studies
 \>> \Em{soft CD}: inclusive $X$\\
 $\Rightarrow$ analysis as with TOTEM alone
@@ -1253,7 +1339,7 @@ $$
 \context{Forward charged-particle multiplicities}
 \title{7 TeV Results}
 
-\> published: EPL 98 (2012) 31002
+\centerline{[EPL 98 (2012) 31002]}
 
 \> main contributions to systematic uncertainty ($\approx 10\un{\%}$)
 \>> subtraction of a large fraction of secondaries (about $80\un{\%}$ of all T2 tracks)
@@ -1307,15 +1393,31 @@ $$
 \newpage %-------------------------------------------------------------------------------------------
 \title{Upgrade plans}
 
-TODO:
+\> now: LHC in Long Shutdown 1
+\>> restart 2015: $\sqrt s = 14\un{TeV}$, possibly even higher luminosities\\
+$\Rightarrow$ higher \Em{pile-up}
 
-RP upgrade --> to cope with pile-up
+\> TOTEM: interest in lower-cross-section processes $\Rightarrow$ higher luminosity needed\\
+$\Rightarrow$ higher \Em{pile-up}
 
-\> multiple tracks in RPs per event --> pixels or a 3rd rotated RP
-\> timing detector --> match RP tracks with CMS vertices
+\vfil
+\noindent{\cYe Two aspects of coping with pile-up\cFg}
+
+\> \Em{RP detectors resolve multiple tracks}
+
+\>> two new units will be installed -- hosting \cGr pixel\cFg{} or \cGr rotated-strip\cFg{} detectors
+
+\line{\hss\fig[12cm]{fig/multi_hit.pdf}\hss}
+
+\> \Em{association of RP and central detector (CMS) tracks} $\rightarrow$ tracks with common vertex
+\>> current RPs: with certain optics, transverse vertex component(s) determinable $\Rightarrow$ insufficient
+\>> two new units with \cGr timing detectors\cFg{}, resolution $\ls 30\un{ps}$
+
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Summary}
+
+{\itskip1mm
 
 \noindent\Em{Number of results published}
 
@@ -1345,6 +1447,7 @@ RP upgrade --> to cope with pile-up
 \vfil
 \noindent\Em{Roman Pot upgrade ongoing}
 \> preparation for higher luminosities (higher pile-up)
+}
 
 \vfil
 \eject
