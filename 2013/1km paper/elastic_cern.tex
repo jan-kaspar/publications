@@ -1,0 +1,402 @@
+\documentclass[TOTEM]{cern/cernphprep}
+
+
+\def\d{{\rm d}}
+\def\un#1{\,{\rm #1}}
+\def\ung#1{\quad[{\rm #1}]}
+\def\unt#1{[{\rm #1}]}
+\def\e{{\rm e}}
+
+\setbox123\hbox{\small$0$}
+\def\S{\hbox to\wd123{\hss}}
+\setbox124\hbox{\small$_{0}$}
+\def\s{\hbox to\wd124{\hss}}
+
+\def\etal{et al.}
+\def\acknowledgments{\section*{Acknowledgements}}
+\def\Name#1{\textsc{#1}, }
+\def\REVIEW#1#2#3#4{{\it #1} {\bf #2} (#3) #4}
+
+\def\Instline#1#2{%
+	\expandafter\write1{\string\newlabel{#1}{{#1}{}}}%
+	\hbox to\hsize{\strut\hss$^{#1}$#2\hss}
+}
+
+\def\hang{\hangindent=\parindent}
+\catcode`\>=11
+\newskip\itskip \itskip2mm
+\newskip\iitskip \iitskip0mm
+\newdimen\itindent \itindent3mm
+\newdimen\iitindent \iitindent5mm
+\def\>{\par\vskip\itskip\parindent\itindent\indent\hang\llap{\hbox to3mm{$\bullet$\hss}}}
+\def\>E{\par\vskip\itskip\parindent\itindent\indent\hang\llap{\hbox to3mm{\hss}}}
+\def\>>{\par\vskip\iitskip\parindent\iitindent\indent\hang\llap{\hbox to\iitindent{\hss--\ }}}
+
+
+
+%----------------------------------------------------------------------------------------------------
+
+\begin{document}
+
+\begin{titlepage}
+
+\renewcommand{\EXPLOGO}{fig/logo_totem_black.pdf}
+
+\PHnumber{XXXX}
+\PHdate{XXXX}
+
+\EXPnumber{XXXX}
+\EXPdate{XXXX}
+
+\title{XXXX}
+\ShortTitle{XXXX}
+
+\Collaboration{The TOTEM Collaboration}
+\ShortAuthor{The TOTEM Collaboration (G.~Antchev \emph{\etal})}
+
+\iffalse
+\begin{Authlist}
+G.~Antchev\Aref{a},
+P.~Aspell\Iref{8},
+I.~Atanassov\IAref{8}{a},
+V.~Avati\Iref{8},
+J.~Baechler\Iref{8},
+V.~Berardi\IIref{5b}{5a},
+M.~Berretti\Iref{7b},
+E.~Bossini\Iref{7b},
+M.~Bozzo\IIref{6b}{6a},
+P.~Brogi\Iref{7b},
+E.~Br\"{u}cken\IIref{3a}{3b},
+A.~Buzzo\Iref{6a},
+F.~S.~Cafagna\Iref{5a},
+M.~Calicchio\IIref{5b}{5a},
+M.~G.~Catanesi\Iref{5a},
+C.~Covault\Iref{9},
+M.~Csan\'{a}d\IAref{4}{e},
+T.~Cs\"{o}rg\H{o}\Iref{4},
+M.~Deile\Iref{8},
+K.~Eggert\Iref{9},
+V.~Eremin\Aref{b},
+R.~Ferretti\IIref{6a}{6b},
+F.~Ferro\Iref{6a},
+A. Fiergolski\Aref{c},
+F.~Garcia\Iref{3a},
+S.~Giani\Iref{8},
+V.~Greco\IIref{7b}{8},
+L.~Grzanka\IAref{8}{d},
+J.~Heino\Iref{3a},
+T.~Hilden\IIref{3a}{3b},
+R.~A.~Intonti\Iref{5a},
+J.~Ka\v{s}par\IIref{1a}{8},
+J.~Kopal\IIref{1a}{8},
+V.~Kundr\'{a}t\Iref{1a},
+K.~Kurvinen\Iref{3a},
+S.~Lami\Iref{7a},
+G.~Latino\Iref{7b},
+R.~Lauhakangas\Iref{3a},
+T.~Leszko\Aref{c},
+E.~Lippmaa\Iref{2},
+M.~Lokaj\'{\i}\v{c}ek\Iref{1a},
+M.~Lo~Vetere\IIref{6b}{6a},
+F.~Lucas~Rodr\'{i}guez\Iref{8},
+M.~Macr\'{\i}\Iref{6a},
+T.~M\"aki\Iref{3a},
+A.~Mercadante\IIref{5b}{5a},
+N.~Minafra\Iref{8} ,
+S.~Minutoli\Iref{6a},
+F.~Nemes\IAref{4}{e},
+H.~Niewiadomski\Iref{8},
+E.~Oliveri\Iref{7b},
+F.~Oljemark\IAref{3a}{3b},
+R.~Orava\IIref{3a}{3b},
+M.~Oriunno\IAref{8}{f},
+K.~\"{O}sterberg\IIref{3a}{3b},
+P.~Palazzi\Iref{7b},
+J.~Proch\'{a}zka\Iref{1a},
+M.~Quinto\Iref{5a},
+E.~Radermacher\Iref{8},
+E.~Radicioni\Iref{5a},
+F.~Ravotti\Iref{8},
+E.~Robutti\Iref{6a},
+L.~Ropelewski\Iref{8},
+G.~Ruggiero\Iref{8},
+H.~Saarikko\IIref{3a}{3b},
+A.~Santroni\IIref{6b}{6a},
+A.~Scribano\Iref{7b},
+J.~Smajek\Iref{8},
+W.~Snoeys\Iref{8},
+J.~Sziklai\Iref{4},
+C.~Taylor\Iref{9},
+N.~Turini\Iref{7b},
+V.~Vacek\Iref{1b},
+M.~V\'itek\Iref{1b},
+J.~Welti\IIref{3a}{3b} and
+J.~Whitmore\Iref{10}
+\end{Authlist}
+
+\Instline{1a}{Institute of Physics of the Academy of Sciences of the Czech Republic, Praha, Czech Republic.}
+\Instline{1b}{Czech Technical University, Praha, Czech Republic.}
+\Instline{2} {National Institute of Chemical Physics and Biophysics NICPB, Tallinn, Estonia.}
+\Instline{3a}{Helsinki Institute of Physics, Finland.}
+\Instline{3b}{Department of Physics, University of Helsinki, Finland.}
+\Instline{4} {MTA Wigner Research Center, RMKI, Budapest, Hungary.}
+\Instline{5a}{INFN Sezione di Bari, Italy.}
+\Instline{5b}{Dipartimento Interateneo di Fisica di Bari, Italy.}
+\Instline{6a}{Sezione INFN, Genova, Italy.}
+\Instline{6b}{Universit\`{a} degli Studi di Genova, Italy.}
+\Instline{7a}{INFN Sezione di Pisa, Italy.}
+\Instline{7b}{Universit\`{a} degli Studi di Siena and Gruppo Collegato INFN di Siena, Italy.}
+\Instline{8} {CERN, Geneva, Switzerland.}
+\Instline{9} {Case Western Reserve University, Dept. of Physics, Cleveland, OH, USA.}
+\Instline{10}{Penn State University, Dept.~of Physics, University Park, PA, USA.}
+
+\Anotfoot{a}{INRNE-BAS, Institute for Nuclear Research and Nuclear Energy, Bulgarian Academy of Sciences, Sofia, Bulgaria.}
+\Anotfoot{b}{Ioffe Physical - Technical Institute of Russian Academy of Sciences.}
+\Anotfoot{c}{Warsaw University of Technology, Poland.}
+\Anotfoot{d}{Institute of Nuclear Physics, Polish Academy of Science, Cracow, Poland.}
+\Anotfoot{e}{Department of Atomic Physics, E\"otv\"os University, Hungary.}
+\Anotfoot{f}{SLAC National Accelerator Laboratory, Stanford CA, USA.}
+\fi
+
+\newpage
+\begin{abstract}
+\iffalse
+At the LHC energy of $\sqrt s = 7\un{TeV}$, under various beam and background conditions, luminosities, and Roman Pot positions, TOTEM has measured the differential cross-section for proton-proton elastic scattering as a function of the four-momentum transfer squared $t$. The results of the different analyses are in excellent agreement demonstrating no sizeable dependence on the beam conditions. Due to the very close approach of the Roman Pot detectors to the beam center ($\approx 5\sigma_{\rm beam}$) in a dedicated run with $\beta^*=90\un{m}$, $|t|$-values down to $5\cdot10^{-3}\un{GeV^2}$ were reached. The exponential slope of the differential elastic cross-section in this newly explored $|t|$-region remained unchanged and thus an exponential fit with only one constant $B = (19.9 \pm 0.3)\un{GeV^{-2}}$ over the large $|t|$-range from $0.005$ to $0.2\un{GeV^2}$ describes the differential distribution well. The high precision of the measurement and the large fit range lead to an error on the slope parameter $B$ which is remarkably small compared to previous experiments. It allows a precise extrapolation over the non-visible cross-section (only  $9\%$) to $t=0$. With the luminosity from CMS, the elastic cross-section was determined to be $(25.4 \pm 1.1)\un{mb}$, and using in addition the optical theorem, the total $\rm pp$ cross-section was derived to be $(98.6 \pm 2.2)\un{mb}$.
+%
+For model comparisons the $t$-distributions are tabulated including the large $|t|$-range of the previous measurement \cite{epl95}.
+\fi
+\end{abstract}
+\end{titlepage}
+
+
+
+
+%--------------------------------------------------
+\section{Introduction}
+
+\> motivation for low-$|t|$ measurement
+\>> why it is important and interesting
+
+\> theoretical understanding
+\>> several models $\rightarrow$ can we distiguish with data ?
+
+
+
+%--------------------------------------------------
+\section{Data taking}
+
+\> difficult environment
+\>> sizeable beam-induced background $\Rightarrow$ regular beam cleaning (describe the procedures -- vertical and horizontal)
+
+\> different diagonal settings (due to the anti-collision switches -- but also positive aspect: better understanding of systematics)
+\>> RP approach, $|t|_{\rm min}$
+
+\> data sets (in between beam cleanings)
+\>> any differences?
+
+\> $\beta^* = 1000\un{m}$ optics $\Leftarrow$ need extremely low $t$ smearing
+\>> very low beam divergence
+\>> event higher effective length than the 90m optics
+
+
+%--------------------------------------------------
+\section{Differential cross-section}
+
+
+%-------------------------
+\subsection{Alignment}
+
+\> the three methods: collimation, track-based and with physics processes
+\>> final uncertainty, also propagated to angles
+\>> TODO: the new approach -- relative + absolute in one RP using also horizontal RPs
+
+\> the observed hit inefficiencies -- possible asymmetries -- discuss
+\> mention final alignment check = 2D Gaussian fit of $\theta_x^*$ vs.~$\theta_y^*$ from both diagonals ??
+
+
+%-------------------------
+\subsection{Kinematics reconstruction}
+
+\> choice of reconstruction formulae in x and in y
+\>> guide = robustness against error sources: beam divergence, sensor pitch, misalignment, vertex term neglected, optics imperfections
+\>> two types of reconstruction: one-arm (for cuts) and two-arm (for physics)
+
+
+%-------------------------
+\subsection{Elastic tagging}
+
+\> the three main cuts: left-right collinearity in $x$ and $y$, left-right vertex $x^*$ comparison
+\>> motivation, sigmas
+\> applied at 4 sigmas ??
+\> inefficiency of the cuts (how many true events lost)
+
+\> control cuts (not applied, used for validation only): $y^{N}$ vs.~local $\theta_y$ correlation, reconstructed $x^*$ compatible with vertex distribution?
+
+
+%-------------------------
+\subsection{Background}
+
+\> background = impurity of the cuts above
+
+\> method: plot a cut quantity under various cuts
+\>> central peak (signal) stays
+\>> tails (background) drop
+\>> residual after all cuts $\rightarrow$ interpolate to signal region $\rightarrow$ background negligible
+\>> can be repeated for any cut -- compatible results ??
+
+\> further test: $|t|$-distributions under various combinations of cuts -- background distributed uniformly over $|t|$, no peaking
+
+
+%-------------------------
+\subsection{Acceptance correction}
+
+\> ``standard procedure'' (ref. to previous publications?): ``divergence'' and ``phi'' corrections
+
+\> also applied $\theta_x^*$ selection to avoid the regions affected by the horizontal RPs
+
+
+%-------------------------
+\subsection{Unfolding of resolution effects}
+
+\> ``standard procedure'' (ref. to previous publications?)
+
+\> due to the very small beam divergence, the effect is negligible for all bins except the low-$|t|$ ones where the rapid cross-section growth appears beacause of the Coulomb interaction
+
+%-------------------------
+\subsection{Efficiencies}
+
+\> ``standard procedure'' for the ``standard contributions'' (ref. to previous publications?)
+\>> ``3-out-of-4''
+\>> ``shower in near''
+\>> ``pile-up''
+
+
+
+%-------------------------
+\subsection{Luminosity}
+
+\> determined by fitting $\d N/\d t$ from $1000\un{m}$ to $\d\sigma/\d t$ from $90\un{m}$ (where the luminosity-inpendent method was applied, yielding $4\un{\%}$ uncertainty)
+
+\> full uncertainty $\approx 5\un{\%}$
+
+
+%-------------------------
+\subsection{Systematic uncertainty calculation}
+
+\> ``standard procedure'' (ref. to previous publications?)
+
+\> TODO: leading uncertainties
+
+
+%--------------------------------------------------
+\subsection{Result}
+
+
+
+%-------------------------
+\section{Analysis of Coulomb-hadronic interference region}
+
+
+
+%--------------------------------------------------
+\section{Discussion}
+
+
+%--------------------------------------------------
+\section{Outlook}
+
+
+
+%--------------------------------------------------
+\acknowledgments
+
+\iffalse
+We are indebted to the beam optics development team
+%({\sc A.~Verdier} in the initial phase, {\sc H.~Burkhardt}, {\sc G.~M\" uller}, {\sc S.~Redaelli}, {\sc J.~Wenninger}, {\sc S.~M.~White})
+for the design, the thorough preparations and the successful commissioning of the $\beta^* = 90\un{m}$ optics. We congratulate the CERN accelerator groups for the very smooth operation in 2011. We thank
+%{\sc M.~Ferro-Luzzi}
+the LHC machine coordinators for scheduling the dedicated fills.
+
+We are grateful to CMS for providing their luminosity measurements.
+
+This work was supported by the institutions listed on the front page and partially also by NSF (US), the Magnus
+Ehrnrooth foundation (Finland), the Waldemar von Frenckell foundation (Finland), the Academy of
+Finland, the OTKA grant NK 101438, 73143 (Hungary) and the NKTH-OTKA grant 74458 (Hungary).
+
+\fi
+
+%--------------------------------------------------
+\begin{thebibliography}{99}
+
+\iffalse
+\bibitem{epl95}
+    %Proton-proton elastic scattering at the LHC energy of \sqrt{s} = 7 TeV, Europhys. Lett. 95 (2011) 41001,CERN-PH-EP-2011-101 
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Europhys.~Lett.}{95}{2011}{41001}
+
+\bibitem{epl96}
+    %First measurements of the total proton-proton cross-section at the LHC energy of $\sqrt s =7\,\rm TeV$ CERN-PH-EP-2011-158
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Europhys.~Lett.}{96}{2011}{21002}
+
+\bibitem{P2} 
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	%\REVIEW{Europhys.~Lett.}{TODO}{2012}{TODO}
+	CERN-PH-EP-2012-352
+
+\bibitem{P3} 
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	%\REVIEW{Europhys.~Lett.}{TODO}{2012}{TODO}
+	CERN-PH-EP-2012-353
+
+\bibitem{jinst}
+    %The TOTEM Experiment at the CERN Large Hadron Collider, JINST 3 S08007, 2008
+	\Name{Anelli G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{JINST}{3}{2008}{S08007}
+
+\bibitem{jan_thesis}
+	\Name{Ka\v spar J.}
+	PhD Thesis, CERN-THESIS-2011-214, {\tt http://cdsweb.cern.ch/record/1441140}
+
+\bibitem{mario_ipac_2011}
+	\Name{Deile M.}
+	{\it The First 1 1/2 Years of TOTEM Roman Pot Operation at LHC}, in
+	{\it Proceedings of the 2nd International Particle Accelerator Conference (IPAC 2011), San Sebastian, Spain}. 
+	%{\tt http://accelconf.web.cern.ch/AccelConf/IPAC2011/papers/mopo011.pdf}
+	arXiv:1110.5808v1
+
+\bibitem{kklp}	
+	\Name{Ka\v spar, J.~\etal}
+	\REVIEW{Nucl.~Phys.}{B843}{2011}{84}
+
+%\bibitem{pdg} 
+%	\Name{Nakamura K.~\etal{} (Particle Data Group)}
+%	\REVIEW{J.~Phys.}{G37}{2010}{075021}
+
+\bibitem{B_vs_s}
+	\Name{ISR (CR Collaboration)} \REVIEW{Phys.~Lett.}{B62}{1976}{460}; 
+	\Name{ISR (ACHGT Collaboration)} \REVIEW{Phys.~Lett.}{B39}{1972}{663}; 
+	\Name{ISR (R-211)} \REVIEW{Nucl.~Phys.}{B262}{1985}{689}; 
+	\Name{ISR (R-210)} \REVIEW{Phys.~Lett.}{B115}{1982}{495}; 
+	\Name{UA1} \REVIEW{Phys.~Lett.}{B147}{1984}{385}; 
+	\Name{UA4} \REVIEW{Phys.~Lett.}{B127}{1983}{472} and \REVIEW{Phys. Lett.}{B198}{1987}{583}; 
+	\Name{UA4/2} \REVIEW{Phys.~Lett.}{B316}{1993}{448}; 
+	\Name{CDF} \REVIEW{Phys.~Rev.}{D50}{1994}{5518}; 
+	\Name{E710} \REVIEW{Phys.~Rev.~Lett.}{68}{1992}{2433} and \REVIEW{Nuovo Cimento}{A106}{1992}{123}; 
+	\Name{D0} D0 Note 6056-CONF; 
+	\Name{pp2pp} \REVIEW{Phys.~Lett.}{B579}{2004}{245}
+
+\bibitem{lafferty94}
+ 	% Where to stick your data points: The treatment of measurements within wide bins
+	\Name{Lafferty G.~D.~and Wyatt T.~R.}
+	\REVIEW{Nucl.\ Instrum.\ Meth.}{A 355}{1995}{541}
+
+\bibitem{compete} 
+	\Name{Cudell~J.~R.~\etal{} (COMPETE Collaboration)}
+	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
+
+\fi
+
+\end{thebibliography}
+
+\end{document}
