@@ -1,6 +1,5 @@
 \documentclass[TOTEM]{cern/cernphprep}
 
-
 \def\d{{\rm d}}
 \def\un#1{\,{\rm #1}}
 \def\ung#1{\quad[{\rm #1}]}
@@ -158,13 +157,9 @@ J.~Whitmore\Iref{10}
 \Anotfoot{f}{SLAC National Accelerator Laboratory, Stanford CA, USA.}
 \fi
 
-\newpage
+%\newpage
 \begin{abstract}
-\iffalse
-At the LHC energy of $\sqrt s = 7\un{TeV}$, under various beam and background conditions, luminosities, and Roman Pot positions, TOTEM has measured the differential cross-section for proton-proton elastic scattering as a function of the four-momentum transfer squared $t$. The results of the different analyses are in excellent agreement demonstrating no sizeable dependence on the beam conditions. Due to the very close approach of the Roman Pot detectors to the beam center ($\approx 5\sigma_{\rm beam}$) in a dedicated run with $\beta^*=90\un{m}$, $|t|$-values down to $5\cdot10^{-3}\un{GeV^2}$ were reached. The exponential slope of the differential elastic cross-section in this newly explored $|t|$-region remained unchanged and thus an exponential fit with only one constant $B = (19.9 \pm 0.3)\un{GeV^{-2}}$ over the large $|t|$-range from $0.005$ to $0.2\un{GeV^2}$ describes the differential distribution well. The high precision of the measurement and the large fit range lead to an error on the slope parameter $B$ which is remarkably small compared to previous experiments. It allows a precise extrapolation over the non-visible cross-section (only  $9\%$) to $t=0$. With the luminosity from CMS, the elastic cross-section was determined to be $(25.4 \pm 1.1)\un{mb}$, and using in addition the optical theorem, the total $\rm pp$ cross-section was derived to be $(98.6 \pm 2.2)\un{mb}$.
-%
-For model comparisons the $t$-distributions are tabulated including the large $|t|$-range of the previous measurement \cite{epl95}.
-\fi
+Abstract ...
 \end{abstract}
 \end{titlepage}
 
@@ -177,26 +172,45 @@ For model comparisons the $t$-distributions are tabulated including the large $|
 \> motivation for low-$|t|$ measurement
 \>> why it is important and interesting
 
+\> historical context, previous measurements
+
 \> theoretical understanding
-\>> several models $\rightarrow$ can we distiguish with data ?
+\>> several models/frameworks $\rightarrow$ can we distinguish with data ?
 
 
 
 %--------------------------------------------------
 \section{Data taking}
 
-\> difficult environment
-\>> sizeable beam-induced background $\Rightarrow$ regular beam cleaning (describe the procedures -- vertical and horizontal)
+\> what data: 24-25 October 2012, how many bunches, 2 colliding bunch pairs, bunch population $10^{11}$, about 9h of data taking, luminosity, trigger, ...
+
+\> challenging environment
+\>> sizeable beam-induced background $\Rightarrow$ regular (every 1 or 2 hours) beam cleaning
+
+\> beam cleaning -- TODO: verify
+\>> RPs at $3\un{\sigma}$ retracted by $1\un{\sigma}$ for safety reasons
+\>> collimators to $2\un{\sigma}$, then retracted to $2.5\un{\sigma}$
+\>> RPs back to $3\un{\sigma}$
 
 \> different diagonal settings (due to the anti-collision switches -- but also positive aspect: better understanding of systematics)
-\>> RP approach, $|t|_{\rm min}$
+\>> 45 top -- 56 bottom: verticals at $3\un{\sigma}$, $|t|_{\rm min} \approx 6\cdot10^{-4}\un{GeV^2}$
+\>> 45 bottom -- 56 top: verticals at $10\un{\sigma}$, $|t|_{\rm min} \approx 3\cdot10^{-3}\un{GeV^2}$
 
 \> data sets (in between beam cleanings)
-\>> any differences?
+\>> no differences in results observed
 
 \> $\beta^* = 1000\un{m}$ optics $\Leftarrow$ need extremely low $t$ smearing
 \>> very low beam divergence
 \>> event higher effective length than the 90m optics
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=16cm]{fig/overview.pdf}
+\vskip-3mm
+\caption{Illustration of the beam conditions. The T2 rate is roughly proportional to luminosity. The RP rate is sensitive to luminosity plus beam-halo. The pile-up probability follows the intensity of beam-halo protons.}
+\label{fig:overview}
+\end{center}
+\end{figure*}
 
 
 %--------------------------------------------------
@@ -207,10 +221,17 @@ For model comparisons the $t$-distributions are tabulated including the large $|
 \subsection{Alignment}
 
 \> the three methods: collimation, track-based and with physics processes
-\>> final uncertainty, also propagated to angles
-\>> TODO: the new approach -- relative + absolute in one RP using also horizontal RPs
 
-\> the observed hit inefficiencies -- possible asymmetries -- discuss
+\> the new approach for alignment with elastics
+\>> excellent for relative alignment (between near and far or left and right)
+\>> absolute (= wrt.~the beam) achieved with the right arm and two complementary methods:
+
+\noindent 1) standard method with vertical RPs
+\noindent 2) fitting the axis of diffractive-proton axis and extrapolation to beam position
+
+\> final uncertainty, also propagated to $\theta^*_{x, y}$ angles
+
+\> the observed hit inefficiencies -- possible asymmetries -- discuss ???
 \> mention final alignment check = 2D Gaussian fit of $\theta_x^*$ vs.~$\theta_y^*$ from both diagonals ??
 
 
@@ -220,7 +241,9 @@ For model comparisons the $t$-distributions are tabulated including the large $|
 \> choice of reconstruction formulae in x and in y
 \>> guide = robustness against error sources: beam divergence, sensor pitch, misalignment, vertex term neglected, optics imperfections
 \>> two types of reconstruction: one-arm (for cuts) and two-arm (for physics)
+\>> TODO: what reco formulae used
 
+\> typical values of uncertainties: statistical (smearing) and systematic (optics, ...)
 
 %-------------------------
 \subsection{Elastic tagging}
@@ -246,13 +269,25 @@ For model comparisons the $t$-distributions are tabulated including the large $|
 
 \> further test: $|t|$-distributions under various combinations of cuts -- background distributed uniformly over $|t|$, no peaking
 
+%-------------------------
+\subsection{Efficiencies}
+
+\> ``standard procedure'' for the standard contributions (ref. to previous publications?): ``3-out-of-4'' (uncorrelated 1-RP inefficiencies), ``shower in near'' (near-far correlated) and ``pile-up'' (coincidence with beam-halo or any other particle)
+
+\> 3-out-of-4 results
+\>> right arm: typical results (near $\approx 98\un{\%}$, far $\approx 96.5\un{\%}$ efficiency)
+\>> left arm: efficiency in far RP unexpectedly low ($\approx 90\un{\%}$) -- due to showers in horizontal RPs (horizontal in left arm closer that in the right one) -- but experimentally determinable and thus fully correctable
+
+\> pile-up results shown in Fig.~\ref{fig:overview}
+\>> strong time-dependece: linear rise within the data-taking periods, decrease in beam cleanings
+
 
 %-------------------------
 \subsection{Acceptance correction}
 
 \> ``standard procedure'' (ref. to previous publications?): ``divergence'' and ``phi'' corrections
 
-\> also applied $\theta_x^*$ selection to avoid the regions affected by the horizontal RPs
+\> also applied $-50 < \theta_x^* < 80\un{\mu rad}$ selection to avoid the regions affected by the horizontal RPs
 
 
 %-------------------------
@@ -260,42 +295,77 @@ For model comparisons the $t$-distributions are tabulated including the large $|
 
 \> ``standard procedure'' (ref. to previous publications?)
 
-\> due to the very small beam divergence, the effect is negligible for all bins except the low-$|t|$ ones where the rapid cross-section growth appears beacause of the Coulomb interaction
+\> but time-dependent smearing sigma, determined from the variation of $\theta_y^{*R} - \theta_y^{*L}$
+\>> mention the subtlety with $\sigma(\theta_x^*)$ ?? Cannot be measured directly. The only handle comes from the emittances (crude only). But (at least for low-$|t|$), the impact of $\theta_x^*$ smearing is small -- the value of $\theta^*$ is mostly made by $\theta_y^*$, therefore $\theta_x^*$ must be very small. Consequently, $\Delta t_x = 2 \theta_x^* \Delta \theta_x^* \approx 0$
 
-%-------------------------
-\subsection{Efficiencies}
-
-\> ``standard procedure'' for the ``standard contributions'' (ref. to previous publications?)
-\>> ``3-out-of-4''
-\>> ``shower in near''
-\>> ``pile-up''
-
-
+\> due to the very small beam divergence, the effect is negligible for all bins except the low-$|t|$ ones where the rapid cross-section growth appears because of the Coulomb interaction
 
 %-------------------------
 \subsection{Luminosity}
 
-\> determined by fitting $\d N/\d t$ from $1000\un{m}$ to $\d\sigma/\d t$ from $90\un{m}$ (where the luminosity-inpendent method was applied, yielding $4\un{\%}$ uncertainty)
+\> determined by fitting $\d N/\d t$ from $1000\un{m}$ to $\d\sigma/\d t$ from $90\un{m}$ (where the luminosity-independent method was applied, yielding $4\un{\%}$ uncertainty)
 
 \> full uncertainty $\approx 5\un{\%}$
 
 
 %-------------------------
-\subsection{Systematic uncertainty calculation}
+\subsection{Systematic uncertainties}
 
-\> ``standard procedure'' (ref. to previous publications?)
+\> ``standard procedure'' (ref. to previous publications?) of uncertainty assessment
 
-\> TODO: leading uncertainties
+\> leading uncertainties: residual misalignment (very low-$|t|$), normalisation (flat)
+
+\> compatible results obtained if data right after or right before beam cleaning are used
+
 
 
 %--------------------------------------------------
 \subsection{Result}
 
+\begin{figure*}
+\begin{center}
+\includegraphics[width=16cm]{fig/plotTabulation.pdf}
+\vskip-3mm
+\caption{Differential cross-section.}
+\label{fig:dsdt}
+\end{center}
+\end{figure*}
+
+\> present/comment Fig.~\ref{fig:dsdt}
+
+\> Table with points? Now or later (in a compilation with all 8 TeV data)?
 
 
 %-------------------------
 \section{Analysis of Coulomb-hadronic interference region}
 
+\> general approach: not just a blind fit, but probe and test
+
+\> two goals: distinction between different models, determination of parameters of interest (e.g.~$\rho$, total cross-section with Coulomb taken into account)
+
+\> distinction between different models - TODO
+
+%-------------------------
+\subsection{Parameter determination}
+
+\> general comment: need to work with certain theoretical framework (assumption)
+
+\> key elements
+\>> Coulomb amplitude: well known
+\>> interference formula (assumption: SWY or KL)
+\>> modulus of hadronic amplitude -- strongly constrained by data $\Rightarrow$ exponential parametrisation, one parameter only disfavoured
+\>> phase of hadronic amplitude -- weak guidance from data $\Rightarrow$ need assumption: constant, central, peripheral (the last two as from Z.Phys. ...)
+
+\> match metrics: $\chi^2$, Kolmogorov-like
+\> minimisation engines: Minuit, alternatives (simplex and simplex with simulated annealing), scan
+
+\> each method: tested with MC (input: phenomenological models as well as data fits) and applied to data
+
+\> MC tests
+\>> small method bias
+\>> understanding/evaluation of the method response to statistical and systematic uncerainties
+
+TODO: the rest
 
 
 %--------------------------------------------------
@@ -305,6 +375,9 @@ For model comparisons the $t$-distributions are tabulated including the large $|
 %--------------------------------------------------
 \section{Outlook}
 
+\> if any
+
+\> what data we have and publish in near future?
 
 
 %--------------------------------------------------
