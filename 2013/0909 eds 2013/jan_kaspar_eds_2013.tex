@@ -1,0 +1,629 @@
+\input slides.tex
+\input utf8-t1
+
+%%%%%%%%%%%%%%%%%%%%
+
+\SelectDejaVuSansCondensedFonts
+\LoadFonts
+
+\SetFontSizesXII
+
+\def\itcol{\cBl}
+\def\iitcol{\cBlack}
+\def\iiitcol{\cDGray}
+
+
+\def\section#1{\noindent\cRe{\bf #1}\cFg}
+\def\em#1{\cGreen{\it #1}\previcol}
+
+\def\FrameColor{\cLBlue}
+\def\AddFrame#1{%
+	\FrameColor
+	\vbox{%
+		\hrule height1mm
+		\hbox{%
+			\vrule width1mm
+			\cBlack
+			#1
+			\FrameColor
+			\vrule width1mm
+		}%
+		\hrule height1mm
+	}%
+	\cFg
+}
+
+\def\AddBox#1{%
+	\FrameColor
+	\vbox{%
+		\hrule height1mm
+		\hbox{%
+			\vrule width1mm
+			\cBlack
+			\vbox{%
+				\vskip1mm
+				\hbox{\hskip1mm #1\hskip1mm}%
+				\vskip1mm
+			}%
+			\FrameColor
+			\vrule width1mm
+		}%
+		\hrule height1mm
+	}%
+	\cFg
+}
+
+
+\def\figBS[#1]#2{\AddFrame{\IncludeSizedGraphics{#1}{#2}}}
+\def\figBNS#1{\AddFrame{\IncludeGraphics{#1}}}
+
+\def\title#1{%
+	\hbox to\hsize{%
+		\hskip-\horizontalmargin
+		\vbox{\advance\hsize2\horizontalmargin
+			\cBlue
+			\hrule height8mm width\hsize
+			\vbox to0pt{%
+				\vss
+				\vbox to8mm{%
+					\vss
+					\cWhite
+					\centerline{#1}%
+					\vss
+				}%
+			}%
+			\cLBlue
+			\hrule height0.5mm width\hsize
+			\cFg
+		}%
+	\hss
+	}%
+}
+
+\def\ctitle#1#2{\title{{\rm #1} : {\it #2}}}
+
+\footline={%
+	\vbox to 4mm{%
+		\hbox to\hsize{%
+			\hskip-\horizontalmargin
+			\vbox to0pt{\advance\hsize2\horizontalmargin
+				\cBlue
+				\hrule height4mm width\hsize
+				\vss
+			}%
+			\hss
+		}%
+		\vss
+		\cWhite
+		\line{\SetFontSizesVIII\author\hfil{\it \caption}\hfil \date\hfil\lower2pt\hbox{\SetFontSizesX\bf \the\pageno}}%
+		\vss
+	}%
+}
+
+%%%%%%%%%%%%%%%%%%%%
+
+\def\Em#1{{\cRe#1\cFg}}
+\def\EM#1{{\cRe\bf #1\cFg}}
+
+\def\author{Jan Kašpar}
+\def\caption{EDS Blois 2013, Saariselkä, Finland}
+\def\date{9 September, 2013}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}\vfil
+\title{TOTEM Results on Elastic Scattering and Total Cross-Section}
+\vfil
+\centerline{\bf Jan Kašpar}
+\centerline{on behalf of the TOTEM collaboration}
+\vfil
+\line{\hss\hss
+	\fig[,25mm]{fig/logo_totem_blue.pdf}\hss
+	\fig[,25mm]{fig/logo_cern_blue.pdf}\hss
+	\fig[,25mm]{fig/logo_fzu_small_blue.pdf}\hss
+	\hss}
+\vfil
+\centerline{\caption}
+\centerline{\date}
+%\vfil
+
+{
+\footline={}
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+}
+\title{Elastic scattering and total cross-section}
+
+\vfil
+\cBlue
+\line{\hskip17mm Elastic scattering \hskip41mm Total cross-section\hss}
+\vskip1mm
+\line{\hss
+\hbox to12cm{%
+	\hss
+	\fig[,3cm]{fig/diagram_es.pdf}
+	\hss
+	\raise14mm\hbox{\fig{fig/optical_theorem.pdf}}
+	\hss
+	\fig[,3cm]{fig/diagram_tot.pdf}
+	\hss
+}%
+\hss}
+\vfil
+
+
+\newpage %-------------------------------------------------------------------------------------------
+
+\title{TOTEM and elastic scattering}
+
+\> TOTEM shares the LHC interaction point (IP5) with CMS
+
+\> elastic scattering = 2 anti-collinear protons from the same vertex:
+
+\line{\hss\fig[15.5cm]{fig/elastic_diagram.pdf}\hss}
+
+\vskip-31mm
+
+\line{%
+	\vbox{\hsize9cm
+		\> 2 diagonals $\Rightarrow$ control of systematics
+		\>> left {\it bottom} -- right {\it top}
+		\>> left {\it top} -- right {\it bottom}
+	}%
+	\hskip2mm
+	\raise0cm\vbox{\hsize6cm
+		\cBlack
+		\line{\hskip29mm$\Downarrow$\hss}
+		\vskip1mm
+		\fig[6.0cm]{fig/rp_station.jpg}%
+
+		\> 2 units $\Rightarrow$ improved:
+		\>> event selection
+		\>> kinematics reconstruction
+	}%
+	\hss
+}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Roman Pot detectors}
+
+\line{%
+\raise25mm\vbox{\hsize10.5cm
+\> each station: \cBlack near and far units
+
+\> each unit: \cBlack top, bottom and horizontal Roman Pots
+
+\> Roman Pot
+\>> movable beam-pipe insertion
+\>>> retracted when beam unstable
+\>>> close to beam for data taking
+\>> contains: $5\times 2$ back-to-back mounted silicon sensors
+
+\> edge-less silicon sensors
+\>> insensitive edge (facing beam): $\approx 50\un{\mu m}$
+\>> strips with pitch $66\un{\mu m}$ oriented at $45^\circ$ wrt.~active edge
+
+\> VFAT: \cBlack trigger-capable read-out chip
+}\hskip2mm
+\vbox{\hsize5cm
+	\line{\hss\fig[33mm]{fig/rp_unit.pdf}\hss}%
+	\line{\hss\fig[33mm]{fig/rp_pot.pdf}\hss}%
+	\line{\hss\fig[33mm]{fig/rp_package.pdf}\hss}%
+	\line{\hss\fig[33mm]{fig/rp_hybrid.pdf}\hss}%
+}}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Proton measurement with RPs}
+\vskip-2mm
+
+\> proton transport IP5 $\rightarrow$ RP detectors:
+
+\line{\hss\fig[10cm]{fig/ttm_proton_transport.pdf}\hss}
+
+\> optics
+
+\line{\hss\fig[8.8cm]{fig/optics.pdf}\hss}
+
+
+\> example: elastic sample seen with 3 different optics:
+
+\line{%
+	\hss
+	\fig[6.8cm]{fig/ttm_hit_distribution.pdf}%
+	\hskip10mm
+	\raise10mm\vbox{\hsize6cm
+		\cBlack
+		\hbox{$\Rightarrow$ \em{optics knowledge essential}}%
+		\centerline{$\Downarrow$}%
+		\hbox{TOTEM can improve optics accuracy}%
+	}%
+	\hss
+}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Elastic scattering analysis I}
+
+\> entirely data-driven
+\> two diagonals, several LHC fills $\simeq$ different experiments $\Rightarrow$ control of systematics
+
+\vfil
+\noindent\cRe{\bf 1. Alignment}\cFg
+\> prior to data-taking: collimator-like beam-based alignment
+\> offline alignment: \em{relative} (analysis of track fit residuals) and\\ \em{absolute wrt.~beam} (symmetries of elastic scattering)
+
+\vfil
+\noindent\cRe{\bf 2. Kinematics reconstruction}\cFg
+
+\> tracks in RPs $\mathop{\longrightarrow}$ kinematics at IP ($\xi = 0$ $\Rightarrow$ relatively easy)
+\> choice of formulae (using {\it N}ear and {\it F}ar RPs) $\rightarrow$ minimisation of systematics, typically:
+
+$$\th_x^* = {x^{\rm F} - x^{\rm N}\over L_x^{\rm F} - L_x^{\rm N}} ,\qquad \th_y^* = {1\over 2} \left ( {y^{\rm N}\over L_y^{\rm N}} + {y^{\rm F}\over L_y^{\rm F}} \right )$$
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Elastic scattering analysis II}
+
+\line{\vbox{\hsize10cm
+
+\noindent\cRe{\bf 3. Elastic tagging}\cFg
+
+\> angles left = angles right \cBlack(tolerance set by beam divergence: higher $\be^*$ $\Rightarrow$ more stringent cut)
+\> vertex left = vertex right
+\> protons $\xi \approx 0$ $\Rightarrow$ correlation hit position vs.~track angle at RPs
+
+\vskip3mm
+\noindent\cRe{\bf 4. Background subtraction}\cFg
+
+\> typically needed only for low $\be^*$ optics
+
+\> interpolation of event distribution surrounding the signal (tagged) region
+
+\vskip3mm
+\noindent\cRe{\bf 5. Acceptance corrections}\cFg
+
+\> RP sensors have finite size $\Rightarrow$ low $|\th_y^*|$ cut
+\> LHC apertures $\Rightarrow$ high $|\th_y^*|$ cut
+\> azimuthal symmetry (verified) $\Rightarrow$\\ geometrical correction (+ smearing around edges)
+
+}%
+\vbox{\hsize5.1cm
+	\centerline{\em{$\th_x^*$ collinearity\cFg}}%
+	\fig[5cm]{fig/cuts_th_x_L_vs_th_x_R.pdf}%
+
+	\vskip5mm
+
+	\centerline{\em{acceptance correction\cFg}}
+	\fig[5cm]{fig/acc_corr_phi_lab.pdf}
+}%
+}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Elastic scattering analysis III}
+
+\noindent\cRe{\bf 6. Unfolding of resolution effects}\cFg
+
+\> angular resolution \cBlack (better for high $\be^*$)\cBlue: left-right proton comparison
+\> Monte Carlo calculation $\Rightarrow$ impact on $t$-distribution
+
+\vfil
+\noindent\cRe{\bf 7. Inefficiency corrections}\cFg
+
+\> uncorrelated 1-RP inefficiencies\cBlack: repeat tagging with 3 RPs only and check the signal in 4th RP
+\> near-far correlated RP inefficiencies \cBlack(showers from near to far RP)
+\> ``pile-up'' = elastic event + another track in a RP \cBlack (prob.~from zero-bias stream)
+
+\vfil
+\noindent\cRe{\bf 8. Luminosity}\cFg
+
+\> from CMS (if available), uncertainty $\approx 4\%$
+\> from TOTEM (details later on)
+
+\vfil
+\noindent\cRe{\bf 9. Study of systematic uncertainties}\cFg
+
+\> final $\d\si/\d t$ $\Rightarrow$ input to Monte-Carlo simulation
+\> any analysis parameter: discrepancy simulation vs.~reconstruction $\Rightarrow$ study impact on $t$-distribution
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering results}{$\sqrt{s}$ = 7 TeV}
+
+\line{\hss\vbox{\tab{\bln
+\be^* & \hbox{RP approach} & \hbox{$|t|$ range} & \hbox{el.~events} & \hbox{status}\cr\bln
+90\un{m} & 4.8 \hbox{ to }6.5\un{\si}	& 0.005\hbox{ to } 0.4\un{GeV^2} 		& 1\un{M}	& \hbox{[EPL 101 (2013) 2100]}\cr\ln
+3.5\un{m} & 7\un{\si}					& 0.4\hbox{ to } 2.5\un{GeV^2}			& 66\un{k}	& \hbox{[EPL 95 (2011) 41001]}\cr\ln
+3.5\un{m} & 18\un{\si}					& \approx 2\hbox{ to } 3.5\un{GeV^2}	& 10\un{k}	& \hbox{anal.~advanced}\cr\bln
+}}\hss}
+
+\line{\hss\fig[,8cm]{fig/el_results_7.pdf}\hss}
+
+% SAY: 18sigma data compatible with continued exponential-like decrease
+
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering results}{$\sqrt{s}$ = 8 TeV}
+
+\cBlack
+
+\line{\hss\vbox{\tab{\bln
+\be^* & \hbox{RP approach} & \hbox{$|t|$ range} & \hbox{el.~events} & \hbox{status}\cr\bln
+1000\un{m} & 3\hbox{ or }10\un{\si}	& 0.0006\hbox{ to }0.2\un{GeV^2}	& 352\un{k}	& \hbox{publ.~in prep.}\cr\ln
+90\un{m} & 6\hbox{ to }9.5\un{\si}	& 0.01\hbox{ to }0.3\un{GeV^2}		& 0.68\un{M}& \hbox{[PRL 111 (2013)]}\cr\ln % 012001
+90\un{m} & 9.5\un{\si}				& 0.02\hbox{ to }1.4\un{GeV^2}		& 7.2\un{M}	& \hbox{anal.~advanced}\cr\ln
+}}\hss}
+
+
+\line{\hss\fig[,6cm]{fig/el_results_8.pdf}\hss}
+
+\> dip well visible in the combined $\be^* = 90\un{m}$ data
+
+% SAY: data tables for 90m data will be published together
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering results}{$\sqrt{s}$ = 2.76 TeV}
+
+\line{\hss\vbox{\tab{\bln
+\be^* & \hbox{RP approach} & \hbox{$|t|$ range} & \hbox{el.~events} & \hbox{status}\cr\bln
+11\un{m} & 5\un{\si} & 0.06\hbox{ to }0.4\un{GeV^2} & 45\un{k} & \hbox{anal.~started}\cr\ln
+11\un{m} & 13\un{\si} & 0.4\hbox{ to }0.6\un{GeV^2} & 2\un{k} & \hbox{anal.~started}\cr\bln
+}}\hss}
+
+\line{\hss\fig[,6cm]{fig/el_results_2p76.pdf}\hss}
+
+\> $\be^*=11\un{m}$ optics tuning in progress ($\rightarrow$ $t$ values preliminary)
+\> LHC aperture(s) at $\approx 14\un{\si}$
+\> dip (expected at $|t| \approx 0.6\un{GeV^2}$) unlikely to be visible
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Total cross-section}
+
+\line{\em{3 complementary methods:}\hss \cBlack$\displaystyle\rh \equiv \left . {\Re {\cal A}_{\rm el}\over \Im {\cal A}_{\rm el}} \right |_{t = 0}$}
+
+\vfil
+
+\line{\hss\fig[13cm]{fig/tot_cs_methods.pdf}\hss}
+
+\vfil
+
+\centerline{\hskip-5mm \cRe$N_{\rm el}$\cBlack{} from RPs\hss \cRe$N_{\rm inel}$\cBlack{} from T2\hss \cRe$\cal L$\cBlack{} from CMS\hss \cRe$\rh$\cBlack{} from COMPETE or TOTEM\hskip-5mm}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Inelastic cross-section}
+
+\line{%
+	\hskip-4mm
+	\fig[8cm]{fig/ttm_det_overview.pdf}%
+	\hskip5mm
+	\raise12mm\vbox{\hsize6.5cm
+		\section{Forward inelastic telescope T2}
+		\> detects charged particles at\\ $5.3 < |\et| < 6.5$
+		\> $\approx 95\un{\%}$ of inelastic events seen (enough to detect 1 track!)
+	}
+	\hss
+}
+
+\section{Inelastic cross-section analysis}
+
+\vfil
+\noindent 1) \em{Raw rate}: event counting with T2
+
+\vskip2mm
+\line{%
+	\hskip10mm
+	\hbox{$\downarrow$}%
+	\hskip3mm
+	\vtop{\hsize5cm
+		\noindent \cBlack{experimental corrections}:
+	}%
+	\hskip3mm
+	\vtop{\hsize8cm
+		\noindent\SetFontSizesX\it\cDGray trigger and reconstruction inefficiencies, beam-gas event suppression, pile-up consideration
+		\cBlack
+	}%
+	\hss
+}
+
+\vskip2mm
+
+\noindent 2) \em{Visible rate}: visible with T2 in perfect conditions
+
+\vskip2mm
+\line{%
+	\hskip10mm
+	\lower2mm\hbox{$\downarrow$}%
+	\hskip3mm
+	\vtop{\hsize5cm
+		\noindent\cBlack{recovery of events with no tracks in T2}:
+	}%
+	\hskip3mm
+	\vtop{\hsize8cm
+		\noindent\SetFontSizesX\it\cDGray T1-only events, events with gap over T2, low-mass diffraction
+		\cBlack
+	}%
+	\hss
+}
+\vskip2mm
+
+\noindent 3) \em{Physics rate}: true rate of inelastic events
+
+\vfil
+\> only one major Monte-Carlo-based correction: \em{low-mass diffraction}\\
+$\Rightarrow$ but can be constrained from data ($\si_{\rm tot}^{RP} - \si_{\rm el}^{RP} - \si_{\rm visible}^{T2}$)
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Total cross-section}{$\sqrt{s}$ = 7 and 8 TeV results}
+
+
+\line{%
+	\hss
+	\vtop{\hsize7.7cm
+		\centerline{\bf\cRe$\sqrt s = 7\un{TeV}$\cFg}
+		\vskip3mm
+		\line{\hss\fig{fig/tot_cs_methods_res7.pdf}\hss}
+	}%
+	\hskip2mm
+	\vrule
+	\hskip2mm
+	\vtop{\hsize7.7cm
+		\centerline{\bf\cRe$\sqrt s = 8\un{TeV}$\cFg}
+		\vskip3mm
+		\line{\hss\fig{fig/tot_cs_methods_res8.pdf}\hss}
+		\SetFontSizesX
+		\> CMS luminosity unavailable
+		\> $\cal L$ from luminosity-independent method\\ $\Rightarrow$ normalisation of $\d\si/\d t$ both at $\be^* = 90$ and $1000\un{m}$
+	}%
+	\hss
+}
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Total cross-section}{results in context}
+
+\line{\hss\fig[12.5cm]{fig/sigma_tot_el_inel_cmp_big.pdf}\hss}
+
+\> analysis at $\sqrt s = 2.76\un{TeV}$: all three methods available
+\>> elastic analysis: in early stage
+\>> inelastic analysis: almost finished
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Coulomb-nuclear interference at 8 TeV}
+
+\> $|t|$ as low as $6\cdot10^{-4}\un{GeV^2}$ (i.e.~$\th \approx 6\un{\mu rad}$) accessible thanks to
+\>> $\be^* = 1000\un{m}$ optics: large effective lengths, low beam divergence ($\approx 0.5\un{\mu rad}$)
+\>> RPs approach of $3\un{\si_{\rm beam}}$ from beam
+
+\vfil
+\line{\hss\fig[8cm]{fig/plotFitExampleComponents.pdf}\hss}
+
+\> interesting aspects
+\>> Coulomb-hadronic interference $\Rightarrow$ \Em{determination of phase} of hadronic amplitude
+\>> Coulomb/hadronic separation $\Rightarrow$ hadronic extrapolation to $t = 0$\\
+$\Rightarrow$ \Em{total-cross section implications} via optical theorem $\cGr\si_{\rm tot} \propto \Im {\cal A_{\rm el}}(t = 0)\cFg$
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Hadronic phase: first results}
+
+\section{Theory}
+
+\line{\hss\raise2mm\vbox{\hsize5.5cm
+$${\d\si\over \d t} \propto |{\cal A}^{\rm C+H}|^2$$
+
+$${\cal A}^{\rm C+H} = \hbox{COMBINATION}({\cal A^{\rm C}}, {\cal A}^{\rm H})$$
+}\hskip3mm\AddBckg[1mm]{\fig[,1.8cm]{fig/el_diagrams.pdf}}\hss}
+
+\> \Em{COMBINATION}: 2 theoretical alternatives
+\> \Em{${\cal A}^{\rm C}$}: well known
+\> \Em{${\cal A}^{\rm H}$}
+\>> \Em{modulus}: constrained by TOTEM data $\Rightarrow$ parametrised $\exp(Bt + \ldots)$
+\>> \Em{phase}: test a range of theoretical predictions
+
+
+\vfil
+
+
+\line{\vbox{\hsize9cm
+\section{Fits}
+
+\> various fit metrics: generalised $\ch^2$, Kolmogorov-like
+
+\> combination of above choices: little impact on the fit
+
+\> very PRELIMINARY result
+
+$$\rh = \left. {\Re {\cal A^{\rm H}}\over \Im {\cal A}^{\rm H}}\right |_{t = 0} =
+0.110 \pm 0.027^{\rm (stat)} \pm 0.010^{\rm (syst)}\ \hbox{}^{\hbox to 7pt{\hss+\hss} 0.013}_{\hbox to 7pt{\hss-\hss} 0.012}\ \hbox{}^{\rm (model)}
+$$
+
+}\hskip3mm\vbox{\vskip-5mm\fig[,5cm]{fig/rho.pdf}}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Conclusions/Summary}
+
+TODO
+
+
+\newpage %-------------------------------------------------------------------------------------------
+
+\hbox{}
+\vfill
+\centerline{Backup}
+\centerline{$\downarrow$}
+
+{
+\footline={}
+
+\newpage %-------------------------------------------------------------------------------------------
+}
+\ctitle{Backup}{Optics imperfections}
+
+\vfil
+\> optics imperfection sources
+\>> power-converter error: $\De I / I \approx 10^{-4}$
+\>> magnet transfer function: $\De B / B \approx 10^{-3}$
+\>> magnet rotation ($<1\un{mrad}$) and displacements ($<0.5\un{mm}$)
+\>> magnet harmonics ($\De B \approx 10^{-4}$)
+\>> beam momentum offset: $\De p / p \approx 10^{-3}$
+\>> beam crossing-angle uncertainty
+
+\vfil
+\> optics determination
+\>> direct measurement -- difficult
+\>> indirect from TOTEM observables
+
+\vfil
+\> TOTEM optics determination -- variation of magnet/beam parameters (within tolerances) to match TOTEM observables:
+\>> $L_y^L / L_y^R$
+\>> ${\d L_y\over \d s} / L_y$
+\>> $s(L_x = 0)$
+\>> $xy$ coupling (tilts in $xy$ plane)
+\>> ...
+
+\vfil
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Backup}{Optics refinement with TOTEM data}
+
+\centerline{\em{example for $\be^* = $ 3.5\ m optics}}
+
+\vfil
+\line{\hss\hskip0mm\fig[15.5cm]{fig/optics_refinement.png}\hss}
+
+\vfil
+
+\> optics uncertainty reduced:
+
+\cBlack
+\centerline{x projection: from $1.6\%$ to $0.17\%$}
+\centerline{y projection: from $4.2\%$ to $0.16\%$}
+
+\vfil
+
+\cBlue
+{\SmallerFonts
+\noindent [H. Niewiadomski, Roman Pots for beam diagnostic, OMCM, CERN, 20-23.06.2011]
+
+\noindent [H. Niewiadomski, F. Nemes, LHC Optics Determination with Proton Tracks, IPAC'12, Louisiana, USA, 20-25.05.2012]
+}
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Backup}{Elastic slope}
+
+\> RP Alignment ?? (From Heidelberg talk)
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Backup}{Elastic slope}
+
+\> TODO
+
+\vfil
+\eject
+\bye
