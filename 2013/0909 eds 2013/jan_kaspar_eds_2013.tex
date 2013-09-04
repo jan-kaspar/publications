@@ -1,109 +1,9 @@
 \input slides.tex
 \input utf8-t1
 
-%%%%%%%%%%%%%%%%%%%%
 
-\SelectDejaVuSansCondensedFonts
-\LoadFonts
-
-\SetFontSizesXII
-
-\def\itcol{\cBl}
-\def\iitcol{\cBlack}
-\def\iiitcol{\cDGray}
-
-
-\def\section#1{\noindent\cRe{\bf #1}\cFg}
-\def\em#1{\cGreen{\it #1}\previcol}
-
-\def\FrameColor{\cLBlue}
-\def\AddFrame#1{%
-	\FrameColor
-	\vbox{%
-		\hrule height1mm
-		\hbox{%
-			\vrule width1mm
-			\cBlack
-			#1
-			\FrameColor
-			\vrule width1mm
-		}%
-		\hrule height1mm
-	}%
-	\cFg
-}
-
-\def\AddBox#1{%
-	\FrameColor
-	\vbox{%
-		\hrule height1mm
-		\hbox{%
-			\vrule width1mm
-			\cBlack
-			\vbox{%
-				\vskip1mm
-				\hbox{\hskip1mm #1\hskip1mm}%
-				\vskip1mm
-			}%
-			\FrameColor
-			\vrule width1mm
-		}%
-		\hrule height1mm
-	}%
-	\cFg
-}
-
-
-\def\figBS[#1]#2{\AddFrame{\IncludeSizedGraphics{#1}{#2}}}
-\def\figBNS#1{\AddFrame{\IncludeGraphics{#1}}}
-
-\def\title#1{%
-	\hbox to\hsize{%
-		\hskip-\horizontalmargin
-		\vbox{\advance\hsize2\horizontalmargin
-			\cBlue
-			\hrule height8mm width\hsize
-			\vbox to0pt{%
-				\vss
-				\vbox to8mm{%
-					\vss
-					\cWhite
-					\centerline{#1}%
-					\vss
-				}%
-			}%
-			\cLBlue
-			\hrule height0.5mm width\hsize
-			\cFg
-		}%
-	\hss
-	}%
-}
-
-\def\ctitle#1#2{\title{{\rm #1} : {\it #2}}}
-
-\footline={%
-	\vbox to 4mm{%
-		\hbox to\hsize{%
-			\hskip-\horizontalmargin
-			\vbox to0pt{\advance\hsize2\horizontalmargin
-				\cBlue
-				\hrule height4mm width\hsize
-				\vss
-			}%
-			\hss
-		}%
-		\vss
-		\cWhite
-		\line{\SetFontSizesVIII\author\hfil{\it \caption}\hfil \date\hfil\lower2pt\hbox{\SetFontSizesX\bf \the\pageno}}%
-		\vss
-	}%
-}
-
-%%%%%%%%%%%%%%%%%%%%
-
-\def\Em#1{{\cRe#1\cFg}}
-\def\EM#1{{\cRe\bf #1\cFg}}
+%\def\Em#1{{\cRe#1\cFg}}
+%\def\EM#1{{\cRe\bf #1\cFg}}
 
 \def\author{Jan Kašpar}
 \def\caption{EDS Blois 2013, Saariselkä, Finland}
@@ -127,13 +27,10 @@
 \centerline{\date}
 %\vfil
 
-{
 \footline={}
 
 
-
 \newpage %-------------------------------------------------------------------------------------------
-}
 \title{Elastic scattering and total cross-section}
 
 \vfil
@@ -152,6 +49,17 @@
 }%
 \hss}
 \vfil
+\vfil
+
+\centerline{\vbox{\hsize10cm
+\section{Outline}
+\bitm\cBlue
+\itm Introduction: \cBlack{\it Roman Pot detectors, ...}\cBlue
+\itm Elastic scattering: \cBlack{\it analysis method and results}\cBlue
+\itm Total cross-section: \cBlack{\it analysis method and results}\cBlue
+\itm Study of Coulomb-nuclear interference
+\eitm
+}}
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -191,7 +99,8 @@
 \title{Roman Pot detectors}
 
 \line{%
-\raise25mm\vbox{\hsize10.5cm
+\raise105mm\vtop{\hsize10.5cm
+\itskip5mm
 \> each station: \cBlack near and far units
 
 \> each unit: \cBlack top, bottom and horizontal Roman Pots
@@ -273,7 +182,7 @@ $$\th_x^* = {x^{\rm F} - x^{\rm N}\over L_x^{\rm F} - L_x^{\rm N}} ,\qquad \th_y
 
 \> angles left = angles right \cBlack(tolerance set by beam divergence: higher $\be^*$ $\Rightarrow$ more stringent cut)
 \> vertex left = vertex right
-\> protons $\xi \approx 0$ $\Rightarrow$ correlation hit position vs.~track angle at RPs
+\> protons $\xi \approx 0$ $\Rightarrow$ correlation hit position vs.~track angle at RP
 
 \vskip3mm
 \noindent\cRe{\bf 4. Background subtraction}\cFg
@@ -333,14 +242,14 @@ $$\th_x^* = {x^{\rm F} - x^{\rm N}\over L_x^{\rm F} - L_x^{\rm N}} ,\qquad \th_y
 \newpage %-------------------------------------------------------------------------------------------
 \ctitle{Elastic scattering results}{$\sqrt{s}$ = 7 TeV}
 
-\line{\hss\vbox{\tab{\bln
+\line{\hss\AddBox{\vbox{\tab{\bln
 \be^* & \hbox{RP approach} & \hbox{$|t|$ range} & \hbox{el.~events} & \hbox{status}\cr\bln
 90\un{m} & 4.8 \hbox{ to }6.5\un{\si}	& 0.005\hbox{ to } 0.4\un{GeV^2} 		& 1\un{M}	& \hbox{[EPL 101 (2013) 2100]}\cr\ln
 3.5\un{m} & 7\un{\si}					& 0.4\hbox{ to } 2.5\un{GeV^2}			& 66\un{k}	& \hbox{[EPL 95 (2011) 41001]}\cr\ln
 3.5\un{m} & 18\un{\si}					& \approx 2\hbox{ to } 3.5\un{GeV^2}	& 10\un{k}	& \hbox{anal.~advanced}\cr\bln
-}}\hss}
+}}}\hss}
 
-\line{\hss\fig[,8cm]{fig/el_results_7.pdf}\hss}
+\line{\hss\fig[,78mm]{fig/el_results_7.pdf}\hss}
 
 % SAY: 18sigma data compatible with continued exponential-like decrease
 
@@ -351,12 +260,12 @@ $$\th_x^* = {x^{\rm F} - x^{\rm N}\over L_x^{\rm F} - L_x^{\rm N}} ,\qquad \th_y
 
 \cBlack
 
-\line{\hss\vbox{\tab{\bln
+\line{\hss\AddBox{\vbox{\tab{\bln
 \be^* & \hbox{RP approach} & \hbox{$|t|$ range} & \hbox{el.~events} & \hbox{status}\cr\bln
 1000\un{m} & 3\hbox{ or }10\un{\si}	& 0.0006\hbox{ to }0.2\un{GeV^2}	& 352\un{k}	& \hbox{publ.~in prep.}\cr\ln
 90\un{m} & 6\hbox{ to }9.5\un{\si}	& 0.01\hbox{ to }0.3\un{GeV^2}		& 0.68\un{M}& \hbox{[PRL 111 (2013)]}\cr\ln % 012001
 90\un{m} & 9.5\un{\si}				& 0.02\hbox{ to }1.4\un{GeV^2}		& 7.2\un{M}	& \hbox{anal.~advanced}\cr\ln
-}}\hss}
+}}}\hss}
 
 
 \line{\hss\fig[,6cm]{fig/el_results_8.pdf}\hss}
@@ -369,11 +278,11 @@ $$\th_x^* = {x^{\rm F} - x^{\rm N}\over L_x^{\rm F} - L_x^{\rm N}} ,\qquad \th_y
 \newpage %-------------------------------------------------------------------------------------------
 \ctitle{Elastic scattering results}{$\sqrt{s}$ = 2.76 TeV}
 
-\line{\hss\vbox{\tab{\bln
+\line{\hss\AddBox{\vbox{\tab{\bln
 \be^* & \hbox{RP approach} & \hbox{$|t|$ range} & \hbox{el.~events} & \hbox{status}\cr\bln
 11\un{m} & 5\un{\si} & 0.06\hbox{ to }0.4\un{GeV^2} & 45\un{k} & \hbox{anal.~started}\cr\ln
-11\un{m} & 13\un{\si} & 0.4\hbox{ to }0.6\un{GeV^2} & 2\un{k} & \hbox{anal.~started}\cr\bln
-}}\hss}
+11\un{m} & 13\un{\si} & 0.4\hbox{ to }0.5\un{GeV^2} & 2\un{k} & \hbox{anal.~started}\cr\bln
+}}}\hss}
 
 \line{\hss\fig[,6cm]{fig/el_results_2p76.pdf}\hss}
 
@@ -485,9 +394,11 @@ $\Rightarrow$ but can be constrained from data ($\si_{\rm tot}^{RP} - \si_{\rm e
 }
 
 \newpage %-------------------------------------------------------------------------------------------
-\ctitle{Total cross-section}{results in context}
+\ctitle{Total cross-section}{Results in context}
 
-\line{\hss\fig[12.5cm]{fig/sigma_tot_el_inel_cmp_big.pdf}\hss}
+\line{\hss\fig[13.5cm]{fig/sigma_tot_el_inel_cmp_big.pdf}\hss}
+
+\vskip-6mm
 
 \> analysis at $\sqrt s = 2.76\un{TeV}$: all three methods available
 \>> elastic analysis: in early stage
@@ -496,60 +407,175 @@ $\Rightarrow$ but can be constrained from data ($\si_{\rm tot}^{RP} - \si_{\rm e
 \newpage %-------------------------------------------------------------------------------------------
 \title{Coulomb-nuclear interference at 8 TeV}
 
-\> $|t|$ as low as $6\cdot10^{-4}\un{GeV^2}$ (i.e.~$\th \approx 6\un{\mu rad}$) accessible thanks to
-\>> $\be^* = 1000\un{m}$ optics: large effective lengths, low beam divergence ($\approx 0.5\un{\mu rad}$)
-\>> RPs approach of $3\un{\si_{\rm beam}}$ from beam
+\> $\be^* = 1000\un{m}$ : \cBlack $|t|$ as low as $6\cdot10^{-4}\un{GeV^2}$ $\Rightarrow$ \em{observed Coulomb-nuclear interference}
+\cBlack (between Coulomb/electromagnetic and nuclear/strong interactions):
 
 \vfil
-\line{\hss\fig[8cm]{fig/plotFitExampleComponents.pdf}\hss}
+\line{\hss\fig[85mm]{fig/plotFitExampleComponents.pdf}\hss}
+
+\vskip-5mm
 
 \> interesting aspects
-\>> Coulomb-hadronic interference $\Rightarrow$ \Em{determination of phase} of hadronic amplitude
-\>> Coulomb/hadronic separation $\Rightarrow$ hadronic extrapolation to $t = 0$\\
-$\Rightarrow$ \Em{total-cross section implications} via optical theorem $\cGr\si_{\rm tot} \propto \Im {\cal A_{\rm el}}(t = 0)\cFg$
+\>> interference $\Rightarrow$ \em{determination of phase} of nuclear amplitude
+\>> separation of Coulomb/nuclear effects $\Rightarrow$ \em{methodically better determination of $\si_{\rm tot}$}
+$$\cDGrayRed\si_{\rm tot}^{\rm(nuclear)} \propto \Im {\cal A_{\rm el}^{\rm nuclear}}(t = 0)\cFg$$
 
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{Hadronic phase: first results}
+\ctitle{Coulomb-nuclear interference}{Theory}
 
-\section{Theory}
+\vskip-3mm
 
-\line{\hss\raise2mm\vbox{\hsize5.5cm
-$${\d\si\over \d t} \propto |{\cal A}^{\rm C+H}|^2$$
+\cBlue
+$${\d\si\over \d t} \propto |{\cal A}^{\rm C+N}|^2\ ,\qquad
+{\cal A}^{\rm C+N} = \hbox{interference formula}({\cal A^{\rm C}}, {\cal A}^{\rm N})$$
+\vskip1mm
+\line{\hss\fig[,21mm]{fig/el_diagrams.pdf}\hss}
 
-$${\cal A}^{\rm C+H} = \hbox{COMBINATION}({\cal A^{\rm C}}, {\cal A}^{\rm H})$$
-}\hskip3mm\AddBckg[1mm]{\fig[,1.8cm]{fig/el_diagrams.pdf}}\hss}
+\> \em{Coulomb amplitude ${\cal A}^{\rm C}$}: well known (QED, form-factors measured)
 
-\> \Em{COMBINATION}: 2 theoretical alternatives
-\> \Em{${\cal A}^{\rm C}$}: well known
-\> \Em{${\cal A}^{\rm H}$}
-\>> \Em{modulus}: constrained by TOTEM data $\Rightarrow$ parametrised $\exp(Bt + \ldots)$
-\>> \Em{phase}: test a range of theoretical predictions
+\> \em{Nuclear amplitude ${\cal A}^{\rm N}$}
+\>> \em{modulus}: constrained by TOTEM data $\Rightarrow$ parametrised:
+$$\cBlue\exp(b_1 t + b_2 t^2 + ...)\qquad N_b = \hbox{number of $b_i$ parameters} = 1 \hbox{ to }3$$
+\>> \em{phase}: weak guidance from data $\Rightarrow$ test a range of theoretical alternatives 
 
+\> \em{interference formula}
+\>> \cBlue simplified West-Yennie \cBlack(SWY) [Phys.~Rev.~172 (1968) 1413-1422]
+\>>> traditional but
+\>>> only compatible with constant phase and purely exponential modulus
+\>> \cBlue Kundrát-Lokajíček \cBlack(KL) [Z.~Phys.~C63 (1994) 619-630]
+\>>> no ${\cal A}^{\rm N}$ limitations
 
 \vfil
 
+\centerline{\Em{general approach: exploration}}
 
-\line{\vbox{\hsize9cm
-\section{Fits}
-
-\> various fit metrics: generalised $\ch^2$, Kolmogorov-like
-
-\> combination of above choices: little impact on the fit
-
-\> very PRELIMINARY result
-
-$$\rh = \left. {\Re {\cal A^{\rm H}}\over \Im {\cal A}^{\rm H}}\right |_{t = 0} =
-0.110 \pm 0.027^{\rm (stat)} \pm 0.010^{\rm (syst)}\ \hbox{}^{\hbox to 7pt{\hss+\hss} 0.013}_{\hbox to 7pt{\hss-\hss} 0.012}\ \hbox{}^{\rm (model)}
-$$
-
-}\hskip3mm\vbox{\vskip-5mm\fig[,5cm]{fig/rho.pdf}}\hss}
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{Conclusions/Summary}
+\ctitle{Coulomb-nuclear interference}{Phase of nuclear amplitude}
 
-TODO
+\line{\hskip-2mm\raise-10mm\vbox{\hsize8.1cm
+\itskip10mm
 
+\> \Em{constant phase} -- the simplest choice
+\cDGrayRed
+$$\SmallerFonts\arg {\cal A}^{\rm N} = p_0$$
+
+\> \Em{central phase} -- similar shape as in many phenomenological models
+
+\cDGrayRed
+$$\SmallerFonts\arg {\cal A}^{\rm N} = {\pi\over 2} - \atan {\rh_0\over 1 - {t\over t_{\rm d}}},\ \rh_0 = {1\over \tan p_0}$$
+$$\SmallerFonts t_{\rm d} \approx -0.53\un{GeV^2}$$
+
+\> \Em{peripheral phase} [Z.~Phys.~C63 (1994)\break 619-630] -- expected order in impact\break parameter space: elastic collisions more peripheral than inelastic $\langle b^2 \rangle^{\rm el} > \langle b^2 \rangle^{\rm inel}$
+
+\cDGrayRed
+$$\SmallerFonts\arg {\cal A}^{\rm N} = p_0 + A \exp\left[ \ka \left( \log {t\over t_{\rm m}} - {t\over t_{\rm m}} + 1 \right) \right]$$
+$$\SmallerFonts A \approx 5.53,\ \ka \approx 4.01,\ t_{\rm m} \approx -0.310\un{GeV^2}$$
+}\hskip2mm\fig[7.5cm]{fig/compareHadronicPhases.pdf}\hss}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Coulomb-nuclear interference}{Data fits}
+
+\> data fits $\rightarrow$ for every parameter: value and uncertainty
+\>> full $|t|$-range: $6\cdot10^{-4}$ to $0.2\un{GeV^2}$
+\>> generalised $\ch^2$ (full covariance matrix)
+\>> typical $\ch^2/\hbox{``ndf''} \approx 1$
+\>> nuclear phase: only $p_0$ (value at $t=0$) free parameter
+
+\> fits with constant and central phase: undistinguishable
+\> fits with $N_b = 1$ and KL or SWY interference formula: undistinguishable
+
+%$$\rh = \left. {\Re {\cal A^{\rm H}}\over \Im {\cal A}^{\rm H}}\right |_{t = 0} =
+%0.110 \pm 0.027^{\rm (stat)} \pm 0.010^{\rm (syst)}\ \hbox{}^{\hbox to 7pt{\hss+\hss} 0.013}_{\hbox to 7pt{\hss-\hss} 0.012}\ \hbox{}^{\rm (model)}
+%$$
+
+\line{%
+	\hss
+	\fig[,6cm]{fig/plotDataResults.pdf}%
+	\hskip3mm
+	\raise50mm\vtop{\hsize55mm
+		\> indications that $N_b = 1$ insufficient to describe data
+		\vskip10mm
+		\> $\si_{\rm tot}$: very stable results
+		\> green line and band:\\
+		$\be^* = 90\un{m}$ results
+	}%
+	\hss
+}
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Coulomb-nuclear interference}{Variation of peripheral phase}
+
+\> data fits: only $p_0$ is free
+
+\> probe influence of phase shape: vary peak amplitude, width and position:
+
+\vskip2mm
+
+\line{%
+	\hss
+	\fig[15.5cm]{fig/plotDataResults_per_ranges.pdf}%
+	\hss
+}
+
+\vfil
+
+\centerline{$\Downarrow$}
+
+\vfil
+
+\centerline{range of fit results}
+
+\vskip 0pt plus 2fil
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Coulomb-nuclear interference}{Results}
+
+
+\line{\raise25mm\hbox{\SetFontSizesXVI\EM{$\rh \rightarrow$}}\hss\fig[,5cm]{fig/rho_s.pdf}\hss}
+
+\line{\raise25mm\hbox{\SetFontSizesXVI\EM{$\si_{\rm tot} \rightarrow$}}\hss\fig[,5cm]{fig/sigma_tot_details.pdf}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Summary}
+
+{
+\SmallerFonts
+
+\section{Elastic differential cross-section}
+
+\> \em{7 TeV}
+\>> $\be^*=90\un{m}$ and medium-$|t|$ at $\be^{*}=3.5\un{m}$: published
+\>> high-$|t|$ at $\be^{*}=3.5\un{m}$: advanced analysis
+
+\> \em{8 TeV}
+\>> $\be^*=1000\un{m}$: publication ongoing
+\>> $\be^*=90\un{m}$: advanced analysis
+
+\> \em{2.76 TeV}
+\>> $\be^*=11\un{m}$: analysis started
+
+\vfil
+\section{Total cross-section}
+
+\> \em{7 TeV}
+\>> $\be^*=90\un{m}$: published
+
+\> \em{8 TeV}
+\>> $\be^*=90\un{m}$: published
+\>> $\be^*=1000\un{m}$: publication ongoing (+ separation Coulomb/nuclear effects)
+
+\> \em{2.76 TeV}
+\>> $\be^*=11\un{m}$: elastic analysis started, inelastic ready
+
+\vfil
+\section{Coulomb-nuclear interference studies}
+
+\> \em{8 TeV}
+\>> $\be^*=1000\un{m}$: publication ongoing
+}
 
 \newpage %-------------------------------------------------------------------------------------------
 
@@ -558,11 +584,62 @@ TODO
 \centerline{Backup}
 \centerline{$\downarrow$}
 
-{
 \footline={}
 
+
 \newpage %-------------------------------------------------------------------------------------------
-}
+\ctitle{Backup}{RP Alignment I}
+
+\> RPs = movable insertions $\Rightarrow$ each run at different positions
+\> required angular precision $\rm \mu rad$ $\Rightarrow$ $\rm\mu m$ alignment precision needed
+
+\vfil
+\centerline{$\Downarrow$}
+\vfil
+
+\> two types of alignment needed
+\>> alignment of mechanical RP edges $\rightarrow$ for machine protection
+\>> alignment of RP sensors $\rightarrow$ for physics
+
+\> need alignment \em{wrt.~the beam}
+
+\vfil
+\centerline{$\Downarrow$}
+\vfil
+
+\centerline{\EM{3-step alignment procedure}:}
+
+\vfil
+
+\noindent1) \em{Collimation alignment}: RP alignment wrt.~beam, rough sensor alignment
+
+\line{\hss\vbox{\hsize8cm
+\> procedure prior to data taking
+\> standard procedure for LHC collimators
+
+\fig[,25mm]{fig/al_collim_scheme.pdf}}\hskip1mm\hfil\fig[,45mm]{fig/al_collim_ex.pdf}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Backup}{RP Alignment II}
+
+\noindent2) \em{Track-based alignment}: relative alignment among sensors
+
+\line{\raise3mm\vbox{\hsize10cm
+{\itskip1mm
+\> RP station: no magnetic field $\rightarrow$ straight tracks
+\> misalignments $\rightarrow$ residuals
+\> residual analysis $\rightarrow$ alignment corrections
+\> overlap between horizontal and vertical RPs $\rightarrow$ relative alignment among all sensors
+\> singular/weak modes: e.g.~overall shift/rotation\\
+$\Rightarrow$ need further alignment step
+}}\hss\fig[,3.8cm]{fig/overlap.pdf}}
+
+\vfil
+\noindent3) \em{Alignment with elastic scattering}: sensor alignment wrt.~beam
+
+\line{\hss\fig[16cm]{fig/al_el_plots_sum_slides.pdf}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
 \ctitle{Backup}{Optics imperfections}
 
 \vfil
@@ -570,7 +647,7 @@ TODO
 \>> power-converter error: $\De I / I \approx 10^{-4}$
 \>> magnet transfer function: $\De B / B \approx 10^{-3}$
 \>> magnet rotation ($<1\un{mrad}$) and displacements ($<0.5\un{mm}$)
-\>> magnet harmonics ($\De B \approx 10^{-4}$)
+\>> magnet harmonics ($\De B / B \approx 10^{-4}$)
 \>> beam momentum offset: $\De p / p \approx 10^{-3}$
 \>> beam crossing-angle uncertainty
 
@@ -608,21 +685,46 @@ TODO
 \vfil
 
 \cBlue
-{\SmallerFonts
+{\SetFontSizesVIII
 \noindent [H. Niewiadomski, Roman Pots for beam diagnostic, OMCM, CERN, 20-23.06.2011]
 
 \noindent [H. Niewiadomski, F. Nemes, LHC Optics Determination with Proton Tracks, IPAC'12, Louisiana, USA, 20-25.05.2012]
 }
 
 \newpage %-------------------------------------------------------------------------------------------
-\ctitle{Backup}{Elastic slope}
+\ctitle{Backup}{Systematic studies}
 
-\> RP Alignment ?? (From Heidelberg talk)
+\> Monte-Carlo: offset in 1 parameter $\Rightarrow$ impact on $t$-distribution
+
+\vskip1mm
+
+\centerline{\em{example for $\be^* = $ 1000\ m optics}}
+
+\centerline{\fig[11.5cm]{fig/predefined_scenarios_plots_eb.pdf}}
 
 \newpage %-------------------------------------------------------------------------------------------
-\ctitle{Backup}{Elastic slope}
+\ctitle{Backup}{Interference formulae}
 
-\> TODO
+\> {simplified West-Yennie formula} (SWY)
+\>> \em{limitation}: derived for \em{constant slope $B$} (1 $b_i$ parameter only)\\ and \em{constant hadronic phase}
+\>> acts as simple {interference phase} (i.e.~$\Ph$ is real-valued)
+
+$$F^{\rm C+H} = F^{\rm C} \e^{\i \al \Ph} + F^{\rm H}\ ,\qquad \Ph = - \left( {B |t|\over 2} + \ga \right)$$
+
+\> {Kundrát-Lokajíček formula} (KL)
+\>> any slope $B$, any hadronic phase
+\>> more complicated effect ($\Ps$ complex in general)
+
+$$F^{\rm C+H} = F^{\rm C} + F^{\rm H} \e^{\i \al \Ps}$$
+
+$$\Ps(t) =
+	\mp \int\limits_{t_{\rm min}}^{0} \d t' \log {t'\over t}\ {\d\phantom{t'}\over\d t'} {\cal F}^2(t')
+	\pm \int\limits_{t_{\rm min}}^{0} \d t' \left ( {F^{\rm H}(t')\over F^{\rm H}(t)} - 1 \right)\, {I(t, t')\over 2\pi}
+$$
+
+$$I(t, t') = \int\limits_{0}^{2\pi}\d\ph\ {{\cal F}^2(t'')\over t''}\ ,\qquad t'' = t + t' + 2\sqrt{t t'} \cos\ph$$
+
+
 
 \vfil
 \eject
