@@ -1,0 +1,429 @@
+%\documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%%\documentclass[final,3p,times,twocolumn]{elsarticle}
+\documentclass[preprint,12pt]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%\documentclass[final,5p,times,twocolumn]{elsarticle}
+
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+%% \usepackage{lineno}
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+
+\journal{Computer Physics Communications}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Elegent -- an elastic event generator}
+
+\author{J.~Ka\v spar\corref{cor1}\fnref{fn1}}
+\ead{jan.kaspar@cern.ch}
+\address{CERN, Geneva, Switzerland}
+
+\cortext[cor1]{Corresponding author}
+\fntext[fn1]{On leave of absence from Institute of Physics, AS CR, v.v.i., 182 21 Prague 8, Czech Republic.}
+
+
+\begin{abstract}
+Elastic scattering: simple process but challenge for theory. Lacking hard scale, perturbative QCD can not be applied. Instead, many phenomenological/theoretical models. This package: unified implementation of a number of such models as a C++ library. Ready made t- and b-distributions for most interesting energies. A class performing Monte-Carlo generation of elastic scattering events. This class can easily embedded in any other program (e.g. TOTEM offline software).
+
+TODO: add LHC somewhere (prediction for LHC energies?)
+\end{abstract}
+
+\begin{keyword}
+elastic hadron scattering \sep Coulomb-nuclear interference \sep Monte-Carlo generator \sep TODO
+%% keywords here, in the form: keyword \sep keyword
+
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+\end{keyword}
+
+\end{frontmatter}
+
+%% Start line numbering here if you want
+%\linenumbers
+
+%----------------------------------------------------------------------------------------------------
+
+\newpage
+
+\noindent
+{\bf PROGRAM SUMMARY}
+
+\begin{small}
+\noindent
+{\em Manuscript Title:} Elegent -- an elastic event generator\\
+{\em Authors:} Jan Ka\v spar\\
+{\em Program Title:} Elegent\\
+{\em Journal Reference:}\\ % Leave blank, supplied by Elsevier.
+{\em Catalogue identifier:}\\ % Leave blank, supplied by Elsevier.
+{\em Licensing provisions:} TODO\\ %enter "none" if CPC non-profit use license is sufficient.
+{\em Programming language:} C++\\
+{\em Computer:} any\\
+{\em Operating system:} any\\
+{\em RAM:} bytes\\
+  %RAM in bytes required to execute program with typical data.
+%{\em Supplementary material:}\\ % Fill in if necessary, otherwise leave out.
+{\em Keywords:} Keyword one, Keyword two, Keyword three, etc.\\ % Please give some freely chosen keywords that we can use in a cumulative keyword index.
+{\em Classification:} 11.6 Phenomenological and Empirical Models and Theories\\ % http://cpc.cs.qub.ac.uk/subjectIndex/SUBJECT_index.html)
+{\em External routines/libraries:} ROOT\\
+  % Fill in if necessary, otherwise leave out.
+{\em Nature of problem:}\\
+  %Describe the nature of the problem here.
+\\
+{\em Solution method:}\\
+  %Describe the method solution here.
+\\
+{\em Restrictions:}\\
+  %Describe any restrictions on the complexity of the problem here.
+\\
+{\em Unusual features:}\\
+  %Describe any unusual features of the program/problem here.
+\\
+{\em Additional comments:}\\
+  %Provide any additional comments here.
+\\
+{\em Running time:}\\
+  %Give an indication of the typical running time here.
+\\
+
+\iffalse
+\begin{thebibliography}{0}
+\bibitem{1}Reference 1         % This list should only contain those items referenced in the                 
+\bibitem{2}Reference 2         % Program Summary section.   
+\bibitem{3}Reference 3         % Type references in text as [1], [2], etc.
+                               % This list is different from the bibliography at the end of 
+                               % the Long Write-Up.
+\end{thebibliography}
+\fi
+
+\end{small}
+
+\newpage
+
+%----------------------------------------------------------------------------------------------------
+
+\section{Introduction}\label{s:inc}
+
+* why interesting
+
+* why need models
+
+* elastic scattering: strong (hadronic) and Coulomb (and interference)
+
+
+%----------------------------------------------------------------------------------------------------
+
+\section{Hadronic models}\label{s:had mod}
+
+Typical model constructions.
+
+The following models are currently implemented.
+
+
+\begin{itemize}
+
+\item {\em The Model of Block et al.} \cite{bh99,bh11} -- brief description of each model, outline physics motivations, model variants
+
+\item {\em The Model of Bourrely et al.} \cite{bsw79,bsw84,bsw03,bsw11} \cite{wu70}
+
+\item {\em The Model of Islam et al.} \cite{islam84,islam87,islam03,islam05,islam06,islam09}
+
+Several stages of the model
+
+Two variants: hard pomeron and low-$x$ gluons
+
+\item {\em The Model of Jenkovszky et al.} \cite{jenkovszky11}
+
+\item {\em The Model of Petrov et al.} \cite{petrov02}
+
+Two variants: 2 and 3 pomerons
+
+\item {\em Simple exponential model} with a constant phase.
+
+\end{itemize}
+
+
+%----------------------------------------------------------------------------------------------------
+
+\section{Coulomb amplitudes}\label{s:coul mod}
+
+* calculable from QED, here limit ourselves to OPE approximation, anything beyond that is not anymore QED (proton can get excited in loops), more detailed discussion \cite[section 1.3.6]{jan_thesis}
+
+* limit to a low |t| range?
+
+* QED formula with form factors (electric and magnetic) -- experimentally determined, different parameterizations and fits (More details \cite[section 1.3.1]{jan_thesis}):
+
+* formula with an effective formfactor (from \cite[equation (31)]{block06})
+
+\begin{itemize}
+\item Hofstadter \cite{hofstadter58}
+\item Borkowski \cite{borkowski74,borkowski75}
+\item Kelly \cite{kelly04}
+\item Arrington \cite{arrington07}
+\item Puckett \cite{puckett10}
+\end{itemize}
+
+
+
+%----------------------------------------------------------------------------------------------------
+
+\section{Coulomb-hadronic interference}\label{s:int mod}
+
+* same physics, but two calculation approaches: QFT and eikonal
+
+West and Yennie \cite{wy68}, \cite[section 1.3.4]{jan_thesis}
+
+Kundr\' at and Lokaj\' i\v cek, \cite{kl94}, \cite[section 1.3.5]{jan_thesis};
+numerical considerations \cite[section 1.3.6]{jan_thesis}
+
+%----------------------------------------------------------------------------------------------------
+
+\section{Program package}\label{s:prog}
+
+package \cite{elegent}, ref to Wiki as user's and implementation manual
+
+* modules: implementation of models (C++) library, class for Monte-Carlo event simulation, data sets (t- and b-distributions, plots) for some energies of interest
+
+* relation between diff. cs., total cs. and amplitudes: to define the amplitude convention used; iF NEEDED
+
+* table: model <--> tag -- remove ??
+
+%----------------------------------------------------------------------------------------------------
+
+
+\begin{thebibliography}{00}
+
+%TODO: put them in order
+
+\def\Name#1{#1, }
+\def\REVIEW#1#2#3#4{{\it #1} {\bf #2} (#3) #4}
+
+\bibitem{islam84}
+	\Name{ISLAM, M. M., FEARNLEY, T. and GUILLAUD, J. P.}
+	\REVIEW{Nuovo Cim.}{A81}{1984}{737}
+	%title          = "$\bar pp$ and $pp$ elastic scattering from $10\,GeV$ to $1000\,GeV$ center-of-mass energy",
+	%doi            = "10.1007/BF02724225",
+
+\bibitem{islam87}
+	\Name{ISLAM, M. M., INNOCENTE V., FEARNLEY T. and SANGUIETTI, G.}
+	\REVIEW{Europhys. Lett.}{4}{1987}{189--196}
+	%title="High energy $pp$ and $\bar p p$ Elastic Scattering and Nucleon Structure",
+
+\bibitem{islam03}
+	\Name{ISLAM, M. M., LUDDY, R. J. and PROKUDIN, A. V.}
+	\REVIEW{Mod. Phys. Lett.}{A18}{2003}{743--752}
+	%title="pp elastic scattering at LHC and nucleon structure",
+	%number="11",
+
+\bibitem{islam05}
+	\Name{ISLAM, M. M., LUDDY, R. J. and PROKUDIN, A. V.}
+	\REVIEW{Phys. Lett.}{B605}{2005}{115--122}
+	%title          = "$pp$ elastic scattering at LHC in near forward direction",
+	%doi            = "10.1016/j.physletb.2004.11.006",
+    
+% the review
+\bibitem{islam06}
+	\Name{ISLAM, M. M., LUDDY, R. J. and PROKUDIN, A. V.}
+	\REVIEW{Int. J. Mod. Phys.}{A21}{2006}{1--42}
+	%title     = "Near forward $p p$ elastic scattering at LHC and nucleon structure",
+	%doi       = "10.1142/S0217751X06033271",
+
+
+\bibitem{islam09}
+	\Name{ISLAM, M. M., KA\v SPAR, J. and LUDDY, R. J.}
+	\REVIEW{Mod. Phys. Lett.}{A24}{2009}{485--496}
+	%title          = "Deep-elastic p p scattering at LHC from low-x gluons",
+	%doi            = "10.1142/S0217732309030266",
+
+
+\bibitem{wu70}
+	\Name{CHENG H. and WU, T. T.}
+	\REVIEW{Phys. Rev. Lett.}{24}{1970}{1456--1460}
+	%title     = "Limit of Cross-Sections at Infinite Energy",
+	%doi       = "10.1103/PhysRevLett.24.1456",
+
+
+\bibitem{bsw79}
+	\Name{BOURRELY C., SOFFER, J. and WU, T. T.}
+	\REVIEW{Phys. Rev.}{D19}{1979}{3249}
+	%title     = "A New Impact Picture for Low and High-Energy Proton Proton Elastic Scattering",
+	%doi       = "10.1103/PhysRevD.19.3249",
+
+\bibitem{bsw84}
+	\Name{BOURRELY C., SOFFER, J. and WU, T. T.}
+	\REVIEW{Nucl. Phys.}{B247}{1984}{15}
+	%title     = "Impact Picture Expectations for Very High-Energy Elastic $p p$ and $p \bar p$ Scattering",
+	%doi       = "10.1016/0550-3213(84)90369-9",
+
+\bibitem{bsw03}
+	\Name{BOURRELY C., SOFFER, J. and WU, T. T.}
+	\REVIEW{Eur. Phys. J.}{C28}{2003}{97--105}
+	%title     = "Impact picture phenomenology for $\pi^+$-$p$, $K^+$-$p$ and $p p$, $\bar p p$ elastic scattering at high-energies",
+	%doi       = "10.1140/epjc/s2003-01159-7",
+
+
+\bibitem{bsw11}
+	\Name{BOURRELY C., SOFFER, J. and WU, T. T.}
+	\REVIEW{Eur. Phys. J.}{C71}{2011}{1601}
+	%title          = "Determination of the forward slope in $pp$ and $\bar  pp$ elastic scattering up to LHC energy",
+	%doi            = "10.1140/epjc/s10052-011-1601-x",
+
+
+\bibitem{bh99}
+	\Name{BLOCK, M. M., GREGORES, E. M., HALZEN, F. and PANCHERI, G.}
+	\REVIEW{Phys. Rev.}{D60}{199}{054024}
+	%title     = "Photon - proton and photon-photon scattering from nucleon-nucleon forward amplitudes",
+	%doi       = "10.1103/PhysRevD.60.054024",
+
+
+\bibitem{bh11}
+	\Name{BLOCK, M. M. and HALZEN, F.}
+	\REVIEW{Phys. Rev.}{D83}{2011}{077901}
+	%title          = "Forward hadronic scattering at 7 TeV: Predictions for the LHC: An Update",
+	%doi            = "10.1103/PhysRevD.83.077901",
+
+
+\bibitem{petrov02}
+	\Name{PETROV, V. A. and PROKUDIN, A. V.}
+	\REVIEW{Eur. Phys. J.}{C23}{2002}{135--143}
+	%title          = "The First three pomerons...",
+	%doi            = "10.1007/s100520100838",
+
+
+\bibitem{jenkovszky11}
+	\Name{JENKOVSZKY, L., LENGYEL, A. and LONTKOVSKYI, D.}
+	arXiv: 1105.1202 (2011)
+	%title          = "The Pomeron and Odderon in elastic, inelastic and total cross sections at the LHC",
+
+
+\iffalse
+\bibitem{islam67}
+	ISLAM, M. M., Lectures In Theoretical Physics Vol.~Xb (1967), New York
+	%title          = "Impact parameter description of high energy scattering",
+
+\bibitem{islam75}
+      author         = "ISLAM, M. M.",
+      title          = "Impact Parameter Representation from Sommerfeld-Watson
+                        Transform",
+	%journal        = "Nucl.Phys.",
+	%volume         = "B104",
+	%pages          = "511",
+	%doi            = "10.1016/0550-3213(76)90115-2",
+	%year           = "1976"
+
+
+% 12th Blois conference, Hamburg
+\bibitem{islam07}
+	 author		="ISLAM, M. M., KA\v SPAR, J. and LUDDY, R. J.",
+     title     = "pp Elastic Scattering at LHC in a Nucleon-Structure Model",
+     year      = "2007",
+     eprint    = "0708.1156",
+      archivePrefix  = "arXiv",
+\fi
+
+\bibitem{jan_thesis}
+    \Name{KA\v SPAR J.}
+    PhD Thesis, CERN-THESIS-2011-214, {\tt http://cdsweb.cern.ch/record/1441140}
+
+\bibitem{hofstadter58}
+	\Name{HOFSTADTER, R., BUMILLER, F. and YEARIAN, M. R.}
+	\REVIEW{Rev. Mod. Phys.}{30}{1958}{482--497}
+	%title = "Electromagnetic Structure of the Proton and Neutron",
+	%doi = "10.1103/RevModPhys.30.482",
+
+\bibitem{borkowski74}
+	\Name{BORKOWSKI F., PEUSER, P., SIMON, G. G., WALTHER et al.}
+	\REVIEW{Nucl. Phys.}{A222}{1974}{269--275}
+	%title = "Electromagnetic form factors of the proton at low four-momentum transfer",
+	%doi = "DOI: 10.1016/0375-9474(74)90392-3",
+
+\bibitem{borkowski75}
+	\Name{BORKOWSKI F., PEUSER, P., SIMON, G. G., WALTHER et al.}
+	\REVIEW{Nucl. Phys.}{B93}{1975}{461}
+	%title          = "Electromagnetic Form-Factors of the Proton at Low Four-Momentum Transfer",
+	%doi            = "10.1016/0550-3213(75)90514-3",
+
+\bibitem{kelly04}
+	\Name{KELLY, J. J.}
+	\REVIEW{Phys. Rev.}{C70}{2004}{068202}
+	%title = "Simple parametrization of nucleon form factors",
+	%doi = "10.1103/PhysRevC.70.068202",
+
+\bibitem{arrington07}
+	\Name{ARRINGTON, J., MELNITCHOUK, W. and TJON, J. A.}
+	\REVIEW{Phys. Rev.}{C76}{2007}{035205}
+	%title          = "Global analysis of proton elastic form factor data with two-photon exchange corrections",
+	%doi            = "10.1103/PhysRevC.76.035205",
+
+\bibitem{puckett10}
+	\Name{PUCKETT, A. J. R. (GEp-III collaboration)}
+	arXiv: nucl-ex/1008.0855
+	%title          = "Final Results of the GEp-III Experiment and the Status of the Proton Form Factors",
+	%year           = "2010",
+	%eprint         = "nucl-ex/1008.0855",
+	%archivePrefix  = "arXiv",
+
+\bibitem{block06}
+	\Name{BLOCK, M. M.}
+	\REVIEW{Phys. Rept.}{436}{2006}{71--215}
+	%title     = "Hadronic forward scattering: Predictions for the Large Hadron Collider and cosmic rays",
+	%doi       = "10.1016/j.physrep.2006.06.003",
+
+\bibitem{wy68}
+	\Name{WEST, G. B. and YENNIE, D. R.}
+	\REVIEW{Phys. Rev.}{172}{1968}{1413-1422}
+	%title     = "Coulomb interference in high-energy scattering",
+	%doi       = "10.1103/PhysRev.172.1413",
+
+\bibitem{kl94}
+	\Name{KUNDR\' AT, V. and LOKAJ\' I\v CEK, M.}
+	\REVIEW{Z. Phys.}{C63}{1994}{619--630}
+	%title     = "High-energy scattering amplitude of unpolarized and
+	%doi       = "10.1007/BF01557628",
+
+\bibitem{elegent}
+	http://elegent.hepforge.org/
+
+
+\end{thebibliography}
+
+\end{document}
