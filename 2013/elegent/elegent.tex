@@ -1,5 +1,3 @@
-%\documentclass[preprint,12pt]{elsarticle}
-
 %% Use the option review to obtain double line spacing
 %% \documentclass[preprint,review,12pt]{elsarticle}
 
@@ -44,6 +42,13 @@
 %% \biboptions{comma,round}
 
 % \biboptions{}
+
+%----------------------------------------------------------------------------------------------------
+
+\def\class#1{{\tt #1}}
+\def\e{{\rm e}}
+
+%----------------------------------------------------------------------------------------------------
 
 
 \journal{Computer Physics Communications}
@@ -154,32 +159,28 @@ elastic hadron scattering \sep Coulomb-nuclear interference \sep Monte-Carlo gen
 
 \section{Hadronic models}\label{s:had mod}
 
-Typical model constructions.
+The following models are currently implemented, for a more detailed model overview see \cite[section 1.1]{jan_thesis} or \cite[section 4]{dremin13}.
 
-The following models are currently implemented.
+{\bf The Model of Block et al.}~is a QCD-inspired model formulated in eikonal formalism \cite{bh99,block06}. The eikonal receives four contributions due to quark-quark, quark-gluon, gluon-gluon interactions and an odderon exchange. The latter is responsible for the difference between $\rm pp$ and $\rm \bar p p$ scattering and is negligible at LHC energies. Each of the eikonal contributions is factorised into energy dependence term (proportional to the integral cross-section of a given sub-process) and impact-parameter profile. All four profiles have the same form but are scaled with a parameter reflecting the areas occupied by quarks and gluons in the nucleon. The gluon-gluon cross-section is modelled after QCD, adopting a gluon distribution function that behaves as $1/x^{1+\epsilon}$ at low momentum fractions $x$. It is this high soft-gluon content that is responsible for the cross-section rise with energy. This model is implemented as class \class{BHModel} in the library source code, using parameters from publication \cite{block06}.
+
+%TODO: problem with 1/2 in eikonal
 
 
-\begin{itemize}
+{\bf The Model of Bourrely et al.}~\cite{bsw79,bsw84,bsw03,bsw11} is also formulated in eikonal description. The eikonal includes two terms corresponding to two scattering mechanisms: pomeron and reggeon exchange. The pomeron term is factorised into a product of $s$- and $b$-dependent functions. The energy dependence is deduced from asymptotic quantum field theory behaviour \cite{wu70}. The impact-parameter profile of the pomeron exchange is derived by assuming similar distributions of electric charge and nuclear matter in the nucleon. The charge distribution is extracted from electromagnetic form factor and is further modified by a slowly varying function in order to get the complete profile function. The reggeons considered in this model include $\rm A_2$, $\rho$ and $\omega$. The trajectories are described with a traditional parametrisation with $s^{\alpha - 1}$ energy dependence and $\e^{-bt}$ momentum-transfer dependence. The reggeon contribution is responsible for the $\rm pp$ and $\rm \bar pp$ difference at low energies and is negligible at LHC energies and higher. This model is implemented as class \class{BSWModel} in the library source code, using parameters from publication \cite{bsw03}.
 
-\item {\em The Model of Block et al.} \cite{bh99,bh11} -- brief description of each model, outline physics motivations, model variants
+%TODO: problem with complex logarithm, factor in front of the regeon term, energy dependence S0 does actually depend on t.
 
-\item {\em The Model of Bourrely et al.} \cite{bsw79,bsw84,bsw03,bsw11} \cite{wu70}
 
-\item {\em The Model of Islam et al.} \cite{islam84,islam87,islam03,islam05,islam06,islam09}
+ 
+In {\bf the Model of Islam et al.}~the proton is pictured in an effective quantum field theory model (gauged linear sigma model) \cite{islam06}. The proposed soliton solution has a mass comparable to the proton and divides the proton to two distinct layers: an outer cloud of quark-antiquark condensate and an inner core of topological charge. Later on \cite{islam05}, a third, the inner-most layer has been added: a valence-quark bag. These three layers give rise to three mechanisms contributing to elastic proton-proton scattering, each being dominant at a different region of $t$. At the lowest $|t|$ it is the diffraction scattering originating from a glancing overlapping of the outer clouds \cite{islam84,islam87}, at medium $|t|$ the core-core scattering \cite{islam06} and at high $|t|$ the valence-quark scattering \cite{islam05,islam09}. The diffraction scattering is described in impact-parameter picture using a Fermi profile function. As a consequence of the underlying quantum field theory model, the core-core scattering is mediated by the $\omega$ meson behaving as an elementary particle. The corresponding amplitude thus contains a Feynman propagator and a form factor ensuring an exponential fall off at higher $|t|$ values. Regarding the valence-quark scattering, the model comes with two alternative mechanisms: interaction via a BFKL gluon ladder (denoted {\em hard pomeron} version, HP) or interaction mediated by low-$x$ gluons surrounding the valence quark (variant {\em low-x}, LxG). This model is implemented as class \class{IslamModel} in the library source code, using parameters from publication TODO.
 
-Several stages of the model
+In {\bf the Model of Jenkovszky et al.}~\cite{jenkovszky11} the elastic scattering of nucleons is attributed to $t$-channel exchange of a pomeron, an odderon and reggeons $\rm f$ and $\omega$. The reggeon-exchange amplitudes have the traditional form with $s^{\alpha - 1}$ energy dependence and residua $\e^{-bt}$ and are negligible at LHC energies and above. The pomeron and odderon amplitudes have a more complicated form arising from the assumed double Regge pole nature of the pomeron \cite[section 2]{jenkovszky86}. Moreover, the model comes with several parametrisations of the pomeron Regge trajectory $\alpha(t)$. The linear parametrisation is discussed in the greatest detail in the publication as is the only implemented in Elegent for the moment. This model is implemented as class \class{JenkovszkyModel} in the library source code, using parameters from publication \cite{jenkovszky11}.
 
-Two variants: hard pomeron and low-$x$ gluons
+{\bf The Model of Petrov et al.}~\cite{petrov02} describes the collision of nucleons as an exchange of reggeons: pomerons, an odderon, $\rm f$ and $\omega$. Each of these trajectories contributes to the eikonal with a term proportional to $s^{\alpha - 1}$ and with a Gaussian profile $\e^{-c b^2}$ ($b$ being the impact parameter). The model has two variants: including two pomerons (denoted {\em 2P}\/) and three pomerons ({\em 3P}\/). This model is implemented as class \class{PPPModel} in the library source code, using parameters from publication \cite{petrov02}.
 
-\item {\em The Model of Jenkovszky et al.} \cite{jenkovszky11}
 
-\item {\em The Model of Petrov et al.} \cite{petrov02}
+A {\bf simple exponential model} with a constant phase is implemented (class \class{ExpModel}) for convenience.
 
-Two variants: 2 and 3 pomerons
-
-\item {\em Simple exponential model} with a constant phase.
-
-\end{itemize}
 
 
 %----------------------------------------------------------------------------------------------------
@@ -223,6 +224,8 @@ package \cite{elegent}, ref to Wiki as user's and implementation manual
 
 * modules: implementation of models (C++) library, class for Monte-Carlo event simulation, data sets (t- and b-distributions, plots) for some energies of interest
 
+standard init
+
 * relation between diff. cs., total cs. and amplitudes: to define the amplitude convention used; iF NEEDED
 
 * table: model <--> tag -- remove ??
@@ -248,11 +251,11 @@ package \cite{elegent}, ref to Wiki as user's and implementation manual
 	\REVIEW{Europhys. Lett.}{4}{1987}{189--196}
 	%title="High energy $pp$ and $\bar p p$ Elastic Scattering and Nucleon Structure",
 
-\bibitem{islam03}
-	\Name{ISLAM, M. M., LUDDY, R. J. and PROKUDIN, A. V.}
-	\REVIEW{Mod. Phys. Lett.}{A18}{2003}{743--752}
-	%title="pp elastic scattering at LHC and nucleon structure",
-	%number="11",
+%\bibitem{islam03}
+%	\Name{ISLAM, M. M., LUDDY, R. J. and PROKUDIN, A. V.}
+%	\REVIEW{Mod. Phys. Lett.}{A18}{2003}{743--752}
+%	%title="pp elastic scattering at LHC and nucleon structure",
+%	%number="11",
 
 \bibitem{islam05}
 	\Name{ISLAM, M. M., LUDDY, R. J. and PROKUDIN, A. V.}
@@ -314,12 +317,17 @@ package \cite{elegent}, ref to Wiki as user's and implementation manual
 	%title     = "Photon - proton and photon-photon scattering from nucleon-nucleon forward amplitudes",
 	%doi       = "10.1103/PhysRevD.60.054024",
 
+\bibitem{block06}
+	\Name{BLOCK, M. M.}
+	\REVIEW{Phys. Rept.}{436}{2006}{71--215}
+	%title     = "Hadronic forward scattering: Predictions for the Large Hadron Collider and cosmic rays",
+	%doi       = "10.1016/j.physrep.2006.06.003",
 
-\bibitem{bh11}
-	\Name{BLOCK, M. M. and HALZEN, F.}
-	\REVIEW{Phys. Rev.}{D83}{2011}{077901}
-	%title          = "Forward hadronic scattering at 7 TeV: Predictions for the LHC: An Update",
-	%doi            = "10.1103/PhysRevD.83.077901",
+%\bibitem{bh11}
+%	\Name{BLOCK, M. M. and HALZEN, F.}
+%	\REVIEW{Phys. Rev.}{D83}{2011}{077901}
+%	%title          = "Forward hadronic scattering at 7 TeV: Predictions for the LHC: An Update",
+%	%doi            = "10.1103/PhysRevD.83.077901",
 
 
 \bibitem{petrov02}
@@ -328,37 +336,16 @@ package \cite{elegent}, ref to Wiki as user's and implementation manual
 	%title          = "The First three pomerons...",
 	%doi            = "10.1007/s100520100838",
 
+\bibitem{jenkovszky86}
+	\Name{JENKOVSZKY, L.~L.}
+	\REVIEW{Fortchr. Phys.}{34}{1986}{791 -- 816} % No. 12
+
 
 \bibitem{jenkovszky11}
-	\Name{JENKOVSZKY, L., LENGYEL, A. and LONTKOVSKYI, D.}
-	arXiv: 1105.1202 (2011)
-	%title          = "The Pomeron and Odderon in elastic, inelastic and total cross sections at the LHC",
+	\Name{JENKOVSZKY, L.~L., LENGYEL, A.~I. and LONTKOVSKYI, D.~I.}
+	\REVIEW{Int. J. Mod. Phys. A}{26}{2011}{4755--4771}
+	%DOI: 10.1142/S0217751X11054760
 
-
-\iffalse
-\bibitem{islam67}
-	ISLAM, M. M., Lectures In Theoretical Physics Vol.~Xb (1967), New York
-	%title          = "Impact parameter description of high energy scattering",
-
-\bibitem{islam75}
-      author         = "ISLAM, M. M.",
-      title          = "Impact Parameter Representation from Sommerfeld-Watson
-                        Transform",
-	%journal        = "Nucl.Phys.",
-	%volume         = "B104",
-	%pages          = "511",
-	%doi            = "10.1016/0550-3213(76)90115-2",
-	%year           = "1976"
-
-
-% 12th Blois conference, Hamburg
-\bibitem{islam07}
-	 author		="ISLAM, M. M., KA\v SPAR, J. and LUDDY, R. J.",
-     title     = "pp Elastic Scattering at LHC in a Nucleon-Structure Model",
-     year      = "2007",
-     eprint    = "0708.1156",
-      archivePrefix  = "arXiv",
-\fi
 
 \bibitem{jan_thesis}
     \Name{KA\v SPAR J.}
@@ -402,12 +389,6 @@ package \cite{elegent}, ref to Wiki as user's and implementation manual
 	%eprint         = "nucl-ex/1008.0855",
 	%archivePrefix  = "arXiv",
 
-\bibitem{block06}
-	\Name{BLOCK, M. M.}
-	\REVIEW{Phys. Rept.}{436}{2006}{71--215}
-	%title     = "Hadronic forward scattering: Predictions for the Large Hadron Collider and cosmic rays",
-	%doi       = "10.1016/j.physrep.2006.06.003",
-
 \bibitem{wy68}
 	\Name{WEST, G. B. and YENNIE, D. R.}
 	\REVIEW{Phys. Rev.}{172}{1968}{1413-1422}
@@ -422,6 +403,11 @@ package \cite{elegent}, ref to Wiki as user's and implementation manual
 
 \bibitem{elegent}
 	http://elegent.hepforge.org/
+
+\bibitem{dremin13}
+	\Name{DREMIN, I. M.}
+	\REVIEW{Physics - Uspekhi}{56}{2013}{3--28}
+	
 
 
 \end{thebibliography}
