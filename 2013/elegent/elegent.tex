@@ -48,6 +48,7 @@
 \def\class#1{{\tt #1}}
 \def\e{{\rm e}}
 \def\d{{\rm d}}
+\def\un#1{{\,\rm #1}}
 
 %----------------------------------------------------------------------------------------------------
 
@@ -187,25 +188,17 @@ A {\bf simple exponential model} with a constant phase is implemented (class \cl
 
 \section{Coulomb amplitudes}\label{s:coul mod}
 
-* calculable from QED, here limit ourselves to OPE approximation, anything beyond that is not anymore QED (proton can get excited in loops), more detailed discussion \cite[section 1.3.6]{jan_thesis}
+TODO: reference to introduction -- Coulomb+hadronic
 
-* limit to a low |t| range?
+The Coulomb scattering amplitude is calculated in the framework of QED, within the leading approximation (one photon exchange). As argued in \cite[section 1.3.6]{jan_thesis}, there are reasons to believe that this approximation is sufficient in the domain of very low momentum transfers where the Coulomb amplitude dominates the hadronic one. One should also note that higher order corrections (multi photon exchange) go beyond the scope of pure QED as excited states of the nucleon need to be considered in loop diagrams too (for more details see \cite{arrington07,puckett10}).
 
-* QED formula with form factors (electric and magnetic) -- experimentally determined, different parameterizations and fits (More details \cite[section 1.3.1]{jan_thesis}):
-
-* formula with an effective formfactor (from \cite[equation (31)]{block06})
-
+The QED framework can naturally account for the nucleon structure and its anomalous magnetic moment by introducing electric and magnetic form factors that modify the standard QED vertex function. Moreover, at high energies (like at LHC) and low momentum transfers ($|t| \lesssim 10\un{GeV^2}$), the electric and magnetic form factors can be merged into one effective form factor $G_{\rm eff}(t)$ \cite[equation (31)]{block06}. The differential cross-section than reads:
 \begin{equation}
-{\d\sigma\over\d t} = {4\pi \alpha^2\over t^2}\, G_{\rm eff}^4(t)
+{\d\sigma\over\d t} = {4\pi \alpha^2\over t^2}\, G_{\rm eff}^4(t)\ ,
 \end{equation}
+where $\alpha$ is the fine-structure constant.
 
-\begin{itemize}
-\item Hofstadter \cite{hofstadter58}
-\item Borkowski \cite{borkowski74,borkowski75}
-\item Kelly \cite{kelly04}
-\item Arrington \cite{arrington07}
-\item Puckett \cite{puckett10}
-\end{itemize}
+In the Elegent package, the user can choose between several form factor parametrisations. They account for increasing amount of experimental data as well as progressing theoretical development. One of the first publications is by Hofstadter \cite{hofstadter58} who used a dipole parametrisations. This was later updated by Borkowski et al.~\cite{borkowski74,borkowski75} parametrising both form factors by a sum of four poles. Further publications Kelly \cite{kelly04}, Arrington et al.~\cite{arrington07} and Puckett \cite{puckett10} use a parametrisation satisfying dimensional scaling at high $|t|$. A graphical comparison of these form factors is available in \cite[Figure~1.7]{jan_thesis}.
 
 
 
