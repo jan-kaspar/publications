@@ -234,11 +234,15 @@ Here we describe the key components of the library.
 
 The class {\tt Math} groups numerical integration routines.
 
-The class {\tt Constants} encapsulates physics and mathematical constants (e.g.~proton mass, Euler's constants) as well as process description (e.g.~$\rm pp$ or $\rm \bar pp$ mode, centre-of-mass energy, etc.).
+The class {\tt Constants} encapsulates physics and mathematical constants (e.g.~proton mass, Euler's constants) as well as process description (e.g.~$\rm pp$ or $\rm \bar pp$ mode, centre-of-mass energy, etc.). TODO: method {\tt Init(sqrt\_s, ParticleMode)}. global variable {\tt cnts}.
 
 The class {\tt Model} is the mother class for all the hadronic models described in Section \ref{s:had mod}. 
 
-TODO: key data members and methods
+TODO: {\tt Configure} {\tt Init} {\tt Print} {\tt Amp} {\tt Prf}
+
+TODO: labels short and full; structure: {\tt name:mode (variant) [version]}
+
+TODO: global variable {\tt model}
 
 
 \begin{equation}
@@ -253,9 +257,33 @@ TODO: define $b$, $J_0$ is Bessel function, $A$ given by {\tt Prf} function
 
 The class {\tt CoulombInterference} implements the models from Sections \ref{s:coul mod} and \ref{s:int mod}.
 
-TODO: key data members and methods
+TODO:
+{\tt FFType}
+{\tt FF\_e(t)}
+{\tt FF\_m(t)}
+{\tt FF\_sq(t)}
 
-* table: model <--> tag -- NEEDED ??
+{\tt CIMode}
+{\tt Amp(t)}
+
+{\tt R(t)}: relative difference between SWY and KL formulae
+; C+H superscript, KL subscript
+\begin{equation}
+R(t) = (|KL|^2 - |WY|^2) / |KL|^2
+\end{equation}
+
+{\tt Z(t)}: importance of the interference term
+\begin{equation}
+Z(t) = (|KL|^2 - |PH|^2 - |PC|^2) / |KL|^2
+\end{equation}
+
+{\tt C(t)}: influence of Coulomb interaction
+\begin{equation}
+C(t) = (|KL|^2 - |PH|^2) / |PH|^2
+\end{equation}
+
+TODO: global variable {\tt coulomb}
+
 
 \subsection{Utilities}\label{s:prog util}
 
