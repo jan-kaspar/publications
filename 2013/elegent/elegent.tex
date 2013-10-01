@@ -156,6 +156,8 @@ elastic hadron scattering \sep Coulomb-nuclear interference \sep Monte-Carlo gen
 
 * elastic scattering: strong (hadronic) and Coulomb (and interference)
 
+* spin?
+
 
 %----------------------------------------------------------------------------------------------------
 
@@ -198,7 +200,7 @@ The QED framework can naturally account for the nucleon structure and its anomal
 \end{equation}
 where $\alpha$ is the fine-structure constant.
 
-In the Elegent package, the user can choose between several form factor parametrisations. They account for increasing amount of experimental data as well as progressing theoretical development. One of the first publications is by Hofstadter \cite{hofstadter58} who used a dipole parametrisations. This was later updated by Borkowski et al.~\cite{borkowski74,borkowski75} parametrising both form factors by a sum of four poles. Further publications Kelly \cite{kelly04}, Arrington et al.~\cite{arrington07} and Puckett \cite{puckett10} use a parametrisation satisfying dimensional scaling at high $|t|$. A graphical comparison of these form factors is available in \cite[Figure~1.7]{jan_thesis}.
+In the Elegent package, the user can choose (via {\tt CoulombInterference::FFType}) between several form factor parametrisations. They account for increasing amount of experimental data as well as progressing theoretical development. One of the first publications is by Hofstadter \cite{hofstadter58} who used a dipole parametrisations. This was later updated by Borkowski et al.~\cite{borkowski74,borkowski75} parametrising both form factors by a sum of four poles. Further publications Kelly \cite{kelly04}, Arrington et al.~\cite{arrington07} and Puckett \cite{puckett10} use a parametrisation satisfying dimensional scaling at high $|t|$. A graphical comparison of these form factors is available in \cite[Figure~1.7]{jan_thesis}.
 
 
 
@@ -206,22 +208,38 @@ In the Elegent package, the user can choose between several form factor parametr
 
 \section{Coulomb-hadronic interference}\label{s:int mod}
 
-* same physics, but two calculation approaches: QFT and eikonal
+After calculating hadronic and Coulomb amplitudes, one needs to evaluate the effects of their interference in order to complete the picture. Historically, there are two ways to calculate these effects: in Feynman-diagram framework and using eikonal approximation.
 
-West and Yennie \cite{wy68}, \cite[section 1.3.4]{jan_thesis}
+The Feynman-diagram approach is best represented by the work of {\bf West and Yennie} \cite{wy68} (a shorter summary available in \cite[section 1.3.4]{jan_thesis}, also mentioning the preceding works). The basic idea is to evaluate diagrams including both Coulomb and hadronic interactions, treating correctly the infrared divergences due to the zero photon mass. Moreover, these diagrams may contain loops, the evaluation of which requires the off-shell hadronic amplitudes -- that are generally (and particularly for the models described in Section \ref{s:had mod}) not known. Therefore, the authors made a number of simplifying approximations (e.g.~slow variation of the hadronic amplitude phase) in order to derive an interference formula in a closed form. This formula is denoted {\em WY} and -- strictly speaking -- is internally inconsistent for the models from Section \ref{s:had mod} with non-constant phase. The authors made one more simplifying step -- assuming purely exponential decrease of the hadronic amplitude with $|t|$ -- and obtained a simple interference formula, denoted {\em SWY}. Although this simplifications is inconsistent with many models, this formula has been often used until recently and therefore it is still implemented in the Elegent package.
 
-Kundr\' at and Lokaj\' i\v cek, \cite{kl94}, \cite[section 1.3.5]{jan_thesis};
-numerical considerations \cite[section 1.3.6]{jan_thesis}
+The eikonal calculation was pursued by a number of authors (reviewed in \cite[section 1.3.5]{jan_thesis}), most recently by {\bf Kundr\' at and Lokaj\' i\v cek} \cite{kl94}. This approach is based on the additivity of eikonals: the complete eikonal is given by the sum of Coulomb eikonal (obtained from the OPE Coulomb amplitude) and the hadronic eikonal (given by Fourier-Bessel transform of the hadronic amplitude). Within the leading approximation in $\alpha$, the authors derived a closed-form interference formula (denoted {\em KL}) that does not assume anything about the hadronic amplitude.
+
+In both approaches above, the interference formulae are derived in the leading $\alpha$ order only. In case of the eikonal approach, however, it is possible to perform a numerical calculation to all orders. As shown in \cite[section 1.3.7]{jan_thesis}, the KL formula is very accurate for small $|t|$ up to the (first) dip, where the disagreement peaks on the level of $1\un{\%}$.
+
+Both approaches consider only certain (classes of) diagrams contributing to the Coulomb-hadronic interference. The effects of the neglected diagrams -- as discussed in \cite[section 1.3.6]{jan_thesis} -- can become significant for $|t|\gtrsim 1\un{GeV^2}$. Therefore, one should use the interference formulae with care.
+
+TODO: Implemented in class {\tt CoulombInterference}, formula chosen by {\tt ciMode}.
 
 %----------------------------------------------------------------------------------------------------
 
 \section{Program package}\label{s:prog}
 
-package \cite{elegent}, ref to Wiki as user's and implementation manual
+The core of the Elegent package is a C++ library implementing the physics models from Sections \ref{s:had mod}, \ref{s:coul mod} and \ref{s:int mod}. This more library is described in Section \ref{s:prog lib}. Furthermore, the package contains a number of convenience utilities, see Section \ref{s:prog util}.
 
-* modules: implementation of models (C++) library, class for Monte-Carlo event simulation, data sets (t- and b-distributions, plots) for some energies of interest
+Further practical-oriented information, implementation details and users' manual can be found the project web page \cite{elegent}.
 
-standard init -- needed?
+\subsection{Model library}\label{s:prog lib} 
+
+Here we describe the key components of the library.
+
+The class {\tt Math} groups numerical integration routines.
+
+The class {\tt Constants} encapsulates physics and mathematical constants (e.g.~proton mass, Euler's constants) as well as process description (e.g.~$\rm pp$ or $\rm \bar pp$ mode, centre-of-mass energy, etc.).
+
+The class {\tt Model} is the mother class for all the hadronic models described in Section \ref{s:had mod}. 
+
+TODO: key data members and methods
+
 
 \begin{equation}
 {\d\sigma\over\d t} = {\pi\over s p^2} |F(t)|^2\ ,\qquad \sigma_{\rm tot} = {4\pi\over p\sqrt s} \Im F(t = 0)
@@ -233,15 +251,22 @@ F(t) = 2 p \sqrt s \int b\, \d b\, J_0(b \sqrt{-t})\, A(b)\ ,\qquad A(b) {1\over
 \end{equation}
 TODO: define $b$, $J_0$ is Bessel function, $A$ given by {\tt Prf} function
 
+The class {\tt CoulombInterference} implements the models from Sections \ref{s:coul mod} and \ref{s:int mod}.
+
+TODO: key data members and methods
 
 * table: model <--> tag -- NEEDED ??
+
+\subsection{Utilities}\label{s:prog util}
+
+* class for Monte-Carlo event simulation, data sets (t- and b-distributions, plots) for some energies of interest
 
 %----------------------------------------------------------------------------------------------------
 
 
 \begin{thebibliography}{00}
 
-%TODO: put them in order
+% TODO: put them in order
 
 \def\Name#1{#1, }
 \def\REVIEW#1#2#3#4{{\it #1} {\bf #2} (#3) #4}
