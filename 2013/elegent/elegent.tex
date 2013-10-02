@@ -234,60 +234,43 @@ Here we describe the key components of the library.
 
 The class {\tt Math} groups numerical integration routines.
 
-The class {\tt Constants} encapsulates physics and mathematical constants (e.g.~proton mass, Euler's constants) as well as process description (e.g.~$\rm pp$ or $\rm \bar pp$ mode, centre-of-mass energy, etc.). TODO: method {\tt Init(sqrt\_s, ParticleMode)}. global variable {\tt cnts}.
+The class {\tt Constants} encapsulates physics and mathematical constants (e.g.~proton mass, Euler's constants) as well as process description (e.g.~$\rm pp$ or $\rm \bar pp$ mode, centre-of-mass energy). The constants are set up by the static {\tt Init} method, creating an instance of the class referenced by the global pointer {\tt cnts}.
 
-The class {\tt Model} is the mother class for all the hadronic models described in Section \ref{s:had mod}. 
-
-TODO: {\tt Configure} {\tt Init} {\tt Print} {\tt Amp} {\tt Prf}
-
-TODO: labels short and full; structure: {\tt name:mode (variant) [version]}
-
-TODO: global variable {\tt model}
-
-
+The class {\tt Model} is the mother class for all the hadronic models described in Section \ref{s:had mod}. Each model object has two labels: {\tt fullLabel} (intended for figure legends) and {\tt shortLabel} (intended for object names in ROOT files). Each of the labels have this structure: {\tt name:mode (variant) [version]}. The {\tt mode} (e.g.~which amplitude components are included) and {\tt variant} are optional entries and {\tt version} gives a reference to the paper(s) used for the implementation. The mode and variant can be chosen by the {\tt Configure} method, which sets up appropriate values of model parameters. Afterwards, {\tt Init} method shall be called to perform (potentially) time expensive operations (e.g.~pre-sampling of certain distributions). The state of a model can be queried by calling the {\tt Print} method. The scattering amplitude $F(t)$ can be obtained by the {\tt Amp(t)} method which takes the $t$ (negative) in $\rm GeV^2$ as a parameter. The amplitude normalisation is as follows:
 \begin{equation}
-{\d\sigma\over\d t} = {\pi\over s p^2} |F(t)|^2\ ,\qquad \sigma_{\rm tot} = {4\pi\over p\sqrt s} \Im F(t = 0)
+{\d\sigma\over\d t} = {\pi\over s p^2} |F(t)|^2\ ,\qquad \sigma_{\rm tot} = {4\pi\over p\sqrt s} \Im F(t = 0)\ ,
 \end{equation}
-TODO: define $s$ and $p$, $F$ given by {\tt Amp} function
-
+where $s$ denotes the square of the collision energy and $p$ is the momentum of a colliding nucleon in the centre-of-mass frame. The profile function $A(b)$ (i.e.~impact-parameter amplitude) is calculated by the {\tt Prf(b)} method which takes as a parameter the impact parameter $b$ in $\rm fm$. The profile function is normalised according to these relations:
 \begin{equation}
-F(t) = 2 p \sqrt s \int b\, \d b\, J_0(b \sqrt{-t})\, A(b)\ ,\qquad A(b) {1\over 4p\sqrt s} \int \d t\, J_0(b\sqrt{-t})\,F(t)
+F(t) = 2 p \sqrt s \int b\, \d b\, J_0(b \sqrt{-t})\, A(b)\ ,\quad A(b) = {1\over 4p\sqrt s} \int \d t\, J_0(b\sqrt{-t})\,F(t)\ ,
 \end{equation}
-TODO: define $b$, $J_0$ is Bessel function, $A$ given by {\tt Prf} function
+where $J_0$ stands for the Bessel function. There is a global model pointer {\tt model} pointing to the actual/working model.
 
-The class {\tt CoulombInterference} implements the models from Sections \ref{s:coul mod} and \ref{s:int mod}.
-
-TODO:
-{\tt FFType}
-{\tt FF\_e(t)}
-{\tt FF\_m(t)}
-{\tt FF\_sq(t)}
-
-{\tt CIMode}
-{\tt Amp(t)}
-
-{\tt R(t)}: relative difference between SWY and KL formulae
-; C+H superscript, KL subscript
+The class {\tt CoulombInterference} implements the parametrisations and models from Sections \ref{s:coul mod} and \ref{s:int mod}. The form factor parametrisation is set via the {\tt ffType} option. The methods {\tt FF\_e(t)}, {\tt FF\_m(t)} and {\tt FF\_sq(t)} return the electric, magnetic and square of the effective form factor, for a given value of $t$ (negative) in $\rm GeV^2$. Scattering amplitudes can be calculated by {\tt Amp(t)} method, where $t$ is given in $\rm GeV^2$. The type of the amplitude is chosen via the {\tt mode} switch: {\tt mPC} (pure Coulomb amplitude), {\tt mPH} (pure hadronic amplitude), {\tt mWY} (West-Yennie formula), {\tt mSWY} (simplified West-Yennie formula) and {\tt mKL} (Kundr\'at-Lokaj\' i\v cek formula). The hadronic model is chosen via the global variable {\tt model} introduced above. For convenience, the class implements several derived quantities of interest. The {\tt R(t)} method evaluates relative difference between SWY and KL formulae
 \begin{equation}
-R(t) = (|KL|^2 - |WY|^2) / |KL|^2
+R(t) = {|F^{\rm KL}(t)|^2 - |F^{\rm WY}(t)|^2 \over |F^{\rm KL}(t)|^2}\ ,
 \end{equation}
-
-{\tt Z(t)}: importance of the interference term
+the {\tt Z(t)} method gives the importance of the interference term
 \begin{equation}
-Z(t) = (|KL|^2 - |PH|^2 - |PC|^2) / |KL|^2
+Z(t) = {|F^{\rm KL}(t)|^2 - |F^{\rm PH}(t)|^2 - |F^{\rm PC}(t)|^2 \over |F^{\rm KL}(t)|^2}
 \end{equation}
-
-{\tt C(t)}: influence of Coulomb interaction
+and the {\tt C(t)} measures the influence of Coulomb interaction to the differential cross-section
 \begin{equation}
-C(t) = (|KL|^2 - |PH|^2) / |PH|^2
+C(t) = {|F^{\rm KL}(t)|^2 - |F^{\rm PH}(t)|^2 \over |F^{\rm PH}(t)|^2} \ .
 \end{equation}
-
-TODO: global variable {\tt coulomb}
+There is a global pointer {\tt coulomb} to an instance of the {\tt CoulombInterference}.
 
 
 \subsection{Utilities}\label{s:prog util}
 
-* class for Monte-Carlo event simulation, data sets (t- and b-distributions, plots) for some energies of interest
+{\tt ElegentXDistributionSampler} {\tt distributions/generate\_x\_distributions}
+
+{\tt Generator} {\tt ElegentTest}
+
+{\tt plots/generate\_plots} and plots on the web
+
+{\tt test/package\_test}
+
 
 %----------------------------------------------------------------------------------------------------
 
