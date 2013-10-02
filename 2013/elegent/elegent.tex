@@ -150,20 +150,17 @@ elastic hadron scattering \sep Coulomb-nuclear interference \sep Monte-Carlo gen
 
 \section{Introduction}\label{s:inc}
 
-* why interesting
+The elastic scattering of nucleons (proton or anti-proton) is their simplest interaction, however, it still presents a challenge for theory to describe it. The complication may be seen in the fact that the coupling constant of quantum chromodynamics (QCD) becomes large at low energy scales (low momentum transfer is characteristic for the elastic scattering of nucleons). Consequently, one can not apply the straight-forward perturbative calculations like in quantum electrodynamics (QED) for example. Instead of describing the elastic scattering from first principles, many model descriptions have been developed. These more or less QCD-motivated models are often built on Regge theory and/or eikonal formalism grounds. As there are new experimental efforts at the LHC \cite{totem,alfa}, we have felt it useful to collect some of the most prominent models in an easily accessible library that could be used for various applications (C++ code, comparison to data, Monte-Carlo generator, etc).
 
-* why need models
+Out of the three fundamental forces relevant for particle interactions only the strong and electromagnetic forces are important for elastic scattering of nucleons. The four-momentum transfer squared, $t$, typical for the elastic scattering is $|t| \lesssim 10\un{GeV^2}$. Compared to that, the carriers of the weak forces are much heavier, thus the influence of the weak interaction is negligible. Some models of the strong interaction (traditionally called {\em hadronic models}) are described in Section \ref{s:had mod}, the electromagnetic (traditionally called {\em Coulomb}) interaction is discussed in Section \ref{s:coul mod}. Some approaches to evaluate the interference between the hadronic and Coulomb forces are reviewed in Section \ref{s:int mod}.
 
-* elastic scattering: strong (hadronic) and Coulomb (and interference)
-
-* spin?
-
+Although nucleons are spin $1/2$ particles, there is evidence that for forward elastic scattering only one spin amplitude is dominant (for details see \cite[section 1]{jan_thesis}). This sets the traditional theoretical framework where only one scattering amplitude is considered.
 
 %----------------------------------------------------------------------------------------------------
 
 \section{Hadronic models}\label{s:had mod}
 
-The following models are currently implemented, for a more detailed model overview see \cite[section 1.1]{jan_thesis} or \cite[section 4]{dremin13}.
+The following models are currently implemented in the Elegent package, for a more detailed model overview see \cite[section 1.1]{jan_thesis} or \cite[section 4]{dremin13}.
 
 {\bf The Model of Block et al.}~is a QCD-inspired model formulated in eikonal formalism \cite{bh99,block06}. The eikonal receives four contributions due to quark-quark, quark-gluon, gluon-gluon interactions and an odderon exchange. The latter is responsible for the difference between $\rm pp$ and $\rm \bar p p$ scattering and is negligible at LHC energies. Each of the eikonal contributions is factorised into energy dependence term (proportional to the integral cross-section of a given sub-process) and impact-parameter profile. All four profiles have the same form but are scaled with a parameter reflecting the areas occupied by quarks and gluons in the nucleon. The gluon-gluon cross-section is modelled after QCD, adopting a gluon distribution function that behaves as $1/x^{1+\epsilon}$ at low momentum fractions $x$. It is this high soft-gluon content that is responsible for the cross-section rise with energy. This model is implemented as class \class{BHModel} in the library source code, using parameters from publication \cite{block06}.
 
@@ -450,6 +447,11 @@ The sampled distributions are plotted to compare hadronic models in each of the 
 	\Name{DREMIN, I. M.}
 	\REVIEW{Physics - Uspekhi}{56}{2013}{3--28}
 	
+\bibitem{totem}
+	TODO
+
+\bibitem{alfa}
+	TODO
 
 
 \end{thebibliography}
