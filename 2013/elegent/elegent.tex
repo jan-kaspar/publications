@@ -247,15 +247,15 @@ F(t) = 2 p \sqrt s \int b\, \d b\, J_0(b \sqrt{-t})\, A(b)\ ,\quad A(b) = {1\ove
 where $J_0$ stands for the Bessel function. There is a global model pointer {\tt model} pointing to the actual/working model.
 
 The class {\tt CoulombInterference} implements the parametrisations and models from Sections \ref{s:coul mod} and \ref{s:int mod}. The form factor parametrisation is set via the {\tt ffType} option. The methods {\tt FF\_e(t)}, {\tt FF\_m(t)} and {\tt FF\_sq(t)} return the electric, magnetic and square of the effective form factor, for a given value of $t$ (negative) in $\rm GeV^2$. Scattering amplitudes can be calculated by {\tt Amp(t)} method, where $t$ is given in $\rm GeV^2$. The type of the amplitude is chosen via the {\tt mode} switch: {\tt mPC} (pure Coulomb amplitude), {\tt mPH} (pure hadronic amplitude), {\tt mWY} (West-Yennie formula), {\tt mSWY} (simplified West-Yennie formula) and {\tt mKL} (Kundr\'at-Lokaj\' i\v cek formula). The hadronic model is chosen via the global variable {\tt model} introduced above. For convenience, the class implements several derived quantities of interest. The {\tt R(t)} method evaluates relative difference between SWY and KL formulae
-\begin{equation}
+\begin{equation}\label{e:R}
 R(t) = {|F^{\rm KL}(t)|^2 - |F^{\rm WY}(t)|^2 \over |F^{\rm KL}(t)|^2}\ ,
 \end{equation}
 the {\tt Z(t)} method gives the importance of the interference term
-\begin{equation}
+\begin{equation}\label{e:Z}
 Z(t) = {|F^{\rm KL}(t)|^2 - |F^{\rm PH}(t)|^2 - |F^{\rm PC}(t)|^2 \over |F^{\rm KL}(t)|^2}
 \end{equation}
 and the {\tt C(t)} measures the influence of Coulomb interaction to the differential cross-section
-\begin{equation}
+\begin{equation}\label{e:C}
 C(t) = {|F^{\rm KL}(t)|^2 - |F^{\rm PH}(t)|^2 \over |F^{\rm PH}(t)|^2} \ .
 \end{equation}
 There is a global pointer {\tt coulomb} to an instance of the {\tt CoulombInterference}.
@@ -263,13 +263,13 @@ There is a global pointer {\tt coulomb} to an instance of the {\tt CoulombInterf
 
 \subsection{Utilities}\label{s:prog util}
 
-{\tt ElegentXDistributionSampler} {\tt distributions/generate\_x\_distributions}
+The are programs to sample distributions of interest: {\tt ElegentXDistributionSampler} where {\tt X} can be {\tt T} for distributions in four-momentum transfer squared or {\tt B} for distributions in impact parameter space. The $t$-distributions comprise: amplitude $F(t)$, phase $\arg F(t)$, rho parameter $\rho \equiv \Re F(t)/\Im F(t)$, differential cross-section $\d\sigma/\d t$, cumulative cross-section, elastic slope $B(t) \equiv \d\log |F(t)|^2/\d t$ and the $C(t)$, $R(t)$ and $Z(t)$ functions defined in Eqs. (\ref{e:R}) to (\ref{e:C}). All these distributions are available for all the Coulomb-hadronic interference modes listed in the previous section. The $b$-distributions comprise only the profile function at the moment. The users' manual for the programs can be found at \cite[Wiki section]{elegent}. There are also scripts ({\tt generate\_x\_distributions}) to generate the distributions at a number of energies of interest. These distributions are available for download in the ROOT format at the project web page \cite[Data-sheets section]{elegent}.
 
-{\tt Generator} {\tt ElegentTest}
+A cumulative cross-section distribution (sampled by the program mentioned above) can be used for Monte-Carlo generation of elastic nucleon-nucleon scattering events. This functionality is provided by the {\tt Generator} class, which can easily be used in any other program. For an example usage see the  {\tt ElegentTest} program.
 
-{\tt plots/generate\_plots} and plots on the web
+The sampled distributions are plotted to compare hadronic models in each of the quantities. These plots are available in PDF format on the project web page \cite[Plots section]{elegent}.
 
-{\tt test/package\_test}
+%{\tt test/package\_test}
 
 
 %----------------------------------------------------------------------------------------------------
