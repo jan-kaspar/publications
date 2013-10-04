@@ -63,21 +63,18 @@
 
 \author{J.~Ka\v spar\corref{cor1}\fnref{fn1}}
 \ead{jan.kaspar@cern.ch}
-\address{CERN, Geneva, Switzerland}
+\address{CERN, 1211 Geneve 23, Switzerland}
 
 \cortext[cor1]{Corresponding author}
 \fntext[fn1]{On leave of absence from Institute of Physics, AS CR, v.v.i., 182 21 Prague 8, Czech Republic.}
 
 
 \begin{abstract}
-Elastic scattering: simple process but challenge for theory. Lacking hard scale, perturbative QCD can not be applied. Instead, many phenomenological/theoretical models. This package: unified implementation of a number of such models as a C++ library. Ready made t- and b-distributions for most interesting energies. A class performing Monte-Carlo generation of elastic scattering events. This class can easily embedded in any other program (e.g. TOTEM offline software).
-
-TODO: add LHC somewhere (prediction for LHC energies?)
+Although elastic scattering of nucleons is a very simple process it still presents a big challenge for theory. Due to missing hard energy scale, the perturbative QCD can not be applied. Instead, many phenomenological/theoretical models have emerged. In this paper we present a unified implementation of most prominent such models as a C++ library. In addition, there are a number of utilities included in the package. For instance, programs to sample many distributions of interest in four-momentum transfer squared, $t$, impact parameter, $b$, and collision energy $\sqrt s$. These distributions at ISR, S$\rm p\bar p$S, RHIC, Tevatron and LHC energies are available for download from the project web site. Both in the form of ROOT files and PDF figures providing comparisons among the models. The package comprises also a tool for Monte-Carlo generation of elastic scattering events, which can easily be embedded in any other program framework (e.g.~TOTEM offline software).
 \end{abstract}
 
 \begin{keyword}
-elastic hadron scattering \sep Coulomb-nuclear interference \sep Monte-Carlo generator \sep TODO
-%% keywords here, in the form: keyword \sep keyword
+elastic hadron scattering \sep non-perturbative QCD models \sep impact parameter profiles \sep nucleon form factors \sep Coulomb-nuclear interference \sep Monte-Carlo event generator \sep LHC predictions
 
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
@@ -150,7 +147,7 @@ elastic hadron scattering \sep Coulomb-nuclear interference \sep Monte-Carlo gen
 
 \section{Introduction}\label{s:inc}
 
-The elastic scattering of nucleons (proton or anti-proton) is their simplest interaction, however, it still presents a challenge for theory to describe it. The complication may be seen in the fact that the coupling constant of quantum chromodynamics (QCD) becomes large at low energy scales (low momentum transfer is characteristic for the elastic scattering of nucleons). Consequently, one can not apply the straight-forward perturbative calculations like in quantum electrodynamics (QED) for example. Instead of describing the elastic scattering from first principles, many model descriptions have been developed. These more or less QCD-motivated models are often built on Regge theory and/or eikonal formalism grounds. As there are new experimental efforts at the LHC \cite{totem,alfa}, we have felt it useful to collect some of the most prominent models in an easily accessible library that could be used for various applications (C++ code, comparison to data, Monte-Carlo generator, etc).
+The elastic scattering of nucleons (proton or anti-proton) is their simplest interaction, however, it still presents a challenge for theory to describe it. The complication may be seen in the fact that the coupling constant of quantum chromodynamics (QCD) becomes large at low energy scales (low momentum transfer is characteristic for the elastic scattering of nucleons). Consequently, one can not apply the straight-forward perturbative calculations like in quantum electrodynamics (QED) for example. Instead of describing the elastic scattering from first principles, many model descriptions have been developed. These more or less QCD-motivated models are often built on Regge theory and/or eikonal formalism grounds. As there are new experimental efforts at the LHC \cite{totem,alfa}, we have felt it useful to collect some of the most prominent models in an easily accessible library that could be used for various applications (C++ code, comparison to data, Monte-Carlo generator, etc). This became the core of the Elegent (ELastic Event GENeraTor) package.
 
 Out of the three fundamental forces relevant for particle interactions only the strong and electromagnetic forces are important for elastic scattering of nucleons. The four-momentum transfer squared, $t$, typical for the elastic scattering is $|t| \lesssim 10\un{GeV^2}$. Compared to that, the carriers of the weak forces are much heavier, thus the influence of the weak interaction is negligible. Some models of the strong interaction (traditionally called {\em hadronic models}) are described in Section \ref{s:had mod}, the electromagnetic (traditionally called {\em Coulomb}) interaction is discussed in Section \ref{s:coul mod}. Some approaches to evaluate the interference between the hadronic and Coulomb forces are reviewed in Section \ref{s:int mod}.
 
