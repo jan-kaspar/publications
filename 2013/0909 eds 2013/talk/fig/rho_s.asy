@@ -170,12 +170,12 @@ DrawPoint(7e3, 0.145, 0.091, 0.091, red+0.8pt, mCi+false+2pt+red);		// TOTEM 7 T
 //DrawPoint(8e3, 0.107, 0.031, 0.031, red+0.8pt, mCi+true+2pt+red);		// TOTEM 8 TeV
 
 x_corr = -0.5 * x_corr_scale;
-DrawPointUnc(0.037, 0.023);
+//DrawPointUnc(0.037, 0.023);
 DrawPointUnc(0.098, 0.026);
 DrawPointUnc(0.116, 0.03);
 
 //DrawRange(0.046, 0.105);
-DrawPointUnc(0.066, 0.023);
+//DrawPointUnc(0.066, 0.023);
 //DrawRange(0.087, 0.127);
 DrawPointUnc(0.093, 0.026);
 //DrawRange(0.097, 0.117);
@@ -252,17 +252,25 @@ y = 0; v = 0.1399; e = 0.002;
 draw(t * (y, v), black, mSq+black+3pt);
 draw(t * ((y, 0.064)--(y, 0.148)), black+1pt, Bars(8));
 
-y = 2 - 2.5ys;
-DrawPointUnc(0.037, 0.023);
+y = 2 - 2.0ys;
+//DrawPointUnc(0.037, 0.023);
 DrawPointUnc(0.098, 0.026);
 DrawPointUnc(0.116, 0.03);
 
-DrawRange(0.046, 0.105);
-DrawPointUnc(0.066, 0.023);
+//DrawRange(0.046, 0.105);
+//DrawPointUnc(0.066, 0.023);
 DrawRange(0.087, 0.127);
 DrawPointUnc(0.093, 0.026);
 DrawRange(0.097, 0.117);
 DrawPointUnc(0.11, 0.03);
+
+v = 0.104;
+draw(t * ((1, v)--(3, v)), red+dashdotted);
+
+label("TOTEM mean:",
+	t * (2.7, 0.005), E, red, Fill(white));
+label("$\displaystyle\rh = 0.104 \pm 0.027^{\rm (stat)} \pm 0.010^{\rm (syst)}\ \hbox{}^{\hbox to 7pt{\hss+\hss} 0.012}_{\hbox to 7pt{\hss-\hss} 0.006}\ \hbox{}^{\rm (model)}$",
+	t * (3.2, 0.005), E, red, Fill(white));
 
 y = 4; v = 0.119;
 draw(t * (y, v), blue, mCr+(magenta+1pt)+3pt);

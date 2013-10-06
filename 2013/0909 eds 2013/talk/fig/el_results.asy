@@ -185,7 +185,7 @@ NewPad("$|t|\ung{GeV^2}$", "$\d\si/\d t\ung{mb/GeV}$", axesAbove=true);
 scale(Linear, Log);
 
 filldraw((0.06, -1.8)--(0.4, -1.8)--(0.4, -1.2)--(0.06, -1.2)--cycle, heavygreen, nullpen);
-filldraw((0.4, -1.8)--(0.6, -1.8)--(0.6, -1.2)--(0.4, -1.2)--cycle, heavygreen+opacity(0.5), nullpen);
+filldraw((0.4, -1.8)--(0.5, -1.8)--(0.5, -1.2)--(0.4, -1.2)--cycle, heavygreen+opacity(0.5), nullpen);
 
 AddToLegend("$\be^* = 11\un{m}$, RPs at $5\un{\si}$", mSq+5pt+heavygreen);
 AddToLegend("$\be^* = 11\un{m}$, RPs at $13\un{\si}$", mSq+5pt+(heavygreen+opacity(0.5)));

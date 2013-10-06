@@ -29,7 +29,7 @@ string MeasDesc(real vr)
 {
 	int v = floor(vr + 0.5);
 
-	if (v == 2) return "\vbox{\hbox{previous measurement}\hbox{($\be^* = 90\un{m}$)}}";
+	if (v == 2) return "\vbox{\hbox{previous measurement}\hbox{($\be^* = 90\un{m}$)}\hbox{[PRL 111 (2013) 012001]}}";
 	if (v == 0) return "\vbox{\hbox{this analysis}\hbox{($\be^* = 1000\un{m}$)}}";
 
 	return "";
@@ -42,17 +42,16 @@ currentpad.xTicks = LeftTicks(Step=2, step=1);
 currentpad.yTicks = RightTicks(rotate(0)*Label(""), MeasDesc, Step=1, step=0);
 
 y = 2;
-// TODO
 DrawPointUnc(101.7, 2.9, heavygreen);
 
-y = 0 + 2.5ys;
+y = 0 + 2.0ys;
 
-DrawPointUnc(103.228, 2.455);
+//DrawPointUnc(103.228, 2.455);
 DrawPointUnc(103.189, 2.471);
 DrawPointUnc(103.072, 2.471);
 
-DrawRange(102.4, 103.5);
-DrawPointUnc(103.148, 2.479);
+//DrawRange(102.4, 103.5);
+//DrawPointUnc(103.148, 2.479);
 DrawRange(102.7, 103.3);
 DrawPointUnc(103.275, 2.478);
 DrawRange(102.7, 103.3);

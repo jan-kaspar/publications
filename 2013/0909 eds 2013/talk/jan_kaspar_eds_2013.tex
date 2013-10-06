@@ -1,6 +1,9 @@
 \input slides.tex
 \input utf8-t1
 
+\def\Section#1{%
+	\centerline{\EM{#1}}
+}
 
 %\def\Em#1{{\cRe#1\cFg}}
 %\def\EM#1{{\cRe\bf #1\cFg}}
@@ -354,7 +357,7 @@ $$\th_x^* = {x^{\rm F} - x^{\rm N}\over L_x^{\rm F} - L_x^{\rm N}} ,\qquad \th_y
 	}%
 	\hskip3mm
 	\vtop{\hsize8cm
-		\noindent\SetFontSizesX\it\cDGray T1-only events, events with gap over T2, low-mass diffraction
+		\noindent\SetFontSizesX\it\cDGray T1-only events, events with gap over T2, low-mass diffraction, cen.~diff. without tracks in T1 and T2
 		\cBlack
 	}%
 	\hss
@@ -400,8 +403,8 @@ $\Rightarrow$ but can be constrained from data ($\si_{\rm tot}^{RP} - \si_{\rm e
 
 \vskip-6mm
 
-\> analysis at $\sqrt s = 2.76\un{TeV}$: all three methods available
-\>> elastic analysis: in early stage
+\> analysis at $\sqrt s = 2.76\un{TeV}$: all three methods planned
+\>> elastic analysis: ongoing
 \>> inelastic analysis: almost finished
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -454,7 +457,7 @@ $$\cBlue\exp(b_1 t + b_2 t^2 + ...)\qquad N_b = \hbox{number of $b_i$ parameters
 \newpage %-------------------------------------------------------------------------------------------
 \ctitle{Coulomb-nuclear interference}{Phase of nuclear amplitude}
 
-\line{\hskip-2mm\raise-10mm\vbox{\hsize8.1cm
+\line{\hskip-2mm\raise-20mm\vbox{\hsize8.1cm
 \itskip10mm
 
 \> \Em{constant phase} -- the simplest choice
@@ -495,12 +498,14 @@ $$\SmallerFonts A \approx 5.53,\ \ka \approx 4.01,\ t_{\rm m} \approx -0.310\un{
 	\hss
 	\fig[,6cm]{fig/plotDataResults.pdf}%
 	\hskip3mm
-	\raise50mm\vtop{\hsize55mm
-		\> indications that $N_b = 1$ insufficient to describe data
+	\raise50mm\vtop{\hsize56mm
+		\let\itcol\cDGrayRed
+		\> indications that $N_b = 1$\break insufficient to describe data
 		\vskip10mm
 		\> $\si_{\rm tot}$: very stable results
 		\> green line and band:\\
-		$\be^* = 90\un{m}$ results
+		previous $\be^* = 90\un{m}$ results
+		[PRL 111 (2013) 012001]
 	}%
 	\hss
 }
@@ -544,7 +549,7 @@ $$\SmallerFonts A \approx 5.53,\ \ka \approx 4.01,\ t_{\rm m} \approx -0.310\un{
 {
 \SmallerFonts
 
-\section{Elastic differential cross-section}
+\Section{Elastic differential cross-section}
 
 \> \em{7 TeV}
 \>> $\be^*=90\un{m}$ and medium-$|t|$ at $\be^{*}=3.5\un{m}$: published
@@ -555,10 +560,10 @@ $$\SmallerFonts A \approx 5.53,\ \ka \approx 4.01,\ t_{\rm m} \approx -0.310\un{
 \>> $\be^*=90\un{m}$: advanced analysis
 
 \> \em{2.76 TeV}
-\>> $\be^*=11\un{m}$: analysis started
+\>> $\be^*=11\un{m}$: analysis ongoing
 
 \vfil
-\section{Total cross-section}
+\Section{Total cross-section}
 
 \> \em{7 TeV}
 \>> $\be^*=90\un{m}$: published
@@ -571,7 +576,7 @@ $$\SmallerFonts A \approx 5.53,\ \ka \approx 4.01,\ t_{\rm m} \approx -0.310\un{
 \>> $\be^*=11\un{m}$: elastic analysis started, inelastic ready
 
 \vfil
-\section{Coulomb-nuclear interference studies}
+\Section{Coulomb-nuclear interference studies}
 
 \> \em{8 TeV}
 \>> $\be^*=1000\un{m}$: publication ongoing
@@ -724,6 +729,17 @@ $$
 
 $$I(t, t') = \int\limits_{0}^{2\pi}\d\ph\ {{\cal F}^2(t'')\over t''}\ ,\qquad t'' = t + t' + 2\sqrt{t t'} \cos\ph$$
 
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Backup}{More elastic observables}
+
+\hbox{}\vfil
+
+\centerline{%
+	\fig[,7.5cm]{fig/B_s.pdf}%
+	\hskip5mm
+	\fig[,7.5cm]{fig/sigma_el_to_sigma_tot.pdf}%
+}
 
 
 \vfil
