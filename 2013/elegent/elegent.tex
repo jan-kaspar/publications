@@ -52,7 +52,6 @@
 
 %----------------------------------------------------------------------------------------------------
 
-
 \journal{Computer Physics Communications}
 
 \begin{document}
@@ -87,7 +86,8 @@ elastic nucleon scattering \sep non-perturbative QCD models \sep nucleon form fa
 
 %----------------------------------------------------------------------------------------------------
 
-\newpage
+% TODO
+\iffalse
 
 \noindent
 {\bf PROGRAM SUMMARY}
@@ -131,7 +131,10 @@ elastic nucleon scattering \sep non-perturbative QCD models \sep nucleon form fa
 
 \end{small}
 
+\fi
+
 \newpage
+
 
 %----------------------------------------------------------------------------------------------------
 
@@ -150,10 +153,10 @@ Although nucleons are spin $1/2$ particles, there are indications that for forwa
 The following models are currently implemented in the Elegent package, for a more detailed model review see \cite[section 1.1]{jan_thesis} or \cite[section 4]{dremin13}.
 
 The {\bf model of Block et al.}~\cite{bh99,block06} is a QCD-inspired model formulated in eikonal formalism . The eikonal receives four contributions due to quark-quark, quark-gluon, gluon-gluon interactions and an odderon exchange. The latter is responsible for the difference between $\rm pp$ and $\rm \bar p p$ scattering and is negligible at LHC energies. Each of the eikonal contributions is factorised into energy dependence term (proportional to the integral cross-section of a given sub-process) and impact-parameter profile. All four profiles have the same form but are scaled with a parameter reflecting the areas occupied by quarks and gluons in the nucleon. The gluon-gluon cross-section is modelled after QCD, adopting a gluon distribution function that behaves as $1/x^{1+\epsilon}$ at low momentum fractions $x$. It is this high soft-gluon content that is responsible for the cross-section rise with energy. This model is implemented as class \class{BHModel} in the library source code, using parameter values from publication \cite{block06}.
-TODO: corrections at Wiki?
+% TODO: corrections at Wiki?
 
 The {\bf model of Bourrely et al.}~\cite{bsw79,bsw84,bsw03,bsw11} is also formulated within eikonal description. The eikonal includes two terms corresponding to two scattering mechanisms: pomeron and reggeon exchange. The pomeron term is factorised into a product of two functions, one depending on centre-of-mass energy, $\sqrt s$, and one on impact parameter, $b$. The energy dependence is deduced from asymptotic quantum field theory behaviour \cite{wu70}. The impact-parameter profile of the pomeron exchange is derived by assuming similar distributions of electric charge and nuclear matter in the nucleon. The charge distribution is extracted from electromagnetic form factor and is further modified by a slowly varying function in order to get the complete profile function. The reggeons considered in this model include $\rm A_2$, $\rho$ and $\omega$. The trajectories are described with a traditional parametrisation with $s^{\alpha - 1}$ energy dependence and $\e^{-bt}$ momentum-transfer dependence. The reggeon contribution is responsible for the $\rm pp$ and $\rm \bar pp$ difference at low energies and is negligible at LHC and higher energies. This model is implemented as class \class{BSWModel} in the library source code, using parameter values from publication \cite{bsw03}.
-TODO: corrections at Wiki?
+% TODO: corrections at Wiki?
 
 In the {\bf model of Islam et al.}~the proton is pictured in an effective quantum field theory model (gauged linear sigma model) \cite{islam06}. The proposed soliton solution has a mass comparable to the proton and divides the proton to two distinct layers: an outer cloud of quark-antiquark condensate and an inner core of topological charge. Later on \cite{islam05}, a third, the inner-most layer has been added: a valence-quark bag. These three layers give rise to three mechanisms contributing to elastic proton-proton scattering, each being dominant at a different region of $t$. At the lowest $|t|$ it is the diffraction scattering originating from a glancing overlapping of the outer clouds \cite{islam84,islam87}, at medium $|t|$ the core-core scattering \cite{islam06} and at high $|t|$ the valence-quark scattering \cite{islam05,islam09}. The diffraction scattering is described in impact-parameter picture using a Fermi profile function. As a consequence of the underlying quantum field theory model, the core-core scattering is mediated by the $\omega$ meson behaving as an elementary particle. The corresponding amplitude thus contains a Feynman propagator and a form factor ensuring an exponential fall off at higher $|t|$ values. Regarding the valence-quark scattering, the model comes with two alternative mechanisms: interaction via a BFKL gluon ladder (denoted {\em hard pomeron} variant, HP) \cite{islam05} or interaction mediated by low-$x$ gluons surrounding the valence quark (variant {\em low-x gluons}, LxG) \cite{islam09}. This model is implemented as class \class{IslamModel} in the library source code, using parameter values from publication \cite{islam06} and \cite{islam09} for the LxG extension.
 
@@ -177,8 +180,7 @@ The QED framework can naturally account for the nucleon structure and its anomal
 \end{equation}
 where $\alpha$ is the fine-structure constant.
 
-% TODO: discreationary
-In the Elegent package, the user can choose (via {\tt CoulombInterference::\-FFType}) between several form factor parametrisations. They account for increasing amount of experimental data as well as progressing theoretical development. One of the first publications is by Hofstadter \cite{hofstadter58} who used a dipole parametrisations. This was later updated by Borkowski et al.~\cite{borkowski74,borkowski75} parametrising both form factors by a sum of four poles. Further publications Kelly \cite{kelly04}, Arrington et al.~\cite{arrington07} and Puckett \cite{puckett10} use a parametrisation satisfying dimensional scaling at high $|t|$. A graphical comparison of these form factors is available in \cite[Figure~1.7]{jan_thesis}.
+In the Elegent package, the user can choose (via {\tt CoulombInterference::\discretionary{}{}{}FFType}) between several form factor parametrisations. They account for increasing amount of experimental data as well as progressing theoretical development. One of the first publications is by Hofstadter \cite{hofstadter58} who used a dipole parametrisations. This was later updated by Borkowski et al.~\cite{borkowski74,borkowski75} parametrising both form factors by a sum of four poles. Further publications Kelly \cite{kelly04}, Arrington et al.~\cite{arrington07} and Puckett \cite{puckett10} use a parametrisation satisfying dimensional scaling at high $|t|$. A graphical comparison of these form factors is available in \cite[Figure~1.7]{jan_thesis}.
 
 The Coulomb amplitude and nuclear form factors are implemented in class {\tt CoulombInterference}.
 
@@ -207,23 +209,25 @@ The core of the Elegent package is a C++ library implementing the physics models
 
 Further practical-oriented information, implementation details and users' manual can be found at the project web page \cite{elegent}.
 
-\subsection{Model library}\label{s:prog lib} 
+\subsection{Model library}\label{s:prog lib}
+
+In the library source code, the four-momentum transfer squared $t$ is treated as negative number in $\rm GeV^2$. The units of the impact parameter $b$ are $\rm fm$.
 
 The class {\tt Math} collects numerical integration routines.
 
 The class {\tt Constants} encapsulates physics and mathematical constants (e.g.~proton mass, Euler's constants) as well as process description (e.g.~$\rm pp$ or $\rm \bar pp$ mode, centre-of-mass energy). The constants are set up by the static {\tt Init} method, creating an instance of the class referenced by the global pointer {\tt cnts}.
 
-The class {\tt Model} is the mother class for all the hadronic models described in Section \ref{s:had mod}. Each model object has two labels: {\tt fullLabel} (intended for figure legends) and {\tt shortLabel} (intended for object names in ROOT files). Each of the labels have this structure: {\tt name:mode (variant) [version]}. The {\tt mode} (e.g.~which amplitude components are included) and {\tt variant} are optional entries and {\tt version} gives a reference to the paper(s) used for the implementation. The mode and variant can be chosen by the {\tt Configure} method. Afterwards, the {\tt Init} method shall be called to set up appropriate values of model parameters and to perform (potentially) time expensive operations (e.g.~pre-sampling of certain distributions). The state of a model can be queried by calling the {\tt Print} method. The scattering amplitude $F(t)$ can be obtained by the {\tt Amp(t)} method which takes the $t$ (negative) in $\rm GeV^2$ as a parameter. The amplitude normalisation is as follows:
+The class {\tt Model} is the mother class for all the hadronic models described in Section \ref{s:had mod}. Each model object has two labels: {\tt fullLabel} (intended for figure legends) and {\tt shortLabel} (intended for object names in ROOT files). Each of the labels have this structure: {\tt name:mode (variant) [version]}. The {\tt mode} (e.g.~which amplitude components are included) and {\tt variant} are optional entries and {\tt version} gives a reference to the paper(s) used for the implementation. The mode and variant can be chosen by the {\tt Configure} method. Afterwards, the {\tt Init} method shall be called to set up appropriate values of model parameters and to perform (potentially) time expensive operations (e.g.~pre-sampling of certain distributions). The state of a model can be queried by calling the {\tt Print} method. The {\tt Amp(t)} method calculates the scattering amplitude $F(t)$ using the following normalisation:
 \begin{equation}
 {\d\sigma\over\d t} = {\pi\over s p^2} |F(t)|^2\ ,\qquad \sigma_{\rm tot} = {4\pi\over p\sqrt s} \Im F(t = 0)\ ,
 \end{equation}
-where $s$ denotes the square of the collision energy and $p$ is the momentum of a colliding nucleon in the centre-of-mass frame. The profile function $A(b)$ (i.e.~impact-parameter amplitude) is calculated by the {\tt Prf(b)} method which takes as a parameter the impact parameter $b$ in $\rm fm$. The profile function is normalised according to these relations:
+where $s$ denotes the square of the collision energy and $p$ is the momentum of a colliding nucleon in the centre-of-mass frame. The profile function $A(b)$ (i.e.~impact-parameter amplitude) is calculated by the {\tt Prf(b)} method. The profile function is normalised according to these relations:
 \begin{equation}
 F(t) = 2 p \sqrt s \int b\, \d b\, J_0(b \sqrt{-t})\, A(b)\ ,\quad A(b) = {1\over 4p\sqrt s} \int \d t\, J_0(b\sqrt{-t})\,F(t)\ ,
 \end{equation}
 where $J_0$ stands for the Bessel function. There is a global model pointer {\tt model} referring to the actual/working model.
 
-The class {\tt CoulombInterference} implements the parametrisations and models from Sections \ref{s:coul mod} and \ref{s:int mod}. The form factor parametrisation is set via the {\tt ffType} option. The methods {\tt FF\_e(t)}, {\tt FF\_m(t)} and {\tt FF\_sq(t)} return the electric, magnetic and square of the effective form factor, for a given value of $t$ (negative) in $\rm GeV^2$. Scattering amplitudes can be calculated by {\tt Amp(t)} method, where $t$ is given in $\rm GeV^2$. The type of the amplitude is chosen via the {\tt mode} variable: {\tt mPC} (pure Coulomb amplitude), {\tt mPH} (pure hadronic amplitude), {\tt mWY} (West-Yennie formula), {\tt mSWY} (simplified West-Yennie formula) and {\tt mKL} (Kundr\'at-Lokaj\' i\v cek formula). The hadronic model used for Coulomb interference calculations is given by the global variable {\tt model} introduced above. For convenience, the class implements methods to calculate several derived quantities of interest. The {\tt R(t)} method evaluates relative difference between SWY and KL formulae
+The class {\tt CoulombInterference} implements the models from Sections \ref{s:coul mod} and \ref{s:int mod}. The form factor parametrisation is set via the {\tt ffType} option. The methods {\tt FF\_e(t)}, {\tt FF\_m(t)} and {\tt FF\_sq(t)} return the electric, magnetic and square of the effective form factor. Scattering amplitudes can be calculated by {\tt Amp(t)} method. The type of the amplitude is chosen via the {\tt mode} variable: {\tt mPC} (pure Coulomb amplitude), {\tt mPH} (pure hadronic amplitude), {\tt mWY} (West-Yennie formula), {\tt mSWY} (simplified West-Yennie formula) and {\tt mKL} (Kundr\'at-Lokaj\' i\v cek formula). The hadronic model used for Coulomb interference calculations is given by the global variable {\tt model} introduced above. For convenience, the class implements methods to calculate several derived quantities of interest. The {\tt R(t)} method evaluates relative difference between the SWY and KL formulae
 \begin{equation}\label{e:R}
 R(t) = {|F^{\rm KL}(t)|^2 - |F^{\rm WY}(t)|^2 \over |F^{\rm KL}(t)|^2}\ ,
 \end{equation}
@@ -240,7 +244,31 @@ There is a global pointer {\tt coulomb} to an instance of the {\tt CoulombInterf
 
 \subsection{Utilities}\label{s:prog util}
 
-The are programs to sample distributions of interest: {\tt ElegentXDistributionSampler} where {\tt X} can be {\tt T} for distributions in four-momentum transfer squared or {\tt B} for distributions in impact parameter space. The $t$-distributions comprise: amplitude $F(t)$, phase $\arg F(t)$, rho parameter $\rho \equiv \Re F(t)/\Im F(t)$, differential cross-section $\d\sigma/\d t$, cumulative cross-section, elastic slope $B(t) \equiv \d\log |F(t)|^2/\d t$ and the $C(t)$, $R(t)$ and $Z(t)$ functions defined in Eqs. (\ref{e:R}) to (\ref{e:C}). All these distributions are available for all the Coulomb-hadronic interference modes listed in the previous section. The $b$-distributions comprise only the profile function at the moment. The users' manual for the programs can be found at \cite[Wiki section]{elegent}. There are also scripts ({\tt generate\_x\_distributions}) to generate the distributions at ISR, S$\rm p\bar p$S, RHIC, Tevatron and LHC energies. These distributions are available for download in the ROOT format at the project web page \cite[Distributions section]{elegent}.
+\begin{table}
+\def\Box#1{\leftskip0pt\rightskip0pt\parfillskip0pt plus1fil\vtop{\hsize102mm\noindent #1}}
+\caption{List of distributions generated by sampling programs and available for download from the project web page.}
+\label{tab:dists}
+\begin{center}
+\begin{tabular}{cl}\hline
+$t$-distributions & \vtop{%
+	\Box{%
+		{\em available for all Coulomb-interference modes}:\hfil\break
+		amplitude $F(t)$, phase $\arg F(t)$, rho parameter $\rho(t) \equiv \Re F(t)/\Im F(t)$,
+		differential cross-section $\d\sigma/\d t$, cumulative cross-section and elastic slope $B(t) \equiv \d\log |F(t)|^2/\d t$
+	}%
+	\vskip2mm
+	\Box{%
+		{\em derived quantities}:\hfil\break
+		$R(t)$, $Z(t)$ and $C(t)$, see Eqs. (\ref{e:R}) to (\ref{e:C})
+	}%
+} \cr\hline
+$b$-distributions & \Box{profile function $A(b)$} \cr\hline
+$s$-distributions & \Box{total cross-section $\sigma_{\rm tot}(s)$, rho parameter $\rho(s, t=0)$ and forward hadronic slope $B_0(s) \equiv \d\log |F(t)|^2/\d t |_{t = 0}$}\cr\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+The are programs to sample many distributions of interest (see the list in Table \ref{tab:dists}): {\tt ElegentXDistributionSampler} where {\tt X} can be {\tt T} for distributions in four-momentum transfer squared, {\tt B} for distributions in impact parameter space or {\tt S} for distributions in cetre-of-mass energy $\sqrt s$. The users' manual for these programs can be found at \cite[Wiki section]{elegent}. There are also scripts ({\tt generate\_x\_distributions}) to generate the distributions at ISR, S$\rm p\bar p$S, RHIC, Tevatron and LHC energies. These distributions are available for download in the ROOT format at the project web page \cite[Distributions section]{elegent}.
 
 A cumulative cross-section distribution (sampled by the program mentioned above) can be used for Monte-Carlo generation of elastic nucleon-nucleon scattering events. This functionality is provided by the {\tt Generator} class, which can easily be used in any other program. For an example application see the  {\tt ElegentTest} program.
 
@@ -254,16 +282,19 @@ The sampled distributions are plotted to compare hadronic models in each of the 
 
 \begin{thebibliography}{00}
 
-% TODO: put them in order
-
 \def\Name#1{#1, }
 \def\REVIEW#1#2#3#4{{\it #1} {\bf #2} (#3) #4}
 	
 \bibitem{totem}
-	TODO
+	%The TOTEM Experiment at the CERN Large Hadron Collider
+	\Name{The TOTEM collaboration}
+	\REVIEW{JINST}{3}{2008}{S08007}
 
 \bibitem{alfa}
-	TODO
+	% JENNI, P. et al.
+	\Name{The ATLAS collaboration}
+	% ATLAS Forward Detectors for Measurement of Elastic Scattering and Luminosity
+	ATLAS-TDR 018, CERN-LHCC-2008-004 (2008)
 
 \bibitem{jan_thesis}
     \Name{KA\v SPAR J.}
