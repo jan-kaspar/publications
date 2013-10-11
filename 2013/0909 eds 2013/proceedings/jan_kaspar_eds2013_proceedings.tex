@@ -4,7 +4,7 @@
 
 \def\un#1{\,{\rm #1}}
 \def\unt#1{\,{\rm (#1)}}
-\def\d{{\rm d}}
+\def\der{{\rm d}}
 
 %------------------------------------
 
@@ -71,7 +71,7 @@ The ``pile-up'' inefficiency is calculated from the probability of finding an ad
 on differential cross-section is estimated with a Monte-Carlo simulation, using the final experimental $t$-distribution as an input. Quite generally, the luminosity uncertainty is the leading $t$-independent contribution. Regarding the $t$-dependent ones, the uncertainty due to residual misalignment tends to dominate at low $|t|$ while the optics uncertainties (affecting the kinematics reconstruction) at higher $|t|$.
 
 
-\subsection{Analyses and result overview}
+\subsection{Overview of analyses and results}
 
 There are published or ongoing elastic scattering analyses at centre-of-mass energies $\sqrt s = 7$, $8$ and $2.76\un{TeV}$. For details on the used data samples, $|t|$ ranges, event statistics and analysis status/publication reference see Tables \ref{tab:el res 7}, \ref{tab:el res 8} and \ref{tab:el res 2.76}.
 
@@ -99,7 +99,7 @@ $3.5$ & $18\un{\sigma}$					& $\approx 2\hbox{ to } 3.5$	& $10\un{k}$	& analysis
 $\beta^*\unt{m}$ & RP approach & $|t|$ range$\unt{GeV^2}$ & elastic events & status\cr\hline
 \hline
 $1000$	& $3\hbox{ or }10\un{\sigma}$	& $0.0006\hbox{ to }0.2$	& $352\un{k}$	& publication in preparation\cr\hline
-$90$	& $6\hbox{ to }9.5\un{\sigma}$	& $0.01\hbox{ to }0.3$		& $0.68\un{M}$	& published \cite{si_tot_8}\cr\hline
+$90$	& $6\hbox{ to }9.5\un{\sigma}$	& $0.01\hbox{ to }0.3$		& $0.68\un{M}$	& completed (cf.~\cite{si_tot_8})\cr\hline
 $90$	& $9.5\un{\sigma}$				& $0.02\hbox{ to }1.4$		& $7.2\un{M}$	& analysis advanced\cr\hline
 \end{tabular}
 \end{center}
@@ -148,9 +148,9 @@ TOTEM has applied three different methods to determine the total cross-section.
 \item The first method exploits only elastic inputs (thus measured by RPs). By applying the optical theorem, once can obtain the following formula for the total cross-section $\sigma_{\rm tot}$:
 
 \begin{equation}\label{eq:si tot m1}
-\sigma_{\rm tot}^2 = {16\pi\over 1+\rho^2} {1\over {\cal L}} \left. {\d N_{\rm el}\over \d t}\right |_{t = 0}\ ,
+\sigma_{\rm tot}^2 = {16\pi\over 1+\rho^2} {1\over {\cal L}} \left. {\der N_{\rm el}\over \der t}\right |_{t = 0}\ ,
 \end{equation}
-where ${\cal L}$ stands for the integrated luminosity and $\d N_{\rm el}/\d t|_{t = 0}$ is the elastic differential rate extrapolated to $t = 0$.
+where ${\cal L}$ stands for the integrated luminosity and $\der N_{\rm el}/\der t|_{t = 0}$ is the elastic differential rate extrapolated to $t = 0$.
 
 \eject
 
@@ -163,8 +163,8 @@ This method does not require the value of $\rho$ which is advantageous when TOTE
 \item The third method is called luminosity-independent as the inputs are combined in such a way that the formula for $\sigma_{\rm tot}$ does not include the luminosity. Moreover, the value of the integrated luminosity can be determined as well:
 
 \begin{equation}\label{eq:si tot m3}
-\sigma_{\rm tot} = {16\pi\over 1+\rho^2} {\d N_{\rm el}/ \d t |_{t = 0}\over N_{\rm el} + N_{\rm inel} }\ ,\qquad
-{\cal L} = {1+\rho^2\over 16\pi} {( N_{\rm el} + N_{\rm inel})^2 \over \d N_{\rm el}/ \d t |_{t = 0}}\ .
+\sigma_{\rm tot} = {16\pi\over 1+\rho^2} {\der N_{\rm el}/ \der t |_{t = 0}\over N_{\rm el} + N_{\rm inel} }\ ,\qquad
+{\cal L} = {1+\rho^2\over 16\pi} {( N_{\rm el} + N_{\rm inel})^2 \over \der N_{\rm el}/ \der t |_{t = 0}}\ .
 \end{equation}
 
 \end{itemize}
@@ -172,7 +172,7 @@ This method does not require the value of $\rho$ which is advantageous when TOTE
 The principle of the elastic scattering analysis is explained in Section \ref{s:el}. Here, we would like to outline the measurement of the inelastic event rate $N_{\rm inel}$, for more details we refer the reader elsewhere \cite{si_tot_8,si_inel_7}. The measurement proceeds in three steps. In the first step, {\em raw rate} is established by counting events with the telescope T2 (fragments of more than $95\un{\%}$ of inelastic events are detected). In the second step, one applies corrections to determine {\em visible rate} that would be measured with perfect detector in perfect conditions. These corrections account for trigger and reconstruction inefficiencies, beam-gas background and event pile-up. In the third step, events with no tracks in T2 are recovered:  T1-only events, events with rapidity gap over T2, low-mass diffraction and central diffraction without tracks in T1 and T2. The only major Monte-Carlo based correction in the analysis is the one for low-mass diffraction. However, it should be noted that TOTEM can constrain its value from data by calculating $\sigma_{\rm tot}^{\rm RP} - \sigma_{\rm el}^{\rm RP} - \sigma_{\rm inel, visible}^{\rm T2}$, where the first two terms (the last one) are determined with RPs (T2).
 
 
-\subsection{Analyses and result overview}
+\subsection{Overview of analyses and results}
 
 At $\sqrt s =7\un{TeV}$, two total-cross section analyses were published, both exploiting the $\beta^*=90\un{m}$ optics. The first paper \cite{si_el_7_90a} (cf.~top row in Table~\ref{tab:el res 7}) used the method based on elastic inputs only, Eq.~(\ref{eq:si tot m1}). The second publication \cite{si_tot_7} used a dataset (second row from top in Table~\ref{tab:el res 7}) with much higher statistics and all the three methods were applied. Let us remark that all four total cross-section results are well compatible.
 
