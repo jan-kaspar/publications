@@ -73,7 +73,7 @@ Although elastic scattering of nucleons may look like a simple process, it prese
 \end{abstract}
 
 \begin{keyword}
-elastic nucleon scattering \sep non-perturbative QCD models \sep nucleon form factors \sep Coulomb-nuclear interference \sep Monte-Carlo event generator \sep LHC predictions
+elastic nucleon-nucleon scattering \sep non-perturbative QCD models \sep nucleon form factors \sep Coulomb-nuclear interference \sep Monte-Carlo event generator \sep LHC predictions
 
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
@@ -81,13 +81,9 @@ elastic nucleon scattering \sep non-perturbative QCD models \sep nucleon form fa
 
 \end{frontmatter}
 
-%% Start line numbering here if you want
-%\linenumbers
-
 %----------------------------------------------------------------------------------------------------
 
-% TODO
-\iffalse
+\newpage
 
 \noindent
 {\bf PROGRAM SUMMARY}
@@ -101,37 +97,20 @@ elastic nucleon scattering \sep non-perturbative QCD models \sep nucleon form fa
 {\em Catalogue identifier:}\\ % Leave blank, supplied by Elsevier.
 {\em Licensing provisions:} TODO\\ %enter "none" if CPC non-profit use license is sufficient.
 {\em Programming language:} C++\\
-{\em Computer:} any\\
-{\em Operating system:} any\\
-{\em RAM:} bytes\\
-  %RAM in bytes required to execute program with typical data.
-%{\em Supplementary material:}\\ % Fill in if necessary, otherwise leave out.
-{\em Keywords:} Keyword one, Keyword two, Keyword three, etc.\\ % Please give some freely chosen keywords that we can use in a cumulative keyword index.
+{\em Computer:} any in principle, tested on x86-64 architecture\\
+{\em Operating system:} any in principle, tested on GNU/Linux\\
+{\em RAM:} strongly depends on the task, but typically below $20\un{MB}$\\ %RAM in bytes required to execute program with typical data.
+{\em Keywords:} elastic nucleon-nucleon scattering, non-perturbative QCD models, nucleon form factors, Coulomb-nuclear interference, Monte-Carlo event generator\\ % Please give some freely chosen keywords that we can use in a cumulative keyword index.
 {\em Classification:} 11.6 Phenomenological and Empirical Models and Theories\\ % http://cpc.cs.qub.ac.uk/subjectIndex/SUBJECT_index.html)
-{\em External routines/libraries:} ROOT\\
-  % Fill in if necessary, otherwise leave out.
-{\em Nature of problem:}\\
-  %Describe the nature of the problem here.
-\\
-{\em Solution method:}\\
-  %Describe the method solution here.
-\\
-{\em Restrictions:}\\
-  %Describe any restrictions on the complexity of the problem here.
-\\
-{\em Unusual features:}\\
-  %Describe any unusual features of the program/problem here.
-\\
-{\em Additional comments:}\\
-  %Provide any additional comments here.
-\\
-{\em Running time:}\\
-  %Give an indication of the typical running time here.
-\\
-
+{\em External routines/libraries:} ROOT, HepMC\\ % Fill in if necessary, otherwise leave out.
+{\em Nature of problem:} Monte-Carlo simulation of elastic nucleon-nucleon collisions\\%Describe the nature of the problem here.
+{\em Solution method:} implementation of some of the most prominent phenomenological/theoretical models providing cumulative distribution function that is used for random event generation\\ %Describe the method solution here.
+{\em Restrictions:}\\ %Describe any restrictions on the complexity of the problem here.
+{\em Unusual features:}\\ %Describe any unusual features of the program/problem here.
+{\em Additional comments:}\\ %Provide any additional comments here.
+{\em Running time:} strongly depends on the task, but typically below one hour\\ %Give an indication of the typical running time here.
 \end{small}
 
-\fi
 
 \newpage
 
@@ -150,22 +129,41 @@ Although nucleons are spin $1/2$ particles, there are indications that for forwa
 
 \section{Hadronic models}\label{s:had mod}
 
-The following models are currently implemented in the Elegent package, for a more detailed model review see \cite[section 1.1]{jan_thesis} or \cite[section 4]{dremin13}.
+The following models are currently implemented in the Elegent package, more models are likely to be added in future. For a more detailed model review see \cite[section 1.1]{jan_thesis} or \cite[section 4]{dremin13}.
 
-The {\bf model of Block et al.}~\cite{bh99,block06} is a QCD-inspired model formulated in eikonal formalism . The eikonal receives four contributions due to quark-quark, quark-gluon, gluon-gluon interactions and an odderon exchange. The latter is responsible for the difference between $\rm pp$ and $\rm \bar p p$ scattering and is negligible at LHC energies. Each of the eikonal contributions is factorised into energy dependence term (proportional to the integral cross-section of a given sub-process) and impact-parameter profile. All four profiles have the same form but are scaled with a parameter reflecting the areas occupied by quarks and gluons in the nucleon. The gluon-gluon cross-section is modelled after QCD, adopting a gluon distribution function that behaves as $1/x^{1+\epsilon}$ at low momentum fractions $x$. It is this high soft-gluon content that is responsible for the cross-section rise with energy. This model is implemented as class \class{BHModel} in the library source code, using parameter values from publication \cite{block06}.
-% TODO: corrections at Wiki?
+\subsection{The model of Block et al.}
 
-The {\bf model of Bourrely et al.}~\cite{bsw79,bsw84,bsw03,bsw11} is also formulated within eikonal description. The eikonal includes two terms corresponding to two scattering mechanisms: pomeron and reggeon exchange. The pomeron term is factorised into a product of two functions, one depending on centre-of-mass energy, $\sqrt s$, and one on impact parameter, $b$. The energy dependence is deduced from asymptotic quantum field theory behaviour \cite{wu70}. The impact-parameter profile of the pomeron exchange is derived by assuming similar distributions of electric charge and nuclear matter in the nucleon. The charge distribution is extracted from electromagnetic form factor and is further modified by a slowly varying function in order to get the complete profile function. The reggeons considered in this model include $\rm A_2$, $\rho$ and $\omega$. The trajectories are described with a traditional parametrisation with $s^{\alpha - 1}$ energy dependence and $\e^{-bt}$ momentum-transfer dependence. The reggeon contribution is responsible for the $\rm pp$ and $\rm \bar pp$ difference at low energies and is negligible at LHC and higher energies. This model is implemented as class \class{BSWModel} in the library source code, using parameter values from publication \cite{bsw03}.
-% TODO: corrections at Wiki?
+This model \cite{bh99,block06} is a QCD-inspired model formulated in eikonal formalism. The eikonal receives four contributions due to quark-quark, quark-gluon, gluon-gluon interactions and an odderon exchange. The latter is responsible for the difference between $\rm pp$ and $\rm \bar p p$ scattering and is negligible at LHC and higher energies. Each of the eikonal contributions is factorised into energy dependence term (proportional to the integral cross-section of a given sub-process) and impact-parameter profile. All four profiles have the same form but are scaled with a parameter reflecting the areas occupied by quarks and gluons in the nucleon. The gluon-gluon cross-section is modelled after QCD, adopting a gluon distribution function that behaves as $1/x^{1+\epsilon}$ at low momentum fractions $x$. It is this high soft-gluon content that is responsible for the cross-section rise with energy.
 
-In the {\bf model of Islam et al.}~the proton is pictured in an effective quantum field theory model (gauged linear sigma model) \cite{islam06}. The proposed soliton solution has a mass comparable to the proton and divides the proton to two distinct layers: an outer cloud of quark-antiquark condensate and an inner core of topological charge. Later on \cite{islam05}, a third, the inner-most layer has been added: a valence-quark bag. These three layers give rise to three mechanisms contributing to elastic proton-proton scattering, each being dominant at a different region of $t$. At the lowest $|t|$ it is the diffraction scattering originating from a glancing overlapping of the outer clouds \cite{islam84,islam87}, at medium $|t|$ the core-core scattering \cite{islam06} and at high $|t|$ the valence-quark scattering \cite{islam05,islam09}. The diffraction scattering is described in impact-parameter picture using a Fermi profile function. As a consequence of the underlying quantum field theory model, the core-core scattering is mediated by the $\omega$ meson behaving as an elementary particle. The corresponding amplitude thus contains a Feynman propagator and a form factor ensuring an exponential fall off at higher $|t|$ values. Regarding the valence-quark scattering, the model comes with two alternative mechanisms: interaction via a BFKL gluon ladder (denoted {\em hard pomeron} variant, HP) \cite{islam05} or interaction mediated by low-$x$ gluons surrounding the valence quark (variant {\em low-x gluons}, LxG) \cite{islam09}. This model is implemented as class \class{IslamModel} in the library source code, using parameter values from publication \cite{islam06} and \cite{islam09} for the LxG extension.
+The model is implemented as class \class{BHModel} in the library source code, using parameter values from publication \cite{block06}. Several inconsistencies in the reference papers \cite{bh99,block06} are clarified in the online documentation \cite[Wiki section, page HMBlock]{elegent}.
 
-In the {\bf model of Jenkovszky et al.}~\cite{jenkovszky11} the elastic scattering of nucleons is attributed to $t$-channel exchanges of a pomeron, an odderon and reggeons $\rm f$ and $\omega$. The reggeon-exchange amplitudes have the traditional form with $s^{\alpha - 1}$ energy dependence and residua $\e^{-bt}$ and are negligible at LHC and higher energies. The pomeron and odderon amplitudes have a more complicated form arising from the assumed double Regge pole nature of the pomeron \cite[section 2]{jenkovszky86}. Moreover, the model comes with several parametrisations of the pomeron Regge trajectory $\alpha(t)$. The linear parametrisation is discussed in the greatest detail in the publication and is the only implemented in Elegent at the moment. This model is implemented as class \class{JenkovszkyModel}, using parameter values from publication \cite{jenkovszky11}.
+\subsection{The model of Bourrely et al.}
 
-The {\bf model of Petrov et al.}~\cite{petrov02} describes the collision of nucleons as an exchange of reggeons: pomerons, an odderon, $\rm f$ and $\omega$. Each of these trajectories contributes to the eikonal with a term proportional to $s^{\alpha - 1}$ and with a Gaussian impact-parameter profile $\e^{-c b^2}$. The model has two variants: including two pomerons (denoted {\em 2P}\/) and three pomerons ({\em 3P}\/). This model is implemented as class \class{PPPModel}.
-%, using parameter values from publication \cite{petrov02}.
+This model \cite{bsw79,bsw84,bsw03,bsw11} is also formulated within eikonal description. The eikonal includes two terms corresponding to two scattering mechanisms: pomeron and reggeon exchange. The pomeron term is factorised into a product of two functions, one depending on centre-of-mass energy, $\sqrt s$, and one on impact parameter, $b$. The energy dependence is deduced from asymptotic quantum field theory behaviour \cite{wu70}. The impact-parameter profile of the pomeron exchange is derived by assuming similar distributions of electric charge and nuclear matter in the nucleon. The charge distribution is extracted from electromagnetic form factor and is further modified by a slowly varying function in order to get the complete profile function. The reggeons considered in this model include $\rm A_2$, $\rho$ and $\omega$. The trajectories are described with a traditional parametrisation with $s^{\alpha - 1}$ energy dependence and $\e^{-bt}$ momentum-transfer dependence. The reggeon contribution is responsible for the $\rm pp$ and $\rm \bar pp$ difference at low energies and is negligible at LHC and higher energies.
 
-A {\bf simple exponential model} with a constant phase is implemented (class \class{ExpModel}) for convenience and comparison.
+The model is implemented as class \class{BSWModel} in the library source code, using parameter values from publication \cite{bsw03}. A number of ambiguities and inconsistencies in the above quoted reference papers are discussed in the online documentation \cite[Wiki section, page HMBourrely]{elegent}.
+
+\subsection{The model of Islam et al.}
+
+The authors picture the proton in an effective quantum field theory model (gauged linear sigma model) \cite{islam06}. The proposed soliton solution has a mass comparable to the proton and divides the proton to two distinct layers: an outer cloud of quark-antiquark condensate and an inner core of topological charge. Later on \cite{islam05}, a third, the inner-most layer has been added: a valence-quark bag. These three layers give rise to three mechanisms contributing to elastic proton-proton scattering, each being dominant at a different region of $t$. At the lowest $|t|$ it is the diffraction scattering originating from a glancing overlapping of the outer clouds \cite{islam84,islam87}, at medium $|t|$ the core-core scattering \cite{islam06} and at high $|t|$ the valence-quark scattering \cite{islam05,islam09}. The diffraction scattering is described in impact-parameter picture using a Fermi profile function. As a consequence of the underlying quantum field theory model, the core-core scattering is mediated by the $\omega$ meson behaving as an elementary particle. The corresponding amplitude thus contains a Feynman propagator and a form factor ensuring an exponential fall off at higher $|t|$ values. Regarding the valence-quark scattering, the model comes with two alternative mechanisms: interaction via a BFKL gluon ladder (denoted {\em hard pomeron} variant, HP) \cite{islam05} or interaction mediated by low-$x$ gluons surrounding the valence quark (variant {\em low-x gluons}, LxG) \cite{islam09}.
+
+The model is implemented as class \class{IslamModel} in the library source code, using parameter values from publication \cite{islam06} and \cite{islam09} for the LxG extension.
+
+\subsection{The model of Jenkovszky et al.}
+
+In this model \cite{jenkovszky11} the elastic scattering of nucleons is attributed to $t$-channel exchanges of a pomeron, an odderon and reggeons $\rm f$ and $\omega$. The reggeon-exchange amplitudes have the traditional form with $s^{\alpha - 1}$ energy dependence and residua $\e^{-bt}$ and are negligible at LHC and higher energies. The pomeron and odderon amplitudes have a more complicated form arising from the assumed double Regge pole nature of the pomeron \cite[section 2]{jenkovszky86}. Moreover, the model comes with several parametrisations of the pomeron Regge trajectory $\alpha(t)$. The linear parametrisation is discussed in the greatest detail in the publication and is the only implemented in Elegent at the moment. 
+
+The model is implemented as class \class{JenkovszkyModel}, using parameter values from publication \cite{jenkovszky11}.
+
+\subsection{The model of Petrov et al.}
+
+This model \cite{petrov02} describes the collision of nucleons as an exchange of reggeons: pomerons, an odderon, $\rm f$ and $\omega$. Each of these trajectories contributes to the eikonal with a term proportional to $s^{\alpha - 1}$ and with a Gaussian impact-parameter profile $\e^{-c b^2}$. The model has two variants: including two pomerons (denoted {\em 2P}\/) and three pomerons ({\em 3P}\/).
+
+The model is implemented as class \class{PPPModel}, using parameter values from publication \cite{petrov02}.
+
+\subsection{A simple exponential model}
+
+For convenience and comparison reasons, a simple exponential model with a constant phase is provided by class \class{ExpModel}.
 
 
 %----------------------------------------------------------------------------------------------------
@@ -322,6 +320,9 @@ The sampled distributions are plotted to compare hadronic models in each of the 
 %	%title          = "Forward hadronic scattering at 7 TeV: Predictions for the LHC: An Update",
 %	%doi            = "10.1103/PhysRevD.83.077901",
 
+\bibitem{elegent}
+	Elegent web site at http://elegent.hepforge.org/
+
 \bibitem{bsw79}
 	\Name{BOURRELY C., SOFFER, J. and WU, T. T.}
 	\REVIEW{Phys. Rev.}{D19}{1979}{3249}
@@ -451,9 +452,6 @@ The sampled distributions are plotted to compare hadronic models in each of the 
 	\REVIEW{Z. Phys.}{C63}{1994}{619--630}
 	%title     = "High-energy scattering amplitude of unpolarized and
 	%doi       = "10.1007/BF01557628",
-
-\bibitem{elegent}
-	http://elegent.hepforge.org/
 
 \end{thebibliography}
 
