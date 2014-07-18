@@ -58,8 +58,7 @@
 \ShortAuthor{The TOTEM Collaboration (G.~Antchev \emph{\etal})}
 
 \begin{Authlist}
-TODO -- names
-\iffalse
+THIS IS JUST PLACEHOLDER -----------
 G.~Antchev\Aref{a},
 P.~Aspell\Iref{8},
 I.~Atanassov\IAref{8}{a},
@@ -136,7 +135,7 @@ V.~Vacek\Iref{1b},
 M.~V\'itek\Iref{1b},
 J.~Welti\IIref{3a}{3b} and
 J.~Whitmore\Iref{10}
-\fi
+----------- END OF THE PLACEHOLDER
 \end{Authlist}
 
 \Instline{1a}{Institute of Physics of the Academy of Sciences of the Czech Republic, Praha, Czech Republic.}
@@ -162,10 +161,10 @@ J.~Whitmore\Iref{10}
 \Anotfoot{e}{Department of Atomic Physics, E\"otv\"os University, Hungary.}
 \Anotfoot{f}{SLAC National Accelerator Laboratory, Stanford CA, USA.}
 
-%\newpage
+\newpage
 
 \begin{abstract}
-TODO
+TODO - abstract
 \end{abstract}
 \end{titlepage}
 
@@ -173,7 +172,7 @@ TODO
 %----------------------------------------------------------------------------------------------------
 \section{Introduction}
 
-\> new: high-statistics data sample
+\> new: high-statistics data sample to complement the DS2 already presented in \cite{prl111}.
 \>> eventually beyond dip/bumb
 \>> for the moment only what is relevant for extrapolations to $t=0$
 
@@ -192,11 +191,13 @@ Detailed description elsewhere \cite{totem-jinst} - TODO, focus on RPs 220m only
 
 July 2012, typical bunch population, typ. inst. luminosity, beta star, trigger settings
 
+also mention zero-bias data
+
 TODO: why DS1 not used, TODO: why DS3 and DS4 separated -- different trigger
 
 \begin{table}
 \caption{Description of the three datasets available. The RP position gives the RP approach to the beam in multiples of the beam size ($\sigma_{\rm beam}$). The third column summarizes the numbers of elastic events reconstructed from both diagonals. $\mathcal{L}_{\rm int}$ is the integrated
-luminosity for each dataset, accounting for the data-acquisition (DAQ) inefficiency. The last column shows the lowest $|t|$ values observed.
+luminosity for each dataset, accounting for the data-acquisition (DAQ) inefficiency. The last column shows the lowest $|t|$ values observed. TODO: make compatible with PRL111 -- elastic events before acceptance correction? t min after all cuts = left edge of the left most bin?
 }
 \label{tab:datasets}
 \begin{center}
@@ -225,40 +226,50 @@ DS4 & 2836 & $9.5\,\sigma_{\rm beam}$ & 2 to 3  & $6.74\cdot10^6$ & $735$       
 \subsection{Event reconstruction}
 
 \begin{equation}
+\label{eq:t}
 t = p^2 ({\theta_x^*}^2 + {\theta_y^*}^2)
 \end{equation}
 TODO: projections of scattering angle
 
 One-arm reconstruction -- minimise uncertainties due to optics imperfections
 \begin{equation}
+\label{eq:kin 1a}
 \theta_x^* = {v_x^{\rm N} x^{\rm F} - v_x^{\rm F} x^{\rm N}\over v_x^{\rm N} L_x^{\rm F} - v_x^{\rm F} L_x^{\rm N}}\ ,\qquad
 \theta_y^* = {1\over 2} \left( {y^{\rm N}\over L_y^{\rm N}} + {y^{\rm F}\over L_y^{\rm F}} \right)\ ,\qquad
 x^* = {L_x^{\rm N} x^{\rm F} - L_x^{\rm F} x^{\rm N}\over L_x^{\rm N} v_x^{\rm F} - L_x^{\rm F} v_x^{\rm N}}
 \end{equation}
 x formula -- suppresses the impact of vertex.
-Double-arm reconstruction -- TODO.
+Double-arm reconstruction
+\begin{equation}
+\label{eq:kin 2a}
+\theta_x^* = (\theta_x^{*L} + \theta_x^{*R})/2\ ,\quad \theta_y^* = (\theta_y^{*L} + \theta_y^{*R})/2\ .
+\end{equation}
+
+
 Single arm for cuts, double-arm for physics.
 
-{\bf alignment} Standard three-step procecure, details \cite{totem-ijmp}. Uncertainty: shifts $2\un{\mu m}$ (horizontal), $100\un{\mu m}$ (vertical) and rotations $0.2\un{mrad}$ (for each unit -- common for top and bottom RPs). Impact on angles (double-arm), horizontal shift $0.8\un{\mu rad}$, vertical shift $0.2\un{\mu rad}$ (effect disappears when diagonals combined). % rotation th_x^reco = th_x^true + A * th_y, si[A] = 0.02
+{\bf Alignment}. Standard three-step procecure, details \cite{totem-ijmp}. Uncertainty: shifts $2\un{\mu m}$ (horizontal), $100\un{\mu m}$ (vertical) and rotations $0.2\un{mrad}$ (for each unit -- common for top and bottom RPs). Impact on angles (double-arm), horizontal shift $0.8\un{\mu rad}$, vertical shift $0.2\un{\mu rad}$ (effect disappears when diagonals combined). % rotation th_x^reco = th_x^true + A * th_y, si[A] = 0.02
 
-{\bf optics} Matching \cite{totem-optics}, before: scale uncertainty (double-arm) $0.48\un{\%}$ (hor), $0.90\un{\%}$ (ver). After: scale uncertainty $0.21\un{\%}$ (hor), $0.25\un{\%}$ (ver). [not so spectacular difference: formula chosen to minimise the impact].
+{\bf Optics}. Matching \cite{totem-optics}, before: scale uncertainty (double-arm) $0.48\un{\%}$ (hor), $0.90\un{\%}$ (ver). After: scale uncertainty $0.21\un{\%}$ (hor), $0.25\un{\%}$ (ver) -- including the harmonics (not before). [not so spectacular difference: formula chosen to minimise the impact].
 
-{\bf resolutions} Beyond systematic uncertainties mentioned above, there are also statistical fluctuations -- beam divergence and for horizontal projection also detector resolution (low Lx).
+{\bf Resolutions} Beyond systematic uncertainties mentioned above, there are also statistical fluctuations -- beam divergence and for horizontal projection also detector resolution (low Lx). The resolutions can be experimentaly inferred from differences of the scattering angles determined from the left and right arms. Assuming identical resolutions in both arms, the standard deviation of the left-right difference is double of the angular resolution, see Eq.~(\ref{eq:kin 2a}). The resolutions were monitored in time to account for possible beam deterioation. The resolution in $\theta_y^*$ decreased from $1.6$ to $1.7\un{\mu rad}$ from the beginning to the end of the fill (DS3+DS4), for $\theta_x^*$ from $4.6$ to $4.8\un{\mu rad}$ (45b -- 56t) and from $4.3$ to $4.4\un{\mu rad}$ (45t -- 56b). In fact, just means over all bunches -- in analysis bunches treated independently. Comparing x and y, the contribution from the RP spatial resolution is evident. A cross check, horizontal beam div. from vertex distribution (sigma 145 to 185 urad, diagonal independent) % 2.3 to 2.9 urad
+, the sensor contribution (2-arm) is $4.3$ (45b) and $4.0$ urad (45t), time independent. With the same method, not only RMS, but also shape. Generally, gaussian-like, with non-gaussianity decreasing with time. Non-gaussianinty taken accounted in systematic uncertainties. The original assumption of identical resolutions in both arms can be verified by checking the beam emittances. They give beam divergences compatible with our observations and indicate that a possible left-right imbalance could be of order $15\un{\%}$, which is used for uncertainty estimation.
+TODO: why needed -- resolutions used in later steps
 
 %--------------------------------------------------
-\subsection{Differential cross-section reconstruction}
+\subsection{Differential cross-section}
 
 For a given $t$ bin, the value of differential cross-section is evaluated by selecting and counting elastic events as follows
 \begin{equation}
 {\d\sigma\over \d t}(\hbox{bin}) =
-	{\cal N} {\cal U} {\cal B}\ 
-	{\sum\limits_{t \in \hbox{bin}} {\cal A}(\theta_x^*, \theta_y^*) {\cal E}(\theta_y^*)\over \Delta t}\ ,
+	{\cal N}\, {\cal U}({\rm bin})\, {\cal B}\ 
+	{\sum\limits_{t \in \hbox{bin}} {\cal A}(\theta_x^*, \theta_y^*)\, {\cal E}(\theta_y^*)\over \Delta t}\ ,
 \end{equation}
-where $\Delta t$ is the width of the bin, ${\cal N}$ is a normalisation factor, ${\cal U}$ is an unfolding correction,
-${\cal B}$ is a backround subtraction factor, ${\cal A}$ is an acceptace correction and ${\cal E}$ is an efficiency correction.
+where $\Delta t$ is the width of the bin, ${\cal N}$ is a normalisation factor and the other symbols stand for various correction factors:
+ ${\cal U}$ for unfolding, ${\cal B}$ for backround subtraction, ${\cal A}$ for acceptace correction and ${\cal E}$ for detection and reconstruction efficiency.
 
 {\bf Tagging}. The cuts used to select the elastic events are summarized in Tab.~\ref{tab:cuts}. Cuts 1 and 2 require the reconstructed-track collinearity between the left and right arm. Cuts 3 to 6 effectively work as low-$\xi$ cuts ($\xi$ being the fractional momentum loss of a proton).
-Cuts 5 and 6: if $\xi\neq 0$, the correlation between the track position ($y^{\rm N}$) and the track angle (proportional to $y^{\rm F} - y^{\rm N}$) is lost. Cut 7 compares the horizontal vertex position reconstructed from the left and right arms. TODO: tagging inefficiency ?
+Cuts 5 and 6: if $\xi\neq 0$, the correlation between the track position ($y^{\rm N}$) and the track angle (proportional to $y^{\rm F} - y^{\rm N}$) is lost. Cut 7 compares the horizontal vertex position reconstructed from the left and right arms. TODO: tagging inefficiency ? Aplly cuts at different sigmas. Difference between 4 and 5: about $0.5\un{\%}$, flat in $t$ (up to 0.2) thus irrelevant (due to the normalisation method).
 
 \begin{table}
 \caption{The elastic selection cuts. The superscripts R and L refer to the right and left arm, the N and F corresponds to the near and far units. The constant $\alpha = L_y^{\rm F} / L_y^{\rm N} - 1 \approx 0.107$. The right-most column gives the typical (there is diagonal and dataset dependence) RMS of the cut distribution ($\equiv 1\sigma$), all the cuts are applied at $4\sigma$-level.
@@ -280,21 +291,56 @@ diagonal &\multispan2 \hss track reconstructed in all 4 diagonal RPs \hss \cr
 \end{center}
 \end{table}
 
-{\bf background}
+{\bf Background}. Cut distributions studied under different cut combinations: no change in signal part (below 4 sigmas), heavy impact outside signal region. After applying all cuts (except the studied one) and smoothly interpolating into the signal region, the $B/(S+B)$ ratio is $\approx 10^{-4}$ (for th x, th y and vtx x cuts). ${\cal B} = 1$, anyway irrelevant due to the normalisation approach.
 
-{\bf acceptance correction}
+{\bf Acceptance correction}. Two detection limitations: detector shape (mostly the edge facing beam, small $|\theta_y^*|$) and LHC apertures (high $|\theta_y^*|$). Two mechnisms: $\phi^*$ and beam divergence. The latter correctable due to known resolution (above) the former simply geometrical correction -- the theoretically expectable $\phi^*$ symmetry is confirmed by the date in the observable region. TODO: formula for ${\cal A}$ ?? TODO: Uncertainties.
 
-{\bf efficiency corrections}
+\iffalse
+\begin{equation}
+\label{acceptance}
+{\cal A_{\rm sm}}(\theta_y^*)^{-1} = {1\over 2} \left(
+	\mathop{\rm Erf} {\min(\theta_y^{*,R,max} - |\theta_y^*|, |\theta_y^*| - \theta_y^{*,L,min})\over \sigma^{1a}_{\theta_y^*}}
+	- \mathop{\rm Erf} {\max(\theta_y^{*,R,min} - |\theta_y^*|, |\theta_y^*| - \theta_y^{*,L,max})\over \sigma^{1a}_{\theta_y^*}}
+\right)
+\end{equation}
 
-{\bf unsmearing}
+\begin{equation}
+\label{acceptance}
+{\cal A_{\phi}}(\theta_y^*) = {
+	2\pi\over 
+	\hbox{arc length with $\theta_y^*$ between } \max(\theta_y^{*,L,min}, \theta_y^{*,R,min}) \hbox{ and } \min(\theta_y^{*,L,max}, \theta_y^{*,R,max})
+}
+\end{equation}
+\fi
 
-{\bf normalisation}
 
-{\bf binning}
+{\bf Efficiency corrections} include corrections for inefficiencies from various sources: trigger inefficiency ${\cal I}_{\rm trig}$, reconsctruction inefficiency ${\cal I}_{\rm det}$ and pile-up inefficiency ${\cal I}_{\rm PU}$ (RPs unable to resolve multiple tracks):
 
-{\bf final data merging}
+\begin{equation}
+\label{efficiency}
+{\cal E}(\theta_y^*) = {1\over 1 - {\cal I}_{\rm trig}} {1\over 1 - {\cal I}_{\rm det}(\theta_y^*)} {1\over 1 - {\cal I}_{\rm PU}}\ ,\quad
+{\cal I}_{\rm det}(\theta_y^*) = \sum\limits_{i\in \rm RPs} {\cal I}^i_{3/4}(\theta_y^*) + 2 {\cal I}_{2/4}
+\end{equation}
 
-{\bf propagation of systematics}
+The trigger and pile-up inefficiencies are mentioned for completeness only, since they do not affect the distribution shape, their values are not relevant the presented analysis due to a different way of final normalisation. The efects were nevertheless studied with techniques used in previous publications yielding expectable results.
+
+Detector efficiency. Standard technique: 3/4 for every RP (${\cal I} \approx 1\un{\%}$ near and $2.5\un{\%}$ far) and 2/4 (${\cal I} = 1.5\un{\%}$) for the nears. 3/4 studied as function of $\theta_y^*$ to disentangle efficiency from acceptance effects. Furthermore, due to high statistics, gentle efficiency decrease with increasing $|\theta_y^*|$ was observed and taken into account. Average slope of the decrease per RP was $80\un{rad^{-1}}$ with a typical uncertainty of $8\un{rad^{-1}}$ for DS4.
+
+%Trigger efficiency. Zero-bias data stream, events tagged as elastic, look at the trigger flag.
+%For example for DS2, at $95\un{\%}$ CL, ${\cal I}_{\rm trig} < 8\cdot10^{-4}$. Anyway irrelevant.
+
+{\bf Unsmearing}. Apriory: small effect due to the good angular resolution (above). 2 iterations: fit, Monte-Carlo calculation of the effect, correction of the ds/dt. Correction $|1 - {\cal U}| < 3\un{\%}$
+
+{\bf Normalisation}. TODO: ${\cal N}$, same integral between $|t| = 0.027$ and $0.083\un{GeV^2}$ wrt.~dataset 1 from \cite{prl111}
+
+{\bf Binning} Up to $0.8\un{GeV^2}$ one smearing sigma.
+
+{\bf TODO: Estimate of systematics} Acc. corr. due to non-gauss, L-R asymmetry, both few per-mille withing final data
+
+%--------------------------------------------------
+\subsection{Final data merging}
+
+\> central values and systematics
 
 %----------------------------------------------------------------------------------------------------
 \section{Results}
@@ -320,20 +366,18 @@ diagonal &\multispan2 \hss track reconstructed in all 4 diagonal RPs \hss \cr
 %----------------------------------------------------------------------------------------------------
 \acknowledgments
 
-\iffalse
+THIS IS JUST PLACEHOLDER -----------
 We are indebted to the beam optics development team
 %({\sc A.~Verdier} in the initial phase, {\sc H.~Burkhardt}, {\sc G.~M\" uller}, {\sc S.~Redaelli}, {\sc J.~Wenninger}, {\sc S.~M.~White})
 for the design, the thorough preparations and the successful commissioning of the $\beta^* = 90\un{m}$ optics. We congratulate the CERN accelerator groups for the very smooth operation in 2011. We thank
 %{\sc M.~Ferro-Luzzi}
 the LHC machine coordinators for scheduling the dedicated fills.
 
-We are grateful to CMS for providing their luminosity measurements.
-
 This work was supported by the institutions listed on the front page and partially also by NSF (US), the Magnus
 Ehrnrooth foundation (Finland), the Waldemar von Frenckell foundation (Finland), the Academy of
 Finland, the OTKA grant NK 101438, 73143 (Hungary) and the NKTH-OTKA grant 74458 (Hungary).
+----------- END OF THE PLACEHOLDER
 
-\fi
 
 %----------------------------------------------------------------------------------------------------
 \begin{thebibliography}{99}
@@ -351,6 +395,10 @@ Finland, the OTKA grant NK 101438, 73143 (Hungary) and the NKTH-OTKA grant 74458
 	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
 	LHC Optics Measurement with Proton Tracks Detected by the Roman Pots of the TOTEM Experiment, 
 	arXiv:1406.0546
+
+\bibitem{prl111}
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Phys.~Rev.~Lett.}{111}{2013}{012001}
 
 \bibitem{lafferty94}
  	% Where to stick your data points: The treatment of measurements within wide bins
@@ -370,23 +418,17 @@ Finland, the OTKA grant NK 101438, 73143 (Hungary) and the NKTH-OTKA grant 74458
 	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
 	\REVIEW{Europhys.~Lett.}{96}{2011}{21002}
 
-\bibitem{epl101}
+\bibitem{epl101-el}
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Europhys.~Lett.}{101}{2013}{21002}
+
+\bibitem{epl101-inel}
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Europhys.~Lett.}{101}{2013}{21003}
+
+\bibitem{epl101-tot}
 	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
 	\REVIEW{Europhys.~Lett.}{101}{2013}{21004}
-
-\bibitem{prl111}
-	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
-	\REVIEW{Phys.~Rev.~Lett.}{111}{2013}{012001}
-
-\bibitem{P2} 
-	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
-	%\REVIEW{Europhys.~Lett.}{TODO}{2012}{TODO}
-	CERN-PH-EP-2012-352
-
-\bibitem{P3} 
-	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
-	%\REVIEW{Europhys.~Lett.}{TODO}{2012}{TODO}
-	CERN-PH-EP-2012-353
 
 \bibitem{jan_thesis}
 	\Name{Ka\v spar J.}
