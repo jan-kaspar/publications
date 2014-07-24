@@ -300,7 +300,6 @@ diagonal &\multispan2 \hss track reconstructed in all 4 diagonal RPs \hss \cr
 \end{equation}
 \fi
 
-
 {\bf Efficiency corrections} include corrections for inefficiencies from various sources: trigger inefficiency ${\cal I}_{\rm trig}$, reconsctruction inefficiency ${\cal I}_{\rm det}$ and pile-up inefficiency ${\cal I}_{\rm PU}$ (RPs unable to resolve multiple tracks):
 
 \begin{equation}
@@ -333,6 +332,46 @@ Detector efficiency. Standard technique: 3/4 for every RP (${\cal I} \approx 1\u
 
 %----------------------------------------------------------------------------------------------------
 \section{Results}
+
+The result of the analysis is given in Tab.~\ref{tab:data} and Fig.~\ref{fig:data rel ob}.
+
+Data have exponential behaviour, in order to visualize the deviations from pure exponential, the main mode is subtracted, Fig.~\ref{fig:data rel ob}.
+
+Data have exponential behaviour, thus fit parametrisation
+\begin{equation}
+\label{fit param}
+{\d\sigma\over\d t}(t) = \left. \d\sigma\over\d t\right|_{0} \ \exp\left( \sum\limits_{i = 1}^{N_{b}} b_i\, t^i \right)
+\end{equation}
+If $N_b = 1$, then pure exponential.
+Fits use full covariance matrix.
+
+TODO: Describe exclusion of pure exponential. Method 1, in Fig.~\ref{fig:data rel ob}. Method 2, in Fig.~\ref{fig:data rel cpb0.001}.
+\iffalse
+	split details
+                A = 529.299 +- 21.951
+                B1 = -19.678 +- 0.074
+                B2 = 514.681 +- 21.953
+                B3 = -19.264 +- 0.057
+
+ A1 − A2 = 14.617 ± 1.789 ⇒ 8.2 σ
+ B1 − B2 = −0.414 ± 0.056 ⇒ 7.4 σ
+\fi
+Exclusion using both differences in $A$ and $B$ using the result covariance matrix: $7.7\un{\sigma}$
+
+The total cross-section:
+\begin{equation}
+\label{eq:si tot}
+\sigma_{\rm tot}^2 = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d\sigma_{\rm el}\over\d t\right|_0\ ,
+\end{equation}
+
+For the $\rho$ parameter the COMPETE \cite{compete} preferred-model extrapolation of $0.140\pm 0.007$ was chosen.
+
+\begin{equation}
+\label{eq:si tot results}
+N_b = 2:\quad \sigma_{\rm tot} = (100.8 \pm 2.1)\un{mb}\ ,\qquad	% A = 529.3 +- 21.9
+N_b = 3:\quad \sigma_{\rm tot} = (101.2 \pm 2.1)\un{mb}\ .			% A = 533.5 +- 21.9
+\end{equation}
+
 
 \begin{table*}
 \caption{The elastic differential cross-section determined in this analysis.
@@ -389,16 +428,19 @@ $0.190$ & $0.200$ & $0.195$ & $ 12.124$ & $0.059$ & $ 0.526$ & $ 0.517$ & $+0.00
 \begin{figure}
 \begin{center}
 \includegraphics[width=18cm]{fig/t_dist_rel_with_fits.pdf}
-\caption{TODO}
-\label{fig:t dist rel}
+\caption{Data: ob binning, stat. unc. scaled; TODO: explain the relative frame; fits according to Eq.~(\ref{fit param}) using full covariance matrix. TODO: describe fit quality}
+\label{fig:data rel ob}
 \end{center}
 \end{figure}
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=18cm]{fig/t_dist_rel_with_split_fit.pdf}
+\caption{Data: cpb,0.001 binning, stat. unc. NOT scaled; TODO: describe fit quality}
+\label{fig:data rel cpb0.001}
+\end{center}
+\end{figure}
 
-\> Describe exclusion of pure exponential - several methods
-
-\> new determination of si tot?
-\>> give values for "blue and green fits"
 
 %----------------------------------------------------------------------------------------------------
 \section{Discussion/Conclusions}
@@ -454,6 +496,10 @@ Finland, the OTKA grant NK 101438, 73143 (Hungary) and the NKTH-OTKA grant 74458
 	\Name{Lafferty G.~D.~and Wyatt T.~R.}
 	\REVIEW{Nucl.\ Instrum.\ Meth.}{A 355}{1995}{541}
 
+\bibitem{compete} 
+	\Name{Cudell~J.~R.~\etal{} (COMPETE Collaboration)}
+	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
+
 
 \iffalse
 
@@ -506,10 +552,6 @@ Finland, the OTKA grant NK 101438, 73143 (Hungary) and the NKTH-OTKA grant 74458
 	\Name{E710} \REVIEW{Phys.~Rev.~Lett.}{68}{1992}{2433} and \REVIEW{Nuovo Cimento}{A106}{1992}{123}; 
 	\Name{D0} D0 Note 6056-CONF; 
 	\Name{pp2pp} \REVIEW{Phys.~Lett.}{B579}{2004}{245}
-
-\bibitem{compete} 
-	\Name{Cudell~J.~R.~\etal{} (COMPETE Collaboration)}
-	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
 
 \fi
 
