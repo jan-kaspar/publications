@@ -42,14 +42,15 @@ two arm -- better resolution for already selected events
 % mention final alignment check = 2D Gaussian fit of $\theta_x^*$ vs.~$\theta_y^*$ from both diagonals ??
 
 %------------------------------
+
 {\bf Optics}. The optics matching method \cite{totem-optics} has been applied. The residual uncertainty has a form of factors scaling the reconstructed scattering angles:
 % double-arm; 
 $0.34\un{\%}$ (horizontal) and $0.25\un{\%}$ (vertical), including the effects of magnet harmonics.
 
 
-
 %------------------------------
-{\bf Resolution}
+
+{\bf Resolution}. Good knowledge of statistical fluctuations in the event reconstruction is essential for several steps in differential cross-section reconstruction. The fluctuations in $\theta_y^*$ are mostly due to the beam divergence phenomenon and can be studied by comparing the angles reconstructed from the left and right arm. If the divergences of both beams are the same (verified by emittance measurements with uncertainty of $25\un{\%}$), then the beam divergence distribution can be de-convoluted from the distribution of the left-right differences. The beam divergence has shown very small deviations from Gaussian shape (taken as a source of uncertainty) but increasing width with time. Thus the $\theta_y^*$ (Eq.~(\ref{eq:kin 2a})) resolution degraded from initial $4.3$ to $4.8\un{\mu rad}$ at the end of the fill. In the horizontal projection, a different method must be used since the one-arm reconstruction, Eq.~(\ref{eq:kin 1a}), is strongly influenced by sensor resolution. First, the beam divergence is calculated from the vertex $x^*$ spread by dividing by the known $\beta^*$: it grew from $0.75$ to $0.9\un{\mu rad}$ during the fill. Second, the beam-divergence component is subtracted from the standard deviation of the right-left difference in $\theta_x^*$, yielding (time-independent) contribution from the sensor resolution: $10.7\un{\mu m}$ (45 top -- 56 bottom) and $12.1\un{\mu m}$ (45 bottom -- 56 top). This can be propagated to the two-arm resolution in $\theta_x^*$, Eq.~({\ref{eq:kin 2a}}), which is almost purely determined by the beam divergence: it rose from $0.54$ to $0.65\un{\mu rad}$ during the fill. 
 
 
 %----------------------------------------------------------------------------------------------------
@@ -119,7 +120,7 @@ Method: plot a cut quantity ($\Delta \theta_{x,y}^*$) under various cut combinat
 
 %-------------------------
 
-{\bf Unsmearing} The standard per-bin technique has been applied \cite{8tev-90m}. Due to the very small beam divergence, the effect is negligible for all bins except the very low-$|t|$ ones where the rapid cross-section growth appears because of the Coulomb interaction (correction $< 2.5\un{\%}$). For the uncertainty estimate, the uncertainties of $\theta_x^*$ and $\theta_y^*$ resolutions as well as fit-model dependence have been considered, each contribution giving few per-mille for the lowest-$|t|$ point.
+{\bf Unsmearing} The standard per-bin technique has been applied \cite{8tev-90m}. Due to the very small beam divergence, the effect is negligible for all bins except the very low-$|t|$ ones where the rapid cross-section growth appears because of the Coulomb interaction (correction $< 2.5\un{\%}$). For the uncertainty estimate, the uncertainties of $\theta_x^*$ and $\theta_y^*$ resolutions (to accommodate the full time variation) as well as fit-model dependence have been considered, each contribution giving few per-mille for the lowest-$|t|$ point.
 
 \iffalse
 \> but time-dependent smearing sigma, determined from the variation of $\theta_y^{*R} - \theta_y^{*L}$
@@ -162,6 +163,7 @@ The {\bf binning} has been optimised with respect to two aspects. At low $|t|$, 
 
 
 \begin{figure*}
+\vskip-5mm
 \begin{center}
 \includegraphics[width=18cm]{fig/t_dist_tabulation.pdf}
 \vskip-3mm
