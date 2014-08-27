@@ -5,27 +5,27 @@
 \subsection{Theoretical framework}
 \label{sec:cni_framework}
 
-Elastic scattering of protons is a process caused by the strong and electromagnetic interactions -- the weak interaction can be neglected since its carriers are heavy compared to the small momentum-transfers typical for elastic scattering. In this context, the strong interaction is traditionally called nuclear and the electromagnetic called Coulomb. In quantum-theory description, each of the interactions generates a scattering amplitude, nuclear ${\cal A}^{\rm N}$ and Coulomb ${\cal A}^{\rm C}$. Moreover, since the interactions act simultaneously, their interference needs to be taken into account too. The Coulomb amplitude can be calculated from QED \cite{block06}, using empirical electric and magnetic form factors of the proton (e.g.~\cite{puckett10}). It can be shown \cite{jan_thesis} that, at low $|t|$, the effect of both form factors can be describe by a single function ${\cal F}$. Since the Coulomb amplitude is known, the Coulomb-nuclear interference (CNI) exposes the phase of the nuclear amplitude, otherwise not directly observable in differential cross-section. \todo{why phase interesting?}
+Elastic scattering of protons is a process caused by the strong and electromagnetic interactions -- the weak interaction can be neglected since its carriers are heavy compared to the small momentum-transfers typical for elastic scattering. In this context, the strong interaction is traditionally called nuclear and the electromagnetic called Coulomb. In quantum-theory description, each of the interactions generates a scattering amplitude, nuclear ${\cal A}^{\rm N}$ and Coulomb ${\cal A}^{\rm C}$. Moreover, since the interactions act simultaneously, their interference needs to be taken into account, too. The Coulomb amplitude can be calculated from QED (e.g.~section 3.2 in \cite{block06}), using empirical electric and magnetic form factors of the proton (e.g.~\cite{puckett10}). It can be shown (e.g.~section 1.3.1 in \cite{jan_thesis}) that, at low $|t|$, the effect of both form factors can be describe by a single function ${\cal F}$. Since the Coulomb amplitude is known, the Coulomb-nuclear interference (CNI) exposes the phase of the nuclear amplitude, otherwise not directly observable in differential cross-section. \todo{why phase interesting?} \todo{introduce: coulomb-interference formula}
 
 
 %----------------------------------------------------------------------------------------------------
 \subsubsection{Nuclear amplitude}
 
-Since the nuclear amplitude can not be presently calculated from first principles, its mathematical description shall be discussed.
+Since the nuclear amplitude can not be currently calculated from first principles, its mathematical description shall be discussed.
 
-The {\bf modulus} is directly related to the differential cross-section and thus strongly constrained by experimental observations. Following especially \cite{8tev-90m}, the modulus will be parametrised:
+The {\bf modulus} is closely related to the differential cross-section and thus strongly constrained by experimental observations. Following especially \cite{8tev-90m}, the modulus will be parametrised:
 \begin{equation}
 \label{eq:nuc mod}
 | {\cal A}^{\rm N}(t) | = a \exp\left( \sum\limits_{n}^{N_b} b_n t^n \right)\ ,
 \end{equation}
+\todo{for $|t| < 0.2$, what about higher $|t|$'s?}\\
 where $N_b$ gives the number of free parameters in the exponent. This implicitly extends the exponential-like behaviour to the regions where the (pure nuclear) cross-section can not be observed. Although there is no rigorous justification, and therefore it stands as an assumption, it is compatible with many theoretical models.
 
 For the {\bf phase} of the nuclear amplitude, there is little experimental guidance and therefore several theory-motivated choices will be assumed and tested.
 
-\>> choice of phase determines the behaviour in impact parameter space
-
 \begin{itemize}
 
+% ***
 \item A {\it constant phase} is obviously the simplest choice:
 
 \begin{equation}
@@ -33,7 +33,8 @@ For the {\bf phase} of the nuclear amplitude, there is little experimental guida
 \arg {\cal A}^{\rm N}(t) = \hbox{const.}
 \end{equation}
 
-\item The {\it standard phase} \cite{bailly87} \todo{rename Bailly} implements the main features of many theoretical models -- almost imaginary amplitude in the forward direction while purely real in the (first) diffraction dip:
+% ***
+\item The parametrisation by {\em Bailly et al.}~\cite{bailly87} implements the main features of many theoretical models -- almost imaginary amplitude in the forward direction while purely real in the (first) diffraction dip:
 \begin{equation}
 \label{eq:nuc phase std}
 	%\arg {\cal A}^{\rm N}(t) = {\pi\over 2} - \arctan {\rho_0\over 1 - {t\over t_{\rm d}}},\ \rho_0 = {1\over \tan p_0}
@@ -41,26 +42,30 @@ For the {\bf phase} of the nuclear amplitude, there is little experimental guida
 \end{equation}
 where $p_0$ determines the phase value at $t=0$ and $t_{\rm d} \approx -0.53\un{GeV^2}$ gives the position of the diffractive minimum at $8\un{TeV}$ (preliminary result from $90\un{m}$ data).
 
-\item \todo{add standard phase}
+% ***
+\item \todo{add standard phase ??}
 
-\item The {\it peripheral phase} \cite{kl94} \todo{newer ref} provides an alternative to the above descriptions. Its parametrisation
+% ***
+\item The {\it peripheral phase} \cite{kl94} \todo{newer ref - if we ever get one} provides an alternative to the above descriptions. Its parametrisation
+
+\todo{update values, range?}
 
 \begin{equation}
 \label{eq:nuc phase per}
-\arg {\cal A}^{\rm N}(t) = p_0 + A \exp\left[ \kappa \left( \log {t\over t_{\rm m}} - {t\over t_{\rm m}} + 1 \right) \right]
+\arg {\cal A}^{\rm N}(t) = p_0 - A \exp\left[ \kappa \left( \log {t\over t_{\rm m}} - {t\over t_{\rm m}} + 1 \right) \right]
 \end{equation}
 results in a peak with at $t_{\rm m} \approx -0.310\un{GeV^2}$, amplitude $A \approx 5.53$ and width controlled by $\kappa \approx 4.01$.
 
 \end{itemize}
 
-It should be noted that the phase has decisive influence on the amplitude behaviour in the space of impact parameter, $b$, \cite{klk02}. It can be quantified by evaluating the root-mean-squares (RMS) of $b$ for elastic and inelastic collisions. The constant and standard phase lead to elastic collisions more central (smaller RMS) than the inelastic ones. The peripheral phase can yield a description with the opposite hierarchy, which is argued more natural by some authors \cite{kl96}.
+It should be noted that the phase has decisive influence on the amplitude behaviour in the space of impact parameter, $b$, see e.g.~section 3 in \cite{klk02}. It can be quantified by evaluating the root-mean-squares (RMS) of $b$ for elastic and inelastic collisions. The constant and standard phase lead to elastic collisions more central (smaller RMS) than the inelastic ones. The peripheral phase can yield a description with the opposite hierarchy, which is argued more natural by some authors (e.g.~section 4 in \cite{kl96}).
 
 %----------------------------------------------------------------------------------------------------
 \subsubsection{Coulomb-nuclear interference formulae}
 
 The {\bf simplified West-Yennie formula (SWY)} \cite{wy68} is derived in the framework of perturbative QFT by evaluating the lowest-order Feynman diagrams that comprise both nuclear and Coulomb interactions. In this approach, the interference is reduced to an additional phase between the Coulomb and nuclear amplitudes. Moreover, several approximations were used in the derivation. First, in order to avoid integrating over off-mass-shell contributions to the nuclear amplitude (purely known), very slow variation of the nuclear amplitude phase was assumed: $\arg {\cal A}^{\rm N} \approx \hbox{const}$. Then, in order to obtain a closed-form expression, the exponential slope of the nuclear modulus
 \begin{equation}
-B(t) = {\d \log |{\cal A}^{\rm N}|^2 \over \d t}
+B^{\rm N}(t) = {\d \log |{\cal A}^{\rm N}|^2 \over \d t}
 \end{equation}
 was assumed constant. The original formula did not contain the electromagnetic form factor ${\cal F}$, it was added later by hand:
 \begin{equation}
@@ -87,13 +92,13 @@ The {\bf Kundr\' at-Lokaj\' i\v cek formula (KL)} \cite{kl94} was derived in an 
 \end{equation}
 where the $t$ integrations go over the entire kinematically allowed region.
 
-Calculation engine \cite{elegent}
+Calculation engine \cite{elegent}, using form-factor of Puckett et al.~\cite{puckett10}
 
 %----------------------------------------------------------------------------------------------------
 \subsection{Data analysis}
 \label{sec:cni_anal}
 
-\> nuclear modulus: anchored to $90\un{m}$ data at $|t| > 0.2\un{GeV^2}$
+\> nuclear modulus: anchored to $90\un{m}$ data at $|t| > 0.2\un{GeV^2}$ for stability of integrations in \ref{eq:int kl}
 
 \> with the presented data not possible to distinguish between different models/assumptions above $\Rightarrow$ {\bf conditional} determination of parameters of interest
 \>> $\rho$
@@ -115,6 +120,7 @@ where $\vec\Delta$ represents vector of differences in $\d\sigma/\d t$ between f
 \> results ($\rho$, $\sigma_{\rm tot}$, $B^{\rm N}(0)$, ...)
 \>> for the model choices above -- keeping phase parameters fixed at their central values from Vojt\v ech
 \>> for peripheral-phase parameters being varied within their uncertainties $\Rightarrow$ uncertainty band
+\>> illustrative decomposition of uncertainties from MC
 
 \> question: do we want to present a single-value result for $\rho$ (combined from fits under different models) ??
 

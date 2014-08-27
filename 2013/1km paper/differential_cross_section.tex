@@ -18,7 +18,7 @@ The protons' kinematics is first reconstructed separately in each arm, using for
 		x^* &= {L_x^{\rm N} x^{\rm F} - L_x^{\rm F} x^{\rm N}\over L_x^{\rm N} v_x^{\rm F} - L_x^{\rm F} v_x^{\rm N}}\ , \\
 	\end{aligned}
 \end{equation}
-where the N and F subscripts refer to the near and far unit, $x$ and $y$ to {\em aligned} horizontal and vertical track hits and $v$ and $L$ stand for the magnification and effective length optical functions. This reconstruction is used for tagging elastic events, where the left and right arm protons are compared. Once an event is selected, all four RPs can be used to reconstruct the kinematics of the event, in addition optimising for angular resolution:
+where the N and F subscripts refer to the near and far units, $x$ and $y$ to horizontal and vertical track hits (after alignment) and $v$ and $L$ stand for the magnification and effective length optical functions. This reconstruction is used for tagging elastic events, where the left and right arm protons are compared. Once an event is selected, all four RPs can be used to reconstruct the kinematics of the event, in addition optimising for angular resolution:
 \iffalse
 \begin{equation}
 \label{eq:kin 2a}
@@ -42,13 +42,13 @@ where the N and F subscripts refer to the near and far unit, $x$ and $y$ to {\em
 			}\ ,
 		\theta_y^* = {1\over 4} \sum {y^i\over L_y^i}\ ,
 \end{equation}
-where the sums go over the subscripts $i$ representing the four RPs of a diagonal.
+where the sums go over the superscripts $i$ representing the four RPs of a diagonal.
 
 %------------------------------
 
 \subsubsection{Alignment}
 
-The standard three-step procedure \cite{totem-ijmp} has been applied, further extended by steps improving the vertical alignment. They exploit the fact that the elastic scattering with its two anti-collinear protons can rely the alignment in the left and right arm (with an uncertainty of $20\un{\mu m}$). Furthermore, the horizontal RPs in right arm showed a hit distribution usable for vertical alignment in addition to the other technique based on the vertical RPs. Together, the two methods reduce the uncertainty to about $70\un{\mu m}$. The horizontal alignment and rotation about the beam have been determined with the standard approach, with uncertainties $30\un{\mu m}$ and $2\un{m rad}$, respectively. Propagating the uncertainties to the reconstructed angles, Eq.~(\ref{eq:kin 2a}), gives $0.28\un{\mu rad}$ ($0.19\un{\mu rad}$) for horizontal (vertical) angle. The error of the RP rotations would cause admixture of $\theta_y^*$ to $\theta_x^*$ with proportionality constant having standard deviation $0.005$.
+The standard three-step procedure \cite{totem-ijmp} has been applied: collimator-like alignment prior to run, track-based alignment (relative among RPs) and alignment with elastic events (absolute with respect to the beam). The procedure has been further extended by steps improving the vertical alignment. They exploit the fact that the elastic scattering with its two anti-collinear protons can rely the alignment in the left and right arm (with an uncertainty of $20\un{\mu m}$). Furthermore, the horizontal RPs in the right arm recorded a hit distribution usable for vertical alignment in addition to the standard technique based on the vertical RPs. Together, the two methods reduce the uncertainty to about $70\un{\mu m}$. The horizontal alignment and rotation about the beam have been determined by the standard approach, with uncertainties $30\un{\mu m}$ and $2\un{m rad}$, respectively. Propagating the uncertainties to the reconstructed angles, Eq.~(\ref{eq:kin 2a}), gives $0.28\un{\mu rad}$ ($0.19\un{\mu rad}$) for horizontal (vertical) angle. The error of the RP rotations would bias the reconstructed $\theta_x^*$ by a term proportional to $\theta_y^*$, with the proportionality constant having standard deviation $0.005$.
 
 % the observed hit inefficiencies -- possible asymmetries -- discuss ???
 % mention final alignment check = 2D Gaussian fit of $\theta_x^*$ vs.~$\theta_y^*$ from both diagonals ??
@@ -66,17 +66,21 @@ $0.34\un{\%}$ (horizontal) and $0.25\un{\%}$ (vertical), including the effects o
 
 \subsubsection{Resolution}
 
-Good knowledge of statistical fluctuations in the event reconstruction is essential for several steps in differential cross-section reconstruction. The fluctuations in $\theta_y^*$ are mostly due to the beam divergence phenomenon and can be studied by comparing the angles reconstructed from the left and right arm. If the divergences of both beams are the same (verified by emittance measurements with uncertainty of $25\un{\%}$), then the beam divergence distribution can be de-convoluted from the distribution of the left-right differences. The beam divergence has shown very small deviations from Gaussian shape (taken as a source of uncertainty) but increasing width with time. Thus the $\theta_y^*$ (Eq.~(\ref{eq:kin 2a})) resolution degraded from initial $4.3$ to $4.8\un{\mu rad}$ at the end of the fill. In the horizontal projection, a different method must be used since the one-arm reconstruction, Eq.~(\ref{eq:kin 1a}), is strongly influenced by sensor resolution. First, the beam divergence is calculated from the vertex $x^*$ spread by dividing by the known $\beta^*$: it grew from $0.75$ to $0.9\un{\mu rad}$ during the fill. Second, the beam-divergence component is subtracted from the standard deviation of the right-left difference in $\theta_x^*$, yielding (time-independent) contribution from the sensor resolution: $10.7\un{\mu m}$ (45 top -- 56 bottom) and $12.1\un{\mu m}$ (45 bottom -- 56 top). This can be propagated to the two-arm resolution in $\theta_x^*$, Eq.~({\ref{eq:kin 2a}}), which is almost purely determined by the beam divergence: it rose from $0.54$ to $0.65\un{\mu rad}$ during the fill. 
+Good knowledge of statistical fluctuations in the event reconstruction is essential for several steps in differential cross-section evaluation.
+
+The fluctuations in $\theta_y^*$ are mostly due to the beam divergence and can be studied by comparing the angles reconstructed from the left and right arm. If the divergences of the two beams are the same (verified by emittance measurements with uncertainty of $25\un{\%}$), then the beam divergence distribution can be de-convoluted from the distribution of the left-right differences. The beam divergence has shown very small deviations from Gaussian shape but increasing width with time. Similarly, the $\theta_y^*$ (Eq.~(\ref{eq:kin 2a})) resolution degraded from initial $0.43$ to $0.48\un{\mu rad}$ at the end of the fill.
+
+In the horizontal projection, a different method must be used since the one-arm reconstruction, Eq.~(\ref{eq:kin 1a}), is strongly influenced by sensor resolution (strip pitch). First, the beam divergence is estimated from the vertex $x^*$ spread by dividing by $\beta^*$: it grew from $0.75$ to $0.9\un{\mu rad}$ during the fill. Then, the beam-divergence component is subtracted from the standard deviation of the right-left difference in $\theta_x^*$, yielding (time-independent) contribution from the sensor resolution: $10.7\un{\mu m}$ (45 top -- 56 bottom) and $12.1\un{\mu m}$ (45 bottom -- 56 top). This can be propagated to the two-arm resolution in $\theta_x^*$, Eq.~({\ref{eq:kin 2a}}), which is by far dominated the beam divergence component: it rose from $0.54$ to $0.65\un{\mu rad}$ during the fill. 
 
 
 %----------------------------------------------------------------------------------------------------
-\subsection{Differential cross-section}
+\subsection{Differential cross-section reconstruction}
 
 For a given $t$ bin, the value of differential cross-section is evaluated by selecting and counting elastic events as follows
 \begin{equation}
 {\d\sigma\over \d t}(\hbox{bin}) =
 	{\cal N}\, {\cal U}({\rm bin})\, {\cal B}\ 
-	{\sum\limits_{t \in \hbox{bin}} {\cal A}(\theta_x^*, \theta_y^*)\, {\cal E}(\theta_y^*)\over \Delta t}\ ,
+	{\sum\limits_{t \in \hbox{bin}} {\cal A}(\theta^*, \theta_y^*)\, {\cal E}(\theta_y^*)\over \Delta t}\ ,
 \end{equation}
 where $\Delta t$ is the width of the bin, ${\cal N}$ is a normalisation factor and the other symbols stand for various correction factors:
  ${\cal U}$ for unfolding, ${\cal B}$ for background subtraction, ${\cal A}$ for acceptance correction and ${\cal E}$ for detection and reconstruction efficiency.
@@ -85,7 +89,9 @@ where $\Delta t$ is the width of the bin, ${\cal N}$ is a normalisation factor a
 
 \subsubsection{Tagging}
 
-The cuts used to select the elastic events are summarized in Tab.~\ref{tab:cuts}, all are applied at $4\sigma$-level. Cuts 1 and 2 require the reconstructed-track collinearity between the left and right arm. Cut 3 ensures that the protons come from the same vertex (horizontally). Thanks to the very good resolution, the collinearity cuts are very strong and consequently the other possible cuts (cf.~\cite{epl101-el}) bring no significant improvement. The tagging efficiency is studied by applying the cuts also at $5\un{\sigma}$-level. This selection yields $0.3\un{\%}$ more events, almost uniformly in $|t|$ (at very low $|t|$ in increases to $\approx 1\un{\%}$ -- anyway well in systematics). This kind of inefficiency is irrelevant for the presented analysis.
+The cuts used to select the elastic events are summarized in Tab.~\ref{tab:cuts}, all are applied at $4\sigma$-level. Cuts 1 and 2 require the reconstructed-track collinearity between the left and right arm. Cut 3 ensures that the protons come from the same vertex (horizontally). Thanks to the very good resolution, the collinearity cuts are very strong and consequently the other possible cuts (cf.~\cite{epl101-el}) bring no significant improvement.
+
+The tagging efficiency has been studied by applying the cuts also at $5\un{\sigma}$-level. This selection has yielded $0.3\un{\%}$ more events, almost uniformly in $|t|$ \todo{(at very low $|t|$ in increases to $\approx 1\un{\%}$ -- anyway well in systematics)}. This kind of inefficiency is irrelevant for the presented analysis.
 
 \begin{table}
 \caption{The elastic selection cuts. The superscripts R and L refer to the right and left arm. The $\alpha \theta_x^*$ term in cut 3 is intended to absorb possible effects of residual optics imperfections. The right-most column gives a typical RMS of the cut distribution.
@@ -107,7 +113,7 @@ number & cut & RMS ($\equiv 1\sigma$)\cr\hline
 
 \subsubsection{Background}
 
-The distributions of right-left angular differences (see Tab.~\ref{tab:cuts}) are plotted under various cut combinations. While the central part (signal) remains essentially constant, the tails (background) are dramatically affected. Interpolating the background smoothly to the signal region ($\pm 4\un{\sigma}$) permits to conclude negligible background: $1 - {\cal B} < 0.1\un{\%}$ (from each $\theta_x^*$ and $\theta_y^*$ distributions). As an additional test, if a cut is released the recuperated events ($\approx 0.3\un{\%}$) are distributed almost uniformly over the $|t|$ range, except a small increase ($< 1.5\un{\%}$) at very low $|t|$ (anyway, well in within systematics).
+To study the background (i.e.~impurity of the tagging), the distributions of right-left angular differences (see Tab.~\ref{tab:cuts}) are plotted under various cut combinations. While the central part (signal) remains essentially constant, the tails (background) are dramatically affected. Interpolating the background smoothly to the signal region ($\pm 4\un{\sigma}$) permits to conclude negligible background: $1 - {\cal B} < 0.1\un{\%}$ (independently from $\theta_x^*$ and $\theta_y^*$ distributions). As an additional test, if a cut is released the recuperated events ($\approx 0.3\un{\%}$) are distributed almost uniformly over the $|t|$ range\todo{, except a small increase ($< 1.5\un{\%}$) at very low $|t|$ (anyway, well in within systematics)}.
 
 % background = impurity of the cuts above
 
@@ -116,14 +122,23 @@ The distributions of right-left angular differences (see Tab.~\ref{tab:cuts}) ar
 
 \subsubsection{Acceptance correction}
 
-Beyond the usual acceptance limitations -- sensor edge (relevant for low $|\theta^*_y|$) and LHC apertures (high $|\theta_y^*|$) -- two additional ones have been identified. Both stem from the horizontal RPs interfering with the elastic protons, resulting in phase space region with uncertain detection efficiency. Consequently, an additional acceptance restriction $-50 < \theta_x^* < 80\un{\mu rad}$ has been adopted to avoid the interference regions. Otherwise, the standard correction technique \cite{8tev-90m} has been applied, comprising a geometrical correction (exploiting the verified azimuthal symmetry) and a correction for smearing around the acceptance limits. The uncertainties are related to the smearing parameters: vertical beam divergence size, left-right asymmetry and non-Gaussian shape.
+Beyond the usual acceptance limitations -- sensor edge (relevant for low $|\theta^*_y|$) and LHC apertures (high $|\theta_y^*|$) -- two additional ones have been identified. Both stem from the horizontal RPs interfering with the elastic protons, resulting in phase space region with uncertain detection efficiency. Consequently, an additional acceptance restriction $-50 < \theta_x^* < 80\un{\mu rad}$ has been adopted to avoid the interference regions.
+
+The expected azimuthal symmetry is verified for the data within acceptance. Assuming the symmetry globally yields a geometrical correction ${\cal A}_{\rm g}(\theta^*)$ calculated from a fraction of circle with radius $\theta^*$ falling into the acceptance region in the $\theta_x^*$, $\theta_y^*$ space.
+
+The other acceptance correction, ${\cal A}_{\rm s}$, accounts for fluctuations around horizontal acceptance boundaries. The uncertainties are related to the resolution parameters: vertical beam divergence size, left-right asymmetry and non-Gaussian shape.
+
+The final acceptance correction combines the two contributions:
+\begin{equation}
+{\cal A}(\theta^*, \theta_y^*) = {\cal A}_{\rm g}(\theta^*)\ {\cal A}_{\rm s}(\theta_y^*)\ .
+\end{equation}
 
 
 %-------------------------
 
 \subsubsection{Inefficiency corrections}
 
-Any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis. The uncorrelated 1-RP inefficiency ${\cal I}_{3/4}$ is evaluated by removing the given RP from the tagging cuts, Tab.~\ref{tab:cuts}, and calculating the ratio of recovered events. This ratio has been found depending gently on the vertical scattering angle: decreasing by about $0.4\un{\%}$ from the lowest to the highest $|\theta_y^*|$. The uncertainty of this dependence has been included in the final systematic uncertainty assessment. The 1-RP inefficiencies are complemented by inefficiencies ${\cal I}_{2/4}$ from proton interactions in the near RP affecting also the far one:
+Any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (e.g.~the pile-up inefficiency in \cite{prl111}). The uncorrelated 1-RP inefficiency ${\cal I}_{3/4}$ is evaluated by removing a given RP from the tagging cuts, Tab.~\ref{tab:cuts}, and calculating the ratio of recovered events. This ratio has been found depending gently on the vertical scattering angle: decreasing by about $0.4\un{\%}$ from the lowest to the highest $|\theta_y^*|$. The uncertainty of this dependence has been included in the final systematic uncertainty assessment. The 1-RP inefficiencies are complemented by inefficiencies ${\cal I}_{2/4}$ from proton interactions in the near RP affecting also the far one:
 
 \begin{equation}
 \label{efficiency}
@@ -136,11 +151,15 @@ Any inefficiency correction that does not alter the $t$-distribution shape does 
 \>> left arm: efficiency in far RP unexpectedly low ($\approx 90\un{\%}$) -- due to showers in horizontal RPs (horizontal in left arm closer that in the right one) -- but experimentally determinable and thus fully correctable
 \fi
 
+\todo{Give some values or a plot?}
+
 %-------------------------
 
-\subsubsection{Unsmearing}
+\subsubsection{Unfolding of resolution effects}
 
-The standard per-bin technique has been applied \cite{8tev-90m}. Due to the very small beam divergence, the effect is negligible for all bins except the very low-$|t|$ ones where the rapid cross-section growth appears because of the Coulomb interaction (correction $< 2.5\un{\%}$). For the uncertainty estimate, the uncertainties of $\theta_x^*$ and $\theta_y^*$ resolutions (to accommodate the full time variation) as well as fit-model dependence have been considered, each contribution giving few per-mille for the lowest-$|t|$ point.
+Due to the very small beam divergence, the correction for resolution effects can be safely determined by the following iterative procedure. The differential cross-section data are fitted by a smooth curve which serves as an input to a Monte-Carlo simulation using the resolution parameters determined above. Making a ratio of simulated histograms with / without smearing effects gives a set of per-bin correction factors. Applying them to the yet uncorrected differential cross-section yields a better estimate of the true $t$-distribution, which can be used as input to the next iteration. The final correction is negligible (${\cal U} \approx 1$) for all bins except the very low-$|t|$ ones where the rapid cross-section growth occurs because of the Coulomb interaction ($ {\cal U} - 1 < 2.5\un{\%}$).
+
+For the uncertainty estimate, the uncertainties of $\theta_x^*$ and $\theta_y^*$ resolutions (accommodating the full time variation) as well as fit-model dependence have been considered, each contribution giving few per-mille for the lowest-$|t|$ bin.
 
 \iffalse
 \> but time-dependent smearing sigma, determined from the variation of $\theta_y^{*R} - \theta_y^{*L}$
@@ -151,7 +170,7 @@ The standard per-bin technique has been applied \cite{8tev-90m}. Due to the very
 
 \subsubsection{Normalisation}
 
-The final differential rate is scaled to cross-section by requiring the same integral between $|t| = 0.014$ and $0.2030\un{GeV^2}$ as for dataset 1 from \cite{prl111}, where the luminosity-independent calibration was applied. The leading uncertainty of the scaling factor $4.2\un{\%}$ comes from the luminosity-independent method.
+The normalisation ${\cal N}$ is determined by requiring the same cross-section integral between $|t| = 0.014$ and $0.203\un{GeV^2}$ as for dataset 1 from \cite{prl111}, where the luminosity-independent calibration was applied. The leading uncertainty of the scaling factor $4.2\un{\%}$ comes from the luminosity-independent method.
 % transfer negligible ($0.5\un{\%}$).
 % stat: 0.3%, syst: 0.3% (DS2 at 90m), 0.3% (1km)
 
@@ -161,6 +180,7 @@ The final differential rate is scaled to cross-section by requiring the same int
 \subsubsection{Binning}
 
 The binning has been optimised with respect to two aspects. At low $|t|$, the bin size has been set to the triple of the resolution in $t$. At higher $|t|$, a fixed statistical fluctuation of $4\un{\%}$ has been targeted.
+
 
 %-------------------------
 \subsubsection{Systematic uncertainties}
@@ -183,10 +203,11 @@ normalisation
 %----------------------------------------------------------------------------------------------------
 \subsection{Final data merging}
 
-Eventually, the differential cross-sections from both diagonals are merged. This is accomplished by a per-bin weighted average, with the weight given by inverse squared statistical uncertainty. The statistical and systematic uncertainties are propagated accordingly. For the systematic ones, the correlation between the diagonals is taken into account. For example the vertical (mis)alignment of the RPs within one unit is almost fully correlated, thus the effect on differential cross-section is opposite in the two diagonals and consequently its impact is strongly reduced once the diagonals are merged. The leading systematic uncertainties are: normalisation uncertainty, optics imperfections, beam momentum offset and residual misalignment, see details in Tab.~\ref{tab:data}. The vertical misalignment is the dominant systematic mode in the very low $|t|$ region. The final cross-section is tabulated in Tab.~\ref{tab:data} and visualised in Fig.~\ref{fig:dsdt}.
+Eventually, the differential cross-section histograms from both diagonals are merged. This is accomplished by a per-bin weighted average, with the weight given by inverse squared statistical uncertainty. The statistical and systematic uncertainties are propagated accordingly. For the systematic ones, the correlation between the diagonals is taken into account. For example the vertical (mis)alignment of the RPs within one unit is almost fully correlated, thus the effect on differential cross-section is opposite in the two diagonals and consequently its impact is strongly reduced once the diagonals are merged.
 
+The leading systematic uncertainties are: normalisation uncertainty, optics imperfections, beam momentum offset and residual misalignment, see details in Tab.~\ref{tab:data}. The vertical misalignment is the dominant systematic mode in the very low $|t|$ region.
 
-\todo{SOMEWHERE:} compatible results obtained if data right after or right before beam cleaning are used
+The final cross-section is tabulated in Tab.~\ref{tab:data} and visualised in Fig.~\ref{fig:dsdt}. \todo{SOMEWHERE:} compatible results have obtained from data in the beginning of data-taking periods (after beam cleanings) and in their ends (before next beam cleaning was needed).
 
 
 \input data_table.tex
