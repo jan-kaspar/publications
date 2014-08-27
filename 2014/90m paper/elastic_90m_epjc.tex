@@ -1,0 +1,209 @@
+\documentclass[pdftex,twocolumn,epjc3]{svjour3}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{mathptmx}
+
+%----------------------------------------------------------------------------------------------------
+
+\def\d{{\rm d}}
+\def\un#1{\,{\rm #1}}
+\def\ung#1{\quad[{\rm #1}]}
+\def\unt#1{[{\rm #1}]}
+\def\e{{\rm e}}
+\def\I{{\rm i}}
+\def\T{{\rm T}}
+%\def\vec#1{\mathbf{#1}}
+\def\vec#1{#1} % TODO
+\def\mat#1{\mathsf{#1}}
+\def\etal{et al.}
+\def\todo#1{{\color{red} #1}}
+
+\setbox123\hbox{$0$}
+\setbox124\hbox{$.$}
+\def\S{\hbox to\wd123{\hss}}
+\def\.{\hbox to\wd124{\hss}}
+
+\def\thanksInst#1{\unskip\footnotemark[#1]}
+
+% TODO: needed?
+\bgroup
+\catcode`\@=11
+
+\gdef\thanksRef#1#2{%
+    \protected@xdef\@thanks{\@thanks\protect\footnotetext[#1]{#2}}%
+}
+\egroup
+
+% TODO: needed?
+\def\hang{\hangindent=\parindent}
+\catcode`\>=11
+\newskip\itskip \itskip2mm
+\newskip\iitskip \iitskip0mm
+\newdimen\itindent \itindent3mm
+\newdimen\iitindent \iitindent5mm
+\def\>{\par\vskip\itskip\parindent\itindent\indent\hang\llap{\hbox to3mm{$\bullet$\hss}}}
+\def\>E{\par\vskip\itskip\parindent\itindent\indent\hang\llap{\hbox to3mm{\hss}}}
+\def\>>{\par\vskip\iitskip\parindent\iitindent\indent\hang\llap{\hbox to\iitindent{\hss--\ }}}
+
+\def\Name#1{\textsc{#1}, }
+\def\REVIEW#1#2#3#4{{\it #1} {\bf #2} (#3) #4}
+
+%----------------------------------------------------------------------------------------------------
+
+\journalname{Eur. Phys. J. C}
+
+\begin{document}
+
+\title{Evidence for non-exponential elastic differential cross-section at low $|\hbox{t}|$ and $\sqrt{\hbox{s}}$ = 8 TeV} % with TOTEM ?
+
+\authorrunning{Short form of author}
+\titlerunning{Short form of title}
+
+\input authorlist_epjc
+
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+Analysis of a new dataset obtained at $\sqrt{s} = 8\un{TeV}$ and $\beta^* = 90\un{m}$ optics.
+High statistics (more than $7\cdot10^{6}$ elastic events)
+$\Rightarrow$ strongly reduced statistical and systematic uncertainties (each below $1\un{\%}$) % excluding normalisation unc.
+$\Rightarrow$ purely exponential behaviour of differential cross-section excluded at more than $7\un{\sigma}$ significance
+$\Rightarrow$ new determination of the total cross-section (non-exponential extrapolation), TODO: values, but still compatible
+with the previous TOTEM measurements.
+
+% TODO
+\keywords{First keyword \and Second keyword \and More}
+\PACS{13.60.Hb} % Total and inclusive cross sections (including deep-inelastic processes)
+%\preprint{CERN-PH-EP-2014-XXXX}
+
+\end{abstract}
+
+%--------------------------------------------------
+
+\input introduction
+
+\input experimental_apparatus
+
+\input data_taking
+
+\input differential_cross_section
+
+%--------------------------------------------------
+
+\section{Discussion/Conclusions/Outlook}
+
+\> will extend this analysis beyond the dip
+\> bridge to the $1000\un{m}$ paper?
+
+%--------------------------------------------------
+
+\begin{acknowledgements}
+THIS IS JUST PLACEHOLDER -----------
+We are indebted to the beam optics development team
+%({\sc A.~Verdier} in the initial phase, {\sc H.~Burkhardt}, {\sc G.~M\" uller}, {\sc S.~Redaelli}, {\sc J.~Wenninger}, {\sc S.~M.~White})
+for the design, the thorough preparations and the successful commissioning of the $\beta^* = 90\un{m}$ optics. We congratulate the CERN accelerator groups for the very smooth operation in 2011. We thank
+%{\sc M.~Ferro-Luzzi}
+the LHC machine coordinators for scheduling the dedicated fills.
+
+This work was supported by the institutions listed on the front page and partially also by NSF (US), the Magnus
+Ehrnrooth foundation (Finland), the Waldemar von Frenckell foundation (Finland), the Academy of
+Finland, the OTKA grant NK 101438, 73143 (Hungary) and the NKTH-OTKA grant 74458 (Hungary).
+----------- END OF THE PLACEHOLDER
+\end{acknowledgements}
+
+
+%----------------------------------------------------------------------------------------------------
+\begin{thebibliography}{99}
+
+\bibitem{totem-jinst}
+    %The TOTEM Experiment at the CERN Large Hadron Collider, JINST 3 S08007, 2008
+	\Name{Anelli G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{JINST}{3}{2008}{S08007}
+
+\bibitem{totem-ijmp}
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Int.~J.~Mod.~Phys.~A}{28}{2013}{1330046}
+
+\bibitem{totem-optics}
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	LHC Optics Measurement with Proton Tracks Detected by the Roman Pots of the TOTEM Experiment, 
+	arXiv:1406.0546
+
+\bibitem{prl111}
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Phys.~Rev.~Lett.}{111}{2013}{012001}
+
+\bibitem{epl101-el}
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Europhys.~Lett.}{101}{2013}{21002}
+
+\bibitem{lafferty94}
+ 	% Where to stick your data points: The treatment of measurements within wide bins
+	\Name{Lafferty G.~D.~and Wyatt T.~R.}
+	\REVIEW{Nucl.\ Instrum.\ Meth.}{A 355}{1995}{541}
+
+\bibitem{compete} 
+	\Name{Cudell~J.~R.~\etal{} (COMPETE Collaboration)}
+	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
+
+
+\iffalse
+
+\bibitem{epl95}
+    %Proton-proton elastic scattering at the LHC energy of \sqrt{s} = 7 TeV, Europhys. Lett. 95 (2011) 41001,CERN-PH-EP-2011-101 
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Europhys.~Lett.}{95}{2011}{41001}
+
+\bibitem{epl96}
+    %First measurements of the total proton-proton cross-section at the LHC energy of $\sqrt s =7\,\rm TeV$ CERN-PH-EP-2011-158
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Europhys.~Lett.}{96}{2011}{21002}
+
+\bibitem{epl101-inel}
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Europhys.~Lett.}{101}{2013}{21003}
+
+\bibitem{epl101-tot}
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Europhys.~Lett.}{101}{2013}{21004}
+
+\bibitem{jan_thesis}
+	\Name{Ka\v spar J.}
+	PhD Thesis, CERN-THESIS-2011-214, {\tt http://cdsweb.cern.ch/record/1441140}
+
+\bibitem{mario_ipac_2011}
+	\Name{Deile M.}
+	{\it The First 1 1/2 Years of TOTEM Roman Pot Operation at LHC}, in
+	{\it Proceedings of the 2nd International Particle Accelerator Conference (IPAC 2011), San Sebastian, Spain}. 
+	%{\tt http://accelconf.web.cern.ch/AccelConf/IPAC2011/papers/mopo011.pdf}
+	arXiv:1110.5808v1
+
+%\bibitem{pdg} 
+%	\Name{Nakamura K.~\etal{} (Particle Data Group)}
+%	\REVIEW{J.~Phys.}{G37}{2010}{075021}
+
+\bibitem{B_vs_s}
+	\Name{ISR (CR Collaboration)} \REVIEW{Phys.~Lett.}{B62}{1976}{460}; 
+	\Name{ISR (ACHGT Collaboration)} \REVIEW{Phys.~Lett.}{B39}{1972}{663}; 
+	\Name{ISR (R-211)} \REVIEW{Nucl.~Phys.}{B262}{1985}{689}; 
+	\Name{ISR (R-210)} \REVIEW{Phys.~Lett.}{B115}{1982}{495}; 
+	\Name{UA1} \REVIEW{Phys.~Lett.}{B147}{1984}{385}; 
+	\Name{UA4} \REVIEW{Phys.~Lett.}{B127}{1983}{472} and \REVIEW{Phys. Lett.}{B198}{1987}{583}; 
+	\Name{UA4/2} \REVIEW{Phys.~Lett.}{B316}{1993}{448}; 
+	\Name{CDF} \REVIEW{Phys.~Rev.}{D50}{1994}{5518}; 
+	\Name{E710} \REVIEW{Phys.~Rev.~Lett.}{68}{1992}{2433} and \REVIEW{Nuovo Cimento}{A106}{1992}{123}; 
+	\Name{D0} D0 Note 6056-CONF; 
+	\Name{pp2pp} \REVIEW{Phys.~Lett.}{B579}{2004}{245}
+
+\fi
+
+\end{thebibliography}
+
+
+
+\end{document}
