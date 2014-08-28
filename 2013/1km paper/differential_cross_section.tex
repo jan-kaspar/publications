@@ -126,12 +126,27 @@ Beyond the usual acceptance limitations -- sensor edge (relevant for low $|\thet
 
 The expected azimuthal symmetry is verified for the data within acceptance. Assuming the symmetry globally yields a geometrical correction ${\cal A}_{\rm g}(\theta^*)$ calculated from a fraction of circle with radius $\theta^*$ falling into the acceptance region in the $\theta_x^*$, $\theta_y^*$ space.
 
-The other acceptance correction, ${\cal A}_{\rm s}$, accounts for fluctuations around horizontal acceptance boundaries. The uncertainties are related to the resolution parameters: vertical beam divergence size, left-right asymmetry and non-Gaussian shape.
+The other acceptance correction, ${\cal A}_{\rm s}$, accounts for fluctuations around horizontal acceptance boundaries. \todo{How?} The uncertainties are related to the resolution parameters: vertical beam divergence size, left-right asymmetry and non-Gaussian shape.
 
 The final acceptance correction combines the two contributions:
 \begin{equation}
 {\cal A}(\theta^*, \theta_y^*) = {\cal A}_{\rm g}(\theta^*)\ {\cal A}_{\rm s}(\theta_y^*)\ .
 \end{equation}
+
+\todo{quantitative information - how big is the correction, how important are the uncertainties}
+
+\iffalse
+\> A_g
+\>> at low |t|: correction < 10 (for 1 diagonal)
+\>> at high |t|: correction < 20 (for 1 diagonal)
+
+\> A_s
+\>> at low |t|: correction < 2.5
+\>> uncertainties only important for few low |t| bins, giving the value for the lowest |t| bin
+\>>> sigma beam div: 2%
+\>>> L-R asymmetry: 1%
+\>>> non-Gauss: 1%
+\fi
 
 
 %-------------------------
@@ -149,9 +164,18 @@ Any inefficiency correction that does not alter the $t$-distribution shape does 
 \> 3-out-of-4 results
 \>> right arm: typical results (near $\approx 98\un{\%}$, far $\approx 96.5\un{\%}$ efficiency)
 \>> left arm: efficiency in far RP unexpectedly low ($\approx 90\un{\%}$) -- due to showers in horizontal RPs (horizontal in left arm closer that in the right one) -- but experimentally determinable and thus fully correctable
+
+\> sum of all 3/4 inefficiencies (DS2b, 45 bottom)
+\>> lowest |th_y|: 15.96%
+\>> highest |th_y|: 17.88%
+
+\> 2/4: 1.5% for one RP
+
 \fi
 
-\todo{Give some values or a plot?}
+\todo{how is 2/4 ineff calculated}
+
+\todo{Typical values or even a plot? What about uncertainties?}
 
 %-------------------------
 
