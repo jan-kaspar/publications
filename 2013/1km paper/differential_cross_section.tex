@@ -8,6 +8,8 @@ irrelevant.
 %----------------------------------------------------------------------------------------------------
 \subsection{Event reconstruction}
 
+\todo{Short introduction - anticipate the argument flow; text below into a subsection}
+
 The protons' kinematics is first reconstructed separately in each arm, using formulae that optimise the robustness against imperfections (predominantly optics):
 %guide for reconstruction formulae = robustness against error sources: beam divergence, sensor pitch, misalignment, vertex term neglected, optics imperfections
 \begin{equation}
@@ -122,15 +124,15 @@ To study the background (i.e.~impurity of the tagging), the distributions of rig
 
 \subsubsection{Acceptance correction}
 
-Beyond the usual acceptance limitations -- sensor edge (relevant for low $|\theta^*_y|$) and LHC apertures (high $|\theta_y^*|$) -- two additional ones have been identified. Both stem from the horizontal RPs interfering with the elastic protons, resulting in phase space region with uncertain detection efficiency. Consequently, an additional acceptance restriction $-50 < \theta_x^* < 80\un{\mu rad}$ has been adopted to avoid the interference regions.
+Beyond the usual acceptance limitations -- sensor edge (relevant for low $|\theta^*_y|$) and LHC apertures (high $|\theta_y^*|$) -- two additional ones have been identified. Both stem from the horizontal RPs interfering with the elastic protons, resulting in phase space region with uncertain detection efficiency. Consequently, an additional acceptance restriction $-50 < \theta_x^* < 80\un{\mu rad}$ has been adopted to avoid the interference regions. \todo{give the same in millimetres}
 
-The expected azimuthal symmetry is verified for the data within acceptance. Assuming the symmetry globally yields a geometrical correction ${\cal A}_{\rm g}(\theta^*)$ calculated from a fraction of circle with radius $\theta^*$ falling into the acceptance region in the $\theta_x^*$, $\theta_y^*$ space.
+The expected azimuthal symmetry is verified for the data within acceptance. Assuming the symmetry globally yields a geometrical correction ${\cal A}_{\rm geom}(\theta^*)$ calculated from a fraction of circle with radius $\theta^*$ falling into the acceptance region in the $\theta_x^*$, $\theta_y^*$ space.
 
-The other acceptance correction, ${\cal A}_{\rm s}$, accounts for fluctuations around horizontal acceptance boundaries. \todo{How?} The uncertainties are related to the resolution parameters: vertical beam divergence size, left-right asymmetry and non-Gaussian shape.
+The other acceptance correction, ${\cal A}_{\rm fluct}$, accounts for fluctuations around horizontal acceptance boundaries. \todo{How?} The uncertainties are related to the resolution parameters: vertical beam divergence size, left-right asymmetry and non-Gaussian shape.
 
 The final acceptance correction combines the two contributions:
 \begin{equation}
-{\cal A}(\theta^*, \theta_y^*) = {\cal A}_{\rm g}(\theta^*)\ {\cal A}_{\rm s}(\theta_y^*)\ .
+{\cal A}(\theta^*, \theta_y^*) = {\cal A}_{\rm geom}(\theta^*)\ {\cal A}_{\rm fluct}(\theta_y^*)\ .
 \end{equation}
 
 \todo{quantitative information - how big is the correction, how important are the uncertainties}
@@ -153,11 +155,11 @@ The final acceptance correction combines the two contributions:
 
 \subsubsection{Inefficiency corrections}
 
-Any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (e.g.~the pile-up inefficiency in \cite{prl111}). The uncorrelated 1-RP inefficiency ${\cal I}_{3/4}$ is evaluated by removing a given RP from the tagging cuts, Tab.~\ref{tab:cuts}, and calculating the ratio of recovered events. This ratio has been found depending gently on the vertical scattering angle: decreasing by about $0.4\un{\%}$ from the lowest to the highest $|\theta_y^*|$. The uncertainty of this dependence has been included in the final systematic uncertainty assessment. The 1-RP inefficiencies are complemented by inefficiencies ${\cal I}_{2/4}$ from proton interactions in the near RP affecting also the far one:
+Any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (e.g.~the pile-up inefficiency in \cite{prl111}). The uncorrelated 1-RP inefficiency ${\cal I}_{3/4}$ is evaluated by removing a given RP from the tagging cuts, Tab.~\ref{tab:cuts}, and calculating the fraction of recovered events. This fraction has been found depending gently on the vertical scattering angle: decreasing by about $0.4\un{\%}$ from the lowest to the highest $|\theta_y^*|$. The uncertainty of this dependence has been included in the final systematic uncertainty assessment. The 1-RP inefficiencies are complemented by inefficiencies ${\cal I}_{2/4}$ from proton interactions in the near RP affecting also the far one:
 
 \begin{equation}
 \label{efficiency}
-	{\cal E}(\theta_y^*) = {1\over 1 - \sum\limits_{i\in \rm RPs} {\cal I}^i_{3/4}(\theta_y^*) + 2 {\cal I}_{2/4} } \ .
+	{\cal E}(\theta_y^*) = {1\over 1 - \left( \sum\limits_{i\in \rm RPs} {\cal I}^i_{3/4}(\theta_y^*) + 2 {\cal I}_{2/4} \right) } \ .
 \end{equation}
 
 \iffalse
@@ -203,10 +205,11 @@ The normalisation ${\cal N}$ is determined by requiring the same cross-section i
 
 \subsubsection{Binning}
 
-The binning has been optimised with respect to two aspects. At low $|t|$, the bin size has been set to the triple of the resolution in $t$. At higher $|t|$, a fixed statistical fluctuation of $4\un{\%}$ has been targeted.
+The binning has been optimised with respect to two aspects. At low $|t|$, the bin size has been set to the triple of the resolution in $t$. At higher $|t|$, a fixed statistical fluctuation of $4\un{\%}$ has been targeted. \todo{define low and hight $|t|$}
 
 
 %-------------------------
+
 \subsubsection{Systematic uncertainties}
 
 Besides the systematic uncertainties mentioned at the above analysis steps, the uncertainty of the beam momentum $0.1\un{\%}$ needs to be considered when the scattering angles are translated to $t = - p^2 (\theta_x^2 + \theta_y^2)$. The systematic effects are propagated to the $t$-distribution by inserting the final cross-section to a Monte-Carlo simulation where any analysis parameter can be artificially biased. The results are validated with a semi-analytic calculation eventually exploiting numerical integration.
@@ -223,6 +226,12 @@ unfolding - resolutions x, y and model dependence
 normalisation
 \fi
 
+%-------------------------
+
+\subsubsection{\todo{Cross checks}}
+
+Compatible results have obtained from data in the beginning of data-taking periods (after beam cleanings) and in their ends (before next beam cleaning was needed). \todo{add diagonal, bunch, ... comparisons}
+
 
 %----------------------------------------------------------------------------------------------------
 \subsection{Final data merging}
@@ -231,7 +240,7 @@ Eventually, the differential cross-section histograms from both diagonals are me
 
 The leading systematic uncertainties are: normalisation uncertainty, optics imperfections, beam momentum offset and residual misalignment, see details in Tab.~\ref{tab:data}. The vertical misalignment is the dominant systematic mode in the very low $|t|$ region.
 
-The final cross-section is tabulated in Tab.~\ref{tab:data} and visualised in Fig.~\ref{fig:dsdt}. \todo{SOMEWHERE:} compatible results have obtained from data in the beginning of data-taking periods (after beam cleanings) and in their ends (before next beam cleaning was needed).
+The final cross-section is tabulated in Tab.~\ref{tab:data} and visualised in Fig.~\ref{fig:dsdt}.
 
 
 \input data_table.tex
@@ -249,3 +258,12 @@ Differential cross-section from Tab~\ref{tab:data} with statistical (bars) and s
 \end{center}
 \end{figure*}
 
+\begin{figure*}
+\begin{center}
+%\includegraphics[width=18cm]{fig/t_dist_tabulation.pdf}
+\caption{%
+\todo{Add a plot comparing systematic uncertainties and a plot with correlation matrix??}
+}
+%\label{fig:dsdt}
+\end{center}
+\end{figure*}
