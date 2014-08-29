@@ -238,9 +238,20 @@ Compatible results have obtained from data in the beginning of data-taking perio
 
 Eventually, the differential cross-section histograms from both diagonals are merged. This is accomplished by a per-bin weighted average, with the weight given by inverse squared statistical uncertainty. The statistical and systematic uncertainties are propagated accordingly. For the systematic ones, the correlation between the diagonals is taken into account. For example the vertical (mis)alignment of the RPs within one unit is almost fully correlated, thus the effect on differential cross-section is opposite in the two diagonals and consequently its impact is strongly reduced once the diagonals are merged.
 
-The leading systematic uncertainties are: normalisation uncertainty, optics imperfections, beam momentum offset and residual misalignment, see details in Tab.~\ref{tab:data}. The vertical misalignment is the dominant systematic mode in the very low $|t|$ region.
+A summary and comparison of all systematic uncertainties is given in Fig.~\ref{fig:syst unc}. The leading ones are: normalisation uncertainty, optics imperfections, beam momentum offset and residual misalignment, their effect is quantified in Tab.~\ref{tab:data}. The vertical misalignment is the dominant systematic mode in the very low $|t|$ region. \todo{Give here the recipe to recover covariance matrix? This would leave more space on the table page.}
 
 The final cross-section is tabulated in Tab.~\ref{tab:data} and visualised in Fig.~\ref{fig:dsdt}.
+
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=18cm]{fig/systematic_uncertainties.pdf}
+\caption{%
+\todo{\todo{TODO: rename contributions to make them consistent among text, table and this figure; explain properly what needs to be abbreviated; then, shorten explications in the data table}. \todo{normalisation skipped as it is too big}}
+}
+\label{fig:syst unc}
+\end{center}
+\end{figure*}
 
 
 \input data_table.tex
@@ -258,12 +269,3 @@ Differential cross-section from Tab~\ref{tab:data} with statistical (bars) and s
 \end{center}
 \end{figure*}
 
-\begin{figure*}
-\begin{center}
-%\includegraphics[width=18cm]{fig/t_dist_tabulation.pdf}
-\caption{%
-\todo{Add a plot comparing systematic uncertainties and a plot with correlation matrix??}
-}
-%\label{fig:dsdt}
-\end{center}
-\end{figure*}
