@@ -48,7 +48,8 @@ where $p_0$ determines the phase value at $t=0$ and $t_{\rm d} \approx -0.53\un{
 % ***
 \item The {\it peripheral phase} \cite{kl94} \todo{newer ref - if we ever get one} provides an alternative to the above descriptions. Its parametrisation
 
-\todo{update values, range?}
+\todo{update values, range?}\\
+\todo{if range used: several options with different level of peripherality as assumption - the RMS of b el was initially fixed by Vojtech - it is a cause not consequence}
 
 \begin{equation}
 \label{eq:nuc phase per}
@@ -95,10 +96,15 @@ where the $t$ integrations go over the entire kinematically allowed region.
 Calculation engine \cite{elegent}, using form-factor of Puckett et al.~\cite{puckett10}
 
 %----------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------
 \subsection{Data analysis}
 \label{sec:cni_anal}
 
-\> nuclear modulus: anchored to $90\un{m}$ data at $|t| > 0.2\un{GeV^2}$ for stability of integrations in \ref{eq:int kl}
+\subsubsection{Jan's notes}
+
+\> nuclear modulus
+\>> anchored to $90\un{m}$ data at $|t| > 0.2\un{GeV^2}$ for stability of integrations in \ref{eq:int kl}
+\>> considering 1, 2 and 3 parameters, then no improvement of $\chi^2$
 
 \> with the presented data not possible to distinguish between different models/assumptions above $\Rightarrow$ {\bf conditional} determination of parameters of interest
 \>> $\rho$
@@ -128,8 +134,9 @@ where $\vec\Delta$ represents vector of differences in $\d\sigma/\d t$ between f
 
 \> reference to Fig.~\ref{fig:rho_s}
 
-\> RMS of b for the final fits??
+\> RMS of b for the final fits
 
+\iffalse
 \begin{figure*}
 \begin{center}
 \includegraphics[width=16cm]{fig/rho_s.pdf}
@@ -140,3 +147,145 @@ where $\vec\Delta$ represents vector of differences in $\d\sigma/\d t$ between f
 \end{figure*}
 
 \> figure for $\sigma_{\rm tot}$ result ??
+\fi
+
+
+
+%----------------------------------------------------------------------------------------------------
+
+\subsubsection{Introduction}
+
+In reference to the results published in the 90m run paper (or sections)... and in reference to the results published in the 1km paper (or sections)... we study in the present paper (or sections) a combined analysis of the Coulomb interference with the 90m and 1km data, with the objectives to:
+
+\> investigate different combinations of: the formalization of the interference (SWY vs
+KL), the models of the hadronic phase (central vs peripheral), and the functional
+forms of the hadronic modulus (constant vs non-constant exponential at low-t);
+
+\> extract physics quantities such as rho, total cross-section, and hadronic B slope, as
+function of different assumptions on interference modelling and phase modelling;
+
+\> quantify the various results in terms of C.L.
+
+%----------------------------------------------------------------------------------------------------
+
+\subsubsection{Elastic differential cross-section: 90m data + interference with Coulomb QED}
+
+\todo{One needs to assume a rho value -- now we take 0.14, but later we will need to redo it with the result from 1km.}
+
+We observe in the data a non-constant-exponential \& oscillating behaviour.
+The hadronic slope by itself, the interference by itself, or a combination of both, must be
+responsible for this effect.
+
+{\bf 1. Fit with KL or SWY interference, constant/central phase, constant B slope}
+
+Figures \ref{fig:90,SWY,con,1} and \ref{fig:90,KL,con,1}: statistical+systematic –based fitting exclude with high significance that the data can be
+consistent with a constant B slope and constant phase. This is the case no matter which
+interference formula is used. (rho is fixed to the Compete value).
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=18cm]{simone/90/SWY,con,1,stat-stat+syst.pdf}
+\vskip-3mm
+\caption{SWY formula, constant phase, 1 parameter in exponential}
+\label{fig:90,SWY,con,1}
+\end{center}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=18cm]{simone/90/KL,con,1,stat-stat+syst.pdf}
+\vskip-3mm
+\caption{KL formula, constant phase, 1 parameter in exponential}
+\label{fig:90,KL,con,1}
+\end{center}
+\end{figure*}
+
+SWY can only cope with constant B slope and constant phase, therefore it will not be
+considered in the following.
+
+Thus we will now consider only the KL interference formula, with central or peripheral
+phase, with constant and not constant B slope.
+
+For the peripheral phase, a range of 3 parameters qualified by physics properties in the impact
+parameter space will be used. Later we will try a best fit with the 3 parameters constrained in
+the given physical range.
+
+For the B slope, 1 parameter (i.e. const) and 2-3-parameters functional forms will be used.
+
+{\bf 2. Fit with KL interference, constant/central phase, non-constant B slope}
+
+Figure \ref{fig:90,KL,con,2-3}: statistical only, and statistical+systematic, fitting for slope with 2 and 3 parameters. (rho is
+fixed to the Compete value). Show/compare chi2, significance, C.L.
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=18cm]{simone/90/KL,con,2-3,stat-stat+syst.pdf}
+\vskip-3mm
+\caption{KL formula, constant phase, 2 to 3 parameters in exponential}
+\label{fig:90,KL,con,2-3}
+\end{center}
+\end{figure*}
+
+{\bf 3. Fit with KL interference, peripheral phase, constant B slope}
+
+Figure \ref{fig:90,KL,per,1}
+statistical only and statistical+systematic fitting for constant slope, having fixed rho to the
+Compete value and the other three phase parameters to the triplet in VK’s table first
+row, or to the triplet in the central row, or to the triplet in the bottom row (to explore the
+range and phase-space presented by VK at Collaboration Meetings).
+Show/compare chi2, significance, C.L., ...
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=18cm]{simone/90/KL,per-var048,1,stat-stat+syst.pdf}
+\vskip-3mm
+\caption{SWY formula, peripheral phases, 1 parameter in exponential}
+\label{fig:90,KL,per,1}
+\end{center}
+\end{figure*}
+
+{\bf 4. Fit with KL interference, peripheral phase, non-constant B slope}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=18cm]{simone/90/KL,per-var048,2,stat-stat+syst.pdf}
+\vskip-3mm
+\caption{SWY formula, peripheral phases, 2 parameters in exponential}
+\label{fig:90,KL,per,2}
+\end{center}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=18cm]{simone/90/KL,per-var048,3,stat-stat+syst.pdf}
+\vskip-3mm
+\caption{SWY formula, peripheral phases, 3 parameters in exponential}
+\label{fig:90,KL,per,3}
+\end{center}
+\end{figure*}
+
+Figures \ref{fig:90,KL,per,2} and \ref{fig:90,KL,per,3}:
+statistical only and statistical+systematic fitting for slope with 2 and 3 parameters,
+having fixed rho to the Compete value and the other three phase parameters to the triplet
+in VK’s table first row, or to the triplet in the central row, or to the triplet in the
+bottom row. Show/compare chi2, significance, C.L.,...
+
+Check results by fixing rho to a different value, e.g. to the one resulting from the 1km
+standalone data (under the traditional assumptions for the interference).
+
+Concluding remarks on coupling of conditions and their significance.
+
+%----------------------------------------------------------------------------------------------------
+
+\subsubsection{Elastic differential cross-section: 90m \& 1km data + interference with Coulomb QED}
+
+Repeat as above. Reciprocally constraining fits giving weight to the 90km or to the 1km data
+for different physics quantities. Ultimately try combined fit properly weighting different
+“experiments”.
+
+%----------------------------------------------------------------------------------------------------
+
+\subsubsection{Measurements of Rho, B, and Total Cross-Section}
+
+Conditional analysis and results for the combinations analysed in the previous sections,
+according to the sets of fits 1., 2., 3., 4.
