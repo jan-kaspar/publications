@@ -26,8 +26,6 @@
 \def\S{\hbox to\wd123{\hss}}
 \def\.{\hbox to\wd124{\hss}}
 
-\def\thanksInst#1{\unskip\footnotemark[#1]}
-
 % TODO: needed?
 \bgroup
 \catcode`\@=11
@@ -69,15 +67,15 @@
 \maketitle
 
 \begin{abstract}
-Analysis of a new dataset obtained at $\sqrt{s} = 8\un{TeV}$ and $\beta^* = 90\un{m}$ optics.
-High statistics (more than $7\cdot10^{6}$ elastic events)
-$\Rightarrow$ strongly reduced statistical and systematic uncertainties (each below $1\un{\%}$) % excluding normalisation unc.
-$\Rightarrow$ purely exponential behaviour of differential cross-section excluded at more than $7\un{\sigma}$ significance
-$\Rightarrow$ new determination of the total cross-section (non-exponential extrapolation), TODO: values, but still compatible
-with the previous TOTEM measurements.
+The TOTEM experiment has determined elastic proton-proton differential cross-section at the centre-of-mass energy $\sqrt s = 8\un{TeV}$ from a new high-statistics data sample obtained with the $\beta^* = 90\un{m}$ optics. Furthermore, thanks to an improved analysis procedure, an unprecedented precision has been reached: both statistical and systematic uncertainties remain below $1\un{\%}$ (except the overall normalisation). This precision allows to exclude a purely exponential cross-section on the range of four-momentum transfer squared $0.027 < |t| < 0.2\un{GeV^2}$ with significance greater than $7\un{\sigma}$. Consequently, the extrapolation to $t=0$ is reviewed and two extended models are presented, yielding total cross-section estimates $(100.8 \pm 2.1)\un{mb}$ and $(101.2 \pm 2.1)\un{mb}$, well compatible with previous TOTEM measurements.
+%
+%Analysis of a new dataset obtained at $\sqrt{s} = 8\un{TeV}$ and $\beta^* = 90\un{m}$ optics.
+%High statistics (more than $7\cdot10^{6}$ elastic events)
+%$\Rightarrow$ strongly reduced statistical and systematic uncertainties (each below $1\un{\%}$) % excluding normalisation unc.
+%$\Rightarrow$ purely exponential behaviour of differential cross-section excluded at more than $7\un{\sigma}$ significance
+%$\Rightarrow$ new determination of the total cross-section (non-exponential extrapolation), values, but still compatible with the previous TOTEM measurements.
 
-% TODO
-\keywords{First keyword \and Second keyword \and More}
+\keywords{elastic scattering \and total cross-section \and LHC}
 \PACS{13.60.Hb} % Total and inclusive cross sections (including deep-inelastic processes)
 %\preprint{CERN-PH-EP-2014-XXXX}
 
@@ -95,19 +93,22 @@ with the previous TOTEM measurements.
 
 %--------------------------------------------------
 
-\section{Discussion/Conclusions/Outlook}
+\iffalse
+\section{Conclusions}
 
-\> will extend this analysis beyond the dip
-\> bridge to the $1000\un{m}$ paper?
+new data - high statistics
+new analysis - only irreducible unc. left - which ones
+unprecedented precision in a range
+data exclude pure exponential in that range, two methods, 7sigma
+extended models for extrapolation to t=0, sigma\_tot compatible to previous TOTEM measurement
+\fi
 
 %--------------------------------------------------
 
 \begin{acknowledgements}
 THIS IS JUST PLACEHOLDER -----------
 We are indebted to the beam optics development team
-%({\sc A.~Verdier} in the initial phase, {\sc H.~Burkhardt}, {\sc G.~M\" uller}, {\sc S.~Redaelli}, {\sc J.~Wenninger}, {\sc S.~M.~White})
 for the design, the thorough preparations and the successful commissioning of the $\beta^* = 90\un{m}$ optics. We congratulate the CERN accelerator groups for the very smooth operation in 2011. We thank
-%{\sc M.~Ferro-Luzzi}
 the LHC machine coordinators for scheduling the dedicated fills.
 
 This work was supported by the institutions listed on the front page and partially also by NSF (US), the Magnus
@@ -120,12 +121,26 @@ Finland, the OTKA grant NK 101438, 73143 (Hungary) and the NKTH-OTKA grant 74458
 %----------------------------------------------------------------------------------------------------
 \begin{thebibliography}{99}
 
+\bibitem{prl111}
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Phys.~Rev.~Lett.}{111}{2013}{012001}
+
 \bibitem{totem-jinst}
     %The TOTEM Experiment at the CERN Large Hadron Collider, JINST 3 S08007, 2008
 	\Name{Anelli G.~\etal{}~(TOTEM Collaboration)}
 	\REVIEW{JINST}{3}{2008}{S08007}
 
+\bibitem{epl96}
+    %First measurements of the total proton-proton cross-section at the LHC energy of $\sqrt s =7\,\rm TeV$ CERN-PH-EP-2011-158
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Europhys.~Lett.}{96}{2011}{21002}
+
+\bibitem{epl101-el}
+	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
+	\REVIEW{Europhys.~Lett.}{101}{2013}{21002}
+
 \bibitem{totem-ijmp}
+	% Performance of the Totem Detectors at the LHC
 	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
 	\REVIEW{Int.~J.~Mod.~Phys.~A}{28}{2013}{1330046}
 
@@ -134,22 +149,14 @@ Finland, the OTKA grant NK 101438, 73143 (Hungary) and the NKTH-OTKA grant 74458
 	LHC Optics Measurement with Proton Tracks Detected by the Roman Pots of the TOTEM Experiment, 
 	arXiv:1406.0546
 
-\bibitem{prl111}
-	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
-	\REVIEW{Phys.~Rev.~Lett.}{111}{2013}{012001}
-
-\bibitem{epl101-el}
-	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
-	\REVIEW{Europhys.~Lett.}{101}{2013}{21002}
+\bibitem{compete} 
+	\Name{Cudell~J.~R.~\etal{} (COMPETE Collaboration)}
+	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
 
 \bibitem{lafferty94}
  	% Where to stick your data points: The treatment of measurements within wide bins
 	\Name{Lafferty G.~D.~and Wyatt T.~R.}
 	\REVIEW{Nucl.\ Instrum.\ Meth.}{A 355}{1995}{541}
-
-\bibitem{compete} 
-	\Name{Cudell~J.~R.~\etal{} (COMPETE Collaboration)}
-	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
 
 
 \iffalse
@@ -159,10 +166,6 @@ Finland, the OTKA grant NK 101438, 73143 (Hungary) and the NKTH-OTKA grant 74458
 	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
 	\REVIEW{Europhys.~Lett.}{95}{2011}{41001}
 
-\bibitem{epl96}
-    %First measurements of the total proton-proton cross-section at the LHC energy of $\sqrt s =7\,\rm TeV$ CERN-PH-EP-2011-158
-	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
-	\REVIEW{Europhys.~Lett.}{96}{2011}{21002}
 
 \bibitem{epl101-inel}
 	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
