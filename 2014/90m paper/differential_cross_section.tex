@@ -23,7 +23,7 @@ alignment (see Section~\ref{sec:alignment}), using the LHC optics
 
 \subsubsection{Kinematics Determination}
 \label{sec:kinematics}
-
+\textbf{[mention improvement here ?]\\}
 The horizontal ($\theta_x^*$) and vertical ($\theta_y^*$) projections of the scattering angle and the horizontal vertex position $x^*$ are first reconstructed separately from each arm, using formulae that optimise the robustness against imperfections (predominantly optics):
 \begin{equation}
 \label{eq:kin 1a}
@@ -61,8 +61,11 @@ The standard three-step procedure \cite{totem-ijmp} has been applied: beam-based
 \subsubsection{Optics}
 \label{sec:optics}
 
-In order to reduce errors due to imperfect optics knowledge, the optics matching technique \cite{totem-optics} has been applied. The residual uncertainty has the form of factors scaling the scattering angles \textbf{[?????]}. % double-arm; before matching $0.48\un{\%}$ (hor), $0.90\un{\%}$
-For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the factors have standard deviations of $0.21\un{\%}$ (horizontal) and $0.25\un{\%}$ (vertical), including the effects of magnet harmonics.
+In order to reduce errors due to imperfect optics knowledge, the optics matching technique \cite{totem-optics} has been applied. The 
+corrections have the form of factors scaling the scattering angles
+%residual uncertainty has the form of factors scaling the scattering angles 
+\textbf{[correctly rephrased ?]}. % double-arm; before matching $0.48\un{\%}$ (hor), $0.90\un{\%}$
+For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the factors have uncertainties of $0.21\un{\%}$ (horizontal) and $0.25\un{\%}$ (vertical), including the effects of magnet harmonics.
 
 
 %------------------------------
@@ -225,7 +228,7 @@ Two binnings have been considered. The ``optimised'' option sets the bin size to
 \subsubsection{Systematic Uncertainties}
 \label{sec:systematics}
 
-Besides the systematic uncertainties mentioned at the above analysis steps, the uncertainty of the beam momentum, $0.65\un{\%}$ \textbf{[!!!!!]}, needs to be considered when the scattering angles are translated into $t$, see Eq.~(\ref{eq:th t}). The systematic effects are propagated to the $t$-distribution by inserting the final cross-section into a Monte-Carlo simulation where any analysis parameter can be artificially biased. The results are validated with a semi-analytical calculation eventually exploiting numerical integration \textbf{[?????]}.
+Besides the systematic uncertainties mentioned at the above analysis steps, the uncertainty of the beam momentum, $0.1\un{\%}$ \textbf{[!!!!!]}, needs to be considered when the scattering angles are translated into $t$, see Eq.~(\ref{eq:th t}). The systematic effects are propagated to the $t$-distribution by inserting the final cross-section into a Monte-Carlo simulation where any analysis parameter can be artificially biased. The results are validated with a semi-analytical calculation eventually exploiting numerical integration \textbf{[?????]}.
 
 
 
@@ -254,7 +257,11 @@ where the $\vec v_i$'s represent the uncertainty vectors from the table \textbf{
 \begin{center}
 \includegraphics[width=\textwidth]{fig/direct_method_mode_cmp_presentation.pdf}
 \caption{%
-Impact of systematic uncertainties on the differential cross-section. The two contributions due to optics correspond to the two eigenvectors of the $\theta_x^*$, $\theta_y^*$ scaling covariance matrix (see Section~\ref{sec:optics}) \textbf{[?????]}.
+Impact of systematic uncertainties on the differential cross-section. The two contributions due to optics correspond to the two eigenvectors of the covariance
+matrix of the factors scaling 
+$\theta_x^*$ and $\theta_y^*$ 
+%scaling covariance matrix 
+(see Section~\ref{sec:optics}) \textbf{[?????]}.
 }
 \label{fig:syst unc}
 \end{center}
