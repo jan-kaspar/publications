@@ -23,7 +23,7 @@ alignment (see Section~\ref{sec:alignment}), using the LHC optics
 
 \subsubsection{Kinematics Determination}
 \label{sec:kinematics}
-\textbf{[mention improvement here ?]\\}
+
 The horizontal ($\theta_x^*$) and vertical ($\theta_y^*$) projections of the scattering angle and the horizontal vertex position $x^*$ are first reconstructed separately from each arm, using formulae that optimise the robustness against imperfections (predominantly optics):
 \begin{equation}
 \label{eq:kin 1a}
@@ -61,11 +61,16 @@ The standard three-step procedure \cite{totem-ijmp} has been applied: beam-based
 \subsubsection{Optics}
 \label{sec:optics}
 
+In order to reduce the impact of imperfect optics knowledge, the optics matching technique \cite{totem-optics} has been applied. The residual imperfections induce an error in the reconstructed scattering angle proportional to the angle. For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the proportionality constants have uncertainties of $0.21\un{\%}$ (horizontal) and $0.25\un{\%}$ (vertical), including the effects of magnet harmonics.
+
+\iffalse
+% original text
 In order to reduce errors due to imperfect optics knowledge, the optics matching technique \cite{totem-optics} has been applied. The 
 corrections have the form of factors scaling the scattering angles
-%residual uncertainty has the form of factors scaling the scattering angles 
-\textbf{[correctly rephrased ?]}. % double-arm; before matching $0.48\un{\%}$ (hor), $0.90\un{\%}$
 For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the factors have uncertainties of $0.21\un{\%}$ (horizontal) and $0.25\un{\%}$ (vertical), including the effects of magnet harmonics.
+\fi
+
+% double-arm; before matching $0.48\un{\%}$ (hor), $0.90\un{\%}$
 
 
 %------------------------------
@@ -78,9 +83,9 @@ the beam divergence and, in the horizontal projection (due to small $L_x$),
 also by the sensor resolution (strip pitch). Good descriptions of these effects
 are essential for several corrections discussed below.
 
-The angular resolution is studied through differences $\theta_{x,y}^{*R} - \theta_{x,y}^{*L}$. Since in good approximation the fluctuations are independent in each arm, the distribution of the difference is just twice \textbf{[????]} wider than the fluctuation of angles in Eq.~(\ref{eq:kin 2a}). Generally, the distributions are well Gaussian, the small non-Gaussianity is decreasing with time. The resolutions were found to deteriorate with time: for the two-arm $\theta_y^*$ it evolved from initially $1.6$ to $1.7\un{\mu rad}$ at the end of the run. For $\theta_x^*$, the resolution decreased from $4.6$ to $4.8\un{\mu rad}$ (for the diagonal 45 bottom -- 56 top) and from $4.3$ to $4.4$ (45 top -- 56 bottom).
+The angular resolution is studied through differences $\theta_{x,y}^{*R} - \theta_{x,y}^{*L}$. Since in good approximation the fluctuations are independent in each arm, the distribution of the difference is just twice wider than the fluctuation of angles in Eq.~(\ref{eq:kin 2a}). Generally, the distributions are well Gaussian, the small non-Gaussianity is decreasing with time. The resolutions were found to deteriorate with time: for the two-arm $\theta_y^*$ it evolved from initially $1.6$ to $1.7\un{\mu rad}$ at the end of the run. For $\theta_x^*$, the resolution decreased from $4.6$ to $4.8\un{\mu rad}$ (for the diagonal 45 bottom -- 56 top) and from $4.3$ to $4.4$ (45 top -- 56 bottom).
 
-Measurements of beam emittances \textbf{[????]} show that the vertical beam divergences of the two beams are equal with a tolerance of about $15\un{\%}$. Exploiting this equality, one can de-convolute the distribution of $\theta_y^{*R} - \theta_y^{*L}$ in order to obtain the beam-divergence distribution, used e.g.~for acceptance corrections (see Section~\ref{sec:acc corr}).
+Measurements of beam emittances show that the vertical beam divergences of the two beams are equal with a tolerance of about $15\un{\%}$. Exploiting this equality, one can de-convolute the distribution of $\theta_y^{*R} - \theta_y^{*L}$ in order to obtain the beam-divergence distribution, used e.g.~for acceptance corrections (see Section~\ref{sec:acc corr}).
 
 
 \iffalse
@@ -110,7 +115,7 @@ ${\cal U}$ for unfolding of resolution effects, ${\cal B}$ for background subtra
 
 The cuts used to select elastic events are summarised in Table \ref{tab:cuts}, all are applied at the $4\sigma$ level. Cuts 1 and 2 require the reconstructed-track collinearity between the left and right arm. Cuts 3 and 4 control the elasticity -- if a proton loses momentum, the vertical position-angle correlation at the RPs is lost. Cut 5 ensures that the two protons come from the same vertex (horizontally). 
 
-The tagging efficiency is studied by applying the cuts also at the $5\un{\sigma}$ level. This selection yields $0.5\un{\%}$ more events, uniformly distributed in $|t|$ -- thus the inefficiency is irrelevant for the presented analysis \textbf{[uniform != scale factor]}.
+The tagging efficiency is studied by applying the cuts also at the $5\un{\sigma}$ level. This selection yields about $0.5\un{\%}$ more events in every $t$ bin -- thus the inefficiency is irrelevant for the presented analysis.
 
 \begin{table}
 \caption{The elastic selection cuts. The superscripts R and L refer to the right and left arm, N and F correspond to the near and far units, respectively. The constant $\alpha = L_y^{\rm F} / L_y^{\rm N} - 1 \approx 0.107$. The right-most column gives a typical RMS of the cut distribution.
@@ -134,8 +139,8 @@ number & cut & RMS ($\equiv 1\sigma$)\cr\hline
 \subsubsection{Background}
 \label{sec:background}
 
-Studying distributions of discriminators from Table~\ref{tab:cuts} under various cut combinations allows for separation of signal and background contributions. While the central part (signal, within $4\un{\sigma}$) remains essentially constant, the tails (background) are dramatically affected. Interpolating the background smoothly into the signal region yields a background estimate of $1 - {\cal B} < 10^{-4}$ (independent of whether discriminator 1, 2 or 5 is used) \textbf{[correctly rephrased ?]}.
-%${\cal B} = 1$, anyway irrelevant due to the normalisation approach.
+Studying distributions of discriminators from Table~\ref{tab:cuts} under various cut combinations allows for separation of signal and background contributions. While the central part (signal, within $4\un{\sigma}$) remains essentially constant, the tails (background) are dramatically affected. Interpolating the background smoothly into the signal region yields a background estimate of $1 - {\cal B} < 10^{-4}$ (independent of whether discriminator 1, 2 or 5 is used).
+% anyway irrelevant due to the normalisation approach
 
 %-------------------------
 
@@ -228,7 +233,8 @@ Two binnings have been considered. The ``optimised'' option sets the bin size to
 \subsubsection{Systematic Uncertainties}
 \label{sec:systematics}
 
-Besides the systematic uncertainties mentioned at the above analysis steps, the uncertainty of the beam momentum, $0.1\un{\%}$ \textbf{[!!!!!]}, needs to be considered when the scattering angles are translated into $t$, see Eq.~(\ref{eq:th t}). The systematic effects are propagated to the $t$-distribution by inserting the final cross-section into a Monte-Carlo simulation where any analysis parameter can be artificially biased. The results are validated with a semi-analytical calculation eventually exploiting numerical integration \textbf{[?????]}.
+Besides the systematic uncertainties mentioned at the above analysis steps, the uncertainty of the beam momentum, $0.1\un{\%}$, needs to be considered when the scattering angles are translated into $t$, see Eq.~(\ref{eq:th t}). The systematic effects are propagated to the $t$-distribution by inserting the final cross-section into a Monte-Carlo simulation where any analysis parameter can be artificially biased.
+%The results are validated with a semi-analytical calculation eventually exploiting numerical integration.
 
 
 
@@ -251,17 +257,13 @@ The systematic uncertainties are summarised in Figure~\ref{fig:syst unc} where t
 \label{eq:covar mat}
 \mat V = \sum_{i} \vec v_i \vec v_i^{\rm T}\ ,
 \end{equation}
-where the $\vec v_i$'s represent the uncertainty vectors from the table \textbf{[?????]}.
+where the $\vec v_i$'s represent the uncertainty vectors (columns) from the table.
 
 \begin{figure*}[t]
 \begin{center}
-\includegraphics[width=\textwidth]{fig/direct_method_mode_cmp_presentation.pdf}
+\includegraphics[width=13cm]{fig/direct_method_mode_cmp_presentation.pdf}
 \caption{%
-Impact of systematic uncertainties on the differential cross-section. The two contributions due to optics correspond to the two eigenvectors of the covariance
-matrix of the factors scaling 
-$\theta_x^*$ and $\theta_y^*$ 
-%scaling covariance matrix 
-(see Section~\ref{sec:optics}) \textbf{[?????]}.
+Impact of systematic uncertainties on the differential cross-section. The two contributions due to optics correspond to the two eigenvectors of the covariance matrix of the factors scaling $\theta_x^*$ and $\theta_y^*$ (see Section~\ref{sec:optics}).
 }
 \label{fig:syst unc}
 \end{center}
@@ -309,49 +311,50 @@ which are well compatible with the previous measurement using the luminosity-ind
 \begin{table*}[t!]
 \caption{%
 The elastic differential cross-section as determined in this analysis using the optimised binning. The three left-most columns describe the bins in $t$. The representative point gives the $t$ value suitable for fitting~\cite{lafferty94}. %uncertainty due to different fit models negligible:$10^{-7}\un{GeV^2}$
-The other columns are related to the differential cross-section. The four right-most columns give the leading systematic uncertainty modes (see Section~\ref{sec:final data merging} and Figure~\ref{fig:syst unc}). \todo{TODO: optimise number of digits, spacing}.
+The other columns are related to the differential cross-section. The four right-most columns give the leading systematic uncertainty modes (see Section~\ref{sec:final data merging} and Figure~\ref{fig:syst unc}).
 }
 \label{tab:data}
 \begin{center}
 \small
 \setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{ccc@{\hskip15pt}ccccccc}
+\begin{tabular}{ccc@{\hskip20pt}ccccccc}
 \hline
 \hline
-\multispan3\hss $|t|$ bin $\unt{GeV^2}$\hss & \multispan7\hss $\d\sigma/\d t \ung{mb/GeV^2}$ \hss \cr
-left & right & repres. & value & stat.     & full syst. & norm. & optics   & optics   & beam\cr
-edge & edge  & point   &       & unc.      & unc.       &       & mode 1   & mode 2   & momentum\cr
+\multispan3\hss\vrule width0pt depth4pt height10pt $|t|$ bin $\unt{GeV^2}$\hss & \multispan7\hss $\d\sigma/\d t \ung{mb/GeV^2}$ \hss \cr
+\multispan3\hrulefill\hbox to15pt{\hfil} & \multispan7\hrulefill \cr
+left & right & representative & value & statistical     & systematic  & normalisation & optics   & optics   & beam\cr
+edge & edge  & point      &       & uncertainty      & uncertainty   &       & mode 1   & mode 2   & momentum\cr
 \hline
-$0.027$ & $0.030$ & $0.029$ & $300.945$ & $0.612$ & $12.909$ & $12.890$ & $-0.473$ & $-0.260$ & $+0.254$ \cr
-$0.030$ & $0.033$ & $0.032$ & $284.042$ & $0.554$ & $12.130$ & $12.113$ & $-0.495$ & $-0.214$ & $+0.204$ \cr
-$0.033$ & $0.037$ & $0.035$ & $265.588$ & $0.506$ & $11.370$ & $11.355$ & $-0.484$ & $-0.172$ & $+0.157$ \cr
-$0.037$ & $0.040$ & $0.038$ & $247.896$ & $0.465$ & $10.632$ & $10.618$ & $-0.472$ & $-0.133$ & $+0.114$ \cr
-$0.040$ & $0.044$ & $0.042$ & $231.953$ & $0.430$ & $ 9.917$ & $ 9.904$ & $-0.459$ & $-0.097$ & $+0.074$ \cr
-$0.044$ & $0.047$ & $0.046$ & $215.353$ & $0.398$ & $ 9.225$ & $ 9.213$ & $-0.446$ & $-0.064$ & $+0.038$ \cr
-$0.047$ & $0.051$ & $0.049$ & $199.885$ & $0.369$ & $ 8.559$ & $ 8.546$ & $-0.431$ & $-0.034$ & $+0.005$ \cr
-$0.051$ & $0.055$ & $0.053$ & $184.554$ & $0.342$ & $ 7.917$ & $ 7.905$ & $-0.416$ & $-0.007$ & $-0.024$ \cr
-$0.055$ & $0.060$ & $0.057$ & $170.715$ & $0.318$ & $ 7.303$ & $ 7.290$ & $-0.400$ & $+0.017$ & $-0.050$ \cr
-$0.060$ & $0.064$ & $0.062$ & $156.615$ & $0.295$ & $ 6.715$ & $ 6.703$ & $-0.383$ & $+0.038$ & $-0.072$ \cr
-$0.064$ & $0.068$ & $0.066$ & $142.958$ & $0.274$ & $ 6.155$ & $ 6.142$ & $-0.366$ & $+0.056$ & $-0.091$ \cr
-$0.068$ & $0.073$ & $0.071$ & $131.310$ & $0.254$ & $ 5.623$ & $ 5.610$ & $-0.348$ & $+0.072$ & $-0.107$ \cr
-$0.073$ & $0.078$ & $0.076$ & $119.589$ & $0.236$ & $ 5.120$ & $ 5.106$ & $-0.330$ & $+0.084$ & $-0.120$ \cr
-$0.078$ & $0.083$ & $0.081$ & $108.278$ & $0.218$ & $ 4.645$ & $ 4.631$ & $-0.312$ & $+0.095$ & $-0.131$ \cr
-$0.083$ & $0.089$ & $0.086$ & $ 97.732$ & $0.202$ & $ 4.199$ & $ 4.184$ & $-0.294$ & $+0.102$ & $-0.138$ \cr
-$0.089$ & $0.094$ & $0.091$ & $ 87.916$ & $0.186$ & $ 3.781$ & $ 3.766$ & $-0.275$ & $+0.108$ & $-0.143$ \cr
-$0.094$ & $0.100$ & $0.097$ & $ 78.866$ & $0.172$ & $ 3.391$ & $ 3.376$ & $-0.257$ & $+0.112$ & $-0.146$ \cr
-$0.100$ & $0.106$ & $0.103$ & $ 70.641$ & $0.158$ & $ 3.029$ & $ 3.014$ & $-0.239$ & $+0.114$ & $-0.146$ \cr
-$0.106$ & $0.112$ & $0.109$ & $ 62.480$ & $0.145$ & $ 2.694$ & $ 2.678$ & $-0.221$ & $+0.114$ & $-0.145$ \cr
-$0.112$ & $0.119$ & $0.115$ & $ 55.454$ & $0.133$ & $ 2.386$ & $ 2.369$ & $-0.204$ & $+0.112$ & $-0.142$ \cr
-$0.119$ & $0.125$ & $0.122$ & $ 48.733$ & $0.122$ & $ 2.103$ & $ 2.086$ & $-0.187$ & $+0.110$ & $-0.138$ \cr
-$0.125$ & $0.132$ & $0.129$ & $ 42.712$ & $0.111$ & $ 1.844$ & $ 1.828$ & $-0.171$ & $+0.106$ & $-0.132$ \cr
-$0.132$ & $0.140$ & $0.136$ & $ 37.277$ & $0.102$ & $ 1.610$ & $ 1.594$ & $-0.155$ & $+0.101$ & $-0.126$ \cr
-$0.140$ & $0.147$ & $0.143$ & $ 32.207$ & $0.092$ & $ 1.398$ & $ 1.382$ & $-0.140$ & $+0.096$ & $-0.119$ \cr
-$0.147$ & $0.155$ & $0.151$ & $ 27.731$ & $0.084$ & $ 1.207$ & $ 1.191$ & $-0.126$ & $+0.091$ & $-0.111$ \cr
-$0.155$ & $0.163$ & $0.159$ & $ 23.827$ & $0.076$ & $ 1.035$ & $ 1.021$ & $-0.094$ & $+0.086$ & $-0.102$ \cr
-$0.163$ & $0.172$ & $0.168$ & $ 20.364$ & $0.072$ & $ 0.881$ & $ 0.870$ & $-0.058$ & $+0.079$ & $-0.094$ \cr
-$0.172$ & $0.181$ & $0.176$ & $ 17.249$ & $0.067$ & $ 0.746$ & $ 0.736$ & $-0.030$ & $+0.073$ & $-0.085$ \cr
-$0.181$ & $0.190$ & $0.185$ & $ 14.480$ & $0.063$ & $ 0.628$ & $ 0.619$ & $-0.008$ & $+0.066$ & $-0.077$ \cr
-$0.190$ & $0.200$ & $0.195$ & $ 12.124$ & $0.059$ & $ 0.526$ & $ 0.517$ & $+0.005$ & $+0.060$ & $-0.069$ \cr
+$0.02697$ & $0.03005$ & $0.02850$ & $300.94\S$ & $0.612\S$ & $12.68\S$ & $+12.66\S$ & $-0.473\S$ & $-0.259\S$ & $+0.254\S$ \cr
+$0.03005$ & $0.03325$ & $0.03164$ & $284.04\S$ & $0.554\S$ & $11.91\S$ & $+11.90\S$ & $-0.495\S$ & $-0.214\S$ & $+0.204\S$ \cr
+$0.03325$ & $0.03658$ & $0.03491$ & $265.59\S$ & $0.506\S$ & $11.17\S$ & $+11.15\S$ & $-0.484\S$ & $-0.172\S$ & $+0.157\S$ \cr
+$0.03658$ & $0.04005$ & $0.03831$ & $247.90\S$ & $0.465\S$ & $10.44\S$ & $+10.43\S$ & $-0.472\S$ & $-0.133\S$ & $+0.114\S$ \cr
+$0.04005$ & $0.04365$ & $0.04184$ & $231.95\S$ & $0.430\S$ & $\S9.740$ & $+\S9.727$ & $-0.459\S$ & $-0.0968$ & $+0.0740$ \cr
+$0.04365$ & $0.04740$ & $0.04551$ & $215.35\S$ & $0.398\S$ & $\S9.061$ & $+\S9.048$ & $-0.445\S$ & $-0.0638$ & $+0.0378$ \cr
+$0.04740$ & $0.05129$ & $0.04933$ & $199.89\S$ & $0.369\S$ & $\S8.405$ & $+\S8.393$ & $-0.431\S$ & $-0.0338$ & $+0.0051$ \cr
+$0.05129$ & $0.05534$ & $0.05330$ & $184.55\S$ & $0.342\S$ & $\S7.775$ & $+\S7.763$ & $-0.415\S$ & $-0.0069$ & $-0.0240$ \cr
+$0.05534$ & $0.05956$ & $0.05743$ & $170.71\S$ & $0.318\S$ & $\S7.171$ & $+\S7.159$ & $-0.399\S$ & $+0.0170$ & $-0.0498$ \cr
+$0.05956$ & $0.06394$ & $0.06173$ & $156.62\S$ & $0.295\S$ & $\S6.594$ & $+\S6.581$ & $-0.382\S$ & $+0.0380$ & $-0.0721$ \cr
+$0.06394$ & $0.06850$ & $0.06620$ & $142.96\S$ & $0.274\S$ & $\S6.044$ & $+\S6.031$ & $-0.365\S$ & $+0.0561$ & $-0.0913$ \cr
+$0.06850$ & $0.07324$ & $0.07085$ & $131.31\S$ & $0.254\S$ & $\S5.521$ & $+\S5.508$ & $-0.348\S$ & $+0.0715$ & $-0.107\S$ \cr
+$0.07324$ & $0.07817$ & $0.07568$ & $119.59\S$ & $0.236\S$ & $\S5.027$ & $+\S5.013$ & $-0.330\S$ & $+0.0842$ & $-0.120\S$ \cr
+$0.07817$ & $0.08329$ & $0.08071$ & $108.28\S$ & $0.218\S$ & $\S4.560$ & $+\S4.546$ & $-0.312\S$ & $+0.0944$ & $-0.130\S$ \cr
+$0.08329$ & $0.08862$ & $0.08593$ & $\S97.732$ & $0.202\S$ & $\S4.122$ & $+\S4.107$ & $-0.293\S$ & $+0.102\S$ & $-0.138\S$ \cr
+$0.08862$ & $0.09417$ & $0.09137$ & $\S87.916$ & $0.186\S$ & $\S3.711$ & $+\S3.696$ & $-0.275\S$ & $+0.108\S$ & $-0.143\S$ \cr
+$0.09417$ & $0.09994$ & $0.09702$ & $\S78.866$ & $0.172\S$ & $\S3.329$ & $+\S3.313$ & $-0.257\S$ & $+0.112\S$ & $-0.145\S$ \cr
+$0.09994$ & $0.10593$ & $0.10290$ & $\S70.641$ & $0.158\S$ & $\S2.973$ & $+\S2.957$ & $-0.239\S$ & $+0.113\S$ & $-0.146\S$ \cr
+$0.10593$ & $0.11217$ & $0.10902$ & $\S62.480$ & $0.145\S$ & $\S2.644$ & $+\S2.628$ & $-0.221\S$ & $+0.113\S$ & $-0.145\S$ \cr
+$0.11217$ & $0.11866$ & $0.11538$ & $\S55.454$ & $0.133\S$ & $\S2.341$ & $+\S2.325$ & $-0.204\S$ & $+0.112\S$ & $-0.142\S$ \cr
+$0.11866$ & $0.12540$ & $0.12199$ & $\S48.733$ & $0.122\S$ & $\S2.063$ & $+\S2.047$ & $-0.187\S$ & $+0.109\S$ & $-0.138\S$ \cr
+$0.12540$ & $0.13242$ & $0.12887$ & $\S42.712$ & $0.111\S$ & $\S1.810$ & $+\S1.793$ & $-0.170\S$ & $+0.106\S$ & $-0.132\S$ \cr
+$0.13242$ & $0.13972$ & $0.13602$ & $\S37.277$ & $0.102\S$ & $\S1.580$ & $+\S1.563$ & $-0.155\S$ & $+0.101\S$ & $-0.126\S$ \cr
+$0.13972$ & $0.14730$ & $0.14346$ & $\S32.207$ & $0.0922$ & $\S1.372$ & $+\S1.356$ & $-0.140\S$ & $+0.0961$ & $-0.118\S$ \cr
+$0.14730$ & $0.15520$ & $0.15120$ & $\S27.731$ & $0.0835$ & $\S1.185$ & $+\S1.169$ & $-0.125\S$ & $+0.0911$ & $-0.110\S$ \cr
+$0.15520$ & $0.16340$ & $0.15925$ & $\S23.827$ & $0.0764$ & $\S1.016$ & $+\S1.002$ & $-0.0942$ & $+0.0855$ & $-0.102\S$ \cr
+$0.16340$ & $0.17194$ & $0.16761$ & $\S20.364$ & $0.0715$ & $\S0.865$ & $+\S0.854$ & $-0.0582$ & $+0.0793$ & $-0.0938$ \cr
+$0.17194$ & $0.18082$ & $0.17632$ & $\S17.249$ & $0.0666$ & $\S0.733$ & $+\S0.723$ & $-0.0298$ & $+0.0729$ & $-0.0853$ \cr
+$0.18082$ & $0.19005$ & $0.18537$ & $\S14.480$ & $0.0630$ & $\S0.618$ & $+\S0.609$ & $-0.0080$ & $+0.0664$ & $-0.0769$ \cr
+$0.19005$ & $0.19965$ & $0.19478$ & $\S12.124$ & $0.0585$ & $\S0.517$ & $+\S0.508$ & $+0.0052$ & $+0.0598$ & $-0.0687$ \cr
 \hline
 \hline
 \end{tabular}
@@ -381,7 +384,7 @@ The incompatibility between a pure exponential behaviour and the data with the p
 \vskip-5mm
 \begin{center}
 \includegraphics[width=\textwidth]{fig/t_dist_rel_with_fits.pdf}
-\vskip-6mm
+\vskip-4mm
 \caption{%
 Differential cross-section using the optimised binning and plotted as relative difference to a reference exponential (see vertical axis). The black dots represent data points with statistical uncertainty bars. The blue band corresponds to the full systematic uncertainty, the yellow one includes all systematic contributions except the normalisation. The coloured lines correspond to fits with parametrisation Eq.~(\ref{fit param}).
 %using full covariance matrix.
@@ -397,8 +400,8 @@ Various fit-quality measures are given in the legend, starting with the $\chi^2$
 \begin{figure*}
 \begin{center}
 \includegraphics[width=\textwidth]{fig/t_dist_rel_with_split_fit.pdf}
-\vskip-6mm
-\caption{
+\vskip-4mm
+\caption{%
 Differential cross-section using the per-mille binning and plotted as relative difference to the reference exponential (see vertical axis). The black dots represent data points with statistical uncertainty bars. The blue band corresponds to the full systematic uncertainty, the yellow one includes all systematic contributions except the normalisation. The green line shows pure exponential fits in regions below and above $|t| = 0.07\un{GeV^2}$.
 }
 \label{fig:data rel cpb0.001}

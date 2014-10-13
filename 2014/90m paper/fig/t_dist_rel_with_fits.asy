@@ -109,7 +109,7 @@ for (int ei : extensions.keys)
 			NewPad("$|t|\ung{GeV^2}$", "\vbox{\hbox{$\displaystyle{\d\si/\d t - \hbox{ref} \over \hbox{ref}}$}\kern1mm\hbox{$\hbox{ref} = "+ref_str+"$}}",
 				axesAbove=true);
 		
-			AddToLegend("data ("+dataset+", "+binning+")", mCi+1pt);
+			AddToLegend("data\cWhite ("+dataset+", "+binning+")\cBlack", mCi+1pt);
 			//AddToLegend("data", mCi+2pt);
 			AddToLegend("statistical uncertainties", (scale(0.0001, 1.)*mPl)+5pt);
 	
@@ -193,5 +193,5 @@ for (int ei : extensions.keys)
 		}
 	}
 		
-	GShipout("t_dist_rel_with_fits" + extensions[ei], vSkip=0mm);
+	GShipout("t_dist_rel_with_fits" + extensions[ei], vSkip=0mm, margin=0mm);
 }
