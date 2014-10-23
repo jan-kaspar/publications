@@ -16,38 +16,45 @@ The Coulomb amplitude can be calculated from QED (e.g.~Section 3.2 in \cite{bloc
 %
 Since the nuclear amplitude can presently not be calculated from first principles, its phenomenological description will be discussed.
 
-The {\bf modulus} is closely related to the differential cross-section and thus strongly constrained by experimental observations outside the Coulomb and CNI region. Following especially~\cite{8tev-90m}, the modulus will be parametrised as:
+The {\bf modulus} is closely related to the differential cross-section and thus strongly constrained by experimental observations outside the Coulomb and CNI region. Following especially~\cite{8tev-90m}, the modulus for $|t|~\lesssim~0.2$, i.e. well below the diffractive minimum, will be parametrised as:
 \begin{equation}
 \label{eq:nuc mod}
 | {\cal A}^{\rm N}(t) | = a \exp\left( \sum\limits_{n}^{N_b} b_n t^n \right)\ ,
 \end{equation}
-\todo{for $|t| < 0.2$, what about higher $|t|$'s?}\\
-where $N_b$ gives the number of free parameters in the exponent. This implicitly extends the exponential-like behaviour to the regions where the (pure nuclear) cross-section can not be observed. Although there is no rigorous justification, and therefore it stands as an assumption, it is compatible with many theoretical models.
+%\todo{for $|t| < 0.2$, what about higher $|t|$'s?}\\
+where $N_b$ gives the number of free parameters in the exponent. This implicitly extends the exponential behaviour to the regions where the (pure nuclear) cross-section cannot be observed. Although there is no rigorous justification, and therefore it stands as an assumption, it is compatible with many theoretical models.
 
 For the {\bf phase} of the nuclear amplitude, there is little experimental guidance and therefore several theory-motivated choices will be assumed and tested.
 
 \begin{itemize}
-
 % ***
 \item A {\it constant phase} is obviously the simplest choice:
-
+%
 \begin{equation}
 \label{eq:nuc phase const}
 \arg {\cal A}^{\rm N}(t) = \hbox{const.}
 \end{equation}
+Note that this is equivalent to a strict proportionality of real and imaginary part of the amplitude at all $t$.
+%
+% ***
+\item The {\it standard phase} parametrisation,
+\begin{equation}
+\label{eqn:nuc_phase_standard}
+\arg {\cal A}^{\rm N}(t) = p_{0} + \arctan \left(\frac{|t|-|t_{0}|}{\tau}\right) -  \arctan \left(\frac{-|t_{0}|}{\tau}\right) \: ,
+\end{equation}
+implements the main features of many theoretical models -- almost imaginary amplitude in the forward direction ($p_0 \approx \pi/2$) while almost purely real in the (first) diffraction dip 
+($\arg {\cal A}^{\rm N}(t) \approx \pi$ at $t = t_{0}$). \todo{[to be corrected]}
 
 % ***
-\item The parametrisation by {\em Bailly et al.}~\cite{bailly87} implements the main features of many theoretical models -- almost imaginary amplitude in the forward direction while purely real in the (first) diffraction dip:
+%
+\item The parametrisation by {\em Bailly et al.}~\cite{bailly87} \todo{[to be written]}
 \begin{equation}
 \label{eq:nuc phase std}
 	%\arg {\cal A}^{\rm N}(t) = {\pi\over 2} - \arctan {\rho_0\over 1 - {t\over t_{\rm d}}},\ \rho_0 = {1\over \tan p_0}
 	\arg {\cal A}^{\rm N}(t) = \arctan \left[ \tan p_0 \left(1 - {t\over t_{\rm d}} \right) \right]\ ,
 \end{equation}
 where $p_0$ determines the phase value at $t=0$ and $t_{\rm d} \approx -0.53\un{GeV^2}$ gives the position of the diffractive minimum at $8\un{TeV}$ (preliminary result from $90\un{m}$ data).
-
-% ***
-\item \todo{add standard phase ??}
-
+%
 % ***
 \item The {\it peripheral phase} \cite{kl94} \todo{newer ref - if we ever get one} provides an alternative to the above descriptions. Its parametrisation
 
@@ -58,11 +65,19 @@ where $p_0$ determines the phase value at $t=0$ and $t_{\rm d} \approx -0.53\un{
 \label{eq:nuc phase per}
 \arg {\cal A}^{\rm N}(t) = p_0 - A \exp\left[ \kappa \left( \log {t\over t_{\rm m}} - {t\over t_{\rm m}} + 1 \right) \right]
 \end{equation}
-results in a peak with at $t_{\rm m} \approx -0.310\un{GeV^2}$, amplitude $A \approx 5.53$ and width controlled by $\kappa \approx 4.01$.
-
+results in a peak at $t_{\rm m} \approx -0.310\un{GeV^2}$, with amplitude $A \approx 5.53$ and width controlled by $\kappa \approx 4.01$.
 \end{itemize}
+%
+\begin{figure*}
+\begin{center}
+\includegraphics[width=\textwidth]{phase_illustration.pdf}
+\vskip-3mm
+\caption{}
+\label{fig:phase_illustration}
+\end{center}
+\end{figure*}
 
-It should be noted that the phase has decisive influence on the amplitude behaviour in the space of impact parameter, $b$, see e.g.~section 3 in~\cite{klk02}. It can be quantified by evaluating the root-mean-squares (RMS) of $b$ for elastic and inelastic collisions. The constant and standard phase lead to elastic collisions more central (smaller RMS) than the inelastic ones. The peripheral phase can yield a description with the opposite hierarchy, which is argued more natural by some authors (e.g. Section~4 in~\cite{kl96}).
+It should be noted that the phase has decisive influence on the amplitude behaviour in the space of impact parameter, $b$, see e.g.~Section 3 in~\cite{klk02}. It can be quantified by evaluating the root-mean-squares (RMS) of $b$ for elastic and inelastic collisions. The constant and standard phase lead to elastic collisions more central (smaller RMS) than the inelastic ones. The peripheral phase can yield a description with the opposite hierarchy, which is argued more natural by some authors (e.g. Section~4 in~\cite{kl96}).
 
 %----------------------------------------------------------------------------------------------------
 \subsubsection{Coulomb-Nuclear Interference Formulae}
