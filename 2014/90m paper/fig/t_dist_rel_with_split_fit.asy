@@ -3,6 +3,8 @@ import pad_layout;
 
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta90/plots/t_distributions/common_code.asy";
 
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+
 //----------------------------------------------------------------------------------------------------
 
 string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta90/";
@@ -14,11 +16,8 @@ string datasets_unc[] = { "DS4" };
 string diagonals[] = { "combined" };
 string diagonals_long[] = { "diagonals combined" };
 
-string extensions[] = { "" };
-
-
-xSizeDef = 12cm;
-ySizeDef = 8cm;
+xSizeDef = 14.5cm;
+ySizeDef = 6cm;
 
 string ref_str = MakeRefStr();
 
@@ -32,6 +31,73 @@ string binning = "cpb,0.001";
 
 string iteration = "iteration 2";
 
+string f = "fit_with_syst-split_fit.root";
+
+TGraph_errorBar = None;
+
+//----------------------------------------------------------------------------------------------------
+
+void DrawBand(rObject o_c, rObject o_r, pen p)
+{
+	guide gp, gm;
+
+	int N = o_r.iExec("GetNbinsX");
+	for (int bi = 1; bi <= N; ++bi)
+	{
+		real x = o_r.rExec("GetBinCenter", bi);
+		real u_rel = o_r.rExec("GetBinContent", bi);
+
+		if (u_rel <= 0 || x > 0.2)
+			continue;
+
+		real y = o_c.rExec("Eval", x);
+		real u = u_rel * y;
+
+		gp = gp -- Scale((x, y + u));
+		gm = gm -- Scale((x, y - u));
+	}
+	
+	gm = reverse(gm);
+	filldraw((gp--gm--cycle), p, nullpen);
+}
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+
+string base_dir = binning + "/"+datasets[0]+"/"+diagonals[0]+"/fit with systematics, "+format("n_b=%i", 3)+"/"+iteration;
+
+rObject h_dsdt = rGetObj(topDir+"DS-merged/"+f, base_dir + "/h_dsdt", error=false);
+if (!h_dsdt.valid)
+	write("ERROR: can't load fit data " + base_dir);
+
+rObject g_dsdt = rGetObj(topDir+"DS-merged/"+f, base_dir + "/g_fit");
+
+rObject f_dsdt_fit = rGetObj(topDir+"DS-merged/"+f, base_dir+"/fit canvas|f_fit");
+
+rObject h_rel_unc_anal = rGetObj(topDir+"systematics/"+datasets_unc[0]+"/matrix_direct_"+diagonals[0]+".root",
+	"all analysis/"+binning+"/h_stddev");
+
+rObject h_rel_unc_full = rGetObj(topDir+"systematics/"+datasets_unc[0]+"/matrix_direct_"+diagonals[0]+".root",
+	"all/"+binning+"/h_stddev");
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+
+/*
+NewPad("$|t|\ung{GeV^2}$", "$\d\si/\d t\ung{mb/GeV^2}$");
+currentpad.xSize = 5cm;
+currentpad.xTicks = LeftTicks(0.05, 0.01);
+scale(Linear, Log);
+
+DrawBand(f_dsdt_fit, h_rel_unc_full, paleblue+opacity(0.4));
+DrawBand(f_dsdt_fit, h_rel_unc_anal, yellow);
+
+draw(g_dsdt, "p", mCi+1pt+black);
+
+limits((0, 1e1), (0.2, 4e2), Crop);
+*/
+
+//----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 
 void PlotOneFit(string f, string ds, string dgn, string binning, int n_b, string fit_type, string iteration, pen p)
@@ -63,8 +129,11 @@ void PlotOneFit(string f, string ds, string dgn, string binning, int n_b, string
 	else
 		label += ", significance = INF";
 
+	label = "";
+
 	DrawRelDiff(ff, StdPen(n_b) + p, label);
 
+	/*
 	AddToLegend(
 		format("$a_1 = (%.0f$", ff.rExec("GetParameter", 0)) + format("$\pm %.0f)\un{mb/GeV^2}$, ", ff.rExec("GetParError", 0))
 		+ format("$b_1 = (%.1f$", ff.rExec("GetParameter", 1)) + format("$\pm %.1f)\un{GeV^{-2}}$", ff.rExec("GetParError", 1))
@@ -74,131 +143,89 @@ void PlotOneFit(string f, string ds, string dgn, string binning, int n_b, string
 		format("$a_2 = (%.0f$", ff.rExec("GetParameter", 2)) + format("$\pm %.0f)\un{mb/GeV^2}$, ", ff.rExec("GetParError", 2))
 		+ format("$b_2 = (%.1f$", ff.rExec("GetParameter", 3)) + format("$\pm %.1f)\un{GeV^{-2}}$", ff.rExec("GetParError", 3))
 	);
+	*/
 }
 
 //----------------------------------------------------------------------------------------------------
 
 frame fLegend;
 
-for (int ei : extensions.keys)
+for (int dsi : datasets.keys)
 {
-	string f = "fit_with_syst-split_fit" + extensions[ei] + ".root";
-	string ff = "fit_with_syst-split_fit.root";
+	int min_n_b = 3;
+	int max_n_b = 3;
 
-	for (int dsi : datasets.keys)
+	A_ref = 519.545; B_ref = 19.376;
+	ref_str = MakeRefStr();
+
+	//NewRow();
+	//NewPad(false);
+	//label("{\SetFontSizesXX " + replace(datasets[dsi], "_", "\_") + "}");
+
+	for (int dgni : diagonals.keys)
 	{
-		int min_n_b = 1;
-		int max_n_b = 1;
+		string dataset = datasets[dsi];
 
-		if (extensions[ei] == "")
-		{
-			max_n_b = 3;
+		NewPad("$|t|\ung{GeV^2}$", "$\displaystyle{\d\si/\d t - \hbox{ref} \over \hbox{ref}}\ ,\quad \hbox{ref} = "+ref_str+"$",
+			axesAbove=false);
+	
+		AddToLegend("data, statistical uncertainties", MarkerArray(mCi+1pt, (scale(0.0001, 1.)*mPl)+5pt));
 
-			A_ref = 519.545; B_ref = 19.376;
-			ref_str = MakeRefStr();
-		} else {
-			A_ref = A_ref_7TeV;
-			B_ref = B_ref_7TeV;
-			ref_str = MakeRefStr();
-		}
+		// uncertainty band
+		//AddToLegend("systematic uncertainty band", mSq+true+5pt+lightgray);
+		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_full, x_max=0.2, paleblue+opacity(0.4), "full systematic uncertainty band");
+		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_anal, x_max=0.2, yellow, "syst.~unc.~band without normalisation");
 
-		NewRow();
-	
-		//NewPad(false);
-		//label("{\SetFontSizesXX " + replace(datasets[dsi], "_", "\_") + "}");
-	
-		for (int dgni : diagonals.keys)
-		{
-			string dataset = datasets[dsi];
-	
-			NewPad("$|t|\ung{GeV^2}$", "\vbox{\hbox{$\displaystyle{\d\si/\d t - \hbox{ref} \over \hbox{ref}}$}\kern1mm\hbox{$\hbox{ref} = "+ref_str+"$}}",
-				axesAbove=true);
+		//AddToLegend("fit parametrisation: $\cases{a_1\,\exp(-b_1 |t|) & for $|t| < 0.7\un{GeV^2}$\cr a_2\,\exp(-b_2 |t|) & for $|t| > 0.7\un{GeV^2}$\cr}$");
+
+		// datapoints
+		//DrawRelDiff(h_dsdt, black);
+		DrawRelDiff(g_dsdt, black+0.1pt, mCi+0.7pt+black);
 		
-			AddToLegend("data\cWhite ("+dataset+", "+binning+")\cBlack", mCi+1pt);
-			//AddToLegend("data", mCi+2pt);
-			AddToLegend("statistical uncertainties", (scale(0.0001, 1.)*mPl)+5pt);
-	
-			string base_dir = binning + "/"+datasets[dsi]+"/"+diagonals[dgni]+"/fit with systematics, "+format("n_b=%i", max_n_b)+"/"+iteration;
-			rObject h_dsdt = rGetObj(topDir+"DS-merged/"+f, base_dir + "/h_dsdt", error=false);
+		//DrawRelDiffBand(f_dsdt_fit, h_rel_unc_anal, x_max=0.2, yellow+opacity(0.4), "");
 
-			if (!h_dsdt.valid)
-			{
-				write("ERROR: can't load fit data " + base_dir);
-				continue;
-			}
+		/*
+		// fits with statistical uncertainties
+		AddToLegend("{\it fits with statistical uncertainties:}");
+		for (int i = min_n_b; i <= max_n_b; ++i)
+			PlotOneFit(topDir+"DS-merged/"+f, datasets[dsi], diagonals[dgni], binning, i, "fit without systematics", ""+iteration+"", dashed);
+		*/
+		
+		// fits with statistical and systematic uncertainties
+		//AddToLegend("{\it fits with statistical and systematic uncertainties:}");
+		for (int i = min_n_b; i <= max_n_b; ++i)
+			PlotOneFit(topDir+"DS-merged/"+f, datasets[dsi], diagonals[dgni], binning, i, "fit with systematics", ""+iteration+"", solid+1.5pt);
 
-			rObject g_dsdt = rGetObj(topDir+"DS-merged/"+f, base_dir + "/g_fit");
-	
-			rObject f_dsdt_fit = rGetObj(topDir+"DS-merged/"+ff, base_dir+"/fit canvas|f_fit");
-	
-			rObject h_rel_unc_anal = rGetObj(topDir+"systematics/"+datasets_unc[dsi]+"/matrix_direct_"+diagonals[dgni]+".root",
-				"all analysis/"+binning+"/h_stddev");
+		/*
+		// datapoints + uncertainty mode
+		string fu = topDir + "systematics/simu.root";
 
-			rObject h_rel_unc_full = rGetObj(topDir+"systematics/"+datasets_unc[dsi]+"/matrix_direct_"+diagonals[dgni]+".root",
-				"all/"+binning+"/h_stddev");
-	
-			// uncertainty band
-			//AddToLegend("systematic uncertainty band", mSq+true+5pt+lightgray);
-			DrawRelDiffBand(f_dsdt_fit, h_rel_unc_full, x_max=0.2, paleblue+opacity(0.4), "systematic uncertainty band: analysis+normalisation");
-			DrawRelDiffBand(f_dsdt_fit, h_rel_unc_anal, x_max=0.2, yellow, "systematic uncertainty band: analysis only");
+		DrawRelDiffWithCorrection(
+			rGetObj(topDir+"DS-merged/fit.root", binning + "/"+datasets[dsi]+"/"+diagonals[dgni]+"/fit with systematics, n_b=1/fit canvas|h_dsdt"),
+			rGetObj(fu, "de_th_y/h_eff_syst"),
+			+3., blue+1.0pt, "$+3\un{\si}$", true);
+		*/
 
-			AddToLegend("fit parametrisation: $\cases{a_1\,\exp(-b_1 |t|) & for $|t| < 0.7\un{GeV^2}$\cr a_2\,\exp(-b_2 |t|) & for $|t| > 0.7\un{GeV^2}$\cr}$");
-	
-			// datapoints
-			//DrawRelDiff(h_dsdt, black);
-			DrawRelDiff(g_dsdt, black);
+		real y_min, y_max, y_Step, y_step;
+		y_min = -0.05;
+		y_max = +0.06;
+		y_Step = 0.01;
+		y_step = 0.005;
+
+		currentpad.xTicks = LeftTicks(0.02, 0.01);
+		currentpad.yTicks = RightTicks(y_Step, y_step);	
 			
-			//DrawRelDiffBand(f_dsdt_fit, h_rel_unc_anal, x_max=0.2, yellow+opacity(0.4), "");
-	
-			/*
-			// fits with statistical uncertainties
-			AddToLegend("{\it fits with statistical uncertainties:}");
-			for (int i = min_n_b; i <= max_n_b; ++i)
-				PlotOneFit(topDir+"DS-merged/"+f, datasets[dsi], diagonals[dgni], binning, i, "fit without systematics", ""+iteration+"", dashed);
-			*/
-			
-			// fits with statistical and systematic uncertainties
-			//AddToLegend("{\it fits with statistical and systematic uncertainties:}");
-			for (int i = min_n_b; i <= max_n_b; ++i)
-				PlotOneFit(topDir+"DS-merged/"+f, datasets[dsi], diagonals[dgni], binning, i, "fit with systematics", ""+iteration+"", solid+1.5pt);
-	
-			/*
-			// datapoints + uncertainty mode
-			string fu = topDir + "systematics/simu.root";
-	
-			DrawRelDiffWithCorrection(
-				rGetObj(topDir+"DS-merged/fit.root", binning + "/"+datasets[dsi]+"/"+diagonals[dgni]+"/fit with systematics, n_b=1/fit canvas|h_dsdt"),
-				rGetObj(fu, "de_th_y/h_eff_syst"),
-				+3., blue+1.0pt, "$+3\un{\si}$", true);
-			*/
+		limits((0, y_min), (0.20, y_max), Crop);
 
-			real y_min, y_max, y_Step, y_step;
-			if (extensions[ei] == "")
-			{
-				y_min = -0.05;
-				y_max = +0.05;
-				y_Step = 0.01;
-				y_step = 0.005;
-			} else {
-				y_min = -0.05;
-				y_max = +0.25;
-				y_Step = 0.05;
-				y_step = 0.01;
-			}
+		for (real x = 0; x <= 0.2; x += 0.02)
+			yaxis(XEquals(x, false), dotted, above=true);
 
-			currentpad.xTicks = LeftTicks(0.02, 0.01);
-			currentpad.yTicks = RightTicks(y_Step, y_step);	
-				
-			limits((0, y_min), (0.20, y_max), Crop);
-			//AttachLegend("{\bf " + diagonals_long[dgni] + "}", NW, NE);
-			AttachLegend(NW, NE);
-			for (real x = 0; x <= 0.2; x += 0.02)
-				yaxis(XEquals(x, false), dotted, above=true);
-			for (real y = y_min; y <= y_max; y += y_Step)
-				xaxis(YEquals(y, false), (abs(y) < 1e-5) ? dashed : dotted, above=true);
-			
-		}
+		for (real y = y_min; y <= y_max; y += y_Step)
+			xaxis(YEquals(y, false), (abs(y) < 1e-5) ? dashed : dotted, above=true);
+		
+		frame fL = BuildLegend(lineLength=5mm, vSkip=1.5mm, N);
+		AttachLegend(fL, N);
 	}
-		
-	GShipout("t_dist_rel_with_split_fit" + extensions[ei], vSkip=0mm, margin=0mm);
 }
+		
+GShipout(vSkip=0mm, hSkip=5mm, margin=0mm);
