@@ -50,7 +50,7 @@ combinations.push("cuts:2,5"); comb_labels.push("cuts: 2, 3"); comb_pens.push(bl
 combinations.push("cuts:2,5,6"); comb_labels.push("cuts: 2, 3, 4"); comb_pens.push(heavygreen);
 combinations.push("cuts:2,5,6,7"); comb_labels.push("cuts: 2, 3, 4, 5"); comb_pens.push(magenta);
 
-MakeComparison("$\th_x^{*R} - \th_x^{*L}$", 1e6, "\mu rad", "cut 1/h_cq1", 200, 9.4, 100, 20, combinations, comb_labels, comb_pens);
+MakeComparison("$\theta_x^{*R} - \theta_x^{*L}$", 1e6, "\mu rad", "cut 1/h_cq1", 200, 9.4, 100, 20, combinations, comb_labels, comb_pens);
 
 /*
 //--------------------
@@ -66,7 +66,7 @@ combinations.push("cuts:1,5"); comb_labels.push("cuts: 1, 3"); comb_pens.push(bl
 combinations.push("cuts:1,5,6"); comb_labels.push("cuts: 1, 3, 4"); comb_pens.push(heavygreen);
 combinations.push("cuts:1,5,6,7"); comb_labels.push("cuts: 1, 3, 4, 5"); comb_pens.push(magenta);
 
-MakeComparison("$\th_y^{*R} - \th_y^{*L}$", 1e6, "\mu rad", "cut 2/h_cq2", 50, 3.3, 50, 10, combinations, comb_labels, comb_pens);
+MakeComparison("$\theta_y^{*R} - \theta_y^{*L}$", 1e6, "\mu rad", "cut 2/h_cq2", 50, 3.3, 50, 10, combinations, comb_labels, comb_pens);
 
 //--------------------
 NewRow();

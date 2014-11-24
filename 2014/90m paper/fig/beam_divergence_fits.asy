@@ -57,7 +57,7 @@ void DrawFitFunction(rObject obj, real norm, string label, pen p, bool addFitSta
 
 for (int dgni : diagonals.keys)
 {
-	NewPad("$\th_y^{*R} - \th_y^{*L} \ung{\mu rad}$");
+	NewPad("$\theta_y^{*R} - \theta_y^{*L} \ung{\mu rad}$");
 	scale(Linear, Log);	
 
 	for (int dsi : datasets.keys)

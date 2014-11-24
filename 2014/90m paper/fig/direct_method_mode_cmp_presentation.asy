@@ -23,7 +23,7 @@ void PlotMode(string label, string tag)
 {
 	string pth = "all/contribution: " + tag + ", fit crop";
 	rObject obj = rGetObj(mf, pth, error=true);
-	pen p = StdPen(++ci);
+	pen p = StdPen(++ci, 6);
 	draw(scale(1, 100) * shift(0, -1), obj, "l,d0", p, label);
 }
 
@@ -39,8 +39,8 @@ void PlotAll()
 	PlotMode("tilt in $x$-$y$ plane", "tilt");
 	
 	AddToLegend("<{\it optics}:");
-	PlotMode("eigen mode 1", "scale_mode1");
-	PlotMode("eigen mode 2", "scale_mode2");
+	PlotMode("mode 1", "scale_mode1");
+	PlotMode("mode 2", "scale_mode2");
 	
 	AddToLegend("<{\it acceptance correction}:");
 	PlotMode("beam divergence~RMS uncertainty", "de_si_th_y");
@@ -54,8 +54,8 @@ void PlotAll()
 	PlotMode("offset from nominal", "de_p");
 	
 	AddToLegend("<{\it unfolding}:");
-	PlotMode("$\th_x^*$ resolution uncertainty", "unfolding");
-	//PlotMode("$\th_y^*$ resolution uncertainty", "unsm-sigma-y");
+	PlotMode("$\theta_x^*$ resolution uncertainty", "unfolding");
+	//PlotMode("$\theta_y^*$ resolution uncertainty", "unsm-sigma-y");
 	//PlotMode("model dependence", "unsm-model");
 	
 	AddToLegend("<{\bf envelope of uncertainties}:");

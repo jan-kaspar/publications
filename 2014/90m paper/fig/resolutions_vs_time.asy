@@ -20,7 +20,7 @@ transform swToHours = scale(1/3600, 1);
 
 //----------------------------------------------------------------------------------------------------
 
-NewPad("", "$\th_x^*$ resolution $\ung{\mu rad}$");
+NewPad("", "$\theta_x^*$ resolution $\ung{\mu rad}$");
 currentpad.xTicks = LeftTicks("%",  2., 1.);
 currentpad.yTicks = RightTicks(0.2, 0.1);
 
@@ -48,7 +48,7 @@ for (real y=4; y <= 5; y += 0.2)
 //----------------
 
 NewRow();
-NewPad("time $\ung{h}$", "$\th_y^*$ resolution $\ung{\mu rad}$");
+NewPad("time $\ung{h}$", "$\theta_y^*$ resolution $\ung{\mu rad}$");
 currentpad.xTicks = LeftTicks(2., 1.);
 currentpad.yTicks = RightTicks(0.1, 0.02);
 

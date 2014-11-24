@@ -22,9 +22,9 @@ string cut_desc[] = { "cut 1", "cut 2", "", "", "cut 3", "cut 4", "", "", "cut 5
 real scale_x[] = { 1e6, 1e6, 1e6, 1e6, 1e0, 1e0, 1e6, 1e0, 1e3 };
 real scale_y[] = { 1e6, 1e6, 1e0, 1e0, 1e0, 1e0, 1e0, 1e0, 1e3 };
 
-string label_x[] = { "$\th_x^{*R}\ung{\mu rad}$", "$\th_y^{*R}\ung{\mu rad}$", "$\th_x^{*R}\ung{\mu rad}$", "$\th_x^{*L}\ung{\mu rad}$", "$y^{R,N}\ung{mm}$", "$y^{L,N}\ung{mm}$", "$\th_x^*\ung{\mu rad}$", "bla", "$x^{*R}\ung{\mu m}$" };
-string label_y[] = { "$\th_x^{*L}\ung{\mu rad}$", "$\th_y^{*L}\ung{\mu rad}$", "$x^{*R}\ung{mm}$", "$x^{*L}\ung{mm}$", "$y^{R,F} - y^{R,N}\ung{mm}$", "$y^{L,F} - y^{L,N}\ung{mm}$", "$\De^{R-L} x^*\ung{mm}$", "bla", "$x^{*L}\ung{\mu m}$" };
-string label_cut[] = { "$\De^{R-L} \th_x^{*}\ung{\mu rad}$", "$\De^{R-L} \th_y^{*}\ung{\mu rad}$", "$x^{*R}\ung{mm}$", "$x^{*L}\ung{mm}$", "$cq5$", "$cq6$", "$cq7$", "cq8",  "vtx R - vtx L"};
+string label_x[] = { "$\theta_x^{*R}\ung{\mu rad}$", "$\theta_y^{*R}\ung{\mu rad}$", "$\theta_x^{*R}\ung{\mu rad}$", "$\theta_x^{*L}\ung{\mu rad}$", "$y^{R,N}\ung{mm}$", "$y^{L,N}\ung{mm}$", "$\theta_x^*\ung{\mu rad}$", "bla", "$x^{*R}\ung{\mu m}$" };
+string label_y[] = { "$\theta_x^{*L}\ung{\mu rad}$", "$\theta_y^{*L}\ung{\mu rad}$", "$x^{*R}\ung{mm}$", "$x^{*L}\ung{mm}$", "$y^{R,F} - y^{R,N}\ung{mm}$", "$y^{L,F} - y^{L,N}\ung{mm}$", "$\De^{R-L} x^*\ung{mm}$", "bla", "$x^{*L}\ung{\mu m}$" };
+string label_cut[] = { "$\De^{R-L} \theta_x^{*}\ung{\mu rad}$", "$\De^{R-L} \theta_y^{*}\ung{\mu rad}$", "$x^{*R}\ung{mm}$", "$x^{*L}\ung{mm}$", "$cq5$", "$cq6$", "$cq7$", "cq8",  "vtx R - vtx L"};
 
 real lim_x_low[] = { -400, -120, 0, 0, -30,   5, -200, 0, -1000 };
 real lim_x_high[] = { +400, -20, 1, 1, -5,   +30,  +200, 1, 1000 };

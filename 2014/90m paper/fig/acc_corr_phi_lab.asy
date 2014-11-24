@@ -68,13 +68,13 @@ void DrawFullArc(real th)
 
 for (int dsi : dataSets.keys)
 {
-	NewPad("$\th_x^{*}\ung{\mu rad}$", "$\th_y^{*}\ung{\mu rad}$", axesAbove = true);
+	NewPad("$\theta_x^{*}\ung{\mu rad}$", "$\theta_y^{*}\ung{\mu rad}$", axesAbove = true);
 	scale(Linear, Linear, Log);
 	currentpad.xTicks = LeftTicks(50., 10.);
 	currentpad.yTicks = RightTicks(50., 10.);
 	
 	label("$\rightarrow$", (50, 0), 0.5W, Fill(white+opacity(0.8)));
-	label(rotate(-90)*Label("\SmallerFonts $\th^*$"), (30, 0), 0.5W);
+	label(rotate(-90)*Label("\SmallerFonts $\theta^*$"), (30, 0), 0.5W);
 	label(rotate(-90)*Label("\SmallerFonts $\rm (\mu rad)$"), (15, 0), 0.5W);
 	DrawFullArc(50);
 	DrawFullArc(100);

@@ -47,14 +47,14 @@ for (int dsi : datasets.keys)
 			string d = diagonals[dgi] + "/" + RPs[rpi];
 
 			++gx;
-			NewPad("$\th_y^*\ung{\mu rad}$", "efficiency\ung{\%}", gx, gy);
+			NewPad("$\theta_y^*\ung{\mu rad}$", "efficiency, $1 - {\cal I_{\rm 3/4}}$\ung{\%}", gx, gy);
 			currentpad.yTicks = RightTicks(0.5, 0.1);
 			draw(scale(sgn, 100), rGetObj(f, d+"/th_y : rel"), opt, blue, "efficiency histogram");
 
 			rObject fit = rGetObj(f, d+"/th_y : rel|ff");
-			TF1_lowLimit = -inf; TF1_highLimit = +inf;
+			TF1_x_min = -inf; TF1_x_max = +inf;
 			draw(scale(sgn, 100), fit, red+2pt, "linear fit");
-			TF1_lowLimit = -100; TF1_highLimit = 110;
+			TF1_x_min = -100; TF1_x_max = 110;
 			draw(scale(sgn, 100), fit, red+dashed);
 
 			string slope_label = format("slope = ($%#.1f$", fit.rExec("GetParameter", 1)*1e6)

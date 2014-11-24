@@ -25,7 +25,7 @@ for (int dsi : datasets.keys)
 	//NewPad(false);
 	//label("{\SetFontSizesXX "+datasets[dsi]+"}");
 
-	NewPad("$|t|\ung{GeV^2}$", "multiplicative correction",
+	NewPad("$|t|\ung{GeV^2}$", "unfolding correction $\cal U$",
 		xTicks=LeftTicks(0.05, 0.01), yTicks=RightTicks(0.005, 0.001));
 
 	int idx = 0;
@@ -43,7 +43,7 @@ for (int dsi : datasets.keys)
 			draw(rGetObj(f, "cf,eb/"+ffs[ffi]+"/"+object), "d0,eb", p);
 		}
 		
-		draw(rGetObj(ff, "ff"), p);
+		//draw(rGetObj(ff, "ff"), p);
 		
 		//draw(rGetObj(topDir+"unfolding_reference.root", "cf,eb/exp3+exp4/corr_final"), "d0,eb", heavygreen+1pt, "old ref");
 		
