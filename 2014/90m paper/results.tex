@@ -1,5 +1,3 @@
-\newpage
-
 %----------------------------------------------------------------------------------------------------
 \section{Results}
 
@@ -26,7 +24,7 @@ To study the detailed behaviour of the differential cross-section, a series of f
 \end{equation}
 which includes both pure exponentail ($N_b = 1$) and its straight-forward extensions ($N_b = 2, 3, \ldots$).
 
-The fits have been performed by minimising the standard $\chi^2$:
+The fits have been performed by the standard least sqaures method, in particular minimising:
 \begin{equation}
 \label{eq:chi sq}
 \chi^2 = \Delta^\T \mat V^{-1} \Delta\ ,\quad \Delta = (\hbox{data} - \hbox{fit})\ ,\quad \mat V = \mat V_{\rm stat} + \mat V_{\rm syst}\ ,
@@ -92,7 +90,7 @@ Differential cross-section using the ``optimised'' binning and plotted as relati
 %--------------------------------------------------
 % results from per-mille binning
 
-The incompatibility between a pure-exponential behaviour and the data with the ``per-mille'' binning can be shown equally well. However, since the number of points is drastically increased, the straight-forward $\chi^2$ test does not have sufficient sensitivity, and a different test is used. Assuming that the data can be described by a pure exponential, the fit parameters should have compatible values for fits over different ranges. Figure~\ref{fig:data rel cpb0.001} shows a fit with parameterisation \todo{chi sq fit}
+The incompatibility between a pure-exponential behaviour and the data with the ``per-mille'' binning can be shown equally well. However, since the number of points is drastically increased, the straight-forward $\chi^2$ test does not have sufficient sensitivity, and a different test is used. Assuming that the data can be described by a pure exponential, the fit parameters should have compatible values for fits over different ranges. Figure~\ref{fig:data rel cpb0.001} shows a fit (minimisation of $\chi^2$ from Eq.~(\ref{eq:chi sq})) with parameterisation
 \begin{equation}
 \label{eq:split fit param}
 {\d\sigma\over\d t}(t) =
@@ -101,16 +99,16 @@ a_1\, \e^{b_1 |t|} & |t| < 0.07\un{GeV^2}\\
 a_2\, \e^{b_2 |t|} & |t| > 0.07\un{GeV^2}\\
 \end{cases}
 \end{equation}
-giving a reasonable fit quality (p-value of 0.57). The compatibility of the parameters in the two $|t|$ regions can be verified by evaluating \todo{p subscript ??}
+giving a reasonable fit quality (p-value of 0.57). The compatibility of the parameters in the two $|t|$ regions can be verified by evaluating
 \begin{equation}
 \label{eq:chi sq param}
-\chi^2 = \Delta^\T \mat V^{-1} \Delta\ ,\quad \Delta =
+\chi_p^2 = \Delta_p^\T \mat V_p^{-1} \Delta_p\ ,\quad \Delta_p =
 \begin{pmatrix}
 a_1 - a_2\\
 b_1 - b_2\\
 \end{pmatrix}\ ,
 \end{equation}
-where $\mat V$ is the uncertainty matrix for the difference vector $\Delta$. It yields $\chi^2 = 65.4$ which with $2$ degrees of freedom corresponds to a p-value of $6.2\cdot10^{-15}$ and a significance of $7.8\un{\sigma}$. This, in turn, rules out the hypothesis of a purely exponential behaviour of the data.
+where $\mat V_p$ is the uncertainty matrix for the difference vector $\Delta_p$. It yields $\chi_p^2 = 65.4$ which with $2$ degrees of freedom corresponds to a p-value of $6.2\cdot10^{-15}$ and a significance of $7.8\un{\sigma}$. This, in turn, rules out the hypothesis of a purely exponential behaviour of the data.
 
 
 \iffalse
@@ -118,9 +116,37 @@ where $\mat V$ is the uncertainty matrix for the difference vector $\Delta$. It 
  B1 − B2 = −0.414 ± 0.056 ⇒ 7.4 σ
 \fi
 
-\todo{this test is binning-independent, show results for ob, ob-sc}
+Since parameters estimated with the least squares method are unbiased, the test in Eq.~(\ref{eq:chi sq param}) is asymptotically binning independent. Indeed, applying it to the data in the ``optimised'' binning (prior to the statistical uncertainty rescaling, Section \ref{sec:stat unc adj}) yields $\chi^2_p = 65.7$ which corresponds to a significance of $7.8\un{\sigma}$. After the uncertainty rescaling, the exclustion significance increases even to $9.0\un{\sigma}$.
 
+\iffalse
+DS4-sc, ob
 
+A1 - A2 = 14.273 +- 1.549
+B1 - B2 = -0.421 +- 0.051
+
+S2 = 8.519790E+01
+prob_A+B = 3.158714E-19
+
+>> significances
+        A: 9.2
+        B: -8.2
+        A+B: 9.0
+\fi
+
+\iffalse
+DS4, ob
+
+A1 - A2 = 14.501 +- 1.789
+B1 - B2 = -0.426 +- 0.059
+
+S2 = 6.574304E+01
+prob_A+B = 5.297602E-15
+
+>> significances
+        A: 8.1
+        B: -7.2
+        A+B: 7.8
+\fi
 
 \begin{figure*}
 \begin{center}
