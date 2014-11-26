@@ -177,7 +177,7 @@ number & cut & RMS ($\equiv 1\sigma$)\cr\hline
 \begin{center}
 \includegraphics{fig/cuts.pdf}
 \caption{%
-Correlation plots for the selection cuts summarised in Table~\ref{tab:cuts}, using all events with diagonal topology 45 top -- 56 bottom. The black solid lines delimit the signal ($\pm 4\un{\sigma}$) region.
+Correlation plots for the event selection cuts summarised in Table~\ref{tab:cuts}, using all events with diagonal topology 45 top -- 56 bottom. The black solid lines delimit the signal ($\pm 4\un{\sigma}$) region.
 }
 \label{fig:cuts}
 \end{center}
@@ -189,7 +189,7 @@ Correlation plots for the selection cuts summarised in Table~\ref{tab:cuts}, usi
 \subsubsection{Background}
 \label{sec:background}
 
-In this analysis, one may expect background (i.e.~non-elastic events passing the tagging cuts) coming from central diffraction as well as pile-up of single diffraction and/or beam-halo. The background rate is studied by plotting the discriminators from Table~\ref{tab:cuts} under various cut combinations, see an example in Figure~\ref{fig:background}. While the central part (signal) remains essentially constant, the tails (background) are strongly suppressed with increasing number of cuts applied. Interpolating the background smoothly into the signal region (see the dotted line in the figure) yields a background estimate of $1 - {\cal B} < 10^{-4}$, independent of whether discriminator 1, 2 or 5 is used.
+Expectable background (i.e.~non-elastic events passing the tagging cuts) may come from central diffraction as well as pile-up of single diffraction and/or beam-halo protons. The background rate is studied by plotting the discriminators from Table~\ref{tab:cuts} under various cut combinations, see an example in Figure~\ref{fig:background}. While the central part (signal) remains essentially constant, the tails (background) are strongly suppressed with increasing number of cuts applied. Interpolating the background smoothly into the signal region (see the dotted line in the figure) yields a background estimate of $1 - {\cal B} < 10^{-4}$, independent of whether discriminator 1, 2 or 5 is used.
 % anyway irrelevant due to the normalisation approach
 
 
@@ -235,7 +235,7 @@ Distribution of scattering angle projections $\theta_y^*$ vs.~$\theta_x^*$. The 
 \end{figure}
 
 
-The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probability that any of the two elastic protons is pushed outside the acceptance due to the beam divergence. The beam divergence distribution is modelled as Gaussian with spread determined by the method described in Section~\ref{sec:resolution}. This correction contribution is only sizeable close to the acceptance limitations but remains below $1.5$. The uncertainties are related to the resolution parameters (vertical beam divergence, left-right asymmetry and non-Gaussian shape), and all stay below $0.1\un{\%}$.
+The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probability that any of the two elastic protons is pushed outside the acceptance due to the beam divergence. The beam divergence distribution is modelled as Gaussian with spread determined by the method described in Section~\ref{sec:resolution}. This correction contribution is only sizeable close to the acceptance limitations but is kept below $1.5$. The uncertainties are related to the resolution parameters (vertical beam divergence, left-right asymmetry and non-Gaussian shape), and all stay below $0.1\un{\%}$.
 
 
 \iffalse
@@ -248,7 +248,7 @@ The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probab
 \end{equation}
 \fi
 
-Figure \ref{fig:acceptance result} shows an example of acceptance correction $t$-dependence for one diagonal. Since a single diagonal can not cover more than a half of the phase space, the minimum value of the correction is $2$.
+Figure \ref{fig:acceptance result} shows an example of the acceptance correction $t$-dependence for one diagonal. Since a single diagonal can not cover more than a half of the phase space, the minimum value of the correction is $2$.
 
 \begin{figure}
 \begin{center}
@@ -266,7 +266,7 @@ Full acceptance correction, ${\cal A}$, for diagonal 45 bottom -- 56 top. The po
 \subsubsection{Inefficiency Corrections}
 \label{sec:ineff corr}
 
-Any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (trigger, data acquisition and pile-up inefficiency discussed in \cite{epl101-el,prl111}). The inefficiencies left are related to inability of a RP to resolve proton track.
+Any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (trigger, data acquisition and pile-up inefficiency discussed in \cite{epl101-el,prl111}). The inefficiencies left are related to inability of a RP to resolve the elastic proton track.
 
 One such a case is when a single RP can not detect and/or reconstruct a proton track, with no correlation to other RPs. This type of inefficiency, ${\cal I}_{3/4}$, is evaluated by removing the RP from the tagging cuts (Table \ref{tab:cuts}), repeating the event selection and calculating the fraction of recovered events. A typical example is given in Figure \ref{fig:eff 3/4}, showing that the efficiency depends gently on the vertical scattering angle. 
 
@@ -342,7 +342,7 @@ Two binnings have been considered. The ``optimised'' option sets the bin size to
 
 Besides the systematic uncertainties mentioned at the above analysis steps, the uncertainty of the beam momentum, $0.1\un{\%}$, needs to be considered when the scattering angles are translated into $t$, see Eq.~(\ref{eq:th t}).
 
-The systematic effects are propagated to the $t$-distribution with help of a Monte-Carlo simulation. A fit of the final differential cross-section data is used to generate the true $t$-distribution. Simultaneously, another $t$-distribution is built, having introduced one (or several) of the above mentioned systematic effects. Eventually, making a ratio of the two $t$-distributions yields the relative cross-section variation, similar to those in Figure \ref{fig:syst unc}.
+The systematic effects are propagated to the $t$-distribution with help of a Monte-Carlo simulation. A fit of the final differential cross-section data is used to generate the true $t$-distribution. Simultaneously, another $t$-distribution is built, having introduced one (or several) of the above mentioned systematic effects. Eventually, making a ratio of the two $t$-distributions yields the relative cross-section error, similar to those in Figure \ref{fig:syst unc}.
 
 
 %----------------------------------------------------------------------------------------------------
