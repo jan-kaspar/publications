@@ -15,23 +15,23 @@ Differential cross-section using ``optimised'' binning, as given in Table~\ref{t
 \end{figure}
 
 
-The final differential cross-section in the ``optimised'' binning is presented in Table~\ref{tab:data} and Figure \ref{fig:data ob}. In order to visualise small deviations from the leading pure-exponential behaviour, Figure~\ref{fig:data rel ob} shows the relative difference of the cross-section from a reference exponential. This plot immediately suggests a non-exponentiality of the data -- pure exponentials would look as (alomost) linear functions in this reference frame.
+The final differential cross-section in the ``optimised'' binning is presented in Table~\ref{tab:data} and Figure \ref{fig:data ob}. In order to visualise small deviations from the leading pure-exponential behaviour, Figure~\ref{fig:data rel ob} shows the relative difference of the cross-section from a reference exponential. This plot immediately suggests a non-exponentiality of the data -- pure exponentials would look as (almost) linear functions in this reference frame.
 
 To study the detailed behaviour of the differential cross-section, a series of fits has been made using parametrisation:
 \begin{equation}
 \label{eq:fit param}
 {\d\sigma\over\d t}(t) = \left. \d\sigma\over\d t\right|_{0} \ \exp\left( \sum\limits_{i = 1}^{N_{b}} b_i\, t^i \right) \ ,
 \end{equation}
-which includes both pure exponentail ($N_b = 1$) and its straight-forward extensions ($N_b = 2, 3, \ldots$).
+which includes both pure exponential ($N_b = 1$) and its straight-forward extensions ($N_b = 2, 3, \ldots$).
 
-The fits have been performed by the standard least sqaures method, in particular minimising:
+The fits have been performed by the standard least-squares method, in particular minimising:
 \begin{equation}
 \label{eq:chi sq}
 \chi^2 = \Delta^\T \mat V^{-1} \Delta\ ,\quad \Delta = (\hbox{data} - \hbox{fit})\ ,\quad \mat V = \mat V_{\rm stat} + \mat V_{\rm syst}\ ,
 \end{equation}
 where $\Delta$ is a vector of differences between the differential cross-section data and a fit function evaluated at the bin representative points (see Table ~\ref{tab:data}). The covariance matrix $\mat V$ is given by the sum of the statistical component $\mat V_{\rm stat}$ (statistical uncertainty from Table ~\ref{tab:data} on the diagonal) and the systematic component $\mat V_{\rm stat}$ (see Eq.~(\ref{eq:covar mat})).
 
-The quality of fits is juged on the basis of several measures. The first is the value of $\chi^2$ after minimisation divided by the number of degrees of freedom (ndf). Then, p-value stands for probability that a $\chi^2$ value greater than the observed one would be drawn from the $\chi^2$ distribution with the given number of degrees of freedom. Eventually, significance means the half-width of a central region that needs to be excluded from a normal distribution to get the same integrated probability as the p-value. The significance is expressed in multiples of sigma, the standard deviation of the normal distribution.
+The quality of fits is judged on the basis of several measures. The first is the value of $\chi^2$ after minimisation divided by the number of degrees of freedom (ndf). Then, p-value stands for probability that a $\chi^2$ value greater than the observed one would be drawn from the $\chi^2$ distribution with the given number of degrees of freedom. Eventually, significance means the half-width of a central region that needs to be excluded from a normal distribution to get the same integrated probability as the p-value. The significance is expressed in multiples of sigma, the standard deviation of the normal distribution.
 
 Figure~\ref{fig:data rel ob} shows several fits of the differential cross-section with the parametrisation Eq.~(\ref{eq:fit param}) and different numbers of parameters in the exponent, $N_b$. The corresponding fit quality is given in Table~\ref{tab:fits ob}, clearly indicating that the purely-exponential fit ($N_b = 1$) is excluded at $7.2\un{\sigma}$ significance.
 %
@@ -90,7 +90,7 @@ Differential cross-section using the ``optimised'' binning and plotted as relati
 %--------------------------------------------------
 % results from per-mille binning
 
-The incompatibility between a pure-exponential behaviour and the data with the ``per-mille'' binning can be shown equally well. However, since the number of points is drastically increased, the straight-forward $\chi^2$ test does not have sufficient sensitivity, and a different test is used. Assuming that the data can be described by a pure exponential, the fit parameters should have compatible values for fits over different ranges. Figure~\ref{fig:data rel cpb0.001} shows a fit (minimisation of $\chi^2$ from Eq.~(\ref{eq:chi sq})) with parameterisation
+The incompatibility between a pure-exponential behaviour and the data with the ``per-mille'' binning can be shown equally well. However, since the number of points is drastically increased, the straight-forward $\chi^2$ test does not have sufficient sensitivity, and a different test is used. Assuming that the data can be described by a pure exponential, the fit parameters should have compatible values for fits over different ranges. Figure~\ref{fig:data rel cpb0.001} shows a fit (minimisation of $\chi^2$ from Eq.~(\ref{eq:chi sq})) with parametrisation
 \begin{equation}
 \label{eq:split fit param}
 {\d\sigma\over\d t}(t) =
@@ -116,7 +116,7 @@ where $\mat V_p$ is the uncertainty matrix for the difference vector $\Delta_p$.
  B1 − B2 = −0.414 ± 0.056 ⇒ 7.4 σ
 \fi
 
-Since parameters estimated with the least squares method are unbiased, the test in Eq.~(\ref{eq:chi sq param}) is asymptotically binning independent. Indeed, applying it to the data in the ``optimised'' binning (prior to the statistical uncertainty rescaling, Section \ref{sec:stat unc adj}) yields $\chi^2_p = 65.7$ which corresponds to a significance of $7.8\un{\sigma}$. After the uncertainty rescaling, the exclustion significance increases even to $9.0\un{\sigma}$.
+Since parameters estimated with the least squares method are unbiased, the test in Eq.~(\ref{eq:chi sq param}) is asymptotically binning independent. Indeed, applying it to the data in the ``optimised'' binning (prior to the statistical uncertainty rescaling, Section \ref{sec:stat unc adj}) yields $\chi^2_p = 65.7$ which corresponds to a significance of $7.8\un{\sigma}$. After the uncertainty rescaling, the exclusion significance increases even to $9.0\un{\sigma}$.
 
 \iffalse
 DS4-sc, ob
