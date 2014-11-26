@@ -1,11 +1,14 @@
 import root;
 import pad_layout;
 
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/plots/run_info.asy";
 
 string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000";
 
-xSizeDef = 25cm;
+xSizeDef = 15cm;
+ySizeDef = 4cm;
 
 real timestamp0 = 1351029600;
 transform unixToHours = scale(1/3600, 1) * shift(-timestamp0, 0);
@@ -71,7 +74,7 @@ AttachLegend(3, S, S);
 
 NewRow();
 
-NewPad("", "rate$\ung{Hz}$", xTicks=LeftTicks(Step=1, n=6));
+NewPad("time\ung{h}", "rate$\ung{Hz}$", xTicks=LeftTicks(Step=1, n=6));
 
 TGraph_reducePoints = 1;
 string f = topDir + "/plots/dcs_rates_rp.root";
@@ -148,3 +151,5 @@ DrawRunBoundaries();
 GShipout(vSkip=0mm);
 
 */
+
+GShipout(margin=0mm);

@@ -2,6 +2,8 @@ import root;
 import pad_layout;
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/plots/t_distributions/common_code.asy";
 
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+
 string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000";
 
 string f = topDir + "/tabulation/tabulate.root";

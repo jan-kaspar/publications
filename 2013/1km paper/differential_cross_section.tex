@@ -3,13 +3,13 @@
 The analysis method is very similar to the previously published ones \cite{epl101-el,prl111}. Each diagonal is analysed separately, some steps are performed independently for each bunch. In this analysis, however, a different normalisation approach is used, consequently making all $t$-independent scaling factors (e.g.~certain inefficiency corrections) irrelevant.
 
 %----------------------------------------------------------------------------------------------------
-\subsection{Event Reconstruction}
+\subsection{Event Analysis}
 
 Event kinematics is determined from track hits in RPs (after proper alignment, see Sec.~\ref{sec:alignment}) using the LHC optics (see Sec.~\ref{sec:optics}).
 
 %------------------------------
 
-\subsubsection{Kinematics Determination}
+\subsubsection{Kinematics Reconstruction}
 \label{sec:kinematics}
 
 The protons' kinematics is first reconstructed separately in each arm, using formulae that maximise the robustness against imperfections (predominantly optics):
@@ -108,6 +108,16 @@ number & cut & RMS ($\equiv 1\sigma$)\cr\hline
 \end{center}
 \end{table}
 
+\begin{figure}
+\begin{center}
+\includegraphics{fig/cuts.pdf}
+\caption{%
+\todo{DS2b, 45t -- 56b, cuts from Table~\ref{tab:cuts}}
+}
+\label{fig:tag corr plots}
+\end{center}
+\end{figure}
+
 
 %-------------------------
 
@@ -118,6 +128,15 @@ To study the background (i.e.~impurity of the tagging), the distributions of rig
 
 % background = impurity of the cuts above
 
+\begin{figure}
+\begin{center}
+\includegraphics{fig/cut_distributions.pdf}
+\caption{%
+\todo{DS2b, 45t -- 56b, cuts from Table~\ref{tab:cuts}}
+}
+\label{fig:tag bckg}
+\end{center}
+\end{figure}
 
 %-------------------------
 
@@ -149,6 +168,27 @@ The final acceptance correction combines the two contributions:
 \fi
 
 
+\begin{figure}
+\begin{center}
+\includegraphics{fig/acc_corr_phi_lab.pdf}
+\caption{%
+\todo{DS2b, top (bottom) part from diagonal 45 bot -- 56 top (45 top -- 56 bot)}
+}
+\label{fig:acc corr princ}
+\end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics{fig/acc_corr_hist_lab.pdf}
+\caption{%
+\todo{DS2b, 45 top -- 56 bot, control the numbers, mean correction per bin + std.~dev. per bin}
+}
+\label{fig:acc corr res}
+\end{center}
+\end{figure}
+
 %-------------------------
 
 \subsubsection{Inefficiency Corrections}
@@ -179,6 +219,16 @@ where the first term in parentheses typically grows from about $16$ to $18\un{\%
 \> 2/4: 1.5% for one RP
 
 \fi
+
+\begin{figure}
+\begin{center}
+\includegraphics{fig/eff3outof4_fits.pdf}
+\caption{%
+\todo{DS2b, 45t -- 56b, right near}
+}
+\label{fig:eff 3/4}
+\end{center}
+\end{figure}
 
 
 %-------------------------
@@ -267,7 +317,7 @@ Differential cross-section from Table \ref{tab:data} with statistical (bars) and
 
 \begin{figure*}
 \begin{center}
-\includegraphics[width=18cm]{fig/systematic_uncertainties.pdf}
+\includegraphics{fig/systematic_uncertainties.pdf}
 \caption{%
 Impact of systematic uncertainties on the differential cross-section. 
 LEFT: full $|t|$ range, RIGHT: low $|t|$ zoom.

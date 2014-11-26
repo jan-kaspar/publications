@@ -1,10 +1,5 @@
-all: elastic_1km_epjc.pdf
+all: elastic_1km_npb.pdf
 
-
-elastic_1km_prl.pdf: elastic_1km_prl.tex authorlist_prl.tex introduction.tex experimental_apparatus.tex\
+elastic_1km_npb.pdf: elastic_1km_npb.tex authorlist_npb.tex introduction.tex experimental_apparatus.tex\
 		data_taking.tex differential_cross_section.tex data_table.tex coulomb.tex
-	pdflatex elastic_1km_prl.tex
-
-elastic_1km_epjc.pdf: elastic_1km_epjc.tex authorlist_epjc.tex introduction.tex experimental_apparatus.tex\
-		data_taking.tex differential_cross_section.tex data_table.tex coulomb.tex
-	pdflatex elastic_1km_epjc.tex
+	pdflatex elastic_1km_npb.tex
