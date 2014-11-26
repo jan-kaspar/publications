@@ -7,18 +7,20 @@
 	\def\empty{}%
 	
 	\ifx\PriAf\empty
-		\author{#1\fnref{\ExtAf}}%
+		\author{#1\fnref{#4}}%
 	\else
-		\ifx\ExtAf\empty
-			\edef\ExtName{#1}%
-		\else
-			\edef\ExtName{#1\fnref{\ExtAf}}%
-		\fi
-
 		\ifx\SecAf\empty
-			\author[#2]{#1}%
+			\ifx\ExtAf\empty
+				\author[#2]{#1}%
+			\else
+				\author[#2]{#1\fnref{#4}}%
+			\fi
 		\else
-			\author[#2,#3]{#1}%
+			\ifx\ExtAf\empty
+				\author[#2,#3]{#1}%
+			\else
+				\author[#2,#3]{#1\fnref{#4}}%
+			\fi
 		\fi
 	\fi
 }
