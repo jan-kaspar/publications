@@ -22,17 +22,21 @@ The protons' kinematics is first reconstructed separately in each arm, using for
 		x^* &= {L_x^{\rm N} x^{\rm F} - L_x^{\rm F} x^{\rm N}\over L_x^{\rm N} v_x^{\rm F} - L_x^{\rm F} v_x^{\rm N}}\ , \\
 	\end{aligned}
 \end{equation}
-where the N and F superscripts refer to the near and far units, $x$ and $y$ to horizontal and vertical track hits and $v$ and $L$ stand for the magnification and effective length optical functions. This reconstruction is used for tagging elastic events, where the left and right arm protons are compared. Once an event is selected, all four RPs can be used to reconstruct the kinematics of the event, in addition optimising for angular resolution:
+where the N and F superscripts refer to the near and far units, $x$ and $y$ to horizontal and vertical track hits and $v$ and $L$ stand for the magnification and effective length optical functions. This reconstruction is used for tagging elastic events, where the left and right arm protons are compared.
+
+Once an event is selected, all four RPs can be used to reconstruct the kinematics of the event, in addition optimising for angular resolution (see Section \ref{sec:resolution}):
 \begin{equation}
 \label{eq:kin 2a}
 		\theta_x^* = {
 				\sum {v_x^i}^2 \sum L_x^i x^i - \sum L_x^i v_x^i \sum v_x^i x^i
 				\over
-				\sum {v_x^i}^2 \sum {L_x^i}^2 - \sum L_x^i v_x^i \sum L_x^i v_x^i
+				\sum {v_x^i}^2 \sum {L_x^i}^2 - \sum L_x^i v_x^i \sum v_x^i L_x^i
 			}\ ,\quad
 		\theta_y^* = {1\over 4} \sum {y^i\over L_y^i}\ ,
 \end{equation}
-where the sums go over the superscripts $i$ representing the four RPs of a diagonal. Eventually, the full scattering angle, $\theta^*$, and four-momentum transfer squared, $t$, are calculated:
+where the sums go over the superscripts $i$ representing the four RPs of a diagonal.
+
+Eventually, the full scattering angle, $\theta^*$, and four-momentum transfer squared, $t$, are calculated:
 
 \begin{equation}
 \label{eq:th t}
@@ -51,6 +55,16 @@ The standard three-step procedure \cite{totem-ijmp} has been applied: collimator
 % the observed hit inefficiencies -- possible asymmetries -- discuss ???
 % mention final alignment check = 2D Gaussian fit of $\theta_x^*$ vs.~$\theta_y^*$ from both diagonals ??
 
+\begin{figure}
+\begin{center}
+\includegraphics{fig/alignment_method.pdf}
+\caption{%
+\todo{caption}. Right-far unit, data from 1 period (= 15 minutes). Black (blue) dots and solid lines represent track hits and sensor shape of vertical (horizontal) RPs. The magenta histogram shows the profile of hits in the vertical RPs, the cyan line represents its interpolation between the top and bottom pots. Similarly, the red histogram gives the profile of the hits in the horizontal RP and the green line its extrapolation to the beam region.
+}
+\label{fig:align meth}
+\end{center}
+\end{figure}
+
 %------------------------------
 
 \subsubsection{Optics}
@@ -65,11 +79,20 @@ In order to reduce the impact of imperfect optics knowledge, the optics matching
 
 Good knowledge of statistical fluctuations in the event reconstruction is essential for several steps in differential cross-section evaluation.
 
-The fluctuations in $\theta_y^*$ are mostly due to the beam divergence and can be studied by comparing the angles reconstructed from the left and right arm. If the divergences of the two beams are the same (verified by emittance measurements with uncertainty of $25\un{\%}$), then the beam divergence distribution can be de-convoluted from the distribution of the left-right differences. The beam divergence has shown very small deviations from Gaussian shape but increasing width with time. Therefore, the $\theta_y^*$ (Eq.~(\ref{eq:kin 2a})) resolution degraded from initial $0.43$ to $0.48\un{\mu rad}$ at the end of the fill.
+The fluctuations in $\theta_y^*$ are mostly due to the beam divergence and can be studied by comparing the angles reconstructed from the left and right arm. If the divergences of the two beams are the same (verified by emittance measurements with uncertainty of $25\un{\%}$), then the beam divergence distribution can be de-convoluted from the distribution of the left-right differences. The beam divergence has shown very small deviations from Gaussian shape, \todo{decreasing width with time?}. The $\theta_y^*$ (Eq.~(\ref{eq:kin 2a})) resolution degraded from initial $0.43$ to $0.48\un{\mu rad}$ at the end of the fill.
 
-In the horizontal projection, a different method is used since the one-arm reconstruction, Eq.~(\ref{eq:kin 1a}), is strongly influenced by sensor resolution (strip pitch). First, the beam divergence is estimated by dividing the vertex spread $\sigma(x^*)$ by $\beta^*$: it grew from $0.75$ to $0.9\un{\mu rad}$ during the fill. Then the beam-divergence component is subtracted quadratically \textbf{[check!!!]} 
-from the standard deviation of the right-left difference in $\theta_x^*$, yielding the (time-independent) contribution from the sensor resolution: $10.7\un{\mu m}$ (45 top -- 56 bottom) and $12.1\un{\mu m}$ (45 bottom -- 56 top). This can be propagated to the two-arm resolution in $\theta_x^*$, Eq.~({\ref{eq:kin 2a}}), which is by far dominated by the beam divergence component: it rose from $0.54$ to $0.65\un{\mu rad}$ during the fill. 
+In the horizontal projection, a different method is used since the one-arm reconstruction, Eq.~(\ref{eq:kin 1a}), is strongly influenced by sensor resolution (strip pitch). First, the beam divergence is estimated by dividing the vertex spread $\sigma(x^*)$ by $\beta^*$: it grew from $0.75$ to $0.9\un{\mu rad}$ during the fill. Then the beam-divergence component is subtracted quadratically \todo{check} 
+from the standard deviation of the right-left difference in $\theta_x^*$, yielding the (time-independent \todo{experimentally verified}) contribution from the sensor resolution: $10.7\un{\mu m}$ (45 top -- 56 bottom) and $12.1\un{\mu m}$ (45 bottom -- 56 top). This can be propagated to the two-arm resolution in $\theta_x^*$, Eq.~({\ref{eq:kin 2a}}), which is by far dominated by the beam divergence component: it rose from $0.54$ to $0.65\un{\mu rad}$ during the fill. 
 
+\begin{figure}
+\begin{center}
+\includegraphics{fig/resolutions_vs_time.pdf}
+\caption{%
+\todo{final two-arm resolutions}. The yellow bands indicate regions of uninterrupted data-taking.
+}
+\label{fig:resol final}
+\end{center}
+\end{figure}
 
 %----------------------------------------------------------------------------------------------------
 \subsection{Differential Cross-Section Reconstruction}
@@ -124,7 +147,7 @@ number & cut & RMS ($\equiv 1\sigma$)\cr\hline
 \subsubsection{Background}
 \label{sec:background}
 
-To study the background (i.e.~impurity of the tagging), the distributions of right-left angular differences (see Table \ref{tab:cuts}) are plotted under various cut combinations \textbf{[vague!!!]}. While the central part (signal) remains essentially constant, the tails (background) are dramatically affected. Interpolating the background smoothly into the signal region ($\pm 4\un{\sigma}$) permits to conclude negligible background: $1 - {\cal B} < 0.1\un{\%}$ (independent of whether the $\theta_x^*$ or the $\theta_y^*$ distribution is used). As an additional test, if a cut is released, the recuperated events (less than $0.3\un{\%}$) are distributed almost uniformly over the $|t|$ range.
+To study the background (i.e.~impurity of the tagging), the distributions of right-left angular differences (see Table \ref{tab:cuts}) are plotted under various cut combinations \todo{vague}. While the central part (signal) remains essentially constant, the tails (background) are dramatically affected. Interpolating the background smoothly into the signal region ($\pm 4\un{\sigma}$) permits to conclude negligible background: $1 - {\cal B} < 0.1\un{\%}$ (independent of whether the $\theta_x^*$ or the $\theta_y^*$ distribution is used). As an additional test, if a cut is released, the recuperated events (less than $0.3\un{\%}$) are distributed almost uniformly over the $|t|$ range.
 
 % background = impurity of the cuts above
 
@@ -236,14 +259,22 @@ where the first term in parentheses typically grows from about $16$ to $18\un{\%
 \subsubsection{Unfolding of Resolution Effects}
 \label{sec:unfolding}
 
+\todo{numerical integration method, in principle similar method as in the 90m paper, but different implementation with better performance}
+
 Due to the very small beam divergence, the correction for resolution effects can be safely determined by the following iterative procedure. The differential cross-section data are fitted by a smooth curve which serves as an input to a Monte-Carlo simulation using the resolution parameters determined above. Making a ratio of simulated histograms with / without smearing effects gives a set of per-bin correction factors. Applying them to the yet uncorrected differential cross-section yields a better estimate of the true $t$-distribution, which can be used as input to the next iteration. The final correction is negligible (${\cal U} \approx 1$) for all bins except at very low $|t|$ where the rapid cross-section growth occurs ($ {\cal U} - 1 < 2.5\un{\%}$).
 
 For the uncertainty estimate, the uncertainties of $\theta_x^*$ and $\theta_y^*$ resolutions (accommodating the full time variation) as well as fit-model dependence have been considered, each contribution giving a few per-mille for the lowest-$|t|$ bin.
 
-\iffalse
-\> but time-dependent smearing sigma, determined from the variation of $\theta_y^{*R} - \theta_y^{*L}$
-\>> mention the subtlety with $\sigma(\theta_x^*)$ ?? Cannot be measured directly. The only handle comes from the emittances (crude only). But (at least for low-$|t|$), the impact of $\theta_x^*$ smearing is small -- the value of $\theta^*$ is mostly made by $\theta_y^*$, therefore $\theta_x^*$ must be very small. Consequently, $\Delta t_x = 2 \theta_x^* \Delta \theta_x^* \approx 0$
-\fi
+
+\begin{figure}
+\begin{center}
+\includegraphics{fig/unfolding.pdf}
+\caption{%
+Unfolding correction for diagonal 45 bottom -- 56 top is negligible everywhere except the very low-$|t|$ region. The vertical dashed line indicates the position of the acceptance cut.
+}
+\label{fig:align meth}
+\end{center}
+\end{figure}
 
 %-------------------------
 

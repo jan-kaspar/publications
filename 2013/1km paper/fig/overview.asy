@@ -75,19 +75,23 @@ AttachLegend(3, S, S);
 NewRow();
 
 NewPad("time\ung{h}", "rate$\ung{Hz}$", xTicks=LeftTicks(Step=1, n=6));
+DrawRunBands(0, 400, false);
 
-TGraph_reducePoints = 1;
-string f = topDir + "/plots/dcs_rates_rp.root";
-draw(unixToHours, rGetObj(f, "dcs_rates_rp"), "p", red);
+TGraph_reducePoints = 5;
+dotfactor = 2;
 string f = topDir + "/plots/dcs_rates_t2.root";
-draw(unixToHours, rGetObj(f, "dcs_rates_t2"), "p", heavygreen);
+draw(unixToHours, rGetObj(f, "dcs_rates_t2"), "d", blue);
+string f = topDir + "/plots/dcs_rates_rp.root";
+draw(unixToHours, rGetObj(f, "dcs_rates_rp"), "d", red);
 
-AddToLegend("RP rate", red);
-AddToLegend("T2 rate", heavygreen);
+AddToLegend("T2 rate", mCi+1pt+blue);
+AddToLegend("RP rate", mCi+1pt+red);
 
-limits((22, 0), (33, 400), Crop);
-DrawRunBoundaries();
-AttachLegend();
+limits((23, 0), (32.2, 400), Crop);
+AttachLegend(BuildLegend(N, lineLength=5mm, vSkip=0.5mm), N);
+
+for (real y = 0; y <= 400; y += 100)
+	xaxis(YEquals(y, false), dotted);
 
 //----------------------------------------------------------------------------------------------------
 
@@ -147,8 +151,6 @@ AddToLegend("linear fit per run", black+dashed);
 limits((22, 0), (33, 0.04), Crop);
 AttachLegend();
 DrawRunBoundaries();
-
-GShipout(vSkip=0mm);
 
 */
 
