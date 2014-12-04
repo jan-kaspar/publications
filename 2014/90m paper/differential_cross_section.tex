@@ -3,11 +3,11 @@
 
 The analysis method is similar to the previously published ones~\cite{epl101-el,prl111}, each diagonal is analysed
 separately. However, a different normalisation
-approach is used (Section~\ref{sec:normalisation}), making all 
+approach is used (Section~\ref{sec:normalisation}) that makes all 
 $t$-independent scaling factors irrelevant.
 
-The analysis is presented in two main blocks. Section \ref{sec:event anal} includes all aspects related to the reconstruction of a single event.
-Section \ref{sec:diff cs} describes the steps of transforming a raw $t$-distribution into the differential cross-section.
+The analysis is presented in two main blocks. Section~\ref{sec:event anal} includes all aspects related to the reconstruction of a single event.
+Section~\ref{sec:diff cs} describes the steps of transforming a raw $t$-distribution into the differential cross-section.
 
 %----------------------------------------------------------------------------------------------------
 
@@ -22,24 +22,23 @@ Event kinematics are determined from coordinates of track hits in the RPs after 
 \subsubsection{Kinematics Reconstruction}
 \label{sec:kinematics}
 
-The scattering angles and vertex position are first determined for each proton (i.e.~from each arm) separately by inverting the proton transport Eq.~(\ref{eq:prot trans}), assuming $\xi = 0$. The following formulae optimise the robustness against optics imperfections:
+The scattering angles and vertex position are first determined for each proton (i.e.~from each arm) separately by inverting the proton transport, Eq.~(\ref{eq:prot trans}), assuming $\xi = 0$. The following formulae optimise the robustness against optics imperfections:
 \begin{equation}
 \label{eq:kin 1a}
 	\begin{aligned}
-		\theta_x^* &= {v_x^{\rm N} x^{\rm F} - v_x^{\rm F} x^{\rm N}\over v_x^{\rm N} L_x^{\rm F} - v_x^{\rm F} L_x^{\rm N}}\ ,\qquad
-		\theta_y^* = {1\over 2} \left( {y^{\rm N}\over L_y^{\rm N}} + {y^{\rm F}\over L_y^{\rm F}} \right)\ ,\\
-		x^* &= {L_x^{\rm N} x^{\rm F} - L_x^{\rm F} x^{\rm N}\over L_x^{\rm N} v_x^{\rm F} - L_x^{\rm F} v_x^{\rm N}}\ , \\
+		\theta_x^{*L,R} &= {v_x^{\rm N} x^{\rm F} - v_x^{\rm F} x^{\rm N}\over v_x^{\rm N} L_x^{\rm F} - v_x^{\rm F} L_x^{\rm N}}\ ,\qquad
+		\theta_y^{*L,R} = {1\over 2} \left( {y^{\rm N}\over L_y^{\rm N}} + {y^{\rm F}\over L_y^{\rm F}} \right)\ ,\\
+		x^{*L,R} &= {L_x^{\rm N} x^{\rm F} - L_x^{\rm F} x^{\rm N}\over L_x^{\rm N} v_x^{\rm F} - L_x^{\rm F} v_x^{\rm N}}\ , \\
 	\end{aligned}
 \end{equation}
-where the N and F superscripts refer to the near and far units. This one-arm reconstruction is used for tagging elastic events, where the left and right arm protons are compared.
+where the N and F superscripts refer to the near and far units, L and R to the 
+left and right arm, respectively. This one-arm reconstruction is used for tagging elastic events, where the left and right arm protons are compared.
 
-Once an event is selected, the information from both arms can be merged yielding better angular resolution:
+Once an event is selected, the information from both arms is merged yielding better angular resolution:
 \begin{equation}
 \label{eq:kin 2a}
-\theta_x^* = {\theta_x^{*\rm L} + \theta_x^{*\rm R} \over 2}\ ,\quad \theta_y^* = {\theta_y^{*\rm L} + \theta_y^{*\rm R} \over 2}\ ,
+\theta_x^* = {\theta_x^{*\rm L} + \theta_x^{*\rm R} \over 2}\ ,\quad \theta_y^* = {\theta_y^{*\rm L} + \theta_y^{*\rm R} \over 2}\ .
 \end{equation}
-where the L (R) superscript refers to the left (right) arm.
-
 Eventually, the full scattering angle, $\theta^*$, and four-momentum transfer squared, $t$, are calculated as
 
 \begin{equation}
@@ -53,7 +52,7 @@ where $p$ denotes the beam momentum.
 \subsubsection{Alignment}
 \label{sec:alignment}
 
-The standard three-step procedure \cite{totem-ijmp} has been applied: beam-based alignment prior to the run (as for LHC collimators) followed by two off-line methods. First, track-based alignment for relative positions among RPs, and second alignment with elastic events for absolute position with respect to the beam. The final uncertainties per unit (common for top and bottom RPs) are: $2\un{\mu m}$ (horizontal shift), $100\un{\mu m}$ (vertical shift) and $0.2\un{mrad}$ (rotation about the beam axis). Propagated to the scattering angles, Eq.~(\ref{eq:kin 2a}), the shifts lead to uncertainties of $0.8\un{\mu rad}$ (horizontal) and $0.2\un{\mu rad}$ (vertical). The error of the RP rotations would bias the reconstructed horizontal scattering angle:
+The standard three-step procedure \cite{totem-ijmp} has been applied: beam-based alignment prior to the run (as for LHC collimators) followed by two off-line methods. First, track-based alignment for relative positions among RPs, and second, alignment with elastic events for absolute position with respect to the beam. The final uncertainties per unit (common for top and bottom RPs) are: $2\un{\mu m}$ (horizontal shift), $100\un{\mu m}$ (vertical shift) and $0.2\un{mrad}$ (rotation about the beam axis). Propagated to the scattering angles, Eq.~(\ref{eq:kin 2a}), the shifts lead to uncertainties of $0.8\un{\mu rad}$ (horizontal) and $0.2\un{\mu rad}$ (vertical). The error of the RP rotations would bias the reconstructed horizontal scattering angle:
 \begin{equation}
 \label{eq:alig rot bias}
 \theta_x^* \rightarrow \theta_x^* + c \theta_y^*\ ,
@@ -97,9 +96,9 @@ where $\eta_{1,2}$ are two independent random variables with unit variance. In p
 
 Statistical fluctuations in the reconstructed scattering angles are caused by the beam divergence and, in the horizontal projection (due to small $L_x$), also by the sensor resolution. They are studied by comparing the scattering angles reconstructed from the two arms, in particular through differences $\theta_{x,y}^{*R} - \theta_{x,y}^{*L}$ as illustrated in Figure \ref{fig:beam divergence}. The distributions exhibit small deviations from Gaussian shape which decrease with time.
 
-Since in good approximation the fluctuations are independent in each arm, the angular resolution for the two-arm reconstruction Eq.~(\ref{eq:kin 2a}) is given by half of the standard deviation of the $\theta_{x,y}^{*R} - \theta_{x,y}^{*L}$ distributions. As shown in Figure \ref{fig:resolutions}, the resolution deteriorates slightly with time, which can be expected mainly due to the emittance growth. The small difference in $\theta_x^*$ resolution between the diagonals can be attributed to different RPs, each with slightly different spatial resolution, being involved in the two diagonals.
+Since in good approximation the fluctuations are independent in each arm, the angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), is given by half of the standard deviation of the $\theta_{x,y}^{*R} - \theta_{x,y}^{*L}$ distributions. As shown in Figure~\ref{fig:resolutions}, the resolution deteriorates slightly with time, which can be expected mainly due to the emittance growth. The small difference in $\theta_x^*$ resolution between the diagonals can be attributed to different RPs, each with slightly different spatial resolution, being involved in the two diagonals.
 
-Measurements of beam emittances \todo{citation ??} show that the vertical beam divergences of the two beams are equal with a tolerance of about $15\un{\%}$. Exploiting this equality, one can de-convolute the distribution of $\theta_y^{*R} - \theta_y^{*L}$ in order to obtain the beam-divergence distribution, used e.g.~for acceptance corrections (see Section~\ref{sec:acc corr}).
+Measurements of beam emittances~\cite{op-elog} show that the vertical beam divergences of the two beams are equal with a tolerance of about $15\un{\%}$. Exploiting this equality, one can de-convolute the distribution of $\theta_y^{*R} - \theta_y^{*L}$ in order to obtain the beam-divergence distribution, used e.g.~for acceptance corrections (see Section~\ref{sec:acc corr}).
 
 \begin{figure}
 \begin{center}
@@ -119,7 +118,7 @@ Difference between vertical scattering angles reconstructed in the right and lef
 \includegraphics{fig/resolutions_vs_time.pdf}
 \vskip-4mm
 \caption{%
-Angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), as a function of time (from the beginning of the first data-taking day). The step in $\theta_y^*$ resolution around $26.5\un{h}$ is due to inclusion of another bunch with a larger vertical emittance.
+Angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), as a function of time (from the beginning of the first data-taking day). The step in $\theta_y^*$ resolution around $26.5\un{h}$ is due to inclusion of another proton bunch with a larger vertical emittance.
 }
 \label{fig:resolutions}
 \end{center}
@@ -153,7 +152,7 @@ The cuts used to select elastic events are summarised in Table \ref{tab:cuts}. C
 Monte-Carlo simulation suggests that applying all the five cuts at $3\un{\sigma}$ level would lead to a loss of about $2\un{\%}$ of elastic events. Setting the thresholds to $4\un{\sigma}$ yields a tolerable loss of about $0.07\un{\%}$ and therefore the cuts are applied at the $4\un{\sigma}$ level.
 % 2sigma: 76%, 3sigma: 98.02%, 4sigma: 99.93%, 5sigma: 99.999%
 
-The tagging efficiency is studied experimentally by applying the cuts also at the $5\un{\sigma}$ level. This selection yields about $0.5\un{\%}$ more events in every $t$ bin -- thus the inefficiency is irrelevant for the presented analysis.
+The tagging efficiency is studied experimentally by applying the cuts also at the $5\un{\sigma}$ level. This selection yields about $0.5\un{\%}$ more events in every $t$ bin -- thus the inefficiency is irrelevant for this analysis.
 
 
 \begin{table}
@@ -163,7 +162,7 @@ The tagging efficiency is studied experimentally by applying the cuts also at th
 \begin{center}
 \vskip-3mm
 \begin{tabular}{ccc}\hline\hline
-number & cut & RMS ($\equiv 1\sigma$)\cr\hline
+discriminator & cut quantity & RMS ($\equiv 1\sigma$)\cr\hline
 1 & $\theta_x^{*\rm R} - \theta_x^{*\rm L}$				& $9.5\un{\mu rad}$	\cr
 2 & $\theta_y^{*\rm R} - \theta_y^{*\rm L}$				& $3.3\un{\mu rad}$	\cr
 3 & $\alpha\,y^{\rm R,N} - (y^{\rm R,F} - y^{\rm R,N})$	& $18\un{\mu m}$	\cr
@@ -197,7 +196,7 @@ Expectable background (i.e.~non-elastic events passing the tagging cuts) may com
 \begin{center}
 \includegraphics{fig/cut_distributions.pdf}
 \caption{%
-Distributions of the difference between the horizontal scattering angle reconstructed from the right and the left arm, for diagonal 45 top -- 56 bottom. The different colours correspond to various combinations of the selection cuts, see numbering in Table~\ref{tab:cuts}. The vertical dashed lines represent the boundaries of the signal region ($\pm 4\un{\sigma}$ of the central peak). The dotted line gives a smooth interpolation (Gaussian fit) of the background observed in the distribution tails.
+Distributions of discriminator 1, i.e. the difference between the horizontal scattering angle reconstructed from the right and the left arm, for diagonal 45 top -- 56 bottom. The different colours correspond to various combinations of the selection cuts, see numbering in Table~\ref{tab:cuts}. The vertical dashed lines represent the boundaries of the signal region ($\pm 4\un{\sigma}$ of the central peak). The dotted line gives a smooth interpolation (Gaussian fit) of the background observed in the distribution tails.
 }
 \label{fig:background}
 \end{center}
@@ -235,7 +234,7 @@ Distribution of scattering angle projections $\theta_y^*$ vs.~$\theta_x^*$. The 
 \end{figure}
 
 
-The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probability that any of the two elastic protons is pushed outside the acceptance due to the beam divergence. The beam divergence distribution is modelled as Gaussian with spread determined by the method described in Section~\ref{sec:resolution}. This correction contribution is only sizeable close to the acceptance limitations but is kept below $1.5$. The uncertainties are related to the resolution parameters (vertical beam divergence, left-right asymmetry and non-Gaussian shape), and all stay below $0.1\un{\%}$.
+The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probability that any of the two elastic protons is pushed outside the acceptance due to the beam divergence. The beam divergence distribution is modelled as Gaussian with spread determined by the method described in Section~\ref{sec:resolution}. This correction contribution is only sizeable close to the acceptance limitations but is kept below $1.5$ by discarding data with larger corrections. The uncertainties are related to the resolution parameters (vertical beam divergence, left-right asymmetry and non-Gaussian shape), and all stay below $0.1\un{\%}$.
 
 
 \iffalse
@@ -248,7 +247,7 @@ The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probab
 \end{equation}
 \fi
 
-Figure \ref{fig:acceptance result} shows an example of the acceptance correction $t$-dependence for one diagonal. Since a single diagonal can not cover more than a half of the phase space, the minimum value of the correction is $2$.
+Figure \ref{fig:acceptance result} shows an example of the acceptance correction $t$-dependence for one diagonal. Since a single diagonal cannot cover more than half of the phase space, the minimum value of the correction is $2$.
 
 \begin{figure}
 \begin{center}
@@ -266,9 +265,9 @@ Full acceptance correction, ${\cal A}$, for diagonal 45 bottom -- 56 top. The po
 \subsubsection{Inefficiency Corrections}
 \label{sec:ineff corr}
 
-Any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (trigger, data acquisition and pile-up inefficiency discussed in \cite{epl101-el,prl111}). The inefficiencies left are related to inability of a RP to resolve the elastic proton track.
+Any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (trigger, data acquisition and pile-up inefficiency discussed in~\cite{epl101-el,prl111}). The inefficiencies left are related to inability of a RP to resolve the elastic proton track.
 
-One such a case is when a single RP can not detect and/or reconstruct a proton track, with no correlation to other RPs. This type of inefficiency, ${\cal I}_{3/4}$, is evaluated by removing the RP from the tagging cuts (Table \ref{tab:cuts}), repeating the event selection and calculating the fraction of recovered events. A typical example is given in Figure \ref{fig:eff 3/4}, showing that the efficiency depends gently on the vertical scattering angle. 
+One such case is when a single RP cannot detect and/or reconstruct a proton track, with no correlation to other RPs. This type of inefficiency, ${\cal I}_{3/4}$, is evaluated by removing the RP from the tagging cuts (Table \ref{tab:cuts}), repeating the event selection and calculating the fraction of recovered events. A typical example is given in Figure~\ref{fig:eff 3/4}, showing that the efficiency depends gently on the vertical scattering angle. 
 
 \begin{figure}
 \begin{center}
