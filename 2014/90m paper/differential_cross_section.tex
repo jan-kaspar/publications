@@ -65,7 +65,7 @@ where the proportionality constant $c$ has a standard deviation of $0.02$.
 
 \subsubsection{Optics}
 \label{sec:optics}
-
+%
 In order to reduce the impact of imperfect optics knowledge, the optics matching technique \cite{totem-optics} has been applied. This method uses various RP observables to determine fine corrections to the optical functions presented in Eq.~(\ref{eq:prot trans}).
 
 The residual errors induce a bias in the reconstructed scattering angles:
@@ -74,19 +74,21 @@ The residual errors induce a bias in the reconstructed scattering angles:
 \theta_x^* \rightarrow (1 + d_x)\, \theta_x^*\ ,\quad
 \theta_y^* \rightarrow (1 + d_y)\, \theta_y^*\ .
 \end{equation}
-For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the expected distribution of biases $d_x$ and $d_y$ (including the effects of magnet harmonics) can be described by
+For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.21\un{\%}$ and $0.25\un{\%}$, respectively, and correlation factor of $-0.70$. These estimates include the effects of magnet harmonics. For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ in two statistically independent modes, $\mathbf{\tilde{d}_{1}}$ and $\mathbf{\tilde{d}_{2}}$, obtained by diagonalising the covariance matrix:
 \begin{equation}
 \label{eq:opt bias modes}
 \begin{pmatrix} d_x\cr d_y \end{pmatrix} =
-	\eta_1 \begin{pmatrix} -0.18\un{\%} \cr +0.24\un{\%} \end{pmatrix}
-	+ \eta_2 \begin{pmatrix} -0.10\un{\%} \cr -0.07\un{\%} \end{pmatrix}\ ,
+	\eta_1 \mathbf{\tilde{d}_{1}} 
+	+ \eta_2 \mathbf{\tilde{d}_{2}} \ ,
 \end{equation}
-where $\eta_{1,2}$ are two independent random variables with unit variance. In particular, $d_x$ ($d_y$) has a standard deviation of $0.21\un{\%}$ ($0.25\un{\%}$).
-
-%scale_mode1_th_x = -1.822E-03; scale_mode1_th_y = +2.353E-03;
-%scale_mode2_th_x = -9.579E-04; scale_mode2_th_y = -7.418E-04;
-
-% double-arm; before matching $0.48\un{\%}$ (hor), $0.90\un{\%}$
+where $\mathbf{\tilde{d}_{1}} = \begin{pmatrix} -0.182\un{\%} \cr +0.235\un{\%} \end{pmatrix}$ and $\mathbf{\tilde{d}_{1}} = \begin{pmatrix} -0.096\un{\%} \cr -0.074\un{\%} \end{pmatrix}$ are orthogonal, and
+%\begin{equation}
+%\label{eq:opt bias modes}
+%\begin{pmatrix} d_x\cr d_y \end{pmatrix} =
+%	\eta_1 \begin{pmatrix} -0.18\un{\%} \cr +0.24\un{\%} \end{pmatrix}
+%	+ \eta_2 \begin{pmatrix} -0.10\un{\%} \cr -0.07\un{\%} \end{pmatrix}\ ,
+%\end{equation}
+the factors $\eta_{1,2}$ have unit variance.
 
 
 %------------------------------
@@ -358,14 +360,7 @@ Compatible results have been obtained from data originating from different bunch
 
 Eventually, the differential cross-section histograms from both diagonals are merged. This is accomplished by a per-bin weighted average, with the weight given by inverse squared statistical uncertainty. The statistical and systematic uncertainties are propagated accordingly. For the systematic ones, the correlation between the diagonals is taken into account. For example, the vertical (mis-)alignment of the RPs within one unit is almost fully correlated, thus the effect on the differential cross-section is opposite in the two diagonals, and consequently its impact is strongly reduced once the diagonals are merged.
 
-The final systematic uncertainties are summarised in Figure~\ref{fig:syst unc} where their impact on the differential cross-section is shown. The leading uncertainties include normalisation, optics imperfections and beam momentum offset. Their effects are quantified in Table~\ref{tab:data} and can be used to approximate the covariance matrix of systematic uncertainties:
-\begin{equation}
-\label{eq:covar mat}
-\mat V_{ij} = \sum_{\vec m} \vec m_i\, \vec m_j\ ,
-\end{equation}
-where $i$ and $j$ are bin indices (row numbers in Table~\ref{tab:data}) and the sum goes over the leading error contributions $\vec m$ (the for right-most columns in the table).
-
-\begin{figure*}
+\begin{figure*}[ht]
 \begin{center}
 \includegraphics{fig/direct_method_mode_cmp_presentation.pdf}
 \vskip-3mm
@@ -378,11 +373,23 @@ The envelope is determined by summing all contributions in quadrature for each $
 \end{center}
 \end{figure*}
 
+The final systematic uncertainties are summarised in Figure~\ref{fig:syst unc} where their impact on the differential cross-section is shown. The leading uncertainties include normalisation, optics imperfections and beam momentum offset. Their effects are quantified in Table~\ref{tab:data}, where each of the last four columns quantifies the effect of a 1\,$\sigma$ shift $\delta q$ in the respective variable $q$ on the differential cross-section:
+\begin{equation}
+\delta s_{q, i} \equiv \frac{\partial(\d\sigma/\d t)_{i}}{\partial q} \delta q
+\end{equation}
+where the index $i$ stands for the table row, i.e. the $t$-bin.
+This can be used to approximate the covariance matrix of systematic uncertainties:
+\begin{equation}
+\label{eq:covar mat}
+\mat V_{ij} = \sum_{q} \delta s_{q, i}\, \delta_{q, j}\: ,
+\end{equation}
+where $i$ and $j$ are bin indices (row numbers in Table~\ref{tab:data}) and the sum goes over the leading error contributions $q$.
+
 
 \begin{table*}
 \caption{%
 The elastic differential cross-section as determined in this analysis using the ``optimised'' binning. The three left-most columns describe the bins in $t$. The representative point gives the $t$ value suitable for fitting~\cite{lafferty94}. %uncertainty due to different fit models negligible:$10^{-7}\un{GeV^2}$
-The other columns are related to the differential cross-section. The four right-most columns give the leading systematic error contributions (see Section~\ref{sec:final data merging} and Figure~\ref{fig:syst unc}). The two contributions due to optics correspond to the two vectors in Eq.~(\ref{eq:opt bias modes}).
+The other columns are related to the differential cross-section. The four right-most columns give the leading systematic biases in $\d\sigma/\d t$ for $+1\sigma$-shifts in the respective quantities (see Section~\ref{sec:final data merging} and Figure~\ref{fig:syst unc}). The two contributions due to optics correspond to the two vectors in Eq.~(\ref{eq:opt bias modes}).
 }
 \vskip-2mm
 \label{tab:data}
@@ -395,7 +402,7 @@ The other columns are related to the differential cross-section. The four right-
 \multispan3\hss\vrule width0pt depth4pt height10pt $|t|$ bin $\unt{GeV^2}$\hss & \multispan7\hss $\d\sigma/\d t \ung{mb/GeV^2}$ \hss \cr
 \multispan3\hrulefill\hbox to15pt{\hfil} & \multispan7\hrulefill \cr
 left & right & representative & value & statistical     & systematic  & normalisation & optics   & optics   & beam\cr
-edge & edge  & point      &       & uncertainty      & uncertainty   &       & mode 1   & mode 2   & momentum\cr
+edge & edge  & point      &       & uncertainty      & uncertainty   &  $\mathcal{N}$     & mode 1   & mode 2   & momentum\cr
 \hline
 $0.02697$ & $0.03005$ & $0.02850$ & $300.94\S$ & $0.612\S$ & $12.68\S$ & $+12.66\S$ & $-0.473\S$ & $-0.259\S$ & $+0.254\S$ \cr
 $0.03005$ & $0.03325$ & $0.03164$ & $284.04\S$ & $0.554\S$ & $11.91\S$ & $+11.90\S$ & $-0.495\S$ & $-0.214\S$ & $+0.204\S$ \cr
