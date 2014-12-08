@@ -6,7 +6,7 @@ separately. However, a different normalisation
 approach is used (Section~\ref{sec:normalisation}) that makes all 
 $t$-independent scaling factors irrelevant.
 
-The analysis is presented in two main blocks. Section~\ref{sec:event anal} includes all aspects related to the reconstruction of a single event.
+The analysis is presented in two main blocks. Section~\ref{sec:event anal} covers all aspects related to the reconstruction of a single event.
 Section~\ref{sec:diff cs} describes the steps of transforming a raw $t$-distribution into the differential cross-section.
 
 %----------------------------------------------------------------------------------------------------
@@ -74,22 +74,30 @@ The residual errors induce a bias in the reconstructed scattering angles:
 \theta_x^* \rightarrow (1 + d_x)\, \theta_x^*\ ,\quad
 \theta_y^* \rightarrow (1 + d_y)\, \theta_y^*\ .
 \end{equation}
-For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.21\un{\%}$ and $0.25\un{\%}$, respectively, and correlation factor of $-0.70$. These estimates include the effects of magnet harmonics. For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ in two statistically independent modes, $\mathbf{\tilde{d}_{1}}$ and $\mathbf{\tilde{d}_{2}}$, obtained by diagonalising the covariance matrix:
+For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.21\un{\%}$ and $0.25\un{\%}$, respectively, and correlation factor of $-0.70$. These estimates include the effects of magnet harmonics.
+%
+%
+% Mario's version
+\iffalse
+For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ in two statistically independent modes, $\mathbf{\tilde{d}_{1}}$ and $\mathbf{\tilde{d}_{2}}$, obtained by diagonalising the covariance matrix:
 \begin{equation}
 \label{eq:opt bias modes}
 \begin{pmatrix} d_x\cr d_y \end{pmatrix} =
 	\eta_1 \mathbf{\tilde{d}_{1}} 
 	+ \eta_2 \mathbf{\tilde{d}_{2}} \ ,
 \end{equation}
-where $\mathbf{\tilde{d}_{1}} = \begin{pmatrix} -0.182\un{\%} \cr +0.235\un{\%} \end{pmatrix}$ and $\mathbf{\tilde{d}_{1}} = \begin{pmatrix} -0.096\un{\%} \cr -0.074\un{\%} \end{pmatrix}$ are orthogonal, and
-%\begin{equation}
-%\label{eq:opt bias modes}
-%\begin{pmatrix} d_x\cr d_y \end{pmatrix} =
-%	\eta_1 \begin{pmatrix} -0.18\un{\%} \cr +0.24\un{\%} \end{pmatrix}
-%	+ \eta_2 \begin{pmatrix} -0.10\un{\%} \cr -0.07\un{\%} \end{pmatrix}\ ,
-%\end{equation}
-the factors $\eta_{1,2}$ have unit variance.
-
+where $\mathbf{\tilde{d}_{1}} = \begin{pmatrix} -0.182\un{\%} \cr +0.235\un{\%} \end{pmatrix}$ and $\mathbf{\tilde{d}_{1}} = \begin{pmatrix} -0.096\un{\%} \cr -0.074\un{\%} \end{pmatrix}$ are orthogonal, and the factors $\eta_{1,2}$ have unit variance.
+\fi
+%
+%
+For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ into eigenvectors of the covariance matrix:
+\begin{equation}
+\label{eq:opt bias modes}
+\begin{pmatrix} d_x\cr d_y \end{pmatrix} =
+	\eta_1 \underbrace{\begin{pmatrix} -0.182\un{\%} \cr +0.235\un{\%} \end{pmatrix}}_{\rm mode\ 1}
+	+ \eta_2 \underbrace{\begin{pmatrix} -0.096\un{\%} \cr -0.074\un{\%} \end{pmatrix}}_{\rm mode\ 2}
+\end{equation}
+normalised such that the factors $\eta_{1,2}$ have unit variance.
 
 %------------------------------
 
@@ -104,6 +112,8 @@ Measurements of beam emittances~\cite{op-elog} show that the vertical beam diver
 
 \begin{figure}
 \begin{center}
+% Do not scale the graphics - fonts have been adjusted to match with figure caption.
+% If needed, ask for a different size at jan.kaspar@cern.ch.
 \includegraphics{fig/beam_divergence_fits.pdf}
 \vskip-4mm
 \caption{%
@@ -117,6 +127,8 @@ Difference between vertical scattering angles reconstructed in the right and lef
 
 \begin{figure}
 \begin{center}
+% Do not scale the graphics - fonts have been adjusted to match with figure caption.
+% If needed, ask for a different size at jan.kaspar@cern.ch.
 \includegraphics{fig/resolutions_vs_time.pdf}
 \vskip-4mm
 \caption{%
@@ -176,6 +188,8 @@ discriminator & cut quantity & RMS ($\equiv 1\sigma$)\cr\hline
 
 \begin{figure*}
 \begin{center}
+% Do not scale the graphics - fonts have been adjusted to match with figure caption.
+% If needed, ask for a different size at jan.kaspar@cern.ch.
 \includegraphics{fig/cuts.pdf}
 \caption{%
 Correlation plots for the event selection cuts summarised in Table~\ref{tab:cuts}, using all events with diagonal topology 45 top -- 56 bottom. The black solid lines delimit the signal ($\pm 4\un{\sigma}$) region.
@@ -190,15 +204,18 @@ Correlation plots for the event selection cuts summarised in Table~\ref{tab:cuts
 \subsubsection{Background}
 \label{sec:background}
 
-Expectable background (i.e.~non-elastic events passing the tagging cuts) may come from central diffraction as well as pile-up of single diffraction and/or beam-halo protons. The background rate is studied by plotting the discriminators from Table~\ref{tab:cuts} under various cut combinations, see an example in Figure~\ref{fig:background}. While the central part (signal) remains essentially constant, the tails (background) are strongly suppressed with increasing number of cuts applied. Interpolating the background smoothly into the signal region (see the dotted line in the figure) yields a background estimate of $1 - {\cal B} < 10^{-4}$, independent of whether discriminator 1, 2 or 5 is used.
+Expectable background (i.e.~non-elastic events passing the tagging cuts) may come from central diffraction as well as pile-up of single diffraction and/or beam-halo protons. The background rate is studied by plotting the discriminators from Table~\ref{tab:cuts} under various cut combinations, see an example in Figure~\ref{fig:background}. While the central part (signal) remains essentially constant, the tails (background) are strongly suppressed with increasing number of cuts applied. This interpretation is further supported by the discriminator distributions from anti-diagonal RP configurations, see the dotted curves in the figure. While these top -- top or bottom -- bottom configurations cannot contain any elastic signal, they are likely to have a similar share of events causing background to the presented analysis. And indeed, the figure shows a good agreement at the distribution tails. Integrating the anti-diagonal curve over the signal region (see the dashed lines in the figure) yields a background estimate of $1 - {\cal B} < 10^{-4}$.
+%, independent of whether discriminator 1, 2 or 5 is used.
 % anyway irrelevant due to the normalisation approach
 
 
 \begin{figure}
 \begin{center}
+% Do not scale the graphics - fonts have been adjusted to match with figure caption.
+% If needed, ask for a different size at jan.kaspar@cern.ch.
 \includegraphics{fig/cut_distributions.pdf}
 \caption{%
-Distributions of discriminator 1, i.e. the difference between the horizontal scattering angle reconstructed from the right and the left arm, for diagonal 45 top -- 56 bottom. The different colours correspond to various combinations of the selection cuts, see numbering in Table~\ref{tab:cuts}. The vertical dashed lines represent the boundaries of the signal region ($\pm 4\un{\sigma}$ of the central peak). The dotted line gives a smooth interpolation (Gaussian fit) of the background observed in the distribution tails.
+Distributions of discriminator 1, i.e. the difference between the horizontal scattering angle reconstructed from the right and the left arm. Solid curves: data from diagonal 45 top -- 56 bottom, the different colours correspond to various combinations of the selection cuts (see numbering in Table~\ref{tab:cuts}). Dotted curves: data from anti-diagonal RP configurations, obtained by inverting track coordinates in the left arm. The vertical dashed lines represent the boundaries of the signal region ($\pm 4\un{\sigma}$).
 }
 \label{fig:background}
 \end{center}
@@ -226,6 +243,8 @@ The calculation of the geometrical correction ${\cal A}_{\rm geom}$ is based on 
 
 \begin{figure}
 \begin{center}
+% Do not scale the graphics - fonts have been adjusted to match with figure caption.
+% If needed, ask for a different size at jan.kaspar@cern.ch.
 \includegraphics{fig/acc_corr_phi_lab.pdf}
 \vskip-3mm
 \caption{%
@@ -253,6 +272,8 @@ Figure \ref{fig:acceptance result} shows an example of the acceptance correction
 
 \begin{figure}
 \begin{center}
+% Do not scale the graphics - fonts have been adjusted to match with figure caption.
+% If needed, ask for a different size at jan.kaspar@cern.ch.
 \includegraphics{fig/acc_corr_hists.pdf}
 \vskip-3mm
 \caption{%
@@ -273,10 +294,12 @@ One such case is when a single RP cannot detect and/or reconstruct a proton trac
 
 \begin{figure}
 \begin{center}
+% Do not scale the graphics - fonts have been adjusted to match with figure caption.
+% If needed, ask for a different size at jan.kaspar@cern.ch.
 \includegraphics{fig/eff3outof4_details_fits.pdf}
 \vskip-3mm
 \caption{%
-Single-RP uncorrelated inefficiency for the far top RP in the left arm. The rapid efficiency drop at $\theta_y^* \approx 33\un{\mu rad}$ is due to acceptance effects at the sensor edge. The red lines represent a linear fit of the efficiency dependence on the vertical scattering angle.
+Single-RP uncorrelated inefficiency for the far top RP in the left arm. The rapid drop at $\theta_y^* \approx 35\un{\mu rad}$ is due to acceptance effects at the sensor edge. The red lines represent a linear fit of the efficiency dependence on the vertical scattering angle.
 }
 \label{fig:eff 3/4}
 \end{center}
@@ -309,6 +332,8 @@ For the uncertainty estimate, the uncertainties of $\theta_x^*$ and $\theta_y^*$
 
 \begin{figure}
 \begin{center}
+% Do not scale the graphics - fonts have been adjusted to match with figure caption.
+% If needed, ask for a different size at jan.kaspar@cern.ch.
 \includegraphics{fig/unfolding_correction_comparison.pdf}
 \vskip-3mm
 \caption{%
@@ -343,7 +368,14 @@ Two binnings have been considered. The ``optimised'' option sets the bin size to
 
 Besides the systematic uncertainties mentioned at the above analysis steps, the uncertainty of the beam momentum, $0.1\un{\%}$, needs to be considered when the scattering angles are translated into $t$, see Eq.~(\ref{eq:th t}).
 
-The systematic effects are propagated to the $t$-distribution with help of a Monte-Carlo simulation. A fit of the final differential cross-section data is used to generate the true $t$-distribution. Simultaneously, another $t$-distribution is built, having introduced one (or several) of the above mentioned systematic effects. Eventually, making a ratio of the two $t$-distributions yields the relative cross-section error, similar to those in Figure \ref{fig:syst unc}.
+The systematic effects are propagated to the $t$-distribution with help of a Monte-Carlo simulation. A fit of the final differential cross-section data is used to generate the true $t$-distribution. Simultaneously, another $t$-distribution is built, having introduced one of the above mentioned systematic effects at $1\un{\sigma}$ level. The difference between the $t$-distributions gives the systematic effect on the differential cross-section. Formally, this procedure is equivalent to evaluating
+\begin{equation}
+\label{eq:syst mode}
+\delta s_{q}(t) \equiv \frac{\partial(\d\sigma/\d t)}{\partial q} \delta q\ ,
+\end{equation}
+where $\delta q$ corresponds to $1\un{\sigma}$ bias in the quantity $q$ responsible for a given systematic effect.
+
+The Monte-Carlo simulations show that the combined effect of several systematic errors is well approximated by linear combination of the individual contributions from Eq.~(\ref{eq:syst mode}).
 
 
 %----------------------------------------------------------------------------------------------------
@@ -358,38 +390,36 @@ Compatible results have been obtained from data originating from different bunch
 \subsection{Final Data Merging}
 \label{sec:final data merging}
 
-Eventually, the differential cross-section histograms from both diagonals are merged. This is accomplished by a per-bin weighted average, with the weight given by inverse squared statistical uncertainty. The statistical and systematic uncertainties are propagated accordingly. For the systematic ones, the correlation between the diagonals is taken into account. For example, the vertical (mis-)alignment of the RPs within one unit is almost fully correlated, thus the effect on the differential cross-section is opposite in the two diagonals, and consequently its impact is strongly reduced once the diagonals are merged.
-
 \begin{figure*}[ht]
 \begin{center}
+% Do not scale the graphics - fonts have been adjusted to match with figure caption.
+% If needed, ask for a different size at jan.kaspar@cern.ch.
 \includegraphics{fig/direct_method_mode_cmp_presentation.pdf}
 \vskip-3mm
 \caption{%
-Impact of systematic effects on the differential cross-section. Each curve corresponds to a systematic error at $1\un{\sigma}$.
+Impact of systematic effects on the differential cross-section. Each curve corresponds to a systematic error at $1\un{\sigma}$, cf.~Eq.~(\ref{eq:syst mode}).
 The two contributions due to optics correspond to the two vectors in Eq.~(\ref{eq:opt bias modes}).
-The envelope is determined by summing all contributions in quadrature for each $|t|$ value.
+The envelope is determined by summing all shown contributions in quadrature for each $|t|$ value.
 }
 \label{fig:syst unc}
 \end{center}
 \end{figure*}
 
-The final systematic uncertainties are summarised in Figure~\ref{fig:syst unc} where their impact on the differential cross-section is shown. The leading uncertainties include normalisation, optics imperfections and beam momentum offset. Their effects are quantified in Table~\ref{tab:data}, where each of the last four columns quantifies the effect of a 1\,$\sigma$ shift $\delta q$ in the respective variable $q$ on the differential cross-section:
-\begin{equation}
-\delta s_{q, i} \equiv \frac{\partial(\d\sigma/\d t)_{i}}{\partial q} \delta q
-\end{equation}
-where the index $i$ stands for the table row, i.e. the $t$-bin.
-This can be used to approximate the covariance matrix of systematic uncertainties:
+Eventually, the differential cross-section histograms from both diagonals are merged. This is accomplished by a per-bin weighted average, with the weight given by inverse squared statistical uncertainty. The statistical and systematic uncertainties are propagated accordingly. For the systematic ones, the correlation between the diagonals is taken into account. For example, the vertical (mis-)alignment of the RPs within one unit is almost fully correlated, thus the effect on the differential cross-section is opposite in the two diagonals, and consequently its impact is strongly reduced once the diagonals are merged.
+
+The final systematic uncertainties are summarised in Figure~\ref{fig:syst unc} where their impact on the differential cross-section is shown. The leading uncertainties include normalisation, optics imperfections and beam momentum offset. Their effects are quantified in Table~\ref{tab:data}, which can be used to approximate the covariance matrix of systematic uncertainties:
 \begin{equation}
 \label{eq:covar mat}
-\mat V_{ij} = \sum_{q} \delta s_{q, i}\, \delta_{q, j}\: ,
+\mat V_{ij} = \sum_{q} \delta s_{q}(i)\, \delta s_{q}(j)\: ,
 \end{equation}
-where $i$ and $j$ are bin indices (row numbers in Table~\ref{tab:data}) and the sum goes over the leading error contributions $q$.
+where $i$ and $j$ are bin indices (row numbers in Table~\ref{tab:data}) and the sum goes over the leading error contributions $q$ (four right-most columns in the table).
 
 
 \begin{table*}
 \caption{%
-The elastic differential cross-section as determined in this analysis using the ``optimised'' binning. The three left-most columns describe the bins in $t$. The representative point gives the $t$ value suitable for fitting~\cite{lafferty94}. %uncertainty due to different fit models negligible:$10^{-7}\un{GeV^2}$
-The other columns are related to the differential cross-section. The four right-most columns give the leading systematic biases in $\d\sigma/\d t$ for $+1\sigma$-shifts in the respective quantities (see Section~\ref{sec:final data merging} and Figure~\ref{fig:syst unc}). The two contributions due to optics correspond to the two vectors in Eq.~(\ref{eq:opt bias modes}).
+The elastic differential cross-section as determined in this analysis using the ``optimised'' binning. The three left-most columns describe the bins in $t$. The representative point gives the $t$ value suitable for fitting~\cite{lafferty94}.
+%uncertainty due to different fit models negligible:$10^{-7}\un{GeV^2}$
+The other columns are related to the differential cross-section. The four right-most columns give the leading systematic biases in $\d\sigma/\d t$ for $1\sigma$-shifts in the respective quantities, $\delta s_q$, see Eqs.~(\ref{eq:syst mode}) and (\ref{eq:covar mat}). The two contributions due to optics correspond to the two vectors in Eq.~(\ref{eq:opt bias modes}).
 }
 \vskip-2mm
 \label{tab:data}
