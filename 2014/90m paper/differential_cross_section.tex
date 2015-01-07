@@ -277,7 +277,7 @@ Figure \ref{fig:acceptance result} shows an example of the acceptance correction
 \includegraphics{fig/acc_corr_hists.pdf}
 \vskip-3mm
 \caption{%
-Full acceptance correction, ${\cal A}$, for diagonal 45 bottom -- 56 top. The points give the mean value per bin, the error bars indicate the standard deviation. The data left of the dashed vertical line are discarded due to excessively large acceptance correction.
+Full acceptance correction, ${\cal A}$, for diagonal 45 bottom -- 56 top. The points give the mean value per bin, the error bars indicate the standard deviation. The sharp shape change at $|t|\approx 0.16\un{GeV^2}$ is caused by the LHC aperture cuts. The data left of the dashed vertical line are discarded due to excessively large acceptance correction.
 }
 \label{fig:acceptance result}
 \end{center}
@@ -475,7 +475,9 @@ $0.19005$ & $0.19965$ & $0.19478$ & $\S12.124$ & $0.0585$ & $\S0.517$ & $+\S0.50
 \subsection{Statistical Uncertainty Adjustment}
 \label{sec:stat unc adj}
 
-There are several indications that the statistical fluctuations in the differential cross-section using the ``optimised'' binning have been slightly overestimated (the ``per-mille'' binning does not suffer from this problem). One way of demonstration is to split the differential cross-section data into small groups of consecutive points ($\sim$ 3, 4, 5) and perform a straight-line fit through each group. The obtained $\chi^2$ values are a little on the low side. Alternatively, it can be demonstrated as follows. The data sample is divided into several sub-samples corresponding to the same luminosity and the above-described analysis method is repeated for all of them. Then, fluctuations of each bin content are determined from the several sub-samples, giving values slightly lower than the uncertainty estimates.
+The statistical fluctuations in the differential cross-section using the ``optimised'' binning have been slightly overestimated (the ``per-mille'' binning does not suffer from this problem). One way of demonstration is splitting the data into groups of consecutive points small enough for linear function to approximate well the differential cross-section within each group. Then, performing straight-line fits through each group yields $\chi^2$ values slightly too low. Alternatively, the issue can be demonstrated as follows. The data sample is divided into several sub-samples corresponding to the same luminosity and the above-described analysis method is repeated for all of them. Then, fluctuations of each bin content are determined from the several sub-samples, giving values slightly lower than the uncertainty estimates.
 % Interpretation?
 
-As a remedy, the statistical uncertainties in the ``optimised'' binning have been divided by a factor of $1.176$. This value has been determined by requiring both binnings to give the same fit quality (value of $\chi^2/\hbox{ndf}$) between the differential cross-section data and a function with enough flexibility (see the green fit in Figure~\ref{fig:data rel ob}).
+As a remedy, the statistical uncertainties in the ``optimised'' binning have been divided by a factor of $1.176$. This value has been determined by requiring both binnings to give the same value of $\chi^2/\hbox{ndf}$ for fits of $\d\sigma / \d t$ to the fit function in Eq.~(\ref{eq:fit param}) with $N_b = 3$ which has enough flexibility to describe the data.
+
+% between the differential cross-section data and a function with enough flexibility (see the green fit in Figure~\ref{fig:data rel ob}).
