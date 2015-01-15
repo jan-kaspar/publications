@@ -94,7 +94,7 @@ currentpad.xTicks = LeftTicks(0.05, 0.01);
 scale(Linear, Log);
 
 DrawBand(f_dsdt_fit, h_rel_unc_full, paleblue+opacity(0.4));
-DrawBand(f_dsdt_fit, h_rel_unc_anal, yellow);
+DrawBand(f_dsdt_fit, h_rel_unc_anal, red);
 
 draw(g_dsdt, "p", mCi+1pt+black);
 
@@ -110,7 +110,7 @@ for (real y = 100; y < 400; y += 100)
 
 AddToLegend("data, statistical unc.", MarkerArray(mCi+1pt, (scale(0.0001, 1.)*mPl)+5pt));
 AddToLegend("full systematic unc. band", mSq+5pt+(paleblue+opacity(0.4)));
-AddToLegend("syst.~unc.~band without", mSq+5pt+yellow);
+AddToLegend("syst.~unc.~band without", mSq+5pt+red);
 AddToLegend("\vbox{\hbox{normalisation}}");
 
 frame fL = BuildLegend(lineLength=5mm, vSkip=3mm, ymargin=0mm, NE);
