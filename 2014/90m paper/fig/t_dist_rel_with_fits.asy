@@ -68,7 +68,8 @@ void DrawBand(rObject o_c, rObject o_r, pen p)
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 
-string base_dir = binning + "/"+datasets[0]+"/"+diagonals[0]+"/fit without systematics, "+format("n_b=%i", 3)+"/"+iteration;
+//string base_dir = binning + "/"+datasets[0]+"/"+diagonals[0]+"/fit without systematics, "+format("n_b=%i", 3)+"/"+iteration;
+string base_dir = binning + "/"+datasets[0]+"/"+diagonals[0]+"/fit with systematics, "+format("n_b=%i", 3)+"/"+iteration;
 
 rObject h_dsdt = rGetObj(topDir+"DS-merged/"+f, base_dir + "/h_dsdt", error=false);
 if (!h_dsdt.valid)

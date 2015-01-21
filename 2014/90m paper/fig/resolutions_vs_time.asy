@@ -17,6 +17,7 @@ ySizeDef = 2.5cm;
 TGraph_errorBar = None;
 
 transform swToHours = scale(1/3600, 1);
+transform paperTimeShift = shift(-19.5, 0);
 
 //----------------------------------------------------------------------------------------------------
 
@@ -28,7 +29,7 @@ for (int dsi : datasets.keys)
 {
 	for (int dgni : diagonals.keys)
 	{
-		draw(swToHours*scale(1, 0.5e6),
+		draw(paperTimeShift * swToHours*scale(1, 0.5e6),
 			rGetObj(topDir+datasets[dsi]+"/distributions_"+diagonals[dgni]+".root", "time dependences/gRMS_diffLR_th_x_vs_time"), "p,eb,d0",
 			dgn_pens[dgni], mCi+1pt+dgn_pens[dgni], dgn_labels[dgni]);
 
@@ -41,7 +42,7 @@ for (int dsi : datasets.keys)
 	}
 }
 
-limits((19, 4), (32, 5), Crop);
+limits((0, 4), (12, 5), Crop);
 for (real y=4; y <= 5; y += 0.2)
 	xaxis(YEquals(y, false), dotted);
 
@@ -58,7 +59,7 @@ for (int dsi : datasets.keys)
 
 	for (int dgni : diagonals.keys)
 	{
-		draw(swToHours*scale(1, 0.5e6),
+		draw(paperTimeShift * swToHours*scale(1, 0.5e6),
 			rGetObj(topDir+datasets[dsi]+"/distributions_"+diagonals[dgni]+".root", "time dependences/gRMS_diffLR_th_y_vs_time"), "p,eb,d0",
 			dgn_pens[dgni], mCi+1pt+dgn_pens[dgni], dgn_labels[dgni]);
 
@@ -71,7 +72,7 @@ for (int dsi : datasets.keys)
 	}
 }
 
-limits((19, 1.5), (32, 1.8), Crop);
+limits((0, 1.5), (12, 1.8), Crop);
 for (real y=1.5; y <= 1.8; y += 0.1)
 	xaxis(YEquals(y, false), dotted);
 

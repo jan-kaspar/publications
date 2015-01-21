@@ -77,7 +77,7 @@ for (int dgni : diagonals.keys)
 		//DrawFitFunction(rGetObj(f, dir+"/f_dgaus"), 1./entries, "Gauss + Gauss", heavygreen);
 	}
 
-	limits((-15, 1e1), (+15, 2e5), Crop);
+	limits((-15, 6e0), (+15, 2e5), Crop);
 	//AttachLegend(NW, NE);
 }
 

@@ -131,7 +131,7 @@ void PlotOneFit(string f, string ds, string dgn, string binning, int n_b, string
 
 	label = "";
 
-	DrawRelDiff(ff, StdPen(n_b) + p, label);
+	DrawRelDiff(ff, red + p, label);
 
 	/*
 	AddToLegend(
