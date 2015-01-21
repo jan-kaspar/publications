@@ -1,7 +1,7 @@
 %----------------------------------------------------------------------------------------------------
 \section{Analysis}
 
-The analysis method is similar to the previously published ones~\cite{epl101-el,prl111}, each diagonal is analysed
+The analysis method is similar to the previously published ones~\cite{epl101-el,prl111}, in particular each diagonal is analysed
 separately. However, a different normalisation
 approach is used (Section~\ref{sec:normalisation}) that makes all 
 $t$-independent scaling factors irrelevant.
@@ -117,7 +117,7 @@ Measurements of beam emittances~\cite{op-elog} show that the vertical beam diver
 \includegraphics{fig/beam_divergence_fits.pdf}
 \vskip-4mm
 \caption{%
-Difference between vertical scattering angles reconstructed in the right and left arm, for the diagonal 45 bottom - 56 top. Red: data from run start ($20$ to $21\un{h}$ from the beginning of the first data-taking day). Blue: data from run end ($30$ to $31\un{h}$), scaled by $0.1$. The solid lines represent Gaussian fits.
+Difference between vertical scattering angles reconstructed in the right and left arm, for the diagonal 45 bottom - 56 top. Red: data from run start ($0.5$ to $1.5\un{h}$ from the beginning of the run). Blue: data from run end ($10.5$ to $11.5\un{h}$), scaled by $0.1$. The solid lines represent Gaussian fits.
 }
 \label{fig:beam divergence}
 \end{center}
@@ -132,7 +132,7 @@ Difference between vertical scattering angles reconstructed in the right and lef
 \includegraphics{fig/resolutions_vs_time.pdf}
 \vskip-4mm
 \caption{%
-Angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), as a function of time (from the beginning of the first data-taking day). The step in $\theta_y^*$ resolution around $26.5\un{h}$ is due to inclusion of another proton bunch with a larger vertical emittance.
+Angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), as a function of time (from the beginning of the run). The step in $\theta_y^*$ resolution around $7\un{h}$ is due to inclusion of another proton bunch with a larger vertical emittance.
 }
 \label{fig:resolutions}
 \end{center}
@@ -268,7 +268,7 @@ The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probab
 \end{equation}
 \fi
 
-Figure \ref{fig:acceptance result} shows an example of the acceptance correction $t$-dependence for one diagonal. Since a single diagonal cannot cover more than half of the phase space, the minimum value of the correction is $2$.
+Figure \ref{fig:acceptance result} shows an example of the acceptance correction $t$-dependence for one diagonal. Since a single diagonal cannot cover more than a half of the phase space, the minimum value of the correction is $2$. As indicated in the figure, data points with too large correction (${\cal A} \gtrsim 5$) are discarded.
 
 \begin{figure}
 \begin{center}
@@ -288,9 +288,9 @@ Full acceptance correction, ${\cal A}$, for diagonal 45 bottom -- 56 top. The po
 \subsubsection{Inefficiency Corrections}
 \label{sec:ineff corr}
 
-Any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (trigger, data acquisition and pile-up inefficiency discussed in~\cite{epl101-el,prl111}). The inefficiencies left are related to inability of a RP to resolve the elastic proton track.
+Since the overall normalisation is determined from another dataset (see Section~\ref{sec:normalisation}), any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (trigger, data acquisition and pile-up inefficiency discussed in~\cite{epl101-el,prl111}). The inefficiencies left are related to inability of a RP to resolve the elastic proton track.
 
-One such case is when a single RP cannot detect and/or reconstruct a proton track, with no correlation to other RPs. This type of inefficiency, ${\cal I}_{3/4}$, is evaluated by removing the RP from the tagging cuts (Table \ref{tab:cuts}), repeating the event selection and calculating the fraction of recovered events. A typical example is given in Figure~\ref{fig:eff 3/4}, showing that the efficiency depends gently on the vertical scattering angle. 
+One such case is when a single RP cannot detect and/or reconstruct a proton track, with no correlation to other RPs. This type of inefficiency, ${\cal I}_{3/4}$, is evaluated by removing the RP from the tagging cuts (Table \ref{tab:cuts}), repeating the event selection and calculating the fraction of recovered events. A typical example is given in Figure~\ref{fig:eff 3/4}, showing that the efficiency decreases gently with the vertical scattering angle. This dependence stems from the fact that protons with larger $|\theta_y^*|$ hit the RPs further from their edge and therefore the potentially created secondary particles have more chance to induce additional signal in the sensors and thus prevent from resolving the elastic proton track.
 
 \begin{figure}
 \begin{center}
@@ -299,7 +299,7 @@ One such case is when a single RP cannot detect and/or reconstruct a proton trac
 \includegraphics{fig/eff3outof4_details_fits.pdf}
 \vskip-3mm
 \caption{%
-Single-RP uncorrelated inefficiency for the far top RP in the left arm. The rapid drop at $\theta_y^* \approx 35\un{\mu rad}$ is due to acceptance effects at the sensor edge. The red lines represent a linear fit of the efficiency dependence on the vertical scattering angle.
+Single-RP uncorrelated inefficiency for the far top RP in the left arm. The rapid drop at $\theta_y^* \approx 35\un{\mu rad}$ is due to acceptance effects at the sensor edge. The red lines represent a linear fit of the efficiency dependence on the vertical scattering angle (solid) and its extrapolation to the region affected by acceptance effects (dashed).
 }
 \label{fig:eff 3/4}
 \end{center}
