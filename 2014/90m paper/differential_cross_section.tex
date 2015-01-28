@@ -2,10 +2,8 @@
 \section{Analysis}
 \label{sec:analysis}
 
-The analysis method is similar to the previously published ones~\cite{epl101-el,prl111}. In particular, each diagonal is analysed
-separately. However, a different normalisation
-approach is used (Section~\ref{sec:normalisation}) that makes all 
-$t$-independent scaling factors irrelevant.
+The analysis method is similar to the previously published ones~\cite{epl101-el,prl111}.
+However, a different normalisation approach is used (Section~\ref{sec:normalisation}) that makes all $t$-independent scaling factors irrelevant.
 
 The analysis is presented in two main blocks. Section~\ref{sec:event anal} covers all aspects related to the reconstruction of a single event.
 Section~\ref{sec:diff cs} describes the steps of transforming a raw $t$-distribution into the differential cross-section. The $t$-distributions for the two diagonals are analysed separately. After comparison (Section~\ref{sec:cross checks}) they are finally merged (Section~\ref{sec:final data merging}).
@@ -53,7 +51,7 @@ where $p$ denotes the beam momentum.
 \subsubsection{Alignment}
 \label{sec:alignment}
 
-The standard three-step procedure \cite{totem-ijmp} has been applied: beam-based alignment prior to the run (as for LHC collimators) followed by two off-line methods. First, track-based alignment for relative positions among RPs, and second, alignment with elastic events for absolute position with respect to the beam. The final uncertainties per unit (common for top and bottom RPs) are: $2\un{\mu m}$ (horizontal shift), $100\un{\mu m}$ (vertical shift) and $0.2\un{mrad}$ (rotation about the beam axis). Propagated to the scattering angles, Eq.~(\ref{eq:kin 2a}), the shifts lead to uncertainties of $0.8\un{\mu rad}$ (horizontal) and $0.2\un{\mu rad}$ (vertical) -- the relatively large impact of horizontal misalignment is due the almost vanishing effective length $L_x$. The error of the RP rotations would bias the reconstructed horizontal scattering angle:
+The standard three-step procedure \cite{totem-ijmp} has been applied: beam-based alignment prior to the run (as for LHC collimators) followed by two off-line methods. First, track-based alignment for relative positions among RPs, and second, alignment with elastic events for absolute position with respect to the beam. The final uncertainties per unit (common for top and bottom RPs) are: $2\un{\mu m}$ (horizontal shift), $100\un{\mu m}$ (vertical shift) and $0.2\un{mrad}$ (rotation about the beam axis). Propagated to the scattering angles, Eq.~(\ref{eq:kin 2a}), the shifts lead to uncertainties of $0.8\un{\mu rad}$ (horizontal) and $0.2\un{\mu rad}$ (vertical). The relatively large impact of horizontal misalignment is due the almost vanishing effective length $L_x$ (cf. Eq.~(\ref{eq:kin 1a})). RP rotations induce a bias in the reconstructed horizontal scattering angle:
 \begin{equation}
 \label{eq:alig rot bias}
 	\theta_x^* \rightarrow \theta_x^* + c \theta_y^*\ ,
@@ -104,7 +102,7 @@ normalised such that the factors $\eta_{1,2}$ have unit variance.
 \subsubsection{Resolution}
 \label{sec:resolution}
 
-Statistical fluctuations in the reconstructed scattering angles are caused by the beam divergence and, in the horizontal projection (due to small $L_x$), also by the sensor resolution. They are studied by comparing the scattering angles reconstructed from the two arms, in particular through differences $\theta_{x,y}^{*\rm R} - \theta_{x,y}^{*\rm L}$ as illustrated in Figure \ref{fig:beam divergence}. The distributions exhibit small deviations from Gaussian shape which decrease with time.
+Statistical fluctuations in the reconstructed scattering angles are caused by the beam divergence and, in the horizontal projection (due to small $L_x$), also by the sensor resolution. They are studied by comparing the scattering angles reconstructed from the two arms, in particular through differences $\theta_{x,y}^{*\rm R} - \theta_{x,y}^{*\rm L}$ as illustrated in Figure \ref{fig:beam divergence}. The distributions exhibit small deviations from a Gaussian shape which decrease with time.
 
 Since in good approximation the fluctuations are independent in each arm, the angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), is given by half of the standard deviation of the $\theta_{x,y}^{*\rm R} - \theta_{x,y}^{*\rm L}$ distributions. As shown in Figure~\ref{fig:resolutions}, the resolution deteriorates slightly with time, which can be expected mainly due to the emittance growth. The small difference in $\theta_x^*$ resolution between the diagonals can be attributed to different RPs, each with slightly different spatial resolution, being involved in the two diagonals.
 
@@ -255,7 +253,7 @@ Distribution of scattering angle projections $\theta_y^*$ vs.~$\theta_x^*$. The 
 \end{figure}
 
 
-The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probability that any of the two elastic protons is pushed outside the acceptance due to the beam divergence. The beam divergence distribution is modelled as Gaussian with spread determined by the method described in Section~\ref{sec:resolution}. This correction contribution is only sizeable close to the acceptance limitations but is kept below $1.5$ by discarding data with larger corrections. The uncertainties are related to the resolution parameters (vertical beam divergence, left-right asymmetry and non-Gaussian shape), and all stay below $0.1\un{\%}$.
+The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probability that any of the two elastic protons is pushed outside the acceptance due to the beam divergence. The beam divergence distribution is modelled as a Gaussian with the spread determined by the method described in Section~\ref{sec:resolution}. This correction contribution is only sizeable close to the acceptance limitations but is kept below $1.5$ by discarding data with larger corrections. The uncertainties are related to the resolution parameters (vertical beam divergence, left-right asymmetry and non-Gaussian shape), and all stay below $0.1\un{\%}$.
 
 
 \iffalse
@@ -268,7 +266,7 @@ The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probab
 \end{equation}
 \fi
 
-Figure \ref{fig:acceptance result} shows an example of the acceptance correction $t$-dependence for one diagonal. Since a single diagonal cannot cover more than half of the phase space, the minimum value of the correction is $2$. As indicated in the figure, data points with too large correction (${\cal A} \gtrsim 5$) are discarded.
+Figure \ref{fig:acceptance result} shows an example for the $t$-dependence of the acceptance correction for one diagonal. Since a single diagonal cannot cover more than half of the phase space, the minimum value of the correction is $2$. As indicated in the figure, data points with too large correction (${\cal A} \gtrsim 5$) are discarded.
 
 \begin{figure}
 \begin{center}
@@ -479,7 +477,7 @@ $0.19005$ & $0.19965$ & $0.19478$ & $\S12.124$ & $0.0585$ & $\S0.517$ & $+\S0.50
 \subsection{Statistical Uncertainty Adjustment}
 \label{sec:stat unc adj}
 
-The statistical fluctuations in the differential cross-section using the ``optimised'' binning have been slightly overestimated (the ``per-mille'' binning does not suffer from this problem). One way of demonstration is splitting the data into groups of consecutive points small enough for a linear function to approximate well the differential cross-section within each group. Then, performing straight-line fits through each group yields $\chi^2$ values slightly too low. Alternatively, the issue can be demonstrated as follows. The data sample is divided into several sub-samples corresponding to the same luminosity, and the analysis method described in the earlier sections is repeated for each of these sub-samples. Then, fluctuations of each bin content are determined from the several sub-samples, giving values slightly lower than the uncertainty estimates.
+The statistical fluctuations in the differential cross-section using the ``optimised'' binning have been slightly overestimated (the ``per-mille'' binning does not suffer from this problem). One way to demonstrate this is to split the data into groups of consecutive points small enough for a linear function to approximate well the differential cross-section within each group. Then, performing straight-line fits through each group yields $\chi^2$ values slightly too low. Alternatively, the issue can be demonstrated as follows. The data sample is divided into several sub-samples corresponding to the same luminosity, and the analysis method described in the earlier sections is repeated for each of these sub-samples. Then, fluctuations of each bin content are determined from the several sub-samples, giving values slightly lower than the uncertainty estimates.
 % Interpretation?
 
 As a remedy, the statistical uncertainties in the ``optimised'' binning have been divided by a factor of $1.176$. This value has been determined by requiring both binnings to give the same value of $\chi^2/\hbox{ndf}$ for fits of $\d\sigma / \d t$ to the fit function in Eq.~(\ref{eq:fit param}) with $N_b = 3$ which has enough flexibility to describe the data.
