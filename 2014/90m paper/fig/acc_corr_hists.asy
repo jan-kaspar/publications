@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 
 string topDir = "../analysis/";
 
@@ -10,6 +10,13 @@ real t_min[] = { 0.027 };
 
 string dgns[] = { "45b_56t" };
 string dgn_labels[] = { "45b -- 56t" };
+
+//xSizeDef = 6cm;
+//ySizeDef = 5cm;
+xSizeDef = 10cm;
+ySizeDef = 6cm;
+
+//----------------------------------------------------------------------------------------------------
 
 for (int dsi : datasets.keys)
 {
@@ -36,7 +43,7 @@ for (int dsi : datasets.keys)
 			xaxis(YEquals(y, false), dotted);
 		*/
 		
-		NewPad("$|t|\ung{GeV^2}$", "acceptance correction ${\cal A}$", xSize=6cm, ySize=5cm);
+		NewPad("$|t|\ung{GeV^2}$", "acceptance correction ${\cal A}$");
 		currentpad.xTicks = LeftTicks(0.05, 0.01);
 		//scale(Linear, Log);
 		//draw(rGetObj(f, "acceptance correction/ob/p_t_phi_corr"), "d0,eb", heavygreen, "phi");

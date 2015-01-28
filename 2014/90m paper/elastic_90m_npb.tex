@@ -1,11 +1,12 @@
-\documentclass[3p,twocolumn]{elsarticle}
+\documentclass[3p,onecolumn,12pt,times]{elsarticle}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{graphicx}
+%\usepackage{graphicx}
 \usepackage{color}
-\usepackage{mathptmx}
+%\usepackage{mathptmx}
 \usepackage{url}
+\usepackage{fleqn}
 
 %------------------------------------------------------------------------------
 
@@ -20,6 +21,7 @@
 \def\mat#1{\mathsf{#1}}
 \def\etal{et al.}
 \def\todo#1{{\color{red}TODO: #1}}
+\def\TODO#1{{\color{red}TODO: #1}}
 
 \setbox123\hbox{$0$}
 \setbox124\hbox{$.$}
@@ -51,7 +53,7 @@ $\sqrt s = 8\un{TeV}$ based on a high-statistics data sample obtained with
 the $\beta^* = 90\un{m}$ optics. 
 Both statistical and systematic uncertainties remain below $1\un{\%}$ (except for the contribution from the overall normalisation). This unprecedented precision allows to exclude a purely exponential differential cross-section in the range of four-momentum transfer squared $0.027 < |t| < 0.2\un{GeV^2}$ with a significance greater than $7\un{\sigma}$.
 %
-Two extended parametrisations, with linear and quadratic polynomials in the exponent, are shown to be well compatible with the data. Using them for differential cross-section extrapolation to $t=0$, and further applying the Optical Theorem, yields total cross-section estimates $(100.8 \pm 2.1)\un{mb}$ and $(101.2 \pm 2.1)\un{mb}$, well compatible with previous TOTEM measurements.
+Two extended parametrisations, with quadratic and cubic polynomials in the exponent, are shown to be well compatible with the data. Using them for differential cross-section extrapolation to $t=0$, and further applying the optical theorem, yields total cross-section estimates $(100.8 \pm 2.1)\un{mb}$ and $(101.2 \pm 2.1)\un{mb}$, well compatible with previous TOTEM measurements.
 \end{abstract}
 
 \begin{keyword}
@@ -143,24 +145,27 @@ NKTH-OTKA grant 74458 (Hungary).
 \bibitem{op-elog} CERN BE-OP eLogbook: \url{https://www.cern.ch/ab-dep-op-elogbook/elogbook/secure/eLogbook.php?shiftId=1045825}
 
 \bibitem{hubert-thesis}
-	\Name{Niewiadomski H.}
+	\Name{H.~Niewiadomski}
 	%Reconstruction of Protons in the TOTEM Roman Pot Detectors at the LHC
     PhD thesis, 
 	%University of Manchester, 2008
-    CERN-THESIS-2008-080 
-	{\tt http://cds.cern.ch/record/1131825}
+    CERN-THESIS-2008-080,
+	\url{http://cds.cern.ch/record/1131825}
 
 \bibitem{lafferty94}
  	% Where to stick your data points: The treatment of measurements within wide bins
-	\Name{G.D.~Lafferty~and T.R.~Wyatt}
+	\Name{G.~D.~Lafferty~and T.R.~Wyatt}
 	\REVIEW{Nucl.\ Instrum.\ Meth.}{A 355}{1995}{541}
 
 \bibitem{compete} 
-	\Name{J.R.~Cudell~\etal{} (COMPETE Collaboration)}
+	\Name{J.~R.~Cudell~\etal{} (COMPETE Collaboration)}
 	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
 
-\iffalse
 
+
+% TODO: remove the unnecessary references
+
+\iffalse
 \bibitem{1km}
 	\Name{G.~Antchev~\etal{}~(TOTEM Collaboration)}
         Measurement of Elastic pp Scattering at $\sqrt{s}=8\,$TeV in the 

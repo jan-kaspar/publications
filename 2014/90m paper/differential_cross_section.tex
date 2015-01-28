@@ -1,5 +1,6 @@
 %----------------------------------------------------------------------------------------------------
 \section{Analysis}
+\label{sec:analysis}
 
 The analysis method is similar to the previously published ones~\cite{epl101-el,prl111}. In particular, each diagonal is analysed
 separately. However, a different normalisation
@@ -25,11 +26,9 @@ Event kinematics are determined from coordinates of track hits in the RPs after 
 The scattering angles and vertex position are first determined for each proton (i.e.~from each arm) separately by inverting the proton transport, Eq.~(\ref{eq:prot trans}), assuming $\xi = 0$. The following formulae optimise the robustness against optics imperfections:
 \begin{equation}
 \label{eq:kin 1a}
-	\begin{aligned}
-		\theta_x^{*L,R} &= {v_x^{\rm N} x^{\rm F} - v_x^{\rm F} x^{\rm N}\over v_x^{\rm N} L_x^{\rm F} - v_x^{\rm F} L_x^{\rm N}}\ ,\qquad
-		\theta_y^{*L,R} = {1\over 2} \left( {y^{\rm N}\over L_y^{\rm N}} + {y^{\rm F}\over L_y^{\rm F}} \right)\ ,\\
-		x^{*L,R} &= {L_x^{\rm N} x^{\rm F} - L_x^{\rm F} x^{\rm N}\over L_x^{\rm N} v_x^{\rm F} - L_x^{\rm F} v_x^{\rm N}}\ , \\
-	\end{aligned}
+	\theta_x^{*\rm L,R} = {v_x^{\rm N} x^{\rm F} - v_x^{\rm F} x^{\rm N}\over v_x^{\rm N} L_x^{\rm F} - v_x^{\rm F} L_x^{\rm N}}\ ,\qquad
+	\theta_y^{*\rm L,R} = {1\over 2} \left( {y^{\rm N}\over L_y^{\rm N}} + {y^{\rm F}\over L_y^{\rm F}} \right)\ ,\qquad
+	x^{*\rm L,R} = {L_x^{\rm N} x^{\rm F} - L_x^{\rm F} x^{\rm N}\over L_x^{\rm N} v_x^{\rm F} - L_x^{\rm F} v_x^{\rm N}}\ ,
 \end{equation}
 where the N and F superscripts refer to the near and far units, L and R to the 
 left and right arm, respectively. This one-arm reconstruction is used for tagging elastic events, where the left and right arm protons are compared.
@@ -37,13 +36,15 @@ left and right arm, respectively. This one-arm reconstruction is used for taggin
 Once an event is selected, the information from both arms is merged yielding better angular resolution:
 \begin{equation}
 \label{eq:kin 2a}
-\theta_x^* = {\theta_x^{*\rm L} + \theta_x^{*\rm R} \over 2}\ ,\quad \theta_y^* = {\theta_y^{*\rm L} + \theta_y^{*\rm R} \over 2}\ .
+	\theta_x^* = {\theta_x^{*\rm L} + \theta_x^{*\rm R} \over 2}\ ,\qquad
+	\theta_y^* = {\theta_y^{*\rm L} + \theta_y^{*\rm R} \over 2}\ .
 \end{equation}
 Eventually, the full scattering angle, $\theta^*$, and four-momentum transfer squared, $t$, are calculated as
 
 \begin{equation}
 \label{eq:th t}
-\theta^* = \sqrt{{\theta_x^*}^2 + {\theta_y^*}^2}\ ,\quad t = - p^2 ({\theta_x^*}^2 + {\theta_y^*}^2)\ ,
+	\theta^* = \sqrt{{\theta_x^*}^2 + {\theta_y^*}^2}\ ,\qquad
+	t = - p^2\, \left({\theta_x^*}^2 + {\theta_y^*}^2\right)\ ,
 \end{equation}
 where $p$ denotes the beam momentum.
 
@@ -52,13 +53,12 @@ where $p$ denotes the beam momentum.
 \subsubsection{Alignment}
 \label{sec:alignment}
 
-The standard three-step procedure \cite{totem-ijmp} has been applied: beam-based alignment prior to the run (as for LHC collimators) followed by two off-line methods. First, track-based alignment for relative positions among RPs, and second, alignment with elastic events for absolute position with respect to the beam. The final uncertainties per unit (common for top and bottom RPs) are: $2\un{\mu m}$ (horizontal shift), $100\un{\mu m}$ (vertical shift) and $0.2\un{mrad}$ (rotation about the beam axis). Propagated to the scattering angles, Eq.~(\ref{eq:kin 2a}), the shifts lead to uncertainties of $0.8\un{\mu rad}$ (horizontal) and $0.2\un{\mu rad}$ (vertical). The error of the RP rotations would bias the reconstructed horizontal scattering angle:
+The standard three-step procedure \cite{totem-ijmp} has been applied: beam-based alignment prior to the run (as for LHC collimators) followed by two off-line methods. First, track-based alignment for relative positions among RPs, and second, alignment with elastic events for absolute position with respect to the beam. The final uncertainties per unit (common for top and bottom RPs) are: $2\un{\mu m}$ (horizontal shift), $100\un{\mu m}$ (vertical shift) and $0.2\un{mrad}$ (rotation about the beam axis). Propagated to the scattering angles, Eq.~(\ref{eq:kin 2a}), the shifts lead to uncertainties of $0.8\un{\mu rad}$ (horizontal) and $0.2\un{\mu rad}$ (vertical) -- the relatively large impact of horizontal misalignment is due the almost vanishing effective length $L_x$. The error of the RP rotations would bias the reconstructed horizontal scattering angle:
 \begin{equation}
 \label{eq:alig rot bias}
-\theta_x^* \rightarrow \theta_x^* + c \theta_y^*\ ,
+	\theta_x^* \rightarrow \theta_x^* + c \theta_y^*\ ,
 \end{equation}
 where the proportionality constant $c$ has a standard deviation of $0.02$.
-
 
 
 %------------------------------
@@ -71,8 +71,8 @@ In order to reduce the impact of imperfect optics knowledge, the optics matching
 The residual errors induce a bias in the reconstructed scattering angles:
 \begin{equation}
 \label{eq:opt bias}
-\theta_x^* \rightarrow (1 + d_x)\, \theta_x^*\ ,\quad
-\theta_y^* \rightarrow (1 + d_y)\, \theta_y^*\ .
+	\theta_x^* \rightarrow (1 + d_x)\, \theta_x^*\ ,\qquad
+	\theta_y^* \rightarrow (1 + d_y)\, \theta_y^*\ .
 \end{equation}
 For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.21\un{\%}$ and $0.25\un{\%}$, respectively, and correlation factor of $-0.70$. These estimates include the effects of magnet harmonics.
 %
@@ -95,7 +95,7 @@ For evaluating the impact on the $t$-distribution, it is convenient to decompose
 \label{eq:opt bias modes}
 \begin{pmatrix} d_x\cr d_y \end{pmatrix} =
 	\eta_1 \underbrace{\begin{pmatrix} -0.182\un{\%} \cr +0.235\un{\%} \end{pmatrix}}_{\rm mode\ 1}
-	+ \eta_2 \underbrace{\begin{pmatrix} -0.096\un{\%} \cr -0.074\un{\%} \end{pmatrix}}_{\rm mode\ 2}
+	\ +\ \eta_2 \underbrace{\begin{pmatrix} -0.096\un{\%} \cr -0.074\un{\%} \end{pmatrix}}_{\rm mode\ 2}
 \end{equation}
 normalised such that the factors $\eta_{1,2}$ have unit variance.
 
@@ -104,11 +104,11 @@ normalised such that the factors $\eta_{1,2}$ have unit variance.
 \subsubsection{Resolution}
 \label{sec:resolution}
 
-Statistical fluctuations in the reconstructed scattering angles are caused by the beam divergence and, in the horizontal projection (due to small $L_x$), also by the sensor resolution. They are studied by comparing the scattering angles reconstructed from the two arms, in particular through differences $\theta_{x,y}^{*R} - \theta_{x,y}^{*L}$ as illustrated in Figure \ref{fig:beam divergence}. The distributions exhibit small deviations from Gaussian shape which decrease with time.
+Statistical fluctuations in the reconstructed scattering angles are caused by the beam divergence and, in the horizontal projection (due to small $L_x$), also by the sensor resolution. They are studied by comparing the scattering angles reconstructed from the two arms, in particular through differences $\theta_{x,y}^{*\rm R} - \theta_{x,y}^{*\rm L}$ as illustrated in Figure \ref{fig:beam divergence}. The distributions exhibit small deviations from Gaussian shape which decrease with time.
 
-Since in good approximation the fluctuations are independent in each arm, the angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), is given by half of the standard deviation of the $\theta_{x,y}^{*R} - \theta_{x,y}^{*L}$ distributions. As shown in Figure~\ref{fig:resolutions}, the resolution deteriorates slightly with time, which can be expected mainly due to the emittance growth. The small difference in $\theta_x^*$ resolution between the diagonals can be attributed to different RPs, each with slightly different spatial resolution, being involved in the two diagonals.
+Since in good approximation the fluctuations are independent in each arm, the angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), is given by half of the standard deviation of the $\theta_{x,y}^{*\rm R} - \theta_{x,y}^{*\rm L}$ distributions. As shown in Figure~\ref{fig:resolutions}, the resolution deteriorates slightly with time, which can be expected mainly due to the emittance growth. The small difference in $\theta_x^*$ resolution between the diagonals can be attributed to different RPs, each with slightly different spatial resolution, being involved in the two diagonals.
 
-Measurements of beam emittances~\cite{op-elog} show that the vertical beam divergences of the two beams are equal with a tolerance of about $15\un{\%}$. Exploiting this equality, one can de-convolute the distribution of $\theta_y^{*R} - \theta_y^{*L}$ in order to obtain the beam-divergence distribution, used e.g.~for acceptance corrections (see Section~\ref{sec:acc corr}).
+Measurements of beam emittances~\cite{op-elog} show that the vertical beam divergences of the two beams are equal with a tolerance of about $15\un{\%}$. Exploiting this equality, one can de-convolute the distribution of $\theta_y^{*\rm R} - \theta_y^{*\rm L}$ in order to obtain the beam-divergence distribution, used e.g.~for acceptance corrections (see Section~\ref{sec:acc corr}).
 
 \begin{figure}
 \begin{center}
@@ -148,9 +148,9 @@ Angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), as a f
 
 For a given $t$ bin, the differential cross-section is evaluated by selecting and counting elastic events:
 \begin{equation}
-{\d\sigma\over \d t}(\hbox{bin}) =
-	{\cal N}\, {\cal U}({\rm bin})\, {\cal B}\ 
-	{\sum\limits_{t \in \hbox{bin}} {\cal A}(\theta^*, \theta_y^*)\, {\cal E}(\theta_y^*)\over \Delta t}\ ,
+	{\d\sigma\over \d t}(\hbox{bin}) =
+		{\cal N}\, {\cal U}({\rm bin})\, {\cal B}\ 
+		{\sum\limits_{t \in \hbox{bin}} {\cal A}(\theta^*, \theta_y^*)\ {\cal E}(\theta_y^*)\over \Delta t}\ ,
 \end{equation}
 where $\Delta t$ is the width of the bin, ${\cal N}$ is a normalisation factor, 
 and the other symbols stand for various correction factors:
@@ -305,7 +305,7 @@ Single-RP uncorrelated inefficiency for the far top RP in the left arm. The rapi
 \end{center}
 \end{figure}
 
-Another source of inefficiency are proton interactions in a near RP affecting simultaneously the far RP downstream. The contribution from these near-far correlated inefficiencies, ${\cal I}_{2/4}$, is determined by evaluating the rate of events with high track multiplicity ($\gtrsim$ 5) in both near and far RPs. Events with high track multiplicity simultaneously in a near top and near bottom RP are not counted as such a shower is likely to have started upstream from the RP station and thus unrelated to the elastic proton interacting with detectors. The outcome, ${\cal I}_{2/4} \approx 1.5\un{\%}$, compares well to Monte-Carlo simulations (e.g.~section 7.5 in \cite{hubert-thesis}).
+Another source of inefficiency are proton interactions in a near RP affecting simultaneously the far RP downstream. The contribution from these near-far correlated inefficiencies, ${\cal I}_{2/4}$, is determined by evaluating the rate of events with high track multiplicity ($\gtrsim$ 5) in both near and far RPs. Events with high track multiplicity simultaneously in a near top and near bottom RP are not counted as such a shower is likely to have started upstream from the RP station and thus unrelated to the elastic proton interacting with detectors. The outcome, ${\cal I}_{2/4} \approx 1.5\un{\%}$, is compatible between left/right arms and top/bottom RP pairs, in addition it compares well to Monte-Carlo simulations (e.g.~section 7.5 in \cite{hubert-thesis}).
 
 The full correction is calculated as
 \begin{equation}
@@ -385,6 +385,8 @@ The Monte-Carlo simulations show that the combined effect of several systematic 
 
 Compatible results have been obtained from data originating from different bunches, different diagonals and different time periods.
 
+In addition, the complete analysis chain has been applied in two independent analysis implementations, yielding compatible results.
+
 %----------------------------------------------------------------------------------------------------
 
 \subsection{Final Data Merging}
@@ -405,12 +407,12 @@ The envelope is determined by summing all shown contributions in quadrature for 
 \end{center}
 \end{figure*}
 
-Eventually, the differential cross-section histograms from both diagonals are merged. This is accomplished by a per-bin weighted average, with the weight given by inverse squared statistical uncertainty. The statistical and systematic uncertainties are propagated accordingly. For the systematic ones, the correlation between the diagonals is taken into account. For example, the vertical (mis-)alignment of the RPs within one unit is almost fully correlated, thus the effect on the differential cross-section is opposite in the two diagonals, and consequently its impact is strongly reduced once the diagonals are merged.
+Finally, the differential cross-section histograms from both diagonals are merged. This is accomplished by a per-bin weighted average, with the weight given by inverse squared statistical uncertainty. The statistical and systematic uncertainties are propagated accordingly. For the systematic ones, the correlation between the diagonals is taken into account. For example, the vertical (mis-)alignment of the RPs within one unit is almost fully correlated, thus the effect on the differential cross-section is opposite in the two diagonals, and consequently its impact is strongly reduced once the diagonals are merged.
 
 The final systematic uncertainties are summarised in Figure~\ref{fig:syst unc} where their impact on the differential cross-section is shown. The leading uncertainties include normalisation, optics imperfections and beam momentum offset. Their effects are quantified in Table~\ref{tab:data}, which can be used to approximate the covariance matrix of systematic uncertainties:
 \begin{equation}
 \label{eq:covar mat}
-\mat V_{ij} = \sum_{q} \delta s_{q}(i)\, \delta s_{q}(j)\: ,
+\mat V_{ij} = \sum_{q} \delta s_{q}(i)\ \delta s_{q}(j)\: ,
 \end{equation}
 where $i$ and $j$ are bin indices (row numbers in Table~\ref{tab:data}) and the sum goes over the leading error contributions $q$ (four right-most columns in the table).
 
@@ -424,14 +426,16 @@ The other columns are related to the differential cross-section. The four right-
 \vskip-2mm
 \label{tab:data}
 \begin{center}
-\small
-\setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{ccc@{\hskip20pt}ccccccc}
+%\small
+\footnotesize
+%\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{ccc@{\hskip10pt}ccccccc}
 \hline
 \hline
 \multispan3\hss\vrule width0pt depth4pt height10pt $|t|$ bin $\unt{GeV^2}$\hss & \multispan7\hss $\d\sigma/\d t \ung{mb/GeV^2}$ \hss \cr
-\multispan3\hrulefill\hbox to15pt{\hfil} & \multispan7\hrulefill \cr
-left & right & representative & value & statistical     & systematic  & normalisation & optics   & optics   & beam\cr
+\multispan3\hrulefill\hbox to5pt{\hfil} & \multispan7\hrulefill \cr
+left & right & represent. & value & statistical     & systematic  & normalisation & optics   & optics   & beam\cr
 edge & edge  & point      &       & uncertainty      & uncertainty   &  $\mathcal{N}$     & mode 1   & mode 2   & momentum\cr
 \hline
 $0.02697$ & $0.03005$ & $0.02850$ & $300.94\S$ & $0.612\S$ & $12.68\S$ & $+12.66\S$ & $-0.473\S$ & $-0.259\S$ & $+0.254\S$ \cr

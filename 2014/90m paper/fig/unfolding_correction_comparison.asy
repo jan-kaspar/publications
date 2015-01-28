@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 
 string datasets[] = { "DS4" };
 
@@ -15,8 +15,10 @@ string object = "corr_final";
 
 string topDir = "../analysis/";
 
-xSizeDef = 6cm;
-ySizeDef = 4cm;
+//xSizeDef = 6cm;
+//ySizeDef = 4cm;
+xSizeDef = 10cm;
+ySizeDef = 6cm;
 
 //----------------------------------------------------------------------------------------------------
 

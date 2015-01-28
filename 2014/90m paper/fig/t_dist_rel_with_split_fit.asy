@@ -1,9 +1,14 @@
 import root;
 import pad_layout;
+import patterns;
+
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta90/plots/t_distributions/common_code.asy";
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+pen full_band_p = (olive*0.5 + yellow*0.7) + opacity(0.7);
+pen anal_band_p = brown*0.5 + yellow*0.5;
+add("hatch", hatch(1.3mm, NE, anal_band_p+1pt));
 
 //----------------------------------------------------------------------------------------------------
 
@@ -16,7 +21,7 @@ string datasets_unc[] = { "DS4" };
 string diagonals[] = { "combined" };
 string diagonals_long[] = { "diagonals combined" };
 
-xSizeDef = 14.5cm;
+xSizeDef = 14.1cm;
 ySizeDef = 6cm;
 
 string ref_str = MakeRefStr();
@@ -173,8 +178,8 @@ for (int dsi : datasets.keys)
 
 		// uncertainty band
 		//AddToLegend("systematic uncertainty band", mSq+true+5pt+lightgray);
-		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_full, x_max=0.2, paleblue+opacity(0.4), "full systematic uncertainty band");
-		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_anal, x_max=0.2, yellow, "syst.~unc.~band without normalisation");
+		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_full, x_max=0.2, full_band_p, "full systematic uncertainty band");
+		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_anal, x_max=0.2, pattern("hatch"), "syst.~unc.~band without normalisation");
 
 		//AddToLegend("fit parametrisation: $\cases{a_1\,\exp(-b_1 |t|) & for $|t| < 0.7\un{GeV^2}$\cr a_2\,\exp(-b_2 |t|) & for $|t| > 0.7\un{GeV^2}$\cr}$");
 

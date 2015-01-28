@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 
 string datasets[] = { "DS4" };
 string diagonals[] = { "45b_56t" };
@@ -11,8 +11,10 @@ string RP_labels[] = { "left far" };
 
 string topDir = "../analysis/";
 
-xSizeDef = 6.5cm;
-ySizeDef = 4cm;
+//xSizeDef = 6.5cm;
+//ySizeDef = 4cm;
+xSizeDef = 10cm;
+ySizeDef = 6cm;
 
 int gx=0, gy=0;
 

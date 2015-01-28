@@ -2,7 +2,7 @@ import root;
 import pad_layout;
 include "../analysis/plots/systematics/common_code";
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 
 AddAllModes();
 
@@ -85,6 +85,7 @@ for (real x = 0; x <= 0.2; x += 0.05)
 	yaxis(XEquals(x, false), dotted);
 
 frame f_legend;
+legendLabelPen = fontcommand("\SetFontSizesVIII");
 f_legend = BuildLegend(vSkip=-1mm, lineLength=6mm, 4);
 
 //----------------------------------------------------------------------------------------------------
@@ -108,6 +109,6 @@ for (real x = 0; x <= 0.2; x += 0.05)
 
 NewPad(false, 0, -1);
 attach(f_legend);
-FixPad(340, 140);
+FixPad(337, 150);
 
 GShipout(hSkip=5mm, vSkip=0mm, margin=0mm);

@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 
 string datasets[] = { "DS4" };
 
@@ -11,8 +11,10 @@ pen dgn_pens[] = { blue, red };
 
 string topDir = "../analysis/";
 
+//xSizeDef = 6.5cm;
+//ySizeDef = 2.5cm;
 xSizeDef = 6.5cm;
-ySizeDef = 2.5cm;
+ySizeDef = 4cm;
 
 TGraph_errorBar = None;
 
@@ -21,8 +23,9 @@ transform paperTimeShift = shift(-19.5, 0);
 
 //----------------------------------------------------------------------------------------------------
 
-NewPad("", "$\theta_x^*$ resolution $\ung{\mu rad}$");
-currentpad.xTicks = LeftTicks("%",  2., 1.);
+NewPad("time $\ung{h}$", "$\theta_x^*$ resolution $\ung{\mu rad}$");
+//currentpad.xTicks = LeftTicks("%",  2., 1.);
+currentpad.xTicks = LeftTicks(2., 1.);
 currentpad.yTicks = RightTicks(0.2, 0.1);
 
 for (int dsi : datasets.keys)
@@ -48,7 +51,7 @@ for (real y=4; y <= 5; y += 0.2)
 
 //----------------
 
-NewRow();
+//NewRow();
 NewPad("time $\ung{h}$", "$\theta_y^*$ resolution $\ung{\mu rad}$");
 currentpad.xTicks = LeftTicks(2., 1.);
 currentpad.yTicks = RightTicks(0.1, 0.02);
@@ -79,4 +82,4 @@ for (real y=1.5; y <= 1.8; y += 0.1)
 add(BuildLegend(vSkip=1mm, lineLength=2mm, NW), point(NW), Fill(white));
 
 
-GShipout(margin=0mm, vSkip=0pt);
+GShipout(margin=0mm, vSkip=0pt, hSkip=5mm);

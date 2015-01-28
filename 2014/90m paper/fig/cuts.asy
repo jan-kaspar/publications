@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 
 TH2_palette = Gradient(white, blue, heavygreen, yellow, red);
 
@@ -12,8 +12,10 @@ string diagonal = "45t_56b";
 
 string topDir = "../analysis/";
 
+//xSizeDef = 5cm;
+//ySizeDef = 4.5cm;
 xSizeDef = 5cm;
-ySizeDef = 4.5cm;
+ySizeDef = 5cm;
 
 int cuts[] = { 1, 2, 5, 6, 9 };
 
@@ -22,15 +24,15 @@ string cut_desc[] = { "cut 1", "cut 2", "", "", "cut 3", "cut 4", "", "", "cut 5
 real scale_x[] = { 1e6, 1e6, 1e6, 1e6, 1e0, 1e0, 1e6, 1e0, 1e3 };
 real scale_y[] = { 1e6, 1e6, 1e0, 1e0, 1e0, 1e0, 1e0, 1e0, 1e3 };
 
-string label_x[] = { "$\theta_x^{*R}\ung{\mu rad}$", "$\theta_y^{*R}\ung{\mu rad}$", "$\theta_x^{*R}\ung{\mu rad}$", "$\theta_x^{*L}\ung{\mu rad}$", "$y^{R,N}\ung{mm}$", "$y^{L,N}\ung{mm}$", "$\theta_x^*\ung{\mu rad}$", "bla", "$x^{*R}\ung{\mu m}$" };
-string label_y[] = { "$\theta_x^{*L}\ung{\mu rad}$", "$\theta_y^{*L}\ung{\mu rad}$", "$x^{*R}\ung{mm}$", "$x^{*L}\ung{mm}$", "$y^{R,F} - y^{R,N}\ung{mm}$", "$y^{L,F} - y^{L,N}\ung{mm}$", "$\De^{R-L} x^*\ung{mm}$", "bla", "$x^{*L}\ung{\mu m}$" };
+string label_x[] = { "$\theta_x^{*\rm R}\ung{\mu rad}$", "$\theta_y^{*\rm R}\ung{\mu rad}$", "$\theta_x^{*\rm R}\ung{\mu rad}$", "$\theta_x^{*\rm L}\ung{\mu rad}$", "$y^{\rm R,N}\ung{mm}$", "$y^{\rm L,N}\ung{mm}$", "$\theta_x^*\ung{\mu rad}$", "bla", "$x^{*\rm R}\ung{\mu m}$" };
+string label_y[] = { "$\theta_x^{*\rm L}\ung{\mu rad}$", "$\theta_y^{*\rm L}\ung{\mu rad}$", "$x^{*\rm R}\ung{mm}$", "$x^{*\rm L}\ung{mm}$", "$y^{\rm R,F} - y^{\rm R,N}\ung{mm}$", "$y^{\rm L,F} - y^{\rm L,N}\ung{mm}$", "$\De^{\rm R-L} x^*\ung{mm}$", "bla", "$x^{*\rm L}\ung{\mu m}$" };
 string label_cut[] = { "$\De^{R-L} \theta_x^{*}\ung{\mu rad}$", "$\De^{R-L} \theta_y^{*}\ung{\mu rad}$", "$x^{*R}\ung{mm}$", "$x^{*L}\ung{mm}$", "$cq5$", "$cq6$", "$cq7$", "cq8",  "vtx R - vtx L"};
 
-real lim_x_low[] = { -400, -120, 0, 0, -30,   5, -200, 0, -1000 };
-real lim_x_high[] = { +400, -20, 1, 1, -5,   +30,  +200, 1, 1000 };
+real lim_x_low[] = { -400, -120, 0, 0, -30,   5, -200, 0, -800 };
+real lim_x_high[] = { +400, -20, 1, 1, -5,   +30,  +200, 1, 800 };
 
-real lim_y_low[] = { -400, -120, 0, 0,  -3,  0.5, -0.2, 0, -1000 };
-real lim_y_high[] = { +400, -20, 1, 1,  -0.5, +3,  +0.2, 1, 1000 };
+real lim_y_low[] = { -400, -120, 0, 0,  -3,  0.5, -0.2, 0, -800 };
+real lim_y_high[] = { +400, -20, 1, 1,  -0.5, +3,  +0.2, 1, 800 };
 
 int en = 0;
 for (int ci : cuts.keys)
@@ -59,4 +61,4 @@ for (int ci : cuts.keys)
 	++en;
 }
 
-GShipout(hSkip=5mm, vSkip=2mm, margin=0mm);
+GShipout(hSkip=3mm, vSkip=2mm, margin=0mm);

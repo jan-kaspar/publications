@@ -1,9 +1,15 @@
 import root;
 import pad_layout;
+import patterns;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta90/plots/t_distributions/common_code.asy";
+
+pen full_band_p = (olive*0.5 + yellow*0.7) + opacity(0.7);
+pen anal_band_p = brown*0.5 + yellow*0.5;
+add("hatch", hatch(1.3mm, NE, anal_band_p+1pt));
+
 
 //----------------------------------------------------------------------------------------------------
 
@@ -20,7 +26,7 @@ string datasets_unc[] = { "DS4" };
 string diagonals[] = { "combined" };
 string diagonals_long[] = { "diagonals combined" };
 
-xSizeDef = 14.5cm;
+xSizeDef = 14.1cm;
 ySizeDef = 6cm;
 
 string ref_str = MakeRefStr();
@@ -89,13 +95,13 @@ rObject h_rel_unc_full = rGetObj(topDir+"systematics/"+datasets_unc[0]+"/matrix_
 //----------------------------------------------------------------------------------------------------
 
 NewPad("$|t|\ung{GeV^2}$", "$\d\si/\d t\ung{mb/GeV^2}$");
-currentpad.xSize = 6cm;
-currentpad.ySize = 5cm;
+currentpad.xSize = 10cm;
+currentpad.ySize = 6cm;
 currentpad.xTicks = LeftTicks(0.05, 0.01);
 scale(Linear, Log);
 
-DrawBand(f_dsdt_fit, h_rel_unc_full, paleblue+opacity(0.4));
-DrawBand(f_dsdt_fit, h_rel_unc_anal, red);
+DrawBand(f_dsdt_fit, h_rel_unc_full, full_band_p);
+DrawBand(f_dsdt_fit, h_rel_unc_anal, anal_band_p);
 
 draw(g_dsdt, "p", mCi+1pt+black);
 
@@ -109,16 +115,15 @@ for (real y = 20; y < 100; y += 10)
 for (real y = 100; y < 400; y += 100)
 	xaxis(YEquals(y, false), dotted);
 
-AddToLegend("data, statistical unc.", MarkerArray(mCi+1pt, (scale(0.0001, 1.)*mPl)+5pt));
-AddToLegend("full systematic unc. band", mSq+5pt+(paleblue+opacity(0.4)));
-AddToLegend("syst.~unc.~band without", mSq+5pt+red);
-AddToLegend("\vbox{\hbox{normalisation}}");
+AddToLegend("data, statistical uncertainty", MarkerArray(mCi+1pt, (scale(0.0001, 1.)*mPl)+5pt));
+AddToLegend("full systematic uncertainty band", mSq+5pt+full_band_p);
+AddToLegend("syst.~unc.~band without normalisation", mSq+5pt+anal_band_p);
+//AddToLegend("\vbox{\hbox{normalisation}}");
 
-frame fL = BuildLegend(lineLength=5mm, vSkip=3mm, ymargin=0mm, NE);
+frame fL = BuildLegend(lineLength=5mm, ymargin=0mm, NE);
 AttachLegend(fL, NE);
 
 GShipout("t_dist", margin=0mm);
-
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -187,8 +192,8 @@ for (int dsi : datasets.keys)
 
 		// uncertainty band
 		//AddToLegend("systematic uncertainty band", mSq+true+5pt+lightgray);
-		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_full, x_max=0.2, paleblue+opacity(0.4), "full systematic uncertainty band");
-		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_anal, x_max=0.2, yellow, "syst.~unc.~band without normalisation");
+		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_full, x_max=0.2, full_band_p, "full systematic uncertainty band");
+		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_anal, x_max=0.2, pattern("hatch"), "syst.~unc.~band without normalisation");
 
 		//AddToLegend("fit parametrisation: $a\,\exp(\sum\limits_{n=1}^{N_b} b_n t^n)$");
 

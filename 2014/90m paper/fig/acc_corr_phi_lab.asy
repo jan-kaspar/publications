@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 
 string top_dir = "../analysis/";
 
@@ -12,8 +12,8 @@ TH2_palette = Gradient(white, blue, heavygreen, yellow, red);
 TH2_paletteBarSpacing = 0.02;
 TH2_paletteBarWidth = 0.07;
 
-xSizeDef = 5.5cm;
-ySizeDef = xSizeDef * 160/170;
+ySizeDef = 6cm;
+xSizeDef = ySizeDef * 190/160;
 
 //----------------------------------------------------------------------------------------------------
 
@@ -59,7 +59,7 @@ void DrawAcceptedArcs(real th)
 void DrawFullArc(real th)
 {
 	draw(scale(th)*unitcircle, dotted);
-	label(rotate(-90)*Label(format("\SmallerFonts $%.0f$", th)), (th, 0), 0.5E, Fill(white+opacity(0.8)));
+	label(rotate(-90)*Label(format("$%.0f$", th)), (th, 0), 0.5E, Fill(white+opacity(0.8)));
 	draw((-200, cut_th_y_low_top)--(+200, cut_th_y_low_top), blue+1pt);
 	draw((-200, cut_th_y_low_bot)--(+200, cut_th_y_low_bot), blue+1pt);
 }
@@ -74,8 +74,8 @@ for (int dsi : dataSets.keys)
 	currentpad.yTicks = RightTicks(50., 10.);
 	
 	label("$\rightarrow$", (50, 0), 0.5W, Fill(white+opacity(0.8)));
-	label(rotate(-90)*Label("\SmallerFonts $\theta^*$"), (30, 0), 0.5W);
-	label(rotate(-90)*Label("\SmallerFonts $\rm (\mu rad)$"), (15, 0), 0.5W);
+	label(rotate(-90)*Label("$\theta^*$"), (30, 0), 0.5W);
+	label(rotate(-90)*Label("$\rm (\mu rad)$"), (13, 0), 0.5W);
 	DrawFullArc(50);
 	DrawFullArc(100);
 	DrawFullArc(150);
@@ -123,7 +123,7 @@ for (int dsi : dataSets.keys)
 	draw((130, -150)--(cut_th_x_low_bot, -160), magenta, EndArrow);
 	*/
 	
-	limits((-170, -160), (170, 160), Crop);
+	limits((-190, -160), (190, 160), Crop);
 	//AttachLegend(dataSets[dsi]);
 }
 
