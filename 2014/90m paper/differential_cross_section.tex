@@ -51,7 +51,7 @@ where $p$ denotes the beam momentum.
 \subsubsection{Alignment}
 \label{sec:alignment}
 
-The standard three-step procedure \cite{totem-ijmp} has been applied: beam-based alignment prior to the run (as for LHC collimators) followed by two off-line methods. First, track-based alignment for relative positions among RPs, and second, alignment with elastic events for absolute position with respect to the beam. The final uncertainties per unit (common for top and bottom RPs) are: $2\un{\mu m}$ (horizontal shift), $100\un{\mu m}$ (vertical shift) and $0.2\un{mrad}$ (rotation about the beam axis). Propagated to the scattering angles, Eq.~(\ref{eq:kin 2a}), the shifts lead to uncertainties of $0.8\un{\mu rad}$ (horizontal) and $0.2\un{\mu rad}$ (vertical). The relatively large impact of horizontal misalignment is due the almost vanishing effective length $L_x$ (cf. Eq.~(\ref{eq:kin 1a})). RP rotations induce a bias in the reconstructed horizontal scattering angle:
+The standard three-step procedure \cite{totem-ijmp} has been applied: beam-based alignment prior to the run (as for LHC collimators) followed by two off-line methods. First, track-based alignment for relative positions among RPs, and second, alignment with elastic events for absolute position with respect to the beam. The final uncertainties per unit (common for top and bottom RPs) are: $2\un{\mu m}$ (horizontal shift), $100\un{\mu m}$ (vertical shift) and $0.2\un{mrad}$ (rotation about the beam axis). Propagated through Eqs.~(\ref{eq:kin 1a}) and (\ref{eq:kin 2a}) to the scattering angles reconstructed from both arms, the shifts lead to uncertainties of $0.8\un{\mu rad}$ (horizontal) and $0.2\un{\mu rad}$ (vertical). The relatively large impact of horizontal misalignment is due to the almost vanishing effective length $L_x$ (cf. Eq.~(\ref{eq:kin 1a})). RP rotations induce a bias in the reconstructed horizontal scattering angle:
 \begin{equation}
 \label{eq:alig rot bias}
 	\theta_x^* \rightarrow \theta_x^* + c \theta_y^*\ ,
@@ -106,7 +106,7 @@ Statistical fluctuations in the reconstructed scattering angles are caused by th
 
 Since in good approximation the fluctuations are independent in each arm, the angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), is given by half of the standard deviation of the $\theta_{x,y}^{*\rm R} - \theta_{x,y}^{*\rm L}$ distributions. As shown in Figure~\ref{fig:resolutions}, the resolution deteriorates slightly with time, which can be expected mainly due to the emittance growth. The small difference in $\theta_x^*$ resolution between the diagonals can be attributed to different RPs, each with slightly different spatial resolution, being involved in the two diagonals.
 
-Measurements of beam emittances~\cite{op-elog} show that the vertical beam divergences of the two beams are equal with a tolerance of about $15\un{\%}$. Exploiting this equality, one can de-convolute the distribution of $\theta_y^{*\rm R} - \theta_y^{*\rm L}$ in order to obtain the beam-divergence distribution, used e.g.~for acceptance corrections (see Section~\ref{sec:acc corr}).
+Measurements of beam emittances~\cite{op-elog} show that the vertical beam divergences of the two beams are equal with a tolerance of about $15\un{\%}$. Exploiting this equality, one can de-convolute the distribution of $\theta_y^{*\rm R} - \theta_y^{*\rm L}$ in order to obtain the beam-divergence distribution, used e.g.~for acceptance corrections discussed in Section~\ref{sec:acc corr} (only required in the vertical plane).
 
 \begin{figure}
 \begin{center}
@@ -164,7 +164,7 @@ The cuts used to select elastic events are summarised in Table \ref{tab:cuts}. C
 Monte-Carlo simulation suggests that applying all the five cuts at $3\un{\sigma}$ level would lead to a loss of about $2\un{\%}$ of elastic events. Setting the thresholds to $4\un{\sigma}$ yields a tolerable loss of about $0.07\un{\%}$ and therefore the cuts are applied at the $4\un{\sigma}$ level.
 % 2sigma: 76%, 3sigma: 98.02%, 4sigma: 99.93%, 5sigma: 99.999%
 
-The tagging efficiency is studied experimentally by applying the cuts also at the $5\un{\sigma}$ level. This selection yields about $0.5\un{\%}$ more events in every $t$ bin -- thus the inefficiency is irrelevant for this analysis.
+The tagging efficiency is studied experimentally by applying the cuts also at the $5\un{\sigma}$ level. This selection yields about $0.5\un{\%}$ more events in every $t$ bin -- thus the inefficiency is irrelevant for this analysis (since the overall normalisation is determined from another dataset, see Section~\ref{sec:normalisation}).
 
 
 \begin{table}
