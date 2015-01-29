@@ -7,9 +7,15 @@
 \> with the presented data not possible to distinguish between different models/assumptions above $\Rightarrow$ {\bf conditional} determination of parameters of interest
 \>> $\rho$
 \>> total cross-section and $B$ with Coulomb separated
+\>> RMS b elastic, inelastic
 
 
-\> generalised $\chi^2$ fits (covariance matrix contained all relevant contributions: statistical, normalisation and misalignment), full formula??, fits driven by Minuit
+Generalised $\chi^2$ fits:
+\begin{equation}
+\label{eq:chi sq}
+	\chi^2 = \vec\Delta^\T \mat{V}^{-1} \vec\Delta\ ,
+\end{equation}
+where $\vec\Delta$ represents vector of differences in $\d\sigma/\d t$ between fit and measurement for each point and $\mat{V}$ stands for the measurement covariance matrix. The covariance matrix receives three contributions: from statistical uncertainties (diagonal), from systematic uncertainties other than normalisation (independent between $90$ and $1000\un{m}$ data) and from normalisation uncertainty (common source for both datasets).
 
 \> extensive MC tests (input: phenomenological models as well as data fits)
 \>> check for bias: only small
