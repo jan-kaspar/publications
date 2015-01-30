@@ -1,10 +1,12 @@
-\documentclass[3p,twocolumn,a4paper]{elsarticle}
+\documentclass[3p,twocolumn,times,longtitle]{elsarticle}
+%\documentclass[3p,onecolumn,12pt,times,longtitle]{elsarticle}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{graphicx}
+%\usepackage{graphicx}
 \usepackage{color}
-\usepackage{mathptmx}
+%\usepackage{mathptmx}
+\usepackage{url}
 
 %----------------------------------------------------------------------------
 
@@ -15,11 +17,11 @@
 \def\e{{\rm e}}
 \def\I{{\rm i}}
 \def\T{{\rm T}}
-%\def\vec#1{\mathbf{#1}}
-\def\vec#1{#1} % TODO
+\def\vec#1{\mathbf{#1}}
 \def\mat#1{\mathsf{#1}}
 \def\etal{et al.}
 \def\todo#1{{\color{red}TODO: #1}}
+\def\TODO#1{{\color{red}TODO: #1}}
 
 \setbox123\hbox{$0$}
 \setbox124\hbox{$.$}
@@ -47,8 +49,11 @@
 
 \begin{frontmatter}
 
+%\title{Measurement of Elastic pp Scattering at $\sqrt{\hbox{s}} = \hbox{8}$\,TeV in the 
+%Coulomb-Nuclear Interference Region by the TOTEM Experiment at the CERN LHC}
+
 \title{Measurement of Elastic pp Scattering at $\sqrt{\hbox{s}} = \hbox{8}$\,TeV in the 
-Coulomb-Nuclear Interference Region by the TOTEM Experiment at the CERN LHC}
+Coulomb-Nuclear Interference Region by TOTEM}
 
 \input authorlist_npb
 
@@ -76,7 +81,7 @@ range ... with a typical uncertainty of ...
 
 % TODO
 \begin{keyword}
-elastic scattering \sep Coulomb-Nuclear Interference \sep CNI \sep More
+proton-proton interactions \sep elastic scattering \sep Coulomb-Nuclear Interference \sep total cross-section \sep TOTEM \sep LHC
 \PACS 13.60.Hb % Total and inclusive cross sections (including deep-inelastic processes)
 \end{keyword}
 \end{frontmatter}
@@ -90,46 +95,18 @@ elastic scattering \sep Coulomb-Nuclear Interference \sep CNI \sep More
 
 \input experimental_apparatus.tex
 
+\input beam_optics.tex
+
 \input data_taking.tex
 
 \input differential_cross_section.tex
 
 \input coulomb.tex
 
-%--------------------------------------------------
-
-\section{Summary}
-
-\> emphasize very first results, original work
-\> emphasize novel methods, used for the first times
-
-
-%--------------------------------------------------
-
-\section{Outlook}
-
-\> if any...
-
-
-
-
-%--------------------------------------------------
+\input conclusions.tex
 
 \section*{Acknowledgements}
-We are grateful to the beam optics development team for the design and the 
-successful commissioning of the high $\beta^{*}$ optics and to the LHC machine 
-coordinators for scheduling the dedicated fills.
-
-We thank B. Alberski, P. Anielski, M. Idzik, I. Jurkowski, R. Lazarz, 
-B. Niemczura for their help in software development.
-
-This work was supported by the institutions listed on the front page and 
-partially also by NSF (US), the Magnus Ehrnrooth Foundation (Finland), the 
-Waldemar von Frenckell Foundation (Finland), the Academy of Finland, the 
-Finnish Academy of Science and Letters (The Vilho, Yrj\"o and Kalle 
-V\"ais\"al\"a Fund), the OTKA grant NK 101438, 73143 (Hungary) and the 
-NKTH-OTKA grant 74458 (Hungary).
-
+\input acknowledgements.tex
 
 %--------------------------------------------------
 \begin{thebibliography}{99}

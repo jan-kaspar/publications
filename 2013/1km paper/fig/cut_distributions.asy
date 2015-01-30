@@ -22,12 +22,12 @@ void MakeComparison(string quantity, real xscale, string unit, string obj, real 
 	real xStep, real xstep,
 	string combinations[], string comb_labels[], pen comb_pens[])
 {
-	NewPad(quantity+"$\ung{"+unit+"}$", "", xTicks=LeftTicks(xStep, xstep));
+	NewPad(quantity+"$\ung{"+unit+"}$", "TODO: title", xTicks=LeftTicks(xStep, xstep));
 	scale(Linear, Log(true));
 	for (int ci : combinations.keys)
 	{
 		string f = topDir+dataset+"/background_study/"+combinations[ci]+"/distributions_"+diagonal+".root";
-		draw(scale(xscale, 1), rGetObj(f, "elastic cuts/"+obj),
+		draw(scale(xscale, 1), rGetObj(f, "elastic cuts/"+obj), "vl",
 			comb_pens[ci], replace(comb_labels[ci], "_", "\_"));	
 	}
 

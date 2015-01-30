@@ -39,6 +39,10 @@ path hor_det_shape = shift(0, -cutEdge/sqrt(2)*10) * det_shape;
 
 //----------------------------------------------------------------------------------------------------
 
+pen adashed = linetype(new real[] {7.1, 5});
+
+//----------------------------------------------------------------------------------------------------
+
 NewPad("$x\ung{mm}$", "$y\ung{mm}$");
 
 draw(shift(0, -sh_top[ui])*det_shape);
@@ -48,12 +52,16 @@ draw(shift(sh_hor[ui], 0)*rotate(-90)*hor_det_shape, blue);
 
 //--------------------
 string f = topDir+"DS2b/alignment.root";
+string ff = topDir+"DS2b/alignment_fit.root";
 string dir = "period " + period + "/unit " + rps[ui];
 
 
 draw(xyswitch, rGetObj(f, dir+"/horizontal/horizontal graph fit/horizontal fit|merged"), "d", black);
-draw(xyswitch, rGetObj(f, dir+"/horizontal/horizontal graph fit/horizontal fit|ff"), "l", cyan+1pt);
+draw(xyswitch, rGetObj(f, dir+"/horizontal/horizontal graph fit/horizontal fit|ff"), "l", magenta + adashed);
 draw(xyswitch, rGetObj(f, dir+"/horizontal/horizontal profile/p"), "d0,eb", magenta+1pt);
+
+real l = 3, v = rGetObj(ff, rps[ui] + "/c_fit").rExec("Eval", 1e5) / 1e3;
+draw((-l, v)--(+l, v), heavygreen + adashed);
 
 //--------------------
 string fData = topDir+"DS2b/alignment_horizontal.root";
@@ -61,11 +69,14 @@ string fFit = topDir+"DS2b/alignment_horizontal_fit.root";
 
 TGraph_x_min = 7;
 draw(rGetObj(fData, period+"/" + rps[ui]), "d", blue);
-draw(rGetObj(fFit, "period "+period+"/unit R_N/graph fit/horizontal fit|ff"), heavygreen);
+draw(rGetObj(fFit, "period "+period+"/unit R_N/graph fit/horizontal fit|ff"), red+adashed);
 draw(rGetObj(fFit, "period "+period+"/unit R_N/profile/p"), "eb,d0", red+1pt);
 //limits((0, -2), (15, +2), Crop);
 
 limits((-5, -10), (+15, +10), Crop);
 //AttachLegend(rp_labels[ui]);
+
+
+draw(Label("beam", E), (0.2, 0.3)--(1.5, 1.5), BeginArrow);
 
 GShipout(margin=0pt);

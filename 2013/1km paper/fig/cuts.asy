@@ -22,8 +22,8 @@ int cuts[] = { 1, 2, 7 };
 real scale_x[] = { 1e6, 1e6, 1e6, 1e6, 1e0, 1e0, 1e6 };
 real scale_y[] = { 1e6, 1e6, 1e0, 1e0, 1e0, 1e0, 1e0 };
 
-string label_x[] = { "$\theta_x^{*R}\ung{\mu rad}$", "$\theta_y^{*R}\ung{\mu rad}$", "$\theta_x^{*R}\ung{\mu rad}$", "$\theta_x^{*L}\ung{\mu rad}$", "$y^{R,N}\ung{mm}$", "$y^{L,N}\ung{mm}$", "$\theta_x^*\ung{\mu rad}$" };
-string label_y[] = { "$\theta_x^{*L}\ung{\mu rad}$", "$\theta_y^{*L}\ung{\mu rad}$", "$x^{*R}\ung{mm}$", "$x^{*L}\ung{mm}$", "$y^{R,F} - y^{R,N}\ung{mm}$", "$y^{L,F} - y^{L,N}\ung{mm}$", "$x^{*\rm R} - x^{*\rm L}\ung{mm}$" };
+string label_x[] = { "$\theta_x^{*\rm R}\ung{\mu rad}$", "$\theta_y^{*\rm R}\ung{\mu rad}$", "$\theta_x^{*\rm R}\ung{\mu rad}$", "$\theta_x^{*\rm L}\ung{\mu rad}$", "$y^{\rm R,N}\ung{mm}$", "$y^{\rm L,N}\ung{mm}$", "$\theta_x^*\ung{\mu rad}$" };
+string label_y[] = { "$\theta_x^{*\rm L}\ung{\mu rad}$", "$\theta_y^{*\rm L}\ung{\mu rad}$", "$x^{*\rm R}\ung{mm}$", "$x^{*\rm L}\ung{mm}$", "$y^{\rm R,F} - y^{\rm R,N}\ung{mm}$", "$y^{\rm L,F} - y^{\rm L,N}\ung{mm}$", "$x^{*\rm R} - x^{*\rm L}\ung{mm}$" };
 string label_cut[] = { "$\De^{R-L} \theta_x^{*}\ung{\mu rad}$", "$\De^{R-L} \theta_y^{*}\ung{\mu rad}$", "$x^{*R}\ung{mm}$", "$x^{*L}\ung{mm}$", "$cq5$", "$cq6$", "$cq7$" };
 
 real lim_x_low[] = { -200, -120, 0, 0, -300, 0, -200 };

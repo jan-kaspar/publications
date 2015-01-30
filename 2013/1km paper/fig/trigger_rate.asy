@@ -12,6 +12,7 @@ ySizeDef = 4cm;
 
 real timestamp0 = 1351029600;
 transform unixToHours = scale(1/3600, 1) * shift(-timestamp0, 0);
+transform paperTimeShift = shift(-23, 0);
 
 //----------------------------------------------------------------------------------------------------
 
@@ -74,23 +75,23 @@ AttachLegend(3, S, S);
 
 NewRow();
 
-NewPad("time\ung{h}", "rate$\ung{Hz}$", xTicks=LeftTicks(Step=1, n=6));
-DrawRunBands(0, 400, false);
+NewPad("time\ung{h}", "rate$\ung{Hz}$", xTicks=LeftTicks(Step=1, n=6), yTicks=RightTicks(50., 10.));
+DrawRunBands(paperTimeShift, 0, 400, false);
 
-TGraph_reducePoints = 5;
-dotfactor = 2;
-string f = topDir + "/plots/dcs_rates_t2.root";
-draw(unixToHours, rGetObj(f, "dcs_rates_t2"), "d", blue);
-string f = topDir + "/plots/dcs_rates_rp.root";
-draw(unixToHours, rGetObj(f, "dcs_rates_rp"), "d", red);
+//TGraph_reducePoints = 5;
+TGraph_errorBar = None;
+dotfactor = 4;
+string f = topDir + "/plots/rates.root";
+draw(paperTimeShift * unixToHours, rGetObj(f, "g_rate_t2"), "d", blue);
+draw(paperTimeShift * unixToHours, rGetObj(f, "g_rate_rp"), "d", red);
 
 AddToLegend("T2 rate", mCi+1pt+blue);
 AddToLegend("RP rate", mCi+1pt+red);
 
-limits((23, 0), (32.2, 400), Crop);
+limits((0, 0), (9.2, 300), Crop);
 AttachLegend(BuildLegend(N, lineLength=5mm, vSkip=0.5mm), N);
 
-for (real y = 0; y <= 400; y += 100)
+for (real y = 0; y <= 300; y += 50)
 	xaxis(YEquals(y, false), dotted);
 
 //----------------------------------------------------------------------------------------------------
