@@ -69,6 +69,7 @@ for (int dsi : datasets.keys)
 
 			++gx;
 			NewPad("$\theta_y^*\ung{\mu rad}$", "efficiency, $1 - {\cal I}_{3/4}$ \ung{\%}", gx, gy);
+			currentpad.xTicks = LeftTicks(20., 10.);
 			currentpad.yTicks = RightTicks(1., 0.5);
 			draw(scale(1e6, 100), rGetObj(f, d+"/h_refined_ratio.th_y"), opt, blue, "efficiency histogram");
 
@@ -100,10 +101,16 @@ for (int dsi : datasets.keys)
 
 			string slope_label = format("slope = ($%#.1f$", fit.rExec("GetParameter", 1))
 				+ format("$\pm %#.1f) \un{rad^{-1}}$", fit.rExec("GetParError", 1));
-			label(slope_label, (60, y), red);
+			label(slope_label, (60, y), red, Fill(white+opacity(0.8)));
 
 			limits((0, 100*RP_eff_cen[rpi] - 2), (110, 100*RP_eff_cen[rpi] + 2), Crop);
 			fLegend = BuildLegend();
+
+			for (real x = 0; x <= 110; x += 20)
+				yaxis(XEquals(x, false), dotted);
+
+			for (real y = 96; y <= 100; y += 1)
+				xaxis(YEquals(y, false), dotted);
 		}
 
 		/*

@@ -56,7 +56,7 @@ void DrawAcceptedArcs(real th)
 
 void DrawFullArc(real th)
 {
-	draw(scale(th)*unitcircle, dashed);
+	draw(scale(th)*unitcircle, dotted);
 	label(rotate(-90)*Label(format("\SmallerFonts $%.0f$", th)), (th, 4), 0.5E, Fill(white+opacity(0.8)));
 }
 

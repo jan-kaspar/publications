@@ -9,10 +9,13 @@ string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000";
 string f = topDir + "/tabulation/tabulate.root";
 
 TGraph_errorBar = None;
-TH1_errorContourOpacity = 0.6;
 
-xSizeDef = 10cm;
-ySizeDef = 8cm;
+xSizeDef = 6.2cm;
+ySizeDef = 5cm;
+
+pen p_full_band = (olive*0.5 + yellow*0.7) + opacity(0.7);
+pen p_anal_band = brown*0.5 + yellow*0.5;
+//add("hatch", hatch(1.3mm, NE, p_anal_band+1pt));
 
 //----------------------------------------------------------------------------------------------------
 
@@ -74,6 +77,8 @@ void DrawRelBand(rObject bc, rObject unc, pen p)
 //----------------------------------------------------------------------------------------------------
 
 /*
+TH1_errorContourOpacity = 0.6;
+
 NewPad(false);
 AddToLegend("statistical uncertainty", nullpen, mPl+4pt);
 AddToLegend("analysis uncertainty", nullpen, scale(1.2, 1)*mSq+(red+opacity(TH1_errorContourOpacity))+5pt);
@@ -106,22 +111,25 @@ for (real y = 1; y <= 3; y += 1)
 
 //----------------------------------------------------------------------------------------------------
 
+
 NewPad("$|t|\ung{GeV^2}$", "$\d\si / \d t \ung{mb/GeV^2}$", xTicks=LeftTicks(0.005, 0.001));
 //scale(Linear, Log);
 currentpad.yTicks = RightTicks(100., 20.);
 
-DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_all"), paleblue+opacity(0.4));
-DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_anal_all"), yellow);
+DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_all"), p_full_band);
+DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_anal_all"), p_anal_band);
 draw(rGetObj(f, "g_data"), "p", black, mCi+1pt);
 
 AddToLegend("data", mCi+1pt);
 AddToLegend("statistical unc.", (scale(0.0001, 1.)*mPl)+5pt);
 
-AddToLegend("systematic unc. band: analysis+norm.", mSq+6pt+(paleblue+opacity(0.4)));
-AddToLegend("systematic unc. band: analysis only", mSq+6pt+yellow);
+AddToLegend("full systematic uncertainty band", mSq+6pt+p_full_band);
+AddToLegend("systematic unc. band without normalis.", mSq+6pt+p_anal_band);
 
-limits((0, 3e2), (0.015, 1.2e3), Crop);
-AttachLegend();
+limits((0, 3e2), (0.015, 1e3), Crop);
+
+frame fL = BuildLegend(lineLength=5mm, ymargin=0mm, NE);
+AttachLegend(fL, NE);
 
 /*
 yaxis(XEquals(6e-4, false), dashed+black);
@@ -136,20 +144,21 @@ AttachLegend("$\sqrt s = 8\un{TeV}$, low-$|t|$ detail");
 for (real x = 0; x <= 0.015; x += 0.005)
 	yaxis(XEquals(x, false), dotted);
 
-for (real y = 300; y <= 1200; y += 100)
+for (real y = 300; y <= 1000; y += 100)
 	xaxis(YEquals(y, false), dotted);
 
 //----------------------------------------------------------------------------------------------------
 
 A_ref = 519.5;
 B_ref = 19.38;
+ref_str = MakeRefStr("");
 
-NewPad("$|t|\ung{GeV^2}$", "\vbox{\hbox{$(\d\si/\d t - \hbox{ref}) / \hbox{ref}$}\hbox{ref = $"+ref_str+"$}}");
+NewPad("$|t|\ung{GeV^2}$", "${\d\si/\d t - \hbox{ref} \over \hbox{ref}}\ ,\quad \hbox{ref} = "+ref_str+"$");
 currentpad.xTicks = LeftTicks(0.05, 0.01);
 currentpad.yTicks = RightTicks(0.02, 0.01);
 
-DrawRelBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_all"), paleblue+opacity(0.4));
-DrawRelBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_anal_all"), yellow);
+DrawRelBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_all"), p_full_band);
+DrawRelBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_anal_all"), p_anal_band);
 draw(rGetObj(f, "g_data"), "p", black, mCi+1pt);
 DrawRelDiff(rGetObj(f, "g_data"), black);
 
@@ -160,3 +169,6 @@ for (real x = 0; x <= 0.2; x += 0.05)
 
 for (real y = -0.1; y <= 0.1; y += 0.02)
 	xaxis(YEquals(y, false), dotted);
+
+
+GShipout(margin=0mm, hSkip=3mm);

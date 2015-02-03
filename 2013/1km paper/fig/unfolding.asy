@@ -43,7 +43,7 @@ for (int dgni : diagonals.keys)
 	limits((0.000, 0.975), (0.01, 1.005), Crop);
 
 	for (real y = 0.975; y <= 1.005; y += 0.005)
-		xaxis(YEquals(y, false), (fabs(y - 1.) < 1e-4) ? dashed : dotted);
+		xaxis(YEquals(y, false), (fabs(y - 1.) < 1e-4) ? dotted : dotted);
 
 	for (real x = 0.000; x <= 0.01; x += 0.002)
 		yaxis(XEquals(x, false), dotted);

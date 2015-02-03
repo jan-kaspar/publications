@@ -64,8 +64,8 @@ void PlotAllModes(string f)
 	PlotMode("beam divergence non-gaussianity", f, "acc-corr-non-gauss");
 
 	AddToLegend("<{\it uncorrelated 1-RP efficiencies}:");
-	PlotMode("slope uncertainty, 45 bot.~-- 56 top", f, "eff-slp", "g_eff_comb1");
-	PlotMode("slope uncertainty, 45 top -- 56 bot.", f, "eff-slp", "g_eff_comb2");
+	PlotMode("slope uncertainty, 45 bottom -- 56 top", f, "eff-slp", "g_eff_comb1");
+	PlotMode("slope uncertainty, 45 top -- 56 bottom", f, "eff-slp", "g_eff_comb2");
 
 	AddToLegend("<{\it beam momentum}:");
 	PlotMode("offset from nominal", f, "beam-mom");
@@ -95,6 +95,7 @@ for (int dsi : datasets.keys)
 	
 	NewPad("$|t|\ung{GeV^2}$", "relative cross-section variation$\ung{\%}$", 0, gy);
 	currentpad.xTicks = LeftTicks(0.05, 0.01);
+	currentpad.yTicks = RightTicks(0.5, 0.1);
 	PlotAllModes(f);
 	limits((0, -1.5), (0.20, +1.5), Crop);
 	f_legend = BuildLegend(3, vSkip=-1mm);
@@ -137,7 +138,7 @@ for (int dsi : datasets.keys)
 
 	NewPad(false);
 	attach(f_legend);
-	FixPad(320, +170);
+	FixPad(310, +170);
 }
 
 GShipout(margin=0pt, hSkip=5mm);

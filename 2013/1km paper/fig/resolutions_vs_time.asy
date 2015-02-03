@@ -19,6 +19,8 @@ xTicksDef = LeftTicks(1., 0.5);
 
 TGraph_errorBar = None;
 
+transform paperTimeShift = shift(-23, 0);
+
 //----------------------------------------------------------------------------------------------------
 
 void DrawBeamDivergence(rObject g_vtx_rms, pen p, marker m, string label)
@@ -108,8 +110,8 @@ void DrawFinalThXResolution(rObject g_vtx_rms, rObject g_diffRL_th_x, real msr, 
 
 		if (bd != 0)
 		{
-			draw(swToHours*scale(1, 1e6)*(time, res), p, m);
-			draw(swToHours*scale(1, 1e6)*((time, res-res_unc)--(time, res+res_unc)), p);
+			draw(paperTimeShift * swToHours*scale(1, 1e6)*(time, res), p, m);
+			draw(paperTimeShift * swToHours*scale(1, 1e6)*((time, res-res_unc)--(time, res+res_unc)), p);
 		}
 	}
 }
@@ -119,7 +121,7 @@ void DrawFinalThXResolution(rObject g_vtx_rms, rObject g_diffRL_th_x, real msr, 
 
 NewPad("", "resolution in $\theta_x^*\ung{\mu rad}$");
 currentpad.yTicks = RightTicks(0.05, 0.01);
-DrawRunBands(0.5, 0.7, false);
+DrawRunBands(paperTimeShift, 0.5, 0.7, false);
 for (int dsi : datasets.keys)
 {
 	for (int dgni : diagonals.keys)
@@ -135,7 +137,7 @@ for (int dsi : datasets.keys)
 	}
 }
 
-limits((23, 0.5), (32.2, 0.7), Crop);
+limits((0, 0.5), (9.2, 0.7), Crop);
 for (real y=0.5; y <= 0.7; y += 0.05)
 	xaxis(YEquals(y, false), dotted);
 
@@ -144,14 +146,14 @@ NewRow();
 
 NewPad("time $\ung{h}$", "resolution in $\theta_y^*\ung{\mu rad}$");
 currentpad.yTicks = RightTicks(0.02, 0.01);
-DrawRunBands(0.42, 0.52, false);
+DrawRunBands(paperTimeShift, 0.42, 0.52, false);
 for (int dsi : datasets.keys)
 {
 	currentpicture.legend.delete();
 
 	for (int dgni : diagonals.keys)
 	{
-		draw(swToHours*scale(1, 0.5 * 1e6),
+		draw(paperTimeShift * swToHours*scale(1, 0.5 * 1e6),
 			rGetObj(topDir+datasets[dsi]+"/distributions_"+diagonals[dgni]+".root", "time dependences/gRMS_diffLR_th_y_vs_time"), "p,eb,d0",
 			dgn_pens[dgni], mCi+1pt+dgn_pens[dgni], dgn_labels[dgni]);
 
@@ -159,7 +161,7 @@ for (int dsi : datasets.keys)
 	}
 }
 
-limits((23, 0.42), (32.2, 0.52), Crop);
+limits((0, 0.42), (9.2, 0.52), Crop);
 for (real y = 0.42; y <= 0.52; y += 0.02)
 	xaxis(YEquals(y, false), dotted);
 
