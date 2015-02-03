@@ -1,16 +1,87 @@
-\author{
-	The TOTEM Collaboration\\
-	First Author\thanksref{e1,addr1} \and
-    Second Author\thanksref{e2,addr2,addr3} %etc.
+%----------------------------------------------------------------------------------------------------
+% Add an author
+% USAGE: \AddAuthor{name}{primary affiliation}{secondary affiliation}{external affiliation}
+
+\newif\ifFirstAuthor
+\FirstAuthortrue
+
+\def\AddAuthor#1#2#3#4{%
+	\def\PriAf{#2}%
+	\def\SecAf{#3}%
+	\def\ExtAf{#4}%
+	\def\empty{}%
+	%
+	\ifFirstAuthor
+		\FirstAuthorfalse
+	\else
+		\and
+	\fi
+	%	
+	\ifx\PriAf\empty
+		% no primary affiliation, only external
+		#1\thanksref{#4}%
+	\else
+		\ifx\SecAf\empty
+			\ifx\ExtAf\empty
+				% only primary affiliation
+				#1\thanksref{#2}%
+			\else
+				% primary and external affiliation
+				#1\thanksref{#2,#4}%
+			\fi
+		\else
+			\ifx\ExtAf\empty
+				% primary and secondary affiliation
+				#1\thanksref{#2,#3}%
+			\else
+				% primary, secondary and external affiliation
+				#1\thanksref{#2,#3,#4}%
+			\fi
+		\fi
+	\fi
 }
 
-%\thankstext[$\star$]{t1}{Thanks to the title}
-\thankstext{e1}{e-mail: magic1@xxx.xx}
-\thankstext{e2}{e-mail: magic2@xxx.xx}
+%----------------------------------------------------------------------------------------------------
+% Add a TOTEM institute
+% USAGE: \AddInstitute{reference as in AddAuthor}{address}
 
-\institute{First Address, Street, City, Country\label{addr1}
-          \and
-          Second Address, Street, City, Country\label{addr2}
-          \and
-          \emph{Present Address:} Street, City, Country\label{addr3}
+%	First Address, Street, City, Country\label{addr1} \and
+
+\newif\ifFirstInstitute
+\FirstInstitutetrue
+
+\def\AddInstitute#1#2{%
+	\ifFirstInstitute
+		\FirstInstitutefalse
+	\else
+		\and
+	\fi
+	%	
+	#2\label{#1}%
+}
+
+%----------------------------------------------------------------------------------------------------
+% Add an institute not in the TOTEM collaboration
+% USAGE: \AddExternalInstitute{reference as in AddAuthor}{address}
+
+\def\AddExternalInstitute#1#2{%
+	\thankstext{#1}{#2}
+}
+
+%----------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------
+% include the actual data
+
+\input authorlist_data
+
+
+\author{%
+	The TOTEM Collaboration\\
+	\DeclareAuthors
+}
+
+\DeclareExternalInstitutes
+
+\institute{%
+	\DeclareInstitutes
 }
