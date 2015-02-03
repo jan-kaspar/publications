@@ -72,23 +72,7 @@ The residual errors induce a bias in the reconstructed scattering angles:
 	\theta_x^* \rightarrow (1 + d_x)\, \theta_x^*\ ,\qquad
 	\theta_y^* \rightarrow (1 + d_y)\, \theta_y^*\ .
 \end{equation}
-For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.21\un{\%}$ and $0.25\un{\%}$, respectively, and correlation factor of $-0.70$. These estimates include the effects of magnet harmonics.
-%
-%
-% Mario's version
-\iffalse
-For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ in two statistically independent modes, $\mathbf{\tilde{d}_{1}}$ and $\mathbf{\tilde{d}_{2}}$, obtained by diagonalising the covariance matrix:
-\begin{equation}
-\label{eq:opt bias modes}
-\begin{pmatrix} d_x\cr d_y \end{pmatrix} =
-	\eta_1 \mathbf{\tilde{d}_{1}} 
-	+ \eta_2 \mathbf{\tilde{d}_{2}} \ ,
-\end{equation}
-where $\mathbf{\tilde{d}_{1}} = \begin{pmatrix} -0.182\un{\%} \cr +0.235\un{\%} \end{pmatrix}$ and $\mathbf{\tilde{d}_{1}} = \begin{pmatrix} -0.096\un{\%} \cr -0.074\un{\%} \end{pmatrix}$ are orthogonal, and the factors $\eta_{1,2}$ have unit variance.
-\fi
-%
-%
-For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ into eigenvectors of the covariance matrix:
+For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.21\un{\%}$ and $0.25\un{\%}$, respectively, and correlation factor of $-0.70$. These estimates include the effects of magnet harmonics. For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ into eigenvectors of the covariance matrix:
 \begin{equation}
 \label{eq:opt bias modes}
 \begin{pmatrix} d_x\cr d_y \end{pmatrix} =
