@@ -2,6 +2,7 @@ import root;
 import pad_layout;
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string dataset = "DS4";
 
@@ -50,7 +51,7 @@ void MakeComparison(string quantity, real xscale, string unit, string obj, real 
 	yaxis(XEquals(-4*sigma, false), dashed);
 	yaxis(XEquals(+4*sigma, false), dashed);
 
-	frame f_legend1 = BuildLegend(ymargin=0mm, vSkip=6mm, lineLength=5mm, NW);
+	frame f_legend1 = BuildLegend(ymargin=0mm, vSkip=-0.5mm, lineLength=5mm, NW);
 
 	//draw(scale(xscale, 1), rGetObj("background_fits.root", combinations[combinations.length - 1] + "|ff"), black+dotted);
 
@@ -71,7 +72,7 @@ void MakeComparison(string quantity, real xscale, string unit, string obj, real 
 	draw(xscale(1e6), o, "vl", heavygreen+dotted, "45 top -- 56 top");
 	Check(o, 1);
 	
-	frame f_legend2 = BuildLegend(ymargin=0mm, vSkip=1mm, lineLength=5mm, NE);
+	frame f_legend2 = BuildLegend(ymargin=0mm, vSkip=-0.5mm, lineLength=5mm, NE);
 
 	xlimits(-xlimit, +xlimit, Crop);
 	add(f_legend1, point(NW), Fill(white));

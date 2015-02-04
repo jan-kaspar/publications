@@ -3,6 +3,7 @@ import pad_layout;
 import patterns;
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta90/plots/t_distributions/common_code.asy";
 

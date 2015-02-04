@@ -2,6 +2,7 @@ import root;
 import pad_layout;
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string datasets[] = { "DS4" };
 
@@ -79,7 +80,6 @@ limits((0, 1.5), (12, 1.8), Crop);
 for (real y=1.5; y <= 1.8; y += 0.1)
 	xaxis(YEquals(y, false), dotted);
 
-add(BuildLegend(vSkip=1mm, lineLength=2mm, NW), point(NW), Fill(white));
-
+add(BuildLegend(vSkip=0mm, ymargin=1mm, lineLength=2mm, NW), point(NW), Fill(white));
 
 GShipout(margin=0mm, vSkip=0pt, hSkip=5mm);

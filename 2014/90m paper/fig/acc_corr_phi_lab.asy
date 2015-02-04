@@ -2,6 +2,7 @@ import root;
 import pad_layout;
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string top_dir = "../analysis/";
 
@@ -75,7 +76,7 @@ for (int dsi : dataSets.keys)
 	
 	label("$\rightarrow$", (50, 0), 0.5W, Fill(white+opacity(0.8)));
 	label(rotate(-90)*Label("$\theta^*$"), (30, 0), 0.5W);
-	label(rotate(-90)*Label("$\rm (\mu rad)$"), (13, 0), 0.5W);
+	label(rotate(-90)*Label("$\rm [\mu rad]$"), (13, 0), 0.5W);
 	DrawFullArc(50);
 	DrawFullArc(100);
 	DrawFullArc(150);

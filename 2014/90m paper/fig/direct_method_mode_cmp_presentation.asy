@@ -3,6 +3,7 @@ import pad_layout;
 include "../analysis/plots/systematics/common_code";
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 AddAllModes();
 
