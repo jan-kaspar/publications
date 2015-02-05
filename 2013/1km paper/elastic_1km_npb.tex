@@ -10,6 +10,12 @@
 
 %----------------------------------------------------------------------------
 
+% TODO - check for consisten use of
+%	1) units in parentheses of brackets
+%	2) multiplication symbol: \times or \cdot
+
+%----------------------------------------------------------------------------
+
 \def\d{{\rm d}}
 \def\un#1{\,{\rm #1}}
 \def\ung#1{\quad[{\rm #1}]}
@@ -28,19 +34,59 @@
 \def\S{\hbox to\wd123{\hss}}
 \def\.{\hbox to\wd124{\hss}}
 
-\def\hang{\hangindent=\parindent}
-\catcode`\>=11
-\newskip\itskip \itskip2mm
-\newskip\iitskip \iitskip0mm
-\newdimen\itindent \itindent3mm
-\newdimen\iitindent \iitindent5mm
-\def\>{\par\vskip\itskip\parindent\itindent\indent\hang\llap{\hbox to3mm{$\bullet$\hss}}}
-\def\>E{\par\vskip\itskip\parindent\itindent\indent\hang\llap{\hbox to3mm{\hss}}}
-\def\>>{\par\vskip\iitskip\parindent\iitindent\indent\hang\llap{\hbox to\iitindent{\hss--\ }}}
-
 \def\Name#1{\textsc{#1}, }
 \def\REVIEW#1#2#3#4{{\it #1} {\bf #2} (#3) #4}
 
+%-----------------------------------------------------------------------------
+
+\def\hang{\hangindent=\parindent}
+
+\catcode`\>=11
+
+\newskip\itskip \itskip2mm
+\newskip\iitskip \iitskip0mm
+\newskip\iiitskip \iiitskip0mm
+
+\newdimen\itindent \itindent4mm
+\newdimen\iitindent \iitindent8mm
+\newdimen\iiitindent \iiitindent12mm
+
+\def\previcol{}
+
+\def\itcol{}
+\def\>{%
+	\par\vskip\itskip
+	\parindent\itindent\indent\hang
+	\itcol
+	\def\previcol{\itcol}%
+	\llap{\hbox to\itindent{$\bullet$\hss}}%
+}
+
+\def\>E{\par\vskip\itskip\parindent\itindent\indent\hang}
+
+\def\iitcol{}
+\def\>>{%
+	\par\vskip\iitskip
+	\parindent\iitindent\indent\hang
+	\iitcol
+	\def\previcol{\iitcol}%
+	{%
+		\advance\iitindent-\itindent
+		\llap{\hbox to\iitindent{$\circ$\hss}}%
+	}%
+}
+
+\def\iiitcol{}
+\def\>>>{%
+	\par\vskip\iiitskip
+	\parindent\iiitindent\indent\hang
+	\iiitcol
+	\def\previcol{\iiitcol}%
+	{%
+		\advance\iiitindent-\iitindent
+		\llap{\hbox to\iiitindent{--\hss}}%
+	}%
+}
 %-----------------------------------------------------------------------------
 
 \journal{Nuclear Physics B}

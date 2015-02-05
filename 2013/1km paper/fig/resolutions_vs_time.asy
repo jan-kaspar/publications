@@ -3,6 +3,7 @@ import pad_layout;
 include "../analysis/plots/run_info.asy";
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string datasets[] = { "DS2a", "DS2b" };
 

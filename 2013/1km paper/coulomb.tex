@@ -1,67 +1,92 @@
+\newpage
+
 \section{Coulomb-Nuclear Interference}
 \label{sec:coulomb}
+
+\> outline for this section
+
+\> reason for using 90m data
+\> different ways of using 1000 and 90m data: combined (democratically), differential (tensions), combined (each DS used where strong)
 
 %----------------------------------------------------------------------------------------------------
 
 \subsection{Theoretical Framework}
-\label{sec:cni_framework}
+\label{sec:cni framework}
 
 In this section the different components of the combined elastic scattering amplitude, already briefly outlined in the introduction, are discussed in more detail. In particular, the possible choices for theoretically unknown terms are explained.
 
 %------------------------------------------------------------------
 \subsubsection{Coulomb Amplitude}
+\label{sec:cni coulomb}
 %
 The Coulomb amplitude can be calculated from QED (e.g.~Section 3.2 in \cite{block06}), using empirical electric and magnetic form factors of the proton (e.g.~\cite{puckett10}). It can be shown (e.g.~Section 1.3.1 in~\cite{jan_thesis}) that, at low $|t|$, the effect of both form factors can be described by a single function ${\cal F}$. 
 
+\TODO{Add formula}
 
+\TODO{Choice of FF no impact on final results}
+
+%------------------------------------------------------------------
 \subsubsection{Nuclear Amplitude}
+\label{sec:cni nuclear}
 %
 Since the nuclear amplitude can presently not be calculated from first principles, its phenomenological description will be discussed.
 
-The {\bf modulus} is closely related to the differential cross-section and thus strongly constrained by experimental observations outside the Coulomb and CNI region. Following especially~\cite{8tev-90m}, the modulus for $|t|~\lesssim~0.2$, i.e. well below the diffractive minimum, will be parametrised as:
+\vskip3mm
+\hbox to\hsize{\bf Modulus\hfil}
+
+The modulus is closely related to the differential cross-section and thus strongly constrained by experimental observations outside the Coulomb and CNI region. Following especially~\cite{8tev-90m}, the modulus for $|t|~\lesssim~0.2$, i.e. well below the diffractive minimum, will be parametrised as:
 \begin{equation}
 \label{eq:nuc mod}
 | {\cal A}^{\rm N}(t) | = a \exp\left( \sum\limits_{n}^{N_b} b_n t^n \right)\ ,
 \end{equation}
-%\todo{for $|t| < 0.2$, what about higher $|t|$'s?}\\
+%\TODO{for $|t| < 0.2$, what about higher $|t|$'s?}\\
 where $N_b$ gives the number of free parameters in the exponent. This implicitly extends the exponential behaviour to the regions where the (pure nuclear) cross-section cannot be observed. Although there is no rigorous justification, and therefore it stands as an assumption, it is compatible with many theoretical models.
 
-For the {\bf phase} of the nuclear amplitude, there is little experimental guidance and therefore several theory-motivated choices will be assumed and tested.
+\TODO{considering $N_b = $ 1, 2 and 3 parameters, with more parameters no improvement of $\chi^2$}
+
+\TODO{anchored to $90\un{m}$ data at $|t| > 0.2\un{GeV^2}$ for stability of integrations in Eq.~(\ref{eq:int kl}); high t part has no effect on final results}
+
+\TODO{This parametrisation assumes that Coulomb effects are small, which is not unreasonable, the expected order is few percent}
+
+\vskip3mm
+\hbox to\hsize{\bf Phase\hfil}
+
+For the phase of the nuclear amplitude, there is little experimental guidance and therefore several theory-motivated choices will be assumed and tested.
 
 \begin{itemize}
 % ***
 \item A {\it constant phase} is obviously the simplest choice:
 %
 \begin{equation}
-\label{eq:nuc phase const}
-\arg {\cal A}^{\rm N}(t) = \hbox{const.}
+\label{eq:nuc phase con}
+\arg {\cal A}^{\rm N}(t) = p_0 = \hbox{const.}
 \end{equation}
 Note that this is equivalent to a strict proportionality of real and imaginary part of the amplitude at all $t$.
 %
 % ***
 \item The {\it standard phase} parametrisation,
 \begin{equation}
-\label{eqn:nuc_phase_standard}
+\label{eqn:nuc phase std}
 \arg {\cal A}^{\rm N}(t) = p_{0} + \arctan \left(\frac{|t|-|t_{0}|}{\tau}\right) -  \arctan \left(\frac{-|t_{0}|}{\tau}\right) \: ,
 \end{equation}
 implements the main features of many theoretical models -- almost imaginary amplitude in the forward direction ($p_0 \approx \pi/2$) while almost purely real in the (first) diffraction dip 
-($\arg {\cal A}^{\rm N}(t) \approx \pi$ at $t = t_{0}$). \todo{[to be corrected]}
+($\arg {\cal A}^{\rm N}(t) \approx \pi$ at $t = t_{0}$). \TODO{[to be corrected]}
 
 % ***
 %
-\item The parametrisation by {\em Bailly et al.}~\cite{bailly87} \todo{[to be written]}
+\item The parametrisation by {\em Bailly et al.}~\cite{bailly87} \TODO{motivation for this option}
 \begin{equation}
-\label{eq:nuc phase std}
+\label{eq:nuc phase bai}
 	%\arg {\cal A}^{\rm N}(t) = {\pi\over 2} - \arctan {\rho_0\over 1 - {t\over t_{\rm d}}},\ \rho_0 = {1\over \tan p_0}
 	\arg {\cal A}^{\rm N}(t) = \arctan \left[ \tan p_0 \left(1 - {t\over t_{\rm d}} \right) \right]\ ,
 \end{equation}
 where $p_0$ determines the phase value at $t=0$ and $t_{\rm d} \approx -0.53\un{GeV^2}$ gives the position of the diffractive minimum at $8\un{TeV}$ (preliminary result from $90\un{m}$ data).
 %
 % ***
-\item The {\it peripheral phase} \cite{kl94} \todo{newer ref - if we ever get one} provides an alternative to the above descriptions. Its parametrisation
+\item The {\it peripheral phase} \cite{kl94} \TODO{newer ref - if we ever get one} provides an alternative to the above descriptions. Its parametrisation
 
-\todo{update values, range?}\\
-\todo{if range used: several options with different level of peripherality as assumption - the RMS of b el was initially fixed by Vojtech - it is a cause not consequence}
+\TODO{update values, range?}\\
+\TODO{if range used: several options with different level of peripherality as assumption - the RMS of b el was initially fixed by Vojtech - it is a cause not consequence}
 
 \begin{equation}
 \label{eq:nuc phase per}
@@ -69,21 +94,20 @@ where $p_0$ determines the phase value at $t=0$ and $t_{\rm d} \approx -0.53\un{
 \end{equation}
 results in a peak at $t_{\rm m} \approx -0.310\un{GeV^2}$, with amplitude $A \approx 5.53$ and width controlled by $\kappa \approx 4.01$.
 \end{itemize}
-%
+
 \begin{figure*}
 \begin{center}
-% TODO: file not in the repository
-%\includegraphics[width=\textwidth]{phase_illustration.pdf}
-\vskip-3mm
-\caption{}
+\includegraphics{fig/hadronic_phase_illustration.pdf}
+\caption{Illustration of hadronic-phase forms. The dashed lines correspond to predictions by theoretical models as provided by \cite{elegent}. The solid lines give typical examples of parametrisations used in the study, all at the same value of $\rho = 0.12$.}
 \label{fig:phase_illustration}
 \end{center}
 \end{figure*}
 
 It should be noted that the phase has decisive influence on the amplitude behaviour in the space of impact parameter, $b$, see e.g.~Section 3 in~\cite{klk02}. It can be quantified by evaluating the root-mean-squares (RMS) of $b$ for elastic and inelastic collisions. The constant and standard phase lead to elastic collisions more central (smaller RMS) than the inelastic ones. The peripheral phase can yield a description with the opposite hierarchy, which is argued more natural by some authors (e.g. Section~4 in~\cite{kl96}).
 
-%----------------------------------------------------------------------------------------------------
+%------------------------------------------------------------------
 \subsubsection{Coulomb-Nuclear Interference Formulae}
+\label{sec:cni interference}
 
 The {\bf simplified West-Yennie formula (SWY)} \cite{wy68} is derived in the framework of perturbative QFT by evaluating the lowest-order Feynman diagrams that comprise both nuclear and Coulomb interactions. In this approach, the interference is reduced to an additional phase between the Coulomb and nuclear amplitudes. Moreover, several approximations were used in the derivation. First, in order to avoid integrating over off-mass-shell contributions to the nuclear amplitude (purely known), very slow variation of the nuclear amplitude phase was assumed: $\arg {\cal A}^{\rm N} \approx \hbox{const}$. Then, in order to obtain a closed-form expression, the exponential slope of the nuclear modulus
 \begin{equation}
@@ -94,7 +118,7 @@ was assumed constant. The original formula did not contain the electromagnetic f
 \label{eq:int swy}
 	\begin{aligned}
 		{\d\sigma\over \d t}^{\rm C+N} &= {\pi (\hbar c)^2 \over s p^2} \left | {\alpha s\over t} {\cal F}^2 \e^{\I\alpha \Phi(t)} + {\cal A}^{\rm N} \right |^2\ ,\cr
-		\Phi(t) &= - \left( \log {B |t|\over 2} + \gamma \right)\ ,\cr
+		\Phi(t) &= - \left( \log {B^{\rm N} |t|\over 2} + \gamma \right)\ ,\cr
 	\end{aligned}
 \end{equation}
 where $\gamma \doteq 0.577$ is the Euler constant. Despite the many limitations, the formula has extensively been used in past data analyses. For backward-comparison reasons we consider it also in this report.
@@ -116,199 +140,77 @@ where the $t$ integrations go over the entire kinematically allowed region.
 
 Calculation engine \cite{elegent}, using form-factor of Puckett et al.~\cite{puckett10}
 
-%----------------------------------------------------------------------------------------------------
-%----------------------------------------------------------------------------------------------------
-\subsection{Data analysis}
-\label{sec:cni_anal}
+\TODO{Show an ``exploration'' plot to explain the C+CNI reaction to changing $p_0$ (low $|t|$) and higher orders (higher $|t|$) -- could be very instructive}
 
-\subsubsection{Jan's notes}
+%----------------------------------------------------------------------------------------------------
+\subsection{Fitting/parameter inference}
+\label{sec:cni fitting}
 
-\> nuclear modulus
-\>> anchored to $90\un{m}$ data at $|t| > 0.2\un{GeV^2}$ for stability of integrations in \ref{eq:int kl}
-\>> considering 1, 2 and 3 parameters, then no improvement of $\chi^2$
+%------------------------------------------------------------------
+\subsubsection{Task analysis/general discussion}
+
+\> measured data = (nuclear cs) + (effects of Coulomb and CNI)
+\>> would like to make statements about the nuclear component
+\>> the 2 components can only be separated if sufficiently distinct
+\>>> their forms (features) are set by the choice of modulus/phase parametrisation $\Rightarrow$ choice crucial
+\>>> the form of the C+CNI component further limited by the KL formula
+\>>> if parametrisations too flexible, the components can't be sufficiently distinct
+\>>> no rigorous guide for choosing the parametrisations $\Rightarrow$ choice arbitrary $\Rightarrow$ we will only provide some examples of possible descriptions
 
 \> with the presented data not possible to distinguish between different models/assumptions above $\Rightarrow$ {\bf conditional} determination of parameters of interest
-\>> $\rho$
-\>> total cross-section and $B$ with Coulomb separated
-\>> RMS b elastic, inelastic
 
+%------------------------------------------------------------------
+\subsubsection{Fitting techniques}
 
-Generalised $\chi^2$ fits:
+\> \TODO{Standard LS} -- Generalised $\chi^2$ fits:
 \begin{equation}
 \label{eq:chi sq}
 	\chi^2 = \vec\Delta^\T \mat{V}^{-1} \vec\Delta\ ,
 \end{equation}
 where $\vec\Delta$ represents vector of differences in $\d\sigma/\d t$ between fit and measurement for each point and $\mat{V}$ stands for the measurement covariance matrix. The covariance matrix receives three contributions: from statistical uncertainties (diagonal), from systematic uncertainties other than normalisation (independent between $90$ and $1000\un{m}$ data) and from normalisation uncertainty (common source for both datasets).
 
-\> extensive MC tests (input: phenomenological models as well as data fits)
-\>> check for bias: only small
-\>> understanding/evaluation of the method response to statistical and systematic uncertainties
-
-\> results ($\rho$, $\sigma_{\rm tot}$, $B^{\rm N}(0)$, ...)
-\>> for the model choices above -- keeping phase parameters fixed at their central values from Vojt\v ech
-\>> for peripheral-phase parameters being varied within their uncertainties $\Rightarrow$ uncertainty band
-\>> illustrative decomposition of uncertainties from MC
-
-\> question: do we want to present a single-value result for $\rho$ (combined from fits under different models) ??
-
-\> discuss the new value of $\sigma_{\rm tot}$ in comparison to our previous measurement \cite{prl111}; values compatible; remind in what is the new measurement better ??
-
-\> reference to Fig.~\ref{fig:rho_s}
-
-\> RMS of b for the final fits
-
-\begin{figure*}
-\begin{center}
-%\includegraphics[width=16cm]{fig/rho_s.pdf}
-\vspace*{3cm}
-\vskip-3mm
-\caption{$\rho$ as a function of $s$.}
-\label{fig:rho_s}
-\end{center}
-\end{figure*}
-
-\> figure for $\sigma_{\rm tot}$ result ??
-
+\> \TODO{Parameter comparison method}
 
 
 
 %----------------------------------------------------------------------------------------------------
+\subsection{Common fits of 1000 and 90m data}
 
-\subsubsection{Introduction}
+\> Figure \ref{fig:fits common con}
+\>> std LS and par cmp fits very similar (up to small difference in normalisation), can be generalised to all results hereafter
+\>> $N_b = 1$ fits with KL and SWY almost identical (also true in what follows, will use KL to represent both)
+\>> case $N_b = 1$ + constant phase excluded by both fit techniques
+\>>> the only compatible with SWY $\Rightarrow$ SWY excluded, too
+\>> addition (not shown): results for standard and Bailly phase (almost) indistinguishable from the constant one, will use only constant to represent this ``family''
 
-In reference to the results published in the 90m run paper (or sections)... and in reference to the results published in the 1km paper (or sections)... we study in the present paper (or sections) a combined analysis of the Coulomb interference with the 90m and 1km data, with the objectives to:
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/fits_common_con.pdf}
+\caption{\TODO{caption}, only $p_0$ variable in phase}
+\label{fig:fits common con}
+\end{center}
+\end{figure*}
 
-\> investigate different combinations of: the formalization of the interference (SWY vs
-KL), the models of the hadronic phase (central vs peripheral), and the functional
-forms of the hadronic modulus (constant vs non-constant exponential at low-t);
+\> Figure \ref{fig:fits common per}
+\>> again, std LS and par cmp fits very similar (up to small difference in normalisation for $N_b = 1$)
+\>> all fits reasonable
 
-\> extract physics quantities such as rho, total cross-section, and hadronic B slope, as
-function of different assumptions on interference modelling and phase modelling;
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/fits_common_per.pdf}
+\caption{\TODO{caption}, all phase parameters variable}
+\label{fig:fits common per}
+\end{center}
+\end{figure*}
 
-\> quantify the various results in terms of C.L.
+\> Figure \ref{fig:fits common der}: parameters derived from fits shown in Figures~\ref{fig:fits common con} and \ref{fig:fits common per}
+\>> \TODO{or table instead of figure}
+\>> \TODO{trends in data? Explain!}
+\>> \TODO{illustrative decomposition of uncertainties from MC}
 
 %----------------------------------------------------------------------------------------------------
+\subsection{Tensions between 1000 and 90m data}
 
-\subsubsection{Elastic differential cross-section: 90m data + interference with Coulomb QED}
-
-\todo{One needs to assume a rho value -- now we take 0.14, but later we will need to redo it with the result from 1km.}
-
-We observe in the data a non-constant-exponential \& oscillating behaviour.
-The hadronic slope by itself, the interference by itself, or a combination of both, must be
-responsible for this effect.
-
-\iffalse
-{\bf 1. Fit with KL or SWY interference, constant/central phase, constant B slope}
-
-Figures \ref{fig:90,SWY,con,1} and \ref{fig:90,KL,con,1}: statistical+systematic –based fitting exclude with high significance that the data can be
-consistent with a constant B slope and constant phase. This is the case no matter which
-interference formula is used. (rho is fixed to the Compete value).
-
-\begin{figure*}
-\begin{center}
-\includegraphics[width=18cm]{simone/90/SWY,con,1,stat-stat+syst.pdf}
-\vskip-3mm
-\caption{SWY formula, constant phase, 1 parameter in exponential}
-\label{fig:90,SWY,con,1}
-\end{center}
-\end{figure*}
-
-\begin{figure*}
-\begin{center}
-\includegraphics[width=18cm]{simone/90/KL,con,1,stat-stat+syst.pdf}
-\vskip-3mm
-\caption{KL formula, constant phase, 1 parameter in exponential}
-\label{fig:90,KL,con,1}
-\end{center}
-\end{figure*}
-
-SWY can only cope with constant B slope and constant phase, therefore it will not be
-considered in the following.
-
-Thus we will now consider only the KL interference formula, with central or peripheral
-phase, with constant and not constant B slope.
-
-For the peripheral phase, a range of 3 parameters qualified by physics properties in the impact
-parameter space will be used. Later we will try a best fit with the 3 parameters constrained in
-the given physical range.
-
-For the B slope, 1 parameter (i.e. const) and 2-3-parameters functional forms will be used.
-
-{\bf 2. Fit with KL interference, constant/central phase, non-constant B slope}
-
-Figure \ref{fig:90,KL,con,2-3}: statistical only, and statistical+systematic, fitting for slope with 2 and 3 parameters. (rho is
-fixed to the Compete value). Show/compare chi2, significance, C.L.
-
-\begin{figure*}
-\begin{center}
-\includegraphics[width=18cm]{simone/90/KL,con,2-3,stat-stat+syst.pdf}
-\vskip-3mm
-\caption{KL formula, constant phase, 2 to 3 parameters in exponential}
-\label{fig:90,KL,con,2-3}
-\end{center}
-\end{figure*}
-
-{\bf 3. Fit with KL interference, peripheral phase, constant B slope}
-
-Figure \ref{fig:90,KL,per,1}
-statistical only and statistical+systematic fitting for constant slope, having fixed rho to the
-Compete value and the other three phase parameters to the triplet in VK’s table first
-row, or to the triplet in the central row, or to the triplet in the bottom row (to explore the
-range and phase-space presented by VK at Collaboration Meetings).
-Show/compare chi2, significance, C.L., ...
-
-\begin{figure*}
-\begin{center}
-\includegraphics[width=18cm]{simone/90/KL,per-var048,1,stat-stat+syst.pdf}
-\vskip-3mm
-\caption{SWY formula, peripheral phases, 1 parameter in exponential}
-\label{fig:90,KL,per,1}
-\end{center}
-\end{figure*}
-
-{\bf 4. Fit with KL interference, peripheral phase, non-constant B slope}
-
-\begin{figure*}
-\begin{center}
-\includegraphics[width=18cm]{simone/90/KL,per-var048,2,stat-stat+syst.pdf}
-\vskip-3mm
-\caption{SWY formula, peripheral phases, 2 parameters in exponential}
-\label{fig:90,KL,per,2}
-\end{center}
-\end{figure*}
-
-\begin{figure*}
-\begin{center}
-\includegraphics[width=18cm]{simone/90/KL,per-var048,3,stat-stat+syst.pdf}
-\vskip-3mm
-\caption{SWY formula, peripheral phases, 3 parameters in exponential}
-\label{fig:90,KL,per,3}
-\end{center}
-\end{figure*}
-\fi
-
-Figures \ref{fig:90,KL,per,2} and \ref{fig:90,KL,per,3}:
-statistical only and statistical+systematic fitting for slope with 2 and 3 parameters,
-having fixed rho to the Compete value and the other three phase parameters to the triplet
-in VK’s table first row, or to the triplet in the central row, or to the triplet in the
-bottom row. Show/compare chi2, significance, C.L.,...
-
-Check results by fixing rho to a different value, e.g. to the one resulting from the 1km
-standalone data (under the traditional assumptions for the interference).
-
-Concluding remarks on coupling of conditions and their significance.
 
 %----------------------------------------------------------------------------------------------------
-
-\subsubsection{Elastic differential cross-section: 90m \& 1km data + interference with Coulomb QED}
-
-Repeat as above. Reciprocally constraining fits giving weight to the 90km or to the 1km data
-for different physics quantities. Ultimately try combined fit properly weighting different
-“experiments”.
-
-%----------------------------------------------------------------------------------------------------
-
-\subsubsection{Measurements of Rho, B, and Total Cross-Section}
-
-Conditional analysis and results for the combinations analysed in the previous sections,
-according to the sets of fits 1., 2., 3., 4.
+\subsection{Reciprocally constrained 1000 and 90m fits}

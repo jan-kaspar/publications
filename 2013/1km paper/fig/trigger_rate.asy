@@ -2,6 +2,7 @@ import root;
 import pad_layout;
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/plots/run_info.asy";
 

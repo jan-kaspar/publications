@@ -2,6 +2,7 @@ import root;
 import pad_layout;
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string datasets[] = { "DS2b" };
 
