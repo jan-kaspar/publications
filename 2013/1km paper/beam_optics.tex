@@ -1,15 +1,28 @@
 \section{Beam optics}
 \label{sec:beam optics}
+%
+The beam optics relates the proton state at the IP to its state at the RP location. At the IP, the direction of a proton can be described by the scattering angle $\theta^*$ (with respect to the $z$ axis) and azimuthal angle $\phi^*$ (about the $z$ axis). Alternatively, the horizontal ($x$) and vertical ($y$) projections of the scattering angle can be used:
+\begin{equation}
+\label{eq:scatt angle}
+\theta_x^* = \theta^* \cos\phi^*\ ,\qquad \theta_y^* = \theta^* \sin\phi^*\ .
+\end{equation}
+A proton with such scattering angles, emerging from the vertex $(x^*$, $y^*)$ with relative momentum loss $\xi \equiv \Delta p / p$ arrives at the RPs with transverse position
+\begin{equation}
+\label{eq:prot trans}
+	x = L_x\, \theta_x^* + v_x\, x^* + D_x\, \xi\ ,\qquad y = L_y\, \theta_y^* + v_y\, y^* + D_y\, \xi\ ,
+\end{equation}
+given by the optical functions: effective length $L$, magnification $v$ and dispersion $D$. Since protons lose no momentum in elastic collisions 
+(i.e. $\xi = 0$), the dispersion terms are irrelevant for this process.
 
-The beam optics with $\beta^{*} = 1000\,$m
+The special optics characterised by $\beta^{*} = 1000\,$m~\footnote{$\beta^{*}$ is the value of the $\beta$-function at the interaction point; for the practical purposes of this article, it can be considered as a name label for the optics configuration.}
 has been specifically developed for measuring low-$|t|$ elastic scattering.
 Like the previously used $\beta^{*} = 90\,$m optics~\cite{epl96,epl101-el,epl101-tot,prl111},
 this new optics configuration
 provides parallel-to-point focussing in the vertical plane at the RP position 
-$s = 220\un{m}$, implemented by tuning the transport matrix elements via the
+$z = 220\un{m}$, implemented by tuning the transport matrix elements 
+(Table~\ref{tab:optics}) via the
 LHC magnet currents: the magnification $v_{y}$ is made to vanish whereas the 
-effective length $L_{y}$ is maximised ($285.6\un{m}$ as compared to $260\un{m}$ for 
-$\beta^{*} = 90\,$m).
+effective length $L_{y}$ is maximised ($285\un{m}$ as compared to $260\un{m}$ for $\beta^{*} = 90\,$m).
 The resulting large displacement of a scattered proton with a given $t$-value 
 away from the beam centre at the RP, together with a very small beam 
 divergence in the interaction point and hence a tiny beam width 
@@ -21,21 +34,24 @@ deviations~\footnote{The nominal standard deviation is defined as
 the beam width for a normalised emittance 
 $\varepsilon \gamma = 3.5\,\mu$m\,rad.}.
 A further improvement relative to $\beta^{*} = 90\,$m is the non-vanishing 
-effective length in the horizontal plane, $L_{x} = 46.8\,$m at $s = 220\,$m, 
+effective length in the horizontal plane, $L_{x} = 46\,$m at $z = 220\,$m, 
 enabling a better reconstruction of the horizontal component of the 
 scattering angle.
 
-\todo{integrate the formulae for proton transport}
-\begin{equation}
-\label{eq:scatt angle}
-\theta_x^* = \theta^* \cos\phi^*\ ,\qquad \theta_y^* = \theta^* \sin\phi^*\ .
-\end{equation}
+\begin{table}
+\caption{
+Optical functions for elastic proton transport for the $\beta^{*} = 1000\,$m optics. The values refer to the right arm, for the left one they are very similar.
+}
+\label{tab:optics}
+\begin{center}
+\vskip-3mm
+\begin{tabular}{ccccc}\hline\hline
+RP unit & $L_x$ & $v_x$ & $L_y$ & $v_y$ \cr\hline
+near & $59.37\un{m}$  & $-0.867$ & $255.87\un{m}$ & $0.003$ \cr
+far  & $45.89\un{m}$ & $-0.761$ & $284.62\un{m}$ & $-0.017$ \cr
+\hline\hline
+\end{tabular}
+\end{center}
+\end{table}
 
-\begin{equation}
-\label{eq:prot trans}
-	x = L_x\, \theta_x^* + v_x\, x^* + D_x\, \xi\ ,\qquad y = L_y\, \theta_y^* + v_y\, y^* + D_y\, \xi\ ,
-\end{equation}
-
-
-\todo{add table with optical values?}
 
