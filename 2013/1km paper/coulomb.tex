@@ -99,7 +99,7 @@ results in a peak at $t_{\rm m} \approx -0.310\un{GeV^2}$, with amplitude $A \ap
 \begin{center}
 \includegraphics{fig/hadronic_phase_illustration.pdf}
 \caption{Illustration of hadronic-phase forms. The dashed lines correspond to predictions by theoretical models as provided by \cite{elegent}. The solid lines give typical examples of parametrisations used in the study, all at the same value of $\rho = 0.12$.}
-\label{fig:phase_illustration}
+\label{fig:phase illustration}
 \end{center}
 \end{figure*}
 
@@ -141,6 +141,17 @@ where the $t$ integrations go over the entire kinematically allowed region.
 Calculation engine \cite{elegent}, using form-factor of Puckett et al.~\cite{puckett10}
 
 \TODO{Show an ``exploration'' plot to explain the C+CNI reaction to changing $p_0$ (low $|t|$) and higher orders (higher $|t|$) -- could be very instructive}
+
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/cni_effect_illustration.pdf}
+\caption{\TODO{caption} Illustration of effects due to the Coulomb interaction, using KL formula (SWY formula misses the effects at higher $|t|$). Different $|t|$ regions probe different parts of the nuclear phase. Difference between constant and standard (and also Bailly) very small -- all have small derivatives of the phase at low $|t|$. The higher $|t|$ effects for peripheral phase are of the order of several percents and can provoke ``U shapes'' as observed in the 90m data.
+\TODO{Find better/more representative peripheral examples ??}
+\TODO{Use the same phases as in Figure~\ref{fig:phase illustration} ??}
+}
+\label{fig:cni effect}
+\end{center}
+\end{figure*}
 
 %----------------------------------------------------------------------------------------------------
 \subsection{Fitting/parameter inference}
@@ -203,14 +214,57 @@ where $\vec\Delta$ represents vector of differences in $\d\sigma/\d t$ between f
 \end{center}
 \end{figure*}
 
-\> Figure \ref{fig:fits common der}: parameters derived from fits shown in Figures~\ref{fig:fits common con} and \ref{fig:fits common per}
-\>> \TODO{or table instead of figure}
+\> Table \ref{tab:fits common}: parameters derived from fits shown in Figures~\ref{fig:fits common con} and \ref{fig:fits common per}
 \>> \TODO{trends in data? Explain!}
 \>> \TODO{illustrative decomposition of uncertainties from MC}
+\>> visualised in Figure~\ref{fig:fits reciprocal der} (black points)
 
-%----------------------------------------------------------------------------------------------------
-\subsection{Tensions between 1000 and 90m data}
+
+\begin{table*}
+\caption{%
+\TODO{caption}, parcmp fits as in Figures~\ref{fig:fits common con} and \ref{fig:fits common per}
+}%
+\label{tab:fits common}
+\begin{center}
+\small
+\setlength{\tabcolsep}{5pt}
+%\def\arraystretch{0.8}
+\begin{tabular}{c@{\hskip20pt}cc@{\hskip20pt}cc}
+\hline
+\hline
+% header
+	& \multispan2\hfil constant \hfil & \multispan2\hfil peripheral \hfil  \cr
+\hline
+ 			& $\rho = -0.027 \pm 0.021$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 0.87\un{fm}$					& $\rho = 0.083 \pm 0.023$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 1.68\un{fm}$					\cr
+$N_b = 1$	& $B = (19.39 \pm 0.05)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 1.34\un{fm}$		& $B = (19.68 \pm 0.07)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 1.03\un{fm}$		\cr
+			& $\sigma_{\rm tot} = (103.8 \pm 2.1)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.23\un{fm}$	& $\sigma_{\rm tot} = (102.8 \pm 2.1)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.24\un{fm}$	\cr\hline
+%                                                                                                                                                                                                                   
+ 			& $\rho = 0.059 \pm 0.021$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 0.87\un{fm}$						& $\rho = 0.120 \pm 0.026$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 1.90\un{fm}$						\cr
+$N_b = 2$	& $B = (19.97 \pm 0.07)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 1.36\un{fm}$		& $B = (20.46 \pm 0.44)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 0.96\un{fm}$		\cr
+			& $\sigma_{\rm tot} = (102.8 \pm 2.1)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.25\un{fm}$	& $\sigma_{\rm tot} = (104.13 \pm 2.3)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.28\un{fm}$	\cr\hline
+%                                                                                                                                                                                                                   
+ 			& $\rho = 0.090 \pm 0.024$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 0.87\un{fm}$						& $\rho = 0.115 \pm 0.026$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 2.01\un{fm}$						\cr
+$N_b = 3$	& $B = (20.39 \pm 0.14)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 1.37\un{fm}$		& $B = (20.04 \pm 0.36)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 0.82\un{fm}$		\cr
+			& $\sigma_{\rm tot} = (102.5 \pm 2.1)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.26\un{fm}$	& $\sigma_{\rm tot} = (103.5 \pm 2.2)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.25\un{fm}$	\cr\hline
+\hline
+\hline
+\end{tabular}
+\end{center}
+%\vskip-10mm
+\end{table*}
+
 
 
 %----------------------------------------------------------------------------------------------------
 \subsection{Reciprocally constrained 1000 and 90m fits}
+
+
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/fits_reciprocal_derived.pdf}
+\caption{\TODO{caption}
+Points as in legend, black ones correspond to the results of Table~\ref{tab:fits common}. Significance: triangles up (down) from 1000m (90m) fit. Describe columns -- combinations of $N_b$ and phase parametrisation. The column $N_b=1$ and constant phase is hatched since this combination is excluded by the data. Yellow horizontal bands: results from PRL, reference to the delicate B comparison above? Green horizontal band: extrapolation by COMPETE - which one? Peripheral fits -- shape variable or fixed?
+}
+\label{fig:fits reciprocal der}
+\end{center}
+\end{figure*}
