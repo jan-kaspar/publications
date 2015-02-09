@@ -3,7 +3,7 @@
 
 Elastic scattering of protons is a process mediated by the strong and the electromagnetic interactions -- the weak interaction can be neglected since its carriers are heavy compared to the small momentum transfers, $|t|$, typical for elastic scattering. In this context, the strong interaction is traditionally called nuclear and the electromagnetic called Coulomb. In quantum-theory description, each of the interactions is described by a complex scattering amplitude, nuclear ${\cal A}^{\rm N}$ and Coulomb ${\cal A}^{\rm C}$. Moreover, the superposition 
 of the two amplitudes generates an interference term in the combined interaction cross-section. 
-Since the Coulomb amplitude is known, the Coulomb-nuclear interference (CNI) exposes the phase of the nuclear amplitude, which is necessary for a complete understanding of the interaction but not directly observable in the pure hadronic differential cross-section. The interference effect is most pronounced in the $t$-region where the two amplitudes have similar magnitudes, i.e.~-- for typical LHC centre-of-mass energies of a few TeV -- near $|t| \sim 5 \times 10^{-4}\,\rm GeV^{2}$. Thus the experimental sensitivity to 
+Since the Coulomb amplitude is known, the Coulomb-nuclear interference (CNI) exposes the phase of the nuclear amplitude, which is necessary for a complete understanding of the interaction but not directly observable in the pure hadronic differential cross-section. The interference effect is most pronounced in the $t$-region where the two amplitudes have similar magnitudes, i.e. -- for typical LHC centre-of-mass energies of a few TeV -- near $t \sim 5 \times 10^{-4}\,\rm GeV^{2}$. Thus the experimental sensitivity to 
 the nuclear phase, which for general nuclear amplitudes is a function of $t$, 
 is limited to a region at very small $|t|$, making any conclusions on the 
 functional form of the phase very difficult.
@@ -15,45 +15,39 @@ hadronic amplitude, implying in particular a purely exponential modulus and a
 constant phase for all $t$ (see the discussion in 
 Section~\ref{sec:cni_framework}).
 As result, traditionally the phase value $\arg {\cal A}^{\rm N} (t=0)$, or
-equivalently, $\rho \equiv \cot \, \arg {\cal A}^{\rm N} (0) = \frac{\Re {\cal A}^{\rm N} (0)}{\Im {\cal A}^{\rm N} (0)}$ was quoted. 
+equivalently, $\rho \equiv \cot \, \arg {\cal A}^{\rm N} (0) = \frac{{\cal R A}^{\rm N} (0)}{{\cal I A}^{\rm N} (0)}$ was quoted. 
 Most of the interest in $\rho$ lies in its predictive power on total cross-sections at higher centre-of-mass energies via dispersion 
 relations~\cite{dremin-dispersion}. 
 
 The present article discusses the first measurement of elastic scattering in the
 CNI region at the CERN LHC by the TOTEM experiment. 
 The data have been collected at $\sqrt{s} = 8\,$TeV with a special beam optics 
-($\beta^{*}=1000\,$m, see Section~\ref{sec:beam optics}) and cover a $|t|$-interval
-from $6\times10^{-4}\,\rm GeV^{2}$ to 0.2\,GeV$^{2}$, thus overlapping comfortably
-with another data set taken at the same energy but with different beam optics
-($\beta^{*}=90\,$m; 0.027\,GeV$^{2} < |t| < 0.2\,$GeV$^{2}$). The analysis of the
-latter~\cite{8tev-90m} excludes a purely exponential hadronic elastic scattering
-amplitude with more than $7\,\sigma$ confidence and thereby also excludes
+($\beta^{*}=1000\,$m, see Section~\ref{sec:beam optics}) and cover a $|t|$-interval from $6\times10^{-4}\,\rm GeV^{2}$ to 0.2\,GeV$^{2}$, extending well into 
+the interference region. 
+In order to optimally constrain the modulus of the hadronic amplitude and thus enable a cleaner identification of the interference effects, 
+this analysis also exploits another, complementary data set with very strong statistical power, taken at the same energy but with different beam optics ($\beta^{*}=90\,$m) and covering a hadronically dominated $t$-range: 0.027\,GeV$^{2} < |t| < 0.2\,$GeV$^{2}$. The isolated analysis of the
+latter data set~\cite{8tev-90m}, neglecting effects from Coulomb scattering, has already excluded a purely exponential hadronic elastic scattering
+amplitude with more than $7\,\sigma$ confidence and thereby also refuted
 one of the conditions for the applicability of the SWY formula.
 Therefore the more general and complex Kundr\'{a}t-Lokaj\'{\i}\v{c}ek (KL) interference 
 formula~\cite{kl94} is applied in the present study, which offers much more freedom for the
 choice of the theoretically unknown functional forms of the hadronic modulus 
 and phase. Since the data cannot unambiguously determine all functional forms and their parameters, the results of this study, still representatively 
-expressed in terms of $\rho$, become conditional to the choice of amplitude models. Each of these choices implies a different behaviour of the interaction in impact parameter space, as discussed in \TODO{Section~...}.
-
-%\todo{why phase interesting?} \todo{introduce: coulomb-interference formula}
-%\> motivation for low-$|t|$ measurement
-%\>> why it is important and interesting
-%
-%\> historical context, previous measurements
-%
-%\> explain structure: first 1000m measurement, then CNI analysis (where also 90m data will be used)
+expressed in terms of $\rho$, become conditional to the choice of the model 
+describing the hadronic amplitude. This choice has implications on the behaviour of the interaction in impact parameter space. In particular, the functional 
+form of the hadronic phase at $|t|>0$ determines whether elastic collisions occur predominantly at small or large impact parameters (centrality vs. peripherality). A relevant question to be addressed in the discussion of the fit results is therefore whether the data have enough discrimination power to show any preference for either a central or a peripheral elastic scattering behaviour (Section~... \textbf{[not yet written!!!]}).
 
 The paper is organised as follows.
 \begin{itemize}
-\item Section\ref{sec:exp apparatus} outlines the experimental setup used for the presented measurement.
-\item Section\ref{sec:beam optics} describes the properties of the special beam optics.
-\item Section\ref{sec:data taking} gives details of the data-taking conditions.
-\item Section\ref{sec:differential cross-section} describes the data analysis and reconstruction of the differential cross-section.
-\item Section\ref{sec:coulomb}: study of the Coulomb-nuclear interference (+ link to the next paragraph?)
+\item Section~\ref{sec:exp apparatus} outlines the experimental setup used for the presented measurement.
+\item Section~\ref{sec:beam optics} describes the properties of the special beam optics.
+\item Section~\ref{sec:data taking} gives details of the data-taking conditions.
+\item Section~\ref{sec:differential cross-section} describes the data analysis and reconstruction of the differential cross-section.
+\item Section~\ref{sec:coulomb}: study of the Coulomb-nuclear interference together with the functional form of the hadronic amplitude.
 \end{itemize}
 
-In order to optimally exploit the information of all available data, the two 
-data sets are analysed in a combined way, providing complementary constraints:
-The $\beta^{*}=90\,$m set with very high statistics at higher $|t|$ fixes the 
-hadronic modulus, whereas the $\beta^{*}=1000\,$m set with its reach to very low
-$|t|$ determines phase parameters.
+%In order to optimally exploit the information of all available data, the two 
+%data sets are analysed in a combined way, providing complementary constraints:
+%The $\beta^{*}=90\,$m set with very high statistics at higher $|t|$ fixes the 
+%hadronic modulus, whereas the $\beta^{*}=1000\,$m set with its reach to very low
+%$|t|$ determines phase parameters.
