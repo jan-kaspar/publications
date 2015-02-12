@@ -271,7 +271,8 @@ for (int dsi : datasets.keys)
 	AttachLegend(BuildLegend(lineLength=6mm, vSkip=-0.3mm, NW), NE);
 
 	currentpicture.legend.delete();
-	AttachLegend("nuclear phase: peripheral, Eq.~(" + GetLatexReference("label", "eq:nuc phase per") + ")", N, N);
+	//AttachLegend("nuclear phase: peripheral, Eq.~(" + GetLatexReference("label", "eq:nuc phase per") + ")", N, N);
+	AttachLegend("nuclear phase: peripheral parametrisation)", N, N);
 }
 		
 GShipout(margin=0mm);

@@ -1,143 +1,63 @@
 %----------------------------------------------------------------------------------------------------
+% Add an author
+% USAGE: \AddAuthor{name}{primary affiliation}{secondary affiliation}{external affiliation}
 
 \def\AddAuthor#1#2#3#4{%
+	\def\Name{#1}%
 	\def\PriAf{#2}%
 	\def\SecAf{#3}%
 	\def\ExtAf{#4}%
 	\def\empty{}%
 	
 	\ifx\PriAf\empty
+		% no primary affiliation, only external
 		\author{#1\fnref{#4}}%
 	\else
 		\ifx\SecAf\empty
 			\ifx\ExtAf\empty
+				% only primary affiliation
 				\author[#2]{#1}%
 			\else
+				% primary and external affiliation
 				\author[#2]{#1\fnref{#4}}%
 			\fi
 		\else
 			\ifx\ExtAf\empty
+				% primary and secondary affiliation
 				\author[#2,#3]{#1}%
 			\else
+				% primary, secondary and external affiliation
 				\author[#2,#3]{#1\fnref{#4}}%
 			\fi
 		\fi
 	\fi
 }
 
+%----------------------------------------------------------------------------------------------------
+% Add a TOTEM institute
+% USAGE: \AddInstitute{reference as in AddAuthor}{address}
+
 \def\AddInstitute#1#2{%
 	\address[#1]{#2}%
 }
 
-\def\AddExternal#1#2{%
+%----------------------------------------------------------------------------------------------------
+% Add an institute not in the TOTEM collaboration
+% USAGE: \AddExternalInstitute{reference as in AddAuthor}{address}
+
+\def\AddExternalInstitute#1#2{%
 	\fntext[#1]{#2}%
 }
 
 %----------------------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------------------
+% include the actual data
 
 \author{The TOTEM Collaboration}
 \address{}
 
-\AddAuthor{G.~Antchev}{}{}{a}
-\AddAuthor{P.~Aspell}{8}{}{}
-\AddAuthor{I.~Atanassov}{8}{}{a}
-\AddAuthor{V.~Avati}{8}{}{}
-\AddAuthor{J.~Baechler}{8}{}{}
-\AddAuthor{V.~Berardi}{5b}{5a}{}
-\AddAuthor{M.~Berretti}{7b}{}{}
-\AddAuthor{E.~Bossini}{7b}{}{}
-\AddAuthor{M.~Bozzo}{6b}{6a}{}
-\AddAuthor{P.~Brogi}{7b}{}{}
-\AddAuthor{E.~Br\"{u}cken}{3a}{3b}{}
-\AddAuthor{A.~Buzzo}{6a}{}{}
-\AddAuthor{F.~S.~Cafagna}{5a}{}{}
-\AddAuthor{M.~Calicchio}{5b}{5a}{}
-\AddAuthor{M.~G.~Catanesi}{5a}{}{}
-\AddAuthor{C.~Covault}{9}{}{}
-\AddAuthor{M.~Csan\'{a}d}{4}{}{e}
-\AddAuthor{T.~Cs\"{o}rg\H{o}}{4}{}{}
-\AddAuthor{M.~Deile}{8}{}{}
-\AddAuthor{K.~Eggert}{9}{}{}
-\AddAuthor{V.~Eremin}{}{}{b}
-\AddAuthor{R.~Ferretti}{6a}{6b}{}
-\AddAuthor{F.~Ferro}{6a}{}{}
-\AddAuthor{A. Fiergolski}{}{}{c}
-\AddAuthor{F.~Garcia}{3a}{}{}
-\AddAuthor{S.~Giani}{8}{}{}
-\AddAuthor{V.~Greco}{7b}{8}{}
-\AddAuthor{L.~Grzanka}{8}{}{d}
-\AddAuthor{J.~Heino}{3a}{}{}
-\AddAuthor{T.~Hilden}{3a}{3b}{}
-\AddAuthor{R.~A.~Intonti}{5a}{}{}
-\AddAuthor{J.~Ka\v{s}par}{1a}{8}{}
-\AddAuthor{J.~Kopal}{1a}{8}{}
-\AddAuthor{V.~Kundr\'{a}t}{1a}{}{}
-\AddAuthor{K.~Kurvinen}{3a}{}{}
-\AddAuthor{S.~Lami}{7a}{}{}
-\AddAuthor{G.~Latino}{7b}{}{}
-\AddAuthor{R.~Lauhakangas}{3a}{}{}
-\AddAuthor{T.~Leszko}{}{}{c}
-\AddAuthor{E.~Lippmaa}{2}{}{}
-\AddAuthor{M.~Lokaj\'{\i}\v{c}ek}{1a}{}{}
-\AddAuthor{M.~Lo~Vetere}{6b}{6a}{}
-\AddAuthor{F.~Lucas~Rodr\'{i}guez}{8}{}{}
-\AddAuthor{M.~Macr\'{\i}}{6a}{}{}
-\AddAuthor{T.~M\"aki}{3a}{}{}
-\AddAuthor{A.~Mercadante}{5b}{5a}{}
-\AddAuthor{N.~Minafra}{8}{}{} 
-\AddAuthor{S.~Minutoli}{6a}{}{}
-\AddAuthor{F.~Nemes}{4}{}{e}
-\AddAuthor{H.~Niewiadomski}{8}{}{}
-\AddAuthor{E.~Oliveri}{7b}{}{}
-\AddAuthor{F.~Oljemark}{3a}{3b}{}
-\AddAuthor{R.~Orava}{3a}{3b}{}
-\AddAuthor{M.~Oriunno}{8}{}{f}
-\AddAuthor{K.~\"{O}sterberg}{3a}{3b}{}
-\AddAuthor{P.~Palazzi}{7b}{}{}
-\AddAuthor{J.~Proch\'{a}zka}{1a}{}{}
-\AddAuthor{M.~Quinto}{5a}{}{}
-\AddAuthor{E.~Radermacher}{8}{}{}
-\AddAuthor{E.~Radicioni}{5a}{}{}
-\AddAuthor{F.~Ravotti}{8}{}{}
-\AddAuthor{E.~Robutti}{6a}{}{}
-\AddAuthor{L.~Ropelewski}{8}{}{}
-\AddAuthor{G.~Ruggiero}{8}{}{}
-\AddAuthor{H.~Saarikko}{3a}{3b}{}
-\AddAuthor{A.~Santroni}{6b}{6a}{}
-\AddAuthor{A.~Scribano}{7b}{}{}
-\AddAuthor{J.~Smajek}{8}{}{}
-\AddAuthor{W.~Snoeys}{8}{}{}
-\AddAuthor{J.~Sziklai}{4}{}{}
-\AddAuthor{C.~Taylor}{9}{}{}
-\AddAuthor{N.~Turini}{7b}{}{}
-\AddAuthor{V.~Vacek}{1b}{}{}
-\AddAuthor{M.~V\'itek}{1b}{}{}
-\AddAuthor{J.~Welti}{3a}{3b}{}
-\AddAuthor{J.~Whitmore}{10}{}{}
+\input authorlist_data
 
-%----------------------------------------------------------------------------------------------------
-
-\AddInstitute{1a}{Institute of Physics of the Academy of Sciences of the Czech Republic, Praha, Czech Republic.}
-\AddInstitute{1b}{Czech Technical University, Praha, Czech Republic.}
-\AddInstitute{2} {National Institute of Chemical Physics and Biophysics NICPB, Tallinn, Estonia.}
-\AddInstitute{3a}{Helsinki Institute of Physics, Finland.}
-\AddInstitute{3b}{Department of Physics, University of Helsinki, Finland.}
-\AddInstitute{4} {MTA Wigner Research Center, RMKI, Budapest, Hungary.}
-\AddInstitute{5a}{INFN Sezione di Bari, Italy.}
-\AddInstitute{5b}{Dipartimento Interateneo di Fisica di Bari, Italy.}
-\AddInstitute{6a}{Sezione INFN, Genova, Italy.}
-\AddInstitute{6b}{Universit\`{a} degli Studi di Genova, Italy.}
-\AddInstitute{7a}{INFN Sezione di Pisa, Italy.}
-\AddInstitute{7b}{Universit\`{a} degli Studi di Siena and Gruppo Collegato INFN di Siena, Italy.}
-\AddInstitute{8} {CERN, Geneva, Switzerland.}
-\AddInstitute{9} {Case Western Reserve University, Dept. of Physics, Cleveland, OH, USA.}
-\AddInstitute{10}{Penn State University, Dept.~of Physics, University Park, PA, USA.}
-
-%----------------------------------------------------------------------------------------------------
-
-\AddExternal{a}{INRNE-BAS, Institute for Nuclear Research and Nuclear Energy, Bulgarian Academy of Sciences, Sofia, Bulgaria.}
-\AddExternal{b}{Ioffe Physical - Technical Institute of Russian Academy of Sciences.}
-\AddExternal{c}{Warsaw University of Technology, Poland.}
-\AddExternal{d}{Institute of Nuclear Physics, Polish Academy of Science, Cracow, Poland.}
-\AddExternal{e}{Department of Atomic Physics, E\"otv\"os University, Hungary.}
-\AddExternal{f}{SLAC National Accelerator Laboratory, Stanford CA, USA.}
+\DeclareAuthors
+\DeclareInstitutes
+\DeclareExternalInstitutes

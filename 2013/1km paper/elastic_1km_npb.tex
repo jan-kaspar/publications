@@ -8,6 +8,9 @@
 %\usepackage{mathptmx}
 \usepackage{url}
 
+% TODO: only for draft, remove then
+%\usepackage[]{showlabels}
+
 %----------------------------------------------------------------------------
 
 % TODO - check for consisten use of
@@ -15,6 +18,8 @@
 %	2) multiplication symbol: \times or \cdot
 
 %----------------------------------------------------------------------------
+
+\definecolor{gray}{gray}{0.50}
 
 \def\d{{\rm d}}
 \def\un#1{\,{\rm #1}}
@@ -158,6 +163,8 @@ proton-proton interactions \sep elastic scattering \sep Coulomb-Nuclear Interfer
 \begin{thebibliography}{99}
 
 % TODO: sort the references
+% TODO: consistent order of first and last names
+% TODO: remove capitalised surnames
 
 \bibitem{plb43} U. Amaldi et al., Phys. Lett. B 43 (1973) 231-236.
 
@@ -285,6 +292,7 @@ proton-proton interactions \sep elastic scattering \sep Coulomb-Nuclear Interfer
 	\REVIEW{Comp.~Phys.~Comm.}{185}{2014}{1081--1084}
 	%number = "3",
 	%doi = "http://dx.doi.org/10.1016/j.cpc.2013.11.016",
+	and \url{http://elegent.hepforge.org/}
 
 \bibitem{hubert-thesis}
 	\Name{H.~Niewiadomski}
@@ -299,19 +307,28 @@ proton-proton interactions \sep elastic scattering \sep Coulomb-Nuclear Interfer
 	\url{http://elogbook.cern.ch/eLogbook/eLogbook.jsp?shiftId=1049013}, 
 	\url{http://elogbook.cern.ch/eLogbook/eLogbook.jsp?shiftId=1049020}
 
-\end{thebibliography}
-
-\iffalse
+\bibitem{compete} 
+	\Name{Cudell~J.~R.~\etal{} (COMPETE Collaboration)}
+	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
 
 \bibitem{epl95}
-    %Proton-proton elastic scattering at the LHC energy of \sqrt{s} = 7 TeV, Europhys. Lett. 95 (2011) 41001,CERN-PH-EP-2011-101 
+    %Proton-proton elastic scattering at the LHC energy of \sqrt{s} = 7 TeV, Europhys. Lett. 95 (2011) 41001, CERN-PH-EP-2011-101 
 	\Name{Antchev G.~\etal{}~(TOTEM Collaboration)}
 	\REVIEW{Europhys.~Lett.}{95}{2011}{41001}
 
+\bibitem{borkowski}
+	\Name{Borkowski F.~et al.}
+	%title = "Electromagnetic form factors of the proton at low four-momentum transfer",
+	\REVIEW{Nuclear Physics A}{222}{1974}{269 -- 275}
+	%doi = "DOI: 10.1016/0375-9474(74)90392-3",
+	
 
-\bibitem{jan_thesis}
-	\Name{Ka\v spar J.}
-	PhD Thesis, CERN-THESIS-2011-214, {\tt http://cdsweb.cern.ch/record/1441140}
+\end{thebibliography}
+
+
+% TODO: remove unnecessary references
+
+\iffalse
 
 \bibitem{mario_ipac_2011}
 	\Name{Deile M.}
@@ -340,10 +357,6 @@ proton-proton interactions \sep elastic scattering \sep Coulomb-Nuclear Interfer
 	\Name{E710} \REVIEW{Phys.~Rev.~Lett.}{68}{1992}{2433} and \REVIEW{Nuovo Cimento}{A106}{1992}{123}; 
 	\Name{D0} D0 Note 6056-CONF; 
 	\Name{pp2pp} \REVIEW{Phys.~Lett.}{B579}{2004}{245}
-
-\bibitem{compete} 
-	\Name{Cudell~J.~R.~\etal{} (COMPETE Collaboration)}
-	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
 
 \fi
 

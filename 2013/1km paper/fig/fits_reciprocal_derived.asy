@@ -56,7 +56,7 @@ if (true)
 	for (int nb = 1; nb <= 3; ++nb)
 	{
 		string nbs = format("%i", nb);
-		AddColumn("$N_b = "+nbs+"$", "con");
+		AddColumn("$N_b = "+nbs+"$", "constant");
 		AddPoint("1000-ob-0-1,90-DS4-sc-ob/parcmp:"+nbs+",KL,con,chisq,,st+sy", black);
 		AddPoint("1000-ob-0-1,90-DS4-sc-ob/parcmpsepm2-90,v,v,f-1000,f,f,v:"+nbs+",KL,con,chisq,,st+sy", red);
 		AddPoint("1000-ob-0-1,90-DS4-sc-ob/parcmpsepm2-90,f,v,f-1000,v,f,v:"+nbs+",KL,con,chisq,,st+sy", blue);
@@ -67,7 +67,7 @@ if (true)
 	for (int nb = 1; nb <= 3; ++nb)
 	{
 		string nbs = format("%i", nb);
-		AddColumn("$N_b = "+nbs+"$", "per");
+		AddColumn("$N_b = "+nbs+"$", "peripheral");
 		AddPoint("1000-ob-0-1,90-DS4-sc-ob/parcmpper:"+nbs+",KL,per-exa"+nbs+"-1,chisq,,st+sy", black);
 	
 		// shape variable in fit
@@ -174,7 +174,7 @@ xSizeDef = columnWidth * (columns.length + 1);
 		padSet.rho = NewPad("", "$\rh(t = 0)$", yTicks = RightTicks(Step=0.05, step=0.01), 0, ++idx);
 		xTicksDef = LeftTicks(Label(" "), Step=1, step=0);
 
-		real v = 0.14, u = 0.007;
+		real v = 0.140, u = 0.007;
 		filldraw((x_min, v-u)--(x_max, v-u)--(x_max, v+u)--(x_min, v+u)--cycle, heavygreen+opacity(0.3), nullpen);
 		draw((x_min, v)--(x_max, v), darkgreen+2pt);
 	}
@@ -385,11 +385,11 @@ void MarkExcludedColumns(real y_min, real y_max)
 			xaxis(YEquals(y, false), (fabs(y - 0.) < 1e-4) ? dashed : dotted);
 
 		AddToLegend("common fit", mCi+2pt+black);
-		AddToLegend("start: 90, A: 90", mCi+2pt+red);
-		AddToLegend("start: 90, A: 1000", mCi+2pt+blue);
-		AddToLegend("start: 1000, A: 90", mCi+2pt+magenta);
-		AddToLegend("start: 1000, A: 1000", mCi+2pt+cyan2);
-		AttachLegend(NE, NE);
+		AddToLegend("start: 90, $a$: 90", mCi+2pt+red);
+		AddToLegend("start: 90, $a$: 1000", mCi+2pt+blue);
+		AddToLegend("start: 1000, $a$: 90", mCi+2pt+magenta);
+		AddToLegend("start: 1000, $a$: 1000", mCi+2pt+cyan2);
+		AttachLegend(BuildLegend(NE, vSkip=-1mm, lineLength=5mm), NE);
 	}
 
 	if (plotDPt)
@@ -411,9 +411,9 @@ void MarkExcludedColumns(real y_min, real y_max)
 	if (plotRho)
 	{
 		SetPad(padSet.rho);
-		limits((x_min, -0.05), (x_max, 0.20), Crop);
-		MarkExcludedColumns(-0.05, 0.20);
-		for (real y = 0.; y < 0.2; y += 0.05)
+		limits((x_min, -0.05), (x_max, 0.15), Crop);
+		MarkExcludedColumns(-0.05, 0.15);
+		for (real y = 0.; y < 0.15; y += 0.05)
 			xaxis(YEquals(y, false), dotted);
 	}
 

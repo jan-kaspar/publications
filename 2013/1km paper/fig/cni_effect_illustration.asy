@@ -8,6 +8,7 @@ texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 string topDir = "../analysis_combined/coulomb_analysis/exploration/";
 
 xSizeDef = 8cm;
+ySizeDef = 5cm;
 
 //----------------------------------------------------------------------------------------------------
 
@@ -129,17 +130,20 @@ void FinalisePlots()
 	}
 
 	SetPad(pEffect);
-	limits((0, -0.05), (0.2, 0.05), Crop);
+	limits((0, -0.03), (0.2, 0.05), Crop);
 
 	for (real x=0.; x <= 0.2; x += 0.05)
 		yaxis(XEquals(x, false), dotted);
 
-	for (real y=-0.05; y <= 0.05; y += 0.01)
+	for (real y=-0.03; y <= 0.05; y += 0.01)
 		xaxis(YEquals(y, false), dotted);
 
-	draw(Label("region of Coulomb dominance", 1., E, Fill(white+opacity(0.8))), (0.005, 0.04)--(0.03, 0.04), BeginArrow);
+	draw(Label("region of Coulomb dominance", 1., E, Fill(white+opacity(0.8))), (0.005, 0.045)--(0.03, 0.035), BeginArrow);
 	
 	draw(Label("region of sensitivity to phase at $|t| \approx 0$", 1., E, Fill(white+opacity(0.8))), (0.01, -0.001)--(0.02, 0.015), BeginArrow);
+
+	draw((0.045, -0.022)--(0.040, -0.015), EndArrow);
+	draw((0.155, -0.022)--(0.160, -0.008), EndArrow);
 
 	label("region of sensitivity to phase at higher $|t|$", (0.04, -0.025), E, Fill(white+opacity(0.8)));
 
@@ -179,15 +183,15 @@ void AddText(string l)
 InitPlots();
 
 
-AddText("<{\it different $\rh$, same shape:}");
+AddText("<{\it different $\rh$, same shape (constant):}");
 PlotCurve("p-con-rho0.05", red, "$\rh = 0.05$");
 PlotCurve("p-con-rho0.10", blue, "$\rh = 0.10$");
 PlotCurve("p-con-rho0.15", heavygreen, "$\rh = 0.15$");
 
 AddText("<{\it $\rh = $ 0.10, different shapes:}");
 PlotCurve("p-std-rho0.10", red+dashed, "standard");
-PlotCurve("p-per-rho0.10-1-4-0.3", blue+dashed, "peripheral (example 1)");
-PlotCurve("p-per-rho0.10-5-4-0.3", heavygreen+dashed, "peripheral (example 2)");
+PlotCurve("p-per-rho0.10-1-2-0.3", blue+dashed, "peripheral (example 1)");
+PlotCurve("p-per-rho0.10-4-4-0.2", heavygreen+dashed, "peripheral (example 2)");
 
 FinalisePlots();
 

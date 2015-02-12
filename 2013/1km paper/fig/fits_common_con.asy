@@ -270,7 +270,8 @@ for (int dsi : datasets.keys)
 	AttachLegend(BuildLegend(lineLength=6mm, vSkip=-0.7mm, NW), NE);
 
 	currentpicture.legend.delete();
-	AttachLegend("nuclear phase: constant, Eq.~(" + GetLatexReference("label", "eq:nuc phase con") + ")", N, N);
+	//AttachLegend("nuclear phase: constant, Eq.~(" + GetLatexReference("label", "eq:nuc phase con") + ")", N, N);
+	AttachLegend("nuclear phase: constant parametrisation)", N, N);
 }
 		
 GShipout(margin=0mm);
