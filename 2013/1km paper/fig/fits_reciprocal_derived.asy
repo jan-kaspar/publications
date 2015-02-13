@@ -171,7 +171,7 @@ xSizeDef = columnWidth * (columns.length + 1);
 
 	if (plotRho)
 	{
-		padSet.rho = NewPad("", "$\rh(t = 0)$", yTicks = RightTicks(Step=0.05, step=0.01), 0, ++idx);
+		padSet.rho = NewPad("", "\hbox to10mm{\hfil}$\rh$", yTicks = RightTicks(Step=0.05, step=0.01), 0, ++idx);
 		xTicksDef = LeftTicks(Label(" "), Step=1, step=0);
 
 		real v = 0.140, u = 0.007;
@@ -201,7 +201,7 @@ xSizeDef = columnWidth * (columns.length + 1);
 	
 	if (plotSigmaTot)
 	{
-		padSet.si_tot = NewPad("", "$\si_{\rm tot}^{\rm N}\ung{mb}$", yTicks = RightTicks(Step=1, step=0.2), 0, ++idx);
+		padSet.si_tot = NewPad("", "$\si_{\rm tot}\ung{mb}$", yTicks = RightTicks(Step=1, step=0.2), 0, ++idx);
 
 		real v = 101.7, u = 2.9;
 		filldraw((x_min, v-u)--(x_max, v-u)--(x_max, v+u)--(x_min, v+u)--cycle, ref_unc_pen, nullpen);
