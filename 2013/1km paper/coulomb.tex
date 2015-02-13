@@ -52,6 +52,16 @@ Since the calculation of Coulomb-nuclear interference may, in principle, involve
 \vskip3mm
 \hbox to\hsize{\bf Phase\hfil}
 
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/hadronic_phase_illustration.pdf}
+\caption{Illustration of nuclear-phase forms. The dashed lines correspond to predictions by theoretical models (\cite{elegent} and references therein). The solid lines give typical examples of parametrisations used in the study, all at the same value of $\rho = 0.10$.
+}
+\label{fig:phase illustration}
+\end{center}
+\end{figure*}
+
+
 % ***
 A {\it constant phase} is obviously the simplest choice:
 \begin{equation}
@@ -86,15 +96,6 @@ The {\it peripheral phase} \cite{kl94} provides an alternative to the above desc
 %results in a peak at $t_{\rm m} \approx -0.310\un{GeV^2}$, with amplitude $A \approx 5.53$ and width controlled by $\kappa \approx 4.01$.
 results in a peak at $t = t_{\rm m}$, with an amplitude $A$ and width controlled by $\kappa$, as can be seen in Figure~\ref{fig:phase illustration}.
 
-\begin{figure*}
-\begin{center}
-\includegraphics{fig/hadronic_phase_illustration.pdf}
-\caption{Illustration of nuclear-phase forms. The dashed lines correspond to predictions by theoretical models (\cite{elegent} and references therein). The solid lines give typical examples of parametrisations used in the study, all at the same value of $\rho = 0.10$.
-}
-\label{fig:phase illustration}
-\end{center}
-\end{figure*}
-
 Figure~\ref{fig:phase illustration} presents a comparison of phase predictions of several models to typical examples of parametrisations proposed above.
 
 It should be noted that the phase has decisive influence on the amplitude behaviour in the space of impact parameter, $b$, see e.g.~Section 3 in~\cite{klk02}. It can be characterised by the root-mean-squares (RMS) of $b$ for elastic and inelastic collisions. The constant, standard and Bailly phases lead to elastic collisions more central (smaller RMS) than the inelastic ones. The peripheral phase can yield a description with the opposite hierarchy, which is argued more natural by some authors (e.g. Section~4 in~\cite{kl96}).
@@ -118,6 +119,16 @@ was assumed constant (i.e.~$b_2 = b_3 = 0$ in parametrisation Eq.~(\ref{eq:nuc m
 \end{equation}
 where $\alpha$ is the fine-structure constant and $\gamma \doteq 0.577$ the Euler constant. Despite the many limitations, the formula has extensively been used in past data analyses. For backward-comparison reasons we consider it also in this report.
 
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/cni_effect_illustration.pdf}
+\caption{%
+Illustration of the effects due to the Coulomb interaction, using KL formula. For SWY formula, the picture is similar, however it misses the effects at higher $|t|$. The curves show a response of the interference formula to different nuclear phases with a purely exponential nuclear modulus. The solid curves correspond to phases of the same shape (constant) but different values of $\rho$ (maximal response can be seen at $|t| \lesssim 0.01\un{GeV^2}$). Conversely, the dashed lines correspond to phases with fixed $\rho$ but various shapes (the same examples as in Figure~\ref{fig:phase illustration}), with response sizeable at $|t| \gtrsim 0.02\un{GeV^2}$.
+}
+\label{fig:cni effect}
+\end{center}
+\end{figure*}
+
 The {\bf Kundr\' at-Lokaj\' i\v cek formula (KL)} \cite{kl94} was derived in an impact parameter formalism and it is based on the additivity of eikonals. The derivation poses no limitations on nuclear amplitude and the formula naturally incorporates the electromagnetic form factor. In this treatment, the interference effect goes beyond a single phase, the $\Psi$ quantity is complex, in general:
 \begin{equation}
 \label{eq:int kl}
@@ -132,16 +143,6 @@ The {\bf Kundr\' at-Lokaj\' i\v cek formula (KL)} \cite{kl94} was derived in an 
 	\end{aligned}
 \end{equation}
 where the $t$ integrations go over the entire kinematically allowed region.
-
-\begin{figure*}
-\begin{center}
-\includegraphics{fig/cni_effect_illustration.pdf}
-\caption{%
-Illustration of the effects due to the Coulomb interaction, using KL formula. For SWY formula, the picture is similar, however it misses the effects at higher $|t|$. The curves show a response of the interference formula to different nuclear phases with a purely exponential nuclear modulus. The solid curves correspond to phases of the same shape (constant) but different values of $\rho$ (maximal response can be seen at $|t| \lesssim 0.01\un{GeV^2}$). Conversely, the dashed lines correspond to phases with fixed $\rho$ but various shapes (the same examples as in Figure~\ref{fig:phase illustration}), with response sizeable at $|t| \gtrsim 0.02\un{GeV^2}$.
-}
-\label{fig:cni effect}
-\end{center}
-\end{figure*}
 
 By analysing the formulae Eq.~(\ref{eq:int swy}) and (\ref{eq:int kl}), one can conclude that in the region where the nuclear amplitude dominates ($|t| \gtrsim 0.003\un{GeV^2}$), the effects due to the Coulomb interaction can be proportional either to $\alpha$ or to the ratio ${\cal A}^{\rm C} / {\cal A}^{\rm N}$. In both cases, the magnitude of the interference effects can be expected at a percent level, as shown in Figure~\ref{fig:cni effect}. The figure also shows that the effects at different $|t|$ probe different parts of the nuclear phase: maximum sensitivity to $\rho$ lies at very low $|t|$ while at higher $|t|$ the effects are sensitive to phase values at higher $|t|$. It can also be observed that for constant and standard phase (and can be generalised to Bailly, too) the effects are very similar, rather mild at higher $|t|$. This can be understood from a very limited variation of the phase at low $|t|$, which is the region contributing most to the integral in Eq.~(\ref{eq:int kl}). In contrary, the higher $|t|$ response to peripheral phases can have various forms, often similar to the ``U shape'' of the reconstructed cross-section, see Figures \ref{fig:fits common con} and \ref{fig:fits common per}.
 
@@ -182,23 +183,23 @@ where $\vec F$ is a vector of the fit function values at the data point abscissa
 
 %-----------
 
-The {\bf parameter-comparison} method is based on decomposing both the data and fit function into a linear combination of features $\Phi_i(t)$: \TODO{vectors?}
+The {\bf parameter-comparison} method is based on decomposing both the data and fit function into a linear combination of features $\vec\Phi_i$: 
 \begin{equation}
 \label{eq:parcmp decomposition}
-	\vec D_j = \sum_i \zeta_i\ \Phi_i(t_j)\ ,\quad
-	\vec F_j = \sum_i \eta_i\ \Phi_i(t_j)\ ,
+	\vec D = \sum_i \zeta_i\ \vec\Phi_i\ ,\quad
+	\vec F = \sum_i \eta_i\ \vec\Phi_i\ ,
 \end{equation}
-where $t_j$ represent the data point abscissas. The difference between the coefficients $\zeta_i$ and $\eta_i$ can then be used to establish the match quality between the data and the fit function. Such a test construction can offer several advantages. Since the estimation of coefficients $\zeta_i$ is likely to be binning-independent, so the test is. Another advantage comes from the possibility to choose the features $\Phi_i$: one can make separation between features expected in the data (e.g.~polynomials of low degree) from typical signatures of noise (e.g.~polynomials of high degree). This in turn leads to increased strength of the method. Regarding the technical implementation, a coordinate transformation is applied first:
+where each of the feature vectors $\vec\Phi$ can be, for example, generated from a function $\Phi(t)$ evaluated at the abscissas of data points. The difference between the coefficients $\zeta_i$ and $\eta_i$ can then be used to establish the match quality between the data and the fit function. Such a test construction can offer several advantages. Since the estimation of coefficients $\zeta_i$ is likely to be binning-independent, so the test is. Another advantage comes from the possibility to choose the features $\vec\Phi_i$: one can make separation between features expected in the data (e.g.~polynomials of low degree) from typical signatures of noise (e.g.~polynomials of high degree). This in turn leads to increased strength of the method. Regarding the technical implementation, a coordinate transformation is applied first:
 \begin{equation}
 \label{eq:parcmp transform}
-	\vec D_i \rightarrow {\vec D_i - \vec F_i\over \vec F_i}\ ,
+	D_i \rightarrow {D_i - F_i\over F_i}\ ,
 \end{equation}
-which simplifies the task since the coefficients $\eta_i \equiv 0$ and also simplifies the choice of features $\Phi_i$. For these, polynomials of low degree have been chosen (cf.~data shape in Figure~\ref{fig:fits common con}) together with functions $1/t$ and $1/t^2$ relevant when fit functions fail to describe the data in the region of Coulomb dominance (see Figure~\ref{fig:cni effect}). For optimal performance, Gram-Schmidt orthonormalisation is applied such that $\Phi_i \cdot \Phi_j = \delta_{ij}$ which makes the determination of parameters straight-forward: \TODO{$\zeta_i = \Vec D \cdot \Phi_i$}. The scalar product has been chosen such that data points with larger uncertainties contribute less to the fit:
+which simplifies the task since the coefficients $\eta_i \equiv 0$ and also simplifies the choice of features $\vec\Phi_i$. For these, polynomials of low degree have been chosen (cf.~data shape in Figure~\ref{fig:fits common con}) together with functions $1/t$ and $1/t^2$ relevant when fit functions fail to describe the data in the region of Coulomb dominance (see Figure~\ref{fig:cni effect}). For optimal performance, Gram-Schmidt orthonormalisation is applied such that $\vec\Phi_i \cdot \vec\Phi_j = \delta_{ij}$ rendering the determination of parameters straight-forward: $\zeta_i = \vec D \cdot \vec \Phi_i$. The scalar product has been defined such that data points with larger uncertainties contribute less to the fit:
 \begin{equation}
 \label{eq:parcmp dot product}
-	f \cdot g = \sum_{i, j} f(t_i)\ \mat V^{-1}_{ij}\ g(t_j) \ ,
+	\vec f \cdot \vec g = \sum_{i, j} f_i\ \mat V^{-1}_{ij}\ g_j \ ,
 \end{equation}
-where $t_i$ are the abscissas of the data points and $\mat V$ is the data uncertainty matrix. This choice is also practical since the covariance matrix of the $\zeta_i$ parameters becomes a unit matrix: $\mat V_{\vec\zeta} = 1$. Moreover, the method becomes equivalent to the standard LS method in the limit where the number of features equals the number of data points. Finally, the fit quality is determined as a measure of compatibility of the vector $\vec\zeta$ with zero:
+where $\mat V$ is the data uncertainty matrix. This choice is also practical since the covariance matrix of the $\zeta_i$ parameters becomes a unit matrix: $\mat V_{\vec\zeta} = 1$. Moreover, the method becomes equivalent to the standard LS method in the limit where the number of features equals the number of data points. Finally, the fit quality is determined as a measure of compatibility of the vector $\vec\zeta$ with zero:
 \begin{equation}
 \label{eq:chi sq parcmp}
 	\chi_{\rm PC}^2 = \vec\zeta^\T \mat V_{\vec\zeta}^{-1} \vec\zeta = |\vec\zeta|^2 \ .
@@ -324,7 +325,6 @@ The fits have been repeated with electromagnetic form factors by Borkowski et al
 \includegraphics{fig/fits_reciprocal_derived.pdf}
 \caption{%
 Comparison of parameters derived from common fits (Section~\ref{sec:cni common fits}) and reciprocal fits (Section~\ref{sec:cni reciprocal fits}). The black points correspond to the results from Table~\ref{tab:fits common}. The other points represent the reciprocal fits as described in the legend. There ``start'' indicates the data set used first in the fit series and ``$a$'' indicates the data set determining the nuclear modulus normalisation (cf.~Eq.~(\ref{eq:nuc mod})). The significance plot gives fit quality for both fits in the series: triangles up (down) from $1000$ ($90\un{m}$) data set. The results are organised in 6 columns, each of them corresponds to a combination of $N_b$ and constant or peripheral phase. The left most column ($N_b = 1$ and constant phase) is hatched since this combination is excluded by data, note the very large significance. The yellow horizontal bands represent the previous measurements by TOTEM at the same energy \cite{prl111}. The green horizontal band stands for the preferred-model extrapolation of $\rho$ by COMPETE \cite{compete}.
-\TODO{Reasonable error bars, point fluctuations}
 }
 \label{fig:fits reciprocal der}
 \end{center}
@@ -339,11 +339,8 @@ In contrast to the previous section, here the $1000$ and $90\un{m}$ data sets ar
 \end{itemize}
 Therefore, one may perform a sequence of two fits, one with $1000$ and the other with $90\un{m}$ data set, each of them fixing the parameters according to the breakdown above. Since there are two choices for the modulus normalisation, $a$, and one can start the fit sequence with either the $1000$ or the $90\un{m}$ data set, there are four variants of this approach, see Figure~\ref{fig:fits reciprocal der}. The fit sequence is repeated several times until convergence is reached.
 
-Figure~\ref{fig:fits reciprocal der} presents a comparison of the fit results from methods presented in this section (reciprocal fits) and the previous section (common fits). For the fits with the peripheral phase parametrisation, all phase parameters have been free, consistently with the previous section).
-\TODO{Describe observations.}
-\iffalse
-Generally, one can conclude very good agreement among all the fit methods and variants, which reflects the robustness of the fitting procedures. The small variations, mostly visible in $\sigma_{\rm tot}$ results, follow the choice of the data set determining the normalisation $a$: see the red-magenta and blue-green point groups in the figure.
-\TODO{expectable, si tot especially sensitive to a, but magnitude reasonable?? Both calibrated with the same data set!}
-\TODO{Comment on rho and B for N=3 and peripheral phase -- larger differences.}
-One can also see a trend in the fit qualities (significances): the quality of $1000\un{m}$ data fits (triangles up) tends to be worse than the one of $90\un{m}$ fits (triangles down). This effect has two sources. First, the $90\un{m}$ data fits can freely change ``shape'' of modulus (and phase, if applicable) and consequently the fit can better describe the data. Second source is a small difference between the two data sets. As can be seen from Figure~\ref{} both data sets feature a ``U shape'' however it seems more pronounced for the $1000\un{m}$ data (... details). \TODO{continue}
-\fi
+Figure~\ref{fig:fits reciprocal der} presents a comparison of the fit results from methods presented in this section (reciprocal fits) and the previous section (common fits). For the fits with the peripheral phase parametrisation, all phase parameters have been free, consistently with the previous section). Generally, one can conclude very good agreement among all the fit methods and variants. The small differences, mostly visible in $\sigma_{\rm tot}$ results, follow the choice of the data set determining the normalisation $a$: see the red-magenta and blue-green point groups in the figure. The high sensitivity of the total cross-section is expectable since it directly depends on $a$, see Eq.~(\ref{eq:si tot}). Comparing the common fit results (black) with reciprocal fits (colours) indicates that the normalisation $a$ of the common fits is often strongly influenced by the $1000\un{m}$ data set. This is not surprising since $a$ corresponds to the modulus value at $t=0$ and the $1000\un{m}$ data extend to much lower $|t|$. This effect can be further magnified by the presence of additional degrees of freedom, as it happens for the combination $N_b = 3$ with peripheral phase parametrisation, where the fits with the $90\un{m}$ data set fixing the normalisation give results rather different from the common fits, not only in $\sigma_{\rm tot}$.
+
+The fit results with $N_b = 2$ and peripheral phase parametrisation may seem a little to high (in all the three parameters) with respect to other combinations. The fits for this combination prefer solutions with exceptionally high CNI component: about $6\un{\%}$ at $t = 0.01\un{GeV^2}$ and rapidly decreasing at larger $|t|$. 
+
+One can also see a trend in the fit qualities (significances): the quality of $1000\un{m}$ data fits (triangles up) tends to be worse than the one of $90\un{m}$ fits (triangles down). This effect has two sources. First, the $90\un{m}$ data fits can freely change ``shape'' of modulus (and phase, if applicable) and consequently the fit can better describe the data. Second source is a small difference between the two data sets. As can be seen from Figure~\ref{fig:fits common con} both data sets feature a ``U shape'' which however it seems more pronounced for the $1000\un{m}$ data: at $|t| \lesssim 0.06\un{GeV^2}$ and $|t| \gtrsim 0.11\un{GeV^2}$ the $1000\un{m}$ data points tend to lie above the $90\un{m}$ points and vice versa for intermediate $|t|$. Therefore fit functions with shape fixed by the $90\un{m}$ data feel some tension with respect to the $1000\un{m}$ data, reflected as a worse fit quality.
