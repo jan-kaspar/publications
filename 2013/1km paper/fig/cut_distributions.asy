@@ -38,8 +38,13 @@ void MakeComparison(string quantity, real xscale, string unit, string obj, real 
 	real xStep, real xstep,
 	string combinations[], string comb_labels[], pen comb_pens[])
 {
-	// diagonals
 	NewPad(quantity+"$\ung{"+unit+"}$", "events per bin", xTicks=LeftTicks(xStep, xstep));
+	
+	TH1_y_def = 0.1;
+
+	// diagonals
+	TH1_use_y_def = true;
+
 	scale(Linear, Log(true));
 	for (int ci : combinations.keys)
 	{
@@ -59,6 +64,8 @@ void MakeComparison(string quantity, real xscale, string unit, string obj, real 
 	AddToLegend("<" + comb_labels[comb_labels.length-1] + ":");
 
 	pen astyle = linetype(new real[] {4, 4});
+
+	TH1_use_y_def = true;
 
 	rObject o = rGetObj(dir_anti + "/distributions_anti_45b_56b.root", "elastic cuts/"+obj);
 	draw(xscale(1e6), o, "vl", red+astyle, "45 bottom -- 56 bottom");
