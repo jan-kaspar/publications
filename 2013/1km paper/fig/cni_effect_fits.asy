@@ -1,42 +1,15 @@
 import pad_layout;
 import root;
-include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/coulomb_analysis/exploration/common_code.asy";
+
+//include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/coulomb_analysis/exploration/common_code.asy";
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
-string topDir = "../analysis_combined/coulomb_analysis/exploration/";
+string topDir = "../analysis_combined/coulomb_analysis/";
 
-xSizeDef = 9cm;
-ySizeDef = 6cm;
-
-//----------------------------------------------------------------------------------------------------
-
-void PlotRelGraph(rObject o, pen p, string label)
-{
-	guide g;
-
-	int N = o.iExec("GetN");
-	for (int i = 0; i < N; ++i)
-	{
-		real xa[] = {0.};
-		real ya[] = {0.};
-		o.vExec("GetPoint", i, xa, ya);
-		real x = xa[0];
-		real y = ya[0];
-
-		if (x > TGraph_x_max)
-			continue;
-	
-		real y_ref = A_ref * exp(-B_ref * x);
-	
-		real y_rel = (y - y_ref) / y_ref;
-
-		g = g -- Scale((x, y_rel));
-	}
-
-	draw(g, p, label);
-}
+xSizeDef = 8cm;
+ySizeDef = 5cm;
 
 //----------------------------------------------------------------------------------------------------
 
@@ -105,7 +78,7 @@ void PlotPhase(rObject o, pen p, string label="")
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 
-bool plotPhase = false;
+bool plotPhase = true;
 
 pad pPhase, pEffect;
 
@@ -126,26 +99,17 @@ void FinalisePlots()
 	if (plotPhase)
 	{
 		SetPad(pPhase);
-		limits((0, -5), (0.3, 2), Crop);
+		limits((0, -4), (0.8, 2), Crop);
 	}
 
 	SetPad(pEffect);
-	limits((0, -0.03), (0.2, 0.05), Crop);
+	limits((0, -0.05), (0.2, 0.05), Crop);
 
 	for (real x=0.; x <= 0.2; x += 0.05)
 		yaxis(XEquals(x, false), dotted);
 
-	for (real y=-0.03; y <= 0.05; y += 0.01)
+	for (real y=-0.05; y <= 0.05; y += 0.01)
 		xaxis(YEquals(y, false), dotted);
-
-	draw(Label("region of Coulomb dominance", 1., E, Fill(white+opacity(0.8))), (0.005, 0.045)--(0.03, 0.035), BeginArrow);
-	
-	draw(Label("region of sensitivity to phase at $|t| \approx 0$", 1., E, Fill(white+opacity(0.8))), (0.01, -0.001)--(0.02, 0.015), BeginArrow);
-
-	draw((0.045, -0.022)--(0.040, -0.015), EndArrow);
-	draw((0.155, -0.022)--(0.160, -0.008), EndArrow);
-
-	label("region of sensitivity to phase at higher $|t|$", (0.04, -0.025), E, Fill(white+opacity(0.8)));
 
 	AttachLegend(NW, NE);
 }
@@ -154,19 +118,18 @@ void FinalisePlots()
 
 void PlotCurve(string option, pen p, string label)
 {
-	string fn = topDir + "test2.root";
+	string fn = topDir + "data/" + option + "/fit.root";
 
 	if (plotPhase)
 	{
 		SetPad(pPhase);
-		TGraph_x_max = 0.3;
-		PlotPhase(rGetObj(fn, option + "/g_FH_Theta"), p, "");
+		TGraph_x_max = 0.8;
+		PlotPhase(rGetObj(fn, "g_Phase_H"), p, "");
 	}
 	
 	SetPad(pEffect);
 	TGraph_x_max = 0.25;
-	//PlotRelGraph(rGetObj(fn, option + "/g_FCH_dsdt"), p, label);
-	PlotEffGraph(rGetObj(fn, option + "/g_FCH_Rho2"), rGetObj(fn, option + "/g_FH_Rho2"), p, label);
+	PlotEffGraph(rGetObj(fn, "g_fit_CH"), rGetObj(fn, "g_fit_H"), p, label);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -183,16 +146,14 @@ void AddText(string l)
 InitPlots();
 
 
-AddText("<{\it different $\rh$, same shape (constant):}");
-PlotCurve("p-con-rho0.05", red, "$\rh = 0.05$");
-PlotCurve("p-con-rho0.10", blue, "$\rh = 0.10$");
-PlotCurve("p-con-rho0.15", heavygreen, "$\rh = 0.15$");
+//AddText("<{\it different $\rh$, same shape (constant):}");
+PlotCurve("1000-ob-0-1,90-DS4-sc-ob/parcmp:1,KL,con,chisq,,st+sy", red+dashed, "$N_b = 1$, constant");
+PlotCurve("1000-ob-0-1,90-DS4-sc-ob/parcmp:2,KL,con,chisq,,st+sy", blue+dashed, "$N_b = 2$, constant");
+PlotCurve("1000-ob-0-1,90-DS4-sc-ob/parcmp:3,KL,con,chisq,,st+sy", heavygreen+dashed, "$N_b = 3$, constant");
 
-AddText("<{\it $\rh = $ 0.10, different shapes:}");
-PlotCurve("p-std-rho0.10", red+dashed, "standard");
-PlotCurve("p-bai-rho0.10", magenta+dashed, "Bailly");
-PlotCurve("p-per-rho0.10-1-2-0.3", blue+dashed, "peripheral (example 1)");
-PlotCurve("p-per-rho0.10-4-4-0.2", heavygreen+dashed, "peripheral (example 2)");
+PlotCurve("1000-ob-0-1,90-DS4-sc-ob/parcmp:1,KL,per-exa1-1,chisq,,st+sy", red, "$N_b = 1$, peripheral");
+PlotCurve("1000-ob-0-1,90-DS4-sc-ob/parcmp:2,KL,per-exa2-1,chisq,,st+sy", blue, "$N_b = 2$, peripheral");
+PlotCurve("1000-ob-0-1,90-DS4-sc-ob/parcmp:3,KL,per-exa3-1,chisq,,st+sy", heavygreen, "$N_b = 3$, peripheral");
 
 FinalisePlots();
 

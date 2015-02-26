@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string topDir = "../analysis/";

@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string datasets[] = { "DS2b" };
@@ -17,8 +17,8 @@ string topDir = "../analysis/";
 real old_const_eff_45b[] = { 0, 0, 0, 0 };
 real old_const_eff_45t[] = { 0, 0, 0, 0 };
 
-xSizeDef = 6cm;
-ySizeDef = 4cm;
+xSizeDef = 10cm;
+ySizeDef = 6cm;
 yTicksDef = RightTicks(5., 1.);
 
 int gx=0, gy=0;

@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string topDir = "../analysis/";
@@ -20,8 +20,8 @@ string diagonals[] = {
 
 //----------------------------------------------------------------------------------------------------
 
-xSizeDef = 6.3cm;
-ySizeDef = 4cm;
+xSizeDef = 10cm;
+ySizeDef = 6cm;
 
 //----------------------------------------------------------------------------------------------------
 
@@ -78,6 +78,12 @@ for (int dgni : diagonals.keys)
 
 	limits((-4, 6e-2), (+4, 2e3), Crop);
 	//AttachLegend(NW, NE);
+
+	for (real x = -4; x <= 4; x += 1)
+		yaxis(XEquals(x, false), dotted);
+
+	for (real y = -1; y <= 3; y += 1)
+		xaxis(YEquals(10^y, false), dotted);
 }
 
 GShipout(margin=0mm, vSkip=0pt);

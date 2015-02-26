@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string topDir = "../analysis_combined/coulomb_analysis/";
@@ -19,8 +19,8 @@ string models[] = {
 	"petrov (3p) [02]", 
 };
 
-xSizeDef = 8cm;
-ySizeDef = 5cm;
+xSizeDef = 9cm;
+ySizeDef = 6cm;
 
 //----------------------------------------------------------------------------------------------------
 
@@ -130,10 +130,12 @@ draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", 
 draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-std-rho0.10/g_FH_Theta")), red+1pt, "standard");
 draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-bai-rho0.10/g_FH_Theta")), magenta+1pt, "Bailly");
 draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-per-rho0.10-1-2-0.3/g_FH_Theta")), blue+1pt,
-	"peripheral (example 1: $A = 1$, $\ka = 2$, $|t_m| = 0.3\un{GeV^2}$)");
+	"peripheral (example 1)");
+//	"peripheral (example 1: $A = 1$, $\ka = 2$, $|t_m| = 0.3\un{GeV^2}$)");
 
 draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-per-rho0.10-4-4-0.2/g_FH_Theta")), heavygreen+1pt,
-	"peripheral (example 2: $A = 4$, $\ka = 4$, $|t_m| = 0.2\un{GeV^2}$)");
+	"peripheral (example 2)");
+//	"peripheral (example 2: $A = 4$, $\ka = 4$, $|t_m| = 0.2\un{GeV^2}$)");
 
 limits((0, -1.0), (0.8, +1.5), Crop);
 AttachLegend(BuildLegend(NW, vSkip=-0.8mm, ymargin=0mm), NE);

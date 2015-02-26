@@ -6,8 +6,10 @@ import latex_aux_parser;
 
 string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/";
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
+
+legendLabelPen = fontcommand("\SmallerFonts");
 
 pen p_full_band = (olive*0.5 + yellow*0.7) + opacity(1);
 pen p_anal_band = brown*0.5 + yellow*0.5;

@@ -19,8 +19,8 @@ In this section the different components of the combined elastic scattering cros
 The Coulomb amplitude can be calculated from QED (e.g.~Section 3.2 in \cite{block06}), using empirical electric ${\cal F}_{\rm E}$ and magnetic ${\cal F}_{\rm M}$ form factors of the proton. It can be shown (e.g.~Section 1.3.1 in~\cite{jan_thesis}) that, at low $|t|$, the effect of both form factors can be described by a single function ${\cal F}$:
 \begin{equation}
 \label{eq:coul cs}
-	{\d\sigma^{\rm C}\over \d t} = {4\pi\alpha^2\over t^2}\,{\cal F}^4\ ,\ 
-	{\cal F}^2 = {{\cal F}_{\rm E}^2 + \tau {\cal F}_{\rm M}^2\over 1 + \tau}\ ,\ 
+	{\d\sigma^{\rm C}\over \d t} = {4\pi\alpha^2\over t^2}\,{\cal F}^4\ ,\qquad 
+	{\cal F}^2 = {{\cal F}_{\rm E}^2 + \tau {\cal F}_{\rm M}^2\over 1 + \tau}\ ,\qquad 
 	\tau = {|t|\over 4m^2}\ ,
 \end{equation}
 where $\alpha$ denotes the fine-structure constant and $m$ represents proton mass.
@@ -55,7 +55,7 @@ Since the calculation of Coulomb-nuclear interference may, in principle, involve
 \begin{figure*}
 \begin{center}
 \includegraphics{fig/hadronic_phase_illustration.pdf}
-\caption{Illustration of nuclear-phase forms. The dashed lines correspond to predictions by theoretical models (\cite{elegent} and references therein). The solid lines give typical examples of parametrisations used in the study, all at the same value of $\rho = 0.10$.
+\caption{Illustration of nuclear-phase forms. The dashed lines correspond to predictions by theoretical models (\cite{elegent} and references therein). The solid lines give typical examples of parametrisations used in the study, all at the same value of $\rho = 0.10$. The peripheral example 1 corresponds to parameters $A = 1$, $\kappa = 2$ and $|t_m| = 0.3\un{GeV^2}$, the example 2 to $A = 4$, $\kappa = 4$ and $|t_m| = 0.2\un{GeV^2}$.
 }
 \label{fig:phase illustration}
 \end{center}
@@ -112,10 +112,8 @@ B^{\rm N}(t) = {\d \log |{\cal A}^{\rm N}|^2 \over \d t}
 was assumed constant (i.e.~$b_2 = b_3 = 0$ in parametrisation Eq.~(\ref{eq:nuc mod})). The original formula did not contain the electromagnetic form factor ${\cal F}$, which was added later by hand:
 \begin{equation}
 \label{eq:int swy}
-	\begin{aligned}
-		{\d\sigma\over \d t}^{\rm C+N} &= {\pi (\hbar c)^2 \over s p^2} \left | {\alpha s\over t} {\cal F}^2 \e^{\I\alpha \Phi(t)} + {\cal A}^{\rm N} \right |^2\ ,\cr
-		\Phi(t) &= - \left( \log {B^{\rm N} |t|\over 2} + \gamma \right)\ ,\cr
-	\end{aligned}
+	{\d\sigma\over \d t}^{\rm C+N} = {\pi (\hbar c)^2 \over s p^2} \left | {\alpha s\over t} {\cal F}^2 \e^{\I\alpha \Phi(t)} + {\cal A}^{\rm N} \right |^2\ ,\qquad
+	\Phi(t) = - \left( \log {B^{\rm N} |t|\over 2} + \gamma \right)\ ,
 \end{equation}
 where $\alpha$ is the fine-structure constant and $\gamma \doteq 0.577$ the Euler constant. Despite the many limitations, the formula has extensively been used in past data analyses. For backward-comparison reasons we consider it also in this report.
 
@@ -135,11 +133,9 @@ The {\bf Kundr\' at-Lokaj\' i\v cek formula (KL)} \cite{kl94} was derived in an 
 	\begin{aligned}
 		{\d\sigma\over \d t}^{\rm C+N} &= {\pi (\hbar c)^2 \over s p^2} \left | {\alpha s\over t} {\cal F}^2 + {\cal A}^{\rm N} \e^{\I\alpha \Psi(t)} \right |^2\ ,\cr
 		\Psi(t) &= 
-			- \int \d t'\, \log {t'\over t} {\d\phantom{t'}\over \d t'} {\cal F}^2(t') \cr
-		&\phantom{=} + \int \d t' \left( {{\cal A}^{\rm N}(t') \over {\cal A}^{\rm N}(t)} - 1 \right) { I(t, t')\over 2\pi }
+			- \int \d t'\, \log {t'\over t} {\d\phantom{t'}\over \d t'} {\cal F}^2(t') + \int \d t' \left( {{\cal A}^{\rm N}(t') \over {\cal A}^{\rm N}(t)} - 1 \right) { I(t, t')\over 2\pi }
 			\ ,\cr
-		I(t, t') &= \int_0^{2\pi} \d\phi\ {{\cal F}^2(t'')\over t''}\ , \cr
-		t'' &= t + t' + 2\sqrt{t\, t'} \cos\phi\ ,\cr
+		I(t, t') &= \int_0^{2\pi} \d\phi\ {{\cal F}^2(t'')\over t''}\ ,\qquad t'' = t + t' + 2\sqrt{t\, t'} \cos\phi\ ,\cr
 	\end{aligned}
 \end{equation}
 where the $t$ integrations go over the entire kinematically allowed region.
@@ -260,7 +256,7 @@ Parameters derived from the parameter-comparison fits presented in Figures~\ref{
 \vskip-3mm
 \label{tab:fits common}
 \begin{center}
-\hbox to0pt{\hskip-26mm\vbox to0pt{\vskip5.5mm\includegraphics{fig/hatch_overlay.pdf}\vss}\hss}%
+\hbox to0pt{\hskip-25.5mm\vbox to0pt{\vskip6.5mm\includegraphics{fig/hatch_overlay.pdf}\vss}\hss}%
 \small
 \setlength{\tabcolsep}{5pt}
 %\def\arraystretch{0.8}
@@ -321,8 +317,10 @@ The fits have been repeated with electromagnetic form factors by Borkowski et al
 \label{sec:cni reciprocal fits}
 
 \begin{figure*}
+\vskip-2mm
 \begin{center}
 \includegraphics{fig/fits_reciprocal_derived.pdf}
+\vskip-5mm
 \caption{%
 Comparison of parameters derived from common fits (Section~\ref{sec:cni common fits}) and reciprocal fits (Section~\ref{sec:cni reciprocal fits}). The black points correspond to the results from Table~\ref{tab:fits common}. The other points represent the reciprocal fits as described in the legend. There ``start'' indicates the data set used first in the fit series and ``$a$'' indicates the data set determining the nuclear modulus normalisation (cf.~Eq.~(\ref{eq:nuc mod})). The significance plot gives fit quality for both fits in the series: triangles up (down) from $1000$ ($90\un{m}$) data set. The results are organised in 6 columns, each of them corresponds to a combination of $N_b$ and constant or peripheral phase. The left most column ($N_b = 1$ and constant phase) is hatched since this combination is excluded by data, note the very large significance. The yellow horizontal bands represent the previous measurements by TOTEM at the same energy \cite{prl111}. The green horizontal band stands for the preferred-model extrapolation of $\rho$ by COMPETE \cite{compete}.
 }

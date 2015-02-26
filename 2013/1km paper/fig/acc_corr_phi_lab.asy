@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string topDir = "../analysis/";
@@ -11,8 +11,8 @@ string dataSets[] = { "DS2b" };
 
 TH2_palette = Gradient(white, blue, heavygreen, yellow, red);
 
-xSizeDef = 5.1cm;
-ySizeDef = 5.1cm;
+xSizeDef = 6cm;
+ySizeDef = 6cm;
 
 //----------------------------------------------------------------------------------------------------
 

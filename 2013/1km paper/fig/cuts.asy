@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string topDir = "../analysis/";
@@ -10,8 +10,8 @@ TH2_palette = Gradient(blue, heavygreen, yellow, red);
 TH2_paletteBarSpacing = 0.02;
 TH2_paletteBarWidth = 0.07;
 
-xSizeDef = 5cm;
-ySizeDef = 5cm;
+xSizeDef = 5.5cm;
+ySizeDef = 5.5cm;
 
 string datasets[] = { "DS2b" };
 
@@ -41,6 +41,9 @@ for (int ci : cuts.keys)
 	int idx = cut - 1;
 
 	write("idx = ", idx);
+	
+	if (ci == 2)
+		NewRow();
 
 	for (int dsi : datasets.keys)
 	{
@@ -51,7 +54,6 @@ for (int ci : cuts.keys)
 			string dgn = dgns[dgi];
 			string f = topDir+dataset+"/distributions_" + dgn + ".root";
 
-			NewRow();
 	
 			NewPad(label_x[idx], label_y[idx]);
 			scale(Linear, Linear, Log);

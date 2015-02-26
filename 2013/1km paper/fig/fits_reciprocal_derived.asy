@@ -2,14 +2,15 @@ include pad_layout;
 
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/coulomb_analysis/plots/base.asy";
 import patterns;
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
-texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string topDir = "../analysis_combined/coulomb_analysis/";
 
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
+
 add("hatch-excl", hatch(1.7mm, NE, black));
 
-ySizeDef = 3.5cm;
+ySizeDef = 3.8cm;
 real columnWidth = 1.8cm;
 
 //----------------------------------------------------------------------------------------------------
@@ -153,7 +154,7 @@ xSizeDef = columnWidth * (columns.length + 1);
 
 	if (plotSig)
 	{
-		padSet.sig = NewPad("", "significance$\ung{\si}$", yTicks = RightTicks(Step=1, step=0.2), 0, ++idx);
+		padSet.sig = NewPad("", "significance$\ung{\si}$", yTicks = RightTicks(Step=2, step=1), 0, ++idx);
 		xTicksDef = LeftTicks(Label(" "), Step=1, step=0);
 	}
 
@@ -192,7 +193,7 @@ xSizeDef = columnWidth * (columns.length + 1);
 
 	if (plotB)
 	{
-		padSet.B = NewPad("", "$B^{\rm N}(t = 0)\ung{GeV^{-2}}$", yTicks = RightTicks(Step=1, step=0.2), 0, ++idx);
+		padSet.B = NewPad("", "$B^{\rm N}(t = 0)\ung{GeV^{-2}}$", yTicks = RightTicks(Step=0.5, step=0.1), 0, ++idx);
 
 		real v = 19.9, u = 0.3; // stat only: u = 0.1;
 		filldraw((x_min, v-u)--(x_max, v-u)--(x_max, v+u)--(x_min, v+u)--cycle, ref_unc_pen, nullpen);
@@ -201,7 +202,7 @@ xSizeDef = columnWidth * (columns.length + 1);
 	
 	if (plotSigmaTot)
 	{
-		padSet.si_tot = NewPad("", "$\si_{\rm tot}\ung{mb}$", yTicks = RightTicks(Step=1, step=0.2), 0, ++idx);
+		padSet.si_tot = NewPad("", "$\si_{\rm tot}\ung{mb}$", yTicks = RightTicks(Step=2, step=1), 0, ++idx);
 
 		real v = 101.7, u = 2.9;
 		filldraw((x_min, v-u)--(x_max, v-u)--(x_max, v+u)--(x_min, v+u)--cycle, ref_unc_pen, nullpen);
@@ -381,7 +382,7 @@ void MarkExcludedColumns(real y_min, real y_max)
 		SetPad(padSet.sig);
 		limits((x_min, 0), (x_max, 10), Crop);
 		MarkExcludedColumns(0, 10);
-		for (real y = 0; y <= 10; y += 1)
+		for (real y = 0; y <= 10; y += 2)
 			xaxis(YEquals(y, false), (fabs(y - 0.) < 1e-4) ? dashed : dotted);
 
 		AddToLegend("common fit", mCi+2pt+black);
@@ -428,9 +429,9 @@ void MarkExcludedColumns(real y_min, real y_max)
 	if (plotB)
 	{
 		SetPad(padSet.B);
-		limits((x_min, 19), (x_max, 21.2), Crop);
-		MarkExcludedColumns(19, 21.2);
-		for (real y = 19; y < 21.2; y += 0.2)
+		limits((x_min, 18.9), (x_max, 21.3), Crop);
+		MarkExcludedColumns(18.9, 21.3);
+		for (real y = 19; y < 21.2; y += 0.5)
 			xaxis(YEquals(y, false), dotted);
 	}
 	
@@ -439,7 +440,7 @@ void MarkExcludedColumns(real y_min, real y_max)
 		SetPad(padSet.si_tot);
 		limits((x_min, 98), (x_max, 108), Crop);
 		MarkExcludedColumns(98, 108);
-		for (real y = 98; y < 108; y += 1)
+		for (real y = 98; y < 108; y += 2)
 			xaxis(YEquals(y, false), dotted);
 	}
 

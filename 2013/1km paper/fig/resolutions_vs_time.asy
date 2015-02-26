@@ -2,7 +2,7 @@ import root;
 import pad_layout;
 include "../analysis/plots/run_info.asy";
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string datasets[] = { "DS2a", "DS2b" };
@@ -13,8 +13,8 @@ pen dgn_pens[] = { blue, red };
 
 string topDir = "../analysis/";
 
-xSizeDef = 6.3cm;
-ySizeDef = 2.7cm;
+xSizeDef = 6.5cm;
+ySizeDef = 4cm;
 
 xTicksDef = LeftTicks(1., 0.5);
 
@@ -120,7 +120,7 @@ void DrawFinalThXResolution(rObject g_vtx_rms, rObject g_diffRL_th_x, real msr, 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 
-NewPad("", "resolution in $\theta_x^*\ung{\mu rad}$");
+NewPad("time $\ung{h}$", "resolution in $\theta_x^*\ung{\mu rad}$");
 currentpad.yTicks = RightTicks(0.05, 0.01);
 DrawRunBands(paperTimeShift, 0.5, 0.7, false);
 for (int dsi : datasets.keys)
@@ -143,7 +143,7 @@ for (real y=0.5; y <= 0.7; y += 0.05)
 	xaxis(YEquals(y, false), dotted);
 
 //----------------------------------------------------------------------------------------------------
-NewRow();
+//NewRow();
 
 NewPad("time $\ung{h}$", "resolution in $\theta_y^*\ung{\mu rad}$");
 currentpad.yTicks = RightTicks(0.02, 0.01);
@@ -166,4 +166,4 @@ limits((0, 0.42), (9.2, 0.52), Crop);
 for (real y = 0.42; y <= 0.52; y += 0.02)
 	xaxis(YEquals(y, false), dotted);
 
-GShipout(vSkip=0mm, margin=0mm);
+GShipout(hSkip=5mm, margin=0mm);

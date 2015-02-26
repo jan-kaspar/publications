@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string datasets[] = { "DS2b" };
@@ -13,8 +13,8 @@ string dgn_labels[] = { "45t -- 56b" };
 
 string topDir = "../analysis/";
 
-xSizeDef = 6.0cm;
-ySizeDef = 4cm;
+xSizeDef = 10cm;
+ySizeDef = 6cm;
 
 //----------------------------------------------------------------------------------------------------
 
@@ -49,7 +49,7 @@ void MakeComparison(string quantity, real xscale, string unit, string obj, real 
 		Check(o, 1);	
 	}
 
-	frame f_legend1 = BuildLegend("45 top -- 56 bot", ymargin=0mm, vSkip=-1mm, lineLength=3.8mm, NW);
+	frame f_legend1 = BuildLegend("45 top -- 56 bottom", ymargin=0mm, vSkip=-1mm, lineLength=3.8mm, NW);
 	currentpicture.legend.delete();
 
 	// anti-diagonals
@@ -61,7 +61,7 @@ void MakeComparison(string quantity, real xscale, string unit, string obj, real 
 	pen astyle = linetype(new real[] {4, 4});
 
 	rObject o = rGetObj(dir_anti + "/distributions_anti_45b_56b.root", "elastic cuts/"+obj);
-	draw(xscale(1e6), o, "vl", red+astyle, "45 bot -- 56 bot");
+	draw(xscale(1e6), o, "vl", red+astyle, "45 bottom -- 56 bottom");
 	Check(o, 1);
 
 	rObject o = rGetObj(dir_anti + "/distributions_anti_45t_56t.root", "elastic cuts/"+obj);

@@ -1,5 +1,4 @@
-\documentclass[3p,twocolumn,times,longtitle]{elsarticle}
-%\documentclass[3p,onecolumn,12pt,times,longtitle]{elsarticle}
+\documentclass[3p,onecolumn,12pt,times,longtitle]{elsarticle}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -7,13 +6,20 @@
 \usepackage{color}
 %\usepackage{mathptmx}
 \usepackage{url}
+\usepackage{fleqn}
+
+% TODO: only for draft
+\usepackage{lineno}
 
 % TODO: only for draft, remove then
 %\usepackage[]{showlabels}
 
+% TODO: play with float settings to get better figure/table placement
+%	http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html
+
 %----------------------------------------------------------------------------
 
-% TODO - check for consisten use of
+% TODO - check for consistent use of
 %	1) units in parentheses of brackets
 %	2) multiplication symbol: \times or \cdot
 
@@ -137,9 +143,10 @@ proton-proton interactions \sep elastic scattering \sep Coulomb-Nuclear Interfer
 \end{frontmatter}
 
 
-%\preprint{CERN-PH-EP-2014-XXXX}
-
 %--------------------------------------------------
+
+% TODO: only for draft
+\linenumbers
 
 \input introduction.tex
 

@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string topDir = "../analysis/";
@@ -18,8 +18,8 @@ string extensions[] = {
 //	"y-1",
 };
 
-xSizeDef = 6cm;
-ySizeDef = 4cm;
+xSizeDef = 10cm;
+ySizeDef = 6cm;
 
 //TGraph_x_min = 6e-4;
 

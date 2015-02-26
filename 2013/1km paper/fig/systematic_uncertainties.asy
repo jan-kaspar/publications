@@ -2,7 +2,7 @@ import root;
 import pad_layout;
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/plots/systematics/common_code.asy";
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string topDir = "../analysis/";
@@ -139,7 +139,7 @@ for (int dsi : datasets.keys)
 
 	NewPad(false);
 	attach(f_legend);
-	FixPad(310, +170);
+	FixPad(340, +185);
 }
 
 GShipout(margin=0pt, hSkip=5mm);

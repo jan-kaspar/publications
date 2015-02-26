@@ -1,14 +1,17 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string topDir = "../analysis/";
 
+xSizeDef = 10cm;
+ySizeDef = 6cm;
+
 string f = topDir+"DS2b/distributions_45t_56b.root";
 
-NewPad("$|t|\ung{GeV^2}$", "acceptance correction $\cal A$", 6cm, 5cm, xTicks=LeftTicks(0.05, 0.01));
+NewPad("$|t|\ung{GeV^2}$", "acceptance correction $\cal A$", xTicks=LeftTicks(0.05, 0.01));
 //scale(Log, Linear);
 scale(Linear, Log);
 //TH1_lowLimit = 1e-3;

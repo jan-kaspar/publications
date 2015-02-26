@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/plots/run_info.asy";
@@ -90,7 +90,7 @@ AddToLegend("T2 rate", mCi+1pt+blue);
 AddToLegend("RP rate", mCi+1pt+red);
 
 limits((0, 0), (9.2, 300), Crop);
-AttachLegend(BuildLegend(N, lineLength=5mm, vSkip=0.5mm), N);
+AttachLegend(BuildLegend(NE, lineLength=5mm, vSkip=0.5mm), NE);
 
 for (real y = 0; y <= 300; y += 50)
 	xaxis(YEquals(y, false), dotted);

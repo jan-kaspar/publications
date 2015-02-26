@@ -3,6 +3,9 @@ include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/coulomb_a
 
 string topDir = "../analysis_combined/coulomb_analysis/";
 
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\def\ung#1{\quad[{\rm#1}]}");
+
 // datasets
 string dataColls[];
 pen dataColl_colors[];

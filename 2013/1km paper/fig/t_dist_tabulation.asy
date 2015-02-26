@@ -2,7 +2,7 @@ import root;
 import pad_layout;
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/plots/t_distributions/common_code.asy";
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000";
@@ -11,7 +11,7 @@ string f = topDir + "/tabulation/tabulate.root";
 
 TGraph_errorBar = None;
 
-xSizeDef = 6.2cm;
+xSizeDef = 6.1cm;
 ySizeDef = 5cm;
 
 pen p_full_band = (olive*0.5 + yellow*0.7) + opacity(0.7);
@@ -122,10 +122,11 @@ DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_anal_all"), p_anal_band);
 draw(rGetObj(f, "g_data"), "p", black, mCi+1pt);
 
 AddToLegend("data", mCi+1pt);
-AddToLegend("statistical unc.", (scale(0.0001, 1.)*mPl)+5pt);
+AddToLegend("statistical uncertainty", (scale(0.0001, 1.)*mPl)+5pt);
 
 AddToLegend("full systematic uncertainty band", mSq+6pt+p_full_band);
-AddToLegend("systematic unc. band without normalis.", mSq+6pt+p_anal_band);
+AddToLegend("systematic uncertainty band", mSq+6pt+p_anal_band);
+AddToLegend("without normalisation");
 
 limits((0, 3e2), (0.015, 1e3), Crop);
 
