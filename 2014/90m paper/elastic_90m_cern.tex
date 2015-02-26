@@ -14,10 +14,11 @@
 \def\TODO#1{{\color{red}TODO: #1}}
 
 \setbox123\hbox{\small$0$}
-\def\S{\hbox to\wd123{\hss}}
 \setbox124\hbox{\small$_{0}$}
-\def\s{\hbox to\wd124{\hss}}
+\def\S{\hbox to\wd123{\hss}}
+\def\.{\hbox to\wd124{\hss}}
 
+% TODO: needed?
 \def\etal{et al.}
 \def\acknowledgments{\section*{Acknowledgements}}
 \def\Name#1{\textsc{#1}, }
@@ -37,16 +38,20 @@
 \EXPnumber{XXXX}
 \EXPdate{XXXX}
 
+\hbox{}
+\vskip-21mm
+\hbox{}
 
 \title{Evidence for Non-Exponential Elastic Proton-Proton Differential Cross-Section at Low $|\hbox{t}|$ and $\sqrt{\hbox{s}}$ = 8 TeV by TOTEM}
-\ShortTitle{Evidence for Non-Exponential Elastic Proton-Proton Differential Cross-Section at Low $|\hbox{t}|$ and $\sqrt{\hbox{s}}$ = 8 TeV by TOTEM}
+\ShortTitle{Evidence for Non-Exponential Elastic pp Differential Cross-Section at Low $|\hbox{t}|$ and $\sqrt{\hbox{s}}$ = 8 TeV}
 
 \Collaboration{The TOTEM Collaboration}
 \ShortAuthor{The TOTEM Collaboration (G.~Antchev \emph{\etal})}
 
+
 \input authorlist_cern
 
-\newpage
+%\newpage
 
 \begin{abstract}
 The TOTEM experiment has made a high-precision measurement of the elastic 
@@ -76,7 +81,8 @@ Two extended parametrisations, with quadratic and cubic polynomials in the expon
 %--------------------------------------------------
 
 \acknowledgments
-% TODO: add final version
+
+\input acknowledgements
 
 %----------------------------------------------------------------------------------------------------
 \begin{thebibliography}{99}
@@ -143,5 +149,6 @@ Two extended parametrisations, with quadratic and cubic polynomials in the expon
 	\REVIEW{Phys.\ Rev.\ Lett.}{89}{2002}{201801}
 
 \end{thebibliography}
+
 
 \end{document}
