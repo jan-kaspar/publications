@@ -26,7 +26,7 @@ The scattering angles and vertex position are first determined for each proton (
 \label{eq:kin 1a}
 	\theta_x^{*\rm L,R} = {v_x^{\rm N} x^{\rm F} - v_x^{\rm F} x^{\rm N}\over v_x^{\rm N} L_x^{\rm F} - v_x^{\rm F} L_x^{\rm N}}\ ,\qquad
 	\theta_y^{*\rm L,R} = {1\over 2} \left( {y^{\rm N}\over L_y^{\rm N}} + {y^{\rm F}\over L_y^{\rm F}} \right)\ ,\qquad
-	x^{*\rm L,R} = {L_x^{\rm N} x^{\rm F} - L_x^{\rm F} x^{\rm N}\over L_x^{\rm N} v_x^{\rm F} - L_x^{\rm F} v_x^{\rm N}}\ ,
+	x^{*\rm L,R} = {L_x^{\rm F} x^{\rm N} - L_x^{\rm N} x^{\rm F}\over v_x^{\rm N} L_x^{\rm F} - v_x^{\rm F} L_x^{\rm N} }\ ,
 \end{equation}
 where the N and F superscripts refer to the near and far units, L and R to the 
 left and right arm, respectively. This one-arm reconstruction is used for tagging elastic events, where the left and right arm protons are compared.
@@ -64,7 +64,7 @@ where the proportionality constant $c$ has a standard deviation of $0.02$.
 \subsubsection{Optics}
 \label{sec:optics}
 %
-In order to reduce the impact of imperfect optics knowledge, the optics matching technique \cite{totem-optics} has been applied. This method uses various RP observables to determine fine corrections to the optical functions presented in Eq.~(\ref{eq:prot trans}).
+In order to reduce the impact of imperfect optics knowledge, the LHC optics calibration \cite{totem-optics} has been applied. This method uses various RP observables to determine fine corrections to the optical functions presented in Eq.~(\ref{eq:prot trans}).
 
 The residual errors induce a bias in the reconstructed scattering angles:
 \begin{equation}
@@ -72,7 +72,7 @@ The residual errors induce a bias in the reconstructed scattering angles:
 	\theta_x^* \rightarrow (1 + d_x)\, \theta_x^*\ ,\qquad
 	\theta_y^* \rightarrow (1 + d_y)\, \theta_y^*\ .
 \end{equation}
-For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.21\un{\%}$ and $0.25\un{\%}$, respectively, and correlation factor of $-0.70$. These estimates include the effects of magnet harmonics. For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ into eigenvectors of the covariance matrix:
+For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.21\un{\%}$ and $0.25\un{\%}$, respectively, and correlation factor of $-0.70$. These estimates include the effects of magnet field harmonics. For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ into eigenvectors of the covariance matrix:
 \begin{equation}
 \label{eq:opt bias modes}
 \begin{pmatrix} d_x\cr d_y \end{pmatrix} =
