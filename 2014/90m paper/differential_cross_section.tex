@@ -306,7 +306,7 @@ The first term in the parentheses sums the contributions from the four RPs of a 
 \subsubsection{Unfolding of Resolution Effects}
 \label{sec:unfolding}
 
-The correction for resolution effects has been determined by the following iterative procedure. The differential cross-section data are fitted by a smooth curve which serves as an input to a Monte-Carlo simulation using the resolution parameters determined in Section~\ref{sec:resolution}. Making a ratio between simulated histograms with and without smearing effects gives a set of per-bin correction factors. Applying them to the yet uncorrected differential cross-section yields a better estimate of the true $t$-distribution which can be used as input to the next iteration. Thanks to the good angular resolution (see Section \ref{sec:resolution}), the final correction is not large, as shown in Figure \ref{fig:unfolding}.
+The correction for resolution effects has been determined by the following iterative procedure. The differential cross-section data are fitted by a smooth curve which serves as an input to a Monte-Carlo simulation using the resolution parameters determined in Section~\ref{sec:resolution}. Making a ratio between simulated histograms with and without smearing effects gives a set of per-bin correction factors. Applying them to the yet uncorrected differential cross-section yields a better estimate of the true $t$-distribution which can be used as input to the next iteration. The iterations stop when the difference between the input and output $t$-distributions becomes negligible, which is typically achieved after the second iteration. Thanks to the good angular resolution (see Section \ref{sec:resolution}), the final correction is not large, as shown in Figure \ref{fig:unfolding}.
 
 For the uncertainty estimate, the uncertainties of $\theta_x^*$ and $\theta_y^*$ resolutions (accommodating the full time variation) as well as fit-model dependence have been considered, the first contribution being dominant.
 
@@ -348,7 +348,7 @@ Two binnings have been considered. The ``optimised'' option sets the bin size to
 \subsubsection{Systematic Uncertainties}
 \label{sec:systematics}
 
-Besides the systematic uncertainties mentioned at the above analysis steps, the uncertainty of the beam momentum, $0.1\un{\%}$, needs to be considered when the scattering angles are translated into $t$, see Eq.~(\ref{eq:th t}).
+Besides the systematic uncertainties mentioned in the above analysis steps, the uncertainty of the beam momentum, $0.1\un{\%}$, needs to be considered when the scattering angles are translated into $t$, see Eq.~(\ref{eq:th t}).
 
 The systematic effects are propagated to the $t$-distribution with help of a Monte-Carlo simulation. A fit of the final differential cross-section data is used to generate the true $t$-distribution. Simultaneously, another $t$-distribution is built, having introduced one of the above mentioned systematic effects at $1\un{\sigma}$ level. The difference between the $t$-distributions gives the systematic effect on the differential cross-section. Formally, this procedure is equivalent to evaluating
 \begin{equation}
@@ -381,9 +381,10 @@ In addition, the complete analysis chain has been applied in two independent ana
 \includegraphics{fig/direct_method_mode_cmp_presentation.pdf}
 \vskip-3mm
 \caption{%
-Impact of systematic effects on the differential cross-section. Each curve corresponds to a systematic error at $1\un{\sigma}$, cf.~Eq.~(\ref{eq:syst mode}).
+Impact of $t$-dependent systematic effects on the differential cross-section. Each curve corresponds to a systematic error at $1\un{\sigma}$, cf.~Eq.~(\ref{eq:syst mode}).
 The two contributions due to optics correspond to the two vectors in Eq.~(\ref{eq:opt bias modes}).
 The envelope is determined by summing all shown contributions in quadrature for each $|t|$ value.
+The right plot provides a zoom of the left one.
 }
 \label{fig:syst unc}
 \end{center}
