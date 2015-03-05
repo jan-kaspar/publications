@@ -81,15 +81,17 @@ for (int dsi : dataSets.keys)
 	DrawFullArc(100);
 	DrawFullArc(150);
 
+	//string obj_name = "normalization/h_th_y_vs_th_x_normalized";
+	string obj_name = "acceptance correction/h_th_y_vs_th_x_after";
+
+	TH2_z_min = 0;
+	TH2_z_max = 3.7;
+
 	// 45 bottom - 56 top
-	TH2_z_min = 5.5;
-	TH2_z_max = 9.3;
-	draw(scale(1e6, 1e6), rGetObj(top_dir+"/"+dataSets[dsi]+"/distributions_45b_56t.root", "normalization/h_th_y_vs_th_x_normalized"), "def");
+	draw(scale(1e6, 1e6), rGetObj(top_dir+"/"+dataSets[dsi]+"/distributions_45b_56t.root", obj_name), "def");
 	
 	// 45 top - 56 bottom
-	//TH2_z_min = 7;
-	//TH2_z_max = 9.7;
-	draw(scale(1e6, 1e6), rGetObj(top_dir+"/"+dataSets[dsi]+"/distributions_45t_56b.root", "normalization/h_th_y_vs_th_x_normalized"), "p");
+	draw(scale(1e6, 1e6), rGetObj(top_dir+"/"+dataSets[dsi]+"/distributions_45t_56b.root", obj_name), "p");
 	
 	draw((-200, cut_th_y_low_top)--(+200, cut_th_y_low_top), magenta+1pt);
 	draw((-200, cut_th_y_low_bot)--(+200, cut_th_y_low_bot), magenta+1pt);
