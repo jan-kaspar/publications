@@ -59,13 +59,14 @@ void MakeComparison(string quantity, real xscale, string unit, string obj, real 
 	
 	currentpicture.legend.delete();
 
-	string cut_str = combinations[combinations.length-1];
+	//string cut_str = combinations[combinations.length-1];
+	string cut_str = "cuts:2,7,5,6";
 	string dir_anti = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta90,high_t/DS4/background_study/" + cut_str;
 
 	AddToLegend("<" + comb_labels[comb_labels.length-1] + ":");
 
 	rObject o = rGetObj(dir_anti + "/distributions_anti_45b_56b.root", "elastic cuts/"+obj);
-	draw(xscale(1e6), o, "vl", blue+dotted, "45 bot -- 56 bot");
+	draw(xscale(1e6), o, "vl", blue+dotted, "45 bottom -- 56 bottom");
 	Check(o, 1);
 
 	rObject o = rGetObj(dir_anti + "/distributions_anti_45t_56t.root", "elastic cuts/"+obj);
