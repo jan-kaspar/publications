@@ -161,7 +161,7 @@ for (int dsi : datasets.keys)
 	int min_n_b = 3;
 	int max_n_b = 3;
 
-	A_ref = 519.545; B_ref = 19.376;
+	A_ref = 519.9; B_ref = 19.39;
 	ref_str = MakeRefStr();
 
 	//NewRow();
@@ -229,7 +229,7 @@ for (int dsi : datasets.keys)
 		for (real y = y_min; y <= y_max; y += y_Step)
 			xaxis(YEquals(y, false), (abs(y) < 1e-5) ? dashed : dotted, above=true);
 		
-		frame fL = BuildLegend(lineLength=5mm, vSkip=1.5mm, N);
+		frame fL = BuildLegend(lineLength=5mm, vSkip=-1mm, N);
 		AttachLegend(fL, N);
 	}
 }

@@ -18,7 +18,7 @@ Differential cross-section using ``optimised'' binning, as given in Table~\ref{t
 \end{figure}
 
 
-The final differential cross-section in the ``optimised'' binning is presented in Table~\ref{tab:data} and Figure \ref{fig:data ob}. In order to visualise small deviations from the leading pure-exponential behaviour, Figure~\ref{fig:data rel ob} shows the relative difference of the cross-section from a reference exponential. This plot immediately suggests a non-exponentiality of the data: pure exponentials would look like (almost) linear functions in this kind of representation.
+The final differential cross-section in the ``optimised'' binning is presented in Table~\ref{tab:data} and Figure \ref{fig:data ob}. In order to visualise small deviations from the leading pure-exponential behaviour, Figure~\ref{fig:data rel ob} shows the relative difference of the cross-section from a reference exponential (pure exponential fit using statistical uncertainties only). This plot immediately suggests a non-exponentiality of the data: pure exponentials would look like (almost) linear functions in this kind of representation.
 
 To study the detailed behaviour of the differential cross-section, a series of fits has been made using the parametrisation:
 \begin{equation}
@@ -31,10 +31,10 @@ The fits have been performed by the standard least-squares method, in particular
 \begin{equation}
 \label{eq:chi sq}
 	\chi^2 = \Delta^\T \mat V^{-1} \Delta\ ,\qquad
-	\Delta = (\hbox{data} - \hbox{fit})\ ,\qquad
+	\Delta_i = \left.{\d\sigma\over \d t}\right|_{{\rm bin}\ i} - {1\over \Delta t_i} \int_{{\rm bin}\ i} f(t)\,\d t\ ,\qquad
 	\mat V = \mat V_{\rm stat} + \mat V_{\rm syst}\ ,
 \end{equation}
-where $\Delta$ is a vector of differences between the differential cross-section data and a fit function evaluated at the bin representative points (see Table~\ref{tab:data}). The covariance matrix $\mat V$ is given by the sum of the statistical component $\mat V_{\rm stat}$ (statistical uncertainty squared from Table~\ref{tab:data} on the diagonal) and the systematic component $\mat V_{\rm syst}$ (see Eq.~(\ref{eq:covar mat})).
+where $\Delta$ is a vector of differences between the differential cross-section data and a fit function $f$, with $\Delta t_i$ representing the width of the $i$-th bin. The covariance matrix $\mat V$ is given by the sum of the statistical component $\mat V_{\rm stat}$ (statistical uncertainty squared from Table~\ref{tab:data} on the diagonal) and the systematic component $\mat V_{\rm syst}$ (see Eq.~(\ref{eq:covar mat})).
 
 The quality of fits is judged on the basis of several measures. The first is the value of $\chi^2$ after minimisation divided by the number of degrees of freedom (ndf). Secondly, the p-value stands for the probability that a $\chi^2$ value greater than the observed one would be drawn from the $\chi^2$ distribution with the given number of degrees of freedom. Finally, significance means the half-width of a central region that needs to be excluded from a normal distribution to get the same integrated probability as the p-value. The significance is expressed in multiples of sigma, the standard deviation of the normal distribution.
 
@@ -50,8 +50,8 @@ Using the COMPETE~\cite{compete} preferred-model extrapolation of $\rho = 0.140\
 \begin{equation}
 \label{eq:si tot results}
 	\begin{aligned}
-		N_b &= 2:\quad \sigma_{\rm tot} = (100.8 \pm 2.1)\un{mb}\ ,\\	% A = 529.3 +- 21.9
-		N_b &= 3:\quad \sigma_{\rm tot} = (101.2 \pm 2.1)\un{mb}\ ,\\	% A = 533.5 +- 21.9
+		N_b &= 2:\quad \sigma_{\rm tot} = (100.8 \pm 2.1)\un{mb}\ ,\\
+		N_b &= 3:\quad \sigma_{\rm tot} = (101.2 \pm 2.1)\un{mb}\ ,\\
 	\end{aligned}
 \end{equation}
 which are well compatible with the previous measurement using the luminosity-independent \linebreak method~\cite{prl111}.
@@ -59,20 +59,35 @@ which are well compatible with the previous measurement using the luminosity-ind
 
 \begin{table}
 \caption{%
-Fit quality measures for fits in Figure~\ref{fig:data rel ob}.
+Details of the fits in Figure~\ref{fig:data rel ob} using parametrisation Eq.~(\ref{eq:fit param}). The matrices give the correlation factors between the fit parameters.
 }
-\vskip-2mm
+\vskip-3mm
 \label{tab:fits ob}
 \begin{center}
-\small
-\begin{tabular}{cccc}
+%\small
+\footnotesize
+\begin{tabular}{cccccccc}
 \hline
 \hline
-$N_b$ & $\chi^2/\hbox{ndf}$ & p-value & significance\cr
+%$N_b$ & $\displaystyle\left. {\d\sigma\over\d t}\right|_{t=0}\ \unt{mb/GeV^2}$ & $b_1\ \unt{GeV^{-2}}$ & $b_2\ \unt{GeV^{-4}}$ & $b_3\ \unt{GeV^{-6}}$ & $\chi^2/\hbox{ndf}$ & p-value & significance\cr
+$N_b$ & $\left . \d\sigma / \d t \right|_{t=0}$ & $b_1$ & $b_2$ & $b_3$ & $\chi^2/\hbox{ndf}$ & p-value & significance\cr
+& $\unt{mb/GeV^2}$ & $\unt{GeV^{-2}}$ & $\unt{GeV^{-4}}$ & $\unt{GeV^{-6}}$ & & & \cr
 \hline
-$1$ & $117.5/28 = 4.20$ & $6.1\cdot 10^{-13}$ & $7.2\un{\sigma}$ \cr
-$2$ & $29.3/27 = 1.09$ & $0.35$ & $0.94\un{\sigma}$ \cr
-$3$ & $25.5/26 = 0.98$ & $0.49$ & $0.69\un{\sigma}$ \cr
+$1$ & $523 \pm 22$ & $-19.35 \pm 0.06$ & - & -& $117.5/28=4.20$ & $6.2\cdot10^{-13}$ & $7.20\un{\sigma}$ \cr
+        & $ \left(\begin{matrix} +1.00\cr-0.11\cr\end{matrix} \right. $
+        & $ \left.\begin{matrix} -0.11\cr+1.00\cr\end{matrix} \right) $
+\cr\hline
+$2$ & $529 \pm 22$ & $-19.89 \pm 0.08$ & $2.61 \pm 0.30$ & -& $ 29.3/27=1.09$ & $0.35$ & $0.94\un{\sigma}$ \cr
+        & $ \left(\begin{matrix} +1.00\cr+0.19\cr-0.34\cr\end{matrix} \right. $
+        & $ \begin{matrix} +0.19\cr+1.00\cr-0.76\cr\end{matrix}  $
+        & $ \left.\begin{matrix} -0.34\cr-0.76\cr+1.00\cr\end{matrix} \right) $
+\cr\hline
+$3$ & $534 \pm 22$ & $-20.14 \pm 0.15$ & $5.95 \pm 1.75$ & $-12.0 \pm 6.2$& $ 25.5/26=0.98$ & $0.49$ & $0.69\un{\sigma}$ \cr
+        & $ \left(\begin{matrix} +1.00\cr+0.08\cr-0.04\cr-0.02\cr\end{matrix} \right. $
+        & $ \begin{matrix} +0.08\cr+1.00\cr-0.90\cr+0.85\cr\end{matrix}  $
+        & $ \begin{matrix} -0.04\cr-0.90\cr+1.00\cr-0.99\cr\end{matrix}  $
+        & $ \left.\begin{matrix} -0.02\cr+0.85\cr-0.99\cr+1.00\cr\end{matrix} \right) $
+\cr
 \hline
 \hline
 \end{tabular}

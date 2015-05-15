@@ -40,7 +40,7 @@ string binning = "ob";
 //string binning = "hb";
 //string binning = "cpb,0.001";
 
-string iteration = "iteration 2";
+string iteration = "iteration 0";
 
 string f = "fit_with_syst.root";
 
@@ -175,7 +175,7 @@ for (int dsi : datasets.keys)
 
 	max_n_b = 3;
 
-	A_ref = 519.545; B_ref = 19.376;
+	A_ref = 519.9; B_ref = 19.39;
 	ref_str = MakeRefStr();
 
 	//NewRow();
