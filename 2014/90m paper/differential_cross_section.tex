@@ -131,8 +131,9 @@ Angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), as a f
 For a given $t$ bin, the differential cross-section is evaluated by selecting and counting elastic events:
 \begin{equation}
 	{\d\sigma\over \d t}(\hbox{bin}) =
-		{\cal N}\, {\cal U}({\rm bin})\, {\cal B}\ 
-		{\sum\limits_{t \in \hbox{bin}} {\cal A}(\theta^*, \theta_y^*)\ {\cal E}(\theta_y^*)\over \Delta t}\ ,
+		{\cal N}\: {\cal U}({\rm bin})\: {\cal B} \: 
+		\frac{1}{\Delta t}
+                \sum\limits_{t\, \in\, \text{bin}} {\cal A}(\theta^*, \theta_y^*)\: {\cal E}(\theta_y^*) \: ,
 \end{equation}
 where $\Delta t$ is the width of the bin, ${\cal N}$ is a normalisation factor, 
 and the other symbols stand for various correction factors:
@@ -270,7 +271,7 @@ Full acceptance correction, ${\cal A}$, for diagonal 45 bottom -- 56 top. The po
 \subsubsection{Inefficiency Corrections}
 \label{sec:ineff corr}
 
-Since the overall normalisation is determined from another dataset (see Section~\ref{sec:normalisation}), any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (trigger, data acquisition and pile-up inefficiency discussed in~\cite{epl101-el,prl111}). The inefficiencies left are related to inability of a RP to resolve the elastic proton track.
+Since the overall normalisation is determined from another dataset (see Section~\ref{sec:normalisation}), any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (trigger, data acquisition and pile-up inefficiency discussed in~\cite{epl101-el,prl111}). The inefficiencies left are related to the inability of a RP to resolve the elastic proton track.
 
 One such case is when a single RP cannot detect and/or reconstruct a proton track, with no correlation to other RPs. This type of inefficiency, ${\cal I}_{3/4}$, is evaluated by removing the RP from the tagging cuts (Table~\ref{tab:cuts}), repeating the event selection and calculating the fraction of recovered events. A typical example is given in Figure~\ref{fig:eff 3/4}, showing that the efficiency decreases gently with the vertical scattering angle. This dependence stems from the fact that protons with larger $|\theta_y^*|$ hit the RPs further from their edge and therefore the potentially created secondary particles have more chance to induce additional signal in the sensors and thus prevent from resolving the elastic proton track.
 
@@ -382,7 +383,7 @@ In addition, the complete analysis chain has been applied in two independent ana
 Impact of $t$-dependent systematic effects on the differential cross-section. Each curve corresponds to a systematic error at $1\un{\sigma}$, cf.~Eq.~(\ref{eq:syst mode}).
 The two contributions due to optics correspond to the two vectors in Eq.~(\ref{eq:opt bias modes}).
 The envelope is determined by summing all shown contributions in quadrature for each $|t|$ value.
-The right plot provides a zoom of the left one.
+The right plot provides a vertical zoom; note that the envelope is out of scale.
 }
 \label{fig:syst unc}
 \end{center}
