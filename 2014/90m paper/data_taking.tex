@@ -14,22 +14,32 @@ The beam optics relates the proton state at the IP to its state at the RP locati
 \label{eq:scatt angle}
 \theta_x^* = \theta^* \cos\phi^*\ ,\qquad \theta_y^* = \theta^* \sin\phi^*\ .
 \end{equation}
-A proton with such scattering angles, emerging from the vertex $(x^*$, $y^*)$ with relative momentum loss $\xi \equiv \Delta p / p$ arrives at the RPs with transverse position
+A proton emerging from the vertex $(x^*$, $y^*)$ at the angle $(\theta_x^*,\theta_y^*)$ and with momentum  $p (1 +  \xi)$, where $p$ is the nominal initial-state proton momentum, arrives at the RPs in a transverse position
 \begin{equation}
 \label{eq:prot trans}
-	x = L_x\, \theta_x^* + v_x\, x^* + D_x\, \xi\ ,\qquad y = L_y\, \theta_y^* + v_y\, y^* + D_y\, \xi\ ,
+	x(z_{\rm RP}) = L_x(z_{\rm RP})\, \theta_x^* + v_x(z_{\rm RP})\, x^* + D_x(z_{\rm RP})\, \xi\ ,\qquad y(z_{\rm RP}) = L_y(z_{\rm RP})\, \theta_y^* + v_y(z_{\rm RP})\, y^* + D_y(z_{\rm RP})\, \xi \quad
 \end{equation}
-given by the optical functions: effective length $L$, magnification $v$ and dispersion $D$. The dispersion terms can be ignored for elastic scattering: 
+relative to the beam centre. This position is determined by the optical functions: effective length $L_{x,y}(z)$, magnification $v_{x,y}(z)$ and dispersion $D_{x,y}(z)$. 
+The relative final-state momentum deviation $\xi$ has the following 
+contributions:
+\begin{itemize}
+\item Beam momentum offsets $\xi_{\rm off}$ relative to the nominal momentum 
+and time-dependent variations, $\xi_{\rm var}$, with 
+$\sigma(xi_{\rm off}) \sim 10^{-3}$ and $\sigma(\xi_{\rm var}) \sim 10^{-4}$ 
+(see discussion in Section~\ref{sec:systematics}).
+\item The momentum loss, $\xi_{\rm scatt}$, in diffractive scattering processes.
+\end{itemize}
+For elastic scattering the dispersion terms, $D_{x,y}\, \xi$, can be ignored: 
 \begin{itemize}
 \item The protons lose no momentum in elastic collisions 
-(i.e. $\xi = 0$).
+(i.e. $\xi_{\rm scatt} = 0$).
 \item Due to the collinearity of the two elastically scattered protons and 
 the symmetry of the optics of the two beams, the effects of 
-beam energy offsets and fluctuations ($\sigma(\xi) \sim 10^{-3}$ and $10^{-4}$, 
-respectively, \TODO{reference to Eq.~(\ref{eq:bmom unc}) ??}) on the reconstructed scattering angle (Eq.~(\ref{eq:th t}) in 
-Section~\ref{sec:kinematics})
-are strongly suppressed. Residual effects from optics imperfections have
-been verified to be negligible compared to all other uncertainties.
+beam energy deviations ($\xi_{\rm off}$ and $\xi_{\rm var}$) on the 
+reconstructed scattering angle (Eq.~(\ref{eq:th t}) in 
+Section~\ref{sec:kinematics}) are strongly suppressed. Residual effects from 
+optics imperfections have been verified to be negligible compared to all other 
+uncertainties.
 \end{itemize}
 
 
@@ -45,7 +55,7 @@ the opposite sign.
 \begin{center}
 \vskip-3mm
 \begin{tabular}{ccccc}\hline\hline
-unit & $L_x$ & $v_x$ & $L_y$ & $v_y$ \cr\hline
+RP unit & $L_x$ & $v_x$ & $L_y$ & $v_y$ \cr\hline
 near & $\phantom{-}2.45\un{m}$  & $-2.17$ & $239\un{m}$ & $0.040$ \cr
 far  & $-0.37\un{m}$ & $-1.87$ & $264\un{m}$ & $0.021$ \cr
 \hline\hline
