@@ -344,16 +344,19 @@ Two binnings have been considered. The ``optimised'' option sets the bin size to
 
 %-------------------------
 
-\subsubsection{Systematic Uncertainties}
+\subsubsection{Beam Energy Uncertainty}
+%\subsubsection{Systematic Uncertainties}
 \label{sec:systematics}
 
-Besides the systematic uncertainties mentioned at the above analysis steps, the uncertainty of the beam momentum needs to be considered when the scattering angles are translated into $t$, see Eq.~(\ref{eq:th t}). This uncertainty is estimated by a method based on the calibration curves of the LHC magnets, see Section~4 in \cite{lhc-note-334}. The relative momentum uncertainty receives contributions $0.05\un{\%}$ from cold dipole magnet measurements, $0.05\un{\%}$ from warm-to-cold measurement conversion \cite{lhc-note-326,fidel} and $0.02\un{\%}$ from beam-quadrupole alignment, altogether yielding
-\begin{equation}
-\label{eq:bmom unc}
-	{\delta p\over p} = 0.1\un{\%}\ .
-\end{equation}
-These estimates are confirmed in Section~3.1 in \cite{cern-ats-2013-040}. Another confirmation comes in Eq.~(29) in \cite{cern-ats-2013-040}, where an alternative beam-momentum measurement based on common proton-ion injections is extrapolated using the LHC magnetic model from the injection beam energy of $450\un{GeV}$ to the data-taking energy of $4\un{TeV}$. The outcome is consistent with the nominal beam momentum within the uncertainty of $0.1\un{\%}$. When the proton-ion method is directly applied at $4\un{TeV}$, see Eq.~(28) in \cite{cern-ats-2013-040}, the uncertainty increases considerably, however the measurement is still consistent with the above statements.
+Besides the systematic uncertainties mentioned at the above analysis steps, the uncertainty of the beam momentum needs to be considered when the scattering angles are translated into $t$, see Eq.~(\ref{eq:th t}). The beam momentum at 
+$\sqrt{s}=8\,$TeV is derived from the current-to-field calibration functions of the LHC dipole magnets (see Section~4 in~\cite{lhc-note-334}, Section~3.1 in~\cite{cern-ats-2013-040}), yielding a relative momentum uncertainty of 0.07\%. Taking into account a further contribution of 0.02\% from quadrupole misalignments, the total relative beam momentum uncertainty amounts to 0.1\%, which is the value used in the present analysis.
 
+The precision of this method has been confirmed by direct beam energy measurements at 450\,GeV~\cite{bottura-pac09,fidel}.
+Another confirmation is given in \cite{cern-ats-2013-040} (Eqn.~(29)), where an alternative beam-momentum measurement based on common proton-ion injections is extrapolated from the injection beam energy of $450\un{GeV}$ to the data-taking energy of $4\un{TeV}$ using the LHC magnetic model. The outcome is consistent with the nominal beam momentum within an uncertainty of $0.1\un{\%}$. When the proton-ion method is directly applied at $4\un{TeV}$, see Eq.~(28) in~\cite{cern-ats-2013-040}, the measurement result is consistent with the above evaluations, but the uncertainty of this method, 0.65\%, is larger. 
+
+Finally, energy variations with time during a fill do not exceed $\pm 0.03$\% (Section~10 in~\cite{cern-ats-2013-040}) and are hence negligible.\\
+
+\subsubsection{Propagation of Systematic Uncertainties}
 The systematic effects are propagated to the $t$-distribution with help of a Monte-Carlo simulation. A fit of the final differential cross-section data is used to generate the true $t$-distribution. Simultaneously, another $t$-distribution is built, having introduced one of the above mentioned systematic effects at $1\un{\sigma}$ level. The difference between the $t$-distributions gives the systematic effect on the differential cross-section. Formally, this procedure is equivalent to evaluating
 \begin{equation}
 \label{eq:syst mode}
