@@ -50,8 +50,8 @@ Using the COMPETE~\cite{compete} preferred-model extrapolation of $\rho = 0.140\
 \begin{equation}
 \label{eq:si tot results}
 	\begin{aligned}
-		N_b &= 2:\quad \sigma_{\rm tot} = (100.8 \pm 2.1)\un{mb}\ ,\\
-		N_b &= 3:\quad \sigma_{\rm tot} = (101.2 \pm 2.1)\un{mb}\ ,\\
+		N_b &= 2:\quad \sigma_{\rm tot} = (101.5 \pm 2.1)\un{mb}\ ,\\
+		N_b &= 3:\quad \sigma_{\rm tot} = (101.9 \pm 2.1)\un{mb}\ ,\\
 	\end{aligned}
 \end{equation}
 which are well compatible with the previous measurement using the luminosity-independent \linebreak method~\cite{prl111}.
@@ -73,16 +73,16 @@ Details of the fits in Figure~\ref{fig:data rel ob} using parametrisation Eq.~(\
 $N_b$ & $\left . \d\sigma / \d t \right|_{t=0}$ & $b_1$ & $b_2$ & $b_3$ & $\chi^2/\hbox{ndf}$ & p-value & significance\cr
 & $\unt{mb/GeV^2}$ & $\unt{GeV^{-2}}$ & $\unt{GeV^{-4}}$ & $\unt{GeV^{-6}}$ & & & \cr
 \hline
-$1$ & $523 \pm 22$ & $-19.35 \pm 0.06$ & - & -& $117.5/28=4.20$ & $6.2\cdot10^{-13}$ & $7.20\un{\sigma}$ \cr
+$1$ & $531 \pm 22$ & $-19.35 \pm 0.06$ & - & -& $117.5/28=4.20$ & $6.2\cdot 10^{-13}$ & $7.20\un{\sigma}$ \cr
         & $ \left(\begin{matrix} +1.00\cr-0.11\cr\end{matrix} \right. $
         & $ \left.\begin{matrix} -0.11\cr+1.00\cr\end{matrix} \right) $
 \cr\hline
-$2$ & $529 \pm 22$ & $-19.89 \pm 0.08$ & $2.61 \pm 0.30$ & -& $ 29.3/27=1.09$ & $0.35$ & $0.94\un{\sigma}$ \cr
+$2$ & $537 \pm 22$ & $-19.89 \pm 0.08$ & $2.61 \pm 0.30$ & -& $ 29.3/27=1.09$ & $0.35$ & $0.94\un{\sigma}$ \cr
         & $ \left(\begin{matrix} +1.00\cr+0.19\cr-0.34\cr\end{matrix} \right. $
         & $ \begin{matrix} +0.19\cr+1.00\cr-0.76\cr\end{matrix}  $
         & $ \left.\begin{matrix} -0.34\cr-0.76\cr+1.00\cr\end{matrix} \right) $
 \cr\hline
-$3$ & $534 \pm 22$ & $-20.14 \pm 0.15$ & $5.95 \pm 1.75$ & $-12.0 \pm 6.2$& $ 25.5/26=0.98$ & $0.49$ & $0.69\un{\sigma}$ \cr
+$3$ & $541 \pm 22$ & $-20.14 \pm 0.15$ & $5.95 \pm 1.75$ & $-12.0 \pm 6.2$& $ 25.5/26=0.98$ & $0.49$ & $0.69\un{\sigma}$ \cr
         & $ \left(\begin{matrix} +1.00\cr+0.08\cr-0.04\cr-0.02\cr\end{matrix} \right. $
         & $ \begin{matrix} +0.08\cr+1.00\cr-0.90\cr+0.85\cr\end{matrix}  $
         & $ \begin{matrix} -0.04\cr-0.90\cr+1.00\cr-0.99\cr\end{matrix}  $
@@ -132,45 +132,9 @@ a_1 - a_2\\
 b_1 - b_2\\
 \end{pmatrix}\ ,
 \end{equation}
-where $\mat V_p$ is the covariance matrix for the difference vector $\Delta_p$. It yields $\chi_p^2 = 65.4$ which with $2$ degrees of freedom corresponds to a p-value of $6.2\cdot10^{-15}$ and a significance of $7.8\un{\sigma}$. This, in turn, rules out the hypothesis of a purely exponential behaviour of the data over the entire observed range.
+where $\mat V_p$ is the covariance matrix for the difference vector $\Delta_p$. It yields $\chi_p^2 = 65.2$ which with $2$ degrees of freedom corresponds to a p-value of $7\cdot10^{-15}$ and a significance of $7.8\un{\sigma}$. This, in turn, rules out the hypothesis of a purely exponential behaviour of the data over the entire observed range.
 
-
-\iffalse
- A1 − A2 = 14.617 ± 1.789 ⇒ 8.2 σ
- B1 − B2 = −0.414 ± 0.056 ⇒ 7.4 σ
-\fi
-
-Since parameters estimated with the least squares method are unbiased, the test in Eq.~(\ref{eq:chi sq param}) is asymptotically binning independent. Indeed, applying it to the data in the ``optimised'' binning (prior to the statistical uncertainty rescaling, Section \ref{sec:stat unc adj}) yields $\chi^2_p = 65.7$ which corresponds to a significance of $7.8\un{\sigma}$. After the uncertainty rescaling, the exclusion significance increases to $9.0\un{\sigma}$.
-
-\iffalse
-DS4-sc, ob
-
-A1 - A2 = 14.273 +- 1.549
-B1 - B2 = -0.421 +- 0.051
-
-S2 = 8.519790E+01
-prob_A+B = 3.158714E-19
-
->> significances
-        A: 9.2
-        B: -8.2
-        A+B: 9.0
-\fi
-
-\iffalse
-DS4, ob
-
-A1 - A2 = 14.501 +- 1.789
-B1 - B2 = -0.426 +- 0.059
-
-S2 = 6.574304E+01
-prob_A+B = 5.297602E-15
-
->> significances
-        A: 8.1
-        B: -7.2
-        A+B: 7.8
-\fi
+Since parameters estimated with the least squares method are unbiased, the test in Eq.~(\ref{eq:chi sq param}) is asymptotically binning independent. Indeed, applying it to the data in the ``optimised'' binning (prior to the statistical uncertainty rescaling, Section \ref{sec:stat unc adj}) yields $\chi^2_p = 65.9$ which corresponds to a significance of $7.8\un{\sigma}$. After the uncertainty rescaling, the exclusion significance increases to $8.9\un{\sigma}$.
 
 \begin{figure*}
 \begin{center}

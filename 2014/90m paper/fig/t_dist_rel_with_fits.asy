@@ -175,7 +175,7 @@ for (int dsi : datasets.keys)
 
 	max_n_b = 3;
 
-	A_ref = 519.9; B_ref = 19.39;
+	A_ref = 527.1; B_ref = 19.39;
 	ref_str = MakeRefStr();
 
 	//NewRow();
