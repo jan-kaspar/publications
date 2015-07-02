@@ -14,6 +14,8 @@ TGraph_errorBar = None;
 xSizeDef = 6.1cm;
 ySizeDef = 5cm;
 
+drawGridDef = true;
+
 pen p_full_band = (olive*0.5 + yellow*0.7) + opacity(0.7);
 pen p_anal_band = brown*0.5 + yellow*0.5;
 //add("hatch", hatch(1.3mm, NE, p_anal_band+1pt));
@@ -143,19 +145,14 @@ label(rotate(90)*Label("\vbox{\kern1mm\hbox{$|t|_{\rm min}$ at $\be^* = 90\un{m}
 AttachLegend("$\sqrt s = 8\un{TeV}$, low-$|t|$ detail");
 */
 
-for (real x = 0; x <= 0.015; x += 0.005)
-	yaxis(XEquals(x, false), dotted);
-
-for (real y = 300; y <= 1000; y += 100)
-	xaxis(YEquals(y, false), dotted);
 
 //----------------------------------------------------------------------------------------------------
 
-A_ref = 519.5;
-B_ref = 19.38;
+A_ref = 527.1;
+B_ref = 19.39;
 ref_str = MakeRefStr("");
 
-NewPad("$|t|\ung{GeV^2}$", "${\d\si/\d t - \hbox{ref} \over \hbox{ref}}\ ,\quad \hbox{ref} = "+ref_str+"$");
+NewPad("$|t|\ung{GeV^2}$", "$\displaystyle{\d\si/\d t - \hbox{ref} \over \hbox{ref}}\ ,\quad \hbox{ref} = "+ref_str+"$");
 currentpad.xTicks = LeftTicks(0.05, 0.01);
 currentpad.yTicks = RightTicks(0.02, 0.01);
 
@@ -165,12 +162,5 @@ draw(rGetObj(f, "g_data"), "p", black, mCi+1pt);
 DrawRelDiff(rGetObj(f, "g_data"), black);
 
 limits((0, -0.1), (0.2, 0.1), Crop);
-
-for (real x = 0; x <= 0.2; x += 0.05)
-	yaxis(XEquals(x, false), dotted);
-
-for (real y = -0.1; y <= 0.1; y += 0.02)
-	xaxis(YEquals(y, false), dotted);
-
 
 GShipout(margin=0mm, hSkip=3mm);
