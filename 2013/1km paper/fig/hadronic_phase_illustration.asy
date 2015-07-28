@@ -128,14 +128,8 @@ draw(scale(1., 1/pi) * graph(PeripheralPhase, 0, 1), heavygreen+1pt, "peripheral
 
 draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-con-rho0.10/g_FH_Theta")), black+1pt, "constant");
 draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-std-rho0.10/g_FH_Theta")), red+1pt, "standard");
-draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-bai-rho0.10/g_FH_Theta")), magenta+1pt, "Bailly");
-draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-per-rho0.10-1-2-0.3/g_FH_Theta")), blue+1pt,
-	"peripheral (example 1)");
-//	"peripheral (example 1: $A = 1$, $\ka = 2$, $|t_m| = 0.3\un{GeV^2}$)");
-
-draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-per-rho0.10-4-4-0.2/g_FH_Theta")), heavygreen+1pt,
-	"peripheral (example 2)");
-//	"peripheral (example 2: $A = 4$, $\ka = 4$, $|t_m| = 0.2\un{GeV^2}$)");
+draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-bai-rho0.10/g_FH_Theta")), blue+1pt, "Bailly");
+draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-per-rho0.10-4.3-2.311-0.283/g_FH_Theta")), heavygreen+1pt, "peripheral");
 
 limits((0, -1.0), (0.8, +1.5), Crop);
 AttachLegend(BuildLegend(NW, vSkip=-0.8mm, ymargin=0mm), NE);

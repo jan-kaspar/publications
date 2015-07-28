@@ -9,6 +9,8 @@ elastic_1km_npb.pdf: elastic_1km_npb.tex \
 		differential_cross_section.tex \
 		data_table.tex \
 		coulomb.tex \
+		fig/fit_exp1/table_data.tex \
+		fig/fit_exp3/table_data.tex \
 		conclusions.tex \
 		acknowledgements.tex
 	pdflatex elastic_1km_npb.tex

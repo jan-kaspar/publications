@@ -1,0 +1,15 @@
+#!/bin/bash
+
+gvim -p \
+	elastic_1km_npb.tex \
+	abstract.tex \
+	introduction.tex \
+	experimental_apparatus.tex \
+	beam_optics.tex \
+	data_taking.tex \
+	differential_cross_section.tex \
+	data_table.tex \
+	coulomb.tex \
+	conclusions.tex \
+	acknowledgements.tex
+#	authorlist_npb.tex \

@@ -1,10 +1,15 @@
 \section{Coulomb-Nuclear Interference}
 \label{sec:coulomb}
 
+\TODO{Update this paragraph}.
 This section presents a study of the measured differential cross-section focused on the effects of the Coulomb-nuclear interference (CNI). These effects are sensitive to the phase of nuclear amplitude and thus allow for determination of additional physics parameters such as $\rho$. The presentation starts with Section~\ref{sec:cni framework} outlining the theoretical concepts needed to describe the CNI effects. It is followed by Section~\ref{sec:cni task discussion} with a critical discussion on the task feasibility, presenting a strategy for the study. Section~\ref{sec:cni fit techniques} describes fit techniques used for parameter determination. As anticipated in the introduction, this study strongly benefits from including another high-statistics data set \cite{8tev-90m} obtained at the same energy however with beam optics $\beta^* = 90\un{m}$. This gives several possibilities of combination with the above presented data, from $\beta^* = 1000\un{m}$ optics. In particular, Section~\ref{sec:cni common fits} gives results where both data sets enter the fit on equal ground, while Section~\ref{sec:cni reciprocal fits} reports results where the data sets are assigned complementary roles.
 
 \TODO{Which binning of 90m data is used}
 
+\TODO{Move this paragraph after the framework section? It needs lots of terms defined there...}
+\> define goals = by using data constrain nuclear amplitude:
+\>> modulus -- non-exponentiality in nuclear component or CNI effect?
+\>> phase -- value of $\rho$, test compatibility of central/peripheral phases, ...
 
 
 %----------------------------------------------------------------------------------------------------
@@ -13,6 +18,14 @@ This section presents a study of the measured differential cross-section focused
 \label{sec:cni framework}
 
 In this section the different components of the combined elastic scattering cross-section, already briefly outlined in the introduction, are discussed in more detail. In particular, the Coulomb amplitude (Section~\ref{sec:cni coulomb}), the nuclear amplitude (Section~\ref{sec:cni nuclear}) and their interference (Section~\ref{sec:cni interference}).
+
+\TODO{Expect three contributions to the amplitude, corresponding to Feynman diagram sets containing
+\begin{itemize}
+\item QED elements only -- calculable from first principles, Section~\ref{sec:cni coulomb}
+\item QCD elements only -- not calculable from first principles, phenomenological amplitude used instead, Section~\ref{sec:cni nuclear}
+\item both QED and QCD -- not calculable from first principles, phenomenological amplitude cannot be used either since this amplitude is correlated with the previous two. Section~\ref{sec:cni interference} will introduce two interference formulae attempting to calculate these effects.
+\end{itemize}
+}
 
 %------------------------------------------------------------------
 \subsubsection{Coulomb Amplitude}
@@ -34,7 +47,7 @@ The form factors by Pucket et al.~\cite{puckett10} are used in this study and it
 \subsubsection{Nuclear Amplitude}
 \label{sec:cni nuclear}
 
-Very few conclusions can be made on the nuclear amplitude from first principles (QCD). Instead, several phenomenology or theory motivated descriptions will outlined here. The choice will be critically discussed in Section~\ref{sec:cni task discussion}.
+Very few conclusions can be made on the nuclear amplitude from first principles (QCD). Instead, several phenomenology or theory motivated descriptions will be outlined here. The choice will be critically discussed in Section~\ref{sec:cni task discussion}.
 
 %--------------------
 \vskip3mm
@@ -43,9 +56,9 @@ Very few conclusions can be made on the nuclear amplitude from first principles 
 At $|t| \gtrsim 0.02\un{GeV^2}$ the effects due to the Coulomb interaction are not expected to be large (c.f.~Figure~\ref{fig:cni effect}). Thus, the measured cross-section can be -- to a large extent -- attributed to the nuclear component. Following Table~\ref{tab:data} and especially \cite{8tev-90m} which presents high-precision data for $|t| < 0.2\un{GeV^2}$, it is reasonable to parametrise the nuclear modulus as
 \begin{equation}
 \label{eq:nuc mod}
-\left | {\cal A}^{\rm N}(t) \right | = a \exp\left( \sum\limits_{n = 1}^{N_b} b_n\, t^n \right)\ ,
+\left | {\cal A}^{\rm N}(t) \right | = \sqrt{s\over\pi} {p\over \hbar c} \sqrt{a} \exp\left( {1\over 2} \sum\limits_{n = 1}^{N_b} b_n\, t^n \right)\ ,
 \end{equation}
-where $N_b$ gives the number of free parameters in the exponent. This parametrisation is also compatible with a number of theoretical models (see e.g.~\cite{elegent}).
+where $N_b$ gives the number of free parameters in the exponent. This parametrisation is also compatible with a number of theoretical models (see e.g.~\cite{elegent}). \TODO{Consistently with \cite{8tev-90m}, $a$ gives differential cross-section intercept and $b_1$ forward diffractive slope}.
 
 Since the calculation of Coulomb-nuclear interference may, in principle, involve integrations (e.g.~Eq.~(\ref{eq:int kl})), it is necessary to extend the parametrisation meaningfully to $|t| > 0.2\un{GeV^2}$. Therefore, at $|t| > 0.5\un{GeV^2}$, the parametrisation is anchored to a preliminary cross-section derived from the same data set as in \cite{8tev-90m} which features a dip-bump structure similar to the one observed at $\sqrt{s} = 7\un{TeV}$ \cite{epl95}. The region $0.2 < |t| < 0.5\un{GeV^2}$ is reserved for a smooth transition between the parametrisation in Eq.~(\ref{eq:nuc mod}) and the anchored part. It will be shown that changing the high-$|t|$ part has negligible impact on the results presented later on.
 
@@ -54,10 +67,12 @@ Since the calculation of Coulomb-nuclear interference may, in principle, involve
 \vskip3mm
 \hbox to\hsize{\bf Phase\hfil}
 
+\TODO{$p_0$ always gives phase at $t=0$.}
+
 \begin{figure*}
 \begin{center}
 \includegraphics{fig/hadronic_phase_illustration.pdf}
-\caption{Illustration of nuclear-phase forms. The dashed lines correspond to predictions by theoretical models (\cite{elegent} and references therein). The solid lines give typical examples of parametrisations used in the study, all at the same value of $\rho = 0.10$. The peripheral example 1 corresponds to parameters $A = 1$, $\kappa = 2$ and $|t_m| = 0.3\un{GeV^2}$, the example 2 to $A = 4$, $\kappa = 4$ and $|t_m| = 0.2\un{GeV^2}$.
+\caption{Illustration of nuclear-phase forms. The dashed lines correspond to predictions by theoretical models (\cite{elegent} and references therein). The solid lines give typical examples of parametrisations used in the study, all at the same value of $\rho = 0.10$. The peripheral example corresponds to the central values in Eq.~(\ref{eq:nuc phase per val}).
 }
 \label{fig:phase illustration}
 \end{center}
@@ -90,17 +105,24 @@ Another parametrisation is by {\em Bailly et al.}~\cite{bailly87}:
 where $p_0$ determines the phase value at $t=0$ and $t_{\rm d} \approx -0.53\un{GeV^2}$ gives the position of the diffractive minimum at $8\un{TeV}$ (preliminary result derived from the $\beta^* = 90\un{m}$ data \cite{8tev-90m}). This phase has a behaviour qualitatively similar to the model of Jenskovszky et al., see Figure~\ref{fig:phase illustration}.
 
 % ***
-The {\it peripheral phase} \cite{kl94} provides an alternative to the above descriptions. Its parametrisation
+The {\it peripheral phase} \cite{kl94} provides an alternative to the above descriptions. As can be seen in Figure~\ref{fig:phase illustration}, the parametrisation
 \begin{equation}
 \label{eq:nuc phase per}
-\arg {\cal A}^{\rm N}(t) = p_0 - A \exp\left[ \kappa \left( \log {t\over t_{\rm m}} - {t\over t_{\rm m}} + 1 \right) \right]
+\arg {\cal A}^{\rm N}(t) = p_0 - \zeta_1 \left(- {t\over 1\un{GeV^2}} \right)^\kappa \e^{\nu t}
 \end{equation}
-%results in a peak at $t_{\rm m} \approx -0.310\un{GeV^2}$, with amplitude $A \approx 5.53$ and width controlled by $\kappa \approx 4.01$.
-results in a peak at $t = t_{\rm m}$, with an amplitude $A$ and width controlled by $\kappa$, as can be seen in Figure~\ref{fig:phase illustration}.
+can have rapid variation at low $|t|$, then peaks at $t = -\kappa / \nu$ and asymptotically returns to $p_0$, the value at $t=0$. According to \cite{kl-8tev}, the reasonable parameter values at $\sqrt s = 8\un{TeV}$ are
+\begin{equation}
+\label{eq:nuc phase per val}
+	\zeta_1 = 800\ ,\qquad
+	\kappa = 2.311 \pm 0.399\ ,\qquad
+	\nu = (8.161 \pm 0.389)\un{GeV^{-2}}
+\end{equation}
+where the values after ``$\pm$'' indicate boundaries of ranges within which the values may be varied.
+
 
 Figure~\ref{fig:phase illustration} presents a comparison of phase predictions of several models to typical examples of parametrisations proposed above.
 
-It should be noted that the phase has decisive influence on the amplitude behaviour in the space of impact parameter, $b$, see e.g.~Section 3 in~\cite{klk02}. It can be characterised by the root-mean-squares (RMS) of $b$ for elastic and inelastic collisions. The constant, standard and Bailly phases lead to elastic collisions more central (smaller RMS) than the inelastic ones. The peripheral phase can yield a description with the opposite hierarchy, which is argued more natural by some authors (e.g. Section~4 in~\cite{kl96}).
+It should be noted that the phase has decisive influence on the amplitude behaviour in the space of impact parameter, $b$, see e.g.~Section 3 in~\cite{klk02}. It can be characterised by the root-mean-squares (RMS) of $b$ for elastic and inelastic collisions. The constant, standard and Bailly phases lead to elastic collisions more central (smaller RMS) than the inelastic ones. The peripheral phase can yield a description with the opposite hierarchy, which is argued more natural by some authors (e.g. Section~4 in~\cite{kl96}). \TODO{Update: shape very relevant, too.}
 
 %------------------------------------------------------------------
 \subsubsection{Coulomb-Nuclear Interference Formulae}
@@ -123,224 +145,144 @@ where $\alpha$ is the fine-structure constant and $\gamma \doteq 0.577$ the Eule
 \begin{center}
 \includegraphics{fig/cni_effect_illustration.pdf}
 \caption{%
-Illustration of the effects due to the Coulomb interaction, using the KL formula. For the SWY formula, the picture is similar, however it misses the effects at higher $|t|$. The curves show a response of the interference formula to different nuclear phases with a purely exponential nuclear modulus. The solid curves correspond to phases of the same shape (constant) but different values of $\rho$ (the maximal response can be seen at $|t| \lesssim 0.01\un{GeV^2}$). Conversely, the dashed lines correspond to phases with fixed $\rho$ but various shapes (the same examples as in Figure~\ref{fig:phase illustration}), with response sizeable at $|t| \gtrsim 0.02\un{GeV^2}$.
+Illustration of the effects due to the Coulomb interaction, using the KL formula. For the SWY formula, the picture is similar, however it misses the effects at higher $|t|$. The curves show a response of the interference formula to different nuclear phases with a purely exponential nuclear modulus. The solid curves correspond to phases of the same shape (constant) but different values of $\rho$: the maximal response can be seen at $|t| \lesssim 0.01\un{GeV^2}$. Conversely, the dashed lines correspond to phases with fixed $\rho$ but various shapes (the same examples as in Figure~\ref{fig:phase illustration}): response sizeable at $|t| \gtrsim 0.02\un{GeV^2}$.
 }
 \label{fig:cni effect}
 \end{center}
 \end{figure*}
 
-The {\bf Kundr\' at-Lokaj\' i\v cek formula (KL)} \cite{kl94} was derived in an impact parameter formalism and it is based on the additivity of eikonals. The derivation poses no limitations on nuclear amplitude and the formula naturally incorporates the electromagnetic form factor. In this treatment, the interference effect goes beyond a single phase, the $\Psi$ quantity is complex, in general:
+The {\bf Kundr\' at-Lokaj\' i\v cek formula (KL)} \cite{kl94}\footnote{%
+Note that many newer publications by the authors contain a misprint: wrong sign in front of the second term contributing to $G(t)$.
+} was derived in an impact parameter formalism and it is based on the additivity of eikonals. The derivation poses no limitations on nuclear amplitude and the formula naturally incorporates the electromagnetic form factor. In this treatment, the interference effect goes beyond a single phase, the $G$ quantity is complex, in general:
 \begin{equation}
 \label{eq:int kl}
 	\begin{aligned}
-		{\d\sigma\over \d t}^{\rm C+N} &= {\pi (\hbar c)^2 \over s p^2} \left | {\alpha s\over t} {\cal F}^2 + {\cal A}^{\rm N} \e^{\I\alpha \Psi(t)} \right |^2\ ,\cr
-		\Psi(t) &= 
-			- \int \d t'\, \log {t'\over t} {\d\phantom{t'}\over \d t'} {\cal F}^2(t') + \int \d t' \left( {{\cal A}^{\rm N}(t') \over {\cal A}^{\rm N}(t)} - 1 \right) { I(t, t')\over 2\pi }
+		{\d\sigma\over \d t}^{\rm C+N} &= {\pi (\hbar c)^2 \over s p^2} \left | {\alpha s\over t} {\cal F}^2
+			+ {\cal A}^{\rm N}\, \Big[1 - \I\alpha G(t)\Big] \right |^2\ ,\cr
+		G(t) &= 
+			\int \d t'\, \log {t'\over t} {\d\phantom{t'}\over \d t'} {\cal F}^2(t')
+			- \int \d t' \left( {{\cal A}^{\rm N}(t') \over {\cal A}^{\rm N}(t)} - 1 \right) { I(t, t')\over 2\pi }
 			\ ,\cr
 		I(t, t') &= \int_0^{2\pi} \d\phi\ {{\cal F}^2(t'')\over t''}\ ,\qquad t'' = t + t' + 2\sqrt{t\, t'} \cos\phi\ ,\cr
 	\end{aligned}
 \end{equation}
-where the $t$ integrations go over the entire kinematically allowed region.
+where the $t$ integrations go over the entire kinematically allowed region. A slightly different variant proposed in Eq.~(22) in~\cite{kl05} was considered, too:
+\begin{equation}
+\label{eq:int kl exp}
+	{\d\sigma\over \d t}^{\rm C+N} = {\pi (\hbar c)^2 \over s p^2} \left | {\alpha s\over t} {\cal F}^2
+		+ {\cal A}^{\rm N}\, \e^{- \I\alpha G(t)} \right |^2 \ .
+\end{equation}
 
-By analysing the formulae Eq.~(\ref{eq:int swy}) and (\ref{eq:int kl}), one can conclude that in the region where the nuclear amplitude dominates ($|t| \gtrsim 0.003\un{GeV^2}$), the effects due to the Coulomb interaction can be proportional either to $\alpha$ or to the ratio ${\cal A}^{\rm C} / {\cal A}^{\rm N}$. In both cases, the magnitude of the interference effects can be expected at a percent level, as shown in Figure~\ref{fig:cni effect}. The figure also shows that the effects at different $|t|$ probe different parts of the nuclear phase: maximum sensitivity to $\rho$ lies at very low $|t|$ while at higher $|t|$ the effects are sensitive to phase values at higher $|t|$. It can also be observed that for the constant and the standard phase (and can be generalised to Bailly, too) the effects are very similar and rather mild at higher $|t|$. This can be understood from a very limited variation of the phase at low $|t|$, which is the region contributing most to the integral in Eq.~(\ref{eq:int kl}). On the contrary, the higher $|t|$ response to peripheral phases can have various forms, often similar to the ``U shape'' of the reconstructed cross-section, see Figures~\ref{fig:fits common con} and~\ref{fig:fits common per}.
-
-
+By analysing the formulae Eq.~(\ref{eq:int swy}) and (\ref{eq:int kl}), one can conclude that in the region where the nuclear amplitude dominates ($|t| \gtrsim 0.003\un{GeV^2}$), the effects due to the Coulomb interaction can be proportional either to $\alpha$ or to the ratio ${\cal A}^{\rm C} / {\cal A}^{\rm N}$. In both cases, the magnitude of the interference effects can be expected at a percent level, as shown in Figure~\ref{fig:cni effect}. The figure also shows that the effects at different $|t|$ probe different parts of the nuclear phase: maximum sensitivity to $\rho$ lies at very low $|t|$ while at higher $|t|$ the effects are sensitive to phase values at higher $|t|$. It can also be observed that for the constant, standard and Bailly phase the effects are very similar and rather mild at higher $|t|$. \TODO{Thus treat as one family}. This can be understood from a very limited variation of the phase at low $|t|$, which is the region contributing most to the integral in Eq.~(\ref{eq:int kl}). On the contrary, the higher $|t|$ response to peripheral phases can have various forms, often similar to the ``U shape'' of the reconstructed cross-section, see Figures~\ref{fig:fits common con} and~\ref{fig:fits common per}. \TODO{Recheck the statements about phase at ''higher $|t|$'' and correct if needed.}
 
 
 %----------------------------------------------------------------------------------------------------
-\subsection{Parameter Inference from the Data}
-\label{sec:cni task discussion}
+\subsection{Fitting Procedure}
+\label{sec:fit}
 
-As formalised in Section~\ref{sec:cni interference}, the observable cross-section can be split into two components: nuclear component (as in the limit $\alpha\to 0$) and CNI component (Coulomb effects as shown in Figure~\ref{fig:cni effect}).
+Beyond using the data from Table~\ref{tab:data}, one might consider including $\beta^* = 90\un{m}$ data \cite{8tev-90m} which have much smaller uncertainties but reach limited to $|t| \gtrsim 0.03\un{GeV^2}$. Due to the latter, they have essentially no sensitivity to the $\rho$ parameter, cf.~Fig.~\ref{fig:cni effect}. Furthermore, due to possible systematic tensions between the data sets, including the $\beta^* = 90\un{m}$ data may have deteriorating impact on the $\rho$ determination. Therefore, the value of $\rho$ (or $p_0$ in other words), was determined from $\beta^* = 1000\un{m}$ data only. For other parameters to which both data sets have non-negligible sensitivity (e.g.~$b_i$ in Eq.~(\ref{eq:nuc mod})), both data sets shall give compatible results. This has been verified for all the fits presented later on. Since the $\beta^* = 90\un{m}$ data yield much lower uncertainties, both data sets have been used for determining all parameters except $\rho$. In practice, a series of two fits is performed:
+\begin{enumerate}
+\item fit of $\beta^* = 1000\un{m}$ data with $p_0$ free,
+\item fit of $\beta^* = 1000$ and $90\un{m}$ data with $p_0$ fixed from the preceding step.
+\end{enumerate}
 
-As a next task it would be desirable to exploit the measured data to make statements about the nuclear component (e.g.~determine $a$ related to the total cross-section, see Eq.~(\ref{eq:si tot})) and the CNI component (e.g.~determine $\rho$). For this purpose it is essential to be able to separate the two cross-section components, which in turn requires them to be sufficiently distinct. Failing that, would lead to a situation characterised by degeneracy, many possible data descriptions and thus non unique statements about the two components.
+Each the fits has been performed by following the standard least-squares method, however trying the following two implementations.
 
-The task is technically achieved by fitting. Therefore one needs to introduce parametrisations for the variable elements of the cross-section description: nuclear modulus and phase. Here it is important to realise that the form of the parametrisations defines what features can possibly be observed in the nuclear and CNI components of the cross-section. Therefore, the parametrisations define the level of distinction between the two components. For example, giving too much flexibility to the parametrisations will necessarily make the nuclear and CNI cross-section components undistinguishable and lead to degeneracy in the fit results. This tends to be the case with the peripheral phase parametrisation, Eq.~(\ref{eq:nuc phase per}), and large $N_b$ in the nuclear modulus parametrisation, Eq.~(\ref{eq:nuc mod}). These considerations illustrate that the choice of the parametrisations is crucial. At the same time, there is no rigorous guide for the choice which makes it subjective and arbitrary.
+\begin{enumerate}
 
-It is clear that not all possible nuclear modulus and phase parametrisations can be tested and therefore all results presented hereafter will have the character of examples. The choice of parametrisations in Section~\ref{sec:cni nuclear} is rather conservative and follows the guideline of minimal extensions with respect to previous TOTEM analyses \cite{8tev-90m}. It is easily conceivable to construct parametrisations that might yield few percent difference in parameters of interest, like $\rho$ or total cross-section. This applies mainly to the modulus parametrisation. Although at $|t| \gtrsim 0.02\un{GeV^2}$ the Coulomb effects are not large and thus the measured cross-section provides a good guide for parametrisations, at very low $|t|$ the measured data are dominated by the Coulomb interaction and no information on the nuclear component can be extracted. Consequently, the form of extrapolation to $t = 0$ is largely unconstrained. The uncertainty in nuclear phase might be less critical since the cross-section effects are limited by the KL/SWY interference formulae (see Figure~\ref{fig:cni effect}). This stems from the effects being predominantly sensitive to the nuclear phase at low $|t|$ and thus a large class of phase parametrisations could be reduced to polynomials by employing the Taylor expansion at $t = 0$.
-
-For the rest of the analysis, the following strategy has been adopted. Starting with the example parametrisations from Section~\ref{sec:cni nuclear}, the experimental data will be used to exclude the non-compatible ones. The rest will be used to present a matrix of conditional results, each valid for one of the chosen parametrisation assumptions.
-
-
-
-%----------------------------------------------------------------------------------------------------
-\subsection{Fitting Techniques}
-\label{sec:cni fit techniques}
-
-As already anticipated, it is vital to include the $\beta^* = 90\un{m}$ data to the fits. Formally, the data vector $\vec D$ can thus consist of rows of Table~\ref{tab:data} and/or Table~3 in \cite{8tev-90m}. The corresponding uncertainty matrix $\mat V$ includes two components. The statistical one contains the statistical uncertainties from the data tables on the diagonal. The systematic uncertainty component can be obtained from Eq.~(\ref{eq:covar mat}) and Eq.~(14) in \cite{8tev-90m}, taking into account the (almost) full correlation between the normalisation uncertainties in the two data sets (both are calibrated to the same reference measurement \cite{prl111}).
-
-
-%-----------
-
-Two alternative objective functions will be used for fitting in this report. The {\bf standard least squares (LS)} method suggests to minimise
+% ***
+\item[A.] Minimise
 \begin{equation}
-\label{eq:chi sq LS}
-	\chi_{\rm LS}^2 = (\vec D - \vec F)^\T\ \mat V^{-1}\ (\vec D - \vec F)\ ,
+\label{eq:chi sq A}
+	\chi^2 = \Delta^\T \mat V^{-1} \Delta\ ,\qquad
+	\Delta_i = \left.{\d\sigma\over \d t}\right|_{{\rm bin}\ i} - {\d\sigma^{\rm C+N}\over\d t}\left(t^{\rm rep}_{{\rm bin}\ i}\right)\ ,\qquad
+	\mat V = \mat V_{\rm stat} + \mat V_{\rm syst} + \mat V_{\rm norm}\ ,
 \end{equation}
-where $\vec F$ is a vector of the fit function values at the data point abscissas (i.e.~at $t$ given by the ``representative point'' in the data tables). A potential disadvantage of this approach is that if the fit function cannot describe the data, the excess in $\chi^2_{\rm LS}$ may be binning dependent.
+where $\Delta$ is a vector of differences between the differential cross-section data and a fit function $\d\sigma^{C+N}/\d t$ evaluated at representative points $t^{\rm rep}$ of each bin \cite{lafferty94}. The minimisation is repeated several times, updating the representative points between iterations. The covariance matrix $\mat V$ is composed of three components. $\mat V_{\rm stat}$ contains on the diagonal statistical uncertainty squared from Table~\ref{tab:data} and possibly also from Table~3 in \cite{8tev-90m}. $\mat V_{\rm syst}$ includes all systematic uncertainty contributions except normalisation, see Eq.~(\ref{eq:covar mat}) and Eq.~(14) in \cite{8tev-90m}. $\mat V_{\rm norm}$ reflects the normalisation uncertainty: $4.2\un{\%}$ fully correlated between the $90$ and $1000\un{m}$ datasets and $0.25\un{\%}$ ($0.08\un{\%}$) for $90\un{m}$ ($1000\un{m}$) datasets individually.
 
-%-----------
 
-The {\bf parameter-comparison} method is based on decomposing both the data and fit function into a linear combination of features $\vec\Phi_i$: 
+% ***
+\item[B.] Minimise
 \begin{equation}
-\label{eq:parcmp decomposition}
-	\vec D = \sum_i \zeta_i\ \vec\Phi_i\ ,\quad
-	\vec F = \sum_i \eta_i\ \vec\Phi_i\ ,
+\label{eq:chi sq B}
+	\chi^2 = \Delta^\T \mat V^{-1} \Delta + \TODO{...}\ ,\qquad
+	\Delta_i = \left.{\d\sigma\over \d t}\right|_{{\rm bin}\ i} - {1\over \Delta t_i} \int_{{\rm bin}\ i} f(t)\,\d t\ ,\qquad
+	\mat V = \mat V_{\rm stat} + \mat V_{\rm syst}\ ,
 \end{equation}
-where each of the feature vectors $\vec\Phi$ can be, for example, generated from a function $\Phi(t)$ evaluated at the abscissas of data points. The difference between the coefficients $\zeta_i$ and $\eta_i$ can then be used to establish the match quality between the data and the fit function. Such a test construction can offer several advantages. Since the estimation of coefficients $\zeta_i$ is likely to be binning-independent, so the test is. Another advantage comes from the possibility to choose the features $\vec\Phi_i$: one can make separation between features expected in the data (e.g.~polynomials of low degree) from typical signatures of noise (e.g.~polynomials of high degree). This in turn leads to increased strength of the method. Regarding the technical implementation, a coordinate transformation is applied first:
-\begin{equation}
-\label{eq:parcmp transform}
-	D_i \rightarrow {D_i - F_i\over F_i}\ ,
-\end{equation}
-which simplifies the task since the coefficients $\eta_i \equiv 0$ and also simplifies the choice of features $\vec\Phi_i$. For these, polynomials of low degree have been chosen (cf.~data shape in Figure~\ref{fig:fits common con}) together with functions $1/t$ and $1/t^2$ relevant when fit functions fail to describe the data in the region of Coulomb dominance (see Figure~\ref{fig:cni effect}). For optimal performance, Gram-Schmidt orthonormalisation is applied such that $\vec\Phi_i \cdot \vec\Phi_j = \delta_{ij}$ rendering the determination of parameters straight-forward: $\zeta_i = \vec D \cdot \vec \Phi_i$. The scalar product has been defined such that data points with larger uncertainties contribute less to the fit:
-\begin{equation}
-\label{eq:parcmp dot product}
-	\vec f \cdot \vec g = \sum_{i, j} f_i\ \mat V^{-1}_{ij}\ g_j \ ,
-\end{equation}
-where $\mat V$ is the data uncertainty matrix. This choice is also practical since the covariance matrix of the $\zeta_i$ parameters becomes a unit matrix: $\mat V_{\vec\zeta} = 1$. Moreover, the method becomes equivalent to the standard LS method in the limit where the number of features equals the number of data points. Finally, the fit quality is determined as a measure of compatibility of the vector $\vec\zeta$ with zero:
-\begin{equation}
-\label{eq:chi sq parcmp}
-	\chi_{\rm PC}^2 = \vec\zeta^\T \mat V_{\vec\zeta}^{-1} \vec\zeta = |\vec\zeta|^2 \ .
-\end{equation}
-By Monte-Carlo simulations, it has been verified that the quantity $\chi_{\rm PC}$ has a chi-square distribution with the number of degrees of freedom (NDF) given by the number of features minus the number of free parameters. Because of that, fits with peripheral phase parametrisation will use more features ($t^0 \ldots t^8$) than fits with other phase parametrisations ($t^0 \ldots t^4$).
+$\Delta t_i$ representing the width of the $i$-th bin
 
-%-----------
+\end{enumerate}
 
-Since both methods eventually rely on quantities with a chi-square distribution, the same fit quality measures can be quoted. In particular the p-value, i.e. the probability that a $\chi^2$ value at least as extreme as the observed one would be drawn from the corresponding chi-square distribution. The p-value can be conveniently expressed as significance which corresponds to a half-width of a central region that needs to be excluded from a normal distribution to give the same integrated probability as the p-value. The significance is given in multiples of $\sigma$, the standard deviation of the normal distribution.
+\TODO{Approaches A and B give compatible results $\rightarrow$ stability.}
 
+\TODO{Fits with the two variants of the KL formula, Eqs.~(\ref{eq:int kl}) and (\ref{eq:int kl exp}), give compatible results.}
 
+\TODO{Fits with different implementations of interference formulae (\cite{elegent} and custom) $\rightarrow$ confidence, no numerical issues.}
 
-%----------------------------------------------------------------------------------------------------
-\subsection{Common Fits of 1000\,m and 90\,m Data}
-\label{sec:cni common fits}
-
-This section presents results for fits where the $1000$ and $90\un{m}$ data act in equal manner. Technically, the data vector $\vec D$ consists of two sub-columns, one from each data sets.
-
-Figure \ref{fig:fits common con} shows results of fits with the constant nuclear phase parametrisation. The free parameters include: $a$ and $b_n$ in Eq.~(\ref{eq:nuc mod}) and $p_0$ in Eq.~(\ref{eq:nuc phase con}). One can observe that the standard LS and parameter-comparison fits give very similar results (up to a small difference in normalisation). Therefore, only the parameter-comparison method will be presented in what follows (as it has better sensitivity in addition). Similarly, for $N_b = 1$ the fits with SWY and KL interference formulae are almost identical, thus only KL will be used later on. Still for $N_b = 1$, note the very bad fit quality: more than $7\un{\sigma}$ for the standard LS and almost $10\un{\sigma}$ for the parameter-comparison method. Consequently, one may conclude that the combination of purely exponential nuclear modulus and constant phase is excluded by the data. Moreover, since this is the only combination theoretically compatible with the SWY interference formula, the formula is excluded, too.
-
-Furthermore, as it could be expected from Figure~\ref{fig:cni effect}, the fits with constant, standard and Bailly nuclear phases are nearly identical. Therefore, the constant phase will be used hereafter to represent this group.
-
-%\> Figure \ref{fig:fits common con}
-%\>> std LS and par cmp fits very similar (up to small difference in normalisation), can be generalised to all results hereafter
-%\>> $N_b = 1$ fits with KL and SWY almost identical (also true in what follows, will use KL to represent both)
-%\>> case $N_b = 1$ + constant phase excluded by both fit techniques
-%\>>> the only compatible with SWY $\Rightarrow$ SWY excluded, too
-%\>> addition (not shown): results for standard and Bailly phase (almost) indistinguishable from the constant one, will use only constant to represent this ``family''
-
-\begin{figure*}
-\begin{center}
-\includegraphics{fig/fits_common_con.pdf}
-\caption{%
-Fit results with constant nuclear phase parametrisation, Eq.~(\ref{eq:nuc phase con}). The vertical axis gives the cross-section difference from a reference exponential. The red (blue) triangles represent the $\beta^* = 1000\un{m}$ ($90\un{m}$) data with their statistical uncertainties. The systematic uncertainties are represented by the hatched bands: yellow (full uncertainty), brown (all systematic uncertainties except for normalisation). The orientation of the hatching indicates the respective data set.
-The curves represent fit results obtained with different parametrisations and fit techniques. The solid curves represent standard least-squares fits, the dashed ones fits with the parameter-comparison method. Different colours stand for different interference formulae (SWY/KL) and numbers of parameters in the nuclear modulus exponent, $N_b$, cf.~Eq.~(\ref{eq:nuc mod}). The red curves almost fully cover the black ones. The legend gives fit quality (significance) for each of the fits.
-}
-\label{fig:fits common con}
-\end{center}
-\end{figure*}
-
-Figure \ref{fig:fits common per} shows results of fits with the peripheral nuclear phase. The free parameters include: $a$ and $b_n$ in Eq.~(\ref{eq:nuc mod}) and $p_0$, $A$, $\kappa$ and $t_m$ in Eq.~(\ref{eq:nuc phase per}). Again, one may conclude that the standard LS fits are very similar to those from the parameter-comparison method (up to a small difference in normalisation for $N_b = 1$). In contrast to the fits with constant nuclear phase, here all the fits have reasonable quality.
-
-\begin{figure*}
-\begin{center}
-\includegraphics{fig/fits_common_per.pdf}
-\caption{%
-Fit results with peripheral nuclear phase parametrisation, Eq.~(\ref{eq:nuc phase per}). Legend identical to Figure~\ref{fig:fits common con}.
-}
-\label{fig:fits common per}
-\end{center}
-\end{figure*}
-
-
-\begin{table*}
-\caption{%
-Parameters derived from the parameter-comparison fits presented in Figures~\ref{fig:fits common con} and \ref{fig:fits common per}. The rows correspond to different numbers of parameters in the nuclear modulus exponent. The left-hand (right-hand) side columns refer to fits with constant, Eq.~(\ref{eq:nuc phase con}), (peripheral, Eq.~(\ref{eq:nuc phase per})) nuclear phase parametrisation. The RMS values of impact parameter $b$ correspond to elastic (el), inelastic (inel) and any (tot) collisions. The combination $N_b = 1$ with constant phase is hatched as it is excluded by data, see Figure~\ref{fig:fits common con}.
-}%
-\vskip-3mm
-\label{tab:fits common}
-\begin{center}
-\hbox to0pt{\hskip-25.5mm\vbox to0pt{\vskip6.5mm\includegraphics{fig/hatch_overlay.pdf}\vss}\hss}%
-\small
-\setlength{\tabcolsep}{5pt}
-%\def\arraystretch{0.8}
-\begin{tabular}{c@{\hskip20pt}cc@{\hskip20pt}cc}
-\hline
-\hline
-% header
-	& \multispan2\hfil constant phase parametrisation \hfil & \multispan2\hfil peripheral phase parametrisation\hfil  \cr
-\hline
- 			& $\rho = -0.027 \pm 0.021$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 0.87\un{fm}$					& $\rho = 0.083 \pm 0.023$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 1.68\un{fm}$					\cr
-$N_b = 1$	& $B = (19.39 \pm 0.05)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 1.34\un{fm}$		& $B = (19.68 \pm 0.07)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 1.03\un{fm}$		\cr
-			& $\sigma_{\rm tot} = (103.8 \pm 2.1)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.23\un{fm}$	& $\sigma_{\rm tot} = (102.8 \pm 2.1)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.24\un{fm}$	\cr\hline
-%                                                                                                                                                                                                                   
- 			& $\rho = 0.059 \pm 0.021$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 0.87\un{fm}$						& $\rho = 0.120 \pm 0.026$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 1.90\un{fm}$						\cr
-$N_b = 2$	& $B = (19.97 \pm 0.07)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 1.36\un{fm}$		& $B = (20.46 \pm 0.44)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 0.96\un{fm}$		\cr
-			& $\sigma_{\rm tot} = (102.8 \pm 2.1)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.25\un{fm}$	& $\sigma_{\rm tot} = (104.13 \pm 2.3)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.28\un{fm}$	\cr\hline
-%                                                                                                                                                                                                                   
- 			& $\rho = 0.090 \pm 0.024$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 0.87\un{fm}$						& $\rho = 0.115 \pm 0.026$ & $\sqrt{\langle b^2\rangle_{\rm el}} = 2.01\un{fm}$						\cr
-$N_b = 3$	& $B = (20.39 \pm 0.14)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 1.37\un{fm}$		& $B = (20.04 \pm 0.36)\un{GeV^{-2}}$ & $\sqrt{\langle b^2\rangle_{\rm inel}} = 0.82\un{fm}$		\cr
-			& $\sigma_{\rm tot} = (102.5 \pm 2.1)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.26\un{fm}$	& $\sigma_{\rm tot} = (103.5 \pm 2.2)\un{mb}$ & $\sqrt{\langle b^2\rangle_{\rm tot}} = 1.25\un{fm}$	\cr\hline
-\hline
-\end{tabular}
-\end{center}
-%\vskip-10mm
-\end{table*}
-
-
-From the fits presented in Figures~\ref{fig:fits common con} and \ref{fig:fits common per} one may derive parameters of interest related to the nuclear amplitude. In particular $\rho = 1 / \tan p_0$, exponential slope $B^{\rm N}$, Eq.~(\ref{eq:nuc slope}), and the total cross-section via the optical theorem:
-\begin{equation}
-\label{eq:si tot}
-\sigma_{\rm tot}^2 = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, \left. \d\sigma^{\rm N}\over\d t\right|_0
-		= {16\pi^2\, (\hbar c)^4\over s p^2 (1+\rho^2)}\, a^2\ ,
-\end{equation}
-where $a$ is the intercept of the nuclear modulus parametrisation, Eq.~(\ref{eq:nuc mod}). The results are summarised in Table \ref{tab:fits common} and visualised in Figure~\ref{fig:fits reciprocal der} (black points).
-
-There are several trends observable in the results. For the fits with constant phase, the values of $B^{\rm N}$ and $\rho$ increase with $N_b$. This can be understood from Figures~\ref{fig:cni effect} (constant phase cannot make any sizeable CNI effect at higher $|t|$) and \ref{fig:fits common con} (data have a ``U shape'' with respect to the reference exponential). Therefore, fits with $N_b = 1$ (looking almost as a straight line in the relative frame of Figure~\ref{fig:fits common con}) can only reflect a mean slope of the data, which is lower than a realistic one when extrapolated to $t = 0$. Consequently, adding more flexibility to the nuclear modulus ($N_b = 2, 3$) makes the fits absorb more of the ``U shape'' of the data and thus extrapolate to $t = 0$ with a higher value of the slope $B^{\rm N}$. A similar argumentation may applied to the trend of $\rho$ values. For positive values of $\rho$ the CNI effect leads to a negative interference (see Figure~\ref{fig:cni effect}) and thus $\rho$ can be deduced from the gap between data at low $|t|$ and the extrapolation from higher $|t|$ (where the strong constraint from the $90\un{m}$ data applies). Consequently, fits extrapolating to $t = 0$ too low yield also low values of $\rho$ (or even negative) and vice versa.
-
-In the case of fits with peripheral phase, the trend is less clear which can be expected from Figure~\ref{fig:cni effect} since the CNI effects can absorb a large part of the ``U shape'' of the data.
-
-The total cross-section results are rather stable, with mild dependence on $N_b$ and phase choice (with a small exception of the combination of $N_b = 2$ with peripheral phase).
-
-Figure~\ref{fig:fits reciprocal der} also compares the newly derived parameters to previous TOTEM measurements and other predictions. For the total cross-section, the new results occur consistently little higher than the value from \cite{prl111}. This is fully expectable since now the CNI effects (most importantly the negative interference due to $\rho$) are taken into account. The diffractive slope comparison to the result from \cite{prl111} is more delicate. In the present analysis, the results correspond to the slope of the nuclear component at $t = 0$. In the previous analysis, however, the mean slope (over the range $|t| < 0.2\un{GeV^2}$) of the combined (C+N) cross-section was evaluated. Moreover, the previous analysis did not include the optics matching procedure like the present one. The latter fact is responsible for the shift of the previous central value (brown horizontal line) from the new results for $N_b = 1$ and constant phase (left-most column). In principle, one would expect that this difference is covered by the yellow uncertainty band, however one should remember that in the previous analysis it only corresponds to the mean slope. And the uncertainty would increase if extrapolation to $t = 0$ is included.
-%
-Regarding $\rho$, the figure provides comparison to the preferred-model estimate by COMPETE \cite{compete} which is obtained by extrapolation from lower scattering energies. The new results lie all below the COMPETE value.
-
-Monte-Carlo studies show that uncertainties of $\rho$ in Table~\ref{tab:fits common} have about equal source in statistical and systematic uncertainties of the data, the latter being dominated by the vertical-alignment uncertainty in $1000\un{m}$ data (cf.~red curve in Figure~\ref{fig:syst unc}).
-%For the slope $B^{\rm N}$, the uncertainty depends strongly of the fit configuration and the statistical and systematic uncertainties contribute at various ratios.
-The uncertainties of $\sigma_{\rm tot}$ are mostly due to the normalisation uncertainty.
-
-Table \ref{tab:fits common} presents also RMS values of impact parameter, $b$, for elastic and inelastic collisions. These quantities indicate the character of the collisions in the impact parameter space and have been calculated according to Section 3 in~\cite{klk02}, directly from $t$-space quantities. One can conclude that irrespectively of $N_b$, the constant-phase fits have central character: elastic collisions occur at smaller impact parameters than the inelastic collisions. On the contrary, all the fits with the peripheral nuclear phase lead to opposite (peripheral) hierarchy.
-
-The fits have been repeated with electromagnetic form factors by Borkowski et al.~\cite{borkowski} instead the default one (see Section~\ref{sec:cni coulomb}) leading to no change in the results. Similarly, another set of fits has been performed with the high-$|t|$ component of the nuclear modulus (see Section~\ref{sec:cni nuclear}) scaled by a factor of $1.2$ (preliminary uncertainty estimate), again with no impact on the results.
-
-
-
-%----------------------------------------------------------------------------------------------------
-\subsection{Reciprocally Constrained 1000\,m and 90\,m Fits}
-\label{sec:cni reciprocal fits}
-
-\begin{figure*}
-\vskip-2mm
-\begin{center}
-\includegraphics{fig/fits_reciprocal_derived.pdf}
-\vskip-5mm
-\caption{%
-Comparison of parameters derived from common fits (Section~\ref{sec:cni common fits}) and reciprocal fits (Section~\ref{sec:cni reciprocal fits}). The black points correspond to the results from Table~\ref{tab:fits common}. The other points represent the reciprocal fits as described in the legend. There ``start'' indicates the data set used first in the fit series and ``$a$'' indicates the data set determining the nuclear modulus normalisation (cf.~Eq.~(\ref{eq:nuc mod})). The significance plot gives fit quality for both fits in the series: triangles up (down) from $1000$ ($90\un{m}$) data set. The results are organised in 6 columns, each of them corresponds to a combination of $N_b$ and constant or peripheral phase. The left most column ($N_b = 1$ and constant phase) is hatched since this combination is excluded by data, note the very large significance. The yellow horizontal bands represent the previous measurements by TOTEM at the same energy \cite{prl111}. The green horizontal band stands for the preferred-model extrapolation of $\rho$ by COMPETE \cite{compete}.
-}
-\label{fig:fits reciprocal der}
-\end{center}
-\end{figure*}
-
-In contrast to the previous section, here the $1000$ and $90\un{m}$ data sets are assigned specific roles in the fit, naturally following from where each data set it strong. One can identify the following four elements of the fits.
+As anticipated above, one of the goals of this report is to probe the origin of the earlier observed differential cross-section non-exponentiality \cite{8tev-90m}. Therefore, the following two classes of fits will be considered.
 \begin{itemize}
-\item Modulus ``normalisation'', parameter $a$ in Eq.~(\ref{eq:nuc mod}): both data set can be used equally well.
-\item Modulus ``shape'', parameters $b_n$ in Eq.~(\ref{eq:nuc mod}): essential contribution from the $90\un{m}$ data set with very low statistical uncertainties.
-\item Phase at $t = 0$, parameter $p_0$ in Eqs.~(\ref{eq:nuc phase con}) and (\ref{eq:nuc phase per}): as indicated in Figure~\ref{fig:cni effect}, maximum sensitivity to $p_0$ (or $\rho$) lies in a $|t|$ region only available in the $1000\un{m}$ data set.
-\item Phase ``shape'' (only for peripheral phase), other parameters in Eq.~(\ref{eq:nuc phase per}): as for modulus shape, the $90\un{m}$ data set provides much stronger constraints.
+\item Section \ref{sec:fit exp1}: fits with purely-exponential nuclear modulus, that is $N_b=1$ in Eq.~(\ref{eq:nuc mod}). In this case, the non-exponentiality must come from the CNI effects.
+\item Section \ref{sec:fit exp3}: fits with nuclear modulus flexible enough to describe the non-exponentiality event without the CNI effects. \TODO{Discuss already here why $N_b=3$?}
 \end{itemize}
-Technically, one performs a sequence of two separate fits, one with $1000$ and the other with $90\un{m}$ data set, each of them fixing the parameters according to the breakdown above. Since there are two choices for the modulus normalisation, $a$, and one can start the fit sequence with either the $1000$ or the $90\un{m}$ data set, there are four variants of this approach, see Figure~\ref{fig:fits reciprocal der}. This fit sequence is repeated several times until convergence is reached.
 
-Figure~\ref{fig:fits reciprocal der} presents a comparison of the fit results from methods presented in this section (reciprocal fits) and the previous section (common fits). For the fits with the peripheral phase parametrisation, all phase parameters have been free, consistently with the previous section. Generally, one can conclude very good agreement among all the fit methods and variants. The small differences, most visible in $\sigma_{\rm tot}$ results, follow the choice of the data set determining the normalisation $a$: see the red-magenta and blue-green point groups in the figure. The high sensitivity of the total cross-section is expectable since it directly depends on $a$, see Eq.~(\ref{eq:si tot}). Comparing the common fit results (black) with the reciprocal fits (colours) indicates that the normalisation $a$ of the common fits is often strongly influenced by the $1000\un{m}$ data set. This is not surprising since $a$ corresponds to the modulus value at $t=0$ and the $1000\un{m}$ data extend to much lower $|t|$. This effect can be further magnified by the presence of additional degrees of freedom, as it happens for the combination $N_b = 3$ with peripheral phase parametrisation, where the fits with the $90\un{m}$ data set fixing the normalisation give results rather different from the common fits, not only in $\sigma_{\rm tot}$.
 
-The fit results with $N_b = 2$ and peripheral phase parametrisation may seem a little too high (in all the three parameters) with respect to other combinations. The fits for this combination prefer solutions with exceptionally high CNI component: about $6\un{\%}$ at $t = 0.01\un{GeV^2}$ and rapidly decreasing at larger $|t|$. 
+%----------------------------------------------------------------------------------------------------
+\subsection{Fits with Purely-Exponential Nuclear Modulus}
+\label{sec:fit exp1}
 
-One can also see a trend in the fit qualities (significances): the quality of $1000\un{m}$ data fits (triangles up) tends to be worse than the one of $90\un{m}$ fits (triangles down). This effect has two sources. First, the $90\un{m}$ data fits can freely change ``shape'' of modulus (and phase, if applicable) and consequently the fit can better describe the data. Second source is a small difference between the two data sets. As can be seen from Figure~\ref{fig:fits common con} both data sets feature a ``U shape'' which however it seems more pronounced for the $1000\un{m}$ data: at $|t| \lesssim 0.06\un{GeV^2}$ and $|t| \gtrsim 0.11\un{GeV^2}$ the $1000\un{m}$ data points tend to lie above the $90\un{m}$ points and vice versa for intermediate $|t|$. Therefore fit functions with shape fixed by the $90\un{m}$ data feel some tension with respect to the $1000\un{m}$ data, reflected as a worse fit quality.
+Results shown in Table~\ref{tab:fit exp1} and Fig.~\ref{fig:fit exp1}.
+
+\begin{table}
+\caption{Fit results for $N_b=1$. TODO}
+\label{tab:fit exp1}
+\begin{center}
+\input fig/fit_exp1/table_data.tex
+\end{center}
+\end{table}
+
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/fit_exp1/t_dist_rel_with_fit.pdf}
+\includegraphics{fig/fit_exp1/phase_cni_effect.pdf}
+\caption{Fit results for $N_b=1$. TODO}%
+\label{fig:fit exp1}
+\end{center}
+\end{figure*}
+
+
+%----------------------------------------------------------------------------------------------------
+\subsection{Fits with Non-Exponential Nuclear Modulus}
+\label{sec:fit exp3}
+
+\> justify choice of $N_b=3$
+
+\> comment on fit degeneracy ??
+
+Results shown in Table~\ref{tab:fit exp3} and Fig.~\ref{fig:fit exp3}.
+
+\begin{table}
+\caption{Fit results for $N_b=3$. TODO}
+\label{tab:fit exp3}
+\begin{center}
+\input fig/fit_exp3/table_data.tex
+\end{center}
+\end{table}
+
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/fit_exp3/t_dist_rel_with_fit.pdf}
+\includegraphics{fig/fit_exp3/phase_cni_effect.pdf}
+\caption{Fit results for $N_b=3$. TODO}%
+\label{fig:fit exp3}
+\end{center}
+\end{figure*}
+
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/fit_exp3/b_dist.pdf}
+\caption{Fit results for $N_b=3$. TODO}%
+\label{fig:bdist exp3}
+\end{center}
+\end{figure*}
+
+\> results

@@ -1,5 +1,5 @@
-import pad_layout;
 import root;
+import pad_layout;
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/coulomb_analysis/exploration/common_code.asy";
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
@@ -140,12 +140,12 @@ void FinalisePlots()
 
 	draw(Label("region of Coulomb dominance", 1., E, Fill(white+opacity(0.8))), (0.005, 0.045)--(0.03, 0.035), BeginArrow);
 	
-	draw(Label("region of sensitivity to phase at $|t| \approx 0$", 1., E, Fill(white+opacity(0.8))), (0.01, -0.001)--(0.02, 0.015), BeginArrow);
+	draw(Label("region of sensitivity to phase at $|t| \approx 0$", 1., N+0.9E, Fill(white+opacity(0.8))), (0.01, -0.001)--(0.013, 0.011), BeginArrow);
 
-	draw((0.045, -0.022)--(0.040, -0.015), EndArrow);
-	draw((0.155, -0.022)--(0.160, -0.008), EndArrow);
+	draw((0.065, -0.025)--(0.050, -0.025), EndArrow);
+	draw((0.19, -0.022)--(0.19, -0.008), EndArrow);
 
-	label("region of sensitivity to phase at higher $|t|$", (0.04, -0.025), E, Fill(white+opacity(0.8)));
+	label("region of sensitivity to phase at higher $|t|$", (0.065, -0.025), E, Fill(white+opacity(0.8)));
 
 	AttachLegend(NW, NE);
 }
@@ -190,9 +190,8 @@ PlotCurve("p-con-rho0.15", heavygreen, "$\rh = 0.15$");
 
 AddText("<{\it $\rh = $ 0.10, different shapes:}");
 PlotCurve("p-std-rho0.10", red+dashed, "standard");
-PlotCurve("p-bai-rho0.10", magenta+dashed, "Bailly");
-PlotCurve("p-per-rho0.10-1-2-0.3", blue+dashed, "peripheral (example 1)");
-PlotCurve("p-per-rho0.10-4-4-0.2", heavygreen+dashed, "peripheral (example 2)");
+PlotCurve("p-bai-rho0.10", blue+dashed, "Bailly");
+PlotCurve("p-per-rho0.10-4.3-2.311-0.283", heavygreen+dashed, "peripheral");
 
 FinalisePlots();
 
