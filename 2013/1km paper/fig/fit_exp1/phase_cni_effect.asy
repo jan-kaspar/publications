@@ -7,13 +7,21 @@ texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/coulomb_analysis/";
 
 string fits[] = {
+	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,SWY,con,chisq,,st+sy",
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,KL,con,chisq,,st+sy",
 	"1000-ob-0-1,90-DS4-sc-ob/pervojsep-1000,v,v,v,v-all,v,v,f,v:1,KL,per-jun15,chisq,,st+sy",
 };
 
+pen fitPens[] = {
+	black,
+	red+dashed,
+	blue
+};
+
 string fitLabels[] = {
-	"constant",
-	"peripheral",
+	"SWY, constant",
+	"KL, constant",
+	"KL, peripheral",
 };
 
 drawGridDef = true;
@@ -113,7 +121,7 @@ void PlotOneFit(string dir, string desc, pen p)
 
 for (int fi : fits.keys)
 {
-	pen p = StdPen(fi) + solid+1pt;
+	pen p = fitPens[fi] + 1pt;
 
 	PlotOneFit(topDir + "/data/" + fits[fi], "nuclear phase: " + fitLabels[fi], p);
 }

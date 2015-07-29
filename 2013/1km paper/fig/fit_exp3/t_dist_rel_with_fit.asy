@@ -36,7 +36,7 @@ string fitLabels[] = {
 };
 
 xSizeDef = 14cm;
-ySizeDef = 8cm;
+ySizeDef = 7cm;
 
 drawGridDef = true;
 
@@ -224,6 +224,6 @@ limits((0, y_min), (0.2, y_max), Crop);
 
 //AttachLegend(NW, NE);
 
-AttachLegend(shift(-20, 10)*BuildLegend(3, S, hSkip=4mm, lineLength=8mm), N);
+AttachLegend(shift(-20, 10)*BuildLegend(3, S, hSkip=4mm, lineLength=8mm, vSkip=-1mm), N);
 
 GShipout(vSkip=0mm, margin=1mm);

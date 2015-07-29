@@ -181,12 +181,12 @@ By analysing the formulae Eq.~(\ref{eq:int swy}) and (\ref{eq:int kl}), one can 
 \label{sec:fit}
 
 Beyond using the data from Table~\ref{tab:data}, one might consider including $\beta^* = 90\un{m}$ data \cite{8tev-90m} which have much smaller uncertainties but reach limited to $|t| \gtrsim 0.03\un{GeV^2}$. Due to the latter, they have essentially no sensitivity to the $\rho$ parameter, cf.~Fig.~\ref{fig:cni effect}. Furthermore, due to possible systematic tensions between the data sets, including the $\beta^* = 90\un{m}$ data may have deteriorating impact on the $\rho$ determination. Therefore, the value of $\rho$ (or $p_0$ in other words), was determined from $\beta^* = 1000\un{m}$ data only. For other parameters to which both data sets have non-negligible sensitivity (e.g.~$b_i$ in Eq.~(\ref{eq:nuc mod})), both data sets shall give compatible results. This has been verified for all the fits presented later on. Since the $\beta^* = 90\un{m}$ data yield much lower uncertainties, both data sets have been used for determining all parameters except $\rho$. In practice, a series of two fits is performed:
-\begin{enumerate}
-\item fit of $\beta^* = 1000\un{m}$ data with $p_0$ free,
-\item fit of $\beta^* = 1000$ and $90\un{m}$ data with $p_0$ fixed from the preceding step.
+\begin{enumerate}[leftmargin=2cm]
+\item[step 1:] fit of $\beta^* = 1000\un{m}$ data with $p_0$ free,
+\item[step 2:] fit of $\beta^* = 1000$ and $90\un{m}$ data with $p_0$ fixed from the preceding step.
 \end{enumerate}
 
-Each the fits has been performed by following the standard least-squares method, however trying the following two implementations.
+Each of the fits has been performed by following the standard least-squares method, however trying the following two implementations.
 
 \begin{enumerate}
 
@@ -198,11 +198,11 @@ Each the fits has been performed by following the standard least-squares method,
 	\Delta_i = \left.{\d\sigma\over \d t}\right|_{{\rm bin}\ i} - {\d\sigma^{\rm C+N}\over\d t}\left(t^{\rm rep}_{{\rm bin}\ i}\right)\ ,\qquad
 	\mat V = \mat V_{\rm stat} + \mat V_{\rm syst} + \mat V_{\rm norm}\ ,
 \end{equation}
-where $\Delta$ is a vector of differences between the differential cross-section data and a fit function $\d\sigma^{C+N}/\d t$ evaluated at representative points $t^{\rm rep}$ of each bin \cite{lafferty94}. The minimisation is repeated several times, updating the representative points between iterations. The covariance matrix $\mat V$ is composed of three components. $\mat V_{\rm stat}$ contains on the diagonal statistical uncertainty squared from Table~\ref{tab:data} and possibly also from Table~3 in \cite{8tev-90m}. $\mat V_{\rm syst}$ includes all systematic uncertainty contributions except normalisation, see Eq.~(\ref{eq:covar mat}) and Eq.~(14) in \cite{8tev-90m}. $\mat V_{\rm norm}$ reflects the normalisation uncertainty: $4.2\un{\%}$ fully correlated between the $90$ and $1000\un{m}$ datasets and $0.25\un{\%}$ ($0.08\un{\%}$) for $90\un{m}$ ($1000\un{m}$) datasets individually.
+where $\Delta$ is a vector of differences between the differential cross-section data and a fit function $\d\sigma^{C+N}/\d t$ evaluated at representative points $t^{\rm rep}$ of each bin \cite{lafferty94}. The minimisation is repeated several times and the representative points are updated between iterations. The covariance matrix $\mat V$ is composed of three components. The diagonal of $\mat V_{\rm stat}$ contains statistical uncertainty squared from Table~\ref{tab:data} and from Table~3 in \cite{8tev-90m}. $\mat V_{\rm syst}$ includes all systematic uncertainty contributions except normalisation, see Eq.~(\ref{eq:covar mat}) and Eq.~(14) in \cite{8tev-90m}. $\mat V_{\rm norm}$ reflects the normalisation uncertainty: $4.2\un{\%}$ fully correlated between the $90$ and $1000\un{m}$ datasets and $0.25\un{\%}$ ($0.08\un{\%}$) for $90\un{m}$ ($1000\un{m}$) dataset individually.
 
 
 % ***
-\item[B.] Minimise
+\item[B.] \TODO{Hubert's approach}
 \begin{equation}
 \label{eq:chi sq B}
 	\chi^2 = \Delta^\T \mat V^{-1} \Delta + \TODO{...}\ ,\qquad
@@ -222,7 +222,7 @@ $\Delta t_i$ representing the width of the $i$-th bin
 As anticipated above, one of the goals of this report is to probe the origin of the earlier observed differential cross-section non-exponentiality \cite{8tev-90m}. Therefore, the following two classes of fits will be considered.
 \begin{itemize}
 \item Section \ref{sec:fit exp1}: fits with purely-exponential nuclear modulus, that is $N_b=1$ in Eq.~(\ref{eq:nuc mod}). In this case, the non-exponentiality must come from the CNI effects.
-\item Section \ref{sec:fit exp3}: fits with nuclear modulus flexible enough to describe the non-exponentiality event without the CNI effects. \TODO{Discuss already here why $N_b=3$?}
+\item Section \ref{sec:fit exp3}: fits with nuclear modulus flexible enough to describe the non-exponentiality event without the CNI effects.
 \end{itemize}
 
 
@@ -230,12 +230,15 @@ As anticipated above, one of the goals of this report is to probe the origin of 
 \subsection{Fits with Purely-Exponential Nuclear Modulus}
 \label{sec:fit exp1}
 
-Results shown in Table~\ref{tab:fit exp1} and Fig.~\ref{fig:fit exp1}.
+The goal of this section is to test whether the data are compatible with purely-exponential nuclear modulus, i.e.~$N_b=1$ in Eq.~(\ref{eq:nuc mod}). In other words, the non-exponetiality is forced come from the Coulomb-induced effects. For that two different nuclear phase options are considered: constant (as a representant of the central family), Eq.~(\ref{eq:nuc phase con}), and peripheral, Eq.~(\ref{eq:nuc phase per}), with parameters free within the ranges indicated in Eq.~(\ref{eq:nuc phase per val}). The fit results are summarised in Table~\ref{tab:fit exp1} and shown in Fig.~\ref{fig:fit exp1}.
 
 \begin{table}
-\caption{Fit results for $N_b=1$. TODO}
+\caption{Fit results with $N_b=1$. Each column corresponds to a different interference formula and/or nuclear phase. The peripheral phase parameters were allowed to vary within the ranges indicated in Eq.~(\ref{eq:nuc phase per val}).}
+\vskip-3mm
 \label{tab:fit exp1}
 \begin{center}
+\setlength\tabcolsep{5mm}
+\small
 \input fig/fit_exp1/table_data.tex
 \end{center}
 \end{table}
@@ -244,26 +247,68 @@ Results shown in Table~\ref{tab:fit exp1} and Fig.~\ref{fig:fit exp1}.
 \begin{center}
 \includegraphics{fig/fit_exp1/t_dist_rel_with_fit.pdf}
 \includegraphics{fig/fit_exp1/phase_cni_effect.pdf}
-\caption{Fit results for $N_b=1$. TODO}%
+\caption{Visualisation of fit results from Table~\ref{tab:fit exp1} obtained with KL formula and $N_b=1$.
+TOP: fits compared to differential cross-section data in a relative reference frame, see the vertical axis label. The reference is identical to the one in \cite{8tev-90m}. 
+BOTTOM LEFT: $t$-dependence of the nuclear phase as extracted from the fits.
+BOTTOM RIGHT: the effects induced by the Coulomb interaction for each of the fits.
+}%
 \label{fig:fit exp1}
 \end{center}
 \end{figure*}
+
+Table~\ref{tab:fit exp1} shows that both fits with constant phase are essentially identical and have bad fit quality. The step-2 fit using both $\beta^*=1000$ and $90\un{m}$ data can be excluded with $7.6\un{\sigma}$ significance. In turn, since the combination of $N_b=1$ and constant phase is the only compatible with the SWY formula, its use is excluded, too.
+
+The quality of the fit with peripheral phase is good, but \TODO{is it reasonable from other aspects?}
 
 
 %----------------------------------------------------------------------------------------------------
 \subsection{Fits with Non-Exponential Nuclear Modulus}
 \label{sec:fit exp3}
 
-\> justify choice of $N_b=3$
+The aim of this section is to discuss fits with enough flexibility in the nuclear modulus to describe the non-exponentiality in the data. For this, $N_b=2$ to $5$ were considered. The optimal degree was chosen according to two criteria: reasonable $\chi^2/\hbox{ndf}$ and stability of fit parameters (among which $\rho$ is one of the most sensitive). For example, with constant phase the fit (step 1) with $N_b=2$ yields $\chi^2/\hbox{ndf} = 1.07$ and $\rho = 0.101$ while with $N_b=3$ gives $\chi^2/\hbox{ndf} = 1.03$ and $\rho = 0.121$. Both fits have the normalised $\chi^2$ reasonably close to $1$, but the value of $\rho$ changes significantly between $N_b=2$ and $3$ which is unexpected should $N_b=2$ be sufficient. On the other hand $N_b=4$ gives $\chi^/\hbox{ndf} = 0.861$ which is unreasonably low. Therefore $N_b=3$ was chosen.
 
-\> comment on fit degeneracy ??
+The only applicable interference formula is KL. Three nuclear phase options have been considered which yield, as shown in Fig.~\ref{fig:bdist exp3}, three different levels of centrality/peripherality:
+\begin{itemize}\setlength\itemsep{0pt}
+\item constant phase, Eq.~(\ref{eq:nuc phase con}),
+\item mid-peripheral phase, Eq.~(\ref{eq:nuc phase per}) with parameters free within the bounds in Eq.~(\ref{eq:nuc phase per val}),
+\item full-peripheral phase, Eq.~(\ref{eq:nuc phase per}) with parameters fixed to the central values in Eq.~(\ref{eq:nuc phase per val}).
+\end{itemize}
 
-Results shown in Table~\ref{tab:fit exp3} and Fig.~\ref{fig:fit exp3}.
+\iffalse
+* KL, exp2, con
+\rh       =   0.101 \pm  0.026
+last fit     : chi^2/ndf = 68.45/57 = 1.201, probability = 1.42E-01, significance = 1.467, quality = 0.000000
+previous fit : chi^2/ndf = 27.74/26 = 1.067, probability = 3.71E-01, significance = 0.894
+
+* KL, exp3, con
+\rh       =   0.121 \pm  0.029
+last fit     : chi^2/ndf = 57.59/56 = 1.028, probability = 4.16E-01, significance = 0.813, quality = 0.000000
+previous fit : chi^2/ndf = 25.63/25 = 1.025, probability = 4.27E-01, significance = 0.794
+
+* KL, exp4, con
+rho    =   0.087 +-  0.034
+last fit     : chi^2/ndf = 54.48/55 = 0.990, probability = 4.95E-01, significance = 0.683, quality = 0.000000
+previous fit : chi^2/ndf = 20.66/24 = 0.861, probability = 6.59E-01, significance = 0.442
+\fi
+
+
+The fit with mid-peripheral phase has 7 free parameters ($\zeta_1$ is fixed) and varying many of them provokes similar changes in the cross-section shape. Therefore it is not surprising that several $\chi^2$ minima of similar quality can be found. In what follows, the minimum closest to the constant-fit will be reported.
+
+As shown in Table~\ref{tab:fit exp3}, all the three fits yield very reasonable fit quality and remarkably comparable values of $\rho$ which are compared to previous measurements in Fig.~\ref{fig:rho cmp exp3}.
+
+Fig.~\ref{fig:fit exp3} shows that the level of Coulomb-induced effects is different for the three fits. It is the mildest for the constant phase, more pronounced for the mid-peripheral and strongest for the full-peripheral. The same order can be observed in the variation of the nuclear phase as function of $|t|$.
+
+The impact-parameter distribution \TODO{ref} for the three fits is shown in Fig.~\ref{fig:bdist exp3}, also giving the RMS for elastic, inelastic and total collisions \TODO{ref}. The fit with constant phase exhibits central behaviour: the elastic impact-parameter distribution is peaked at $b=0$ and the elastic RMS is smaller than the inelastic one. The mid-peripheral fit corresponds to the case where all three RMS values are comparable. The full-peripheral fit has truly peripheral behaviour: the distribution maximum lies at $b > 0$ and the elastic RMS is grater that the inelastic.
+
+\TODO{Statement about si tot: stability (also wrt. Nb=1) and that compatible but little higher (as expected) compared to the previous results.}
 
 \begin{table}
-\caption{Fit results for $N_b=3$. TODO}
+\caption{Fit results with KL formula, $N_b=3$ and constant, Eq.~(\ref{eq:nuc phase con}), or peripheral, Eq.~(\ref{eq:nuc phase per}), nuclear phase. For the ``mid'' column, the peripheral phase parameters were free within the bounds in Eq.~(\ref{eq:nuc phase per val}), for the ``full'' they were fixed to the central values.}
+\vskip-3mm
 \label{tab:fit exp3}
 \begin{center}
+\setlength\tabcolsep{5mm}
+\small
 \input fig/fit_exp3/table_data.tex
 \end{center}
 \end{table}
@@ -272,7 +317,11 @@ Results shown in Table~\ref{tab:fit exp3} and Fig.~\ref{fig:fit exp3}.
 \begin{center}
 \includegraphics{fig/fit_exp3/t_dist_rel_with_fit.pdf}
 \includegraphics{fig/fit_exp3/phase_cni_effect.pdf}
-\caption{Fit results for $N_b=3$. TODO}%
+\caption{Visualisation of fit results from Table~\ref{tab:fit exp3} obtained with KL formula and $N_b=3$.
+TOP: fits compared to differential cross-section data in a relative reference frame, see the vertical axis label. The reference is identical to the one in \cite{8tev-90m}. 
+BOTTOM LEFT: $t$-dependence of the nuclear phase as extracted from the fits.
+BOTTOM RIGHT: the effects induced by the Coulomb interaction for each of the fits.
+}%
 \label{fig:fit exp3}
 \end{center}
 \end{figure*}
@@ -280,9 +329,18 @@ Results shown in Table~\ref{tab:fit exp3} and Fig.~\ref{fig:fit exp3}.
 \begin{figure*}
 \begin{center}
 \includegraphics{fig/fit_exp3/b_dist.pdf}
-\caption{Fit results for $N_b=3$. TODO}%
+\caption{TODO
+}%
 \label{fig:bdist exp3}
 \end{center}
 \end{figure*}
 
-\> results
+
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/rho_s.pdf}
+\caption{Energy dependence of the $\rho$ parameter. The blue (green) hollow triangles correspond to $\rm pp$ ($\rm \bar pp$) data from PDG \cite{pdg}. The hollow dot stands for the earlier indirect determination by TOTEM \cite{epl101-tot}. The red triangles show the new results obtained in Section~\ref{sec:fit exp3}, using different nuclear phases. The black curve gives the preferred $\rm pp$ model by COMPETE \cite{compete}, obtained without using LHC data.
+}%
+\label{fig:rho cmp exp3}
+\end{center}
+\end{figure*}

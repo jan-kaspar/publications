@@ -24,17 +24,25 @@ add("hatch2-b", hatch(1.7mm, NW, p_full_band+0.7pt));
 string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/coulomb_analysis/";
 
 string fits[] = {
+	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,SWY,con,chisq,,st+sy",
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,KL,con,chisq,,st+sy",
 	"1000-ob-0-1,90-DS4-sc-ob/pervojsep-1000,v,v,v,v-all,v,v,f,v:1,KL,per-jun15,chisq,,st+sy",
 };
 
+pen fitPens[] = {
+	black,
+	red+dashed,
+	blue
+};
+
 string fitLabels[] = {
-	"constant",
-	"peripheral",
+	"SWY, constant",
+	"KL, constant",
+	"KL, peripheral",
 };
 
 xSizeDef = 14cm;
-ySizeDef = 8cm;
+ySizeDef = 7cm;
 
 drawGridDef = true;
 
@@ -203,9 +211,9 @@ for (int fi : fits.keys)
 	string label = fits[fi];
 	label = substr(label, find(label, "/")+1);
 
-	pen p = StdPen(fi) + solid+1pt;
+	pen p = fitPens[fi] + 1pt;
 	
-	PlotOneFit(topDir + "/data/"+ fits[fi], "phase: " + fitLabels[fi], p);
+	PlotOneFit(topDir + "/data/"+ fits[fi], fitLabels[fi], p);
 }
 
 //------------------------------
@@ -222,7 +230,6 @@ limits((0, y_min), (0.2, y_max), Crop);
 
 //AttachLegend(NW, NE);
 
-AddToLegend("");
-AttachLegend(shift(-20, 10)*BuildLegend(3, S, hSkip=4mm, lineLength=8mm), N);
+AttachLegend(shift(-20, 10)*BuildLegend(3, S, hSkip=4mm, lineLength=8mm, vSkip=-1mm), N);
 
 GShipout(vSkip=0mm, margin=1mm);
