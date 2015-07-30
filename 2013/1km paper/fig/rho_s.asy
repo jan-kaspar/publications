@@ -153,7 +153,7 @@ real x_corr = 0;
 void DrawPointUnc(real v, real u, mark m)
 {
 	real W = 8e3;
-	draw(Scale((W, v)) + (x_corr, 0), m+3pt+true+red);
+	draw(Scale((W, v)) + (x_corr, 0), m+2pt+true+red);
 	draw(shift(x_corr) * (Scale((W, v-u))--Scale((W, v+u))), red+0.8pt);
 
 	x_corr += x_corr_scale;
@@ -171,25 +171,28 @@ DrawPoint(7e3, 0.145, 0.091, 0.091, red+0.8pt, mCi+false+2pt+red);		// TOTEM 7 T
 
 //DrawPoint(8e3, 0.107, 0.031, 0.031, red+0.8pt, mCi+true+2pt+red);		// TOTEM 8 TeV
 
-x_corr = -0.5 * x_corr_scale;
-DrawPointUnc(0.121, 0.029, mTU);
-DrawPointUnc(0.118, 0.029, mTD);
+//x_corr = -0.5 * x_corr_scale;
+//DrawPointUnc(0.121, 0.029, mTU);
+//DrawPointUnc(0.118, 0.029, mTD);
+x_corr = 0;
+DrawPointUnc(0.12, 0.029, mCi);
 
 competeRho = true;
 draw(graph(Compete_RRP_nf_L2_u, 1e1, 2e4), black);
 //draw(graph(Compete_R_qc_RL_qc, 1e1, 1e4), red);
 
 AddToLegend("$\rm pp$ (PDG)", blue, mTD+false+3pt+blue);
-AddToLegend("$\rm\bar pp$ (PDG)", heavygreen, mTU+false+3pt+heavygreen);
+AddToLegend("$\raise1.2mm\hbox to0pt{\hskip-0.3pt--\hss}\rm pp$ (PDG)", heavygreen, mTU+false+3pt+heavygreen);
 AddToLegend("COMPETE preferred model ($\rm pp$)", black);
 AddToLegend("TOTEM indirect at $\sqrt s = 7\un{TeV}$", red+0.8pt, mCi+false+3pt+red);
 //AddToLegend("TOTEM direct at $\sqrt s = 8\un{TeV}$", red+0.8pt, mCi+true+3pt+red);
-AddToLegend("$\sqrt s = 8\un{TeV}$, $N_b=3$, constant", red+0.8pt, mTU+true+3pt+red);
-AddToLegend("$\sqrt s = 8\un{TeV}$, $N_b=3$, peripheral", red+0.8pt, mTD+true+3pt+red);
+//AddToLegend("$\sqrt s = 8\un{TeV}$, $N_b=3$, constant", red+0.8pt, mTU+true+3pt+red);
+//AddToLegend("$\sqrt s = 8\un{TeV}$, $N_b=3$, peripheral", red+0.8pt, mTD+true+3pt+red);
+AddToLegend("this report, $\sqrt s = 8\un{TeV}$", red+0.8pt, mCi+true+3pt+red);
 
 limits((1e1, -0.2), (2e4, +0.25), Crop);
 
-AttachLegend(shift(-43, 5)*BuildLegend(SE), SE);
+AttachLegend(shift(0, 10)*BuildLegend(SE), SE);
 
 /*
 //----------------------------------------------------------------------------------------------------

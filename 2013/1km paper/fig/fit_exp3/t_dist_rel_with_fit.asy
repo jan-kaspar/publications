@@ -29,10 +29,16 @@ string fits[] = {
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:3,KL,per-jun15,chisq,,st+sy",
 };
 
+pen fitPens[] = {
+	black,
+	red,
+	blue
+};
+
 string fitLabels[] = {
-	"constant",
-	"mid-peripheral",
-	"full-peripheral",
+	"KL, constant",
+	"KL, mid-peripheral",
+	"KL, full-peripheral",
 };
 
 xSizeDef = 14cm;
@@ -205,9 +211,9 @@ for (int fi : fits.keys)
 	string label = fits[fi];
 	label = substr(label, find(label, "/")+1);
 
-	pen p = StdPen(fi) + solid+1pt;
+	pen p = fitPens[fi] + 1pt;
 	
-	PlotOneFit(topDir + "/data/"+ fits[fi], "phase: " + fitLabels[fi], p);
+	PlotOneFit(topDir + "/data/"+ fits[fi], fitLabels[fi], p);
 }
 
 //------------------------------

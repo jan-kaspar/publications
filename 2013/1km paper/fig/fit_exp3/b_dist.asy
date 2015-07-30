@@ -14,10 +14,16 @@ string fits[] = {
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:3,KL,per-jun15,chisq,,st+sy",
 };
 
+pen fitPens[] = {
+	black,
+	red,
+	blue
+};
+
 string fitLabels[] = {
-	"constant",
-	"mid-peripheral",
-	"full-peripheral",
+	"KL, constant",
+	"KL, mid-peripheral",
+	"KL, full-peripheral",
 };
 
 drawGridDef = true;
@@ -61,17 +67,19 @@ void PlotOneFit(string dir, string desc, pen p)
 bool fitStSy = true;
 
 NewPad("$b\ung{fm}$", "profile function $|{\cal P}|^2$");
+currentpad.xTicks = LeftTicks(0.5, 0.1);
+currentpad.yTicks = RightTicks(0.05, 0.01);
 
 AddToLegend("$\sqrt{\langle b^2 \rangle_{\rm el}}, \sqrt{\langle b^2 \rangle_{\rm inel}}, \sqrt{\langle b^2 \rangle_{\rm tot}}$");
 
 for (int fi : fits.keys)
 {
-	pen p = StdPen(fi) + solid+1pt;
+	pen p = fitPens[fi] + 1pt;
 	
-	PlotOneFit(topDir + "/data/" + fits[fi], "nuclear phase: " + fitLabels[fi], p);
+	PlotOneFit(topDir + "/data/" + fits[fi], fitLabels[fi], p);
 }
 
-limits((0, 0), (5, 0.31), Crop);
+limits((0, 0), (3, 0.31), Crop);
 AttachLegend(NE, NE);
 
 		

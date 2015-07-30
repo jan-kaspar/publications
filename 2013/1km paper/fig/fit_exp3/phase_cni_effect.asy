@@ -12,10 +12,16 @@ string fits[] = {
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:3,KL,per-jun15,chisq,,st+sy",
 };
 
+pen fitPens[] = {
+	black,
+	red,
+	blue
+};
+
 string fitLabels[] = {
-	"constant",
-	"mid-peripheral",
-	"full-peripheral",
+	"KL, constant",
+	"KL, mid-peripheral",
+	"KL, full-peripheral",
 };
 
 drawGridDef = true;
@@ -115,9 +121,9 @@ void PlotOneFit(string dir, string desc, pen p)
 
 for (int fi : fits.keys)
 {
-	pen p = StdPen(fi) + solid+1pt;
+	pen p = fitPens[fi] + 1pt;
 
-	PlotOneFit(topDir + "/data/" + fits[fi], "nuclear phase: " + fitLabels[fi], p);
+	PlotOneFit(topDir + "/data/" + fits[fi], fitLabels[fi], p);
 }
 
 //----------------------------------------------------------------------------------------------------

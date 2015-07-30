@@ -24,21 +24,24 @@ add("hatch2-b", hatch(1.7mm, NW, p_full_band+0.7pt));
 string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/coulomb_analysis/";
 
 string fits[] = {
-	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,SWY,con,chisq,,st+sy",
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,KL,con,chisq,,st+sy",
+	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,SWY,con,chisq,,st+sy",
 	"1000-ob-0-1,90-DS4-sc-ob/pervojsep-1000,v,v,v,v-all,v,v,f,v:1,KL,per-jun15,chisq,,st+sy",
+	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:3,KL,per-jun15,chisq,,st+sy",
 };
 
 pen fitPens[] = {
 	black,
-	red+dashed,
+	magenta+dashed,1
+	red,
 	blue
 };
 
 string fitLabels[] = {
-	"SWY, constant",
 	"KL, constant",
-	"KL, peripheral",
+	"SWY, constant",
+	"KL, mid-peripheral",
+	"KL, full-peripheral",
 };
 
 xSizeDef = 14cm;
@@ -229,6 +232,12 @@ currentpad.yTicks = RightTicks(y_Step, y_step);
 limits((0, y_min), (0.2, y_max), Crop);
 
 //AttachLegend(NW, NE);
+
+// swap 3rd and 4th legend etry from the end
+int s = currentpicture.legend.length;
+Legend l = currentpicture.legend[s-4];
+currentpicture.legend[s-4] = currentpicture.legend[s-3];
+currentpicture.legend[s-3] = l;
 
 AttachLegend(shift(-20, 10)*BuildLegend(3, S, hSkip=4mm, lineLength=8mm, vSkip=-1mm), N);
 
