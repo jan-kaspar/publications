@@ -1,6 +1,8 @@
 import three;
 import math;
 
+StdFonts();
+
 void PreparePicture()
 {
 	unitsize(1cm);
@@ -53,7 +55,7 @@ void DrawDet(transform3 align, string L, triple aligPoint = (4, 4, 0)) {
 	label("$u$", align * (edge/2+aLen * 1.08, edge/2, 0));
 	label("$v$", align * (edge/2, edge/2+aLen * 1.08, 0));
 
-	label(XY*Label("\rPxviii" + L), align * aligPoint);
+	label(XY*Label("" + L), align * aligPoint);
 }
 
 //----------------------------------------------------------------------------------------------------

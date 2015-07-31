@@ -1,6 +1,8 @@
 import three;
 import math;
 
+StdFonts();
+
 unitsize(3mm);
 currentprojection = orthographic((-1.0, 0.4, 1), (0, 1, 0));
 
@@ -64,4 +66,14 @@ label("$y$", (0, 5.5, 0), N);
 label("$z$", (0, 0, 8), S);
 draw((0, 0, -80)--(0, 0, +80), dashed);
 
-label(project(Label("beam line"), Z, Y, (0, -1, -4)));
+label(project(Label("beam axis"), Z, Y, (0, +1, -4)));
+
+draw((0, -4, 0)--(0, -4, 5), black+2, EndArrow3(10));
+draw((0, -6, 5)--(0, -6, 0), black+2, EndArrow3(10));
+label(project(Label("beam 1"), Z, Y, (0, -4, -4)));
+label(project(Label("beam 2"), Z, Y, (0, -6, -4)));
+
+label(project(Label("\SetFontSizesXX LHC: sector 45, RP: left arm, CMS: z+, Towards: Jura"), Z, Y, (0, +10, -40)));
+label(project(Label("\SetFontSizesXX LHC: sector 56, RP: right arm, CMS: z-, Towards: lake"), Z, Y, (0, +10, +40)));
+
+shipout(bbox(3mm, nullpen));

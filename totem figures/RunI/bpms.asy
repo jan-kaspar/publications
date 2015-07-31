@@ -1,5 +1,7 @@
 unitsize(0.5mm);
 
+StdFonts();
+
 real max_s = 280;
 real s_d1 = 72.287;
 real s_d2 = 158.200;
