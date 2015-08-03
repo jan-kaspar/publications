@@ -11,5 +11,6 @@ gvim -p \
 	data_table.tex \
 	coulomb.tex \
 	conclusions.tex \
-	acknowledgements.tex
+	acknowledgements.tex \
+	bibliography.tex
 #	authorlist_npb.tex \
