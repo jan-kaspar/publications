@@ -34,6 +34,44 @@
 }
 
 %----------------------------------------------------------------------------------------------------
+% Add an author
+% USAGE: \AddCorrespondingAuthor{name}{primary affiliation}{secondary affiliation}{external affiliation}{footnote text}{email}
+
+\def\AddCorrespondingAuthor#1#2#3#4#5#6{%
+	\def\Name{#1}%
+	\def\PriAf{#2}%
+	\def\SecAf{#3}%
+	\def\ExtAf{#4}%
+	\def\empty{}%
+	
+	\ifx\PriAf\empty
+		% no primary affiliation, only external
+		\author{#1\fnref{#4}\corref{CA}}%
+	\else
+		\ifx\SecAf\empty
+			\ifx\ExtAf\empty
+				% only primary affiliation
+				\author[#2]{#1\corref{CA}}%
+			\else
+				% primary and external affiliation
+				\author[#2]{#1\fnref{#4}\corref{CA}}%
+			\fi
+		\else
+			\ifx\ExtAf\empty
+				% primary and secondary affiliation
+				\author[#2,#3]{#1\corref{CA}}%
+			\else
+				% primary, secondary and external affiliation
+				\author[#2,#3]{#1\fnref{#4}\corref{CA}}%
+			\fi
+		\fi
+	\fi
+
+	\ead{#6}%
+	\cortext[CA]{#5}%
+}
+
+%----------------------------------------------------------------------------------------------------
 % Add a TOTEM institute
 % USAGE: \AddInstitute{reference as in AddAuthor}{address}
 
@@ -53,9 +91,6 @@
 %----------------------------------------------------------------------------------------------------
 % include the actual data
 
-\author{\small Dedicated to the memory of Prof. E. Lippmaa and Prof. M. Lo Vetere who passed away recently}
-\address{}
-\vspace*{-2mm}
 \author{The TOTEM Collaboration}
 \address{\vspace*{-3mm}}
 \input authorlist_data

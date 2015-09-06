@@ -227,7 +227,7 @@
 
 \def\@alph#1{%
   \ifcase#1\or a\or b\or c\or d\or e\or f\or g\or h\or i\or j\or k\or
-  l\or m\or n\or o\or p\or q\or r\or s\or t\or u\or v\or w\or x\or
+  m\or n\or o\or p\or q\or r\or s\or t\or u\or v\or w\or x\or
   y\or z%
   \or aa\or ab\or ac\or ad\or ae\or af\or ag\or ah\or ai\or aj\or
   ak\or al\or am\or an\or ao\or ap\or aq\or ar\or as\or at\or au\or
