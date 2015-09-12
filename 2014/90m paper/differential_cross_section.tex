@@ -10,7 +10,7 @@ Section~\ref{sec:diff cs} describes the steps of transforming a raw $t$-distribu
 
 %----------------------------------------------------------------------------------------------------
 
-\subsection{Event Analysis}
+\subsection{Event analysis}
 \label{sec:event anal}
 
 Event kinematics are determined from the coordinates of track hits in the RPs after proper alignment (see Section~\ref{sec:alignment}), using the LHC optics (see Section~\ref{sec:optics}).
@@ -18,7 +18,7 @@ Event kinematics are determined from the coordinates of track hits in the RPs af
 
 %------------------------------
 
-\subsubsection{Kinematics Reconstruction}
+\subsubsection{Kinematics reconstruction}
 \label{sec:kinematics}
 
 The scattering angles and vertex position are first determined for each proton (i.e.~from each arm) separately by inverting the proton transport, Eq.~(\ref{eq:prot trans}), assuming $\xi = 0$. The following formulae optimise the robustness against optics imperfections:
@@ -125,7 +125,7 @@ Angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), as a f
 
 %----------------------------------------------------------------------------------------------------
 
-\subsection{Differential Cross-Section}
+\subsection{Differential cross-section}
 \label{sec:diff cs}
 
 For a given $t$ bin, the differential cross-section is evaluated by selecting and counting elastic events:
@@ -141,7 +141,7 @@ ${\cal U}$ for unfolding of resolution effects, ${\cal B}$ for background subtra
 
 %------------------------------
 
-\subsubsection{Event Tagging}
+\subsubsection{Event tagging}
 \label{sec:tagging}
 
 The cuts used to select elastic events are summarised in Table~\ref{tab:cuts}. Cuts 1 and 2 require the reconstructed-track collinearity between the left and right arm. Cuts 3 and 4 control the elasticity -- if a proton loses momentum, the vertical position-angle correlation at the RPs is lost. Cut 5 ensures that the two protons come from the same vertex (horizontally). The correlation plots corresponding to these cuts are shown in Figure~\ref{fig:cuts}.
@@ -206,7 +206,7 @@ Distributions of discriminator 1, i.e. the difference between the horizontal sca
 
 %-------------------------
 
-\subsubsection{Acceptance Correction}
+\subsubsection{Acceptance correction}
 \label{sec:acc corr}
 
 Two proton detection limitations have been identified: detector coverage (mostly at the edge facing the beam, i.e. relevant for small $|\theta_y^*|$) and LHC apertures ($|\theta_y^*| \approx 100\un{\mu rad}$). The correction accounting for these limitations includes two contributions -- a geometrical correction ${\cal A}_{\rm geom}$ reflecting the fraction of the phase space within the acceptance and a component ${\cal A}_{\rm fluct}$ correcting for fluctuations around the acceptance limits (cuts in $\theta_y^*$):
@@ -268,7 +268,7 @@ Full acceptance correction, ${\cal A}$, for diagonal 45 bottom -- 56 top. The po
 
 %-------------------------
 
-\subsubsection{Inefficiency Corrections}
+\subsubsection{Inefficiency corrections}
 \label{sec:ineff corr}
 
 Since the overall normalisation is determined from another dataset (see Section~\ref{sec:normalisation}), any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (trigger, data acquisition and pile-up inefficiency discussed in~\cite{epl101-el,prl111}). The inefficiencies left are related to the inability of a RP to resolve the elastic proton track.
@@ -304,7 +304,7 @@ The first term in the parentheses sums the contributions from the four RPs of a 
 
 %-------------------------
 
-\subsubsection{Unfolding of Resolution Effects}
+\subsubsection{Unfolding of resolution effects}
 \label{sec:unfolding}
 
 The correction for resolution effects has been determined by the following iterative procedure. The differential cross-section data are fitted by a smooth curve which serves as an input to a Monte-Carlo simulation using the resolution parameters determined in Section~\ref{sec:resolution}. Making a ratio between simulated histograms with and without smearing effects gives a set of per-bin correction factors. Applying them to the yet uncorrected differential cross-section yields a better estimate of the true $t$-distribution which can be used as input to the next iteration. The iterations stop when the difference between the input and output $t$-distributions becomes negligible, which is typically achieved after the second iteration. Thanks to the good angular resolution (see Section~\ref{sec:resolution}), the final correction is not large, as shown in Figure~\ref{fig:unfolding}.
@@ -344,7 +344,7 @@ Two binnings have been considered. The ``optimised'' option sets the bin size to
 
 %-------------------------
 
-\subsubsection{Beam Energy Uncertainty}
+\subsubsection{Beam energy uncertainty}
 \label{sec:beam en unc}
 
 Besides the systematic uncertainties mentioned at the above analysis steps, the uncertainty of the beam momentum needs to be considered when the scattering angles are translated into $t$, see Eq.~(\ref{eq:th t}). The beam momentum at 
@@ -357,7 +357,7 @@ Finally, energy variations with time during a fill do not exceed $\pm 0.03\un{\%
 
 %-------------------------
 
-\subsubsection{Propagation of Systematic Uncertainties}
+\subsubsection{Propagation of systematic uncertainties}
 \label{sec:systematics propagation}
 
 The systematic effects are propagated to the $t$-distribution with help of a Monte-Carlo simulation. A fit of the final differential cross-section data is used to generate the true $t$-distribution. Simultaneously, another $t$-distribution is built, having introduced one of the above mentioned systematic effects at $1\un{\sigma}$ level. The difference between the $t$-distributions gives the systematic effect on the differential cross-section. Formally, this procedure is equivalent to evaluating
@@ -372,7 +372,7 @@ The Monte-Carlo simulations show that the combined effect of several systematic 
 
 %----------------------------------------------------------------------------------------------------
 
-\subsection{Systematic Cross-Checks}
+\subsection{Systematic cross-checks}
 \label{sec:cross checks}
 
 Compatible results have been obtained from data originating from different bunches, different diagonals and different time periods.
@@ -381,7 +381,7 @@ In addition, the complete analysis chain has been applied in two independent ana
 
 %----------------------------------------------------------------------------------------------------
 
-\subsection{Final Data Merging}
+\subsection{Final data merging}
 \label{sec:final data merging}
 
 \begin{figure*}
@@ -469,7 +469,7 @@ $0.19005$ & $0.19965$ & $0.19478$ & $\S12.291$ & $0.0504$ & $\S0.524$ & $+\S0.51
 
 %----------------------------------------------------------------------------------------------------
 
-\subsection{Statistical Uncertainty Adjustment}
+\subsection{Statistical uncertainty adjustment}
 \label{sec:stat unc adj}
 
 The statistical fluctuations in the differential cross-section using the ``optimised'' binning have been slightly overestimated, whereas the ``per-mille'' binning does not suffer from this problem. One way to demonstrate this is to split the data into groups of consecutive points small enough for a linear function to approximate well the differential cross-section within each group. Then, performing straight-line fits through each group yields on average $\chi^2$ values slightly too low. Alternatively, the issue can be demonstrated as follows. The data sample is divided into several sub-samples corresponding to the same luminosity, and the analysis method described in the earlier sections is repeated for each of these sub-samples. Then, fluctuations of each bin content are determined from the several sub-samples, giving values slightly lower than the uncertainty estimates.
