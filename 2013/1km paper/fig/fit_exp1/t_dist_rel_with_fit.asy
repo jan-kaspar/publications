@@ -27,14 +27,14 @@ string fits[] = {
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,KL,con,chisq,,st+sy_noNorm",
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,SWY,con,chisq,,st+sy_noNorm",
 	"1000-ob-0-1,90-DS4-sc-ob/pervojsep-1000,v,v,v,v-all,v,v,f,v:1,KL,per-jun15,chisq,,st+sy_noNorm",
-	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:3,KL,per-jun15,chisq,,st+sy_noNorm",
+	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,KL,per-jun15,chisq,,st+sy_noNorm",
 };
 
 pen fitPens[] = {
 	black,
 	magenta+dashed,1
 	red,
-	blue
+	blue,
 };
 
 string fitLabels[] = {
@@ -112,9 +112,6 @@ NewRow();
 
 p_main = NewPad("$|t|\ung{GeV^2}$", "$\displaystyle{\d\si/\d t - \hbox{ref} \over \hbox{ref}}\ ,\quad\hbox{ref} = "+ref_str+"$",
 	axesAbove=true);
-
-// TODO
-//AddToLegend("<{\it differential cross-section:}");
 
 string defDir = "1000-ob-0-1,90-DS4-sc-ob/simple:3,KL,con,chisq,,st";
 
