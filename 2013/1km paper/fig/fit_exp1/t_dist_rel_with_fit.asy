@@ -32,7 +32,7 @@ string fits[] = {
 
 pen fitPens[] = {
 	black,
-	magenta+dashed,1
+	magenta+dashed,
 	red,
 	blue,
 };
