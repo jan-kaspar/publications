@@ -26,22 +26,22 @@ string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/c
 string fits[] = {
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,KL,con,chisq,,st+sy_noNorm",
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,SWY,con,chisq,,st+sy_noNorm",
-	"1000-ob-0-1,90-DS4-sc-ob/pervojsep-1000,v,v,v,v-all,v,v,f,v:1,KL,per-jun15,chisq,,st+sy_noNorm",
+	//"1000-ob-0-1,90-DS4-sc-ob/pervojsep-1000,v,v,v,v-all,v,v,f,v:1,KL,per-jun15,chisq,,st+sy_noNorm",
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,KL,per-jun15,chisq,,st+sy_noNorm",
 };
 
 pen fitPens[] = {
 	black,
 	magenta+dashed,
-	red,
+	//red,
 	blue,
 };
 
 string fitLabels[] = {
 	"KL, constant",
 	"SWY, constant",
-	"KL, mid-peripheral",
-	"KL, full-peripheral",
+	//"KL, mid-peripheral",
+	"KL, peripheral",
 };
 
 xSizeDef = 14cm;
@@ -232,9 +232,9 @@ limits((0, y_min), (0.2, y_max), Crop);
 
 // swap 3rd and 4th legend etry from the end
 int s = currentpicture.legend.length;
-Legend l = currentpicture.legend[s-4];
-currentpicture.legend[s-4] = currentpicture.legend[s-3];
-currentpicture.legend[s-3] = l;
+Legend l = currentpicture.legend[s-3];
+currentpicture.legend[s-3] = currentpicture.legend[s-2];
+currentpicture.legend[s-2] = l;
 
 AttachLegend(shift(-20, 10)*BuildLegend(3, S, hSkip=4mm, lineLength=8mm, vSkip=-1mm), N);
 

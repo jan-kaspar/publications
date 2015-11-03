@@ -25,22 +25,20 @@ string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/c
 
 string fits[] = {
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:3,KL,con,chisq,,st+sy_noNorm",
-	// TODO
-	"1000-ob-0-1,90-DS4-sc-ob/0,0,0/pervojsep-1000,v,v,v,v-all,v,v,f,v:3,KL,per-jun15,chisq,,st+sy_noNorm",
 	//"1000-ob-0-1,90-DS4-sc-ob/pervojsep-1000,v,v,v,v-all,v,v,f,v:3,KL,per-jun15,chisq,,st+sy_noNorm",
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:3,KL,per-jun15,chisq,,st+sy_noNorm",
 };
 
 pen fitPens[] = {
 	black,
-	red,
+	//red,
 	blue
 };
 
 string fitLabels[] = {
 	"KL, constant",
-	"KL, mid-peripheral",
-	"KL, full-peripheral",
+	//"KL, mid-peripheral",
+	"KL, peripheral",
 };
 
 xSizeDef = 14cm;
@@ -230,8 +228,9 @@ currentpad.yTicks = RightTicks(y_Step, y_step);
 	
 limits((0, y_min), (0.2, y_max), Crop);
 
-//AttachLegend(NW, NE);
+AddToLegend("");
 
+//AttachLegend(NW, NE);
 AttachLegend(shift(-20, 10)*BuildLegend(3, S, hSkip=4mm, lineLength=8mm, vSkip=-1mm), N);
 
 GShipout(vSkip=0mm, margin=1mm);
