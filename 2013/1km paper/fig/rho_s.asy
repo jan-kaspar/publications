@@ -175,7 +175,7 @@ DrawPoint(7e3, 0.145, 0.091, 0.091, red+0.8pt, mCi+false+2pt+red);		// TOTEM 7 T
 //DrawPointUnc(0.121, 0.029, mTU);
 //DrawPointUnc(0.118, 0.029, mTD);
 x_corr = 0;
-DrawPointUnc(0.12, 0.029, mCi);
+DrawPointUnc(0.12, 0.03, mCi);
 
 competeRho = true;
 draw(graph(Compete_RRP_nf_L2_u, 1e1, 2e4), black);
