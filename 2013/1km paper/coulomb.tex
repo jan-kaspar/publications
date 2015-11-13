@@ -170,14 +170,14 @@ Each of the fits has been performed according to the standard least-squares meth
 \begin{enumerate}
 
 % ***
-\item[A.] Minimise
+\item[A.] This approach consists of minimising
 \begin{equation}
 \label{eq:chi sq A}
 	\chi^2 = \Delta^\T \mat V^{-1} \Delta\ ,\qquad
 	\Delta_i = \left.{\d\sigma\over \d t}\right|_{{\rm bin}\ i} - {\d\sigma^{\rm C+N}\over\d t}\left(t^{\rm rep}_{{\rm bin}\ i}\right)\ ,\qquad
-	\mat V = \mat V_{\rm stat} + \mat V_{\rm syst} + \mat V_{\rm norm}\ ,
+	\mat V = \mat V_{\rm stat} + \mat V_{\rm syst}\ ,
 \end{equation}
-where $\Delta$ is a vector of differences between the differential cross-section data and a fit function $\d\sigma^{C+N}/\d t$ evaluated at representative points $t^{\rm rep}$ of each bin \cite{lafferty94}. The minimisation is repeated several times and the representative points are updated between iterations. The covariance matrix $\mat V$ is composed of three components. The diagonal of $\mat V_{\rm stat}$ contains statistical uncertainty squared from Table~\ref{tab:data} and from Table~3 in \cite{8tev-90m}. $\mat V_{\rm syst}$ includes all systematic uncertainty contributions except normalisation, see Eq.~(\ref{eq:covar mat}) and Eq.~(14) in \cite{8tev-90m}. $\mat V_{\rm norm}$ reflects the normalisation uncertainty: $4.2\un{\%}$ fully correlated between the $90$ and $1000\un{m}$ datasets and $0.25\un{\%}$ ($0.08\un{\%}$) for $90\un{m}$ ($1000\un{m}$) dataset individually. \TODO{interference formulae by \cite{elegent}} \TODO{normalisation uncertainty story}
+where $\Delta$ is a vector of differences between the differential cross-section data and a fit function $\d\sigma^{C+N}/\d t$ evaluated at representative points $t^{\rm rep}$ of each bin \cite{lafferty94}. The minimisation is repeated several times and the representative points are updated between iterations. The CNI effects are calculated by the computer code from \cite{elegent}. The covariance matrix $\mat V$ is composed of two components. The diagonal of $\mat V_{\rm stat}$ contains statistical uncertainty squared from Table~\ref{tab:data} and from Table~3 in \cite{8tev-90m}. $\mat V_{\rm syst}$ includes all systematic uncertainty contributions except normalisation, see Eq.~(\ref{eq:covar mat}) and Eq.~(14) in \cite{8tev-90m}. The normalisation uncertainty is not included in $\chi^2$ definition for increased fit stability. Instead, the uncertainty is propagated for each fit parameter. For this, the fit is repeated with $-1\un{\sigma}$, $0\un{\sigma}$ and $+1\un{\sigma}$ biases independently in: global normalisation ($1\un{\sigma} = 4.2\un{\%}$), $90\un{m}$ data normalisation ($0.08\un{\%}$) and $1000\un{m}$ data normalisation ($0.25\un{\%}$). This gives a sample of 27 fit results, from which one can estimate the propagated normalisation uncertainty of a parameter as $(\hbox{max} - \hbox{min})/2$, where ``max'' (``min'') is the greatest (smallest) value in the sample. This normalisation uncertainty is, at the end, added quadratically to the uncertainty reported by the fit with no bias.
 
 
 % ***
