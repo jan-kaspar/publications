@@ -106,7 +106,7 @@ can have rapid variation at low $|t|$, then peaks at $t = -\kappa / \nu$ and asy
 
 Figure~\ref{fig:phase illustration} presents a comparison of phase predictions of several models to typical examples of parametrisations proposed above.
 
-\TODO{Move this paragraph?} \TODO{Update: shape of b-distribution relevant, too.} It should be noted that the phase has decisive influence on the amplitude behaviour in the space of impact parameter, $b$, see e.g.~Section 3 in~\cite{klk02}. It can be characterised by the root-mean-squares (RMS) of $b$ for elastic and inelastic collisions. The constant, standard and Bailly phases lead to elastic collisions more central (smaller RMS) than the inelastic ones. The peripheral phase can yield a description with the opposite hierarchy, which is argued more natural by some authors (e.g. Section~4 in~\cite{kl96}).
+It should be noted that the nuclear phase has a strong influence on the amplitude behaviour in the space of impact parameter $b$ (for detailed discussion see e.g.~Section 3 in~\cite{klk02}). A particularly decisive feature is the rate of phase variation at low $|t|$. Looking at Figure~\ref{fig:phase illustration} one can see that the constant, standard and Bailly phases are essentially flat at low $|t|$, thus leading to qualitatively similar picture in the impact parameter space: elastic collisions more central (preferring lower values of $b$) than the inelastic ones. Conversely, the peripheral phase parametrisation can yield a description with the opposite hierarchy, which is argued more natural by some authors (e.g. Section~4 in~\cite{kl96}). An impact-parameter study of the presented data will be given at end of Section~\ref{sec:fit exp3}.
 
 %------------------------------------------------------------------
 \subsubsection{Coulomb-Nuclear Interference Formulae}
@@ -294,10 +294,6 @@ As shown in Table~\ref{tab:fit exp3}, both fits yield very reasonable fit qualit
 
 Fig.~\ref{fig:fit exp3} shows that the level of Coulomb-induced effects is very different in the fits. It is much stronger in the peripheral-phase case which can be expected as the phase features faster variation in the low-$|t|$ region.
 
-The total cross-section results from the two fits in Table~\ref{tab:fit exp3} are well consistent with each other and also with previous measurements \cite{8tev-90m,epl101-el}. The slightly higher values with respect to previous analyses neglecting the Coulomb interaction are expectable as long as $\rho > 0$. This leads to negative interference at low $|t|$ which, when separated, leads to increase of nuclear cross-section intercept $a$ and thus also total cross-section, see Eq.~(\ref{eq:si tot}).
-
-The impact-parameter distribution \TODO{ref} for the three fits is shown in Fig.~\ref{fig:bdist exp3}, also giving the RMS for elastic, inelastic and total collisions \TODO{ref}. The fit with constant phase exhibits central behaviour: the elastic impact-parameter distribution is peaked at $b=0$ and the elastic RMS is smaller than the inelastic one. The mid-peripheral fit corresponds to the case where all three RMS values are comparable. The full-peripheral fit has truly peripheral behaviour: the distribution maximum lies at $b > 0$ and the elastic RMS is grater that the inelastic.
-
 
 \begin{table}
 \caption{Fit results with KL formula and $N_b=3$.}
@@ -323,21 +319,50 @@ BOTTOM RIGHT: the effects induced by the Coulomb interaction for each of the fit
 \end{center}
 \end{figure*}
 
+Both fits give values identical with the accuracy. This new result is put in context of earlier measurements in Figure~\ref{fig:rho cmp exp3}.
+
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/rho_s.pdf}
+\caption{Energy dependence of the $\rho$ parameter. The blue (green) hollow triangles correspond to $\rm pp$ ($\rm \bar pp$) data from PDG \cite{pdg} -- note that most of these points were determined with the help of the SWY formula, shown inconsistent with the presented data. The hollow red dot stands for the earlier indirect determination by TOTEM \cite{epl101-tot}. The full red dot represents the two results from Table~\ref{tab:fit exp3} which are numerically identical within the accuracy. The black curve gives the preferred $\rm pp$ model by COMPETE \cite{compete}, obtained without using LHC data.
+}%
+\label{fig:rho cmp exp3}
+\end{center}
+\end{figure*}
+
+
+The total cross-section results from the two fits in Table~\ref{tab:fit exp3} are well consistent with each other and also with previous measurements \cite{8tev-90m,epl101-el}. The slightly higher values with respect to previous analyses neglecting the Coulomb interaction are expectable as long as $\rho > 0$. This leads to negative interference at low $|t|$ which, when separated, leads to increase of nuclear cross-section intercept $a$ and thus also total cross-section, see Eq.~(\ref{eq:si tot}).
+
+
+It is interesting to study the fit behaviour in the impact-parameter space. The scattering amplitude in this representation (often called profile function), ${\cal P}(b)$, can be obtained from the nuclear amplitude by means of Fourrier-Bessel transform (see e.g.~\cite{klk02}):
+\begin{equation}
+\label{eq:prof fun}
+	{\cal P}(b) = {1\over 4 p \sqrt s} \int\limits_{-\infty}^0 \d t\,J_0(b\sqrt{-t})\,{\cal A}^{\rm N}(t)\ .
+\end{equation}
+The profile functions for the two fits from Table~\ref{tab:fit exp3} are shown in Figure~\ref{fig:bdist exp3}. The fit with constant nuclear phase gives a distribution peaked at $b=0$. It corresponds to a behaviour which is more central that for the fit with peripheral phase, where the most frequent impact parameter value is $b\approx 1.2\un{fm}$. This observation can be generalised to non-elastic channels, too. Following Section~3 in \cite{klk02}, one can calculate mean values of $b^2$ for elastic ($\langle b^2\rangle_{\rm el}$), inelastic ($\langle b^2\rangle_{\rm inel}$) or all ($\langle b^2\rangle_{\rm tot}$) collisions:
+\begin{equation}
+\label{eq:ms b}
+	\langle b^2\rangle_j = {
+		\int b\,\d b\,b^2\, h_j(b)
+		\over
+		\int b\,\d b\, h_j(b)
+	}\ ,\ 
+	h_{\rm el}(b) = |{\cal P}(b)|^2\ ,\ 
+	h_{\rm tot}(b) = \Im {\cal P}(b)\ ,\ 
+	h_{\rm inel}(b) = h_{\rm tot}(b) - h_{\rm el}(b)\ .
+\end{equation}
+Their values in Figure~\ref{fig:bdist exp3} indicate that the fit with constant nuclear phase leads to a picture with elastic collisions more central than the inelastic ones. The hierarchy is inverted for the fit with peripheral phase.
+
+
+
 \begin{figure*}
 \begin{center}
 \includegraphics{fig/fit_exp3/b_dist.pdf}
-\caption{TODO
+\caption{%
+Squared amplitude of the profile function, ${\cal P}$, as a function of impact parameter, $b$. The two lines correspond to the fits in Table~\ref{tab:fit exp3}, using the same colour code as in Figure~\ref{fig:fit exp3}. The root-mean-squares of $b$ in the legend are calculated from Eq.~(\ref{eq:ms b}).
 }%
 \label{fig:bdist exp3}
 \end{center}
 \end{figure*}
 
 
-\begin{figure*}
-\begin{center}
-\includegraphics{fig/rho_s.pdf}
-\caption{Energy dependence of the $\rho$ parameter. The blue (green) hollow triangles correspond to $\rm pp$ ($\rm \bar pp$) data from PDG \cite{pdg} -- note that most of these points were determined with the help of the SWY formula, shown inconsistent with the presented data. The hollow red dot stands for the earlier indirect determination by TOTEM \cite{epl101-tot}. The full red dot represents the three results from Table~\ref{tab:fit exp3} which happen to be numerically identical within the resolution. The black curve gives the preferred $\rm pp$ model by COMPETE \cite{compete}, obtained without using LHC data.
-}%
-\label{fig:rho cmp exp3}
-\end{center}
-\end{figure*}

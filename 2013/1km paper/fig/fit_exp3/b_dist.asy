@@ -6,6 +6,13 @@ include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/coulomb_a
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
+texpreamble("\def\fbox#1#2#3#4{
+\hbox to 2.2cm{#1\hfil}%
+\hbox to 1.5cm{\hfil#2\hfil}%
+\hbox to 1.5cm{\hfil#3\hfil}%
+\hbox to 1.5cm{\hfil#4\hfil}%
+}");
+
 string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/coulomb_analysis/";
 
 string fits[] = {
@@ -47,7 +54,11 @@ void PlotOneFit(string dir, string desc, pen p)
 	string f = dir + "/impactParameterDistributions.root";
 
 	rObject g_prf_sq = rGetObj(f, "g_A_mod2");
-	draw(g_prf_sq, p, desc);
+	draw(g_prf_sq, p, "\fbox{"+desc+":}{"
+		+ format("$%#.2f\un{fm}$", ra[0].b_rms_el) + "}{"
+		+ format("$%#.2f\un{fm}$", ra[0].b_rms_inel) + "}{"
+		+ format("$%#.2f\un{fm}$", ra[0].b_rms_tot) + "}"
+	);
 
 	//real b_rms_el, b_rms_inel, b_rms_tot;
 
@@ -56,21 +67,17 @@ void PlotOneFit(string dir, string desc, pen p)
 	AddToLegend(format("$\sqrt{\langle b^2 \rangle_{\rm inel}} = %#.2f\un{fm}$", ra[0].b_rms_inel));
 	AddToLegend(format("$\sqrt{\langle b^2 \rangle_{\rm tot}} = %#.2f\un{fm}$", ra[0].b_rms_tot));
 	*/
-	AddToLegend(format("$%#.2f\un{fm}$, ", ra[0].b_rms_el)
-		+ format("$%#.2f\un{fm}$, ", ra[0].b_rms_inel)
-		+ format("$%#.2f\un{fm}$", ra[0].b_rms_tot)
-	);
 }
 
 //----------------------------------------------------------------------------------------------------
 
 bool fitStSy = true;
 
-NewPad("$b\ung{fm}$", "profile function $|{\cal P}|^2$");
+NewPad("$b\ung{fm}$", "$|{\cal P}(b)|^2$");
 currentpad.xTicks = LeftTicks(0.5, 0.1);
 currentpad.yTicks = RightTicks(0.05, 0.01);
 
-AddToLegend("$\sqrt{\langle b^2 \rangle_{\rm el}}, \sqrt{\langle b^2 \rangle_{\rm inel}}, \sqrt{\langle b^2 \rangle_{\rm tot}}$");
+AddToLegend("\fbox{}{$\sqrt{\langle b^2 \rangle_{\rm el}}$}{$\sqrt{\langle b^2 \rangle_{\rm inel}}$}{$\sqrt{\langle b^2 \rangle_{\rm tot}}$}");
 
 for (int fi : fits.keys)
 {
