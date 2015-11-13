@@ -12,5 +12,6 @@ elastic_1km_npb.pdf: elastic_1km_npb.tex \
 		fig/fit_exp1/table_data.tex \
 		fig/fit_exp3/table_data.tex \
 		conclusions.tex \
-		acknowledgements.tex
+		acknowledgements.tex \
+		bibliography.tex
 	pdflatex elastic_1km_npb.tex
