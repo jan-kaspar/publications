@@ -138,9 +138,9 @@ void FinalisePlots()
 	for (real y=-0.03; y <= 0.05; y += 0.01)
 		xaxis(YEquals(y, false), dotted);
 
-	draw(Label("region of Coulomb dominance", 1., E, Fill(white+opacity(0.8))), (0.005, 0.045)--(0.03, 0.035), BeginArrow);
+	draw(Label("region of Coulomb dominance", 1., E, Fill(white+opacity(0.8))), (0.005, 0.045){0.3, -1}..{1, 0}(0.03, 0.035), BeginArrow);
 	
-	draw(Label("region of sensitivity to phase at $|t| \approx 0$", 1., N+0.9E, Fill(white+opacity(0.8))), (0.01, -0.001)--(0.013, 0.011), BeginArrow);
+	draw(Label("region of sensitivity to phase at $|t| \approx 0$", 1., E, Fill(white+opacity(0.8))), (0.01, 0.011)--(0.025, 0.025), BeginArrow);
 
 	draw((0.065, -0.025)--(0.050, -0.025), EndArrow);
 	draw((0.19, -0.022)--(0.19, -0.008), EndArrow);

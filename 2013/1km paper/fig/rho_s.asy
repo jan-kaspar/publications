@@ -181,7 +181,7 @@ competeRho = true;
 draw(graph(Compete_RRP_nf_L2_u, 1e1, 2e4), black);
 //draw(graph(Compete_R_qc_RL_qc, 1e1, 1e4), red);
 
-AddToLegend("$\rm pp$ (PDG)", blue, mTD+false+3pt+blue);
+AddToLegend("$\rm pp$ (PDG)", blue, mTD+true+3pt+blue);
 AddToLegend("$\raise1.2mm\hbox to0pt{\hskip-0.3pt--\hss}\rm pp$ (PDG)", heavygreen, mTU+false+3pt+heavygreen);
 AddToLegend("COMPETE preferred model ($\rm pp$)", black);
 AddToLegend("TOTEM indirect at $\sqrt s = 7\un{TeV}$", red+0.8pt, mCi+false+3pt+red);

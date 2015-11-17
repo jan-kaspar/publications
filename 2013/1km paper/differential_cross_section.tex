@@ -57,14 +57,14 @@ This procedure has been further extended to improve the vertical alignment. The 
 \begin{center}
 \includegraphics{fig/alignment_method.pdf}
 \caption{%
-Hit scatter plot in the right-far unit, corresponding to a period of 15 minutes. Black (blue) dots and solid lines represent track hits and sensor contours of vertical (horizontal) RPs. Track hits close to the sensor edges are discarded because of possible bias due to acceptance effects.
-The magenta histogram shows the horizontal profile of hits in the vertical RPs, the dashed magenta line interpolates the profiles between the top and bottom RPs. Similarly, the red histogram gives the vertical profile of the hits in the horizontal RP and the dashed red line its extrapolation to the beam region. The green dashed line indicates the vertical centre of symmetry of the hits in the vertical RPs (see \cite{totem-ijmp} for details). The crossing of the dashed lines represents the position the beam centre.
+Hit scatter plot in the right-far unit, corresponding to a period of 15 minutes. Black dots represent track hits in vertical and horizontal RPs. Track hits close to the sensor edges are removed because of possible bias due to acceptance effects.
+The green histogram shows the horizontal profile of hits in the vertical RPs, the dashed green line interpolates the profiles between the top and bottom RPs. Similarly, the red histogram gives the vertical profile of the hits in the horizontal RP and the dashed red line its extrapolation to the beam region. The blue dashed line indicates the vertical centre of symmetry of the hits in the vertical RPs (see \cite{totem-ijmp} for details). The crossing of the dashed lines represents the position the beam centre (the two vertical-alignment results are averaged).
 }
 \label{fig:align meth}
 \end{center}
 \end{figure}
 
-Exploiting all the methods, the alignment uncertainties have been estimated to $30\un{\mu m}$ (horizontal shift), $70\un{\mu m}$ (vertical shift) and $2\un{m rad}$ (rotation about the beam axis). Propagating them through Eq.~(\ref{eq:kin 2a}) to reconstructed scattering angles yields gives $0.28\un{\mu rad}$ ($0.19\un{\mu rad}$) for horizontal (vertical) angle. RP rotations induce a bias in the reconstructed horizontal scattering angle:
+Exploiting all the methods, the alignment uncertainties have been estimated to $30\un{\mu m}$ (horizontal shift), $70\un{\mu m}$ (vertical shift) and $2\un{m rad}$ (rotation about the beam axis). Propagating them through Eq.~(\ref{eq:kin 2a}) to reconstructed scattering angles yields $0.28\un{\mu rad}$ ($0.19\un{\mu rad}$) for horizontal (vertical) angle. RP rotations induce a bias in the reconstructed horizontal scattering angle:
 \begin{equation}
 \label{eq:alig rot bias}
 	\theta_x^* \rightarrow \theta_x^* + c \theta_y^*\ ,
@@ -199,7 +199,7 @@ Correlation plots for the event selection cuts presented in Table~\ref{tab:cuts}
 
 As the RPs were very close to the beam, one may expect emphasized background from coincidence of beam halo protons hitting detectors in the two arms. The other background sources (pertinent to any elastic analysis) are: central diffraction and pile-up of two single diffraction events.
 
-The background rate (i.e.~impurity of the elastic tagging) is studied by plotting the discriminators from Table~\ref{tab:cuts} under various cut combinations, see an example in Figure~\ref{fig:tag bckg}. While the central part (signal) remains essentially constant, the tails (background) are strongly suppressed with increasing number of cuts applied. This interpretation is further supported by the discriminator distributions from anti-diagonal RP configurations, see the dashed curves in the figure. While these top -- top or bottom -- bottom configurations cannot contain any elastic signal, they are likely to have a similar share of events causing background to the presented analysis. The background is barely observable and thus one can estimate $1 - {\cal B} < 10^{-4}$.
+The background rate (i.e.~impurity of the elastic tagging) is studied by plotting the discriminators from Table~\ref{tab:cuts} under various cut combinations, see an example in Figure~\ref{fig:tag bckg}. While the central part (signal) remains essentially constant, the tails (background) are strongly suppressed with increasing number of cuts applied. This interpretation is further supported by the discriminator distributions from anti-diagonal RP configurations, see the dashed curves in the figure. While these top -- top or bottom -- bottom configurations cannot contain any elastic signal, they are likely to have a similar share of events causing background to the presented analysis. The background is barely observable and one can estimate $1 - {\cal B} < 10^{-4}$.
 
 
 \begin{figure}
@@ -377,7 +377,7 @@ The final cross-section is tabulated in Table~\ref{tab:data} and visualised in F
 \includegraphics{fig/t_dist_tabulation.pdf}
 \vskip-3mm
 \caption{%
-Differential cross-section from Table \ref{tab:data} with statistical (bars) and systematic uncertainties (bands). The yellow band represents all systematic uncertainties, the brown one all but normalisation. The bands are centred around a data fit including both nuclear and Coulomb components (Eqs.~(\ref{eq:int kl}), (\ref{eq:nuc phase con}) and (\ref{eq:nuc mod}) with $N_b=3$). LEFT: a low-$|t|$ zoom of the differential cross-section. RIGHT: differential cross-section over the full $|t|$ range plotted relative to a reference exponential.
+Differential cross-section from Table \ref{tab:data} with statistical (bars) and systematic uncertainties (bands). The yellow band represents all systematic uncertainties, the brown one all but normalisation. The bands are centred around a data fit including both nuclear and Coulomb components (Eqs.~(\ref{eq:int kl}), (\ref{eq:nuc phase con}) and (\ref{eq:nuc mod}) with $N_b=3$). LEFT: a low-$|t|$ zoom of the differential cross-section. RIGHT: differential cross-section over the full $|t|$ range plotted relative to a reference exponential (the same as in \cite{8tev-90m}).
 }
 \label{fig:dsdt}
 \end{center}

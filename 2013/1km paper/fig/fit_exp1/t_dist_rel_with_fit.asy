@@ -9,8 +9,8 @@ texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 pen p_full_band = (olive*0.5 + yellow*0.7) + opacity(1);
-//pen p_anal_band = brown*0.5 + yellow*0.5;
-pen p_anal_band = heavygreen;
+pen p_anal_band = brown*0.5 + yellow*0.5;
+//pen p_anal_band = heavygreen;
 
 add("hatch", hatch(1.7mm, NE, p_anal_band+1pt));
 add("hatch-b", hatch(1.7mm, NE, p_full_band+0.7pt));

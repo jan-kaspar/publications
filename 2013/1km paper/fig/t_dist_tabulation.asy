@@ -18,6 +18,7 @@ drawGridDef = true;
 
 pen p_full_band = (olive*0.5 + yellow*0.7) + opacity(0.7);
 pen p_anal_band = brown*0.5 + yellow*0.5;
+//pen p_anal_band = heavygreen;
 //add("hatch", hatch(1.3mm, NE, p_anal_band+1pt));
 
 //----------------------------------------------------------------------------------------------------

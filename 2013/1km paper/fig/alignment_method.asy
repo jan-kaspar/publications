@@ -46,33 +46,37 @@ pen adashed = linetype(new real[] {7.1, 5});
 
 NewPad("$x\ung{mm}$", "$y\ung{mm}$");
 
-draw(shift(0, -sh_top[ui])*det_shape);
-draw(shift(0, -sh_bot[ui])*scale(1, -1)*det_shape);
+//draw(shift(0, -sh_top[ui])*det_shape, black+1pt);
+//draw(shift(0, -sh_bot[ui])*scale(1, -1)*det_shape, black+1pt);
 
-draw(shift(sh_hor[ui], 0)*rotate(-90)*hor_det_shape, blue);
+//draw(shift(sh_hor[ui], 0)*rotate(-90)*hor_det_shape, blue+1pt);
 
 //--------------------
 string f = topDir+"DS2b/alignment.root";
 string ff = topDir+"DS2b/alignment_fit.root";
 string dir = "period " + period + "/unit " + rps[ui];
 
-
 draw(xyswitch, rGetObj(f, dir+"/horizontal/horizontal graph fit/horizontal fit|merged"), "d", black);
-draw(xyswitch, rGetObj(f, dir+"/horizontal/horizontal graph fit/horizontal fit|ff"), "l", magenta + adashed);
-draw(xyswitch, rGetObj(f, dir+"/horizontal/horizontal profile/p"), "d0,eb", magenta+1pt);
+draw(xyswitch, rGetObj(f, dir+"/horizontal/horizontal graph fit/horizontal fit|ff"), "l", heavygreen + adashed);
+draw(xyswitch, rGetObj(f, dir+"/horizontal/horizontal profile/p"), "d0,eb", heavygreen+1pt);
+
+label(rotate(90)*Label("top RP"), (-4, 7), Fill(white+opacity(0.5)));
+label(rotate(90)*Label("bottom RP"), (-4, -6), Fill(white+opacity(0.5)));
 
 real l = 3, v = rGetObj(ff, rps[ui] + "/c_fit").rExec("Eval", 1e5) / 1e3;
-draw((-l, v)--(+l, v), heavygreen + adashed);
+draw((-l, v)--(+l, v), blue + adashed);
 
 //--------------------
 string fData = topDir+"DS2b/alignment_horizontal.root";
 string fFit = topDir+"DS2b/alignment_horizontal_fit.root";
 
 TGraph_x_min = 7;
-draw(rGetObj(fData, period+"/" + rps[ui]), "d", blue);
+draw(rGetObj(fData, period+"/" + rps[ui]), "d", black);
 draw(rGetObj(fFit, "period "+period+"/unit R_N/graph fit/horizontal fit|ff"), red+adashed);
 draw(rGetObj(fFit, "period "+period+"/unit R_N/profile/p"), "eb,d0", red+1pt);
 //limits((0, -2), (15, +2), Crop);
+
+label(rotate(90)*Label("horizontal RP"), (6.3, 5.5), Fill(white+opacity(0.5)));
 
 limits((-5, -10), (+15, +10), Crop);
 //AttachLegend(rp_labels[ui]);
