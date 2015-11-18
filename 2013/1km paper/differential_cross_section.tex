@@ -7,7 +7,7 @@ The analysis method is very similar to the previously published one \cite{8tev-9
 \subsection{Event Analysis}
 \label{sec:event analysis}
 
-Event kinematics are determined from track hits in RPs (after proper alignment, see Sec.~\ref{sec:alignment}) using the LHC optics (see Sec.~\ref{sec:optics}).
+The event kinematics are determined from track hits in RPs (after proper alignment, see Sec.~\ref{sec:alignment}) using the LHC optics (see Sec.~\ref{sec:optics}).
 
 %------------------------------
 
@@ -88,7 +88,7 @@ The residual errors induce a bias in the reconstructed scattering angles:
 	\theta_x^* \rightarrow (1 + d_x)\, \theta_x^*\ ,\qquad
 	\theta_y^* \rightarrow (1 + d_y)\, \theta_y^*\ .
 \end{equation}
-For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.34\un{\%}$ and $0.25\un{\%}$, respectively, and correlation factor of $-0.89$. These estimates include the effects of magnet harmonics. For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ into eigenvectors of the covariance matrix:
+For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.34\un{\%}$ and $0.25\un{\%}$, respectively, and a correlation factor of $-0.89$. These estimates include the effects of magnet harmonics. For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ into eigenvectors of the covariance matrix:
 \begin{equation}
 \label{eq:opt bias modes}
 \begin{pmatrix} d_x\cr d_y \end{pmatrix} =
@@ -233,7 +233,7 @@ The correction accounting for the above limitations includes two contributions -
 \begin{equation}
 {\cal A}(\theta^*, \theta_y^*) = {\cal A}_{\rm geom}(\theta^*)\ {\cal A}_{\rm fluct}(\theta_y^*)\ .
 \end{equation}
-The fiducial cuts in $\theta_x^*$ have been been given sufficient margin from the region with uncertain efficiency to render the respective fluctuation correction is negligible.
+The fiducial cuts in $\theta_x^*$ have been been given sufficient margin from the region with uncertain efficiency to render the respective fluctuation correction negligible.
 
 The calculation of the geometrical correction ${\cal A}_{\rm geom}$ is based on the azimuthal symmetry of elastic scattering, experimentally verified for the data within acceptance. As shown in Figure \ref{fig:acc corr princ}, for a given value of $\theta^*$ the correction is given by:
 \begin{equation}
@@ -244,7 +244,7 @@ The calculation of the geometrical correction ${\cal A}_{\rm geom}$ is based on 
 } \ .
 \end{equation}
 
-The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probability that any of the two elastic protons leaves the region of acceptance due to the vertical beam divergence. The beam divergence distribution is modelled as a Gaussian with the spread determined by the method described in Section~\ref{sec:resolution}. This correction contribution is only sizeable close to the acceptance limitations but is kept below $2.5$ by discarding data with larger corrections. The uncertainties are related to the resolution parameters. For the lowest $|t|$ bin their relative values are: vertical beam divergence: $2\un{\%}$, left-right asymmetry: $1\un{\%}$ and non-Gaussian shape: $1\un{\%}$.
+The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probability that any of the two elastic protons leaves the region of acceptance due to the vertical beam divergence. The beam divergence distribution is modelled as a Gaussian with the spread determined by the method described in Section~\ref{sec:resolution}. This correction contribution is only sizeable close to the acceptance limitations but is kept below $2.5$ by discarding data with larger corrections. The uncertainties are related to the resolution parameters. For the lowest $|t|$ bin their relative values are: vertical beam divergence: $2\un{\%}$, left-right asymmetry: $1\un{\%}$, and non-Gaussian shape: $1\un{\%}$.
 
 Figure \ref{fig:acc corr res} shows an example of the $t$-dependence of the acceptance correction for the close diagonal. Since a single diagonal cannot cover more than half of the phase space, the minimum value of the correction is $2$. The very low $|t|$ data points with the full correction larger than $10$ are discarded.
 
@@ -287,7 +287,7 @@ The full correction is calculated as
 \label{efficiency}
 	{\cal E}(\theta_y^*) = {1\over 1 - \left( \sum\limits_{i\in \rm RPs} {\cal I}^i_{3/4}(\theta_y^*) + 2 {\cal I}_{2/4} \right) } \ .
 \end{equation}
-The first term in the parentheses sums the contributions from the four RPs of a diagonal and grows from about $16$ to $18\un{\%}$ from the lowest to the highest $|\theta_y^*|$. These values are extraordinarily high (cf.~Section 5.2.4 in \cite{8tev-90m}) due the contribution from far RPs in the left arm which suffer, in addition, from showers created by beam halo in the horizontal RPs.
+The first term in the parentheses sums the contributions from the four RPs of a diagonal and grows from about $16$ to $18\un{\%}$ from the lowest to the highest $|\theta_y^*|$. These values are extraordinarily high (cf.~Section 5.2.4 in \cite{8tev-90m}) due the contribution from the far RPs in the left arm which suffer, in addition, from showers created by beam halo in the horizontal RPs.
 %The second term amounts to about $3\un{\%}$.
 
 \iffalse
@@ -303,9 +303,9 @@ The first term in the parentheses sums the contributions from the four RPs of a 
 \subsubsection{Unfolding of Resolution Effects}
 \label{sec:unfolding}
 
-Thanks to the very small beam divergence, the correction for resolution effects can be safely determined by the following iterative procedure. The differential cross-section data are fitted by a smooth curve which serves as an input to a numerical-integration based calculation of smeared $t$-distribution (using the resolution parameters determined in Section~\ref{sec:resolution}). Making a ratio of the smeared / non-smeared $t$-distributions gives a set of per-bin correction factors. Applying them to the yet uncorrected differential cross-section yields a better estimate of the true $t$-distribution, which can be used as input to the next iteration. The iterations stop when the difference between the input and output $t$-distributions becomes negligible, which is typically achieved after the second iteration. The final correction is negligible (${\cal U} \approx 1$) for all bins except at very low $|t|$ where the rapid cross-section growth occurs, see Figure~\ref{fig:unfolding}.
+Thanks to the very small beam divergence, the correction for resolution effects can be safely determined by the following iterative procedure. The differential cross-section data are fitted by a smooth curve which serves as an input to a numerical-integration based calculation of the smeared $t$-distribution (using the resolution parameters determined in Section~\ref{sec:resolution}). The ratio between the smeared and the non-smeared $t$-distributions gives a set of per-bin correction factors. Applying them to the yet uncorrected differential cross-section yields a better estimate of the true $t$-distribution, which can be used as input to the next iteration. The iterations stop when the difference between the input and output $t$-distributions becomes negligible, which is typically achieved after the second iteration. The final correction is negligible (${\cal U} \approx 1$) for all bins except at very low $|t|$ where the rapid cross-section growth occurs, see Figure~\ref{fig:unfolding}.
 
-For the uncertainty estimate, the uncertainties of $\theta_x^*$ and $\theta_y^*$ resolutions (accommodating the full time variation) as well as fit-model dependence have been considered, each contribution giving a few per-mille for the lowest-$|t|$ bin.
+For the uncertainty estimate, the uncertainties of the $\theta_x^*$ and $\theta_y^*$ resolutions (accommodating the full time variation) as well as fit-model dependence have been considered, each contribution giving a few per-mille for the lowest-$|t|$ bin.
 
 \begin{figure}
 \begin{center}
@@ -332,7 +332,7 @@ The normalisation ${\cal N}$ is determined by requiring the same cross-section i
 \subsubsection{Binning}
 \label{sec:binning}
 
-The binning has been optimised in view of three aspects. At very low $|t|$ where the cross-section varies the fastest ($\approx 0.001\un{GeV^2}$), a fine binning is used. In the middle of the $|t|$ range ($\approx 0.03\un{GeV^2}$), bin width is chosen to give about $1\un{\%}$ statistical uncertainty. This rule is abandoned at higher $|t|$ (above $0.07\un{GeV^2}$) in favour of bins with constant width of $0.01\un{GeV^2}$ to avoid excessively large bins.
+The binning has been optimised in view of three aspects. At very low $|t|$ where the cross-section varies the fastest ($\approx 0.001\un{GeV^2}$), a fine binning is used. In the middle of the $|t|$ range ($\approx 0.03\un{GeV^2}$), the bin width is chosen to give about $1\un{\%}$ statistical uncertainty. This rule is abandoned at higher $|t|$ (above $0.07\un{GeV^2}$) in favour of bins with constant width of $0.01\un{GeV^2}$ to avoid excessively large bins.
 
 
 %-------------------------
@@ -347,7 +347,7 @@ Two different methods are used to propagate the systematic effects into the $t$-
 \label{eq:syst mode}
 \delta s_{q}(t) \equiv \frac{\partial(\d\sigma/\d t)}{\partial q}\ \delta q\ ,
 \end{equation}
-where $\delta q$ corresponds to $1\un{\sigma}$ bias in the quantity $q$ responsible for a given systematic effect.
+where $\delta q$ corresponds to a $1\un{\sigma}$ bias in the quantity $q$ responsible for a given systematic effect.
 
 The Monte-Carlo simulations show that the combined effect of several systematic errors is well approximated by linear combination of the individual contributions from Eq.~(\ref{eq:syst mode}).
 
@@ -361,11 +361,11 @@ Compatible results have been obtained from data originating from different bunch
 
 
 
-%----------------------------------------------------------------------------------------------------
+ %----------------------------------------------------------------------------------------------------
 \subsection{Final Data Merging}
 \label{sec:final data merging}
 
-Finally, the differential cross-section histograms from both diagonals are merged. This is accomplished by a per-bin weighted average, with the weight given by inverse squared statistical uncertainty. The statistical and systematic uncertainties are propagated accordingly. For the systematic ones, the correlation between the diagonals is taken into account. For example the vertical (mis-)alignment of the RPs within one unit is almost fully correlated, thus the effect on differential cross-section is opposite in the two diagonals and consequently its impact is strongly reduced once the diagonals are merged.
+Finally, the differential cross-section histograms from both diagonals are merged. This is accomplished by a per-bin weighted average, with the weight given by inverse squared statistical uncertainty. The statistical and systematic uncertainties are propagated accordingly. For the systematic ones, the correlation between the diagonals is taken into account. For example the vertical (mis-)alignment of the RPs within one unit is almost fully correlated; thus the effect on the differential cross-section is opposite in the two diagonals and consequently its impact is strongly reduced once the diagonals are merged.
 
 The final cross-section is tabulated in Table~\ref{tab:data} and visualised in Figure~\ref{fig:dsdt}. The figure clearly shows a rapid cross-section rise below $|t| \lesssim 0.002\un{GeV^2}$, which will later be interpreted as an effect due to electromagnetic interaction.
 
@@ -383,7 +383,7 @@ Differential cross-section from Table \ref{tab:data} with statistical (bars) and
 \end{center}
 \end{figure*}
 
-The final systematic uncertainties are summarised in Figure~\ref{fig:syst unc} where their impact on the differential cross-section is shown. The leading uncertainties include normalisation, optics imperfections, beam momentum offset and residual misalignment. The vertical misalignment is the dominant systematic effect in the very low $|t|$ region. The leading effects are quantified in Table~\ref{tab:data}, which can be used to approximate the covariance matrix of systematic uncertainties:
+The final systematic uncertainties are summarised in Figure~\ref{fig:syst unc} where their impact on the differential cross-section is shown. The leading uncertainties include normalisation, optics imperfections, beam momentum offset and residual misalignment. The vertical misalignment is the dominant systematic effect in the very-low $|t|$ region. The leading effects are quantified in Table~\ref{tab:data}, which can be used to approximate the covariance matrix of systematic uncertainties:
 \begin{equation}
 \label{eq:covar mat}
 \mat V_{ij} = \sum_{q} \delta s_{q}(i)\ \delta s_{q}(j)\: ,
