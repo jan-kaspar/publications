@@ -195,17 +195,17 @@ $\Delta t_i$ representing the width of the $i$-th bin. Custom implementation of 
 \end{enumerate}
 
 
-The fits have shown extremely low sensitivity to a number of the above presented choices, summarised in the following list. 
+The fits have shown extremely low sensitivity to several of the above presented choices, summarised in the following list. 
 \begin{itemize}
 \item Choice of the form factor in Eq.~(\ref{eq:coul cs}). The options considered in \cite{elegent} have been tested, none of them giving any significant difference with respect to the default choice \cite{puckett10}.
-\item Extension of the nuclear modulus to non-measured $|t|$ region, see last paragraph in Section~\ref{sec:cni nuclear modulus}. No effect was observed when the high-$|t|$ part was altered (both shape and normalisation) nor when the size of the transition region was changed.
+\item Extension of the nuclear modulus to the unobserved $|t|$ region, see last paragraph in Section~\ref{sec:cni nuclear modulus}. No effect was observed when the high-$|t|$ part was altered (both shape and normalisation) nor when the size of the transition region was changed.
 \item The two variants of the KL formula, Eqs.~(\ref{eq:int kl}) and (\ref{eq:int kl exp}).
 \item Fit implementations A and B, manifesting the stability of the fit results.
-\item Fits with constant, standard and Bailly phase are practically indistinguishable. This can be expected from Fig.~\ref{fig:cni effect} showing that the corresponding CNI effects are very similar. Therefore, later on these phases will be treated as one family represented by the constant phase.
+\item Fits with constant, standard and Bailly phase are practically indistinguishable. This can be expected from Fig.~\ref{fig:cni effect} showing that the corresponding CNI effects are very similar. Therefore, in the remainder of this article, these phases will be treated as one family represented by the constant phase.
 \end{itemize}
 
 
-As anticipated above, one of the goals of this study is to probe the origin of the earlier observed differential cross-section non-exponentiality \cite{8tev-90m}. Therefore, the following two classes of fits were considered.
+As anticipated above, one of the goals of this study is to probe the origin of the differential cross-section non-exponentiality reported earlier~\cite{8tev-90m}. Therefore, the following two classes of fits were considered.
 \begin{itemize}
 \item Section \ref{sec:fit exp1}: fits with purely-exponential nuclear modulus, that is $N_b=1$ in Eq.~(\ref{eq:nuc mod}). In this case, the non-exponentiality must come from the CNI effects.
 \item Section \ref{sec:fit exp3}: fits with nuclear modulus flexible enough to describe the non-exponentiality without the CNI effects. Here, the non-exponentiality may be due to the nuclear modulus, CNI effects or both.
@@ -216,19 +216,19 @@ For each of these nuclear modulus cases, the following two phase parametrisation
 \item peripheral phase, Eq.~(\ref{eq:nuc phase per}) with parameters fixed to the values in Eq.~(\ref{eq:nuc phase per val}) to represent peripheral behaviour in the impact parameter space.
 \end{itemize}
 
-The results of any fit can be used to calculate the total cross-section via the optical theorem:
+In each case, the fit results can be used to calculate the total cross-section via the optical theorem:
 \begin{equation}
 \label{eq:si tot}
 \sigma_{\rm tot}^2 = {16\pi\, (\hbar c)^2\over 1 + \rho^2}\, a\ .
 \end{equation}
-Note that unlike all previous LHC analyses, in this report all the ingredients are obtained consistently from the same source.
+Note that unlike all previous total cross-section determinations at LHC, the present analysis obtains all the ingredients consistently from the same source.
 
 
 %----------------------------------------------------------------------------------------------------
-\subsection{Fits with Purely-Exponential Nuclear Modulus}
+\subsection{Fits with Purely Exponential Nuclear Modulus}
 \label{sec:fit exp1}
 
-The goal of this section is to test whether the data are compatible with purely-exponential nuclear modulus, i.e.~$N_b=1$ in Eq.~(\ref{eq:nuc mod}). In other words, the non-exponentiality is forced to originate in the Coulomb-induced effects. The fit results obtained with KL and SWY (where applicable) formulae are summarised in Table~\ref{tab:fit exp1} and shown in Fig.~\ref{fig:fit exp1}.
+The goal of this section is to test whether the data are compatible with a purely exponential nuclear modulus, i.e.~$N_b=1$ in Eq.~(\ref{eq:nuc mod}). In other words, the non-exponentiality is forced to originate from the Coulomb-induced effects. The fit results obtained with the KL and SWY (where applicable) formulae are summarised in Table~\ref{tab:fit exp1} and shown in Fig.~\ref{fig:fit exp1}.
 
 \begin{table}
 \caption{Fit results with $N_b=1$. Each column corresponds to a fit with different interference formula and/or nuclear phase.}
@@ -254,12 +254,12 @@ BOTTOM RIGHT: the effects induced by the Coulomb interaction for each of the fit
 \end{center}
 \end{figure*}
 
-Table~\ref{tab:fit exp1} shows that both fits with constant phase are essentially identical and have bad fit quality. The step-2 fit using both $\beta^*=1000$ and $90\un{m}$ data can be excluded with $7.6\un{\sigma}$ significance. Consequently, since the combination of $N_b=1$ and constant phase is the only compatible with the SWY formula, its application is excluded, too.
+Table~\ref{tab:fit exp1} shows that both fits with constant phase are essentially identical and have bad fit quality. The step-2 fit using both $\beta^*=1000$ and $90\un{m}$ data can be excluded with $7.6\un{\sigma}$ significance. Consequently, since the combination of $N_b=1$ and constant phase is the only one compatible with the SWY formula, its application is excluded, too.
 
 
 Although the quality of the fit with the peripheral phase is good, this option seems disfavoured from different perspectives.
 \begin{itemize}
-\item There are several theoretical reasons for the nuclear component being non-exponential, e.g.~\cite{kmr00-multiPom,kmr12-opacity,kmr15-slope}. Indeed, most elastic scattering models predict non-exponential nuclear modulus, see e.g.~\cite{elegent}.
+\item There are several theoretical reasons for the nuclear component to be non-exponential, e.g.~\cite{kmr00-multiPom,kmr12-opacity,kmr15-slope}. Indeed, most elastic scattering models predict a non-exponential nuclear modulus, see e.g.~\cite{elegent}.
 \item The value of $\rho$ obtained in this fit constitutes an outlier with respect to a consistent pattern of other fits from this report and extrapolations from lower energies: e.g.~\cite{fagundes11,block12,compete} and most models in \cite{elegent}.
 \end{itemize}
 Let us also recall that the good quality of this fit is possible due to the more complex KL formula where the CNI effects go beyond an additional phase in the traditional SWY concept.
@@ -269,7 +269,7 @@ Let us also recall that the good quality of this fit is possible due to the more
 \subsection{Fits with Non-Exponential Nuclear Modulus}
 \label{sec:fit exp3}
 
-The aim of this section is to discuss fits with enough flexibility in the nuclear modulus to describe the non-exponentiality in the data. For this, $N_b=2$ to $5$ were considered. The optimal degree was chosen according to two criteria: reasonable $\chi^2/\hbox{ndf}$ and stability of fit parameters (among which $\rho$ is one of the most sensitive). For instance, with constant phase the fit (step 1) with $N_b=2$ yields $\chi^2/\hbox{ndf} = 1.07$ and $\rho = 0.10$ while with $N_b=3$ gives $\chi^2/\hbox{ndf} = 1.03$ and $\rho = 0.12$. Both fits have the normalised $\chi^2$ reasonably close to $1$, but the value of $\rho$ changes significantly between $N_b=2$ and $3$ which is unexpected should $N_b=2$ be sufficient. On the other hand $N_b=4$ gives $\chi^2/\hbox{ndf} = 0.861$ which is unreasonably low. Therefore $N_b=3$ was chosen.
+The aim of this section is to discuss fits with enough flexibility in the nuclear modulus to describe the non-exponentiality in the data. For this purpose, $N_b=2$ to $5$ were considered. The optimal degree was chosen according to two criteria: reasonable $\chi^2/\hbox{ndf}$ and stability of fit parameters (among which $\rho$ is one of the most sensitive). For instance, with constant phase the fit (step 1) with $N_b=2$ yields $\chi^2/\hbox{ndf} = 1.07$ and $\rho = 0.10$ while the one with $N_b=3$ gives $\chi^2/\hbox{ndf} = 1.03$ and $\rho = 0.12$. Both fits have the normalised $\chi^2$ reasonably close to $1$, but the value of $\rho$ changes significantly between $N_b=2$ and $3$ which is unexpected should $N_b=2$ be sufficient. On the other hand $N_b=4$ gives $\chi^2/\hbox{ndf} = 0.861$ which is unreasonably low. Therefore $N_b=3$ was chosen.
 
 \iffalse
 * KL, exp2, con
@@ -288,11 +288,11 @@ last fit     : chi^2/ndf = 54.48/55 = 0.990, probability = 4.95E-01, significanc
 previous fit : chi^2/ndf = 20.66/24 = 0.861, probability = 6.59E-01, significance = 0.442
 \fi
 
-Since non-exponential hadronic modulus is used, the only applicable interference formula is KL.
+Since a non-exponential hadronic modulus is used, the only applicable interference formula is KL.
 
 As shown in Table~\ref{tab:fit exp3}, both fits yield very reasonable fit quality and remarkably consistent values of $\rho$ (identical within the resolution) which are compared to previous measurements in Fig.~\ref{fig:rho cmp exp3}.
 
-Fig.~\ref{fig:fit exp3} shows that the level of Coulomb-induced effects is very different in the fits. It is much stronger in the peripheral-phase case which can be expected as the phase features faster variation in the low-$|t|$ region.
+Fig.~\ref{fig:fit exp3} shows that the level of Coulomb-induced effects is very different in the fits. It is much stronger in the case of the peripheral-phase, which can be expected as this phase features a faster variation in the low-$|t|$ region.
 
 
 \begin{table}
@@ -323,7 +323,7 @@ BOTTOM RIGHT: the effects induced by the Coulomb interaction for each of the fit
 \begin{figure*}
 \begin{center}
 \includegraphics{fig/rho_s.pdf}
-\caption{Energy dependence of the $\rho$ parameter. The blue (green) triangles correspond to $\rm pp$ ($\rm \bar pp$) data from PDG \cite{pdg} -- note that most of these points were determined with the help of the SWY formula, shown inconsistent with the presented data. The hollow red dot stands for the earlier indirect determination by TOTEM \cite{epl101-tot}. The full red dot represents the two results from Table~\ref{tab:fit exp3} which are numerically identical within the resolution. The black curve gives the preferred $\rm pp$ model by COMPETE \cite{compete}, obtained without using LHC data.
+\caption{Energy dependence of the $\rho$ parameter. The blue (green) triangles correspond to $\rm pp$ ($\rm \bar pp$) data from PDG \cite{pdg} -- note that most of these points were determined with the help of the SWY formula, shown to be inconsistent with the presented data. The hollow red circle stands for the earlier indirect determination by TOTEM~\cite{epl101-tot}. The filled red circle represents the two results from Table~\ref{tab:fit exp3} which are numerically identical within the resolution. The black curve gives the preferred $\rm pp$ model by COMPETE~\cite{compete}, obtained without using LHC data.
 }%
 \label{fig:rho cmp exp3}
 \end{center}
@@ -333,12 +333,12 @@ BOTTOM RIGHT: the effects induced by the Coulomb interaction for each of the fit
 The total cross-section results from the two fits in Table~\ref{tab:fit exp3} are well consistent with each other and also with previous measurements \cite{8tev-90m,epl101-el}. The slightly higher values with respect to previous analyses neglecting the Coulomb interaction are expectable as long as $\rho > 0$. This leads to negative interference at low $|t|$ which, when separated, leads to an increase of nuclear cross-section intercept $a$ and thus also total cross-section via Eq.~(\ref{eq:si tot}).
 
 
-It is interesting to study the fit behaviour in the impact-parameter space. The scattering amplitude in this representation (often called profile function), ${\cal P}(b)$, can be obtained from the nuclear amplitude by means of Fourrier-Bessel transform (see e.g.~\cite{klk02}):
+It is interesting to study the fit behaviour in the impact-parameter space. The scattering amplitude in this representation (often called profile function), ${\cal P}(b)$, can be obtained from the nuclear amplitude by means of Fourier-Bessel transformation (see e.g.~\cite{klk02}):
 \begin{equation}
 \label{eq:prof fun}
 	{\cal P}(b) = {1\over 4 p \sqrt s} \int\limits_{-\infty}^0 \d t\,J_0(b\sqrt{-t})\,{\cal A}^{\rm N}(t)\ .
 \end{equation}
-The profile functions for the two fits from Table~\ref{tab:fit exp3} are shown in Figure~\ref{fig:bdist exp3}. The fit with constant nuclear phase gives a distribution peaked at $b=0$. It corresponds to a behaviour which is more central that for the fit with peripheral phase, where the most frequent impact parameter value is $b\approx 1.2\un{fm}$. This observation can be generalised to non-elastic channels, too. Following Section~3 in \cite{klk02}, one can calculate mean values of $b^2$ for elastic ($\langle b^2\rangle_{\rm el}$), inelastic ($\langle b^2\rangle_{\rm inel}$) or all ($\langle b^2\rangle_{\rm tot}$) collisions:
+The profile functions for the two fits from Table~\ref{tab:fit exp3} are shown in Figure~\ref{fig:bdist exp3}. The fit with constant nuclear phase gives a distribution peaked at $b=0$. It corresponds to a behaviour that is more central than for the fit with peripheral phase, where the most frequent impact parameter value is $b\approx 1.2\un{fm}$. This observation can be generalised to non-elastic channels, too. Following Section~3 in~\cite{klk02}, one can calculate mean values of $b^2$ for elastic ($\langle b^2\rangle_{\rm el}$), inelastic ($\langle b^2\rangle_{\rm inel}$) or all ($\langle b^2\rangle_{\rm tot}$) collisions:
 \begin{equation}
 \label{eq:ms b}
 	\langle b^2\rangle_j = {
