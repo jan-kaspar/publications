@@ -72,8 +72,8 @@ void PlotAllModes(string f)
 	PlotMode("offset from nominal", f, "beam-mom");
 
 	AddToLegend("<{\it unfolding}:");
-	PlotMode("$\th_x^*$ resolution uncertainty", f, "unsm-sigma-x");
-	PlotMode("$\th_y^*$ resolution uncertainty", f, "unsm-sigma-y");
+	PlotMode("$\theta_x^*$ resolution uncertainty", f, "unsm-sigma-x");
+	PlotMode("$\theta_y^*$ resolution uncertainty", f, "unsm-sigma-y");
 	PlotMode("model dependence", f, "unsm-model");
 
 	AddToLegend("<{\bf envelope of uncertainties}:");
