@@ -1,11 +1,9 @@
 \section{Introduction}
 \label{sec:introduction}
 
-Elastic scattering of protons is a process mediated by the strong and the electromagnetic interactions -- the weak interaction can be neglected since its carriers are heavy compared to the small momentum transfers, $|t|$, typical for elastic scattering. In this context, the strong interaction is traditionally called nuclear and the electromagnetic called Coulomb.
-\TODO{In quantum-theory description, each of the interactions is described by a scattering amplitude, nuclear ${\cal A}^{\rm N}(t)$ and Coulomb ${\cal A}^{\rm C}(t)$. Moreover, the combined scattering amplitude receives a third contribution reflecting Feynman diagrams with both strong and electromagnetic exchanges. The latter term, together with the complex character of the scattering amplitudes, is responsible for the effects of Coulomb-nuclear interference (CNI) in the differential cross-section.} Since the Coulomb amplitude is known, the Coulomb-nuclear interference (CNI) exposes the phase of the nuclear amplitude, which is necessary for a complete understanding of the interaction but not directly observable in the pure hadronic differential cross-section. The interference effect is most pronounced in the $t$-region where the two amplitudes have similar magnitudes, i.e. -- for typical LHC centre-of-mass energies of a few TeV -- near $|t| \sim 5 \times 10^{-4}\,\rm GeV^{2}$. \TODO{Thus the experimental sensitivity to 
-the nuclear phase, which for general nuclear amplitudes is a function of $t$, 
-is limited to a region at very small $|t|$, making any conclusions on the 
-functional form of the phase very difficult.}
+Elastic scattering of protons is a process mediated by the strong and the electromagnetic interactions -- the weak interaction can be neglected since its carriers are heavy compared to the small momentum transfers, $|t|$, typical for elastic scattering. In this context, the strong interaction is traditionally called nuclear or hadronic and the electromagnetic called Coulomb. In quantum-theory description, each of the interactions is described by a scattering amplitude, nuclear ${\cal A}^{\rm N}(t)$ and Coulomb ${\cal A}^{\rm C}(t)$. Moreover, the combined scattering amplitude receives a third contribution reflecting Feynman diagrams with both strong and electromagnetic exchanges. The latter term, together with the complex character of the scattering amplitudes, is responsible for the effects of Coulomb-nuclear interference (CNI) in the differential cross-section. Since the Coulomb amplitude is known, the CNI exposes the phase of the nuclear amplitude, which is necessary for a complete understanding of the interaction but not directly observable in the pure hadronic differential cross-section. The CNI effect is most pronounced in the $t$-region where the two amplitudes have similar magnitudes, i.e.~-- for typical LHC centre-of-mass energies of a few TeV -- near $|t| \sim 5 \times 10^{-4}\,\rm GeV^{2}$. Thus the experimental sensitivity to the nuclear phase, $\arg {\cal A}^{\rm N}(t)$, is limited to a region at very small $|t|$, making any conclusions on the 
+functional form of the phase difficult.
+
 In the analyses of past experiments -- see e.g.~\cite{plb43,plb66,npb141,prl47,plb115,plb120,plb128,npb262} 
 (ISR),~\cite{plb198,plb316} ($\rm S\bar{p}pS$),~\cite{prl68} (Tevatron) --
 typically a strongly simplified interference formula was used. This so-called
@@ -23,33 +21,30 @@ was traditionally quoted.
 An interesting aspect of $\rho$ is its predictive power on total cross-sections at higher centre-of-mass energies via dispersion 
 relations~\cite{dremin-dispersion}. 
 
+\TODO{add discussion on the source of non-exponentiality}
 The present article discusses the first measurement of elastic scattering in the
 CNI region at the CERN LHC by the TOTEM experiment. 
 The data have been collected at $\sqrt{s} = 8\,$TeV with a special beam optics 
-($\beta^{*}=1000\,$m, see Section~\ref{sec:beam optics}) and cover a $|t|$-interval from $6\times10^{-4}\,\rm GeV^{2}$ to 0.2\,GeV$^{2}$, extending well into 
-the interference region. 
+($\beta^{*}=1000\,$m, see Section~\ref{sec:beam optics}) and cover a $|t|$-interval from $6\times10^{-4}\,\rm GeV^{2}$ to 0.2\,GeV$^{2}$, extending well into the interference region. 
 In order to optimally constrain the modulus of the hadronic amplitude and thus enable a cleaner identification of the interference effects, 
-this analysis also exploits another, complementary data set with very strong statistical power, taken at the same energy but with different beam optics ($\beta^{*}=90\,$m) and covering a hadronically dominated $t$-range: 0.027\,GeV$^{2} < |t| < 0.2\,$GeV$^{2}$. \TODO{The isolated analysis of the
-latter data set~\cite{8tev-90m}, neglecting effects from Coulomb scattering, has already excluded a purely exponential hadronic elastic scattering
+this analysis also exploits another, complementary data set with very strong statistical power~\cite{8tev-90m}, taken at the same energy but with different beam optics ($\beta^{*}=90\,$m) and covering a hadronically dominated $t$-range: 0.027\,GeV$^{2} < |t| < 0.2\,$GeV$^{2}$. \TODO{The isolated analysis of the
+latter data set, neglecting effects from Coulomb scattering, has already excluded a purely exponential hadronic elastic scattering
 amplitude with more than $7\,\sigma$ confidence and thereby also refuted
 one of the conditions for the applicability of the SWY formula.}
+
+
+
+%
 Therefore the more general and complex Kundr\'{a}t-Lokaj\'{\i}\v{c}ek (KL) interference 
 formula~\cite{kl94} is applied in the present study, which offers much more freedom for the
 choice of the theoretically unknown functional forms of the hadronic modulus 
 and phase. Since the data cannot unambiguously determine all functional forms and their parameters, the results of this study, still representatively 
 expressed in terms of $\rho$, become conditional to the choice of the model 
 describing the hadronic amplitude. This choice has implications on the behaviour of the interaction in impact parameter space. In particular, the functional 
-form of the hadronic phase at $|t|>0$ determines whether elastic collisions occur predominantly at small or large impact parameters (centrality vs. peripherality). \TODO{A relevant question to be addressed in the discussion of the fit results is therefore whether the data have enough discrimination power to show any preference for either a central or a peripheral elastic scattering behaviour.}
+form of the hadronic phase at small $|t|$ determines whether elastic collisions occur predominantly at small or large impact parameters (centrality vs.~peripherality). \TODO{Finalise: both are compatible with our data.}
 
-The paper is organised as follows. \TODO{put into sentences}
-\begin{itemize}
-\item Section~\ref{sec:exp apparatus} outlines the experimental setup used for the measurement.
-\item Section~\ref{sec:beam optics} describes the properties of the special beam optics.
-\item Section~\ref{sec:data taking} gives details of the data-taking conditions.
-\item Section~\ref{sec:differential cross-section} describes the data analysis and reconstruction of the differential cross-section.
-\item Section~\ref{sec:coulomb} presents the study of the Coulomb-nuclear interference together with the functional form of the hadronic amplitude. As central
+The article is structured in the following way. Section~\ref{sec:exp apparatus} outlines the experimental setup used for the measurement. The properties of the special beam optics are described in Section~\ref{sec:beam optics}. Section~\ref{sec:data taking} gives details of the data-taking conditions. The data analysis and reconstruction of the differential cross-section are described in Section~\ref{sec:differential cross-section}. Section~\ref{sec:coulomb} presents the study of the Coulomb-nuclear interference together with the functional form of the hadronic amplitude. As central
 results, the values of $\rho$ and $\sigma_{\rm tot}$ are determined.
-\end{itemize}
 
 %In order to optimally exploit the information of all available data, the two 
 %data sets are analysed in a combined way, providing complementary constraints:
