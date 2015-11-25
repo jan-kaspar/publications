@@ -1,6 +1,7 @@
 all: elastic_1km_npb.pdf
 
 elastic_1km_npb.pdf: elastic_1km_npb.tex \
+		abstract.tex \
 		authorlist_npb.tex \
 		introduction.tex \
 		experimental_apparatus.tex \
