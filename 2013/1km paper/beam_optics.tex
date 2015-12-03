@@ -1,15 +1,7 @@
 \section{Beam Optics}
 \label{sec:beam optics}
 %
-%The beam optics relates the proton state at the IP to its state at the RP location. 
-%At the IP, the direction of a proton can be described by the scattering angle $\theta^*$ (with respect to the $z$ axis) and azimuthal angle $\phi^*$ (about the $z$ axis). Alternatively, the horizontal ($x$) and vertical ($y$) projections of the scattering angle can be used:
-%\begin{equation}
-%\label{eq:scatt angle}
-%\theta_x^* = \theta^* \cos\phi^*\ ,\qquad \theta_y^* = \theta^* \sin\phi^*\ .
-%\end{equation}
-The beam optics relates the proton state at the IP to its state at the RP location. 
-A proton emerging from the interaction vertex $(x^*$, $y^*)$ at the angle $(\theta_x^*,\theta_y^*)$ (relative to the $z$ axis) and with momentum $p\,(1+\xi)$, where $p$ is the nominal initial-state proton momentum, is transported along the outgoing beam through the LHC's dipole and quadrupole magnets. It finally 
-arrives at the RPs in the transverse position
+The beam optics relates the proton kinematical states at the IP and at the RP location. A proton emerging from the interaction vertex $(x^*$, $y^*)$ at the angle $(\theta_x^*,\theta_y^*)$ (relative to the $z$ axis) and with momentum $p\,(1+\xi)$, where $p$ is the nominal initial-state proton momentum, is transported along the outgoing beam through the LHC's dipole and quadrupole magnets. It arrives at the RPs in the transverse position
 \begin{equation}
 \label{eq:prot trans}
 x(z_{\rm RP}) = L_x(z_{\rm RP})\, \theta_x^*\ +\ v_x(z_{\rm RP})\, x^*\ +\ D_x(z_{\rm RP})\, \xi\ ,\quad y(z_{\rm RP}) = L_y(z_{\rm RP})\, \theta_y^*\ +\ v_y(z_{\rm RP})\, y^*\ +\ D_y(z_{\rm RP})\, \xi \quad
@@ -18,29 +10,12 @@ relative to the beam centre. This position is determined by the optical function
 the LHC magnet currents.
 The effective length $L_{x,y}(z)$, magnification $v_{x,y}(z)$ and dispersion $D_{x,y}(z)$ quantify the sensitivity of the measured proton position to the 
 scattering angle, vertex position and momentum loss, respectively.
+Note that for elastic collisions the dispersion terms $D\,\xi$ can be ignored because the protons do not lose any momentum. The values of $\xi$ only account for the initial state momentum offset and variations, see Section 4 in~\cite{8tev-90m}. Due to the collinearity of the two elastically scattered protons and the symmetry of the optics, the impact of $D\,\xi$ on the reconstructed scattering angles is negligible compared to other uncertainties.
 
-The data for the analysis presented here have been taken with a new, special optics, conventionally labelled by the value of the $\beta$-function at the interaction point, $\beta^{*} = 1000\,$m, and specifically developed for measuring low-$|t|$ elastic scattering.
-%Like the previously used $\beta^{*} = 90\,$m optics~\cite{epl96,epl101-el,epl101-tot,prl111}, this new optics configuration
-It provides parallel-to-point focussing in the vertical plane at the RP 
-position $z = 220\un{m}$ by maximising the effective length $L_{y}$ and 
-minimising the magnification $|v_{y}|$ at $z = 220\,$m (Table~\ref{tab:optics}).
+The data for the analysis presented here have been taken with a new, special optics, conventionally labelled by the value of the $\beta$-function at the interaction point, $\beta^{*} = 1000\,$m, and specifically developed for measuring low-$|t|$ elastic scattering. It maximises the vertical effective length $L_{y}$ at the RP position $z = 220\un{m}$ and minimises the vertical magnification $|v_{y}|$ at $z = 220\,$m (Table~\ref{tab:optics}). This configuration is called
+``parallel-to-point focussing'' because all protons with the same angle in the IP are focussed on one point in the RP at 220\,m. It optimises the sensitivity to the vertical projection of the scattering angle -- and hence to $|t|$ -- while minimising the influence of the vertex position. 
+In the horizontal projection the parallel-to-point focussing condition is not fulfilled, but -- unlike in the $\beta^{*} = 90\,$m optics used for previous measurements~\cite{epl96,epl101-el,epl101-tot,prl111} -- the effective length $L_{x}$ at $z = 220\,$m does not vanish, which helps in the reconstruction of the horizontal component of the scattering angle.
 %
-%the magnification $v_{y}$ is made to vanish whereas the 
-%effective length $L_{y}$ is maximised ($285\un{m}$ as compared to $260\un{m}$ for $\beta^{*} = 90\,$m). 
-This optimises the sensitivity to the scattering angle -- and hence to $|t|$ -- while minimising the influence of the vertex position.
-In addition, the beam divergence in the 
-interaction point is minimised, resulting in a small beam width 
-at the RP 
-%($\sigma_{y} = 260\,\mu$m as compared to 700\,$\mu$m for 
-%$\beta^{*} = 90\,$m, assuming a normalised transverse beam emittance of $\varepsilon \gamma = 3.5\,\mu$m\,rad). 
-By approaching the beam centre with the vertical RPs to a distance of only a few $\sigma_{y}$, an acceptance for $|t|$-values down to the order of $10^{-4}\,\rm GeV^{2}$ is obtained.
-
-[to be rewritten:]\\
-A further improvement relative to $\beta^{*} = 90\,$m is the non-vanishing 
-effective length in the horizontal plane, $L_{x} = 46\,$m at $z = 220\,$m, 
-enabling a better reconstruction of the horizontal component of the 
-scattering angle.
-
 \begin{table}
 \caption{
 Optical functions for elastic proton transport for the $\beta^{*} = 1000\,$m optics. The values refer to the right arm, for the left one they are very similar.
@@ -57,5 +32,4 @@ far  & $45.89\un{m}$ & $-0.761$ & $284.62\un{m}$ & $-0.017$ \cr
 \end{center}
 \end{table}
 
-Given that in elastic collisions the protons do not lose any momentum, the values of $\xi$ only account for the initial state momentum offset and variations, see Section 4 in~\cite{8tev-90m}. Due to the collinearity of the two elastically scattered protons and the symmetry of the optics, the impact of the dispersion terms $D\,\xi$ on the reconstructed scattering angles (Eq.~(\ref{eq:kin 2a})) is negligible compared to other uncertainties and thus the terms can and will be ignored here.
 
