@@ -1,20 +1,21 @@
 \section{Differential Cross-Section}
 \label{sec:differential cross-section}
 
-The analysis method is very similar to the previously published one \cite{8tev-90m} and is presented in two main blocks. Section~\ref{sec:event analysis} covers all aspects related to the reconstruction of a single event. Section~\ref{sec:diff cs} describes the steps of transforming a raw $t$-distribution into the differential cross-section. The $t$-distributions for the two diagonals are analysed separately. After comparison (Section~\ref{sec:cross checks}) they are finally merged (Section~\ref{sec:final data merging}).
+The analysis method is very similar to the previously published one \cite{8tev-90m}. Section~\ref{sec:event analysis} covers all aspects related to the reconstruction of a single event. Section~\ref{sec:diff cs} describes the steps of transforming a raw $t$-distribution into the differential cross-section. The $t$-distributions for the two diagonals are analysed separately. After comparison (Section~\ref{sec:cross checks}) they are finally merged (Section~\ref{sec:final data merging}).
 
 %----------------------------------------------------------------------------------------------------
 \subsection{Event Analysis}
 \label{sec:event analysis}
 
-The event kinematics are determined from track hits in RPs (after proper alignment, see Sec.~\ref{sec:alignment}) using the LHC optics (see Sec.~\ref{sec:optics}).
+The event kinematics are determined from the coordinates of track hits in the RPs after proper alignment (see Sec.~\ref{sec:alignment}) using the LHC optics (see Sec.~\ref{sec:optics}).
 
 %------------------------------
 
 \subsubsection{Kinematics Reconstruction}
 \label{sec:kinematics}
 
-The scattering angles and vertex position are first determined for each proton (i.e.~from each arm) separately by inverting the proton transport, Eq.~(\ref{eq:prot trans}), assuming $\xi = 0$. The following formulae optimise the robustness against optics imperfections:
+For each event candidate 
+the scattering angles and vertex position are first determined for both protons (one per arm) separately by inverting the proton transport equation~(\ref{eq:prot trans}), assuming $\xi = 0$. The following formulae optimise the robustness against optics imperfections:
 \begin{equation}
 \label{eq:kin 1a}
 	\theta_x^{*\rm L,R} = {v_x^{\rm N} x^{\rm F} - v_x^{\rm F} x^{\rm N}\over v_x^{\rm N} L_x^{\rm F} - v_x^{\rm F} L_x^{\rm N}}\ ,\qquad
