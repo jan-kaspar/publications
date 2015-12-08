@@ -48,7 +48,7 @@ void DrawBand(rObject bc, rObject unc, pen p)
 picture inset = new picture;
 currentpicture = inset;
 
-unitsize(4500mm, 0.045mm);
+unitsize(5000mm, 0.055mm);
 
 //currentpad.xTicks = LeftTicks(0.005, 0.001);
 //currentpad.yTicks = RightTicks(100., 20.);
@@ -57,7 +57,7 @@ DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_all"), p_full_band);
 DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_anal_all"), p_anal_band);
 draw(rGetObj(f, "g_data"), "p", black, mCi+1pt);
 
-limits((0, 3e2), (0.01, 1e3), Crop);
+limits((0, 4e2), (0.01, 1e3), Crop);
 
 xaxis(BottomTop, LeftTicks(0.005, 0.001).GetTicks());
 yaxis(LeftRight, RightTicks(100., 20.).GetTicks());
@@ -67,12 +67,12 @@ yaxis(LeftRight, RightTicks(100., 20.).GetTicks());
 
 //pad_collection.delete();
 
-NewPad("$|t|\ung{GeV^2}$", "$\d\si / \d t \ung{mb/GeV^2}$", 14cm, 7cm);
+NewPad("$|t|\ung{GeV^2}$", "$\d\si / \d t \ung{mb/GeV^2}$", 15cm, 7cm);
 scale(Linear, Log);
 currentpad.xTicks = LeftTicks(0.05, 0.01);
 //currentpad.yTicks = RightTicks(100., 20.);
 
-attach(bbox(inset, 1mm, nullpen, FillDraw(white)), (0.125, 1.6));
+attach(bbox(inset, 1mm, nullpen, FillDraw(white)), (0.125, 1.3));
 
 DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_all"), p_full_band);
 DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_anal_all"), p_anal_band);
@@ -85,10 +85,9 @@ AddToLegend("full systematic uncertainty band", mSq+6pt+p_full_band);
 AddToLegend("systematic uncertainty band", mSq+6pt+p_anal_band);
 AddToLegend("without normalisation");
 
-
 limits((0, 1e1), (0.203, 1e3), Crop);
 
 frame fL = BuildLegend(lineLength=5mm, ymargin=0mm, SW);
 AttachLegend(shift(10, 10) * fL, SW);
 
-GShipout(margin=1mm, hSkip=3mm);
+GShipout(margin=0mm, hSkip=3mm);
