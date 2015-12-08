@@ -64,10 +64,10 @@ DrawDet(ZRot(0)*shift(0, 0, z1));
 draw((-1, 1, z1-2)--(-1, 1, z1), black);
 dot((-1, 1, z1), black);
 
-label("stack of 10 detectors", (-3.7, 4.5));
+label("stack of 10", (-3.7, 4.5));
 label("detectors", (-3.7, 3.3));
 
 draw((-6.2, 3.8)--(-6.5, 2.6), EndArrow);
-draw((-1.3, 3.8)--(-1.0, 3.0), EndArrow);
+draw((-1.3, 4.0)--(-1.0, 3.0), EndArrow);
 
 shipout(bbox(0mm, Fill(white)));
