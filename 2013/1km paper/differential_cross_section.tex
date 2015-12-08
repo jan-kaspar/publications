@@ -15,16 +15,18 @@ The event kinematics are determined from the coordinates of track hits in the RP
 \label{sec:kinematics}
 
 For each event candidate 
-the scattering angles and vertex position are first determined for both protons (one per arm) separately by inverting the proton transport equation~(\ref{eq:prot trans}), assuming $\xi = 0$. The following formulae optimise the robustness against optics imperfections:
+the scattering angles and vertex positions of both protons (one per arm) are first determined separately by inverting the proton transport equation~(\ref{eq:prot trans}), assuming $\xi = 0$:
 \begin{equation}
 \label{eq:kin 1a}
 	\theta_x^{*\rm L,R} = {v_x^{\rm N} x^{\rm F} - v_x^{\rm F} x^{\rm N}\over v_x^{\rm N} L_x^{\rm F} - v_x^{\rm F} L_x^{\rm N}}\ ,\qquad
 	\theta_y^{*\rm L,R} = {1\over 2} \left( {y^{\rm N}\over L_y^{\rm N}} + {y^{\rm F}\over L_y^{\rm F}} \right)\ ,\qquad
 	x^{*\rm L,R} = {L_x^{\rm N} x^{\rm F} - L_x^{\rm F} x^{\rm N}\over L_x^{\rm N} v_x^{\rm F} - L_x^{\rm F} v_x^{\rm N}}\ , 
 \end{equation}
-where the N and F superscripts refer to the near and far units, L and R to the left and right arm, respectively. This one-arm reconstruction is used for tagging elastic events, where the left and right arm protons are compared.
+where the N and F superscripts refer to the near and far units, L and R to the left and right arm, respectively. 
+%The formulae optimise the robustness against optics imperfections:
+This one-arm reconstruction is used for tagging elastic events, where the left and right arm protons are compared.
 
-Once an event is selected, all four RPs can be used to reconstruct the kinematics of the event, in addition optimising for angular resolution (see Section \ref{sec:resolution}):
+Once a proton pair has been selected, all four RPs are used to reconstruct the kinematics of the event, optimising the angular resolution (see Section \ref{sec:resolution}):
 \begin{equation}
 \label{eq:kin 2a}
 		\theta_x^* = {
@@ -34,9 +36,9 @@ Once an event is selected, all four RPs can be used to reconstruct the kinematic
 			}\ ,\qquad
 		\theta_y^* = {1\over 4} \sum {y^i\over L_y^i}\ ,
 \end{equation}
-where the sums go over the superscripts $i$ representing the four RPs of a diagonal.
+where the sums run over the superscript $i$ representing the four RPs of a diagonal.
 
-Eventually, the full scattering angle, $\theta^*$, and four-momentum transfer squared, $t$, are calculated:
+Eventually, the scattering angle, $\theta^*$, and the four-momentum transfer squared, $t$, are calculated:
 
 \begin{equation}
 \label{eq:th t}
@@ -50,7 +52,8 @@ where $p$ denotes the beam momentum.
 \subsubsection{Alignment}
 \label{sec:alignment}
 
-The standard three-stage procedure \cite{totem-ijmp} has been applied: beam-based alignment prior to the run (as for LHC collimators) followed by two off-line methods. First, track-based alignment for relative positions among RPs, and second, alignment with elastic events for absolute position with respect to the beam -- performed in 15 minutes time periods to check for possible beam movements.
+TOTEM's usual three-stage procedure~\cite{totem-ijmp} for correcting the detector positions and rotation angles  
+has been applied: beam-based alignment prior to the run (as for LHC collimators) followed by two off-line methods. First, track-based alignment for relative positions among RPs, and second, alignment with elastic events for absolute position with respect to the beam -- performed in 15 minutes time periods to check for possible beam movements.
 
 This procedure has been further extended to improve the vertical alignment. The new steps exploit the fact that the elastic scattering with its two anti-collinear protons can relate the alignment in the left and right arm (with an uncertainty of $20\un{\mu m}$). Furthermore, the horizontal RPs in the right arm recorded a hit distribution usable for vertical alignment in addition to the standard technique based on the vertical RPs, see Figure~\ref{fig:align meth}.
 
