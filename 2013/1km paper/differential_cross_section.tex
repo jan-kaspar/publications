@@ -53,22 +53,22 @@ where $p$ denotes the beam momentum.
 \label{sec:alignment}
 
 TOTEM's usual three-stage procedure~\cite{totem-ijmp} for correcting the detector positions and rotation angles  
-has been applied: beam-based alignment prior to the run (as for LHC collimators) followed by two off-line methods. First, track-based alignment for relative positions among RPs, and second, alignment with elastic events for absolute position with respect to the beam -- performed in 15 minutes time periods to check for possible beam movements.
+has been applied: a beam-based alignment prior to the run followed by two offline methods. First, track-based alignment for relative positions among RPs, and second, alignment with elastic events for absolute position with respect to the beam -- repeated in 15 minutes time intervals to check for possible beam movements.
 
-This procedure has been further extended to improve the vertical alignment. The new steps exploit the fact that the elastic scattering with its two anti-collinear protons can relate the alignment in the left and right arm (with an uncertainty of $20\un{\mu m}$). Furthermore, the horizontal RPs in the right arm recorded a hit distribution usable for vertical alignment in addition to the standard technique based on the vertical RPs, see Figure~\ref{fig:align meth}.
+The offline procedure has been extended further to improve the vertical alignment. The new steps exploit the fact that elastic events with their two collinear protons relate the alignments in the left and right arm with an uncertainty of $20\un{\mu m}$. Furthermore, the horizontal RPs in the right arm recorded a hit distribution usable for vertical alignment in addition to the standard technique based on the vertical RPs, see Figure~\ref{fig:align meth}.
 
 \begin{figure}
 \begin{center}
 \includegraphics{fig/alignment_method.pdf}
 \caption{%
-Hit scatter plot in the right-far unit, corresponding to a period of 15 minutes. Black dots represent track hits in vertical and horizontal RPs. Track hits close to the sensor edges are removed because of possible bias due to acceptance effects.
-The green histogram shows the horizontal profile of hits in the vertical RPs, the dashed green line interpolates the profiles between the top and bottom RPs. Similarly, the red histogram gives the vertical profile of the hits in the horizontal RP and the dashed red line its extrapolation to the beam region. The blue dashed line indicates the vertical centre of symmetry of the hits in the vertical RPs (see \cite{totem-ijmp} for details). The crossing of the dashed lines represents the position the beam centre (the two vertical-alignment results are averaged).
+Hit scatter plot in the right-far unit, corresponding to a period of 15 minutes. The black dots represent track hits in the vertical and horizontal RPs. Track hits close to the sensor edges are removed because of possible bias due to acceptance effects.
+The green histogram shows the horizontal profile of hits in the vertical RPs, the dashed green line interpolates the profiles between the top and bottom RPs. Similarly, the red histogram gives the vertical profile of the hits in the horizontal RP and the dashed red line its extrapolation to the beam region. The blue dashed line indicates the vertical centre of symmetry of the hits in the vertical RPs (see \cite{totem-ijmp} for more details). The crossing of the dashed lines represents the position the beam centre (the two vertical-alignment results are averaged).
 }
 \label{fig:align meth}
 \end{center}
 \end{figure}
 
-Exploiting all the methods, the alignment uncertainties have been estimated to $30\un{\mu m}$ (horizontal shift), $70\un{\mu m}$ (vertical shift) and $2\un{m rad}$ (rotation about the beam axis). Propagating them through Eq.~(\ref{eq:kin 2a}) to reconstructed scattering angles yields $0.28\un{\mu rad}$ ($0.19\un{\mu rad}$) for horizontal (vertical) angle. RP rotations induce a bias in the reconstructed horizontal scattering angle:
+Exploiting all the methods, the alignment uncertainties have been estimated to $30\un{\mu m}$ (horizontal shift), $70\un{\mu m}$ (vertical shift) and $2\un{m rad}$ (rotation about the beam axis). Propagating them through Eq.~(\ref{eq:kin 2a}) to reconstructed scattering angles yields $0.28\un{\mu rad}$ ($0.19\un{\mu rad}$) for the horizontal (vertical) angle. RP rotations induce a bias in the reconstructed horizontal scattering angle:
 \begin{equation}
 \label{eq:alig rot bias}
 	\theta_x^* \rightarrow \theta_x^* + c \theta_y^*\ ,
@@ -76,15 +76,12 @@ Exploiting all the methods, the alignment uncertainties have been estimated to $
 where the proportionality constant $c$ has a mean of 0 and a standard deviation of $0.005$.
 
 
-% the observed hit inefficiencies -- possible asymmetries -- discuss ???
-% mention final alignment check = 2D Gaussian fit of $\theta_x^*$ vs.~$\theta_y^*$ from both diagonals ??
-
-
 %------------------------------
 
 \subsubsection{Optics}
 \label{sec:optics}
-In order to reduce the impact of imperfect optics knowledge, the LHC optics calibration \cite{totem-optics} has been applied. This method uses various RP observables to determine fine corrections to the optical functions presented in Eq.~(\ref{eq:prot trans}).
+It is crucial to know with high precision the LHC beam optics between IP5 and the RPs, i.e. the behaviour of the spectrometer composed of the various magnetic elements.
+The optics calibration has been applied as described in~\cite{totem-optics}. This method uses RP observables to determine fine corrections to the optical functions presented in Eq.~(\ref{eq:prot trans}).
 
 The residual errors induce a bias in the reconstructed scattering angles:
 \begin{equation}
@@ -92,7 +89,7 @@ The residual errors induce a bias in the reconstructed scattering angles:
 	\theta_x^* \rightarrow (1 + d_x)\, \theta_x^*\ ,\qquad
 	\theta_y^* \rightarrow (1 + d_y)\, \theta_y^*\ .
 \end{equation}
-For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.34\un{\%}$ and $0.25\un{\%}$, respectively, and a correlation factor of $-0.89$. These estimates include the effects of magnet harmonics. For evaluating the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ into eigenvectors of the covariance matrix:
+For the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), the biases $d_x$ and $d_y$ have uncertainties of $0.34\un{\%}$ and $0.25\un{\%}$, respectively, and a correlation factor of $-0.89$. These estimates include the effects of magnet harmonics. To evaluate the impact on the $t$-distribution, it is convenient to decompose the correlated biases $d_x$ and $d_y$ into eigenvectors of the covariance matrix:
 \begin{equation}
 \label{eq:opt bias modes}
 \begin{pmatrix} d_x\cr d_y \end{pmatrix} =
@@ -138,7 +135,7 @@ It increases from $0.75$ to $0.9\un{\mu rad}$ over the time of the fill. Subtrac
 \begin{center}
 \includegraphics{fig/resolutions_vs_time.pdf}
 \caption{%
-Angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), as a function of time (from the beginning of the run). The blue (red) dots correspond to the diagonal 45 bottom -- 56 top (45 top -- 56 bottom). The yellow bands indicate regions of uninterrupted data-taking.
+Angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), as a function of time (from the beginning of the run). The blue (red) dots correspond to the diagonal 45 bottom -- 56 top (45 top -- 56 bottom). The yellow bands indicate regions of uninterrupted data-taking, whereas in the remaining periods the beam cleaning procedure described in Section~\ref{sec:data taking} was performed.
 }
 \label{fig:resol final}
 \end{center}
@@ -178,18 +175,18 @@ number & cut & RMS ($\equiv 1\sigma$)\cr\hline
 \end{center}
 \end{table}
 
-The cuts used to select the elastic events are summarised in Table~\ref{tab:cuts}. Cuts 1 and 2 require the reconstructed-track collinearity between the left and right arm. Cut 3 ensures that the protons come from the same vertex (horizontally). The correlation plots corresponding to these cuts are shown in Figure~\ref{fig:cuts}. Thanks to the very low beam divergence, the collinearity cuts are very powerful, and consequently the other conceivable cuts (cf. Table~2 in~\cite{epl101-el}) bring no significant improvement.
+The cuts used to select the elastic events are summarised in Table~\ref{tab:cuts}. Cuts 1 and 2 require the reconstructed-track collinearity between the left and right arm. Cut 3 ensures that the protons come from the same vertex (horizontally). The correlation plots corresponding to these cuts are shown in Figure~\ref{fig:cuts}. Thanks to the very low beam divergence, the collinearity cuts are very powerful, and consequently other conceivable cuts (cf. Table~2 in~\cite{epl101-el}) bring no significant improvement.
 
-A Monte-Carlo study shows that applying the three cuts at a $3\un{\sigma}$ level would lead to a loss of about $0.5\un{\%}$ elastic events and therefore the cut threshold has been increased to $4\un{\sigma}$.
+Since a Monte-Carlo study shows that applying the three cuts at the $3\un{\sigma}$ level would lead to a loss of about $0.5\un{\%}$ of the elastic events, the cut threshold is set to $4\un{\sigma}$.
 
-The tagging efficiency has been studied by applying the cuts also at the $5\un{\sigma}$-level. This selection has yielded $0.3\un{\%}$ more events in every $|t|$-bin. This kind of inefficiency only contributes to a global scale factor and is irrelevant for the presented analysis because the normalisation is taken from a different data set (cf. Section~\ref{sec:normalisation}).
+The tagging efficiency has been studied by applying the cuts also at the $5\un{\sigma}$-level. This selection has yielded $0.3\un{\%}$ more events in every $|t|$-bin. This kind of inefficiency only contributes to a global scale factor, which is irrelevant for this analysis because the normalisation is taken from a different data set (cf. Section~\ref{sec:normalisation}).
 
 
 \begin{figure}
 \begin{center}
 \includegraphics{fig/cuts.pdf}
 \caption{%
-Correlation plots for the event selection cuts presented in Table~\ref{tab:cuts}, showing events with diagonal topology 45 top -- 56 bottom. The solid black lines delimit the signal region, i.e.~$\pm 4\un{\sigma}$.
+Correlation plots for the event selection cuts presented in Table~\ref{tab:cuts}, showing events with diagonal topology 45 top -- 56 bottom. The solid black lines delimit the signal region within $\pm 4\un{\sigma}$.
 }
 \label{fig:cuts}
 \end{center}
@@ -201,9 +198,9 @@ Correlation plots for the event selection cuts presented in Table~\ref{tab:cuts}
 \subsubsection{Background}
 \label{sec:background}
 
-As the RPs were very close to the beam, one may expect emphasized background from coincidence of beam halo protons hitting detectors in the two arms. The other background sources (pertinent to any elastic analysis) are: central diffraction and pile-up of two single diffraction events.
+As the RPs were very close to the beam, one may expect an enhanced background from coincidence of beam halo protons hitting detectors in the two arms. Other background sources (pertinent to any elastic analysis) are: central diffraction and pile-up of two single diffraction events.
 
-The background rate (i.e.~impurity of the elastic tagging) is studied by plotting the discriminators from Table~\ref{tab:cuts} under various cut combinations, see an example in Figure~\ref{fig:tag bckg}. While the central part (signal) remains essentially constant, the tails (background) are strongly suppressed with increasing number of cuts applied. This interpretation is further supported by the discriminator distributions from anti-diagonal RP configurations, see the dashed curves in the figure. While these top -- top or bottom -- bottom configurations cannot contain any elastic signal, they are likely to have a similar share of events causing background to the presented analysis. The background is barely observable and one can estimate $1 - {\cal B} < 10^{-4}$.
+The background rate (i.e.~impurity of the elastic tagging) is studied by plotting the discriminators from Table~\ref{tab:cuts} under various cut combinations, see an example in Figure~\ref{fig:tag bckg}. While the central part (signal) remains essentially constant, the tails (background) are strongly suppressed when the number of cuts is increased. This interpretation is further supported by the discriminator distributions from non-diagonal RP track configurations (\textit{45 bottom -- 56 bottom} or \textit{45 top -- 56 top}), artificially treated like diagonal signatures by inverting the coordinate signs in the arm 45; see the dashed distributions in the figure. These non-diagonal configurations cannot contain any elastic signal and hence consist purely of background. Since in background events diagonal and non-diagonal signatures are equally frequent, the number of non-diagonal events surviving the cuts will be similar to the number of background events remaining in the diagonal signal region. The background is barely observable and one can estimate $1 - {\cal B} < 10^{-4}$.
 
 
 \begin{figure}
@@ -221,7 +218,7 @@ Distributions of discriminator 1, i.e. the difference between the horizontal sca
 \subsubsection{Acceptance Correction}
 \label{sec:acc corr}
 
-The acceptance of elastic protons is limited by two factors: sensor coverage (relevant for low $|\theta^*_y|$) and LHC apertures (at $|\theta^*_y| \approx 100\un{\mu rad}$). Moreover, there is a phase-space region where elastic protons may interact with the horizontal RPs leading to uncertain detection efficiency. To avoid this region, an additional fiducial cut has been adopted: $-50 < \theta_x^* < 80\un{\mu rad}$. In the far vertical RPs, this restriction corresponds to about $-2.3 < x < 3.7\un{mm}$. All acceptance related cuts are visualised in Figure~\ref{fig:acc corr princ}.
+The acceptance of elastic protons is limited by two factors: sensor coverage (relevant for low $|\theta^*_y|$) and LHC beam aperture (at $|\theta^*_y| \approx 100\un{\mu rad}$). Moreover, there is a region in the kinematic parameter space where elastic protons may interact with the horizontal RPs leading to uncertain detection efficiency. To avoid this region, an additional fiducial cut has been adopted: $-50 < \theta_x^* < 80\un{\mu rad}$. In the far vertical RPs, this restriction corresponds to about $-2.3 < x < 3.7\un{mm}$. All acceptance related cuts are visualised in Figure~\ref{fig:acc corr princ}.
 
 \begin{figure}
 \begin{center}
@@ -233,7 +230,7 @@ Distribution of scattering angle projections $\theta_y^*$ vs.~$\theta_x^*$. The 
 \end{center}
 \end{figure}
 
-The correction accounting for the above limitations includes two contributions -- a geometrical correction ${\cal A}_{\rm geom}$ reflecting the fraction of the phase space within the acceptance and a component ${\cal A}_{\rm fluct}$ correcting for fluctuations around the vertical acceptance limitations:
+The correction for the above limitations includes two contributions -- a geometrical correction ${\cal A}_{\rm geom}$ reflecting the fraction of the phase space within the acceptance and a component ${\cal A}_{\rm fluct}$ correcting for fluctuations around the vertical acceptance limitations:
 \begin{equation}
 {\cal A}(\theta^*, \theta_y^*) = {\cal A}_{\rm geom}(\theta^*)\ {\cal A}_{\rm fluct}(\theta_y^*)\ .
 \end{equation}
@@ -248,9 +245,9 @@ The calculation of the geometrical correction ${\cal A}_{\rm geom}$ is based on 
 } \ .
 \end{equation}
 
-The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probability that any of the two elastic protons leaves the region of acceptance due to the vertical beam divergence. The beam divergence distribution is modelled as a Gaussian with the spread determined by the method described in Section~\ref{sec:resolution}. This correction contribution is only sizeable close to the acceptance limitations but is kept below $2.5$ by discarding data with larger corrections. The uncertainties are related to the resolution parameters. For the lowest $|t|$ bin their relative values are: vertical beam divergence: $2\un{\%}$, left-right asymmetry: $1\un{\%}$, and non-Gaussian shape: $1\un{\%}$.
+The correction ${\cal A}_{\rm fluct}$ is calculated analytically from the probability that any of the two elastic protons leaves the region of acceptance due to the vertical beam divergence. The beam divergence distribution is modelled as a Gaussian with the spread determined by the method described in Section~\ref{sec:resolution}. This contribution is sizeable only close to the acceptance limitations. Data from regions with corrections larger than $2.5$ are discarded. The uncertainties are related to the resolution parameters. For the lowest $|t|$ bin their relative values are: vertical beam divergence: $2\un{\%}$, left-right asymmetry: $1\un{\%}$, and non-Gaussian shape: $1\un{\%}$.
 
-Figure \ref{fig:acc corr res} shows an example of the $t$-dependence of the acceptance correction for the close diagonal. Since a single diagonal cannot cover more than half of the phase space, the minimum value of the correction is $2$. The very low $|t|$ data points with the full correction larger than $10$ are discarded to avoid biases. At the high-$|t|$ end all points are kept not to loose $|t|$ coverage.
+Figure~\ref{fig:acc corr res} shows an example of the $t$-dependence of the acceptance correction for the diagonal reaching lower $|t|$-values. Since a single diagonal cannot cover more than half of the phase space, the minimum value of the correction is $2$. The very low $|t|$ data points with the full correction larger than $10$ are discarded to avoid biases. At the high-$|t|$ end all data points are kept.
 
 
 \begin{figure}
