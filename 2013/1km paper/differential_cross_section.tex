@@ -269,7 +269,7 @@ Full acceptance correction, ${\cal A}$, for diagonal 45 bottom -- 56 top. The po
 
 Since the overall normalisation will be determined from another dataset (see Section~\ref{sec:normalisation}), any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (trigger, data acquisition and pile-up inefficiency discussed in~\cite{epl101-el,prl111}). The remaining inefficiencies are related to the inability of a RP to resolve the elastic proton track.
 
-One such case is when a single RP does not detect and/or reconstruct a proton track, with no correlation to other RPs. This type of inefficiency, ${\cal I}_{3/4}$, is evaluated by removing the RP from the tagging cuts (Table \ref{tab:cuts}), repeating the event selection and calculating the fraction of recovered events. A typical example is given in Figure~\ref{fig:eff 3/4}, showing that the efficiency decreases gently with the vertical scattering angle. This dependence originates from the fact that protons with larger $|\theta_y^*|$ hit the RPs further from their edge and therefore the potentially created secondary particles have more chance to induce additional signal in the sensors and thus prevent from resolving the elastic proton track.
+One such case is when a single RP does not detect and/or reconstruct a proton track, with no correlation to other RPs. This type of inefficiency, ${\cal I}_{3/4}$, is evaluated by removing the RP from the tagging cuts (Table \ref{tab:cuts}), repeating the event selection and calculating the fraction of recovered events. A typical example is given in Figure~\ref{fig:eff 3/4}, showing that the efficiency decreases gently with the vertical scattering angle. This dependence originates from the fact that protons with larger $|\theta_y^*|$ hit the RPs further from their edge and therefore the potentially created secondary particles have more chance to induce additional signal. Since the RP detectors can resolve only a single track, a secondary particle track prevents from using the affected RP in the analysis.
 
 \begin{figure}
 \begin{center}
@@ -288,7 +288,8 @@ The full correction is calculated as
 \label{efficiency}
 	{\cal E}(\theta_y^*) = {1\over 1 - \left( \sum\limits_{i\in \rm RPs} {\cal I}^i_{3/4}(\theta_y^*) + 2 {\cal I}_{2/4} \right) } \ .
 \end{equation}
-The first term in the parentheses sums the contributions from the four RPs of a diagonal and increases from about $16$ to $18\un{\%}$ from the lowest to the highest $|\theta_y^*|$. These values are extraordinarily high (cf.~Section 5.2.4 in \cite{8tev-90m}) due the contribution from the far RPs in the left arm which suffer, in addition, from showers created by beam halo in the horizontal RPs.
+The first term in the parentheses sums the contributions from the four RPs of a diagonal and increases from about $16$ to $18\un{\%}$ from the lowest to the highest $|\theta_y^*|$. These values are higher than in previous analyses (e.g.~Section 5.2.4 in \cite{8tev-90m}) due the contribution from the far RPs in the left arm. The reconstruction efficiency in these pots is decreased by showers initiated by beam halo protons in the horizontal RPs upstream.
+
 %The second term amounts to about $3\un{\%}$.
 
 \iffalse
