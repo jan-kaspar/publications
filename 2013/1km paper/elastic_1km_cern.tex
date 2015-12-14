@@ -23,59 +23,8 @@
 \def\S{\hbox to\wd123{\hss}}
 \def\.{\hbox to\wd124{\hss}}
 
-\def\Name#1{\textsc{#1}, }
-\def\REVIEW#1#2#3#4{{\it #1} {\bf #2} (#3) #4}
-
-%-----------------------------------------------------------------------------
-
-\def\hang{\hangindent=\parindent}
-
-\catcode`\>=11
-
-\newskip\itskip \itskip2mm
-\newskip\iitskip \iitskip0mm
-\newskip\iiitskip \iiitskip0mm
-
-\newdimen\itindent \itindent4mm
-\newdimen\iitindent \iitindent8mm
-\newdimen\iiitindent \iiitindent12mm
-
-\def\previcol{}
-
-\def\itcol{}
-\def\>{%
-	\par\vskip\itskip
-	\parindent\itindent\indent\hang
-	\itcol
-	\def\previcol{\itcol}%
-	\llap{\hbox to\itindent{$\bullet$\hss}}%
-}
-
-\def\>E{\par\vskip\itskip\parindent\itindent\indent\hang}
-
-\def\iitcol{}
-\def\>>{%
-	\par\vskip\iitskip
-	\parindent\iitindent\indent\hang
-	\iitcol
-	\def\previcol{\iitcol}%
-	{%
-		\advance\iitindent-\itindent
-		\llap{\hbox to\iitindent{$\circ$\hss}}%
-	}%
-}
-
-\def\iiitcol{}
-\def\>>>{%
-	\par\vskip\iiitskip
-	\parindent\iiitindent\indent\hang
-	\iiitcol
-	\def\previcol{\iiitcol}%
-	{%
-		\advance\iiitindent-\iitindent
-		\llap{\hbox to\iiitindent{--\hss}}%
-	}%
-}
+\def\Name#1{#1, }
+\def\Review#1#2#3#4{{\it #1} {\bf #2} (#3) #4}
 
 %----------------------------------------------------------------------------------------------------
 
@@ -91,16 +40,16 @@
 \EXPnumber{XXXX}
 \EXPdate{XXXX}
 
-\title{Measurement of Elastic pp Scattering at $\sqrt{\hbox{s}} = \hbox{8}$\,TeV in the 
-Coulomb-Nuclear Interference Region by the TOTEM Experiment at the CERN LHC}
+\title{Measurement of Elastic pp Scattering at $\sqrt{\hbox{s}} = \hbox{8}$\,TeV in the Coulomb-Nuclear Interference Region -- Determination of the $\mathbf{\rho}$-Parameter and the Total Cross-Section}
 
-\ShortTitle{Meas.~of Elastic pp Scattering at $\sqrt{\hbox{s}} = \hbox{8}$\,TeV in the 
-CNI Region by TOTEM}
+\ShortTitle{Meas.~of Elastic pp Scatt.~at $\sqrt{\hbox{s}} = \hbox{8}$\,TeV in the CNI Region -- Determination of $\rho$ and $\sigma_{\rm tot}$}
 
 \Collaboration{The TOTEM Collaboration}
+
 \ShortAuthor{The TOTEM Collaboration (G.~Antchev \emph{\etal})}
 
 \input authorlist_cern
+
 
 %\newpage
 \begin{abstract}
@@ -108,12 +57,13 @@ CNI Region by TOTEM}
 \end{abstract}
 \end{titlepage}
 
-
 %--------------------------------------------------
 
 \input introduction.tex
 
 \input experimental_apparatus.tex
+
+\input beam_optics.tex
 
 \input data_taking.tex
 
@@ -123,12 +73,11 @@ CNI Region by TOTEM}
 
 \input conclusions.tex
 
-%--------------------------------------------------
-
 \section*{Acknowledgements}
 \input acknowledgements.tex
 
 %--------------------------------------------------
+
 \begin{thebibliography}{99}
 \input bibliography.tex
 \end{thebibliography}
