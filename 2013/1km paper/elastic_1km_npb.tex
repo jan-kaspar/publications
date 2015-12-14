@@ -43,56 +43,6 @@
 
 %-----------------------------------------------------------------------------
 
-\def\hang{\hangindent=\parindent}
-
-\catcode`\>=11
-
-\newskip\itskip \itskip2mm
-\newskip\iitskip \iitskip0mm
-\newskip\iiitskip \iiitskip0mm
-
-\newdimen\itindent \itindent4mm
-\newdimen\iitindent \iitindent8mm
-\newdimen\iiitindent \iiitindent12mm
-
-\def\previcol{}
-
-\def\itcol{}
-\def\>{%
-	\par\vskip\itskip
-	\parindent\itindent\indent\hang
-	\itcol
-	\def\previcol{\itcol}%
-	\llap{\hbox to\itindent{$\bullet$\hss}}%
-}
-
-\def\>E{\par\vskip\itskip\parindent\itindent\indent\hang}
-
-\def\iitcol{}
-\def\>>{%
-	\par\vskip\iitskip
-	\parindent\iitindent\indent\hang
-	\iitcol
-	\def\previcol{\iitcol}%
-	{%
-		\advance\iitindent-\itindent
-		\llap{\hbox to\iitindent{$\circ$\hss}}%
-	}%
-}
-
-\def\iiitcol{}
-\def\>>>{%
-	\par\vskip\iiitskip
-	\parindent\iiitindent\indent\hang
-	\iiitcol
-	\def\previcol{\iiitcol}%
-	{%
-		\advance\iiitindent-\iitindent
-		\llap{\hbox to\iiitindent{--\hss}}%
-	}%
-}
-%-----------------------------------------------------------------------------
-
 \journal{Nuclear Physics B}
 
 \begin{document}
@@ -111,10 +61,11 @@
 
 \begin{keyword}
 proton-proton interactions \sep elastic scattering \sep Coulomb-Nuclear Interference \sep total cross-section \sep rho parameter \sep TOTEM \sep LHC
+\PACS 13.60.Fz % Elastic and Compton scattering
 \PACS 13.60.Hb % Total and inclusive cross sections (including deep-inelastic processes)
+\PACS 13.40.Ks % Electromagnetic corrections to strong- and weak-interaction processes
 \end{keyword}
 \end{frontmatter}
-
 
 %--------------------------------------------------
 
@@ -139,6 +90,7 @@ proton-proton interactions \sep elastic scattering \sep Coulomb-Nuclear Interfer
 \input acknowledgements.tex
 
 %--------------------------------------------------
+
 \begin{thebibliography}{99}
 \input bibliography.tex
 \end{thebibliography}
