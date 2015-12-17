@@ -86,7 +86,7 @@ for (int fi : fits.keys)
 	PlotOneFit(topDir + "/data/" + fits[fi], fitLabels[fi], p);
 }
 
-limits((0, 0), (3, 0.31), Crop);
+limits((0, 0), (3, 0.32), Crop);
 AttachLegend(NE, NE);
 
 		

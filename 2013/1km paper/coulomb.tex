@@ -46,7 +46,8 @@ At $|t| \gtrsim 0.02\un{GeV^2}$ the effects due to the Coulomb interaction are n
 \end{equation}
 where $N_b$ is the number of free parameters in the exponent. Consistently with \cite{8tev-90m}, the parameter $b_1$ gives the forward diffractive slope and $a$ the intercept of the differential cross-section at $t=0$. This parametrisation is also compatible with a number of theoretical models (see e.g.~\cite{elegent}).
 
-Since the calculation of CNI may, in principle, involve integrations (e.g.~Eq.~(\ref{eq:int kl})), it is necessary to extend the parametrisation meaningfully to $|t| > 0.2\un{GeV^2}$. Therefore, at $|t| > 0.5\un{GeV^2}$, the parametrisation follows a preliminary cross-section derived from the same data set as in \cite{8tev-90m} which features a dip-bump structure similar to the one observed at $\sqrt{s} = 7\un{TeV}$ \cite{epl95}. In the region $0.2 < |t| < 0.5\un{GeV^2}$ a smooth transition between the parametrisation in Eq.~(\ref{eq:nuc mod}) and the high-$|t|$ part is modelled. It will be shown that changing the high-$|t|$ part has negligible impact on the results presented later on.
+Since the calculation of CNI may, in principle, involve integrations (e.g.~Eq.~(\ref{eq:int kl})), it is necessary to extend the nuclear amplitude meaningfully to $|t| > 0.2\un{GeV^2}$. Therefore the parametrisation Eq.~(\ref{eq:nuc mod}) is only used for $|t| < 0.2\un{GeV^2}$ while at $|t| > 0.5\un{GeV^2}$ the amplitude is fixed to follow a preliminary cross-section derived from the same data set as in \cite{8tev-90m} which features a dip-bump structure similar to the one observed at $\sqrt{s} = 7\un{TeV}$ \cite{epl95}. In order to avoid numerical problems, the intermediate region $0.2 < |t| < 0.5\un{GeV^2}$ is modelled with a continuous and smooth interpolation between the low and high-$|t|$ parts. It will be shown that altering the extended part of the nuclear amplitude ($|t| > 0.2\un{GeV^2}$) within reasonable limits has negligible impact on the results presented later on.
+
 
 
 %------------------------------------------------------------------
@@ -73,7 +74,8 @@ A {\bf constant phase} is obviously the simplest choice:
 \label{eq:nuc phase con}
 \arg {\cal A}^{\rm N}(t) = {\pi\over 2} - \arctan\rho = \hbox{const} \quad .
 \end{equation}
-It leads to a strict proportionality between the real and the imaginary part of the amplitude at all $t$. This parametrisation is not compatible with Martin's theorem \cite{martin97} stating that, under some assumptions, the real part of an even-signature scattering amplitude must change sign at low $|t|$.
+It leads to a strict proportionality between the real and the imaginary part of the amplitude at all $t$.
+%This parametrisation is not compatible with Martin's theorem \cite{martin97} stating that, under some assumptions, the real part of an even-signature scattering amplitude must change sign at low $|t|$.
 
 % ***
 \item[b)]
@@ -92,7 +94,8 @@ The parametrisation by {\bf Bailly et al.}~\cite{bailly87}:
 	\arg {\cal A}^{\rm N}(t) = {\pi\over 2} - \arctan {\rho\over 1 - {t\over t_{\rm d}}}
 	%\arg {\cal A}^{\rm N}(t) = \arctan \left[ {1\over\rho} \left(1 - {t\over t_{\rm d}} \right) \right]\ ,
 \end{equation}
-where $t_{\rm d} \approx -0.53\un{GeV^2}$ gives the position of the diffractive minimum at $8\un{TeV}$ (preliminary result derived from the $\beta^* = 90\un{m}$ data \cite{8tev-90m}). This phase has a behaviour qualitatively similar to the model of Jenkovszky et al., see Figure~\ref{fig:phase illustration}. Like the constant phase, this parametrisation is not compatible with Martin's theorem~\cite{martin97}.
+where $t_{\rm d} \approx -0.53\un{GeV^2}$ gives the position of the diffractive minimum at $8\un{TeV}$ (preliminary result derived from the $\beta^* = 90\un{m}$ data \cite{8tev-90m}). This phase has a behaviour qualitatively similar to the model of Jenkovszky et al., see Figure~\ref{fig:phase illustration}.
+%Like the constant phase, this parametrisation is not compatible with Martin's theorem~\cite{martin97}.
 
 % ***
 \item[d)]
@@ -316,12 +319,13 @@ BOTTOM RIGHT: the effects induced by the Coulomb interaction for each of the fit
 The total cross-section results from the two fits in Table~\ref{tab:fit exp3} are well consistent with each other and also with previous measurements \cite{8tev-90m,prl111}. The slightly higher values with respect to previous analyses neglecting the Coulomb interaction are expected as long as $\rho > 0$. This gives negative interference at low $|t|$ and when separated leads to an increase of nuclear cross-section intercept $a$ and thus also total cross-section via Eq.~(\ref{eq:si tot}).
 
 
-It is interesting to study the fit behaviour in the impact-parameter space. The scattering amplitude in this representation (often called profile function), ${\cal P}(b)$, can be obtained from the nuclear amplitude by means of Fourier-Bessel transformation (see e.g.~\cite{klk02}):
+It is interesting to study the fit behaviour in the impact-parameter space. The scattering amplitude in this representation (sometimes called profile function), ${\cal P}(b)$, can be obtained from the nuclear amplitude by means of Fourier-Bessel transformation (see e.g.~\cite{klk02}):
 \begin{equation}
 \label{eq:prof fun}
-	{\cal P}(b) = {1\over 4 p \sqrt s} \int\limits_{-\infty}^0 \d t\,J_0(b\sqrt{-t})\,{\cal A}^{\rm N}(t)\ .
+	{\cal P}(b) = {1\over 4 p \sqrt s} \int\limits_{-\infty}^0 \d t\,J_0\left(b\sqrt{-t}\over \hbar c\right)\,{\cal A}^{\rm N}(t)\ ,\qquad
+	\hbox{normalised that } {\sigma_{\rm el} = 8\pi \int\limits_0^{+\infty} b\, \d b\, |{\cal P}(b)|^2}\ ,
 \end{equation}
-The profile functions for the two fits from Table~\ref{tab:fit exp3} are shown in Figure~\ref{fig:bdist exp3}. The fit with constant nuclear phase gives a distribution peaked at $b=0$. It corresponds to a behaviour that is more central than for the fit with peripheral phase, where the most frequent impact parameter value is $b\approx 1.2\un{fm}$. These considerations can be extended to inelastic channels. Following Section~3 in~\cite{klk02}, one can calculate the mean values of $b^2$ for elastic ($\langle b^2\rangle_{\rm el}$), inelastic ($\langle b^2\rangle_{\rm inel}$) or all ($\langle b^2\rangle_{\rm tot}$) collisions:
+where $\sigma_{\rm el}$ is the integrated elastic cross-section. The profile functions for the two fits from Table~\ref{tab:fit exp3} are shown in Figure~\ref{fig:bdist exp3}. The fit with constant nuclear phase gives a distribution peaked at $b=0$. It corresponds to a behaviour that is more central than for the fit with peripheral phase, where the amplitude modulus reaches maximum at $b\approx 1.2\un{fm}$. These considerations can be extended to inelastic channels. Following Section~3 in~\cite{klk02}, one can calculate the mean values of $b^2$ for elastic ($\langle b^2\rangle_{\rm el}$), inelastic ($\langle b^2\rangle_{\rm inel}$) or all ($\langle b^2\rangle_{\rm tot}$) collisions:
 \begin{equation}
 \label{eq:ms b}
 	\langle b^2\rangle_j = {
@@ -341,7 +345,7 @@ Their values reproduced in Figure~\ref{fig:bdist exp3} indicate that the fit wit
 \begin{center}
 \includegraphics{fig/fit_exp3/b_dist.pdf}
 \caption{%
-Squared amplitude of the profile function, ${\cal P}$, as a function of impact parameter, $b$. The two lines correspond to the fits in Table~\ref{tab:fit exp3}, using the same colour code as in Figure~\ref{fig:fit exp3}. The root-mean-squares of $b$ in the legend are calculated from Eq.~(\ref{eq:ms b}).
+Square of the impact-parameter amplitude, ${\cal P}$, as a function of impact parameter, $b$. The two lines correspond to the fits in Table~\ref{tab:fit exp3}, using the same colour code as in Figure~\ref{fig:fit exp3}. The root-mean-squares of $b$ in the legend are calculated from Eq.~(\ref{eq:ms b}).
 }%
 \label{fig:bdist exp3}
 \end{center}
