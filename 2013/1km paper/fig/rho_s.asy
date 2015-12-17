@@ -188,7 +188,7 @@ AddToLegend("TOTEM indirect at $\sqrt s = 7\un{TeV}$", red+0.8pt, mCi+false+3pt+
 //AddToLegend("TOTEM direct at $\sqrt s = 8\un{TeV}$", red+0.8pt, mCi+true+3pt+red);
 //AddToLegend("$\sqrt s = 8\un{TeV}$, $N_b=3$, constant", red+0.8pt, mTU+true+3pt+red);
 //AddToLegend("$\sqrt s = 8\un{TeV}$, $N_b=3$, peripheral", red+0.8pt, mTD+true+3pt+red);
-AddToLegend("this report, $\sqrt s = 8\un{TeV}$", red+0.8pt, mCi+true+3pt+red);
+AddToLegend("this article, $\sqrt s = 8\un{TeV}$", red+0.8pt, mCi+true+3pt+red);
 
 limits((1e1, -0.2), (2e4, +0.25), Crop);
 
