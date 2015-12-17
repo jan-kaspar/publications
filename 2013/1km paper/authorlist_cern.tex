@@ -35,10 +35,20 @@
 				#1\IIref{#2}{#3}%
 			\else
 				% primary, secondary and external affiliation
+				#1\IIAref{#2}{#3}{#4}%
 				\relax
 			\fi
 		\fi
 	\fi
+}
+
+%----------------------------------------------------------------------------------------------------
+% Add an author
+% USAGE: \AddCorrespondingAuthor{name}{primary affiliation}{secondary affiliation}{external affiliation}{footnote text}{email}
+
+\def\AddCorrespondingAuthor#1#2#3#4#5#6{%
+	\AddAuthor{#1}{#2}{#3}{*}%
+	\Anotfoot{*}{#5 E-mail address: #6.}
 }
 
 %----------------------------------------------------------------------------------------------------
