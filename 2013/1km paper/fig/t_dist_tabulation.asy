@@ -85,7 +85,7 @@ AddToLegend("full systematic uncertainty band", mSq+6pt+p_full_band);
 AddToLegend("systematic uncertainty band", mSq+6pt+p_anal_band);
 AddToLegend("without normalisation");
 
-limits((0, 1e1), (0.203, 1e3), Crop);
+limits((0, 1e1), (0.2, 1e3), Crop);
 
 frame fL = BuildLegend(lineLength=5mm, ymargin=0mm, SW);
 AttachLegend(shift(10, 10) * fL, SW);
