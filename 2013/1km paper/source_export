@@ -1,0 +1,23 @@
+#!/bin/bash
+
+tar czvf "elastic_1km_sources.tar.gz"\
+	elsarticle.cls \
+	elastic_1km_npb.tex \
+	authorlist_npb.tex \
+	authorlist_data.tex \
+	abstract.tex \
+	introduction.tex \
+	experimental_apparatus.tex \
+	beam_optics.tex \
+	data_taking.tex \
+	differential_cross_section.tex \
+	data_table.tex \
+	coulomb.tex \
+	conclusions.tex \
+	acknowledgements.tex \
+	bibliography.tex \
+	fig/*.pdf \
+	fig/fit_exp1/*.pdf \
+	fig/fit_exp1/*.tex \
+	fig/fit_exp3/*.pdf \
+	fig/fit_exp3/*.tex
