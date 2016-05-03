@@ -17,7 +17,7 @@ The amplitude describing elastic scattering of protons may be expected to receiv
 \begin{itemize}
 \item Containing QED elements only. This amplitude can be obtained by perturbative calculations, see Section~\ref{sec:cni coulomb}.
 \item Containing QCD elements only. This amplitude is not directly calculable from the QCD lagrangian, Sections~\ref{sec:cni nuclear modulus} and \ref{sec:cni nuclear phase} will propose several phenomenologically motived parame\-trisations.
-\item Containing both QED and QCD elements. This contribution can neither be directly calculated from the Lagrangians, nor can \textit{ad hoc} parametrisations be used -- this amplitude is correlated with the previous two. Section~\ref{sec:cni interference} will introduce two interference formulae attempting to calculate the corresponding effects.
+\item Containing both QED and QCD elements. This contribution can neither be directly calculated from the Lagrangians, nor can \textit{ad hoc} parametrisations be used -- this amplitude is correlated with the previous two. Section~\ref{sec:cni interference} will introduce several interference formulae attempting to calculate the corresponding effects.
 \end{itemize}
 
 %------------------------------------------------------------------
@@ -44,7 +44,9 @@ At $|t| \gtrsim 0.02\un{GeV^2}$ the effects due to the Coulomb interaction are n
 \label{eq:nuc mod}
 \left | {\cal A}^{\rm N}(t) \right | = \sqrt{s\over\pi} {p\over \hbar c} \sqrt{a} \exp\left( {1\over 2} \sum\limits_{n = 1}^{N_b} b_n\, t^n \right)\ ,
 \end{equation}
-where $N_b$ is the number of free parameters in the exponent. Consistently with \cite{8tev-90m}, the parameter $b_1$ gives the forward diffractive slope and $a$ the intercept of the differential cross-section at $t=0$. This parametrisation is also compatible with a number of theoretical models (see e.g.~\cite{elegent}).
+where $N_b$ is the number of free parameters in the exponent. Consistently with \cite{8tev-90m} \footnote{%
+Please note that Eq.~(15) in \cite{8tev-90m} contains a misprint: the exponent should have read $\sum\limits_{i=1}^{N_b} b_i\, |t|^i$.
+}, the parameter $b_1$ gives the forward diffractive slope and $a$ the intercept of the differential cross-section at $t=0$. This parametrisation is also compatible with a number of theoretical models (see e.g.~\cite{elegent}).
 
 Since the calculation of CNI may, in principle, involve integrations (e.g.~Eq.~(\ref{eq:int kl})), it is necessary to extend the nuclear amplitude meaningfully to $|t| > 0.2\un{GeV^2}$. Therefore the parametrisation Eq.~(\ref{eq:nuc mod}) is only used for $|t| < 0.2\un{GeV^2}$ while at $|t| > 0.5\un{GeV^2}$ the amplitude is fixed to follow a preliminary cross-section derived from the same data set as in \cite{8tev-90m} which features a dip-bump structure similar to the one observed at $\sqrt{s} = 7\un{TeV}$ \cite{epl95}. In order to avoid numerical problems, the intermediate region $0.2 < |t| < 0.5\un{GeV^2}$ is modelled with a continuous and smooth interpolation between the low and high-$|t|$ parts. It will be shown that altering the extended part of the nuclear amplitude ($|t| > 0.2\un{GeV^2}$) within reasonable limits has negligible impact on the results presented later on.
 
@@ -53,15 +55,6 @@ Since the calculation of CNI may, in principle, involve integrations (e.g.~Eq.~(
 %------------------------------------------------------------------
 \subsubsection{Nuclear Amplitude -- Phase}
 \label{sec:cni nuclear phase}
-
-\begin{figure*}
-\begin{center}
-\includegraphics{fig/hadronic_phase_illustration.pdf}
-\caption{Illustration of nuclear-phase forms. The dashed lines correspond to predictions by theoretical models (\cite{elegent} and references therein). The solid lines are typical examples of phases used in this report, all with the same value of $\rho = 0.10$. The peripheral example corresponds to the parameter values in Eq.~(\ref{eq:nuc phase per val}).
-}
-\label{fig:phase illustration}
-\end{center}
-\end{figure*}
 
 The following phase parametrisations are considered.
 
@@ -113,6 +106,16 @@ can have a rapid variation at low $|t|$, then peaks at $t = -\kappa / \nu$ and a
 \end{equation}
 \end{enumerate}
 
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/hadronic_phase_illustration.pdf}
+\caption{Illustration of nuclear-phase forms. The dashed lines correspond to predictions by theoretical models (\cite{elegent} and references therein). The solid lines are typical examples of phases used in this report, all with the same value of $\rho = 0.10$. The peripheral example corresponds to the parameter values in Eq.~(\ref{eq:nuc phase per val}).
+}
+\label{fig:phase illustration}
+\end{center}
+\end{figure*}
+
+
 Figure~\ref{fig:phase illustration} shows on the same plot a comparison of phase predictions by several models to typical examples of parametrisations proposed above.
 
 It should be noted that the nuclear phase has a strong influence on the amplitude behaviour in the space of impact parameter $b$ (for a detailed discussion see e.g.~Section~3 in~\cite{klk02}). A particularly decisive feature is the rate of phase variation at low $|t|$. Looking at Figure~\ref{fig:phase illustration} one can see that the constant, standard and Bailly phases are essentially flat at low $|t|$, thus leading to qualitatively similar pictures in the impact parameter space: elastic collisions being more central (preferring lower values of $b$) than the inelastic ones. Conversely, the peripheral phase parametrisation can yield a description with the opposite hierarchy, which is argued to be more natural by some authors (e.g. Section~4 in~\cite{kl96}). An impact-parameter study of the presented data will be given at end of Section~\ref{sec:fit exp3}.
@@ -129,17 +132,20 @@ The {\bf simplified West-Yennie formula (SWY)} \cite{wy68} was derived in the fr
 \end{equation}
 where $\alpha$ is the fine-structure constant and $\gamma \doteq 0.577$ the Euler constant. Despite the many limitations, the formula has been extensively used in past data analyses. For backward-comparison reasons it is also considered in this report.
 
-\begin{figure*}
-\begin{center}
-\includegraphics{fig/cni_effect_illustration.pdf}
-\caption{%
-Illustration of the effects due to the Coulomb interaction, using the KL formula. For the SWY formula, the picture is similar, however it misses the effects at $|t| \gtrsim 0.02\un{GeV^2}$. The curves show a response of the interference formula to different nuclear phases with a purely exponential nuclear modulus. The solid curves correspond to phases of the same shape (constant) but different values of $\rho$: the maximal response can be seen at $|t| \lesssim 0.01\un{GeV^2}$. Conversely, the dashed lines correspond to phases with fixed $\rho$ but various shapes (the same examples as in Figure~\ref{fig:phase illustration}): the response is sizeable at $|t| \gtrsim 0.02\un{GeV^2}$.
-}
-\label{fig:cni effect}
-\end{center}
-\end{figure*}
+The approach of {\bf Cahn} \cite{cahn82} uses an impact parameter formalism and is based on the additivity of eikonals. The first part of his derivation does not impose any limit on the nuclear amplitude, leading to a formula (Eq.~(30) in \cite{cahn82}):
+\begin{equation}
+\label{eq:int cahn}
+	\begin{aligned}
+		{\d\sigma\over \d t}^{\rm C+N} &= {\pi (\hbar c)^2 \over s p^2} \left | -{\alpha s\over q^2} {\cal F}^2
+			+ {\cal A}^{\rm N}\, \Big[1 - \I\alpha G(-q^2)\Big] \right |^2\ ,\cr
+		G(-q^2) &= - \int\limits_0^\infty \d q'^2 \log {q'^2\over q^2} {\d\phantom{q'^2}\over \d q'^2} {\cal F}^2(-q^2)
+					+ {1\over\pi} \int\d^2 q' {{\cal F}^2(-q'^2)\over q'^2} \left[ {{\cal A}^{\rm N}\left(-[\vec{q} - \vec{q'}]^2\right) \over {\cal A}^{\rm N}(-q^2)} - 1 \right]
+			\ , \cr
+	\end{aligned}
+\end{equation}
+where $t=-q^2$, $\vec{q'}$ is a two-dimensional vector and $q'^2 = |\vec{q'}|^2$. The second part of the article gives simplified formulae for nuclear amplitudes with purely-exponential modulus and constant phase and is, thus, of limited interest for the presented analysis.
 
-The {\bf Kundr\' at-Lokaj\' i\v cek formula (KL)} \cite{kl94}, generalising the work of Cahn \cite{cahn82}, was derived in an impact parameter formalism and is based on the additivity of eikonals. The derivation does not impose any limit on the nuclear amplitude, and the formula naturally incorporates the electromagnetic form factor:\footnote{%
+{\bf Kundr\' at and Lokaj\' i\v cek (KL)} \cite{kl94} transformed the formula of Cahn, Eq.~(\ref{eq:int cahn}), into a form better suited for practical applications and added the kinematic limits on the momentum transfer: \footnote{%
 Note that some recent publications by the same authors (e.g.~\cite{kl05,kklp11}) contain a misprint: the wrong sign in front of the second term contributing to $G(t)$.
 }
 \begin{equation}
@@ -160,9 +166,22 @@ A slightly different variant proposed in Eq.~(22) in~\cite{kl05} was considered,
 	{\d\sigma\over \d t}^{\rm C+N} = {\pi (\hbar c)^2 \over s p^2} \left | {\alpha s\over t} {\cal F}^2
 		+ {\cal A}^{\rm N}\, \e^{- \I\alpha G(t)} \right |^2 \ .
 \end{equation}
-Since the quantity $G$ is complex, the interference effects in this treatment are generally more feature-rich than with the SWY formula, Eq.~(\ref{eq:int swy}), where the interference is reduced to a single additional phase $\Phi$.
 
-By analysing Eqs.~(\ref{eq:int swy}) and (\ref{eq:int kl}), one can conclude that in the region where the nuclear amplitude dominates ($|t| \gtrsim 0.003\un{GeV^2}$), the effects due to the Coulomb interaction are of the order of $\alpha$ or the ratio $|{\cal A}^{\rm C}| / |{\cal A}^{\rm N}|$. In both cases, the magnitude of the interference effects can be expected at a percent level, as shown in Figure~\ref{fig:cni effect}. The figure also shows that the effects at different $|t|$ probe different parts of the nuclear phase: maximum sensitivity to $\rho$ lies at very low $|t|$ while at higher $|t|$ the effects are sensitive to phase values at slightly higher $|t|$. It can also be observed that for the constant, standard and Bailly phase the effects are very similar and rather mild at higher $|t|$. This can be understood from a very limited variation of the phase at low $|t|$, which is the region contributing most to the integral in Eq.~(\ref{eq:int kl}). On the contrary, the higher $|t|$ response to peripheral phases can have various forms, often similar to the deviation of the reconstructed cross-section from pure-exponential, see the top plots in Figures~\ref{fig:fit exp1} and~\ref{fig:fit exp3}.
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/cni_effect_illustration.pdf}
+\caption{%
+Illustration of the effects due to the Coulomb interaction, using the KL formula. With the Cahn formula the plot looks identical. For the SWY formula, the picture is similar, however it misses the effects at $|t| \gtrsim 0.02\un{GeV^2}$. The curves show a response of the interference formula to different nuclear phases with a purely exponential nuclear modulus. The solid curves correspond to phases of the same shape (constant) but different values of $\rho$: the maximal response can be seen at $|t| \lesssim 0.01\un{GeV^2}$. Conversely, the dashed lines correspond to phases with fixed $\rho$ but various shapes (the same examples as in Figure~\ref{fig:phase illustration}): the response is sizeable at $|t| \gtrsim 0.02\un{GeV^2}$.
+}
+\label{fig:cni effect}
+\end{center}
+\end{figure*}
+
+The interference formula by Cahn, Eq.~(\ref{eq:int cahn}), and the KL formula, Eq.~(\ref{eq:int kl}), are very similar by construction and therefore they give practically identical interference effects.
+
+Since the quantities $G$ in Eqs.~(\ref{eq:int cahn}) and (\ref{eq:int kl}) are complex, the interference effects in these treatments are generally more feature-rich than with the SWY formula, Eq.~(\ref{eq:int swy}), where the interference is reduced to a single additional phase $\Phi$.
+
+By analysing Eqs.~(\ref{eq:int swy}), (\ref{eq:int cahn}) and (\ref{eq:int kl}), one can conclude that in the region where the nuclear amplitude dominates ($|t| \gtrsim 0.003\un{GeV^2}$), the effects due to the Coulomb interaction are of the order of $\alpha$ or the ratio $|{\cal A}^{\rm C}| / |{\cal A}^{\rm N}|$. In both cases, the magnitude of the interference effects can be expected at a percent level, as shown in Figure~\ref{fig:cni effect}. The figure also shows that the effects at different $|t|$ probe different parts of the nuclear phase: maximum sensitivity to $\rho$ lies at very low $|t|$ while at higher $|t|$ the effects are sensitive to phase values at slightly higher $|t|$. It can also be observed that for the constant, standard and Bailly phase the effects are very similar and rather mild at higher $|t|$. This can be understood from a very limited variation of the phase at low $|t|$, which is the region contributing most to the integral in Eq.~(\ref{eq:int cahn}) or (\ref{eq:int kl}). On the contrary, the higher $|t|$ response to peripheral phases can have various forms, often similar to the deviation of the reconstructed cross-section from pure-exponential, see the top plots in Figures~\ref{fig:fit exp1} and~\ref{fig:fit exp3}.
 
 
 %----------------------------------------------------------------------------------------------------
@@ -189,7 +208,8 @@ The fits have shown low sensitivity to several of the above presented choices, s
 \begin{itemize}
 \item Choice of the form factor in Eq.~(\ref{eq:coul cs}). The options considered in \cite{elegent} have been tested, none of them giving any significant difference with respect to the default choice \cite{puckett10}.
 \item Extension of the modulus of the nuclear amplitude to the unobserved $|t|$ region, see the last paragraph in Section~\ref{sec:cni nuclear modulus}. No effect was observed when the high-$|t|$ part was altered (both shape and normalisation) nor when the size of the transition region was changed.
-\item The two variants of the KL formula, Eqs.~(\ref{eq:int kl}) and (\ref{eq:int kl exp}).
+\item Use of the Cahn or KL formula. Only the latter will be used in what follows to represent both of them.
+\item The two variants of the KL formula, Eqs.~(\ref{eq:int kl}) and (\ref{eq:int kl exp}). The latter will be used below.
 \item Fits with constant, standard and Bailly phase are practically indistinguishable. This can be expected from Fig.~\ref{fig:cni effect} showing that the corresponding CNI effects are very similar. Therefore, in the remainder of this article, these phases will be treated as a single family represented by the constant phase.
 \end{itemize}
 
@@ -276,7 +296,7 @@ last fit     : chi^2/ndf = 54.48/55 = 0.990, probability = 4.95E-01, significanc
 previous fit : chi^2/ndf = 20.66/24 = 0.861, probability = 6.59E-01, significance = 0.442
 \fi
 
-As shown in Table~\ref{tab:fit exp3}, both fits have reasonable fit quality and remarkably consistent values of $\rho$ (identical within the resolution) which are compared to previous determinations at lower energies in Fig.~\ref{fig:rho cmp exp3}. Let us repeat that the parameters of the nuclear amplitude ($a$ and $b_i$) are consistent between step 1 ($\beta^*=1000\un{m}$ data only) and step 2 (both $\beta^* = 1000$ and $ 90\un{m}$ data) of the fitting procedure.
+As shown in Table~\ref{tab:fit exp3}, both fits have reasonable fit quality and remarkably consistent values of $\rho$ (identical within the resolution) which are compared to previous determinations at lower energies in Fig.~\ref{fig:rho cmp exp3}. Take note that the obtained parameters for the nuclear amplitude ($a$ and $b_i$) are consistent between step 1 ($\beta^* = 1000\un{m}$ data only) and step 2 (both $\beta^* = 1000$ and $90\un{m}$ data) of the fitting procedure as already mentioned in Section~\ref{sec:cni anal proc}.
 
 Fig.~\ref{fig:fit exp3} shows that the level of Coulomb-induced effects is very different in the fits. It is much stronger in the case of the peripheral-phase, which can be expected as this phase features a faster variation in the low-$|t|$ region.
 
