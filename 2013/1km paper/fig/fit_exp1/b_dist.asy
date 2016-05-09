@@ -23,10 +23,10 @@ pen fitPens[] = {
 };
 
 string fitLabels[] = {
-	"KL, constant",
+	"Cahn/KL, constant",
 	"SWY, constant",
-	//"KL, mid-peripheral",
-	"KL, peripheral",
+	//"Cahn/KL, mid-peripheral",
+	"Cahn/KL, peripheral",
 };
 
 drawGridDef = true;
@@ -49,7 +49,7 @@ void PlotOneFit(string dir, string desc, pen p)
 
 	string f = dir + "/impactParameterDistributions.root";
 
-	rObject g_prf_sq = rGetObj(f, "g_A_mod2");
+	RootObject g_prf_sq = RootGetObject(f, "g_A_mod2");
 	draw(g_prf_sq, p, desc);
 
 	//real b_rms_el, b_rms_inel, b_rms_tot;

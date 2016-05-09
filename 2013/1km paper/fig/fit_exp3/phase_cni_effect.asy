@@ -19,9 +19,9 @@ pen fitPens[] = {
 };
 
 string fitLabels[] = {
-	"KL, constant",
-	//"KL, mid-peripheral",
-	"KL, peripheral",
+	"Cahn/KL, constant",
+	//"Cahn/KL, mid-peripheral",
+	"Cahn/KL, peripheral",
 };
 
 drawGridDef = true;
@@ -39,7 +39,7 @@ p_cni_effect.yTicks = RightTicks(0.01, 0.005);
 
 //-----------------------------------------------------------------------------------------------------
 
-void PlotPhase(rObject o, pen p, string label="")
+void PlotPhase(RootObject o, pen p, string label="")
 {
 	if (!o.valid)
 		return;
@@ -76,7 +76,7 @@ void PlotPhase(rObject o, pen p, string label="")
 
 //-----------------------------------------------------------------------------------------------------
 
-void PlotEffect(rObject g_CH, rObject g_H, pen p, string label="")
+void PlotEffect(RootObject g_CH, RootObject g_H, pen p, string label="")
 {
 	guide g;
 	int N = g_CH.iExec("GetN");
@@ -103,9 +103,9 @@ void PlotOneFit(string dir, string desc, pen p)
 	// ----- ROOT file -----
 	string f = dir + "/fit.root";
 
-	rObject g_fit_CH = rGetObj(f, "g_fit_CH", error=false);
-	rObject g_fit_H = rGetObj(f, "g_fit_H", error=false);
-	rObject g_Phase_H = rGetObj(f, "g_Phase_H", error=false);
+	RootObject g_fit_CH = RootGetObject(f, "g_fit_CH", error=false);
+	RootObject g_fit_H = RootGetObject(f, "g_fit_H", error=false);
+	RootObject g_Phase_H = RootGetObject(f, "g_Phase_H", error=false);
 
 	if (!g_fit_CH.valid)
 		return;

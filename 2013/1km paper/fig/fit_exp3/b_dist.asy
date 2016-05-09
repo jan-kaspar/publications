@@ -7,7 +7,7 @@ texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 texpreamble("\def\fbox#1#2#3#4{
-\hbox to 2.2cm{#1\hfil}%
+\hbox to 3.0cm{#1\hfil}%
 \hbox to 1.5cm{\hfil#2\hfil}%
 \hbox to 1.5cm{\hfil#3\hfil}%
 \hbox to 1.5cm{\hfil#4\hfil}%
@@ -28,14 +28,14 @@ pen fitPens[] = {
 };
 
 string fitLabels[] = {
-	"KL, constant",
-	//"KL, mid-peripheral",
-	"KL, peripheral",
+	"Cahn/KL, constant",
+	//"Cahn/KL, mid-peripheral",
+	"Cahn/KL, peripheral",
 };
 
 drawGridDef = true;
 
-xSizeDef = 10cm;
+xSizeDef = 11cm;
 ySizeDef = 6cm;
 
 //-----------------------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ void PlotOneFit(string dir, string desc, pen p)
 
 	string f = dir + "/impactParameterDistributions.root";
 
-	rObject g_prf_sq = rGetObj(f, "g_A_mod2");
+	RootObject g_prf_sq = RootGetObject(f, "g_A_mod2");
 	draw(g_prf_sq, p, "\fbox{"+desc+":}{"
 		+ format("$%#.2f\un{fm}$", ra[0].b_rms_el) + "}{"
 		+ format("$%#.2f\un{fm}$", ra[0].b_rms_inel) + "}{"

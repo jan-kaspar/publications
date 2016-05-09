@@ -38,10 +38,10 @@ pen fitPens[] = {
 };
 
 string fitLabels[] = {
-	"KL, constant",
+	"Cahn/KL, constant",
 	"SWY, constant",
-	//"KL, mid-peripheral",
-	"KL, peripheral",
+	//"Cahn/KL, mid-peripheral",
+	"Cahn/KL, peripheral",
 };
 
 xSizeDef = 14cm;
@@ -74,18 +74,18 @@ void PlotOneFit(string dir, string desc, pen p)
 	// ----- ROOT file -----
 	string f = dir + "/fit.root";
 
-	//rObject f_fit = rGetObj(f, "f_fit", error=false);
-	//rObject g_fit = rGetObj(f, "g_fit", error=false);
+	//RootObject f_fit = RootGetObject(f, "f_fit", error=false);
+	//RootObject g_fit = RootGetObject(f, "g_fit", error=false);
 
-	rObject g_fit = rGetObj(f, "g_fit_CH", error=false);
-	rObject g_fit_h = rGetObj(f, "g_fit_H", error=false);
+	RootObject g_fit = RootGetObject(f, "g_fit_CH", error=false);
+	RootObject g_fit_h = RootGetObject(f, "g_fit_H", error=false);
 
 	if (!g_fit.valid)
 		return;
 
-	rObject g_fit_data = rGetObj(f, "g_fit_data", error=false);
+	RootObject g_fit_data = RootGetObject(f, "g_fit_data", error=false);
 
-	rObject g_Phase_H = rGetObj(f, "g_Phase_H", error=false);
+	RootObject g_Phase_H = RootGetObject(f, "g_Phase_H", error=false);
 
 	string label = desc;
 
@@ -116,7 +116,7 @@ p_main = NewPad("$|t|\ung{GeV^2}$", "$\displaystyle{\d\si/\d t - \hbox{ref} \ove
 string defDir = "1000-ob-0-1,90-DS4-sc-ob/simple:3,KL,con,chisq,,st";
 
 // centre for uncertainty bands
-rObject f_dsdt_fit = rGetObj(topDir + "/data/"+defDir+"/fit.root", "f_fit");
+RootObject f_dsdt_fit = RootGetObject(topDir + "/data/"+defDir+"/fit.root", "f_fit");
 
 // build list of data set tags
 string ds_tags[];
@@ -124,7 +124,7 @@ string f_data = topDir + "/data/"+defDir+"/fit.root";
 for (int di = 0; di < 3; ++di)
 {
 	string o_data = "fit canvas|g_data" + format("%i", di);
-	rObject obj = rGetObj(f_data, o_data, error=false);
+	RootObject obj = RootGetObject(f_data, o_data, error=false);
 	if (obj.valid)
 		ds_tags.push(obj.sExec("GetTitle"));
 }
@@ -136,13 +136,13 @@ for (int ti : ds_tags.keys)
 
 	if (find(data_tag, "1000-") == 0)
 	{
-		rObject h_rel_unc_full = rGetObj(syst_unc_file_1000, syst_unc_obj_full_1000);
+		RootObject h_rel_unc_full = RootGetObject(syst_unc_file_1000, syst_unc_obj_full_1000);
 		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_full, x_max=0.2, pattern("hatch-b"));
 	}
 
 	if (find(data_tag, "90-") == 0)
 	{
-		rObject h_rel_unc_full = rGetObj(syst_unc_file_90, syst_unc_obj_full_90);
+		RootObject h_rel_unc_full = RootGetObject(syst_unc_file_90, syst_unc_obj_full_90);
 		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_full, x_max=0.2, pattern("hatch2-b"));
 	}
 }
@@ -154,13 +154,13 @@ for (int ti : ds_tags.keys)
 
 	if (find(data_tag, "1000-") == 0)
 	{
-		rObject h_rel_unc_anal = rGetObj(syst_unc_file_1000, syst_unc_obj_anal_1000);
+		RootObject h_rel_unc_anal = RootGetObject(syst_unc_file_1000, syst_unc_obj_anal_1000);
 		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_anal, x_max=0.2, pattern("hatch"));
 	}
 
 	if (find(data_tag, "90-") == 0)
 	{
-		rObject h_rel_unc_anal = rGetObj(syst_unc_file_90, syst_unc_obj_anal_90);
+		RootObject h_rel_unc_anal = RootGetObject(syst_unc_file_90, syst_unc_obj_anal_90);
 		DrawRelDiffBand(f_dsdt_fit, h_rel_unc_anal, x_max=0.2, pattern("hatch2"));
 	}
 }
@@ -169,7 +169,7 @@ for (int ti : ds_tags.keys)
 for (int di = 0; di < 3; ++di)
 {
 	string o_data = "fit canvas|g_data" + format("%i", di);
-	rObject obj = rGetObj(f_data, o_data, error=false);
+	RootObject obj = RootGetObject(f_data, o_data, error=false);
 	if (obj.valid)
 	{
 		string data_tag = obj.sExec("GetTitle");
