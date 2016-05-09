@@ -132,7 +132,7 @@ The {\bf simplified West-Yennie formula (SWY)} \cite{wy68} was derived in the fr
 \end{equation}
 where $\alpha$ is the fine-structure constant and $\gamma \doteq 0.577$ the Euler constant. Despite the many limitations, the formula has been extensively used in past data analyses. For backward-comparison reasons it is also considered in this report.
 
-The approach of {\bf Cahn} \cite{cahn82} uses an impact parameter formalism and is based on the additivity of eikonals. The first part of his derivation does not impose any limit on the nuclear amplitude, leading to a formula (Eq.~(30) in \cite{cahn82}):
+The approach of {\bf Cahn} \cite{cahn82} uses an impact parameter formalism and is based on the additivity of eikonals. The first part of his derivation does not impose any limit on the nuclear amplitude, leading to the formula (Eq.~(30) in \cite{cahn82}):
 \begin{equation}
 \label{eq:int cahn}
 	\begin{aligned}
@@ -143,9 +143,9 @@ The approach of {\bf Cahn} \cite{cahn82} uses an impact parameter formalism and 
 			\ , \cr
 	\end{aligned}
 \end{equation}
-where $t=-q^2$, $\vec{q'}$ is a two-dimensional vector and $q'^2 = |\vec{q'}|^2$. The second part of the article gives simplified formulae for nuclear amplitudes with purely-exponential modulus and constant phase and is, thus, of limited interest for the presented analysis.
+where $t=-q^2$, $\vec{q'}$ is a two-dimensional vector and $q'^2 = |\vec{q'}|^2$. The second part of the article gives simplified formulae for nuclear amplitudes with purely-exponential modulus and constant phase and is, thus, of limited interest for the present analysis.
 
-{\bf Kundr\' at and Lokaj\' i\v cek (KL)} \cite{kl94} transformed the formula of Cahn, Eq.~(\ref{eq:int cahn}), into a form better suited for practical applications and added the kinematic limits on the momentum transfer: \footnote{%
+{\bf Kundr\' at and Lokaj\' i\v cek (KL)} \cite{kl94} transformed the formula of Cahn, Eq.~(\ref{eq:int cahn}), into a form better suited for practical applications and added the kinematic limits on the momentum transfer:\footnote{%
 Note that some recent publications by the same authors (e.g.~\cite{kl05,kklp11}) contain a misprint: the wrong sign in front of the second term contributing to $G(t)$.
 }
 \begin{equation}
@@ -204,7 +204,7 @@ The standard least-squares method was used for all the fits. In particular, mini
 where $\Delta$ is a vector of differences between the differential cross-section data and a fit function $\d\sigma^{C+N}/\d t$ evaluated at the representative point $t^{\rm rep}$ of each bin~\cite{lafferty94}. The minimisation is repeated several times, and the representative points are updated between iterations. The CNI effects are calculated using the computer code from~\cite{elegent}. The covariance matrix $\mat V$ has two components. The diagonal of $\mat V_{\rm stat}$ contains the statistical uncertainty squared from Table~\ref{tab:data} and from the Table~3 in \cite{8tev-90m}. $\mat V_{\rm syst}$ includes all systematic uncertainty contributions except the normalisation, see Eq.~(\ref{eq:covar mat}) and Eq.~(14) in \cite{8tev-90m}. For improved fit stability, the normalisation uncertainty is not included in the $\chi^2$ definition. Instead, the uncertainty is propagated for each fit parameter. For this purpose, the fit is repeated with $-1\un{\sigma}$, $0\un{\sigma}$ and $+1\un{\sigma}$ biases independently in: global normalisation ($1\un{\sigma} = 4.2\un{\%}$), $90\un{m}$ data normalisation ($0.08\un{\%}$) and $1000\un{m}$ data normalisation ($0.25\un{\%}$). This gives a sample of 27 fit results, from which one can estimate the propagated normalisation uncertainty of a parameter as $(\hbox{max} - \hbox{min})/2$, where ``max'' (``min'') is the greatest (smallest) value in the sample. This normalisation uncertainty is, at the end, added quadratically to the uncertainty reported by the fit with no bias.
 
 
-The fits have shown low sensitivity to several of the above presented choices, summarised in the following list. 
+The fits have shown low sensitivity to several of the choices presented above, summarised in the following list. 
 \begin{itemize}
 \item Choice of the form factor in Eq.~(\ref{eq:coul cs}). The options considered in \cite{elegent} have been tested, none of them giving any significant difference with respect to the default choice \cite{puckett10}.
 \item Extension of the modulus of the nuclear amplitude to the unobserved $|t|$ region, see the last paragraph in Section~\ref{sec:cni nuclear modulus}. No effect was observed when the high-$|t|$ part was altered (both shape and normalisation) nor when the size of the transition region was changed.
