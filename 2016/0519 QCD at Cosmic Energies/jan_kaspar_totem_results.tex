@@ -1,0 +1,697 @@
+\input slides.tex
+\input utf8-t1
+
+\newpage %-------------------------------------------------------------------------------------------
+
+\def\author{Jan Kašpar}
+\def\caption{QCD at Cosmic Energies -- VII}
+\def\date{19 May, 2016}
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}\vfil
+\title{TOTEM}
+\vfil
+\centerline{\bf Jan Kašpar}
+\centerline{on behalf of the TOTEM collaboration}
+\vfil
+\line{\hss\hss
+	\fig[,25mm]{fig/logo_totem_blue.pdf}\hss
+	\fig[,25mm]{fig/logo_cern_blue.pdf}\hss
+	\fig[,25mm]{fig/logo_infn.pdf}\hss
+	\hss}
+\vfil
+\centerline{\caption}
+\centerline{\date}
+%\vfil
+
+\footline={}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Outline}
+
+\> projects and physics programme
+
+\> detector apparatus, principle of proton measurement
+
+\> physics analyses and results, TOTEM alone
+\>> elastic scattering
+\>> inelastic cross-section
+\>> total cross-section
+\>> single diffraction
+\>> double diffraction
+\>> central diffraction
+\>> forward charged-particle multiplicity ($\d N/\d\eta$)
+
+\> physics analyses and results, TOTEM + CMS
+\>> forward charged-particle multiplicity ($\d N/\d\eta$)
+\>> central diffraction
+\>> inelastic event classification
+
+\> outlook - future projects
+
+\> \link{http://totem.web.cern.ch/Totem/publ_new.html}{list of TOTEM publications}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{TOTEM projects and physics programme}
+
+\> add drawings + labels
+
+\hrule
+
+\> TOTEM
+\>> si tot, ES, SD, DD, CD
+\>> common features: rapidity gaps, particles in very forward region, intact protons
+
+\> TOTEM + CMS
+\>> independent experiments, exchange of triggers
+
+\> CT-PPS (CMS-TOTEM Precision Proton Spectrometer)
+\>> full integration, new dedicated 
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Detector apparatus}
+
+\> \em{Inelastic telescopes T1 and T2}: charged particles from inelastic collisions
+
+\centerline{%
+	\fig[10cm]{fig/cms_totem_gray.pdf}%
+	\hskip3mm
+	\raise35mm\vtop{\hsize=5cm
+		\> T1: $3.1 < |\et| < 4.7$,\\ $p_{\rm T} > 100 MeV$
+		\vskip4mm
+		\> T2: $5.3 < |\et| < 6.5$,\\ $p_{\rm T} > 40 MeV$
+	}
+}
+
+\vfil
+
+\> \em{Roman Pots (RP)}: elastic and diffractive protons close to outgoing beam
+
+\centerline{\fig[13cm]{fig/RP_stations_run_1_2.pdf}}
+
+\>> station at 147m in Run I $\rightarrow$ station 220m in Run II
+
+\vfil
+
+\> all detectors: symmetric about IP5, trigger capable, radiation tolerant
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Telescope 1 (T1)}
+
+\SmallerFonts
+
+\line{\fig[7cm]{fig/t1_installed.jpg}\hskip3mm\raise15mm\vbox{\hsize7.5cm
+\> installed inside CMS end-caps
+\> at $7.5$ to $10.5\un{m}$ from the IP
+\> one \em{telescope} on each side of IP
+\> each telescope consists of two \em{quarters}
+}\hss}
+
+\vfil
+\line{\fig[7cm]{fig/t1_quarter.jpg}\hskip3mm\raise1mm\vbox{\hsize7.5cm
+\> each quarter formed by 5 \em{planes} equally spaced along beam
+\> each plane consists of 3 trapezoidal \em{CSC detectors}, each covering $60\un{^\circ}$ in azimuth
+\> Cathode Strip Chamber: gaseous detector with 3 read-out coordinates (at $60\un{^\circ}$ wrt.~each other)
+}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Telescope 2 (T2)}
+
+\SmallerFonts
+
+\line{\AddBckg[0.2mm]{\fig[7.5cm]{fig/t2_installed.jpg}}\hskip3mm\raise15mm\vbox{\hsize7.0cm
+\> installed inside CMS shielding between HF and Castor calorimeters
+\> centred about $13.5\un{m}$ from the IP
+\> one \em{telescope} on each side of IP
+\> each telescope consists of two \em{quarters}
+}\hss}
+
+\vskip-5mm
+
+\line{\AddBckg[0.2mm]{\fig[7.5cm]{fig/t2_quarter.jpg}}\hskip3mm\vbox{\hsize6.8cm
+\> each quarter formed by 10 semi-circular \em{planes}, assembled in 5 back-to-back mounted pairs
+\> each plane equipped with a \em{Gas Electron Multiplier} detector
+\>> gaseous detector, electron multiplication by 3 perforated foils ($2\un{mm}$ separation)
+\>> radial segmentation: \em{strips} (resolution $\approx 0.15\un{mm}$)
+\>> coarse radial$\times$azimuthal segmentation: \em{pads} (for triggering, azimuthal resolution $0.8\un{^\circ}$)
+}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Roman Pots (RPs)}
+
+\SmallerFonts
+
+\line{\fig[5cm]{fig/rp_station.pdf}\hskip3mm\raise20mm\vbox{\hsize10cm
+\> \em{stations} installed at $\pm 220\un{m}$ in the outgoing LHC beam-pipe
+\> each station has two \em{units}, separated by $\approx 5\un{m}$
+}\hss}
+
+\line{\fig[5cm]{fig/rp_unit.pdf}\hskip3mm\raise1mm\vbox{\hsize10cm
+\> each unit contains 3 \em{Roman Pots}: top, bottom and horizontal
+\> Roman Pot = movable beam-pipe insertion
+\>> \Em{beam unstable} $\Rightarrow$ RPs retracted to safe position
+\>> \Em{beam stable} $\Rightarrow$ RPs as close to beam as reasonable
+\> typical approach: $10\un{\si_{\rm beam}}$ (record $3\un{\si_{\rm beam}}$)
+}\hss}
+
+\line{\fig[5cm]{fig/rp_pot.pdf}\hskip3mm\raise3mm\vbox{\hsize10cm
+\> Roman Pot: container for sensors
+\> TODO: add picture of cylindrical ones and possibly new ferrites
+}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{``Edgeless'' silicon sensors}
+
+\SmallerFonts
+
+\line{\fig[6cm]{fig/rp_package.pdf}\hskip3mm\raise39mm\vbox{\hsize10cm
+\> each RP contains a \cYe\em{package}\cFg{} of 10 silicon sensors
+\> 5 pairs of back-to-back mounted strip sensors
+}\hss}
+
+\vfil
+\line{\fig[6cm]{fig/rp_hybrid_new.pdf}\hskip3mm\raise23mm\vbox{\hsize10cm
+\> custom developed \cYe\em{``edgeless'' sensors}\cFg\\
+$\Rightarrow$ \Em{insensitive edge $\approx 50\un{\mu m}$} (standard about $1\un{mm}$)
+\> single-sided $\rm p^+$-n
+\> 512 strips at pitch of $66\un{\mu m}$, at $45\un{^\circ}$ wrt.~cut edge
+\> operated at $\approx -20\un{^\circ C}$, bias voltage $\approx 100\un{V}$
+}\hss}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Proton measurement with RPs}
+
+\SmallerFonts
+
+\> \em{proton transport}: described as in linear optics
+
+\line{\hss\fig[11.5cm]{fig/ttm_proton_transport.pdf}\hss}
+
+\vfil
+
+\cBlack
+\line{\hss$\displaystyle
+\pmatrix{x\cr \th_x\cr y\cr \th_y\cr \xi}_{\rm RP} =
+\underbrace{\pmatrix{
+	v_x & L_x & \cdot & \cdot & D_x\cr
+	\cdot & \cdot & \cdot & \cdot & \cdot\cr
+	v_y & L_y & \cdot & \cdot & D_y\cr
+	\cdot & \cdot & \cdot & \cdot & \cdot\cr
+	\cdot & \cdot & \cdot & \cdot & 1\cr
+}}_{\hbox{product from all lattice elements}}
+\pmatrix{x^*\cr \th_x^*\cr y^*\cr \th_y^*\cr \xi}_{\rm IP}
+$
+\hskip10mm
+\lower15mm\vbox{
+\hbox{$\th_x^*, \th_y^*$: scattering angles}
+\hbox{$x^*, y^*$: vertex}
+\hbox{$\xi = \De p / p$: momentum loss}
+\hbox{\strut}
+\hbox{\Em{optical functions:}}
+\hbox{effective length $L$}
+\hbox{magnification $v$}
+\hbox{dispersion $D$}
+}
+\hss}
+
+\vfil
+
+\> \em{proton reconstruction}: inverted transport RPs $\longrightarrow$ IP
+
+\>> optical parameters functions of $\xi$ $\Rightarrow$ reconstruction is non-linear problem
+
+\>> \cRed good knowledge of optics is crucial
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{LHC optics}
+
+\> simulation of centra diffraction for 2 different optics
+
+\vskip2mm
+\line{%
+	\hss
+	\hskip2mm
+	\vtop{\hsize7.7cm
+		\centerline{{\bf\cRed low $\bf\be^*$ (LHC standard)\cBlack}}
+		\centerline{\SmallerFonts$\displaystyle L_x \approx 1.7\un{m},\quad L_y \approx 14\un{m},\quad D_x \approx 8\un{cm}$}
+		
+		\centerline{diffractive protons in \em{horizontal RPs}}
+		\line{\hss\fig[,4.5cm]{fig/hit_dist_0p7.png}\hss}
+	}%
+	\vtop{\hsize7.7cm
+		\centerline{\bf\cRed$\bf\be^* = 90\un{m}$ (special for RP)\cBlack}
+		\centerline{\SmallerFonts$\displaystyle L_x \approx 0,\quad L_y \approx 260\un{m},\quad D_x \approx 4\un{cm}$}
+		
+		\centerline{diffractive protons in \em{vertical RPs}}
+		\line{\hss\fig[,4.5cm]{fig/hit_dist_90.png}\hss}
+	}%
+	\hss
+}
+
+\vfil
+\> optics typically ``labelled'' by \em{$\be^* \equiv$ betatron function at IP}
+\>> beam width: $\sqrt{\ep \be}$, $\ep$: beam emittance
+\>> beam angular divergence: $\sqrt{\ep / \be}$
+\>> luminosity $\propto \hbox{(beam width at IP)}^{-2} \propto 1/\be^*$
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Typical run scenarios}
+
+\centerline{\SmallerFonts ($t \approx -p^2 \th^2$: four-momentum transfer squared; $\xi = \De p / p$: fractional momentum loss)}
+\vskip1mm
+
+{
+
+\advance\hsize\horizontalmargin\line{\kern-\horizontalmargin
+\fig[,4.37cm]{fig/acceptance_2.pdf}
+\fig[,4.37cm]{fig/acceptance_90.pdf}
+\fig[,4.37cm]{fig/acceptance_1535.pdf}\hss
+}
+
+\line{\kern-\horizontalmargin\SmallerFonts\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil\rightskip0pt plus1fil\parfillskip0pt
+	\Em{\NormalFonts\bf $\bf\be^* = 0.55\un{m}$}
+	\hrule\vskip1mm
+	${\cal L} \approx 10^{33}\un{cm^{-2}s^{-1}}$
+		\vskip\baselineskip
+	\em{elastic scattering}: high $|t|$
+		\vskip\baselineskip
+	\em{diffraction}: $\xi > 0.01$, low cross-section processes
+}
+\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil\rightskip0pt plus1fil\parfillskip0pt
+	\Em{\NormalFonts\bf medium $\bf\be^* = 90\un{m}$}
+	\hrule\vskip1mm
+	${\cal L} \approx 10^{28}\un{cm^{-2}s^{-1}}$
+		\vskip1\baselineskip
+	\em{elastic scattering}: low to mid $|t|$
+		\vskip\baselineskip
+	\em{diffraction}: any $\xi$ for $|t| > 0.01\un{GeV^2}$
+}
+\hss
+\vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil\rightskip0pt plus1fil\parfillskip0pt
+	\Em{\NormalFonts\bf high $\bf\be^* = 1535\un{m}$}
+	\hrule\vskip1mm
+	${\cal L} \approx 10^{27}\un{cm^{-2}s^{-1}}$
+		\vskip\baselineskip
+	\em{elastic scattering}: very low $|t|$ (Coulomb-nuclear interference)
+}
+\hss}
+
+}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering}{$p + p \rightarrow p + p$}
+
+\> data overview
+
+\centerline{\fig[14cm]{fig/es_summary.pdf}}
+
+\> selection: two anti-collinear protons from the save vertex
+
+\> (almost) purely data-driven analysis
+
+\> different $|t|$ probe different physics regimes: Coulomb interference, diffractive cone, dip-bump, transition to pQCD
+
+% ORAL: anticipate some features of the data: shift of dip position, cone steepening
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering}{Trends}
+
+\centerline{%
+	\fig[,5cm]{fig/es_summary_detail.pdf}%
+	\hfil
+	\fig[,5cm]{fig/B_s.pdf}%
+}
+
+\> dip position: moves to lower $|t|$ as $\sqrt s$ increases ($8$ and $13\un{TeV}$ preliminary though!)
+
+\> forward slope $B = {\d\over\d t} \log \left.{\d\si\over\d t} \right |_{t=0}$ increases with $\sqrt s$
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering}{Non-exponentiality at low $|t|$}
+
+\> diffraction cone: ``looks almost exponential''
+\>> magnify deviations $\Rightarrow$ plot \cThird ${(\d\si/\d t - \hbox{ref. exp.}) / \hbox{ref. exp.}}$
+
+\> $\be^* = 90\un{m}$ measurements at different energies (stat.~unc.~only):
+
+\centerline{%
+	\fig[,4.8cm]{fig/t_dist_rel_7.pdf}%
+	\hskip-1mm
+	\fig[,4.8cm]{fig/t_dist_rel_8.pdf}%
+	\hskip-1mm
+	\fig[,4.8cm]{fig/t_dist_rel_13.pdf}
+}
+
+\vskip-3mm
+
+\line{\raise37mm\vtop{\hsize9.4cm
+\> non-exponentiality observed at $8$ and $13\un{TeV}$!
+\>> $8\un{TeV}$: \em{$7\un{\si}$ significance}\hfil $\longrightarrow$
+\>> $13\un{TeV}$: preliminary results
+\>> non-exponentiality of observed cross-section:
+
+\cThird
+\vskip-3mm
+$$\d\si /\d t = \hbox{nuclear} + \hbox{Coulomb} + \hbox{interference}$$
+}
+	\hskip3mm
+	\fig[5.6cm]{fig/t_dist_8TeV_non_exp.pdf}
+	\hss
+}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering}{Coulomb interference}
+
+\> $8\un{TeV}$ data with $\be^* = 1000\un{m}$ optics
+\>> RPs very close to the beam: $\approx 3\un{\si_{\rm beam}}$
+\>> $|t|_{\rm min} \approx 6\cdot10^{-4}\un{GeV^2}$
+
+\vfil
+\centerline{\fig[11cm]{fig/coulomb_components.pdf}}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering}{Coulomb interference}
+
+\> observed cross-section
+\vskip-3mm
+\cBlack
+$${\d\si\over\d t} \propto \left|
+\underbrace{\vcenter{\fig[,2cm]{fig/el_diagram_C.pdf}} + \cdots}_{\vbox to 0pt{\SmallerFonts\hbox{Coulomb}\hbox{amplitude}\vss}}
+\quad +
+\underbrace{\vcenter{\fig[,2cm]{fig/el_diagram_H.pdf}}}_{\vbox to 0pt{\SmallerFonts\hbox{hadronic}\hbox{amplitude}\vss}}
++
+\underbrace{\vcenter{\fig[,2cm]{fig/el_diagram_C_H.pdf}} + \cdots}_{\vbox to 0pt{\SmallerFonts\hbox{``interference''}\hbox{terms}\vss}}
+\right|^2$$
+
+\vskip10mm
+
+\> interference formula = summation for practical applications
+\>> \Em{simplified West-Yennie (SWY)}: QFT framework, traditional but \em{heavy simplifications (constant hadronic phase, constant slope})
+\>> \Em{Cahn} or \Em{Kundr\' at-Lokaj\' i\v cek (KL)}: eikonal framework, no explicit simplifications
+
+\> interference $\Rightarrow$ phase of hadronic amplitude exposed in cross-section
+\>> phase $t$-dependence needs to be considered in analysis
+\>> constraints from data $\Rightarrow$ \Em{determination of $\rh$ parameter}
+
+\vskip-3mm
+\cThird
+$$\rh = \left. {\Re {\cal A}^{\rm H}\over \Im {\cal A}^{\rm H}} \right|_{t=0}$$
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering}{Coulomb interference -- Analysis strategy}
+
+\centerline{\EM{central question:}}
+\centerline{observed non-exponentiality -- due to hadronic, Coulomb or both?}
+
+\vfil
+
+\> fits with 2 different assumptions on hadronic component
+\>> \em{purely-exponential} -- non-exponentiality due to Coulomb (+interference)\\
+$\rightarrow$ degree-1 polynomial in exponent
+\>> \em{flexible enough} to describe non-exponentiality even without Coulomb\\
+$\rightarrow$ degree-3 polynomial in exponent
+
+\vfil
+
+\> role of hadronic phase $t$-dependence?
+\>> largest impact: rate of change at low $|t|$
+\>>> same quantity controls behaviour in impact-parameter space
+\>> considered two families
+\>>> \em{central}: preferably low impact parameters
+\>>> \em{peripheral}: preferably higher impact parameters
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering}{Coulomb interference -- Fits}
+
+\SmallerFonts
+
+\line{%
+	\fig[7cm]{fig/coulomb_exp1_fit.pdf}%
+	\raise45mm\vtop{\hsize8cm
+	$\Leftarrow$ \EM{purely-exponential hadronic amplitude}
+		\>> constant phase \em{excluded} (with both SWY and KL formulae) $\Rightarrow$ application of SWY formula excluded too
+		\>> peripheral phase not excluded by data, but \em{disfavoured}
+		\>>> $\rh$ value outside a consistent pattern of other fits and theoretical predictions
+		\>>> number of theoretical reasons for non-exponential hadronic amplitude
+	}
+	\hss
+}
+
+\line{%
+	\fig[7cm]{fig/coulomb_exp3_fit.pdf}%
+	\raise30mm\vtop{\hsize8cm
+	$\Leftarrow$ \EM{non-exponential hadronic amplitude}
+		\>> both constant and peripheral phases compatible with data $\Rightarrow$ \em{centrality not necessity}
+	}
+	\hss
+}
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering}{Coulomb interference -- Result summary}
+
+\> \em{$\rh$} -- first LHC determination from Coulomb-hadronic interference:
+\vskip-4mm
+\cBlack
+$$\rh = 0.12 \pm 0.03$$
+
+\centerline{\fig[11cm]{fig/rho_s.pdf}}
+
+\> \em{$\si_{\rm tot}$} -- results consistent with previous publications, but for the first time:
+\>> Coulomb component explicitly separated
+\>> determined in the same analysis as $\rh$
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering}{Exclusion power in Run I}
+
+\> model predictions (prior to Run I) vs.~TOTEM data at $\sqrt s = 7\un{TeV}$:
+
+\centerline{\fig[13cm]{fig/cmp_totem_data_7TeV.pdf}}
+
+\>> \em{no model compatible with data!}
+
+\> surprisingly?: little reaction after Run I (statement from 2015)
+\>> most often: no change at all or simple parameter refit
+\>> only Islam abandoned one mechanism of large $|t|$ scattering
+\>> exclusion of physics mechanisms (model independent)?
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Elastic scattering}{Structures at high $|t|$ ?}
+
+\> $\sqrt s = 13\un{TeV}$: very preliminary, but already very strong results
+
+\centerline{%
+	\fig[,6.5cm]{fig/t_dist_13.pdf}%
+	\hskip1mm
+	\raise57mm\vtop{\hsize7cm
+		\centerline{\SmallerFonts\cBlack model predictions:}
+		\vskip1mm
+		\fig[,4.5cm]{fig/models_13TeV.pdf}%
+		\vskip-1mm
+		\centerline{\SmallerFonts\em{oscillations in almost each model}}
+	}%
+}
+
+\line{\vbox{\hsize10.8cm
+\> \em{high-$|t|$: no structures!}
+\>> rules out many models
+\>> rules out physics mechanism: ``optical'' models
+\>> physics interpretation: transition between diffraction and pQCD? \hfill $\Rightarrow$ \hfill e.g.~Donnachie-Landshoff:
+}\hskip4mm\hbox{\fig[4cm]{fig/tripple_gluon.png}}\hss
+}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Inelastic and total cross-section}
+
+\> \em{inelastic cross-section}: event counting with T2 (and T1)
+\>> $95\un{\%}$ of inelastic events have at least 1 track in the T2 region
+\>> only one significant MC correction: contribution from low mass diffraction
+
+\> 3 methods to determine \em{total cross-section}
+
+\centerline{\fig[13cm]{fig/tot_cs_methods.pdf}}
+
+\>> $\rh$: from TOTEM ($8\un{TeV}$, $\be^* = 1000\un{m}$) or from external source (e.g.~COMPETE)
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Cross-section results}
+
+\centerline{%
+	\fig[,7cm]{fig/sigma_tot_el_inel_cmp.pdf}%
+	\hskip2mm
+	\fig[,7cm]{fig/sigma_el_to_sigma_tot.pdf}%
+}
+
+\> $\sqrt s = 2.76$ and $13\un{TeV}$ analyses ongoing
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Single diffraction: $p + p \rightarrow p + X$}
+
+\centerline{\fig[13cm]{fig/topology_sd_T2_opp.pdf}}
+
+\> double determination of $\xi \approx \e^{-\De\et}$
+\>> from RPs
+\>> from rapidity gap $\De\et$ (T1/T2)
+
+\> mass of diffractive system:\cBlack $m(x) = \sqrt{s \xi}$ 
+
+\> $\xi$ resolution from RPs: $\approx 0.9\un{\%}$ $\Rightarrow$ mass bins given by which T1/T2 active
+
+\> available data
+\>> $7\un{TeV}$: TOTEM-standalone analysis in progress
+\>> $8$ and $13\un{TeV}$: common data with CMS
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Single diffraction}{Preliminary results at $7\un{TeV}$}
+
+\centerline{\fig[16cm]{fig/sd_7TeV.png}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Double diffraction: $p + p \rightarrow X + Y$}
+
+\centerline{\fig[13cm]{fig/topology_dd_lab.pdf}}
+
+\> experimental challenge: background (non-diffractive, SD pile-up)
+\>> sub-sample with signal $\gg$ background:  $2\times$T2 and T1 veto
+\>> non-diffractive background: control sample $2\times$T2 + $2\times$T1
+\>> SD background: control sample $1\times$T2 + $0\times$T1
+
+\> cross-section as function of $\et_{\rm min}$ on both sides
+\>> challenge: reconstructed $\et_{\rm min}$ $\longrightarrow$ true/generator $\et_{\rm min}$\\
+$\Rightarrow$ 2 $\et_{\rm min}$ bins only
+
+\> available data
+\>> $7\un{TeV}$: results published
+\>> $8$ and $13\un{TeV}$: common data with CMS (improvement expected)
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Double diffraction}{Results at $7\un{TeV}$}
+
+\> measurement
+
+\centerline{\fig[12cm]{fig/DD_meas.png}}
+
+\> comparison to Monte Carlos
+
+\centerline{\fig[12cm]{fig/DD_mc_comp.png}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Central diffraction: $p + p \rightarrow p + X + p$}
+
+\centerline{\fig[13cm]{fig/topology_cd.pdf}}
+
+\> available data
+\>> $7\un{TeV}$: TOTEM only, analysis started
+\>> $8\un{TeV}$: common data with CMS, analysis started
+\>> $13\un{TeV}$: common data with CMS
+
+\> $\be^* = 90\un{m}$: all $\xi$ visible, but resolution $\approx 0.9\un{\%}$
+
+\> experimental challenge: background (pileup ES/beam halo + inelastic)
+\>> anti-elastic cuts: anti-collinearity
+\>> anti-beam-halo cuts: $|y| > 11\un{mm}$
+
+\newpage %-------------------------------------------------------------------------------------------
+\ctitle{Central diffraction}{First results at $7\un{TeV}$}
+
+\> $|t_y|$ distribution: all $\xi$ values, only acceptance correction
+
+\line{\raise8mm\vbox{\hsize70mm
+\> estimate of $\si_{\rm CD}$
+
+\cBlack\SmallerFonts
+$${\d^2\si_{\rm CD}\over \d t_1 \d t_2} = C \e^{-B t_1} \e^{-B t_2}$$
+
+$$\Downarrow$$
+
+$$ \si_{\rm CD}
+= \int\limits^{0}_{-\infty} \d t_1 \int\limits^{0}_{-\infty} \d t_2\ C \e^{-B t_1} \e^{-B t_2} \approx 1\un{mb}$$
+}\hskip1mm\fig[8.5cm]{fig/cd_ty_dist_7TeV.png}\hss}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Forward particle multiplicities, TOTEM and TOTEM + CMS}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Central diffraction with CMS}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Inelastic event classification}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Outlook: Odderon}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Outlook: timing}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Outlook: CT-PPS}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Summary}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}%
+\vfil
+\title{Backup}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Backup topics}
+
+\> RP alignment
+
+\> Optics refinement with RP data
+
+\> Coulomb analysis
+\>> interference formulae
+\>> phase choices
+
+\vfil
+\eject
+\bye
