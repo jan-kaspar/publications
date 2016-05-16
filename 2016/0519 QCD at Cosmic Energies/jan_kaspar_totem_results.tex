@@ -718,13 +718,21 @@ $$ \si_{\rm CD}
 \newpage %-------------------------------------------------------------------------------------------
 \title{Inelastic event classification}
 
-TODO
+\> $\sqrt s = 8\un{TeV}$: analysis in review
+\>> classes considered: non-diffractive (ND), single diffractive (SD) with proton left/right, double diffractive (DD)
+\>>> central diffraction not take into account: low cross-section not worth added complexity
+\>> experimental definition of diffraction: rapidity gap $\De\et \ge 3$
+\>> boosted decision tree
+\>>> ordered binarisation: ND $\rightarrow$ SD (left) $\rightarrow$ SD (right) $\rightarrow$ DD
+\>> training sample: Pythia 8-4C
+\>> control samples: Pythia 8-4C+MBR, QGSJET-II-04, Pythia 8-Monash
+\>> discriminators: $\De\et$, $\et_{\rm min}$, $\et_{\rm max}$, $N_{\rm CMS}$, $N_{\rm T2+}$, $N_{\rm T2-}$, $\xi_L$, $\xi_R$, ...
 
-\> analysis in review: 8 TeV, 90m, 2012
+\> possible improvement: use of CMS FSC ($6 < |\et| < 8$) $\Rightarrow$ better distinction between low-mass DD (more forward than T2) and SD with undetected proton
 
-\> 13 TeV data also available
 
-TODO: main weakness ??
+\> other available data
+\>> $\sqrt s = 13\un{TeV}$
 
 
 
@@ -877,7 +885,23 @@ gluon coupling to quarks)
 \newpage %-------------------------------------------------------------------------------------------
 \title{Summary}
 
-TODO
+\> \em{performance} in Run II
+\>> all detectors functional (except one T2 quarter -- minimal impact on physics)
+\>> DAQ throughput increased $50\times$ wrt.~Run I
+
+\> many \em{analyses} ongoing
+\>> Run I and Run II
+\>> TOTEM standalone, TOTEM + CMS
+
+\> \em{upgrade} projects
+\>> timing in vertical RPs (diamonds)
+\>> CT-PPS (pixel tracking, Cherenkov timing)
+
+\> \em{priorities} for 2016
+\>> glueball analysis of 2015 data
+\>> TOTEM special run: $\be^* = 2500\un{m}$ $\Rightarrow$ Odderon searches via CNI
+\>> CT-PPS runs with LHC standard optics: di-photon searches with existing RPs, ...
+
 
 
 \newpage %-------------------------------------------------------------------------------------------
