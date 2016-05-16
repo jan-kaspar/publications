@@ -29,11 +29,17 @@
 \newpage %-------------------------------------------------------------------------------------------
 \title{Outline}
 
-\> projects and physics programme
+\hbox{}
+\vskip 0pt plus0.3fil
 
-\> detector apparatus, principle of proton measurement
-
-\> physics analyses and results, TOTEM alone
+\centerline{\vtop{\hsize9cm
+\itskip5mm
+\> TOTEM projects and physics programme
+%
+\> detector apparatus, principle of proton\\ measurement
+%
+\> physics analyses and results: TOTEM alone
+\iffalse
 \>> elastic scattering
 \>> inelastic cross-section
 \>> total cross-section
@@ -41,15 +47,23 @@
 \>> double diffraction
 \>> central diffraction
 \>> forward charged-particle multiplicity ($\d N/\d\eta$)
-
-\> physics analyses and results, TOTEM + CMS
+\fi
+%
+\> physics analyses and results: TOTEM + CMS
+\iffalse
 \>> forward charged-particle multiplicity ($\d N/\d\eta$)
 \>> central diffraction
 \>> inelastic event classification
+\fi
+%
+\> outlook for 2016
+}}
 
-\> outlook - future projects
+\vfil
 
-\> \link{http://totem.web.cern.ch/Totem/publ_new.html}{list of TOTEM publications}
+\cBlack
+\centerline{ list of TOTEM publications: }
+\centerline{ \link{http://totem.web.cern.ch/Totem/publ_new.html}{http://totem.web.cern.ch/Totem/publ\_new.html} }
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{TOTEM projects and physics programme}
@@ -78,9 +92,9 @@
 	\fig[10cm]{fig/cms_totem_gray.pdf}%
 	\hskip3mm
 	\raise35mm\vtop{\hsize=5cm
-		\> T1: $3.1 < |\et| < 4.7$,\\ $p_{\rm T} > 100 MeV$
+		\> \cBlack T1: $3.1 < |\et| < 4.7$,\\ $p_{\rm T} > 100 MeV$
 		\vskip4mm
-		\> T2: $5.3 < |\et| < 6.5$,\\ $p_{\rm T} > 40 MeV$
+		\> \cBlack T2: $5.3 < |\et| < 6.5$,\\ $p_{\rm T} > 40 MeV$
 	}
 }
 
@@ -680,19 +694,68 @@ $$ \si_{\rm CD}
 
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{Central diffraction with CMS}
+\title{(Exclusive) central diffraction with CMS}
 
-\> low mass resonances
-\>> 8 TeV, 90m, Jul 2012
-\>> 13 TeV, 90m, Oct 2015
+\centerline{\fig[11cm]{fig/diagram_cd_cms_lab.pdf}}
+
+
+\> exchange of colour singlets with vacuum quantum numbers $\Rightarrow$ selection rules for system X: $J^{PC} = 0^{++}$, $2^{++}$, ...
+
+\> double-arm proton tagging: mass reach and luminosity depending on optics
+
+\> event selection via comparison CMS to RP protons:
+
+\vskip-2mm
+\cBlack
+$$M(pp) \hbox{ vs. } M(CMS)\ ,\quad p_T(pp)\hbox{ vs. }p_T(CMS)\ ,\quad	\hbox{vertex}(pp)\hbox{ vs. }\hbox{vertex}(CMS)$$
+
+\> prediction of rapidity gap from proton $\xi$: $\De\et_{1,2} = −\log \xi_{1,2}$
+
+
+\> analysis examples:
+\>> studies of glueball candidates
+\>> exclusive dijets: mainly $gg$ ($p_T > 30GeV$: $\si_{gg} \approx 100 pb$)
+\>> exclusive $\ch_{c}$ and $J/\Ps$ production: $\O{10 pb - 10 nb}$
+\>> search for missing mass signals of $\O{pb}$ $\Rightarrow$ SUSY searches
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Glueball searches}
+
+\> CD production at LHC
+\>> $M_X = 1\hbox{ to }4\un{GeV}$ $\Rightarrow$ $x\sim 10^{-4}$ $\Rightarrow$ pure gluon content
+\>> Pomeron $\sim$ colour-less gluon ladder $\Rightarrow$ fusion likely to produce glueballs
+
+\> $0^{++}$ glueball candidates: $f_0(1500)$, $f_0(1710)$, $f_0(1370)$
+\>> lattice QCD: m(0++) glueball $\sim$ $1700 (\pm 100)\un{MeV}$
+
+\> CMS + TOTEM:
+\>> both protons measured and tagged by TOTEM
+\>> effective selection with high purity ($p_T$ balance + $x$-vertexing) in required $\xi$-range.
+\>> CMS tracker: charged particle invariant mass with $\si(M) \sim 20-30\un{MeV}$
+
+\> available data
+\>> 8 Te	V, $\be^* = 90\un{m}$, Jul 2012: ${\cal L} \approx 3\un{nb^{-1}}$: proof of principle
+\>> 13 TeV, $\be^* = 90m\un{m}$, Oct 2015: ${\cal L} \approx 0.4\un{pb^{-1}}$ for (CMS + TOTEM): should allow full production and decay characterisation
 
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{}
+\ctitle{Glueball searches}{2015 data}
 
+\> CMS + TOTEM: trigger exchange, independent DAQ, offline data merging
 
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
+\> trigger: RP double arm \& T2 veto \& at least one track in CMS:
+
+\centerline{\fig[10cm]{fig/run_2015_90m_trigger.png}}
+
+\> analysis strategy -- verify the following glueball conditions
+\>> selective production enhancement as function of gluon-gluon purity in
+exclusive CD interaction (resonances with ~same energy, quark
+contents, and quantum numbers $\rightarrow$ same coupling to/for gluons )
+\>> final states branching ratio pion-pion, kaon-kaon, rho-rho consistent
+with equi-flavour partitioning selection rules (or with proportionality of
+gluon coupling to quarks naked mass)
+\>> suppression of photon-photon channel (in production and final state)
+
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -704,20 +767,11 @@ $$ \si_{\rm CD}
 
 TODO: main weakness ??
 
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{Outlook: Odderon}
+\ctitle{Outlook for 2016}{Odderon}
 
-
-\newpage %-------------------------------------------------------------------------------------------
-\title{Outlook: timing}
-
-
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
-
+\> $be^* = 2500\un{m}$
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Outlook: CT-PPS}
@@ -728,9 +782,18 @@ TODO: main weakness ??
 
 
 \newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{}
+
+
+\newpage %-------------------------------------------------------------------------------------------
 \title{Summary}
 
 
+\iffalse
 \newpage %-------------------------------------------------------------------------------------------
 \hbox{}%
 \vfil
@@ -747,6 +810,7 @@ TODO: main weakness ??
 \> Coulomb analysis
 \>> interference formulae
 \>> phase choices
+\fi
 
 \vfil
 \eject
