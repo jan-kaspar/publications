@@ -36,7 +36,7 @@
 \itskip5mm
 \> TOTEM projects and physics programme
 %
-\> detector apparatus, principle of proton\\ measurement
+\> detector apparatus,\\ principle of proton measurement
 %
 \> physics analyses and results: TOTEM alone
 \iffalse
@@ -56,7 +56,7 @@
 \>> inelastic event classification
 \fi
 %
-\> outlook for 2016
+\> upgrades, outlook for 2016
 }}
 
 \vfil
@@ -68,25 +68,28 @@
 \newpage %-------------------------------------------------------------------------------------------
 \title{TOTEM projects and physics programme}
 
-\> add drawings + labels
+\> \EM{TOTEM}
+\>> LHC experiment dedicated to measurement of:
 
-\hrule
+\centerline{\em{total cross-section, elastic scattering and diffractive processes}}
+\>> common features: rapidity gaps, particles in very forward region, surviving protons $\Rightarrow$ special detectors
 
-\> TOTEM
-\>> si tot, ES, SD, DD, CD
-\>> common features: rapidity gaps, particles in very forward region, intact protons
+\vfil
+\> \Em{TOTEM + CMS}
+\>> both experiments at LHC Interaction Point 5
+\>> excellent pseudorapidity coverage: optimal for hard diffraction studies
+\>> cooperation mode: independent experiments, exchange of triggers
 
-\> TOTEM + CMS
-\>> independent experiments, exchange of triggers
-
-\> CT-PPS (CMS-TOTEM Precision Proton Spectrometer)
-\>> full integration, new dedicated 
+\vfil
+\> \Em{CT-PPS} (CMS-TOTEM Precision Proton Spectrometer)
+\>> all subdetectors fully integrated under CMS
+\>> dedicated detectors for high-pileup environment (timing, pixels instead of strips)
 
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Detector apparatus}
 
-\> \em{Inelastic telescopes T1 and T2}: charged particles from inelastic collisions
+\> \Em{Inelastic telescopes T1 and T2}: charged particles from inelastic collisions
 
 \centerline{%
 	\fig[10cm]{fig/cms_totem_gray.pdf}%
@@ -100,7 +103,7 @@
 
 \vfil
 
-\> \em{Roman Pots (RP)}: elastic and diffractive protons close to outgoing beam
+\> \Em{Roman Pots (RP)}: elastic and diffractive protons close to outgoing beam
 
 \centerline{\fig[13cm]{fig/RP_stations_run_1_2.pdf}}
 
@@ -116,7 +119,7 @@
 
 \SmallerFonts
 
-\line{\fig[7cm]{fig/t1_installed.jpg}\hskip3mm\raise15mm\vbox{\hsize7.5cm
+\line{\fig[7cm]{fig/t1_installed.jpg}\hskip3mm\raise15mm\vbox{\hsize7.9cm
 \> installed inside CMS end-caps
 \> at $7.5$ to $10.5\un{m}$ from the IP
 \> one \em{telescope} on each side of IP
@@ -124,7 +127,7 @@
 }\hss}
 
 \vfil
-\line{\fig[7cm]{fig/t1_quarter.jpg}\hskip3mm\raise1mm\vbox{\hsize7.5cm
+\line{\fig[7cm]{fig/t1_quarter.jpg}\hskip3mm\raise15mm\vbox{\hsize7.9cm
 \> each quarter formed by 5 \em{planes} equally spaced along beam
 \> each plane consists of 3 trapezoidal \em{CSC detectors}, each covering $60\un{^\circ}$ in azimuth
 \> Cathode Strip Chamber: gaseous detector with 3 read-out coordinates (at $60\un{^\circ}$ wrt.~each other)
@@ -135,20 +138,19 @@
 
 \SmallerFonts
 
-\line{\AddBckg[0.2mm]{\fig[7.5cm]{fig/t2_installed.jpg}}\hskip3mm\raise15mm\vbox{\hsize7.0cm
+\line{\fig[7.1cm]{fig/t2_installed.jpg}\hskip3mm\raise15mm\vbox{\hsize70mm
 \> installed inside CMS shielding between HF and Castor calorimeters
 \> centred about $13.5\un{m}$ from the IP
 \> one \em{telescope} on each side of IP
 \> each telescope consists of two \em{quarters}
 }\hss}
 
-\vskip-5mm
-
-\line{\AddBckg[0.2mm]{\fig[7.5cm]{fig/t2_quarter.jpg}}\hskip3mm\vbox{\hsize6.8cm
+\vfil
+\line{\fig[7.1cm]{fig/t2_quarter.jpg}\hskip3mm\vbox{\hsize80mm
 \> each quarter formed by 10 semi-circular \em{planes}, assembled in 5 back-to-back mounted pairs
 \> each plane equipped with a \em{Gas Electron Multiplier} detector
 \>> gaseous detector, electron multiplication by 3 perforated foils ($2\un{mm}$ separation)
-\>> radial segmentation: \em{strips} (resolution $\approx 0.15\un{mm}$)
+\>> radial segmentation: \em{strips} (resolution\\ $\approx 0.15\un{mm}$)
 \>> coarse radial$\times$azimuthal segmentation: \em{pads} (for triggering, azimuthal resolution $0.8\un{^\circ}$)
 }\hss}
 
@@ -162,7 +164,7 @@
 \> each station has two \em{units}, separated by $\approx 5\un{m}$
 }\hss}
 
-\line{\fig[5cm]{fig/rp_unit.pdf}\hskip3mm\raise1mm\vbox{\hsize10cm
+\line{\fig[5cm]{fig/rp_unit.pdf}\hskip3mm\raise4mm\vbox{\hsize10cm
 \> each unit contains 3 \em{Roman Pots}: top, bottom and horizontal
 \> Roman Pot = movable beam-pipe insertion
 \>> \Em{beam unstable} $\Rightarrow$ RPs retracted to safe position
@@ -242,7 +244,7 @@ $
 \newpage %-------------------------------------------------------------------------------------------
 \title{LHC optics}
 
-\> simulation of centra diffraction for 2 different optics
+\> simulation of central diffraction for 2 different optics
 
 \vskip2mm
 \line{%
@@ -256,7 +258,7 @@ $
 		\line{\hss\fig[,4.5cm]{fig/hit_dist_0p7.png}\hss}
 	}%
 	\vtop{\hsize7.7cm
-		\centerline{\bf\cRed$\bf\be^* = 90\un{m}$ (special for RP)\cBlack}
+		\centerline{\bf\cRed$\bf\be^* = 90\un{m}$ (special for TOTEM)\cBlack}
 		\centerline{\SmallerFonts$\displaystyle L_x \approx 0,\quad L_y \approx 260\un{m},\quad D_x \approx 4\un{cm}$}
 		
 		\centerline{diffractive protons in \em{vertical RPs}}
@@ -418,7 +420,7 @@ $${\d\si\over\d t} \propto \left|
 
 \vskip-3mm
 \cThird
-$$\rh = \left. {\Re {\cal A}^{\rm H}\over \Im {\cal A}^{\rm H}} \right|_{t=0}$$
+$$\rh = \left. {\Re {\cal A}^{\rm N}\over \Im {\cal A}^{\rm N}} \right|_{t=0}$$
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -431,18 +433,26 @@ $$\rh = \left. {\Re {\cal A}^{\rm H}\over \Im {\cal A}^{\rm H}} \right|_{t=0}$$
 
 \> fits with 2 different assumptions on hadronic component
 \>> \em{purely-exponential} -- non-exponentiality due to Coulomb (+interference)\\
-$\rightarrow$ degree-1 polynomial in exponent
+$\rightarrow$ $|{\cal A}^{\rm N}| = a\, \exp(b_1 t)$
 \>> \em{flexible enough} to describe non-exponentiality even without Coulomb\\
-$\rightarrow$ degree-3 polynomial in exponent
+$\rightarrow$ $|{\cal A}^{\rm N} = a\, \exp(b_1 t + b_2 t^2 + b_3 t^3)$
 
 \vfil
 
 \> role of hadronic phase $t$-dependence?
 \>> largest impact: rate of change at low $|t|$
 \>>> same quantity controls behaviour in impact-parameter space
+
+\centerline{%
+	\raise30mm\vtop{\hsize53mm
 \>> considered two families
-\>>> \em{central}: preferably low impact parameters
-\>>> \em{peripheral}: preferably higher impact parameters
+\>>> \em{central}: black $\rightarrow$
+\>>> \em{peripheral}: blue $\rightarrow$
+	}
+	\fig[,35mm]{fig/1000m_exp3_phase_cni_effect.pdf}%
+	\fig[,35mm]{fig/1000m_exp3_b_dist.pdf}%
+}
+
 
 \newpage %-------------------------------------------------------------------------------------------
 \ctitle{Elastic scattering}{Coulomb interference -- Fits}
@@ -480,10 +490,6 @@ $$\rh = 0.12 \pm 0.03$$
 
 \centerline{\fig[11cm]{fig/rho_s.pdf}}
 
-\> \em{$\si_{\rm tot}$} -- results consistent with previous publications, but for the first time:
-\>> Coulomb component explicitly separated
-\>> determined in the same analysis as $\rh$
-
 
 \newpage %-------------------------------------------------------------------------------------------
 \ctitle{Elastic scattering}{Exclusion power in Run I}
@@ -520,7 +526,7 @@ $$\rh = 0.12 \pm 0.03$$
 \> \em{high-$|t|$: no structures!}
 \>> rules out many models
 \>> rules out physics mechanism: ``optical'' models
-\>> physics interpretation: transition between diffraction and pQCD? \hfill $\Rightarrow$ \hfill e.g.~Donnachie-Landshoff:
+\>> physics interpretation: transition between diffraction and pQCD? \hfill $\Rightarrow$ \hfill e.g.~Donnachie-Landshoff $\Rightarrow$
 }\hskip4mm\hbox{\fig[4cm]{fig/tripple_gluon.png}}\hss
 }
 
@@ -535,7 +541,6 @@ $$\rh = 0.12 \pm 0.03$$
 
 \centerline{\fig[13cm]{fig/tot_cs_methods.pdf}}
 
-\>> $\rh$: from TOTEM ($8\un{TeV}$, $\be^* = 1000\un{m}$) or from external source (e.g.~COMPETE)
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -549,6 +554,10 @@ $$\rh = 0.12 \pm 0.03$$
 
 \> $\sqrt s = 2.76$ and $13\un{TeV}$ analyses ongoing
 
+\> $\sqrt s = 8\un{TeV}$: results from CNI study superior
+\>> Coulomb component explicitly separated
+\>> determined in the same analysis as $\rh$
+
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Single diffraction: $p + p \rightarrow p + X$}
@@ -559,13 +568,13 @@ $$\rh = 0.12 \pm 0.03$$
 \>> from RPs
 \>> from rapidity gap $\De\et$ (T1/T2)
 
-\> mass of diffractive system:\cBlack $m(x) = \sqrt{s \xi}$ 
-
-\> $\xi$ resolution from RPs: $\approx 0.9\un{\%}$ $\Rightarrow$ mass bins given by which T1/T2 active
+\> mass of diffractive system: \cBlack $M_X = \sqrt{s \xi}$ 
 
 \> available data
 \>> $7\un{TeV}$: TOTEM-standalone analysis in progress
 \>> $8$ and $13\un{TeV}$: common data with CMS
+
+\> $\xi$ resolution from RPs: $\approx 0.9\un{\%}$ $\Rightarrow$ mass bins given by arms where T1/T2 active
 
 \newpage %-------------------------------------------------------------------------------------------
 \ctitle{Single diffraction}{Preliminary results at $7\un{TeV}$}
@@ -637,18 +646,26 @@ $$ \si_{\rm CD}
 \newpage %-------------------------------------------------------------------------------------------
 \title{Forward charged-particle multiplicities}
 
-\> $\d N_{\rm ch} / \d\et$ : mean number of charged particles per event and per unit of pseudorapidity
+\> \em{$\d N_{\rm ch} / \d\et$} : mean number of charged particles per event and per unit of pseudorapidity
 
 \> probes (non-)perturbative strong interactions and hadronisation 
 
-\> primary particles only: primary = lifetime $> 30\un{ps}$ (definition consistent with other LHC experiments)
 
-\> measurement based on 2
+\centerline{
+	\raise50mm\vtop{\hsize9cm
+\> measurement based on T2
 \>> $\approx 95\un{\%}$ of inelastic events seen
 \>> almost all non-diffractive events visible
-\>> almost all diffraction with $m_X \gs 3.4\un{GeV}$ detected
+\>> almost all diffraction with $M_X \gs 3.4\un{GeV}$\\ detected
+\>> main cut: selection of primary\\ (lifetime $> 30\un{ps}$) particles
+	}
+	\fig[6cm]{fig/dNdeta_zimpact.png}
+}
 
-\centerline{\fig[5cm]{fig/dNdeta_zimpact.png}}
+\> available data
+\>> $\sqrt s = 7\un{TeV}$: TOTEM only, published
+\>> $\sqrt s = 8\un{TeV}$: TOTEM + CMS, TOTEM + shifted vertex, published
+\>> $\sqrt s = 13\un{TeV}$ 
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -676,21 +693,39 @@ $$ \si_{\rm CD}
 \newpage %-------------------------------------------------------------------------------------------
 \ctitle{Forward charged-particle multiplicities}{$\sqrt s = 8\un{TeV}$}
 
+\vskip-1mm
 \> TOTEM + CMS
-\>> \Em{non-single-diffractive enhanced}: requiring both hemispheres of T2 on
-\>> \Em{single-diffractive enhanced}: requiring only one hemisphere of T2 on
+\>> \em{non-single-diffractive enhanced}: requiring both hemispheres of T2 on
+\>> \em{single-diffractive enhanced}: requiring only one hemisphere of T2 on
 
 \centerline{
-	\fig[,3.5cm]{fig/dNdeta_8TeV_with_CMS.png}%
+	\fig[,45mm]{fig/dNdeta_8TeV_with_CMS.png}%
 	\hskip3mm
-	\fig[,3.5cm]{fig/dNdeta_8TeV_with_CMS_SD_enhanced.png}%
+	\fig[,45mm]{fig/dNdeta_8TeV_with_CMS_SD_enhanced.png}%
 }
 
-\> TOTEM only, with displaced vertex ($z = 11.25\un{m}$)
 
-\centerline{
-	\fig[,3.5cm]{fig/dNdeta_8TeV_displaced_vertex.png}%
+\vskip-1mm
+\line{
+	\raise42mm\vtop{\hsize8cm
+		\> TOTEM only, with \em{displaced vertex}\\ ($z = 11.25\un{m}$)
+	}
+	\fig[,45mm]{fig/dNdeta_8TeV_displaced_vertex.png}%
+	\hss
 }
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\title{Inelastic event classification}
+
+TODO
+
+\> analysis in review: 8 TeV, 90m, 2012
+
+\> 13 TeV data also available
+
+TODO: main weakness ??
+
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -705,8 +740,8 @@ $$ \si_{\rm CD}
 
 \> event selection via comparison CMS to RP protons:
 
-\vskip-2mm
-\cBlack
+\vskip-3mm
+\cThird
 $$M(pp) \hbox{ vs. } M(CMS)\ ,\quad p_T(pp)\hbox{ vs. }p_T(CMS)\ ,\quad	\hbox{vertex}(pp)\hbox{ vs. }\hbox{vertex}(CMS)$$
 
 \> prediction of rapidity gap from proton $\xi$: $\De\et_{1,2} = −\log \xi_{1,2}$
@@ -745,72 +780,136 @@ $$M(pp) \hbox{ vs. } M(CMS)\ ,\quad p_T(pp)\hbox{ vs. }p_T(CMS)\ ,\quad	\hbox{ve
 
 \> trigger: RP double arm \& T2 veto \& at least one track in CMS:
 
-\centerline{\fig[10cm]{fig/run_2015_90m_trigger.png}}
+\centerline{\fig[12cm]{fig/run_2015_90m_trigger.png}}
 
 \> analysis strategy -- verify the following glueball conditions
-\>> selective production enhancement as function of gluon-gluon purity in
-exclusive CD interaction (resonances with ~same energy, quark
-contents, and quantum numbers $\rightarrow$ same coupling to/for gluons )
-\>> final states branching ratio pion-pion, kaon-kaon, rho-rho consistent
-with equi-flavour partitioning selection rules (or with proportionality of
-gluon coupling to quarks naked mass)
-\>> suppression of photon-photon channel (in production and final state)
+\>> resonance \em{enhancement with increasing collision} energy (increasingly pure gluon contribution to CEP)
+\>> final states \em{branching ratio to $\pi\pi$, $KK$, ...},  with equi-flavour partitioning selection rules (or with proportionality of
+gluon coupling to quarks)
+\>> \em{suppression of photon-photon} channel (in production and final state)
 
 
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{Inelastic event classification}
+\title{Outlook}
 
-\> analysis in review: 8 TeV, 90m, 2012
+\> \Em{upgrade projects}: interest in lower cross-section processes\\ $\Rightarrow$ higher luminosity needed $\Rightarrow$ higher pile-up
+\>> need \em{timing}: association of RP proton with central event
+\>> need \em{pixels}: more tracks in RPs
 
-\> 13 TeV data also available
+\cThird
+\centerline{%
+\tab{\ln
+\hbox{project} & \hbox{\bf CT-PPS} & \hbox{\bf timing in vertical RP} \cr\ln
+\hbox{optics} & \hbox{low (standard) }\be^* & \hbox{high lumi }\be^* = 90\un{m}\cr
+\hbox{RPs used} & \hbox{horizontal} & \hbox{vertical} \cr
+\hbox{tracking} & \hbox{3D pixel (}10\un{\mu m}\hbox{)} & \hbox{current Si strip (}20\un{\mu m}\hbox{/RP)} \cr
+\hbox{timing} & \hbox{L-bar cherenkov (}30\un{ps}\hbox{/module)} & \hbox{diamond (}100\un{ps}\hbox{/plane)}\cr
+\hbox{timescale} & \hbox{2017} & \hbox{June: 2 RPs with 2 planes} \cr\ln
+}%
+}
 
-TODO: main weakness ??
+
+
+\> \Em{priorities for 2016}
+\>> \em{glueball} searches (2015 data)
+\>> \em{odderon} searches: TOTEM only, special run with $be^* = 2500\un{m}$
+\>> \em{di-photon} searches with ``accelerated'' CT-PPS: standard low $\be^*$ runs
+\>>> motivated by ``the $750\un{GeV}$ may-be-resonance``, start CT-PPS programme with current detectors now
 
 
 \newpage %-------------------------------------------------------------------------------------------
-\ctitle{Outlook for 2016}{Odderon}
+\ctitle{Outlook}{CT-PPS plan for 2016}
 
-\> $be^* = 2500\un{m}$
+\line{%
+	\raise21mm\vtop{\hsize11cm
+\> motivation: di-photon excess at $750\un{GeV}$ observed by ATLAS and CMS
+\>> CT-PPS: can see \em{exclusive and complete} events
+	}%
+	\hss
+	\fig[4cm]{fig/diagram_750GeV_candidate.png}
+	\hss
+}
+
+\> background suppressible even \em{without timing} detectors
+\>> large mass: low background from inelastic photon pair + pileup
+\>> strong correlation (mass, pseudorapidity, ...) between RP and CMS tracker
+\>> nevertheless: install 2 RPs with 2 diamond planes (originally for vertical RPs)
+
+\> \em{tracking: use current Si strip} detectors in station 210m
+\>> functional at least for $10/fb$, then replacable with RPs from 220m
+
+\line{%
+	\raise9mm\vbox{\hsize9.3cm
+\> \em{CMS-TOTEM integration} successfully ongoing
+\>> trigger, DAQ, offline SW, DQM, ...
+\>> DQM snapshot: from Monday, beam with 900 bunches, RPs inserted in physics positions, RPs included in global CMS DAQ, data processed with CMSSW 8.1.X (next release) $\rightarrow$
+	}
+	\hss
+	\fig[5cm]{fig/ctpps_hit_dist.pdf}
+}
 
 \newpage %-------------------------------------------------------------------------------------------
-\title{Outlook: CT-PPS}
+\ctitle{Outlook}{Odderon searches}
+
+\> Odderon = (hypothetical) cross-odd partner of Pomeron
+
+\> overview of past Odderon searches
+\>> comparison pp vs.~anti-pp (dip): not applicable at LHC
+\>> spin analyses: not applicable at LHC
+\>> structures in $\d\si / \d t$: where Pomeron contribution small
+\>>> high-$|t|$: disfavoured by $13\un{TeV}$ measurements
+\>>> low-$|t|$: shifts of $\rh$ value $\Rightarrow$ within reach of TOTEM
 
 
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
-
-
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
-
-
-\newpage %-------------------------------------------------------------------------------------------
-\title{}
+\line{%
+	\raise45mm\vtop{\hsize73mm
+	\> Coulomb-nuclear interference at\\ $\sqrt s = 13\un{TeV}$
+	\>> needs special optics: $\be^* = 2500\un{m}$
+	\>> $|t| = 6\cdot10^{-4}\un{GeV^2}$ reachable
+	\>> $\sim 1\un{week}$ data-taking time\\ approved in 2016
+	}
+	\hskip2mm
+	\fig[8.0cm]{fig/2500m_interference_effect.pdf}
+}
 
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Summary}
 
+TODO
+
+
+\newpage %-------------------------------------------------------------------------------------------
+\hbox{}%
+\vfill
+\centerline{ $\downarrow$ Backup}
+\footline={}
+
 
 \iffalse
 \newpage %-------------------------------------------------------------------------------------------
-\hbox{}%
-\vfil
-\title{Backup}
-
-
-\newpage %-------------------------------------------------------------------------------------------
 \title{Backup topics}
-
-\> RP alignment
 
 \> Optics refinement with RP data
 
 \> Coulomb analysis
 \>> interference formulae
 \>> phase choices
+
 \fi
+
+\newpage %-------------------------------------------------------------------------------------------
+\centerline{\fig[16cm]{fig/mario_slide_11.png}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\centerline{\fig[16cm]{fig/mario_slide_12.png}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\centerline{\fig[16cm]{fig/mario_slide_14.png}}
+
+\newpage %-------------------------------------------------------------------------------------------
+\centerline{\fig[16cm]{fig/mario_slide_15.png}}
 
 \vfil
 \eject
