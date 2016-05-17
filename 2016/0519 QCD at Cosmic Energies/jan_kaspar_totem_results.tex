@@ -107,7 +107,7 @@
 
 \centerline{\fig[13cm]{fig/RP_stations_run_1_2.pdf}}
 
-\>> station at 147m in Run I $\rightarrow$ station 220m in Run II
+\>> station at 147m in Run I $\rightarrow$ station 210m in Run II
 
 \vfil
 
@@ -172,9 +172,9 @@
 \> typical approach: $10\un{\si_{\rm beam}}$ (record $3\un{\si_{\rm beam}}$)
 }\hss}
 
-\line{\fig[5cm]{fig/rp_pot.pdf}\hskip3mm\raise3mm\vbox{\hsize10cm
+\line{\fig[5cm]{fig/rp_pot_new.png}\hskip3mm\raise13mm\vbox{\hsize10cm
 \> Roman Pot: container for sensors
-\> TODO: add picture of cylindrical ones and possibly new ferrites
+\> LS1: improved RF shield $\Rightarrow$ possible close approach to high-intensity beam
 }\hss}
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -277,8 +277,10 @@ $
 \newpage %-------------------------------------------------------------------------------------------
 \title{Typical run scenarios}
 
-\centerline{\SmallerFonts ($t \approx -p^2 \th^2$: four-momentum transfer squared; $\xi = \De p / p$: fractional momentum loss)}
-\vskip1mm
+\centerline{\cRed $t \approx -p^2 \th^2$:\cBlue{} four-momentum transfer squared}
+\centerline{\cRed $\xi = \De p / p$:\cBlue{} fractional momentum loss}
+
+\vfil
 
 {
 
@@ -296,7 +298,7 @@ $
 		\vskip\baselineskip
 	\em{elastic scattering}: high $|t|$
 		\vskip\baselineskip
-	\em{diffraction}: $\xi > 0.01$, low cross-section processes
+	\em{diffraction}: $\xi \gs 0.03$, low cross-section processes
 }
 \hss
 \vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil\rightskip0pt plus1fil\parfillskip0pt
@@ -306,7 +308,7 @@ $
 		\vskip1\baselineskip
 	\em{elastic scattering}: low to mid $|t|$
 		\vskip\baselineskip
-	\em{diffraction}: any $\xi$ for $|t| > 0.01\un{GeV^2}$
+	\em{diffraction}: any $\xi$ for $|t| \gs 0.01\un{GeV^2}$
 }
 \hss
 \vtop{\hsize4.7cm\obeylines\leftskip0pt plus1fil\rightskip0pt plus1fil\parfillskip0pt
@@ -320,34 +322,45 @@ $
 
 }
 
+\vfil
+
+\centerline{\cBlue details depend on RP approach to beam and precise optics}
+
 
 \newpage %-------------------------------------------------------------------------------------------
 \ctitle{Elastic scattering}{$p + p \rightarrow p + p$}
 
-\> data overview
-
-\centerline{\fig[14cm]{fig/es_summary.pdf}}
-
-\> selection: two anti-collinear protons from the save vertex
+\> selection: two anti-collinear protons from the same vertex
 
 \> (almost) purely data-driven analysis
 
-\> different $|t|$ probe different physics regimes: Coulomb interference, diffractive cone, dip-bump, transition to pQCD
+\> data overview (selection), \cBlack gray = preliminary
+
+\centerline{\fig[15cm]{fig/es_summary.pdf}}
+
+\> different $|t|$ probe \em{different physics regimes} -- from lowest to highest $|t|$:
+\\ \cThird Coulomb interference, diffractive cone, dip-bump, transition to pQCD
 
 % ORAL: anticipate some features of the data: shift of dip position, cone steepening
 
 \newpage %-------------------------------------------------------------------------------------------
 \ctitle{Elastic scattering}{Trends}
 
+\centerline{\cBlack (gray = preliminary)}
+
 \centerline{%
-	\fig[,5cm]{fig/es_summary_detail.pdf}%
-	\hfil
-	\fig[,5cm]{fig/B_s.pdf}%
+	\fig[,55mm]{fig/es_summary_detail.pdf}%
+	\hskip5mm
+	\fig[,55mm]{fig/B_s.pdf}%
 }
 
-\> dip position: moves to lower $|t|$ as $\sqrt s$ increases ($8$ and $13\un{TeV}$ preliminary though!)
+\> \em{dip position}
+\>> $\sqrt s = 8\un{TeV}$: limited statistics
+\>> $\sqrt s = 7 \rightarrow 13\un{TeV}$: dip moves to lower $|t|$
+\>>> $13\un{TeV}$ results preliminary! (the yet missing unfolding correction likely to move the dip to lower $|t|$)
 
-\> forward slope $B = {\d\over\d t} \log \left.{\d\si\over\d t} \right |_{t=0}$ increases with $\sqrt s$
+\> \em{forward slope} $B = {\d\over\d t} \log \left.{\d\si\over\d t} \right |_{t=0}$
+\>> increase wrt.~previous experiments
 
 \newpage %-------------------------------------------------------------------------------------------
 \ctitle{Elastic scattering}{Non-exponentiality at low $|t|$}
@@ -410,8 +423,10 @@ $${\d\si\over\d t} \propto \left|
 
 \vskip10mm
 
+\>> 2 meanings of ``interference'': sum of amplitudes, additional terms
+
 \> interference formula = summation for practical applications
-\>> \Em{simplified West-Yennie (SWY)}: QFT framework, traditional but \em{heavy simplifications (constant hadronic phase, constant slope})
+\>> \Em{simplified West-Yennie (SWY)}: QFT framework, traditional but \em{heavy simplifications (constant hadronic phase, constant slope)}
 \>> \Em{Cahn} or \Em{Kundr\' at-Lokaj\' i\v cek (KL)}: eikonal framework, no explicit simplifications
 
 \> interference $\Rightarrow$ phase of hadronic amplitude exposed in cross-section
@@ -420,7 +435,7 @@ $${\d\si\over\d t} \propto \left|
 
 \vskip-3mm
 \cThird
-$$\rh = \left. {\Re {\cal A}^{\rm N}\over \Im {\cal A}^{\rm N}} \right|_{t=0}$$
+$$\rh = \left. {\Re {\cal A}^{\rm N} / \Im {\cal A}^{\rm N}} \right|_{t=0}$$
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -442,15 +457,13 @@ $\rightarrow$ $|{\cal A}^{\rm N} = a\, \exp(b_1 t + b_2 t^2 + b_3 t^3)$
 \> role of hadronic phase $t$-dependence?
 \>> largest impact: rate of change at low $|t|$
 \>>> same quantity controls behaviour in impact-parameter space
+\>> considered two families: \em{central} (black $\downarrow$), \em{peripheral} (blue $\downarrow$)
 
 \centerline{%
-	\raise30mm\vtop{\hsize53mm
-\>> considered two families
-\>>> \em{central}: black $\rightarrow$
-\>>> \em{peripheral}: blue $\rightarrow$
+	\raise30mm\vtop{\hsize48mm
 	}
-	\fig[,35mm]{fig/1000m_exp3_phase_cni_effect.pdf}%
-	\fig[,35mm]{fig/1000m_exp3_b_dist.pdf}%
+	\fig[,43mm]{fig/1000m_exp3_phase_cni_effect.pdf}%
+	\fig[,43mm]{fig/1000m_exp3_b_dist.pdf}%
 }
 
 
@@ -463,10 +476,10 @@ $\rightarrow$ $|{\cal A}^{\rm N} = a\, \exp(b_1 t + b_2 t^2 + b_3 t^3)$
 	\fig[7cm]{fig/coulomb_exp1_fit.pdf}%
 	\raise45mm\vtop{\hsize8cm
 	$\Leftarrow$ \EM{purely-exponential hadronic amplitude}
-		\>> constant phase \em{excluded} (with both SWY and KL formulae) $\Rightarrow$ application of SWY formula excluded too
-		\>> peripheral phase not excluded by data, but \em{disfavoured}
-		\>>> $\rh$ value outside a consistent pattern of other fits and theoretical predictions
-		\>>> number of theoretical reasons for non-exponential hadronic amplitude
+		\>> \em{constant phase excluded} (with both SWY and KL formulae) $\Rightarrow$ application of SWY formula excluded too
+		\>> \em{peripheral phase} not excluded by data, but \em{disfavoured}
+		\>>> $\rh$ value outside a consistent pattern of\\ other fits and theoretical predictions
+		\>>> number of theoretical reasons for\\ non-exponential hadronic amplitude
 	}
 	\hss
 }
@@ -481,14 +494,20 @@ $\rightarrow$ $|{\cal A}^{\rm N} = a\, \exp(b_1 t + b_2 t^2 + b_3 t^3)$
 }
 
 \newpage %-------------------------------------------------------------------------------------------
-\ctitle{Elastic scattering}{Coulomb interference -- Result summary}
+\ctitle{Elastic scattering}{Coulomb interference -- $\rh$ parameter}
 
-\> \em{$\rh$} -- first LHC determination from Coulomb-hadronic interference:
+\> $\sqrt{s} = 8\un{TeV}$: first LHC determination from Coulomb-hadronic interference
 \vskip-4mm
-\cBlack
+\cThird
 $$\rh = 0.12 \pm 0.03$$
 
 \centerline{\fig[11cm]{fig/rho_s.pdf}}
+
+\>> leading uncertainty: statistics
+
+\vfil
+
+\> plans for $\sqrt s = 13\un{TeV}$: $\rh$ measurement with higher statistics
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -552,12 +571,13 @@ $$\rh = 0.12 \pm 0.03$$
 	\fig[,7cm]{fig/sigma_el_to_sigma_tot.pdf}%
 }
 
-\> $\sqrt s = 2.76$ and $13\un{TeV}$ analyses ongoing
+\> $\sqrt s = 7\un{TeV}$: all 3 methods consistent
 
 \> $\sqrt s = 8\un{TeV}$: results from CNI study superior
 \>> Coulomb component explicitly separated
 \>> determined in the same analysis as $\rh$
 
+\> $\sqrt s = 2.76$ and $13\un{TeV}$ analyses ongoing
 
 \newpage %-------------------------------------------------------------------------------------------
 \title{Single diffraction: $p + p \rightarrow p + X$}
@@ -656,8 +676,8 @@ $$ \si_{\rm CD}
 \> measurement based on T2
 \>> $\approx 95\un{\%}$ of inelastic events seen
 \>> almost all non-diffractive events visible
-\>> almost all diffraction with $M_X \gs 3.4\un{GeV}$\\ detected
-\>> main cut: selection of primary\\ (lifetime $> 30\un{ps}$) particles
+\>> diffraction with $M_X \gs 3.4\un{GeV}$\\ detected
+\>> selection of primary particles:\\ lifetime $> 30\un{ps}$ (LHC convention)
 	}
 	\fig[6cm]{fig/dNdeta_zimpact.png}
 }
@@ -677,6 +697,12 @@ $$ \si_{\rm CD}
 	\fig[,5cm]{fig/dNdeta_totem_7TeV.png}%
 	\hskip3mm
 	\fig[,5cm]{fig/dNdeta_7TeV_allLHC.png}%
+}
+\centerline{
+	\hskip8cm
+	\vtop{\hsize7cm
+		\SmallerFonts $\uparrow$ NB: each experiment has different event selection!
+	}
 }
 
 \> main contributions to systematic uncertainty ($\approx 10\un{\%}$)
@@ -777,8 +803,8 @@ $$M(pp) \hbox{ vs. } M(CMS)\ ,\quad p_T(pp)\hbox{ vs. }p_T(CMS)\ ,\quad	\hbox{ve
 \>> CMS tracker: charged particle invariant mass with $\si(M) \sim 20-30\un{MeV}$
 
 \> available data
-\>> 8 Te	V, $\be^* = 90\un{m}$, Jul 2012: ${\cal L} \approx 3\un{nb^{-1}}$: proof of principle
-\>> 13 TeV, $\be^* = 90m\un{m}$, Oct 2015: ${\cal L} \approx 0.4\un{pb^{-1}}$ for (CMS + TOTEM): should allow full production and decay characterisation
+\>> 8 TeV, $\be^* = 90\un{m}$, Jul 2012: ${\cal L} \approx 1\un{nb^{-1}}$: proof of principle
+\>> 13 TeV, $\be^* = 90\un{m}$, Oct 2015: ${\cal L} \approx 0.4\un{pb^{-1}}$ for (CMS + TOTEM): should allow full production and decay characterisation
 
 
 \newpage %-------------------------------------------------------------------------------------------
@@ -802,7 +828,7 @@ gluon coupling to quarks)
 \title{Outlook}
 
 \> \Em{upgrade projects}: interest in lower cross-section processes\\ $\Rightarrow$ higher luminosity needed $\Rightarrow$ higher pile-up
-\>> need \em{timing}: association of RP proton with central event
+\>> need \em{timing}: association of RP proton vertex with CMS vertex
 \>> need \em{pixels}: more tracks in RPs
 
 \cThird
@@ -813,7 +839,7 @@ gluon coupling to quarks)
 \hbox{RPs used} & \hbox{horizontal} & \hbox{vertical} \cr
 \hbox{tracking} & \hbox{3D pixel (}10\un{\mu m}\hbox{)} & \hbox{current Si strip (}20\un{\mu m}\hbox{/RP)} \cr
 \hbox{timing} & \hbox{L-bar cherenkov (}30\un{ps}\hbox{/module)} & \hbox{diamond (}100\un{ps}\hbox{/plane)}\cr
-\hbox{timescale} & \hbox{2017} & \hbox{June: 2 RPs with 2 planes} \cr\ln
+			 & \hbox{or ultrafast silicon or diamond} & \cr\ln
 }%
 }
 
@@ -834,18 +860,22 @@ gluon coupling to quarks)
 \> motivation: di-photon excess at $750\un{GeV}$ observed by ATLAS and CMS
 \>> CT-PPS: can see \em{exclusive and complete} events
 	}%
-	\hss
+	\hskip3mm
 	\fig[4cm]{fig/diagram_750GeV_candidate.png}
 	\hss
 }
 
+\vskip-5mm
+
 \> background suppressible even \em{without timing} detectors
 \>> large mass: low background from inelastic photon pair + pileup
-\>> strong correlation (mass, pseudorapidity, ...) between RP and CMS tracker
-\>> nevertheless: install 2 RPs with 2 diamond planes (originally for vertical RPs)
+\>> strong correlation between proton pair (RP) and photon pair (CMS ECal)
+\>> nevertheless: install 2 RPs with 4 diamond planes (originally for vertical RPs)
+\>>> can also be used for (coarse) tracking
 
 \> \em{tracking: use current Si strip} detectors in station 210m
-\>> functional at least for $10/fb$, then replacable with RPs from 220m
+\>> functional at least for $10/fb$, then replaceable with detectors from 220m
+\>> detector/beam shift: irradiation distributed
 
 \line{%
 	\raise9mm\vbox{\hsize9.3cm
@@ -886,16 +916,23 @@ gluon coupling to quarks)
 \title{Summary}
 
 \> \em{performance} in Run II
-\>> all detectors functional (except one T2 quarter -- minimal impact on physics)
+\>> all detectors functional
+\>> RPs equipped with RF shields $\Rightarrow$ less impedance $\Rightarrow$ close approach possible
 \>> DAQ throughput increased $50\times$ wrt.~Run I
+
+\vfil
 
 \> many \em{analyses} ongoing
 \>> Run I and Run II
 \>> TOTEM standalone, TOTEM + CMS
 
+\vfil
+
 \> \em{upgrade} projects
 \>> timing in vertical RPs (diamonds)
-\>> CT-PPS (pixel tracking, Cherenkov timing)
+\>> CT-PPS (pixel tracking, timing with fast silicon, diamond or Cherenkov)
+
+\vfil
 
 \> \em{priorities} for 2016
 \>> glueball analysis of 2015 data

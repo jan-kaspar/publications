@@ -16,7 +16,7 @@ void PlotAll(bool detail=false)
 	
 	TH1_x_max = 0.4;
 	draw(shift(0, shy_2), RootGetObject("/afs/cern.ch/work/j/jkaspar/analyses/elastic/1380GeV,beta11/DS1/distributions_45b_56t.root",
-		"normalization/eb/h_t_normalized"), "vl,d0", gray+opacity(0.5)+2pt, "$\be^*=11\un{m}$, VERY PRELIMINARY!");
+		"normalization/eb/h_t_normalized"), "vl,d0", gray+opacity(0.5)+2.5pt, "$\be^*=11\un{m}$, VERY PRELIMINARY!");
 	
 	label("$\sqrt s = 2.76\un{TeV}$", (0.75, -3.5), Fill(white));
 	
@@ -42,7 +42,7 @@ void PlotAll(bool detail=false)
 	
 	TH1_x_max = +inf;
 	draw(shift(0, shy_8), RootGetObject("/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta90,high_t/DS-merged/merged.root",
-		"ob-2-20-0.20/DS4/45t_56b/h_dsdt"), "cl,eb", gray+opacity(0.5)+2pt, "$\be^*=90\un{m}$, PRELIMINARY!");
+		"ob-2-20-0.20/DS4/45t_56b/h_dsdt"), "cl,eb", gray+opacity(0.5)+2.5pt, "$\be^*=90\un{m}$, PRELIMINARY!");
 	
 	TH1_x_max = +0.2;
 	draw(shift(0, shy_8), RootGetObject("/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta90/DS-merged/merged.root",
@@ -63,9 +63,22 @@ void PlotAll(bool detail=false)
 	TH1_x_min = 0.05;
 	TH1_x_max = 3.4;
 	draw(shift(0, shy_13), RootGetObject("/afs/cern.ch/work/j/jkaspar/analyses/elastic/6500GeV,beta90,10sigma/DS-merged/merged.root",
-		"ob-1-10-0.2/merged/combined/h_dsdt"), "vl,d0,eb", gray+opacity(0.5)+2pt, "$\be^*=90\un{m}$, VERY PRELIMINARY!");
+		"ob-1-10-0.2/merged/combined/h_dsdt"), "vl,d0,eb", gray+opacity(0.5)+2.5pt, "$\be^*=90\un{m}$, VERY PRELIMINARY!");
 	
 	label("$\sqrt s = 13\un{TeV}$", (0.75, 1.7), Fill(white));
+
+	// -------------- labels -----------
+
+	if (detail)
+	{
+		label(rotate(-45) * Label("{\bf PRELIMINARY}"), (0.4, 1.2), gray);
+		label(rotate(-45) * Label("{\bf PRELIMINARY}"), (0.35, 0.4), gray);
+		label(rotate(-45) * Label("{\bf PRELIMINARY}"), (0.26, -1.1), gray);
+	} else {
+		label(rotate(-25) * Label("{\bf PRELIMINARY}"), (1.5, 0.3), gray);
+		label(rotate(-25) * Label("{\bf PRELIMINARY}"), (1.5, -1.2), gray);
+		label(rotate(-68) * Label("{\bf PRELIMINARY}"), (0.25, -2.5), gray);
+	}
 }
 
 
