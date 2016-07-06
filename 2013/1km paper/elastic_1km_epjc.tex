@@ -1,0 +1,96 @@
+\documentclass[pdftex,twocolumn,epjc3]{svjour3}
+
+\RequirePackage[T1]{fontenc}
+
+\RequirePackage{graphicx}
+\RequirePackage{mathptmx}      % use Times fonts if available on your TeX system
+\RequirePackage{flushend}
+\RequirePackage[numbers,sort&compress]{natbib}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue,linkcolor=blue]{hyperref}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{enumitem}
+
+%----------------------------------------------------------------------------
+
+\def\d{{\rm d}}
+\def\un#1{\,{\rm #1}}
+\def\ung#1{\quad[{\rm #1}]}
+\def\unt#1{[{\rm #1}]}
+\def\e{{\rm e}}
+\def\I{{\rm i}}
+\def\T{{\rm T}}
+%\def\vec#1{\mathbf{#1}}	% available in macro set
+\def\mat#1{\tens{#1}}
+\def\etal{et al.}
+\def\todo#1{{\color{red}TODO: #1}}
+\def\TODO#1{{\color{red}TODO: #1}}
+
+\setbox123\hbox{$0$}
+\setbox124\hbox{$.$}
+\def\S{\hbox to\wd123{\hss}}
+\def\.{\hbox to\wd124{\hss}}
+
+\def\Name#1{#1, }
+\def\Review#1#2#3#4{{\it #1} {\bf #2} (#3) #4}
+
+%-----------------------------------------------------------------------------
+
+\journalname{Eur. Phys. J. C}
+
+\begin{document}
+
+\title{Measurement of Elastic pp Scattering at $\sqrt{\hbox{s}} = \hbox{8}$\,TeV in the Coulomb-Nuclear Interference Region -- Determination of the $\mathbf{\rho}$-Parameter and the Total Cross-Section}
+
+\titlerunning{Meas.~of Elastic pp Scatt.~at $\sqrt{\hbox{s}} = \hbox{8}$\,TeV in the CNI Region -- Determination of $\rho$ and $\sigma_{\rm tot}$}
+
+\input authorlist_epjc
+
+\authorrunning{The TOTEM Collaboration}
+
+\date{Manuscript date: \today}
+
+\maketitle
+
+
+\begin{abstract}
+\input abstract
+\keywords{proton-proton interactions \and elastic scattering \and Coulomb-Nuclear Interference \and total cross-section \and rho parameter \and TOTEM \and LHC}
+\PACS{
+13.85.Dz % Elastic scattering
+\and
+13.85.Lg % Total cross sections
+\and
+13.40.Ks % Electromagnetic corrections to strong- and weak-interaction processes
+}
+\end{abstract}
+
+%--------------------------------------------------
+
+\input introduction.tex
+
+\input experimental_apparatus.tex
+
+\input beam_optics.tex
+
+\input data_taking.tex
+
+% TODO
+\input differential_cross_section.tex
+
+\input coulomb.tex
+
+\input conclusions.tex
+
+\begin{acknowledgements}
+\input acknowledgements.tex
+\end{acknowledgements}
+
+%--------------------------------------------------
+
+\begin{thebibliography}{99}
+\input bibliography.tex
+\end{thebibliography}
+
+
+\end{document}
