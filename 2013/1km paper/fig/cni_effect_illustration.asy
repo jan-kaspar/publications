@@ -1,9 +1,6 @@
 import root;
 import pad_layout;
 
-// TODO: needed?
-include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/coulomb_analysis/exploration/common_code.asy";
-
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesIX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
@@ -16,7 +13,7 @@ drawGridDef = true;
 
 //----------------------------------------------------------------------------------------------------
 
-void PlotEffGraph(rObject g_CH, rObject g_H, pen p, string label)
+void PlotEffGraph(RootObject g_CH, RootObject g_H, pen p, string label)
 {
 	guide g;
 
@@ -47,7 +44,7 @@ void PlotEffGraph(rObject g_CH, rObject g_H, pen p, string label)
 
 //----------------------------------------------------------------------------------------------------
 
-guide BuildEffGraph(rObject g_CH, rObject g_H)
+guide BuildEffGraph(RootObject g_CH, RootObject g_H)
 {
 	guide g;
 
@@ -82,7 +79,7 @@ void PlotCurve(string option, pen p, string label)
 	string fn = topDir + "test2.root";
 
 	TGraph_x_max = 0.25;
-	PlotEffGraph(rGetObj(fn, option + "/g_FCH_Rho2"), rGetObj(fn, option + "/g_FH_Rho2"), p, label);
+	PlotEffGraph(RootGetObject(fn, option + "/g_FCH_Rho2"), RootGetObject(fn, option + "/g_FH_Rho2"), p, label);
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -70,7 +70,7 @@ real PeripheralPhase(real mt)
 
 //----------------------------------------------------------------------------------------------------
 
-guide ContinuousGraph(rObject obj)
+guide ContinuousGraph(RootObject obj)
 {
 	int N = obj.iExec("GetN");
 	
@@ -109,7 +109,7 @@ AddToLegend("<{\it theoretical models}:");
 
 for (int mi : models.keys) 
 {
-	rObject obj = rGetObj(f_mod, "full range/" + models[mi] + "/PH/phase");
+	RootObject obj = RootGetObject(f_mod, "full range/" + models[mi] + "/PH/phase");
 	string label = obj.sExec("GetTitle");
 	label = substr(label, 0, find(label, " ["));
 	pen p = StdPen(mi) + dashed;
@@ -126,10 +126,10 @@ draw(scale(1., 1/pi) * graph(BaillyPhase, 0, 1), red+1pt, "Bailly");
 draw(scale(1., 1/pi) * graph(PeripheralPhase, 0, 1), heavygreen+1pt, "peripheral");
 */
 
-draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-con-rho0.10/g_FH_Theta")), black+1pt, "constant");
-draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-std-rho0.10/g_FH_Theta")), red+1pt, "standard");
-draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-bai-rho0.10/g_FH_Theta")), blue+1pt, "Bailly");
-draw(scale(1., 1/pi) * ContinuousGraph(rGetObj(topDir+"exploration/test2.root", "p-per-rho0.10-4.3-2.311-0.283/g_FH_Theta")), heavygreen+1pt, "peripheral");
+draw(scale(1., 1/pi) * ContinuousGraph(RootGetObject(topDir+"exploration/test2.root", "p-con-rho0.10/g_FH_Theta")), black+1pt, "constant");
+draw(scale(1., 1/pi) * ContinuousGraph(RootGetObject(topDir+"exploration/test2.root", "p-std-rho0.10/g_FH_Theta")), red+1pt, "standard");
+draw(scale(1., 1/pi) * ContinuousGraph(RootGetObject(topDir+"exploration/test2.root", "p-bai-rho0.10/g_FH_Theta")), blue+1pt, "Bailly");
+draw(scale(1., 1/pi) * ContinuousGraph(RootGetObject(topDir+"exploration/test2.root", "p-per-rho0.10-4.3-2.311-0.283/g_FH_Theta")), heavygreen+1pt, "peripheral");
 
 limits((0, -1.0), (0.8, +1.5), Crop);
 AttachLegend(BuildLegend(NW, vSkip=-0.8mm, ymargin=0mm), NE);
