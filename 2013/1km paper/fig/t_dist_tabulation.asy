@@ -19,7 +19,7 @@ pen p_anal_band = brown*0.5 + yellow*0.5;
 
 //----------------------------------------------------------------------------------------------------
 
-void DrawBand(rObject bc, rObject unc, pen p)
+void DrawBand(RootObject bc, RootObject unc, pen p)
 {
 	int N = bc.iExec("GetN");
 
@@ -53,9 +53,9 @@ unitsize(5000mm, 0.055mm);
 //currentpad.xTicks = LeftTicks(0.005, 0.001);
 //currentpad.yTicks = RightTicks(100., 20.);
 
-DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_all"), p_full_band);
-DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_anal_all"), p_anal_band);
-draw(rGetObj(f, "g_data"), "p", black, mCi+1pt);
+DrawBand(RootGetObject(f, "g_band_cen"), RootGetObject(f, "g_unc_all"), p_full_band);
+DrawBand(RootGetObject(f, "g_band_cen"), RootGetObject(f, "g_unc_anal_all"), p_anal_band);
+draw(RootGetObject(f, "g_data"), "p", black, mCi+1pt);
 
 limits((0, 4e2), (0.01, 1e3), Crop);
 
@@ -74,9 +74,9 @@ currentpad.xTicks = LeftTicks(0.05, 0.01);
 
 attach(bbox(inset, 1mm, nullpen, FillDraw(white)), (0.125, 1.3));
 
-DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_all"), p_full_band);
-DrawBand(rGetObj(f, "g_band_cen"), rGetObj(f, "g_unc_anal_all"), p_anal_band);
-draw(rGetObj(f, "g_data"), "p", black, mCi+1pt);
+DrawBand(RootGetObject(f, "g_band_cen"), RootGetObject(f, "g_unc_all"), p_full_band);
+DrawBand(RootGetObject(f, "g_band_cen"), RootGetObject(f, "g_unc_anal_all"), p_anal_band);
+draw(RootGetObject(f, "g_data"), "p", black, mCi+1pt);
 
 AddToLegend("data", mCi+1pt);
 AddToLegend("statistical uncertainty", (scale(0.0001, 1.)*mPl)+5pt);

@@ -18,8 +18,8 @@ string extensions[] = {
 //	"y-1",
 };
 
-xSizeDef = 10cm;
-ySizeDef = 6cm;
+xSizeDef = 6.5cm;
+ySizeDef = 5.5cm;
 
 //TGraph_x_min = 6e-4;
 
@@ -33,12 +33,12 @@ for (int dgni : diagonals.keys)
 	currentpad.xTicks = LeftTicks(0.002, 0.001);
 	currentpad.yTicks = RightTicks(0.005, 0.001);
 
-	draw(rGetObj(dir + "/numerical_integration.root", "unsm_corr"), red+1pt, "central");
+	draw(RootGetObject(dir + "/numerical_integration.root", "unsm_corr"), red+1pt, "central");
 
 	for (int ei : extensions.keys)
 	{
 		string f_ni = dir + "/numerical_integration_" + extensions[ei] + ".root";
-		draw(rGetObj(f_ni, "unsm_corr"), StdPen(ei+1), replace(extensions[ei], "_", "\_"));
+		draw(RootGetObject(f_ni, "unsm_corr"), StdPen(ei+1), replace(extensions[ei], "_", "\_"));
 	}
 
 	limits((0.000, 0.975), (0.01, 1.005), Crop);
