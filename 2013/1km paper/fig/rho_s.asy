@@ -11,7 +11,7 @@ TH2_palette = paletteColor2;
 
 string base_dir = "/home/jkaspar/publications/2012/7TeV three papers/combined/fig/";
 
-xSizeDef = 10cm;
+xSizeDef = 6.9cm;
 ySizeDef = 6cm;
 
 drawGridDef = true;
