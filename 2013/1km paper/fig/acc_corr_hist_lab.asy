@@ -6,8 +6,8 @@ texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string topDir = "../analysis/";
 
-xSizeDef = 10cm;
-ySizeDef = 6cm;
+xSizeDef = 6.5cm;
+ySizeDef = 5.5cm;
 
 string f = topDir+"DS2b/distributions_45t_56b.root";
 
@@ -15,7 +15,7 @@ NewPad("$|t|\ung{GeV^2}$", "acceptance correction $\cal A$", xTicks=LeftTicks(0.
 //scale(Log, Linear);
 scale(Linear, Log);
 //TH1_lowLimit = 1e-3;
-draw(rGetObj(f, "acceptance correction/ob-5-4/p_t_full_corr"), "d0,eb", red+1pt, "acceptance");
+draw(RootGetObject(f, "acceptance correction/ob-5-4/p_t_full_corr"), "d0,eb", red+1pt, "acceptance");
 
 pen bp = white + opacity(0.8);
 draw(Label("cut: $|\theta_y^*| > 6\un{\mu rad}$", 0, Fill(bp)), (0.03, 0.7)--(0.005, 1.2), EndArrow);

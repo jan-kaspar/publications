@@ -17,13 +17,13 @@ string topDir = "../analysis/";
 real old_const_eff_45b[] = { 0, 0, 0, 0 };
 real old_const_eff_45t[] = { 0, 0, 0, 0 };
 
-xSizeDef = 10cm;
-ySizeDef = 6cm;
+xSizeDef = 6.5cm;
+ySizeDef = 5.5cm;
 yTicksDef = RightTicks(5., 1.);
 
 int gx=0, gy=0;
 
-TF1_points = 4;
+//TF1_points = 4;
 
 //----------------------------------------------------------------------------------------------------
 
@@ -72,17 +72,17 @@ for (int dsi : datasets.keys)
 			NewPad("$\theta_y^*\ung{\mu rad}$", "efficiency, $1 - {\cal I}_{3/4}$ \ung{\%}", gx, gy);
 			currentpad.xTicks = LeftTicks(20., 10.);
 			currentpad.yTicks = RightTicks(1., 0.5);
-			draw(scale(1e6, 100), rGetObj(f, d+"/h_refined_ratio.th_y"), opt, blue, "efficiency histogram");
+			draw(scale(1e6, 100), RootGetObject(f, d+"/h_refined_ratio.th_y"), opt, blue, "efficiency histogram");
 
 			/*
-			rObject fit = rGetObj(f, d+"/pol0");
+			RootObject fit = RootGetObject(f, d+"/pol0");
 			TF1_x_min = -inf; TF1_x_max = +inf;
 			draw(scale(1e6, 100), fit, heavygreen+2pt, "const fit");
 			TF1_x_min = 0; TF1_x_max = 120e-6;
 			draw(scale(1e6, 100), fit, heavygreen+dashed);
 			*/
 
-			rObject fit = rGetObj(f, d+"/pol1");
+			RootObject fit = RootGetObject(f, d+"/pol1");
 			TF1_x_min = -inf; TF1_x_max = +inf;
 			draw(scale(1e6, 100), fit, red+2pt, "linear fit");
 			TF1_x_min = 0; TF1_x_max = 120e-6;
