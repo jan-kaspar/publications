@@ -5,7 +5,7 @@ import patterns;
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/coulomb_analysis/plots/base.asy";
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/plots/t_distributions/common_code.asy";
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesIX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 pen p_full_band = (olive*0.5 + yellow*0.7) + opacity(1);
@@ -223,7 +223,7 @@ SetPad(p_main);
 real y_min, y_max, y_Step, y_step;
 y_min = -0.05; y_max = +0.08; y_Step = 0.01; y_step = 0.005;
 
-currentpad.xTicks = LeftTicks(0.05, 0.01);
+currentpad.xTicks = LeftTicks(0.02, 0.01);
 currentpad.yTicks = RightTicks(y_Step, y_step);
 	
 limits((0, y_min), (0.2, y_max), Crop);
@@ -236,6 +236,6 @@ Legend l = currentpicture.legend[s-3];
 currentpicture.legend[s-3] = currentpicture.legend[s-2];
 currentpicture.legend[s-2] = l;
 
-AttachLegend(shift(-20, 10)*BuildLegend(3, S, hSkip=4mm, lineLength=8mm, vSkip=-1mm), N);
+AttachLegend(shift(-20, 10)*BuildLegend(3, S, hSkip=7mm, lineLength=8mm, vSkip=-1mm), N);
 
 GShipout(vSkip=0mm, margin=1mm);
