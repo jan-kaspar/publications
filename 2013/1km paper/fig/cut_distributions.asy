@@ -13,12 +13,12 @@ string dgn_labels[] = { "45t -- 56b" };
 
 string topDir = "../analysis/";
 
-xSizeDef = 10cm;
-ySizeDef = 6cm;
+xSizeDef = 6.9cm;
+ySizeDef = 5.5cm;
 
 //----------------------------------------------------------------------------------------------------
 
-void Check(rObject obj, real scale)
+void Check(RootObject obj, real scale)
 {
 	real entries = obj.rExec("GetEntries");
 	int nb = obj.iExec("GetNbinsX");
@@ -49,7 +49,7 @@ void MakeComparison(string quantity, real xscale, string unit, string obj, real 
 	for (int ci : combinations.keys)
 	{
 		string f = topDir+dataset+"/background_study/"+combinations[ci]+"/distributions_"+diagonal+".root";
-		rObject o = rGetObj(f, "elastic cuts/"+obj);
+		RootObject o = RootGetObject(f, "elastic cuts/"+obj);
 		draw(scale(xscale, 1), o, "vl", comb_pens[ci], replace(comb_labels[ci], "_", "\_"));
 		Check(o, 1);	
 	}
@@ -67,12 +67,12 @@ void MakeComparison(string quantity, real xscale, string unit, string obj, real 
 
 	TH1_use_y_def = true;
 
-	rObject o = rGetObj(dir_anti + "/distributions_anti_45b_56b.root", "elastic cuts/"+obj);
-	draw(xscale(1e6), o, "vl", red+astyle, "45 bottom -- 56 bottom");
+	RootObject o = RootGetObject(dir_anti + "/distributions_anti_45b_56b.root", "elastic cuts/"+obj);
+	draw(xscale(1e6), o, "vl", red+astyle, "\vbox{\hbox{45 bottom --}\hbox{-- 56 bottom}}");
 	Check(o, 1);
 
-	rObject o = rGetObj(dir_anti + "/distributions_anti_45t_56t.root", "elastic cuts/"+obj);
-	draw(xscale(1e6), o, "vl", magenta+astyle, "45 top -- 56 top");
+	RootObject o = RootGetObject(dir_anti + "/distributions_anti_45t_56t.root", "elastic cuts/"+obj);
+	draw(xscale(1e6), o, "vl", magenta+astyle, "\vbox{\hbox{45 top --}\hbox{-- 56 top}}");
 	Check(o, 1);
 
 	frame f_legend2 = BuildLegend(ymargin=0mm, vSkip=-1mm, lineLength=3.8mm, NE);

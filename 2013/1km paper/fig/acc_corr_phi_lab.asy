@@ -11,8 +11,8 @@ string dataSets[] = { "DS2b" };
 
 TH2_palette = Gradient(white, blue, heavygreen, yellow, red);
 
-xSizeDef = 6cm;
-ySizeDef = 6cm;
+xSizeDef = 5.5cm;
+ySizeDef = 5.5cm;
 
 //----------------------------------------------------------------------------------------------------
 
@@ -90,14 +90,14 @@ for (int dsi : dataSets.keys)
 	*/
 
 	// data: 45 bottom - 56 top
-	TH2_z_min = 7;
-	TH2_z_max = 9.7;
-	draw(scale(1e6, 1e6), rGetObj(topDir+dataSets[dsi]+"/distributions_45b_56t.root", "normalization/h_th_y_vs_th_x_normalized"), "def");
+	TH2_z_min = 10^7;
+	TH2_z_max = 10^9.7;
+	draw(scale(1e6, 1e6), RootGetObject(topDir+dataSets[dsi]+"/distributions_45b_56t.root", "normalization/h_th_y_vs_th_x_normalized"), "def");
 	
 	// data: 45 top - 56 bottom
-	TH2_z_min = 7;
-	TH2_z_max = 9.7;
-	draw(scale(1e6, 1e6), rGetObj(topDir+dataSets[dsi]+"/distributions_45t_56b.root", "normalization/h_th_y_vs_th_x_normalized"), "p");
+	TH2_z_min = 10^7;
+	TH2_z_max = 10^9.7;
+	draw(scale(1e6, 1e6), RootGetObject(topDir+dataSets[dsi]+"/distributions_45t_56b.root", "normalization/h_th_y_vs_th_x_normalized"), "p");
 	
 	// accepted arcs
 	DrawAcceptedArcs(20);
