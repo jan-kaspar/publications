@@ -18,9 +18,11 @@ For each event candidate
 the scattering angles and vertex positions of both protons (one per arm) are first determined separately by inverting the proton transport equation~(\ref{eq:prot trans}), assuming $\xi = 0$:
 \begin{equation}
 \label{eq:kin 1a}
-	\theta_x^{*\rm L,R} = {v_x^{\rm N} x^{\rm F} - v_x^{\rm F} x^{\rm N}\over v_x^{\rm N} L_x^{\rm F} - v_x^{\rm F} L_x^{\rm N}}\ ,\qquad
-	\theta_y^{*\rm L,R} = {1\over 2} \left( {y^{\rm N}\over L_y^{\rm N}} + {y^{\rm F}\over L_y^{\rm F}} \right)\ ,\qquad
-	x^{*\rm L,R} = {L_x^{\rm N} x^{\rm F} - L_x^{\rm F} x^{\rm N}\over L_x^{\rm N} v_x^{\rm F} - L_x^{\rm F} v_x^{\rm N}}\ , 
+	\begin{aligned}
+		\theta_x^{*\rm L,R} =& {v_x^{\rm N} x^{\rm F} - v_x^{\rm F} x^{\rm N}\over v_x^{\rm N} L_x^{\rm F} - v_x^{\rm F} L_x^{\rm N}}\ ,\quad
+			\theta_y^{*\rm L,R} = {1\over 2} \left( {y^{\rm N}\over L_y^{\rm N}} + {y^{\rm F}\over L_y^{\rm F}} \right)\ ,\cr
+		x^{*\rm L,R} =& {L_x^{\rm N} x^{\rm F} - L_x^{\rm F} x^{\rm N}\over L_x^{\rm N} v_x^{\rm F} - L_x^{\rm F} v_x^{\rm N}}\ ,\cr
+	\end{aligned}
 \end{equation}
 where the N and F superscripts refer to the near and far units, L and R to the left and right arm, respectively. 
 %The formulae optimise the robustness against optics imperfections:
