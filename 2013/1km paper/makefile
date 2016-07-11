@@ -1,8 +1,8 @@
-all: elastic_1km_npb.pdf
+all: elastic_1km_epjc.pdf
 
-elastic_1km_npb.pdf: elastic_1km_npb.tex \
+elastic_1km_epjc.pdf: elastic_1km_epjc.tex \
 		abstract.tex \
-		authorlist_npb.tex \
+		authorlist_epjc.tex \
 		introduction.tex \
 		experimental_apparatus.tex \
 		beam_optics.tex \
@@ -15,4 +15,4 @@ elastic_1km_npb.pdf: elastic_1km_npb.tex \
 		conclusions.tex \
 		acknowledgements.tex \
 		bibliography.tex
-	pdflatex elastic_1km_npb.tex
+	pdflatex elastic_1km_epjc.tex
