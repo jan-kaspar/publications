@@ -10,8 +10,8 @@ TH2_palette = Gradient(blue, heavygreen, yellow, red);
 TH2_paletteBarSpacing = 0.02;
 TH2_paletteBarWidth = 0.07;
 
-xSizeDef = 5.5cm;
-ySizeDef = 5.5cm;
+xSizeDef = 6.0cm;
+ySizeDef = 6.0cm;
 
 string datasets[] = { "DS2b" };
 
@@ -42,8 +42,7 @@ for (int ci : cuts.keys)
 
 	write("idx = ", idx);
 	
-	if (ci == 2)
-		NewRow();
+	NewRow();
 
 	for (int dsi : datasets.keys)
 	{
@@ -54,13 +53,12 @@ for (int ci : cuts.keys)
 			string dgn = dgns[dgi];
 			string f = topDir+dataset+"/distributions_" + dgn + ".root";
 
-	
 			NewPad(label_x[idx], label_y[idx]);
 			scale(Linear, Linear, Log);
 			string objC = format("elastic cuts/cut %i", cut) + format("/plot_before_cq%i", cut);
-			draw(scale(scale_x[idx], scale_y[idx]), rGetObj(f, objC+"#0"));
-			draw(scale(scale_x[idx], scale_y[idx]), rGetObj(f, objC+"#1"), black+1pt);
-			draw(scale(scale_x[idx], scale_y[idx]), rGetObj(f, objC+"#2"), black+1pt);
+			draw(scale(scale_x[idx], scale_y[idx]), RootGetObject(f, objC+"#0"));
+			draw(scale(scale_x[idx], scale_y[idx]), RootGetObject(f, objC+"#1"), black+1pt);
+			draw(scale(scale_x[idx], scale_y[idx]), RootGetObject(f, objC+"#2"), black+1pt);
 			limits((lim_x_low[idx], lim_y_low[idx]), (lim_x_high[idx], lim_y_high[idx]), Crop);
 
 			AttachLegend("cut " + paper_labels[idx], NW, NW);
