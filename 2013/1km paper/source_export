@@ -1,9 +1,8 @@
 #!/bin/bash
 
 tar czvf "elastic_1km_sources.tar.gz"\
-	elsarticle.cls \
-	elastic_1km_npb.tex \
-	authorlist_npb.tex \
+	elastic_1km_epjc.tex \
+	authorlist_epjc.tex \
 	authorlist_data.tex \
 	abstract.tex \
 	introduction.tex \
