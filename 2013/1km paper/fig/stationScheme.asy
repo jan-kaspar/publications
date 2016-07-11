@@ -2,7 +2,7 @@ import three;
 import math;
 access settings;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
 
 settings.prc = false;
 settings.render = 0;

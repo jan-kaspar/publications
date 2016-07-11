@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string datasets[] = { "DS2b" };
@@ -59,7 +59,7 @@ for (int dsi : datasets.keys)
 		*/
 		
 		//NewPad(false, -1, gy);
-		//label(replace("\vbox{\SetFontSizesXX\hbox{dataset: "+datasets[dsi]+"}\hbox{diagonal: "+diagonals[dgi]+"}}", "_", "\_"));
+		//label(replace("\vbox{\SetFontSizesVIIIX\hbox{dataset: "+datasets[dsi]+"}\hbox{diagonal: "+diagonals[dgi]+"}}", "_", "\_"));
 
 		frame fLegend;
 

@@ -3,7 +3,7 @@ import pad_layout;
 
 StdFonts();
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 pen[] paletteColor2 = {blue, green, yellow, red};

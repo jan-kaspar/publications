@@ -6,7 +6,7 @@ import latex_aux_parser;
 
 string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/";
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 legendLabelPen = fontcommand("\SmallerFonts");

@@ -1,6 +1,6 @@
 unitsize(0.45mm);
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesX");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
 
 dotfactor = 10;
 dot((0, 0));
