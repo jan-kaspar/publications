@@ -20,12 +20,12 @@ string diagonals[] = {
 
 //----------------------------------------------------------------------------------------------------
 
-xSizeDef = 10cm;
-ySizeDef = 6cm;
+xSizeDef = 6.5cm;
+ySizeDef = 4.5cm;
 
 //----------------------------------------------------------------------------------------------------
 
-void DrawFitFunction(rObject obj, real norm, string label, pen p, bool addFitStat=true)
+void DrawFitFunction(RootObject obj, real norm, string label, pen p, bool addFitStat=true)
 {
 	int ndf = obj.iExec("GetNDF");
 	real chi2 = obj.rExec("GetChisquare");
@@ -55,15 +55,15 @@ for (int dgni : diagonals.keys)
 
 		pen p = StdPen(dsi + 1);
 
-		rObject h = rGetObj(f, dir+"/th_y_diffLR_safe");
+		RootObject h = RootGetObject(f, dir+"/th_y_diffLR_safe");
 		real entries = h.rExec("GetEntries");
 		real binWidth = h.rExec("GetBinWidth", 1);
 		draw(scale(1e6, 1.)*shift(0., log10(binWidth) - dsi), h, "eb", p);
 
-		//DrawFitFunction(rGetObj(f, dir+"/f_gaus_nom"), 1./entries * scale, "Gauss, $\si$=RMS, norm.~from hist.~entries", red+dashed, false);
-		//DrawFitFunction(rGetObj(f, dir+"/f_gaus"), 1./entries * scale, "Gauss", p);
-		DrawFitFunction(rGetObj(f, dir+"/f_gaus"), binWidth * scale, "Gauss", p);
-		//DrawFitFunction(rGetObj(f, dir+"/f_dgaus"), 1./entries, "Gauss + Gauss", heavygreen);
+		//DrawFitFunction(RootGetObject(f, dir+"/f_gaus_nom"), 1./entries * scale, "Gauss, $\si$=RMS, norm.~from hist.~entries", red+dashed, false);
+		//DrawFitFunction(RootGetObject(f, dir+"/f_gaus"), 1./entries * scale, "Gauss", p);
+		DrawFitFunction(RootGetObject(f, dir+"/f_gaus"), binWidth * scale, "Gauss", p);
+		//DrawFitFunction(RootGetObject(f, dir+"/f_dgaus"), 1./entries, "Gauss + Gauss", heavygreen);
 
 		// check
 		int nb = h.iExec("GetNbinsX");

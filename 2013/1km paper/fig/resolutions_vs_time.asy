@@ -14,7 +14,7 @@ pen dgn_pens[] = { blue, red };
 string topDir = "../analysis/";
 
 xSizeDef = 6.5cm;
-ySizeDef = 4cm;
+ySizeDef = 3.5cm;
 
 xTicksDef = LeftTicks(1., 0.5);
 
@@ -24,7 +24,7 @@ transform paperTimeShift = shift(-23, 0);
 
 //----------------------------------------------------------------------------------------------------
 
-void DrawBeamDivergence(rObject g_vtx_rms, pen p, marker m, string label)
+void DrawBeamDivergence(RootObject g_vtx_rms, pen p, marker m, string label)
 {
 	int N = g_vtx_rms.iExec("GetN");
 	for (int i = 0; i < N; ++i)
@@ -49,7 +49,7 @@ void DrawBeamDivergence(rObject g_vtx_rms, pen p, marker m, string label)
 
 //----------------------------------------------------------------------------------------------------
 
-void DrawMeanSensorResolution(rObject g_vtx_rms, rObject g_diffRL_th_x, pen p, marker m, string label)
+void DrawMeanSensorResolution(RootObject g_vtx_rms, RootObject g_diffRL_th_x, pen p, marker m, string label)
 {
 	int N = g_vtx_rms.iExec("GetN");
 	for (int i = 0; i < N; ++i)
@@ -85,7 +85,7 @@ void DrawMeanSensorResolution(rObject g_vtx_rms, rObject g_diffRL_th_x, pen p, m
 
 //----------------------------------------------------------------------------------------------------
 
-void DrawFinalThXResolution(rObject g_vtx_rms, rObject g_diffRL_th_x, real msr, pen p, marker m, string label)
+void DrawFinalThXResolution(RootObject g_vtx_rms, RootObject g_diffRL_th_x, real msr, pen p, marker m, string label)
 {
 	int N = g_vtx_rms.iExec("GetN");
 	for (int i = 0; i < N; ++i)
@@ -120,15 +120,15 @@ void DrawFinalThXResolution(rObject g_vtx_rms, rObject g_diffRL_th_x, real msr, 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 
-NewPad("time $\ung{h}$", "resolution in $\theta_x^*\ung{\mu rad}$");
+NewPad("", "resolution in $\theta_x^*\ung{\mu rad}$");
 currentpad.yTicks = RightTicks(0.05, 0.01);
 DrawRunBands(paperTimeShift, 0.5, 0.7, false);
 for (int dsi : datasets.keys)
 {
 	for (int dgni : diagonals.keys)
 	{
-		rObject obj_vtx_x = rGetObj(topDir+datasets[dsi]+"/distributions_"+diagonals[dgni]+".root", "time dependences/gRMS_vtx_x_vs_time");
-		rObject obj_diffRL_vtx_x = rGetObj(topDir+datasets[dsi]+"/distributions_"+diagonals[dgni]+".root", "time dependences/gRMS_diffLR_th_x_vs_time");
+		RootObject obj_vtx_x = RootGetObject(topDir+datasets[dsi]+"/distributions_"+diagonals[dgni]+".root", "time dependences/gRMS_vtx_x_vs_time");
+		RootObject obj_diffRL_vtx_x = RootGetObject(topDir+datasets[dsi]+"/distributions_"+diagonals[dgni]+".root", "time dependences/gRMS_diffLR_th_x_vs_time");
 
 		real msr = 0;
 		if (diagonals[dgni] == "45b_56t") msr = 12.0e-6;
@@ -143,7 +143,7 @@ for (real y=0.5; y <= 0.7; y += 0.05)
 	xaxis(YEquals(y, false), dotted);
 
 //----------------------------------------------------------------------------------------------------
-//NewRow();
+NewRow();
 
 NewPad("time $\ung{h}$", "resolution in $\theta_y^*\ung{\mu rad}$");
 currentpad.yTicks = RightTicks(0.02, 0.01);
@@ -155,10 +155,10 @@ for (int dsi : datasets.keys)
 	for (int dgni : diagonals.keys)
 	{
 		draw(paperTimeShift * swToHours*scale(1, 0.5 * 1e6),
-			rGetObj(topDir+datasets[dsi]+"/distributions_"+diagonals[dgni]+".root", "time dependences/gRMS_diffLR_th_y_vs_time"), "p,eb,d0",
+			RootGetObject(topDir+datasets[dsi]+"/distributions_"+diagonals[dgni]+".root", "time dependences/gRMS_diffLR_th_y_vs_time"), "p,eb,d0",
 			dgn_pens[dgni], mCi+1pt+dgn_pens[dgni], dgn_labels[dgni]);
 
-		rObject fit = rGetObj(topDir+"beam_divergence/analyze.root", "combined/fitted");
+		RootObject fit = RootGetObject(topDir+"beam_divergence/analyze.root", "combined/fitted");
 	}
 }
 
@@ -166,4 +166,4 @@ limits((0, 0.42), (9.2, 0.52), Crop);
 for (real y = 0.42; y <= 0.52; y += 0.02)
 	xaxis(YEquals(y, false), dotted);
 
-GShipout(hSkip=5mm, margin=0mm);
+GShipout(vSkip=0mm, margin=0mm);
