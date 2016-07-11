@@ -36,7 +36,7 @@ int ci = -1;
 void PlotMode(string label, string f, string tag, string obj = "g_eff_comb1")
 {
 	string pth = "contributions/" + tag + "/" + obj;
-	rObject obj = rGetObj(f, pth, error=true);
+	RootObject obj = RootGetObject(f, pth, error=true);
 	pen p = StdPen(++ci);
 	draw(scale(1, 100), obj, "l,d0", p, label);
 }
@@ -77,8 +77,8 @@ void PlotAllModes(string f)
 	PlotMode("model dependence", f, "unsm-model");
 
 	AddToLegend("<{\bf envelope of uncertainties}:");
-	draw(scale(1, +100), rGetObj(f, "matrices/all-anal/"+diagonal+"/g_envelope"), "l", black+1pt, "$\pm 1\un{\si}$");
-	draw(scale(1, -100), rGetObj(f, "matrices/all-anal/"+diagonal+"/g_envelope"), "l", black+1pt);
+	draw(scale(1, +100), RootGetObject(f, "matrices/all-anal/"+diagonal+"/g_envelope"), "l", black+1pt, "$\pm 1\un{\si}$");
+	draw(scale(1, -100), RootGetObject(f, "matrices/all-anal/"+diagonal+"/g_envelope"), "l", black+1pt);
 }
 
 
@@ -99,7 +99,7 @@ for (int dsi : datasets.keys)
 	currentpad.yTicks = RightTicks(0.5, 0.1);
 	PlotAllModes(f);
 	limits((0, -1.5), (0.20, +1.5), Crop);
-	f_legend = BuildLegend(3, vSkip=-1mm);
+	f_legend = BuildLegend(3, vSkip=-1mm, hSkip=5mm);
 	currentpicture.legend.delete();
 	AttachLegend("full $|t|$ range", N, N);
 	
@@ -130,7 +130,7 @@ for (int dsi : datasets.keys)
 	currentpad.yTicks = RightTicks(0.05, 0.01);
 	TH2_z_min = -1;
 	TH2_z_max = +1;
-	draw(rGetObj(f, "matrices/all-anal/"+diagonal+"/"+binning+"/h_corr_mat"), "p,bar");
+	draw(RootGetObject(f, "matrices/all-anal/"+diagonal+"/"+binning+"/h_corr_mat"), "p,bar");
 	limits((0, 0), (0.20, 0.20), Crop);
 	//AttachLegend("analysis uncertainties -- correlation matrix", SE, NE);
 	*/
@@ -139,7 +139,7 @@ for (int dsi : datasets.keys)
 
 	NewPad(false);
 	attach(f_legend);
-	FixPad(340, +185);
+	FixPad(333, +185);
 }
 
 GShipout(margin=0pt, hSkip=5mm);
