@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesIX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 string datasets[] = { "DS2b" };
@@ -102,7 +102,7 @@ for (int dsi : datasets.keys)
 		diagonal = diagonals[dgi];
 
 		//NewPad(false);
-		//label(replace("{\SetFontSizesVIIIX\vbox{\hbox{"+dataset+"}\hbox{"+dgn_labels[dgi]+"}}}", "_", "\_"));
+		//label(replace("{\SetFontSizesIXX\vbox{\hbox{"+dataset+"}\hbox{"+dgn_labels[dgi]+"}}}", "_", "\_"));
 
 		string combinations[];
 		string comb_labels[];

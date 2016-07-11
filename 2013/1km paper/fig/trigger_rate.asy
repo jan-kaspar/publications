@@ -1,7 +1,7 @@
 import root;
 import pad_layout;
 
-texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesVIII");
+texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesIX");
 texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/plots/run_info.asy";
@@ -52,20 +52,20 @@ TGraph_reducePoints = 100;
 AddToLegend("verticals", solid);
 AddToLegend("horizontals", longdashed);
 
-draw(unixToHours, rGetObj(topDir+"/plots/rp.root", "XRPH.B6L5.B2:MEAS_MOTOR_LU"), red+longdashed);
-draw(unixToHours, rGetObj("../rp.root", "XRPH.A6L5.B2:MEAS_MOTOR_LU"), blue+longdashed);
-draw(unixToHours, rGetObj("../rp.root", "XRPH.A6R5.B1:MEAS_MOTOR_LU"), heavygreen+longdashed);
-draw(unixToHours, rGetObj("../rp.root", "XRPH.B6R5.B1:MEAS_MOTOR_LU"), magenta+longdashed);
+draw(unixToHours, RootGetObject(topDir+"/plots/rp.root", "XRPH.B6L5.B2:MEAS_MOTOR_LU"), red+longdashed);
+draw(unixToHours, RootGetObject("../rp.root", "XRPH.A6L5.B2:MEAS_MOTOR_LU"), blue+longdashed);
+draw(unixToHours, RootGetObject("../rp.root", "XRPH.A6R5.B1:MEAS_MOTOR_LU"), heavygreen+longdashed);
+draw(unixToHours, RootGetObject("../rp.root", "XRPH.B6R5.B1:MEAS_MOTOR_LU"), magenta+longdashed);
 
-draw(unixToHours, rGetObj("../rp.root", "XRPV.B6L5.B2:MEAS_MOTOR_LU"), red, "left far");
-draw(unixToHours, rGetObj("../rp.root", "XRPV.A6L5.B2:MEAS_MOTOR_LU"), blue, "left near");
-draw(unixToHours, rGetObj("../rp.root", "XRPV.A6R5.B1:MEAS_MOTOR_LU"), heavygreen, "right near");
-draw(unixToHours, rGetObj("../rp.root", "XRPV.B6R5.B1:MEAS_MOTOR_LU"), magenta, "right far");
+draw(unixToHours, RootGetObject("../rp.root", "XRPV.B6L5.B2:MEAS_MOTOR_LU"), red, "left far");
+draw(unixToHours, RootGetObject("../rp.root", "XRPV.A6L5.B2:MEAS_MOTOR_LU"), blue, "left near");
+draw(unixToHours, RootGetObject("../rp.root", "XRPV.A6R5.B1:MEAS_MOTOR_LU"), heavygreen, "right near");
+draw(unixToHours, RootGetObject("../rp.root", "XRPV.B6R5.B1:MEAS_MOTOR_LU"), magenta, "right far");
 
-draw(unixToHours, rGetObj("../rp.root", "XRPV.B6L5.B2:MEAS_MOTOR_RU"), red);
-draw(unixToHours, rGetObj("../rp.root", "XRPV.A6L5.B2:MEAS_MOTOR_RU"), blue);
-draw(unixToHours, rGetObj("../rp.root", "XRPV.A6R5.B1:MEAS_MOTOR_RU"), heavygreen);
-draw(unixToHours, rGetObj("../rp.root", "XRPV.B6R5.B1:MEAS_MOTOR_RU"), magenta);
+draw(unixToHours, RootGetObject("../rp.root", "XRPV.B6L5.B2:MEAS_MOTOR_RU"), red);
+draw(unixToHours, RootGetObject("../rp.root", "XRPV.A6L5.B2:MEAS_MOTOR_RU"), blue);
+draw(unixToHours, RootGetObject("../rp.root", "XRPV.A6R5.B1:MEAS_MOTOR_RU"), heavygreen);
+draw(unixToHours, RootGetObject("../rp.root", "XRPV.B6R5.B1:MEAS_MOTOR_RU"), magenta);
 
 limits((22, -10), (33, +10), Crop);
 DrawRunBoundaries();
@@ -83,8 +83,8 @@ DrawRunBands(paperTimeShift, 0, 400, false);
 TGraph_errorBar = None;
 dotfactor = 4;
 string f = topDir + "/plots/rates.root";
-draw(paperTimeShift * unixToHours, rGetObj(f, "g_rate_t2"), "d", blue);
-draw(paperTimeShift * unixToHours, rGetObj(f, "g_rate_rp"), "d", red);
+draw(paperTimeShift * unixToHours, RootGetObject(f, "g_rate_t2"), "d", blue);
+draw(paperTimeShift * unixToHours, RootGetObject(f, "g_rate_rp"), "d", red);
 
 AddToLegend("T2 rate", mCi+1pt+blue);
 AddToLegend("RP rate", mCi+1pt+red);
@@ -103,22 +103,22 @@ NewRow();
 
 NewPad("", "rate$\ung{Hz}$", xTicks=LeftTicks(Step=1, n=6));
 
-rObject o = rGetObj(topDir+"DS2a/distributions_45t_56b.root", "metadata/h_timestamp_dgn");
+rObject o = RootGetObject(topDir+"DS2a/distributions_45t_56b.root", "metadata/h_timestamp_dgn");
 o.vExec("Rebin", 10);
 o.vExec("Scale", 1/10);
 draw(swToHours, o, "d0", black, "diagonal rates from RP data");
 
-rObject o = rGetObj(topDir+"DS2b/distributions_45t_56b.root", "metadata/h_timestamp_dgn");
+rObject o = RootGetObject(topDir+"DS2b/distributions_45t_56b.root", "metadata/h_timestamp_dgn");
 o.vExec("Rebin", 10);
 o.vExec("Scale", 1/10);
 draw(swToHours, o, "d0", black);
 
-rObject o = rGetObj(topDir+"DS2b-firstParts/distributions_45t_56b.root", "metadata/h_timestamp_dgn");
+rObject o = RootGetObject(topDir+"DS2b-firstParts/distributions_45t_56b.root", "metadata/h_timestamp_dgn");
 o.vExec("Rebin", 10);
 o.vExec("Scale", 1/10);
 draw(swToHours, o, "d0", magenta, "``first parts''");
 
-rObject o = rGetObj(topDir+"DS2b-lastParts/distributions_45t_56b.root", "metadata/h_timestamp_dgn");
+rObject o = RootGetObject(topDir+"DS2b-lastParts/distributions_45t_56b.root", "metadata/h_timestamp_dgn");
 o.vExec("Rebin", 10);
 o.vExec("Scale", 1/10);
 draw(swToHours, o, "d0", green, "``last parts''");
@@ -142,11 +142,11 @@ for (int di : datasets.keys)
 {
 	currentpicture.legend.delete();
 
-	draw(swToHours, rGetObj(topDir+datasets[di]+"/pileup_fit_combined.root", "45b_56t/dgn.src"), "p", blue, mTU+2pt+blue, "45 bot -- 56 top (far)");
-	draw(swToHours, rGetObj(topDir+datasets[di]+"/pileup_fit_combined.root", "45b_56t/dgn"), "l", blue+dashed);
+	draw(swToHours, RootGetObject(topDir+datasets[di]+"/pileup_fit_combined.root", "45b_56t/dgn.src"), "p", blue, mTU+2pt+blue, "45 bot -- 56 top (far)");
+	draw(swToHours, RootGetObject(topDir+datasets[di]+"/pileup_fit_combined.root", "45b_56t/dgn"), "l", blue+dashed);
 	
-	draw(swToHours, rGetObj(topDir+datasets[di]+"/pileup_fit_combined.root", "45t_56b/dgn.src"), "p", red, mTD+2pt+red, "45 top -- 56 bot (close)");
-	draw(swToHours, rGetObj(topDir+datasets[di]+"/pileup_fit_combined.root", "45t_56b/dgn"), "l", red+dashed);
+	draw(swToHours, RootGetObject(topDir+datasets[di]+"/pileup_fit_combined.root", "45t_56b/dgn.src"), "p", red, mTD+2pt+red, "45 top -- 56 bot (close)");
+	draw(swToHours, RootGetObject(topDir+datasets[di]+"/pileup_fit_combined.root", "45t_56b/dgn"), "l", red+dashed);
 }
 AddToLegend("linear fit per run", black+dashed);
 
