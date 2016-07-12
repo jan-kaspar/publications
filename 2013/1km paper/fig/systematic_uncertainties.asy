@@ -103,23 +103,14 @@ for (int dsi : datasets.keys)
 	currentpicture.legend.delete();
 	AttachLegend("full $|t|$ range", N, N);
 	
-	for (real x = 0; x <= 0.2; x += 0.05)
-		yaxis(XEquals(x, false), dotted);
-	for (real y = -1.5; y <= +1.5; y += 0.5)
-		xaxis(YEquals(y, false), dotted);
-
 	NewPad("$|t|\ung{GeV^2}$", "relative cross-section variation$\ung{\%}$", 1, gy);
 	currentpad.xTicks = LeftTicks(0.002, 0.001);
+	currentpad.yTicks = RightTicks(2., 1.);
 	PlotAllModes(f);
 	limits((0, -7), (0.01, +2), Crop);
 	currentpicture.legend.delete();
 	AttachLegend("low $|t|$ zoom", N, N);
 	
-	for (real x = 0; x <= 0.01; x += 0.002)
-		yaxis(XEquals(x, false), dotted);
-	for (real y = -7; y <= +2; y += 1)
-		xaxis(YEquals(y, false), dotted);
-
 
 	/*
 	//--------------------
