@@ -13,6 +13,8 @@ TH2_paletteBarWidth = 0.07;
 xSizeDef = 6.0cm;
 ySizeDef = 6.0cm;
 
+drawGridDef = false;
+
 string datasets[] = { "DS2b" };
 
 string dgns[] = { "45t_56b" };
