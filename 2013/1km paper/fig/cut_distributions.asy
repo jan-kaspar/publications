@@ -16,6 +16,8 @@ string topDir = "../analysis/";
 xSizeDef = 6.9cm;
 ySizeDef = 5.5cm;
 
+drawGridDef = false;
+
 //----------------------------------------------------------------------------------------------------
 
 void Check(RootObject obj, real scale)

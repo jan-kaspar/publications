@@ -14,6 +14,8 @@ TH2_palette = Gradient(white, blue, heavygreen, yellow, red);
 xSizeDef = 5.5cm;
 ySizeDef = 5.5cm;
 
+drawGridDef = false;
+
 //----------------------------------------------------------------------------------------------------
 
 real cut_th_x_low_top = -50, cut_th_x_high_top = 80;
