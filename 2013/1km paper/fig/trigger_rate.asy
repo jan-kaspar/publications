@@ -89,11 +89,8 @@ draw(paperTimeShift * unixToHours, RootGetObject(f, "g_rate_rp"), "d", red);
 AddToLegend("T2 rate", mCi+1pt+blue);
 AddToLegend("RP rate", mCi+1pt+red);
 
-limits((0, 0), (9.2, 300), Crop);
+limits((0, 0), (9.2, 400), Crop);
 AttachLegend(BuildLegend(NE, lineLength=5mm, vSkip=0.5mm), NE);
-
-for (real y = 0; y <= 300; y += 50)
-	xaxis(YEquals(y, false), dotted);
 
 //----------------------------------------------------------------------------------------------------
 
