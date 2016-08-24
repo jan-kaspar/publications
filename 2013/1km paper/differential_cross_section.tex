@@ -109,7 +109,7 @@ normalised such that the factors $\eta_{1,2}$ have unit variance.
 \subsubsection{Resolution}
 \label{sec:resolution}
 
-Statistical fluctuations in $\theta_y^*$ are mostly due to the beam divergence and can be studied by comparing the angles reconstructed from the left and right arm. As illustrated in Figure~\ref{fig:beam div vert}, the distributions show only minimal deviations from a Gaussian shape. By dividing their standard deviation by a factor of 2, one can estimate the resolution of the two-arm reconstruction (Eq.~(\ref{eq:kin 2a})) of elastic events, see Figure~\ref{fig:resol final}, right. Moreover, measurements of beam emittances \cite{op-elog} indicate that the vertical divergences of the two beams can be considered as equal with a tolerance of about $25\un{\%}$. Exploiting this fact, one can de-convolute the distribution of $\theta_y^{*\rm R} - \theta_y^{*\rm L}$ in order to obtain the beam-divergence distribution, used for the acceptance corrections discussed in Section~\ref{sec:acc corr}.
+Statistical fluctuations in $\theta_y^*$ are mostly due to the beam divergence and can be studied by comparing the angles reconstructed from the left and right arm. As illustrated in Figure~\ref{fig:beam div vert}, the distributions show only minimal deviations from a Gaussian shape. By dividing their standard deviation by a factor of 2, one can estimate the resolution of the two-arm reconstruction (Eq.~(\ref{eq:kin 2a})) of elastic events, see Figure~\ref{fig:resol final}, bottom. Moreover, measurements of beam emittances \cite{op-elog} indicate that the vertical divergences of the two beams can be considered as equal with a tolerance of about $25\un{\%}$. Exploiting this fact, one can de-convolute the distribution of $\theta_y^{*\rm R} - \theta_y^{*\rm L}$ in order to obtain the beam-divergence distribution, used for the acceptance corrections discussed in Section~\ref{sec:acc corr}.
 
 \begin{figure}
 \begin{center}
@@ -126,13 +126,13 @@ In the horizontal projection, a more complex procedure is used since the one-arm
 \label{eq:beam div from vertex}
 \sigma^{\rm bd}(\theta_x^*) = {\sigma(x^*) \sqrt 2\over \beta^*}\ .
 \end{equation}
-It increases from $0.75$ to $0.9\un{\mu rad}$ over the time of the fill. Subtracting this component from the standard deviation of $\theta_x^{*\rm R} - \theta_x^{*\rm L}$, one determines the (mean) spatial resolution of the sensors in each diagonal: $10.7\un{\mu m}$ (45 top -- 56 bottom) and $12.1\un{\mu m}$ (45 bottom -- 56 top). These results have been verified to be time independent. Finally, the beam divergence and sensor resolution components can be propagated through Eq.~({\ref{eq:kin 2a}}) to estimate the $\theta_x^*$ resolution for elastic events, as plotted in Figure~\ref{fig:resol final}, left.
+It increases from $0.75$ to $0.9\un{\mu rad}$ over the time of the fill. Subtracting this component from the standard deviation of $\theta_x^{*\rm R} - \theta_x^{*\rm L}$, one determines the (mean) spatial resolution of the sensors in each diagonal: $10.7\un{\mu m}$ (45 top -- 56 bottom) and $12.1\un{\mu m}$ (45 bottom -- 56 top). These results have been verified to be time independent. Finally, the beam divergence and sensor resolution components can be propagated through Eq.~({\ref{eq:kin 2a}}) to estimate the $\theta_x^*$ resolution for elastic events, as plotted in Figure~\ref{fig:resol final}, top.
 
 \begin{figure}
 \begin{center}
 \includegraphics{fig/resolutions_vs_time.pdf}
 \caption{%
-Angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), as a function of time (from the beginning of the run). The blue (red) dots correspond to the diagonal 45 bottom -- 56 top (45 top -- 56 bottom). The yellow bands indicate regions of uninterrupted data-taking, whereas in the remaining periods the beam cleaning procedure described in Section~\ref{sec:data taking} was performed.
+Angular resolution for the two-arm reconstruction, Eq.~(\ref{eq:kin 2a}), as a function of time (from the beginning of the run). The blue (red) dots correspond to the diagonal 45 bottom -- 56 top (45 top -- 56 bottom). The grey bands indicate regions of uninterrupted data-taking, whereas in the remaining periods the beam cleaning procedure described in Section~\ref{sec:data taking} was performed.
 }
 \label{fig:resol final}
 \end{center}
@@ -262,7 +262,7 @@ Full acceptance correction, ${\cal A}$, for diagonal 45 bottom -- 56 top. The po
 
 Since the overall normalisation will be determined from another dataset (see Section~\ref{sec:normalisation}), any inefficiency correction that does not alter the $t$-distribution shape does not need to be considered in this analysis (trigger, data acquisition and pile-up inefficiency discussed in~\cite{epl101-el,prl111}). The remaining inefficiencies are related to the inability of a RP to resolve the elastic proton track.
 
-One such case is when a single RP does not detect and/or reconstruct a proton track, with no correlation to other RPs. This type of inefficiency, ${\cal I}_{3/4}$, is evaluated by removing the RP from the tagging cuts (Table \ref{tab:cuts}), repeating the event selection and calculating the fraction of recovered events. A typical example is given in Figure~\ref{fig:eff 3/4}, showing that the efficiency decreases gently with the vertical scattering angle. This dependence originates from the fact that protons with larger $|\theta_y^*|$ hit the RPs further from their edge and therefore the potentially created secondary particles have more chance to induce additional signal. Since the RP detectors can resolve only a single track, a secondary particle track prevents from using the affected RP in the analysis.
+One such case is when a single RP does not detect and/or reconstruct a proton track, with no correlation to other RPs. This type of inefficiency, ${\cal I}_{3/4}$, is evaluated by removing the RP from the tagging cuts (Table \ref{tab:cuts}), repeating the event selection and calculating the fraction of recovered events. A typical example is given in Figure~\ref{fig:eff 3/4}, showing that the efficiency decreases gently with the vertical scattering angle. This dependence originates from the fact that protons with larger $|\theta_y^*|$ hit the RPs further from their edge and therefore the potentially created secondary particles have more chance to induce additional signal. Since the RP detectors cannot resolve multiple tracks (non-unique association between ``U'' and ``V'' track candidates), a secondary particle track prevents from using the affected RP in the analysis.
 
 \begin{figure}
 \begin{center}
@@ -371,7 +371,7 @@ The cross-section values can be found in Table~\ref{tab:data} and visualised in 
 \includegraphics{fig/t_dist_tabulation.pdf}
 \vskip-3mm
 \caption{%
-Differential cross-section from Table \ref{tab:data} with statistical (bars) and systematic uncertainties (bands). The yellow band represents all systematic uncertainties, the brown one all but normalisation. The bands are centred around a data fit including both nuclear and Coulomb components (Eqs.~(\ref{eq:int kl}), (\ref{eq:nuc phase con}) and (\ref{eq:nuc mod}) with $N_b=3$). INSET: a low-$|t|$ zoom featuring cross-section rise due to the Coulomb interaction.
+Differential cross-section from Table \ref{tab:data} with statistical (bars) and systematic uncertainties (bands). The grey band represents all systematic uncertainties, the brown one all but normalisation. The bands are centred around a data fit including both nuclear and Coulomb components (Eqs.~(\ref{eq:int kl}), (\ref{eq:nuc phase con}) and (\ref{eq:nuc mod}) with $N_b=3$). INSET: a low-$|t|$ zoom featuring cross-section rise due to the Coulomb interaction.
 }
 \label{fig:dsdt}
 \end{center}
