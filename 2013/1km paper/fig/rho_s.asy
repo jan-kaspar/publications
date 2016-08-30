@@ -181,14 +181,14 @@ competeRho = true;
 draw(graph(Compete_RRP_nf_L2_u, 1e1, 2e4), black);
 //draw(graph(Compete_R_qc_RL_qc, 1e1, 1e4), red);
 
-AddToLegend("$\rm pp$ (PDG)", blue, mTD+true+3pt+blue);
-AddToLegend("$\raise1.2mm\hbox to0pt{\hskip-0.3pt--\hss}\rm pp$ (PDG)", heavygreen, mTU+false+3pt+heavygreen);
+AddToLegend("$\rm pp$ (PDG)", blue, mTD+true+2pt+blue);
+AddToLegend("$\raise1.2mm\hbox to0pt{\hskip-0.3pt--\hss}\rm pp$ (PDG)", heavygreen, mTU+false+2pt+heavygreen);
 AddToLegend("COMPETE preferred model ($\rm pp$)", black);
-AddToLegend("TOTEM indirect at $\sqrt s = 7\un{TeV}$", red+0.8pt, mCi+false+3pt+red);
+AddToLegend("TOTEM indirect at $\sqrt s = 7\un{TeV}$", red+0.8pt, mCi+false+2pt+red);
 //AddToLegend("TOTEM direct at $\sqrt s = 8\un{TeV}$", red+0.8pt, mCi+true+3pt+red);
 //AddToLegend("$\sqrt s = 8\un{TeV}$, $N_b=3$, constant", red+0.8pt, mTU+true+3pt+red);
 //AddToLegend("$\sqrt s = 8\un{TeV}$, $N_b=3$, peripheral", red+0.8pt, mTD+true+3pt+red);
-AddToLegend("this article, $\sqrt s = 8\un{TeV}$", red+0.8pt, mCi+true+3pt+red);
+AddToLegend("this article, $\sqrt s = 8\un{TeV}$", red+0.8pt, mCi+true+2pt+red);
 
 limits((1e1, -0.2), (2e4, +0.25), Crop);
 

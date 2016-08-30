@@ -10,8 +10,8 @@ TH2_palette = Gradient(blue, heavygreen, yellow, red);
 TH2_paletteBarSpacing = 0.02;
 TH2_paletteBarWidth = 0.07;
 
-xSizeDef = 6.0cm;
-ySizeDef = 6.0cm;
+xSizeDef = 5.8cm;
+ySizeDef = 5.8cm;
 
 drawGridDef = false;
 

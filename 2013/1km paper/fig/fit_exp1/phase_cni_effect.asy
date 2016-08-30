@@ -30,7 +30,7 @@ string fitLabels[] = {
 drawGridDef = true;
 
 xSizeDef = 6cm;
-ySizeDef = 5cm;
+ySizeDef = 4.0cm;
 
 //-----------------------------------------------------------------------------------------------------
 
