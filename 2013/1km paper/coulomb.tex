@@ -58,6 +58,15 @@ Since the calculation of CNI may, in principle, involve integrations (e.g.~Eq.~(
 
 The following phase parametrisations are considered.
 
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/hadronic_phase_illustration.pdf}
+\caption{Illustration of nuclear-phase forms. The dashed lines correspond to predictions by theoretical models (\cite{elegent} and references therein). The solid lines are typical examples of phases used in this report, all with the same value of $\rho = 0.10$. The peripheral example corresponds to the parameter values in Eq.~(\ref{eq:nuc phase per val}).
+}
+\label{fig:phase illustration}
+\end{center}
+\end{figure*}
+
 \begin{enumerate}
 
 % ***
@@ -111,16 +120,6 @@ have been fixed to values maintaining the desired impact-parameter behaviour at 
 
 \end{enumerate}
 
-\begin{figure*}
-\begin{center}
-\includegraphics{fig/hadronic_phase_illustration.pdf}
-\caption{Illustration of nuclear-phase forms. The dashed lines correspond to predictions by theoretical models (\cite{elegent} and references therein). The solid lines are typical examples of phases used in this report, all with the same value of $\rho = 0.10$. The peripheral example corresponds to the parameter values in Eq.~(\ref{eq:nuc phase per val}).
-}
-\label{fig:phase illustration}
-\end{center}
-\end{figure*}
-
-
 Figure~\ref{fig:phase illustration} shows on the same plot a comparison of phase predictions by several models to typical examples of\Break parametrisations proposed above.
 
 It should be noted that the nuclear phase has a strong influence on the amplitude behaviour in the space of impact parameter $b$ (for a detailed discussion see e.g.~Section~3 in~\cite{klk02}). A particularly decisive feature is the rate of phase variation at low $|t|$. Looking at Figure~\ref{fig:phase illustration} one can see that the constant, standard and Bailly phases are essentially flat at low $|t|$, thus leading to qualitatively similar pictures in the impact parameter space: elastic collisions being more central (preferring lower values of $b$) than the inelastic ones. Conversely, the peripheral phase parametrisation can yield a description with the opposite hierarchy, which is argued to be more natural by some authors (e.g. Section~4 in~\cite{kl96}). An impact-parameter study of the presented data will be given at end of Section~\ref{sec:fit exp3}.
@@ -128,6 +127,16 @@ It should be noted that the nuclear phase has a strong influence on the amplitud
 %------------------------------------------------------------------
 \subsubsection{Coulomb-Nuclear Interference Formulae}
 \label{sec:cni interference}
+
+\begin{figure*}
+\begin{center}
+\includegraphics{fig/cni_effect_illustration.pdf}
+\caption{%
+Illustration of the effects due to the Coulomb interaction, using the KL formula. With the Cahn formula the plot looks identical. For the SWY formula, the picture is similar, however it misses the effects at $|t| \gtrsim 0.02\un{GeV^2}$. The curves show a response of the interference formula to different nuclear phases with a purely exponential nuclear modulus. The solid curves correspond to phases of the same shape (constant) but different values of $\rho$: the maximal response can be seen at $|t| \lesssim 0.01\un{GeV^2}$. Conversely, the dashed lines correspond to phases with fixed $\rho$ but various shapes (the same examples as in Figure~\ref{fig:phase illustration}): the response may be sizeable (e.g.~in the peripheral case) also at $|t| \gtrsim 0.02\un{GeV^2}$.
+}
+\label{fig:cni effect}
+\end{center}
+\end{figure*}
 
 The {\bf simplified West-Yennie formula (SWY)} \cite{wy68} was derived in the framework of perturbative quantum field theory by evaluating the lowest-order Feynman diagrams that comprise both nuclear and Coulomb interactions. In this approach, the interference is reduced to an additional phase between the Coulomb and nuclear amplitudes. Moreover, several approximations were used in the derivation. First, in order to avoid integrating over off-mass-shell contributions to the nuclear amplitude (essentially unknown), a very slow variation of the nuclear amplitude phase was assumed: $\arg {\cal A}^{\rm N} \approx \hbox{const}$. Then, in order to obtain a closed-form expression, the exponential slope of the nuclear modulus was assumed constant (i.e.~only the $b_1$ parameter is non-zero in the parametrisation Eq.~(\ref{eq:nuc mod})) which is formally incompatible with the existence of the diffractive minimum. The original formula did not contain the electromagnetic form factor ${\cal F}$, which was added later by hand:
 \begin{equation}
@@ -180,15 +189,6 @@ Since the quantities $G$ in Eqs.~(\ref{eq:int cahn}) and (\ref{eq:int kl}) are c
 
 By analysing Eqs.~(\ref{eq:int swy}), (\ref{eq:int cahn}) and (\ref{eq:int kl}), one can conclude that in the region where the nuclear amplitude dominates ($|t| \gtrsim 0.003\un{GeV^2}$), the effects due to the Coulomb interaction are of the order of $\alpha$ or the ratio $|{\cal A}^{\rm C}| / |{\cal A}^{\rm N}|$. In both cases, the magnitude of the interference effects can be expected at a percent level, as shown in Figure~\ref{fig:cni effect}. The figure also shows that the effects at different $|t|$ probe different parts of the nuclear phase: maximum sensitivity to $\rho$ lies at very low $|t|$ while at higher $|t|$ the effects are sensitive to phase values at slightly higher $|t|$. It can also be observed that for the constant, standard and Bailly phase the effects are very similar and rather mild at higher $|t|$. This can be understood from a very limited variation of the phase at low $|t|$, which is the region contributing most to the integral in Eq.~(\ref{eq:int cahn}) or (\ref{eq:int kl}). On the contrary, the higher $|t|$ response to peripheral phases can have various forms, often similar to the deviation of the reconstructed cross-section from pure-exponential, see the top plots in Figures~\ref{fig:fit exp1} and~\ref{fig:fit exp3}.
 
-\begin{figure*}
-\begin{center}
-\includegraphics{fig/cni_effect_illustration.pdf}
-\caption{%
-Illustration of the effects due to the Coulomb interaction, using the KL formula. With the Cahn formula the plot looks identical. For the SWY formula, the picture is similar, however it misses the effects at $|t| \gtrsim 0.02\un{GeV^2}$. The curves show a response of the interference formula to different nuclear phases with a purely exponential nuclear modulus. The solid curves correspond to phases of the same shape (constant) but different values of $\rho$: the maximal response can be seen at $|t| \lesssim 0.01\un{GeV^2}$. Conversely, the dashed lines correspond to phases with fixed $\rho$ but various shapes (the same examples as in Figure~\ref{fig:phase illustration}): the response may be sizeable (e.g.~in the peripheral case) also at $|t| \gtrsim 0.02\un{GeV^2}$.
-}
-\label{fig:cni effect}
-\end{center}
-\end{figure*}
 
 
 %----------------------------------------------------------------------------------------------------
