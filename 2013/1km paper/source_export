@@ -19,4 +19,7 @@ tar czvf "elastic_1km_sources.tar.gz"\
 	fig/fit_exp1/*.pdf \
 	fig/fit_exp1/*.tex \
 	fig/fit_exp3/*.pdf \
-	fig/fit_exp3/*.tex
+	fig/fit_exp3/*.tex \
+	svepjc3.clo \
+	svglov3.clo \
+	svjour3.cls
