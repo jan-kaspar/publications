@@ -58,11 +58,12 @@
 
 \ShortAuthor{Jan Ka\v spar}
 
-
-
 \begin{abstract}
 TODO: abstract
 \end{abstract}
+
+\centerline{version XX}
+
 \end{titlepage}
 
 %----------------------------------------------------------------------------------------------------
@@ -140,7 +141,7 @@ A track (red line) passing through an overlap between vertical and horizontal RP
 \> examples
 \>> Figure \ref{fig:tb_residuals}: residuals become centred about 0 during the procedure
 \>> Figure \ref{fig:tb_example_internal}: example of ``internal alignments'', very good stability
-\>> Figure \ref{tb_example_rp}: example of ``RP alignments'', very good stability
+\>> Figure \ref{fig:tb_example_rp}: example of ``RP alignments'', very good stability
 
 \begin{figure}[h!]
 \begin{center}
@@ -154,7 +155,7 @@ Distributions of track-hit residuals (TOTEM run 10332, after TS2). Each colour c
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=\hsize]{fig/after_TS2/plots_per_plane_left.pdf}
+\includegraphics[width=0.8\hsize]{fig/after_TS2/plots_per_plane_left.pdf}
 \caption{%
 Comparison of internal alignments obtained from different TOTEM runs (different colours), for the period after TS2. The two columns correspond to the two horizontal RPs in the sector 45. The horizontal scale gives the plane index within the detector package: 0 is the closest to the IP, 9 the farthest. The results for ``V'' (``U'') planes are marked with crosses (circles). The linear patterns in the determined shifts (separately in ``U'' and ``V'' projections) can be understood by tilts of the entire detector package which shift the sensor centre's proportionally to its position within the package, for more details see Section 4.2.8 in \cite{jan_thesis}. The error bars indicate statistical uncertainties only.
 }
@@ -164,7 +165,7 @@ Comparison of internal alignments obtained from different TOTEM runs (different 
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=\hsize]{fig/after_TS2/plots_per_rp_left.pdf}
+\includegraphics[width=0.8\hsize]{fig/after_TS2/plots_per_rp_left.pdf}
 \caption{%
 Comparison of ``RP'' alignments obtained from different TOTEM runs (different colours), for the period after TS2. The two columns correspond to the two horizontal RPs in the sector 45. The error bars indicate statistical uncertainties only.
 }
@@ -185,20 +186,187 @@ Comparison of ``RP'' alignments obtained from different TOTEM runs (different co
 \subsection{Absolute alignment with respect to the beam}
 \label{s:calib-elastic}
 
+\> missing RPs in the right arm
+\>> non-optimal $\theta_x^*$ reconstruction
+\>> reduced number of elastic selection cuts
+
+\> elastic selection cuts
+\>> $\theta_x^*$ left-right collinearity, see Figure \ref{fig:el_cuts}, top left.
+\>> $\theta_y^*$ left-right collinearity, see Figure \ref{fig:el_cuts}, top right.
+\>> $x^*$ in the left compatible with vertex distribution, see Figure \ref{fig:el_cuts}, bottom left.
+\>> position-angle correlation in $y$ plane in the left arm, see Figure \ref{fig:el_cuts}, bottom right.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.8\hsize]{fig/before_TS2/cut_example.pdf}
+\caption{%
+Example of elastic selection cuts, for period before TS2. The black lines delimit the selection region.
+}
+\label{fig:el_cuts}
+\end{center}
+\end{figure}
+
+\> method: describe Figure \ref{fig:el_alignment_method}
+\>> applied to 1h time slices -- examine time variation, systematics
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\hsize]{fig/before_TS2/el_alignment_method.pdf}
+\caption{%
+Illustration of alignment with elastic scattering. Data from a 1h-slice of pre-TS2 data.
+}
+\label{fig:el_alignment_method}
+\end{center}
+\end{figure}
+
+\> describe the several metrics for each alignment variable
+
+\> exception: RP 56-210-nr-tp not available
+\>> had to fix the tilt: to similar value as in the far top RP
+\>> no vertical alignment for this RP -- \TODO{try by equalising theta y from different RPs}
+
+\> Figure \ref{fig:el_alignment_results}: summary of results
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=\hsize]{fig/before_TS2/el_alignment.pdf}
+\caption{%
+Summary of the elastic-alignment results in the period before TS2. Each column corresponds to one RP unit. The rows (top to bottom) show: tilt (about the beam axis), horizontal beam position and vertical beam position. \TODO{Keep just one line/metric per quantity}? The red solid (dashed) lines denote the final extracted values \TODO{how?} (their uncertainties)
+}
+\label{fig:el_alignment_results}
+\end{center}
+\end{figure}
+
 %----------------------------------------------------------------------------------------------------
 
 \section{Alignment in physics runs}
 \label{s:phys}
+
+\> basic idea: the physics is the same for all runs
+
+\> if optics, ... not changed, then also physics hit distributions equal for all runs
+
+\> alignment method: match/align physics hit distributions from physics runs to the calibration run
+
+\> event selection
+\>> CMS trigger: $\sim$ zero bias for RPs
+\>> physics protons (coming from IP): strong correlation $x^{\rm F}$ vs.~$x^{\rm N}$, see Figure \ref{fig:hor_cuts}.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\hsize]{fig/before_TS2/hor_cuts.pdf}
+\caption{%
+Example of cleaning cuts, employing the correlation between the horizontal track positions in the near and far RP of each unit. Data from a sub-sample of the pre-TS2 period.
+}
+\label{fig:hor_cuts}
+\end{center}
+\end{figure}
+
+\> the effect of the cleaning cuts: Figure \ref{fig:hor_cuts_effect}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\hsize]{fig/before_TS2/hor_cuts_effect_cmp.pdf}
+\caption{%
+Illustration of the effect of the cleaning cuts presented Figure~\ref{fig:hor_cuts}. {\it Left}: hit distribution in \TODO{which RP} before applying the cuts, {\it right}: the same distribution after the cuts. Data from a sub-sample of the pre-TS2 period.
+}
+\label{fig:hor_cuts_effect}
+\end{center}
+\end{figure}
+
+
+
+%--------------------------------------------------
+\subsection{Horizontal alignment}
+
+\> describe the to matching metrics
+\>> describe the pros and cons of each
+\>> Figure \ref{fig:hor_match_method}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\hsize]{fig/before_TS2/match_method_example.pdf}
+\caption{%
+Illustration of the match metrics used for horizontal alignment, for a sub-sample from the pre-TS2 period. Black histogram: reference from the calibration fill. Blue (red) histogram: distribution from a physics fill before (after) matching.
+}
+\label{fig:hor_match_method}
+\end{center}
+\end{figure}
+
+\> results: summarised in Figure \ref{fig:hor_match_results}
+\>> \TODO{describe, comment}
+\>> \TODO{add also method y results?} 
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=\hsize]{fig/before_TS2/match_result_cmp_mean.pdf}
+\caption{%
+Summary of the horizontal-shift results. The horizontal axis indicates the fill number, the vertical scale gives the correction by how much the hit distribution should be moved.
+}
+\label{fig:hor_match_results}
+\end{center}
+\end{figure}
+
+\> \TODO{comment on 45-210-nr-hr ...}
+
+
+%--------------------------------------------------
+\subsection{Vertical alignment}
+
+\> yet to be done...
+
+\> we may not need it for this note: it is not essential for $\xi$ reconstruction
 
 %----------------------------------------------------------------------------------------------------
 
 \section{Alignment validation}
 \label{s:val}
 
+\> basic idea: the physics is RP-independent, each RP should see (up to acceptance, resolution, etc.) the same physics
+
+\> in addition: can compare $\xi$'s within each arm on event-to-event basis
+
+\> \TODO{which alignment results used}
+
+\> $\xi$ is reconstructed pot-by-pot using $x$ to $\xi$ curves from the optics-calibration study \cite{optics_calibration}
+
+\> \TODO{specify whether cleaning cuts are used}
+
+\> Figure \ref{fig:xi_cmp_run}: fill-to-fill stability
+\>> \TODO{describe}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\hsize]{fig/before_TS2/xi_cmp_run.pdf}
+\caption{%
+Fill-to-fill comparison of $\xi$ distributions extracted from single RPs. \TODO{describe the effects of radiation damage}
+}
+\label{fig:xi_cmp_run}
+\end{center}
+\end{figure}
+
+
+\> Figure \ref{fig:xi_cmp_rp}: comparison of $\xi$ distributions from different RPs
+\>> \TODO{comment}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\hsize]{fig/before_TS2/xi_cmp_rp.pdf}
+\caption{%
+Comparison of $\xi$ distributions from different RPs.
+}
+\label{fig:xi_cmp_rp}
+\end{center}
+\end{figure}
+
+
+
 %----------------------------------------------------------------------------------------------------
 
 \section{Summary}
 \label{s:sum}
+
+\> \TODO{TODO}
 
 %----------------------------------------------------------------------------------------------------
 
@@ -209,18 +377,17 @@ Comparison of ``RP'' alignments obtained from different TOTEM runs (different co
 	\Review{JINST}{3}{2008}{S08007}.
     %The TOTEM Experiment at the CERN Large Hadron Collider, JINST 3 S08007, 2008
 
-\bibitem{plb43}
-	\Name{U.~Amaldi et al.}
-	\Review{Phys.~Lett.~B}{43}{1973}{231 -- 236}.
+\bibitem{totem-ijmp}
+	\Name{G.~Antchev \etal{}~(TOTEM Collaboration)}
+	\Review{Int.~J.~Mod.~Phys.~A}{28}{2013}{1330046}.
 
 \bibitem{jan_thesis}
 	\Name{J.~Ka\v spar}
 	PhD Thesis, CERN-THESIS-2011-214,
 	\url{http://cdsweb.cern.ch/record/1441140}.
 
-\bibitem{totem-ijmp}
-	\Name{G.~Antchev \etal{}~(TOTEM Collaboration)}
-	\Review{Int.~J.~Mod.~Phys.~A}{28}{2013}{1330046}.
+\bibitem{optics_calibration}
+	yet to be written
 
 \end{thebibliography}
 
