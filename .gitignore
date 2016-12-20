@@ -3,6 +3,12 @@
 *.jpg
 *.log
 *.aux
+*.dvi
+*.ps
+*.eps
+*.ref
+*.idx
+*.toc
 
 *.swp
 *.swo
