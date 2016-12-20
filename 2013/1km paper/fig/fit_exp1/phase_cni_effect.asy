@@ -2,9 +2,9 @@ import root;
 import pad_layout;
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesIX");
-texpreamble("\def\ung#1{\quad[{\rm#1}]}");
+//texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
-string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/coulomb_analysis/";
+string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV/combined/coulomb_analysis/";
 
 string fits[] = {
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,KL,con,chisq,,st+sy_noNorm",

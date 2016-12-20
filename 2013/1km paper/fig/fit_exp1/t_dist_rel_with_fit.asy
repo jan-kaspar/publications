@@ -2,11 +2,11 @@ import root;
 import pad_layout;
 import patterns;
 
-include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/coulomb_analysis/plots/base.asy";
-include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,beta1000/plots/t_distributions/common_code.asy";
+include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV/combined/coulomb_analysis/plots/base.asy";
+include "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV/beta1000/main/plots/t_distributions/common_code.asy";
 
 texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesIX");
-texpreamble("\def\ung#1{\quad[{\rm#1}]}");
+//texpreamble("\def\ung#1{\quad[{\rm#1}]}");
 
 pen p_full_band = (olive*0.5 + yellow*0.7) + opacity(1);
 pen p_anal_band = brown*0.5 + yellow*0.5;
@@ -21,7 +21,7 @@ add("hatch2-b", hatch(1.7mm, NW, p_full_band+0.7pt));
 //----------------------------------------------------------------------------------------------------
 
 
-string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV,combined/coulomb_analysis/";
+string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV/combined/coulomb_analysis/";
 
 string fits[] = {
 	"1000-ob-0-1,90-DS4-sc-ob/simsep-1000,v,v,v-all,v,v,f:1,KL,con,chisq,,st+sy_noNorm",
@@ -51,11 +51,11 @@ drawGridDef = true;
 
 string ref_str = MakeRefStr();
 
-string syst_unc_file_1000 = topDir+"../../4000GeV,beta1000/systematics/DS2b/matrix_numerical_integration.root";
+string syst_unc_file_1000 = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV/beta1000/main/systematics/DS2b/matrix_numerical_integration.root";
 string syst_unc_obj_full_1000 = "matrices/all/combined/ob-1-10/h_stddev";
 string syst_unc_obj_anal_1000 = "matrices/all-anal/combined/ob-1-10/h_stddev";
 
-string syst_unc_file_90 = topDir+"../../4000GeV,beta90/systematics/DS4/matrix_direct_combined.root";
+string syst_unc_file_90 = "/afs/cern.ch/work/j/jkaspar/analyses/elastic/4000GeV/beta90/main/systematics/DS4/matrix_direct_combined.root";
 string syst_unc_obj_full_90 = "all/ob/h_stddev";
 string syst_unc_obj_anal_90 = "all analysis/ob/h_stddev";
 

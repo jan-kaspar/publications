@@ -1,0 +1,13 @@
+*.pdf
+*.png
+*.jpg
+*.log
+*.aux
+
+*.swp
+*.swo
+
+elastic figures
+totem authorlist
+
+thesis.pdf
