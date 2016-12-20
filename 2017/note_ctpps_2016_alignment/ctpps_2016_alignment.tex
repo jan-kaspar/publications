@@ -62,7 +62,8 @@
 TODO: abstract
 \end{abstract}
 
-\centerline{version XX}
+%\centerline{version 0}	% sent on 19 Dec 2016
+\centerline{version 1-pre}
 
 \end{titlepage}
 
@@ -92,6 +93,8 @@ Layout of RPs aroud IP5. The red RPs contain the tracking Si strips sensors used
 \> two periods -- two alignments
 \>> before TS2: calibration run in fill 4828
 \>> after TS2: calibration run in fill 5322
+
+\> \TODO{consistent use of ``fill'' and ``run''}
 
 %----------------------------------------------------------------------------------------------------
 
@@ -147,7 +150,7 @@ A track (red line) passing through an overlap between vertical and horizontal RP
 \begin{center}
 \includegraphics[width=\hsize]{fig/after_TS2/residuals.pdf}
 \caption{%
-Distributions of track-hit residuals (TOTEM run 10332, after TS2). Each colour corresponds to a different sensor (first planes in the RPs of the 45-210-nr unit). The blue histogram has been downscaled by factor 100. {\it Left}: before any optimisation. The disconnected histogram portions originate from different RP configurations contributing to the fit. {\it Middle}: after shift optimisation. {\it Right}: after shift and rotation optimisation.
+Distributions of track-hit residuals (TOTEM run 10332, after TS2). Each colour corresponds to a different sensor (first planes in the RPs of the 45-210-nr unit). The blue histogram has been downscaled by factor 100. {\it Left}: before any optimisation. The disconnected histogram portions originate from different RP configurations contributing to the track fit. {\it Middle}: after shift optimisation. {\it Right}: after shift and rotation optimisation.
 }
 \label{fig:tb_residuals}
 \end{center}
@@ -256,7 +259,7 @@ Summary of the elastic-alignment results in the period before TS2. Each column c
 \begin{center}
 \includegraphics[width=0.7\hsize]{fig/before_TS2/hor_cuts.pdf}
 \caption{%
-Example of cleaning cuts, employing the correlation between the horizontal track positions in the near and far RP of each unit. Data from a sub-sample of the pre-TS2 period.
+Example of cleaning cuts, employing the correlation between the horizontal track positions in the near and far RP of each station. Data from a sub-sample of the pre-TS2 period.
 }
 \label{fig:hor_cuts}
 \end{center}
@@ -331,6 +334,8 @@ Summary of the horizontal-shift results. The horizontal axis indicates the fill 
 \> $\xi$ is reconstructed pot-by-pot using $x$ to $\xi$ curves from the optics-calibration study \cite{optics_calibration}
 
 \> \TODO{specify whether cleaning cuts are used}
+
+\> \TODO{add $\xi$ correlation plot: near vs.~far RP}
 
 \> Figure \ref{fig:xi_cmp_run}: fill-to-fill stability
 \>> \TODO{describe}
