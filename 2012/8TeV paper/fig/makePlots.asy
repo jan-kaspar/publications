@@ -283,15 +283,15 @@ fsh = 0; DrawPointRel(7e3, 25.1, 4.3, black+0.8pt, mCi+true+1.7pt+black);
 
 // TOTEM 8 TeV data
 // tot
-fsh = 0; DrawPointRel(8e3, 102, 2.8, yellow+opacity(0.3)+2pt, mCi+true+4pt+(yellow+opacity(0.3)));
+fsh = 0; DrawPointRel(8e3, 102, 2.8, yellow+opacity(0.75)+2pt, mCi+true+4pt+(yellow+opacity(0.75)));
 fsh = 0; DrawPointRel(8e3, 102, 2.8, black+0.8pt, mCi+true+1.7pt+black);
 
 // inel
-fsh = 0; DrawPointRel(8e3, 74.7, 2.1, yellow+opacity(0.3)+2pt, mCi+true+4pt+(yellow+opacity(0.3)));
+fsh = 0; DrawPointRel(8e3, 74.7, 2.1, yellow+opacity(0.75)+2pt, mCi+true+4pt+(yellow+opacity(0.75)));
 fsh = 0; DrawPointRel(8e3, 74.7, 2.1, black+0.8pt, mCi+true+1.7pt+black);
 
 // el
-fsh = 0; DrawPointRel(8e3, 27.0, 4.8, yellow+opacity(0.3)+2pt, mCi+true+4pt+(yellow+opacity(0.3)));
+fsh = 0; DrawPointRel(8e3, 27.0, 4.8, yellow+opacity(0.75)+2pt, mCi+true+4pt+(yellow+opacity(0.75)));
 fsh = 0; DrawPointRel(8e3, 27.0, 4.8, black+0.8pt, mCi+true+1.7pt+black);
 
 

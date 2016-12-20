@@ -1,0 +1,14 @@
+*/*
+
+*.root
+
+!7TeV three papers/combined
+7TeV three papers/combined/release*
+7TeV three papers/combined/uncertainty composition
+
+!7TeV three papers/elastic
+7TeV three papers/elastic/release*
+7TeV three papers/elastic/font_test.tex
+
+!8TeV paper/fig
+!8TeV paper/fig/*.pdf

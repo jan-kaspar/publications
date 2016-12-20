@@ -101,16 +101,16 @@ int LoadFile(string fn, Meas data[])
 			continue;
 
 		Meas m;
-		m.p = (real) bits[2];		// GeV
-		m.p_min = (real) bits[3];
-		m.p_max = (real) bits[4];
+		m.p = (real) bits[1];		// GeV
+		m.p_min = (real) bits[2];
+		m.p_max = (real) bits[3];
 		
-		m.si = (real) bits[5];		// mb
-		real si_sep = (real) bits[6];
-		real si_sem = (real) bits[7];
-		real si_srep = (real) bits[8];	// %
-		real si_srem = (real) bits[9];
-		m.ref = bits[10];
+		m.si = (real) bits[4];		// mb
+		real si_sep = (real) bits[5];
+		real si_sem = (real) bits[6];
+		real si_srep = (real) bits[7];	// %
+		real si_srem = (real) bits[8];
+		m.ref = bits[9];
 
 		m.si_ep = sqrt(si_sep^2 + (m.si*si_srep/100)^2);
 		m.si_em = sqrt(si_sem^2 + (m.si*si_srem/100)^2);
@@ -191,23 +191,23 @@ real RFit(real W)
 	return SigmaElFit(W) / SigmaTotFit(W) * 100.;
 }
 
+/*
 real base = 1e3, fac = 1;
 while (true) {
 	real W = fac * base;
 	write(format("%.1E", W)+", " + format("%.2E", SigmaTotFit(W))+", " + format("%.2E", SigmaInelFit(W))+", " + format("%.2E", SigmaElFit(W)));
 
 	fac += 1;
-/*
 	if (fac > 9) {
 		fac = 1;
 		base *= 10;
 	}
 	if (base > 1e4)
 		break;
-*/
 	if (fac > 20)
 		break;
 }
+*/
 
 
 
@@ -227,6 +227,8 @@ void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red
 }
 
 //----------------------------------------------------------------------------------------------------
+
+/*
 
 NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el} / \si_{\rm tot}\ung{\%}$", yTicks=RightTicks(Step=2, step=1), 6cm, 4cm);
 scale(Log, Linear);
@@ -289,3 +291,50 @@ AddToLegend("this publication", red+0.8pt, mCi+true+2pt+red);
 AttachLegend(NW, NW);
 
 GShipout("sigma_el_to_sigma_tot_cern");
+*/
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+
+void PlotRho(string f, pen col, mark m)
+{
+	Meas data_rho[];
+	LoadFile(f, data_rho);
+	
+	for (int pi : data_rho.keys) {
+		//write(data_rho[pi].si);
+	
+		real W = p2W(data_rho[pi].p);
+		real W_min = p2W(data_rho[pi].p_min);
+		real W_max = p2W(data_rho[pi].p_max);
+	
+		real rho = data_rho[pi].si;
+		real rho_ep = data_rho[pi].si_ep;
+		real rho_em = data_rho[pi].si_em;
+	
+	
+		draw(Scale((W_min, rho))--Scale((W_max, rho)), col);
+		draw(Scale((W, rho-rho_em))--Scale((W, rho+rho_ep)), col);
+		draw(Scale((W, rho)), m+col);
+	}
+}
+
+//----------------------------------------------------------------------------------------------------
+
+NewPad("$\sqrt s\ung{GeV}$", "$\rh$");
+scale(Log, Linear);
+
+PlotRho("pbarp_elastic_reim.dat", heavygreen, mTU+1pt+false);
+PlotRho("pp_elastic_reim.dat", blue, mTD+1pt+true);
+
+DrawPoint(8e3, 0.11, 0.03, 0.03, red+0.8pt, mCi+true+2pt+red);		// totem
+
+AddToLegend("$\rm pp$ (PDG)", blue, mTD+false+2pt+blue);
+AddToLegend("$\rm\bar pp$ (PDG)", heavygreen, mTU+false+2pt+heavygreen);
+AddToLegend("TOTEM preliminary", red+0.8pt, mCi+true+2pt+red);
+
+limits((1e1, -0.2), (1e4, +0.2), Crop);
+xaxis(YEquals(0, false), dotted);
+AttachLegend(SE, SE);
+
+GShipout("rho");
