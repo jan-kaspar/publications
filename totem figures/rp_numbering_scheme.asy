@@ -52,8 +52,8 @@ void DrawStation(int id, transform3 pos, string label)
 }
 
 DrawStation(12, shift(0, 0, +65), "+220 m");
-DrawStation(10, shift(0, 0, +25), "+150 m");
-DrawStation( 0, shift(0, 0, -25), "-150 m");
+DrawStation(10, shift(0, 0, +25), "+210 m");
+DrawStation( 0, shift(0, 0, -25), "-210 m");
 DrawStation( 2, shift(0, 0, -65), "-220 m");
 
 

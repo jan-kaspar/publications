@@ -42,10 +42,10 @@ has a variance of
 For Gaussian distribution it reduces to
 \eqref{V[\hat\si] = {\si^2\over 2N}\ .}{std dev estim var}
 
-To {\bf summarize}, the mean and standard deviation of sample (value $\pm$ standard deviation of the estimator) can be estimated as follows:
+To {\bf summarise}, the mean and standard deviation of sample (value $\pm$ standard deviation of the estimator) can be estimated as follows:
 \eqref{\eqnarray{
 \hbox{mean} &: \hat\mu \pm \sqrt{\widehat{\si^2}\over N}\cr
-\hbox{standard deviation} &: \sqrt{\widehat{\si^2}} \pm \sqrt{A\over \widehat{\si^2}}\ ,\qquad A = {1\over N} \left[ \widehat{E_4} - {N-3\over N-1} \left(\widehat{\si^2}\right)^2 \right]\cr
+\hbox{standard deviation} &: \sqrt{\widehat{\si^2}} \pm \sqrt{A\over 2\,\widehat{\si^2}}\ ,\qquad A = {1\over N} \left[ \widehat{E_4} - {N-3\over N-1} \left(\widehat{\si^2}\right)^2 \right]\cr
 }}{summary}
 
 
@@ -59,7 +59,10 @@ For a distribution $h(x, y)$ let us define
 \eqref{\eqnarray{
 \hbox{mean in $x$: }\ \mu_x &= \int\!\! \int \d x\, \d y\ h(x, y)\, x\cr
 \hbox{mean in $y$: } \mu_y &= \int\!\! \int \d x\, \d y\ h(x, y)\, y\cr
+\hbox{variance in $x$: }\ \mu_x &= \int\!\! \int \d x\, \d y\ h(x, y)\, (x - \mu_x)^2\cr
 \hbox{covariance between $x$ and $y$: }\ C_{xy} &= \int\!\! \int \d x\, \d y\ h(x, y)\, (x - \mu_x) (y - \mu_y)\cr
+\hbox{fourth central moment in $x$: } E_4 &= \int \d x\, h(x)\, (x-\mu)^4\cr
+\hbox{second-order covariance between $x$ and $y$: }\ D_{xy} &= \int\!\! \int \d x\, \d y\ h(x, y)\, (x - \mu_x)^2 (y - \mu_y)^2\cr
 }}{two mu si}
 
 The {\bf mean estimators}
@@ -71,6 +74,15 @@ This {\bf covariance estimator}
 	= {1\over N-1} \sum\limits_i^N (x_i - \widehat{\mu_x})\, (y_i - \widehat{\mu_y})
 	= {1\over N-1} \left[ \sum x_i y_i - {1\over N} (\sum x_i)\, (\sum y_i) \right]
 }{covar estim}
-is unbiased.
+is unbiased. This estimator has variance
+\eqref{
+V[\widehat{C_{xy}}] = {1\over N} \left(
+	D_{xy} + {1\over N - 1} \si_x^2 \si_y^2 - {N - 2\over N - 1} C_{xy}^2
+\right) \ .
+}{covar estim var}
+
+The $D_{xy}$ {\bf estimator}:
+\eqref{\widehat{D_{xy}} = {1\over N - 1} \sum_i^N (x_i - \widehat{\mu_x})^2 (y_i - \widehat{\mu_y})^2 = \ldots\hbox{9 terms}\ldots
+}{Dxy estim}
 
 \bye
