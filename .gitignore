@@ -9,6 +9,7 @@
 *.ref
 *.idx
 *.toc
+*.out
 
 *.swp
 *.swo
