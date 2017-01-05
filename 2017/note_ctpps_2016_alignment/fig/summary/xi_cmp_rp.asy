@@ -108,7 +108,7 @@ for (int dsi : datasets.keys)
 		//ylimits(1e1, 2e5, Crop);
 	}
 
-	AttachLegend(shift(-8, 10)*BuildLegend(lineLength=3mm, vSkip=-0.5mm, xmargin=0.5mm, ymargin=0.1mm, S), S);
+	AttachLegend(shift(-10, 10)*BuildLegend(lineLength=3mm, vSkip=-0.5mm, xmargin=0.5mm, ymargin=0.1mm, S), S);
 
 	//frame f_legend = BuildLegend(lineLength=3mm);
 

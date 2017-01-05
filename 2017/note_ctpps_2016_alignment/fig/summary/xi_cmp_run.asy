@@ -158,10 +158,10 @@ for (int ai : alignments.keys)
 		if (cropToDetails)
 			limits((x_min[rpi], y_min[rpi]), (x_max[rpi], y_max[rpi]), Crop);
 		else
-			xlimits(0.03, 0.13, Crop);
+			xlimits(0.03, 0.125, Crop);
 	}
 
-	AttachLegend(shift(15, 2)*BuildLegend(lineLength=3mm, vSkip=-1mm, xmargin=0.5mm, ymargin=0.1mm, S), S);
+	AttachLegend(shift(16, 2)*BuildLegend(lineLength=3mm, vSkip=-1mm, xmargin=0.5mm, ymargin=0.1mm, S), S);
 }
 
 
