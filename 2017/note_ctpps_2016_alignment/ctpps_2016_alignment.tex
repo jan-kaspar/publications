@@ -73,9 +73,9 @@ TODO: abstract
 \label{s:intro}
 
 \> why is the alignment important
-\>> what is the desired precision
+\>> what is the desired precision, put in context with detector resolution and impact on xi uncertainty -- compared to other uncertainties.
 
-\> layout and naming of RPs
+Figure~\ref{fig:rp_layout} shows the layout of the RPs around IP5. The RPs marked in red are used by CT-PPS and will be of primary interest of this note. The vertical RPs in both $210\un{m}$ stations are also used for alignment purposes.
 
 \begin{figure}[h!]
 \begin{center}
@@ -87,12 +87,15 @@ Layout of RPs aroud IP5. The red RPs contain the tracking Si strips sensors used
 \end{center}
 \end{figure}
 
-\> outline of the approach and the structure of the note
-\>> two types of runs: calibration, physics
+This note describes the first alignment of CT-PPS data taken in 2016, before TS2 -- in the LHC fills 4947 through 5288. 
 
-\> two periods -- two alignments
-\>> before TS2: calibration run in fill 4828
-\>> after TS2: calibration run in fill 5322
+The alignment proceeds in the two following stages.
+\begin{enumerate}[noitemsep]
+\item Alignment is performed with data from a special low-luminosity calibration fill (4828), where both horizontal and vertical RPs are inserted very close to the beam (about $5\un{\sigma}$). The standard TOTEM procecure \cite{totem-ijmp} is used, details will be give in Section~\ref{s:calib}.
+\item The alignment information is transferred from the calibration fill to the standard physics fills with high luminosity and only horizontal RPs inserted. This new procedure is described in Section~\ref{s:phys}.
+\end{enumerate}
+
+The alignment and optics calibration \cite{optics_calibration} is eventually followed by a reconstruction validation, see Section~\ref{s:val}.
 
 \> \TODO{consistent use of ``fill'' and ``run''}
 
