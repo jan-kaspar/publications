@@ -50,7 +50,7 @@
 \EXPnumber{TODO}
 \EXPdate{TODO}
 
-\title{Alignment of CT-PPS detectors in 2016}
+\title{Alignment of CT-PPS detectors in 2016, before TS2}
 
 \ShortTitle{Alignment of CT-PPS detectors in 2016}
 
@@ -63,7 +63,7 @@ TODO: abstract
 \end{abstract}
 
 %\centerline{version 0}	% sent on 19 Dec 2016
-\centerline{version 1-pre}
+\centerline{version 2-pre}
 
 \end{titlepage}
 
@@ -148,7 +148,7 @@ A track (red line) passing through an overlap between vertical and horizontal RP
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=\hsize]{fig/after_TS2/residuals.pdf}
+\includegraphics[width=\hsize]{fig/calibration_fill/residuals.pdf}
 \caption{%
 Distributions of track-hit residuals (TOTEM run 10332, after TS2). Each colour corresponds to a different sensor (first planes in the RPs of the 45-210-nr unit). The blue histogram has been downscaled by factor 100. {\it Left}: before any optimisation. The disconnected histogram portions originate from different RP configurations contributing to the track fit. {\it Middle}: after shift optimisation. {\it Right}: after shift and rotation optimisation.
 }
@@ -158,7 +158,7 @@ Distributions of track-hit residuals (TOTEM run 10332, after TS2). Each colour c
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.8\hsize]{fig/after_TS2/plots_per_plane_left.pdf}
+\includegraphics[width=0.8\hsize]{fig/calibration_fill/plots_per_plane_left.pdf}
 \caption{%
 Comparison of internal alignments obtained from different TOTEM runs (different colours), for the period after TS2. The two columns correspond to the two horizontal RPs in the sector 45. The horizontal scale gives the plane index within the detector package: 0 is the closest to the IP, 9 the farthest. The results for ``V'' (``U'') planes are marked with crosses (circles). The linear patterns in the determined shifts (separately in ``U'' and ``V'' projections) can be understood by tilts of the entire detector package which shift the sensor centre's proportionally to its position within the package, for more details see Section 4.2.8 in \cite{jan_thesis}. The error bars indicate statistical uncertainties only.
 }
@@ -168,7 +168,7 @@ Comparison of internal alignments obtained from different TOTEM runs (different 
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.8\hsize]{fig/after_TS2/plots_per_rp_left.pdf}
+\includegraphics[width=0.8\hsize]{fig/calibration_fill/plots_per_rp_left.pdf}
 \caption{%
 Comparison of ``RP'' alignments obtained from different TOTEM runs (different colours), for the period after TS2. The two columns correspond to the two horizontal RPs in the sector 45. The error bars indicate statistical uncertainties only.
 }
@@ -201,7 +201,7 @@ Comparison of ``RP'' alignments obtained from different TOTEM runs (different co
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.8\hsize]{fig/before_TS2/cut_example.pdf}
+\includegraphics[width=0.8\hsize]{fig/calibration_fill/el_cut_example.pdf}
 \caption{%
 Example of elastic selection cuts, for period before TS2. The black lines delimit the selection region.
 }
@@ -214,7 +214,7 @@ Example of elastic selection cuts, for period before TS2. The black lines delimi
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/before_TS2/el_alignment_method.pdf}
+\includegraphics[width=0.7\hsize]{fig/calibration_fill/el_alignment_method.pdf}
 \caption{%
 Illustration of alignment with elastic scattering. Data from a 1h-slice of pre-TS2 data.
 }
@@ -232,7 +232,7 @@ Illustration of alignment with elastic scattering. Data from a 1h-slice of pre-T
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=\hsize]{fig/before_TS2/el_alignment.pdf}
+\includegraphics[width=\hsize]{fig/calibration_fill/el_alignment.pdf}
 \caption{%
 Summary of the elastic-alignment results in the period before TS2. Each column corresponds to one RP unit. The rows (top to bottom) show: tilt (about the beam axis), horizontal beam position and vertical beam position. \TODO{Keep just one line/metric per quantity}? The red solid (dashed) lines denote the final extracted values \TODO{how?} (their uncertainties)
 }
@@ -257,7 +257,7 @@ Summary of the elastic-alignment results in the period before TS2. Each column c
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/before_TS2/hor_cuts.pdf}
+\includegraphics[width=0.7\hsize]{fig/physics_fills/hor_cuts.pdf}
 \caption{%
 Example of cleaning cuts, employing the correlation between the horizontal track positions in the near and far RP of each station. Data from a sub-sample of the pre-TS2 period.
 }
@@ -269,7 +269,7 @@ Example of cleaning cuts, employing the correlation between the horizontal track
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/before_TS2/hor_cuts_effect_cmp.pdf}
+\includegraphics[width=0.7\hsize]{fig/physics_fills/hor_cuts_effect_cmp.pdf}
 \caption{%
 Illustration of the effect of the cleaning cuts presented Figure~\ref{fig:hor_cuts}. {\it Left}: hit distribution in \TODO{which RP} before applying the cuts, {\it right}: the same distribution after the cuts. Data from a sub-sample of the pre-TS2 period.
 }
@@ -277,6 +277,49 @@ Illustration of the effect of the cleaning cuts presented Figure~\ref{fig:hor_cu
 \end{center}
 \end{figure}
 
+%--------------------------------------------------
+\subsection{Conditions}
+
+\> RP insertions
+Figure~\ref{fig:cond_rp}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=1\hsize]{fig/conditions/rp_positions_rps.pdf}
+\caption{%
+RP positions as reported by the 3 position gauges (LVDT, MOTOR and RESOLVER) per LHC fill (horizontal axes). The two entries for fill 4964 correspond to the insertions with and without safety margin. The two entries for fill 5287 correspond to the two insertions within the same fill.
+}
+\label{fig:cond_rp}
+\end{center}
+\end{figure}
+
+
+\> BPM measurements of the orbit
+Figure~\ref{fig:cond_bpm}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=1\hsize]{fig/conditions/bpm_comparison.pdf}
+\caption{%
+Readings of BPMs close to the RP stations in a selection of LHC fills of interest. The monitors C6, D6, A6 and B6 correspond to RP units 210-nr, 210-fr, 220-nr and 220-fr, respectively.
+}
+\label{fig:cond_bpm}
+\end{center}
+\end{figure}
+
+
+\> collimator positions
+Figure~\ref{fig:cond_collimators}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=1\hsize]{fig/conditions/collimator_positions_resolver.pdf}
+\caption{%
+Positions of the relevant collimator jaws as a function of LHC fill. The left/right entry for fill 4964 corresponds to the insertion with/without the safety margin. The variable names (see legend) containing B1 (B2) correspond to collimators in beam 1 (beam 2). The last two characters of the variable name indicate the jaw: L stands for left, R for right, U for upstream and D for downstream.
+}
+\label{fig:cond_collimators}
+\end{center}
+\end{figure}
 
 
 %--------------------------------------------------
@@ -288,7 +331,7 @@ Illustration of the effect of the cleaning cuts presented Figure~\ref{fig:hor_cu
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/before_TS2/match_method_example.pdf}
+\includegraphics[width=0.7\hsize]{fig/physics_fills/match_method_example.pdf}
 \caption{%
 Illustration of the match metrics used for horizontal alignment, for a sub-sample from the pre-TS2 period. Black histogram: reference from the calibration fill. Blue (red) histogram: distribution from a physics fill before (after) matching.
 }
@@ -302,7 +345,7 @@ Illustration of the match metrics used for horizontal alignment, for a sub-sampl
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=\hsize]{fig/before_TS2/match_result_cmp_mean.pdf}
+\includegraphics[width=\hsize]{fig/physics_fills/match_result_cmp_mean.pdf}
 \caption{%
 Summary of the horizontal-shift results. The horizontal axis indicates the fill number, the vertical scale gives the correction by how much the hit distribution should be moved.
 }
@@ -322,7 +365,7 @@ Summary of the horizontal-shift results. The horizontal axis indicates the fill 
 
 %----------------------------------------------------------------------------------------------------
 
-\section{Alignment validation}
+\section{Alignment and optics validation}
 \label{s:val}
 
 \> basic idea: the physics is RP-independent, each RP should see (up to acceptance, resolution, etc.) the same physics
@@ -342,7 +385,7 @@ Summary of the horizontal-shift results. The horizontal axis indicates the fill 
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/before_TS2/xi_cmp_run.pdf}
+\includegraphics[width=0.7\hsize]{fig/validation/xi_cmp_run.pdf}
 \caption{%
 Fill-to-fill comparison of $\xi$ distributions extracted from single RPs. \TODO{describe the effects of radiation damage}
 }
@@ -356,7 +399,7 @@ Fill-to-fill comparison of $\xi$ distributions extracted from single RPs. \TODO{
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/before_TS2/xi_cmp_rp.pdf}
+\includegraphics[width=0.7\hsize]{fig/validation/xi_cmp_rp.pdf}
 \caption{%
 Comparison of $\xi$ distributions from different RPs.
 }
