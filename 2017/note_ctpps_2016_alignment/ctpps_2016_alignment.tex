@@ -101,25 +101,23 @@ The alignment and optics calibration \cite{optics_calibration} is eventually fol
 
 %----------------------------------------------------------------------------------------------------
 
-\section{Alignment in calibration runs}
+\section{Alignment in calibration fill}
 \label{s:calib}
 
-\> calibration run: low intensity, both horizontal and vertical RPs inserted, all RPs close to the beam (\TODO{number of sigmas})
+This stage is performed with a special LHC fill, sometimes called ``alignment fill''. This fill can be characterised by low intensity, both horizontal and vertical RPs inserted and all RPs being close to the beam (\TODO{number of sigmas}).
 
-\> the standard ``TOTEM'' procedure -- Section 3.4 in \cite{totem-ijmp}
-
-\> three steps
-\>> beam-based alignment: prior to data-taking, RPs are moved to the same $n_\sigma$ distance as collimators, when RPs touch the sharp beam edge created by collimators, strong BLM signal is observed; see Figure 7 in \cite{totem-ijmp}
-\>> track-based alignment: relative alignment among all silicon sensors, analysis of track-hit residuals; Section~\ref{s:calib-track}
-\>> elastic-based alignment: absolute alignment wrt.~beam, using symmetries of elastic scattering; Section~\ref{s:calib-elastic}
+The standard ``TOTEM'' alignment, see Section 3.4 in \cite{totem-ijmp}, is applied. It can be summarised by the following three steps.
+\begin{enumerate}[noitemsep]
+\item {\em Beam-based alignment} -- a procedure which takes place before data-taking and the purpose of which is to align the RPs with the LHC collimators and the beam. For that collimators scrape the beam to have a sharp edge and then each RP is slowly approached until a contact with the beam is signalised by a spike in beam-loss monitors downstream ( see Figure 7 in \cite{totem-ijmp}). At this point, the RP is at the same $n_\sigma$ distance as the collimator which defines its position, used as a starting point for the alignment.
+\item {\em Relative alignment among RPs} is achieved by analysing residuals between hits and track fits within each RP station. In this step, position (shift in the read-out direction) and rotation (about the beam axis) of each Si sensor is optimised. Thanks to the overlap between the horizontal and vertical RPs, see Figure~\ref{fig:rp_overlap}, the relative position among all sensors within a station can be determined. Details of the procedure are given in Section 4.2 in \cite{jan_thesis}, the application to the present data is described in Section~\ref{s:calib-track}.
+\item {\em Absolute alignment wrt.~the beam} is performed with a sample of elastic-scattering events tagged by the vertical RPs. Due to the azimuthal symmetry of the process, the position of the beam can be derived from the observed hit distributions, see Section~\ref{s:calib-elastic}.
+\end{enumerate}
 
 %--------------------------------------------------
 \subsection{Relative alignment among RP sensors}
 \label{s:calib-track}
 
-\> can use any track passing through the RP station
-
-\> key point: overlap between horizontal and vertical RPs $\rightarrow$ relative alignment among all RPs
+This step uses the method presented in Section 4.2 in \cite{jan_thesis} based on analysis of the residuals between hits and track fits. While any track passing through a RP station can be used, the most valuable tracks are those passing through several RPs. The key point for the method is the overlap between the horizontal and vertical RPs as shown in Figure~\ref{fig:rp_overlap}, which allows to determine the relative alignment among all sensors of a station.
 
 \begin{figure}[h!]
 \begin{center}
@@ -131,59 +129,57 @@ A track (red line) passing through an overlap between vertical and horizontal RP
 \end{center}
 \end{figure}
 
-\> general method: analysis of track-hit residuals, see details in Section 4.2 in \cite{jan_thesis}
-\>> optimisation of shift (in read-out direction) and rotation (about beam axis) of each Si sensor
-\>> performed in several iterations (about 5), gradually imposing more strict track selection cuts as alignment precision improves
-\>> not sensitive to certain (global) alignment modes (addressed in Section \ref{s:calib-elastic}): x and y shift and rotation of each unit (near or far) $\rightarrow$ optimising under constraint of zero mean global alignments
-\>> applied to several sub-samples (TOTEM runs) for stability and systematics control
+The procedure optimises the shift (in read-out direction, i.e.~perpendicular to strips) and rotation (about beam axis) of each sensor. The optimisation is performed in 5 iterations, gradually imposing more strict track building cuts as alignment precision improves. Typically, only tracks with hits in at least 3 RPs are used -- to prevent building tracks from unrelated hits.
 
-\> specific features
-\>> 1 or 2 RPs missing in the right arm $\rightarrow$ complications, worse precision, even when using uMuMvRot=true
+Obviously, this method is not sensitive to misalignment modes which do not induce residuals. These include global shifts and rotations and will be addressed by the next step, see Section~\ref{s:calib-elastic}. In order to find an optimum here, the optimisation is performed with the constraint of zero global alignment corrections.
 
-\> results can be decomposed into
-\>> ``RP alignments'': alignments shared by all sensors in a RP
-\>> ``internal alignments'': sensors alignments wrt.~the ``RP alignments''
+The method is applied separately to several data sub-samples (different TOTEM runs) in order to verify stability of results and gain control over the systematics.
 
-\> examples
-\>> Figure \ref{fig:tb_residuals}: residuals become centred about 0 during the procedure
-\>> Figure \ref{fig:tb_example_internal}: example of ``internal alignments'', very good stability
-\>> Figure \ref{fig:tb_example_rp}: example of ``RP alignments'', very good stability
+Note that the method works even without the RP 56-210-nr-tp which did not send data due to technical problems.
+
+Figure \ref{fig:tb_residuals} shows examples of residual distributions in several phases of the optimisation. As expected, during the optimisation the width of the distributions decreases and the originally disconnected portions (coming from various RP combinations) become all centred around zero. The final width of the residual distribution is compatible with the sensor pitch of $66\un{\mu m}$.
+
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=\hsize]{fig/calibration_fill/residuals.pdf}
 \caption{%
-Distributions of track-hit residuals (TOTEM run 10332, after TS2). Each colour corresponds to a different sensor (first planes in the RPs of the 45-210-nr unit). The blue histogram has been downscaled by factor 100. {\it Left}: before any optimisation. The disconnected histogram portions originate from different RP configurations contributing to the track fit. {\it Middle}: after shift optimisation. {\it Right}: after shift and rotation optimisation.
+Distributions of track-hit residuals (TOTEM run 10079). Each colour corresponds to a different sensor (first planes in the RPs of the 45-210-nr unit). The blue histogram in the left plot has been downscaled by factor 100. {\it Left}: before any optimisation. The disconnected histogram portions originate from different RP configurations contributing to the track fit. {\it Middle}: after shift optimisation. {\it Right}: after shift and rotation optimisation.
 }
 \label{fig:tb_residuals}
 \end{center}
 \end{figure}
 
+The results of this alignment step may be conveniently decomposed into {\em RP alignments} -- alignments shared by all sensors in a RP -- and {\em internal alignments} -- sensors alignments wrt.~the RP alignments.
+
+Figure \ref{fig:tb_example_internal} shows an example of the internal alignments, TODO: very good stability
+TODO: The linear patterns in the determined shifts (separately in ``U'' and ``V'' projections) can be understood by tilts of the entire detector package which shift the sensor centre's proportionally to its position within the package, for more details see Section 4.2.8 in \cite{jan_thesis}.
+
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.8\hsize]{fig/calibration_fill/plots_per_plane_left.pdf}
 \caption{%
-Comparison of internal alignments obtained from different TOTEM runs (different colours), for the period after TS2. The two columns correspond to the two horizontal RPs in the sector 45. The horizontal scale gives the plane index within the detector package: 0 is the closest to the IP, 9 the farthest. The results for ``V'' (``U'') planes are marked with crosses (circles). The linear patterns in the determined shifts (separately in ``U'' and ``V'' projections) can be understood by tilts of the entire detector package which shift the sensor centre's proportionally to its position within the package, for more details see Section 4.2.8 in \cite{jan_thesis}. The error bars indicate statistical uncertainties only.
+Comparison of internal alignments obtained from different TOTEM runs (different colours). The two columns correspond to the two horizontal RPs in the sector 45. The horizontal scale gives the plane index within the detector package: 0 is the closest to the IP, 9 the farthest. The results for ``V'' (``U'') planes are marked with crosses (circles). The error bars indicate statistical uncertainties only.
 }
 \label{fig:tb_example_internal}
 \end{center}
 \end{figure}
 
+TODO: Figure \ref{fig:tb_example_rp}: example of ``RP alignments'', very good stability
+
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.8\hsize]{fig/calibration_fill/plots_per_rp_left.pdf}
 \caption{%
-Comparison of ``RP'' alignments obtained from different TOTEM runs (different colours), for the period after TS2. The two columns correspond to the two horizontal RPs in the sector 45. The error bars indicate statistical uncertainties only.
+\TODO{add all RPs?}
+Comparison of ``RP'' alignments obtained from different TOTEM runs (different colours). The two columns correspond to the two horizontal RPs in the sector 45. The error bars indicate statistical uncertainties only.
 }
 \label{fig:tb_example_rp}
 \end{center}
 \end{figure}
 
-
-\> uncertainties
-\>> statistical uncertainties estimated by the algorithm
-\>> systematic uncertainties inferred from the difference between sub-samples, see Figures \ref{fig:tb_example_internal} and \ref{fig:tb_example_rp}.
-\>> combined uncertainties:
+The statistical component of the alignment uncertainties is estimated by the algorithm. The systematic component can be inferred from the difference between the sub-samples, cf.~Figures \ref{fig:tb_example_internal} and \ref{fig:tb_example_rp}. The combined uncertainties
+\TODO{evaluate}:
 \>> before TS2 -- \TODO{values}
 \>> after TS2 -- left arm: $5\un{\mu m}$ for shifts, $0.3\un{mrad}$ for rotations, right arm: $25\un{\mu m}$ for shifts, $1\un{mrad}$ for rotations 
 
@@ -192,56 +188,56 @@ Comparison of ``RP'' alignments obtained from different TOTEM runs (different co
 \subsection{Absolute alignment with respect to the beam}
 \label{s:calib-elastic}
 
-\> missing RPs in the right arm
-\>> non-optimal $\theta_x^*$ reconstruction
-\>> reduced number of elastic selection cuts
+This step exploits the azimuthal symmetry of elastic scattering. This process has a large cross-section and is relatively easy to tag due to the two (almost) anti-parallel protons in the final state. Taking into account the LHC optics, the elastic hit distribution in any RP has elliptical contour lines around the beam position. This symmetry is used in an analysis of the detected hit distributions in order to determine the beam location.
 
-\> elastic selection cuts
-\>> $\theta_x^*$ left-right collinearity, see Figure \ref{fig:el_cuts}, top left.
-\>> $\theta_y^*$ left-right collinearity, see Figure \ref{fig:el_cuts}, top right.
-\>> $x^*$ in the left compatible with vertex distribution, see Figure \ref{fig:el_cuts}, bottom left.
-\>> position-angle correlation in $y$ plane in the left arm, see Figure \ref{fig:el_cuts}, bottom right.
+Due to the properties of the LHC optics, the elastic tracks are detected in the vertical RPs. Compared to standard elastic tagging (e.g.~Section~5.2.1~in \cite{totem-8tev-90m}), this dataset presents a complication due to missing RP 56-210-nr-tp, which comes with two consequences. First, the horizontal scattering angle ($\theta_x^*$) cannot be reconstructed in optimal way -- using both near and far RPs, optimising both resolution and stability against optics imperfections. Second, since only 1 RP can be used for reconstruction in the right arm (and the affected diagonal), only 1 kinematic variable can be reconstructed: $\theta_x^*$. As the horizontal vertex position, $x^*$, is not determined the number of tagging cuts is reduced.
+
+The elastic-selection cuts include
+\begin{itemize}[noitemsep]
+\item $\theta_x^*$ left-right collinearity, see Figure \ref{fig:el_cuts}, top left,
+\item $\theta_y^*$ left-right collinearity, see Figure \ref{fig:el_cuts}, top right,
+\item $x^*$ in the left compatible with vertex distribution, see Figure \ref{fig:el_cuts}, bottom left,
+\item position-angle correlation in $y$ plane in the left arm, see Figure \ref{fig:el_cuts}, bottom right.
+\end{itemize}
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.8\hsize]{fig/calibration_fill/el_cut_example.pdf}
+\includegraphics[width=1\hsize]{fig/calibration_fill/el_cut_example.pdf}
 \caption{%
-Example of elastic selection cuts, for period before TS2. The black lines delimit the selection region.
+Example of elastic selection cuts. The black lines delimit the selection region. $\theta_x^*$ and $\theta_y^*$ represent the horizontal and vertical scattering angles. $x^*$ denotes the horizontal vertex positions. In the superscripts, L stands for left (sector 45), R for right (sector 56), N for near and F for far.
 }
 \label{fig:el_cuts}
 \end{center}
 \end{figure}
 
-\> method: describe Figure \ref{fig:el_alignment_method}
-\>> applied to 1h time slices -- examine time variation, systematics
-
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/calibration_fill/el_alignment_method.pdf}
+\includegraphics[width=1\hsize]{fig/calibration_fill/el_alignment_method.pdf}
 \caption{%
-Illustration of alignment with elastic scattering. Data from a 1h-slice of pre-TS2 data.
+Illustration of alignment with elastic scattering, using a 1h-slice of data. See text for description.
 }
 \label{fig:el_alignment_method}
 \end{center}
 \end{figure}
 
-\> describe the several metrics for each alignment variable
+The alignment method is illustrated in Figure~\ref{fig:el_alignment_method}. The top left plot shows a hit distribution in a unit, the upper (lower) part comes from the top (bottom) RP. This distribution is fitted and a vertical axis is obtained, see the red line in the bottom left plot. Several fitting techniques are applied, including fitting a profile histogram and a $\chi^2$-based fit minimising the distance to all hits, dynamically down-weighting outliers. Both fit techniques give compatible results. In a next step, the vertical centre of the distribution is obtained, see the blue line in the top right plot. A non-parametric methods is used: the histogram part from the bottom RP is flipped around zero and then shifted up and down until the best match with the histogram from the top RP is found. For more details see Method 2 in Section 4.4 in \cite{jan_thesis}. Several matching metrics are considered, including $\chi^2$ and Kolmogorov-like expressions, all giving compatible results. Finally, the crossing of the blue and red lines indicates the position of the beam.
 
-\> exception: RP 56-210-nr-tp not available
-\>> had to fix the tilt: to similar value as in the far top RP
-\>> no vertical alignment for this RP -- \TODO{try by equalising theta y from different RPs}
 
-\> Figure \ref{fig:el_alignment_results}: summary of results
+An exceptional approach had to be adopted for the unit 56-210-nr, where the data from the top RP were not available. First, the slope of the vertical axis (red line in Figure~\ref{fig:el_alignment_method}) was fixed to a value compatible with the one in the far RP. The dominant contribution of these slopes is expected to come from the $xy$ coupling in the optics and thus very similar between the near and far RP. Second, the vertical alignment could not have been determined. An alternative method is available but was not applied: imposing the equivalence of $\theta_y^*$ reconstructed in all the 4 RPs measuring the same elastic event.
+
+The alignment procedure was applied separately on 1h time slices of the data, in order to examine time variation and to control systematic effects. The results are summarised in Figure~\ref{fig:el_alignment_results}. Within tolerance, the time dependence can be considered as flat, with some measurements being obvious outliers. Consequently, the results can be reduced to a single value per RP and variable, see the solid red lines in the figure.
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=\hsize]{fig/calibration_fill/el_alignment.pdf}
 \caption{%
-Summary of the elastic-alignment results in the period before TS2. Each column corresponds to one RP unit. The rows (top to bottom) show: tilt (about the beam axis), horizontal beam position and vertical beam position. \TODO{Keep just one line/metric per quantity}? The red solid (dashed) lines denote the final extracted values \TODO{how?} (their uncertainties)
+Summary of the elastic-alignment results. Each column corresponds to one RP unit. The rows (top to bottom) show: tilt (about the beam axis), horizontal beam position and vertical beam position. The error bars indicate statical uncertainties only. The horizontal axis gives time in hours since the beginning of the run. The red solid (dashed) lines denote the final extracted values (their uncertainties).
 }
 \label{fig:el_alignment_results}
 \end{center}
 \end{figure}
+
+The uncertainties can be estimated from Figure~\ref{fig:el_alignment_results}. The statistical component is indicated by the error bars, the variation between the time slices indicates the systematic component. Altogether, a conservative uncertainty estimate is $5\un{mrad}$ for tilts, $50\un{\mu m}$ for horizontal shifts and $75\un{\mu m}$ for vertical shifts, as indicated by the red dashed lines in the figure.
 
 %----------------------------------------------------------------------------------------------------
 
@@ -439,6 +435,10 @@ Comparison of $\xi$ distributions from different RPs.
 
 \bibitem{optics_calibration}
 	yet to be written
+
+\bibitem{totem-8tev-90m}
+	\Name{G.~Antchev \etal{}~(TOTEM Collaboration)}
+	\Review{Nucl.~Phys.~B}{899}{2015}{527-546}
 
 \end{thebibliography}
 

@@ -13,6 +13,19 @@ groups = new string[] { "hor" };
 quantities.push("shr"); quantity_labels.push("shift in read-out direction $\ung{\mu m}$");
 quantities.push("rotz"); quantity_labels.push("rotation about $z\ung{mrad}$");
 
+// before TS2
+base_dir = "/afs/cern.ch/work/j/jkaspar/software/offline/704/user/alignment/lhc/2016_04_20_fill4828/";
+string options = "/s+sr-fin,3pl,1rotzIt=0,units=1,overlap=f,3potsInO=f/iteration5";
+inputs = new string[] {
+	"tb,round1/10077_EVB11_1/0,1,2,3,4,5/" + options,
+	"tb,round1/10079_EVB11_1/0,1,2,3,4,5/" + options,
+	"tb,round1/10080_EVB11_1/0,1,2,3,4,5/" + options,
+	"tb,round1/10081_EVB11_1/0,1,2,3,4,5/" + options,
+//	"tb,round1/10082_EVB11_1/0,1,2,3,4,5/" + options,
+};
+
+// after TS2
+/*
 string options = "s+sr-fin,3pl,1rotzIt=0,units=2,overlap=f,3potsInO=t,eMuMvRot=f/iteration5";
 inputs = new string[] {
 	"tb,round1/10322/0,1,2,3,4,5-excl44/"+options,
@@ -24,10 +37,14 @@ inputs = new string[] {
 //	"tb,round1/10331/0,1,2,3,4,5-excl44/"+options,
 	"tb,round1/10332/0,1,2,3,4,5-excl44/"+options,
 };
+*/
 
 //----------------------------------------------------------------------------------------------------
 
+xSizeDef = 8cm;
 ySizeDef = 5cm;
+
+legend_y_offset = 50;
 
 LoadAlignments();
 MakePlotsPerPlane();

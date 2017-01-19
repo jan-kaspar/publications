@@ -8,7 +8,7 @@ real plane_scale[];
 
 // before TS2
 string topDir = "/afs/cern.ch/work/j/jkaspar/software/offline/704/user-new/alignment/ctpps_2016_beforeTS2/";
-string dir = "tb,round1/10077/0,1,2,3,4,5-excl44,50,51,52,53/s+sr-fin,3pl,1rotzIt=0,units=1,overlap=f,3potsInO=f,eMuMvRot=f";
+string dir = "tb,round1/10079/0,1,2,3,4,5-excl44,50,51,52,53/s+sr-fin,3pl,1rotzIt=0,units=1,overlap=f,3potsInO=f,eMuMvRot=f";
 planes.push("0"); plane_labels.push("45-210-nr-tp, plane 0"); plane_pens.push(black); plane_scale.push(1.);
 planes.push("10"); plane_labels.push("45-210-nr-bt, plane 0"); plane_pens.push(red); plane_scale.push(1.);
 planes.push("20"); plane_labels.push("45-210-nr-hr, plane 0"); plane_pens.push(blue); plane_scale.push(1e-2);

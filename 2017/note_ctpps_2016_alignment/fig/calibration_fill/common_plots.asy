@@ -7,6 +7,10 @@ drawGridDef = true;
 
 xSizeDef = 7cm;
 
+real legend_y_offset = 0;
+
+string base_dir = "/afs/cern.ch/work/j/jkaspar/software/offline/704/user-new/alignment/ctpps_2016_afterTS2/";
+
 //----------------------------------------------------------------------------------------------------
 
 string quantities[];
@@ -33,8 +37,7 @@ void LoadAlignments()
 	
 	for (int ini : inputs.keys)
 	{
-		string f = "/afs/cern.ch/work/j/jkaspar/software/offline/704/user-new/alignment/ctpps_2016_afterTS2/"
-			+ inputs[ini] + "/cumulative_factored_results_Jan.xml";
+		string f = base_dir + inputs[ini] + "/cumulative_factored_results_Jan.xml";
 	
 		//f = replace(f, "<rp_str>", rp_str);
 		//f = replace(f, "<sector>", sector);
@@ -138,11 +141,11 @@ void MakePlotsPerRP()
 		for (int ini : inputs.keys)
 		{
 			string bits[] = split(inputs[ini], "/");
-			string label = bits[1];
+			string label = replace(bits[1], "_", "\_");
 			AddToLegend(label, StdPen(ini));
 		}
 	
-		add(shift(0, 2000)*BuildLegend());
+		AttachLegend(shift(0, legend_y_offset)*BuildLegend());
 	}
 }
 
@@ -264,10 +267,10 @@ void MakePlotsPerPlane()
 		for (int ini : inputs.keys)
 		{
 			string bits[] = split(inputs[ini], "/");
-			string label = bits[1];
+			string label = replace(bits[1], "_", "\_");
 			AddToLegend(label, StdPen(ini));
 		}
 	
-		AttachLegend();
+		AttachLegend(shift(0, legend_y_offset)*BuildLegend());
 	}
 }
