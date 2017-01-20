@@ -294,35 +294,39 @@ Positions of the relevant collimator jaws as a function of LHC fill. The left/ri
 
 
 %--------------------------------------------------
+
+% TODO
+\newpage
+
 \subsection{Data selection}
 \label{s:phys-data_selection}
 
-\> event selection
-\>> CMS trigger: $\sim$ zero bias for RPs
-\>> physics protons (coming from IP): strong correlation $x^{\rm F}$ vs.~$x^{\rm N}$, see Figure \ref{fig:hor_cuts}.
+The data used for the alignment come from tigger streams ``DoubleEG'', ``SingleElectron'' and ``SingleMuon''. The only reason to select these streams was their relatively high statistics. From the forward-proton point of view, all these triggers are very close to zero-bias samples.
+
+In order to select physics protons comming from the IP, one can exploit the correlation between the horizontal hit positions in the near and far RP, as illustrated in Figure \ref{fig:hor_cuts}. This correlation can be understood from the dominance of the dispersion term in the horizontal proton-transport equation. There are two independent cuts, one for the left arm (left plot) and one for the right arm (right plot). Their effect is illustrated in Figure~\ref{fig:hor_cuts_effect}.
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.7\hsize]{fig/physics_fills/hor_cuts.pdf}
 \caption{%
-Example of cleaning cuts, employing the correlation between the horizontal track positions in the near and far RP of each station. Data from a sub-sample of the pre-TS2 period.
+Example of cleaning cuts, employing the correlation between the horizontal track positions in the near (horizontal axis) and far (vertical axis) RP of each station. Data from fill 4985. The magenta lines delimit the selection region, corresponding to a $3\un{\sigma}$ cut. {\it Left}: correlation in sector 45, {\it right}: correlation in sector 56.
 }
 \label{fig:hor_cuts}
 \end{center}
 \end{figure}
 
-\> the effect of the cleaning cuts: Figure \ref{fig:hor_cuts_effect}
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.7\hsize]{fig/physics_fills/hor_cuts_effect_cmp.pdf}
 \caption{%
-Illustration of the effect of the cleaning cuts presented Figure~\ref{fig:hor_cuts}. {\it Left}: hit distribution in \TODO{which RP} before applying the cuts, {\it right}: the same distribution after the cuts. Data from a sub-sample of the pre-TS2 period.
+Illustration of the effect of the cleaning cuts presented in Figure~\ref{fig:hor_cuts}. Data from RP 45-210-nr-hr and fill 4985. {\it Left}: hit distribution in before applying the cuts, {\it right}: the same distribution after the cuts.
 }
 \label{fig:hor_cuts_effect}
 \end{center}
 \end{figure}
 
+Note that it would be possible to conceive a similar set of cuts in the vertical plane where the leading term in the proton transport is the one proportional to the scattering angle. However, it is more complicated due to the strong dependence of the effective length $L_y$ on $\xi$ and consequently this possibility has not been exploited so far.
 
 %--------------------------------------------------
 \subsection{Horizontal alignment}
@@ -376,20 +380,33 @@ Summary of the horizontal-shift results. The horizontal axis indicates the fill 
 
 \> in addition: can compare $\xi$'s within each arm on event-to-event basis
 
-\> \TODO{which alignment results used}
 
 \> $\xi$ is reconstructed pot-by-pot using $x$ to $\xi$ curves from the optics-calibration study \cite{optics_calibration}
 
-\> \TODO{specify whether cleaning cuts are used}
 
-\> \TODO{add $\xi$ correlation plot: near vs.~far RP}
+\> applied background-reduction cuts from Figure~\ref{fig:hor_cuts}
+
+\> Figure~\ref{fig:xi_NF_cmp} \TODO{describe}
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=\hsize]{fig/validation/xi_NF_corr_cmp.pdf}
+\caption{%
+Example of correlation of $\xi$ values reconstructed in the near (horizontal axis) and far (vertical axis) RP. Data from run 5261. {\it Left}: sector 45, {\it right}: sector 56.
+}
+\label{fig:xi_NF_cmp}
+\end{center}
+\end{figure}
+
+
 
 \> Figure \ref{fig:xi_cmp_run}: fill-to-fill stability
 \>> \TODO{describe}
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/validation/xi_cmp_run.pdf}
+\includegraphics[width=\hsize]{fig/validation/xi_cmp_run.pdf}
 \caption{%
 Fill-to-fill comparison of $\xi$ distributions extracted from single RPs. \TODO{describe the effects of radiation damage}
 }
@@ -403,9 +420,9 @@ Fill-to-fill comparison of $\xi$ distributions extracted from single RPs. \TODO{
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/validation/xi_cmp_rp.pdf}
+\includegraphics[width=\hsize]{fig/validation/xi_cmp_rp.pdf}
 \caption{%
-Comparison of $\xi$ distributions from different RPs.
+Comparison of $\xi$ distributions from different RPs. The 3 plots correspond to 3 selected fills, see captions.
 }
 \label{fig:xi_cmp_rp}
 \end{center}

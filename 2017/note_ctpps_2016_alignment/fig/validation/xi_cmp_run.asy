@@ -4,54 +4,14 @@ import pad_layout;
 string topDir = "/afs/cern.ch/work/j/jkaspar/analyses/ctpps/alignment/";
 
 string datasets[] = {
-	"run_physics_margin/fill_4947",
-//	"run_physics_margin/fill_4953",
-//	"run_physics_margin/fill_4961",
-	"run_physics_margin/fill_4964",
-	
-//	"run_physics_no_margin/fill_4964",
-//	"run_physics_margin/fill_4976",
+	"period1_alignment/10077",
 
-//	"run_physics_no_margin/fill_4985",
-	"run_physics_no_margin/fill_4988",
-//	"run_physics_no_margin/fill_4990",
-//	"run_physics_no_margin/fill_5005",
-//	"run_physics_no_margin/fill_5013",
-//	"run_physics_no_margin/fill_5017",
-//	"run_physics_no_margin/fill_5020",
-//	"run_physics_no_margin/fill_5021",
-//	"run_physics_no_margin/fill_5024",
-	"run_physics_no_margin/fill_5026",
-//	"run_physics_no_margin/fill_5027",
-//	"run_physics_no_margin/fill_5028",
-//	"run_physics_no_margin/fill_5029",
-//	"run_physics_no_margin/fill_5030",
-//	"run_physics_no_margin/fill_5038",
-//	"run_physics_no_margin/fill_5043",
-//	"run_physics_no_margin/fill_5045",
-	"run_physics_no_margin/fill_5048",
-//	"run_physics_no_margin/fill_5052",
+	"period1_physics_margin/fill_4947",
+	"period1_physics/fill_4985",
+	"period1_physics/fill_5052",
 
-	"run_physics_no_margin/fill_5261",
-//	"run_physics_no_margin/fill_5264",
-	"run_physics_no_margin/fill_5265",
-	"run_physics_no_margin/fill_5266",
-	"run_physics_no_margin/fill_5267",
-
-	"run_alignment/10077",
-//	"run_alignment/10081",
-};
-
-string datasets[] = {
-	"run_physics_margin/fill_4947",
-	"run_physics_no_margin/fill_4985",
-	"run_physics_no_margin/fill_5052",
-
-	"run_physics_no_margin/fill_5261",
-	"run_physics_no_margin/fill_5266",
-//	"run_physics_no_margin/fill_5288",
-
-	"run_alignment/10077",
+	"period1_physics/fill_5261",
+	"period1_physics/fill_5287",
 };
 
 int rp_ids[];
@@ -59,10 +19,10 @@ string rp_labels[];
 real rp_norm_min[];
 real rp_norm_max[];
 
-rp_ids.push(3); rp_labels.push("L-210-fr-hr"); rp_norm_min.push(0.085); rp_norm_max.push(0.115);
-rp_ids.push(2); rp_labels.push("L-210-nr-hr"); rp_norm_min.push(0.085); rp_norm_max.push(0.115);
-rp_ids.push(102); rp_labels.push("R-210-nr-hr"); rp_norm_min.push(0.095); rp_norm_max.push(0.160);
-rp_ids.push(103); rp_labels.push("R-210-fr-hr"); rp_norm_min.push(0.095); rp_norm_max.push(0.160);
+rp_ids.push(3); rp_labels.push("45-210-fr-hr"); rp_norm_min.push(0.084); rp_norm_max.push(0.114);
+rp_ids.push(2); rp_labels.push("45-210-nr-hr"); rp_norm_min.push(0.083); rp_norm_max.push(0.113);
+rp_ids.push(102); rp_labels.push("56-210-nr-hr"); rp_norm_min.push(0.085); rp_norm_max.push(0.140);
+rp_ids.push(103); rp_labels.push("56-210-fr-hr"); rp_norm_min.push(0.085); rp_norm_max.push(0.145);
 
 string alignments[] = {
 //	"none",
@@ -82,7 +42,7 @@ real y_min[] = {0.03, 0.03, 0.015, 0.015};
 real y_max[] = {0.04, 0.04, 0.020, 0.020};
 
 
-xSizeDef = 8cm;
+xSizeDef = 10cm;
 xTicksDef = (cropToDetails) ? LeftTicks(0.02, 0.01) : LeftTicks(0.05, 0.01);
 
 //----------------------------------------------------------------------------------------------------
@@ -115,7 +75,7 @@ for (int rpi : rp_ids.keys)
 
 	for (int dsi : datasets.keys)
 	{
-		bool alignmentRun = (find(datasets[dsi], "run_alignment") != -1);
+		bool alignmentRun = (find(datasets[dsi], "_alignment") != -1);
 
 		string alignments_eff = alignment;
 		if (alignmentRun)
@@ -126,7 +86,7 @@ for (int rpi : rp_ids.keys)
 
 		real norm = GetNormalisation(obj, rp_norm_min[rpi], rp_norm_max[rpi]);
 
-		pen p = (alignmentRun) ? black+2pt : StdPen(dsi+1);
+		pen p = (alignmentRun) ? black+2pt : StdPen(dsi);
 
 		draw(scale(1., 1./norm), obj, "vl", p, replace(datasets[dsi], "_", "\_"));
 	}
@@ -143,7 +103,6 @@ for (int rpi : rp_ids.keys)
 
 
 NewPad(false);
-attach(f_legend);
-
+attach(shift(0, 20) * f_legend);
 
 GShipout(hSkip=1mm, vSkip=1mm, margin=1mm);

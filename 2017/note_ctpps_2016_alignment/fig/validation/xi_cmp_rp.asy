@@ -37,24 +37,31 @@ string datasets[] = {
 };
 
 string datasets[] = {
-	"run_alignment/10077",
-	"run_physics_margin/fill_4947",
+	"period1_alignment/10077",
+	"period1_physics_margin/fill_4947",
+	"period1_physics/fill_5261",
+};
+
+string ds_captions[] = {
+	"calibration fill (run 10077)",
+	"fill 4947 (with margin)",
+	"fill 5261 (without margin)",
 };
 
 int rp_ids[];
 string rp_labels[];
 pen rp_pens[];
 
-rp_ids.push(3); rp_labels.push("L-210-fr-hr"); rp_pens.push(black);
-rp_ids.push(2); rp_labels.push("L-210-nr-hr"); rp_pens.push(red);
-rp_ids.push(102); rp_labels.push("R-210-nr-hr"); rp_pens.push(blue);
-rp_ids.push(103); rp_labels.push("R-210-fr-hr"); rp_pens.push(heavygreen);
+rp_ids.push(3); rp_labels.push("45-210-fr-hr"); rp_pens.push(black);
+rp_ids.push(2); rp_labels.push("45-210-nr-hr"); rp_pens.push(red);
+rp_ids.push(102); rp_labels.push("56-210-nr-hr"); rp_pens.push(blue);
+rp_ids.push(103); rp_labels.push("56-210-fr-hr"); rp_pens.push(heavygreen);
 
 string alignment = "method x";
 
 string cut_option = "with cuts";
 
-xSizeDef = 10cm;
+xSizeDef = 8cm;
 xTicksDef = LeftTicks(0.05, 0.01);
 
 //----------------------------------------------------------------------------------------------------
@@ -62,8 +69,9 @@ xTicksDef = LeftTicks(0.05, 0.01);
 for (int dsi : datasets.keys)
 {
 	NewPad(false);
-	string bits[] = split(replace(datasets[dsi], "_", "\_"), "/");
-	label("{\SetFontSizesXX " + bits[0] + " (" + bits[1] + ")}");
+	//string bits[] = split(replace(datasets[dsi], "_", "\_"), "/");
+	//label("{\SetFontSizesXX " + bits[0] + " (" + bits[1] + ")}");
+	label("{\SetFontSizesXIV " + ds_captions[dsi] + "}");
 }
 
 NewRow();
