@@ -108,7 +108,7 @@ This stage is performed with a special LHC fill, sometimes called ``alignment fi
 
 The standard ``TOTEM'' alignment, see Section 3.4 in \cite{totem-ijmp}, is applied. It can be summarised by the following three steps.
 \begin{enumerate}[noitemsep]
-\item {\em Beam-based alignment} -- a procedure which takes place before data-taking and the purpose of which is to align the RPs with the LHC collimators and the beam. For that collimators scrape the beam to have a sharp edge and then each RP is slowly approached until a contact with the beam is signalised by a spike in beam-loss monitors downstream ( see Figure 7 in \cite{totem-ijmp}). At this point, the RP is at the same $n_\sigma$ distance as the collimator which defines its position, used as a starting point for the alignment.
+\item {\em Beam-based alignment} -- a procedure which takes place before data-taking and the purpose of which is to align the RPs with the LHC collimators and the beam. For that collimators scrape the beam to have a sharp edge and then each RP is slowly approached until a contact with the beam is signalised by a spike in beam-loss monitors downstream (see Figure 7 in \cite{totem-ijmp}). At this point, the RP is at the same $n_\sigma$ distance as the collimator which defines its position, used as a starting point for the alignment.
 \item {\em Relative alignment among RPs} is achieved by analysing residuals between hits and track fits within each RP station. In this step, position (shift in the read-out direction) and rotation (about the beam axis) of each Si sensor is optimised. Thanks to the overlap between the horizontal and vertical RPs, see Figure~\ref{fig:rp_overlap}, the relative position among all sensors within a station can be determined. Details of the procedure are given in Section 4.2 in \cite{jan_thesis}, the application to the present data is described in Section~\ref{s:calib-track}.
 \item {\em Absolute alignment wrt.~the beam} is performed with a sample of elastic-scattering events tagged by the vertical RPs. Due to the azimuthal symmetry of the process, the position of the beam can be derived from the observed hit distributions, see Section~\ref{s:calib-elastic}.
 \end{enumerate}
@@ -164,7 +164,7 @@ Comparison of the ``internal alignments'' obtained from different TOTEM runs (di
 \end{center}
 \end{figure}
 
-Figure \ref{fig:tb_example_rp}: shows a summary of the determined ``RP alignments''. There is a good agreement among the results obtained from different data sub-samples.
+Figure \ref{fig:tb_example_rp} shows a summary of the determined ``RP alignments''. There is a good agreement among the results obtained from different data sub-samples.
 
 \begin{figure}[h!]
 \begin{center}
@@ -237,14 +237,65 @@ The uncertainties can be estimated from Figure~\ref{fig:el_alignment_results}. T
 
 %----------------------------------------------------------------------------------------------------
 
-\section{Alignment in physics runs}
+\section{Alignment in physics fills}
 \label{s:phys}
 
-\> basic idea: the physics is the same for all runs
+In comparison to the calibration fill, the physics fills can be characterised by high intensity and only horizontal RPs inserted. Consequently a different alignment strategy had to be developped. The procedure is data-driven for both horizontal and vertical alignment and therefore it is important to verify the stability of the LHC conditions (beam orbit, position of collimators, etc.) -- see Section~\ref{s:phys-conditions}.
 
-\> if optics, ... not changed, then also physics hit distributions equal for all runs
+The horizontal alignment is based on the fact that the physics is the same in all fills. If the LHC conditions were stable, the same is true for the hit distributions observed in the RPs. Therefore, the alignment can be achieved by matching the hit distributions from a physics fill to the fully aligned hit distributions from the calibration fill. This method is detailed in Section~\ref{s:phys-horizontal}. For this method, it is obviously important to suppress non-physical background. A set o such cuts will be presented in Section~\ref{s:phys-data_selection}.
 
-\> alignment method: match/align physics hit distributions from physics runs to the calibration run
+The vertical method is, in principle, simpler as the vertical beam position can be inferred from the maximum of the $y$ distribution which is within the acceptance of the horizontal RPs. See Section~\ref{s:phys-vertical} for details.
+
+Regarding the RP position, there were two types of insertions within the period under study. In all fills the target position was $15\un{\sigma}$, in fills 4947, 4953, 4961, 4976 and a part of fill 4964 an additional safety margin of $0.5\un{mm}$ was applied. A graphical illustration is available in Figure~\ref{fig:cond_rp}.
+
+%--------------------------------------------------
+\subsection{Conditions}
+\label{s:phys-conditions}
+
+Figure~\ref{fig:cond_rp} presents a summary of the RP insertions over the period of interest. It shows the readings from the 3 position sensors after the RPs have been moved to the data-taking positions. The ``motor'' sensor counts the steps of the motor which moves the RP by turning a precision screw. This sensor has a precision of few micrometres, but depends on the calibration of the 0 of its scale. The ``resovler'' measures the rotation of the screw. The ``LVDT'' (linear voltage differential transformer) gives a measurement that does not depend on any reset procedure but is known to be subject to various drifts (due to temperature etc.). The figure shows that ``motor'' and ``resolver'' readings were always indentical, the ``LVDT'' was compatible with them within its uncertainty. Moreover, the insertion position was stable over the period, as expected.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=1\hsize]{fig/conditions/rp_positions_rps.pdf}
+\caption{%
+RP positions as reported by the 3 position sensors (LVDT, MOTOR and RESOLVER) per LHC fill (horizontal axes). The two entries for fill 4964 correspond to the insertions with and without the safety margin. The two entries for fill 5287 correspond to the two insertions within the same fill.
+}
+\label{fig:cond_rp}
+\end{center}
+\end{figure}
+
+
+Since the observed hit distributions reflect the relative position between RPs and the beam, it is important to verify the stability of the beam orbits. As shown in Figure~\ref{fig:cond_bpm}, the readings from beam-position monitors (BPMs) in beam 2 can be considered as time-independent, taking into account their uncertainty of about $~0.5\un{mm}$. The same conclusion can be drawn for beam 1.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=1\hsize]{fig/conditions/bpm_comparison.pdf}
+\caption{%
+Readings of selected BPMs in beam 2 and between IP5 and the RPs, in a sub-set of the LHC fills of interest. The left (right) column gives the horizontal (vertical) beam position.
+{\it Top}: the monitors at the RP stations -- C6, D6, A6 and B6 correspond to RP units 210-nr, 210-fr, 220-nr and 220-fr, respectively.
+{\it Bottom}: some of the BPMs between IP5 and the RP stations, used for the LHC orbit feedback.
+}
+\label{fig:cond_bpm}
+\end{center}
+\end{figure}
+
+Another LHC element which can affect the hit distributions observed in the RPs are the collimators. They can intercept protons with large deviation from the beam, either via the momentum loss or scattering angle. Figure~\ref{fig:cond_collimators} gives a summary of positions of the two relevant collimators between IP5 and the RPs: TCL4 and TCL5. The position of their jaws is unchanged during the period and thus the collimators should not introduce any difference in the hit distributions observed in different fills.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=1\hsize]{fig/conditions/collimator_positions_resolver.pdf}
+\caption{%
+Positions of the relevant collimator jaws as a function of LHC fill. The left/right entry for fill 4964 corresponds to the insertion with/without the safety margin. The variable names (see legend) containing B1 (B2) correspond to collimators in beam 1 (beam 2). The last two characters of the variable name indicate the jaw: L stands for left, R for right, U for upstream and D for downstream.
+}
+\label{fig:cond_collimators}
+\end{center}
+\end{figure}
+
+
+
+%--------------------------------------------------
+\subsection{Data selection}
+\label{s:phys-data_selection}
 
 \> event selection
 \>> CMS trigger: $\sim$ zero bias for RPs
@@ -272,53 +323,10 @@ Illustration of the effect of the cleaning cuts presented Figure~\ref{fig:hor_cu
 \end{center}
 \end{figure}
 
-%--------------------------------------------------
-\subsection{Conditions}
-
-\> RP insertions
-Figure~\ref{fig:cond_rp}
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[width=1\hsize]{fig/conditions/rp_positions_rps.pdf}
-\caption{%
-RP positions as reported by the 3 position gauges (LVDT, MOTOR and RESOLVER) per LHC fill (horizontal axes). The two entries for fill 4964 correspond to the insertions with and without safety margin. The two entries for fill 5287 correspond to the two insertions within the same fill.
-}
-\label{fig:cond_rp}
-\end{center}
-\end{figure}
-
-
-\> BPM measurements of the orbit
-Figure~\ref{fig:cond_bpm}
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[width=1\hsize]{fig/conditions/bpm_comparison.pdf}
-\caption{%
-Readings of BPMs close to the RP stations in a selection of LHC fills of interest. The monitors C6, D6, A6 and B6 correspond to RP units 210-nr, 210-fr, 220-nr and 220-fr, respectively.
-}
-\label{fig:cond_bpm}
-\end{center}
-\end{figure}
-
-
-\> collimator positions
-Figure~\ref{fig:cond_collimators}
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[width=1\hsize]{fig/conditions/collimator_positions_resolver.pdf}
-\caption{%
-Positions of the relevant collimator jaws as a function of LHC fill. The left/right entry for fill 4964 corresponds to the insertion with/without the safety margin. The variable names (see legend) containing B1 (B2) correspond to collimators in beam 1 (beam 2). The last two characters of the variable name indicate the jaw: L stands for left, R for right, U for upstream and D for downstream.
-}
-\label{fig:cond_collimators}
-\end{center}
-\end{figure}
-
 
 %--------------------------------------------------
 \subsection{Horizontal alignment}
+\label{s:phys-horizontal}
 
 \> describe the to matching metrics
 \>> describe the pros and cons of each
@@ -353,6 +361,7 @@ Summary of the horizontal-shift results. The horizontal axis indicates the fill 
 
 %--------------------------------------------------
 \subsection{Vertical alignment}
+\label{s:phys-vertical}
 
 \> yet to be done...
 
