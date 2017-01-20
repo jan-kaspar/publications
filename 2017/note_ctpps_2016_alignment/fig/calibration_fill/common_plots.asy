@@ -3,13 +3,14 @@ include "common_code.asy";
 
 //----------------------------------------------------------------------------------------------------
 
+string base_dir = "/afs/cern.ch/work/j/jkaspar/software/offline/704/user-new/alignment/ctpps_2016_afterTS2/";
+
 drawGridDef = true;
 
 xSizeDef = 7cm;
 
+bool attach_legend = true;
 real legend_y_offset = 0;
-
-string base_dir = "/afs/cern.ch/work/j/jkaspar/software/offline/704/user-new/alignment/ctpps_2016_afterTS2/";
 
 //----------------------------------------------------------------------------------------------------
 
@@ -136,16 +137,19 @@ void MakePlotsPerRP()
 			}
 		}
 	
-		NewPad(false);
-	
-		for (int ini : inputs.keys)
+		if (attach_legend)
 		{
-			string bits[] = split(inputs[ini], "/");
-			string label = replace(bits[1], "_", "\_");
-			AddToLegend(label, StdPen(ini));
+			NewPad(false);
+		
+			for (int ini : inputs.keys)
+			{
+				string bits[] = split(inputs[ini], "/");
+				string label = replace(bits[1], "_", "\_");
+				AddToLegend(label, StdPen(ini));
+			}
+		
+			AttachLegend(shift(0, legend_y_offset)*BuildLegend());
 		}
-	
-		AttachLegend(shift(0, legend_y_offset)*BuildLegend());
 	}
 }
 
@@ -259,18 +263,21 @@ void MakePlotsPerPlane()
 	
 		//--------------------
 	
-		NewPad(false);
-	
-		AddToLegend("V plane", mCr+3pt+(black+1.5pt));
-		AddToLegend("U plane", mCi+false+3pt+(black+1.5pt));
-	
-		for (int ini : inputs.keys)
+		if (attach_legend)
 		{
-			string bits[] = split(inputs[ini], "/");
-			string label = replace(bits[1], "_", "\_");
-			AddToLegend(label, StdPen(ini));
+			NewPad(false);
+		
+			AddToLegend("V plane", mCr+3pt+(black+1.5pt));
+			AddToLegend("U plane", mCi+false+3pt+(black+1.5pt));
+		
+			for (int ini : inputs.keys)
+			{
+				string bits[] = split(inputs[ini], "/");
+				string label = replace(bits[1], "_", "\_");
+				AddToLegend(label, StdPen(ini));
+			}
+		
+			AttachLegend(shift(0, legend_y_offset)*BuildLegend());
 		}
-	
-		AttachLegend(shift(0, legend_y_offset)*BuildLegend());
 	}
 }

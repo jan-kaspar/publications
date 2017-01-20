@@ -150,38 +150,34 @@ Distributions of track-hit residuals (TOTEM run 10079). Each colour corresponds 
 \end{center}
 \end{figure}
 
-The results of this alignment step may be conveniently decomposed into {\em RP alignments} -- alignments shared by all sensors in a RP -- and {\em internal alignments} -- sensors alignments wrt.~the RP alignments.
+The results of this alignment step may be conveniently decomposed into ``RP alignments'' -- alignments shared by all sensors in a RP -- and ``internal alignments'' -- sensors alignments wrt.~the RP alignments.
 
-Figure \ref{fig:tb_example_internal} shows an example of the internal alignments, TODO: very good stability
-TODO: The linear patterns in the determined shifts (separately in ``U'' and ``V'' projections) can be understood by tilts of the entire detector package which shift the sensor centre's proportionally to its position within the package, for more details see Section 4.2.8 in \cite{jan_thesis}.
+Figure \ref{fig:tb_example_internal} shows an example of the ``internal alignments''. The agreement between the different colours representing different data samples demonstrates the stability of the procedure. The linear patterns in the determined shifts (separately in ``U'' and ``V'' projections) can be understood by tilts of the entire detector package which shift the sensor centre's proportionally to its position within the package, for more details see Section 4.2.8 in \cite{jan_thesis}.
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.8\hsize]{fig/calibration_fill/plots_per_plane_left.pdf}
 \caption{%
-Comparison of internal alignments obtained from different TOTEM runs (different colours). The two columns correspond to the two horizontal RPs in the sector 45. The horizontal scale gives the plane index within the detector package: 0 is the closest to the IP, 9 the farthest. The results for ``V'' (``U'') planes are marked with crosses (circles). The error bars indicate statistical uncertainties only.
+Comparison of the ``internal alignments'' obtained from different TOTEM runs (different colours). The two columns correspond to the two horizontal RPs in the sector 45. The horizontal scale gives the plane index within the detector package: 0 is the closest to the IP, 9 the farthest. The results for ``V'' (``U'') planes are marked with crosses (circles). The error bars indicate statistical uncertainties only.
 }
 \label{fig:tb_example_internal}
 \end{center}
 \end{figure}
 
-TODO: Figure \ref{fig:tb_example_rp}: example of ``RP alignments'', very good stability
+Figure \ref{fig:tb_example_rp}: shows a summary of the determined ``RP alignments''. There is a good agreement among the results obtained from different data sub-samples.
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.8\hsize]{fig/calibration_fill/plots_per_rp_left.pdf}
+\includegraphics[height=8.5cm]{fig/calibration_fill/plots_per_rp_left.pdf}
+\includegraphics[height=8.5cm]{fig/calibration_fill/plots_per_rp_right.pdf}
 \caption{%
-\TODO{add all RPs?}
-Comparison of ``RP'' alignments obtained from different TOTEM runs (different colours). The two columns correspond to the two horizontal RPs in the sector 45. The error bars indicate statistical uncertainties only.
+Comparison of the ``RP alignments'' obtained from different TOTEM runs (different colours). Each column corresponds to one horizontal RP, each row represents an alignment parameter. The error bars indicate statistical uncertainties only.
 }
 \label{fig:tb_example_rp}
 \end{center}
 \end{figure}
 
-The statistical component of the alignment uncertainties is estimated by the algorithm. The systematic component can be inferred from the difference between the sub-samples, cf.~Figures \ref{fig:tb_example_internal} and \ref{fig:tb_example_rp}. The combined uncertainties
-\TODO{evaluate}:
-\>> before TS2 -- \TODO{values}
-\>> after TS2 -- left arm: $5\un{\mu m}$ for shifts, $0.3\un{mrad}$ for rotations, right arm: $25\un{\mu m}$ for shifts, $1\un{mrad}$ for rotations 
+The statistical component of the alignment uncertainties is estimated by the algorithm. The systematic component can be inferred from the difference between the sub-samples, cf.~Figures \ref{fig:tb_example_internal} and \ref{fig:tb_example_rp}. A conservative estimate of the combined uncertainties is $3\un{\mu m}$ for shifts, $0.2\un{mrad}$ for rotations.
 
 
 %--------------------------------------------------
