@@ -59,7 +59,7 @@
 \ShortAuthor{Jan Ka\v spar}
 
 \begin{abstract}
-TODO: abstract
+This note presents the first alignment of the CMS-TOTEM Precision Proton Spectrometer (CT-PPS) using the data from before Technical Stop 2 (TS2), 2016. This new procedure involves two stages. In the first one, data from a special calibration fill are used. In this fill, both horizontal and vertical Roman Pots (RPs) were inserted very close to the beam. In the second stage, hit distributions from physics fills (with only horizontal RPs inserted) are matched to the previously aligned reference from the calibration fill. The alignment and optics calibration is verified by reconstructing consistent $\xi$ spectra from different RPs and LHC fills.
 \end{abstract}
 
 %\centerline{version 0}	% sent on 19 Dec 2016
@@ -72,45 +72,42 @@ TODO: abstract
 \section{Introduction}
 \label{s:intro}
 
-\> \TODO{why is the alignment important}
-\>> what is the desired precision, put in context with detector resolution and impact on xi uncertainty -- compared to other uncertainties.
-\>> we need mostly horizontal alignment -- for xi
+Proper alignment is obviously important for physics reconstruction. For CT-PPS, therefore, horizontal alignment is of primary importance as it directly contributes to the reconstruction of proton momentum loss, $\xi$. To estimate the order of magnitude of precision needed, one can consider another reconstruction uncertainty: the uncertainty of the horizontal dispersion, $D_x$. Taking the relative uncertainty of $5\un{\%}$ \cite{optics_calibration} and typical values $D_x \approx 8\un{cm}$ and $\xi \approx 0.05$ yields a horizontal hit position uncertainty of $200\un{\mu m}$.
 
-Figure~\ref{fig:rp_layout} shows the layout and naming scheme of the RPs around IP5. The RPs marked in red are used by CT-PPS and will be of primary interest of this note. The vertical RPs in both $210\un{m}$ stations are also used for alignment purposes.
+Figure~\ref{fig:rp_layout} shows the layout and naming scheme \cite{rp-names} of the RPs around IP5. The RPs marked in red are used by CT-PPS and will be of primary interest of this note. The vertical RPs in both $210\un{m}$ stations are also used for alignment purposes.
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics{fig/rp_layout.pdf}
 \caption{%
-Layout of RPs aroud IP5. The red RPs contain the tracking Si strips sensors used for CT-PPS. The blue (cylindrical) RPs host the timing diamond sensors. The other RPs are used only by the TOTEM experiment.
+Layout of RPs around IP5. The red RPs contain the tracking Si strips sensors used for CT-PPS. The blue (cylindrical) RPs host the timing diamond sensors. The other RPs are used only by the TOTEM experiment.
 }
 \label{fig:rp_layout}
 \end{center}
 \end{figure}
 
-\> \TODO{Coordinate system}
-
 This note describes the first alignment of CT-PPS data taken in 2016, before TS2 -- in the LHC fills 4947 through 5288. 
 
 The alignment proceeds in the two following stages.
-\begin{enumerate}[noitemsep]
-\item Alignment is performed with data from a special low-luminosity calibration fill (4828), where both horizontal and vertical RPs are inserted very close to the beam (about $5\un{\sigma}$). The standard TOTEM procecure \cite{totem-ijmp} is used, details will be give in Section~\ref{s:calib}.
+\begin{enumerate}[nosep]
+\item Alignment is performed with data from a special low-luminosity calibration fill (4828), where both horizontal and vertical RPs are inserted very close to the beam (about $5\un{\sigma}$). The standard TOTEM procedure \cite{totem-ijmp} is used, details will be give in Section~\ref{s:calib}.
 \item The alignment information is transferred from the calibration fill to the standard physics fills with high luminosity and only horizontal RPs inserted. This new procedure is described in Section~\ref{s:phys}.
 \end{enumerate}
 
 The alignment and optics calibration \cite{optics_calibration} is eventually followed by a reconstruction validation, see Section~\ref{s:val}.
 
-\> \TODO{consistent use of ``fill'' and ``run''}
+This article uses a reference frame where $x$ denotes the horizontal axis (pointing out of the LHC ring), $y$ the vertical axis (pointing against gravity) and $z$ the beam axis (in the clockwise direction).
+
 
 %----------------------------------------------------------------------------------------------------
 
 \section{Alignment in calibration fill}
 \label{s:calib}
 
-This stage is performed with a special LHC fill, sometimes called ``alignment fill''. This fill can be characterised by low intensity, both horizontal and vertical RPs inserted and all RPs being close to the beam (\TODO{number of sigmas}).
+This stage is performed with a special LHC fill, sometimes called ``alignment fill''. This fill can be characterised by low intensity, both horizontal and vertical RPs inserted and all RPs being close to the beam (about $5\un{\sigma}$).
 
 The standard ``TOTEM'' alignment, see Section 3.4 in \cite{totem-ijmp}, is applied. It can be summarised by the following three steps.
-\begin{enumerate}[noitemsep]
+\begin{enumerate}[nosep]
 \item {\em Beam-based alignment} -- a procedure which takes place before data-taking and the purpose of which is to align the RPs with the LHC collimators and the beam. For that collimators scrape the beam to have a sharp edge and then each RP is slowly approached until a contact with the beam is signalised by a spike in beam-loss monitors downstream (see Figure 7 in \cite{totem-ijmp}). At this point, the RP is at the same $n_\sigma$ distance as the collimator which defines its position, used as a starting point for the alignment.
 \item {\em Relative alignment among RPs} is achieved by analysing residuals between hits and track fits within each RP station. In this step, position (shift in the read-out direction) and rotation (about the beam axis) of each Si sensor is optimised. Thanks to the overlap between the horizontal and vertical RPs, see Figure~\ref{fig:rp_overlap}, the relative position among all sensors within a station can be determined. Details of the procedure are given in Section 4.2 in \cite{jan_thesis}, the application to the present data is described in Section~\ref{s:calib-track}.
 \item {\em Absolute alignment wrt.~the beam} is performed with a sample of elastic-scattering events tagged by the vertical RPs. Due to the azimuthal symmetry of the process, the position of the beam can be derived from the observed hit distributions, see Section~\ref{s:calib-elastic}.
@@ -192,7 +189,7 @@ This step exploits the azimuthal symmetry of elastic scattering. This process ha
 Due to the properties of the LHC optics, the elastic tracks are detected in the vertical RPs. Compared to standard elastic tagging (e.g.~Section~5.2.1~in \cite{totem-8tev-90m}), this dataset presents a complication due to missing RP 56-210-nr-tp, which comes with two consequences. First, the horizontal scattering angle ($\theta_x^*$) cannot be reconstructed in optimal way -- using both near and far RPs, optimising both resolution and stability against optics imperfections. Second, since only 1 RP can be used for reconstruction in the right arm (and the affected diagonal), only 1 kinematic variable can be reconstructed: $\theta_x^*$. As the horizontal vertex position, $x^*$, is not determined the number of tagging cuts is reduced.
 
 The elastic-selection cuts include
-\begin{itemize}[noitemsep]
+\begin{itemize}[nosep]
 \item $\theta_x^*$ left-right collinearity, see Figure \ref{fig:el_cuts}, top left,
 \item $\theta_y^*$ left-right collinearity, see Figure \ref{fig:el_cuts}, top right,
 \item $x^*$ in the left compatible with vertex distribution, see Figure \ref{fig:el_cuts}, bottom left,
@@ -243,9 +240,9 @@ The uncertainties can be estimated from Figure~\ref{fig:el_alignment_results}. T
 \section{Alignment in physics fills}
 \label{s:phys}
 
-In comparison to the calibration fill, the physics fills can be characterised by high intensity and only horizontal RPs inserted. Consequently a different alignment strategy had to be developped. The procedure is data-driven for both horizontal and vertical alignment and therefore it is important to verify the stability of the LHC conditions (beam orbit, position of collimators, etc.) -- see Section~\ref{s:phys-conditions}.
+In comparison to the calibration fill, the physics fills can be characterised by high intensity and only horizontal RPs inserted. Consequently a different alignment strategy had to be developed. The procedure is data-driven for both horizontal and vertical alignment and therefore it is important to verify the stability of the LHC conditions (beam orbit, position of collimators, etc.) -- see Section~\ref{s:phys-conditions}.
 
-The horizontal alignment is based on the fact that the physics is the same in all fills. If the LHC conditions were stable, the same is true for the hit distributions observed in the RPs. Therefore, the alignment can be achieved by matching the hit distributions from a physics fill to the fully aligned hit distributions from the calibration fill. This method is detailed in Section~\ref{s:phys-horizontal}. For this method, it is obviously important to suppress non-physical background. A set o such cuts will be presented in Section~\ref{s:phys-data_selection}.
+The horizontal alignment is based on the fact that the physics is the same in all fills. If the LHC conditions were stable, the same is true for the hit distributions observed in the RPs. Therefore, the alignment can be achieved by matching the hit distributions from a physics fill to the fully aligned hit distributions from the calibration fill. This method is detailed in Section~\ref{s:phys-horizontal}. For this method, it is obviously important to suppress non-physical background. A set of such cuts will be presented in Section~\ref{s:phys-data_selection}.
 
 The vertical method is, in principle, simpler as the vertical beam position can be inferred from the maximum of the $y$ distribution which is within the acceptance of the horizontal RPs. See Section~\ref{s:phys-vertical} for details.
 
@@ -255,7 +252,7 @@ Regarding the RP position, there were two types of insertions within the period 
 \subsection{Conditions}
 \label{s:phys-conditions}
 
-Figure~\ref{fig:cond_rp} presents a summary of the RP insertions over the period of interest. It shows the readings from the 3 position sensors after the RPs have been moved to the data-taking positions. The ``motor'' sensor counts the steps of the motor which moves the RP by turning a precision screw. This sensor has a precision of few micrometres, but depends on the calibration of the 0 of its scale. The ``resovler'' measures the rotation of the screw. The ``LVDT'' (linear voltage differential transformer) gives a measurement that does not depend on any reset procedure but is known to be subject to various drifts (due to temperature etc.). The figure shows that ``motor'' and ``resolver'' readings were always indentical, the ``LVDT'' was compatible with them within its uncertainty. Moreover, the insertion position was stable over the period, as expected.
+Figure~\ref{fig:cond_rp} presents a summary of the RP insertions over the period of interest. It shows the readings from the 3 position sensors after the RPs have been moved to the data-taking positions. The ``motor'' sensor counts the steps of the motor which moves the RP by turning a precision screw. This sensor has a precision of few micrometres, but depends on the calibration of the 0 of its scale. The ``resolver'' measures the rotation of the screw. The ``LVDT'' (linear voltage differential transformer) gives a measurement that does not depend on any reset procedure but is known to be subject to various drifts (due to temperature etc.). The figure shows that ``motor'' and ``resolver'' readings were always identical, the ``LVDT'' was compatible with them within its uncertainty. Moreover, the insertion position was stable over the period, as expected.
 
 \begin{figure}[h!]
 \begin{center}
@@ -298,15 +295,12 @@ Positions of the relevant collimator jaws as a function of LHC fill. The left/ri
 
 %--------------------------------------------------
 
-% TODO
-\newpage
-
 \subsection{Data selection}
 \label{s:phys-data_selection}
 
-The data used for the alignment come from tigger streams ``DoubleEG'', ``SingleElectron'' and ``SingleMuon''. The only reason to select these streams was their relatively high statistics. From the forward-proton point of view, all these triggers are very close to zero-bias samples.
+The data used for the alignment come from trigger streams ``DoubleEG'', ``SingleElectron'' and ``SingleMuon''. The only reason to select these streams was their relatively high statistics. From the forward-proton point of view, all these triggers are very close to zero-bias samples.
 
-In order to select physics protons comming from the IP, one can exploit the correlation between the horizontal hit positions in the near and far RP, as illustrated in Figure \ref{fig:hor_cuts}. This correlation can be understood from the dominance of the dispersion term in the horizontal proton-transport equation. There are two independent cuts, one for the left arm (left plot) and one for the right arm (right plot). Their effect is illustrated in Figure~\ref{fig:hor_cuts_effect}.
+In order to select physics protons coming from the IP, one can exploit the correlation between the horizontal hit positions in the near and far RP, as illustrated in Figure \ref{fig:hor_cuts}. This correlation can be understood from the dominance of the dispersion term in the horizontal proton-transport equation. There are two independent cuts, one for the left arm (left plot) and one for the right arm (right plot). Their effect is illustrated in Figure~\ref{fig:hor_cuts_effect}.
 
 \begin{figure}[h!]
 \begin{center}
@@ -402,11 +396,11 @@ Illustration of the vertical alignment method, data from fill 4947.
 
 
 Figure~\ref{fig:vert_align_method} shows that the mean value of $y$ depends on $x$ which is unexpected. Possible origins of this tilt include
-\begin{enumerate}[noitemsep]
+\begin{itemize}[nosep]
 \item non-zero vertical dispersion, $D_y$,
 \item non-vanishing $x$-$y$ coupling in the optics, e.g.~horizontal scattering angle, $\theta_x^*$ giving rise to displacement in $y$,
 \item tilt of the RP in the $x$-$y$ plane.
-\end{enumerate}
+\end{itemize}
 The origin of the tilt could be studied by plotting correlations of mean of $y$, $\langle y\rangle$ vs.~$\xi$ or $\theta_x^*$.
 
 No matter which of the above tilt origins is confirmed, the vertical alignment can be determined by the procedure illustrated in Figure~\ref{fig:vert_align_method}. After horizontal alignment, see Section~\ref{s:phys-horizontal}, the function of $\langle y\rangle$ on $x$ (red histogram) is fitted (blue solid line) and extrapolated (blue dashed line) to $x = 0$. This $y$ value (blue point) is estimate of the beam position wrt.~the beam.
@@ -506,17 +500,28 @@ Comparison of $\xi$ distributions from different RPs. The 3 plots correspond to 
 \section{Summary}
 \label{s:sum}
 
-\> \TODO{}
+The first alignment of CT-PPS detectors has been achieved by a two-stage procedure. In the first stage, the alignment was performed with data from a special calibration fill, where both horizontal and vertical detectors were inserted close to the beam. In the second stage, the alignment information was transferred to the physics fills with high intensity and only horizontal RPs inserted.
+
+The alignment in the calibration fill employs the standard ``TOTEM'' procedure and reaches precision of $5\un{mrad}$ for tilts ($x$-$y$ plane), $50\un{\mu m}$ for horizontal shifts and $75\un{\mu m}$ for vertical shifts.
+
+The horizontal alignment in physics fills is achieved by matching physics hit distributions to the reference from the calibration fill. The estimated uncertainty is about $150\un{\mu m}$.
+
+The vertical alignment follows the horizontal one and is based on profile histograms of mean $y$ as a function of $x$. These histograms exhibit unexpected tilts, the origin of which is yet to be studied. Irrespective of the origin, the alignment is extracted by extrapolating the profiles to $x=0$ which estimates the beam position wrt.~the sensor. The uncertainty estimate is about $150\un{\mu m}$. A part of the uncertainty stems from systematic fill-to-fill differences that can be traced back to instability of the tilts of the profile histograms.
+
+Many unexpected results have been obtained for the RP 45-210-nr-hr, including horizontal and vertical shifts and tilts in $x$-$y$ and $x$-$z$ plane. All these observations are strongly correlated in time and hint that the sensor moved during the data-taking period. A hypothesis reads that the detector package move within the RP, another hypothesis states that the entire RP structure was loosely attached to the support frame. In any case, the offline alignment procedure above is able track the movements and provide fill-dependent alignment corrections.
+
+As a combined validation of alignment and optics calibration, consistent inclusive $\xi$ distributions have been obtained from different RPs and different fills, compatible with the assumption that all RPs measure the same physics irrespective of the LHC fill.
 
 %----------------------------------------------------------------------------------------------------
 
-% TODO: put in order
 \begin{thebibliography}{99}
 
-\bibitem{totem-jinst}
-	\Name{G.~Anelli \etal{}~(TOTEM Collaboration)}
-	\Review{JINST}{3}{2008}{S08007}.
-    %The TOTEM Experiment at the CERN Large Hadron Collider, JINST 3 S08007, 2008
+\bibitem{optics_calibration}
+	Note being written by Frici.
+
+\bibitem{rp-names}
+	Product breakdown structure and naming scheme of the Roman Pot System, EDMS document,
+	\url{https://edms.cern.ch/document/906715/0.7}.
 
 \bibitem{totem-ijmp}
 	\Name{G.~Antchev \etal{}~(TOTEM Collaboration)}
@@ -527,12 +532,19 @@ Comparison of $\xi$ distributions from different RPs. The 3 plots correspond to 
 	PhD Thesis, CERN-THESIS-2011-214,
 	\url{http://cdsweb.cern.ch/record/1441140}.
 
-\bibitem{optics_calibration}
-	Note being written by Frici.
 
 \bibitem{totem-8tev-90m}
 	\Name{G.~Antchev \etal{}~(TOTEM Collaboration)}
 	\Review{Nucl.~Phys.~B}{899}{2015}{527-546}
+
+\iffalse
+
+\bibitem{totem-jinst}
+	\Name{G.~Anelli \etal{}~(TOTEM Collaboration)}
+	\Review{JINST}{3}{2008}{S08007}.
+    %The TOTEM Experiment at the CERN Large Hadron Collider, JINST 3 S08007, 2008
+
+\fi
 
 \end{thebibliography}
 
