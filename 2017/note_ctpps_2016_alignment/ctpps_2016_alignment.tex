@@ -386,11 +386,7 @@ The uncertainty of the horizontal alignment is estimated to about $150\un{\mu m}
 \subsection{Vertical alignment}
 \label{s:phys-vertical}
 
-\> describe idea
-\>> unexpected tilt, discuss origins, suggest possible study
-
-\> describe method, no matter what origin
-\>> Figure~\ref{fig:vert_align_method}
+By symmetries, the vertical position of the beam wrt.~a sensor can inferred from the vertical ($y$) maximum of the hit distribution observed in the sensor. In contrary to the horizontal alignment, the vertical maximum is within the acceptance of the horizontal RPs. In order to be protected from backgrounds that may break the symmetries, the physics-oriented cuts from Section~\ref{s:phys-data_selection} are applied.
 
 
 \begin{figure}[h!]
@@ -405,10 +401,17 @@ Illustration of the vertical alignment method, data from fill 4947.
 
 
 
-\> result summary
-\>> Figure~\ref{fig:vert_align_results}
-\>> flat within 150um
-\>> systematic effects, some correlated with unstable tilt, further investigations needed
+Figure~\ref{fig:vert_align_method} shows that the mean value of $y$ depends on $x$ which is unexpected. Possible origins of this tilt include
+\begin{enumerate}[noitemsep]
+\item non-zero vertical dispersion, $D_y$,
+\item non-vanishing $x$-$y$ coupling in the optics, e.g.~horizontal scattering angle, $\theta_x^*$ giving rise to displacement in $y$,
+\item tilt of the RP in the $x$-$y$ plane.
+\end{enumerate}
+The origin of the tilt could be studied by plotting correlations of mean of $y$, $\langle y\rangle$ vs.~$\xi$ or $\theta_x^*$.
+
+No matter which of the above tilt origins is confirmed, the vertical alignment can be determined by the procedure illustrated in Figure~\ref{fig:vert_align_method}. After horizontal alignment, see Section~\ref{s:phys-horizontal}, the function of $\langle y\rangle$ on $x$ (red histogram) is fitted (blue solid line) and extrapolated (blue dashed line) to $x = 0$. This $y$ value (blue point) is estimate of the beam position wrt.~the beam.
+
+The results of vertical alignment are summaries in Figure~\ref{fig:vert_align_results}. The error bars include fit and extrapolation uncertainty, uncertainty from the horizontal alignment and uncertainty from varying the fit range. For all RPs, two data samples (red and blue) give compatible results. The RP 45-210-nr-hr exhibits a strong time-dependence and will be discussed later in Section~\ref{s:phys-left-near}. For the other RPs, the results are almost flat in time. There are minor systematic effects which can be often traced to time variance of the tilts shown in Figure~\ref{fig:vert_align_method}. Taking this into account, the uncertainty of the vertical alignment is estimated to $150\un{\mu m}$ for the moment. Further studies are foreseen.
 
 \begin{figure}[h!]
 \begin{center}
@@ -420,7 +423,6 @@ Summary of the horizontal alignment results. Each plots corresponds to a RP. The
 \end{center}
 \end{figure}
 
-\> comment on uncertainty: here or already above ?
 
 
 %--------------------------------------------------
