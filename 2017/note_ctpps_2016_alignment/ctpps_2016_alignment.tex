@@ -338,13 +338,27 @@ Note that it would be possible to conceive a similar set of cuts in the vertical
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/physics_fills/match_method_example.pdf}
+\includegraphics[width=1\hsize]{fig/physics_fills/match_method_example.pdf}
 \caption{%
-Illustration of the match metrics used for horizontal alignment, for a sub-sample from the pre-TS2 period. Black histogram: reference from the calibration fill. Blue (red) histogram: distribution from a physics fill before (after) matching.
+Illustration of the match metrics used for horizontal alignment. Black histogram: reference from the calibration fill. Blue (red) histogram: distribution from a physics fill (4964) before (after) matching.
 }
 \label{fig:hor_match_method}
 \end{center}
 \end{figure}
+
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.9\hsize]{fig/physics_fills/x_alignment_secondary_method.pdf}
+\caption{%
+Illustration of the secondary horizontal alignment rule -- alignment of the histogram edge due to the sensor edge.
+}
+\label{fig:hor_secondary_method}
+\end{center}
+\end{figure}
+
+
 
 \> results: summarised in Figure \ref{fig:hor_match_results}
 \>> \TODO{describe, comment}
@@ -352,9 +366,9 @@ Illustration of the match metrics used for horizontal alignment, for a sub-sampl
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=\hsize]{fig/physics_fills/match_result_cmp_mean.pdf}
+\includegraphics[width=\hsize]{fig/physics_fills/final_alignment_x_cmp_ph_sample.pdf}
 \caption{%
-Summary of the horizontal-shift results. The horizontal axis indicates the fill number, the vertical scale gives the correction by how much the hit distribution should be moved.
+Summary of the horizontal alignment results. Each plots corresponds to a RP. The horizontal axis indicates the LHC fill number, the vertical axis gives the correction by how much the hit distribution should be moved (see Figure~\ref{fig:hor_match_method}). The red and blue points represent results obtained from different data samples (CMS runs). The RP insertions with and without the safety margin are marked with hollow squares and filled circles, respectively. The horizontal black solid lines denote the mean per each insertion type, the dashed lines indicate the uncertainty.
 }
 \label{fig:hor_match_results}
 \end{center}
@@ -367,9 +381,51 @@ Summary of the horizontal-shift results. The horizontal axis indicates the fill 
 \subsection{Vertical alignment}
 \label{s:phys-vertical}
 
-\> yet to be done...
+\> Figure~\ref{fig:vert_align_method}
 
-\> we may not need it for this note: it is not essential for $\xi$ reconstruction
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.8\hsize]{fig/physics_fills/y_alignment_method_example.pdf}
+\caption{%
+Illustration of the vertical alignment method, data from fill 4947.
+}
+\label{fig:vert_align_method}
+\end{center}
+\end{figure}
+
+
+
+\> Figure~\ref{fig:vert_align_results}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=\hsize]{fig/physics_fills/final_alignment_y_cmp_ph_sample.pdf}
+\caption{%
+Summary of the horizontal alignment results. Each plots corresponds to a RP. The horizontal axis indicates the LHC fill number, the vertical axis gives the vertical alignment correction -- the fit extrapolation to $x=0$ as in Figure~\ref{fig:vert_align_method}. The red and blue points represent results obtained from different data samples (CMS runs). The RP insertions with and without the safety margin are marked with hollow squares and filled circles, respectively.
+}
+\label{fig:vert_align_results}
+\end{center}
+\end{figure}
+
+
+
+%--------------------------------------------------
+\subsection{RP 45-210-nr-hr}
+\label{s:phys-left-near}
+
+\> Figure~\ref{fig:left_near_summary}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=1\hsize]{fig/physics_fills/45_210_nr_hr_summary.pdf}
+\caption{%
+Summary of the evidence for the movement of the RP 45-210-nr-hr. The horizontal axis, common to all plots, indicates the LHC fill number. The red and blue points represent results obtained from different data samples (CMS runs). {\it Top}: horizontal shift, {\it second from top}: vertical shift, {\it third from top}: tilt in the $x$-$y$ plane. {\it Bottom}: tilt in the $x$-$z$ plane (green) and $y$-$z$ plane (magenta).
+}
+\label{fig:left_near_summary}
+\end{center}
+\end{figure}
+
 
 %----------------------------------------------------------------------------------------------------
 
