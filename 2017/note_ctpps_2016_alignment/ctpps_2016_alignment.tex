@@ -72,20 +72,23 @@ TODO: abstract
 \section{Introduction}
 \label{s:intro}
 
-\> why is the alignment important
+\> \TODO{why is the alignment important}
 \>> what is the desired precision, put in context with detector resolution and impact on xi uncertainty -- compared to other uncertainties.
+\>> we need mostly horizontal alignment -- for xi
 
-Figure~\ref{fig:rp_layout} shows the layout of the RPs around IP5. The RPs marked in red are used by CT-PPS and will be of primary interest of this note. The vertical RPs in both $210\un{m}$ stations are also used for alignment purposes.
+Figure~\ref{fig:rp_layout} shows the layout and naming scheme of the RPs around IP5. The RPs marked in red are used by CT-PPS and will be of primary interest of this note. The vertical RPs in both $210\un{m}$ stations are also used for alignment purposes.
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics{fig/rp_layout.pdf}
 \caption{%
-Layout of RPs aroud IP5. The red RPs contain the tracking Si strips sensors used for CT-PPS. The blue RPs host the timing diamond sensors. The other RPs are used only by the TOTEM experiment.
+Layout of RPs aroud IP5. The red RPs contain the tracking Si strips sensors used for CT-PPS. The blue (cylindrical) RPs host the timing diamond sensors. The other RPs are used only by the TOTEM experiment.
 }
 \label{fig:rp_layout}
 \end{center}
 \end{figure}
+
+\> \TODO{Coordinate system}
 
 This note describes the first alignment of CT-PPS data taken in 2016, before TS2 -- in the LHC fills 4947 through 5288. 
 
@@ -332,9 +335,13 @@ Note that it would be possible to conceive a similar set of cuts in the vertical
 \subsection{Horizontal alignment}
 \label{s:phys-horizontal}
 
-\> describe the to matching metrics
-\>> describe the pros and cons of each
-\>> Figure \ref{fig:hor_match_method}
+The horizontal alignment is performed by matching, RP by RP, the hit distributions from a physics fill to a reference distribution from the calibration fill where the full alignment has been done by the method described in Section~\ref{s:calib}.
+
+Figure~\ref{fig:hor_match_method} illustrates two matching metrics considered. The ``method x'' (left plot) employs histograms of horizontal track hits, $x$. The ``method y'' (right plot) uses the $x$ dependence of the standard deviation of vertical track hit, $y$.
+
+The advantage of the ``method x'' is that it acts on $x$ which is directly related to $\xi$ (which is of primary interest for physics analyses). A disadvantage is that the histograms must be normalised (each dataset comes with different statistics) which makes the method sensitive only to distribution shapes. Another potential complication stems from radiation damage which often makes the distributions unavailable at lower values of $x$ and thus relying only on higher-$x$ regions which may be affected by the LHC collimators. It is thus reassuring to find the collimator positions stable over the period, see Figure~\ref{fig:cond_collimators}.
+
+The main advantage of the ``method y'' is the independence on the dataset statistics -- no normalisation is needed. A disadvantage follows from strong sensitivity to beam emittances via the beam divergence which is sizeable at this very low $\beta^*$ optics. This makes this method subject to potential fill-to-fill variations. Another complication comes from an often observed discrepancies between the calibration and physics fills in the high-$x$ region. Together with the radiation damage restricting the useful $x$ range at the low side, it shortens the lever-arm useful for alignment.
 
 \begin{figure}[h!]
 \begin{center}
@@ -346,7 +353,7 @@ Illustration of the match metrics used for horizontal alignment. Black histogram
 \end{center}
 \end{figure}
 
-
+In a systematic study, large fill-to-fill variations have been observed for the ``method y'', giving thus preference to the ``method x'' which appeared more stable. Therefore, the ``method y'' will be disregarded in what follows.
 
 \begin{figure}[h!]
 \begin{center}
@@ -358,11 +365,9 @@ Illustration of the secondary horizontal alignment rule -- alignment of the hist
 \end{center}
 \end{figure}
 
+During a systematic application of the procedure, another complication has been observed, for the RPs in the right arm and data from LHC fills $\ge 5261$. A most-likely detector inefficiency makes a systematic difference between the hit distribution from calibration and physics fills. This inefficiency extends to rather large values of $x$, consequently making the matching range short. In order to reinforce the matching results, an additional alignment criterion has been adopted for these RPs and fills. This criterion is based on the fact that once the data in a physics fill are aligned, they can serve as alignment reference for other fills, too. Figure~\ref{fig:hor_secondary_method} shows hit distributions (black histograms) from fill 5043 (before the appearance of the problem) used as the reference for later fills (colourful histograms). The fine alignment is performed by matching the histogram edges due to the sensor edges, appearing at low-$x$ values.
 
-
-\> results: summarised in Figure \ref{fig:hor_match_results}
-\>> \TODO{describe, comment}
-\>> \TODO{add also method y results?} 
+The results of horizontal alignment are summarised in Figure~\ref{fig:hor_match_results}. For all RPs, the results from two data samples (red and blue points) are fully compatible. Except the RP 45-210-nr-hr which will be discussed in Section~\ref{s:phys-left-near}, the results follow the expectations: there is about $0.5\un{mm}$ difference between the insertions with and without the safety margin and the results are stable for each insertion type.
 
 \begin{figure}[h!]
 \begin{center}
@@ -374,14 +379,18 @@ Summary of the horizontal alignment results. Each plots corresponds to a RP. The
 \end{center}
 \end{figure}
 
-\> \TODO{comment on 45-210-nr-hr ...}
+The uncertainty of the horizontal alignment is estimated to about $150\un{\mu m}$.
 
 
 %--------------------------------------------------
 \subsection{Vertical alignment}
 \label{s:phys-vertical}
 
-\> Figure~\ref{fig:vert_align_method}
+\> describe idea
+\>> unexpected tilt, discuss origins, suggest possible study
+
+\> describe method, no matter what origin
+\>> Figure~\ref{fig:vert_align_method}
 
 
 \begin{figure}[h!]
@@ -396,7 +405,10 @@ Illustration of the vertical alignment method, data from fill 4947.
 
 
 
-\> Figure~\ref{fig:vert_align_results}
+\> result summary
+\>> Figure~\ref{fig:vert_align_results}
+\>> flat within 150um
+\>> systematic effects, some correlated with unstable tilt, further investigations needed
 
 \begin{figure}[h!]
 \begin{center}
@@ -408,13 +420,21 @@ Summary of the horizontal alignment results. Each plots corresponds to a RP. The
 \end{center}
 \end{figure}
 
+\> comment on uncertainty: here or already above ?
 
 
 %--------------------------------------------------
 \subsection{RP 45-210-nr-hr}
 \label{s:phys-left-near}
 
-\> Figure~\ref{fig:left_near_summary}
+\> Figure~\ref{fig:left_near_summary} correlation of movement indications.
+
+\>> The top plot is a zoom from Figure~\ref{fig:hor_match_results}, the second from top is extracted from Figure~\ref{fig:vert_align_results}. The third plot from top shows the time dependence of the slopes shown in Figure~\ref{fig:vert_align_method}. \TODO{change more important than for other RPs}
+
+\>> describe the method for the bottom plot
+
+\> striking correlation in all movements
+
 
 \begin{figure}[h!]
 \begin{center}
@@ -425,6 +445,10 @@ Summary of the evidence for the movement of the RP 45-210-nr-hr. The horizontal 
 \label{fig:left_near_summary}
 \end{center}
 \end{figure}
+
+\> interpretation
+\>> hypothesis 1: enough room, spring not strong at the last 2mm, optical inspection indicates friction
+\>> hypothesis 2
 
 
 %----------------------------------------------------------------------------------------------------
@@ -487,6 +511,7 @@ Comparison of $\xi$ distributions from different RPs. The 3 plots correspond to 
 
 %----------------------------------------------------------------------------------------------------
 
+% TODO: put in order
 \begin{thebibliography}{99}
 
 \bibitem{totem-jinst}
@@ -504,7 +529,7 @@ Comparison of $\xi$ distributions from different RPs. The 3 plots correspond to 
 	\url{http://cdsweb.cern.ch/record/1441140}.
 
 \bibitem{optics_calibration}
-	yet to be written
+	Note being written by Frici.
 
 \bibitem{totem-8tev-90m}
 	\Name{G.~Antchev \etal{}~(TOTEM Collaboration)}
