@@ -376,17 +376,11 @@ Summary of the horizontal-shift results. The horizontal axis indicates the fill 
 \section{Alignment and optics validation}
 \label{s:val}
 
-\> basic idea: the physics is RP-independent, each RP should see (up to acceptance, resolution, etc.) the same physics
+This section presents a simple validation of the alignment and optics calibration, based on the fact that the four RPs, in all fills, measure the same physics, up to the detector effects (acceptance, resolution, etc.). As a reference physics quantity, inclusive $\xi$ spectra will be used, see the data selection in Section~\ref{s:phys-data_selection}.
 
-\> in addition: can compare $\xi$'s within each arm on event-to-event basis
+The values of $\xi$ are reconstructed per RP from the horizontal hit position, $x$, using the alignment from Section~\ref{s:phys-horizontal} and dispersion curves from \cite{optics_calibration}.
 
-
-\> $\xi$ is reconstructed pot-by-pot using $x$ to $\xi$ curves from the optics-calibration study \cite{optics_calibration}
-
-
-\> applied background-reduction cuts from Figure~\ref{fig:hor_cuts}
-
-\> Figure~\ref{fig:xi_NF_cmp} \TODO{describe}
+Figure \ref{fig:xi_cmp_run} shows an event-by-event correlation of $\xi$ values reconstructed in the near and far RP of the left spectrometer arm. As expected, the correlation is very close to the dashed line representing equality of both $\xi$'s.
 
 
 \begin{figure}[h!]
@@ -400,23 +394,21 @@ Example of correlation of $\xi$ values reconstructed in the near (horizontal axi
 \end{figure}
 
 
+Figure \ref{fig:xi_cmp_run} compares the $\xi$ distributions from several fills but the same RP. Apart from the lower-$\xi$ regions affected by the radiation damage, there is a very good overlap with the thick black histogram originating from the calibration run. This manifests the stability of the calibration procedures.
 
-\> Figure \ref{fig:xi_cmp_run}: fill-to-fill stability
-\>> \TODO{describe}
 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=\hsize]{fig/validation/xi_cmp_run.pdf}
 \caption{%
-Fill-to-fill comparison of $\xi$ distributions extracted from single RPs. \TODO{describe the effects of radiation damage}
+Fill-to-fill comparison of $\xi$ distributions extracted from single RPs. The green and magenta curves exhibit a strong impact of the radiation damage at lower values of $\xi$, effectively equivalent to inefficiency.
 }
 \label{fig:xi_cmp_run}
 \end{center}
 \end{figure}
 
 
-\> Figure \ref{fig:xi_cmp_rp}: comparison of $\xi$ distributions from different RPs
-\>> \TODO{comment}
+Figure \ref{fig:xi_cmp_rp} compares the $\xi$ distributions from the same fill but different RPs. In the left plot (calibration fill), disregarding the region $\xi\gtrsim 0.08$ affected by acceptance limitations, one can observe a good shape agreement among the histograms from all the four RPs. In the physics fills (middle and right plot), the common $\xi$ region unaffected by detector effects is too short for drawing a conclusion. However, the fill-to-fill stability shown in Figure~\ref{fig:xi_cmp_run} allows for extrapolating the agreement from the calibration fill to the physics fills, too.
 
 \begin{figure}[h!]
 \begin{center}
@@ -435,7 +427,7 @@ Comparison of $\xi$ distributions from different RPs. The 3 plots correspond to 
 \section{Summary}
 \label{s:sum}
 
-\> \TODO{TODO}
+\> \TODO{}
 
 %----------------------------------------------------------------------------------------------------
 
