@@ -27,36 +27,36 @@ draw(RootGetObject("B_vs_s.root", "B_vs_s|ff"), dashed);
 
 
 // ISR (CERN–Rome Collaboration), pp
-//DrawPoint(31.0, 13.0, 0.7, 0.7, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B36 (1971) 504
-//DrawPoint(45.4, 12.9, 0.4, 0.4, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B36 (1971) 504
-//DrawPoint(53.6, 13.0, 0.3, 0.3, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B36 (1971) 504
+//DrawPoint(31.0, 13.0, 0.7, 0.7, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B36 (1971) 504
+//DrawPoint(45.4, 12.9, 0.4, 0.4, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B36 (1971) 504
+//DrawPoint(53.6, 13.0, 0.3, 0.3, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B36 (1971) 504
 
-DrawPoint(23.6, 11.8, 0.3, 0.3, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B62 (1976) 460
-DrawPoint(30.8, 12.3, 0.3, 0.3, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B62 (1976) 460
-DrawPoint(45.0, 12.8, 0.3, 0.3, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B62 (1976) 460
-DrawPoint(53.2, 13.1, 0.3, 0.3, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B62 (1976) 460
-DrawPoint(63.2, 13.3, 0.3, 0.3, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B62 (1976) 460
+DrawPoint(23.6, 11.8, 0.3, 0.3, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B62 (1976) 460
+DrawPoint(30.8, 12.3, 0.3, 0.3, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B62 (1976) 460
+DrawPoint(45.0, 12.8, 0.3, 0.3, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B62 (1976) 460
+DrawPoint(53.2, 13.1, 0.3, 0.3, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B62 (1976) 460
+DrawPoint(63.2, 13.3, 0.3, 0.3, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B62 (1976) 460
 
 // ISR (ACHGT Collaboration)
-DrawPoint(21.5, 11.57, 0.03, 0.03, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B39 (1972) 663
-DrawPoint(30.8, 11.87, 0.28, 0.28, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B39 (1972) 663
-DrawPoint(44.9, 12.87, 0.20, 0.20, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B39 (1972) 663
-DrawPoint(48.0, 12.40, 0.30, 0.30, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B39 (1972) 663
+DrawPoint(21.5, 11.57, 0.03, 0.03, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B39 (1972) 663
+DrawPoint(30.8, 11.87, 0.28, 0.28, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B39 (1972) 663
+DrawPoint(44.9, 12.87, 0.20, 0.20, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B39 (1972) 663
+DrawPoint(48.0, 12.40, 0.30, 0.30, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B39 (1972) 663
 
 // R-211 (ISR), pp and app
-DrawPoint(23.5, 11.8, 0.3, 0.3, blue+0.6pt, mTD+true+1.5pt+blue);	// Nucl. Phys. B262 (1985) 689-714
+DrawPoint(23.5, 11.8, 0.3, 0.3, blue+0.6pt, mTD+false+1.5pt+blue);	// Nucl. Phys. B262 (1985) 689-714
 
-DrawPoint(30.6, 12.2, 0.3, 0.3, blue+0.6pt, mTD+true+1.5pt+blue);	// Nucl. Phys. B262 (1985) 689-714
+DrawPoint(30.6, 12.2, 0.3, 0.3, blue+0.6pt, mTD+false+1.5pt+blue);	// Nucl. Phys. B262 (1985) 689-714
 DrawPoint(30.4, 12.7, 0.5, 0.5, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Nucl. Phys. B262 (1985) 689-714
 
-DrawPoint(52.8, 12.87, 0.14, 0.14, blue+0.6pt, mTD+true+1.5pt+blue);	// Nucl. Phys. B262 (1985) 689-714
+DrawPoint(52.8, 12.87, 0.14, 0.14, blue+0.6pt, mTD+false+1.5pt+blue);	// Nucl. Phys. B262 (1985) 689-714
 DrawPoint(52.6, 13.03, 0.52, 0.52, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Nucl. Phys. B262 (1985) 689-714
 
-DrawPoint(62.3, 13.02, 0.27, 0.27, blue+0.6pt, mTD+true+1.5pt+blue);	// Nucl. Phys. B262 (1985) 689-714
+DrawPoint(62.3, 13.02, 0.27, 0.27, blue+0.6pt, mTD+false+1.5pt+blue);	// Nucl. Phys. B262 (1985) 689-714
 DrawPoint(62.3, 13.47, 0.52, 0.52, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Nucl. Phys. B262 (1985) 689-714
 
 // R-210 (ISR), pp and app
-DrawPoint(52.8, 13.09, 0.58, 0.58, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys. Lett. B115B (1982) 495
+DrawPoint(52.8, 13.09, 0.58, 0.58, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B115B (1982) 495
 DrawPoint(52.8, 13.92, 0.59, 0.59, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Phys. Lett. B115 (1982) 495
 
 // UA1, app
@@ -87,27 +87,27 @@ DrawPoint(1020, 16.2, 1.0, 1.0, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	/
 DrawPoint(1.96e3, 16.54, 0.9, 0.9, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// D0 Note 6056-CONF
 
 // pp2pp, pp
-DrawPoint(200, 16.3, 1.84, 1.84, blue+0.6pt, mTD+true+1.5pt+blue);	// Phys.Lett. B579 (2004) 245-250
+DrawPoint(200, 16.3, 1.84, 1.84, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys.Lett. B579 (2004) 245-250
 
 // TOTEM, pp, 2.76 TeV
 DrawPoint(2.76e3, 17.1, 0.2, 0.2, red+0.8pt, mCi+true+2pt+red);
 
 // ATLAS-ALFA, pp, 7 TeV
-DrawPoint(7e3, 19.73, 0.29, 0.29, blue+0.8pt, mSq+true+2pt+blue, +0.01);
+DrawPoint(7e3, 19.73, 0.29, 0.29, blue+0.8pt, mTL+false+2pt+blue, +0.01);
 
 // TOTEM, pp, 7 TeV
 DrawPoint(7e3, 19.9, 0.26, 0.26, red+0.8pt, mCi+true+2pt+red, -0.01);
 
 // ATLAS-ALFA, pp, 8 TeV
-DrawPoint(8e3, 19.74, 0.24, 0.24,  blue+0.8pt, mSq+true+2pt+blue, +0.01);
+DrawPoint(8e3, 19.74, 0.24, 0.24,  blue+0.8pt, mTL+false+2pt+blue, +0.01);
 
 // TOTEM, pp, 8 TeV
 DrawPoint(8e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
 
-AddToLegend("$\rm pp$", blue, mTD+true+2pt+blue);
-AddToLegend("$\rm \bar pp$", heavygreen, mTU+false+2pt+heavygreen);
-AddToLegend("TOTEM", red+0.8pt, mCi+true+2pt+red);
-AddToLegend("ATLAS-ALFA", blue+0.8pt, mSq+true+2pt+blue);
+AddToLegend("$\rm \bar pp$", heavygreen, mTU+false+3pt+heavygreen);
+AddToLegend("$\rm pp$", blue, mTD+false+3pt+blue);
+AddToLegend("TOTEM", red+0.8pt, mCi+true+2.5pt+red);
+AddToLegend("ATLAS-ALFA", blue+0.8pt, mTL+false+3pt+blue);
 
 // arrows
 /*

@@ -32,7 +32,7 @@ fsh =   0.0; DrawPoint(2.76e3, 25.7, 1.9, 1.9, red, mCi+true+2pt+red);
 fsh = -0.01; DrawPoint(7e3, 25.8, 0.56, 0.56, red, mCi+true+2pt+red);
 
 // ATLAS-ALFA
-fsh = +0.01; DrawPoint(7e3, 25.2, 0.4, 0.4, blue, mSq+true+2pt+blue);
+fsh = +0.01; DrawPoint(7e3, 25.2, 0.4, 0.4, blue, mTL+false+2pt+blue);
 
 // -------------------- LHC, 8 TeV --------------------
 
@@ -40,14 +40,14 @@ fsh = +0.01; DrawPoint(7e3, 25.2, 0.4, 0.4, blue, mSq+true+2pt+blue);
 fsh =   0.0; DrawPoint(8e3, 26.6, 0.6, 0.6, red, mCi+true+2pt+red);
 
 // ATLAS-ALFA
-fsh = +0.01; DrawPoint(8e3, 25.32, 0.47, 0.47, blue, mSq+true+2pt+blue);
+fsh = +0.01; DrawPoint(8e3, 25.32, 0.47, 0.47, blue, mTL+false+2pt+blue);
 
 
 // -------------------- legend --------------------
-AddToLegend("$\rm pp$, PDG", blue, mTD+false+2pt+blue);
-AddToLegend("$\rm \bar pp$, PDG", heavygreen, mTU+false+2pt+heavygreen);
-AddToLegend("TOTEM", red, mCi+true+2pt+red);
-AddToLegend("ATLAS-ALFA", blue, mSq+true+2pt+blue);
+AddToLegend("$\rm \bar pp$, PDG", heavygreen, mTU+false+3pt+heavygreen);
+AddToLegend("$\rm pp$, PDG", blue, mTD+false+3pt+blue);
+AddToLegend("TOTEM", red, mCi+true+2.5pt+red);
+AddToLegend("ATLAS-ALFA", blue, mTL+false+3pt+blue);
 AddToLegend("fits from EPL 101 (2013) 21004", dashed);
 
 limits((1e1, 15), (1e4, 30), Crop);
