@@ -120,6 +120,6 @@ draw(rotate(90)*Label("$\sqrt s = 13\un{TeV}$", 0., Fill(white)), (x, 17.2)--(x,
 
 limits((1e1, 11), (1e4, 21), Crop);
 
-AttachLegend(1, NW, NW);
+AttachLegend(BuildLegend(lineLength=8mm, NW), NW);
 
 GShipout();

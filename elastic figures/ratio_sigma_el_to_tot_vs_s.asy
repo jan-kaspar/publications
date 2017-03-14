@@ -51,6 +51,6 @@ AddToLegend("ATLAS-ALFA", blue, mSq+true+2pt+blue);
 AddToLegend("fits from EPL 101 (2013) 21004", dashed);
 
 limits((1e1, 15), (1e4, 30), Crop);
-AttachLegend(NW, NW);
+AttachLegend(BuildLegend(lineLength=8mm, NW), NW);
 
 GShipout();
