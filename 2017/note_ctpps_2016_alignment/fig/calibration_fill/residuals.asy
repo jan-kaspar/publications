@@ -32,8 +32,8 @@ planes.push("20"); plane_labels.push("45-210-nr-hr, plane 0"); plane_pens.push(b
 
 string iterations[], iteration_labels[];
 iterations.push("1"); iteration_labels.push("iteration 1");
-iterations.push("2"); iteration_labels.push("iteration 2");
-iterations.push("4"); iteration_labels.push("iteration 4");
+iterations.push("2"); iteration_labels.push("iteration 3");
+iterations.push("4"); iteration_labels.push("iteration 5");
 
 //----------------------------------------------------------------------------------------------------
 

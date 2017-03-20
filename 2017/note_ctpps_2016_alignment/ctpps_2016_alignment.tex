@@ -71,7 +71,7 @@ This note presents the first alignment of the CMS-TOTEM Precision Proton Spectro
 
 %----------------------------------------------------------------------------------------------------
 
-\linenumbers
+%\linenumbers
 
 \section{Introduction}
 \label{s:intro}
@@ -340,7 +340,7 @@ Figure~\ref{fig:hor_match_method} illustrates two matching metrics considered. T
 
 The advantage of the ``method x'' is that it acts on distributions of $x$ which is directly related to $\xi$ (which is of primary interest for physics analyses). A disadvantage is that the histograms must be normalised (each dataset comes with different statistics) which makes the method sensitive only to distribution shapes. Another potential complication stems from radiation damage which often makes the distributions unavailable at lower values of $x$ and thus the method rely only on higher-$x$ regions which may be affected by the LHC collimators. It is thus reassuring to find the collimator positions stable over the period of interest, see Figure~\ref{fig:cond_collimators}.
 
-The main advantage of the ``method y'' is the independence on the dataset statistics -- no normalisation is needed. A disadvantage follows from strong sensitivity to beam emittances via the beam divergence which is sizeable at this very low $\beta^*$ optics. This makes this method subject to potential fill-to-fill variations. Another complication comes from an often observed discrepancies between the calibration and physics fills in the high-$x$ region. Together with the radiation damage restricting the useful $x$ range at the low side, it shortens the lever-arm useful for alignment.
+The main advantage of the ``method y'' is the independence on the dataset statistics -- no normalisation is needed. A disadvantage follows from strong sensitivity to beam emittances via the beam divergence which is sizeable at this very low $\beta^*$ optics. This makes this method subject to potential fill-to-fill variations. Another complication comes from discrepancies often observed between the calibration and physics fills in the high-$x$ region. Together with the radiation damage restricting the useful $x$ range at the low side, it shortens the lever-arm useful for alignment.
 
 \begin{figure}[h!]
 \begin{center}
@@ -408,7 +408,7 @@ Figure~\ref{fig:vert_align_method} shows that the mean value of $y$ depends on $
 \end{itemize}
 The origin of the tilt could be studied by plotting correlations of mean of $y$, $\langle y\rangle$ vs.~$\xi$ or $\theta_x^*$.
 
-No matter which of the above tilt origins is confirmed, the vertical alignment can be determined by the procedure illustrated in Figure~\ref{fig:vert_align_method}. After horizontal alignment, see Section~\ref{s:phys-horizontal}, the function of $\langle y\rangle$ on $x$ (red histogram) is fitted (blue solid line) and extrapolated (blue dashed line) to $x = 0$. This $y$ value (blue point) is an estimate of the beam position wrt.~the beam.
+No matter which of the above tilt origins is confirmed, the vertical alignment can be determined by the procedure illustrated in Figure~\ref{fig:vert_align_method}. After horizontal alignment, see Section~\ref{s:phys-horizontal}, the function of $\langle y\rangle$ on $x$ (red histogram) is fitted (blue solid line) and extrapolated (blue dashed line) to $x = 0$. This $y$ value (blue point) is an estimate of the beam position wrt.~the RP.
 
 The results of vertical alignment are summarised in Figure~\ref{fig:vert_align_results}. The error bars include fit and extrapolation uncertainty, uncertainty from the horizontal alignment and uncertainty from varying the fit range. For all RPs, two data samples (red and blue) give compatible results. The RP 45-210-nr-hr exhibits a strong time-dependence and will be discussed later in Section~\ref{s:phys-left-near}. For the other RPs, the results are almost flat in time. There are minor systematic effects which can be often traced to the time variance of the tilts shown in Figure~\ref{fig:vert_align_method}. Taking this into account, the uncertainty of the vertical alignment is estimated to $150\un{\mu m}$ for the moment. Further studies are foreseen.
 
@@ -428,7 +428,7 @@ Summary of the vertical alignment results. Each plot corresponds to a RP. The ho
 \subsection{RP 45-210-nr-hr}
 \label{s:phys-left-near}
 
-As anticipated above, there are indications that the sensor in the RP 45-210-nr-hr moved wrt.~the beam during the data-taking period. Figure~\ref{fig:left_near_summary} provides a correlation of these indications. The top plot is a zoom from Figure~\ref{fig:hor_match_results} and shows horizontal shift as a function of the LHC fill (ordered by increasing date). This plot indicates a shift by almost $2\un{mm}$ between the beginning and end of the data-taking period. Moreover, by comparing the data in the far and near RP in the left arm, it can be shown that the near RP was too far from the beam in the beginning and, by time, drifted to the expected position. The second plot from top is extracted from Figure~\ref{fig:vert_align_results} and describes the vertical shift -- about $1\un{mm}$ in total. The third plot from top shows the time dependence of the slopes shown in Figure~\ref{fig:vert_align_method}. The time variation is not very significant but appreciably stronger than for other RPs.
+As anticipated above, there are indications that the sensor in the RP 45-210-nr-hr moved wrt.~the beam during the data-taking period. Figure~\ref{fig:left_near_summary} provides a correlation of these indications. The top plot is a zoom from Figure~\ref{fig:hor_match_results} and shows horizontal shift as a function of the LHC fill (ordered by increasing date). This plot indicates a shift by almost $2\un{mm}$ between the beginning and end of the data-taking period. Moreover, by comparing the data in the far and near RP in the left arm, it can be shown that the near RP was too far from the beam in the beginning and eventually drifted to the expected position. The second plot from top is extracted from Figure~\ref{fig:vert_align_results} and describes the vertical shift -- about $1\un{mm}$ in total. The third plot from top shows the time dependence of the slopes shown in Figure~\ref{fig:vert_align_method}. The time variation is not very significant but appreciably stronger than for other RPs.
 
 The bottom plot of Figure~\ref{fig:left_near_summary} shows mean track angles as fitted through the 10 planes of Si strip sensors. These mean angles are sensitive to RP tilts in the $x$-$z$ (green) and $y$-$z$ (magenta) planes. While for other RPs the data are compatible with no fill-to-fill variation, RP 45-210-nr-hr shows a strong fill dependence of the tilt in $x$-$z$ plane.
 
@@ -446,7 +446,7 @@ Summary of the evidence for the movement of the RP 45-210-nr-hr. The horizontal 
 
 Since no instability has been reported by the BPMs, see Figure~\ref{fig:cond_bpm}, and since no unexpected behaviour has been observed in the far RP less than $9\un{m}$ from the near RP, it is more likely that the Si sensors moved.
 
-Since the horizontal shift trend from Figure~\ref{fig:left_near_summary} is not reported in the RP position measurements, cf.~Figure~\ref{fig:cond_rp}, there can be only two hypotheses. First, the moving element was inside the RP (thus not affecting the RP position measurements), or second, the entire RP structure moved (both ends of the RP position gauges moved together). For the first hypothesis, it has been verified that inside the RP there is enough room for the detector package (DP) to be by $\sim 2\un{mm}$ too far out. There is a spring that should push the DP to the design position, however its force at the last $2\un{mm}$ is strongly reduced. Furthermore, visual inspection of the DP replaced in TS2 indicates some points of friction (polished surfaces). Regarding the second hypothesis, it could be that the 4 screws holding the RP structure were not taught enough.
+Since the horizontal shift trend from Figure~\ref{fig:left_near_summary} is not reported in the RP position measurements, cf.~Figure~\ref{fig:cond_rp}, there can be only two hypotheses. First, the moving element was inside the RP (thus not affecting the RP position measurements), or second, the entire RP structure moved (both ends of the RP position gauges moved together). For the first hypothesis, it has been verified that inside the RP there is enough room for the detector package (DP) to be by $\sim 2\un{mm}$ too far out. There is a spring that should push the DP to the design position, however its force at the last $2\un{mm}$ is strongly reduced. Furthermore, visual inspection of the DP replaced in TS2 indicates some points of friction (polished surfaces). Regarding the second hypothesis, it could be that the 4 screws holding the RP structure were not tight enough.
 
 
 %----------------------------------------------------------------------------------------------------

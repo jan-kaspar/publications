@@ -37,8 +37,13 @@ for (int ui : units.keys)
 		//draw(swToHours, RootGetObject(topDir+datasets[di]+"/alignment.root", "global/"+units[ui]+"/a_p"), "p,l,eb", blue, mCi+1pt+blue);
 		//if (units[ui] != "R_1_N")
 		//	draw(swToHours, RootGetObject(topDir+datasets[di]+"/alignment.root", "global/"+units[ui]+"/a_g"), "p,l,eb", heavygreen, mCi+1pt+heavygreen);
+
+		string options = "p,l,eb";
+
+		if (unit_labels[ui] == "56-210-nr-hr")
+			options = "l";
 		
-		draw(swToHours, RootGetObject(topDir+datasets[di]+"/alignment.root", "global/"+units[ui]+"/a"), "p,l,eb", blue, mCi+1pt+blue);
+		draw(swToHours, RootGetObject(topDir+datasets[di]+"/alignment.root", "global/"+units[ui]+"/a"), options, blue, mCi+1pt+blue);
 	
 		if (drawFits)
 		{
