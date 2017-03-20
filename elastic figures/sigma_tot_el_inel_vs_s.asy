@@ -2,6 +2,8 @@ import root;
 import pad_layout;
 import common_code;
 
+drawGridDef = false;
+
 texpreamble("\def\ln{\mathop{\rm ln}}");
 //texpreamble("\SelectCMFonts\LoadFonts\rm");
 //texpreamble("\def\ung#1{\quad{\rm[#1]}}");

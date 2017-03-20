@@ -2,6 +2,8 @@ import root;
 import pad_layout;
 import common_code;
 
+drawGridDef = false;
+
 //----------------------------------------------------------------------------------------------------
 
 NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el} / \si_{\rm tot}\ung{\%}$", yTicks=RightTicks(Step=2, step=1), 8cm, 8cm);
@@ -24,7 +26,7 @@ DrawElToTotDataSet("pdg/pp_total.dat", "pdg/pp_elastic.dat", blue+0.2pt, mTD+2pt
 // -------------------- LHC, 2.76 TeV --------------------
 
 // TOTEM
-fsh =   0.0; DrawPoint(2.76e3, 25.7, 1.9, 1.9, red, mCi+true+2pt+red);
+fsh =   0.0; DrawPoint(2.76e3, 25.7, 1.1, 1.1, red, mCi+true+2pt+red);
 
 // -------------------- LHC, 7 TeV --------------------
 

@@ -1,6 +1,8 @@
 import root;
 import pad_layout;
 
+drawGridDef = false;
+
 //----------------------------------------------------------------------------------------------------
 
 void DrawPoint(real W, real B, real em, real ep, pen col=red, marker m, real corr=0)
