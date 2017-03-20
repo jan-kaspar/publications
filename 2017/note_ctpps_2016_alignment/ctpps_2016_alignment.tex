@@ -45,11 +45,11 @@
 
 \renewcommand{\EXPLOGO}{fig/logo_totem_black.pdf}
 
-\PHnumber{TODO}
-\PHdate{TODO}
+\PHnumber{}
+\PHdate{}
 
-\EXPnumber{TODO}
-\EXPdate{TODO}
+\EXPnumber{CERN-TOTEM-NOTE-2017-001}
+\EXPdate{20 March 2017}
 
 \title{Alignment of CT-PPS detectors in 2016, before TS2}
 
@@ -64,7 +64,8 @@ This note presents the first alignment of the CMS-TOTEM Precision Proton Spectro
 \end{abstract}
 
 %\centerline{version 0}	% sent on 19 Dec 2016
-\centerline{version 2}
+%\centerline{version 2} % sent on 23 Jan 2017
+%\centerline{version 3-pre}
 
 \end{titlepage}
 
@@ -270,12 +271,11 @@ RP positions as reported by the 3 position sensors (LVDT, MOTOR and RESOLVER) pe
 Since the observed hit distributions reflect the relative position between RPs and the beam, it is important to verify the stability of the beam orbits, too. As shown in Figure~\ref{fig:cond_bpm}, the readings from beam-position monitors (BPMs) in beam 2 can be considered as time-independent, taking into account their uncertainty of about $~0.5\un{mm}$. The same conclusion can be drawn for beam 1.
 
 \begin{figure}[h!]
+\vskip-5mm
 \begin{center}
 \includegraphics[width=1\hsize]{fig/conditions/bpm_comparison.pdf}
 \caption{%
-Readings of selected BPMs in beam 2 and between IP5 and the RPs, in a sub-set of the LHC fills of interest. The left (right) column gives the horizontal (vertical) beam position.
-{\it Top}: the monitors at the RP stations -- C6, D6, A6 and B6 correspond to RP units 210-nr, 210-fr, 220-nr and 220-fr, respectively.
-{\it Bottom}: some of the BPMs between IP5 and the RP stations, used for the LHC orbit feedback.
+Readings of selected BPMs in between IP5 and the RP stations in both arms, in a sub-set of the LHC fills of interest. The left (right) column gives the horizontal (vertical) beam position. For the monitors at the RP stations, the labels C6, D6, A6 and B6 correspond to RP units 210-nr, 210-fr, 220-nr and 220-fr, respectively. The other shown BPMs are used for the LHC orbit feedback.
 }
 \label{fig:cond_bpm}
 \end{center}
@@ -284,13 +284,16 @@ Readings of selected BPMs in beam 2 and between IP5 and the RPs, in a sub-set of
 Another LHC element which can affect the hit distributions observed in the RPs are the collimators. They can intercept protons with large deviation from the beam, either via the momentum loss or scattering angle. Figure~\ref{fig:cond_collimators} gives a summary of positions of the two relevant collimators between IP5 and the RPs: TCL4 and TCL5. The position of their jaws is unchanged during the period and thus the collimators should not introduce any difference in the hit distributions observed in different fills.
 
 \begin{figure}[h!]
+\vskip-1mm
 \begin{center}
-\includegraphics[width=1\hsize]{fig/conditions/collimator_positions_resolver.pdf}
+\includegraphics[width=0.9\hsize]{fig/conditions/collimator_positions_resolver.pdf}
+\vskip-3mm
 \caption{%
 Positions of the relevant collimator jaws as a function of LHC fill. The left/right entry for fill 4964 corresponds to the insertion with/without the safety margin. The variable names (see legend) containing B1 (B2) correspond to collimators in beam 1 (beam 2). The last two characters of the variable name indicate the jaw: L stands for left, R for right, U for upstream and D for downstream.
 }
 \label{fig:cond_collimators}
 \end{center}
+\vskip-15mm
 \end{figure}
 
 
@@ -306,7 +309,7 @@ In order to select physics protons coming from the IP, one can exploit the corre
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/physics_fills/hor_cuts.pdf}
+\includegraphics[width=0.8\hsize]{fig/physics_fills/hor_cuts.pdf}
 \caption{%
 Example of cleaning cuts, employing the correlation between the horizontal track positions in the near (horizontal axis) and far (vertical axis) RP of each station. Data from fill 4985. The magenta lines delimit the selection region, corresponding to a $3\un{\sigma}$ cut. {\it Left}: correlation in sector 45, {\it right}: correlation in sector 56.
 }
@@ -317,7 +320,7 @@ Example of cleaning cuts, employing the correlation between the horizontal track
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[width=0.7\hsize]{fig/physics_fills/hor_cuts_effect_cmp.pdf}
+\includegraphics[width=0.8\hsize]{fig/physics_fills/hor_cuts_effect_cmp.pdf}
 \caption{%
 Illustration of the effect of the cleaning cuts presented in Figure~\ref{fig:hor_cuts}. Data from RP 45-210-nr-hr and fill 4985. {\it Left}: hit distribution before applying the cuts, {\it right}: the same distribution after the cuts.
 }
@@ -343,7 +346,7 @@ The main advantage of the ``method y'' is the independence on the dataset statis
 \begin{center}
 \includegraphics[width=1\hsize]{fig/physics_fills/match_method_example.pdf}
 \caption{%
-Illustration of the match metrics used for horizontal alignment. Black histogram: reference from the calibration fill. Blue (red) histogram: distribution from a physics fill (4964) before (after) matching.
+Illustration of the match metrics used for horizontal alignment (RP 45-210-fr-hr). Black histogram: reference from the calibration fill. Blue (red) histogram: distribution from a physics fill (4964) before (after) matching.
 }
 \label{fig:hor_match_method}
 \end{center}
@@ -519,11 +522,12 @@ As a combined validation of alignment and optics calibration, consistent inclusi
 \begin{thebibliography}{99}
 
 \bibitem{optics_calibration}
-	Note being written by Frici.
+	\Name{F.~Nemes}
+	LHC optics estimation for the CT-PPS detector, TOTEM note in preparation.
 
 \bibitem{rp-names}
 	Product breakdown structure and naming scheme of the Roman Pot System, EDMS document,
-	\url{https://edms.cern.ch/document/906715/0.7}.
+	\url{https://edms.cern.ch/document/906715/0.7}\ .
 
 \bibitem{totem-ijmp}
 	\Name{G.~Antchev \etal{}~(TOTEM Collaboration)}
@@ -531,13 +535,12 @@ As a combined validation of alignment and optics calibration, consistent inclusi
 
 \bibitem{jan_thesis}
 	\Name{J.~Ka\v spar}
-	PhD Thesis, CERN-THESIS-2011-214,
+	PhD Thesis, CERN-THESIS-2011-214,\hfil\break
 	\url{http://cdsweb.cern.ch/record/1441140}.
-
 
 \bibitem{totem-8tev-90m}
 	\Name{G.~Antchev \etal{}~(TOTEM Collaboration)}
-	\Review{Nucl.~Phys.~B}{899}{2015}{527-546}
+	\Review{Nucl.~Phys.~B}{899}{2015}{527-546}.
 
 \iffalse
 
