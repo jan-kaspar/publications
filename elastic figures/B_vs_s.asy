@@ -92,7 +92,7 @@ DrawPoint(1.96e3, 16.54, 0.9, 0.9, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen)
 DrawPoint(200, 16.3, 1.84, 1.84, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys.Lett. B579 (2004) 245-250
 
 // TOTEM, pp, 2.76 TeV
-DrawPoint(2.76e3, 17.1, 0.2, 0.2, red+0.8pt, mCi+true+2pt+red);
+DrawPoint(2.76e3, 17.1, 0.26, 0.26, red+0.8pt, mCi+true+2pt+red);
 
 // ATLAS-ALFA, pp, 7 TeV
 DrawPoint(7e3, 19.73, 0.29, 0.29, blue+0.8pt, mTL+false+2pt+blue, +0.01);
