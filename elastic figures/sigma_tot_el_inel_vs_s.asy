@@ -118,8 +118,8 @@ fsh = +1fshu; DrawPointE(7e3, 0, 0, 25.1, 1.1, 1.1, p_el, m_TOTEM+p_el);
 
 // TOTEM; Phys. Rev. Lett. 111 no. 1, (2013) 012001
 // tot: 101.7 +- 2.9
-fsh = +0fshu; DrawPoint(8e3, 74.7, 1.7, 1.7, p_inel, m_TOTEM+p_inel);
-fsh = +0fshu; DrawPoint(8e3, 27.1, 1.4, 1.7, p_el, m_TOTEM+p_el);
+fsh = +0fshu; DrawPoint(8e3, 74.7, 1.7, p_inel, m_TOTEM+p_inel);
+fsh = +0fshu; DrawPoint(8e3, 27.1, 1.4, p_el, m_TOTEM+p_el);
 
 // TOTEM; Nucl. Phys. B 899 (2015) 527-546, N_b = 2
 fsh = -1.1fshu; DrawPoint(8e3, 101.5, 2.1, 2.1, p_tot, m_TOTEM+p_tot);
