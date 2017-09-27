@@ -75,7 +75,6 @@ int DrawDataSet(string filename, pen col, mark m, string legend="")
 		if (W > 8.12e3 && W < 8.13e3)
 			W += 150;
 
-
 		draw(Scale((W_min, e.si))--Scale((W_max, e.si)), col);
 		draw(Scale((W, e.si - e.si_em))--Scale((W, e.si + e.si_ep)), col);
 		draw(Scale((W, e.si)), m+false+1.5pt+col);
@@ -209,25 +208,46 @@ real RatioSigmaElToTotFit(real W)
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 
+// fine shift
 real fsh=0;
-void DrawPoint(real W, real si, real em, real ep, pen col=red, marker m)
+
+void DrawPoint(real W, real si, real em, real ep=em, pen col=red, marker m, string label="")
 {
 	draw(shift(fsh, 0)*(Scale((W, si-em))--Scale((W, si+ep))), col);
 	draw(shift(fsh, 0)*Scale((W, si)), m);
+
+	if (label != "")
+		AddToLegend(label, nullpen, m);
+
+	// reset fine shift
+	fsh = 0;
 }
 
+//----------------------------------------------------------------------------------------------------
+
+/*
 void DrawPointRel(real W, real si, real re, pen col=red, marker m)
 {
 	draw(shift(fsh, 0)*(Scale((W, si*(1-re/100)))--Scale((W, si*(1+re/100)))), col);
 	draw(shift(fsh, 0)*Scale((W, si)), m);
-}
 
-void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red, marker m, string label = "")
+	// reset fine shift
+	fsh = 0;
+}
+*/
+
+//----------------------------------------------------------------------------------------------------
+
+void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red, marker m, string label="")
 {
-	draw(Scale((W, si-em))--Scale((W, si+ep)), col);
-	draw(Scale((W-Wm, si))--Scale((W+Wp, si)), col);
-	draw(Scale((W, si)), col, m);
+	draw(shift(fsh, 0)* (Scale((W, si-em))--Scale((W, si+ep))), col);
+	draw(shift(fsh, 0)* (Scale((W-Wm, si))--Scale((W+Wp, si))), col);
+	draw(shift(fsh, 0)*Scale((W, si)), col, m);
+
 	if (label != "")
 		AddToLegend(label, nullpen, m);
+
+	// reset fine shift
+	fsh = 0;
 }
 
