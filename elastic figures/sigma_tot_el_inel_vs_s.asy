@@ -57,6 +57,7 @@ AddToLegend("$\rm pp$ (PDG)", nullpen, mTD+false+3pt);
 DrawPointE(57e3-200, 6e3, 6e3, 92, 14.8, 13.4, blue, mSq+false+1.5pt+blue);
 DrawPointE(57e3+200, 6e3, 6e3, 133, 28.7, 26.7, red, mSq+false+1.5pt+red);
 
+
 // -------------------- LHC, 2.76 TeV --------------------
 
 // ALICE
@@ -66,6 +67,7 @@ DrawPointE(2.76e3-100, 0, 0, 62.8, 4.2, 2.7, blue, mSt+false+1.5pt+blue);				// 
 fsh = 0; DrawPoint(2.76e3, 84.7, 3.3, 3.3, red+0.6pt, mCi+true+1.6pt+red);					// total
 fsh = 0; DrawPoint(2.76e3, 62.8, 2.9, 2.9, blue+0.6pt, mCi+true+1.6pt+blue);				// inelastic
 fsh = 0; DrawPoint(2.76e3, 21.8, 1.4, 1.4, heavygreen+0.6pt, mCi+true+1.6pt+heavygreen);	// elastic
+
 
 // -------------------- LHC, 7 TeV --------------------
 
@@ -87,27 +89,35 @@ DrawPointE(7e3+150, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+1.5pt+blue);					// CM
 // LHCb
 DrawPointE(7e3+300, 0, 0, 66.9, 5.3, 5.3, blue, mPl2+false+1.5pt+blue);					// JHEP 02 (2015) 129; unct. added in quad.
 
-// TOTEM; Europhys. Lett. 101 (2013) 21004
+// TOTEM; EPL 101 (2013) 21004, luminosity independent
 fsh = 0; DrawPoint(7e3-200, 98.0, 2.5, 2.5, red+0.6pt, mCi+true+1.6pt+red);					// total
+
+// TOTEM; EPL 101 (2013) 21004, elastic only
 fsh = 0; DrawPoint(7e3+200, 98.6, 2.2, 2.2, red+0.6pt, mCi+true+1.6pt+red);					// total
 
+// TOTEM; Europhys. Lett. 101 (2013) 21004
 fsh = 0; DrawPointE(7e3, 0, 0, 72.9, 1.5, 1.5, blue+0.6pt, mCi+true+1.6pt+blue);				// inelastic
 fsh = 0; DrawPointE(7e3, 0, 0, 25.1, 1.1, 1.1, heavygreen+0.6pt, mCi+true+1.6pt+heavygreen);	// elastic
+
 
 // -------------------- LHC, 8 TeV --------------------
 
 // TOTEM; Phys. Rev. Lett. 111 no. 1, (2013) 012001
-fsh = 0; DrawPoint(8e3-250, 101.5, 2.1, 2.1, red+0.6pt, mCi+true+1.6pt+red);					// total
-fsh = 0; DrawPoint(8e3+150, 102.9, 2.3, 2.3, red+0.6pt, mCi+true+1.6pt+red);					// total
+// tot: 101.7 +- 2.9
+fsh = 0; DrawPoint(8e3, 74.7, 1.7, 1.7, blue+0.6pt, mCi+true+1.6pt+blue);					// inelastic
+fsh = 0; DrawPoint(8e3, 27.1, 1.4, 1.7, heavygreen+0.6pt, mCi+true+1.6pt+heavygreen);		// elastic
 
-// TODO: Rel to absolute
-fsh = 0; DrawPointRel(8e3, 74.7, 2.1, blue+0.6pt, mCi+true+1.6pt+blue);					// inelastic
-fsh = 0; DrawPointRel(8e3, 27.0, 4.8, heavygreen+0.6pt, mCi+true+1.6pt+heavygreen);		// elastic
+// TOTEM; Nucl. Phys. B 899 (2015) 527-546, N_b = 2
+fsh = 0; DrawPoint(8e3-250, 101.5, 2.1, 2.1, red+0.6pt, mCi+true+1.6pt+red);			// total
+
+// TOTEM; Eur. Phys. J. C76 (2016) 661, N_b = 3, Cahn/KL, constant phase
+fsh = 0; DrawPoint(8e3+150, 102.9, 2.3, 2.3, red+0.6pt, mCi+true+1.6pt+red);			// total
 
 // ATLAS - ALFA, Phys. Lett. B 761 (2016) 158-178
 DrawPointE(8e3, 0, 0, 96.07, 0.92, 0.92, red, mTL+false+1.7pt+red);						// total
 DrawPointE(8e3, 0, 0, 71.73, 0.71, 0.71, blue, mTL+false+1.7pt+blue);					// inelastic
 DrawPointE(8e3, 0, 0, 24.33, 0.39, 0.39, heavygreen, mTL+false+1.7pt+heavygreen);		// elastic
+
 
 // -------------------- LHC, 13 TeV --------------------
 
@@ -116,6 +126,7 @@ DrawPointE(13e3-80, 0, 0, 78.1, 2.9, 2.9, blue, mTL+false+1.5pt+blue);
 
 // CMS; CMS-PAS-FSQ-15-005 also arXiv:1607.02033; uncertainties summed in quadrature
 DrawPointE(13e3+80, 0, 0, 71.3, 3.5, 3.5, blue, mTR+false+1.5pt+blue);
+
 
 // -------------------- arrows --------------------
 
