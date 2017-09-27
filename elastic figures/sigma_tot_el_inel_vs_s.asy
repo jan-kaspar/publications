@@ -63,14 +63,14 @@ DrawPointE(57e3+200, 6e3, 6e3, 133, 28.7, 26.7, red, mSq+false+1.5pt+red);
 DrawPointE(2.76e3-100, 0, 0, 62.8, 4.2, 2.7, blue, mSt+false+1.5pt+blue);				// Eur. Phys. J. C73 no. 6, (2013) 2456; unct. added in quad.
 
 // TOTEM
-fsh = 0; DrawPoint(2.76e3, 84.7, 3.3, 3.3, red+0.8pt, mCi+true+1.8pt+red);					// total
-fsh = 0; DrawPoint(2.76e3, 62.8, 2.9, 2.9, blue+0.8pt, mCi+true+1.8pt+blue);				// inelastic
-fsh = 0; DrawPoint(2.76e3, 21.8, 1.4, 1.4, heavygreen+0.8pt, mCi+true+1.8pt+heavygreen);	// elastic
+fsh = 0; DrawPoint(2.76e3, 84.7, 3.3, 3.3, red+0.6pt, mCi+true+1.6pt+red);					// total
+fsh = 0; DrawPoint(2.76e3, 62.8, 2.9, 2.9, blue+0.6pt, mCi+true+1.6pt+blue);				// inelastic
+fsh = 0; DrawPoint(2.76e3, 21.8, 1.4, 1.4, heavygreen+0.6pt, mCi+true+1.6pt+heavygreen);	// elastic
 
 // -------------------- LHC, 7 TeV --------------------
 
 // ALICE
-DrawPointE(7e3-400, 0, 0, 73.2, 5.3, 3.3, blue, mSt+false+1.5pt+blue);					// Eur. Phys. J. C73 no. 6, (2013) 2456; unct. added in quad.
+DrawPointE(7e3-400, 0, 0, 73.1, 5.3, 3.3, blue, mSt+false+1.5pt+blue);					// Eur. Phys. J. C73 no. 6, (2013) 2456; unct. added in quad.
 
 // ATLAS
 DrawPointE(7e3-150, 0, 0, 69.1, 7.3, 7.3, blue, mTL+false+1.5pt+blue);					// Nature Commun. 2 (2011) 463; unct. added in quad.
@@ -88,16 +88,21 @@ DrawPointE(7e3+150, 0, 0, 68.0, 5.1, 5.1, blue, mTR+false+1.5pt+blue);					// CM
 DrawPointE(7e3+300, 0, 0, 66.9, 5.3, 5.3, blue, mPl2+false+1.5pt+blue);					// JHEP 02 (2015) 129; unct. added in quad.
 
 // TOTEM; Europhys. Lett. 101 (2013) 21004
-fsh = 0; DrawPointE(7e3, 0, 0, 98.0, 2.5, 2.5, red+0.8pt, mCi+true+1.8pt+red);					// total
-fsh = 0; DrawPointE(7e3, 0, 0, 72.9, 1.5, 1.5, blue+0.8pt, mCi+true+1.8pt+blue);				// inelastic
-fsh = 0; DrawPointE(7e3, 0, 0, 25.1, 1.1, 1.1, heavygreen+0.8pt, mCi+true+1.8pt+heavygreen);	// elastic
+fsh = 0; DrawPoint(7e3-200, 98.0, 2.5, 2.5, red+0.6pt, mCi+true+1.6pt+red);					// total
+fsh = 0; DrawPoint(7e3+200, 98.6, 2.2, 2.2, red+0.6pt, mCi+true+1.6pt+red);					// total
+
+fsh = 0; DrawPointE(7e3, 0, 0, 72.9, 1.5, 1.5, blue+0.6pt, mCi+true+1.6pt+blue);				// inelastic
+fsh = 0; DrawPointE(7e3, 0, 0, 25.1, 1.1, 1.1, heavygreen+0.6pt, mCi+true+1.6pt+heavygreen);	// elastic
 
 // -------------------- LHC, 8 TeV --------------------
 
 // TOTEM; Phys. Rev. Lett. 111 no. 1, (2013) 012001
-fsh = 0; DrawPointRel(8e3, 102, 2.8, red+0.8pt, mCi+true+1.8pt+red);					// total
-fsh = 0; DrawPointRel(8e3, 74.7, 2.1, blue+0.8pt, mCi+true+1.8pt+blue);					// inelastic
-fsh = 0; DrawPointRel(8e3, 27.0, 4.8, heavygreen+0.8pt, mCi+true+1.8pt+heavygreen);		// elastic
+fsh = 0; DrawPoint(8e3-250, 101.5, 2.1, 2.1, red+0.6pt, mCi+true+1.6pt+red);					// total
+fsh = 0; DrawPoint(8e3+150, 102.9, 2.3, 2.3, red+0.6pt, mCi+true+1.6pt+red);					// total
+
+// TODO: Rel to absolute
+fsh = 0; DrawPointRel(8e3, 74.7, 2.1, blue+0.6pt, mCi+true+1.6pt+blue);					// inelastic
+fsh = 0; DrawPointRel(8e3, 27.0, 4.8, heavygreen+0.6pt, mCi+true+1.6pt+heavygreen);		// elastic
 
 // ATLAS - ALFA, Phys. Lett. B 761 (2016) 158-178
 DrawPointE(8e3, 0, 0, 96.07, 0.92, 0.92, red, mTL+false+1.7pt+red);						// total
@@ -126,11 +131,11 @@ limits((1e1, 0), (1e5, 140), Crop);
 
 // -------------------- axes --------------------
 
-yaxis(XEquals(0.9e3, false), dotted);
-yaxis(XEquals(2.76e3, false), dotted);
-yaxis(XEquals(7e3, false), dotted);
-yaxis(XEquals(8e3, false), dotted);
-yaxis(XEquals(13e3, false), dotted);
+yaxis(XEquals(0.9e3, false), dotted + roundcap);
+yaxis(XEquals(2.76e3, false), dotted + roundcap);
+yaxis(XEquals(7e3, false), dotted + roundcap);
+yaxis(XEquals(8e3, false), dotted + roundcap);
+yaxis(XEquals(13e3, false), dotted + roundcap);
 
 label(rotate(90)*Label("\SmallerFonts$0.9\un{TeV}$"), Scale((0.9e3, 30)), Fill(white));
 label(rotate(90)*Label("\SmallerFonts$2.76\un{TeV}$"), Scale((2.76e3, 35)), Fill(white));
