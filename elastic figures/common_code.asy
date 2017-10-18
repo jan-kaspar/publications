@@ -65,6 +65,8 @@ int DrawDataSet(string filename, pen col, mark m, string legend="")
 	Meas data[];
 	LoadFile(filename, data);
 
+	col += squarecap;
+
 	for (Meas e : data)
 	{
 		// W = sqrt(s)
@@ -90,6 +92,8 @@ int DrawInelasticDataSet(string fileT, string fileE, pen col, mark m)
 	Meas dataT[], dataE[];
 	LoadFile(fileT, dataT);
 	LoadFile(fileE, dataE);
+
+	col += squarecap;
 
 	for (int idxT : dataT.keys)
 	{
@@ -122,6 +126,8 @@ int DrawInelasticDataSet(string fileT, string fileE, pen col, mark m)
 int DrawElToTotDataSet(string fileT, string fileE, pen col, mark m)
 {
 	write(">> DrawElToTotDataSet");
+
+	col += squarecap;
 
 	Meas dataT[], dataE[];
 	LoadFile(fileT, dataT);
@@ -213,6 +219,8 @@ real fsh=0;
 
 void DrawPoint(real W, real si, real em, real ep=em, pen col=red, marker m, string label="")
 {
+	col += squarecap;
+
 	draw(shift(fsh, 0)*(Scale((W, si-em))--Scale((W, si+ep))), col);
 	draw(shift(fsh, 0)*Scale((W, si)), m);
 
@@ -240,6 +248,8 @@ void DrawPointRel(real W, real si, real re, pen col=red, marker m)
 
 void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red, marker m, string label="")
 {
+	col += squarecap;
+
 	draw(shift(fsh, 0)* (Scale((W, si-em))--Scale((W, si+ep))), col);
 	draw(shift(fsh, 0)* (Scale((W-Wm, si))--Scale((W+Wp, si))), col);
 	draw(shift(fsh, 0)*Scale((W, si)), col, m);
