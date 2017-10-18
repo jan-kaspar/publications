@@ -143,9 +143,9 @@ fsh = -0.01; DrawPoint(13e3, 78.1, 2.9, p_inel, m_ATLAS+p_inel);
 fsh = +0.01; DrawPoint(13e3, 71.3, 3.5, p_inel, m_CMS+p_inel);
 
 // TOTEM; preliminary, not yet published
-fsh = +0fshu; DrawPoint(13e3, 111.53, 3.0, p_tot, m_TOTEM+p_tot);
-fsh = +0fshu; DrawPoint(13e3,  79.99, 2.0, p_inel, m_TOTEM+p_inel);
-fsh = +0fshu; DrawPoint(13e3,  31.53, 1.5, p_el, m_TOTEM+p_el);
+fsh = +0fshu; DrawPoint(13e3, 111.524, 3.0, p_tot, m_TOTEM+p_tot);
+fsh = +0fshu; DrawPoint(13e3,  79.990, 2.0, p_inel, m_TOTEM+p_inel);
+fsh = +0fshu; DrawPoint(13e3,  31.535, 1.5, p_el, m_TOTEM+p_el);
 
 
 
