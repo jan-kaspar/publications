@@ -59,7 +59,13 @@ void B_vs_s()
 	AddPoint(8000.0, 19.74, 0.24);
 	AddPoint(8000.0, 19.90, 0.30);
 
-	//TF1 *ff = new TF1("ff", "[0] + [1]*log(x) + [2]*log(x)^2");
+	TF1 *ff = new TF1("ff", "[0] + [1]*log(x)");
+	ff->SetRange(2E1, 2E3);
+	g->Fit(ff, "", "", 2E1, 2E3);
+
+	g->Write();
+
+#if 0
 	TF1 *ff = new TF1("ff", "(1 - TMath::Erf((log(x)-[4])/[5]))/2 * ([0] + [1]*log(x))  +  (1 + TMath::Erf((log(x)-[4])/[5]))/2 * ([0]+[1]*[4] + 0*[2] + [3]*(log(x)-[4]))");
 	ff->SetRange(1E1, 1E4);
 	ff->SetParameters(8.0, 1.2, -4.0, 2.7);
@@ -92,6 +98,7 @@ void B_vs_s()
 	ff_high_e->Draw("same");
 
 	g->Write();
+#endif
 
 	delete f_out;
 }
