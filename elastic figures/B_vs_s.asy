@@ -17,13 +17,13 @@ void DrawPoint(real W, real B, real em, real ep, pen col=red, marker m, real cor
 //----------------------------------------------------------------------------------------------------
 // B as a function of sqrt(s)
 
-NewPad("$\sqrt s\ung{GeV}$", "$B\ung{GeV^{-2}}$", yTicks=RightTicks(Step=1, step=0.2), 8cm, 8cm);
+NewPad("$\sqrt s\ung{GeV}$", "$B\ung{GeV^{-2}}$", yTicks=RightTicks(Step=1, step=0.2), 10cm, 8cm);
 scale(Log, Linear);
 
 // fit
 TF1_x_min = 10;
 TF1_x_max = 2e4;
-draw(RootGetObject("B_vs_s.root", "B_vs_s|ff"), dashed);
+draw(RootGetObject("B_vs_s.root", "B_vs_s|ff"), dotted);
 //AddToLegend("fit quadratic", dashed);
 //AddToLegend("in $\log s$");
 
@@ -91,20 +91,33 @@ DrawPoint(1.96e3, 16.54, 0.9, 0.9, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen)
 // pp2pp, pp
 DrawPoint(200, 16.3, 1.84, 1.84, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys.Lett. B579 (2004) 245-250
 
-// TOTEM, pp, 2.76 TeV
+// -------------------- LHC, 2.76 TeV --------------------
+
+// TOTEM
 DrawPoint(2.76e3, 17.1, 0.26, 0.26, red+0.8pt, mCi+true+2pt+red);
 
-// ATLAS-ALFA, pp, 7 TeV
+// -------------------- LHC, 7 TeV --------------------
+
+// ATLAS-ALFA
 DrawPoint(7e3, 19.73, 0.29, 0.29, blue+0.8pt, mTL+false+2pt+blue, +0.01);
 
-// TOTEM, pp, 7 TeV
-DrawPoint(7e3, 19.9, 0.26, 0.26, red+0.8pt, mCi+true+2pt+red, -0.01);
+// TOTEM, EPL 101 (2013) 21002, Table 6, largest interval, unc.~added in quad.
+DrawPoint(7e3, 19.89, 0.27, 0.27, red+0.8pt, mCi+true+2pt+red, -0.01);
 
-// ATLAS-ALFA, pp, 8 TeV
+// -------------------- LHC, 8 TeV --------------------
+
+// ATLAS-ALFA
 DrawPoint(8e3, 19.74, 0.24, 0.24,  blue+0.8pt, mTL+false+2pt+blue, +0.01);
 
-// TOTEM, pp, 8 TeV
+// TOTEM
 DrawPoint(8e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
+
+// -------------------- LHC, 13 TeV --------------------
+
+// TOTEM, pp, 13 TeV
+//DrawPoint(13e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
+
+
 
 AddToLegend("$\rm \bar pp$", heavygreen, mTU+false+3pt+heavygreen);
 AddToLegend("$\rm pp$", blue, mTD+false+3pt+blue);
@@ -120,7 +133,7 @@ real x = log10(13e3);
 draw(rotate(90)*Label("$\sqrt s = 13\un{TeV}$", 0., Fill(white)), (x, 17.2)--(x, 20.2), EndArrow);
 */
 
-limits((1e1, 11), (1e4, 21), Crop);
+limits((1e1, 11), (2e4, 21), Crop);
 
 AttachLegend(BuildLegend(lineLength=8mm, NW), NW);
 
