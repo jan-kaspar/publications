@@ -107,6 +107,9 @@ fsh = +1fshu; DrawPointE(7e3, 0, 0, 68.0, 5.1, 5.1, p_inel, m_CMS+p_inel);
 // LHCb; JHEP 02 (2015) 129; unct. added in quad.
 fsh = +2fshu; DrawPointE(7e3, 0, 0, 66.9, 5.3, 5.3, p_inel, m_LHCb+p_inel);
 
+// TOTEM; EPL 101 (2013) 21002, Table 7, unc.~added in quad.
+fsh = -2fshu; DrawPoint(7e3, 25.43, 1.07, p_el, m_TOTEM+p_el);
+
 // TOTEM; EPL 101 (2013) 21004
 fsh = -1.1fshu; DrawPoint(7e3, 98.0, 2.5, 2.5, p_tot, m_TOTEM+p_tot);	// luminosity independent
 fsh = +1.1fshu; DrawPoint(7e3, 98.6, 2.2, 2.2, p_tot, m_TOTEM+p_tot);	// elastic only
