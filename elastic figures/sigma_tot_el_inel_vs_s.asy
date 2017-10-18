@@ -12,7 +12,7 @@ texpreamble("\def\ln{\mathop{\rm ln}}");
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el}$ (green), $\si_{\rm inel}$ (blue) and  $\si_{\rm tot}$ (red) $\ung{mb}$", 14cm, 10cm);
+NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el}$ (green), $\si_{\rm inel}$ (blue) and  $\si_{\rm tot}$ (red) $\ung{mb}$", 15cm, 10cm);
 
 scale(Log, Linear);
 
@@ -199,7 +199,7 @@ label("$\si_{\rm el}$", (3.1, 11), p_el, Fill(white));
 
 // fit labels
 AddToLegend("best COMPETE $\si_{\rm tot}$ fits", black);
-AddToLegend("$11.7 - 1.59\ln s + 0.134\ln^2 s$", dashed);
+AddToLegend("$11.84 - 1.617\ln s + 0.1359\ln^2 s$", dashed);
 
 //AttachLegend("$\si_{\rm tot}$ (red), $\si_{\rm inel}$ (blue) and $\si_{\rm el}$ (green)", 1, NW, NW);
 AttachLegend("", 1, NW, NW);

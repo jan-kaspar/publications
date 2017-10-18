@@ -1,4 +1,6 @@
 *.pdf
 *.root
+*.d
+*.so
 
 pdg

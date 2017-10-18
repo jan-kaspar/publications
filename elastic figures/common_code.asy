@@ -80,6 +80,11 @@ int DrawDataSet(string filename, pen col, mark m, string legend="")
 		draw(Scale((W_min, e.si))--Scale((W_max, e.si)), col);
 		draw(Scale((W, e.si - e.si_em))--Scale((W, e.si + e.si_ep)), col);
 		draw(Scale((W, e.si)), m+false+1.5pt+col);
+
+		/*
+		if (W > 10)
+			write(format("AddPoint(%.3E", W) + format(", %.3f", e.si) + format(", %.3f);", (e.si_em + e.si_ep)/2));
+		*/
 	}
 
 	return 0;
@@ -188,13 +193,18 @@ real SigmaElFit(real W)
 	real s = W*W;
 	real xi = log(s);
 
-	/* fit including 7 and 8 TeV TOTEM points and pp and app PDG points with sqrt s > 10 GeV
-	p0                        =      11.7359   +/-   0.318563    
-	p1                        =     -1.58513   +/-   0.0870728   
-	p2                        =     0.133567   +/-   0.00584892 
+	/*
+	fit including
+		* PDG points with sqrt(s) > 10 GeV
+		* TOTEM measurements
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           1.18407e+01   2.58281e-01   1.00963e-04  -7.31567e-07
+   2  p1          -1.61727e+00   6.58012e-02   1.52574e-05  -4.09819e-06
+   3  p2           1.35940e-01   4.07407e-03   2.04687e-06  -2.18175e-05
 	*/
 
-	return 11.7359 - 1.58513 *xi + 0.133567 *xi*xi;
+
+	return 11.84 - 1.617 *xi + 0.1359 *xi*xi;
 }
 
 //----------------------------------------------------------------------------------------------------
