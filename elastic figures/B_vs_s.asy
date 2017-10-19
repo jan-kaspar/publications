@@ -7,6 +7,8 @@ drawGridDef = false;
 
 void DrawPoint(real W, real B, real em, real ep, pen col=red, marker m, real corr=0)
 {
+	col += squarecap;
+
 	draw( shift(corr, 0) * ( Scale((W, B-em))--Scale((W, B))--Scale((W, B+ep)) ), col);
 	draw( shift(corr, 0) * Scale((W, B)), m);
 
@@ -25,7 +27,7 @@ scale(Log, Linear);
 // fit
 TF1_x_min = 10;
 TF1_x_max = 1e5;
-pen p_fit = dashed;
+pen p_fit = linetype(new real[] {8,8}, offset=7);	// tuned dashed
 draw(RootGetObject("B_vs_s.root", "B_vs_s|ff"), p_fit);
 
 // ISR (CERN–Rome Collaboration), pp

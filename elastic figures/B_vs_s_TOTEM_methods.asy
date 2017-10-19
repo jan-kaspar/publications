@@ -7,6 +7,8 @@ drawGridDef = false;
 
 void DrawPoint(real W, real B, real em, real ep, pen col=red, marker m, real corr=0)
 {
+	col += squarecap;
+
 	draw( shift(corr, 0) * ( Scale((W, B-em))--Scale((W, B))--Scale((W, B+ep)) ), col);
 	draw( shift(corr, 0) * Scale((W, B)), m);
 
