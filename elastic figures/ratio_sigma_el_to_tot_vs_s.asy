@@ -16,11 +16,11 @@ scale(Log, Linear);
 
 // p-anti p
 compete_fit_sign = +1;
-draw(graph(RatioSigmaElToTotFit, 10, 1e5, 100), black+dashed);
+draw(graph(RatioSigmaElToTotFit, 10, 1e5, 100), linetype(new real[] {8, 8}, offset=8));
 
 // p-p
 compete_fit_sign = -1;
-draw(graph(RatioSigmaElToTotFit, 10, 1e5, 100), black+dashed);
+draw(graph(RatioSigmaElToTotFit, 10, 1e5, 100), linetype(new real[] {8, 8}, offset=7));
 
 // -------------------- PDG --------------------
 DrawElToTotDataSet("pdg/pbarp_total.dat", "pdg/pbarp_elastic.dat", heavygreen+0.2pt, mTU+2pt+false+heavygreen);
@@ -50,7 +50,7 @@ fsh = +0.01; DrawPoint(8e3, 25.32, 0.47, 0.47, blue, mTL+false+2pt+blue);
 // -------------------- LHC, 13 TeV --------------------
 
 // TOTEM, preliminary, not yet published
-fsh = 0.0; DrawPoint(13e3, 28.28, 0.6, red, mCi+true+2pt+red);
+fsh = 0.0; DrawPoint(13e3, 28.28, 1.0, red, mCi+true+2pt+red);
 
 // -------------------- limits --------------------
 
