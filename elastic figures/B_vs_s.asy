@@ -99,15 +99,15 @@ DrawPoint(2.76e3, 17.1, 0.26, 0.26, red+0.8pt, mCi+true+2pt+red);
 // -------------------- LHC, 7 TeV --------------------
 
 // ATLAS-ALFA
-DrawPoint(7e3, 19.73, 0.29, 0.29, blue+0.8pt, mTL+false+2pt+blue, +0.01);
+DrawPoint(7e3, 19.73, 0.29, 0.29, blue+0.8pt, mTL+false+2pt+blue, +0.02);
 
 // TOTEM, EPL 101 (2013) 21002, Table 6, largest interval, unc.~added in quad.
-DrawPoint(7e3, 19.89, 0.27, 0.27, red+0.8pt, mCi+true+2pt+red, -0.01);
+DrawPoint(7e3, 19.89, 0.27, 0.27, red+0.8pt, mCi+true+2pt+red);
 
 // -------------------- LHC, 8 TeV --------------------
 
 // ATLAS-ALFA
-DrawPoint(8e3, 19.74, 0.24, 0.24,  blue+0.8pt, mTL+false+2pt+blue, +0.01);
+DrawPoint(8e3, 19.74, 0.24, 0.24, blue+0.8pt, mTL+false+2pt+blue, +0.02);
 
 // TOTEM
 DrawPoint(8e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
