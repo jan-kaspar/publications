@@ -96,7 +96,7 @@ DrawPoint(200, 16.3, 1.84, 1.84, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys.Lett
 // -------------------- LHC, 2.76 TeV --------------------
 
 // TOTEM
-DrawPoint(2.76e3, 17.1, 0.26, 0.26, red+0.8pt, mCi+true+2pt+red);
+DrawPoint(2.76e3, 17.1, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
 
 // -------------------- LHC, 7 TeV --------------------
 
