@@ -16,7 +16,7 @@ void AddPoint(double W, double B, double B_e)
 
 //----------------------------------------------------------------------------------------------------
 
-void B_vs_s()
+int main()
 {
 	TFile *f_out = TFile::Open("B_vs_s.root", "recreate");
 
@@ -54,14 +54,16 @@ void B_vs_s()
 
 	AddPoint(2760.0, 17.10, 0.20);
 
+	/*
 	AddPoint(7000.0, 19.73, 0.29);
 	AddPoint(7000.0, 19.90, 0.26);
 	AddPoint(8000.0, 19.74, 0.24);
 	AddPoint(8000.0, 19.90, 0.30);
+	*/
 
 	TF1 *ff = new TF1("ff", "[0] + [1]*log(x)");
-	ff->SetRange(2E1, 2E3);
-	g->Fit(ff, "", "", 2E1, 2E3);
+	ff->SetRange(2E1, 1E5);
+	g->Fit(ff, "", "");
 
 	g->Write();
 
@@ -101,4 +103,6 @@ void B_vs_s()
 #endif
 
 	delete f_out;
+
+	return 0;
 }

@@ -16,7 +16,7 @@ void AddPoint(double W, double si, double si_e)
 
 //----------------------------------------------------------------------------------------------------
 
-int si_el_fit()
+int main()
 {
 	TFile *f_out = TFile::Open("si_el_fit.root", "recreate");
 

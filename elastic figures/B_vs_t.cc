@@ -280,7 +280,7 @@ void CalculateB_gauss(TGraphErrors *gs, double sigma, double min_w, unsigned int
 
 //----------------------------------------------------------------------------------------------------
 
-void calculate_B()
+int main()
 {
 	map<string, TGraphErrors *> input;
 
@@ -316,4 +316,6 @@ void calculate_B()
 	CalculateB_gauss(g, 0.01, 0.01);
 
 	delete outF;
+
+	return 0;
 }
