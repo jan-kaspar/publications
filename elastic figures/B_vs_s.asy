@@ -109,7 +109,7 @@ DrawPoint(7e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
 // ATLAS-ALFA
 DrawPoint(8e3, 19.74, 0.24, 0.24, blue+0.8pt, mTL+false+2pt+blue, +0.02);
 
-// TOTEM
+// TOTEM, Phys. Rev. Lett. 111, 012001 (2013)
 DrawPoint(8e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
 
 // -------------------- LHC, 13 TeV --------------------
