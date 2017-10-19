@@ -6,7 +6,10 @@ drawGridDef = false;
 
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el} / \si_{\rm tot}\ung{\%}$", yTicks=RightTicks(Step=2, step=1), 9cm, 8cm);
+real size = 13cm;
+NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el} / \si_{\rm tot}\ung{\%}$", size, size*2/3);
+currentpad.yTicks=RightTicks(Step=2, step=1);
+currentpad.drawGridY = true;
 scale(Log, Linear);
 
 // -------------------- fits --------------------
@@ -17,7 +20,7 @@ draw(graph(RatioSigmaElToTotFit, 10, 1e5, 100), black+dashed);
 
 // p-p
 compete_fit_sign = -1;
-draw(graph(RatioSigmaElToTotFit, 10, 2e4, 100), black+dashed);
+draw(graph(RatioSigmaElToTotFit, 10, 1e5, 100), black+dashed);
 
 // -------------------- PDG --------------------
 DrawElToTotDataSet("pdg/pbarp_total.dat", "pdg/pbarp_elastic.dat", heavygreen+0.2pt, mTU+2pt+false+heavygreen);
@@ -49,15 +52,39 @@ fsh = +0.01; DrawPoint(8e3, 25.32, 0.47, 0.47, blue, mTL+false+2pt+blue);
 // TOTEM, preliminary, not yet published
 fsh = 0.0; DrawPoint(13e3, 28.28, 0.6, red, mCi+true+2pt+red);
 
+// -------------------- limits --------------------
+
+limits((1e1, 15), (1e5, 30), Crop);
+
+// -------------------- axes --------------------
+
+yaxis(XEquals(0.546e3, false), dotted + roundcap);
+yaxis(XEquals(0.9e3, false), dotted + roundcap);
+yaxis(XEquals(1.8e3, false), dotted + roundcap);
+yaxis(XEquals(2.76e3, false), dotted + roundcap);
+yaxis(XEquals(7e3, false), dotted + roundcap);
+yaxis(XEquals(8e3, false), dotted + roundcap);
+yaxis(XEquals(13e3, false), dotted + roundcap);
+
+real y_label = 18;
+label(rotate(90)*Label("\SmallerFonts$0.546\un{TeV}$"), Scale((0.546e3, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$0.9\un{TeV}$"), Scale((0.9e3, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$1.8\un{TeV}$"), Scale((1.8e3, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$2.76\un{TeV}$"), Scale((2.76e3, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$7\un{TeV}$"), Scale((7e3-300, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$8\un{TeV}$"), Scale((8e3+300, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$13\un{TeV}$"), Scale((13e3, y_label)), Fill(white));
+
 
 // -------------------- legend --------------------
+
 AddToLegend("$\rm \bar pp$, PDG", heavygreen, mTU+false+3pt+heavygreen);
 AddToLegend("$\rm pp$, PDG", blue, mTD+false+3pt+blue);
+
 AddToLegend("TOTEM", red, mCi+true+2.5pt+red);
 AddToLegend("ATLAS-ALFA", blue, mTL+false+3pt+blue);
-AddToLegend("fits from EPL 101 (2013) 21004", dashed);
+AddToLegend("TOTEM $\si_{\rm el}$ fit / COMPETE $\si_{\rm tot}$ fits", dashed);
 
-limits((1e1, 15), (2e4, 30), Crop);
 AttachLegend(BuildLegend(lineLength=8mm, NW), NW);
 
 GShipout();
