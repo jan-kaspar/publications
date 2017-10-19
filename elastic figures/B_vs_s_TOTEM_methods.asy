@@ -107,7 +107,7 @@ mark m_coul_ign = mCi + 2pt;
 // -------------------- LHC, 2.76 TeV --------------------
 
 // TOTEM, not yet published
-DrawPoint(2.76e3, 17.1, 0.26, 0.26, p_exp1, m_coul_ign + r_full + p_exp1);
+DrawPoint(2.76e3, 17.1, 0.3, 0.3, p_exp1, m_coul_ign + r_full + p_exp1);
 
 
 
