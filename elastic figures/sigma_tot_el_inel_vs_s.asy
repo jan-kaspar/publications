@@ -80,7 +80,7 @@ fsh = -1fshu; DrawPoint(2.76e3, 62.8, 4.2, 2.7, p_inel, m_ALICE+p_inel);
 // TOTEM; not yet published
 fsh = +0fshu; DrawPoint(2.76e3, 84.7, 3.3, p_tot, m_TOTEM+p_tot);
 fsh = +1fshu; DrawPoint(2.76e3, 62.8, 2.9, p_inel, m_TOTEM+p_inel);
-fsh = +0fshu; DrawPoint(2.76e3, 21.8, 1.4, p_el, m_TOTEM+p_el);
+fsh = +0fshu; DrawPoint(2.76e3, 21.8, 1.4, p_el+1pt, m_TOTEM+p_el);
 
 
 // -------------------- LHC, 7 TeV --------------------
@@ -106,13 +106,13 @@ fsh = +1fshu; DrawPointE(7e3, 0, 0, 68.0, 5.1, 5.1, p_inel, m_CMS+p_inel);
 fsh = +2fshu; DrawPointE(7e3, 0, 0, 66.9, 5.3, 5.3, p_inel, m_LHCb+p_inel);
 
 // TOTEM; EPL 101 (2013) 21002, Table 7, unc.~added in quad.
-fsh = -2fshu; DrawPoint(7e3, 25.43, 1.07, p_el, m_TOTEM+p_el);
+fsh = -2fshu; DrawPoint(7e3, 25.43, 1.07, p_el+1pt, m_TOTEM+p_el);
 
 // TOTEM; EPL 101 (2013) 21004
 fsh = -1.1fshu; DrawPoint(7e3, 98.0, 2.5, 2.5, p_tot, m_TOTEM+p_tot);	// luminosity independent
 fsh = +1.1fshu; DrawPoint(7e3, 98.6, 2.2, 2.2, p_tot, m_TOTEM+p_tot);	// elastic only
 fsh = +0fshu; DrawPointE(7e3, 0, 0, 72.9, 1.5, 1.5, p_inel, m_TOTEM+p_inel);
-fsh = +1fshu; DrawPointE(7e3, 0, 0, 25.1, 1.1, 1.1, p_el, m_TOTEM+p_el);
+fsh = +1fshu; DrawPointE(7e3, 0, 0, 25.1, 1.1, 1.1, p_el+1pt, m_TOTEM+p_el);
 
 
 // -------------------- LHC, 8 TeV --------------------
@@ -120,7 +120,7 @@ fsh = +1fshu; DrawPointE(7e3, 0, 0, 25.1, 1.1, 1.1, p_el, m_TOTEM+p_el);
 // TOTEM; Phys. Rev. Lett. 111 no. 1, (2013) 012001
 // tot: 101.7 +- 2.9
 fsh = +0fshu; DrawPoint(8e3, 74.7, 1.7, p_inel, m_TOTEM+p_inel);
-fsh = +0fshu; DrawPoint(8e3, 27.1, 1.4, p_el, m_TOTEM+p_el);
+fsh = +0fshu; DrawPoint(8e3, 27.1, 1.4, p_el+1pt, m_TOTEM+p_el);
 
 // TOTEM; Nucl. Phys. B 899 (2015) 527-546, N_b = 2
 fsh = -1.1fshu; DrawPoint(8e3, 101.5, 2.1, 2.1, p_tot, m_TOTEM+p_tot);
@@ -145,7 +145,7 @@ fsh = +0.01; DrawPoint(13e3, 71.3, 3.5, p_inel, m_CMS+p_inel);
 // TOTEM; preliminary, not yet published
 fsh = +0fshu; DrawPoint(13e3, 111.524, 3.0, p_tot, m_TOTEM+p_tot);
 fsh = +0fshu; DrawPoint(13e3,  79.990, 2.0, p_inel, m_TOTEM+p_inel);
-fsh = +0fshu; DrawPoint(13e3,  31.535, 1.5, p_el, m_TOTEM+p_el);
+fsh = +0fshu; DrawPoint(13e3,  31.535, 1.5, p_el+1pt, m_TOTEM+p_el);
 
 
 
