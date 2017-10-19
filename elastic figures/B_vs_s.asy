@@ -17,16 +17,16 @@ void DrawPoint(real W, real B, real em, real ep, pen col=red, marker m, real cor
 //----------------------------------------------------------------------------------------------------
 // B as a function of sqrt(s)
 
-NewPad("$\sqrt s\ung{GeV}$", "$B\ung{GeV^{-2}}$", yTicks=RightTicks(Step=1, step=0.2), 10cm, 8cm);
+real size = 13cm;
+NewPad("$\sqrt s\ung{GeV}$", "$B\ung{GeV^{-2}}$", yTicks=RightTicks(Step=1, step=0.2), size, size*2/3);
+currentpad.drawGridY = true;
 scale(Log, Linear);
 
 // fit
 TF1_x_min = 10;
-TF1_x_max = 2e4;
-draw(RootGetObject("B_vs_s.root", "B_vs_s|ff"), dotted);
-//AddToLegend("fit quadratic", dashed);
-//AddToLegend("in $\log s$");
-
+TF1_x_max = 1e5;
+pen p_fit = dashed;
+draw(RootGetObject("B_vs_s.root", "B_vs_s|ff"), p_fit);
 
 // ISR (CERN–Rome Collaboration), pp
 //DrawPoint(31.0, 13.0, 0.7, 0.7, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B36 (1971) 504
@@ -131,7 +131,32 @@ real x = log10(13e3);
 draw(rotate(90)*Label("$\sqrt s = 13\un{TeV}$", 0., Fill(white)), (x, 17.2)--(x, 20.2), EndArrow);
 */
 
-limits((1e1, 11), (2e4, 21), Crop);
+// -------------------- limits --------------------
+
+limits((1e1, 11), (1e5, 22), Crop);
+
+// -------------------- axes --------------------
+
+yaxis(XEquals(0.546e3, false), dotted + roundcap);
+yaxis(XEquals(0.9e3, false), dotted + roundcap);
+yaxis(XEquals(1.8e3, false), dotted + roundcap);
+yaxis(XEquals(2.76e3, false), dotted + roundcap);
+yaxis(XEquals(7e3, false), dotted + roundcap);
+yaxis(XEquals(8e3, false), dotted + roundcap);
+yaxis(XEquals(13e3, false), dotted + roundcap);
+
+real y_label = 13;
+label(rotate(90)*Label("\SmallerFonts$0.546\un{TeV}$"), Scale((0.546e3-100, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$0.9\un{TeV}$"), Scale((0.9e3, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$1.8\un{TeV}$"), Scale((1.8e3, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$2.76\un{TeV}$"), Scale((2.76e3, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$7\un{TeV}$"), Scale((7e3-300, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$8\un{TeV}$"), Scale((8e3+300, y_label)), Fill(white));
+label(rotate(90)*Label("\SmallerFonts$13\un{TeV}$"), Scale((13e3, y_label)), Fill(white));
+
+// -------------------- labels --------------------
+
+AddToLegend("fit linear in $\log s$, data $\sqrt s < 2\un{TeV}$", p_fit);
 
 AttachLegend(BuildLegend(lineLength=8mm, NW), NW);
 
