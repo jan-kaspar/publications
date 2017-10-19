@@ -46,7 +46,7 @@ compete_fit_sign = -1;
 draw(graph(SigmaTotFit, 10, 1e5, 100), black);
 draw(graph(SigmaInelFit, 10, 1e5, 100), dashdotted);
 
-draw(graph(SigmaElFit, 10, 1e5, 100), dashed);
+draw(graph(SigmaElFit, 10, 1e5, 100), linetype(new real[] {8,7}, offset=0));
 
 // -------------------- PDG --------------------
 
