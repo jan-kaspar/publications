@@ -50,7 +50,7 @@ fsh = +0.01; DrawPoint(8e3, 25.32, 0.47, 0.47, blue, mTL+false+2pt+blue);
 // -------------------- LHC, 13 TeV --------------------
 
 // TOTEM, preliminary, not yet published
-fsh = 0.0; DrawPoint(13e3, 28.28, 1.0, red, mCi+true+2pt+red);
+fsh = 0.0; DrawPoint(13e3, 28.07, 1.0, red, mCi+true+2pt+red);
 
 // -------------------- limits --------------------
 
