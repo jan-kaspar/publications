@@ -94,7 +94,7 @@ fsh = -2fshu; DrawPointE(7e3, 0, 0, 69.1, 7.3, 7.3, p_inel, m_ATLAS+p_inel);
 // ATLAS - ALFA; Nucl. Phys. B889 (2014) 486–548
 fsh = +0fshu; DrawPointE(7e3, 0, 0, 95.35, 1.36, 1.36, p_tot, m_ATLAS+p_tot);
 fsh = -1fshu; DrawPointE(7e3, 0, 0, 71.34, 0.90, 0.90, p_inel, m_ATLAS+p_inel);
-fsh = -1fshu; DrawPointE(7e3, 0, 0, 24.00, 0.60, 0.60, p_el, m_ATLAS+p_el);
+fsh = +1fshu; DrawPointE(7e3, 0, 0, 24.00, 0.60, 0.60, p_el, m_ATLAS+p_el);
 
 // CMS; CMS-PAS-FWD-11-001
 fsh = +1fshu; DrawPointE(7e3, 0, 0, 68.0, 5.1, 5.1, p_inel, m_CMS+p_inel);
@@ -106,13 +106,13 @@ fsh = +1fshu; DrawPointE(7e3, 0, 0, 68.0, 5.1, 5.1, p_inel, m_CMS+p_inel);
 fsh = +2fshu; DrawPointE(7e3, 0, 0, 66.9, 5.3, 5.3, p_inel, m_LHCb+p_inel);
 
 // TOTEM; EPL 101 (2013) 21002, Table 7, unc.~added in quad.
-fsh = -2fshu; DrawPoint(7e3, 25.43, 1.07, p_el+1pt, m_TOTEM+p_el);
+fsh = +2fshu; DrawPoint(7e3, 25.43, 1.07, p_el+1pt, m_TOTEM+p_el);
 
 // TOTEM; EPL 101 (2013) 21004
 fsh = -1.1fshu; DrawPoint(7e3, 98.0, 2.5, 2.5, p_tot, m_TOTEM+p_tot);	// luminosity independent
 fsh = +1.1fshu; DrawPoint(7e3, 98.6, 2.2, 2.2, p_tot, m_TOTEM+p_tot);	// elastic only
 fsh = +0fshu; DrawPointE(7e3, 0, 0, 72.9, 1.5, 1.5, p_inel, m_TOTEM+p_inel);
-fsh = +1fshu; DrawPointE(7e3, 0, 0, 25.1, 1.1, 1.1, p_el+1pt, m_TOTEM+p_el);
+fsh = -1fshu; DrawPointE(7e3, 0, 0, 25.1, 1.1, 1.1, p_el+1pt, m_TOTEM+p_el);
 
 
 // -------------------- LHC, 8 TeV --------------------
