@@ -1,9 +1,6 @@
 import root;
 import pad_layout;
-
-//StdFonts();
-//texpreamble("\SelectNimbusCMFonts\LoadFonts\SetFontSizesIX");
-//texpreamble("\def\ung#1{\quad[{\rm#1}]}");
+import common_code;
 
 string base_dir = "pdg/";
 
@@ -98,82 +95,6 @@ void PlotRho(string f, pen col, mark m)
 }
 
 //----------------------------------------------------------------------------------------------------
-
-real rho_pp_compete_RRP_nf_L2_u(real W)
-{
-	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
-	real s = W*W;
-
-	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) - Y_2_pp * s^(-eta_2);
-
-	real si_rho = pi * B * log(s/s0) - Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) - Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
-
-	return si_rho / si;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real rho_app_compete_RRP_nf_L2_u(real W)
-{
-	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
-	real s = W*W;
-
-	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) + Y_2_pp * s^(-eta_2);
-
-	real si_rho = pi * B * log(s/s0) - Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) + Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
-
-	return si_rho / si;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real rho_pp_compete_R_qc_RL_qc(real W)
-{
-	real B = 0.7597, s0 = 119.3437, Y_1_pp = 11.907, eta_1 = 0.20193, Y_2_pp = 35.454, eta_2 = 0.55543;
-	real s = W*W;
-	real si_pp = 9*B * log(s/s0) + 9*Y_1_pp * s^(-eta_1) - Y_2_pp * s^(-eta_2);
-
-	real si_pp_rho_pp = 9 * pi * B/2  - 9 * Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) - Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
-
-	return si_pp_rho_pp / si_pp;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real rho_app_compete_R_qc_RL_qc(real W)
-{
-	real B = 0.7597, s0 = 119.3437, Y_1_pp = 11.907, eta_1 = 0.20193, Y_2_pp = 35.454, eta_2 = 0.55543;
-	real s = W*W;
-	real si_pp = 9*B * log(s/s0) + 9*Y_1_pp * s^(-eta_1) + Y_2_pp * s^(-eta_2);
-
-	real si_pp_rho_pp = 9 * pi * B/2  - 9 * Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) + Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
-
-	return si_pp_rho_pp / si_pp;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-void DrawPoint(real W, real si, real em, real ep, pen col=red, marker m, real corr=0)
-{
-	draw((Scale((W, si-em)) + (corr, 0) )--Scale((W, si))--(Scale((W, si+ep)) + (corr, 0)), col);
-	draw(Scale((W, si)), m);
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real x_corr_scale = 0.03;
-real x_corr = 0;
-
-void DrawPointUnc(real v, real u, mark m)
-{
-	real W = 8e3;
-	draw(Scale((W, v)) + (x_corr, 0), m+2pt+true+red);
-	draw(shift(x_corr) * (Scale((W, v-u))--Scale((W, v+u))), red+0.8pt);
-
-	x_corr += x_corr_scale;
-}
-
-//----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 
 real size = 13cm;
@@ -189,13 +110,13 @@ PlotRho("pp_elastic_reim.dat", blue, mTD+2pt+true);
 // TOTEM measurements
 
 // 7 TeV
-DrawPoint(7e3, 0.145, 0.091, 0.091, red+0.8pt, mCi+false+2pt+red);
+DrawPoint(7e3, 0.145, 0.091, red+0.8pt, mCi+false+2pt+red);
 
 // 8 TeV
-DrawPoint(8e3, 0.12, 0.03, 0.03, red+0.8pt, mCi+true+2pt+red);
+DrawPoint(8e3, 0.12, 0.03, red+0.8pt, mCi+true+2pt+red);
 
 // 13 TeV
-DrawPoint(13e3, 0.10, 0.01, 0.01, red+0.8pt, mCi+true+2pt+red);
+DrawPoint(13e3, 0.10, 0.01, red+0.8pt, mCi+true+2pt+red);
 
 // fits
 draw(graph(rho_app_compete_RRP_nf_L2_u, 1e1, 1e5), heavygreen);

@@ -38,16 +38,14 @@ real fshu = 0.01;
 // -------------------- fits --------------------
 
 // p-anti p
-compete_fit_sign = +1;
-draw(graph(SigmaTotFit, 10, 1e5, 100), black);
-draw(graph(SigmaInelFit, 10, 1e5, 100), dashdotted);
+draw(graph(si_tot_app_compete_RRP_nf_L2_u, 10, 1e5, 100), black);
+draw(graph(si_inel_app_fit_diff, 10, 1e5, 100), dashdotted);
 
 // pp
-compete_fit_sign = -1;
-draw(graph(SigmaTotFit, 10, 1e5, 100), black);
-draw(graph(SigmaInelFit, 10, 1e5, 100), dashdotted);
+draw(graph(si_tot_pp_compete_RRP_nf_L2_u, 10, 1e5, 100), black);
+draw(graph(si_inel_pp_fit_diff, 10, 1e5, 100), dashdotted);
 
-draw(graph(SigmaElFit, 10, 1e5, 100), linetype(new real[] {8,7}, offset=0));
+draw(graph(si_el_fit_TOTEM, 10, 1e5, 100), linetype(new real[] {8,7}, offset=0));
 
 // -------------------- PDG --------------------
 

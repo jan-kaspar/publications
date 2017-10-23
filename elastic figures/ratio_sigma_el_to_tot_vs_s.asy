@@ -15,12 +15,10 @@ scale(Log, Linear);
 // -------------------- fits --------------------
 
 // p-anti p
-compete_fit_sign = +1;
-draw(graph(RatioSigmaElToTotFit, 10, 1e5, 100), linetype(new real[] {8, 8}, offset=8));
+draw(graph(si_el_to_tot_app_fit_ratio, 10, 1e5, 100), linetype(new real[] {8, 8}, offset=8));
 
 // p-p
-compete_fit_sign = -1;
-draw(graph(RatioSigmaElToTotFit, 10, 1e5, 100), linetype(new real[] {8, 8}, offset=7));
+draw(graph(si_el_to_tot_pp_fit_ratio, 10, 1e5, 100), linetype(new real[] {8, 8}, offset=7));
 
 // -------------------- PDG --------------------
 DrawElToTotDataSet("pdg/pbarp_total.dat", "pdg/pbarp_elastic.dat", heavygreen+0.2pt, mTU+2pt+false+heavygreen);

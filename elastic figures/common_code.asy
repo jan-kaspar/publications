@@ -169,59 +169,6 @@ int DrawElToTotDataSet(string fileT, string fileE, pen col, mark m)
 }
 
 //----------------------------------------------------------------------------------------------------
-// code to plot cross-section fits
-//----------------------------------------------------------------------------------------------------
-
-// +1 for p-anti p
-// -1 for p-p
-real compete_fit_sign = 0;
-
-real SigmaTotFit(real W)
-{
-	real s0 = 29.1, s1 = 1;
-	real Z = 35.5, B = 0.307, Y1 = 42.6, Y2 = compete_fit_sign*33.4;
-	real et1 = 0.46, et2 = 0.545;
-
-	real s = W^2;
-	return Z + B * log(s/s0)^2 + Y1*(s1/s)^et1 + Y2*(s1/s)^et2;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real SigmaElFit(real W)
-{
-	real s = W*W;
-	real xi = log(s);
-
-	/*
-	fit including
-		* PDG points with sqrt(s) > 10 GeV
-		* TOTEM measurements
-  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
-   1  p0           1.18407e+01   2.58281e-01   1.00963e-04  -7.31567e-07
-   2  p1          -1.61727e+00   6.58012e-02   1.52574e-05  -4.09819e-06
-   3  p2           1.35940e-01   4.07407e-03   2.04687e-06  -2.18175e-05
-	*/
-
-
-	return 11.84 - 1.617 *xi + 0.1359 *xi*xi;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real SigmaInelFit(real W)
-{
-	return SigmaTotFit(W) - SigmaElFit(W);
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real RatioSigmaElToTotFit(real W)
-{
-	return SigmaElFit(W) / SigmaTotFit(W) * 100.;
-}
-
-//----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 
 // fine shift
@@ -243,19 +190,6 @@ void DrawPoint(real W, real si, real em, real ep=em, pen col=red, marker m, stri
 
 //----------------------------------------------------------------------------------------------------
 
-/*
-void DrawPointRel(real W, real si, real re, pen col=red, marker m)
-{
-	draw(shift(fsh, 0)*(Scale((W, si*(1-re/100)))--Scale((W, si*(1+re/100)))), col);
-	draw(shift(fsh, 0)*Scale((W, si)), m);
-
-	// reset fine shift
-	fsh = 0;
-}
-*/
-
-//----------------------------------------------------------------------------------------------------
-
 void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red, marker m, string label="")
 {
 	col += squarecap;
@@ -271,3 +205,131 @@ void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red
 	fsh = 0;
 }
 
+
+//----------------------------------------------------------------------------------------------------
+// cross-section and rho fits
+//----------------------------------------------------------------------------------------------------
+
+real si_tot_pp_compete_RRP_nf_L2_u(real W)
+{
+	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
+	real s = W*W;
+
+	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) - Y_2_pp * s^(-eta_2);
+
+	return si;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real si_tot_app_compete_RRP_nf_L2_u(real W)
+{
+	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
+	real s = W*W;
+
+	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) + Y_2_pp * s^(-eta_2);
+
+	return si;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real rho_pp_compete_RRP_nf_L2_u(real W)
+{
+	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
+	real s = W*W;
+
+	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) - Y_2_pp * s^(-eta_2);
+
+	real si_rho = pi * B * log(s/s0) - Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) - Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
+
+	return si_rho / si;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real rho_app_compete_RRP_nf_L2_u(real W)
+{
+	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
+	real s = W*W;
+
+	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) + Y_2_pp * s^(-eta_2);
+
+	real si_rho = pi * B * log(s/s0) - Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) + Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
+
+	return si_rho / si;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real rho_pp_compete_R_qc_RL_qc(real W)
+{
+	real B = 0.7597, s0 = 119.3437, Y_1_pp = 11.907, eta_1 = 0.20193, Y_2_pp = 35.454, eta_2 = 0.55543;
+	real s = W*W;
+	real si_pp = 9*B * log(s/s0) + 9*Y_1_pp * s^(-eta_1) - Y_2_pp * s^(-eta_2);
+
+	real si_pp_rho_pp = 9 * pi * B/2  - 9 * Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) - Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
+
+	return si_pp_rho_pp / si_pp;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real rho_app_compete_R_qc_RL_qc(real W)
+{
+	real B = 0.7597, s0 = 119.3437, Y_1_pp = 11.907, eta_1 = 0.20193, Y_2_pp = 35.454, eta_2 = 0.55543;
+	real s = W*W;
+	real si_pp = 9*B * log(s/s0) + 9*Y_1_pp * s^(-eta_1) + Y_2_pp * s^(-eta_2);
+
+	real si_pp_rho_pp = 9 * pi * B/2  - 9 * Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) + Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
+
+	return si_pp_rho_pp / si_pp;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real si_el_fit_TOTEM(real W)
+{
+	real s = W*W;
+	real xi = log(s);
+
+	/*
+	fit including
+		* PDG points with sqrt(s) > 10 GeV
+		* TOTEM measurements
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  p0           1.18407e+01   2.58281e-01   1.00963e-04  -7.31567e-07
+   2  p1          -1.61727e+00   6.58012e-02   1.52574e-05  -4.09819e-06
+   3  p2           1.35940e-01   4.07407e-03   2.04687e-06  -2.18175e-05
+	*/
+
+	return 11.84 - 1.617 *xi + 0.1359 *xi*xi;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real si_inel_pp_fit_diff(real W)
+{
+	return si_tot_pp_compete_RRP_nf_L2_u(W) - si_el_fit_TOTEM(W);
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real si_inel_app_fit_diff(real W)
+{
+	return si_tot_app_compete_RRP_nf_L2_u(W) - si_el_fit_TOTEM(W);
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real si_el_to_tot_pp_fit_ratio(real W)
+{
+	return si_el_fit_TOTEM(W) / si_tot_pp_compete_RRP_nf_L2_u(W) * 100.;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real si_el_to_tot_app_fit_ratio(real W)
+{
+	return si_el_fit_TOTEM(W) / si_tot_app_compete_RRP_nf_L2_u(W) * 100.;
+}
