@@ -99,26 +99,54 @@ void PlotRho(string f, pen col, mark m)
 
 //----------------------------------------------------------------------------------------------------
 
-real Compete_RRP_nf_L2_u(real W)
+real rho_pp_compete_RRP_nf_L2_u(real W)
 {
 	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
 	real s = W*W;
-	real si_pp = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) - Y_2_pp * s^(-eta_2);
 
-	real si_pp_rho_pp = pi * B * log(s/s0) - Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) - Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
+	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) - Y_2_pp * s^(-eta_2);
 
-	return si_pp_rho_pp / si_pp;
+	real si_rho = pi * B * log(s/s0) - Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) - Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
+
+	return si_rho / si;
 }
 
 //----------------------------------------------------------------------------------------------------
 
-real Compete_R_qc_RL_qc(real W)
+real rho_app_compete_RRP_nf_L2_u(real W)
+{
+	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
+	real s = W*W;
+
+	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) + Y_2_pp * s^(-eta_2);
+
+	real si_rho = pi * B * log(s/s0) - Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) + Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
+
+	return si_rho / si;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real rho_pp_compete_R_qc_RL_qc(real W)
 {
 	real B = 0.7597, s0 = 119.3437, Y_1_pp = 11.907, eta_1 = 0.20193, Y_2_pp = 35.454, eta_2 = 0.55543;
 	real s = W*W;
 	real si_pp = 9*B * log(s/s0) + 9*Y_1_pp * s^(-eta_1) - Y_2_pp * s^(-eta_2);
 
 	real si_pp_rho_pp = 9 * pi * B/2  - 9 * Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) - Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
+
+	return si_pp_rho_pp / si_pp;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+real rho_app_compete_R_qc_RL_qc(real W)
+{
+	real B = 0.7597, s0 = 119.3437, Y_1_pp = 11.907, eta_1 = 0.20193, Y_2_pp = 35.454, eta_2 = 0.55543;
+	real s = W*W;
+	real si_pp = 9*B * log(s/s0) + 9*Y_1_pp * s^(-eta_1) + Y_2_pp * s^(-eta_2);
+
+	real si_pp_rho_pp = 9 * pi * B/2  - 9 * Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) + Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
 
 	return si_pp_rho_pp / si_pp;
 }
@@ -148,32 +176,46 @@ void DrawPointUnc(real v, real u, mark m)
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$\sqrt s\ung{GeV}$", "$\rh$", yTicks=RightTicks(0.05, 0.01));
+real size = 13cm;
+NewPad("$\sqrt s\ung{GeV}$", "$\rh$", size, size*2/3);
+currentpad.yTicks=RightTicks(0.05, 0.01);
 scale(Log, Linear);
 
 // PDG data
 PlotRho("pbarp_elastic_reim.dat", heavygreen, mTU+2pt+false);
 PlotRho("pp_elastic_reim.dat", blue, mTD+2pt+true);
 
-// TOTEM, 7 TeV
-DrawPoint(7e3, 0.145, 0.091, 0.091, red+0.8pt, mCi+false+2pt+red);
+AddToLegend("<PDG:");
+AddToLegend("$\rm \bar pp$", mTU+false+3pt+heavygreen);
+AddToLegend("$\rm pp$", mTD+true+3pt+blue);
 
-// TOTEM, 8 TeV
+// TOTEM measurements
+AddToLegend("<TOTEM:");
+
+// 7 TeV
+DrawPoint(7e3, 0.145, 0.091, 0.091, red+0.8pt, mCi+false+2pt+red);
+AddToLegend("$\sqrt s = 7\un{TeV}$", mCi+false+3pt+red);
+
+// 8 TeV
 DrawPoint(8e3, 0.12, 0.03, 0.03, red+0.8pt, mCi+true+2pt+red);
+AddToLegend("$\sqrt s = 8\un{TeV}$", mCi+true+3pt+red);
+
+// 13 TeV
+DrawPoint(13e3, 0.10, 0.01, 0.01, red+0.8pt, mCi+true+2pt+red);
+AddToLegend("$\sqrt s = 13\un{TeV}$", mCi+true+3pt+red);
 
 // fits
-draw(graph(Compete_RRP_nf_L2_u, 1e1, 2e4), black);
-//draw(graph(Compete_R_qc_RL_qc, 1e1, 1e4), red);
+AddToLegend("<COMPETE model $\rm RRP_{nf}L2_{u}$ (highest rank):");
+draw(graph(rho_app_compete_RRP_nf_L2_u, 1e1, 2e4), heavygreen, "$\rm\bar pp$");
+draw(graph(rho_pp_compete_RRP_nf_L2_u, 1e1, 2e4), blue, "$\rm pp$");
 
-// legend
-AddToLegend("$\rm pp$ (PDG)", blue, mTD+true+2pt+blue);
-AddToLegend("$\raise1.2mm\hbox to0pt{\hskip-0.3pt--\hss}\rm pp$ (PDG)", heavygreen, mTU+false+2pt+heavygreen);
-AddToLegend("COMPETE preferred model ($\rm pp$)", black);
-AddToLegend("TOTEM indirect at $\sqrt s = 7\un{TeV}$", red+0.8pt, mCi+false+2pt+red);
-AddToLegend("TOTEM, $\sqrt s = 8\un{TeV}$", red+0.8pt, mCi+true+2pt+red);
+//AddToLegend("<COMPETE model $\rm R^{qc}RL^{qc}$:");
+//draw(graph(rho_app_compete_R_qc_RL_qc, 1e1, 2e4), black, "$\rm\bar pp$");
+//draw(graph(rho_pp_compete_R_qc_RL_qc, 1e1, 2e4), red, "$\rm pp$");
+
 
 limits((1e1, -0.2), (2e4, +0.25), Crop);
 
-AttachLegend(shift(0, 10)*BuildLegend(SE), SE);
+AttachLegend(shift(0, 0)*BuildLegend(NW), NE);
 
 GShipout(margin=0.5mm, hSkip=5mm);
