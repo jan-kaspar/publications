@@ -83,7 +83,7 @@ AddToLegend("$\rm pp$, PDG", blue, mTD+false+3pt+blue);
 
 AddToLegend("TOTEM", red, mCi+true+2.5pt+red);
 AddToLegend("ATLAS-ALFA", blue, mTL+false+3pt+blue);
-AddToLegend("TOTEM $\si_{\rm el}$ fit / COMPETE $\si_{\rm tot}$ fits", dashed);
+AddToLegend("$\displaystyle\hbox{\strut $\si_{\rm el}$ fit by TOTEM}\over\hbox{\strut $\si_{\rm tot}$ fits by COMPETE ($\rm RRP_{\rm nf}L2_{\rm u}$)}$", dashed);
 
 AttachLegend(BuildLegend(lineLength=8mm, NW), NW);
 
