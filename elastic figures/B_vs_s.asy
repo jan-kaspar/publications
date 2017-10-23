@@ -158,7 +158,7 @@ label(rotate(90)*Label("\SmallerFonts$13\un{TeV}$"), Scale((13e3, y_label)), Fil
 
 // -------------------- labels --------------------
 
-AddToLegend("fit linear in $\log s$, data $\sqrt s < 2\un{TeV}$", p_fit);
+AddToLegend("fit linear in $\log s$, data $\sqrt s < 3\un{TeV}$", p_fit);
 
 AttachLegend(BuildLegend(lineLength=8mm, NW), NW);
 

@@ -171,7 +171,7 @@ AddToLegend("<{\it pre-LHC experiments:}");
 
 AddToLegend("$\rm \bar pp$", black, mTU+false+3pt+black);
 AddToLegend("$\rm pp$", black, mTD+false+3pt+black);
-AddToLegend("fit linear in $\log s$, data $\sqrt s < 2\un{TeV}$", p_fit);
+AddToLegend("fit linear in $\log s$, data $\sqrt s < 3\un{TeV}$", p_fit);
 
 
 AddToLegend("");
