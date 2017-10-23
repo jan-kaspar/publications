@@ -81,7 +81,10 @@ AddToLegend("$\rm pp$, PDG", blue, mTD+false+3pt+blue);
 
 AddToLegend("TOTEM", red, mCi+true+2.5pt+red);
 AddToLegend("ATLAS-ALFA", blue, mTL+false+3pt+blue);
-AddToLegend("$\displaystyle\hbox{\strut $\si_{\rm el}$ fit by TOTEM}\over\hbox{\strut $\si_{\rm tot}$ fits by COMPETE ($\rm RRP_{\rm nf}L2_{\rm u}$)}$", dashed);
+//AddToLegend("$\displaystyle\hbox{\strut $\si_{\rm el}$ fit by TOTEM}\over\hbox{\strut $\si_{\rm tot}$ fits by COMPETE ($\rm RRP_{\rm nf}L2_{\rm u}$)}$", dashed);
+AddToLegend("ratio of $\si_{\rm el}$ fit by TOTEM", dashed);
+AddToLegend("and $\si_{\rm tot}$ fits by COMPETE");
+AddToLegend("(pre-LHC model $\rm RRP_{\rm nf}L2_{\rm u}$)");
 
 AttachLegend(BuildLegend(lineLength=8mm, NW), NW);
 
