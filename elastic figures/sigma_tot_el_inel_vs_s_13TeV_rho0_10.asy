@@ -12,7 +12,8 @@ texpreamble("\def\ln{\mathop{\rm ln}}");
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 
-NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el}$ (green), $\si_{\rm inel}$ (blue) and  $\si_{\rm tot}$ (red) $\ung{mb}$", 15cm, 10cm);
+real size = 15cm;
+NewPad("$\sqrt s\ung{GeV}$", "$\si_{\rm el}$ (green), $\si_{\rm inel}$ (blue) and  $\si_{\rm tot}$ (red) $\ung{mb}$", size, size*2/3);
 
 scale(Log, Linear);
 
@@ -197,12 +198,14 @@ label("$\si_{\rm tot}$", (3.1, 78), p_tot, Fill(white));
 label("$\si_{\rm inel}$", (3.1, 50), p_inel, Fill(white));
 label("$\si_{\rm el}$", (3.1, 11), p_el, Fill(white));
 
+AttachLegend(2, NW, NW);
+
 // fit labels
-AddToLegend("best COMPETE $\si_{\rm tot}$ fits", black);
-AddToLegend("$11.84 - 1.617\ln s + 0.1359\ln^2 s$", dashed);
-
-//AttachLegend("$\si_{\rm tot}$ (red), $\si_{\rm inel}$ (blue) and $\si_{\rm el}$ (green)", 1, NW, NW);
-AttachLegend("", 1, NW, NW);
-
+currentpicture.legend.delete();
+AddToLegend("$\si_{\rm tot}$ fits by COMPETE", black);
+AddToLegend("(pre-LHC model $\rm RRP_{\rm nf}L2_{\rm u}$)");
+AddToLegend("$\si_{\rm el}$ fit by TOTEM", dashed);
+AddToLegend("($11.84 - 1.617\ln s + 0.1359\ln^2 s$)");
+AttachLegend(shift(0, 42.7)*BuildLegend(W), W);
 
 GShipout();
