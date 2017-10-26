@@ -116,7 +116,7 @@ DrawPoint(7e3, 0.145, 0.091, red+0.8pt, mCi+false+2pt+red);
 DrawPoint(8e3, 0.12, 0.03, red+0.8pt, mCi+true+2pt+red);
 
 // 13 TeV
-DrawPoint(13e3, 0.10, 0.01, red+0.8pt, mCi+true+2pt+red);
+DrawPoint(13e3, 0.0976, 0.01, red+0.8pt, mCi+true+2pt+red);
 
 // fits
 DrawCompeteUncBand("g_band_up_rho_p_ap", "g_band_dw_rho_p_ap", heavygreen+opacity(0.1));
