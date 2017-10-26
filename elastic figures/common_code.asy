@@ -213,6 +213,9 @@ void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red
 RootObject obj_compete_si_tot_pp = RootGetObject("compete/distributions.root", "Model_RRPL2u_21/g_si_p_p");
 RootObject obj_compete_si_tot_app = RootGetObject("compete/distributions.root", "Model_RRPL2u_21/g_si_p_ap");
 
+RootObject obj_compete_rho_pp = RootGetObject("compete/distributions.root", "Model_RRPL2u_21/g_rho_p_p");
+RootObject obj_compete_rho_app = RootGetObject("compete/distributions.root", "Model_RRPL2u_21/g_rho_p_ap");
+
 real si_tot_app_compete(real W)
 {
 	return obj_compete_si_tot_app.rExec("Eval", W);

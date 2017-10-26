@@ -119,8 +119,10 @@ DrawPoint(8e3, 0.12, 0.03, red+0.8pt, mCi+true+2pt+red);
 DrawPoint(13e3, 0.10, 0.01, red+0.8pt, mCi+true+2pt+red);
 
 // fits
-draw(graph(rho_app_compete_RRP_nf_L2_u, 1e1, 1e5), heavygreen);
-draw(graph(rho_pp_compete_RRP_nf_L2_u, 1e1, 1e5), blue);
+DrawCompeteUncBand("g_band_up_rho_p_ap", "g_band_dw_rho_p_ap", heavygreen+opacity(0.1));
+draw(obj_compete_rho_app, heavygreen);
+DrawCompeteUncBand("g_band_up_rho_p_p", "g_band_dw_rho_p_p", blue+opacity(0.1));
+draw(obj_compete_rho_pp, blue);
 
 //AddToLegend("<COMPETE model $\rm R^{qc}RL^{qc}$:");
 //draw(graph(rho_app_compete_R_qc_RL_qc, 1e1, 2e4), black, "$\rm\bar pp$");
