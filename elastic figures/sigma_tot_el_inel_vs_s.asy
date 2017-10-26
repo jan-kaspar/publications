@@ -38,11 +38,13 @@ real fshu = 0.01;
 // -------------------- fits --------------------
 
 // p-anti p
-draw(graph(si_tot_app_compete_RRP_nf_L2_u, 10, 1e5, 100), black);
+DrawCompeteUncBand("g_band_up_si_p_ap", "g_band_dw_si_p_ap", black+opacity(0.1));
+draw(graph(si_tot_app_compete, 10, 1e5, 100), black);
 draw(graph(si_inel_app_fit_diff, 10, 1e5, 100), dashdotted);
 
 // pp
-draw(graph(si_tot_pp_compete_RRP_nf_L2_u, 10, 1e5, 100), black);
+DrawCompeteUncBand("g_band_up_si_p_p", "g_band_dw_si_p_p", black+opacity(0.1));
+draw(graph(si_tot_pp_compete, 10, 1e5, 100), black);
 draw(graph(si_inel_pp_fit_diff, 10, 1e5, 100), dashdotted);
 
 draw(graph(si_el_fit_TOTEM, 10, 1e5, 100), linetype(new real[] {8,7}, offset=0));
