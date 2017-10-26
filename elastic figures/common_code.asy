@@ -210,80 +210,19 @@ void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red
 // cross-section and rho fits
 //----------------------------------------------------------------------------------------------------
 
-real si_tot_pp_compete_RRP_nf_L2_u(real W)
+RootObject obj_compete_si_tot_pp = RootGetObject("compete/distributions.root", "Model_RRPL2u_21/g_si_p_p");
+RootObject obj_compete_si_tot_app = RootGetObject("compete/distributions.root", "Model_RRPL2u_21/g_si_p_ap");
+
+real si_tot_app_compete(real W)
 {
-	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
-	real s = W*W;
-
-	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) - Y_2_pp * s^(-eta_2);
-
-	return si;
+	return obj_compete_si_tot_app.rExec("Eval", W);
 }
 
 //----------------------------------------------------------------------------------------------------
 
-real si_tot_app_compete_RRP_nf_L2_u(real W)
+real si_tot_pp_compete(real W)
 {
-	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
-	real s = W*W;
-
-	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) + Y_2_pp * s^(-eta_2);
-
-	return si;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real rho_pp_compete_RRP_nf_L2_u(real W)
-{
-	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
-	real s = W*W;
-
-	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) - Y_2_pp * s^(-eta_2);
-
-	real si_rho = pi * B * log(s/s0) - Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) - Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
-
-	return si_rho / si;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real rho_app_compete_RRP_nf_L2_u(real W)
-{
-	real Z_pp = 35.497, B = 0.30763, s0 = 29.204, Y_1_pp = 42.593, eta_1 = 0.4600, Y_2_pp = 33.363, eta_2 = 0.5454;
-	real s = W*W;
-
-	real si = Z_pp + B * log(s/s0)^2 + Y_1_pp * s^(-eta_1) + Y_2_pp * s^(-eta_2);
-
-	real si_rho = pi * B * log(s/s0) - Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) + Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
-
-	return si_rho / si;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real rho_pp_compete_R_qc_RL_qc(real W)
-{
-	real B = 0.7597, s0 = 119.3437, Y_1_pp = 11.907, eta_1 = 0.20193, Y_2_pp = 35.454, eta_2 = 0.55543;
-	real s = W*W;
-	real si_pp = 9*B * log(s/s0) + 9*Y_1_pp * s^(-eta_1) - Y_2_pp * s^(-eta_2);
-
-	real si_pp_rho_pp = 9 * pi * B/2  - 9 * Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) - Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
-
-	return si_pp_rho_pp / si_pp;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real rho_app_compete_R_qc_RL_qc(real W)
-{
-	real B = 0.7597, s0 = 119.3437, Y_1_pp = 11.907, eta_1 = 0.20193, Y_2_pp = 35.454, eta_2 = 0.55543;
-	real s = W*W;
-	real si_pp = 9*B * log(s/s0) + 9*Y_1_pp * s^(-eta_1) + Y_2_pp * s^(-eta_2);
-
-	real si_pp_rho_pp = 9 * pi * B/2  - 9 * Y_1_pp * s^(-eta_1) / tan (pi * (1. - eta_1) / 2.) + Y_2_pp * s^(-eta_2) * tan (pi * (1. - eta_2) / 2.);
-
-	return si_pp_rho_pp / si_pp;
+	return obj_compete_si_tot_pp.rExec("Eval", W);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -310,26 +249,49 @@ real si_el_fit_TOTEM(real W)
 
 real si_inel_pp_fit_diff(real W)
 {
-	return si_tot_pp_compete_RRP_nf_L2_u(W) - si_el_fit_TOTEM(W);
+	return si_tot_pp_compete(W) - si_el_fit_TOTEM(W);
 }
 
 //----------------------------------------------------------------------------------------------------
 
 real si_inel_app_fit_diff(real W)
 {
-	return si_tot_app_compete_RRP_nf_L2_u(W) - si_el_fit_TOTEM(W);
+	return si_tot_app_compete(W) - si_el_fit_TOTEM(W);
 }
 
 //----------------------------------------------------------------------------------------------------
 
 real si_el_to_tot_pp_fit_ratio(real W)
 {
-	return si_el_fit_TOTEM(W) / si_tot_pp_compete_RRP_nf_L2_u(W) * 100.;
+	return si_el_fit_TOTEM(W) / si_tot_pp_compete(W) * 100.;
 }
 
 //----------------------------------------------------------------------------------------------------
 
 real si_el_to_tot_app_fit_ratio(real W)
 {
-	return si_el_fit_TOTEM(W) / si_tot_app_compete_RRP_nf_L2_u(W) * 100.;
+	return si_el_fit_TOTEM(W) / si_tot_app_compete(W) * 100.;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+void DrawCompeteUncBand(string bup, string bdw, pen p)
+{
+	RootObject obj_up = RootGetObject("compete/uncertainty_RRPL2u_21.root", bup);
+	RootObject obj_dw = RootGetObject("compete/uncertainty_RRPL2u_21.root", bdw);
+
+	guide g_up, g_dw;
+	for (int i = 0; i < obj_up.iExec("GetN"); ++i)
+	{
+		real ax[] = {0.};
+		real ay[] = {0.};
+		obj_up.vExec("GetPoint", i, ax, ay);
+		g_up = g_up -- Scale((ax[0], ay[0]));
+
+		obj_dw.vExec("GetPoint", i, ax, ay);
+		g_dw = g_dw -- Scale((ax[0], ay[0]));
+	}
+
+	guide g = g_up -- reverse(g_dw) -- cycle;
+	filldraw(g, p, nullpen);
 }
