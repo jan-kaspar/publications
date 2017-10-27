@@ -2,6 +2,13 @@
 #include "TGraphErrors.h"
 #include "TF1.h"
 #include "TCanvas.h"
+#include "TMinuit.h"
+#include "TMatrixDSym.h"
+#include "TMatrixDSymEigen.h"
+
+#include "TRandom2.h"
+
+#include "stat.h"
 
 //----------------------------------------------------------------------------------------------------
 
@@ -23,7 +30,7 @@ int main()
 	g = new TGraphErrors();
 	g->SetName("g_si_el_vs_s");
 
-	// PDG points
+	// input
 	AddPoint(1.154E+01, 7.3, 0.47);
 	AddPoint(1.154E+01, 6.4, 1);
 	AddPoint(1.376E+01, 7.39, 0.36);
@@ -92,6 +99,7 @@ int main()
 
 	AddPoint(13e3, 31.535, 1.5);
 
+	// make fit
 	TF1 *ff = new TF1("ff", "[0] + [1]*log(x*x) + [2]*log(x*x)*log(x*x)");
 	ff->SetParameters(11.7, -1.59, 0.134);
 	ff->SetRange(1E1, 1E5);
@@ -100,9 +108,79 @@ int main()
 	g->Write();
 	ff->Write();
 
-	TCanvas *c = new TCanvas();
-	c->SetLogx(1);
-	g->Draw("ap");
+	double cov_mat_data[3*3];
+	gMinuit->mnemat(&cov_mat_data[0], 3);
+	TMatrixDSym cov_mat(3);
+	cov_mat.SetMatrixArray(cov_mat_data);
+
+	// build generator matrix
+	TMatrixDSymEigen eig_decomp(cov_mat);
+	TVectorD eig_values(eig_decomp.GetEigenValues());
+	TMatrixDSym S(3);
+	for (unsigned int i = 0; i < 3; i++)
+		S(i, i) = (eig_values(i) >= 0.) ? sqrt(eig_values(i)) : 0.;
+	auto gen_mat = eig_decomp.GetEigenVectors() * S;
+
+	// define grid of s values
+	vector<double> values_W;
+	// TODO: use 1.05
+	for (double sqrt_s = 1E1; sqrt_s < 2E5; sqrt_s *= 1.15)
+		values_W.push_back(sqrt_s);
+
+	// evaluate uncertainty
+	gRandom = new TRandom2();
+	gRandom->SetSeed(1);
+
+	vector<Stat> stat(values_W.size(), Stat(1));
+
+	for (unsigned int ci = 0; ci < 10000; ci++)
+	{
+		// generate model parameter errors
+		TVectorD de(3);
+		for (unsigned int i = 0; i < 3; i++)
+			de(i) = gRandom->Gaus();
+		TVectorD de_P = gen_mat * de;
+
+		// get model with biased parameters;
+		TF1 *ff_bias = new TF1(*ff);
+		for (unsigned int pi = 0; pi < 3; pi++)
+			ff_bias->SetParameter(pi, ff_bias->GetParameter(pi) + de_P(pi));
+
+		for (unsigned int si = 0; si < values_W.size(); si++)
+		{
+			const double W = values_W[si];
+			stat[si].Fill(ff_bias->Eval(W) - ff->Eval(W));
+		}
+
+		delete ff_bias;
+	}
+
+	// build graphs
+	TGraph *g_mean = new TGraph();
+	TGraph *g_stddev = new TGraph();
+	TGraph *g_band_up = new TGraph();
+	TGraph *g_band_dw = new TGraph();
+
+	for (unsigned int si = 0; si < values_W.size(); si++)
+	{
+		const double W = values_W[si];
+
+		const double cen = ff->Eval(W);
+
+		int idx = g_mean->GetN();
+
+		g_mean->SetPoint(idx, W, stat[si].GetMean(0));
+		g_stddev->SetPoint(idx, W, stat[si].GetStdDev(0));
+		g_band_up->SetPoint(idx, W, cen + stat[si].GetMean(0) + stat[si].GetStdDev(0));
+		g_band_dw->SetPoint(idx, W, cen + stat[si].GetMean(0) - stat[si].GetStdDev(0));
+	}
+
+	g_mean->Write("g_mean");
+	g_stddev->Write("g_stddev");
+	g_band_up->Write("g_band_up");
+	g_band_dw->Write("g_band_dw");
+
+	delete f_out;
 
 	return 0;
 }
