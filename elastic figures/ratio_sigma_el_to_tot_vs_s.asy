@@ -15,10 +15,12 @@ scale(Log, Linear);
 // -------------------- fits --------------------
 
 // p-anti p
-draw(graph(si_el_to_tot_app_fit_ratio, 10, 1e5, 100), linetype(new real[] {8, 8}, offset=8));
+DrawFitUncBand(yscale(100), "rat_si_el_tot_p_ap", black+opacity(0.1));
+DrawFit(yscale(100), "rat_si_el_tot_p_ap", linetype(new real[] {8, 8}, offset=8));
 
 // p-p
-draw(graph(si_el_to_tot_pp_fit_ratio, 10, 1e5, 100), linetype(new real[] {8, 8}, offset=7));
+DrawFitUncBand(yscale(100), "rat_si_el_tot_p_p", black+opacity(0.1));
+DrawFit(yscale(100), "rat_si_el_tot_p_p", linetype(new real[] {8, 8}, offset=7));
 
 // -------------------- PDG --------------------
 DrawElToTotDataSet("pdg/pbarp_total.dat", "pdg/pbarp_elastic.dat", heavygreen+0.2pt, mTU+2pt+false+heavygreen);

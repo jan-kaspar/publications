@@ -205,83 +205,26 @@ void DrawPointE(real W, real Wm, real Wp, real si, real em, real ep, pen col=red
 	fsh = 0;
 }
 
-
 //----------------------------------------------------------------------------------------------------
 // cross-section and rho fits
 //----------------------------------------------------------------------------------------------------
 
-RootObject obj_compete_si_tot_pp = RootGetObject("compete/distributions.root", "Model_RRPL2u_21/g_si_p_p");
-RootObject obj_compete_si_tot_app = RootGetObject("compete/distributions.root", "Model_RRPL2u_21/g_si_p_ap");
+string fit_file = "build_uncertainty_bands.root";
 
-RootObject obj_compete_rho_pp = RootGetObject("compete/distributions.root", "Model_RRPL2u_21/g_rho_p_p");
-RootObject obj_compete_rho_app = RootGetObject("compete/distributions.root", "Model_RRPL2u_21/g_rho_p_ap");
+//----------------------------------------------------------------------------------------------------
 
-real si_tot_app_compete(real W)
+void DrawFit(transform t=identity(), string dir, pen p)
 {
-	return obj_compete_si_tot_app.rExec("Eval", W);
+	RootObject obj = RootGetObject(fit_file, dir + "/g_cen_val");
+	draw(t, obj, p);
 }
 
 //----------------------------------------------------------------------------------------------------
 
-real si_tot_pp_compete(real W)
+void DrawFitUncBand(transform t=identity(), string dir, pen p)
 {
-	return obj_compete_si_tot_pp.rExec("Eval", W);
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real si_el_fit_TOTEM(real W)
-{
-	real s = W*W;
-	real xi = log(s);
-
-	/*
-	fit including
-		* PDG points with sqrt(s) > 10 GeV
-		* TOTEM measurements
-  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
-   1  p0           1.18407e+01   2.58281e-01   1.00963e-04  -7.31567e-07
-   2  p1          -1.61727e+00   6.58012e-02   1.52574e-05  -4.09819e-06
-   3  p2           1.35940e-01   4.07407e-03   2.04687e-06  -2.18175e-05
-	*/
-
-	return 11.84 - 1.617 *xi + 0.1359 *xi*xi;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real si_inel_pp_fit_diff(real W)
-{
-	return si_tot_pp_compete(W) - si_el_fit_TOTEM(W);
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real si_inel_app_fit_diff(real W)
-{
-	return si_tot_app_compete(W) - si_el_fit_TOTEM(W);
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real si_el_to_tot_pp_fit_ratio(real W)
-{
-	return si_el_fit_TOTEM(W) / si_tot_pp_compete(W) * 100.;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-real si_el_to_tot_app_fit_ratio(real W)
-{
-	return si_el_fit_TOTEM(W) / si_tot_app_compete(W) * 100.;
-}
-
-//----------------------------------------------------------------------------------------------------
-
-void DrawCompeteUncBand(string bup, string bdw, pen p)
-{
-	RootObject obj_up = RootGetObject("compete/uncertainty_RRPL2u_21.root", bup);
-	RootObject obj_dw = RootGetObject("compete/uncertainty_RRPL2u_21.root", bdw);
+	RootObject obj_up = RootGetObject(fit_file, dir + "/g_band_up");
+	RootObject obj_dw = RootGetObject(fit_file, dir + "/g_band_dw");
 
 	guide g_up, g_dw;
 	for (int i = 0; i < obj_up.iExec("GetN"); ++i)
@@ -296,5 +239,5 @@ void DrawCompeteUncBand(string bup, string bdw, pen p)
 	}
 
 	guide g = g_up -- reverse(g_dw) -- cycle;
-	filldraw(g, p, nullpen);
+	filldraw(t*g, p, nullpen);
 }

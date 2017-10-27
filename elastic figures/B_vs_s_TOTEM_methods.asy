@@ -1,20 +1,8 @@
 import root;
 import pad_layout;
+import common_code;
 
 drawGridDef = false;
-
-//----------------------------------------------------------------------------------------------------
-
-void DrawPoint(real W, real B, real em, real ep, pen col=red, marker m, real corr=0)
-{
-	col += squarecap;
-
-	draw( shift(corr, 0) * ( Scale((W, B-em))--Scale((W, B))--Scale((W, B+ep)) ), col);
-	draw( shift(corr, 0) * Scale((W, B)), m);
-
-	real e = (ep + em) / 2.;
-	//write(format("	AddPoint(%#6.1f, ", W) + format("%#5.2f, ", B) + format("%#4.2f);", e));
-}
 
 //----------------------------------------------------------------------------------------------------
 // B as a function of sqrt(s)
@@ -28,7 +16,8 @@ scale(Log, Linear);
 TF1_x_min = 10;
 TF1_x_max = 1e5;
 pen p_fit = linetype(new real[] {8,8}, offset=7);	// tuned dashed
-draw(RootGetObject("B_vs_s.root", "B_vs_s|ff"), p_fit);
+DrawFitUncBand("B", black+opacity(0.2));
+DrawFit("B", p_fit);
 
 // ISR (CERN–Rome Collaboration), pp
 //DrawPoint(31.0, 13.0, 0.7, 0.7, black+0.6pt, mTD+false+1.5pt+black);	// Phys. Lett. B36 (1971) 504
@@ -64,24 +53,24 @@ DrawPoint(52.8, 13.09, 0.58, 0.58, black+0.6pt, mTD+false+1.5pt+black);	// Phys.
 DrawPoint(52.8, 13.92, 0.59, 0.59, black+0.6pt, mTU+false+1.5pt+black);	// Phys. Lett. B115 (1982) 495
 
 // UA1, app
-DrawPoint(540, 13.3, 1.5, 1.5, black+0.6pt, mTU+false+1.5pt+black, -0.01);	// Phys. Lett. B 147 (1984) 385-391
+fsh = -0.01; DrawPoint(540, 13.3, 1.5, 1.5, black+0.6pt, mTU+false+1.5pt+black);	// Phys. Lett. B 147 (1984) 385-391
 
 // UA4, app
-DrawPoint(540, 13.7, 0.3, 0.3, black+0.6pt, mTU+false+1.5pt+black, +0.01);	// Phys. Lett. B127 (1983) 472
-DrawPoint(546, 15.5, 0.8, 0.8, black+0.6pt, mTU+false+1.5pt+black, -0.01); // Phys. Lett. B 198 (1987) 583-589
+fsh = +0.01; DrawPoint(540, 13.7, 0.3, 0.3, black+0.6pt, mTU+false+1.5pt+black);	// Phys. Lett. B127 (1983) 472
+fsh = -0.01; DrawPoint(546, 15.5, 0.8, 0.8, black+0.6pt, mTU+false+1.5pt+black); // Phys. Lett. B 198 (1987) 583-589
 
 // UA4/2, app
-DrawPoint(541, 15.52, 0.07, 0.07, black+0.6pt, mTU+false+1.5pt+black, +0.02);	// Phys.Lett. B316 (1993) 448-454
+fsh = +0.02; DrawPoint(541, 15.52, 0.07, 0.07, black+0.6pt, mTU+false+1.5pt+black);	// Phys.Lett. B316 (1993) 448-454
 
 // CDF, app
-DrawPoint(546, 15.35, 0.19, 0.19, black+0.6pt, mTU+false+1.5pt+black, +0.01);	// Phys. Rev. D 50 (1994) 5518–5534 
-DrawPoint(1800, 16.98, 0.25, 0.25, black+0.6pt, mTU+false+1.5pt+black,-0.01);	// Phys. Rev. D 50 (1994) 5518–5534
+fsh = +0.01; DrawPoint(546, 15.35, 0.19, 0.19, black+0.6pt, mTU+false+1.5pt+black);	// Phys. Rev. D 50 (1994) 5518–5534 
+fsh = -0.01; DrawPoint(1800, 16.98, 0.25, 0.25, black+0.6pt, mTU+false+1.5pt+black);	// Phys. Rev. D 50 (1994) 5518–5534
 
 // E710, app
 //DrawPoint(1800, 17.2, 1.3, 1.3, black+0.6pt, mTU+false+1.5pt+black);	// 1988
 //DrawPoint(1800, 16.3, 0.5, 0.5, black+0.6pt, mTU+false+1.5pt+black);	// 1988
 //DrawPoint(1800, 16.3, 0.3, 0.3, black+0.6pt, mTU+false+1.5pt+black);	// Phys. Lett. B 247 (1990) 127-130
-DrawPoint(1800, 16.99, 0.47, 0.47, black+0.6pt, mTU+false+1.5pt+black, +0.01);	// Phys. Rev. Lett. 68 (1992) 2433
+fsh = +0.01; DrawPoint(1800, 16.99, 0.47, 0.47, black+0.6pt, mTU+false+1.5pt+black);	// Phys. Rev. Lett. 68 (1992) 2433
 DrawPoint(1020, 16.2, 1.0, 1.0, black+0.6pt, mTU+false+1.5pt+black);	// Nuovo Cimento A 106 (1992) 123-129
 
 // E811, app
@@ -124,10 +113,10 @@ DrawPoint(7e3, 19.9, 0.3, 0.3, p_exp1, m_coul_ign + r_full + p_exp1);
 DrawPoint(8e3, 19.9, 0.3, 0.3, p_exp1, m_coul_ign + r_full + p_exp1);
 
 // TOTEM, Nucl. Phys. B 899 (2015) 527-546
-DrawPoint(8e3, 20.14, 0.15, 0.15, p_exp3, m_coul_ign + r_full + p_exp3, +0.01);
+fsh = +0.01; DrawPoint(8e3, 20.14, 0.15, 0.15, p_exp3, m_coul_ign + r_full + p_exp3);
 
 // TOTEM, Eur. Phys. J. C76 (2016) 661, const. phase
-DrawPoint(8e3, 20.47, 0.14, 0.14, p_exp3, m_coul_sub + r_full + p_exp3, -0.01);
+fsh = -0.01; DrawPoint(8e3, 20.47, 0.14, 0.14, p_exp3, m_coul_sub + r_full + p_exp3);
 
 
 
@@ -137,8 +126,8 @@ DrawPoint(8e3, 20.47, 0.14, 0.14, p_exp3, m_coul_sub + r_full + p_exp3, -0.01);
 DrawPoint(13e3, 20.35, 0.3, 0.3, p_exp1, m_coul_ign + r_full + p_exp1);
 
 // TOTEM, 2.5km optics, preliminary, not yet published
-DrawPoint(13e3, 20.77, 0.06, 0.06, p_exp1, m_coul_sub + r_low + p_exp1, +0.01);
-DrawPoint(13e3, 21.25, 0.13, 0.13, p_exp3, m_coul_sub + r_full + p_exp3, -0.01);
+fsh = +0.01; DrawPoint(13e3, 20.77, 0.06, 0.06, p_exp1, m_coul_sub + r_low + p_exp1);
+fsh = -0.01; DrawPoint(13e3, 21.25, 0.13, 0.13, p_exp3, m_coul_sub + r_full + p_exp3);
 
 
 

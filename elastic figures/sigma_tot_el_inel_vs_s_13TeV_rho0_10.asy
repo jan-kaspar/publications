@@ -38,17 +38,20 @@ real fshu = 0.01;
 // -------------------- fits --------------------
 
 // p-anti p
-DrawCompeteUncBand("g_band_up_si_p_ap", "g_band_dw_si_p_ap", black+opacity(0.1));
-draw(graph(si_tot_app_compete, 10, 1e5, 100), black);
-draw(graph(si_inel_app_fit_diff, 10, 1e5, 100), dashdotted);
+DrawFitUncBand("si_tot_p_ap", black+opacity(0.1));
+DrawFit("si_tot_p_ap", solid);
+DrawFitUncBand("si_inel_p_ap", black+opacity(0.1));
+DrawFit("si_inel_p_ap", dashdotted);
 
 // pp
-DrawCompeteUncBand("g_band_up_si_p_p", "g_band_dw_si_p_p", black+opacity(0.1));
-draw(graph(si_tot_pp_compete, 10, 1e5, 100), black);
-draw(graph(si_inel_pp_fit_diff, 10, 1e5, 100), dashdotted);
+DrawFitUncBand("si_tot_p_p", black+opacity(0.1));
+DrawFit("si_tot_p_p", solid);
+DrawFitUncBand("si_inel_p_p", black+opacity(0.1));
+DrawFit("si_inel_p_p", dashdotted);
 
-
-draw(graph(si_el_fit_TOTEM, 10, 1e5, 100), linetype(new real[] {8,7}, offset=0));
+// common
+DrawFitUncBand("si_el", black+opacity(0.2));
+DrawFit("si_el", linetype(new real[] {8,7}, offset=0));
 
 // -------------------- PDG --------------------
 

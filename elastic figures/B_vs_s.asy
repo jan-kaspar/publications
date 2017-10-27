@@ -1,20 +1,8 @@
 import root;
 import pad_layout;
+import common_code;
 
 drawGridDef = false;
-
-//----------------------------------------------------------------------------------------------------
-
-void DrawPoint(real W, real B, real em, real ep, pen col=red, marker m, real corr=0)
-{
-	col += squarecap;
-
-	draw( shift(corr, 0) * ( Scale((W, B-em))--Scale((W, B))--Scale((W, B+ep)) ), col);
-	draw( shift(corr, 0) * Scale((W, B)), m);
-
-	real e = (ep + em) / 2.;
-	//write(format("	AddPoint(%#6.1f, ", W) + format("%#5.2f, ", B) + format("%#4.2f);", e));
-}
 
 //----------------------------------------------------------------------------------------------------
 // B as a function of sqrt(s)
@@ -28,7 +16,8 @@ scale(Log, Linear);
 TF1_x_min = 10;
 TF1_x_max = 1e5;
 pen p_fit = linetype(new real[] {8,8}, offset=7);	// tuned dashed
-draw(RootGetObject("B_vs_s.root", "B_vs_s|ff"), p_fit);
+DrawFitUncBand("B", black+opacity(0.2));
+DrawFit("B", p_fit);
 
 // ISR (CERN–Rome Collaboration), pp
 //DrawPoint(31.0, 13.0, 0.7, 0.7, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B36 (1971) 504
@@ -64,24 +53,24 @@ DrawPoint(52.8, 13.09, 0.58, 0.58, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. L
 DrawPoint(52.8, 13.92, 0.59, 0.59, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Phys. Lett. B115 (1982) 495
 
 // UA1, app
-DrawPoint(540, 13.3, 1.5, 1.5, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen, -0.01);	// Phys. Lett. B 147 (1984) 385-391
+fsh = -0.01; DrawPoint(540, 13.3, 1.5, 1.5, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);		// Phys. Lett. B 147 (1984) 385-391
 
 // UA4, app
-DrawPoint(540, 13.7, 0.3, 0.3, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen, +0.01);	// Phys. Lett. B127 (1983) 472
-DrawPoint(546, 15.5, 0.8, 0.8, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen, -0.01); // Phys. Lett. B 198 (1987) 583-589
+fsh = +0.01; DrawPoint(540, 13.7, 0.3, 0.3, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);		// Phys. Lett. B127 (1983) 472
+fsh = -0.01; DrawPoint(546, 15.5, 0.8, 0.8, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen); 		// Phys. Lett. B 198 (1987) 583-589
 
 // UA4/2, app
-DrawPoint(541, 15.52, 0.07, 0.07, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen, +0.02);	// Phys.Lett. B316 (1993) 448-454
+fsh = +0.02; DrawPoint(541, 15.52, 0.07, 0.07, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Phys.Lett. B316 (1993) 448-454
 
 // CDF, app
-DrawPoint(546, 15.35, 0.19, 0.19, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen, +0.01);	// Phys. Rev. D 50 (1994) 5518–5534 
-DrawPoint(1800, 16.98, 0.25, 0.25, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen,-0.01);	// Phys. Rev. D 50 (1994) 5518–5534
+fsh = +0.01; DrawPoint(546, 15.35, 0.19, 0.19, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Phys. Rev. D 50 (1994) 5518–5534 
+fsh = -0.01; DrawPoint(1800, 16.98, 0.25, 0.25, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Phys. Rev. D 50 (1994) 5518–5534
 
 // E710, app
 //DrawPoint(1800, 17.2, 1.3, 1.3, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// 1988
 //DrawPoint(1800, 16.3, 0.5, 0.5, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// 1988
 //DrawPoint(1800, 16.3, 0.3, 0.3, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Phys. Lett. B 247 (1990) 127-130
-DrawPoint(1800, 16.99, 0.47, 0.47, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen, +0.01);	// Phys. Rev. Lett. 68 (1992) 2433
+fsh = +0.01; DrawPoint(1800, 16.99, 0.47, 0.47, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Phys. Rev. Lett. 68 (1992) 2433
 DrawPoint(1020, 16.2, 1.0, 1.0, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Nuovo Cimento A 106 (1992) 123-129
 
 // E811, app
@@ -101,7 +90,7 @@ DrawPoint(2.76e3, 17.1, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
 // -------------------- LHC, 7 TeV --------------------
 
 // ATLAS-ALFA
-DrawPoint(7e3, 19.73, 0.29, 0.29, blue+0.8pt, mTL+false+2pt+blue, +0.02);
+fsh = +0.02; DrawPoint(7e3, 19.73, 0.29, 0.29, blue+0.8pt, mTL+false+2pt+blue);
 
 // TOTEM, EPL 101 (2013) 21002, abstract
 DrawPoint(7e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
@@ -109,7 +98,7 @@ DrawPoint(7e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
 // -------------------- LHC, 8 TeV --------------------
 
 // ATLAS-ALFA
-DrawPoint(8e3, 19.74, 0.24, 0.24, blue+0.8pt, mTL+false+2pt+blue, +0.02);
+fsh = +0.02; DrawPoint(8e3, 19.74, 0.24, 0.24, blue+0.8pt, mTL+false+2pt+blue);
 
 // TOTEM, Phys. Rev. Lett. 111, 012001 (2013)
 DrawPoint(8e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
