@@ -2,6 +2,13 @@
 #include "TFile.h"
 #include "TF1.h"
 #include "TCanvas.h"
+#include "TMinuit.h"
+#include "TMatrixDSym.h"
+#include "TMatrixDSymEigen.h"
+
+#include "TRandom2.h"
+
+#include "stat.h"
 
 //----------------------------------------------------------------------------------------------------
 
@@ -18,10 +25,10 @@ void AddPoint(double W, double B, double B_e)
 
 int main()
 {
-	TFile *f_out = TFile::Open("B_vs_s.root", "recreate");
+	TFile *f_out = TFile::Open("B_vs_s_fit.root", "recreate");
 
 	g = new TGraphErrors();
-	g->SetName("B_vs_s");
+	g->SetName("g_B_vs_s");
 
 	AddPoint(  23.6, 11.80, 0.30);
 	AddPoint(  30.8, 12.30, 0.30);
@@ -61,46 +68,94 @@ int main()
 	AddPoint(8000.0, 19.90, 0.30);
 	*/
 
-	TF1 *ff = new TF1("ff", "[0] + [1]*log(x)");
+	// make fit
+	TF1 *ff = new TF1("ff", "[0] + [1]*log(x*x)");
 	ff->SetRange(2E1, 1E5);
 	g->Fit(ff, "", "");
 
 	g->Write();
 
-#if 0
-	TF1 *ff = new TF1("ff", "(1 - TMath::Erf((log(x)-[4])/[5]))/2 * ([0] + [1]*log(x))  +  (1 + TMath::Erf((log(x)-[4])/[5]))/2 * ([0]+[1]*[4] + 0*[2] + [3]*(log(x)-[4]))");
-	ff->SetRange(1E1, 1E4);
-	ff->SetParameters(8.0, 1.2, -4.0, 2.7);
+	double cov_mat_data[2*2];
+	gMinuit->mnemat(&cov_mat_data[0], 2);
+	TMatrixDSym cov_mat(2);
+	cov_mat.SetMatrixArray(cov_mat_data);
 
-	ff->FixParameter(2, 0.);
+	// build generator matrix
+	TMatrixDSymEigen eig_decomp(cov_mat);
+	TVectorD eig_values(eig_decomp.GetEigenValues());
+	TMatrixDSym S(2);
+	for (unsigned int i = 0; i < 2; i++)
+		S(i, i) = (eig_values(i) >= 0.) ? sqrt(eig_values(i)) : 0.;
+	auto gen_mat = eig_decomp.GetEigenVectors() * S;
 
-	ff->FixParameter(4, log(2760));
-	ff->FixParameter(5, 0.1);
+	// define grid of s values
+	vector<double> values_W;
+	for (double sqrt_s = 1E1; sqrt_s < 2E5; sqrt_s *= 1.05)
+		values_W.push_back(sqrt_s);
 
-	g->Fit(ff);
+	// evaluate fit
+	TGraph *g_cen_val = new TGraph();
+	for (unsigned int si = 0; si < values_W.size(); si++)
+	{
+		const double W = values_W[si];
+		const double s = W*W;
 
-	TF1 *ff_low_e = new TF1("ff_low_e", "[0] + [1]*log(x)");
-	ff_low_e->SetRange(1E1, 1E4);
-	ff_low_e->SetParameters(ff->GetParameter(0), ff->GetParameter(1));
-	ff_low_e->SetLineColor(4);
-	ff_low_e->SetLineStyle(2);
+		int idx = g_cen_val->GetN();
+		g_cen_val->SetPoint(idx, W, ff->Eval(W));
+	}
+	g_cen_val->Write("g_cen_val");
+	// evaluate uncertainty
+	gRandom = new TRandom2();
+	gRandom->SetSeed(1);
 
-	TF1 *ff_high_e = new TF1("ff_high_e", "[0] + [1]*log(x)");
-	ff_high_e->SetRange(1E1, 1E4);
-	ff_high_e->SetParameters(ff->GetParameter(0) + (ff->GetParameter(1)-ff->GetParameter(3))*ff->GetParameter(4), ff->GetParameter(3));
-	ff_high_e->SetLineColor(8);
-	ff_high_e->SetLineStyle(2);
+	vector<Stat> stat(values_W.size(), Stat(1));
 
-	TCanvas *c = new TCanvas();
-	c->SetLogx(1);
-	g->SetMarkerStyle(20);
-	g->Draw("ap");
-	//ff->Draw("same");
-	ff_low_e->Draw("same");
-	ff_high_e->Draw("same");
+	for (unsigned int ci = 0; ci < 10000; ci++)
+	{
+		// generate model parameter errors
+		TVectorD de(2);
+		for (unsigned int i = 0; i < 2; i++)
+			de(i) = gRandom->Gaus();
+		TVectorD de_P = gen_mat * de;
 
-	g->Write();
-#endif
+		// get model with biased parameters;
+		TF1 *ff_bias = new TF1(*ff);
+		for (unsigned int pi = 0; pi < 2; pi++)
+			ff_bias->SetParameter(pi, ff_bias->GetParameter(pi) + de_P(pi));
+
+		for (unsigned int si = 0; si < values_W.size(); si++)
+		{
+			const double W = values_W[si];
+			stat[si].Fill(ff_bias->Eval(W) - ff->Eval(W));
+		}
+
+		delete ff_bias;
+	}
+
+	// build graphs
+	TGraph *g_unc_mean = new TGraph();
+	TGraph *g_unc_stddev = new TGraph();
+	TGraph *g_band_up = new TGraph();
+	TGraph *g_band_dw = new TGraph();
+
+	for (unsigned int si = 0; si < values_W.size(); si++)
+	{
+		const double W = values_W[si];
+
+		const double cen = ff->Eval(W);
+
+		int idx = g_unc_mean->GetN();
+
+		g_unc_mean->SetPoint(idx, W, stat[si].GetMean(0));
+		g_unc_stddev->SetPoint(idx, W, stat[si].GetStdDev(0));
+		g_band_up->SetPoint(idx, W, cen + stat[si].GetMean(0) + stat[si].GetStdDev(0));
+		g_band_dw->SetPoint(idx, W, cen + stat[si].GetMean(0) - stat[si].GetStdDev(0));
+	}
+
+	g_unc_mean->Write("g_unc_mean");
+	g_unc_stddev->Write("g_unc_stddev");
+	g_band_up->Write("g_band_up");
+	g_band_dw->Write("g_band_dw");
 
 	delete f_out;
 
