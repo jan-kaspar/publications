@@ -123,9 +123,20 @@ int main()
 
 	// define grid of s values
 	vector<double> values_W;
-	// TODO: use 1.05
-	for (double sqrt_s = 1E1; sqrt_s < 2E5; sqrt_s *= 1.15)
+	for (double sqrt_s = 1E1; sqrt_s < 2E5; sqrt_s *= 1.05)
 		values_W.push_back(sqrt_s);
+
+	// evaluate fit
+	TGraph *g_cen_val = new TGraph();
+	for (unsigned int si = 0; si < values_W.size(); si++)
+	{
+		const double W = values_W[si];
+		const double s = W*W;
+
+		int idx = g_cen_val->GetN();
+		g_cen_val->SetPoint(idx, W, ff->Eval(W));
+	}
+	g_cen_val->Write("g_cen_val");
 
 	// evaluate uncertainty
 	gRandom = new TRandom2();
@@ -133,7 +144,7 @@ int main()
 
 	vector<Stat> stat(values_W.size(), Stat(1));
 
-	for (unsigned int ci = 0; ci < 10000; ci++)
+	for (unsigned int ci = 0; ci < 100000; ci++)
 	{
 		// generate model parameter errors
 		TVectorD de(3);
@@ -156,8 +167,8 @@ int main()
 	}
 
 	// build graphs
-	TGraph *g_mean = new TGraph();
-	TGraph *g_stddev = new TGraph();
+	TGraph *g_unc_mean = new TGraph();
+	TGraph *g_unc_stddev = new TGraph();
 	TGraph *g_band_up = new TGraph();
 	TGraph *g_band_dw = new TGraph();
 
@@ -167,16 +178,16 @@ int main()
 
 		const double cen = ff->Eval(W);
 
-		int idx = g_mean->GetN();
+		int idx = g_unc_mean->GetN();
 
-		g_mean->SetPoint(idx, W, stat[si].GetMean(0));
-		g_stddev->SetPoint(idx, W, stat[si].GetStdDev(0));
+		g_unc_mean->SetPoint(idx, W, stat[si].GetMean(0));
+		g_unc_stddev->SetPoint(idx, W, stat[si].GetStdDev(0));
 		g_band_up->SetPoint(idx, W, cen + stat[si].GetMean(0) + stat[si].GetStdDev(0));
 		g_band_dw->SetPoint(idx, W, cen + stat[si].GetMean(0) - stat[si].GetStdDev(0));
 	}
 
-	g_mean->Write("g_mean");
-	g_stddev->Write("g_stddev");
+	g_unc_mean->Write("g_unc_mean");
+	g_unc_stddev->Write("g_unc_stddev");
 	g_band_up->Write("g_band_up");
 	g_band_dw->Write("g_band_dw");
 

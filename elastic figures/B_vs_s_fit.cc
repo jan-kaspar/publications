@@ -110,7 +110,7 @@ int main()
 
 	vector<Stat> stat(values_W.size(), Stat(1));
 
-	for (unsigned int ci = 0; ci < 10000; ci++)
+	for (unsigned int ci = 0; ci < 100000; ci++)
 	{
 		// generate model parameter errors
 		TVectorD de(2);
