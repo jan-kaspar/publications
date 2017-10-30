@@ -84,12 +84,12 @@ DrawPoint(200, 16.3, 1.84, 1.84, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys.Lett
 
 // -------------------- LHC, 2.76 TeV --------------------
 
-// TOTEM
+// TOTEM; not yet published
 DrawPoint(2.76e3, 17.1, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
 
 // -------------------- LHC, 7 TeV --------------------
 
-// ATLAS-ALFA
+// ATLAS-ALFA; Nuclear Physics B 889 (2014) 486-548, abstract, unc.~added in quad.
 fsh = +0.02; DrawPoint(7e3, 19.73, 0.29, 0.29, blue+0.8pt, mTL+false+2pt+blue);
 
 // TOTEM, EPL 101 (2013) 21002, abstract
@@ -97,7 +97,7 @@ DrawPoint(7e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
 
 // -------------------- LHC, 8 TeV --------------------
 
-// ATLAS-ALFA
+// ATLAS-ALFA; Physics Letters B 761 (2016) 158-178, abstract, unc.~added in quad.
 fsh = +0.02; DrawPoint(8e3, 19.74, 0.24, 0.24, blue+0.8pt, mTL+false+2pt+blue);
 
 // TOTEM, Phys. Rev. Lett. 111, 012001 (2013)
