@@ -106,7 +106,7 @@ DrawPoint(8e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
 // -------------------- LHC, 13 TeV --------------------
 
 // TOTEM, pp, 13 TeV
-DrawPoint(13e3, 20.35, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
+DrawPoint(13e3, 20.36, 0.19, 0.19, red+0.8pt, mCi+true+2pt+red);
 
 AddToLegend("$\rm \bar pp$", heavygreen, mTU+false+3pt+heavygreen);
 AddToLegend("$\rm pp$", blue, mTD+false+3pt+blue);
