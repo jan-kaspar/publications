@@ -6,29 +6,33 @@ string f = "compete/distributions.root";
 string models[];
 pen m_pens[];
 
-models.push("Model_RPdPL2_20"); m_pens.push(blue);
-models.push("Model_RPdPL2u_17"); m_pens.push(blue);
-models.push("Model_RPdPL2u_19"); m_pens.push(blue);
-models.push("Model_RPdPqcL2u_16"); m_pens.push(blue);
-models.push("Model_RqcRcL2qc_12"); m_pens.push(magenta);
-models.push("Model_RqcRcLqc_12"); m_pens.push(heavygreen);
-models.push("Model_RqcRLqc_14"); m_pens.push(heavygreen);
+models.push("Model_RRdPL2_20"); m_pens.push(blue);
+models.push("Model_RRdPL2u_17"); m_pens.push(blue);
+models.push("Model_RRdPL2u_19"); m_pens.push(blue);
+models.push("Model_RRdPqcL2u_16"); m_pens.push(blue);
 models.push("Model_RRcdPL2u_15"); m_pens.push(blue);
 models.push("Model_RRcdPqcL2u_14"); m_pens.push(blue);
+models.push("Model_RRPL2u_19"); m_pens.push(blue);
+models.push("Model_RRPL2u_21"); m_pens.push(blue);
+
+models.push("Model_RRPEu_19"); m_pens.push(blue + dashed);
+
+models.push("Model_RqcRcL2qc_12"); m_pens.push(magenta);
+models.push("Model_RRL2_18"); m_pens.push(magenta);
+models.push("Model_RRL2qc_17"); m_pens.push(magenta);
 models.push("Model_RRcL2qc_15"); m_pens.push(magenta);
+
+models.push("Model_RRPL2_20"); m_pens.push(heavygreen + dashed);
+models.push("Model_RRPL2qc_18"); m_pens.push(heavygreen + dashed);
+
+models.push("Model_RqcRcLqc_12"); m_pens.push(heavygreen);
+models.push("Model_RqcRLqc_14"); m_pens.push(heavygreen);
 models.push("Model_RRcLqc_15"); m_pens.push(heavygreen);
 models.push("Model_RRcPL_19"); m_pens.push(heavygreen);
 models.push("Model_RRL_18"); m_pens.push(heavygreen);
 models.push("Model_RRL_19"); m_pens.push(heavygreen);
-models.push("Model_RRL2_18"); m_pens.push(magenta);
-models.push("Model_RRL2qc_17"); m_pens.push(magenta);
 models.push("Model_RRLqc_17"); m_pens.push(heavygreen);
-models.push("Model_RRPEu_19"); m_pens.push(blue + dashed);
 models.push("Model_RRPL_21"); m_pens.push(heavygreen);
-models.push("Model_RRPL2_20"); m_pens.push(heavygreen);
-models.push("Model_RRPL2qc_18"); m_pens.push(heavygreen);
-models.push("Model_RRPL2u_19"); m_pens.push(blue);
-models.push("Model_RRPL2u_21"); m_pens.push(blue);
 
 xSizeDef = 10cm;
 ySizeDef = xSizeDef * 2/3;
@@ -44,7 +48,15 @@ void DrawAll(string obj)
 {
 	for (int mi : models.keys)
 	{
-		draw(RootGetObject(f, models[mi] + "/" + obj), m_pens[mi], replace(models[mi], "_", "\_"));
+		RootObject dir = RootGetObject(f, models[mi] + "/g_label");
+		string label = dir.sExec("GetTitle");
+
+		if (label == "")
+			label = replace(models[mi], "_", "\_");
+		else
+			label = "$\rm " + label + "$";
+
+		draw(RootGetObject(f, models[mi] + "/" + obj), m_pens[mi], label);
 	}
 }
 
