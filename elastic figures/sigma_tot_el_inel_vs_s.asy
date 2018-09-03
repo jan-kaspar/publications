@@ -22,10 +22,11 @@ scale(Log, Linear);
 mark m_PDG_app = mTU + false + 1.5pt;
 mark m_PDG_pp = mTD + false + 1.5pt;
 mark m_Auger = mSq + false + 1.5pt;
-mark m_ALICE = mSt + false + 1.5pt;
+mark m_ALICE = mCr2 + false + 1.5pt;
 mark m_ATLAS = mTL + false + 1.5pt;
 mark m_CMS = mTR + false + 1.5pt;
 mark m_LHCb = mPl2 + false + 1.5pt;
+mark m_STAR = mSt + false + 1.9pt;
 mark m_TOTEM = mCi + true + 1.6pt;
 
 pen p_tot = red;
@@ -75,6 +76,12 @@ DrawInelasticDataSet("pdg/pp_total.dat", "pdg/pp_elastic.dat", p_inel+0.2pt, m_P
 // Auger; P. Abreu et al. (Pierre Auger Collaboration), Phys. Rev. Lett. 109, 062002 (2012)
 fsh = -0.5fshu; DrawPointE(57e3, 6e3, 6e3, 92, 14.8, 13.4, p_inel, m_Auger+p_inel);
 fsh = +0.5fshu; DrawPointE(57e3, 6e3, 6e3, 133, 28.7, 26.7, p_tot, m_Auger+p_tot);
+
+// -------------------- RHIC --------------------
+
+// https://indico.cern.ch/event/713101/contributions/3102222/attachments/1704998/2747001/GurynDiffraction2018.pdf, unc.~added in quad
+fsh = 0fshu; DrawPoint(200., 51.3, 2.04, 2.04, p_tot, m_STAR+p_tot);
+fsh = 0fshu; DrawPoint(200., 9.6, 0.71, 0.71, p_el, m_STAR+p_el);
 
 
 // -------------------- LHC, 2.76 TeV --------------------
@@ -192,6 +199,7 @@ for (real y = 10; y < 140; y += 10)
 AddToLegend("$\rm \bar pp$ (PDG 2010)", nullpen, m_PDG_app+3pt);
 AddToLegend("$\rm pp$ (PDG 2010)", nullpen, m_PDG_pp+3pt);
 AddToLegend("Auger (+ Glauber)", m_Auger+3pt);
+AddToLegend("STAR (preliminary)", m_STAR+3pt);
 AddToLegend("ALICE", m_ALICE+3pt);
 AddToLegend("ATLAS, ATLAS-ALFA", m_ATLAS+3pt);
 AddToLegend("CMS", m_CMS+3pt);
@@ -202,7 +210,7 @@ label("$\si_{\rm tot}$", (3.1, 78), p_tot, Fill(white));
 label("$\si_{\rm inel}$", (3.1, 50), p_inel, Fill(white));
 label("$\si_{\rm el}$", (3.1, 11), p_el, Fill(white));
 
-AttachLegend(2, NW, NW);
+AttachLegend(BuildLegend(3, NW, lineLength=5mm), NW);
 
 // fit labels
 currentpicture.legend.delete();
@@ -210,6 +218,6 @@ AddToLegend("$\si_{\rm tot}$ fits by COMPETE", black);
 AddToLegend("(pre-LHC model $\rm RRP_{\rm nf}L2_{\rm u}$)");
 AddToLegend("$\si_{\rm el}$ fit by TOTEM", dashed);
 AddToLegend("($11.84 - 1.617\ln s + 0.1359\ln^2 s$)");
-AttachLegend(shift(0, 42.7)*BuildLegend(W), W);
+AttachLegend(shift(0, 57.5)*BuildLegend(W), W);
 
 GShipout();
