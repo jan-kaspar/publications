@@ -199,12 +199,12 @@ for (real y = 10; y < 140; y += 10)
 AddToLegend("$\rm \bar pp$ (PDG 2010)", nullpen, m_PDG_app+3pt);
 AddToLegend("$\rm pp$ (PDG 2010)", nullpen, m_PDG_pp+3pt);
 AddToLegend("Auger (+ Glauber)", m_Auger+3pt);
-AddToLegend("STAR (preliminary)", m_STAR+3pt);
+AddToLegend("STAR (prelim.)", m_STAR+3pt);
 AddToLegend("ALICE", m_ALICE+3pt);
-AddToLegend("ATLAS, ATLAS-ALFA", m_ATLAS+3pt);
-AddToLegend("CMS", m_CMS+3pt);
+AddToLegend("ATLAS/ALFA", m_ATLAS+3pt);
+AddToLegend("{\bf TOTEM}", nullpen, m_TOTEM+3pt);
 AddToLegend("LHCb", m_LHCb+3pt);
-AddToLegend("TOTEM", nullpen, m_TOTEM+3pt);
+AddToLegend("CMS", m_CMS+3pt);
 
 label("$\si_{\rm tot}$", (3.1, 78), p_tot, Fill(white));
 label("$\si_{\rm inel}$", (3.1, 50), p_inel, Fill(white));

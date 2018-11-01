@@ -81,8 +81,8 @@ label(rotate(90)*Label("\SmallerFonts$13\un{TeV}$"), Scale((13e3, y_label)), Fil
 AddToLegend("$\rm \bar pp$, PDG", heavygreen, mTU+false+3pt+heavygreen);
 AddToLegend("$\rm pp$, PDG", blue, mTD+false+3pt+blue);
 
-AddToLegend("TOTEM", red, mCi+true+2.5pt+red);
-AddToLegend("ATLAS-ALFA", blue, mTL+false+3pt+blue);
+AddToLegend("{\bf TOTEM}", red, mCi+true+2.5pt+red);
+AddToLegend("ATLAS/ALFA", blue, mTL+false+3pt+blue);
 //AddToLegend("$\displaystyle\hbox{\strut $\si_{\rm el}$ fit by TOTEM}\over\hbox{\strut $\si_{\rm tot}$ fits by COMPETE ($\rm RRP_{\rm nf}L2_{\rm u}$)}$", dashed);
 AddToLegend("ratio of $\si_{\rm el}$ fit by TOTEM", dashed);
 AddToLegend("and $\si_{\rm tot}$ fits by COMPETE");

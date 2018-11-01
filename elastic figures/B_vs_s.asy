@@ -114,8 +114,8 @@ DrawPoint(13e3, 20.36, 0.19, 0.19, red+0.8pt, mCi+true+2pt+red);
 
 AddToLegend("$\rm \bar pp$", heavygreen, mTU+false+3pt+heavygreen);
 AddToLegend("$\rm pp$", blue, mTD+false+3pt+blue);
-AddToLegend("TOTEM", red+0.8pt, mCi+true+2.5pt+red);
-AddToLegend("ATLAS-ALFA", blue+0.8pt, mTL+false+3pt+blue);
+AddToLegend("{\bf TOTEM}", red+0.8pt, mCi+true+2.5pt+red);
+AddToLegend("ATLAS/ALFA", blue+0.8pt, mTL+false+3pt+blue);
 AddToLegend("STAR (preliminary)", blue+0.8pt, mSt+false+3pt+blue);
 
 // arrows
