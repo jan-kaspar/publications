@@ -26,6 +26,11 @@ DrawFit(yscale(100), "rat_si_el_tot_p_p", linetype(new real[] {8, 8}, offset=7))
 DrawElToTotDataSet("pdg/pbarp_total.dat", "pdg/pbarp_elastic.dat", heavygreen+0.2pt, mTU+2pt+false+heavygreen);
 DrawElToTotDataSet("pdg/pp_total.dat", "pdg/pp_elastic.dat", blue+0.2pt, mTD+2pt+true+blue);
 
+// -------------------- STAR --------------------
+
+// https://indico.cern.ch/event/713101/contributions/3102222/attachments/1704998/2747001/GurynDiffraction2018.pdf, unc. added in quad. and corr. ignored
+fsh =   0.0; DrawPoint(200., 18.71, 0.24, 0., blue, mSt+false+3pt+blue);
+
 // -------------------- LHC, 2.76 TeV --------------------
 
 // TOTEM, not yet published
@@ -78,11 +83,14 @@ label(rotate(90)*Label("\SmallerFonts$13\un{TeV}$"), Scale((13e3, y_label)), Fil
 
 // -------------------- legend --------------------
 
+AddToLegend("{\bf TOTEM}", red, mCi+true+2.5pt+red);
+
 AddToLegend("$\rm \bar pp$, PDG", heavygreen, mTU+false+3pt+heavygreen);
 AddToLegend("$\rm pp$, PDG", blue, mTD+false+3pt+blue);
 
-AddToLegend("{\bf TOTEM}", red, mCi+true+2.5pt+red);
 AddToLegend("ATLAS/ALFA", blue, mTL+false+3pt+blue);
+AddToLegend("STAR (prelim.)", blue, mSt+false+3pt+blue);
+
 //AddToLegend("$\displaystyle\hbox{\strut $\si_{\rm el}$ fit by TOTEM}\over\hbox{\strut $\si_{\rm tot}$ fits by COMPETE ($\rm RRP_{\rm nf}L2_{\rm u}$)}$", dashed);
 AddToLegend("ratio of $\si_{\rm el}$ fit by TOTEM", dashed);
 AddToLegend("and $\si_{\rm tot}$ fits by COMPETE");
