@@ -54,7 +54,7 @@ DrawPoint(52.8, 13.92, 0.59, 0.59, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen)
 
 // STAR
 // https://indico.cern.ch/event/713101/contributions/3102222/attachments/1704998/2747001/GurynDiffraction2018.pdf, unc.~added in quad
-fsh = -0.01; DrawPoint(200., 14.2, 0.32, 0.32, blue+0.6pt, mSt+false+1.5pt+blue);
+fsh = -0.01; DrawPoint(200., 14.2, 0.32, 0.32, blue+0.6pt, mSt+false+2pt+blue);
 
 // UA1, app
 fsh = -0.01; DrawPoint(540, 13.3, 1.5, 1.5, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);		// Phys. Lett. B 147 (1984) 385-391
@@ -112,9 +112,9 @@ DrawPoint(8e3, 19.9, 0.3, 0.3, red+0.8pt, mCi+true+2pt+red);
 // TOTEM, pp, 13 TeV
 DrawPoint(13e3, 20.36, 0.19, 0.19, red+0.8pt, mCi+true+2pt+red);
 
+AddToLegend("{\bf TOTEM}", red+0.8pt, mCi+true+2.5pt+red);
 AddToLegend("$\rm \bar pp$", heavygreen, mTU+false+3pt+heavygreen);
 AddToLegend("$\rm pp$", blue, mTD+false+3pt+blue);
-AddToLegend("{\bf TOTEM}", red+0.8pt, mCi+true+2.5pt+red);
 AddToLegend("ATLAS/ALFA", blue+0.8pt, mTL+false+3pt+blue);
 AddToLegend("STAR (preliminary)", blue+0.8pt, mSt+false+3pt+blue);
 
