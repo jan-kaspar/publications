@@ -79,9 +79,11 @@ fsh = +0.5fshu; DrawPointE(57e3, 6e3, 6e3, 133, 28.7, 26.7, p_tot, m_Auger+p_tot
 
 // -------------------- RHIC --------------------
 
-// https://indico.cern.ch/event/713101/contributions/3102222/attachments/1704998/2747001/GurynDiffraction2018.pdf, unc.~added in quad
-fsh = 0fshu; DrawPoint(200., 51.3, 2.04, 2.04, p_tot, m_STAR+p_tot);
-fsh = 0fshu; DrawPoint(200., 9.6, 0.71, 0.71, p_el, m_STAR+p_el);
+// STAR, https://arxiv.org/abs/2003.12136, Physics Letters B, Volume 808, 10 September 2020, 135663
+//		asymmetric systematics averaged, systematic and statistical uncertainty combined in quadrature
+fsh = 0fshu; DrawPoint(200., 54.67, 1.35, 1.35, p_tot, m_STAR+p_tot);
+fsh = 0fshu; DrawPoint(200., 43.82, 1.42, 1.42, p_inel, m_STAR+p_inel);
+fsh = 0fshu; DrawPoint(200., 10.85, 0.45, 0.45, p_el, m_STAR+p_el);
 
 
 // -------------------- LHC, 2.76 TeV --------------------
