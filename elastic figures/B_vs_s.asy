@@ -52,9 +52,9 @@ DrawPoint(62.3, 13.47, 0.52, 0.52, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen)
 DrawPoint(52.8, 13.09, 0.58, 0.58, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B115B (1982) 495
 DrawPoint(52.8, 13.92, 0.59, 0.59, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Phys. Lett. B115 (1982) 495
 
-// STAR
-// https://indico.cern.ch/event/713101/contributions/3102222/attachments/1704998/2747001/GurynDiffraction2018.pdf, unc.~added in quad
-fsh = -0.01; DrawPoint(200., 14.2, 0.32, 0.32, blue+0.6pt, mSt+false+2pt+blue);
+// STAR, https://arxiv.org/abs/2003.12136, Physics Letters B, Volume 808, 10 September 2020, 135663
+//		asymmetric systematics averaged, systematic and statistical uncertainty combined in quadrature
+fsh = -0.01; DrawPoint(200., 14.32, 0.22, 0.22, blue+0.6pt, mSt+false+2pt+blue);
 
 // UA1, app
 fsh = -0.01; DrawPoint(540, 13.3, 1.5, 1.5, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);		// Phys. Lett. B 147 (1984) 385-391
@@ -85,6 +85,12 @@ DrawPoint(1.96e3, 16.54, 0.9, 0.9, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen)
 
 // pp2pp, pp
 DrawPoint(200, 16.3, 1.84, 1.84, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys.Lett. B579 (2004) 245-250
+
+
+// -------------------- LHC, 0.9 TeV --------------------
+
+// TOTEM; not yet published
+//DrawPoint(0.9e3, 17.3, 0.6, 0.6, magenta+0.8pt, mCi+true+2pt+magenta);
 
 // -------------------- LHC, 2.76 TeV --------------------
 
