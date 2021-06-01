@@ -52,9 +52,8 @@ DrawPoint(62.3, 13.47, 0.52, 0.52, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen)
 DrawPoint(52.8, 13.09, 0.58, 0.58, blue+0.6pt, mTD+false+1.5pt+blue);	// Phys. Lett. B115B (1982) 495
 DrawPoint(52.8, 13.92, 0.59, 0.59, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);	// Phys. Lett. B115 (1982) 495
 
-// STAR, https://arxiv.org/abs/2003.12136, Physics Letters B, Volume 808, 10 September 2020, 135663
-//		asymmetric systematics averaged, systematic and statistical uncertainty combined in quadrature
-fsh = -0.01; DrawPoint(200., 14.32, 0.22, 0.22, blue+0.6pt, mSt+false+2pt+blue);
+// STAR, Phys. Lett. B, Volume 808 (2020) 135663, systematic and statistical uncertainty combined in quadrature
+fsh = -0.01; DrawPoint(200., 14.32, 0.294, 0.158, blue+0.6pt, mSt+false+2pt+blue);
 
 // UA1, app
 fsh = -0.01; DrawPoint(540, 13.3, 1.5, 1.5, heavygreen+0.6pt, mTU+false+1.5pt+heavygreen);		// Phys. Lett. B 147 (1984) 385-391
