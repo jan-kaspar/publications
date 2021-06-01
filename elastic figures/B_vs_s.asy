@@ -122,7 +122,7 @@ AddToLegend("{\bf TOTEM}", red+0.8pt, mCi+true+2.5pt+red);
 AddToLegend("$\rm \bar pp$", heavygreen, mTU+false+3pt+heavygreen);
 AddToLegend("$\rm pp$", blue, mTD+false+3pt+blue);
 AddToLegend("ATLAS/ALFA", blue+0.8pt, mTL+false+3pt+blue);
-AddToLegend("STAR (preliminary)", blue+0.8pt, mSt+false+3pt+blue);
+AddToLegend("STAR", blue+0.8pt, mSt+false+3pt+blue);
 
 // arrows
 /*
