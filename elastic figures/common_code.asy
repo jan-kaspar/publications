@@ -62,6 +62,8 @@ int LoadFile(string fn, Meas data[])
 
 int DrawDataSet(string filename, pen col, mark m, string legend="")
 {
+	//write("// " + filename);
+
 	Meas data[];
 	LoadFile(filename, data);
 
@@ -81,10 +83,8 @@ int DrawDataSet(string filename, pen col, mark m, string legend="")
 		draw(Scale((W, e.si - e.si_em))--Scale((W, e.si + e.si_ep)), col);
 		draw(Scale((W, e.si)), m+false+1.5pt+col);
 
-		/*
-		if (W > 10)
-			write(format("AddPoint(%.3E", W) + format(", %.3f", e.si) + format(", %.3f);", (e.si_em + e.si_ep)/2));
-		*/
+		//if (W > 10)
+		//	write(format("AddPoint(%.3E", W) + format(", %.3f", e.si) + format(", %.3f);", (e.si_em + e.si_ep)/2));
 	}
 
 	return 0;

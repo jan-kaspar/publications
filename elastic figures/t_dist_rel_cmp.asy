@@ -158,8 +158,8 @@ AttachLegend(shift(10, 10)*BuildLegend("$\sqrt s = 8\un{TeV}$", SW), SW);
 // 13 TeV
 //----------------------------------------------------------------------------------------------------
 
-A_ref = 606.14;
-B_ref = 20.41;
+A_ref = 633.;
+B_ref = 20.4;
 
 ref_str = MakeRefStr("");
 
@@ -170,22 +170,19 @@ NewPad("$|t|\ung{GeV^2}$", "${\d\si/\d t - \hbox{ref} \over \hbox{ref}}\ ,\ \ \h
 TH1_x_min = 8e-4;
 RootObject obj = RootGetObject("/afs/cern.ch/work/j/jkaspar/analyses/elastic/6500GeV/beta2500/2rp/DS-merged/merged.root",
 	"ob-3-5-0.05/merged/45t_56b/h_dsdt");
-DrawRelDiff(obj, heavygreen+1pt, "$\be^* = 2500\un{m}$");
+DrawRelDiff(obj, blue+1pt, "$\be^* = 2500\un{m}$");
 
 // ----- 90m -----
 
-/*
-A_ref = 1.336e11 * 1.05;
+A_ref *= 0.514;
+RootObject obj = RootGetObject("/afs/cern.ch/work/j/jkaspar/analyses/elastic/6500GeV/beta90/10sigma-smearing/DS-frici/unfolding_cf_ni.root",
+	"binning-def/p3*exp4+p3*exp3/+0,+0/iteration 4/input_corr");
 
-RootObject obj = RootGetObject("/afs/cern.ch/work/j/jkaspar/analyses/elastic/6500GeV/beta90/10sigma/DS-merged/merged.root",
-	"ob-1-10-0.2/merged/45t_56b/h_dsdt");
-TH1_x_min = 0.05;
 DrawRelDiff(obj, red+1pt, "$\be^* = 90\un{m}$");
-*/
 
 // ----- common -----
 
 limits((0, -0.10), (0.3, 0.05), Crop);
 xaxis(YEquals(0, false), dashed);
 
-AttachLegend(shift(10, 10)*BuildLegend("$\sqrt s = 13\un{TeV}$ (prelim.)", SW), SW);
+AttachLegend(shift(10, 10)*BuildLegend("$\sqrt s = 13\un{TeV}$", SW), SW);
